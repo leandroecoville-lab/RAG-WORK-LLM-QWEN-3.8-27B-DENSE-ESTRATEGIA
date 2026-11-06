@@ -1,0 +1,6 @@
+flowchart TD
+    T200["T200 Independent Verification"]
+    T190["T190 Verifier Loop"]
+    T200 -->|"complements: produção documentada"| T190
+    T195["T195 Verificação baseada em execução"]
+    T200 -. "complements: proposta" .-> T195

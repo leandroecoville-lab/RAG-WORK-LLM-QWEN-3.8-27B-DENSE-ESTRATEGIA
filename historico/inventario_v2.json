@@ -1,0 +1,1724 @@
+[
+  {
+    "id": "T001",
+    "name": "Map-Reduce",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T002",
+    "name": "Prompt Caching",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T003",
+    "name": "Sliding Window de contexto — incluindo descarte FIFO",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T004",
+    "name": "Summarization em cadeia",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T005",
+    "name": "Semantic Caching",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T006",
+    "name": "Context Compression",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T007",
+    "name": "Response Caching por Hash",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T008",
+    "name": "Hierarchical Summarization",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T009",
+    "name": "RAG — Retrieval-Augmented Generation; incluindo RAG temporal",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T010",
+    "name": "Fixed-Size Chunking",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T011",
+    "name": "Semantic Chunking",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T012",
+    "name": "Recursive Chunking",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T013",
+    "name": "Long-Context Models",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T014",
+    "name": "Progressive Disclosure",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T015",
+    "name": "Reference Passing",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T016",
+    "name": "Tool Result Truncation",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T017",
+    "name": "Context Folding",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T018",
+    "name": "Context Pruning",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T019",
+    "name": "Few-Shot Pruning",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T020",
+    "name": "Learned Prompt Compression",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T021",
+    "name": "Context Compression On-the-Fly",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T022",
+    "name": "Instruction Compression",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T023",
+    "name": "Recursive Summarization Tree",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T024",
+    "name": "Context Broker e Context Builder",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T025",
+    "name": "Adaptive RAG",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T026",
+    "name": "Hierarchical Retrieval",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T027",
+    "name": "Hybrid Retrieval — BM25 + vetores",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T028",
+    "name": "Reranking",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T029",
+    "name": "GraphRAG",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T030",
+    "name": "RAPTOR",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T031",
+    "name": "Semantic Cache Invalidation",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T032",
+    "name": "Parent-Child Retrieval / Parent-Child Chunking",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T033",
+    "name": "Structure-Aware Chunking",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T034",
+    "name": "Agentic Chunking",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T035",
+    "name": "Contextual Chunking",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T036",
+    "name": "Query-Aware RAG",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T037",
+    "name": "Query-Aware Compression",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T038",
+    "name": "Selective Context Pruning",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T039",
+    "name": "Importance-Aware Window",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T040",
+    "name": "State-Aware Window",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T041",
+    "name": "Last-N Messages Window",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T042",
+    "name": "Token-Based Window",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T043",
+    "name": "Context Compaction",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T044",
+    "name": "Progressive Context Expansion",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T045",
+    "name": "Tool Retrieval",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T046",
+    "name": "Dynamic Few-Shot Selection",
+    "category": "contexto_recuperacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T047",
+    "name": "Long-Term Memory — memória de longo prazo",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T048",
+    "name": "Memory Management",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T049",
+    "name": "Episodic Memory",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T050",
+    "name": "Working Memory Window",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T051",
+    "name": "Graph-Based Memory",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T052",
+    "name": "Latent Context",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T053",
+    "name": "Scratchpad em arquivo",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T054",
+    "name": "Semantic Memory",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T055",
+    "name": "Procedural Memory",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T056",
+    "name": "Bitemporal Memory",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T057",
+    "name": "Causal Memory",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T058",
+    "name": "Memory Consolidation",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T059",
+    "name": "Event Sourcing",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T060",
+    "name": "Agent Checkpointing / Checkpoint & Resume — incluindo checkpoints transacionais",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T061",
+    "name": "Content-Addressable Storage",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T062",
+    "name": "Hierarchical Memory",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T063",
+    "name": "Virtual Context Management — memória virtual de contexto, estilo MemGPT",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T064",
+    "name": "Persistent Agent State",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T065",
+    "name": "Transactional State Manager",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T066",
+    "name": "Memory Resolver / Reference Resolver",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T067",
+    "name": "Active Memory Retrieval",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T068",
+    "name": "Memory-Augmented Generation",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T069",
+    "name": "Consolidação por resumos — anteriormente chamada de “Context Distillation”",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T070",
+    "name": "Episodic Store",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T071",
+    "name": "Memory Promotion",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T072",
+    "name": "Versioned Memory",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T073",
+    "name": "Immutable Evidence Store",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T074",
+    "name": "Memory Eviction",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T075",
+    "name": "Memory Reconciliation",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T076",
+    "name": "Git-Backed Memory",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T077",
+    "name": "Temporal Knowledge Graphs",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T078",
+    "name": "Semantic Page Fault",
+    "category": "memoria",
+    "scope": "inventario"
+  },
+  {
+    "id": "T079",
+    "name": "Speculative Decoding",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T080",
+    "name": "Adaptive Speculative Decoding",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T081",
+    "name": "KV Cache Reuse",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T082",
+    "name": "Prefix Caching",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T083",
+    "name": "Advanced Prefix Caching",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T084",
+    "name": "Session-Based Caching",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T085",
+    "name": "Quantization",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T086",
+    "name": "Quantized KV Cache",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T087",
+    "name": "Batching — Static Batching e Dynamic Batching",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T088",
+    "name": "Continuous Batching",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T089",
+    "name": "Early Stopping — EOS, stop sequences, limites e parada semântica",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T090",
+    "name": "FlashAttention",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T091",
+    "name": "FlashAttention-2",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T092",
+    "name": "FlashAttention-3",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T093",
+    "name": "PagedAttention",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T094",
+    "name": "Chunked Prefill",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T095",
+    "name": "Sliding Window Attention",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T096",
+    "name": "Sparse Attention",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T097",
+    "name": "Block-Sparse Attention",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T098",
+    "name": "Memory-Efficient Attention",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T099",
+    "name": "Multi-Query Attention — MQA",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T100",
+    "name": "Grouped-Query Attention — GQA",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T101",
+    "name": "Ring Attention",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T102",
+    "name": "Disaggregated Inference / Disaggregated Prefill-Decode",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T103",
+    "name": "Prefix Tree / Trie de prefixos",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T104",
+    "name": "Radix Attention",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T105",
+    "name": "KV Cache Eviction",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T106",
+    "name": "Otimização de KV com MQA/GQA",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T107",
+    "name": "Roofline Analysis",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T108",
+    "name": "Multi-Head Attention — MHA",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T109",
+    "name": "Local / Window Attention",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T110",
+    "name": "Global Token Attention",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T111",
+    "name": "Dynamic Sparse Attention",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T112",
+    "name": "Retrieval-Based Attention",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T113",
+    "name": "FlashAttention Tiling",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T114",
+    "name": "Online Softmax",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T115",
+    "name": "Activation Checkpointing",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T116",
+    "name": "KV Cache Recomputation",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T117",
+    "name": "Context Parallelism",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T118",
+    "name": "Tensor Parallelism",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T119",
+    "name": "Pipeline Parallelism",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T120",
+    "name": "KV Cache Routing",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T121",
+    "name": "GPU Scheduling",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T122",
+    "name": "RDMA para inferência distribuída",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T123",
+    "name": "FP8 Quantization",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T124",
+    "name": "INT4 / W4A16 Quantization",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T125",
+    "name": "GPTQ",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T126",
+    "name": "AWQ",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T127",
+    "name": "GGUF — formato de modelos, não método único de quantização",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T128",
+    "name": "EAGLE / EAGLE-3",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T129",
+    "name": "MTP — Multi-Token Prediction",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T130",
+    "name": "N-Gram Speculative Decoding",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T131",
+    "name": "Suffix Decoding",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T132",
+    "name": "Draft-Model Speculation",
+    "category": "inferencia",
+    "scope": "inventario"
+  },
+  {
+    "id": "T133",
+    "name": "Model Routing",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T134",
+    "name": "Semantic Routing",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T135",
+    "name": "Model Cascade",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T136",
+    "name": "Fallback Chains",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T137",
+    "name": "Rate Limiting",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T138",
+    "name": "Circuit Breaker",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T139",
+    "name": "Parallel Tool Calls",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T140",
+    "name": "Tool Use / Function Calling",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T141",
+    "name": "Structured Outputs",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T142",
+    "name": "Agent Frameworks com Planning",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T143",
+    "name": "Plan-Then-Act",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T144",
+    "name": "ReAct Pattern",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T145",
+    "name": "Adaptive Depth",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T146",
+    "name": "Adaptive Compute",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T147",
+    "name": "Parallel Fan-Out",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T148",
+    "name": "Conditional Branching",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T149",
+    "name": "Priority Queue",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T150",
+    "name": "Request Coalescing / Singleflight",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T151",
+    "name": "Lazy Loading de ferramentas",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T152",
+    "name": "Token Budget Allocation",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T153",
+    "name": "Output Streaming com interrupção",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T154",
+    "name": "Multi-Turn Conversation Management",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T155",
+    "name": "System Prompt Optimization / prompt de sistema enxuto",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T156",
+    "name": "Temperature Tuning",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T157",
+    "name": "Prefix Hashing",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T158",
+    "name": "Tool Registry",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T159",
+    "name": "Durable Execution",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T160",
+    "name": "DAG Scheduling",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T161",
+    "name": "Critical Path Analysis",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T162",
+    "name": "Idempotência",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T163",
+    "name": "Backoff exponencial com jitter",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T164",
+    "name": "Retry-After",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T165",
+    "name": "Half-open — estado do Circuit Breaker",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T166",
+    "name": "Queue Fairness / Aging",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T167",
+    "name": "Token Bucket",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T168",
+    "name": "Soft Limit / Hard Limit de tokens",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T169",
+    "name": "Multi-Agent com contextos isolados",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T170",
+    "name": "Tool Schema Versioning",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T171",
+    "name": "Cache-Aware Orchestration",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T172",
+    "name": "Streaming Controller",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T173",
+    "name": "Model Fallback Controlado",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T174",
+    "name": "Priority-Based Scheduling",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T175",
+    "name": "Rate Limiting com Fallback",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T176",
+    "name": "Token-Aware Planning",
+    "category": "orquestracao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T177",
+    "name": "Fine-Tuning",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T178",
+    "name": "Knowledge Distillation",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T179",
+    "name": "Context Distillation Paramétrica",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T180",
+    "name": "Prompt Distillation",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T181",
+    "name": "Agent Memory Distillation",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T182",
+    "name": "LoRA",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T183",
+    "name": "QLoRA",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T184",
+    "name": "Mixture of Experts — MoE",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T185",
+    "name": "Constitutional AI",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T186",
+    "name": "Debate entre agentes",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T187",
+    "name": "Ensemble Voting",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T188",
+    "name": "Self-Consistency",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T189",
+    "name": "Best-of-N Verification",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T190",
+    "name": "Verifier Loop",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T191",
+    "name": "Chain-of-Verification",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T192",
+    "name": "Self-Refine",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T193",
+    "name": "Guardrails",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T194",
+    "name": "Process Supervision",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T195",
+    "name": "Verificação baseada em execução",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T196",
+    "name": "Constrained Decoding / Grammar-Constrained Decoding",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T197",
+    "name": "JSON Schema Validation",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T198",
+    "name": "Calibrated Confidence",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T199",
+    "name": "Aprendizagem por avaliação",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T200",
+    "name": "Independent Verification",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T201",
+    "name": "Agent Test-Time Scaling",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T202",
+    "name": "Uncertainty-Aware Planning",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T203",
+    "name": "Correctness-Based Routing",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T204",
+    "name": "Skills / Procedural Learning",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T205",
+    "name": "Semantic Equivalence Testing",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T206",
+    "name": "Process Verification",
+    "category": "verificacao_treinamento",
+    "scope": "inventario"
+  },
+  {
+    "id": "T207",
+    "name": "Memory Stream",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T208",
+    "name": "Planner–Executor / Plan-and-Execute",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T209",
+    "name": "Reflexion",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T210",
+    "name": "Session Rotation",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T211",
+    "name": "Handoff File",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T212",
+    "name": "Auto-Compact por gatilho",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T213",
+    "name": "Task Decomposition em micro-missões",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T214",
+    "name": "Tool Output Pruning",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T215",
+    "name": "Observation Masking",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T216",
+    "name": "Repo Map / mapa do repositório",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T217",
+    "name": "Test-Driven Loop",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T218",
+    "name": "Loop Detection / detecção de estagnação e ciclos",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T219",
+    "name": "Limite de recursão / profundidade de execução",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T220",
+    "name": "Tool Call Repair",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T221",
+    "name": "Goal Reminder Injection",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T222",
+    "name": "Context Budget Monitor",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T223",
+    "name": "Constitutional Self-Check",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T224",
+    "name": "Spec-Driven Loop",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T225",
+    "name": "Watchdog com Auto-Restart",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T226",
+    "name": "Heartbeat de progresso",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T227",
+    "name": "Health Checks — liveness, readiness e progresso",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T228",
+    "name": "Fila de retries com backoff exponencial",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T229",
+    "name": "Diff-Only Editing / Patch-Based Coding",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T230",
+    "name": "Unified Diff",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T231",
+    "name": "Search/Replace Editing",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T232",
+    "name": "AST Editing",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T233",
+    "name": "Patch Validation — incluindo verificação de hash-base",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T234",
+    "name": "Persistent Project Memory File — incluindo memória por módulo",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T235",
+    "name": "Headless Mode em loop / Headless Controller",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T236",
+    "name": "Git Commit por etapa",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T237",
+    "name": "Subagent Offloading",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T238",
+    "name": "Read On Demand com faixa de linhas",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T239",
+    "name": "Git Worktrees",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T240",
+    "name": "Snapshot de estado",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T241",
+    "name": "Event Replay",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T242",
+    "name": "Recuperação híbrida por Snapshot + Event Sourcing",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "T243",
+    "name": "Reconciliação de operações externas",
+    "category": "continuidade_programacao",
+    "scope": "inventario"
+  },
+  {
+    "id": "R001",
+    "name": "MemGPT",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R002",
+    "name": "Letta",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R003",
+    "name": "LongMem",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R004",
+    "name": "Generative Agents",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R005",
+    "name": "LLMLingua",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R006",
+    "name": "PRISM",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R007",
+    "name": "SADA",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R008",
+    "name": "LangGraph",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R009",
+    "name": "vLLM",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R010",
+    "name": "Hugging Face TGI",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R011",
+    "name": "NVIDIA TensorRT-LLM",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R012",
+    "name": "Tinker — Prompt Distillation",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R013",
+    "name": "Letta MemFS",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R014",
+    "name": "Letta Context Repositories",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R015",
+    "name": "Learning by Distilling Context",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R016",
+    "name": "Lost in the Middle",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R017",
+    "name": "LangChain",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R018",
+    "name": "Temporal",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R019",
+    "name": "Aider",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R020",
+    "name": "Claude Code",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R021",
+    "name": "OpenAI Codex",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R022",
+    "name": "Qwen",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R023",
+    "name": "Hugging Face Transformers",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R024",
+    "name": "llama.cpp",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R025",
+    "name": "XGrammar",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R026",
+    "name": "Guidance",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "R027",
+    "name": "Git",
+    "category": "referencias",
+    "scope": "referencia"
+  },
+  {
+    "id": "P001",
+    "name": "Context Engine",
+    "category": "componentes_propostos",
+    "scope": "proposta"
+  },
+  {
+    "id": "P002",
+    "name": "Context Manager",
+    "category": "componentes_propostos",
+    "scope": "proposta"
+  },
+  {
+    "id": "P003",
+    "name": "Virtual Context Manager",
+    "category": "componentes_propostos",
+    "scope": "proposta"
+  },
+  {
+    "id": "P004",
+    "name": "LAI Memory Runtime",
+    "category": "componentes_propostos",
+    "scope": "proposta"
+  },
+  {
+    "id": "P005",
+    "name": "Context & Memory Controller",
+    "category": "componentes_propostos",
+    "scope": "proposta"
+  },
+  {
+    "id": "P006",
+    "name": "Progressive Loader",
+    "category": "componentes_propostos",
+    "scope": "proposta"
+  },
+  {
+    "id": "P007",
+    "name": "Memory Retriever",
+    "category": "componentes_propostos",
+    "scope": "proposta"
+  },
+  {
+    "id": "P008",
+    "name": "Event Store / Event Log",
+    "category": "componentes_propostos",
+    "scope": "proposta"
+  },
+  {
+    "id": "P009",
+    "name": "Inference Engine",
+    "category": "componentes_propostos",
+    "scope": "proposta"
+  },
+  {
+    "id": "P010",
+    "name": "Routing Engine",
+    "category": "componentes_propostos",
+    "scope": "proposta"
+  },
+  {
+    "id": "P011",
+    "name": "Execution Engine / Execution Controller",
+    "category": "componentes_propostos",
+    "scope": "proposta"
+  },
+  {
+    "id": "P012",
+    "name": "Verification Engine / Verification Controller",
+    "category": "componentes_propostos",
+    "scope": "proposta"
+  },
+  {
+    "id": "P013",
+    "name": "Resilience Engine / Reliability Controller",
+    "category": "componentes_propostos",
+    "scope": "proposta"
+  },
+  {
+    "id": "P014",
+    "name": "Execution Resilience",
+    "category": "componentes_propostos",
+    "scope": "proposta"
+  },
+  {
+    "id": "P015",
+    "name": "Execution Integrity Controller",
+    "category": "componentes_propostos",
+    "scope": "proposta"
+  },
+  {
+    "id": "P016",
+    "name": "Evaluation Engine",
+    "category": "componentes_propostos",
+    "scope": "proposta"
+  },
+  {
+    "id": "P017",
+    "name": "Distillation Pipeline",
+    "category": "componentes_propostos",
+    "scope": "proposta"
+  }
+]

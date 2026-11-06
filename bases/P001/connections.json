@@ -1,0 +1,60 @@
+{
+  "entry_id": "P001",
+  "edges": [
+    {
+      "edge_id": "E-P001-01",
+      "from": "P001",
+      "to": "P007",
+      "relation": "requires",
+      "how": "Solicitar evidência por requisito e escopo.",
+      "interface": "requirement_id, consulta, filtros e tipo de suporte.",
+      "condition": "Retriever devolver proveniência e lacunas.",
+      "acceptance": "Recuperar documento correto que não sustenta o requisito e exigir rejeição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S022",
+        "A-S006"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-P001-02",
+      "from": "P001",
+      "to": "P002",
+      "relation": "requires",
+      "how": "Negociar limite de contexto antes de compilar.",
+      "interface": "Perfil do modelo, reserva e cotas por requisito.",
+      "condition": "Conjunto obrigatório caber ou gerar insuficiência.",
+      "acceptance": "Trocar para modelo menor e recalcular pacote.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S022",
+        "A-S006"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-P001-03",
+      "from": "P001",
+      "to": "T200",
+      "relation": "feeds",
+      "how": "Entregar manifesto à verificação da resposta.",
+      "interface": "Afirmações, fontes e transformações aplicadas.",
+      "condition": "Verificador acessar originais quando necessário.",
+      "acceptance": "Detectar citação que aponta fonte verdadeira mas não suporta a frase.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S022",
+        "A-S006"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

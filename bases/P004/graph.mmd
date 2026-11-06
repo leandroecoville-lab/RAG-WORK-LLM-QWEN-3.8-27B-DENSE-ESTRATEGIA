@@ -1,0 +1,8 @@
+flowchart TD
+    P004["P004 LAI Memory Runtime"]
+    T065["T065 Transactional State Manager"]
+    P004 -. "requires: proposta" .-> T065
+    P007["P007 Memory Retriever"]
+    P004 -. "feeds: proposta" .-> P007
+    T072["T072 Versioned Memory"]
+    P004 -. "requires: proposta" .-> T072

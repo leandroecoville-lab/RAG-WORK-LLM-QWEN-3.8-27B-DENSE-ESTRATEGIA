@@ -1,0 +1,51 @@
+{
+  "id": "T053",
+  "technical_details": "Um scratchpad em arquivo funciona como protocolo entre execuções: alguém escreve um estado explícito e outro processo o interpreta posteriormente. O contrato precisa distinguir alteração no buffer, gravação no disco, revisão publicada e cópia sincronizada. Um arquivo legível pode estar incompleto ou ser de uma execução antiga. Por isso, identidade da missão, revisão e marcador de conclusão têm utilidade operacional além do formato Markdown.",
+  "boundary_condition": "Arquivos deixam de ser uma solução simples quando muitos escritores precisam alterar simultaneamente o mesmo estado sem coordenação ou quando não existe armazenamento persistente.",
+  "implementation_contract": {
+    "inputs": "Estado explícito da tarefa, referências verificáveis e revisão que o escritor pretende substituir.",
+    "outputs": "Arquivo completo publicado com identidade, versão e confirmação de gravação observada.",
+    "state": "Revisão anterior, alterações pendentes, posição de sincronização e conflitos não resolvidos.",
+    "invariant": "Um leitor usa apenas revisões completas e não interpreta nota de intenção como confirmação de execução."
+  },
+  "tradeoffs": [
+    "Arquivos são inspecionáveis e interoperáveis, mas não oferecem transações entre recursos por padrão.",
+    "Versionamento facilita revisão e recuperação; sincronização remota adiciona estados intermediários e conflitos."
+  ],
+  "failure_test": "Teste proposto: interromper uma escrita no meio e reiniciar o leitor em outro processo. Ele deve recuperar a última revisão válida ou detectar incompletude, sem usar a metade nova como estado definitivo.",
+  "evaluation_plan": "Avaliação proposta: comparar notas livres e protocolo com campos mínimos em retomadas interrompidas. Medir estado reconstruído, perdas de correções, conflitos de escritor e latência de publicação; incluir gravação local confirmada com sincronização remota falha.",
+  "comparisons": [
+    {
+      "entry_id": "T064",
+      "relation": "complements",
+      "reason": "O arquivo pode representar parte do estado persistente, desde que tenha identidade e semântica de retomada."
+    },
+    {
+      "entry_id": "T076",
+      "relation": "complements",
+      "reason": "Git acrescenta histórico de versões; não transforma automaticamente cada arquivo em estado transacional do agente."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "MemFS distingue edições locais de memória comprometida e sincronizada por Git entre computadores.",
+    "source_ids": [
+      "A-S010"
+    ],
+    "support": "direct",
+    "caveat": "É um exemplo de implementação; um scratchpad comum não herda automaticamente commit, push ou resolução de conflitos."
+  },
+  "advanced_qa": [
+    {
+      "question": "O arquivo precisa conter raciocínio interno completo?",
+      "answer": "Não. Registre decisões, motivos verificáveis, resultados, pendências e referências necessários à continuidade, sem alegar extrair estados internos ocultos."
+    },
+    {
+      "question": "Como saber qual nota prevalece?",
+      "answer": "Use revisão publicada e regras de autoridade. Data de modificação do filesystem pode refletir cópia ou sincronização, e não a ordem lógica das decisões."
+    }
+  ],
+  "source_ids": [
+    "A-S010"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

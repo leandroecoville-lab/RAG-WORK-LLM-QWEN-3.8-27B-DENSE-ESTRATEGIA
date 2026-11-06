@@ -1,0 +1,53 @@
+{
+  "id": "T216",
+  "technical_details": "O repo map do Aider seleciona partes relevantes usando ranking de um grafo de arquivos e dependências sob orçamento de tokens. Isso fornece orientação estrutural, mas não identifica automaticamente o comportamento executado em tempo de execução. Imports dinâmicos, geração de código e configuração podem escapar do grafo estático. Um mapa ligado à revisão do repositório evita que nomes e posições antigos orientem uma edição sobre código já alterado.",
+  "boundary_condition": "Símbolos centrais no grafo podem não ser os relevantes para um defeito localizado ou ativado por configuração rara.",
+  "implementation_contract": {
+    "inputs": "Revisão do repositório, arquivos indexáveis, símbolos e objetivo da navegação.",
+    "outputs": "Mapa compacto, relações selecionadas e referências resolvíveis.",
+    "state": "Índice por linguagem, revisão analisada e critérios de ranking.",
+    "invariant": "O mapa é uma representação de uma revisão identificada, não autoridade sobre código que não foi lido."
+  },
+  "tradeoffs": [
+    "Mapas amplos ajudam orientação inicial e consomem janela com relações pouco úteis.",
+    "Ranking focado melhora densidade e pode esconder caminhos raros de execução."
+  ],
+  "failure_test": "Teste proposto: mover uma função, atualizar o repositório e manter mapa antigo; exigir detecção da revisão divergente antes de usar a posição para editar.",
+  "evaluation_plan": "Comparar navegação por busca textual, mapa e combinação de ambos em tarefas independentes. Medir leituras até localizar o trecho correto, cobertura de dependências e alterações em lugar errado. Separar tarefas estáticas de casos dependentes de configuração.",
+  "comparisons": [
+    {
+      "entry_id": "T238",
+      "relation": "complements",
+      "reason": "O mapa indica onde ler; faixas de linhas fornecem o conteúdo necessário à decisão."
+    },
+    {
+      "entry_id": "T232",
+      "relation": "complements",
+      "reason": "Metadados sintáticos podem enriquecer referências sem provar comportamento dinâmico."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Aider documenta seleção do repo map por ranking de um grafo de arquivos e dependências dentro de orçamento ativo.",
+    "source_ids": [
+      "V2A-S007"
+    ],
+    "support": "direct",
+    "caveat": "O grafo e o ranking são mecanismos de orientação; não equivalem a análise completa de fluxo em execução."
+  },
+  "advanced_qa": [
+    {
+      "question": "Posso editar apenas com assinatura vista no mapa?",
+      "answer": "Somente quando o contrato é suficiente e confirmado; normalmente é preciso ler implementação, usos e condições relevantes."
+    },
+    {
+      "question": "Por que registrar a revisão do mapa?",
+      "answer": "Porque arquivos, símbolos e linhas mudam; sem ela, uma referência aparentemente válida pode apontar para outra realidade."
+    }
+  ],
+  "source_ids": [
+    "V2A-S007",
+    "V3C-S033",
+    "V3C-S027"
+  ],
+  "research_note": "Fontes primárias reabertas nesta pesquisa; contratos, cenários de falha e avaliação são propostas editoriais."
+}

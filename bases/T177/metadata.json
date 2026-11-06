@@ -1,0 +1,37 @@
+{
+  "id": "T177",
+  "name": "Fine-Tuning",
+  "canonical_name": "Fine-Tuning",
+  "canonical_id": "T177",
+  "aliases": [
+    "ajuste fino"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T178",
+    "T179",
+    "T182",
+    "T183"
+  ],
+  "source_ids": [
+    "C-S031",
+    "V3B-S015",
+    "V4B-S006",
+    "V4B-S005",
+    "V4D-S012",
+    "V4B-S009",
+    "V4B-S010",
+    "V4B-S021",
+    "V4D-S008",
+    "V4D-S010",
+    "V4D-S013"
+  ],
+  "namespace": "T177",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T177",
+  "chunk_count": 9
+}

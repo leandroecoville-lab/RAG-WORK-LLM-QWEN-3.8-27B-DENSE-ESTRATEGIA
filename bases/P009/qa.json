@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Streaming concluído significa resposta semanticamente correta?",
+    "answer": "Não. Ele informa entrega e término; qualidade, evidência e correção dependem de verificações próprias."
+  },
+  {
+    "question": "Por que declarar capacidades por backend?",
+    "answer": "Porque opções de gramática, cache, ferramentas e cancelamento variam; um contrato uniforme precisa expor essas diferenças."
+  },
+  {
+    "question": "Receber tokens significa que a tarefa terminou?",
+    "answer": "Não. O término pode ser por limite, falha, cancelamento ou conclusão; o consumidor deve distingui-los."
+  },
+  {
+    "question": "Qual métrica evita confundir fila com geração?",
+    "answer": "Registre tempos de admissão, início, primeiro token e término separadamente."
+  }
+]

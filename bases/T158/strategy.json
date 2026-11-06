@@ -1,0 +1,109 @@
+{
+  "id": "T158",
+  "novelty": "A v3 distinguia catálogo, disponibilidade e namespace. Esta camada acrescenta governança de descoberta, habilitação e publicação de descritores para impedir que uma ferramenta encontrada se torne executável sem contrato revisado.",
+  "deep_layers": [
+    {
+      "name": "Descoberta não habilita",
+      "detail": "Modele estados encontrado, descrito, revisado, habilitado e retirado. Um crawler pode identificar serviços que nunca deveriam ser oferecidos ao agente. O mecanismo do gateway Uber motiva uma revisão de descritor antes da exposição; a proposta mantém separada a identidade do serviço de sua elegibilidade por tarefa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ]
+    },
+    {
+      "name": "Descritor como código",
+      "detail": "Trate mudança de nome, descrição e exemplos como alteração comportamental. Mesmo com schema idêntico, uma descrição nova pode alterar seleção do modelo. Versione o conjunto inteiro e compare consultas que antes roteavam corretamente. Se o dono da ferramenta mudar a unidade ou o efeito, a revisão precisa tratar significado além da sintaxe.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013",
+        "V3C-S013"
+      ]
+    },
+    {
+      "name": "Retirada em duas fases",
+      "detail": "Uma ferramenta retirada pode continuar citada em tarefas duráveis. Bloqueie novas seleções, mas conserve o descritor histórico para explicar decisões passadas. Se uma execução antiga precisar agir, faça nova checagem de elegibilidade; não considere seu snapshot histórico uma autorização permanente para chamar a versão atual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013",
+        "V3C-S004"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Catálogo empresarial crescente",
+      "scenario": "Centenas de APIs mudam em ritmos diferentes.",
+      "strategy": "Automatize descoberta e geração inicial de metadados, encaminhe diferenças ao proprietário e publique somente versões revisadas. Habilite progressivamente um subconjunto com tarefas conhecidas. Uma regressão de seleção deve permitir voltar ao catálogo anterior sem apagar o histórico.",
+      "small_model_role": "3–7B classifica descritores; 8–14B sugere exemplos e casos ambíguos para revisão.",
+      "acceptance": "Proposta: medir falsas habilitações, latência de atualização e precisão de seleção por revisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ]
+    },
+    {
+      "name": "Ferramentas por especialidade",
+      "scenario": "Especialistas pequenos precisam de poucos recursos do catálogo geral.",
+      "strategy": "Crie uma visão por função e carregue schema completo apenas após descoberta. Conserve o identificador global no resultado para que a integração reconheça a origem. Se duas especialidades pedirem a mesma ação, compare contratos e escopos antes de fundir chamadas.",
+      "small_model_role": "15–30B planeja o conjunto de capacidades; trabalhadores menores recebem visões restritas.",
+      "acceptance": "Proposta: nenhuma resolução ambígua de nomes e redução de schemas carregados por tarefa aceita.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Selecionar em listas curtas de ferramentas bem distintas e exemplos concretos.",
+    "8_14b": "Discriminar ferramentas próximas usando schema e descrição recuperados sob demanda.",
+    "15_30b": "Relacionar capacidades entre serviços, mas sem decidir habilitação organizacional por conta própria.",
+    "training_or_runtime_requirements": "Registro com donos, versões, ambiente, escopo e processo de publicação; descritores testados como interface.",
+    "do_not_use_when": "Não usar descoberta automática como prova de acesso permitido ou de estabilidade operacional."
+  },
+  "connections": [
+    {
+      "target_id": "T151",
+      "relation": "complements",
+      "how": "O registro do gateway fornece descoberta progressiva até a resolução do schema específico.",
+      "interface": "Servidor, ferramenta e revisão do schema.",
+      "condition": "Somente itens habilitados devem ser expostos.",
+      "acceptance": "Validar o schema recuperado no momento da invocação.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S013"
+      ],
+      "case_ids": [
+        "V4C-C014"
+      ]
+    },
+    {
+      "target_id": "T170",
+      "relation": "complements",
+      "how": "Publicar mudança de contrato junto do descritor e manter versões históricas.",
+      "interface": "Diferença semântica, versão e consumidores afetados.",
+      "condition": "Existe estratégia de migração ou compatibilidade comprovada.",
+      "acceptance": "Testar consultas antigas e novas antes de ativar a revisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Uma ferramenta descoberta e desabilitada deve continuar invisível à invocação elegível.",
+    "Descrições geradas por modelo precisam de revisão contra o efeito real da API."
+  ],
+  "frontier_comparison": "Compare seletores pequenos e de fronteira no mesmo catálogo e nas mesmas ambiguidades. Facilidade de roteamento com catálogo curado não demonstra domínio de APIs inéditas.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q009"
+    ],
+    "scope_note": "Gateway Uber comprova integração de catálogo, descoberta e invocação. Propostas de revisão por banda de parâmetros não foram medidas."
+  },
+  "source_ids": [
+    "V4C-S013",
+    "V3C-S013",
+    "V3C-S004"
+  ]
+}

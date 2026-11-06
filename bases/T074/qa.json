@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Eviction significa esquecimento permanente?",
+    "answer": "Depende da camada. Em contexto ou cache pode significar apenas descarregar algo recuperável."
+  },
+  {
+    "question": "É igual a KV Cache Eviction?",
+    "answer": "Não. KV cache contém estados de inferência; memória de agente pode conter fatos, arquivos e episódios."
+  },
+  {
+    "question": "Noeviction elimina risco de perda?",
+    "answer": "Evita expulsão automática por essa política, mas novas escritas podem falhar. O aplicativo precisa detectar e tratar a falha, além de garantir persistência."
+  },
+  {
+    "question": "Devo conservar tudo que é caro de reconstruir?",
+    "answer": "É um critério forte, mas deve ser combinado com validade, uso esperado e retenção. A decisão não pode depender só de frequência."
+  }
+]

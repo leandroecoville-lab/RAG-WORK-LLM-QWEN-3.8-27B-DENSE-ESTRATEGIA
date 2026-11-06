@@ -1,0 +1,39 @@
+{
+  "id": "T102",
+  "name": "Disaggregated Inference / Disaggregated Prefill-Decode",
+  "canonical_name": "Inferência com prefill e decode desagregados",
+  "canonical_id": "T102",
+  "aliases": [
+    "Disaggregated Inference / Prefill-Decode",
+    "prefill-decode disaggregation",
+    "inferência desagregada",
+    "Disaggregated Prefill-Decode",
+    "PD disaggregation"
+  ],
+  "category": "inferencia",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T088",
+    "T094",
+    "T120",
+    "P009"
+  ],
+  "source_ids": [
+    "B-S021",
+    "B-S032",
+    "V3B-S010",
+    "V4B-S002",
+    "V4B-S003",
+    "V4D-S014",
+    "V4D-S015",
+    "V4D-S016",
+    "V4D-S020"
+  ],
+  "namespace": "T102",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T102",
+  "chunk_count": 9
+}

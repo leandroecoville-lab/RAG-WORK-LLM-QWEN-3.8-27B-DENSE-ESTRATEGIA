@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Um semáforo substitui rate limit?",
+    "answer": "Não. O semáforo limita operações simultâneas; o rate limit controla admissão no tempo."
+  },
+  {
+    "question": "Token do bucket é token da LLM?",
+    "answer": "Pode representar essa unidade, mas é apenas uma unidade de orçamento escolhida."
+  },
+  {
+    "question": "Tokens faturados podem ser usados diretamente como sinal de admissão?",
+    "answer": "São úteis para reconciliação, mas chegam tarde para impedir o consumo já iniciado; é necessária estimativa ou reserva prévia."
+  },
+  {
+    "question": "Dividir uma quota por réplicas é sempre eficiente?",
+    "answer": "Não. Uma réplica ociosa pode reter saldo enquanto outra rejeita trabalho; redistribuição introduz outro compromisso de coordenação."
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "id": "T094",
+  "technical_details": "Dividir um prefill não significa tratar cada trecho como uma sequência independente. As consultas do trecho atual precisam acessar todos os estados anteriores permitidos pela arquitetura e respeitar a causalidade dentro do próprio trecho. O orçamento deve contar trabalho novo e interferência com decodes ativos. Trechos muito pequenos podem multiplicar lançamentos e reduzir eficiência matricial; trechos grandes podem provocar pausas longas entre tokens.",
+  "boundary_condition": "O tamanho ideal depende de mistura de comprimentos, contexto já processado, backend e objetivo de latência; não existe número universal.",
+  "implementation_contract": {
+    "inputs": "Prompt completo, offset processado, KV anterior e orçamento da rodada.",
+    "outputs": "Cache estendido e offset confirmado, mantendo ordem causal.",
+    "state": "Trechos pendentes, posições absolutas e sequências de decode concorrentes.",
+    "invariant": "Divisão de execução não altera o contexto visível definido pelo modelo."
+  },
+  "tradeoffs": [
+    "Menores trechos favorecem intercalamento e podem aumentar custo total.",
+    "Priorizar decode melhora cadência, mas pode elevar TTFT de novas entradas."
+  ],
+  "failure_test": "Teste proposto: colocar evidência no fim de um trecho e consulta no início do seguinte, variando fronteiras. Esperar resultado compatível com prefill integral e ausência de reset posicional.",
+  "evaluation_plan": "Plano proposto: comparar prefill inteiro e vários tamanhos de trecho com mesma chegada. Medir TTFT, intervalo entre tokens, duração de prefill e interrupções; selecionar pela combinação de objetivos de serviço, sem confundir throughput agregado com responsividade.",
+  "comparisons": [
+    {
+      "entry_id": "T095",
+      "relation": "distinct_from",
+      "reason": "Chunking organiza execução; uma janela altera a conectividade permitida pela atenção."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Sarathi-Serve combina prefills divididos e escalonamento para reduzir interrupções das sequências em decode.",
+    "source_ids": [
+      "V3B-S004"
+    ],
+    "support": "direct",
+    "caveat": "O método publicado não fixa um tamanho ótimo válido para todos os modelos e cargas."
+  },
+  "advanced_qa": [
+    {
+      "question": "O cache reinicia em cada trecho?",
+      "answer": "Não quando o objetivo é preservar a mesma atenção; o estado permitido anterior precisa continuar acessível."
+    },
+    {
+      "question": "Chunk menor sempre reduz TTFT?",
+      "answer": "Não. Mais rodadas e sobrecarga podem alongar a conclusão do prefill, embora melhorem a cadência de outras respostas."
+    }
+  ],
+  "source_ids": [
+    "V3B-S004",
+    "V3B-S007"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

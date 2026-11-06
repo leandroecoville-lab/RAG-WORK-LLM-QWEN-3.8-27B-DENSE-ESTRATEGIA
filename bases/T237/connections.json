@@ -1,0 +1,42 @@
+{
+  "entry_id": "T237",
+  "edges": [
+    {
+      "edge_id": "E-T237-01",
+      "from": "T237",
+      "to": "T147",
+      "relation": "complements",
+      "how": "Claude Research usa subagentes paralelos e reúne resultados para a resposta do líder.",
+      "interface": "Perguntas, orçamento e artefatos retornados.",
+      "condition": "Trabalhos independentes com junção definida.",
+      "acceptance": "O líder integra resultados aceitos e identifica lacunas.",
+      "basis": "source_documented",
+      "source_ids": [
+        "C-S030"
+      ],
+      "case_ids": [
+        "V4C-C007"
+      ],
+      "evidence_stage": "production_documented"
+    },
+    {
+      "edge_id": "E-T237-02",
+      "from": "T237",
+      "to": "T200",
+      "relation": "complements",
+      "how": "CodeCourt no AutoClean distribui avaliação por propriedades e usa os vereditos como gate do candidato.",
+      "interface": "Patch imutável, propriedade e parecer.",
+      "condition": "Critérios obrigatórios têm tratamento explícito de falha.",
+      "acceptance": "Um veredito negativo não desaparece na média dos demais.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S009"
+      ],
+      "case_ids": [
+        "V4C-C010"
+      ],
+      "evidence_stage": "production_documented"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

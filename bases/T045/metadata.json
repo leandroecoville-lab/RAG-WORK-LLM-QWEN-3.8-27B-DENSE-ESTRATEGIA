@@ -1,0 +1,29 @@
+{
+  "id": "T045",
+  "name": "Tool Retrieval",
+  "canonical_name": "Tool Retrieval",
+  "canonical_id": "T045",
+  "aliases": [
+    "descoberta de ferramentas",
+    "tool search"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T014",
+    "T151",
+    "T158",
+    "T170"
+  ],
+  "source_ids": [
+    "A-S038",
+    "V4A-S023"
+  ],
+  "namespace": "T045",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T045",
+  "chunk_count": 9
+}

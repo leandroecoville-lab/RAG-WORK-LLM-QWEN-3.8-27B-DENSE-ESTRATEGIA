@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lai:rag:chunk:v4",
+  "title": "LAI RAG Chunk",
+  "type": "object",
+  "properties": {
+    "chunk_id": {
+      "type": "string",
+      "pattern": "^[TRP][0-9]{3}:C0[1-9]$"
+    },
+    "entry_id": {
+      "type": "string",
+      "pattern": "^[TRP][0-9]{3}$"
+    },
+    "namespace": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_name": {
+      "type": "string"
+    },
+    "canonical_id": {
+      "type": "string",
+      "pattern": "^[TRP][0-9]{3}$"
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "category": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "section": {
+      "type": "string",
+      "enum": [
+        "conceito",
+        "aplicacao",
+        "riscos_validacao",
+        "perguntas_proveniencia",
+        "mecanismo_avancado",
+        "experimento_comparacao",
+        "estrategia_3_30b",
+        "casos_producao",
+        "conexoes_aceite"
+      ]
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "content_role": {
+      "type": "string"
+    },
+    "evidence_status": {
+      "type": "string",
+      "enum": [
+        "supported",
+        "related_support",
+        "ambiguous",
+        "terminology_correction"
+      ]
+    },
+    "language": {
+      "const": "pt-BR"
+    },
+    "knowledge_version": {
+      "type": "string"
+    },
+    "curated_on": {
+      "type": "string",
+      "format": "date"
+    },
+    "document_path": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "inventario",
+        "referencia",
+        "proposta"
+      ]
+    }
+  },
+  "required": [
+    "chunk_id",
+    "entry_id",
+    "namespace",
+    "name",
+    "text",
+    "source_ids",
+    "content_role",
+    "evidence_status",
+    "document_path",
+    "scope"
+  ],
+  "additionalProperties": true
+}

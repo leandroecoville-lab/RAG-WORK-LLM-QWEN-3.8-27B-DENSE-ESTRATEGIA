@@ -1,0 +1,119 @@
+{
+  "id": "T119",
+  "novelty": "A v3 apresentou bolhas e dependência autoregressiva. A nova camada considera particionamento por custo real, controle de filas entre estágios e distinção entre objetivos de treinamento e serving interativo.",
+  "deep_layers": [
+    {
+      "name": "Balanceamento por perfil",
+      "detail": "Dividir igual quantidade de camadas não garante estágios equilibrados: embeddings, projeção de saída e tipos de camada podem ter custos diferentes. Meça tempo e pico de memória por estágio nas formas reais. Um estágio lento limita fluxo inteiro, enquanto outro pode ficar ocioso com memória reservada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S031",
+        "B-S045",
+        "V3B-S010"
+      ]
+    },
+    {
+      "name": "Créditos entre estágios",
+      "detail": "Filas intermediárias precisam de limites e backpressure. Sem créditos, um produtor rápido acumula ativações que o consumidor não consegue processar. Cada mensagem deve carregar identidade da sequência, posição e versão; cancelamento libera recursos em todos os estágios sem entregar saídas de uma tentativa antiga.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S031",
+        "B-S045",
+        "V3B-S010"
+      ]
+    },
+    {
+      "name": "Objetivo de serviço",
+      "detail": "Treinamento pode preencher pipeline com microbatches relativamente previsíveis; geração interativa mistura tamanhos e depende de tokens anteriores. Uma agenda que maximiza ocupação pode aumentar tempo individual. Declare se o objetivo é throughput de um lote offline, prazo de streaming ou viabilizar memória de pesos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S031",
+        "B-S045",
+        "V3B-S010"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Processamento offline",
+      "scenario": "Há muitos documentos independentes e prazos flexíveis.",
+      "strategy": "Agrupe requisições por custo aproximado, alimente o pipeline com créditos e drene resultados sem perder identidade. Inclua falhas e reexecuções na capacidade planejada.",
+      "small_model_role": "Um 15–30B pode ser dividido quando pesos ou ativações não cabem como desejado.",
+      "acceptance": "Comparar custo total do lote e resultados completos, incluindo bolhas e drenagem.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S031",
+        "B-S045",
+        "V3B-S010"
+      ]
+    },
+    {
+      "name": "Serving com restrição de interconexão",
+      "scenario": "TP exige comunicação frequente que não atende o ambiente.",
+      "strategy": "Teste PP como alternativa de posicionamento, mantendo expectativas realistas de latência. Modele transporte entre estágios e concorrência necessária para ocupação.",
+      "small_model_role": "Um 8–14B só justifica a complexidade se houver uma restrição concreta.",
+      "acceptance": "Aceitar se o serviço atende prazo e memória melhor que alternativas medidas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S031",
+        "B-S045",
+        "V3B-S010"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Para modelos pequenos que cabem inteiros, a fragmentação costuma exigir uma justificativa operacional específica.",
+    "8_14b": "Avalie poucas divisões e custos de filas; não use quantidade de camadas como único balanceador.",
+    "15_30b": "Em 15–30B, PP pode resolver capacidade, mas o ritmo de decode continua dependente do caminho completo.",
+    "training_or_runtime_requirements": "Runtime ou treinamento distribuído com plano de estágios; preserva arquitetura se transporta ativações corretas.",
+    "do_not_use_when": "Não transferir fórmulas ideais de microbatch de treinamento diretamente para latência autoregressiva."
+  },
+  "connections": [
+    {
+      "target_id": "T118",
+      "relation": "alternative",
+      "how": "Comparar PP e TP separa transporte entre estágios de coletivas por camada.",
+      "interface": "Plano de partição e perfil de comunicação.",
+      "condition": "Mesma qualidade e distribuição de pedidos.",
+      "acceptance": "Medir latência, capacidade e recursos reservados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S031",
+        "B-S045",
+        "V3B-S010"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T121",
+      "relation": "requires",
+      "how": "A agenda controla admissão e créditos para evitar filas intermediárias ilimitadas.",
+      "interface": "Capacidade por estágio, identidade e cancelamento.",
+      "condition": "Todos os estágios propagam backpressure.",
+      "acceptance": "Induzir um estágio lento e verificar limites de memória.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S031",
+        "B-S045",
+        "V3B-S010"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Invalidar mensagens atrasadas de tentativas canceladas.",
+    "Não contar ocupação de um estágio como utilização útil do pipeline inteiro."
+  ],
+  "frontier_comparison": "PP modifica o custo de executar o mesmo modelo. Uma comparação com fronteira deve avaliar tarefas e prazos, sem atribuir ganho de qualidade ao uso de vários estágios.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q003"
+    ],
+    "scope_note": "Buscas de paralelismo e serving consultadas. As fontes selecionadas sustentam mecanismos e pesquisa; não foi confirmado neste recorte um caso exato adicional de PP implantado em bigtech para 3–30B."
+  },
+  "source_ids": [
+    "B-S031",
+    "B-S045",
+    "V3B-S010"
+  ]
+}

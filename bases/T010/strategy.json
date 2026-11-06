@@ -1,0 +1,111 @@
+{
+  "id": "T010",
+  "novelty": "A v3 calculou duplicação por overlap. Aqui chunks fixos são dimensionados pela tarefa e por restrições de leitura do modelo.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Use varredura de tamanhos na validação e escolha pelo custo por resposta correta. Chunks menores aumentam candidatos; maiores diluem sinais e ocupam leitura.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S013",
+        "A-S007"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Trate overlap como orçamento de relações atravessando fronteiras. Registre onde uma resposta exige dois chunks, para ajustar sobreposição com evidência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S013",
+        "A-S007"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare tamanhos com mesmo orçamento final de tokens, evitando favorecer configuração que simplesmente fornece mais conteúdo ao leitor. Unidade de avaliação: documento com fronteiras. Crie documentos com resposta perto de cada posição possível da fronteira e com condições separadas por diferentes distâncias. A curva de cobertura por distância ajuda a escolher overlap com base em dependências reais. Controle o orçamento total recuperado: duplicar contexto através de sobreposição não deve ser confundido com melhora intrínseca da segmentação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S013",
+        "A-S007"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Logs padronizados",
+      "scenario": "Registros longos têm formato estável.",
+      "strategy": "Particionar por teto de tokens respeitando registros completos; recuperar vizinhos apenas quando uma operação cruza a borda.",
+      "small_model_role": "3–7B identifica eventos tipados.",
+      "acceptance": "Nenhum registro obrigatório pode aparecer mutilado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S013",
+        "A-S007"
+      ]
+    },
+    {
+      "name": "Documentação homogênea",
+      "scenario": "Manuais repetem estrutura previsível.",
+      "strategy": "Criar grade de tamanhos, medir cobertura por pergunta e escolher configuração por família documental.",
+      "small_model_role": "8–14B responde com contexto de poucos chunks.",
+      "acceptance": "Aceitar tamanho que preserve qualidade dentro do prazo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S013",
+        "A-S007"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Leitor com pequeno conjunto de chunks e campos previamente identificados.",
+    "8_14b": "Comparador de chunks adjacentes para requisitos que cruzam fronteiras.",
+    "15_30b": "Síntese com vários chunks quando benefício superar custo de leitura.",
+    "training_or_runtime_requirements": "Tokenizer correto, offsets e avaliação reservada por documento; segmentação continua determinística.",
+    "do_not_use_when": "Tabelas ou relações essenciais são rompidas repetidamente pelo teto fixo."
+  },
+  "connections": [
+    {
+      "target_id": "T032",
+      "relation": "complements",
+      "how": "Expandir vizinhança quando o trecho é insuficiente.",
+      "interface": "chunk_id, documento, offsets e parent_id.",
+      "condition": "Pai pertencer à mesma revisão.",
+      "acceptance": "Verificar que expansão recupera condição sem duplicar evidência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S013",
+        "A-S007"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T042",
+      "relation": "requires",
+      "how": "Dimensionar recuperação pela janela do consumidor.",
+      "interface": "Tokens por chunk e reserva de resposta.",
+      "condition": "Contar serialização efetiva.",
+      "acceptance": "Comparar configurações sob orçamento idêntico.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S013",
+        "A-S007"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Manter offsets antes e depois da normalização.",
+    "Não duplicar confiança por sobreposição textual."
+  ],
+  "frontier_comparison": "Avaliar extração de fatos próximos às bordas; grande janela não substitui análise das fronteiras.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q009"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S013",
+    "A-S007"
+  ]
+}

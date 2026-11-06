@@ -1,0 +1,18 @@
+[
+  {
+    "question": "FA2 altera os pesos?",
+    "answer": "Não. A otimização implementa o cálculo de atenção sem exigir ensinar uma nova habilidade ao modelo."
+  },
+  {
+    "question": "É sempre melhor que FA1?",
+    "answer": "O projeto melhora paralelismo, mas desempenho real ainda depende de formas e hardware."
+  },
+  {
+    "question": "O maior tile é o melhor?",
+    "answer": "Não. Registradores e memória compartilhada limitam quantos blocos podem executar simultaneamente e podem causar spill."
+  },
+  {
+    "question": "Backward tem exatamente a mesma vantagem?",
+    "answer": "Não. As dependências entre gradientes exigem coordenação adicional; meça o caminho de treinamento separadamente."
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "id": "T163",
+  "name": "Backoff exponencial com jitter",
+  "canonical_name": "Exponential backoff with jitter",
+  "canonical_id": "T163",
+  "aliases": [
+    "Backoff com Jitter",
+    "exponential backoff with jitter",
+    "recuo exponencial aleatório"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T162",
+    "T164",
+    "T228",
+    "P013"
+  ],
+  "source_ids": [
+    "C-S027",
+    "C-S028",
+    "C-S026",
+    "V3C-S010",
+    "V3C-S023",
+    "V2A-S012",
+    "V3C-S009",
+    "V4C-S014"
+  ],
+  "namespace": "T163",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T163",
+  "chunk_count": 9
+}

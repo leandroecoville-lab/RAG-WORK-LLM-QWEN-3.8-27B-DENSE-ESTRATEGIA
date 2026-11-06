@@ -1,0 +1,39 @@
+{
+  "entry_id": "T223",
+  "edges": [
+    {
+      "edge_id": "E-T223-01",
+      "from": "T223",
+      "to": "T200",
+      "relation": "complements",
+      "how": "Encaminhar propriedades objetivas a verificador externo e conservar o parecer textual como evidência de natureza diferente.",
+      "interface": "Critério, artefato e resultado observável.",
+      "condition": "Verificador não depende apenas da opinião do gerador.",
+      "acceptance": "Candidato elogiado mas reprovado em requisito objetivo é rejeitado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T223-02",
+      "from": "T223",
+      "to": "T221",
+      "relation": "complements",
+      "how": "Usar a versão vigente do objetivo para selecionar princípios aplicáveis à revisão.",
+      "interface": "Meta, restrições e critérios de aceite.",
+      "condition": "Mudança autorizada atualiza a base da checagem.",
+      "acceptance": "Não reprovar ou aprovar por regra obsoleta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S032"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

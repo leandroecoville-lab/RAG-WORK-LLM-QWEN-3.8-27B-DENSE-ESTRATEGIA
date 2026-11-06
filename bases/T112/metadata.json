@@ -1,0 +1,26 @@
+{
+  "id": "T112",
+  "name": "Retrieval-Based Attention",
+  "canonical_name": "Retrieval-Based Attention",
+  "canonical_id": "T112",
+  "aliases": [],
+  "category": "inferencia",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T009",
+    "T067",
+    "T096",
+    "T111"
+  ],
+  "source_ids": [
+    "B-S026",
+    "V4B-S020"
+  ],
+  "namespace": "T112",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T112",
+  "chunk_count": 9
+}

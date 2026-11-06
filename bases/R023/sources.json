@@ -1,0 +1,93 @@
+[
+  {
+    "source_id": "V2B-S018",
+    "title": "Transformers",
+    "url": "https://huggingface.co/docs/transformers/index",
+    "publisher": "Hugging Face",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Definições de modelos e interfaces para inferência e treinamento de diferentes modalidades.",
+    "limitations": "Documentação primária consultada nesta data; compatibilidade depende de versão, modelo e ambiente. Nenhuma implantação ou avaliação LAI foi executada.",
+    "web_ref": "turn72view0"
+  },
+  {
+    "source_id": "V2B-S019",
+    "title": "Chat templates",
+    "url": "https://huggingface.co/docs/transformers/main/chat_templating",
+    "publisher": "Hugging Face",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Formatação de mensagens, apply_chat_template, marcadores de geração e risco de duplicar tokens especiais.",
+    "limitations": "Página da branch main; conferir a documentação correspondente à versão instalada. Sem avaliação com checkpoint local.",
+    "web_ref": "turn76view2"
+  },
+  {
+    "source_id": "B-S009",
+    "title": "Generation — GenerationConfig",
+    "url": "https://huggingface.co/docs/transformers/main_classes/text_generation",
+    "publisher": "Hugging Face",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Critérios de parada, limite de novos tokens e semântica específica de early_stopping em beam search.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn25view1"
+  },
+  {
+    "source_id": "V3D-S010",
+    "title": "Transformers — Chat templates",
+    "url": "https://huggingface.co/docs/transformers/main/chat_templating",
+    "publisher": "Hugging Face",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Serialização de mensagens, tokens especiais e cuidados para não duplicá-los após aplicar template.",
+    "limitations": "Página main; confirmar API e template na revisão concreta do modelo.",
+    "web_ref": "turn138view1"
+  },
+  {
+    "source_id": "V3D-S011",
+    "title": "Transformers — KV cache strategies",
+    "url": "https://huggingface.co/docs/transformers/main/kv_cache",
+    "publisher": "Hugging Face",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Estratégias dinâmica, estática, quantizada e offload têm custos e compatibilidades distintos.",
+    "limitations": "Tabela depende de classes e versões; não é garantia universal de suporte.",
+    "web_ref": "turn138view2"
+  },
+  {
+    "source_id": "V4B-S014",
+    "title": "Continuous batching — Transformers",
+    "url": "https://huggingface.co/docs/transformers/en/continuous_batching",
+    "publisher": "Hugging Face",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "ContinuousBatchingManager, generate_batch, configuração separada de geração e scheduling, cache paginado e recursos de serving.",
+    "limitations": "Documentação dinâmica; exemplos não são implantação de cliente. Verificar versão instalada e suporte arquitetural.",
+    "web_ref": "turn221view0"
+  },
+  {
+    "source_id": "V4B-S006",
+    "title": "Open Source and In-House: How Uber Optimizes LLM Training",
+    "url": "https://www.uber.com/us/en/blog/open-source-and-in-house-how-uber-optimizes-llm-training/",
+    "publisher": "Uber Engineering",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-04-14",
+    "supports": "Infraestrutura Michelangelo com Transformers, Ray e DeepSpeed; avaliações de LoRA/QLoRA e scorer distribuído com vLLM.",
+    "limitations": "Mistura uso interno com experimentos; não tratar todas as configurações testadas como produto lançado. FlashAttention densa não reduz a complexidade aritmética quadrática.",
+    "web_ref": "turn217view0"
+  }
+]

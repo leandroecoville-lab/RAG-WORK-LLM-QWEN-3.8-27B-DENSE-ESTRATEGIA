@@ -1,0 +1,119 @@
+{
+  "id": "T097",
+  "novelty": "A v3 classificou blocos presentes, ausentes e parciais. Aqui a estratégia avalia alinhamento documental, amortização de metadados e empacotamento, distinguindo economia no kernel de uma mudança semântica no que cada token pode consultar.",
+  "deep_layers": [
+    {
+      "name": "Alinhamento com documentos",
+      "detail": "Ao empacotar exemplos, mantenha fronteiras documentais independentes do tamanho físico do bloco. Um bloco pode atravessar duas sequências sem autorizar conexões entre elas; a máscara parcial deve preservar isolamento. Avalie o custo dos blocos de fronteira e compare com layouts que reduzem essas regiões parcialmente ocupadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S008",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    },
+    {
+      "name": "Reuso seguro de metadados",
+      "detail": "Armazene a máscara compilada somente quando forma e conectividade forem idênticas. Um template de mesma largura pode ter limites documentais diferentes. A chave precisa representar esses limites e versões do padrão; caso contrário, um cache de metadados rápido pode criar uma ligação que a tarefa nunca autorizou.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S008",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    },
+    {
+      "name": "Planejamento de granularidade",
+      "detail": "Escolha tamanho de bloco em conjunto com distribuição de comprimentos e regularidade do padrão. Reduzir blocos pode revelar mais esparsidade, mas aumentar overhead de índices e scheduling. Faça comparação com o mesmo predicado de conectividade para isolar granularidade; mudar máscara e bloco ao mesmo tempo impede explicar o resultado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S008",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Treino com exemplos empacotados",
+      "scenario": "Muitos textos pequenos são combinados para ocupar melhor o acelerador.",
+      "strategy": "Construa máscara por documento e comprimentos reais, compile padrões recorrentes e valide gradientes contra exemplos separados. Só depois ajuste granularidade e packing. Exclua qualquer ganho obtido por permitir atenção entre exemplos independentes.",
+      "small_model_role": "Um 3–14B em ajuste fino pode reduzir desperdício sem aprender vazamento entre amostras.",
+      "acceptance": "Aceitar com isolamento comprovado, gradientes consistentes e menor custo por token útil.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S008",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    },
+    {
+      "name": "Inferência de estrutura modular",
+      "scenario": "Um documento contém grupos que podem atender a poucos outros grupos.",
+      "strategy": "Codifique relações permitidas em blocos e preserve uma referência densa com a mesma máscara lógica. Meça custo de construção para cada nova estrutura; só mantenha cache quando houver revisitas suficientes.",
+      "small_model_role": "Um 15–30B compatível pode explorar padrões regulares, mediante validação de qualidade e suporte.",
+      "acceptance": "Comparar tempo total por documento e falhas nas referências que cruzam blocos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S008",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, preferir padrões simples que não adicionem um seletor mais caro que a atenção economizada.",
+    "8_14b": "Em 8–14B, packing e máscaras documentais oferecem um problema concreto para avaliar granularidade.",
+    "15_30b": "Em 15–30B, testar layouts produzidos por paralelismo e sua compatibilidade com o backend.",
+    "training_or_runtime_requirements": "Requer kernel que pule blocos; mudança do padrão de atenção exige pesos compatíveis ou adaptação validada.",
+    "do_not_use_when": "Não confundir blocos de computação esparsa com páginas físicas de cache KV."
+  },
+  "connections": [
+    {
+      "target_id": "T096",
+      "relation": "complements",
+      "how": "Materializar um padrão esparso em representação que permita omitir trabalho.",
+      "interface": "Predicado de conexões, índices e blocos parciais.",
+      "condition": "A representação corresponde exatamente à máscara pretendida.",
+      "acceptance": "Comparar saída com referência densa mascarada e contar blocos processados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S008",
+        "V4B-S017",
+        "V4B-S018"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T090",
+      "relation": "complements",
+      "how": "Usar execução em tiles para blocos presentes, preservando normalização sobre o conjunto permitido.",
+      "interface": "Blocos QKV e acumuladores de softmax.",
+      "condition": "Backend combina corretamente esparsidade e kernel fundido.",
+      "acceptance": "Testar linhas com poucos blocos e diferentes ordens de processamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S008",
+        "V4B-S017",
+        "V4B-S018"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Incluir documentos de comprimento não múltiplo do bloco.",
+    "Invalidar metadados quando mudar qualquer fronteira de sequência."
+  ],
+  "frontier_comparison": "Comparar capacidade e qualidade em documentos estruturados com a fronteira. A implementação pode reduzir custo de relações autorizadas; não demonstra que eliminar outras relações preserve qualquer tarefa aberta.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q005"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S008",
+    "V4B-S017",
+    "V4B-S018"
+  ]
+}

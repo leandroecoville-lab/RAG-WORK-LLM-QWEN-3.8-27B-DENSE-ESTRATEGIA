@@ -1,0 +1,80 @@
+[
+  {
+    "source_id": "A-S023",
+    "title": "Memory overview",
+    "url": "https://docs.langchain.com/oss/python/concepts/memory",
+    "publisher": "LangChain",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Distinções de escopo, memória semântica, episódica e procedural; gestão do histórico.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn7view2"
+  },
+  {
+    "source_id": "A-S009",
+    "title": "MemGPT: Towards LLMs as Operating Systems",
+    "url": "https://arxiv.org/abs/2310.08560",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-10-12",
+    "supports": "Gerência de contexto virtual entre níveis de memória e controle de fluxo.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn1view3"
+  },
+  {
+    "source_id": "V3A-S039",
+    "title": "Redis Key eviction",
+    "url": "https://redis.io/docs/latest/develop/reference/eviction/",
+    "publisher": "Redis",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Políticas de eviction, noeviction, LRU aproximado, LFU probabilístico e distinção entre expiração e pressão de capacidade.",
+    "limitations": "Fonte primária consultada. Desempenho não foi reproduzido, não foram usadas perguntas ou respostas dos benchmarks, e propostas de integração não representam execução na LAI.",
+    "web_ref": "turn161view2"
+  },
+  {
+    "source_id": "V4D-S017",
+    "title": "Mooncake x SGLang HiCache System Design",
+    "url": "https://kvcache-ai.github.io/Mooncake/design/hicache-design.html",
+    "publisher": "Mooncake / SGLang",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Co-uso documentado de RadixAttention/HiRadixTree e cache de KV em GPU, host e armazenamento distribuído.",
+    "limitations": "Documento de integração disponível, sem prova de adoção de toda essa configuração pelo serviço Kimi. Hierarquia de cache tensorial não é memória semântica de agente.",
+    "web_ref": "turn311view3"
+  },
+  {
+    "source_id": "V4D-S018",
+    "title": "Mooncake Architecture",
+    "url": "https://kvcache-ai.github.io/Mooncake/design/architecture.html",
+    "publisher": "Mooncake",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Contratos de plano de controle/dados, buffers, leases, armazenamento compartilhado e roteamento por prefixo.",
+    "limitations": "Capacidades de componentes atuais não são evidência de que todo cliente utilize todos eles; suporte depende do backend e da configuração.",
+    "web_ref": "turn313view0"
+  },
+  {
+    "source_id": "V4D-S019",
+    "title": "Mooncake Transfer Engine",
+    "url": "https://kvcache-ai.github.io/Mooncake/design/transfer-engine/index.html",
+    "publisher": "Mooncake",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Segment/BatchTransfer, buffers registrados, transporte RDMA e escolha de caminho segundo topologia, com recuperação de falhas.",
+    "limitations": "Documentação de biblioteca; submissão validada não torna transferência posterior atômica. Suporte amplo de transporte não comprova o caminho usado numa implantação específica.",
+    "web_ref": "turn313view1"
+  }
+]

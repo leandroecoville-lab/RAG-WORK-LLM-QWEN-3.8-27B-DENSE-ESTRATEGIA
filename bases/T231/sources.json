@@ -1,0 +1,80 @@
+[
+  {
+    "source_id": "V2A-S008",
+    "title": "Edit formats",
+    "url": "https://aider.chat/docs/more/edit-formats.html",
+    "publisher": "Aider",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Formatos de edição incluindo substituição e diffs; o formato exato depende do executor.",
+    "limitations": "Consulta documental primária. Não houve reprodução de experimentos, instalação do produto nem validação de disponibilidade na infraestrutura LAI. Receitas e testes das entradas são propostas editoriais.",
+    "web_ref": "turn50view1"
+  },
+  {
+    "source_id": "V3C-S033",
+    "title": "LibCST — Metadata",
+    "url": "https://libcst.readthedocs.io/en/latest/metadata.html",
+    "publisher": "LibCST project",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "MetadataWrapper e providers fornecem posições, escopos e nomes para transformações estruturais.",
+    "limitations": "Metadados estáticos têm limites em código dinâmico; preserving CST não garante equivalência funcional.",
+    "web_ref": "turn141view3"
+  },
+  {
+    "source_id": "V3C-S027",
+    "title": "Git — git-rev-parse",
+    "url": "https://git-scm.com/docs/git-rev-parse",
+    "publisher": "Git project",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Resolução e verificação de revisões e identificação de objetos Git.",
+    "limitations": "Uma revisão válida identifica objetos; não comprova qualidade funcional de uma alteração.",
+    "web_ref": "turn117view3"
+  },
+  {
+    "source_id": "V3C-S035",
+    "title": "LibCST — Codemods",
+    "url": "https://libcst.readthedocs.io/en/latest/codemods.html",
+    "publisher": "LibCST project",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Framework de transformações, metadata e passes para codemods sobre CST.",
+    "limitations": "Transformação automatizada não comprova comportamento preservado; validação depende do contrato da mudança.",
+    "web_ref": "turn155view0"
+  },
+  {
+    "source_id": "V3C-S037",
+    "title": "Git — git-update-ref",
+    "url": "https://git-scm.com/docs/git-update-ref",
+    "publisher": "Git project",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Atualização condicional de ref compara old-oid; transações bloqueiam e validam refs antes de aplicar mudanças.",
+    "limitations": "Atomicidade de cada ref não significa snapshot simultâneo garantido a todo leitor concorrente de várias refs.",
+    "web_ref": "turn156view4"
+  },
+  {
+    "source_id": "V3C-S042",
+    "title": "Chat modes — Architect mode and the editor model",
+    "url": "https://aider.chat/docs/usage/modes.html",
+    "publisher": "Aider",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Modo architect divide a solicitação em proposta e edição; papéis podem usar o mesmo modelo; editor usa formato próprio de alterações.",
+    "limitations": "Documentação primária consultada, sem execução do Aider. Exemplos de modelos da página não são recomendações atuais; a separação em duas chamadas não demonstra ganho universal.",
+    "web_ref": "turn191view0"
+  }
+]

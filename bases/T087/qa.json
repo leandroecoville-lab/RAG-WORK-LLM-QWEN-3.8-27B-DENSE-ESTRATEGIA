@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Dynamic Batching é automaticamente Continuous Batching?",
+    "answer": "Não. O primeiro forma lotes a partir de chegadas; o segundo admite e retira sequências entre passos de geração."
+  },
+  {
+    "question": "Um lote maior sempre é melhor?",
+    "answer": "Não. Pode aumentar espera, padding e memória. A configuração deve atender simultaneamente throughput e metas de latência."
+  },
+  {
+    "question": "Lote maior é sempre mais eficiente?",
+    "answer": "Não. Memória, formas, preenchimento e custo das operações podem mudar a região eficiente."
+  },
+  {
+    "question": "Qual throughput contabilizar?",
+    "answer": "Trabalho útil concluído, acompanhado de erros e tempo de espera; posições de padding não representam serviço entregue."
+  }
+]

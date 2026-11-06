@@ -1,0 +1,112 @@
+{
+  "id": "T133",
+  "novelty": "A v3 tratou calibração e avaliação emparelhada. A camada nova separa política de qualidade, contrato de capacidades e decisão operacional em duas fases, conservando evidências quando a rota muda.",
+  "deep_layers": [
+    {
+      "name": "Admissão anterior à preferência",
+      "detail": "Construa primeiro um conjunto elegível por idioma, ferramentas, limite de entrada e formato efetivamente testados. Só depois use a previsão de qualidade para escolher. Um modelo com menor custo não participa da disputa quando falha um requisito obrigatório; capacidade desconhecida recebe estado próprio, sem ser convertida em compatibilidade presumida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S011"
+      ]
+    },
+    {
+      "name": "Rota como decisão versionada",
+      "detail": "Registre a versão da política, características observadas e candidatos recusados em um recibo. Se a execução ocorrer depois de uma espera, revalide disponibilidade e orçamento, mantendo o mesmo objetivo. Isso permite distinguir mudança de modelo causada pelo conteúdo de mudança causada por saturação, evitando misturar os dois fenômenos na recalibração.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S012",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Evidência de qualidade atrasada",
+      "detail": "Agrupe resultados por tipo de tarefa e revisão de modelo, pois aceitação pode chegar depois da resposta. Um patch aceito, revertido ou rejeitado produz sinais distintos. Atualizar o roteador apenas com likes ou respostas sintaticamente válidas incentivaria rotas que parecem baratas antes de contabilizar retrabalho.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Triagem de tickets com saída verificável",
+      "scenario": "Fila mistura extração de campos e investigação de incidentes.",
+      "strategy": "Execute extrator econômico para campos fechados; direcione investigação com dependências a outro fluxo. Após validação, escale somente os campos ou perguntas sem suporte, levando os documentos originais, não apenas a interpretação anterior.",
+      "small_model_role": "Um 3–7B pode classificar intenção e extrair candidatos delimitados.",
+      "acceptance": "Proposta: medir erros por classe, escalonamentos desnecessários e custo até aceite, incluindo tickets reabertos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S011",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Revisão de mudanças por risco observado",
+      "scenario": "Há patches pequenos, mas com impactos muito diferentes.",
+      "strategy": "Calcule superfície alterada, dependências e testes disponíveis em código. Use esses sinais para escolher revisão local ou análise mais ampla; se o diagnóstico não encontrar evidência, devolva insuficiência em vez de transformar confiança textual em aprovação.",
+      "small_model_role": "Modelos 8–30B analisam trechos e justificam achados ligados a linhas.",
+      "acceptance": "Proposta: comparar com rota fixa de fronteira nos mesmos patches, contabilizando falsos positivos, bugs omitidos e reversões.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S010",
+        "V4C-S014"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: classificador compacto de classes fechadas; abstém-se em entradas fora do domínio calibrado.",
+    "8_14b": "Proposta: executor de rotas conhecidas com recuperação de documentos e ferramentas validadas.",
+    "15_30b": "Proposta: sintetizador de subtarefas difíceis, ainda sujeito a validação externa e escalonamento.",
+    "training_or_runtime_requirements": "Separar dados de calibração por projeto ou tempo; registrar versões e capacidades do servidor real.",
+    "do_not_use_when": "Não usar roteamento aprendido quando faltam rótulos de aceite ou a chamada do roteador custa mais que a tarefa."
+  },
+  "connections": [
+    {
+      "target_id": "T173",
+      "relation": "feeds",
+      "how": "A escolha inicial informa candidatos elegíveis; fallback só usa os que preservam requisitos.",
+      "interface": "Recibo de rota, capacidades, objetivo e orçamento residual.",
+      "condition": "O erro é classificado antes da troca.",
+      "acceptance": "Injetar falha e conferir que a rota alternativa não relaxa o formato exigido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S011"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T171",
+      "relation": "complements",
+      "how": "Residência de cache entra no custo operacional depois da elegibilidade de qualidade.",
+      "interface": "Prefixo identificado, versão do modelo e custo estimado de recomputação.",
+      "condition": "A chave representa o mesmo cálculo.",
+      "acceptance": "Comparar custo total com e sem preferência por cache mantendo qualidade aceita.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014",
+        "V3C-S015"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Separar rejeição por capacidade de erro de conteúdo na telemetria.",
+    "Suspender atualização automática quando rótulos de aceitação atrasarem ou mudarem de significado."
+  ],
+  "frontier_comparison": "Compare custo por tarefa aceita e erro por classe com modelo de fronteira fixo. Uma rota pequena que vence em extração não demonstra equivalência em planejamento aberto.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q008",
+      "V4C-Q009"
+    ],
+    "scope_note": "Bedrock é recurso de produto; Uber descreve seleção operacional por carga. Nenhum deles demonstra dez deployments de roteamento 3–30B."
+  },
+  "source_ids": [
+    "V4C-S011",
+    "V4C-S012",
+    "V4C-S014",
+    "V4C-S010",
+    "V3C-S015"
+  ]
+}

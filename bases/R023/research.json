@@ -1,0 +1,53 @@
+{
+  "id": "R023",
+  "technical_details": "Transformers converte conversas estruturadas em sequências que o modelo realmente consome. Templates diferentes produzem delimitadores e tokens de controle distintos. Formatar uma conversa e depois acrescentar novamente tokens especiais pode introduzir duplicações. A biblioteca também documenta estratégias de KV com diferentes compromissos: crescimento dinâmico, reserva estática, quantização e offload. Compatibilidade depende da classe de modelo e da versão, portanto template e cache devem ser validados como partes separadas da integração.",
+  "boundary_condition": "Documentação main descreve desenvolvimento corrente; não comprova a presença de uma API na versão instalada. Um modelo customizado pode restringir caminhos disponíveis.",
+  "implementation_contract": {
+    "inputs": "Mensagens, tokenizer e template da revisão escolhida, estratégia de cache, parâmetros de geração e orçamento de memória.",
+    "outputs": "IDs de tokens serializados, sequência gerada, consumo de memória e metadados de término.",
+    "state": "Configuração e objetos de cache pertencentes à sequência, pesos carregados e versão da biblioteca.",
+    "invariant": "Tokens especiais devem aparecer conforme o template, sem duplicação involuntária; cache não pode misturar posições ou sequências incompatíveis."
+  },
+  "tradeoffs": [
+    "Cache estático pode facilitar compilação em casos suportados, mas reserva capacidade que talvez não seja usada.",
+    "Offload e quantização reduzem pressão de memória em certos cenários, podendo introduzir transferência ou erro numérico."
+  ],
+  "failure_test": "Proposta: comparar os IDs produzidos por serialização única e por caminho que duplica tokens especiais; testar também retomada de cache com posição errada e exigir detecção ou rejeição.",
+  "evaluation_plan": "Fixar versão, pesos e mensagens. Medir qualidade, latência fria e aquecida e memória para estratégias de cache compatíveis. Testar entrada curta, longa e concorrente; não generalizar resultados de uma classe para todas as arquiteturas.",
+  "comparisons": [
+    {
+      "entry_id": "T081",
+      "relation": "complements",
+      "reason": "A biblioteca oferece mecanismos para armazenar e reutilizar estado KV."
+    },
+    {
+      "entry_id": "T140",
+      "relation": "complements",
+      "reason": "Chamadas de ferramenta dependem de uma representação adequada ao modelo."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Templates de chat definem a serialização; as estratégias de cache têm compatibilidades e custos distintos.",
+    "source_ids": [
+      "V3D-S010",
+      "V3D-S011"
+    ],
+    "support": "direct",
+    "caveat": "Documentação consultada na linha main; opções precisam ser confirmadas na versão instalada."
+  },
+  "advanced_qa": [
+    {
+      "question": "Por que a mesma lista de mensagens pode gerar outro resultado?",
+      "answer": "Template, tokens especiais e parâmetros podem alterar a sequência efetivamente enviada."
+    },
+    {
+      "question": "Qual estratégia de cache é sempre melhor?",
+      "answer": "Nenhuma. Escolha conforme memória, compilação, arquitetura, comprimento e custo de transferência medidos."
+    }
+  ],
+  "source_ids": [
+    "V3D-S010",
+    "V3D-S011"
+  ],
+  "research_note": "Contrato, teste de falha e plano de avaliação são recomendações editoriais; nenhuma implantação ou medição deste mecanismo foi executada neste pacote."
+}

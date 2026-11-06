@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Uma janela maior garante recuperação melhor?",
+    "answer": "Não. O estudo mostra que aceitar mais tokens e utilizar a evidência corretamente são propriedades diferentes."
+  },
+  {
+    "question": "Basta colocar tudo importante no final?",
+    "answer": "Isso é uma hipótese de ordenação a testar. Evidência distribuída, dependências e o modelo escolhido podem alterar o resultado."
+  },
+  {
+    "question": "Devo colocar toda evidência importante no começo e no fim?",
+    "answer": "Não existe regra universal. Isso pode duplicar tokens e não resolver relações complexas. Teste a montagem no modelo e tarefa efetivamente usados."
+  },
+  {
+    "question": "Uma janela maior elimina a necessidade de recuperação?",
+    "answer": "Não necessariamente. Recuperação pode selecionar conteúdo útil mesmo quando tudo caberia; compare qualidade e custo sob condições controladas."
+  }
+]

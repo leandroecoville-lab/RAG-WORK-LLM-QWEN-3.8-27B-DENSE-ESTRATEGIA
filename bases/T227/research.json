@@ -1,0 +1,52 @@
+{
+  "id": "T227",
+  "technical_details": "Falha de readiness deve retirar a instância do tráfego que depende dessa sinalização; não implica automaticamente matar o processo. Uma startup probe protege inicialização lenta contra liveness prematura. Progresso do agente requer outro invariante: uma API saudável pode hospedar uma missão parada. A proposta separa saúde do servidor, capacidade de atender e estado de cada trabalho, evitando um endpoint único que misture todas as causas.",
+  "boundary_condition": "Uma probe que verifica apenas resposta HTTP pode passar enquanto filas, modelo ou tarefas específicas estão bloqueados.",
+  "implementation_contract": {
+    "inputs": "Sinais de inicialização, capacidade de atendimento, vida do processo e avanço por missão.",
+    "outputs": "Estados separados e ação de operação apropriada a cada um.",
+    "state": "Histórico de sondas, dependências observadas e cursor de progresso.",
+    "invariant": "Indisponibilidade de uma missão não é automaticamente convertida em reinício de todas as missões da instância."
+  },
+  "tradeoffs": [
+    "Sondas profundas detectam mais falhas e podem aumentar carga sobre dependências já degradadas.",
+    "Sondas leves são baratas e fornecem evidência restrita de funcionamento."
+  ],
+  "failure_test": "Teste proposto: inicialização lenta, dependência temporariamente indisponível e missão sem progresso em processo responsivo; exigir três diagnósticos e respostas diferentes.",
+  "evaluation_plan": "Comparar endpoint único e sinais separados sob falhas controladas. Medir reinícios indevidos, tráfego enviado a instância incapaz e tempo para detectar missão parada. Dimensionar frequência pelos custos e tempos de recuperação relevantes.",
+  "comparisons": [
+    {
+      "entry_id": "T225",
+      "relation": "complements",
+      "reason": "O supervisor utiliza sinais de saúde para escolher se reinicia ou espera."
+    },
+    {
+      "entry_id": "T226",
+      "relation": "complements",
+      "reason": "Heartbeat com cursor pode fornecer evidência de progresso de uma atividade."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Kubernetes diferencia startup, liveness e readiness e documenta que readiness e liveness não dependem uma da outra.",
+    "source_ids": [
+      "V2A-S011"
+    ],
+    "support": "direct",
+    "caveat": "Sinal de progresso é requisito adicional da aplicação, sem equivalência automática a um tipo nativo de probe."
+  },
+  "advanced_qa": [
+    {
+      "question": "Readiness falsa deve sempre causar restart?",
+      "answer": "Não. Frequentemente significa apenas que a instância não deve receber tráfego enquanto recupera capacidade."
+    },
+    {
+      "question": "Liveness verdadeira prova que a tarefa avança?",
+      "answer": "Não. O processo pode responder a uma sonda simples enquanto uma missão está estagnada."
+    }
+  ],
+  "source_ids": [
+    "V2A-S011",
+    "V3C-S040"
+  ],
+  "research_note": "Mecanismos referenciados em fontes primárias; contratos e verificação descritos são propostas, não ensaios executados."
+}

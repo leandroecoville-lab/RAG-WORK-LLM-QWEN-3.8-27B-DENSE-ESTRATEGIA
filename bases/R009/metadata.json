@@ -1,0 +1,37 @@
+{
+  "id": "R009",
+  "name": "vLLM",
+  "canonical_name": "vLLM",
+  "canonical_id": "R009",
+  "aliases": [
+    "vllm runtime"
+  ],
+  "category": "referencias",
+  "kind": "project",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "T081",
+    "T088",
+    "T093",
+    "T094",
+    "T102"
+  ],
+  "source_ids": [
+    "B-S044",
+    "V3D-S004",
+    "V3D-S005",
+    "V4B-S010",
+    "V4B-S008",
+    "V4B-S029",
+    "B-S040",
+    "V4B-S001",
+    "V4B-S005",
+    "V4B-S006"
+  ],
+  "namespace": "R009",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R009",
+  "chunk_count": 9
+}

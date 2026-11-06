@@ -1,0 +1,18 @@
+[
+  {
+    "question": "MoE é conjunto de especialistas LLM conversando?",
+    "answer": "Não. No sentido técnico principal, são módulos internos da rede."
+  },
+  {
+    "question": "Posso ativar MoE em qualquer Qwen denso?",
+    "answer": "Não por configuração simples; é uma característica arquitetural."
+  },
+  {
+    "question": "Especialista corresponde a um assunto nomeado?",
+    "answer": "Não necessariamente. Especialização emerge do treino e precisa ser investigada; IDs de especialistas não garantem domínio semântico."
+  },
+  {
+    "question": "Pode carregar somente os ativos de cada token sem custo?",
+    "answer": "Não. Trazer pesos sob demanda introduz transporte e sincronização que precisam entrar na avaliação de latência."
+  }
+]

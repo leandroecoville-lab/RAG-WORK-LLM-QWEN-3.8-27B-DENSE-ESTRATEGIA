@@ -1,0 +1,42 @@
+{
+  "entry_id": "T169",
+  "edges": [
+    {
+      "edge_id": "E-T169-01",
+      "from": "T169",
+      "to": "T237",
+      "relation": "complements",
+      "how": "Claude Research distribui tarefas a subagentes e recebe resultados com referências para integração.",
+      "interface": "Objetivo local, orçamento e artefato retornado.",
+      "condition": "Tarefas distinguíveis e mecanismo de reunião.",
+      "acceptance": "Verificar suficiência do retorno antes de declarar cobertura.",
+      "basis": "source_documented",
+      "source_ids": [
+        "C-S030"
+      ],
+      "case_ids": [
+        "V4C-C007"
+      ],
+      "evidence_stage": "production_documented"
+    },
+    {
+      "edge_id": "E-T169-02",
+      "from": "T169",
+      "to": "T171",
+      "relation": "complements",
+      "how": "Harness Uber diferencia perfis de cache entre interação e subagentes, articulando contexto e custo.",
+      "interface": "Perfil de sessão, prefixo estável e política de retenção.",
+      "condition": "Compatibilidade do provedor e configuração atual.",
+      "acceptance": "Medir economia sem misturar estados incompatíveis.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S014"
+      ],
+      "case_ids": [
+        "V4C-C015"
+      ],
+      "evidence_stage": "production_documented"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

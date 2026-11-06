@@ -1,0 +1,115 @@
+{
+  "id": "T163",
+  "novelty": "A v3 integrava deadline, jitter e quota. Esta camada coordena retries entre camadas, diferencia falha temporária de progresso impossível e propõe controle de amplificação por missão.",
+  "deep_layers": [
+    {
+      "name": "Dono único da repetição",
+      "detail": "Escolha qual camada repete cada tipo de falha e faça as demais exporem suas tentativas. Se SDK, ferramenta e agente repetem independentemente, a multiplicação pode ocorrer antes que o coordenador veja um erro. Propague limite restante e informação de tentativa para impedir que uma nova chamada do agente renove artificialmente todo o orçamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S012",
+        "V3C-S010"
+      ]
+    },
+    {
+      "name": "Classificação antes de esperar",
+      "detail": "Backoff é útil quando tempo pode mudar a probabilidade de sucesso. Argumento inválido, schema incompatível ou capacidade ausente exigem correção ou término, não atraso exponencial. Uma rejeição de quota deve considerar o escopo da quota e sinais do servidor; uma falha de transporte após envio pode exigir reconciliação do efeito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S012",
+        "C-S026"
+      ]
+    },
+    {
+      "name": "Estabilidade da recuperação",
+      "detail": "Após uma falha generalizada, milhares de chamadas podem voltar juntas. Jitter distribui tentativas, mas não cria capacidade. Combine admissão e limite de retries com a carga útil; recuperação sustentada deve preservar espaço para novas requisições, evitando que o trabalho de reparação ocupe permanentemente todo o serviço.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S012",
+        "V3C-S009"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Ferramenta externa intermitente",
+      "scenario": "Agentes pequenos dependem de uma API com erros transitórios.",
+      "strategy": "Execute a chamada com política central; devolva ao modelo resultado final classificado, incluindo se houve efeito possível. Não peça ao modelo para dormir e repetir por conta própria. Quando a quota de retries acabar, registre pendência ou alternativa compatível.",
+      "small_model_role": "3–7B reconhece a classe devolvida; código implementa timers e limites.",
+      "acceptance": "Proposta: limitar amplificação observada e manter sucesso útil durante degradação controlada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S012"
+      ]
+    },
+    {
+      "name": "CI compartilhada saturada",
+      "scenario": "Revisores tentam consultar builds que ainda estão executando.",
+      "strategy": "Distinga polling normal de falha de transporte. Aumente o intervalo de consulta conforme duração esperada e respeite eventos quando disponíveis. Repetir o disparo do build não é substituto de consultar seu estado; use ID estável e deadline da campanha.",
+      "small_model_role": "8–14B resume falhas de build; 15–30B escolhe mudança de estratégia após evidência suficiente.",
+      "acceptance": "Proposta: nenhuma duplicação de build e queda no volume de consultas sem atrasar detecção além da tolerância.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014",
+        "C-S026"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Receber estados de falha tipados, sem delegação de controle temporal.",
+    "8_14b": "Sugerir correção de argumentos quando erro é permanente e há evidência explícita.",
+    "15_30b": "Planejar fallback ou redução de escopo após orçamento central esgotado.",
+    "training_or_runtime_requirements": "Timers monotônicos, contabilidade por tentativa, política do SDK conhecida e propagação do deadline.",
+    "do_not_use_when": "Não repetir efeito potencialmente realizado sem identidade ou procedimento de reconciliação."
+  },
+  "connections": [
+    {
+      "target_id": "T167",
+      "relation": "complements",
+      "how": "SDK AWS usa bucket para limitar tentativas adicionais e conter recuperação agressiva.",
+      "interface": "Saldo de retry e classificação da falha.",
+      "condition": "Separar quota de retry de admissão inicial.",
+      "acceptance": "Sob falha sustentada, retries ficam limitados pela política compartilhada.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V2A-S012"
+      ],
+      "case_ids": [
+        "V4C-C002"
+      ]
+    },
+    {
+      "target_id": "T164",
+      "relation": "complements",
+      "how": "Interpretar Retry-After como restrição temporal adicional antes da nova tentativa.",
+      "interface": "Tempo mínimo anunciado e deadline restante.",
+      "condition": "A operação continua elegível para repetição.",
+      "acceptance": "Não dormir além do prazo nem ignorar orientação válida do destino.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S028"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Contabilizar tentativas internas do SDK para não ocultar amplificação.",
+    "Esgotar retry deve produzir estado final explícito; não reiniciar o mesmo loop com nome diferente."
+  ],
+  "frontier_comparison": "Compare qualidade após falhas com mesmo orçamento de tentativas. Um agente pequeno pode obter maior disponibilidade pela engenharia do runtime, sem superar o modelo de fronteira no problema original.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q001",
+      "V4C-Q004"
+    ],
+    "scope_note": "SDK AWS fornece caso operacional de retry com quota. O controlador de missão e polling adaptado para agentes é composição proposta."
+  },
+  "source_ids": [
+    "V2A-S012",
+    "V3C-S010",
+    "C-S026",
+    "V3C-S009",
+    "V4C-S014",
+    "C-S028"
+  ]
+}

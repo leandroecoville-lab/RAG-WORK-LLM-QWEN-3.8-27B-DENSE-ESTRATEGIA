@@ -1,0 +1,120 @@
+{
+  "id": "T136",
+  "novelty": "A v3 cobriu falhas correlacionadas e resultados ambíguos. Aqui a cadeia vira um protocolo de degradação explícita, com classes de substituição e capacidade reservada para recuperação.",
+  "deep_layers": [
+    {
+      "name": "Níveis de equivalência",
+      "detail": "Classifique alternativas como equivalente de contrato, resultado degradado permitido ou impossibilidade. Trocar endpoint mantendo schema não garante a mesma cobertura factual. A camada consumidora precisa receber o nível de serviço entregue e quais requisitos foram adiados, para não usar uma resposta parcial como confirmação completa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S005",
+        "V4C-S011"
+      ]
+    },
+    {
+      "name": "Reserva em vez de migração em massa",
+      "detail": "Se todos os clientes migram simultaneamente para a alternativa, ela pode falhar pelo próprio mecanismo de recuperação. Reserve admissão para casos prioritários e limite a taxa de transferência. A fila de espera conserva prazo e intenção; não gere uma segunda fila invisível dentro de cada cliente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S009",
+        "V2A-S012"
+      ]
+    },
+    {
+      "name": "Sessão portátil somente por contrato",
+      "detail": "A passagem entre modelos deve reconstruir mensagens, resultados de ferramentas e restrições numa representação neutra. Estado interno de raciocínio ou cache não é necessariamente transportável. Verifique o pacote no tokenizer e no formato de ferramentas do destino antes de iniciar a continuação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S012",
+        "V3C-S004"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Assistente que perde o provedor principal",
+      "scenario": "O endpoint remoto falha enquanto um modelo local continua disponível.",
+      "strategy": "Encaminhe apenas tarefas que o local consegue atender com fontes e verificadores existentes. Para pesquisa aberta, reduza o escopo autorizado ou adie a etapa; preserve o estado confirmado e informe o que não foi concluído.",
+      "small_model_role": "3–30B pode manter extração, classificação e consultas locais delimitadas.",
+      "acceptance": "Proposta: injetar indisponibilidade e medir tarefas concluídas corretamente, degradações comunicadas e sobrecarga transferida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S005",
+        "V4C-S012"
+      ]
+    },
+    {
+      "name": "Falha durante fluxo de edição",
+      "scenario": "O modelo deixa um patch parcial antes de perder conexão.",
+      "strategy": "Congele o candidato como artefato não aceito, valide aplicabilidade e registre a base. O substituto recebe o objetivo e diferenças, podendo continuar ou descartar o candidato. Nenhuma parte é publicada apenas porque o primeiro endpoint caiu.",
+      "small_model_role": "8–14B recupera alterações locais; 15–30B replaneja dependências confirmadas.",
+      "acceptance": "Proposta: verificar que o resultado final corresponde a uma única revisão testada, sem misturar fragmentos incompatíveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S016",
+        "V3C-S037"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: contingência para funções estreitas com saída verificável, sem assumir o papel integral do principal.",
+    "8_14b": "Proposta: continuidade de subtarefas com contexto reconstruído e contratos conhecidos.",
+    "15_30b": "Proposta: alternativa local mais ampla, ainda sem equivalência automática a um modelo de fronteira.",
+    "training_or_runtime_requirements": "Adapters devem preservar mensagens e erros; a reserva de capacidade precisa ser medida sob falha simultânea.",
+    "do_not_use_when": "Não usar troca automática quando o destino não oferece capacidade obrigatória ou existe efeito externo não reconciliado."
+  },
+  "connections": [
+    {
+      "target_id": "T175",
+      "relation": "complements",
+      "how": "A admissão da rota alternativa respeita quota própria e prioridade.",
+      "interface": "Capacidade livre, classe de degradação e orçamento restante.",
+      "condition": "A alternativa não compartilha o mesmo gargalo oculto.",
+      "acceptance": "Simular queda global e exigir fila limitada e motivo de rejeição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S009"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T211",
+      "relation": "complements",
+      "how": "Continuação entre sessões precisa transportar estado confirmado de modo legível ao novo executor.",
+      "interface": "Objetivo, artefatos, pendências e revisão da memória externa.",
+      "condition": "Handoff é suficiente para a subtarefa escolhida.",
+      "acceptance": "Retomar sem histórico conversacional e comparar requisitos preservados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S015",
+        "V2A-S004"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não concatenar streams de modelos diferentes como uma única resposta sem revalidação.",
+    "Limitar tentativas em toda a cadeia e conservar quem realizou cada possível efeito."
+  ],
+  "frontier_comparison": "Compare disponibilidade útil e correção com a rota de fronteira em cenários de falha. Manter serviço parcial com 3–30B é um resultado distinto de paridade geral.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q001",
+      "V4C-Q004",
+      "V4C-Q008"
+    ],
+    "scope_note": "Fontes mostram degradação e contratos de rotas; dez cadeias específicas de fallback LLM em produção não foram identificadas nesta busca."
+  },
+  "source_ids": [
+    "V4C-S005",
+    "V4C-S011",
+    "V3C-S009",
+    "V2A-S012",
+    "V4C-S012",
+    "V3C-S004",
+    "V4C-S016",
+    "V3C-S037",
+    "V4C-S015",
+    "V2A-S004"
+  ]
+}

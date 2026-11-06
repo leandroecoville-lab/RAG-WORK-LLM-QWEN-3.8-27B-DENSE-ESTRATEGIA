@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Fallback é retry?",
+    "answer": "Retry repete uma tentativa; fallback muda o caminho ou serviço."
+  },
+  {
+    "question": "Pode trocar de modelo sem checar ferramentas?",
+    "answer": "Não. O destino deve cumprir o contrato necessário à etapa."
+  },
+  {
+    "question": "Por que duas alternativas podem falhar juntas?",
+    "answer": "Porque podem compartilhar provedor, quota, banco, rede ou serviço de recuperação, embora apresentem nomes diferentes."
+  },
+  {
+    "question": "Posso substituir silenciosamente uma resposta parcialmente transmitida?",
+    "answer": "Somente com um contrato explícito de substituição; o consumidor precisa saber qual tentativa e versão está recebendo."
+  }
+]

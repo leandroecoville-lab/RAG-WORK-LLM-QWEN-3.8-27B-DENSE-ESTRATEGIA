@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Reranking é geração de resposta?",
+    "answer": "Não. É seleção e ordenação de evidências antes ou durante a montagem do contexto."
+  },
+  {
+    "question": "O primeiro resultado deve ser tratado como verdadeiro?",
+    "answer": "Não. Relevância e verdade são dimensões diferentes; a fonte e a evidência ainda precisam ser avaliadas."
+  },
+  {
+    "question": "Posso excluir um candidato por score abaixo de um valor copiado?",
+    "answer": "Somente após calibrar o uso desse score no modelo e domínio. Escalas de rerankers diferentes não são intercambiáveis."
+  },
+  {
+    "question": "Uma passagem bem ranqueada basta para citar uma conclusão?",
+    "answer": "Não. Relevância e sustentação são diferentes; a conclusão precisa ser conferida contra o conteúdo e suas condições."
+  }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "B-S034",
+    "title": "Using FP8 and FP4 with Transformer Engine",
+    "url": "https://nvidia.github.io/TransformerEngine/examples/fp8_primer.html",
+    "publisher": "NVIDIA",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Representações FP8 E4M3/E5M2 e escalas para controlar faixa dinâmica.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn32view0"
+  },
+  {
+    "source_id": "V4B-S011",
+    "title": "NVIDIA TensorRT LLM",
+    "url": "https://developer.nvidia.com/tensorrt-llm",
+    "publisher": "NVIDIA",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Runtime Python/PyTorch, cache paginado, batching, quantização e especulação documentados.",
+    "limitations": "Página de produto demonstra recursos disponíveis, não adoção comprovada por cliente nem compatibilidade do hardware local.",
+    "web_ref": "turn219view2"
+  },
+  {
+    "source_id": "V3B-S003",
+    "title": "SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models",
+    "url": "https://arxiv.org/abs/2211.10438",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2022-11-18",
+    "supports": "Reescala equivalente antes da quantização e migração de dificuldade das ativações para pesos.",
+    "limitations": "Resumo consultado; equivalência da reparametrização não elimina erro de arredondamento posterior.",
+    "web_ref": "turn98view2"
+  }
+]

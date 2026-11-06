@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "B-S043",
+    "title": "TensorRT LLM — Overview",
+    "url": "https://nvidia.github.io/TensorRT-LLM/overview.html",
+    "publisher": "NVIDIA",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Runtime atual descrito como PyTorch nativo, com API de inferência e recursos distribuídos; não pressupõe fluxo legado de engines.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn10view6"
+  },
+  {
+    "source_id": "V3D-S007",
+    "title": "TensorRT-LLM — Architecture Overview",
+    "url": "https://nvidia.github.io/TensorRT-LLM/latest/torch/arch_overview.html",
+    "publisher": "NVIDIA",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "PyTorch como único backend atual, remoção do caminho legado e organização dos componentes de execução.",
+    "limitations": "Página latest; versões históricas podem manter outra arquitetura. Não houve benchmark GPU.",
+    "web_ref": "turn137view3"
+  },
+  {
+    "source_id": "V4B-S011",
+    "title": "NVIDIA TensorRT LLM",
+    "url": "https://developer.nvidia.com/tensorrt-llm",
+    "publisher": "NVIDIA",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Runtime Python/PyTorch, cache paginado, batching, quantização e especulação documentados.",
+    "limitations": "Página de produto demonstra recursos disponíveis, não adoção comprovada por cliente nem compatibilidade do hardware local.",
+    "web_ref": "turn219view2"
+  },
+  {
+    "source_id": "B-S034",
+    "title": "Using FP8 and FP4 with Transformer Engine",
+    "url": "https://nvidia.github.io/TransformerEngine/examples/fp8_primer.html",
+    "publisher": "NVIDIA",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Representações FP8 E4M3/E5M2 e escalas para controlar faixa dinâmica.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn32view0"
+  }
+]

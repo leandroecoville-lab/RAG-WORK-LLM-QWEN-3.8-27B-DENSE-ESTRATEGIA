@@ -1,0 +1,42 @@
+{
+  "entry_id": "R017",
+  "edges": [
+    {
+      "edge_id": "E-R017-01",
+      "from": "R017",
+      "to": "T170",
+      "relation": "complements",
+      "how": "Executar contrato da ferramenta na versão que o middleware realmente envia.",
+      "interface": "Versão, schema normalizado e capacidades verificadas.",
+      "condition": "Há migração de provedor ou de ferramenta.",
+      "acceptance": "Payload incompatível falha antes de uma mutação externa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S038",
+        "V2B-S004",
+        "V4C-S012"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-R017-02",
+      "from": "R017",
+      "to": "T136",
+      "relation": "complements",
+      "how": "Fazer fallback consumir o orçamento lógico compartilhado.",
+      "interface": "Tentativas consumidas, deadline e motivo de falha.",
+      "condition": "Mais de um backend é elegível.",
+      "acceptance": "Falhas aninhadas respeitam o teto global e preservam o requisito de saída.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S038",
+        "V2B-S004",
+        "V4C-S012"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "O agente aprendeu porque um arquivo foi salvo?",
+    "answer": "Ele ganhou informação persistida. Aprendizagem comportamental e recuperação confiável ainda precisam ser demonstradas."
+  },
+  {
+    "question": "Long-term memory precisa de banco vetorial?",
+    "answer": "Não. Chaves, SQL, arquivos, grafos e busca lexical podem ser adequados conforme o tipo de informação."
+  },
+  {
+    "question": "Como saber se o problema está no banco ou na LLM?",
+    "answer": "Teste se o fato foi registrado, se aparece entre candidatos elegíveis e se a resposta o usa corretamente. Cada etapa exige uma verificação própria."
+  },
+  {
+    "question": "Persistência em RAM basta para memória longa?",
+    "answer": "Somente dentro da vida daquele processo. Para sobreviver a reinícios é necessário um armazenamento com durabilidade compatível com o contrato."
+  }
+]

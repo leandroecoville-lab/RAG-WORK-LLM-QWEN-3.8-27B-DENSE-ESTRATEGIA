@@ -1,0 +1,40 @@
+{
+  "entry_id": "T112",
+  "edges": [
+    {
+      "edge_id": "E-T112-01",
+      "from": "T112",
+      "to": "T009",
+      "relation": "alternative",
+      "how": "Comparar recuperação textual e integração arquitetural sob o mesmo corpus.",
+      "interface": "Consultas, evidências e versões do índice.",
+      "condition": "Protocolos de teste evitam vazamento e igualam acesso a conhecimento.",
+      "acceptance": "Medir resposta correta com evidência e custo de atualizar o acervo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S026",
+        "V4B-S020"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T112-02",
+      "from": "T112",
+      "to": "T177",
+      "relation": "requires",
+      "how": "Arquitetura integrada precisa aprender a consumir os estados externos.",
+      "interface": "Pesos do codificador, módulos de atenção e dados de treino.",
+      "condition": "Objetivo e entrada refletem uso posterior.",
+      "acceptance": "Ablacionar recuperação e verificar comportamento com ausência de vizinhos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S026",
+        "V4B-S020"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

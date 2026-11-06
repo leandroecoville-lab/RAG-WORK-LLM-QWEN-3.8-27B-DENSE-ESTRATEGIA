@@ -1,0 +1,46 @@
+{
+  "id": "T105",
+  "technical_details": "Expulsar cache pode significar remover uma cópia reconstruível de prefixo inativo ou eliminar estados ainda necessários ao contexto de uma sequência. O primeiro caso muda custo; o segundo muda a função do modelo, salvo reconstrução antes do uso. Uma política de memória precisa declarar qual semântica pratica. Custo de reconstrução e probabilidade de reúso podem orientar retenção, mas são estimativas sujeitas a mudanças de carga.",
+  "boundary_condition": "Uma política aparentemente econômica pode gerar thrashing quando estados expulsos são reconstruídos repetidamente antes de terminar a requisição.",
+  "implementation_contract": {
+    "inputs": "Pressão de memória, referências ativas, estimativas de reúso e custo de reconstrução.",
+    "outputs": "Blocos removidos, bytes liberados e plano para futuros acessos.",
+    "state": "Disponibilidade física, histórico reconstruível e dependências dos consumidores.",
+    "invariant": "Nenhum estado necessário desaparece silenciosamente do contexto lógico prometido."
+  },
+  "tradeoffs": [
+    "Reter estados caros economiza cálculo futuro e limita admissões.",
+    "Políticas sofisticadas custam metadados e podem reagir mal a estimativas desatualizadas."
+  ],
+  "failure_test": "Teste proposto: forçar pressão durante duas continuações que compartilham um ancestral e acessá-lo novamente após remoção permitida. Esperar proteção de referências ativas ou reconstrução correta, sem contexto reduzido ocultamente.",
+  "evaluation_plan": "Plano proposto: comparar LRU e uma política baseada em custo sob sequências de acesso controladas. Medir bytes liberados, recomputação, misses, preempções e latência; escolher pelo custo total preservando a semântica contratada.",
+  "comparisons": [
+    {
+      "entry_id": "T116",
+      "relation": "complements",
+      "reason": "Recomputação pode restaurar estado removido quando o histórico necessário permanece disponível."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O desenho de RadixAttention protege nós usados por requisições ativas e remove folhas elegíveis.",
+    "source_ids": [
+      "V3B-S011"
+    ],
+    "support": "direct",
+    "caveat": "A política documentada não representa todas as variantes de poda ou compressão de contexto."
+  },
+  "advanced_qa": [
+    {
+      "question": "Eviction é equivalente a esquecer informação?",
+      "answer": "Só quando o estado deixa de ser reconstruído antes de necessário; um cache dispensável pode ser removido sem perda semântica."
+    },
+    {
+      "question": "Qual métrica revela thrashing?",
+      "answer": "Recomputações repetidas dos mesmos tokens, associadas a transferências ou preempções, além de baixa progressão efetiva da geração."
+    }
+  ],
+  "source_ids": [
+    "V3B-S011"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

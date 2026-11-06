@@ -1,0 +1,52 @@
+{
+  "id": "T170",
+  "technical_details": "Compatibilidade possui direções diferentes: um servidor novo aceitar pedidos antigos não implica que um cliente antigo aceite respostas novas. Acrescentar um campo opcional pode quebrar um consumidor com objeto fechado; acrescentar valor a enum pode invalidar um switch exaustivo. Mudanças de unidade ou significado podem passar em todos os schemas e ainda alterar o comportamento. Uma matriz de produtor e consumidor torna essas diferenças verificáveis.",
+  "boundary_condition": "Versionar apenas o arquivo JSON é insuficiente quando defaults, efeitos ou semântica de erro mudam sem alteração estrutural.",
+  "implementation_contract": {
+    "inputs": "Contrato antigo e novo, clientes suportados, exemplos e semântica de domínio.",
+    "outputs": "Classificação de compatibilidade, estratégia de migração e revisão efetiva.",
+    "state": "Schemas publicados, consumidores conhecidos e janela de coexistência.",
+    "invariant": "A revisão identifica significado dos campos e comportamento, não somente sintaxe."
+  },
+  "tradeoffs": [
+    "Manter versões paralelas facilita migração e multiplica testes e suporte.",
+    "Aceitar campos desconhecidos melhora extensibilidade e pode ocultar erros de digitação importantes."
+  ],
+  "failure_test": "Teste proposto: adicionar um valor de enum e alterar uma unidade preservando o tipo numérico; verificar quebra estrutural no primeiro caso quando aplicável e detecção semântica no segundo.",
+  "evaluation_plan": "Executar matriz de pedidos e respostas entre versões com fixtures independentes. Medir incompatibilidades, migrações exigidas e divergências silenciosas. Decidir compatibilidade pelos consumidores reais, sem tratar toda adição como mudança segura.",
+  "comparisons": [
+    {
+      "entry_id": "T158",
+      "relation": "complements",
+      "reason": "O registro precisa anunciar e conservar as revisões dos contratos."
+    },
+    {
+      "entry_id": "T141",
+      "relation": "complements",
+      "reason": "Schema delimita estrutura, mas a migração também precisa de testes de significado."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "JSON Schema diferencia propriedades permitidas e avaliadas, afetando a aceitação de extensões de objetos.",
+    "source_ids": [
+      "V3C-S013"
+    ],
+    "support": "direct",
+    "caveat": "A compatibilidade de negócio exige critérios adicionais que o schema não consegue expressar sozinho."
+  },
+  "advanced_qa": [
+    {
+      "question": "Adicionar campo opcional é sempre retrocompatível?",
+      "answer": "Não. Consumidores que rejeitam propriedades extras podem falhar ao receber o novo campo."
+    },
+    {
+      "question": "Como detectar mudança de segundos para milissegundos?",
+      "answer": "Registrar unidade no contrato e usar casos de domínio; ambos os valores continuam sendo números válidos para um schema genérico."
+    }
+  ],
+  "source_ids": [
+    "V3C-S013",
+    "V3C-S004"
+  ],
+  "research_note": "Síntese técnica com contratos e testes propostos; não há alegação de implantação ou medição LAI."
+}

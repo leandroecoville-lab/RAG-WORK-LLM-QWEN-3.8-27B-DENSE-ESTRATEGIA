@@ -1,0 +1,34 @@
+{
+  "id": "T242",
+  "name": "Recuperação híbrida por Snapshot + Event Sourcing",
+  "canonical_name": "Recuperação híbrida por Snapshot + Event Sourcing",
+  "canonical_id": "T242",
+  "aliases": [
+    "snapshot plus event sourcing",
+    "snapshot e replay incremental"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T059",
+    "T240",
+    "T241",
+    "T243"
+  ],
+  "source_ids": [
+    "A-S027",
+    "A-S022",
+    "V3C-S041",
+    "V3C-S028",
+    "V4C-S025",
+    "V4C-S001",
+    "C-S026"
+  ],
+  "namespace": "T242",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T242",
+  "chunk_count": 9
+}

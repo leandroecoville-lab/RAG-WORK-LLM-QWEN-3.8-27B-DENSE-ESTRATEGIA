@@ -1,0 +1,121 @@
+{
+  "id": "P008",
+  "novelty": "Aprofunda a proposta Event Store com fronteira entre intenção e fato, causalidade parcial e replay sem repetir efeitos de negócio.",
+  "source_ids": [
+    "V3D-S018",
+    "V4C-S024",
+    "V4C-S025"
+  ],
+  "deep_layers": [
+    {
+      "name": "Envelope causal mínimo",
+      "detail": "Proposta: além da sequência por entidade, registrar causation_id, correlation_id e revisão observada. Esses campos permitem reconstruir dependências sem fingir uma ordem global de eventos simultâneos. Uma resposta de ferramenta pertence à intenção original mesmo se chegar em outra sessão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S018",
+        "V4C-S024",
+        "V4C-S025"
+      ]
+    },
+    {
+      "name": "Fato versus intenção",
+      "detail": "Usar tipos distintos para ação solicitada, envio iniciado, confirmação recebida e resultado reconciliado. A ausência de confirmação não é fato de falha. Esse desenho impede que um replay transforme um comando antigo em nova autorização para produzir efeito externo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S018",
+        "V4C-S024",
+        "V4C-S025"
+      ]
+    },
+    {
+      "name": "Projeções reexecutáveis",
+      "detail": "Versionar transformação e manter posição aplicada. Ensaiar reconstrução numa projeção separada antes de trocar consumidores. Eventos com dados sensíveis podem carregar referência e hash, preservando uma política explícita de retenção sem prometer apagar cópias fora do domínio controlado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S018",
+        "V4C-S024",
+        "V4C-S025"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Memória de decisões do agente",
+      "scenario": "O sistema precisa explicar por que executou uma ação.",
+      "strategy": "Persistir evidência e versão da política junto da transição; gerar resumo como projeção derivada.",
+      "small_model_role": "3–7B pode resumir a cadeia causal sem substituir o registro original.",
+      "acceptance": "Toda afirmação de ação concluída aponta para confirmação ou reconciliação registrada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S018",
+        "V4C-S024",
+        "V4C-S025"
+      ]
+    },
+    {
+      "name": "Reconstrução após bug de projeção",
+      "scenario": "Um extrator produziu estado derivado incorreto.",
+      "strategy": "Corrigir a projeção, reproduzir eventos numa cópia e comparar diferenças antes de promover.",
+      "small_model_role": "LLM revisa divergências sem criar novos fatos no histórico.",
+      "acceptance": "Replay não chama APIs mutantes e reconstrói estado segundo versão declarada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S018",
+        "V4C-S024",
+        "V4C-S025"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "3–7B: produzir eventos candidatos tipados; validação confirma o que pode ser persistido.",
+    "8_14b": "8–14B: interpretar cadeias curtas para diagnóstico e resumo com referências.",
+    "15_30b": "15–30B: análise de incidentes complexos, sem poder de reescrever o histórico factual.",
+    "training_or_runtime_requirements": "Persistência, schema e idempotência pertencem ao serviço; não dependem de parâmetros do modelo.",
+    "do_not_use_when": "Não usar texto de log livre como único contrato para reconstrução e auditoria."
+  },
+  "connections": [
+    {
+      "target_id": "T059",
+      "relation": "complements",
+      "how": "Definir quais eventos são fonte de verdade e quais são projeções.",
+      "interface": "Envelope versionado, sequência e identidade causal.",
+      "condition": "Estado precisa ser reconstruído.",
+      "acceptance": "Uma reconstrução completa tem critérios explícitos de equivalência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S018",
+        "V4C-S024",
+        "V4C-S025"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T241",
+      "relation": "feeds",
+      "how": "Entregar eventos para reprodução em modo sem efeitos externos.",
+      "interface": "Histórico, cursor e versão da projeção.",
+      "condition": "Há recuperação ou correção de projeção.",
+      "acceptance": "Reexecução preserva fatos sem duplicar operações.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S018",
+        "V4C-S024",
+        "V4C-S025"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir offset de transporte com confirmação de negócio.",
+    "Não afirmar ordem causal total a partir apenas de timestamps."
+  ],
+  "frontier_comparison": "Comparar sistemas pela reconstrução correta e completude da evidência sob falhas. Mais memória textual não substitui eventos identificáveis.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q002",
+      "V4C-Q020",
+      "V4C-Q019"
+    ],
+    "scope_note": "P008 é componente editorial. Brooklin e padrões de outbox sustentam analogias e partes do desenho, sem adoção de um produto LAI com esse nome."
+  }
+}

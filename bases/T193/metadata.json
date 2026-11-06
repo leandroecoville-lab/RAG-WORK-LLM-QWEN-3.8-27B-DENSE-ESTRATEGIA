@@ -1,0 +1,29 @@
+{
+  "id": "T193",
+  "name": "Guardrails",
+  "canonical_name": "Guardrails",
+  "canonical_id": "T193",
+  "aliases": [
+    "controles de execução e saída"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T140",
+    "T185",
+    "T197"
+  ],
+  "source_ids": [
+    "C-S046",
+    "V4B-S027",
+    "V4D-S012",
+    "V4D-S013"
+  ],
+  "namespace": "T193",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T193",
+  "chunk_count": 9
+}

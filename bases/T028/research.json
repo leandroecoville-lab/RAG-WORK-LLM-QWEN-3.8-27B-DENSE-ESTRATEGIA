@@ -1,0 +1,53 @@
+{
+  "id": "T028",
+  "technical_details": "O teto do reranker é determinado pelos candidatos recebidos. Separar recall da primeira etapa e qualidade da ordenação evita culpar o avaliador por um documento ausente. Também é necessário conhecer o truncamento interno de consulta e passagem: um classificador pode receber apenas o início do trecho, atribuindo score sem observar a parte que contém a evidência decisiva.",
+  "boundary_condition": "O estágio não ajuda quando a evidência relevante está fora do conjunto candidato ou quando seu custo consome o prazo disponível sem melhorar a seleção final.",
+  "implementation_contract": {
+    "inputs": "Consulta, candidatos identificados e limite efetivo do modelo de ranking.",
+    "outputs": "Ordem revisada e scores associados às versões originais.",
+    "state": "Modelo, configuração de truncamento, candidatos iniciais e seleção final.",
+    "invariant": "Score de relevância não é apresentado como probabilidade calibrada de verdade ou suporte lógico."
+  },
+  "tradeoffs": [
+    "Mais candidatos elevam o teto de recall e o trabalho de avaliação.",
+    "Modelos conjuntos capturam interação consulta-texto, mas são mais caros que comparar vetores pré-computados."
+  ],
+  "failure_test": "Teste proposto: colocar a evidência relevante no fim de uma passagem longa e depois fora do conjunto candidato. O diagnóstico deve distinguir truncamento do reranker de falha de recuperação inicial.",
+  "evaluation_plan": "Avaliação proposta: usar a mesma lista para comparar ordenação original e reranking, e depois variar sua cobertura. Medir ranking, suporte das passagens selecionadas, duração e custo; incluir uma ordenação ideal dos candidatos para estimar o teto disponível.",
+  "comparisons": [
+    {
+      "entry_id": "T027",
+      "relation": "complements",
+      "reason": "A união híbrida pode aumentar a diversidade de candidatos oferecida ao reranker."
+    },
+    {
+      "entry_id": "T037",
+      "relation": "distinct_from",
+      "reason": "Reranking ordena unidades; compressão condicionada à pergunta modifica a representação enviada."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O trabalho de Nogueira e Cho aplica BERT à reordenação de passagens em função da consulta.",
+    "source_ids": [
+      "V3A-S025"
+    ],
+    "support": "direct",
+    "caveat": "A técnica publicada é uma implementação específica; modelos atuais têm outros limites e distribuições de scores."
+  },
+  "advanced_qa": [
+    {
+      "question": "Posso excluir um candidato por score abaixo de um valor copiado?",
+      "answer": "Somente após calibrar o uso desse score no modelo e domínio. Escalas de rerankers diferentes não são intercambiáveis."
+    },
+    {
+      "question": "Uma passagem bem ranqueada basta para citar uma conclusão?",
+      "answer": "Não. Relevância e sustentação são diferentes; a conclusão precisa ser conferida contra o conteúdo e suas condições."
+    }
+  ],
+  "source_ids": [
+    "V3A-S025",
+    "V3A-S026",
+    "A-S020"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

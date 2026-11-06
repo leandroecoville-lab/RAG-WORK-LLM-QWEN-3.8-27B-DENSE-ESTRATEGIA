@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "B-S019",
+    "title": "GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints",
+    "url": "https://arxiv.org/abs/2305.13245",
+    "publisher": "Ainslie e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-05-22",
+    "supports": "Grupos de consultas compartilham cabeças KV; conversão proposta envolve treinamento.",
+    "limitations": "Resumo e metadados acessados; artigo integral não auditado e resultados não reproduzidos.",
+    "web_ref": "turn6view6"
+  },
+  {
+    "source_id": "V4B-S017",
+    "title": "FlexAttention Part II: FlexAttention for Inference",
+    "url": "https://pytorch.org/blog/flexattention-for-inference/",
+    "publisher": "PyTorch",
+    "source_type": "technical_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-04-30",
+    "supports": "Backend de decode, suporte a GQA e PagedAttention e diferenças entre formas de prefill/decode.",
+    "limitations": "Implementação e experimentos não constituem prova de adoção em produto; atenção customizada depende de máscara correta.",
+    "web_ref": "turn227view0"
+  },
+  {
+    "source_id": "V4B-S020",
+    "title": "Qwen3: Think Deeper, Act Faster",
+    "url": "https://qwenlm.github.io/blog/qwen3/",
+    "publisher": "Qwen Team / Alibaba",
+    "source_type": "model_release",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-04-29",
+    "supports": "Modelos densos e MoE, cabeças Q/KV, distinção entre parâmetros totais/ativos e modos de raciocínio.",
+    "limitations": "Resultados de modelo publicado não verificam checkpoint local nem equivalência geral com modelos de fronteira.",
+    "web_ref": "turn227view3"
+  }
+]

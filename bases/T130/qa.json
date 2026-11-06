@@ -1,0 +1,18 @@
+[
+  {
+    "question": "A resposta armazenada é devolvida diretamente?",
+    "answer": "Não. Ela pode fornecer candidatos; o alvo precisa verificá-los."
+  },
+  {
+    "question": "N-gram é busca semântica?",
+    "answer": "Não. Trabalha principalmente com padrões exatos de tokens, não equivalência de significado."
+  },
+  {
+    "question": "Correspondência exata dispensa o alvo?",
+    "answer": "Não. O padrão pode ter surgido em outro contexto e a próxima distribuição pode ser diferente."
+  },
+  {
+    "question": "Pode funcionar sem um segundo modelo?",
+    "answer": "Sim. O proponente pode ser uma estrutura de tokens na CPU; ainda existem custo de busca e verificação."
+  }
+]

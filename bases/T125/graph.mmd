@@ -1,0 +1,6 @@
+flowchart TD
+    T125["T125 GPTQ"]
+    T124["T124 INT4 / W4A16 Quantization"]
+    T125 -. "feeds: proposta" .-> T124
+    T198["T198 Calibrated Confidence"]
+    T125 -. "complements: proposta" .-> T198

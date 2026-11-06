@@ -1,0 +1,52 @@
+{
+  "id": "T151",
+  "technical_details": "O carregamento tardio precisa fechar a corrida entre descoberta e execução. O catálogo pode indicar uma versão cujo schema mudou antes da chamada. Uma proposta é carregar um descritor identificado, validar argumentos contra essa revisão e confirmar compatibilidade ao executar. O catálogo mínimo também deve expor informação suficiente para distinguir ferramentas com nomes próximos; reduzir descrições indiscriminadamente aumenta falsas seleções.",
+  "boundary_condition": "Quando a tarefa depende de muitas ferramentas em cada rodada, a economia inicial pode ser consumida por sucessivas buscas e carregamentos.",
+  "implementation_contract": {
+    "inputs": "Intenção, catálogo leve, revisão conhecida e orçamento para descoberta.",
+    "outputs": "Definição completa selecionada ou dependência ausente identificada.",
+    "state": "Ferramentas descobertas, carregadas, invalidadas e versões utilizadas.",
+    "invariant": "Uma chamada usa o contrato carregado e não uma descrição desatualizada presumida."
+  },
+  "tradeoffs": [
+    "Catálogo curto poupa contexto e reduz informação para seleção.",
+    "Fixar revisão melhora reprodutibilidade e exige lidar com ferramentas retiradas ou incompatíveis."
+  ],
+  "failure_test": "Teste proposto: alterar o tipo de um argumento após a descoberta e antes da execução; o carregador deve detectar incompatibilidade ou atualizar o contrato antes de enviar a operação.",
+  "evaluation_plan": "Comparar todas as definições no prompt, seleção fixa e carregamento sob demanda em tarefas com catálogos crescentes. Medir tokens totais, rodadas de descoberta, seleção incorreta e latência; decidir pela curva completa, incluindo falhas de descoberta.",
+  "comparisons": [
+    {
+      "entry_id": "T158",
+      "relation": "complements",
+      "reason": "O registro fornece identidade, metadados e sinal de alteração do catálogo."
+    },
+    {
+      "entry_id": "T045",
+      "relation": "distinct_from",
+      "reason": "Recuperação escolhe candidatos; carregamento disponibiliza o contrato necessário para utilizá-los."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "MCP oferece notificação de alteração da lista de ferramentas quando a capacidade correspondente é declarada.",
+    "source_ids": [
+      "V3C-S004"
+    ],
+    "support": "direct",
+    "caveat": "A notificação não torna toda leitura e chamada uma transação atômica de catálogo."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma notificação de mudança elimina a necessidade de versionamento?",
+      "answer": "Não. Ela informa que algo mudou; ainda é necessário identificar o contrato efetivamente usado pela chamada."
+    },
+    {
+      "question": "Quando o carregamento tardio piora a tarefa?",
+      "answer": "Quando descoberta repetida e definições omitidas causam mais rodadas ou erros que a economia inicial de tokens."
+    }
+  ],
+  "source_ids": [
+    "V3C-S004",
+    "C-S016"
+  ],
+  "research_note": "Detalhamento e avaliação propostos; a fonte apoia o mecanismo, sem comprovar implementação LAI."
+}

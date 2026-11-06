@@ -1,0 +1,29 @@
+{
+  "id": "T035",
+  "name": "Contextual Chunking",
+  "canonical_name": "Contextual Chunking",
+  "canonical_id": "T035",
+  "aliases": [
+    "contextualização de chunks",
+    "Contextual Retrieval"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T033",
+    "T036",
+    "T027"
+  ],
+  "source_ids": [
+    "A-S025",
+    "V3A-S014",
+    "V4A-S023"
+  ],
+  "namespace": "T035",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T035",
+  "chunk_count": 9
+}

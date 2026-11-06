@@ -1,0 +1,116 @@
+{
+  "coverage": {
+    "entry_id": "T024",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 2,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Context Broker e Context Builder",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C012",
+      "company": "Amazon",
+      "system": "Rufus shopping assistant",
+      "title": "Rufus shopping assistant — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "Amazon descreve assistente em uso no aplicativo de compras.",
+      "technical_mechanism": "RAG seleciona catálogo, avaliações, perguntas comunitárias e APIs conforme a pergunta.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S022"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T009",
+          "match": "exact",
+          "rationale": "Recuperação antecede geração e inclui múltiplas fontes."
+        },
+        {
+          "entry_id": "T036",
+          "match": "exact",
+          "rationale": "Relevância de cada fonte varia com a consulta."
+        },
+        {
+          "entry_id": "T024",
+          "match": "family",
+          "rationale": "Seleção de fontes inspira broker, sem confirmar componente LAI."
+        },
+        {
+          "entry_id": "P007",
+          "match": "analogy",
+          "rationale": "Recuperador editorial pode adotar contrato semelhante, sem alegar adoção."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Separar busca factual de texto opinativo e exigir evidência de atributo antes da comparação por 8–14B.",
+      "limits": "Porte do LLM customizado não é indicado; não explicita BM25+vetores nem cada técnica de chunking. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4B-C008",
+      "deployment_domain": "llm_application",
+      "deduplication_note": "Consolidado com V4B-C008 para contagem. Mapeamentos e versões das fontes permanecem separados; não se presume simultaneidade de todos os mecanismos.",
+      "mapping": {
+        "entry_id": "T024",
+        "match": "family",
+        "rationale": "Seleção de fontes inspira broker, sem confirmar componente LAI."
+      }
+    },
+    {
+      "case_id": "V4A-C002",
+      "company": "Anthropic",
+      "system": "Research multi-agent system",
+      "title": "Research multi-agent system — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "A equipe descreve passagem do protótipo à produção do recurso Research.",
+      "technical_mechanism": "Agente líder salva plano, delega pesquisa paralela, recebe sínteses e decide novas buscas.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "C-S030"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T001",
+          "match": "family",
+          "rationale": "Distribuição e agregação de pesquisa, sem garantia de semântica MapReduce."
+        },
+        {
+          "entry_id": "T024",
+          "match": "family",
+          "rationale": "Coordena aquisição e síntese de contexto; não usa o nome editorial como produto."
+        },
+        {
+          "entry_id": "T067",
+          "match": "exact",
+          "rationale": "Novas buscas dependem das descobertas intermediárias."
+        },
+        {
+          "entry_id": "P001",
+          "match": "analogy",
+          "rationale": "Inspira montagem de contexto; não comprova Context Engine LAI."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Atribuir pesquisas delimitadas a 3–14B e reservar integração difícil a 15–30B ou escalonamento.",
+      "limits": "Relato usa Claude Opus/Sonnet; custo, qualidade e métricas publicados não se transferem aos portes propostos. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4C-C007",
+      "deployment_domain": "llm_application",
+      "deduplication_note": "Consolidado com V4C-C007 para contagem. Mapeamentos e versões das fontes permanecem separados; não se presume simultaneidade de todos os mecanismos.",
+      "mapping": {
+        "entry_id": "T024",
+        "match": "family",
+        "rationale": "Coordena aquisição e síntese de contexto; não usa o nome editorial como produto."
+      }
+    }
+  ]
+}

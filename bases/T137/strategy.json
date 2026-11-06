@@ -1,0 +1,118 @@
+{
+  "id": "T137",
+  "novelty": "A v3 tratou reserva de tokens e limites globais entre réplicas. O novo desenho combina admissão por dimensão, prioridades de negócio e liquidação de custos quando chamadas terminam parcialmente.",
+  "deep_layers": [
+    {
+      "name": "Vetor de recursos",
+      "detail": "Uma requisição pode consumir slots, tokens de entrada, geração e memória de contexto. Limitar apenas requests por segundo permite que poucas conversas longas ocupem o servidor. Uma proposta usa reservas por dimensão e só admite quando todas as obrigatórias cabem, mantendo a unidade de cada contador visível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S009",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Reserva ligada à intenção",
+      "detail": "Dê à reserva identidade própria e vincule-a à tentativa. Cancelamento ou timeout não libera automaticamente recursos que o servidor ainda usa. Marque reserva em reconciliação, consulte o estado quando disponível e aplique expiração conservadora para não admitir carga nova sobre trabalho ainda ativo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S005",
+        "V2A-S012"
+      ]
+    },
+    {
+      "name": "Prioridade com conta separada",
+      "detail": "Separe capacidade para consultas interativas, recuperação e processamento adiável. O modelo não escolhe sua própria prioridade a partir de linguagem persuasiva; a aplicação deriva classe por política. Meça rejeição e tempo de espera por classe, pois uma média boa pode ocultar bloqueio prolongado de uma delas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S009",
+        "V4C-S003"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Servidor local compartilhado",
+      "scenario": "Vários agentes usam a mesma GPU com modelos 3–30B.",
+      "strategy": "Estime demanda por contexto e saída antes de admitir; reserve margem para verificação e limite sessões simultâneas. Quando faltar memória prevista, mantenha a tarefa em fila ou reduza escopo permitido, sem depender apenas da exceção de falta de memória.",
+      "small_model_role": "Modelos pequenos processam tarefas admitidas; o limitador é determinístico.",
+      "acceptance": "Proposta: medir tarefas aceitas, espera, OOM e consumo efetivo, com mistura fixa de contextos curtos e longos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014",
+        "V3C-S009"
+      ]
+    },
+    {
+      "name": "Proteção do serviço de ferramentas",
+      "scenario": "O modelo pode gerar muitas consultas corretas ao mesmo endpoint.",
+      "strategy": "Atribua quota por serviço e operação lógica; cache ou coalescência reduzem duplicatas antes da admissão. Retry consome uma conta explícita, evitando competir ilimitadamente com primeiras tentativas.",
+      "small_model_role": "3–7B produz pedidos estruturados, sem decidir limites ou liberar saldo.",
+      "acceptance": "Proposta: introduzir rajadas e falhas transitórias; aceitar somente política que mantenha pressão limitada e rastreie saldo sem vazamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S012",
+        "V3C-S010"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: classificar custo aproximado de tarefas curtas, com valores finais calculados pelo runtime.",
+    "8_14b": "Proposta: montar pedidos de ferramentas com estimativas de saída e estratégia de paginação.",
+    "15_30b": "Proposta: planejar lotes maiores sob cotas explicitamente fornecidas pelo controlador.",
+    "training_or_runtime_requirements": "São necessários medidores do servidor e tratamento de reservas órfãs; parâmetros não determinam sozinho memória consumida.",
+    "do_not_use_when": "Não usar estimativa de tokens como único limite quando o gargalo real é conexão, CPU, banco ou concorrência."
+  },
+  "connections": [
+    {
+      "target_id": "T167",
+      "relation": "complements",
+      "how": "Buckets implementam uma dimensão de taxa dentro da política multidimensional.",
+      "interface": "Unidade, saldo, taxa de reposição e custo reservado.",
+      "condition": "Cada dimensão conserva contabilidade independente.",
+      "acceptance": "Reexecutar sequências de admissão e verificar ausência de saldo negativo.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V2A-S012"
+      ],
+      "case_ids": [
+        "V4C-C002"
+      ]
+    },
+    {
+      "target_id": "T150",
+      "relation": "complements",
+      "how": "Coalescer consultas equivalentes evita cobrar capacidade duplicada antes do envio.",
+      "interface": "Chave de operação, participantes e reserva compartilhada.",
+      "condition": "Resultados e permissões são realmente compartilháveis.",
+      "acceptance": "Cancelar um participante sem devolver o saldo de todos os demais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S011"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não liberar reserva inteira com base apenas no cancelamento local.",
+    "Reconciliar consumo observado e evitar que erro de estimativa se acumule indefinidamente."
+  ],
+  "frontier_comparison": "Compare vazão útil, cauda de latência e falhas com uma rota de fronteira sob igual política de admissão. Parâmetros menores não garantem menor custo quando a tarefa repete.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q001",
+      "V4C-Q004",
+      "V4C-Q009"
+    ],
+    "scope_note": "AWS documenta quota de retries; os limites multidimensionais para LLM local são proposta, sem transplante automático de quotas corporativas."
+  },
+  "source_ids": [
+    "V3C-S009",
+    "V4C-S014",
+    "V3C-S005",
+    "V2A-S012",
+    "V4C-S003",
+    "V3C-S010",
+    "V3C-S011"
+  ]
+}

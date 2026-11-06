@@ -1,0 +1,42 @@
+{
+  "entry_id": "T190",
+  "edges": [
+    {
+      "edge_id": "E-T190-01",
+      "from": "T190",
+      "to": "T195",
+      "relation": "requires",
+      "how": "AutoClean combina propostas e verificações executáveis antes de prosseguir.",
+      "interface": "Revisão, resultados e falhas localizadas.",
+      "condition": "Verificação ligada ao conteúdo que será entregue.",
+      "acceptance": "Introduzir defeitos conhecidos e confirmar bloqueio.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S009"
+      ],
+      "case_ids": [
+        "V4C-C010"
+      ],
+      "evidence_stage": "production_documented"
+    },
+    {
+      "edge_id": "E-T190-02",
+      "from": "T190",
+      "to": "T200",
+      "relation": "complements",
+      "how": "Revisores por propriedade acrescentam checagem antes de revisão humana no AutoClean.",
+      "interface": "Artefato e relatórios separados.",
+      "condition": "Critérios e limites da revisão são explícitos.",
+      "acceptance": "Medir falhas detectadas e discordâncias.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S009"
+      ],
+      "case_ids": [
+        "V4C-C010"
+      ],
+      "evidence_stage": "production_documented"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

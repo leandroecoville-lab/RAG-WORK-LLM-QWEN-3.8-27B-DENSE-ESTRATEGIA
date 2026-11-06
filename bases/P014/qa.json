@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Ter retries basta para resiliência de execução?",
+    "answer": "Não. Também é necessário preservar estado, identificar efeitos e recuperar de maneira consistente após interrupções."
+  },
+  {
+    "question": "Qual diferença prática existe para o Resilience Engine?",
+    "answer": "P013 aplicaria mecanismos operacionais; P014 expressa o comportamento recuperável do sistema completo e seus critérios de demonstração."
+  },
+  {
+    "question": "Preciso criar outro microsserviço com este nome?",
+    "answer": "Não. Primeiro defina responsabilidades e evidências; a capacidade pode estar distribuída nos componentes existentes."
+  },
+  {
+    "question": "Qual aceite demonstra resiliência?",
+    "answer": "Injeções de falha com estado final correto, efeitos controlados e recuperação dentro do objetivo definido."
+  }
+]

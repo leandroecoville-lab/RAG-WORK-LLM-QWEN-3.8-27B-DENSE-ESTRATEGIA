@@ -1,0 +1,42 @@
+{
+  "entry_id": "T167",
+  "edges": [
+    {
+      "edge_id": "E-T167-01",
+      "from": "T167",
+      "to": "T163",
+      "relation": "complements",
+      "how": "AWS usa créditos de retry para limitar repetição além do backoff temporal.",
+      "interface": "Saldo de retry e resultado da tentativa.",
+      "condition": "A política distingue chamadas iniciais e adicionais.",
+      "acceptance": "Falha prolongada não gera tentativas ilimitadas.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V2A-S012"
+      ],
+      "case_ids": [
+        "V4C-C002"
+      ],
+      "evidence_stage": "production_documented"
+    },
+    {
+      "edge_id": "E-T167-02",
+      "from": "T167",
+      "to": "T137",
+      "relation": "complements",
+      "how": "O limitador transforma disponibilidade de créditos em admissão e resposta ao solicitante.",
+      "interface": "Quantidade reservada, escopo e motivo da rejeição.",
+      "condition": "Reserva corresponde a capacidade definida, não a pontuação subjetiva.",
+      "acceptance": "Nenhum envio ocorre quando os buckets obrigatórios recusam admissão.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V2A-S012"
+      ],
+      "case_ids": [
+        "V4C-C002"
+      ],
+      "evidence_stage": "production_documented"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

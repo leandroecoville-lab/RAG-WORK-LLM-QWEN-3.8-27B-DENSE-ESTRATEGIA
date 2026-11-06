@@ -1,0 +1,51 @@
+{
+  "id": "T062",
+  "technical_details": "Há duas hierarquias diferentes: níveis de armazenamento com latência distinta e níveis de abstração com detalhe distinto. Um resumo pode estar no armazenamento lento, e um trecho original pode permanecer ativo; misturar essas dimensões dificulta políticas de atualização. Para cada passagem entre níveis, declare se ocorre cópia, seleção ou transformação, e qual versão continua sendo a referência quando as representações divergem.",
+  "boundary_condition": "Adicionar camadas pode piorar o sistema quando buscas atravessam muitos níveis, os índices não representam exceções ou a atualização de derivados fica atrasada.",
+  "implementation_contract": {
+    "inputs": "Memórias classificadas por função, custo de acesso, detalhe e origem autoritativa.",
+    "outputs": "Representações distribuídas em níveis com vínculos explícitos e caminhos de recuperação.",
+    "state": "Políticas de promoção, invalidação, retenção e posição de atualização de cada projeção.",
+    "invariant": "Uma correção na origem torna detectável a obsolescência de qualquer derivado que ainda não foi reconstruído."
+  },
+  "tradeoffs": [
+    "Hierarquias reduzem leitura recorrente e acrescentam decisões de roteamento que podem falhar.",
+    "Mais níveis favorecem especialização e ampliam custo de coerência, observabilidade e recuperação de falhas."
+  ],
+  "failure_test": "Teste proposto: corrigir uma exceção no registro original enquanto um resumo superior continua ativo. A consulta deve detectar a revisão pendente ou reabrir a origem, sem usar o resumo antigo como vigente.",
+  "evaluation_plan": "Avaliação proposta: comparar store único e hierarquia com carga de leituras e correções controlada. Medir latência por nível, fontes abertas, atraso de invalidação e respostas obsoletas; incluir tarefas que precisam de detalhe ausente no índice superior.",
+  "comparisons": [
+    {
+      "entry_id": "T008",
+      "relation": "complements",
+      "reason": "Resumos hierárquicos organizam abstração; memória hierárquica também pode organizar custo e persistência."
+    },
+    {
+      "entry_id": "T063",
+      "relation": "complements",
+      "reason": "Gerência virtual de contexto é uma aplicação de níveis de memória orientada à janela ativa limitada."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "MemGPT organiza níveis de memória para mover informação entre armazenamento externo e contexto limitado.",
+    "source_ids": [
+      "A-S009"
+    ],
+    "support": "related",
+    "caveat": "A fonte sustenta essa arquitetura específica; não exige número fixo de camadas nem valida todas as taxonomias de memória."
+  },
+  "advanced_qa": [
+    {
+      "question": "Toda camada precisa de uma cópia do fato?",
+      "answer": "Não. Pode conter apenas índice ou referência. Cópias e resumos criam obrigações adicionais de atualização e controle de versão."
+    },
+    {
+      "question": "Como decidir onde manter um item?",
+      "answer": "Considere custo de acesso, frequência, criticidade e capacidade de reconstrução. Frequência alta não autoriza ignorar validade ou proveniência."
+    }
+  ],
+  "source_ids": [
+    "A-S009"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

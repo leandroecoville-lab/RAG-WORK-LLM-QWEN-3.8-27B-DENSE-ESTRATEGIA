@@ -1,0 +1,119 @@
+{
+  "id": "T204",
+  "novelty": "A v3 definiu pacote e pré-condições. A nova camada aborda descoberta de habilidades, invalidação de recursos e aprendizado procedural que mantém argumentos variáveis e evidência de execução.",
+  "deep_layers": [
+    {
+      "name": "Seleção por contrato",
+      "detail": "Descrições de skills devem distinguir objetivo, pré-condições e resultado esperado. Similaridade textual pode recuperar um procedimento inadequado porque compartilha vocabulário. Antes de executar, verifique ambiente, versão e permissões; carregar uma skill é uma decisão de planejamento, não prova de que ela se aplica.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S021",
+        "C-S052",
+        "V4B-S032"
+      ]
+    },
+    {
+      "name": "Recursos sob demanda",
+      "detail": "Mantenha instruções centrais curtas e carregue scripts ou referências quando a etapa exige. Isso reduz competição por contexto, mas a execução precisa confirmar que o recurso existe e corresponde à versão descrita. Um link antigo ou script quebrado invalida a habilidade mesmo que o texto continue convincente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S021",
+        "C-S052",
+        "V4B-S032"
+      ]
+    },
+    {
+      "name": "Generalização de trajetória",
+      "detail": "Converta uma execução bem-sucedida em procedimento somente depois de separar constantes, parâmetros e contingências. Inclua caminhos de falha e critérios de interrupção. AMD oferece pesquisa sobre memória procedural hierárquica; transferir seu padrão para uma skill é proposta de engenharia, não implantação comprovada do pacote LAI.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S021",
+        "C-S052",
+        "V4B-S032"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Rotina técnica repetida",
+      "scenario": "O agente precisa executar uma sequência conhecida com variações.",
+      "strategy": "Empacote passos, argumentos e verificações; teste em múltiplas instâncias e preserve evidências. Deixe o modelo selecionar e preencher parâmetros, enquanto scripts fazem operações determinísticas.",
+      "small_model_role": "Um 3–7B pode executar uma rotina estreita com menos improvisação.",
+      "acceptance": "Medir sucesso em casos novos e detectar pré-condições ausentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S021",
+        "C-S052",
+        "V4B-S032"
+      ]
+    },
+    {
+      "name": "Acervo de procedimentos crescente",
+      "scenario": "Muitas skills competem pela atenção do agente.",
+      "strategy": "Organize metadados por tarefa e ambiente, avalie recuperação e rejeite candidatos incompatíveis. Carregue apenas o trecho necessário e registre qual versão orientou a ação.",
+      "small_model_role": "Um 8–14B pode coordenar subtarefas sem inserir todo o acervo no prompt.",
+      "acceptance": "Avaliar seleção correta, recurso carregado e resultado final separadamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S021",
+        "C-S052",
+        "V4B-S032"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Procedimentos curtos com scripts confiáveis reduzem exigência de planejamento aberto.",
+    "8_14b": "Bibliotecas maiores exigem testes de seleção e conflitos entre skills.",
+    "15_30b": "Um 15–30B pode compor rotinas, mas composição demanda novos testes de interfaces e estado.",
+    "training_or_runtime_requirements": "Memória procedural externa pode ser atualizada sem treinar pesos; aprendizagem paramétrica é outra rota.",
+    "do_not_use_when": "Não tratar uma trajetória copiada como procedimento universal nem texto da skill como prova de execução."
+  },
+  "connections": [
+    {
+      "target_id": "T181",
+      "relation": "complements",
+      "how": "Memórias hierárquicas podem informar criação e seleção de procedimentos.",
+      "interface": "Trajetória, pré-condições e resultados.",
+      "condition": "Generalização remove dados de sessão e preserva validade.",
+      "acceptance": "Testar aplicação em ambiente distinto e versão compatível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S021",
+        "C-S052",
+        "V4B-S032"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T206",
+      "relation": "requires",
+      "how": "Verificação de processo confirma que etapas e recursos foram efetivamente usados.",
+      "interface": "Eventos, versão da skill e pós-condições.",
+      "condition": "Observabilidade cobre ações relevantes.",
+      "acceptance": "Comparar plano declarado com execução real.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S021",
+        "C-S052",
+        "V4B-S032"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Suspender skills cujo recurso ou contrato mudou até revalidar.",
+    "Não ocultar parâmetros variáveis em exemplos fixos."
+  ],
+  "frontier_comparison": "Compare execução de rotinas com fronteira usando as mesmas ferramentas. Uma biblioteca procedural pode ampliar utilidade especializada de um modelo pequeno, sem conferir compreensão geral de tarefas desconhecidas.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q023"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S021",
+    "C-S052",
+    "V4B-S032"
+  ]
+}

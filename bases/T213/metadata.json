@@ -1,0 +1,36 @@
+{
+  "id": "T213",
+  "name": "Task Decomposition em micro-missões",
+  "canonical_name": "Task Decomposition em micro-missões",
+  "canonical_id": "T213",
+  "aliases": [
+    "missões incrementais",
+    "decomposição orientada a resultado"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T208",
+    "T237",
+    "T218"
+  ],
+  "source_ids": [
+    "V2A-S021",
+    "V2A-S004",
+    "V3C-S002",
+    "V4C-S030",
+    "V4C-S017",
+    "V4C-S014",
+    "C-S030",
+    "V3C-S022",
+    "V4C-S021",
+    "V4C-S029"
+  ],
+  "namespace": "T213",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T213",
+  "chunk_count": 9
+}

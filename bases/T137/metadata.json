@@ -1,0 +1,35 @@
+{
+  "id": "T137",
+  "name": "Rate Limiting",
+  "canonical_name": "Rate Limiting",
+  "canonical_id": "T137",
+  "aliases": [
+    "limitação de taxa"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T163",
+    "T164",
+    "T167",
+    "T175"
+  ],
+  "source_ids": [
+    "C-S004",
+    "V3C-S010",
+    "V3C-S009",
+    "V4C-S014",
+    "V3C-S005",
+    "V2A-S012",
+    "V4C-S003",
+    "V3C-S011",
+    "V4C-S023"
+  ],
+  "namespace": "T137",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T137",
+  "chunk_count": 9
+}

@@ -1,0 +1,80 @@
+[
+  {
+    "source_id": "V2B-S007",
+    "title": "Repository map",
+    "url": "https://aider.chat/docs/repomap.html",
+    "publisher": "Aider",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Mapa conciso de arquivos e símbolos para contexto do código.",
+    "limitations": "Documentação primária consultada nesta data; nenhuma instalação, benchmark ou avaliação no ambiente LAI foi executada.",
+    "web_ref": "turn46view3"
+  },
+  {
+    "source_id": "V2B-S008",
+    "title": "Edit formats",
+    "url": "https://aider.chat/docs/more/edit-formats.html",
+    "publisher": "Aider",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Diferença entre whole, diff com SEARCH/REPLACE e udiff adaptado.",
+    "limitations": "Documentação primária consultada nesta data; nenhuma instalação, benchmark ou avaliação no ambiente LAI foi executada.",
+    "web_ref": "turn51view4"
+  },
+  {
+    "source_id": "V2B-S009",
+    "title": "Linting and testing",
+    "url": "https://aider.chat/docs/usage/lint-test.html",
+    "publisher": "Aider",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Execução de testes, interpretação de código de saída e configuração de testes após edições.",
+    "limitations": "Documentação primária consultada nesta data; nenhuma instalação, benchmark ou avaliação no ambiente LAI foi executada.",
+    "web_ref": "turn74view2"
+  },
+  {
+    "source_id": "V3C-S042",
+    "title": "Chat modes — Architect mode and the editor model",
+    "url": "https://aider.chat/docs/usage/modes.html",
+    "publisher": "Aider",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Modo architect divide a solicitação em proposta e edição; papéis podem usar o mesmo modelo; editor usa formato próprio de alterações.",
+    "limitations": "Documentação primária consultada, sem execução do Aider. Exemplos de modelos da página não são recomendações atuais; a separação em duas chamadas não demonstra ganho universal.",
+    "web_ref": "turn191view0"
+  },
+  {
+    "source_id": "V2A-S008",
+    "title": "Edit formats",
+    "url": "https://aider.chat/docs/more/edit-formats.html",
+    "publisher": "Aider",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Formatos de edição incluindo substituição e diffs; o formato exato depende do executor.",
+    "limitations": "Consulta documental primária. Não houve reprodução de experimentos, instalação do produto nem validação de disponibilidade na infraestrutura LAI. Receitas e testes das entradas são propostas editoriais.",
+    "web_ref": "turn50view1"
+  },
+  {
+    "source_id": "V2A-S007",
+    "title": "Repository map",
+    "url": "https://aider.chat/docs/repomap.html",
+    "publisher": "Aider",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Mapa compacto de arquivos, símbolos e assinaturas para orientar contexto de código.",
+    "limitations": "Consulta documental primária. Não houve reprodução de experimentos, instalação do produto nem validação de disponibilidade na infraestrutura LAI. Receitas e testes das entradas são propostas editoriais.",
+    "web_ref": "turn57view0"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "RDMA e NVLink são a mesma coisa?",
+    "answer": "Não. São tecnologias e caminhos de comunicação distintos, embora ambos possam participar de sistemas distribuídos."
+  },
+  {
+    "question": "Ter uma 5090 comprova GPUDirect RDMA?",
+    "answer": "Não. O suporte precisa ser confirmado para GPU, NIC, drivers e plataforma específicos."
+  },
+  {
+    "question": "RDMA significa zero latência?",
+    "answer": "Não. Existem transferência física, filas, registro e sincronização, mesmo quando cópias intermediárias são evitadas."
+  },
+  {
+    "question": "Checksum resolve ordenação?",
+    "answer": "Pode detectar corrupção, mas não torna válida uma leitura concorrente antes da disponibilidade; sincronização continua necessária."
+  }
+]

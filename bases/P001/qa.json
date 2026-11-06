@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Qual artefato permitiria explicar o que o modelo recebeu?",
+    "answer": "O manifesto do contexto, vinculado às mensagens efetivas e contendo IDs, versões, recortes e decisões de inclusão."
+  },
+  {
+    "question": "O Context Engine decidiria sozinho qual memória é verdadeira?",
+    "answer": "Não. Ele deve carregar evidências e conflitos; reconciliação de memória e verificação possuem contratos próprios."
+  },
+  {
+    "question": "Como localizar um erro do motor?",
+    "answer": "Compare candidatos recuperados, seleção e contexto final; uma fonte encontrada pode ter sido excluída na montagem."
+  },
+  {
+    "question": "O que aceitar como saída válida?",
+    "answer": "Contexto dentro do orçamento com requisitos preservados, referências resolvíveis e decisões de exclusão observáveis."
+  }
+]

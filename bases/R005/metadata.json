@@ -1,0 +1,34 @@
+{
+  "id": "R005",
+  "name": "LLMLingua",
+  "canonical_name": "LLMLingua — compressão de prompts em múltiplas etapas",
+  "canonical_id": "R005",
+  "aliases": [
+    "LLM Lingua",
+    "compressor de prompt",
+    "prompt compression LLMLingua"
+  ],
+  "category": "referencias",
+  "kind": "paper",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "T006",
+    "T020",
+    "T037",
+    "T018"
+  ],
+  "source_ids": [
+    "A-S015",
+    "A-S018",
+    "V3A-S001",
+    "V3A-S044",
+    "V4A-S027",
+    "V4A-S028"
+  ],
+  "namespace": "R005",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R005",
+  "chunk_count": 9
+}

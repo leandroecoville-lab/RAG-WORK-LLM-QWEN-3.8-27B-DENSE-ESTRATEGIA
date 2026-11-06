@@ -1,0 +1,29 @@
+{
+  "id": "T188",
+  "name": "Self-Consistency",
+  "canonical_name": "Self-Consistency",
+  "canonical_id": "T188",
+  "aliases": [
+    "autoconsistência"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T156",
+    "T187",
+    "T189",
+    "T205"
+  ],
+  "source_ids": [
+    "C-S042",
+    "V3B-S020",
+    "V3B-S019"
+  ],
+  "namespace": "T188",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T188",
+  "chunk_count": 9
+}

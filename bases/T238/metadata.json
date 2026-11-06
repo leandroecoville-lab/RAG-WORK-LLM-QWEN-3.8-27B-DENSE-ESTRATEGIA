@@ -1,0 +1,37 @@
+{
+  "id": "T238",
+  "name": "Read On Demand com faixa de linhas",
+  "canonical_name": "Read On Demand com faixa de linhas",
+  "canonical_id": "T238",
+  "aliases": [
+    "just in time file reading",
+    "leitura dirigida por linhas"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T216",
+    "T222",
+    "T214",
+    "T233"
+  ],
+  "source_ids": [
+    "A-S006",
+    "V2A-S007",
+    "V3C-S033",
+    "V4C-S026",
+    "V3C-S027",
+    "V4C-S027",
+    "V4C-S030",
+    "V3C-S037",
+    "V4C-S010",
+    "V4C-S020"
+  ],
+  "namespace": "T238",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T238",
+  "chunk_count": 9
+}

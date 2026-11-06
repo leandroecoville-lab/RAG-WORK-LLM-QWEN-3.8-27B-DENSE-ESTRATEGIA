@@ -1,0 +1,29 @@
+{
+  "id": "T203",
+  "name": "Correctness-Based Routing",
+  "canonical_name": "Correctness-Based Routing",
+  "canonical_id": "T203",
+  "aliases": [
+    "roteamento por correção"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T133",
+    "T135",
+    "T190",
+    "T198"
+  ],
+  "source_ids": [
+    "C-S001",
+    "C-S050",
+    "V3B-S019"
+  ],
+  "namespace": "T203",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T203",
+  "chunk_count": 9
+}

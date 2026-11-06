@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Soft voting é sempre superior?",
+    "answer": "Não. Probabilidades mal calibradas podem dar peso excessivo a um modelo confiante e errado."
+  },
+  {
+    "question": "Votar exige vários modelos?",
+    "answer": "Pode agregar execuções, mas a independência e diversidade precisam ser avaliadas."
+  },
+  {
+    "question": "Maioria de três cópias iguais aumenta evidência?",
+    "answer": "Não. Repetir o mesmo erro não acrescenta informação independente."
+  },
+  {
+    "question": "Como lidar com abstenção?",
+    "answer": "Defina se ela reduz o peso disponível ou provoca escalonamento; não converta ausência de evidência em voto por uma classe arbitrária."
+  }
+]

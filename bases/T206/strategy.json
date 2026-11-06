@@ -1,0 +1,128 @@
+{
+  "id": "T206",
+  "novelty": "A v3 explicou causalidade dos eventos e pós-condições. Esta camada trata completude do registro, reconstrução de tentativas e limites do que pode ser certificado quando parte do processo ocorre fora do sistema.",
+  "deep_layers": [
+    {
+      "name": "Evidência ausente",
+      "detail": "Um trace sem erro não prova que todas as etapas ocorreram; pode faltar instrumentação ou ter havido perda de eventos. Defina eventos obrigatórios e estados terminais, distinguindo sucesso, falha, cancelamento e desconhecido. A validação deve detectar lacunas, não preenchê-las com a narrativa do agente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S023",
+        "C-S047",
+        "V4C-S009",
+        "V4B-S022"
+      ]
+    },
+    {
+      "name": "Tentativas e efeitos",
+      "detail": "Retries podem criar múltiplas tentativas para a mesma operação lógica. Registre identificadores distintos e vínculo causal, preservando qual tentativa produziu o efeito confirmado. Um evento de envio e um timeout não permitem concluir se a ação externa ocorreu; reconciliação precisa consultar estado ou recibo confiável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S023",
+        "C-S047",
+        "V4C-S009",
+        "V4B-S022"
+      ]
+    },
+    {
+      "name": "Processo versus resultado",
+      "detail": "Cumprir etapas não garante que o objetivo final foi atingido, e um resultado correto por acaso não legitima etapas proibidas. Avalie ambos. Revisores e barreiras como os descritos no AutoClean oferecem um padrão operacional, mas a evidência deve declarar exatamente quais propriedades e transições foram checadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S023",
+        "C-S047",
+        "V4C-S009",
+        "V4B-S022"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Workflow de atualização",
+      "scenario": "O agente deve consultar, propor, validar e alterar um recurso.",
+      "strategy": "Modele estados permitidos, exija pré-condições observadas e relacione cada ação a sua decisão. Verifique estado final no sistema externo e mantenha pendências de reconciliação.",
+      "small_model_role": "Um 3–7B pode executar uma máquina de estados estreita com ferramentas.",
+      "acceptance": "Nenhuma transição sem evidência obrigatória nem sucesso sem pós-condição observada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S023",
+        "C-S047",
+        "V4C-S009",
+        "V4B-S022"
+      ]
+    },
+    {
+      "name": "Revisão de execução longa",
+      "scenario": "Um agente declara ter concluído muitas etapas.",
+      "strategy": "Reconstrua cadeia causal a partir dos eventos e artefatos, confronte com o plano e identifique passos não observados. Não considere texto de progresso como recibo.",
+      "small_model_role": "Um 8–14B pode resumir evidências; validação de invariantes deve ser determinística quando possível.",
+      "acceptance": "Detectar etapas omitidas, versões incorretas e efeitos duplicados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S023",
+        "C-S047",
+        "V4C-S009",
+        "V4B-S022"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Estados explícitos reduzem dependência de memória textual em modelos pequenos.",
+    "8_14b": "Fluxos concorrentes exigem IDs e regras de causalidade além de timestamps.",
+    "15_30b": "Um 15–30B pode planejar mais etapas, mas isso aumenta a necessidade de auditoria de processo.",
+    "training_or_runtime_requirements": "Instrumentação, armazenamento de eventos e regras de transição; não implica supervisão de raciocínio interno do modelo.",
+    "do_not_use_when": "Não declarar uma ação concluída só porque a ferramenta foi chamada ou o agente escreveu 'feito'."
+  },
+  "connections": [
+    {
+      "target_id": "T194",
+      "relation": "complements",
+      "how": "Eventos verificáveis podem apoiar feedback sobre etapas de um procedimento.",
+      "interface": "Transições, resultados e falhas localizadas.",
+      "condition": "Rótulos descrevem observações, não inferências inventadas.",
+      "acceptance": "Comparar supervisão com evidência real do ambiente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S023",
+        "C-S047",
+        "V4C-S009",
+        "V4B-S022"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T200",
+      "relation": "complements",
+      "how": "Auditoria independente confronta execução declarada e registros externos.",
+      "interface": "Trace, artefatos e recibos.",
+      "condition": "Fontes não dependem apenas do narrador.",
+      "acceptance": "Injetar eventos ausentes e contradições para testar detecção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S023",
+        "C-S047",
+        "V4C-S009",
+        "V4B-S022"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Manter estado desconhecido quando não há evidência para decidir.",
+    "Não usar ordem de chegada de logs como causalidade universal."
+  ],
+  "frontier_comparison": "Compare tarefas concluídas com processo permitido e evidência suficiente. Observabilidade ajuda a confiar numa aplicação pequena; não aumenta diretamente a capacidade do modelo nem prova o que não foi observado.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q011",
+      "V4B-Q019"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S023",
+    "C-S047",
+    "V4C-S009",
+    "V4B-S022"
+  ]
+}

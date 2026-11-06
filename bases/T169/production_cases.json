@@ -1,0 +1,200 @@
+{
+  "coverage": {
+    "entry_id": "T169",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 1,
+    "verified_other_operator_production_exact": 1,
+    "unique_cases_associated": 3,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Multi-Agent com contextos isolados",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C007",
+      "company": "Anthropic",
+      "system": "Claude Research — sistema multiagente",
+      "title": "Pesquisa com líder, subagentes e recuperação operacional",
+      "evidence_level": "production_documented",
+      "observed_use": "A Anthropic relata a passagem de seu sistema Research a produção, com líder, subagentes paralelos, ferramentas e checkpoints.",
+      "technical_mechanism": "O líder decompõe perguntas, delega objetivos e formatos, agrega resultados e preserva estado; ferramentas podem executar em paralelo e falhas são tratadas com adaptação e proteções determinísticas.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "C-S030"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T169",
+          "match": "exact",
+          "rationale": "Subagentes possuem contextos próprios no sistema relatado."
+        },
+        {
+          "entry_id": "T237",
+          "match": "exact",
+          "rationale": "O líder delega pesquisa e recebe resultados condensados."
+        },
+        {
+          "entry_id": "T139",
+          "match": "exact",
+          "rationale": "O relato identifica chamadas paralelas de ferramentas."
+        },
+        {
+          "entry_id": "T147",
+          "match": "exact",
+          "rationale": "O líder cria subagentes em paralelo e agrega suas saídas."
+        },
+        {
+          "entry_id": "T208",
+          "match": "exact",
+          "rationale": "Responsabilidades de líder planejador e trabalhadores são explícitas."
+        },
+        {
+          "entry_id": "T155",
+          "match": "exact",
+          "rationale": "Prompt engineering e simulações foram usados para corrigir falhas de delegação."
+        },
+        {
+          "entry_id": "T060",
+          "match": "exact",
+          "rationale": "O sistema utiliza checkpoints regulares e retomada após erros."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "Rubricas de avaliação ilustram verificações propostas, não o produto editorial LAI."
+        }
+      ],
+      "small_model_transfer": "Proposta: reservar agentes 3–30B a buscas delimitadas e extração com fontes, escalando síntese difícil conforme verificação. Medir custo total e cobertura, pois paralelismo aumenta consumo.",
+      "limits": "A implantação usa modelos Claude citados pelo operador; não demonstra que 3–30B reproduzam seus resultados. Ganhos do estudo interno não são transferidos; execução assíncrona plena aparece como direção futura.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4C-C007",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T169",
+        "match": "exact",
+        "rationale": "Subagentes possuem contextos próprios no sistema relatado."
+      }
+    },
+    {
+      "case_id": "V4C-C015",
+      "company": "Uber",
+      "system": "Harnesses da Software Factory",
+      "title": "Orçamento de contexto e especialização de modelos na frota de agentes",
+      "evidence_level": "production_documented",
+      "observed_use": "A Uber relata wrappers e políticas compartilhadas para sessões de agentes, incluindo subagentes com modelos mais econômicos e compactação configurada.",
+      "technical_mechanism": "Seleção usa trabalho real, custo por resultado e qualidade; tool search, code-mode e políticas de cache reduzem trabalho repetido conforme o tipo de sessão.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S014"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T133",
+          "match": "family",
+          "rationale": "A fonte descreve seleção por workload, modelo principal e padrão de subagentes; estratégias mais amplas de routing são discutidas como direção futura, não decisão preditiva por consulta demonstrada."
+        },
+        {
+          "entry_id": "T169",
+          "match": "exact",
+          "rationale": "Subagentes delimitados usam modelo padrão mais econômico que o principal."
+        },
+        {
+          "entry_id": "T212",
+          "match": "exact",
+          "rationale": "Compactação automática é configurada nos harnesses interativos."
+        },
+        {
+          "entry_id": "T222",
+          "match": "exact",
+          "rationale": "Métricas de tokens por requisição e sessão orientam controle de contexto."
+        },
+        {
+          "entry_id": "T171",
+          "match": "exact",
+          "rationale": "Política de cache distingue sessões interativas e subagentes de duração curta."
+        },
+        {
+          "entry_id": "T214",
+          "match": "exact",
+          "rationale": "Code-mode mantém polling e dados intermediários fora do contexto da LLM."
+        },
+        {
+          "entry_id": "R020",
+          "match": "family",
+          "rationale": "Medições incluem sessões Claude Code, sem demonstrar todos os recursos do produto."
+        },
+        {
+          "entry_id": "P010",
+          "match": "analogy",
+          "rationale": "Seleção por resultado é referência para o roteador editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: avaliar separadamente líder e workers 3–30B, com orçamento de contexto ajustado à tarefa e ao checkpoint escolhido. Medir custo por alteração aceita mantendo modelo e mistura de tarefas constantes.",
+      "limits": "Os limiares e preços da publicação são específicos dos provedores e modelos usados; não são recomendados para janelas menores. Não se afirma que a frota use exatamente modelos das bandas propostas.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C015",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T169",
+        "match": "exact",
+        "rationale": "Subagentes delimitados usam modelo padrão mais econômico que o principal."
+      }
+    },
+    {
+      "case_id": "V4C-C027",
+      "company": "Klarna / relato LangChain",
+      "system": "AI Assistant com LangGraph",
+      "title": "Assistente de suporte descrito pelo fornecedor",
+      "evidence_level": "operational_product",
+      "observed_use": "Relato de fornecedor identifica tarefas de suporte com roteamento e instruções adaptadas.",
+      "technical_mechanism": "LangGraph coordena tarefas; LangSmith apoia observação, avaliação e evolução de prompts.",
+      "event_date": "2025-02-12",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S028"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R008",
+          "match": "exact",
+          "rationale": "Fonte nomeia LangGraph na arquitetura."
+        },
+        {
+          "entry_id": "T134",
+          "match": "family",
+          "rationale": "Roteamento entre tarefas é relatado, sem protocolo exato de seleção de ferramentas."
+        },
+        {
+          "entry_id": "T155",
+          "match": "exact",
+          "rationale": "Adaptação e otimização de prompts são descritas."
+        },
+        {
+          "entry_id": "T169",
+          "match": "family",
+          "rationale": "Arquitetura multiagente é mencionada sem especificação de isolamento."
+        }
+      ],
+      "small_model_transfer": "Proposta: usar estados curtos e prompts por tarefa em modelos pequenos, avaliando erros de roteamento e resolução.",
+      "limits": "Classificação conservadora: nesta pesquisa detalhes técnicos vêm do fornecedor, sem abertura de relato técnico do operador. Não conta para dez casos de produção.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C027",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T169",
+        "match": "family",
+        "rationale": "Arquitetura multiagente é mencionada sem especificação de isolamento."
+      }
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "A-S023",
+    "title": "Memory overview",
+    "url": "https://docs.langchain.com/oss/python/concepts/memory",
+    "publisher": "LangChain",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Distinções de escopo, memória semântica, episódica e procedural; gestão do histórico.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn7view2"
+  },
+  {
+    "source_id": "A-S026",
+    "title": "Equipping agents for the real world with Agent Skills",
+    "url": "https://www.anthropic.com/research/equipping-agents-for-the-real-world-with-agent-skills",
+    "publisher": "Anthropic",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-10-16",
+    "supports": "Skills descobertas por metadados, com instruções e recursos carregados sob demanda.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn5view1"
+  },
+  {
+    "source_id": "V3A-S037",
+    "title": "PROV-DM: The PROV Data Model",
+    "url": "https://www.w3.org/TR/prov-dm/",
+    "publisher": "W3C",
+    "source_type": "standard",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2013-04-30",
+    "supports": "Entidades, atividades, agentes, derivação, atribuição e proveniência de registros derivados.",
+    "limitations": "Fonte primária consultada. Desempenho não foi reproduzido, não foram usadas perguntas ou respostas dos benchmarks, e propostas de integração não representam execução na LAI.",
+    "web_ref": "turn160view4"
+  },
+  {
+    "source_id": "V4A-S017",
+    "title": "Memory in ChatGPT",
+    "url": "https://help.openai.com/en/articles/8590148-memory-in-chatgpt",
+    "publisher": "OpenAI",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Memórias salvas e histórico como fontes distintas de personalização e controles.",
+    "limitations": "Escopo limitado ao material aberto. Disponibilidade, resultados experimentais e implantação histórica são classes distintas; não demonstra desempenho de modelos 3–30B no ambiente do usuário.",
+    "web_ref": "turn246view6"
+  }
+]

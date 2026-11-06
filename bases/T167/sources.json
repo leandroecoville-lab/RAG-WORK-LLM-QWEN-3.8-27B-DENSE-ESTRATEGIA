@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "C-S004",
+    "title": "rate package",
+    "url": "https://pkg.go.dev/golang.org/x/time/rate",
+    "publisher": "Projeto Go",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Limitador token bucket mantém taxa média e capacidade de rajada configuráveis.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn22view8"
+  },
+  {
+    "source_id": "V3C-S021",
+    "title": "RFC 2697 — A Single Rate Three Color Marker",
+    "url": "https://www.rfc-editor.org/rfc/rfc2697.html",
+    "publisher": "IETF / RFC Editor",
+    "source_type": "standard",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Marcador de tráfego com buckets limitados, taxa comprometida e tamanhos de rajada explicitados.",
+    "limitations": "RFC descreve marcação de pacotes com dois buckets; limitador simples de chamadas é uma adaptação, não essa especificação integral.",
+    "web_ref": "turn103view2"
+  },
+  {
+    "source_id": "V2A-S012",
+    "title": "Timeouts, retries, and backoff with jitter",
+    "url": "https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/",
+    "publisher": "AWS",
+    "source_type": "official_article",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2019-12-05",
+    "supports": "Retentativas limitadas, espera exponencial, jitter e incerteza de efeitos após timeout.",
+    "limitations": "Consulta documental primária. Não houve reprodução de experimentos, instalação do produto nem validação de disponibilidade na infraestrutura LAI. Receitas e testes das entradas são propostas editoriais.",
+    "web_ref": "turn61view1"
+  },
+  {
+    "source_id": "V3C-S009",
+    "title": "Google SRE — Handling Overload",
+    "url": "https://sre.google/sre-book/handling-overload/",
+    "publisher": "Google",
+    "source_type": "official_book",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Admissão e rejeição por sobrecarga, throttling adaptativo e propagação de criticidade entre serviços.",
+    "limitations": "Arquitetura de referência; classes e parâmetros operacionais do Google não são prescrições universais.",
+    "web_ref": "turn89view0"
+  },
+  {
+    "source_id": "V3C-S010",
+    "title": "Retry behavior — AWS SDKs and Tools",
+    "url": "https://docs.aws.amazon.com/sdkref/latest/guide/feature-retry-behavior.html",
+    "publisher": "Amazon Web Services",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Quota de retries usa token bucket e limita repetições, distinguindo tentativas da admissão inicial; modos variam.",
+    "limitations": "Página consultada distingue comportamento 2026 com opt-in e comportamento anterior; nenhuma configuração local é afirmada.",
+    "web_ref": "turn90view2"
+  }
+]

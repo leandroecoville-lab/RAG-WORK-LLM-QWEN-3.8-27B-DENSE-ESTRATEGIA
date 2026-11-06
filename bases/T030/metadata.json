@@ -1,0 +1,28 @@
+{
+  "id": "T030",
+  "name": "RAPTOR",
+  "canonical_name": "RAPTOR",
+  "canonical_id": "T030",
+  "aliases": [
+    "Recursive Abstractive Processing for Tree-Organized Retrieval"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T008",
+    "T023",
+    "T026"
+  ],
+  "source_ids": [
+    "A-S014",
+    "V3A-S029",
+    "V3A-S011"
+  ],
+  "namespace": "T030",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T030",
+  "chunk_count": 9
+}

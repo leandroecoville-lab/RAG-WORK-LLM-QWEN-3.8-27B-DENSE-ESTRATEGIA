@@ -1,0 +1,115 @@
+{
+  "id": "T236",
+  "novelty": "A v3 mostrava diferença entre índice e árvore testada. A expansão define commits como fronteiras de aceitação e recuperação, organiza histórico de etapas e explicita o que continua fora do versionamento do código.",
+  "deep_layers": [
+    {
+      "name": "Checkpoint e entrega distintos",
+      "detail": "Uma etapa pode salvar trabalho incompleto para recuperação, mas seu status deve declarar que falta validação. Um commit aprovado precisa apontar ao artefato testado e ao requisito atendido. Mensagem descritiva não substitui esses vínculos; use metadados ou manifesto associado quando o histórico de validação não cabe no próprio commit.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S036",
+        "V4C-S030"
+      ]
+    },
+    {
+      "name": "Unidade revisável",
+      "detail": "Escolha commits por mudança coerente, evitando misturar reparo funcional, reformatação e atualização de documentação sem relação. Etapas pequenas ajudam bisect e revisão, mas uma sequência de commits quebrados pode dificultar recuperação. Defina se a campanha exige cada commit válido ou apenas pontos de integração explicitamente marcados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S021",
+        "V3C-S036"
+      ]
+    },
+    {
+      "name": "Publicação e efeitos externos",
+      "detail": "Criar commit local não significa que foi integrado ou implantado. Registre branch, referência esperada e resultado da publicação; se a conexão cai, consulte a referência antes de repetir ações associadas. Migrações de banco, recursos criados e segredos fora do repositório precisam de ledger próprio, não de confiança na existência do commit.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S037",
+        "C-S026"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Campanha longa por módulos",
+      "scenario": "Um agente precisa preservar progresso sem entregar tudo de uma vez.",
+      "strategy": "Depois de cada unidade coerente, valide o conteúdo preparado e salve commit com vínculo ao requisito. Integre apenas etapas aceitas; checkpoints incompletos ficam separados do fluxo de entrega. Na retomada, leia árvore e estado de validação, não apenas a última mensagem de commit.",
+      "small_model_role": "3–7B edita módulo; 8–14B prepara resumo factual; 15–30B coordena integração.",
+      "acceptance": "Proposta: recuperação por etapa sem perder trabalho e sem promover checkpoint incompleto por engano.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S036"
+      ]
+    },
+    {
+      "name": "Revisão de alternativas",
+      "scenario": "Vários candidatos resolvem o mesmo requisito em branches distintas.",
+      "strategy": "Identifique a árvore de cada candidato, execute testes e registre decisão de seleção. Se combinar commits, valide a composição resultante; dois commits aprovados isoladamente podem conflitar semanticamente. Preserve candidatos descartados pelo prazo necessário à auditoria e limpe recursos associados depois.",
+      "small_model_role": "15–30B compara tradeoffs; modelos menores geram alternativas delimitadas.",
+      "acceptance": "Proposta: rastrear a solução escolhida e reproduzir a árvore realmente validada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S037",
+        "V4C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Commits por alteração local coerente, com revisão determinística do índice.",
+    "8_14b": "Agrupar mudanças relacionadas e redigir mensagens ancoradas no diff real.",
+    "15_30b": "Planejar sequência de integração e recuperar regressões sem depender de narrativa do histórico.",
+    "training_or_runtime_requirements": "Git configurado, índice inspecionado, testes sobre árvore preparada e identidade de referência publicada.",
+    "do_not_use_when": "Não usar git commit como snapshot completo do ambiente nem assumir que staging parcial preserva todas as dependências testadas."
+  },
+  "connections": [
+    {
+      "target_id": "T233",
+      "relation": "complements",
+      "how": "Gate valida a árvore preparada antes de marcar o commit como aceito.",
+      "interface": "Tree ID, testes e requisito.",
+      "condition": "Conteúdo testado coincide com o commit.",
+      "acceptance": "Mudança fora do índice não sustenta teste aprovado do commit parcial.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S036",
+        "V3C-S037"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "R027",
+      "relation": "complements",
+      "how": "Usar objetos e referências Git para identificar etapas e publicar condicionalmente.",
+      "interface": "Commit, pais e valor anterior esperado da ref.",
+      "condition": "Operação escolhida respeita semântica documentada.",
+      "acceptance": "Conflito de avanço da ref provoca reconciliação, não sobrescrita silenciosa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S037"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Commit criado não significa push, merge ou deploy concluído.",
+    "Sapling e Scion são sistemas distintos; seus changesets não provam comportamento específico do índice Git."
+  ],
+  "frontier_comparison": "Compare produtividade por etapa aceita e custo de integração com modelos diferentes. Histórico bem formado favorece recuperação de qualquer porte, mas não valida automaticamente a qualidade do código.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q015",
+      "V4C-Q016",
+      "V4C-Q027"
+    ],
+    "scope_note": "Git documenta semântica; Windows Git, Sapling e Codex fornecem contextos operacionais distintos. Não foram contados como prova universal de commits validados a cada etapa."
+  },
+  "source_ids": [
+    "V3C-S036",
+    "V4C-S030",
+    "V4C-S021",
+    "V3C-S037",
+    "C-S026"
+  ]
+}

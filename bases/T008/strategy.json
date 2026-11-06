@@ -1,0 +1,112 @@
+{
+  "id": "T008",
+  "novelty": "A v3 abordou invalidação de ancestrais. A novidade é síntese com orçamento desigual e expansão direcionada por desacordo entre níveis.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Distribua orçamento por diversidade de evidências, não pelo número de folhas. Um ramo consensual pode receber menos espaço que outro com condições incompatíveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S021",
+        "V4A-S024"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Conserve resumo e contraexemplos separados em cada nó. Se a conclusão do pai excluir exceção presente no filho, abrir o ramo antes de responder.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S021",
+        "V4A-S024"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare árvore uniforme e alocação por divergência. Avalie preservação de exceções e custo de expansão, sem confundir profundidade com qualidade. Unidade de avaliação: árvore documental. Introduza uma exceção sustentada por uma única folha num ramo com muitos relatos concordantes. A síntese deve preservar a exceção quando ela afeta a pergunta, mesmo que a maioria dos documentos repita a regra geral. Compare seleção por quantidade de folhas e por diversidade de condições, registrando quais requisitos desapareceram em cada nível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S021",
+        "V4A-S024"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Revisão de políticas",
+      "scenario": "Departamentos descrevem regras parcialmente diferentes.",
+      "strategy": "Resumir por escopo, detectar incompatibilidades e produzir síntese condicionada ao departamento.",
+      "small_model_role": "8–14B resume folhas; 15–30B integra conflitos.",
+      "acceptance": "Nenhuma regra local vira regra universal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S021",
+        "V4A-S024"
+      ]
+    },
+    {
+      "name": "Panorama técnico",
+      "scenario": "Muitos relatórios sobre sistemas distintos.",
+      "strategy": "Gerar mapas temáticos e abrir folhas somente para afirmações decisivas ou contestadas.",
+      "small_model_role": "3–7B extrai evidência por tema.",
+      "acceptance": "Toda conclusão comparativa deve apontar suportes específicos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S021",
+        "V4A-S024"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extrator de afirmações e exceções dentro de uma folha.",
+    "8_14b": "Resumidor intermediário de poucos documentos relacionados.",
+    "15_30b": "Integrador de ramos conflitantes com expansão seletiva.",
+    "training_or_runtime_requirements": "Árvore com vínculos estáveis e orçamento por nó; rotular divergência separadamente de redundância.",
+    "do_not_use_when": "As relações centrais cruzam tantos ramos que a hierarquia oculta mais do que organiza."
+  },
+  "connections": [
+    {
+      "target_id": "T029",
+      "relation": "alternative",
+      "how": "Usar comunidades quando relações cruzarem a árvore.",
+      "interface": "Conjunto de documentos e vínculos temáticos.",
+      "condition": "Grafo representar relações sustentadas por fontes.",
+      "acceptance": "Comparar cobertura de relações entre ramos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S021",
+        "V4A-S024"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T044",
+      "relation": "complements",
+      "how": "Abrir descendente responsável por exceção.",
+      "interface": "node_id, exceção e referência de folha.",
+      "condition": "Origem da exceção permanecer rastreável.",
+      "acceptance": "Recuperar detalhe sem expandir toda a árvore.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S021",
+        "V4A-S024"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não contar repetição da mesma fonte como consenso.",
+    "Preservar diferença entre resumo do nó e evidência primária."
+  ],
+  "frontier_comparison": "Comparar síntese de exceções distribuídas; uma árvore maior não implica melhor entendimento.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q021"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S021",
+    "V4A-S024"
+  ]
+}

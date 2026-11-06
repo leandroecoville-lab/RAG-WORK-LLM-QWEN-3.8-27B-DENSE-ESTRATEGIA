@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Constitutional AI é só system prompt?",
+    "answer": "Não. O nome do trabalho se refere a um processo de treinamento com feedback orientado por princípios."
+  },
+  {
+    "question": "Princípios garantem comportamento perfeito?",
+    "answer": "Não. Aderência precisa ser medida."
+  },
+  {
+    "question": "Sem rótulos humanos significa sem escolhas humanas?",
+    "answer": "Não. A escolha dos princípios, dados, critérios e avaliação continua definindo o comportamento pretendido."
+  },
+  {
+    "question": "Como mudar uma regra depois do treino?",
+    "answer": "Versione a política e avalie a intervenção escolhida; um novo prompt pode influenciar respostas, mas não apaga automaticamente o comportamento aprendido."
+  }
+]

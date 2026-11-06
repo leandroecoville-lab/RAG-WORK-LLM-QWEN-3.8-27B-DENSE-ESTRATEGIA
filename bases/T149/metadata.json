@@ -1,0 +1,33 @@
+{
+  "id": "T149",
+  "name": "Priority Queue",
+  "canonical_name": "Priority Queue",
+  "canonical_id": "T149",
+  "aliases": [
+    "fila de prioridade"
+  ],
+  "category": "orquestracao",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T166",
+    "T174"
+  ],
+  "source_ids": [
+    "C-S014",
+    "V3C-S008",
+    "V4C-S004",
+    "V3C-S024",
+    "V4C-S003",
+    "C-S026",
+    "V3C-S009",
+    "V3C-S037",
+    "V3C-S020"
+  ],
+  "namespace": "T149",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T149",
+  "chunk_count": 9
+}

@@ -1,0 +1,114 @@
+{
+  "id": "T243",
+  "novelty": "A v3 distinguia efeito desta intenção de objeto parecido. A expansão organiza um protocolo de incerteza, escalona observações e define quando repetir, compensar ou manter pendência sem fabricar certeza.",
+  "deep_layers": [
+    {
+      "name": "Ledger de intenção",
+      "detail": "Registre o que se pretendia fazer, chave externa, parâmetros, envio e último resultado conhecido. A reconciliação consulta a identidade da operação e confronta o efeito observado com a intenção. Encontrar recurso com nome semelhante não basta; pode pertencer a outra tentativa, usuário ou ação legítima independente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026",
+        "V3C-S025"
+      ]
+    },
+    {
+      "name": "Ausência tem força variável",
+      "detail": "Uma leitura vazia pode significar operação não executada, processamento em andamento ou atraso de visibilidade. Use garantias do destino e sinais de status para decidir quando a ausência é suficiente. Se não houver consulta confiável, mantenha desconhecido e limite novas ações; disponibilidade não deve ser obtida por duplicação silenciosa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026",
+        "V3C-S028"
+      ]
+    },
+    {
+      "name": "Compensação é nova operação",
+      "detail": "Desfazer um efeito externo não é restaurar memória local. A compensação possui pré-condições, identidade e possibilidade de falha próprias. Um recurso pode ter sido usado ou modificado depois da operação original; reverter cegamente pode apagar trabalho válido. Planeje compensações por contrato e registre seu resultado separadamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026",
+        "V4C-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Criação com timeout",
+      "scenario": "O agente solicita um ambiente e perde a resposta.",
+      "strategy": "Consulte pelo identificador da intenção e aguarde visibilidade conforme contrato. Se confirmado, continue com o recurso existente; se ausente com evidência suficiente, repita usando identidade apropriada. Se a chave expirou e não há correlação confiável, não assuma que é seguro criar outro automaticamente.",
+      "small_model_role": "3–7B preenche pedido; 8–14B interpreta estados tipados; runtime decide repetição segura.",
+      "acceptance": "Proposta: nenhum recurso duplicado em falhas antes, durante e depois da confirmação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026"
+      ]
+    },
+    {
+      "name": "Deploy ou publicação interrompida",
+      "scenario": "Estado local diz pendente, mas o destino pode ter avançado.",
+      "strategy": "Leia versão efetiva e histórico de operação, compare com versão desejada e verifique saúde do resultado. Se houve mudança concorrente, suspenda compensação automática e reconcilie autoridade. Um rollout parcialmente aplicado exige tratamento por etapa, não só marcar o workflow como falho.",
+      "small_model_role": "15–30B analisa alternativas; controlador preserva identidades e regras de publicação.",
+      "acceptance": "Proposta: convergir para estado aceito ou pendência explícita, sem sobrescrever mudança concorrente legítima.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S002",
+        "V3C-S037"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Consumir estados confirmado, ausente e desconhecido definidos pelo adaptador, sem inferir efeito pelo texto.",
+    "8_14b": "Diagnosticar divergências de parâmetros e necessidade de nova observação.",
+    "15_30b": "Planejar compensação ou revisão de intenção em situações complexas, submetida a contratos e evidências.",
+    "training_or_runtime_requirements": "Identidade consultável, ledger persistente, garantias de leitura conhecidas e orçamento de observação.",
+    "do_not_use_when": "Não prometer exatamente uma vez quando o serviço não oferece deduplicação nem correlação suficiente."
+  },
+  "connections": [
+    {
+      "target_id": "T162",
+      "relation": "complements",
+      "how": "Chave idempotente liga tentativas à mesma intenção e permite interpretar resultados repetidos.",
+      "interface": "Chave, payload e horizonte de retenção.",
+      "condition": "Destino garante a semântica documentada da chave.",
+      "acceptance": "Repetição após timeout não cria efeito adicional.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T225",
+      "relation": "complements",
+      "how": "Antes de liberar o executor reiniciado, resolver operações cujo desfecho ficou incerto.",
+      "interface": "Geração anterior, intenções pendentes e observações atuais.",
+      "condition": "Restart não apaga o ledger nem renova a identidade da ação.",
+      "acceptance": "Nova instância não repete automaticamente tudo após o último snapshot.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026",
+        "V3C-S028"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Consulta de estado atual e repetição de intenção histórica são operações distintas.",
+    "Compensação pode falhar ou ser inadequada após mudança concorrente; manter seu próprio estado."
+  ],
+  "frontier_comparison": "Compare integridade de efeitos e tempo de resolução sob falhas reproduzíveis. A LLM ajuda a interpretar casos, mas certeza operacional depende das garantias do destino e do registro local.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q001",
+      "V4C-Q002",
+      "V4C-Q019"
+    ],
+    "scope_note": "EC2 e UpCD apoiam mecanismos de identidade e reconciliação em contextos específicos. A aplicação genérica a agentes é proposta com limites explícitos."
+  },
+  "source_ids": [
+    "C-S026",
+    "V3C-S025",
+    "V3C-S028",
+    "V4C-S002",
+    "V3C-S037"
+  ]
+}

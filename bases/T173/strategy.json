@@ -1,0 +1,117 @@
+{
+  "id": "T173",
+  "novelty": "A v3 negociava capacidades entre modelos. A expansão diferencia recuperação operacional de recuperação de qualidade, define destino de respostas parcialmente emitidas e evita perder decisões já confirmadas na troca.",
+  "deep_layers": [
+    {
+      "name": "Causa determina transição",
+      "detail": "Timeout ou indisponibilidade pode permitir repetir a mesma tarefa em rota compatível; resposta incorreta exige diagnóstico e talvez evidência nova. Se o problema é requisito ambíguo, trocar modelo pode apenas produzir outra interpretação. Registre o motivo e o teste que permitiria aceitar a alternativa antes de gastar outra tentativa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S001",
+        "V4C-S011"
+      ]
+    },
+    {
+      "name": "Estado mínimo portátil",
+      "detail": "Prepare entrada com objetivo atual, evidências referenciadas, contrato de saída e operações concluídas. Remova apenas detalhes dispensáveis com regra explícita. Ferramentas, multimodalidade e raciocínio podem ter interfaces diferentes; um adaptador deve declarar perdas de representação e recusar substituição quando faltar capacidade essencial.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S004",
+        "V4C-S018"
+      ]
+    },
+    {
+      "name": "Publicação de resposta alternativa",
+      "detail": "Depois de transmitir parte da resposta, não concatene automaticamente tokens de outro modelo. A alternativa pode contradizer o início ou reiniciar um JSON. Apresente nova tentativa identificada, ou mantenha saída em buffer até validação quando o produto exigir atomicidade. O contrato de interface define substituição e continuidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S019",
+        "V4C-S015"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Extração local com escalonamento",
+      "scenario": "Um modelo pequeno falha em documento fora do padrão conhecido.",
+      "strategy": "Verifique se o erro é parsing, contexto ausente ou entendimento. Repare formato apenas quando o conteúdo já satisfaz o requisito; recupere trecho faltante quando necessário. Acione modelo maior para a ambiguidade restante, fornecendo o diagnóstico e todas as evidências indispensáveis.",
+      "small_model_role": "3–7B cobre padrão comum; 15–30B ou fronteira trata exceção após gate.",
+      "acceptance": "Proposta: reduzir custo por extração aceita sem esconder erros na taxa agregada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S011",
+        "V3C-S013"
+      ]
+    },
+    {
+      "name": "Indisponibilidade de provedor",
+      "scenario": "A rota escolhida deixa de responder durante uma campanha.",
+      "strategy": "Selecione alternativa previamente testada para o mesmo schema e ferramentas. Reutilize resultados externos confirmados; não volte a executar todas as ações porque a conversa mudou de modelo. Se não houver rota compatível, preserve pendência e retome depois.",
+      "small_model_role": "8–14B continua tarefas tipadas quando autorizado; controlador preserva ledger de efeitos.",
+      "acceptance": "Proposta: nenhuma duplicação externa e manutenção do contrato sob falhas injetadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026",
+        "V3C-S001"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Fallback para tarefas estritas que cabem nas capacidades efetivamente testadas.",
+    "8_14b": "Recuperação de extrações ou classificação com fontes suficientes e schema estável.",
+    "15_30b": "Integração de exceções locais; escalonar além da faixa quando o critério independente falhar.",
+    "training_or_runtime_requirements": "Matriz de capacidades, adaptadores testados e contabilização acumulada entre rotas.",
+    "do_not_use_when": "Não usar substituto textual para tarefa cuja imagem ou ferramenta é indispensável sem reformulação válida."
+  },
+  "connections": [
+    {
+      "target_id": "T133",
+      "relation": "complements",
+      "how": "Obter candidatos elegíveis do roteador e aplicar política específica após a falha.",
+      "interface": "Capacidades, custo e motivo de transição.",
+      "condition": "Roteamento inicial e fallback possuem critérios distintos.",
+      "acceptance": "Não trocar por destino que elimina requisito obrigatório.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S011",
+        "V3C-S001"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T243",
+      "relation": "complements",
+      "how": "Reconciliar operações pendentes antes de continuar com outro modelo.",
+      "interface": "Intenções, chaves e confirmações remotas.",
+      "condition": "Mudança de modelo não altera identidade da missão.",
+      "acceptance": "Alternativa não repete efeito já realizado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "A mesma API de chat não significa a mesma capacidade de ferramentas.",
+    "Fallback de qualidade do Bedrock não deve ser apresentado como prova de recuperação de qualquer outage."
+  ],
+  "frontier_comparison": "Compare cascata e modelo de fronteira isolado com qualidade mínima comum e custo completo. Redução de custo médio não demonstra que o modelo menor resolve sozinho as exceções.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q008",
+      "V4C-Q009"
+    ],
+    "scope_note": "Bedrock documenta roteamento por qualidade; gateway Uber demonstra integração de provedores. Nenhum dos dois prova sozinho toda esta cadeia de recuperação."
+  },
+  "source_ids": [
+    "V3C-S001",
+    "V4C-S011",
+    "V3C-S004",
+    "V4C-S018",
+    "V3C-S019",
+    "V4C-S015",
+    "V3C-S013",
+    "C-S026"
+  ]
+}

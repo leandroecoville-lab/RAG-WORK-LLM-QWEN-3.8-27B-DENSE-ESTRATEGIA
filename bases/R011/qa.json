@@ -1,0 +1,18 @@
+[
+  {
+    "question": "TensorRT-LLM sempre exige construir engine previamente?",
+    "answer": "Não como afirmação universal. A documentação atual consultada descreve arquitetura PyTorch nativa; versões e caminhos devem ser identificados."
+  },
+  {
+    "question": "É concorrente de Qwen?",
+    "answer": "Não. Qwen é família de modelos; TensorRT-LLM é infraestrutura para executar modelos compatíveis."
+  },
+  {
+    "question": "Ainda devo executar um tutorial antigo de build de engine?",
+    "answer": "Primeiro identifique a versão; o caminho legado descrito pode ter sido removido."
+  },
+  {
+    "question": "O nome TensorRT-LLM basta para prever velocidade?",
+    "answer": "Não. Hardware, checkpoint, kernels, quantização, comprimento e concorrência determinam o caso medido."
+  }
+]

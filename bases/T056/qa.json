@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Dois timestamps tornam qualquer memória bitemporal?",
+    "answer": "Não. Os tempos precisam representar e suportar consultas de validade e conhecimento, com semântica definida."
+  },
+  {
+    "question": "Bitemporal significa cinco camadas?",
+    "answer": "Não. Camadas organizam tipos de memória; bitemporalidade descreve eixos temporais dos registros."
+  },
+  {
+    "question": "Tempo do evento é sempre valid-time?",
+    "answer": "Não. O evento pode informar uma alteração que só valerá depois, ou corrigir uma validade passada. A semântica vem do domínio."
+  },
+  {
+    "question": "Qual perspectiva usar para auditoria de uma decisão?",
+    "answer": "A informação conhecida na hora da decisão, com validade adequada à pergunta. Uma análise retrospectiva corrigida responde a outra questão e deve ser identificada."
+  }
+]

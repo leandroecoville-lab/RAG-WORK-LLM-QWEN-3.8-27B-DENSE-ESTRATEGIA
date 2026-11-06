@@ -1,0 +1,46 @@
+{
+  "id": "T097",
+  "technical_details": "A representação em blocos distingue regiões completamente excluídas, completamente presentes e parcialmente mascaradas. Essa classificação permite pular blocos e evitar testes individuais onde toda conexão é válida. O custo de construir a estrutura também importa: uma máscara que muda por exemplo ou camada precisa ser atualizada, enquanto uma máscara estável pode amortizar sua construção entre chamadas compatíveis.",
+  "boundary_condition": "Esparsidade por elemento pode deixar quase todos os blocos parcialmente ocupados, produzindo pouca economia na granularidade escolhida.",
+  "implementation_contract": {
+    "inputs": "Predicado de conectividade, forma, tamanho de bloco e tensores de atenção.",
+    "outputs": "Metadados de blocos e saída equivalente à máscara declarada.",
+    "state": "Versão do padrão, índices presentes e classificação de blocos parciais.",
+    "invariant": "Reutilizar metadados somente quando a conectividade e as dimensões continuam compatíveis."
+  },
+  "tradeoffs": [
+    "Blocos maiores reduzem metadados e podem desperdiçar cálculo dentro de blocos parciais.",
+    "Construir padrões dinâmicos pode consumir o tempo economizado na atenção."
+  ],
+  "failure_test": "Teste proposto: reutilizar propositalmente uma máscara de documentos após trocar suas fronteiras. Esperar invalidação; comparar saída com referência que proíbe atenção entre documentos distintos.",
+  "evaluation_plan": "Plano proposto: medir construção e execução separadamente, variando densidade, regularidade e frequência de mudança. Usar máscara densa equivalente como controle; aprovar pelo tempo total amortizado e equivalência, não apenas pela fração de elementos removidos.",
+  "comparisons": [
+    {
+      "entry_id": "T096",
+      "relation": "specializes",
+      "reason": "Organiza as conexões esparsas em unidades adequadas aos kernels."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "FlexAttention usa BlockMask para identificar blocos puláveis e distinguir blocos completos dos parcialmente mascarados.",
+    "source_ids": [
+      "V3B-S008"
+    ],
+    "support": "direct",
+    "caveat": "A API documentada pode evoluir; o princípio não garante ganho para padrões arbitrários."
+  },
+  "advanced_qa": [
+    {
+      "question": "Mudar máscara sempre exige recompilar?",
+      "answer": "Não necessariamente; mudar metadados e recompilar código são operações distintas, mas os metadados precisam representar o novo padrão."
+    },
+    {
+      "question": "Por que testar fronteiras de documentos?",
+      "answer": "Um bloco parcialmente válido pode conter posições de documentos diferentes; marcá-lo como completo cria vazamento de contexto."
+    }
+  ],
+  "source_ids": [
+    "V3B-S008"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

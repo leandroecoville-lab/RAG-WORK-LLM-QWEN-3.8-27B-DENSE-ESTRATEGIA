@@ -1,0 +1,85 @@
+{
+  "coverage": {
+    "entry_id": "T083",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Advanced Prefix Caching",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4D-C009",
+      "company": "Mooncake / SGLang community",
+      "system": "SGLang HiCache com backend Mooncake",
+      "title": "SGLang HiCache com backend Mooncake",
+      "evidence_level": "operational_product",
+      "observed_use": "Documentação da integração descreve o fluxo de busca local, prefetch remoto e write-back de KV.",
+      "technical_mechanism": "HiRadixTree relaciona prefixos a camadas GPU/host/distribuída; Transfer Engine move dados e componentes de controle resolvem localização.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4D-S017",
+        "V4D-S018",
+        "V4D-S019"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T081",
+          "match": "exact",
+          "rationale": "Blocos KV podem ser reutilizados entre requisições elegíveis."
+        },
+        {
+          "entry_id": "T082",
+          "match": "exact",
+          "rationale": "Prefixos comuns reutilizam os mesmos nós de KV."
+        },
+        {
+          "entry_id": "T083",
+          "match": "exact",
+          "rationale": "Hierarquia e prefetch ampliam a política de reutilização de prefixos descrita."
+        },
+        {
+          "entry_id": "T103",
+          "match": "exact",
+          "rationale": "HiRadixTree organiza spans de tokens e seus locais de armazenamento."
+        },
+        {
+          "entry_id": "T104",
+          "match": "exact",
+          "rationale": "HiCache estende explicitamente RadixAttention."
+        },
+        {
+          "entry_id": "T122",
+          "match": "exact",
+          "rationale": "O backend disponibiliza transferência RDMA entre buffers registrados, conforme suporte e configuração."
+        },
+        {
+          "entry_id": "T062",
+          "match": "analogy",
+          "rationale": "Hierarquia de KV é analogia de camadas de memória, não memória semântica do agente."
+        }
+      ],
+      "small_model_transfer": "Proposta: para 8–30B com prefixos longos repetidos, testar promoção por custo evitado e usar offload somente quando acesso remoto for melhor que recomputação; validar identidade de modelo, adaptador e tokens antes de reutilizar.",
+      "limits": "Integração disponível, não prova de implantação própria de Big Tech nem de todas as opções em Kimi. Roteamento atual e revisão do runtime precisam ser fixados. Modelo pequeno e tráfego baixo podem perder desempenho com a complexidade adicional.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4D-C009",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "T083",
+        "match": "exact",
+        "rationale": "Hierarquia e prefetch ampliam a política de reutilização de prefixos descrita."
+      }
+    }
+  ]
+}

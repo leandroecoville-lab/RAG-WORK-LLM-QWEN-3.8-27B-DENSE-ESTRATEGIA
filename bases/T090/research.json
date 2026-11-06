@@ -1,0 +1,46 @@
+{
+  "id": "T090",
+  "technical_details": "A economia central aparece quando a matriz de probabilidades de atenção deixa de ser gravada integralmente na memória externa. Isso reduz intermediários e tráfego, mas não transforma atenção densa em uma operação linear no comprimento. No treinamento, estratégias de recomputação podem reconstruir intermediários no backward; na inferência, o benefício depende da forma das consultas, especialmente da diferença entre prefill com muitas consultas e decode com poucas.",
+  "boundary_condition": "Exatidão algorítmica permite diferenças de ponto flutuante decorrentes da ordem das reduções; não implica identidade bit a bit.",
+  "implementation_contract": {
+    "inputs": "Q, K, V, máscara, escala e regra de dropout explicitamente definidas.",
+    "outputs": "Saída equivalente à atenção especificada e, quando aplicável, gradientes.",
+    "state": "Acumuladores de normalização e blocos temporários, sem matriz global persistente.",
+    "invariant": "Toda posição permitida participa da normalização; nenhuma posição proibida contribui."
+  },
+  "tradeoffs": [
+    "Menos tráfego externo pode exigir recomputar valores no backward.",
+    "Um kernel rápido em prefill pode não ser o melhor para consultas unitárias."
+  ],
+  "failure_test": "Teste proposto: comparar com referência de alta precisão em logits extremos, máscara causal e comprimentos não múltiplos do tile. Esperar ausência de vazamento futuro e erros compatíveis com o dtype escolhido.",
+  "evaluation_plan": "Plano proposto: controlar forma, máscara, dtype e dropout; medir memória intermediária, tráfego e duração separada de forward e backward. Aprovar pela equivalência numérica e benefício no caminho efetivamente utilizado, incluindo custos de despacho.",
+  "comparisons": [
+    {
+      "entry_id": "T096",
+      "relation": "distinct_from",
+      "reason": "Sparsity muda quais interações existem; FlashAttention pode executar a atenção densa original."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "FlashAttention reduz acessos entre memória externa e memória próxima ao processamento por uma execução consciente de IO.",
+    "source_ids": [
+      "B-S010"
+    ],
+    "support": "direct",
+    "caveat": "O artigo não garante aceleração universal nem remove o custo aritmético quadrático da atenção densa."
+  },
+  "advanced_qa": [
+    {
+      "question": "Cabe menos matriz intermediária significa menos cache KV?",
+      "answer": "Não necessariamente. Intermediários de atenção e estados persistentes KV são parcelas diferentes."
+    },
+    {
+      "question": "Pode validar apenas perplexidade?",
+      "answer": "Não. Compare também saídas e máscaras em casos controlados; qualidade agregada pode ocultar um erro de fronteira."
+    }
+  ],
+  "source_ids": [
+    "B-S010"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

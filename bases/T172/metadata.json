@@ -1,0 +1,32 @@
+{
+  "id": "T172",
+  "name": "Streaming Controller",
+  "canonical_name": "Streaming Controller",
+  "canonical_id": "T172",
+  "aliases": [
+    "controlador de streaming"
+  ],
+  "category": "orquestracao",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T153",
+    "T159"
+  ],
+  "source_ids": [
+    "C-S018",
+    "V3C-S019",
+    "V4C-S015",
+    "C-S030",
+    "V4C-S014",
+    "V4C-S022",
+    "V4D-S012",
+    "V4D-S013"
+  ],
+  "namespace": "T172",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T172",
+  "chunk_count": 9
+}

@@ -1,0 +1,40 @@
+{
+  "entry_id": "T056",
+  "edges": [
+    {
+      "edge_id": "E-T056-01",
+      "from": "T056",
+      "to": "T077",
+      "relation": "complements",
+      "how": "Aplicar cortes temporais às relações do grafo.",
+      "interface": "Aresta, valid_time, recorded_time e perspectiva.",
+      "condition": "Todos os elos respeitarem corte comum.",
+      "acceptance": "Consultar caminho com elo conhecido apenas posteriormente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S032",
+        "V3A-S042"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T056-02",
+      "from": "T056",
+      "to": "T059",
+      "relation": "feeds",
+      "how": "Registrar correção como evento interpretável.",
+      "interface": "Evento, tempos, origem e versão do esquema.",
+      "condition": "Replay preservar distinção dos dois tempos.",
+      "acceptance": "Reproduzir decisão histórica sem incorporar correção futura.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S032",
+        "V3A-S042"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

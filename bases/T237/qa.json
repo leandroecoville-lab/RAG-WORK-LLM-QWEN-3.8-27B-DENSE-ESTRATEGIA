@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Subagentes economizam tokens automaticamente?",
+    "answer": "Não. Eles podem reduzir o contexto do coordenador, mas suas próprias chamadas também consomem recursos. O ganho depende da divisão e da quantidade de trabalho repetido."
+  },
+  {
+    "question": "O coordenador pode aceitar qualquer resumo como conclusão?",
+    "answer": "Não. Deve verificar a evidência necessária ao risco e aos critérios da tarefa, especialmente quando o resultado implica mudança de código ou estado externo."
+  },
+  {
+    "question": "Qual resultado de pesquisa é melhor que um resumo solto?",
+    "answer": "Uma síntese com fontes, alegações específicas, limitações e referências que o coordenador consiga conferir."
+  },
+  {
+    "question": "Quem responde pela qualidade após o merge?",
+    "answer": "O coordenador ou integrador definido pelo contrato; sucesso de cada tarefa isolada não prova compatibilidade do conjunto."
+  }
+]

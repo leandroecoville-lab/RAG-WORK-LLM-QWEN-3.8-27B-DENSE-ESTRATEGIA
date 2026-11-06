@@ -1,0 +1,111 @@
+{
+  "id": "T171",
+  "novelty": "A v3 comparava afinidade de cache e custo de fila. Esta camada organiza prompts, tarefas e duração de sessões para preservar reutilização sem concentrar carga nem confundir cache de conteúdo com estado cognitivo.",
+  "deep_layers": [
+    {
+      "name": "Reutilização por fase",
+      "detail": "Agrupe tarefas que compartilham instruções e evidências estáveis, mas mantenha dados específicos depois desse prefixo. A ordenação só vale quando preserva semântica e isolamento. Um agrupamento excessivo pode esperar por tarefas futuras e aumentar latência; defina limite de espera e permita envio frio quando o prazo exigir.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S015",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Retenção conforme retorno provável",
+      "detail": "Uma sessão interativa pode voltar várias vezes ao mesmo prefixo, enquanto um trabalhador curto pode nunca reutilizá-lo. Avalie política de retenção pela frequência e intervalo de retorno, incluindo custo e pressão de memória. O perfil operacional relatado pela Uber é evidência de diferenciação, não valor universal de TTL.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Caminhos de falha",
+      "detail": "Se a rota quente falhar, o plano precisa funcionar com recomputação fria em destino compatível. Carregue referências suficientes para reconstruir entrada, não só uma indicação de que havia cache. Se a implementação distribui KV, verifique custo e compatibilidade de transferência antes de presumir ganho.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S015",
+        "B-S032"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Extração de muitos registros",
+      "scenario": "Várias chamadas aplicam o mesmo manual a dados diferentes.",
+      "strategy": "Mantenha manual e exemplos estáveis, distribua registros em lotes que caibam no contrato e registre configuração. Compare afinidade com balanceamento simples sob cache frio, quente e saturado. Não reduza o manual necessário somente para aumentar throughput aparente.",
+      "small_model_role": "3–7B extrai campos repetitivos; verificação externa detecta desvios.",
+      "acceptance": "Proposta: menor custo de prefill por registro aceito sem aumento da cauda de latência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S015"
+      ]
+    },
+    {
+      "name": "Especialistas de uma campanha",
+      "scenario": "Subagentes compartilham convenções do repositório, mas trabalham em módulos diferentes.",
+      "strategy": "Prepare núcleo comum curto e anexe contexto de módulo após ele. Escolha retenção para a duração esperada dos lotes; não mantenha todo o KV de trabalhadores encerrados se não houver reuso plausível. Durante retomada, recupere documentos por versão e aceite cache miss.",
+      "small_model_role": "8–14B executa módulos; 15–30B coordena integração sem exigir cache compartilhado de toda a conversa.",
+      "acceptance": "Proposta: medir memória por tarefa, reutilização e custo completo da campanha.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014",
+        "V3C-S015"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Cargas repetitivas curtas podem beneficiar-se mais de throughput que de prefixos enormes.",
+    "8_14b": "Templates especializados e estáveis oferecem reutilização previsível entre chamadas.",
+    "15_30b": "Contextos maiores exigem avaliar benefício de prefill contra pressão de KV e concorrência.",
+    "training_or_runtime_requirements": "Telemetria de hits, filas, expulsões e versões; controle de isolamento e possibilidade de recomputação.",
+    "do_not_use_when": "Não escolher modelo incompatível ou adiar indefinidamente uma tarefa somente para aproveitar cache."
+  },
+  "connections": [
+    {
+      "target_id": "T169",
+      "relation": "complements",
+      "how": "Uber diferencia perfis de uso e cache entre sessões e subagentes do harness.",
+      "interface": "Tipo de sessão, duração prevista e prefixo compatível.",
+      "condition": "A política de cache acompanha o ciclo do trabalhador.",
+      "acceptance": "Medir economia em chamadas aceitas, não apenas hits.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S014"
+      ],
+      "case_ids": [
+        "V4C-C015"
+      ]
+    },
+    {
+      "target_id": "T157",
+      "relation": "complements",
+      "how": "Usar identidade completa do prefixo para decidir o que pode ser reutilizado.",
+      "interface": "Hash, namespace e configuração de execução.",
+      "condition": "Tokens e metadados de computação são compatíveis.",
+      "acceptance": "Troca de adaptador provoca invalidação adequada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S015"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Cache de resultado textual, prefix KV e singleflight resolvem problemas distintos.",
+    "Queda de hit após deploy pode ser aquecimento legítimo; analisar junto de latência e qualidade."
+  ],
+  "frontier_comparison": "Compare pequeno e fronteira sob taxas de repetição declaradas. Uma vantagem em carga cacheável pode desaparecer em perguntas únicas e não transfere capacidade de generalização.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q009",
+      "V4C-Q017"
+    ],
+    "scope_note": "Uber fornece caso operacional de ajuste por perfil. vLLM fundamenta identidade de blocos; políticas propostas não foram executadas neste pacote."
+  },
+  "source_ids": [
+    "V3C-S015",
+    "V4C-S014",
+    "B-S032"
+  ]
+}

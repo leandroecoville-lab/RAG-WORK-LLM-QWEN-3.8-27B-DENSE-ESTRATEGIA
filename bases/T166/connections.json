@@ -1,0 +1,39 @@
+{
+  "entry_id": "T166",
+  "edges": [
+    {
+      "edge_id": "E-T166-01",
+      "from": "T166",
+      "to": "T149",
+      "relation": "complements",
+      "how": "Aging altera a chave efetiva da fila segundo espera e classe, sem violar elegibilidade.",
+      "interface": "Prioridade base, idade e custo estimado.",
+      "condition": "Atualizações de prioridade têm semântica consistente.",
+      "acceptance": "Tarefa antiga elegível recebe progresso em carga sustentada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S020"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T166-02",
+      "from": "T166",
+      "to": "T174",
+      "relation": "complements",
+      "how": "O escalonador implementa reservas e herança limitada de urgência.",
+      "interface": "Créditos por classe e dependências bloqueadoras.",
+      "condition": "Recursos compatíveis e pontos válidos de preempção.",
+      "acceptance": "Evitar inversão de prioridade sem sacrificar toda a classe de lote.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S016",
+        "V4C-S023"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

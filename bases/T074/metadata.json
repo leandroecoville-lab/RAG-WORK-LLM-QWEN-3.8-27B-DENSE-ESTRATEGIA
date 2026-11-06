@@ -1,0 +1,31 @@
+{
+  "id": "T074",
+  "name": "Memory Eviction",
+  "canonical_name": "Memory Eviction",
+  "canonical_id": "T074",
+  "aliases": [
+    "expulsão de memória",
+    "descarregamento de memória"
+  ],
+  "category": "memoria",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T003",
+    "T048",
+    "T062",
+    "T105"
+  ],
+  "source_ids": [
+    "A-S009",
+    "A-S023",
+    "V3A-S039",
+    "V4A-S010"
+  ],
+  "namespace": "T074",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T074",
+  "chunk_count": 9
+}

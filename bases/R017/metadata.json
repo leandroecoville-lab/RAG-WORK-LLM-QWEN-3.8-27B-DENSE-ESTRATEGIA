@@ -1,0 +1,35 @@
+{
+  "id": "R017",
+  "name": "LangChain",
+  "canonical_name": "LangChain",
+  "canonical_id": "R017",
+  "aliases": [
+    "LangChain agents",
+    "langchain.agents.create_agent"
+  ],
+  "category": "referencias",
+  "kind": "project",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "R008",
+    "T009",
+    "T024",
+    "T027",
+    "T060",
+    "T140",
+    "T154",
+    "T219"
+  ],
+  "source_ids": [
+    "V2B-S004",
+    "A-S003",
+    "V3C-S038",
+    "V4C-S012"
+  ],
+  "namespace": "R017",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R017",
+  "chunk_count": 9
+}

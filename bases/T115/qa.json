@@ -1,0 +1,18 @@
+[
+  {
+    "question": "É o mesmo que salvar state.json?",
+    "answer": "Não. Um é técnica numérica de treino; o outro é persistência operacional do agente."
+  },
+  {
+    "question": "Checkpointing acelera o treino?",
+    "answer": "Geralmente adiciona recomputação; pode viabilizar uma configuração maior, mas o resultado deve ser medido."
+  },
+  {
+    "question": "Checkpointing reduz diretamente a latência de geração?",
+    "answer": "Não é esse seu objetivo; atua no armazenamento de ativações durante treinamento com retropropagação."
+  },
+  {
+    "question": "Igualdade de loss em uma etapa basta?",
+    "answer": "Não. Gradientes podem divergir apesar de uma saída forward semelhante; compare também o caminho de atualização dos parâmetros."
+  }
+]

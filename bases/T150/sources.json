@@ -1,0 +1,93 @@
+[
+  {
+    "source_id": "C-S015",
+    "title": "singleflight package",
+    "url": "https://pkg.go.dev/golang.org/x/sync/singleflight",
+    "publisher": "Projeto Go",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Chamadas simultâneas de mesma chave compartilham a execução em andamento e seu resultado.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn22view7"
+  },
+  {
+    "source_id": "V3C-S011",
+    "title": "golang/sync — singleflight implementation",
+    "url": "https://github.com/golang/sync/blob/master/singleflight/singleflight.go",
+    "publisher": "Go Authors",
+    "source_type": "official_source_code",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Registro de chamadas em curso por chave; Forget permite nova chamada sem aguardar a chamada anterior.",
+    "limitations": "Branch master pode mudar; semântica inspecionada não constitui cache durável ou deduplicação de efeitos entre processos.",
+    "web_ref": "turn93view4"
+  },
+  {
+    "source_id": "V4C-S022",
+    "title": "Default Cache Behavior — Request collapsing",
+    "url": "https://developers.cloudflare.com/cache/concepts/default-cache-behavior/",
+    "publisher": "Cloudflare",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Cache lock colapsa requisições simultâneas pelo mesmo asset em um data center e distribui a resposta aos aguardantes.",
+    "limitations": "Fonte primária consultada, sem reprodução. Documentação de recurso não identifica automaticamente um deployment de cliente.",
+    "web_ref": "turn289view0"
+  },
+  {
+    "source_id": "V3C-S037",
+    "title": "Git — git-update-ref",
+    "url": "https://git-scm.com/docs/git-update-ref",
+    "publisher": "Git project",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Atualização condicional de ref compara old-oid; transações bloqueiam e validam refs antes de aplicar mudanças.",
+    "limitations": "Atomicidade de cada ref não significa snapshot simultâneo garantido a todo leitor concorrente de várias refs.",
+    "web_ref": "turn156view4"
+  },
+  {
+    "source_id": "V3C-S017",
+    "title": "Transformers — Utilities for generation",
+    "url": "https://huggingface.co/docs/transformers/internal/generation_utils",
+    "publisher": "Hugging Face",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "TemperatureLogitsWarper e filtros top-k/top-p transformam logits e distribuição de amostragem.",
+    "limitations": "Parâmetros e ordem de aplicação variam por backend; não garantem factualidade ou determinismo entre ambientes.",
+    "web_ref": "turn108view2"
+  },
+  {
+    "source_id": "V4C-S014",
+    "title": "Running a Software Factory Efficiently at Uber Scale",
+    "url": "https://www.uber.com/us/en/blog/efficient-software-factory/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-08-27",
+    "supports": "Harnesses internos, seleção por tarefas reais, modelos diferentes para subagentes, compactação, cache e code-mode.",
+    "limitations": "Relato primário delimitado à data e sistema; não houve reprodução. Números e escolhas do operador não definem ganhos, preços ou limites para a LAI ou modelos 3–30B.",
+    "web_ref": "turn257view0"
+  },
+  {
+    "source_id": "V3C-S015",
+    "title": "vLLM — Automatic Prefix Caching design",
+    "url": "https://docs.vllm.ai/en/latest/design/prefix_caching/",
+    "publisher": "vLLM",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Hash de blocos incorpora hash do pai, tokens e extras como IDs LoRA, conteúdo multimodal e salting de cache.",
+    "limitations": "Layout e implementação dependem da versão; reutilização não é garantia de qualidade ou disponibilidade permanente do bloco.",
+    "web_ref": "turn108view0"
+  }
+]

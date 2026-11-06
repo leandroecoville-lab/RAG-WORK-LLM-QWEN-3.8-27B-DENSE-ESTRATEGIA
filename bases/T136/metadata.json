@@ -1,0 +1,38 @@
+{
+  "id": "T136",
+  "name": "Fallback Chains",
+  "canonical_name": "Fallback Chains",
+  "canonical_id": "T136",
+  "aliases": [
+    "cadeia de contingência"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T135",
+    "T138",
+    "T162",
+    "T173",
+    "T175"
+  ],
+  "source_ids": [
+    "C-S003",
+    "V3C-S009",
+    "V4C-S005",
+    "V4C-S011",
+    "V2A-S012",
+    "V4C-S012",
+    "V3C-S004",
+    "V4C-S016",
+    "V3C-S037",
+    "V4C-S015",
+    "V2A-S004"
+  ],
+  "namespace": "T136",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T136",
+  "chunk_count": 9
+}

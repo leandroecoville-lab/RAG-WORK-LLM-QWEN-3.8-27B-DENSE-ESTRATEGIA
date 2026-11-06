@@ -1,0 +1,120 @@
+{
+  "id": "T114",
+  "novelty": "A v3 deu a regra de combinação estável. O aprofundamento trata identidade de redução, máscaras extremas, precisão acumulada e uso dessa operação em paralelismo.",
+  "deep_layers": [
+    {
+      "name": "Identidade e linhas vazias",
+      "detail": "A implementação precisa representar um bloco sem chaves válidas sem produzir operações indefinidas entre infinitos. Defina explicitamente estado vazio, transição para a primeira contribuição válida e comportamento de linha inteiramente mascarada. Retornar zero, erro ou outro valor deve seguir o contrato da operação, não surgir por acidente numérico.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S028",
+        "B-S027",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Ordem de redução",
+      "detail": "A combinação é matematicamente associativa sob aritmética exata, mas arredondamentos tornam ordens diferentes numericamente distintas. Particionamento, tile e topologia podem mudar a ordem sem mudar a fórmula. Compare tolerâncias por dtype e comprimento; exigir igualdade bit a bit pode rejeitar uma implementação correta ou ocultar tolerâncias mal escolhidas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S028",
+        "B-S027",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Normalizador e diagnóstico",
+      "detail": "Log-sum-exp e estatísticas parciais ajudam a investigar saturação e divergências, mas não são confiança factual da resposta. Um token pode receber probabilidade alta dentro de uma distribuição equivocada. Mantenha métricas numéricas separadas de métricas de qualidade do modelo e da decisão de encaminhar uma tarefa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S028",
+        "B-S027",
+        "V4B-S017"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Redução distribuída de atenção",
+      "scenario": "Blocos de KV residem em partições diferentes.",
+      "strategy": "Combine máximos, massas e numeradores na mesma referência exponencial. Preserve posições e máscaras globais, incluindo partições sem contribuição válida.",
+      "small_model_role": "Um modelo 15–30B com contexto longo pode usar o mecanismo se a comunicação compensar.",
+      "acceptance": "Comparar com referência não particionada e testar partições vazias ou desbalanceadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S028",
+        "B-S027",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Diagnóstico de NaNs",
+      "scenario": "Uma otimização falha apenas em entradas extremas.",
+      "strategy": "Construa scores controlados com grande amplitude, mascaramento e comprimentos variados. Localize se a falha nasce na projeção, na exponencial ou na combinação.",
+      "small_model_role": "Modelos pequenos permitem reproduzir o defeito com tensores sintéticos sem expor dados privados.",
+      "acceptance": "Eliminar não finitos sem alterar silenciosamente escala ou máscara.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S028",
+        "B-S027",
+        "V4B-S017"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Útil como operação interna de kernels; não precisa ser exposto como configuração de produto.",
+    "8_14b": "A extensão do contexto e dtype determinam sensibilidade, não apenas os parâmetros totais.",
+    "15_30b": "Reduções distribuídas exigem verificar comunicação e precisão acumulada conjuntamente.",
+    "training_or_runtime_requirements": "Runtime/kernel; pode participar de treinamento e inferência. Precisão dos acumuladores deve ser explicitada.",
+    "do_not_use_when": "Não combinar médias locais com pesos iguais nem tratar softmax como verificador de verdade."
+  },
+  "connections": [
+    {
+      "target_id": "T101",
+      "relation": "feeds",
+      "how": "A redução de estados parciais permite agregar atenção distribuída.",
+      "interface": "Tripla de estatísticas e identidade da consulta.",
+      "condition": "Todos os blocos representam a mesma consulta e escala.",
+      "acceptance": "Comparar diferentes ordens de comunicação com referência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S028",
+        "B-S027",
+        "V4B-S017"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T113",
+      "relation": "complements",
+      "how": "Tiles usam a redução para manter saída e normalização incrementalmente.",
+      "interface": "Estado parcial por linha.",
+      "condition": "Padding excluído antes das estatísticas.",
+      "acceptance": "Testar bordas, máscaras e sequências com comprimentos díspares.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S028",
+        "B-S027",
+        "V4B-S017"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Separar overflow nos scores de erro na redução; a estabilização não corrige tudo que ocorreu antes.",
+    "Evitar clamps silenciosos que mudam probabilidades sem registro."
+  ],
+  "frontier_comparison": "Essa técnica protege execução numérica e memória, sem acrescentar conhecimento. Um serviço pequeno deve demonstrar qualidade por testes externos, mesmo que seu softmax seja perfeitamente estável.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q020",
+      "V4B-Q005"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S028",
+    "B-S027",
+    "V4B-S017"
+  ]
+}

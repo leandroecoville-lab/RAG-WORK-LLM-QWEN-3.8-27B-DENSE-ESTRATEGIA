@@ -1,0 +1,46 @@
+{
+  "id": "T132",
+  "technical_details": "Um draft externo precisa ser barato em relação ao alvo e suficientemente próximo de suas distribuições. Sob hipóteses idealizadas de aceitação independente α, γ propostas rendem em média (1−α^(γ+1))/(1−α) tokens confirmados por rodada, contando o token adicional. A duração inclui γ passos do draft e a verificação; aumentar γ não compensa automaticamente baixa concordância ou um proponente caro.",
+  "boundary_condition": "A independência e a taxa constante são aproximações analíticas; aceitação real varia com prefixo, domínio e política de amostragem.",
+  "implementation_contract": {
+    "inputs": "Par de modelos, alinhamento de tokens, horizonte e configurações de amostragem.",
+    "outputs": "Candidatos com probabilidades necessárias e continuação confirmada pelo alvo.",
+    "state": "Caches separados e correspondência exata entre prefixos dos dois modelos.",
+    "invariant": "Probabilidades usadas na correção correspondem às propostas efetivamente amostradas."
+  },
+  "tradeoffs": [
+    "Draft maior pode elevar concordância e consumir o ganho de tempo.",
+    "Tokenizadores diferentes exigem alinhamento adicional e restringem algoritmos aplicáveis."
+  ],
+  "failure_test": "Teste proposto: usar um draft barato que concorda em prosa e diverge em código, depois alterar filtros de amostragem apenas nele. Esperar custos e aceitação distintos, sem perder a correção matemática da distribuição alvo.",
+  "evaluation_plan": "Plano proposto: comparar pares de modelos e horizontes com mesma carga e recursos explicitados. Medir tempo do draft, verificação, aceitação por posição e latência total; substituir estimativas idealizadas por medições antes de dimensionar produção.",
+  "comparisons": [
+    {
+      "entry_id": "T080",
+      "relation": "complements",
+      "reason": "Adaptar o horizonte responde ao custo e à concordância observados do par."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A análise de speculative decoding relaciona aceitação, horizonte e custo relativo do draft ao trabalho amortizado.",
+    "source_ids": [
+      "V3B-S001"
+    ],
+    "support": "direct",
+    "caveat": "A expressão idealizada não prevê automaticamente velocidade com batching, comunicação ou aceitação correlacionada."
+  },
+  "advanced_qa": [
+    {
+      "question": "Qual o limite quando α tende a um?",
+      "answer": "A expectativa tende a γ+1; isso ainda precisa ser comparado ao custo de produzir e verificar a rodada."
+    },
+    {
+      "question": "Dois modelos da mesma família bastam?",
+      "answer": "Não. É necessário verificar tokenização, configuração, custo e concordância; parentesco nominal não constitui contrato de compatibilidade."
+    }
+  ],
+  "source_ids": [
+    "V3B-S001"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "SADA é um banco de memória textual?",
+    "answer": "Não. A referência identificada trata mapeamento de contexto em adaptadores e alinhamento de representações."
+  },
+  {
+    "question": "Alinhar estados torna a compressão sem perda?",
+    "answer": "Não há garantia geral. É necessário medir tarefas e casos em que detalhes do contexto precisam permanecer explícitos."
+  },
+  {
+    "question": "Por que comparar estados e respostas separadamente?",
+    "answer": "Divergência interna ajuda diagnosticar o mecanismo, mas a utilidade final depende da tarefa. Uma melhora em uma medida não substitui a outra."
+  },
+  {
+    "question": "O método equivale a resumir texto num arquivo?",
+    "answer": "Não. Ele produz parâmetros de adaptação por uma interface neural treinada. Persistir um resumo externo opera em outro nível do sistema."
+  }
+]

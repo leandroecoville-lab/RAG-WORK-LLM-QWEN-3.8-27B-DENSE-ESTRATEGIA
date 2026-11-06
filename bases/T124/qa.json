@@ -1,0 +1,18 @@
+[
+  {
+    "question": "W4A16 significa todo o modelo em quatro bits?",
+    "answer": "Não. O nome separa pesos e ativações; outras estruturas podem usar precisões diferentes."
+  },
+  {
+    "question": "W4A16 é sinônimo de GPTQ?",
+    "answer": "Não. GPTQ é um método que pode produzir esse regime; outros métodos também podem fazê-lo."
+  },
+  {
+    "question": "A16 significa acumulador de dezesseis bits?",
+    "answer": "Não necessariamente. Ativações, multiplicação e acumulação têm tipos que precisam ser inspecionados separadamente."
+  },
+  {
+    "question": "INT4 reduz também o KV?",
+    "answer": "Não por definição. O cache pode continuar em outro dtype, exigindo orçamento independente por contexto e concorrência."
+  }
+]

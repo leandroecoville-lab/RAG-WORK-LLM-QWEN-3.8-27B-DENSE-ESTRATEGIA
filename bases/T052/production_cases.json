@@ -1,0 +1,100 @@
+{
+  "coverage": {
+    "entry_id": "T052",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 0,
+    "research_cases": 2,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Latent Context",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C029",
+      "company": "Autores LongMem; Microsoft Research e colaboradores",
+      "system": "LongMem",
+      "title": "LongMem — evidência delimitada",
+      "evidence_level": "research_only",
+      "observed_use": "Artigo e código estudam memória neural recuperável para contexto extenso.",
+      "technical_mechanism": "Representações em memória e módulo adaptado de leitura são componentes treinados.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "A-S013",
+        "V3A-S047"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R003",
+          "match": "exact",
+          "rationale": "Projeto e código específicos."
+        },
+        {
+          "entry_id": "T052",
+          "match": "exact",
+          "rationale": "Memória latente como um sentido delimitado do rótulo."
+        },
+        {
+          "entry_id": "T068",
+          "match": "exact",
+          "rationale": "Geração aumentada por memória neural."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Somente considerar 15–30B se houver acesso a treino e alinhamento de estados; iniciar com RAG textual controlado.",
+      "limits": "Não é plug-in universal nem uso bigtech demonstrado; portar requer treino e compatibilidade. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "research_group",
+      "canonical_case_id": "V4A-C029",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "T052",
+        "match": "exact",
+        "rationale": "Memória latente como um sentido delimitado do rótulo."
+      }
+    },
+    {
+      "case_id": "V4A-C033",
+      "company": "Wenhao Gao, Tianlong Wang, Wei Jia, Linhao Zhang, Aiwei Liu, Miao Fan, Zhou Xiao",
+      "system": "SADA: Bridging In-Context Learning and Fine-Tuning via State-Aligned Distillation Adapters",
+      "title": "SADA: Bridging In-Context Learning and Fine-Tuning via State-Aligned Distillation Adapters — evidência delimitada",
+      "evidence_level": "research_only",
+      "observed_use": "Artigo identificado estuda adaptação de contexto por alinhamento de estados.",
+      "technical_mechanism": "Distilação aproxima estados em interface de blocos de atenção usando adapters.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "A-S012"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R007",
+          "match": "exact",
+          "rationale": "Título e autores fixam escopo da sigla."
+        },
+        {
+          "entry_id": "T052",
+          "match": "family",
+          "rationale": "Estados neurais são representação latente, com compatibilidade arquitetural."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Avaliar modelo aberto em faixa permitida com instrumentação de estados e teste funcional separado.",
+      "limits": "Nenhuma produção bigtech exata estabelecida; alinhamento interno não garante resposta correta. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "research_group",
+      "canonical_case_id": "V4A-C033",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "T052",
+        "match": "family",
+        "rationale": "Estados neurais são representação latente, com compatibilidade arquitetural."
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "T161",
+  "technical_details": "Para tarefas indivisíveis com durações estimadas dᵥ, o comprimento L do maior caminho de dependências é um limite inferior do tempo total. Com m trabalhadores idênticos e trabalho total W=Σdᵥ, outro limite é W/m; assim, max(L,W/m) ajuda a separar gargalo de dependência e capacidade. Não é previsão exata: filas, transferência, recursos específicos e variação das durações podem aumentar o tempo observado.",
+  "boundary_condition": "O caminho crítico calculado com médias pode mudar em cada execução quando ferramentas apresentam caudas de latência longas.",
+  "implementation_contract": {
+    "inputs": "DAG, durações estimadas, quantidade de trabalhadores e restrições de recurso.",
+    "outputs": "Caminhos dominantes, folgas e limites inferiores com hipóteses declaradas.",
+    "state": "Estimativas versionadas e durações observadas por etapa.",
+    "invariant": "Toda conclusão de economia identifica qual dependência ou restrição realmente encurtou o término."
+  },
+  "tradeoffs": [
+    "Priorizar o caminho estimado pode reduzir término e atrasar trabalho independente importante.",
+    "Medições detalhadas melhoram estimativas e introduzem custo de instrumentação."
+  ],
+  "failure_test": "Teste proposto: acelerar uma tarefa com folga e depois uma etapa do caminho dominante; verificar que somente a segunda reduz o término sob as hipóteses originais.",
+  "evaluation_plan": "Comparar previsão e execução em grafos com diferentes larguras, controlando trabalhadores. Medir erro de previsão, mudança de caminho dominante e tempo final. Recalcular após otimizações, pois o gargalo pode migrar para outro ramo.",
+  "comparisons": [
+    {
+      "entry_id": "T160",
+      "relation": "complements",
+      "reason": "O escalonador respeita dependências e pode usar folga ou caminho remanescente como critério."
+    },
+    {
+      "entry_id": "T174",
+      "relation": "complements",
+      "reason": "Prioridade pode incorporar caminho crítico sem ignorar justiça e restrições."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "LLMCompiler separa planejamento de dependências e execução paralela para reduzir serialização de chamadas.",
+    "source_ids": [
+      "V3C-S002"
+    ],
+    "support": "related",
+    "caveat": "Os limites L e W/m são modelagem clássica aplicada editorialmente, não resultados experimentais do pacote."
+  },
+  "advanced_qa": [
+    {
+      "question": "Somar p95 de cada etapa produz o p95 do workflow?",
+      "answer": "Não. Quantis não se somam dessa forma em geral; dependência estatística e paralelismo mudam a distribuição total."
+    },
+    {
+      "question": "Duplicar trabalhadores reduz o tempo pela metade?",
+      "answer": "Somente se capacidade for o gargalo dominante e o trabalho puder ser distribuído; dependências podem impor o mesmo limite L."
+    }
+  ],
+  "source_ids": [
+    "V3C-S002",
+    "C-S024"
+  ],
+  "research_note": "Contratos e ensaios são propostas; os resultados citados pertencem às fontes, sem reprodução local."
+}

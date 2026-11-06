@@ -1,0 +1,46 @@
+{
+  "id": "T195",
+  "technical_details": "A execução verifica uma relação entre artefato, entradas, ambiente e oráculo. Se o oráculo contém o mesmo erro do gerador, passar nos testes oferece falsa segurança. É preciso distinguir falha da proposta, falha da infraestrutura e caso não coberto. Para código, entradas de fronteira, efeitos laterais e limites de recursos fazem parte do comportamento; retorno correto em exemplos comuns não demonstra equivalência completa.",
+  "boundary_condition": "Um conjunto finito de testes geralmente refuta defeitos encontrados, mas não prova correção para todas as entradas possíveis.",
+  "implementation_contract": {
+    "inputs": "Artefato identificado, ambiente controlado, casos, resultados esperados e limites de execução.",
+    "outputs": "Observações reproduzíveis com estado aprovado, reprovado ou inconclusivo por critério.",
+    "state": "Versões de dependências, entradas, logs e identidade exata do artefato.",
+    "invariant": "Erro do executor ou timeout nunca é convertido silenciosamente em teste aprovado."
+  },
+  "tradeoffs": [
+    "Mais casos ampliam cobertura e tempo de avaliação.",
+    "Ambiente isolado melhora controle e pode diferir das condições reais de implantação."
+  ],
+  "failure_test": "Teste proposto: usar implementação correta nos exemplos originais, mas errada em entrada vazia, overflow ou repetição. Acrescentar casos independentes e exigir que o verificador detecte a falha.",
+  "evaluation_plan": "Plano proposto: comparar suíte inicial e ampliada com defeitos conhecidos e versões corretas. Medir falsos aceites, falsos alarmes, cobertura relevante e custo; reportar explicitamente domínio testado e ambiente, sem extrapolar para prova universal.",
+  "comparisons": [
+    {
+      "entry_id": "T205",
+      "relation": "complements",
+      "reason": "Comparação diferencial executa duas versões para investigar se preservam o comportamento especificado."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "EvalPlus ampliou casos de teste e identificou programas incorretos que passavam em suítes anteriores.",
+    "source_ids": [
+      "C-S048"
+    ],
+    "support": "direct",
+    "caveat": "A evidência mostra insuficiência de certas suítes, não que expansão automática garanta cobertura completa."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um exit code zero prova sucesso?",
+      "answer": "Somente se o programa e o harness definem esse código de forma confiável e os critérios necessários foram realmente executados."
+    },
+    {
+      "question": "Como testar o próprio verificador?",
+      "answer": "Use casos com resultados conhecidos, mutações que deveriam falhar e falhas de infraestrutura deliberadas para conferir a classificação dos resultados."
+    }
+  ],
+  "source_ids": [
+    "C-S048"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

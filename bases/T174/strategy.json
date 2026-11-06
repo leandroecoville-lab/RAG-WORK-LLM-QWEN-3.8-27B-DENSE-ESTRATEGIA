@@ -1,0 +1,118 @@
+{
+  "id": "T174",
+  "novelty": "A v3 distinguia prioridade e preempção. A nova camada combina urgência, custo de retomada e recursos exclusivos, com decisões de admissão que evitam interromper trabalho cujo efeito não pode ser desfeito.",
+  "deep_layers": [
+    {
+      "name": "Urgência verificável",
+      "detail": "Traduza prioridade em objetivo operacional: deadline, atendimento interativo ou desbloqueio de uma cadeia. Uma etiqueta alta sem critério tende a se espalhar até perder significado. Exija justificativa por classe e reavalie urgência quando a tarefa ficar obsoleta, em vez de manter pedidos antigos consumindo a reserva indefinidamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S003",
+        "V3C-S016"
+      ]
+    },
+    {
+      "name": "Pontos de suspensão",
+      "detail": "Defina onde a tarefa pode liberar recursos sem perder invariantes. Entre chamadas pode ser seguro; durante escrita remota talvez não. Checkpoint de contexto não garante checkpoint da ferramenta. Se não houver suspensão válida, a política pode reservar capacidade futura e evitar admitir novos trabalhos longos, em vez de matar os atuais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S016",
+        "C-S026"
+      ]
+    },
+    {
+      "name": "Recursos exclusivos",
+      "detail": "Duas tarefas de alta prioridade podem disputar o mesmo repositório ou chave de projeto. Respeite exclusão antes de ordenar elegíveis. Acelerar um consumidor bloqueado não ajuda se o produtor de sua dependência ficou sem recurso; transfira urgência apenas ao trecho necessário para liberá-lo e mantenha limite de justiça.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S003",
+        "C-S025"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Chamadas interativas e lote",
+      "scenario": "GPU serve respostas ao usuário e processamento de acervo.",
+      "strategy": "Reserve capacidade interativa e permita empréstimo ao lote quando ociosa. Preempção só ocorre nos pontos suportados pelo servidor; caso contrário, limite duração do lote admitido. Meça desperdício de KV e trabalho reiniciado ao comparar políticas.",
+      "small_model_role": "3–7B pode atender a classe interativa estreita; 15–30B processa lote com reserva definida.",
+      "acceptance": "Proposta: cumprir latência por classe mantendo progresso mínimo do lote.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S023",
+        "V3C-S016"
+      ]
+    },
+    {
+      "name": "Integração de alterações urgentes",
+      "scenario": "Correção bloqueadora precisa entrar em uma campanha de patches.",
+      "strategy": "Determine quais validações e recursos a correção exige. Eleve a prioridade das dependências indispensáveis e pause somente trabalho ainda não publicado em pontos seguros. Não pule testes de contrato para confundir urgência com aceite automático.",
+      "small_model_role": "8–14B identifica impacto local; um planejador maior explicita a cadeia bloqueadora.",
+      "acceptance": "Proposta: menor tempo de integração sem perda de validação ou duplicação de efeito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S003",
+        "V4C-S009"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Tarefas pequenas permitem limites de serviço mais previsíveis, mas ainda precisam de admissão.",
+    "8_14b": "Estimativa de impacto e classificação de urgência apoiadas em regras de domínio.",
+    "15_30b": "Planejamento de dependências urgentes e análise de alternativas quando o recurso está ocupado.",
+    "training_or_runtime_requirements": "Escalonador com classes, exclusões, pontos seguros e telemetria de trabalho descartado.",
+    "do_not_use_when": "Não interromper efeito remoto como se cancelar o cliente fosse desfazer a operação."
+  },
+  "connections": [
+    {
+      "target_id": "T149",
+      "relation": "complements",
+      "how": "Timestone combina prioridade temporal e exclusão para decidir quais mensagens são entregues.",
+      "interface": "Deadline, chave de exclusão e estado da fila.",
+      "condition": "A tarefa está pronta e seu recurso exclusivo está disponível.",
+      "acceptance": "Nenhuma admissão simultânea proibida por chave.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S003"
+      ],
+      "case_ids": [
+        "V4C-C005"
+      ]
+    },
+    {
+      "target_id": "T166",
+      "relation": "complements",
+      "how": "Reservas e aging limitam o custo da urgência para outras classes.",
+      "interface": "Espera acumulada, cota e custo observado.",
+      "condition": "Política declara o que significa justiça.",
+      "acceptance": "Tarefa elegível de baixa prioridade continua recebendo progresso.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S020",
+        "V3C-S016"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não medir apenas tarefas urgentes e ocultar inanição do restante.",
+    "Uma prioridade nova não elimina dependências nem cria memória compatível na GPU."
+  ],
+  "frontier_comparison": "Compare políticas com recursos constantes e distribuição de carga igual. Benefício de modelos pequenos na fila depende de custo e qualidade por tarefa, não apenas do número de parâmetros.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q003",
+      "V4C-Q018"
+    ],
+    "scope_note": "Timestone comprova prioridade e exclusão em produção. Kubernetes fundamenta distinção de preempção; não foi assumido que cada ferramenta de agente suporta suspensão."
+  },
+  "source_ids": [
+    "V4C-S003",
+    "V3C-S016",
+    "C-S026",
+    "C-S025",
+    "V4C-S023",
+    "V4C-S009",
+    "V3C-S020"
+  ]
+}

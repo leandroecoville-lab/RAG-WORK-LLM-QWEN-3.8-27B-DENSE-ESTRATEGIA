@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Context folding é apenas resumir tudo?",
+    "answer": "Não necessariamente. A divisão e retomada de subtrajetórias também organiza o controle da execução."
+  },
+  {
+    "question": "Posso reproduzir o paper só adicionando um prompt?",
+    "answer": "Não. Um padrão parecido em software não reproduz automaticamente o treinamento e os resultados publicados."
+  },
+  {
+    "question": "Uma dobra precisa guardar raciocínio interno completo?",
+    "answer": "Não. O contrato deve preservar estado operacional e evidências úteis, sem presumir acesso ou necessidade de registrar processos internos ocultos do modelo."
+  },
+  {
+    "question": "Como saber se a decomposição foi boa?",
+    "answer": "Observe integração, reaberturas e dependências que atravessam retornos. Uma redução aparente de contexto pode esconder repetição de trabalho nas subtarefas."
+  }
+]

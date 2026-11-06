@@ -1,0 +1,112 @@
+{
+  "id": "T027",
+  "novelty": "A v3 explicou fusão de escores. Aqui canais recebem orçamento conforme sinais da consulta e são avaliados por contribuição exclusiva.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Consultas com códigos literais exigem quota lexical protegida. Paráfrases e descrições vagas podem justificar mais candidatos vetoriais. O ajuste deve ocorrer antes de reranking, preservando filtros comuns.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "A-S021"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Registre candidatos encontrados exclusivamente por cada canal. Quando ambos retornam quase o mesmo conjunto, manter duas buscas pode custar mais sem ampliar cobertura.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "A-S021"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare fusão fixa e orçamento condicionado por intenção com o mesmo número total de candidatos. Separe consultas de identificador, terminologia rara e paráfrase; médias globais podem esconder regressão crítica. Unidade de avaliação: consulta e candidatos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "A-S021"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Suporte de API",
+      "scenario": "Usuário fornece erro exato ou descrição livre.",
+      "strategy": "Detectar identificador sem removê-lo, recuperar lexicalmente e complementar semanticamente quando o termo não aparecer. Rerankear conjunto deduplicado.",
+      "small_model_role": "3–7B extrai sinais; 8–14B lê candidatos.",
+      "acceptance": "Exigir recuperação do código exato quando presente no corpus.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "A-S021"
+      ]
+    },
+    {
+      "name": "Pesquisa de decisões",
+      "scenario": "O usuário não lembra a formulação original.",
+      "strategy": "Gerar consulta semântica preservando nomes e datas; recuperar também registros literais desses filtros.",
+      "small_model_role": "15–30B sintetiza decisões relacionadas.",
+      "acceptance": "Não confundir decisão de entidade homônima com correspondência válida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "A-S021"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extrator determinístico assistido de códigos, nomes e datas.",
+    "8_14b": "Reformulador controlado de intenção para canal vetorial.",
+    "15_30b": "Integrador de evidências de canais diferentes e conflitos.",
+    "training_or_runtime_requirements": "Índices versionados, fusão explícita e métricas por canal; orçamento total deve permanecer comparável.",
+    "do_not_use_when": "Um único canal já cobre os casos relevantes com menor custo e sem regressão nas classes raras."
+  },
+  "connections": [
+    {
+      "target_id": "T028",
+      "relation": "feeds",
+      "how": "Rerankear união deduplicada dos canais.",
+      "interface": "document_id, posições lexicais/vetoriais e filtros.",
+      "condition": "Candidatos elegíveis e versões compatíveis.",
+      "acceptance": "Medir ganho de ranking sem perder candidatos exclusivos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "A-S021"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T036",
+      "relation": "complements",
+      "how": "Preservar identificadores na reformulação.",
+      "interface": "Consulta original, termos protegidos e expansão.",
+      "condition": "Expansão não substituir requisito literal.",
+      "acceptance": "Testar códigos parecidos e nomes com acentos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "A-S021"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não somar escores heterogêneos sem regra validada.",
+    "Não remover candidato raro só por aparecer em um canal."
+  ],
+  "frontier_comparison": "Comparar cobertura e evidência final com contexto equivalente; recuperação forte não garante leitura correta.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q003",
+      "V4A-Q020"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S009",
+    "A-S021"
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "coverage": {
+    "entry_id": "T170",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 2,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Tool Schema Versioning",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C014",
+      "company": "Uber",
+      "system": "MCP Gateway e Omni MCP",
+      "title": "Descoberta gradual, registro e projeção de ferramentas",
+      "evidence_level": "production_documented",
+      "observed_use": "A Uber descreve seu gateway central de interações MCP, com registro de ferramentas e descoberta incremental por intenção.",
+      "technical_mechanism": "Omni MCP separa descobrir servidor, listar ferramentas, obter schema e invocar; o gateway projeta campos de resposta e propaga configurações revisadas ao plano de execução.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S013"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T134",
+          "match": "exact",
+          "rationale": "Descoberta de servidor utiliza intenção da consulta."
+        },
+        {
+          "entry_id": "T140",
+          "match": "exact",
+          "rationale": "O gateway traduz e executa chamadas MCP para serviços."
+        },
+        {
+          "entry_id": "T151",
+          "match": "exact",
+          "rationale": "Schemas são obtidos progressivamente em vez de carregar o catálogo inteiro."
+        },
+        {
+          "entry_id": "T158",
+          "match": "exact",
+          "rationale": "MCP Registry mantém ferramentas, schemas, propriedade e habilitação."
+        },
+        {
+          "entry_id": "T170",
+          "match": "family",
+          "rationale": "O gateway documenta diffs, revisão e rollback de configuração/descritores; isso não prova uma política completa de versionamento e compatibilidade semântica de entrada e saída."
+        },
+        {
+          "entry_id": "T214",
+          "match": "exact",
+          "rationale": "Response Projection reduz respostas aos campos selecionados."
+        },
+        {
+          "entry_id": "T226",
+          "match": "family",
+          "rationale": "Heartbeat descobre presença de servidores, sem comprovar progresso semântico de tarefa."
+        },
+        {
+          "entry_id": "P015",
+          "match": "analogy",
+          "rationale": "Revisões e controle de exposição apoiam integridade editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: oferecer a 3–7B busca curta de ferramentas e schema apenas do candidato escolhido; 8–30B podem compor chamadas delimitadas, mantendo habilitação e projeção verificadas fora da LLM.",
+      "limits": "Um caso de gateway, sem contar cada servidor interno. Projeção reduz informação e precisa preservar campos indispensáveis; heartbeat de descoberta não é conclusão de trabalho.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C014",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T170",
+        "match": "family",
+        "rationale": "O gateway documenta diffs, revisão e rollback de configuração/descritores; isso não prova uma política completa de versionamento e compatibilidade semântica de entrada e saída."
+      }
+    },
+    {
+      "case_id": "V4C-C013",
+      "company": "Uber",
+      "system": "GenAI Gateway",
+      "title": "Acesso unificado a modelos com atribuição de consumo",
+      "evidence_level": "production_documented",
+      "observed_use": "A Uber relata equipes internas utilizando o gateway para consultas a modelos externos e hospedados internamente.",
+      "technical_mechanism": "Adaptadores expõem uma interface comum e integram autenticação, política de dados, métricas e atribuição de custos.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S012"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T133",
+          "match": "family",
+          "rationale": "A plataforma oferece acesso a diferentes modelos, sem provar roteador de qualidade por pergunta nesta publicação."
+        },
+        {
+          "entry_id": "T170",
+          "match": "analogy",
+          "rationale": "Tradução de interfaces ilustra compatibilidade, mas a fonte não demonstra versionamento integral de schemas de ferramentas."
+        },
+        {
+          "entry_id": "P010",
+          "match": "analogy",
+          "rationale": "O gateway é referência para infraestrutura de rotas, não valida o motor editorial completo."
+        }
+      ],
+      "small_model_transfer": "Proposta: centralizar adapters de 3–30B e registrar capacidades reais de cada endpoint; separar seleção do modelo da tradução de protocolos e da medição do custo por tarefa aceita.",
+      "limits": "Interface compatível não torna modelos semanticamente equivalentes. Não mapear automaticamente disponibilidade de múltiplos fornecedores a cascata ou fallback comprovado.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C013",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "T170",
+        "match": "analogy",
+        "rationale": "Tradução de interfaces ilustra compatibilidade, mas a fonte não demonstra versionamento integral de schemas de ferramentas."
+      }
+    }
+  ]
+}

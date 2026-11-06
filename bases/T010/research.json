@@ -1,0 +1,51 @@
+{
+  "id": "T010",
+  "technical_details": "Tamanho e sobreposição determinam quantidade de unidades e redundância. Para um documento longo com N tokens, blocos de c tokens e sobreposição o<c produzem aproximadamente N/(c-o) blocos, desconsiderando bordas. O orçamento de recuperação deve considerar duplicação de evidências entre vizinhos; contar os mesmos tokens duas vezes pode expulsar outra fonte relevante do contexto final.",
+  "boundary_condition": "O modelo deixa de ser uma aproximação útil para documentos curtos, segmentação por caracteres ou processamento que altera a tokenização entre ingestão e consulta.",
+  "implementation_contract": {
+    "inputs": "Texto normalizado, tokenizer identificado, tamanho e sobreposição declarados.",
+    "outputs": "Chunks com offsets, ordem e revisão do documento de origem.",
+    "state": "Versão do segmentador e mapeamento entre bytes e unidades indexadas.",
+    "invariant": "Todo trecho recuperado pode ser relacionado a uma região identificável do original."
+  },
+  "tradeoffs": [
+    "Blocos maiores preservam entorno, mas podem diluir sinais específicos na representação vetorial.",
+    "Sobreposição protege fronteiras, porém aumenta índice, ingestão e repetição na resposta."
+  ],
+  "failure_test": "Teste proposto: posicionar uma condição e sua exceção em lados opostos da fronteira. Comparar recuperação com e sem sobreposição e verificar se a montagem reconhece que o primeiro trecho está incompleto.",
+  "evaluation_plan": "Avaliação proposta: usar tamanho fixo como baseline e variar tamanho e sobreposição mantendo corpus, embeddings e orçamento de resposta. Medir recall de evidências, redundância, custo de índice e qualidade da resposta, sem escolher pelo número bruto de chunks.",
+  "comparisons": [
+    {
+      "entry_id": "T011",
+      "relation": "alternative",
+      "reason": "Fronteiras semânticas acrescentam cálculo; precisam demonstrar ganho sobre esta linha de base."
+    },
+    {
+      "entry_id": "T032",
+      "relation": "complements",
+      "reason": "Trechos pequenos podem localizar um pai maior que fornece contexto após a recuperação."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Um estudo comparativo não encontrou ganhos consistentes que justificassem sempre o custo adicional da segmentação semântica.",
+    "source_ids": [
+      "V3A-S013"
+    ],
+    "support": "direct",
+    "caveat": "Esse resultado é restrito às tarefas e configurações avaliadas; não demonstra superioridade universal do tamanho fixo."
+  },
+  "advanced_qa": [
+    {
+      "question": "Sobreposição deve ser removida antes do embedding?",
+      "answer": "Se remover o conteúdo sobreposto, muda o método. A deduplicação costuma ser considerada na montagem dos candidatos, preservando o contexto usado na indexação."
+    },
+    {
+      "question": "Tokens e caracteres produzem o mesmo tamanho efetivo?",
+      "answer": "Não. Idioma, código e símbolos mudam a relação; o contrato deve usar a unidade realmente relevante para o consumidor."
+    }
+  ],
+  "source_ids": [
+    "V3A-S013"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

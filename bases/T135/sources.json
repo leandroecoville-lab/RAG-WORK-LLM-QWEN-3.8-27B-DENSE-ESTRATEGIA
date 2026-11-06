@@ -1,0 +1,93 @@
+[
+  {
+    "source_id": "C-S002",
+    "title": "FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance",
+    "url": "https://arxiv.org/abs/2305.05176",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Cascatas de modelos e decisões de encaminhamento podem ser otimizadas sob orçamento.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn30view2"
+  },
+  {
+    "source_id": "V3C-S001",
+    "title": "RouteLLM — repository and threshold calibration",
+    "url": "https://github.com/lm-sys/RouteLLM",
+    "publisher": "LMSYS / autores do RouteLLM",
+    "source_type": "official_source_code",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Calibração de limiares depende da distribuição de consultas e da fração pretendida de chamadas ao modelo forte.",
+    "limitations": "README em branch mutável; exemplos numéricos não são limiares recomendados para LAI.",
+    "web_ref": "turn93view3"
+  },
+  {
+    "source_id": "V4C-S009",
+    "title": "Using AI to Delete Code: Agentic Tech Debt Cleanup at Uber",
+    "url": "https://www.uber.com/us/en/blog/ai-code-cleanup/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "AutoClean operacional combina agentes, PolyglotPiranha via MCP, CI, fixers delimitados, verificações estáticas e CodeCourt por propriedades.",
+    "limitations": "Fonte primária aberta. Desempenho relatado pertence ao sistema e ao período descritos; não foi reproduzido e não comprova transferência para modelos 3–30B.",
+    "web_ref": "turn238view0"
+  },
+  {
+    "source_id": "V4C-S014",
+    "title": "Running a Software Factory Efficiently at Uber Scale",
+    "url": "https://www.uber.com/us/en/blog/efficient-software-factory/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-08-27",
+    "supports": "Harnesses internos, seleção por tarefas reais, modelos diferentes para subagentes, compactação, cache e code-mode.",
+    "limitations": "Relato primário delimitado à data e sistema; não houve reprodução. Números e escolhas do operador não definem ganhos, preços ou limites para a LAI ou modelos 3–30B.",
+    "web_ref": "turn257view0"
+  },
+  {
+    "source_id": "V4C-S011",
+    "title": "Understanding intelligent prompt routing in Amazon Bedrock",
+    "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-routing.html",
+    "publisher": "Amazon Web Services",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Recurso de roteamento entre dois modelos de uma família, critérios de qualidade e fallback; não prova uso por cliente específico.",
+    "limitations": "Fonte primária aberta. Desempenho relatado pertence ao sistema e ao período descritos; não foi reproduzido e não comprova transferência para modelos 3–30B.",
+    "web_ref": "turn233view0"
+  },
+  {
+    "source_id": "V2A-S012",
+    "title": "Timeouts, retries, and backoff with jitter",
+    "url": "https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/",
+    "publisher": "AWS",
+    "source_type": "official_article",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2019-12-05",
+    "supports": "Retentativas limitadas, espera exponencial, jitter e incerteza de efeitos após timeout.",
+    "limitations": "Consulta documental primária. Não houve reprodução de experimentos, instalação do produto nem validação de disponibilidade na infraestrutura LAI. Receitas e testes das entradas são propostas editoriais.",
+    "web_ref": "turn61view1"
+  },
+  {
+    "source_id": "V3C-S038",
+    "title": "LangChain — Prebuilt middleware",
+    "url": "https://docs.langchain.com/oss/python/langchain/middleware/built-in",
+    "publisher": "LangChain",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Middleware de erro de ferramenta é distinto de retry; ordem de composição determina tratamento de exceções e limites.",
+    "limitations": "Documentação dinâmica com requisitos de versão; não se pressupõe disponibilidade de classes no ambiente do usuário.",
+    "web_ref": "turn165view2"
+  }
+]

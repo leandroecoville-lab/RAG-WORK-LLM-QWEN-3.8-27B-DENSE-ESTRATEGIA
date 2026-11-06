@@ -1,0 +1,53 @@
+{
+  "id": "T225",
+  "technical_details": "Reinício precisa classificar falha de processo, indisponibilidade de dependência e ausência de progresso. Reiniciar repetidamente uma aplicação saudável porque seu banco está fora pode ampliar a carga de inicialização e atrasar recuperação. A política proposta mantém orçamento de reinícios, espera entre tentativas e informação de propriedade da missão. Antes de retomar efeitos, reconcilia o último ponto confirmado e resultados externos ainda desconhecidos.",
+  "boundary_condition": "Quando a causa permanece externa ou determinística, reiniciar o mesmo código com o mesmo estado tende a reproduzir o problema.",
+  "implementation_contract": {
+    "inputs": "Sinais de vida e progresso, causa de término e estado durável da missão.",
+    "outputs": "Reinício, espera, isolamento ou término explícito com diagnóstico.",
+    "state": "Histórico de reinícios, geração do worker e operações pendentes.",
+    "invariant": "Um worker antigo não reaparece como escritor válido após a recuperação assumir nova geração."
+  },
+  "tradeoffs": [
+    "Detecção rápida reduz indisponibilidade e pode reiniciar trabalho apenas lento.",
+    "Espera maior protege dependências e aumenta tempo de recuperação de falhas simples."
+  ],
+  "failure_test": "Teste proposto: manter processo vivo, interromper dependência e pausar o worker antigo durante a troca; exigir política que evite tempestade de reinícios e escritas obsoletas.",
+  "evaluation_plan": "Comparar restart imediato e recuperação com classificação e orçamento sob falhas de processo e serviço externo. Medir retomada, reinícios inúteis, efeitos duplicados e progresso preservado. Escolher pelo objetivo de recuperação, não só por uptime do processo.",
+  "comparisons": [
+    {
+      "entry_id": "T227",
+      "relation": "complements",
+      "reason": "Sinais de saúde precisam separar quem deve reiniciar de quem deve parar de receber tráfego."
+    },
+    {
+      "entry_id": "T243",
+      "relation": "complements",
+      "reason": "Reconciliação identifica o que a execução anterior efetivamente realizou."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Kubernetes distingue readiness para retirar tráfego e liveness para detectar condições que podem exigir reinício.",
+    "source_ids": [
+      "V2A-S011"
+    ],
+    "support": "direct",
+    "caveat": "Essas probes não conhecem automaticamente o progresso de uma missão nem seus efeitos externos."
+  },
+  "advanced_qa": [
+    {
+      "question": "Processo vivo mas sem avanço deve sempre reiniciar?",
+      "answer": "Não. Primeiro distinguir espera legítima, bloqueio externo e defeito local; cada caso exige resposta diferente."
+    },
+    {
+      "question": "Um novo processo pode começar pela primeira etapa?",
+      "answer": "Somente se o contrato garantir repetição segura; caso contrário, deve recuperar estado e reconciliar efeitos já enviados."
+    }
+  ],
+  "source_ids": [
+    "V2A-S011",
+    "V3C-S028",
+    "V3C-S040"
+  ],
+  "research_note": "Mecanismos referenciados em fontes primárias; contratos e verificação descritos são propostas, não ensaios executados."
+}

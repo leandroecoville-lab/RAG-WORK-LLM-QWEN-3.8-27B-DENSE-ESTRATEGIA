@@ -1,0 +1,52 @@
+{
+  "id": "T239",
+  "technical_details": "Worktrees mantêm HEAD e índice próprios, enquanto compartilham objetos e grande parte das refs. Isso explica por que mudanças de referências podem afetar a visão do repositório sem editar arquivos da outra árvore. O comando worktree lock protege metadados contra poda e remoção; não funciona como mutex de edição dos arquivos. Serviços, portas, bancos e outputs fora da árvore ainda exigem isolamento específico para execução paralela.",
+  "boundary_condition": "Dois worktrees podem executar testes que escrevem no mesmo banco ou diretório externo e interferir apesar de seus arquivos de checkout estarem separados.",
+  "implementation_contract": {
+    "inputs": "Revisão-base, caminho da árvore, branch ou HEAD destacado e recursos externos.",
+    "outputs": "Árvore identificada e contrato de integração do resultado.",
+    "state": "HEAD, índice, refs compartilhadas e recursos alocados por tarefa.",
+    "invariant": "Isolamento de checkout não é anunciado como isolamento completo de processos ou efeitos."
+  },
+  "tradeoffs": [
+    "Compartilhar objetos economiza armazenamento e mantém acoplamento administrativo do repositório.",
+    "Separar árvores facilita paralelismo e exige limpeza e integração das revisões produzidas."
+  ],
+  "failure_test": "Teste proposto: executar dois jobs em worktrees distintos usando o mesmo arquivo de saída externo; exigir detecção da colisão e atribuição de destinos separados.",
+  "evaluation_plan": "Comparar branches na mesma árvore e worktrees separados em alterações concorrentes. Medir conflitos de checkout, interferência de testes e custo de integração. Conferir também recursos externos, sem limitar a avaliação ao diff dos arquivos.",
+  "comparisons": [
+    {
+      "entry_id": "T169",
+      "relation": "complements",
+      "reason": "Agentes com contextos separados podem usar worktrees para também separar árvores de edição."
+    },
+    {
+      "entry_id": "T236",
+      "relation": "complements",
+      "reason": "Commits identificam entregas que depois precisam ser integradas explicitamente."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Git documenta HEAD e índice por worktree, refs compartilhadas e lock voltado à proteção administrativa.",
+    "source_ids": [
+      "V2A-S019"
+    ],
+    "support": "direct",
+    "caveat": "O mecanismo não fornece exclusão mútua geral para escrita nem isola dependências externas."
+  },
+  "advanced_qa": [
+    {
+      "question": "worktree lock impede outro agente de editar arquivos?",
+      "answer": "Não. Seu propósito documentado é proteger a árvore administrativa contra certas operações de limpeza, movimento ou remoção."
+    },
+    {
+      "question": "Um teste em outro worktree pode alterar meu ambiente?",
+      "answer": "Sim, se usar recursos compartilhados fora do checkout, como banco, porta, cache ou diretório de build."
+    }
+  ],
+  "source_ids": [
+    "V2A-S019",
+    "V3C-S037"
+  ],
+  "research_note": "Contratos, cenários de falha e planos de avaliação são propostas editoriais fundamentadas nas fontes indicadas."
+}

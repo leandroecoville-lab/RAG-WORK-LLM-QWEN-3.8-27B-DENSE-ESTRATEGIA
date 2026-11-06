@@ -1,0 +1,52 @@
+{
+  "id": "T214",
+  "technical_details": "Podar uma saída exige preservar sinais que determinam sua interpretação: código de retorno, alcance da consulta, paginação, truncamento e contexto do erro. Selecionar apenas linhas com sucesso pode transformar falha parcial em aparente conclusão. Uma proposta mantém um cabeçalho de proveniência e uma referência ao original, separando fatos extraídos de texto omitido. A extração deve ocorrer por unidades semânticas, como registro ou traceback completo.",
+  "boundary_condition": "Se a informação necessária não pode ser reconhecida por regras confiáveis, poda agressiva pode custar mais em releituras que o contexto economizado.",
+  "implementation_contract": {
+    "inputs": "Saída original, metadados de execução, objetivo da leitura e orçamento.",
+    "outputs": "Trechos selecionados, indicadores de completude e referência ao original.",
+    "state": "Hash ou versão, regra de seleção e intervalos omitidos.",
+    "invariant": "A poda não altera sucesso, falha ou alcance sem registrar essa mudança de representação."
+  },
+  "tradeoffs": [
+    "Filtros determinísticos são baratos e podem perder exceções inesperadas.",
+    "Síntese por modelo capta significado e introduz custo e risco de inferência indevida."
+  ],
+  "failure_test": "Teste proposto: colocar a única falha no meio de milhares de linhas de sucesso e ocultar a última página; exigir preservação da falha e indicação de incompletude.",
+  "evaluation_plan": "Comparar saída integral, filtros por campos e seleção semântica em logs rotulados. Medir tokens, falhas relevantes preservadas e releituras necessárias. Aprovar redução somente se mantiver os sinais exigidos pela decisão posterior.",
+  "comparisons": [
+    {
+      "entry_id": "T215",
+      "relation": "distinct_from",
+      "reason": "Masking substitui observações antigas; pruning pode selecionar dentro de uma observação atual."
+    },
+    {
+      "entry_id": "T238",
+      "relation": "complements",
+      "reason": "Referências por faixa permitem recuperar detalhes omitidos quando necessário."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O estudo de observation masking identifica saídas de ferramentas como parte importante do crescimento de contexto de agentes de software.",
+    "source_ids": [
+      "V2A-S003"
+    ],
+    "support": "related",
+    "caveat": "A fonte motiva reduzir observações; o contrato de poda seletiva e seus filtros são proposta editorial."
+  },
+  "advanced_qa": [
+    {
+      "question": "Posso guardar só a última linha do comando?",
+      "answer": "Somente se ela representar o resultado necessário; muitos comandos produzem avisos ou falhas relevantes antes dela."
+    },
+    {
+      "question": "Como diferenciar ausência de erro e erro removido?",
+      "answer": "Preservar metadados de completude e critérios de seleção, além de acesso à saída original."
+    }
+  ],
+  "source_ids": [
+    "V2A-S003",
+    "V3C-S031"
+  ],
+  "research_note": "Fontes primárias reabertas nesta pesquisa; contratos, cenários de falha e avaliação são propostas editoriais."
+}

@@ -1,0 +1,52 @@
+{
+  "id": "T134",
+  "technical_details": "Um classificador semântico precisa distinguir intenção e elegibilidade operacional. Duas consultas quase iguais podem exigir ferramentas diferentes quando muda o tipo de entidade ou o escopo. Em uma proposta baseada em vetores, a distância ao protótipo e a margem entre as duas melhores classes oferecem sinais diferentes: a primeira detecta afastamento geral; a segunda revela ambiguidade entre destinos conhecidos. Nenhum desses sinais resolve sozinho pedidos com múltiplas intenções.",
+  "boundary_condition": "Quando todas as classes estão distantes ou o pedido combina ações incompatíveis, forçar a classe mais próxima produz encaminhamento artificial.",
+  "implementation_contract": {
+    "inputs": "Texto, catálogo de rotas, exemplos representativos e restrições da tarefa.",
+    "outputs": "Classe ou conjunto de classes, evidências de seleção e estado de ambiguidade.",
+    "state": "Versão do encoder, protótipos, rótulos e limiares por classe.",
+    "invariant": "Um destino semanticamente parecido continua sujeito aos requisitos de capacidade."
+  },
+  "tradeoffs": [
+    "Mais protótipos capturam variedade, mas aumentam manutenção e oportunidades de sobreposição.",
+    "Uma rota de revisão para casos ambíguos acrescenta latência e reduz encaminhamento indevido."
+  ],
+  "failure_test": "Teste proposto: criar pares que diferem somente no escopo, além de pedidos fora do catálogo; exigir distinção do primeiro grupo e ambiguidade explícita no segundo.",
+  "evaluation_plan": "Comparar regras lexicais, embeddings e classificação por modelo em exemplos separados por intenção e período. Medir matriz de confusão, cobertura e erros entre rotas incompatíveis. Ajustar limiares em validação e preservar teste final sem reutilização.",
+  "comparisons": [
+    {
+      "entry_id": "T133",
+      "relation": "distinct_from",
+      "reason": "Escolher domínio ou workflow por significado não estima automaticamente qual modelo resolverá melhor."
+    },
+    {
+      "entry_id": "T148",
+      "relation": "complements",
+      "reason": "O rótulo validado pode alimentar uma condição do grafo."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "RouteLLM demonstra que decisões de roteamento e seus limiares dependem das consultas utilizadas na calibração.",
+    "source_ids": [
+      "V3C-S001"
+    ],
+    "support": "related",
+    "caveat": "A fonte apoia o princípio de calibração; protótipos, margens e abstinência nesta ficha são proposta de arquitetura semântica."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma margem alta prova que a rota está correta?",
+      "answer": "Não. Um pedido fora do domínio pode ficar relativamente mais perto de uma classe errada que das demais."
+    },
+    {
+      "question": "Como representar duas intenções legítimas?",
+      "answer": "Decompor o pedido ou produzir um conjunto de destinos com dependências explícitas, sem esconder a segunda intenção em uma classe única."
+    }
+  ],
+  "source_ids": [
+    "V3C-S001",
+    "V3C-S006"
+  ],
+  "research_note": "Contratos, testes e critérios são propostas editoriais; as fontes sustentam os mecanismos indicados."
+}

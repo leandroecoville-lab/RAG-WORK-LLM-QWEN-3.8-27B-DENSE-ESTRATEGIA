@@ -1,0 +1,6 @@
+flowchart TD
+    T075["T075 Memory Reconciliation"]
+    T243["T243 Reconciliação de operações externas"]
+    T075 -. "requires: proposta" .-> T243
+    T056["T056 Bitemporal Memory"]
+    T075 -. "complements: proposta" .-> T056

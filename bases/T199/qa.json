@@ -1,0 +1,18 @@
+[
+  {
+    "question": "É sinônimo de reinforcement learning?",
+    "answer": "Não. Pode haver melhoria sem gradiente, como memória e revisão de procedimento."
+  },
+  {
+    "question": "Avaliar sozinho faz aprender?",
+    "answer": "Não. É preciso uma alteração concreta e provar seu efeito posterior."
+  },
+  {
+    "question": "Salvar resultados já é aprender?",
+    "answer": "É registrar evidência; falta uma regra que altere comportamento persistente e uma avaliação dessa alteração."
+  },
+  {
+    "question": "Por que separar validação e teste final?",
+    "answer": "Escolher repetidamente com a validação adapta decisões a ela; uma reserva independente estima melhor o desempenho após essa seleção."
+  }
+]

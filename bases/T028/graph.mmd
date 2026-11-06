@@ -1,0 +1,6 @@
+flowchart TD
+    T028["T028 Reranking"]
+    T027["T027 Hybrid Retrieval — BM25 + vetores"]
+    T028 -. "requires: proposta" .-> T027
+    T037["T037 Query-Aware Compression"]
+    T028 -. "feeds: proposta" .-> T037

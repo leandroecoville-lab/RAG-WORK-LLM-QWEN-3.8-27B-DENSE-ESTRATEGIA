@@ -1,0 +1,53 @@
+{
+  "id": "R026",
+  "technical_details": "Guidance combina fluxo de programa e geração controlada, com capacidades que variam conforme o backend. A documentação de JSON explicita limitações de suporte a recursos do schema; não se deve presumir equivalência integral entre uma restrição declarada e a validação completa do objeto. O contrato da aplicação precisa verificar a saída terminada, inclusive regras que o mecanismo de geração não consegue impor naquele provedor.",
+  "boundary_condition": "Um programa que funciona com controle local de logits pode não ter as mesmas capacidades numa API remota. Compatibilidade deve ser testada no backend realmente selecionado.",
+  "implementation_contract": {
+    "inputs": "Programa Guidance, backend, modelo, schema ou escolhas permitidas e limite de geração.",
+    "outputs": "Capturas nomeadas, texto produzido, estado final e resultado de validação posterior do objeto completo.",
+    "state": "Modelo e configuração de execução, progresso das capturas e artefatos necessários ao programa.",
+    "invariant": "Uma captura parcial ou uma restrição não suportada não pode ser promovida silenciosamente a resultado validado."
+  },
+  "tradeoffs": [
+    "Controle programático torna o formato mais previsível, mas adiciona acoplamento às capacidades do provedor.",
+    "Validar novamente custa trabalho, porém detecta lacunas de schema e regras de negócio que a geração não cobre."
+  ],
+  "failure_test": "Proposta: exigir uma restrição de schema fora do subconjunto suportado e interromper outra geração no limite; confirmar que ambos os casos recebem diagnóstico explícito antes de qualquer consumo transacional.",
+  "evaluation_plan": "Fixar modelo, backend e tarefas. Comparar geração livre, Guidance e restrição nativa do servidor quanto a validade completa, semântica, tempo e custo. Incluir casos numéricos, objetos aninhados e truncamento, sem considerar apenas exemplos que terminam corretamente.",
+  "comparisons": [
+    {
+      "entry_id": "T196",
+      "relation": "complements",
+      "reason": "Pode utilizar restrições de geração conforme o backend."
+    },
+    {
+      "entry_id": "R025",
+      "relation": "alternative",
+      "reason": "São ferramentas distintas; comparar capacidade concreta, não apenas o objetivo de estruturação."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação Guidance informa diferenças entre backends e limitações de suporte a JSON Schema.",
+    "source_ids": [
+      "V3D-S014",
+      "V3D-S015"
+    ],
+    "support": "direct",
+    "caveat": "As limitações são dependentes da versão; valide o subconjunto necessário ao aplicativo."
+  },
+  "advanced_qa": [
+    {
+      "question": "Se o programa aceitou o schema, todas as regras foram garantidas?",
+      "answer": "Não presuma isso; confira suporte documentado e valide o objeto final com o contrato da aplicação."
+    },
+    {
+      "question": "Como tratar uma captura interrompida?",
+      "answer": "Preserve o estado de incompletude, descarte uso operacional e decida entre retry limitado ou erro explícito."
+    }
+  ],
+  "source_ids": [
+    "V3D-S014",
+    "V3D-S015"
+  ],
+  "research_note": "Contrato, teste de falha e plano de avaliação são recomendações editoriais; nenhuma implantação ou medição deste mecanismo foi executada neste pacote."
+}

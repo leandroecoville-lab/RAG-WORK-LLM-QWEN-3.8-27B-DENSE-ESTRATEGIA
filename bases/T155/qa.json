@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Prompt menor significa tarefa mais barata?",
+    "answer": "Não necessariamente. Pode aumentar erros, retries ou saída. Meça custo completo por tarefa concluída corretamente."
+  },
+  {
+    "question": "Quais instruções podem sair do núcleo fixo?",
+    "answer": "Conteúdo de domínio carregável sob demanda. Regras indispensáveis à interpretação e execução devem permanecer disponíveis no ponto em que se aplicam."
+  },
+  {
+    "question": "Otimização sem treino pode sobreajustar?",
+    "answer": "Sim. A seleção repetida de candidatos pode explorar particularidades do conjunto de validação, mesmo com pesos congelados."
+  },
+  {
+    "question": "Como saber se otimizar compensou financeiramente?",
+    "answer": "Somar custo da busca e medir economia por chamada aceita, estimando quantas chamadas reais amortizam a preparação."
+  }
+]

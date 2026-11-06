@@ -1,0 +1,52 @@
+{
+  "id": "T153",
+  "technical_details": "Interromper uma resposta incremental exige tratar a corrida entre último fragmento, fechamento e confirmação do cancelamento. A interface pode parar de exibir dados antes de o servidor liberar a geração. Fragmentos já recebidos também podem terminar no meio de UTF-8, de uma estrutura JSON ou de um argumento de ferramenta; a reconstrução deve usar o protocolo de framing e não presumir que cada pacote seja uma unidade semântica.",
+  "boundary_condition": "Se o backend não oferece cancelamento verificável, o cliente pode interromper consumo sem comprovar economia imediata de computação.",
+  "implementation_contract": {
+    "inputs": "Stream identificado, eventos ordenados e sinal de interrupção.",
+    "outputs": "Conteúdo confirmado, estado parcial e confirmação ou incerteza de cancelamento.",
+    "state": "Última sequência recebida, buffers e estado de fechamento.",
+    "invariant": "Fragmento parcial não é promovido a ação executável sem validação completa."
+  },
+  "tradeoffs": [
+    "Exibir cedo melhora percepção de resposta e expõe conteúdo ainda passível de revisão.",
+    "Bufferizar até unidade válida aumenta atraso inicial e facilita consumidores estruturados."
+  ],
+  "failure_test": "Teste proposto: interromper durante um argumento JSON e fazer o evento final chegar após o pedido de cancelamento; exigir classificação consistente e ausência de execução do argumento incompleto.",
+  "evaluation_plan": "Comparar entrega integral e streaming sob interrupções em vários pontos. Medir tempo até conteúdo útil, trabalho após cancelamento e consistência da saída parcial. Distinguir economia observada do servidor e simples redução de exibição.",
+  "comparisons": [
+    {
+      "entry_id": "T172",
+      "relation": "complements",
+      "reason": "O controlador administra buffers, framing e estados do stream."
+    },
+    {
+      "entry_id": "T089",
+      "relation": "distinct_from",
+      "reason": "Término por EOS ou limite é decisão de geração; interrupção do consumidor é outro evento."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "MCP documenta que notificações de cancelamento podem chegar após a conclusão da requisição.",
+    "source_ids": [
+      "V3C-S005"
+    ],
+    "support": "related",
+    "caveat": "A mesma corrida orienta o projeto de streaming, mas o transporte e a geração podem ter contratos adicionais."
+  },
+  "advanced_qa": [
+    {
+      "question": "Fechar a aba prova que a geração foi cancelada?",
+      "answer": "Não. O sinal pode não chegar ao backend; confirmação ou observabilidade do servidor é necessária para afirmar isso."
+    },
+    {
+      "question": "Posso aproveitar texto parcial após interrupção?",
+      "answer": "Sim, se for identificado como parcial e não usado como estrutura completa ou confirmação de uma ação."
+    }
+  ],
+  "source_ids": [
+    "V3C-S005",
+    "V3C-S019"
+  ],
+  "research_note": "Detalhamento e avaliação propostos; a fonte apoia o mecanismo, sem comprovar implementação LAI."
+}

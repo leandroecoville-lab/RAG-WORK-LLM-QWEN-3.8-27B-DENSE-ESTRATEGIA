@@ -1,0 +1,119 @@
+{
+  "id": "R014",
+  "novelty": "A v3 registrou R014 como alias de R013. Aqui a novidade é controlar esse alias no catálogo e evitar duplicação de memória, métricas e casos.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Mantenha uma identidade canônica para MemFS/Context Repositories no escopo editorial adotado. Consultas pelos dois nomes devem chegar à mesma implementação e às mesmas versões.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Apresente diferenças de terminologia como metadados, sem criar um segundo pipeline de memória. Duplicar catálogos pelo alias pode gerar duas cópias divergentes da mesma regra.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare resolução com e sem normalização de alias. Meça resultados duplicados, referências inconsistentes e contagem inflada de casos; nomes distintos não demonstram implantações independentes. Unidade de avaliação: alias de componente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Migração de documentação",
+      "scenario": "Equipe usa nomes diferentes para a mesma família.",
+      "strategy": "Resolver nomes antigos para identidade canônica, preservar histórico e exibir fonte que fixa escopo. Não alterar conteúdo só para adequar rótulo.",
+      "small_model_role": "3–7B normaliza termos.",
+      "acceptance": "Consulta por qualquer alias deve retornar mesma revisão elegível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ]
+    },
+    {
+      "name": "Grafo de combinações",
+      "scenario": "Catálogo precisa mostrar relações entre técnicas.",
+      "strategy": "Colapsar alias antes de calcular cobertura e impedir aresta que sugira composição entre cópias do mesmo componente.",
+      "small_model_role": "8–14B explica equivalência editorial.",
+      "acceptance": "Não contar R013 e R014 como dois casos ou duas camadas técnicas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Resolvedor de nomes para IDs canônicos em vocabulário fechado.",
+    "8_14b": "Leitor que explica diferenças de nomenclatura sem inventar capacidades.",
+    "15_30b": "Revisor de migrações de catálogo com versões históricas e escopos diferentes.",
+    "training_or_runtime_requirements": "Tabela de aliases e escopo editorial explícito; revisar se documentação futura passar a distinguir produtos materialmente.",
+    "do_not_use_when": "Fonte nova indicar produtos diferentes e o catálogo insistir em colapsá-los sem revisão."
+  },
+  "connections": [
+    {
+      "target_id": "R013",
+      "relation": "alternative",
+      "how": "Resolver este nome para a ficha canônica, sem etapa adicional.",
+      "interface": "canonical_id=R013, alias e revisão do catálogo.",
+      "condition": "Escopo continuar equivalente ao adotado na base.",
+      "acceptance": "Consultar ambos os nomes e comparar identidade e fontes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T066",
+      "relation": "requires",
+      "how": "Normalizar nome antes de abrir memória correspondente.",
+      "interface": "Alias, identidade canônica e versão.",
+      "condition": "Resolver preservar histórico de renomeação.",
+      "acceptance": "Detectar alias apontando para objeto diferente sem evidência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não usar dois rótulos para inflar meta de produção.",
+    "Não atribuir a nome editorial capacidades ausentes das fontes."
+  ],
+  "frontier_comparison": "Comparar consistência de resolução e clareza do catálogo; alias não altera capacidade de modelo nem qualidade de memória.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S010",
+    "V2B-S003",
+    "V3A-S046"
+  ]
+}

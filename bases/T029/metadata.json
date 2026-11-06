@@ -1,0 +1,30 @@
+{
+  "id": "T029",
+  "name": "GraphRAG",
+  "canonical_name": "GraphRAG",
+  "canonical_id": "T029",
+  "aliases": [
+    "graph-based RAG",
+    "RAG com grafos"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T009",
+    "T051",
+    "T077"
+  ],
+  "source_ids": [
+    "A-S024",
+    "V3A-S023",
+    "V3A-S024",
+    "V4A-S024"
+  ],
+  "namespace": "T029",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T029",
+  "chunk_count": 9
+}

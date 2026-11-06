@@ -1,0 +1,135 @@
+{
+  "id": "P005",
+  "novelty": "A v3 separou políticas de contexto e memória. Aqui Context & Memory Controller é proposto com regras de precedência e filas de decisões revisáveis.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Defina precedência entre elegibilidade, validade, utilidade e custo. Informação muito relevante mas revogada não deve vencer seleção; relevância não amplia permissão nem confirma verdade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V3A-S032",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Separe caminho rápido de leitura e caminho de manutenção. Promoção, reconciliação e consolidação podem ter fila própria, evitando que cada pergunta reavalie todo o acervo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V3A-S032",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare controlador único irrestrito e políticas tipadas com decisões registradas. Meça promoção indevida, bloqueios desnecessários e custo por consulta; centralização lógica não exige processo monolítico. Unidade de avaliação: decisão de política.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V3A-S032",
+        "V4A-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Memória com correções",
+      "scenario": "Nova evidência contradiz regra ativa.",
+      "strategy": "Suspender uso da regra afetada, preservar evidência e enviar reconciliação à fila prioritária; liberar somente após decisão explícita.",
+      "small_model_role": "8–14B propõe reconciliação.",
+      "acceptance": "Nenhuma projeção pode continuar aplicando regra suspensa como vigente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V3A-S032",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Carga alta de observações",
+      "scenario": "Nem tudo merece memória durável.",
+      "strategy": "Admitir observações em camada temporária, consolidar por tipo e promover somente candidatos úteis e sustentados.",
+      "small_model_role": "3–7B classifica; 15–30B integra.",
+      "acceptance": "Taxa de fatos sem origem promovidos deve ser medida e bloqueada pelo critério local.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V3A-S032",
+        "V4A-S002"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Classificador de tipo e elegibilidade básica com regras externas.",
+    "8_14b": "Revisor de suporte e conflitos locais antes de atualização.",
+    "15_30b": "Planejador de manutenção complexa entre conjuntos de memória.",
+    "training_or_runtime_requirements": "Tabela de políticas, estados de decisão e trilha de motivos; nomes e fronteiras do controlador são proposta editorial.",
+    "do_not_use_when": "O controlador pode escrever irrestritamente ou a política mistura autorização e relevância numa pontuação única."
+  },
+  "connections": [
+    {
+      "target_id": "T071",
+      "relation": "requires",
+      "how": "Aplicar promoção por tipo de candidato.",
+      "interface": "Fonte, tipo, escopo e critério de aceite.",
+      "condition": "Evidência satisfizer critério específico.",
+      "acceptance": "Propor hipótese como fato e exigir rejeição identificável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V3A-S032",
+        "V4A-S002"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "P004",
+      "relation": "feeds",
+      "how": "Emitir comandos de memória com pré-condições.",
+      "interface": "Comando, revisão-base e decisão de política.",
+      "condition": "Runtime validar conflito antes de confirmar.",
+      "acceptance": "Mudar estado durante decisão e impedir sobrescrita.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V3A-S032",
+        "V4A-S002"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "P001",
+      "relation": "feeds",
+      "how": "Informar quais evidências são elegíveis.",
+      "interface": "IDs, validade, prioridade e motivos de exclusão.",
+      "condition": "Builder não reintroduzir conteúdo suspenso.",
+      "acceptance": "Recuperar fato revogado com score alto e impedir inclusão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V3A-S032",
+        "V4A-S002"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não tratar ausência no resumo como revogação.",
+    "Não promover saída fluente sem origem verificável."
+  ],
+  "frontier_comparison": "Comparar qualidade das decisões de admissão e correção; política bem definida reduz erro acumulado, sem garantir raciocínio de fronteira.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S006",
+    "V3A-S032",
+    "V4A-S002"
+  ]
+}

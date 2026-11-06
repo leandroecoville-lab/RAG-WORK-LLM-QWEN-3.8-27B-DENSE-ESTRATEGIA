@@ -1,0 +1,18 @@
+[
+  {
+    "question": "N=20 significa vinte trocas completas?",
+    "answer": "Só se o runtime definiu assim. É necessário distinguir mensagens individuais e turnos."
+  },
+  {
+    "question": "É melhor aumentar N sempre?",
+    "answer": "Não. Isso aumenta custo e pode adicionar ruído; a escolha deve seguir avaliação de qualidade e orçamento."
+  },
+  {
+    "question": "Reexecutar o corte deve produzir o mesmo resultado?",
+    "answer": "Sim, se histórico, N e regras forem iguais. Novas mensagens ou mudanças de agrupamento devem explicar qualquer diferença."
+  },
+  {
+    "question": "Como detectar exclusão persistente acidental?",
+    "answer": "Compare o histórico armazenado antes e depois da montagem. Uma política de apresentação não deveria apagar eventos sem contrato explícito."
+  }
+]

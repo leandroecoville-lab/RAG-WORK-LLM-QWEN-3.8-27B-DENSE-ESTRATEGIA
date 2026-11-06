@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Todo Qwen usa o mesmo template e modo de raciocínio?",
+    "answer": "Não. Esses detalhes variam entre gerações e variantes e devem ser conferidos na documentação do checkpoint."
+  },
+  {
+    "question": "Esta ficha confirma que o modelo cabe na GPU local?",
+    "answer": "Não. Isso exige identificar pesos, formato, backend, contexto, concorrência e memória efetivamente disponível."
+  },
+  {
+    "question": "Um modelo com poucos parâmetros ativos cabe como um denso desse tamanho?",
+    "answer": "Não necessariamente. Os pesos totais, KV e buffers também ocupam memória."
+  },
+  {
+    "question": "Que informação falta para escolher a execução?",
+    "answer": "Checkpoint e revisão exatos, hardware, contexto, concorrência e tarefa; o nome da família é insuficiente."
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "id": "R004",
+  "name": "Generative Agents",
+  "canonical_name": "Generative Agents: Interactive Simulacra of Human Behavior",
+  "canonical_id": "R004",
+  "aliases": [
+    "agentes generativos",
+    "memory stream",
+    "reflexão episódica"
+  ],
+  "category": "referencias",
+  "kind": "paper",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "T049",
+    "T054",
+    "T058",
+    "T071"
+  ],
+  "source_ids": [
+    "A-S008"
+  ],
+  "namespace": "R004",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R004",
+  "chunk_count": 9
+}

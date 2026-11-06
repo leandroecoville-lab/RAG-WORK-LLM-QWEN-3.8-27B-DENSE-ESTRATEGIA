@@ -1,0 +1,1938 @@
+{
+  "from_version": "1.0.0",
+  "to_version": "2.0.0",
+  "curated_on": "2026-11-05",
+  "previous_package_sha256": "0f2247beab15163b086823ceada195c542d5015d6b2bd5bb543f86e8042ea851",
+  "previous_entries": 218,
+  "current_entries": 287,
+  "current_entries_by_scope": {
+    "inventario": 243,
+    "referencia": 27,
+    "proposta": 17
+  },
+  "preserved_ids": [
+    "T001",
+    "T002",
+    "T003",
+    "T004",
+    "T005",
+    "T006",
+    "T007",
+    "T008",
+    "T009",
+    "T010",
+    "T011",
+    "T012",
+    "T013",
+    "T014",
+    "T015",
+    "T016",
+    "T017",
+    "T018",
+    "T019",
+    "T020",
+    "T021",
+    "T022",
+    "T023",
+    "T024",
+    "T025",
+    "T026",
+    "T027",
+    "T028",
+    "T029",
+    "T030",
+    "T031",
+    "T032",
+    "T033",
+    "T034",
+    "T035",
+    "T036",
+    "T037",
+    "T038",
+    "T039",
+    "T040",
+    "T041",
+    "T042",
+    "T043",
+    "T044",
+    "T045",
+    "T046",
+    "T047",
+    "T048",
+    "T049",
+    "T050",
+    "T051",
+    "T052",
+    "T053",
+    "T054",
+    "T055",
+    "T056",
+    "T057",
+    "T058",
+    "T059",
+    "T060",
+    "T061",
+    "T062",
+    "T063",
+    "T064",
+    "T065",
+    "T066",
+    "T067",
+    "T068",
+    "T069",
+    "T070",
+    "T071",
+    "T072",
+    "T073",
+    "T074",
+    "T075",
+    "T076",
+    "T077",
+    "T078",
+    "T079",
+    "T080",
+    "T081",
+    "T082",
+    "T083",
+    "T084",
+    "T085",
+    "T086",
+    "T087",
+    "T088",
+    "T089",
+    "T090",
+    "T091",
+    "T092",
+    "T093",
+    "T094",
+    "T095",
+    "T096",
+    "T097",
+    "T098",
+    "T099",
+    "T100",
+    "T101",
+    "T102",
+    "T103",
+    "T104",
+    "T105",
+    "T106",
+    "T107",
+    "T108",
+    "T109",
+    "T110",
+    "T111",
+    "T112",
+    "T113",
+    "T114",
+    "T115",
+    "T116",
+    "T117",
+    "T118",
+    "T119",
+    "T120",
+    "T121",
+    "T122",
+    "T123",
+    "T124",
+    "T125",
+    "T126",
+    "T127",
+    "T128",
+    "T129",
+    "T130",
+    "T131",
+    "T132",
+    "T133",
+    "T134",
+    "T135",
+    "T136",
+    "T137",
+    "T138",
+    "T139",
+    "T140",
+    "T141",
+    "T142",
+    "T143",
+    "T144",
+    "T145",
+    "T146",
+    "T147",
+    "T148",
+    "T149",
+    "T150",
+    "T151",
+    "T152",
+    "T153",
+    "T154",
+    "T155",
+    "T156",
+    "T157",
+    "T158",
+    "T159",
+    "T160",
+    "T161",
+    "T162",
+    "T163",
+    "T164",
+    "T165",
+    "T166",
+    "T167",
+    "T168",
+    "T169",
+    "T170",
+    "T171",
+    "T172",
+    "T173",
+    "T174",
+    "T175",
+    "T176",
+    "T177",
+    "T178",
+    "T179",
+    "T180",
+    "T181",
+    "T182",
+    "T183",
+    "T184",
+    "T185",
+    "T186",
+    "T187",
+    "T188",
+    "T189",
+    "T190",
+    "T191",
+    "T192",
+    "T193",
+    "T194",
+    "T195",
+    "T196",
+    "T197",
+    "T198",
+    "T199",
+    "T200",
+    "T201",
+    "T202",
+    "T203",
+    "T204",
+    "T205",
+    "T206",
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R005",
+    "R006",
+    "R007",
+    "R008",
+    "R009",
+    "R010",
+    "R011",
+    "R012"
+  ],
+  "new_ids": [
+    "T207",
+    "T208",
+    "T209",
+    "T210",
+    "T211",
+    "T212",
+    "T213",
+    "T214",
+    "T215",
+    "T216",
+    "T217",
+    "T218",
+    "T219",
+    "T220",
+    "T221",
+    "T222",
+    "T223",
+    "T224",
+    "T225",
+    "T226",
+    "T227",
+    "T228",
+    "T229",
+    "T230",
+    "T231",
+    "T232",
+    "T233",
+    "T234",
+    "T235",
+    "T236",
+    "T237",
+    "T238",
+    "T239",
+    "T240",
+    "T241",
+    "T242",
+    "T243",
+    "R013",
+    "R014",
+    "R015",
+    "R016",
+    "R017",
+    "R018",
+    "R019",
+    "R020",
+    "R021",
+    "R022",
+    "R023",
+    "R024",
+    "R025",
+    "R026",
+    "R027",
+    "P001",
+    "P002",
+    "P003",
+    "P004",
+    "P005",
+    "P006",
+    "P007",
+    "P008",
+    "P009",
+    "P010",
+    "P011",
+    "P012",
+    "P013",
+    "P014",
+    "P015",
+    "P016",
+    "P017"
+  ],
+  "substantive_updated_existing_ids": [
+    "R002",
+    "T003",
+    "T009",
+    "T032",
+    "T060",
+    "T069",
+    "T087",
+    "T089",
+    "T102",
+    "T106",
+    "T127",
+    "T155",
+    "T163",
+    "T165",
+    "T196"
+  ],
+  "renamed_entries": [
+    {
+      "id": "T003",
+      "previous_name": "Sliding Window de contexto",
+      "current_name": "Sliding Window de contexto — incluindo descarte FIFO"
+    },
+    {
+      "id": "T004",
+      "previous_name": "Summarization em Cadeia",
+      "current_name": "Summarization em cadeia"
+    },
+    {
+      "id": "T009",
+      "previous_name": "RAG — Retrieval-Augmented Generation",
+      "current_name": "RAG — Retrieval-Augmented Generation; incluindo RAG temporal"
+    },
+    {
+      "id": "T024",
+      "previous_name": "Context Broker / Context Builder",
+      "current_name": "Context Broker e Context Builder"
+    },
+    {
+      "id": "T027",
+      "previous_name": "Hybrid Retrieval — BM25 + Vetores",
+      "current_name": "Hybrid Retrieval — BM25 + vetores"
+    },
+    {
+      "id": "T032",
+      "previous_name": "Parent-Child Retrieval",
+      "current_name": "Parent-Child Retrieval / Parent-Child Chunking"
+    },
+    {
+      "id": "T047",
+      "previous_name": "Long-Term Memory",
+      "current_name": "Long-Term Memory — memória de longo prazo"
+    },
+    {
+      "id": "T053",
+      "previous_name": "Scratchpad em Arquivo",
+      "current_name": "Scratchpad em arquivo"
+    },
+    {
+      "id": "T060",
+      "previous_name": "Checkpointing",
+      "current_name": "Agent Checkpointing / Checkpoint & Resume — incluindo checkpoints transacionais"
+    },
+    {
+      "id": "T063",
+      "previous_name": "Virtual Context Management — MemGPT",
+      "current_name": "Virtual Context Management — memória virtual de contexto, estilo MemGPT"
+    },
+    {
+      "id": "T069",
+      "previous_name": "Context Distillation como memória resumida",
+      "current_name": "Consolidação por resumos — anteriormente chamada de “Context Distillation”"
+    },
+    {
+      "id": "T087",
+      "previous_name": "Batching",
+      "current_name": "Batching — Static Batching e Dynamic Batching"
+    },
+    {
+      "id": "T089",
+      "previous_name": "Early Stopping",
+      "current_name": "Early Stopping — EOS, stop sequences, limites e parada semântica"
+    },
+    {
+      "id": "T102",
+      "previous_name": "Disaggregated Inference / Prefill-Decode",
+      "current_name": "Disaggregated Inference / Disaggregated Prefill-Decode"
+    },
+    {
+      "id": "T103",
+      "previous_name": "Prefix Tree / Trie de Prefixos",
+      "current_name": "Prefix Tree / Trie de prefixos"
+    },
+    {
+      "id": "T106",
+      "previous_name": "GQA/MQA KV Optimization",
+      "current_name": "Otimização de KV com MQA/GQA"
+    },
+    {
+      "id": "T127",
+      "previous_name": "GGUF / formatos de quantização",
+      "current_name": "GGUF — formato de modelos, não método único de quantização"
+    },
+    {
+      "id": "T151",
+      "previous_name": "Lazy Loading de Ferramentas",
+      "current_name": "Lazy Loading de ferramentas"
+    },
+    {
+      "id": "T153",
+      "previous_name": "Output Streaming com Interrupção",
+      "current_name": "Output Streaming com interrupção"
+    },
+    {
+      "id": "T155",
+      "previous_name": "System Prompt Optimization",
+      "current_name": "System Prompt Optimization / prompt de sistema enxuto"
+    },
+    {
+      "id": "T163",
+      "previous_name": "Backoff com Jitter",
+      "current_name": "Backoff exponencial com jitter"
+    },
+    {
+      "id": "T165",
+      "previous_name": "Half-Open Circuit Breaker",
+      "current_name": "Half-open — estado do Circuit Breaker"
+    },
+    {
+      "id": "T168",
+      "previous_name": "Soft Limit / Hard Limit de Tokens",
+      "current_name": "Soft Limit / Hard Limit de tokens"
+    },
+    {
+      "id": "T169",
+      "previous_name": "Multi-Agent com Contextos Isolados",
+      "current_name": "Multi-Agent com contextos isolados"
+    },
+    {
+      "id": "T186",
+      "previous_name": "Debate entre Agentes",
+      "current_name": "Debate entre agentes"
+    },
+    {
+      "id": "T195",
+      "previous_name": "Verificação Baseada em Execução",
+      "current_name": "Verificação baseada em execução"
+    },
+    {
+      "id": "T196",
+      "previous_name": "Constrained Decoding",
+      "current_name": "Constrained Decoding / Grammar-Constrained Decoding"
+    },
+    {
+      "id": "T199",
+      "previous_name": "Aprendizagem por Avaliação",
+      "current_name": "Aprendizagem por avaliação"
+    },
+    {
+      "id": "R002",
+      "previous_name": "Letta / Letta MemFS",
+      "current_name": "Letta"
+    },
+    {
+      "id": "R012",
+      "previous_name": "Tinker Prompt Distillation",
+      "current_name": "Tinker — Prompt Distillation"
+    }
+  ],
+  "canonical_changes": [
+    {
+      "id": "T069",
+      "previous_canonical_id": "T179",
+      "current_canonical_id": "T069"
+    },
+    {
+      "id": "T106",
+      "previous_canonical_id": "T100",
+      "current_canonical_id": "T106"
+    }
+  ],
+  "paths": [
+    {
+      "id": "T001",
+      "previous_directory": "bases/T001_map-reduce",
+      "current_directory": "bases/T001"
+    },
+    {
+      "id": "T002",
+      "previous_directory": "bases/T002_prompt-caching",
+      "current_directory": "bases/T002"
+    },
+    {
+      "id": "T003",
+      "previous_directory": "bases/T003_sliding-window-de-contexto",
+      "current_directory": "bases/T003"
+    },
+    {
+      "id": "T004",
+      "previous_directory": "bases/T004_summarization-em-cadeia",
+      "current_directory": "bases/T004"
+    },
+    {
+      "id": "T005",
+      "previous_directory": "bases/T005_semantic-caching",
+      "current_directory": "bases/T005"
+    },
+    {
+      "id": "T006",
+      "previous_directory": "bases/T006_context-compression",
+      "current_directory": "bases/T006"
+    },
+    {
+      "id": "T007",
+      "previous_directory": "bases/T007_response-caching-por-hash",
+      "current_directory": "bases/T007"
+    },
+    {
+      "id": "T008",
+      "previous_directory": "bases/T008_hierarchical-summarization",
+      "current_directory": "bases/T008"
+    },
+    {
+      "id": "T009",
+      "previous_directory": "bases/T009_rag-retrieval-augmented-generation",
+      "current_directory": "bases/T009"
+    },
+    {
+      "id": "T010",
+      "previous_directory": "bases/T010_fixed-size-chunking",
+      "current_directory": "bases/T010"
+    },
+    {
+      "id": "T011",
+      "previous_directory": "bases/T011_semantic-chunking",
+      "current_directory": "bases/T011"
+    },
+    {
+      "id": "T012",
+      "previous_directory": "bases/T012_recursive-chunking",
+      "current_directory": "bases/T012"
+    },
+    {
+      "id": "T013",
+      "previous_directory": "bases/T013_long-context-models",
+      "current_directory": "bases/T013"
+    },
+    {
+      "id": "T014",
+      "previous_directory": "bases/T014_progressive-disclosure",
+      "current_directory": "bases/T014"
+    },
+    {
+      "id": "T015",
+      "previous_directory": "bases/T015_reference-passing",
+      "current_directory": "bases/T015"
+    },
+    {
+      "id": "T016",
+      "previous_directory": "bases/T016_tool-result-truncation",
+      "current_directory": "bases/T016"
+    },
+    {
+      "id": "T017",
+      "previous_directory": "bases/T017_context-folding",
+      "current_directory": "bases/T017"
+    },
+    {
+      "id": "T018",
+      "previous_directory": "bases/T018_context-pruning",
+      "current_directory": "bases/T018"
+    },
+    {
+      "id": "T019",
+      "previous_directory": "bases/T019_few-shot-pruning",
+      "current_directory": "bases/T019"
+    },
+    {
+      "id": "T020",
+      "previous_directory": "bases/T020_learned-prompt-compression",
+      "current_directory": "bases/T020"
+    },
+    {
+      "id": "T021",
+      "previous_directory": "bases/T021_context-compression-on-the-fly",
+      "current_directory": "bases/T021"
+    },
+    {
+      "id": "T022",
+      "previous_directory": "bases/T022_instruction-compression",
+      "current_directory": "bases/T022"
+    },
+    {
+      "id": "T023",
+      "previous_directory": "bases/T023_recursive-summarization-tree",
+      "current_directory": "bases/T023"
+    },
+    {
+      "id": "T024",
+      "previous_directory": "bases/T024_context-broker-context-builder",
+      "current_directory": "bases/T024"
+    },
+    {
+      "id": "T025",
+      "previous_directory": "bases/T025_adaptive-rag",
+      "current_directory": "bases/T025"
+    },
+    {
+      "id": "T026",
+      "previous_directory": "bases/T026_hierarchical-retrieval",
+      "current_directory": "bases/T026"
+    },
+    {
+      "id": "T027",
+      "previous_directory": "bases/T027_hybrid-retrieval-bm25-vetores",
+      "current_directory": "bases/T027"
+    },
+    {
+      "id": "T028",
+      "previous_directory": "bases/T028_reranking",
+      "current_directory": "bases/T028"
+    },
+    {
+      "id": "T029",
+      "previous_directory": "bases/T029_graphrag",
+      "current_directory": "bases/T029"
+    },
+    {
+      "id": "T030",
+      "previous_directory": "bases/T030_raptor",
+      "current_directory": "bases/T030"
+    },
+    {
+      "id": "T031",
+      "previous_directory": "bases/T031_semantic-cache-invalidation",
+      "current_directory": "bases/T031"
+    },
+    {
+      "id": "T032",
+      "previous_directory": "bases/T032_parent-child-retrieval",
+      "current_directory": "bases/T032"
+    },
+    {
+      "id": "T033",
+      "previous_directory": "bases/T033_structure-aware-chunking",
+      "current_directory": "bases/T033"
+    },
+    {
+      "id": "T034",
+      "previous_directory": "bases/T034_agentic-chunking",
+      "current_directory": "bases/T034"
+    },
+    {
+      "id": "T035",
+      "previous_directory": "bases/T035_contextual-chunking",
+      "current_directory": "bases/T035"
+    },
+    {
+      "id": "T036",
+      "previous_directory": "bases/T036_query-aware-rag",
+      "current_directory": "bases/T036"
+    },
+    {
+      "id": "T037",
+      "previous_directory": "bases/T037_query-aware-compression",
+      "current_directory": "bases/T037"
+    },
+    {
+      "id": "T038",
+      "previous_directory": "bases/T038_selective-context-pruning",
+      "current_directory": "bases/T038"
+    },
+    {
+      "id": "T039",
+      "previous_directory": "bases/T039_importance-aware-window",
+      "current_directory": "bases/T039"
+    },
+    {
+      "id": "T040",
+      "previous_directory": "bases/T040_state-aware-window",
+      "current_directory": "bases/T040"
+    },
+    {
+      "id": "T041",
+      "previous_directory": "bases/T041_last-n-messages-window",
+      "current_directory": "bases/T041"
+    },
+    {
+      "id": "T042",
+      "previous_directory": "bases/T042_token-based-window",
+      "current_directory": "bases/T042"
+    },
+    {
+      "id": "T043",
+      "previous_directory": "bases/T043_context-compaction",
+      "current_directory": "bases/T043"
+    },
+    {
+      "id": "T044",
+      "previous_directory": "bases/T044_progressive-context-expansion",
+      "current_directory": "bases/T044"
+    },
+    {
+      "id": "T045",
+      "previous_directory": "bases/T045_tool-retrieval",
+      "current_directory": "bases/T045"
+    },
+    {
+      "id": "T046",
+      "previous_directory": "bases/T046_dynamic-few-shot-selection",
+      "current_directory": "bases/T046"
+    },
+    {
+      "id": "T047",
+      "previous_directory": "bases/T047_long-term-memory",
+      "current_directory": "bases/T047"
+    },
+    {
+      "id": "T048",
+      "previous_directory": "bases/T048_memory-management",
+      "current_directory": "bases/T048"
+    },
+    {
+      "id": "T049",
+      "previous_directory": "bases/T049_episodic-memory",
+      "current_directory": "bases/T049"
+    },
+    {
+      "id": "T050",
+      "previous_directory": "bases/T050_working-memory-window",
+      "current_directory": "bases/T050"
+    },
+    {
+      "id": "T051",
+      "previous_directory": "bases/T051_graph-based-memory",
+      "current_directory": "bases/T051"
+    },
+    {
+      "id": "T052",
+      "previous_directory": "bases/T052_latent-context",
+      "current_directory": "bases/T052"
+    },
+    {
+      "id": "T053",
+      "previous_directory": "bases/T053_scratchpad-em-arquivo",
+      "current_directory": "bases/T053"
+    },
+    {
+      "id": "T054",
+      "previous_directory": "bases/T054_semantic-memory",
+      "current_directory": "bases/T054"
+    },
+    {
+      "id": "T055",
+      "previous_directory": "bases/T055_procedural-memory",
+      "current_directory": "bases/T055"
+    },
+    {
+      "id": "T056",
+      "previous_directory": "bases/T056_bitemporal-memory",
+      "current_directory": "bases/T056"
+    },
+    {
+      "id": "T057",
+      "previous_directory": "bases/T057_causal-memory",
+      "current_directory": "bases/T057"
+    },
+    {
+      "id": "T058",
+      "previous_directory": "bases/T058_memory-consolidation",
+      "current_directory": "bases/T058"
+    },
+    {
+      "id": "T059",
+      "previous_directory": "bases/T059_event-sourcing",
+      "current_directory": "bases/T059"
+    },
+    {
+      "id": "T060",
+      "previous_directory": "bases/T060_checkpointing",
+      "current_directory": "bases/T060"
+    },
+    {
+      "id": "T061",
+      "previous_directory": "bases/T061_content-addressable-storage",
+      "current_directory": "bases/T061"
+    },
+    {
+      "id": "T062",
+      "previous_directory": "bases/T062_hierarchical-memory",
+      "current_directory": "bases/T062"
+    },
+    {
+      "id": "T063",
+      "previous_directory": "bases/T063_virtual-context-management-memgpt",
+      "current_directory": "bases/T063"
+    },
+    {
+      "id": "T064",
+      "previous_directory": "bases/T064_persistent-agent-state",
+      "current_directory": "bases/T064"
+    },
+    {
+      "id": "T065",
+      "previous_directory": "bases/T065_transactional-state-manager",
+      "current_directory": "bases/T065"
+    },
+    {
+      "id": "T066",
+      "previous_directory": "bases/T066_memory-resolver-reference-resolver",
+      "current_directory": "bases/T066"
+    },
+    {
+      "id": "T067",
+      "previous_directory": "bases/T067_active-memory-retrieval",
+      "current_directory": "bases/T067"
+    },
+    {
+      "id": "T068",
+      "previous_directory": "bases/T068_memory-augmented-generation",
+      "current_directory": "bases/T068"
+    },
+    {
+      "id": "T069",
+      "previous_directory": "bases/T069_context-distillation-como-memoria-resumida",
+      "current_directory": "bases/T069"
+    },
+    {
+      "id": "T070",
+      "previous_directory": "bases/T070_episodic-store",
+      "current_directory": "bases/T070"
+    },
+    {
+      "id": "T071",
+      "previous_directory": "bases/T071_memory-promotion",
+      "current_directory": "bases/T071"
+    },
+    {
+      "id": "T072",
+      "previous_directory": "bases/T072_versioned-memory",
+      "current_directory": "bases/T072"
+    },
+    {
+      "id": "T073",
+      "previous_directory": "bases/T073_immutable-evidence-store",
+      "current_directory": "bases/T073"
+    },
+    {
+      "id": "T074",
+      "previous_directory": "bases/T074_memory-eviction",
+      "current_directory": "bases/T074"
+    },
+    {
+      "id": "T075",
+      "previous_directory": "bases/T075_memory-reconciliation",
+      "current_directory": "bases/T075"
+    },
+    {
+      "id": "T076",
+      "previous_directory": "bases/T076_git-backed-memory",
+      "current_directory": "bases/T076"
+    },
+    {
+      "id": "T077",
+      "previous_directory": "bases/T077_temporal-knowledge-graphs",
+      "current_directory": "bases/T077"
+    },
+    {
+      "id": "T078",
+      "previous_directory": "bases/T078_semantic-page-fault",
+      "current_directory": "bases/T078"
+    },
+    {
+      "id": "T079",
+      "previous_directory": "bases/T079_speculative-decoding",
+      "current_directory": "bases/T079"
+    },
+    {
+      "id": "T080",
+      "previous_directory": "bases/T080_adaptive-speculative-decoding",
+      "current_directory": "bases/T080"
+    },
+    {
+      "id": "T081",
+      "previous_directory": "bases/T081_kv-cache-reuse",
+      "current_directory": "bases/T081"
+    },
+    {
+      "id": "T082",
+      "previous_directory": "bases/T082_prefix-caching",
+      "current_directory": "bases/T082"
+    },
+    {
+      "id": "T083",
+      "previous_directory": "bases/T083_advanced-prefix-caching",
+      "current_directory": "bases/T083"
+    },
+    {
+      "id": "T084",
+      "previous_directory": "bases/T084_session-based-caching",
+      "current_directory": "bases/T084"
+    },
+    {
+      "id": "T085",
+      "previous_directory": "bases/T085_quantization",
+      "current_directory": "bases/T085"
+    },
+    {
+      "id": "T086",
+      "previous_directory": "bases/T086_quantized-kv-cache",
+      "current_directory": "bases/T086"
+    },
+    {
+      "id": "T087",
+      "previous_directory": "bases/T087_batching",
+      "current_directory": "bases/T087"
+    },
+    {
+      "id": "T088",
+      "previous_directory": "bases/T088_continuous-batching",
+      "current_directory": "bases/T088"
+    },
+    {
+      "id": "T089",
+      "previous_directory": "bases/T089_early-stopping",
+      "current_directory": "bases/T089"
+    },
+    {
+      "id": "T090",
+      "previous_directory": "bases/T090_flashattention",
+      "current_directory": "bases/T090"
+    },
+    {
+      "id": "T091",
+      "previous_directory": "bases/T091_flashattention-2",
+      "current_directory": "bases/T091"
+    },
+    {
+      "id": "T092",
+      "previous_directory": "bases/T092_flashattention-3",
+      "current_directory": "bases/T092"
+    },
+    {
+      "id": "T093",
+      "previous_directory": "bases/T093_pagedattention",
+      "current_directory": "bases/T093"
+    },
+    {
+      "id": "T094",
+      "previous_directory": "bases/T094_chunked-prefill",
+      "current_directory": "bases/T094"
+    },
+    {
+      "id": "T095",
+      "previous_directory": "bases/T095_sliding-window-attention",
+      "current_directory": "bases/T095"
+    },
+    {
+      "id": "T096",
+      "previous_directory": "bases/T096_sparse-attention",
+      "current_directory": "bases/T096"
+    },
+    {
+      "id": "T097",
+      "previous_directory": "bases/T097_block-sparse-attention",
+      "current_directory": "bases/T097"
+    },
+    {
+      "id": "T098",
+      "previous_directory": "bases/T098_memory-efficient-attention",
+      "current_directory": "bases/T098"
+    },
+    {
+      "id": "T099",
+      "previous_directory": "bases/T099_multi-query-attention-mqa",
+      "current_directory": "bases/T099"
+    },
+    {
+      "id": "T100",
+      "previous_directory": "bases/T100_grouped-query-attention-gqa",
+      "current_directory": "bases/T100"
+    },
+    {
+      "id": "T101",
+      "previous_directory": "bases/T101_ring-attention",
+      "current_directory": "bases/T101"
+    },
+    {
+      "id": "T102",
+      "previous_directory": "bases/T102_disaggregated-inference-prefill-decode",
+      "current_directory": "bases/T102"
+    },
+    {
+      "id": "T103",
+      "previous_directory": "bases/T103_prefix-tree-trie-de-prefixos",
+      "current_directory": "bases/T103"
+    },
+    {
+      "id": "T104",
+      "previous_directory": "bases/T104_radix-attention",
+      "current_directory": "bases/T104"
+    },
+    {
+      "id": "T105",
+      "previous_directory": "bases/T105_kv-cache-eviction",
+      "current_directory": "bases/T105"
+    },
+    {
+      "id": "T106",
+      "previous_directory": "bases/T106_gqa-mqa-kv-optimization",
+      "current_directory": "bases/T106"
+    },
+    {
+      "id": "T107",
+      "previous_directory": "bases/T107_roofline-analysis",
+      "current_directory": "bases/T107"
+    },
+    {
+      "id": "T108",
+      "previous_directory": "bases/T108_multi-head-attention-mha",
+      "current_directory": "bases/T108"
+    },
+    {
+      "id": "T109",
+      "previous_directory": "bases/T109_local-window-attention",
+      "current_directory": "bases/T109"
+    },
+    {
+      "id": "T110",
+      "previous_directory": "bases/T110_global-token-attention",
+      "current_directory": "bases/T110"
+    },
+    {
+      "id": "T111",
+      "previous_directory": "bases/T111_dynamic-sparse-attention",
+      "current_directory": "bases/T111"
+    },
+    {
+      "id": "T112",
+      "previous_directory": "bases/T112_retrieval-based-attention",
+      "current_directory": "bases/T112"
+    },
+    {
+      "id": "T113",
+      "previous_directory": "bases/T113_flashattention-tiling",
+      "current_directory": "bases/T113"
+    },
+    {
+      "id": "T114",
+      "previous_directory": "bases/T114_online-softmax",
+      "current_directory": "bases/T114"
+    },
+    {
+      "id": "T115",
+      "previous_directory": "bases/T115_activation-checkpointing",
+      "current_directory": "bases/T115"
+    },
+    {
+      "id": "T116",
+      "previous_directory": "bases/T116_kv-cache-recomputation",
+      "current_directory": "bases/T116"
+    },
+    {
+      "id": "T117",
+      "previous_directory": "bases/T117_context-parallelism",
+      "current_directory": "bases/T117"
+    },
+    {
+      "id": "T118",
+      "previous_directory": "bases/T118_tensor-parallelism",
+      "current_directory": "bases/T118"
+    },
+    {
+      "id": "T119",
+      "previous_directory": "bases/T119_pipeline-parallelism",
+      "current_directory": "bases/T119"
+    },
+    {
+      "id": "T120",
+      "previous_directory": "bases/T120_kv-cache-routing",
+      "current_directory": "bases/T120"
+    },
+    {
+      "id": "T121",
+      "previous_directory": "bases/T121_gpu-scheduling",
+      "current_directory": "bases/T121"
+    },
+    {
+      "id": "T122",
+      "previous_directory": "bases/T122_rdma-para-inferencia-distribuida",
+      "current_directory": "bases/T122"
+    },
+    {
+      "id": "T123",
+      "previous_directory": "bases/T123_fp8-quantization",
+      "current_directory": "bases/T123"
+    },
+    {
+      "id": "T124",
+      "previous_directory": "bases/T124_int4-w4a16-quantization",
+      "current_directory": "bases/T124"
+    },
+    {
+      "id": "T125",
+      "previous_directory": "bases/T125_gptq",
+      "current_directory": "bases/T125"
+    },
+    {
+      "id": "T126",
+      "previous_directory": "bases/T126_awq",
+      "current_directory": "bases/T126"
+    },
+    {
+      "id": "T127",
+      "previous_directory": "bases/T127_gguf-formatos-de-quantizacao",
+      "current_directory": "bases/T127"
+    },
+    {
+      "id": "T128",
+      "previous_directory": "bases/T128_eagle-eagle-3",
+      "current_directory": "bases/T128"
+    },
+    {
+      "id": "T129",
+      "previous_directory": "bases/T129_mtp-multi-token-prediction",
+      "current_directory": "bases/T129"
+    },
+    {
+      "id": "T130",
+      "previous_directory": "bases/T130_n-gram-speculative-decoding",
+      "current_directory": "bases/T130"
+    },
+    {
+      "id": "T131",
+      "previous_directory": "bases/T131_suffix-decoding",
+      "current_directory": "bases/T131"
+    },
+    {
+      "id": "T132",
+      "previous_directory": "bases/T132_draft-model-speculation",
+      "current_directory": "bases/T132"
+    },
+    {
+      "id": "T133",
+      "previous_directory": "bases/T133_model-routing",
+      "current_directory": "bases/T133"
+    },
+    {
+      "id": "T134",
+      "previous_directory": "bases/T134_semantic-routing",
+      "current_directory": "bases/T134"
+    },
+    {
+      "id": "T135",
+      "previous_directory": "bases/T135_model-cascade",
+      "current_directory": "bases/T135"
+    },
+    {
+      "id": "T136",
+      "previous_directory": "bases/T136_fallback-chains",
+      "current_directory": "bases/T136"
+    },
+    {
+      "id": "T137",
+      "previous_directory": "bases/T137_rate-limiting",
+      "current_directory": "bases/T137"
+    },
+    {
+      "id": "T138",
+      "previous_directory": "bases/T138_circuit-breaker",
+      "current_directory": "bases/T138"
+    },
+    {
+      "id": "T139",
+      "previous_directory": "bases/T139_parallel-tool-calls",
+      "current_directory": "bases/T139"
+    },
+    {
+      "id": "T140",
+      "previous_directory": "bases/T140_tool-use-function-calling",
+      "current_directory": "bases/T140"
+    },
+    {
+      "id": "T141",
+      "previous_directory": "bases/T141_structured-outputs",
+      "current_directory": "bases/T141"
+    },
+    {
+      "id": "T142",
+      "previous_directory": "bases/T142_agent-frameworks-com-planning",
+      "current_directory": "bases/T142"
+    },
+    {
+      "id": "T143",
+      "previous_directory": "bases/T143_plan-then-act",
+      "current_directory": "bases/T143"
+    },
+    {
+      "id": "T144",
+      "previous_directory": "bases/T144_react-pattern",
+      "current_directory": "bases/T144"
+    },
+    {
+      "id": "T145",
+      "previous_directory": "bases/T145_adaptive-depth",
+      "current_directory": "bases/T145"
+    },
+    {
+      "id": "T146",
+      "previous_directory": "bases/T146_adaptive-compute",
+      "current_directory": "bases/T146"
+    },
+    {
+      "id": "T147",
+      "previous_directory": "bases/T147_parallel-fan-out",
+      "current_directory": "bases/T147"
+    },
+    {
+      "id": "T148",
+      "previous_directory": "bases/T148_conditional-branching",
+      "current_directory": "bases/T148"
+    },
+    {
+      "id": "T149",
+      "previous_directory": "bases/T149_priority-queue",
+      "current_directory": "bases/T149"
+    },
+    {
+      "id": "T150",
+      "previous_directory": "bases/T150_request-coalescing-singleflight",
+      "current_directory": "bases/T150"
+    },
+    {
+      "id": "T151",
+      "previous_directory": "bases/T151_lazy-loading-de-ferramentas",
+      "current_directory": "bases/T151"
+    },
+    {
+      "id": "T152",
+      "previous_directory": "bases/T152_token-budget-allocation",
+      "current_directory": "bases/T152"
+    },
+    {
+      "id": "T153",
+      "previous_directory": "bases/T153_output-streaming-com-interrupcao",
+      "current_directory": "bases/T153"
+    },
+    {
+      "id": "T154",
+      "previous_directory": "bases/T154_multi-turn-conversation-management",
+      "current_directory": "bases/T154"
+    },
+    {
+      "id": "T155",
+      "previous_directory": "bases/T155_system-prompt-optimization",
+      "current_directory": "bases/T155"
+    },
+    {
+      "id": "T156",
+      "previous_directory": "bases/T156_temperature-tuning",
+      "current_directory": "bases/T156"
+    },
+    {
+      "id": "T157",
+      "previous_directory": "bases/T157_prefix-hashing",
+      "current_directory": "bases/T157"
+    },
+    {
+      "id": "T158",
+      "previous_directory": "bases/T158_tool-registry",
+      "current_directory": "bases/T158"
+    },
+    {
+      "id": "T159",
+      "previous_directory": "bases/T159_durable-execution",
+      "current_directory": "bases/T159"
+    },
+    {
+      "id": "T160",
+      "previous_directory": "bases/T160_dag-scheduling",
+      "current_directory": "bases/T160"
+    },
+    {
+      "id": "T161",
+      "previous_directory": "bases/T161_critical-path-analysis",
+      "current_directory": "bases/T161"
+    },
+    {
+      "id": "T162",
+      "previous_directory": "bases/T162_idempotencia",
+      "current_directory": "bases/T162"
+    },
+    {
+      "id": "T163",
+      "previous_directory": "bases/T163_backoff-com-jitter",
+      "current_directory": "bases/T163"
+    },
+    {
+      "id": "T164",
+      "previous_directory": "bases/T164_retry-after",
+      "current_directory": "bases/T164"
+    },
+    {
+      "id": "T165",
+      "previous_directory": "bases/T165_half-open-circuit-breaker",
+      "current_directory": "bases/T165"
+    },
+    {
+      "id": "T166",
+      "previous_directory": "bases/T166_queue-fairness-aging",
+      "current_directory": "bases/T166"
+    },
+    {
+      "id": "T167",
+      "previous_directory": "bases/T167_token-bucket",
+      "current_directory": "bases/T167"
+    },
+    {
+      "id": "T168",
+      "previous_directory": "bases/T168_soft-limit-hard-limit-de-tokens",
+      "current_directory": "bases/T168"
+    },
+    {
+      "id": "T169",
+      "previous_directory": "bases/T169_multi-agent-com-contextos-isolados",
+      "current_directory": "bases/T169"
+    },
+    {
+      "id": "T170",
+      "previous_directory": "bases/T170_tool-schema-versioning",
+      "current_directory": "bases/T170"
+    },
+    {
+      "id": "T171",
+      "previous_directory": "bases/T171_cache-aware-orchestration",
+      "current_directory": "bases/T171"
+    },
+    {
+      "id": "T172",
+      "previous_directory": "bases/T172_streaming-controller",
+      "current_directory": "bases/T172"
+    },
+    {
+      "id": "T173",
+      "previous_directory": "bases/T173_model-fallback-controlado",
+      "current_directory": "bases/T173"
+    },
+    {
+      "id": "T174",
+      "previous_directory": "bases/T174_priority-based-scheduling",
+      "current_directory": "bases/T174"
+    },
+    {
+      "id": "T175",
+      "previous_directory": "bases/T175_rate-limiting-com-fallback",
+      "current_directory": "bases/T175"
+    },
+    {
+      "id": "T176",
+      "previous_directory": "bases/T176_token-aware-planning",
+      "current_directory": "bases/T176"
+    },
+    {
+      "id": "T177",
+      "previous_directory": "bases/T177_fine-tuning",
+      "current_directory": "bases/T177"
+    },
+    {
+      "id": "T178",
+      "previous_directory": "bases/T178_knowledge-distillation",
+      "current_directory": "bases/T178"
+    },
+    {
+      "id": "T179",
+      "previous_directory": "bases/T179_context-distillation-parametrica",
+      "current_directory": "bases/T179"
+    },
+    {
+      "id": "T180",
+      "previous_directory": "bases/T180_prompt-distillation",
+      "current_directory": "bases/T180"
+    },
+    {
+      "id": "T181",
+      "previous_directory": "bases/T181_agent-memory-distillation",
+      "current_directory": "bases/T181"
+    },
+    {
+      "id": "T182",
+      "previous_directory": "bases/T182_lora",
+      "current_directory": "bases/T182"
+    },
+    {
+      "id": "T183",
+      "previous_directory": "bases/T183_qlora",
+      "current_directory": "bases/T183"
+    },
+    {
+      "id": "T184",
+      "previous_directory": "bases/T184_mixture-of-experts-moe",
+      "current_directory": "bases/T184"
+    },
+    {
+      "id": "T185",
+      "previous_directory": "bases/T185_constitutional-ai",
+      "current_directory": "bases/T185"
+    },
+    {
+      "id": "T186",
+      "previous_directory": "bases/T186_debate-entre-agentes",
+      "current_directory": "bases/T186"
+    },
+    {
+      "id": "T187",
+      "previous_directory": "bases/T187_ensemble-voting",
+      "current_directory": "bases/T187"
+    },
+    {
+      "id": "T188",
+      "previous_directory": "bases/T188_self-consistency",
+      "current_directory": "bases/T188"
+    },
+    {
+      "id": "T189",
+      "previous_directory": "bases/T189_best-of-n-verification",
+      "current_directory": "bases/T189"
+    },
+    {
+      "id": "T190",
+      "previous_directory": "bases/T190_verifier-loop",
+      "current_directory": "bases/T190"
+    },
+    {
+      "id": "T191",
+      "previous_directory": "bases/T191_chain-of-verification",
+      "current_directory": "bases/T191"
+    },
+    {
+      "id": "T192",
+      "previous_directory": "bases/T192_self-refine",
+      "current_directory": "bases/T192"
+    },
+    {
+      "id": "T193",
+      "previous_directory": "bases/T193_guardrails",
+      "current_directory": "bases/T193"
+    },
+    {
+      "id": "T194",
+      "previous_directory": "bases/T194_process-supervision",
+      "current_directory": "bases/T194"
+    },
+    {
+      "id": "T195",
+      "previous_directory": "bases/T195_verificacao-baseada-em-execucao",
+      "current_directory": "bases/T195"
+    },
+    {
+      "id": "T196",
+      "previous_directory": "bases/T196_constrained-decoding",
+      "current_directory": "bases/T196"
+    },
+    {
+      "id": "T197",
+      "previous_directory": "bases/T197_json-schema-validation",
+      "current_directory": "bases/T197"
+    },
+    {
+      "id": "T198",
+      "previous_directory": "bases/T198_calibrated-confidence",
+      "current_directory": "bases/T198"
+    },
+    {
+      "id": "T199",
+      "previous_directory": "bases/T199_aprendizagem-por-avaliacao",
+      "current_directory": "bases/T199"
+    },
+    {
+      "id": "T200",
+      "previous_directory": "bases/T200_independent-verification",
+      "current_directory": "bases/T200"
+    },
+    {
+      "id": "T201",
+      "previous_directory": "bases/T201_agent-test-time-scaling",
+      "current_directory": "bases/T201"
+    },
+    {
+      "id": "T202",
+      "previous_directory": "bases/T202_uncertainty-aware-planning",
+      "current_directory": "bases/T202"
+    },
+    {
+      "id": "T203",
+      "previous_directory": "bases/T203_correctness-based-routing",
+      "current_directory": "bases/T203"
+    },
+    {
+      "id": "T204",
+      "previous_directory": "bases/T204_skills-procedural-learning",
+      "current_directory": "bases/T204"
+    },
+    {
+      "id": "T205",
+      "previous_directory": "bases/T205_semantic-equivalence-testing",
+      "current_directory": "bases/T205"
+    },
+    {
+      "id": "T206",
+      "previous_directory": "bases/T206_process-verification",
+      "current_directory": "bases/T206"
+    },
+    {
+      "id": "T207",
+      "previous_directory": null,
+      "current_directory": "bases/T207"
+    },
+    {
+      "id": "T208",
+      "previous_directory": null,
+      "current_directory": "bases/T208"
+    },
+    {
+      "id": "T209",
+      "previous_directory": null,
+      "current_directory": "bases/T209"
+    },
+    {
+      "id": "T210",
+      "previous_directory": null,
+      "current_directory": "bases/T210"
+    },
+    {
+      "id": "T211",
+      "previous_directory": null,
+      "current_directory": "bases/T211"
+    },
+    {
+      "id": "T212",
+      "previous_directory": null,
+      "current_directory": "bases/T212"
+    },
+    {
+      "id": "T213",
+      "previous_directory": null,
+      "current_directory": "bases/T213"
+    },
+    {
+      "id": "T214",
+      "previous_directory": null,
+      "current_directory": "bases/T214"
+    },
+    {
+      "id": "T215",
+      "previous_directory": null,
+      "current_directory": "bases/T215"
+    },
+    {
+      "id": "T216",
+      "previous_directory": null,
+      "current_directory": "bases/T216"
+    },
+    {
+      "id": "T217",
+      "previous_directory": null,
+      "current_directory": "bases/T217"
+    },
+    {
+      "id": "T218",
+      "previous_directory": null,
+      "current_directory": "bases/T218"
+    },
+    {
+      "id": "T219",
+      "previous_directory": null,
+      "current_directory": "bases/T219"
+    },
+    {
+      "id": "T220",
+      "previous_directory": null,
+      "current_directory": "bases/T220"
+    },
+    {
+      "id": "T221",
+      "previous_directory": null,
+      "current_directory": "bases/T221"
+    },
+    {
+      "id": "T222",
+      "previous_directory": null,
+      "current_directory": "bases/T222"
+    },
+    {
+      "id": "T223",
+      "previous_directory": null,
+      "current_directory": "bases/T223"
+    },
+    {
+      "id": "T224",
+      "previous_directory": null,
+      "current_directory": "bases/T224"
+    },
+    {
+      "id": "T225",
+      "previous_directory": null,
+      "current_directory": "bases/T225"
+    },
+    {
+      "id": "T226",
+      "previous_directory": null,
+      "current_directory": "bases/T226"
+    },
+    {
+      "id": "T227",
+      "previous_directory": null,
+      "current_directory": "bases/T227"
+    },
+    {
+      "id": "T228",
+      "previous_directory": null,
+      "current_directory": "bases/T228"
+    },
+    {
+      "id": "T229",
+      "previous_directory": null,
+      "current_directory": "bases/T229"
+    },
+    {
+      "id": "T230",
+      "previous_directory": null,
+      "current_directory": "bases/T230"
+    },
+    {
+      "id": "T231",
+      "previous_directory": null,
+      "current_directory": "bases/T231"
+    },
+    {
+      "id": "T232",
+      "previous_directory": null,
+      "current_directory": "bases/T232"
+    },
+    {
+      "id": "T233",
+      "previous_directory": null,
+      "current_directory": "bases/T233"
+    },
+    {
+      "id": "T234",
+      "previous_directory": null,
+      "current_directory": "bases/T234"
+    },
+    {
+      "id": "T235",
+      "previous_directory": null,
+      "current_directory": "bases/T235"
+    },
+    {
+      "id": "T236",
+      "previous_directory": null,
+      "current_directory": "bases/T236"
+    },
+    {
+      "id": "T237",
+      "previous_directory": null,
+      "current_directory": "bases/T237"
+    },
+    {
+      "id": "T238",
+      "previous_directory": null,
+      "current_directory": "bases/T238"
+    },
+    {
+      "id": "T239",
+      "previous_directory": null,
+      "current_directory": "bases/T239"
+    },
+    {
+      "id": "T240",
+      "previous_directory": null,
+      "current_directory": "bases/T240"
+    },
+    {
+      "id": "T241",
+      "previous_directory": null,
+      "current_directory": "bases/T241"
+    },
+    {
+      "id": "T242",
+      "previous_directory": null,
+      "current_directory": "bases/T242"
+    },
+    {
+      "id": "T243",
+      "previous_directory": null,
+      "current_directory": "bases/T243"
+    },
+    {
+      "id": "R001",
+      "previous_directory": "bases/R001_memgpt",
+      "current_directory": "bases/R001"
+    },
+    {
+      "id": "R002",
+      "previous_directory": "bases/R002_letta-letta-memfs",
+      "current_directory": "bases/R002"
+    },
+    {
+      "id": "R003",
+      "previous_directory": "bases/R003_longmem",
+      "current_directory": "bases/R003"
+    },
+    {
+      "id": "R004",
+      "previous_directory": "bases/R004_generative-agents",
+      "current_directory": "bases/R004"
+    },
+    {
+      "id": "R005",
+      "previous_directory": "bases/R005_llmlingua",
+      "current_directory": "bases/R005"
+    },
+    {
+      "id": "R006",
+      "previous_directory": "bases/R006_prism",
+      "current_directory": "bases/R006"
+    },
+    {
+      "id": "R007",
+      "previous_directory": "bases/R007_sada",
+      "current_directory": "bases/R007"
+    },
+    {
+      "id": "R008",
+      "previous_directory": "bases/R008_langgraph",
+      "current_directory": "bases/R008"
+    },
+    {
+      "id": "R009",
+      "previous_directory": "bases/R009_vllm",
+      "current_directory": "bases/R009"
+    },
+    {
+      "id": "R010",
+      "previous_directory": "bases/R010_hugging-face-tgi",
+      "current_directory": "bases/R010"
+    },
+    {
+      "id": "R011",
+      "previous_directory": "bases/R011_nvidia-tensorrt-llm",
+      "current_directory": "bases/R011"
+    },
+    {
+      "id": "R012",
+      "previous_directory": "bases/R012_tinker-prompt-distillation",
+      "current_directory": "bases/R012"
+    },
+    {
+      "id": "R013",
+      "previous_directory": null,
+      "current_directory": "bases/R013"
+    },
+    {
+      "id": "R014",
+      "previous_directory": null,
+      "current_directory": "bases/R014"
+    },
+    {
+      "id": "R015",
+      "previous_directory": null,
+      "current_directory": "bases/R015"
+    },
+    {
+      "id": "R016",
+      "previous_directory": null,
+      "current_directory": "bases/R016"
+    },
+    {
+      "id": "R017",
+      "previous_directory": null,
+      "current_directory": "bases/R017"
+    },
+    {
+      "id": "R018",
+      "previous_directory": null,
+      "current_directory": "bases/R018"
+    },
+    {
+      "id": "R019",
+      "previous_directory": null,
+      "current_directory": "bases/R019"
+    },
+    {
+      "id": "R020",
+      "previous_directory": null,
+      "current_directory": "bases/R020"
+    },
+    {
+      "id": "R021",
+      "previous_directory": null,
+      "current_directory": "bases/R021"
+    },
+    {
+      "id": "R022",
+      "previous_directory": null,
+      "current_directory": "bases/R022"
+    },
+    {
+      "id": "R023",
+      "previous_directory": null,
+      "current_directory": "bases/R023"
+    },
+    {
+      "id": "R024",
+      "previous_directory": null,
+      "current_directory": "bases/R024"
+    },
+    {
+      "id": "R025",
+      "previous_directory": null,
+      "current_directory": "bases/R025"
+    },
+    {
+      "id": "R026",
+      "previous_directory": null,
+      "current_directory": "bases/R026"
+    },
+    {
+      "id": "R027",
+      "previous_directory": null,
+      "current_directory": "bases/R027"
+    },
+    {
+      "id": "P001",
+      "previous_directory": null,
+      "current_directory": "bases/P001"
+    },
+    {
+      "id": "P002",
+      "previous_directory": null,
+      "current_directory": "bases/P002"
+    },
+    {
+      "id": "P003",
+      "previous_directory": null,
+      "current_directory": "bases/P003"
+    },
+    {
+      "id": "P004",
+      "previous_directory": null,
+      "current_directory": "bases/P004"
+    },
+    {
+      "id": "P005",
+      "previous_directory": null,
+      "current_directory": "bases/P005"
+    },
+    {
+      "id": "P006",
+      "previous_directory": null,
+      "current_directory": "bases/P006"
+    },
+    {
+      "id": "P007",
+      "previous_directory": null,
+      "current_directory": "bases/P007"
+    },
+    {
+      "id": "P008",
+      "previous_directory": null,
+      "current_directory": "bases/P008"
+    },
+    {
+      "id": "P009",
+      "previous_directory": null,
+      "current_directory": "bases/P009"
+    },
+    {
+      "id": "P010",
+      "previous_directory": null,
+      "current_directory": "bases/P010"
+    },
+    {
+      "id": "P011",
+      "previous_directory": null,
+      "current_directory": "bases/P011"
+    },
+    {
+      "id": "P012",
+      "previous_directory": null,
+      "current_directory": "bases/P012"
+    },
+    {
+      "id": "P013",
+      "previous_directory": null,
+      "current_directory": "bases/P013"
+    },
+    {
+      "id": "P014",
+      "previous_directory": null,
+      "current_directory": "bases/P014"
+    },
+    {
+      "id": "P015",
+      "previous_directory": null,
+      "current_directory": "bases/P015"
+    },
+    {
+      "id": "P016",
+      "previous_directory": null,
+      "current_directory": "bases/P016"
+    },
+    {
+      "id": "P017",
+      "previous_directory": null,
+      "current_directory": "bases/P017"
+    }
+  ],
+  "ingestion": {
+    "mode": "upsert_by_chunk_id",
+    "chunks": 1148,
+    "rebuild_embeddings": true,
+    "technical_ids_preserved": "T001–T206",
+    "new_technical_ids": "T207–T243",
+    "historical_files_indexed": false,
+    "external_actions_executed": false
+  },
+  "notes": [
+    "243 entradas do inventário; 27 referências e 17 propostas estão fora dessa contagem.",
+    "T069 agora define consolidação externa por resumos. T179 continua sendo destilação paramétrica; a equivalência canônica anterior foi removida.",
+    "Nomes anteriores permanecem como aliases de busca, inclusive termos cuja correção está explicada na ficha.",
+    "R002 passa a registrar Letta; R013 detalha MemFS e R014 registra Context Repositories como alias documentado de MemFS.",
+    "Caminhos novos usam somente IDs; a migração não altera nenhum armazenamento externo."
+  ]
+}

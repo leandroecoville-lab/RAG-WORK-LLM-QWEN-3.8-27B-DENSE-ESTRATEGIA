@@ -1,0 +1,46 @@
+{
+  "id": "T089",
+  "technical_details": "Uma condição de parada precisa operar na unidade correta: EOS é um token, uma sequência textual pode atravessar fronteiras de tokens e uma restrição semântica depende do artefato produzido. Em streaming, o detector deve conservar o sufixo necessário para reconhecer padrões repartidos. A parada por orçamento encerra computação, mas não transforma um JSON parcial ou uma prova incompleta em resultado concluído.",
+  "boundary_condition": "Marcadores podem aparecer legitimamente dentro de conteúdo citado; uma regra textual cega pode interromper a tarefa cedo demais.",
+  "implementation_contract": {
+    "inputs": "Tokens decodificados, padrões de parada, orçamento e contrato de completude.",
+    "outputs": "Saída entregue, razão terminal e indicação separada de validação semântica.",
+    "state": "Sufixo de detecção, contador e estado terminal por sequência.",
+    "invariant": "Término de uma sequência não conclui outras sequências ainda ativas no lote."
+  },
+  "tradeoffs": [
+    "Bufferizar caracteres facilita detectar padrões e adiciona atraso ao streaming.",
+    "Paradas muito permissivas desperdiçam tokens; paradas agressivas podem cortar evidências necessárias."
+  ],
+  "failure_test": "Teste proposto: dividir o marcador entre chunks, usar padrões sobrepostos e atingir orçamento antes de fechar um objeto. Esperar detecção consistente e marcação explícita de truncamento no último caso.",
+  "evaluation_plan": "Plano proposto: comparar saída integral e streaming com mesmas sequências controladas. Medir detecções incorretas, tokens excedentes, atraso e completude estrutural; aprovar quando regras terminam consistentemente sem confundir limite computacional com sucesso.",
+  "comparisons": [
+    {
+      "entry_id": "T197",
+      "relation": "complements",
+      "reason": "Um validador pode rejeitar uma estrutura interrompida, mesmo quando a geração terminou normalmente no transporte."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A configuração de geração diferencia limites de novos tokens, strings de parada e early stopping de métodos com beams.",
+    "source_ids": [
+      "B-S009"
+    ],
+    "support": "direct",
+    "caveat": "Essas opções controlam geração; nenhuma constitui prova geral de que a resposta está correta."
+  },
+  "advanced_qa": [
+    {
+      "question": "EOS prova que a tarefa acabou?",
+      "answer": "Apenas indica o término escolhido pelo modelo; a aplicação ainda precisa verificar seu contrato de resultado."
+    },
+    {
+      "question": "early_stopping tem uma única semântica?",
+      "answer": "Não. Em APIs de geração, esse nome pode se referir especificamente à conclusão da busca com beams."
+    }
+  ],
+  "source_ids": [
+    "B-S009"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

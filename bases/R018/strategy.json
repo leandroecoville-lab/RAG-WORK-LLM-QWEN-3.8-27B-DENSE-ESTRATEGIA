@@ -1,0 +1,130 @@
+{
+  "id": "R018",
+  "novelty": "Avança dos timeouts para controle do crescimento do histórico, continuidade de identidade entre unidades de execução e tratamento de respostas externas tardias.",
+  "source_ids": [
+    "V3C-S018",
+    "V3C-S023",
+    "V3C-S024",
+    "V3C-S040"
+  ],
+  "deep_layers": [
+    {
+      "name": "Histórico com orçamento",
+      "detail": "Proposta: medir crescimento do histórico por etapa, especialmente em polling e loops de agente. Guardar grandes documentos em armazenamento versionado e conservar referências verificáveis no estado. Planejar fronteiras de renovação ou subdivisão sem apagar a identidade lógica da tarefa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S018",
+        "V3C-S023",
+        "V3C-S024",
+        "V3C-S040"
+      ]
+    },
+    {
+      "name": "Resultado tardio",
+      "detail": "Tratar deadline local e estado remoto separadamente. Uma Activity interrompida pode deixar trabalho externo ativo. O resultado posterior deve ser associado à operação original e conciliado com a decisão vigente, sem iniciar outra operação por interpretar silêncio como falha definitiva.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S018",
+        "V3C-S023",
+        "V3C-S024",
+        "V3C-S040"
+      ]
+    },
+    {
+      "name": "Upgrade com replay controlado",
+      "detail": "Usar históricos representativos para verificar compatibilidade antes de trocar workers. Chamadas a modelos permanecem fora da lógica determinística de workflow. A migração precisa preservar decisões já tomadas; reexecutar a LLM para preencher um resultado antigo muda o processo histórico.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S018",
+        "V3C-S023",
+        "V3C-S024",
+        "V3C-S040"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Pesquisa longa em documentos versionados",
+      "scenario": "A tarefa atravessa falhas de worker e várias consultas.",
+      "strategy": "Persistir decisões pequenas e referências imutáveis; dividir etapas por resultado verificável.",
+      "small_model_role": "Extrair evidências e redigir sínteses dentro de Activities com prazo e resultado registrado.",
+      "acceptance": "Retomar após falha entre etapas sem consultar novamente fontes já congeladas por necessidade de replay.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S018",
+        "V3C-S023",
+        "V3C-S024",
+        "V3C-S040"
+      ]
+    },
+    {
+      "name": "Operação externa com resposta ambígua",
+      "scenario": "Fornecedor responde depois do timeout da Activity.",
+      "strategy": "Conservar operation_id e consultar status antes de repetir; registrar compensação somente quando definida pelo domínio.",
+      "small_model_role": "Classificar evidência textual, sem decidir sozinho se um efeito remoto ocorreu.",
+      "acceptance": "Injetar resposta tardia e comprovar ausência de duplicação ou reconciliação explicitamente pendente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S018",
+        "V3C-S023",
+        "V3C-S024",
+        "V3C-S040"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "3–7B: ações semânticas pequenas; o workflow assume duração e persistência.",
+    "8_14b": "8–14B: microplanos com saídas tipadas e limites por Activity.",
+    "15_30b": "15–30B: reservar a interpretação mais difícil; tamanho não muda a semântica durável.",
+    "training_or_runtime_requirements": "Runtime, backend e políticas duráveis precisam de implantação própria; persistência não é aprendida pelo modelo.",
+    "do_not_use_when": "Não usar workflow determinístico como lugar para chamadas de rede ou amostragem de LLM."
+  },
+  "connections": [
+    {
+      "target_id": "T241",
+      "relation": "complements",
+      "how": "Reproduzir transições registradas sem recriar efeitos externos.",
+      "interface": "Histórico, versão de worker e decisões persistidas.",
+      "condition": "Recuperação ou upgrade exige replay.",
+      "acceptance": "Histórico suportado reproduz comandos compatíveis e não repete chamada sem necessidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S018",
+        "V3C-S023",
+        "V3C-S024",
+        "V3C-S040"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T243",
+      "relation": "complements",
+      "how": "Encaminhar estados remotos incertos ao reconciliador.",
+      "interface": "Operation_id, tentativa, prazo e observações do destino.",
+      "condition": "Timeout não resolve o resultado de negócio.",
+      "acceptance": "Cada ambiguidade recebe estado verificável antes de retry de efeito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S018",
+        "V3C-S023",
+        "V3C-S024",
+        "V3C-S040"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir Cadence com Temporal apenas pela história compartilhada.",
+    "Não confundir heartbeat recente com confirmação de efeito remoto."
+  ],
+  "frontier_comparison": "Comparar sistemas completos sob quedas e atraso de rede, incluindo tempo de recuperação e duplicações. O ganho de durabilidade não deve ser atribuído a mais parâmetros.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q002",
+      "V4C-Q022",
+      "V4C-Q025",
+      "V4C-Q029"
+    ],
+    "scope_note": "Foram pesquisados casos Temporal em Stripe/Coinbase e Cadence em Uber. Relato Cadence não foi convertido em adoção Temporal; resultados não confirmados não entram como produção exata."
+  }
+}

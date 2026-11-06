@@ -1,0 +1,53 @@
+{
+  "id": "T006",
+  "technical_details": "A função objetivo deve incluir custo do compressor, custo de leitura do resultado e perda na tarefa final. Uma representação curta que exige releituras frequentes pode custar mais que o original. Também importa definir suficiência: compressão para extração numérica exige preservar valores e condições, enquanto síntese temática pode tolerar detalhes ausentes. Não existe uma taxa que expresse todas essas perdas.",
+  "boundary_condition": "O ganho desaparece quando compressão e reconstrução superam o trabalho economizado, ou quando o consumidor não entende a representação produzida.",
+  "implementation_contract": {
+    "inputs": "Conteúdo original, classe de tarefa, orçamento e consumidor identificado.",
+    "outputs": "Representação reduzida com tipo declarado e vínculo à fonte.",
+    "state": "Versões do compressor, política de preservação e artefatos originais.",
+    "invariant": "Uma saída latente não é tratada como texto intercambiável entre modelos incompatíveis."
+  },
+  "tradeoffs": [
+    "Extração conserva palavras selecionadas, mas ainda pode remover relações e negações.",
+    "Abstração integra informações dispersas, porém acrescenta risco de afirmações geradas sem suporte."
+  ],
+  "failure_test": "Teste proposto: comprimir um conjunto com exceção rara indispensável à decisão. O consumidor deve preservá-la ou reconhecer insuficiência; uma resposta confiante baseada apenas na regra geral constitui falha.",
+  "evaluation_plan": "Avaliação proposta: comparar entrada integral, seleção simples e compressor candidato com o mesmo modelo final. Medir custo total, suporte factual, respostas incorretas e releituras; escolher pela fronteira de custo e qualidade da tarefa.",
+  "comparisons": [
+    {
+      "entry_id": "T020",
+      "relation": "complements",
+      "reason": "Compressão aprendida é uma família particular que exige treinamento ou modelo especializado."
+    },
+    {
+      "entry_id": "T037",
+      "relation": "complements",
+      "reason": "Condicionar à pergunta muda quais perdas são aceitáveis para a resposta atual."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "RECOMP oferece compressores extrativo e abstrativo e permite saída vazia quando a recuperação não acrescenta informação.",
+    "source_ids": [
+      "V3A-S003"
+    ],
+    "support": "direct",
+    "caveat": "O mecanismo publicado não estabelece que qualquer resumo curto melhora qualquer consumidor."
+  },
+  "advanced_qa": [
+    {
+      "question": "Texto extraído garante fidelidade?",
+      "answer": "Garante que os trechos selecionados vieram da entrada quando o processo é realmente extrativo. Não garante que o conjunto preservou o sentido e as condições do original."
+    },
+    {
+      "question": "Como interpretar uma compressão vazia?",
+      "answer": "Como decisão de não acrescentar evidência, não como prova de que não existe resposta. O gerador precisa respeitar as regras de evidência da tarefa."
+    }
+  ],
+  "source_ids": [
+    "V3A-S003",
+    "V3A-S001",
+    "V3A-S004"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

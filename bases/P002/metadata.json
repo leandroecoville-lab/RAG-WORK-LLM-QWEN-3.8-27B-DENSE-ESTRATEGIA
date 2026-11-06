@@ -1,0 +1,35 @@
+{
+  "id": "P002",
+  "name": "Context Manager",
+  "canonical_name": "Context Manager",
+  "canonical_id": "P002",
+  "aliases": [
+    "gestor proposto de contexto ativo"
+  ],
+  "category": "componentes_propostos",
+  "kind": "component",
+  "scope": "proposta",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T003",
+    "T043",
+    "T050",
+    "T210",
+    "T222",
+    "P001",
+    "P005"
+  ],
+  "source_ids": [
+    "A-S003",
+    "A-S006",
+    "C-S017",
+    "V3D-S016",
+    "V4A-S002",
+    "V4A-S015"
+  ],
+  "namespace": "P002",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/P002",
+  "chunk_count": 9
+}

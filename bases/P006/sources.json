@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "C-S052",
+    "title": "Equipping agents for the real world with Agent Skills",
+    "url": "https://www.anthropic.com/research/equipping-agents-for-the-real-world-with-agent-skills",
+    "publisher": "Anthropic",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Skills empacotam instruções e recursos carregados progressivamente.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn34view8"
+  },
+  {
+    "source_id": "C-S016",
+    "title": "Introducing advanced tool use on the Claude Developer Platform",
+    "url": "https://www.anthropic.com/research/advanced-tool-use",
+    "publisher": "Anthropic",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Descoberta de ferramentas sob demanda evita inserir antecipadamente todos os schemas.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn34view1"
+  },
+  {
+    "source_id": "A-S038",
+    "title": "Tool search tool",
+    "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-search-tool",
+    "publisher": "Anthropic",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Descoberta de ferramentas e carregamento adiado de schemas no contexto.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn26view1"
+  },
+  {
+    "source_id": "V3A-S018",
+    "title": "Agent Skills specification",
+    "url": "https://agentskills.io/specification",
+    "publisher": "Agent Skills",
+    "source_type": "specification",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Carregamento progressivo de metadados, instruções e recursos; estrutura e escopo de arquivos de skills.",
+    "limitations": "Fonte primária consultada. Sem reprodução de resultados, instalação ou verificação de servidor; detalhes operacionais propostos são inferências editoriais.",
+    "web_ref": "turn105view2"
+  },
+  {
+    "source_id": "A-S010",
+    "title": "MemFS",
+    "url": "https://docs.letta.com/concepts/memfs",
+    "publisher": "Letta",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Memória em repositório Git, projeção em arquivos e carregamento por índices.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn1view2"
+  }
+]

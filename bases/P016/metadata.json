@@ -1,0 +1,39 @@
+{
+  "id": "P016",
+  "name": "Evaluation Engine",
+  "canonical_name": "Evaluation Engine",
+  "canonical_id": "P016",
+  "aliases": [
+    "motor proposto de avaliação de versões"
+  ],
+  "category": "componentes_propostos",
+  "kind": "component",
+  "scope": "proposta",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T195",
+    "T198",
+    "T200",
+    "T205",
+    "P007",
+    "P010",
+    "P012",
+    "P017"
+  ],
+  "source_ids": [
+    "V2C-S004",
+    "C-S048",
+    "C-S050",
+    "V3D-S002",
+    "V4B-S026",
+    "V3B-S020",
+    "V4B-S006",
+    "V4B-S022",
+    "V4B-S023"
+  ],
+  "namespace": "P016",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/P016",
+  "chunk_count": 9
+}

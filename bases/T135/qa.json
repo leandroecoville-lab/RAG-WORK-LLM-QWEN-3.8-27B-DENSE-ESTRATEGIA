@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Cascata sempre economiza?",
+    "answer": "Não. Muitas escaladas podem custar mais que chamar diretamente o modelo final."
+  },
+  {
+    "question": "Um erro de rede é o mesmo que baixa qualidade?",
+    "answer": "Não. Falhas operacionais e de conteúdo precisam de políticas separadas."
+  },
+  {
+    "question": "Uma primeira chamada barata sempre reduz a conta?",
+    "answer": "Não. Seu custo soma-se ao avaliador e às escaladas; pode acrescentar despesa a todas as tarefas difíceis."
+  },
+  {
+    "question": "Devo passar a primeira resposta ao modelo seguinte?",
+    "answer": "É uma opção experimental: comparar reaproveitamento com resolução independente para medir ancoragem e consumo."
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Janela maior significa mais inteligência?",
+    "answer": "Não. Ela aumenta a quantidade admissível de entrada, sem garantir compreensão ou planejamento melhores."
+  },
+  {
+    "question": "O limite da ficha é sempre o do meu servidor?",
+    "answer": "Não. Configuração, memória disponível, backend e reservas podem limitar a janela efetiva."
+  },
+  {
+    "question": "Um bom teste de agulha basta para escolher o modelo?",
+    "answer": "Não. Ele demonstra uma habilidade restrita; a tarefa real pode exigir combinar premissas e distinguir versões contraditórias."
+  },
+  {
+    "question": "É sempre melhor usar a janela máxima?",
+    "answer": "Não. O ponto adequado depende de utilidade marginal da informação, custo, prazo e qualidade observada para a operação desejada."
+  }
+]

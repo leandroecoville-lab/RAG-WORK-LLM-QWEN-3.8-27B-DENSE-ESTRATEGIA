@@ -1,0 +1,120 @@
+{
+  "id": "T202",
+  "novelty": "A v3 separou fontes de incerteza. O aprofundamento transforma essa distinção em ações de observação, atualizações de plano e critérios para evitar que confiança verbal substitua pré-condições.",
+  "deep_layers": [
+    {
+      "name": "Lacuna localizada",
+      "detail": "Registre qual variável falta e qual decisão depende dela. Incerteza sobre identidade pede consulta ou confirmação; sobre estado pede observação; sobre efeito pode pedir teste reversível. Uma nota global de confiança não informa qual ação reduz o risco nem se a tarefa pode prosseguir parcialmente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S053",
+        "C-S050",
+        "V4B-S027"
+      ]
+    },
+    {
+      "name": "Valor de informação",
+      "detail": "Compare custo de observar com impacto de decidir errado. Nem toda busca adicional é útil: a fonte pode repetir informação já conhecida ou não resolver a ambiguidade relevante. Uma política proposta só solicita observação quando ela pode alterar a decisão ou confirmar uma pré-condição importante.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S053",
+        "C-S050",
+        "V4B-S027"
+      ]
+    },
+    {
+      "name": "Atualização coerente",
+      "detail": "Depois de receber evidência, revise premissas e ações dependentes, preservando o que permanece válido. Se observações se contradizem, mantenha o estado como incerto até adjudicar fonte e tempo. Não multiplique scores de linguagem e viabilidade como probabilidades do plano inteiro sem hipóteses e calibração apropriadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S053",
+        "C-S050",
+        "V4B-S027"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Agente de operação",
+      "scenario": "Uma ação depende do estado atual de um recurso.",
+      "strategy": "Consulte o recurso, confirme versão e pré-condição, e planeje a ação sobre essa observação. Se houver mudança concorrente, reavalie antes de executar.",
+      "small_model_role": "Um 3–7B pode seguir um fluxo estreito quando a API fornece estado verificável.",
+      "acceptance": "Nenhuma pré-condição desconhecida tratada como satisfeita.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S053",
+        "C-S050",
+        "V4B-S027"
+      ]
+    },
+    {
+      "name": "Pesquisa com entidades ambíguas",
+      "scenario": "A consulta pode se referir a produtos ou versões diferentes.",
+      "strategy": "Faça uma busca discriminante ou solicite o detalhe mínimo necessário. Evite redigir uma resposta longa sobre uma entidade escolhida por suposição.",
+      "small_model_role": "Um 8–14B pode comparar hipóteses e selecionar a observação mais informativa.",
+      "acceptance": "Resolver ambiguidade com menos chamadas e manter proveniência da escolha.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S053",
+        "C-S050",
+        "V4B-S027"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Planos curtos com estados explícitos são mais adequados que estimativas abstratas de confiança.",
+    "8_14b": "Use ferramentas para observar variáveis, preservando limites quando a evidência não existe.",
+    "15_30b": "Maior porte pode explorar hipóteses complexas, mas não torna observações desatualizadas válidas.",
+    "training_or_runtime_requirements": "Runtime de planejamento com fontes e estado; probabilidades exigem avaliação empírica quando usadas numericamente.",
+    "do_not_use_when": "Não interpretar confiança alta como permissão para ignorar uma condição externa não observada."
+  },
+  "connections": [
+    {
+      "target_id": "T198",
+      "relation": "feeds",
+      "how": "Calibração permite interpretar sinais usados para decidir observar ou encaminhar.",
+      "interface": "Evento de sucesso e score validado.",
+      "condition": "Distribuição compatível com a decisão.",
+      "acceptance": "Comparar erro e cobertura após a política.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S053",
+        "C-S050",
+        "V4B-S027"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T203",
+      "relation": "complements",
+      "how": "Roteamento pode escolher executor ou busca adicional conforme a lacuna.",
+      "interface": "Tipo de incerteza, elegibilidade e custo.",
+      "condition": "Encaminhar realmente oferece capacidade ou informação nova.",
+      "acceptance": "Medir resolução de falhas, não apenas troca de modelo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S053",
+        "C-S050",
+        "V4B-S027"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não repetir buscas que não podem mudar a decisão.",
+    "Registrar hipóteses revogadas para evitar que retornem silenciosamente ao plano."
+  ],
+  "frontier_comparison": "Compare decisões corretas e custo de observação com fronteira sob o mesmo acesso ao ambiente. Planejamento explícito ajuda a administrar limites; não cria informação inexistente.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q019",
+      "V4B-Q024"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "C-S053",
+    "C-S050",
+    "V4B-S027"
+  ]
+}

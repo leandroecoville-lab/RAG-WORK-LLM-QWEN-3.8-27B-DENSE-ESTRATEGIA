@@ -1,0 +1,18 @@
+[
+  {
+    "question": "LLMLingua é Context Distillation?",
+    "answer": "Não são equivalentes. Aqui a redução é aplicada ao texto enviado; a destilação paramétrica treina comportamento nos pesos ou adaptadores."
+  },
+  {
+    "question": "Posso adotar a maior razão publicada?",
+    "answer": "Não automaticamente. O limite aceitável depende de tarefa, idioma, modelo e custo dos erros."
+  },
+  {
+    "question": "O gerador precisa ler texto perfeitamente gramatical?",
+    "answer": "Nem sempre, mas a tarefa precisa conservar sentido suficiente. Aparência estranha não prova perda, e texto fluente não prova fidelidade."
+  },
+  {
+    "question": "A taxa configurada é a economia final da aplicação?",
+    "answer": "Não. Some compressor, reprocessamento, overhead e possíveis releituras. O custo líquido depende do uso real e da qualidade preservada."
+  }
+]

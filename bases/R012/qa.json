@@ -1,0 +1,18 @@
+[
+  {
+    "question": "O pacote RAG executou esse treinamento?",
+    "answer": "Não. Ele documenta a técnica e os critérios de avaliação."
+  },
+  {
+    "question": "A receita serve como banco de fatos atualizados?",
+    "answer": "Não. É um fluxo de aprendizagem paramétrica de comportamento."
+  },
+  {
+    "question": "Distilar este inventário substitui RAG com fontes?",
+    "answer": "Não automaticamente. Treinar comportamento e recuperar evidência verificável resolvem necessidades diferentes."
+  },
+  {
+    "question": "Quando o investimento compensa?",
+    "answer": "Quando a economia por chamada e a qualidade sustentada superam custo de dados, treino, atualização e avaliação."
+  }
+]

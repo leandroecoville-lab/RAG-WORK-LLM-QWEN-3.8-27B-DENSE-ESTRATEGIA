@@ -1,0 +1,46 @@
+{
+  "id": "T124",
+  "technical_details": "W4A16 descreve pesos com códigos de quatro bits e ativações em dezesseis bits, sem definir sozinho escalas, zeros, agrupamento ou precisão do acumulador. Dois artefatos com esse rótulo podem exigir kernels incompatíveis. Empacotar dois códigos por byte reduz dados de pesos, mas escalas e tensores preservados elevam o tamanho real. Durante execução, descompactação e conversão precisam ser amortizadas pelo trabalho útil.",
+  "boundary_condition": "Se um operador desquantiza todo o peso para uma cópia persistente maior, a economia de armazenamento não descreve a memória de execução.",
+  "implementation_contract": {
+    "inputs": "Pesos empacotados, escalas, zeros quando presentes, tamanho dos grupos e layout.",
+    "outputs": "Operação linear com representação compatível e erro quantificado.",
+    "state": "Metadados por grupo, código de kernel e temporários de desquantização.",
+    "invariant": "O leitor interpreta ordem dos códigos e parâmetros de quantização exatamente como o produtor."
+  },
+  "tradeoffs": [
+    "Menos tráfego de pesos pode favorecer decode limitado por memória.",
+    "Prefill com muitas ativações pode ter outro gargalo e outra vantagem relativa."
+  ],
+  "failure_test": "Teste proposto: carregar códigos corretos com escala de grupo deslocada e comparar com desquantização de referência. Esperar divergência detectável antes de avaliar qualidade final.",
+  "evaluation_plan": "Plano proposto: comparar FP16/BF16 e W4A16 do mesmo checkpoint, distinguindo arquivo, memória residente e temporários. Medir prefill, decode e qualidade em domínios representativos; aprovar o compromisso apenas no backend que realmente executará o artefato.",
+  "comparisons": [
+    {
+      "entry_id": "T125",
+      "relation": "distinct_from",
+      "reason": "GPTQ é um algoritmo de quantização de pesos; W4A16 especifica precisões, não o procedimento de obtenção."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O texto de AWQ distingue weight-only de baixa precisão, incluindo W4A16, da quantização simultânea de pesos e ativações.",
+    "source_ids": [
+      "V3B-S014"
+    ],
+    "support": "direct",
+    "caveat": "O rótulo não garante equivalência entre formatos de arquivo ou implementações de kernel."
+  },
+  "advanced_qa": [
+    {
+      "question": "A16 significa acumulador de dezesseis bits?",
+      "answer": "Não necessariamente. Ativações, multiplicação e acumulação têm tipos que precisam ser inspecionados separadamente."
+    },
+    {
+      "question": "INT4 reduz também o KV?",
+      "answer": "Não por definição. O cache pode continuar em outro dtype, exigindo orçamento independente por contexto e concorrência."
+    }
+  ],
+  "source_ids": [
+    "V3B-S014"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

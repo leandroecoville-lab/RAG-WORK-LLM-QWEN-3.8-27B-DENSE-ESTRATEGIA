@@ -1,0 +1,53 @@
+{
+  "id": "T069",
+  "technical_details": "A consolidação por resumos mantém o conhecimento em um artefato externo que precisa entrar novamente no contexto para influenciar o modelo. Seu custo reaparece em leitura e atualização. Já a destilação paramétrica usa treinamento para internalizar comportamento condicionado a contexto. Essa distinção muda reversibilidade: editar ou trocar um resumo é uma operação de dados; corrigir comportamento internalizado exige outro processo e não oferece citação automática da origem.",
+  "boundary_condition": "Uma sequência de resumos pode conservar coerência narrativa e perder detalhes raros; a qualidade percebida do texto não mede completude factual.",
+  "implementation_contract": {
+    "inputs": "Histórico delimitado, resumo anterior opcional, alterações recentes e fontes recuperáveis.",
+    "outputs": "Síntese externa versionada com cobertura, fatos candidatos, decisões vigentes e lacunas.",
+    "state": "Origem dos fatos resumidos, revisões, substituições e critério de reconstrução a partir dos originais.",
+    "invariant": "T069 permanece memória externa; nenhum resumo salvo é apresentado como mudança nos parâmetros do modelo."
+  },
+  "tradeoffs": [
+    "Atualizar resumo incrementalmente economiza leitura do histórico e acumula dependência de decisões anteriores de seleção.",
+    "Reconstruir do original reduz essa dependência e custa mais tokens e processamento."
+  ],
+  "failure_test": "Teste proposto: inserir um detalhe raro, omiti-lo numa primeira síntese e depois formular uma tarefa que dependa dele. O sistema deve reabrir a origem ou declarar a lacuna, sem inventar o detalhe perdido.",
+  "evaluation_plan": "Avaliação proposta: comparar resumo incremental, recomputação integral e recuperação de trechos com orçamento semelhante. Medir fatos raros, correções, suporte e custo ao longo de ciclos; usar casos novos independentes dos exemplos usados para ajustar o resumidor.",
+  "comparisons": [
+    {
+      "entry_id": "T179",
+      "relation": "distinct_from",
+      "reason": "Destilação paramétrica altera pesos; este registro continua síntese textual externa lida em chamadas futuras."
+    },
+    {
+      "entry_id": "T058",
+      "relation": "specializes",
+      "reason": "Resumir é uma forma de consolidação, enquanto consolidação também pode produzir relações ou procedimentos."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Recursively Summarizing Enables Long-Term Dialogue Memory propõe atualizar memória por resumos; Learning by Distilling Context usa fine-tuning para internalizar ganhos do contexto.",
+    "source_ids": [
+      "V3A-S005",
+      "A-S040"
+    ],
+    "support": "direct",
+    "caveat": "Os trabalhos tratam mecanismos diferentes; o uso informal da palavra distillation não elimina essa diferença."
+  },
+  "advanced_qa": [
+    {
+      "question": "Posso desfazer uma consolidação?",
+      "answer": "Se mantiver originais e versões, pode substituir a síntese e reindexar derivados. Isso não desfaz respostas ou efeitos externos já produzidos."
+    },
+    {
+      "question": "O resumo precisa ser incluído em toda chamada?",
+      "answer": "Somente quando relevante. Armazená-lo não altera o modelo; sua influência depende de leitura, recuperação ou outro caminho explícito de condicionamento."
+    }
+  ],
+  "source_ids": [
+    "V3A-S005",
+    "A-S040"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

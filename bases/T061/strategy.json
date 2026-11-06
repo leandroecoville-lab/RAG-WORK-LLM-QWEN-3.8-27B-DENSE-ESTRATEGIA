@@ -1,0 +1,112 @@
+{
+  "id": "T061",
+  "novelty": "A v3 distinguiu CID e hash bruto. Aqui CAS sustenta deduplicação verificável, coleta de lixo e manifestos de proveniência.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Armazene manifesto que liga bytes, interpretação e origem. Conteúdos iguais podem ter proveniências distintas; deduplicar armazenamento não deve fundir automaticamente autoridade ou identidade documental.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S038",
+        "A-S028"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Faça coleta de lixo por referências alcançáveis a partir de raízes declaradas. Um artefato não acessado recentemente pode continuar necessário para auditoria ou reconstrução de memória.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S038",
+        "A-S028"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare armazenamento por caminho e CAS com manifestos. Meça deduplicação, referências quebradas e recuperação após limpeza; hash correto não comprova autoria nem verdade. Unidade de avaliação: artefato endereçado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S038",
+        "A-S028"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Evidências compartilhadas",
+      "scenario": "Vários agentes usam o mesmo documento.",
+      "strategy": "Guardar bytes uma vez, criar referências de proveniência separadas e transportar digest para verificar leituras.",
+      "small_model_role": "3–7B consome trechos; código verifica hash.",
+      "acceptance": "Cada citação deve preservar origem mesmo quando bytes forem iguais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S038",
+        "A-S028"
+      ]
+    },
+    {
+      "name": "Índices reconstruíveis",
+      "scenario": "Embeddings e resumos derivam de arquivos.",
+      "strategy": "Registrar DAG de dependências e manter raízes da versão ativa; remover apenas artefatos sem dependentes protegidos.",
+      "small_model_role": "8–14B explica linhagem.",
+      "acceptance": "Reconstrução da versão ativa deve continuar possível após limpeza.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S038",
+        "A-S028"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Leitor de manifestos e referências, sem responsabilidade pelo cálculo criptográfico.",
+    "8_14b": "Analista de dependências de artefatos e falhas de resolução.",
+    "15_30b": "Integrador de evidências de múltiplas origens com identidade física compartilhada.",
+    "training_or_runtime_requirements": "Hash/codec definidos, armazenamento disponível e raízes de retenção; autenticação da origem é camada separada.",
+    "do_not_use_when": "Conteúdo precisa ser mutável sob o mesmo identificador ou política de retenção não distingue raízes protegidas."
+  },
+  "connections": [
+    {
+      "target_id": "T073",
+      "relation": "complements",
+      "how": "Vincular evidência preservada a bytes verificáveis.",
+      "interface": "Digest, origem, retenção e manifestação de autoria.",
+      "condition": "Imutabilidade e autenticidade serem avaliadas separadamente.",
+      "acceptance": "Substituir conteúdo sob caminho e detectar divergência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S038",
+        "A-S028"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T072",
+      "relation": "feeds",
+      "how": "Versionar manifesto de artefatos derivados.",
+      "interface": "Raiz, dependências e versões de produtores.",
+      "condition": "Manifesto declarar conjunto completo da revisão.",
+      "acceptance": "Eliminar objeto referenciado e exigir falha explícita de integridade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S038",
+        "A-S028"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não chamar consistent hashing de endereçamento por conteúdo.",
+    "Não deduplicar direitos ou proveniência apenas porque bytes coincidem."
+  ],
+  "frontier_comparison": "Comparar verificabilidade e recuperação; CAS melhora identidade dos artefatos, não entendimento semântico do leitor.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q006",
+      "V4A-Q026"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S038",
+    "A-S028"
+  ]
+}

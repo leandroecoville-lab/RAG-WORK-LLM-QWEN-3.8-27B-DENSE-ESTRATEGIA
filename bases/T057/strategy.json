@@ -1,0 +1,112 @@
+{
+  "id": "T057",
+  "novelty": "A v3 separou hipótese, estimando e identificação. Aqui memória causal guarda condições de transporte e revisões motivadas por novos ambientes.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Registre intervenção, desfecho, população e pressupostos junto da estimativa. Um efeito observado num ambiente pode não transportar para outro com mecanismo ou composição diferente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S041",
+        "A-S036"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Use a memória para propor experimentos discriminantes, não para declarar causalidade por semelhança. Arestas representam hipóteses ou conclusões condicionadas; armazenar relações em grafo não identifica efeito causal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S041",
+        "A-S036"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare recomendações com e sem verificação de transportabilidade. Avalie se o sistema detecta mudança de população, tratamento ou confundidor; um teste de refutação aprovado não prova todos os pressupostos. Unidade de avaliação: hipótese causal com pressupostos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S041",
+        "A-S036"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Otimização de pipeline",
+      "scenario": "Mudanças anteriores reduziram latência.",
+      "strategy": "Recuperar experimento com hardware, carga e configuração; propor repetição controlada antes de atribuir ganho à mesma alteração no novo ambiente.",
+      "small_model_role": "3–7B extrai condições; código estima.",
+      "acceptance": "Separar efeito da mudança de variação de carga e hardware.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S041",
+        "A-S036"
+      ]
+    },
+    {
+      "name": "Investigação de regressão",
+      "scenario": "Vários componentes mudaram juntos.",
+      "strategy": "Construir hipóteses alternativas e planejar ablações isoladas; preservar resultado inconclusivo quando intervenções não forem identificáveis.",
+      "small_model_role": "15–30B organiza desenho; análise estatística externa.",
+      "acceptance": "Não chamar associação temporal de causa confirmada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S041",
+        "A-S036"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extrator de variáveis, intervenções e condições explicitadas.",
+    "8_14b": "Comparador de pressupostos entre estudos ou ambientes.",
+    "15_30b": "Planejador de ablações e explicador de limites, sem substituir estimador causal.",
+    "training_or_runtime_requirements": "Dados adequados, desenho de identificação e ferramentas estatísticas; memória armazena evidência, não cria identificação.",
+    "do_not_use_when": "Não há suporte para pressupostos ou intervenção relevante não pode ser distinguida de mudanças simultâneas."
+  },
+  "connections": [
+    {
+      "target_id": "T049",
+      "relation": "requires",
+      "how": "Recuperar condições do episódio que originou hipótese.",
+      "interface": "Ambiente, intervenção, resultado e incertezas.",
+      "condition": "Episódio não omitir fatores relevantes.",
+      "acceptance": "Comparar caso semelhante com confundidor diferente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S041",
+        "A-S036"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T195",
+      "relation": "complements",
+      "how": "Executar experimento ou cálculo que avalia hipótese.",
+      "interface": "Plano de ablação, dados e estimador.",
+      "condition": "Execução autorizada e desenho adequado.",
+      "acceptance": "Testar hipótese alternativa e registrar resultado nulo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S041",
+        "A-S036"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não usar plausibilidade linguística como evidência causal.",
+    "Não exportar efeito estimado sem verificar população e intervenção."
+  ],
+  "frontier_comparison": "Comparar identificação de pressupostos e qualidade do desenho; modelo de fronteira também não extrai causalidade de dados insuficientes.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q021",
+      "V4A-Q025"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S041",
+    "A-S036"
+  ]
+}

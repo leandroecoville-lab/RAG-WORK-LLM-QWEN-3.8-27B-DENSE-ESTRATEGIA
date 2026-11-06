@@ -1,0 +1,30 @@
+{
+  "id": "T097",
+  "name": "Block-Sparse Attention",
+  "canonical_name": "Block-Sparse Attention",
+  "canonical_id": "T097",
+  "aliases": [
+    "atenção esparsa por blocos"
+  ],
+  "category": "inferencia",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T093",
+    "T096",
+    "T113"
+  ],
+  "source_ids": [
+    "B-S016",
+    "B-S010",
+    "V3B-S008",
+    "V4B-S017",
+    "V4B-S018"
+  ],
+  "namespace": "T097",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T097",
+  "chunk_count": 9
+}

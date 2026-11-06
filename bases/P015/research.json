@@ -1,0 +1,53 @@
+{
+  "id": "P015",
+  "technical_details": "Execution Integrity Controller propõe vincular cada mutação à versão de origem, à intenção e à evidência de resultado. Em edição de código, o patch deve declarar o estado-base e ser recusado se esse estado mudou sem reconciliação. Em operações externas, uma intenção estável e uma chave idempotente ajudam a distinguir repetição de uma nova ação. Hash comprova identidade do conteúdo comparado, mas não prova que seu significado está correto ou que a ação remota foi concluída.",
+  "boundary_condition": "Não existe uma transação local capaz de tornar automaticamente atômicos arquivo, banco, fila e API externa independentes. A fronteira de confirmação deve ser explicitada por sistema.",
+  "implementation_contract": {
+    "inputs": "Mutação proposta, identidade do alvo, hash ou revisão esperada, escopo autorizado e ID estável da operação.",
+    "outputs": "Aceite ou conflito, nova revisão, registro de intenção e confirmação verificável ou pendência de reconciliação.",
+    "state": "Versões anteriores, resultados por operação, outbox quando aplicável e evidências vinculadas ao conteúdo efetivo.",
+    "invariant": "Um resultado não pode ser atribuído a artefato diferente do verificado; repetição não deve converter a mesma intenção em novo efeito lógico."
+  },
+  "tradeoffs": [
+    "Verificação de versão impede sobrescrita silenciosa, mas pode exigir recomposição do patch após concorrência.",
+    "Registrar intenção e resultado melhora rastreabilidade, acrescentando armazenamento e contratos de retenção."
+  ],
+  "failure_test": "Proposta: alterar o arquivo entre leitura e aplicação do patch e perder a confirmação de uma operação externa; exigir conflito no primeiro caso e consulta ou deduplicação no segundo.",
+  "evaluation_plan": "Comparar execução sem controle de versão e com precondições em cenários concorrentes conhecidos. Medir sobrescritas indevidas, efeitos duplicados, conflitos legítimos e recuperação. Verificar também que hashes são recalculados sobre o artefato realmente consumido.",
+  "comparisons": [
+    {
+      "entry_id": "T233",
+      "relation": "complements",
+      "reason": "Validação de patch verifica precondições e aplicabilidade."
+    },
+    {
+      "entry_id": "T162",
+      "relation": "complements",
+      "reason": "Idempotência controla repetição de uma intenção."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Identificadores idempotentes e outbox ajudam a controlar repetição e a fronteira entre alteração local e notificação.",
+    "source_ids": [
+      "C-S026",
+      "V3D-S018"
+    ],
+    "support": "related",
+    "caveat": "O controlador e o vínculo entre hashes e operações são uma proposta; não há garantia universal de exatamente uma vez."
+  },
+  "advanced_qa": [
+    {
+      "question": "Hash correto significa implementação correta?",
+      "answer": "Não. Ele identifica bytes; testes e critérios verificam propriedades e comportamento."
+    },
+    {
+      "question": "Quando uma operação fica pendente?",
+      "answer": "Quando houve intenção ou envio, mas a confirmação não permite determinar com segurança o efeito externo."
+    }
+  ],
+  "source_ids": [
+    "C-S026",
+    "V3D-S018"
+  ],
+  "research_note": "Contrato, teste de falha e plano de avaliação são recomendações editoriais; nenhuma implantação ou medição deste mecanismo foi executada neste pacote."
+}

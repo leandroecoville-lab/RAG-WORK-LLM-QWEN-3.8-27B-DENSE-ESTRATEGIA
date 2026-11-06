@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Planejar com incerteza exige probabilidades exatas?",
+    "answer": "Não. Pode usar intervalos e estados de desconhecimento explícitos."
+  },
+  {
+    "question": "SayCan prova isso para software?",
+    "answer": "Não. A transferência do princípio de viabilidade para ferramentas é proposta de engenharia."
+  },
+  {
+    "question": "Uma probabilidade por ação basta para o plano?",
+    "answer": "Não se ações compartilham falhas ou mudam o estado; dependências precisam entrar na avaliação."
+  },
+  {
+    "question": "Quando perguntar ao usuário?",
+    "answer": "Quando a informação ausente depende de sua intenção e altera materialmente a escolha; outras lacunas podem ser resolvidas por observação autorizada."
+  }
+]

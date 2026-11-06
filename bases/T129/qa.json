@@ -1,0 +1,18 @@
+[
+  {
+    "question": "MTP e speculative decoding são sinônimos?",
+    "answer": "Não. MTP produz previsões; especulação define como candidatos são usados e verificados."
+  },
+  {
+    "question": "MTP pode melhorar treinamento?",
+    "answer": "É uma hipótese investigada com resultados em modelos específicos; não garante ganho para todo checkpoint."
+  },
+  {
+    "question": "MTP exige usar todas as cabeças no serviço?",
+    "answer": "Não necessariamente; o objetivo auxiliar e o uso acelerado na inferência são decisões distintas."
+  },
+  {
+    "question": "Previsão futura já conhece o token intermediário amostrado?",
+    "answer": "Não por definição. Examine o condicionamento da arquitetura antes de tratá-la como uma cadeia autoregressiva comum."
+  }
+]

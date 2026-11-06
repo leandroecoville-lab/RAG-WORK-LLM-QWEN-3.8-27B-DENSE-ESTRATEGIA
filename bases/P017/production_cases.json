@@ -1,0 +1,251 @@
+{
+  "coverage": {
+    "entry_id": "P017",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 5,
+    "operational_product_cases": 0,
+    "research_cases": 2,
+    "family_or_analogy_cases": 5,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Distillation Pipeline",
+    "scope": "proposta"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C017",
+      "company": "Anthropic",
+      "organization_class": "ai_lab",
+      "system": "Claude — treinamento com constituição",
+      "title": "Constituição declarada como componente direto do treinamento",
+      "evidence_level": "production_documented",
+      "observed_use": "A Anthropic descreve uso direto da constituição no processo que treina Claude, incluindo geração de exemplos e orientação de avaliações. O registro delimita a prática de treinamento do operador.",
+      "technical_mechanism": "Princípios textuais orientam dados e julgamentos usados para ajustar comportamento; o documento evolui entre versões.",
+      "event_date": "2026-01-22",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S021"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T185",
+          "match": "exact",
+          "rationale": "Princípios constitucionais são usados no treinamento por feedback de IA."
+        },
+        {
+          "entry_id": "T177",
+          "match": "family",
+          "rationale": "O processo inclui treinamento do modelo, mas a publicação não revela todos os detalhes da receita."
+        },
+        {
+          "entry_id": "P017",
+          "match": "analogy",
+          "rationale": "Uma política LAI poderia inspirar dados próprios; não há implantação da proposta editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: criar princípios restritos ao domínio e validar com julgamentos humanos antes de usá-los em dados para 3–30B.",
+      "limits": "Laboratório de IA, separado de bigtech na contagem estrita. Não comprova receita reproduzível, porte 3–30B nem cumprimento perfeito dos princípios.",
+      "canonical_case_id": "V4B-C017",
+      "deployment_domain": "llm_training",
+      "mapping": {
+        "entry_id": "P017",
+        "match": "analogy",
+        "rationale": "Uma política LAI poderia inspirar dados próprios; não há implantação da proposta editorial."
+      }
+    },
+    {
+      "case_id": "V4B-C005",
+      "company": "LinkedIn (Microsoft)",
+      "organization_class": "bigtech",
+      "system": "AI-Powered Job Search",
+      "title": "Destilação multiprofessor e serving especializado de busca",
+      "evidence_level": "production_documented",
+      "observed_use": "O pipeline de ranking usa professores especializados e um aluno compacto; o serviço de entendimento de consultas do mesmo produto é descrito com vLLM e batching.",
+      "technical_mechanism": "Sinais de relevância, engajamento e representações alimentam treinamento do aluno; cache de sinais reduz trabalho repetido entre experimentos.",
+      "event_date": "2026-08-06",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S005",
+        "V4B-S010"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T178",
+          "match": "exact",
+          "rationale": "Destilação de conhecimento é explicitamente usada no pipeline de produção."
+        },
+        {
+          "entry_id": "T177",
+          "match": "exact",
+          "rationale": "Professores são ajustados e o aluno é treinado para o domínio."
+        },
+        {
+          "entry_id": "T087",
+          "match": "exact",
+          "rationale": "O relato de serving de query understanding identifica batching no cliente e servidor."
+        },
+        {
+          "entry_id": "R009",
+          "match": "exact",
+          "rationale": "vLLM serve o componente de interpretação de consultas."
+        },
+        {
+          "entry_id": "P017",
+          "match": "analogy",
+          "rationale": "Pipeline real inspira gestão de professores e artefatos da proposta LAI."
+        }
+      ],
+      "small_model_transfer": "Proposta: treinar um aluno 3–14B para uma tarefa bem delimitada, versionando sinais e avaliando dados futuros; o caso mostra especialização, não necessidade de copiar sua escala.",
+      "limits": "O aluno de ranking citado é 0,6B, fora da faixa solicitada. Ranking e query understanding são componentes diferentes do produto; não se afirma que o aluno de ranking é o modelo servido pelo vLLM descrito.",
+      "canonical_case_id": "V4B-C005",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "P017",
+        "match": "analogy",
+        "rationale": "Pipeline real inspira gestão de professores e artefatos da proposta LAI."
+      }
+    },
+    {
+      "case_id": "V4B-C009",
+      "company": "Microsoft",
+      "organization_class": "bigtech",
+      "system": "Bing — inferência BERT",
+      "title": "Destilação de encoder e otimização para busca",
+      "evidence_level": "production_documented",
+      "observed_use": "Microsoft relata que modelos BERT destilados e otimizações de inferência foram usados em produção no Bing para tarefas de linguagem e busca.",
+      "technical_mechanism": "Redução do professor a encoder de três camadas e posterior otimização de execução; parte das melhorias foi disponibilizada no ONNX Runtime.",
+      "event_date": "2020-01-21",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S009"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T178",
+          "match": "exact",
+          "rationale": "Destilação de conhecimento é descrita antes da implantação."
+        },
+        {
+          "entry_id": "T177",
+          "match": "exact",
+          "rationale": "Bing ajusta modelos de representação para tarefas próprias."
+        },
+        {
+          "entry_id": "P017",
+          "match": "analogy",
+          "rationale": "Demonstra uma separação entre compressão de comportamento e otimização do executor."
+        }
+      ],
+      "small_model_transfer": "Proposta: testar um modelo especializado ou até um encoder menor antes de usar um gerador 3–30B para classificação/ranking.",
+      "limits": "Caso histórico de encoder, abaixo da escala e distinto do decode autoregressivo solicitado. Não atribuir ganhos de GPU/C++ à destilação isoladamente nem generalizar precisão de busca a geração aberta.",
+      "canonical_case_id": "V4B-C009",
+      "deployment_domain": "non_generative_nlp",
+      "mapping": {
+        "entry_id": "P017",
+        "match": "analogy",
+        "rationale": "Demonstra uma separação entre compressão de comportamento e otimização do executor."
+      }
+    },
+    {
+      "case_id": "V4B-C026",
+      "company": "Autores de Agent Memory Distillation",
+      "organization_class": "research_group",
+      "system": "AMD",
+      "title": "Memória hierárquica de trajetórias para agentes pequenos",
+      "evidence_level": "research_only",
+      "observed_use": "O projeto apresenta avaliação de agentes de 4–8B com memória derivada de trajetórias de um professor.",
+      "technical_mechanism": "Memórias de workflow, subtarefa e função apoiam recuperação proativa e reativa a falhas, sem exigir que toda a memória seja absorvida por atualização dos pesos.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S032",
+        "C-S035"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T181",
+          "match": "exact",
+          "rationale": "A referência trata de Agent Memory Distillation."
+        },
+        {
+          "entry_id": "T204",
+          "match": "family",
+          "rationale": "Memórias procedurais se relacionam a habilidades recuperáveis."
+        },
+        {
+          "entry_id": "P017",
+          "match": "analogy",
+          "rationale": "Pode inspirar uma proposta LAI, sem comprovar sua adoção."
+        }
+      ],
+      "small_model_transfer": "Proposta: extrair procedimentos de trajetórias autorizadas, validar executabilidade e recuperar somente passos compatíveis com o ambiente atual.",
+      "limits": "Benchmarks de pesquisa não demonstram implantação em bigtech nem equivalência geral a modelos maiores. Memória externa continua dependente de seleção, validade temporal e ferramentas.",
+      "canonical_case_id": "V4B-C026",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "P017",
+        "match": "analogy",
+        "rationale": "Pode inspirar uma proposta LAI, sem comprovar sua adoção."
+      }
+    },
+    {
+      "case_id": "V4B-C012",
+      "company": "Thinking Machines Lab",
+      "organization_class": "ai_lab",
+      "system": "Tinker Cookbook — destilação",
+      "title": "Receitas e experimentos de destilação on-policy e de contexto",
+      "evidence_level": "research_only",
+      "observed_use": "A equipe publica receitas reproduzíveis e experiências de transferência de comportamento, incluindo aluno em suas próprias trajetórias e redução do contexto de instruções.",
+      "technical_mechanism": "LoRA e perdas de destilação treinam o aluno; prompt distillation condiciona o professor com informação ausente da entrada reduzida do aluno.",
+      "event_date": "2025-10-27",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S012",
+        "V4B-S013",
+        "V3D-S008"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T178",
+          "match": "exact",
+          "rationale": "Experimentos são de transferência professor-aluno."
+        },
+        {
+          "entry_id": "T179",
+          "match": "exact",
+          "rationale": "Receita de prompt distillation transfere comportamento condicionado por contexto."
+        },
+        {
+          "entry_id": "T180",
+          "match": "exact",
+          "rationale": "A receita específica reduz instruções na entrada do aluno."
+        },
+        {
+          "entry_id": "R012",
+          "match": "exact",
+          "rationale": "É a referência Tinker para prompt distillation."
+        },
+        {
+          "entry_id": "P017",
+          "match": "analogy",
+          "rationale": "Fornece contratos de dados e checkpoints para um pipeline editorial proposto."
+        }
+      ],
+      "small_model_transfer": "Proposta: começar com uma tarefa 3–14B e teste temporal independente, mantendo acesso a exemplos do professor e custos de geração/treino separados.",
+      "limits": "Receita/benchmark não prova deployment do aluno. Modelos históricos do artigo foram substituídos na oferta; não se assume disponibilidade nem suporte do checkpoint local.",
+      "canonical_case_id": "V4B-C012",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "P017",
+        "match": "analogy",
+        "rationale": "Fornece contratos de dados e checkpoints para um pipeline editorial proposto."
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "entry_id": "P005",
+  "edges": [
+    {
+      "edge_id": "E-P005-01",
+      "from": "P005",
+      "to": "T071",
+      "relation": "requires",
+      "how": "Aplicar promoção por tipo de candidato.",
+      "interface": "Fonte, tipo, escopo e critério de aceite.",
+      "condition": "Evidência satisfizer critério específico.",
+      "acceptance": "Propor hipótese como fato e exigir rejeição identificável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V3A-S032",
+        "V4A-S002"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-P005-02",
+      "from": "P005",
+      "to": "P004",
+      "relation": "feeds",
+      "how": "Emitir comandos de memória com pré-condições.",
+      "interface": "Comando, revisão-base e decisão de política.",
+      "condition": "Runtime validar conflito antes de confirmar.",
+      "acceptance": "Mudar estado durante decisão e impedir sobrescrita.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V3A-S032",
+        "V4A-S002"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-P005-03",
+      "from": "P005",
+      "to": "P001",
+      "relation": "feeds",
+      "how": "Informar quais evidências são elegíveis.",
+      "interface": "IDs, validade, prioridade e motivos de exclusão.",
+      "condition": "Builder não reintroduzir conteúdo suspenso.",
+      "acceptance": "Recuperar fato revogado com score alto e impedir inclusão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V3A-S032",
+        "V4A-S002"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

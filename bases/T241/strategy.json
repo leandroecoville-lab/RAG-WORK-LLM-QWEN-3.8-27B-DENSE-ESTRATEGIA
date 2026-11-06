@@ -1,0 +1,115 @@
+{
+  "id": "T241",
+  "novelty": "A v3 separava reprodução histórica e projeção atual. A expansão define fronteiras de replay para agentes, bloqueia efeitos durante reconstrução e valida migrações com históricos representativos de falhas.",
+  "deep_layers": [
+    {
+      "name": "Decisões observadas versus geração nova",
+      "detail": "Uma chamada LLM gravada como decisão deve ser reproduzida pelo resultado registrado quando o objetivo é reconstruir a execução. Consultar novamente o modelo cria uma nova decisão, mesmo com temperatura baixa. Se a intenção é reavaliar com modelo novo, trate como experimento ou nova projeção, preservando o histórico original para comparação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S001",
+        "V3C-S018"
+      ]
+    },
+    {
+      "name": "Reconstrução sem efeitos",
+      "detail": "Aplicadores de eventos devem atualizar projeções ou emitir comandos controlados, sem reenviar automaticamente efeitos já ocorridos. Separe modo de reconstrução e modo ativo, e teste fronteiras onde uma atividade foi enviada mas a confirmação local não chegou. Reconstruir intenção desconhecida não autoriza concluir que o efeito está ausente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026",
+        "V3C-S018"
+      ]
+    },
+    {
+      "name": "Compatibilidade exercitada",
+      "detail": "Use históricos com timeout, cancelamento, concorrência e versão antiga, não apenas sucessos curtos. Upcasters preservam significado do que foi registrado; campos novos obrigatórios sem origem exigem migração explícita ou representação de ausência. A ordem causal e a identidade dos eventos precisam ser preservadas mesmo quando índices são reconstruídos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S041",
+        "V4C-S001"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Atualização de runtime",
+      "scenario": "Uma nova versão deve retomar missões antigas.",
+      "strategy": "Reproduza históricos selecionados em ambiente sem efeitos e compare comandos ou estados esperados conforme o contrato do runtime. Divergências legítimas precisam de plano de migração; divergências acidentais bloqueiam a publicação. Manter worker antigo pode ser necessário enquanto execuções anteriores terminam.",
+      "small_model_role": "3–30B continua em atividades externas ao replay determinístico; código controla reprodução.",
+      "acceptance": "Proposta: históricos compatíveis retomam e os incompatíveis falham de forma explícita.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S001",
+        "V3C-S018"
+      ]
+    },
+    {
+      "name": "Auditoria de decisão",
+      "scenario": "É necessário explicar como um agente chegou a um resultado.",
+      "strategy": "Reconstrua observações, versões de ferramenta e decisões confirmadas, distinguindo dados disponíveis naquele momento dos atuais. Não preencher lacunas com uma narrativa nova da LLM. Quando o log não contém uma informação, a conclusão correta é limite de reconstrução.",
+      "small_model_role": "8–14B organiza evidência; 15–30B explica causalidade com referências ao log.",
+      "acceptance": "Proposta: cada explicação operacional aponta a evento ou artefato existente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S041",
+        "C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Atividades pequenas registradas facilitam replay porque a decisão fica delimitada.",
+    "8_14b": "Interpretar logs reconstruídos e classificar falhas sem executar efeitos.",
+    "15_30b": "Comparar versões e sugerir migração, preservando prova histórica independente.",
+    "training_or_runtime_requirements": "Log ordenado, schemas e processadores versionados, bloqueio de efeitos e artefatos externos disponíveis.",
+    "do_not_use_when": "Não chamar nova execução probabilística de replay fiel nem inventar fatos ausentes em upcast."
+  },
+  "connections": [
+    {
+      "target_id": "T159",
+      "relation": "complements",
+      "how": "Cadence utiliza histórico e replay para execução durável e validação de evolução.",
+      "interface": "Histórico, comandos e versão compatível.",
+      "condition": "Operações externas seguem a fronteira adequada do runtime.",
+      "acceptance": "Reconstrução não gera nova observação para explicar o passado.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S001"
+      ],
+      "case_ids": [
+        "V4C-C003"
+      ]
+    },
+    {
+      "target_id": "T242",
+      "relation": "complements",
+      "how": "Aplicar apenas eventos posteriores ao snapshot compatível, preservando a mesma semântica de redução.",
+      "interface": "Cursor, versão e sufixo do log.",
+      "condition": "Todos os eventos necessários continuam disponíveis.",
+      "acceptance": "Estado recuperado coincide com replay de referência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S041"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Replay que acessa relógio atual ou fonte mutável pode divergir sem erro de parsing.",
+    "Deduplicar eventos requer identidade; textos parecidos podem representar intenções distintas."
+  ],
+  "frontier_comparison": "Compare fidelidade e tempo de reconstrução entre arquiteturas, não entre capacidades linguísticas. O modelo pode explicar o replay, mas a correção depende do registro e do processador.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q002",
+      "V4C-Q020"
+    ],
+    "scope_note": "Cadence oferece caso operacional de replay. Transporte de eventos Brooklin não foi considerado equivalente à reprodução determinística de decisões do agente."
+  },
+  "source_ids": [
+    "V4C-S001",
+    "V3C-S018",
+    "C-S026",
+    "V3C-S041",
+    "C-S030"
+  ]
+}

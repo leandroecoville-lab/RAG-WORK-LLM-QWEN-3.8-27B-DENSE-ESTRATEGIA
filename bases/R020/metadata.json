@@ -1,0 +1,39 @@
+{
+  "id": "R020",
+  "name": "Claude Code",
+  "canonical_name": "Claude Code — agente de programação da Anthropic",
+  "canonical_id": "R020",
+  "aliases": [
+    "Claude Code CLI",
+    "claude -p"
+  ],
+  "category": "referencias",
+  "kind": "project",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "T211",
+    "T217",
+    "T218",
+    "T234",
+    "T235",
+    "T237",
+    "T239",
+    "R027"
+  ],
+  "source_ids": [
+    "V2B-S010",
+    "V2B-S011",
+    "V2B-S012",
+    "V3C-S030",
+    "V2A-S018",
+    "V2A-S025",
+    "V4C-S026",
+    "V4C-S014"
+  ],
+  "namespace": "R020",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R020",
+  "chunk_count": 9
+}

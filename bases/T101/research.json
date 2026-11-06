@@ -1,0 +1,46 @@
+{
+  "id": "T101",
+  "technical_details": "Sobrepor comunicação e computação não elimina bytes transmitidos: oculta parte do tempo quando existe trabalho suficiente enquanto o próximo bloco chega. Um limite simplificado por rodada é o maior entre duração de cálculo e transferência, acrescido de sincronização não ocultada. O primeiro carregamento e a drenagem final continuam relevantes. Blocos menores aumentam frequência de mensagens; maiores exigem mais memória temporária.",
+  "boundary_condition": "Sequências curtas ou interconexão lenta podem tornar a comunicação dominante, frustrando a sobreposição assumida pelo projeto.",
+  "implementation_contract": {
+    "inputs": "Partições de consultas, blocos KV, topologia e máscara com posições globais.",
+    "outputs": "Saídas locais normalizadas sobre todos os blocos globalmente permitidos.",
+    "state": "Buffers de envio/recepção, identificadores de rodada e acumuladores estáveis.",
+    "invariant": "Cada bloco necessário contribui uma vez, independentemente da ordem de chegada."
+  },
+  "tradeoffs": [
+    "Distribuir contexto reduz memória por dispositivo e adiciona comunicação.",
+    "Mais dispositivos podem aumentar capacidade sem diminuir latência de uma requisição."
+  ],
+  "failure_test": "Teste proposto: atrasar um elo e permutar a ordem de recebimento preservando os identificadores. Esperar espera controlada e resultado equivalente; duplicar um bloco deve ser detectado.",
+  "evaluation_plan": "Plano proposto: comparar implementação local e distribuída para casos que caibam em ambas. Controlar sequência, precisão e máscara; medir bytes transferidos, tempo exposto de comunicação e duração total, separando ganho de capacidade de ganho de velocidade.",
+  "comparisons": [
+    {
+      "entry_id": "T117",
+      "relation": "specializes",
+      "reason": "É uma organização específica da comunicação para distribuir o contexto entre dispositivos."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Ring Attention propõe sobrepor comunicação de blocos KV com cálculo de atenção em blocos.",
+    "source_ids": [
+      "B-S020"
+    ],
+    "support": "direct",
+    "caveat": "O grau efetivo de sobreposição depende da relação entre cálculo, tamanho dos blocos e banda disponível."
+  },
+  "advanced_qa": [
+    {
+      "question": "O anel reduz o número de pares atendidos?",
+      "answer": "Não necessariamente. Pode preservar a atenção densa e apenas distribuir onde suas interações são calculadas."
+    },
+    {
+      "question": "Por que posições globais importam?",
+      "answer": "A causalidade deve acompanhar a sequência original; índices locais de cada shard não determinam quais tokens estão no futuro."
+    }
+  ],
+  "source_ids": [
+    "B-S020"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

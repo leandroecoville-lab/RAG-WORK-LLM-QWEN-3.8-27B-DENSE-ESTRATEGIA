@@ -1,0 +1,874 @@
+[
+  {
+    "id": "T001",
+    "name": "Map-Reduce"
+  },
+  {
+    "id": "T002",
+    "name": "Prompt Caching"
+  },
+  {
+    "id": "T003",
+    "name": "Sliding Window de contexto"
+  },
+  {
+    "id": "T004",
+    "name": "Summarization em Cadeia"
+  },
+  {
+    "id": "T005",
+    "name": "Semantic Caching"
+  },
+  {
+    "id": "T006",
+    "name": "Context Compression"
+  },
+  {
+    "id": "T007",
+    "name": "Response Caching por Hash"
+  },
+  {
+    "id": "T008",
+    "name": "Hierarchical Summarization"
+  },
+  {
+    "id": "T009",
+    "name": "RAG — Retrieval-Augmented Generation"
+  },
+  {
+    "id": "T010",
+    "name": "Fixed-Size Chunking"
+  },
+  {
+    "id": "T011",
+    "name": "Semantic Chunking"
+  },
+  {
+    "id": "T012",
+    "name": "Recursive Chunking"
+  },
+  {
+    "id": "T013",
+    "name": "Long-Context Models"
+  },
+  {
+    "id": "T014",
+    "name": "Progressive Disclosure"
+  },
+  {
+    "id": "T015",
+    "name": "Reference Passing"
+  },
+  {
+    "id": "T016",
+    "name": "Tool Result Truncation"
+  },
+  {
+    "id": "T017",
+    "name": "Context Folding"
+  },
+  {
+    "id": "T018",
+    "name": "Context Pruning"
+  },
+  {
+    "id": "T019",
+    "name": "Few-Shot Pruning"
+  },
+  {
+    "id": "T020",
+    "name": "Learned Prompt Compression"
+  },
+  {
+    "id": "T021",
+    "name": "Context Compression On-the-Fly"
+  },
+  {
+    "id": "T022",
+    "name": "Instruction Compression"
+  },
+  {
+    "id": "T023",
+    "name": "Recursive Summarization Tree"
+  },
+  {
+    "id": "T024",
+    "name": "Context Broker / Context Builder"
+  },
+  {
+    "id": "T025",
+    "name": "Adaptive RAG"
+  },
+  {
+    "id": "T026",
+    "name": "Hierarchical Retrieval"
+  },
+  {
+    "id": "T027",
+    "name": "Hybrid Retrieval — BM25 + Vetores"
+  },
+  {
+    "id": "T028",
+    "name": "Reranking"
+  },
+  {
+    "id": "T029",
+    "name": "GraphRAG"
+  },
+  {
+    "id": "T030",
+    "name": "RAPTOR"
+  },
+  {
+    "id": "T031",
+    "name": "Semantic Cache Invalidation"
+  },
+  {
+    "id": "T032",
+    "name": "Parent-Child Retrieval"
+  },
+  {
+    "id": "T033",
+    "name": "Structure-Aware Chunking"
+  },
+  {
+    "id": "T034",
+    "name": "Agentic Chunking"
+  },
+  {
+    "id": "T035",
+    "name": "Contextual Chunking"
+  },
+  {
+    "id": "T036",
+    "name": "Query-Aware RAG"
+  },
+  {
+    "id": "T037",
+    "name": "Query-Aware Compression"
+  },
+  {
+    "id": "T038",
+    "name": "Selective Context Pruning"
+  },
+  {
+    "id": "T039",
+    "name": "Importance-Aware Window"
+  },
+  {
+    "id": "T040",
+    "name": "State-Aware Window"
+  },
+  {
+    "id": "T041",
+    "name": "Last-N Messages Window"
+  },
+  {
+    "id": "T042",
+    "name": "Token-Based Window"
+  },
+  {
+    "id": "T043",
+    "name": "Context Compaction"
+  },
+  {
+    "id": "T044",
+    "name": "Progressive Context Expansion"
+  },
+  {
+    "id": "T045",
+    "name": "Tool Retrieval"
+  },
+  {
+    "id": "T046",
+    "name": "Dynamic Few-Shot Selection"
+  },
+  {
+    "id": "T047",
+    "name": "Long-Term Memory"
+  },
+  {
+    "id": "T048",
+    "name": "Memory Management"
+  },
+  {
+    "id": "T049",
+    "name": "Episodic Memory"
+  },
+  {
+    "id": "T050",
+    "name": "Working Memory Window"
+  },
+  {
+    "id": "T051",
+    "name": "Graph-Based Memory"
+  },
+  {
+    "id": "T052",
+    "name": "Latent Context"
+  },
+  {
+    "id": "T053",
+    "name": "Scratchpad em Arquivo"
+  },
+  {
+    "id": "T054",
+    "name": "Semantic Memory"
+  },
+  {
+    "id": "T055",
+    "name": "Procedural Memory"
+  },
+  {
+    "id": "T056",
+    "name": "Bitemporal Memory"
+  },
+  {
+    "id": "T057",
+    "name": "Causal Memory"
+  },
+  {
+    "id": "T058",
+    "name": "Memory Consolidation"
+  },
+  {
+    "id": "T059",
+    "name": "Event Sourcing"
+  },
+  {
+    "id": "T060",
+    "name": "Checkpointing"
+  },
+  {
+    "id": "T061",
+    "name": "Content-Addressable Storage"
+  },
+  {
+    "id": "T062",
+    "name": "Hierarchical Memory"
+  },
+  {
+    "id": "T063",
+    "name": "Virtual Context Management — MemGPT"
+  },
+  {
+    "id": "T064",
+    "name": "Persistent Agent State"
+  },
+  {
+    "id": "T065",
+    "name": "Transactional State Manager"
+  },
+  {
+    "id": "T066",
+    "name": "Memory Resolver / Reference Resolver"
+  },
+  {
+    "id": "T067",
+    "name": "Active Memory Retrieval"
+  },
+  {
+    "id": "T068",
+    "name": "Memory-Augmented Generation"
+  },
+  {
+    "id": "T069",
+    "name": "Context Distillation como memória resumida"
+  },
+  {
+    "id": "T070",
+    "name": "Episodic Store"
+  },
+  {
+    "id": "T071",
+    "name": "Memory Promotion"
+  },
+  {
+    "id": "T072",
+    "name": "Versioned Memory"
+  },
+  {
+    "id": "T073",
+    "name": "Immutable Evidence Store"
+  },
+  {
+    "id": "T074",
+    "name": "Memory Eviction"
+  },
+  {
+    "id": "T075",
+    "name": "Memory Reconciliation"
+  },
+  {
+    "id": "T076",
+    "name": "Git-Backed Memory"
+  },
+  {
+    "id": "T077",
+    "name": "Temporal Knowledge Graphs"
+  },
+  {
+    "id": "T078",
+    "name": "Semantic Page Fault"
+  },
+  {
+    "id": "T079",
+    "name": "Speculative Decoding"
+  },
+  {
+    "id": "T080",
+    "name": "Adaptive Speculative Decoding"
+  },
+  {
+    "id": "T081",
+    "name": "KV Cache Reuse"
+  },
+  {
+    "id": "T082",
+    "name": "Prefix Caching"
+  },
+  {
+    "id": "T083",
+    "name": "Advanced Prefix Caching"
+  },
+  {
+    "id": "T084",
+    "name": "Session-Based Caching"
+  },
+  {
+    "id": "T085",
+    "name": "Quantization"
+  },
+  {
+    "id": "T086",
+    "name": "Quantized KV Cache"
+  },
+  {
+    "id": "T087",
+    "name": "Batching"
+  },
+  {
+    "id": "T088",
+    "name": "Continuous Batching"
+  },
+  {
+    "id": "T089",
+    "name": "Early Stopping"
+  },
+  {
+    "id": "T090",
+    "name": "FlashAttention"
+  },
+  {
+    "id": "T091",
+    "name": "FlashAttention-2"
+  },
+  {
+    "id": "T092",
+    "name": "FlashAttention-3"
+  },
+  {
+    "id": "T093",
+    "name": "PagedAttention"
+  },
+  {
+    "id": "T094",
+    "name": "Chunked Prefill"
+  },
+  {
+    "id": "T095",
+    "name": "Sliding Window Attention"
+  },
+  {
+    "id": "T096",
+    "name": "Sparse Attention"
+  },
+  {
+    "id": "T097",
+    "name": "Block-Sparse Attention"
+  },
+  {
+    "id": "T098",
+    "name": "Memory-Efficient Attention"
+  },
+  {
+    "id": "T099",
+    "name": "Multi-Query Attention — MQA"
+  },
+  {
+    "id": "T100",
+    "name": "Grouped-Query Attention — GQA"
+  },
+  {
+    "id": "T101",
+    "name": "Ring Attention"
+  },
+  {
+    "id": "T102",
+    "name": "Disaggregated Inference / Prefill-Decode"
+  },
+  {
+    "id": "T103",
+    "name": "Prefix Tree / Trie de Prefixos"
+  },
+  {
+    "id": "T104",
+    "name": "Radix Attention"
+  },
+  {
+    "id": "T105",
+    "name": "KV Cache Eviction"
+  },
+  {
+    "id": "T106",
+    "name": "GQA/MQA KV Optimization"
+  },
+  {
+    "id": "T107",
+    "name": "Roofline Analysis"
+  },
+  {
+    "id": "T108",
+    "name": "Multi-Head Attention — MHA"
+  },
+  {
+    "id": "T109",
+    "name": "Local / Window Attention"
+  },
+  {
+    "id": "T110",
+    "name": "Global Token Attention"
+  },
+  {
+    "id": "T111",
+    "name": "Dynamic Sparse Attention"
+  },
+  {
+    "id": "T112",
+    "name": "Retrieval-Based Attention"
+  },
+  {
+    "id": "T113",
+    "name": "FlashAttention Tiling"
+  },
+  {
+    "id": "T114",
+    "name": "Online Softmax"
+  },
+  {
+    "id": "T115",
+    "name": "Activation Checkpointing"
+  },
+  {
+    "id": "T116",
+    "name": "KV Cache Recomputation"
+  },
+  {
+    "id": "T117",
+    "name": "Context Parallelism"
+  },
+  {
+    "id": "T118",
+    "name": "Tensor Parallelism"
+  },
+  {
+    "id": "T119",
+    "name": "Pipeline Parallelism"
+  },
+  {
+    "id": "T120",
+    "name": "KV Cache Routing"
+  },
+  {
+    "id": "T121",
+    "name": "GPU Scheduling"
+  },
+  {
+    "id": "T122",
+    "name": "RDMA para inferência distribuída"
+  },
+  {
+    "id": "T123",
+    "name": "FP8 Quantization"
+  },
+  {
+    "id": "T124",
+    "name": "INT4 / W4A16 Quantization"
+  },
+  {
+    "id": "T125",
+    "name": "GPTQ"
+  },
+  {
+    "id": "T126",
+    "name": "AWQ"
+  },
+  {
+    "id": "T127",
+    "name": "GGUF / formatos de quantização"
+  },
+  {
+    "id": "T128",
+    "name": "EAGLE / EAGLE-3"
+  },
+  {
+    "id": "T129",
+    "name": "MTP — Multi-Token Prediction"
+  },
+  {
+    "id": "T130",
+    "name": "N-Gram Speculative Decoding"
+  },
+  {
+    "id": "T131",
+    "name": "Suffix Decoding"
+  },
+  {
+    "id": "T132",
+    "name": "Draft-Model Speculation"
+  },
+  {
+    "id": "T133",
+    "name": "Model Routing"
+  },
+  {
+    "id": "T134",
+    "name": "Semantic Routing"
+  },
+  {
+    "id": "T135",
+    "name": "Model Cascade"
+  },
+  {
+    "id": "T136",
+    "name": "Fallback Chains"
+  },
+  {
+    "id": "T137",
+    "name": "Rate Limiting"
+  },
+  {
+    "id": "T138",
+    "name": "Circuit Breaker"
+  },
+  {
+    "id": "T139",
+    "name": "Parallel Tool Calls"
+  },
+  {
+    "id": "T140",
+    "name": "Tool Use / Function Calling"
+  },
+  {
+    "id": "T141",
+    "name": "Structured Outputs"
+  },
+  {
+    "id": "T142",
+    "name": "Agent Frameworks com Planning"
+  },
+  {
+    "id": "T143",
+    "name": "Plan-Then-Act"
+  },
+  {
+    "id": "T144",
+    "name": "ReAct Pattern"
+  },
+  {
+    "id": "T145",
+    "name": "Adaptive Depth"
+  },
+  {
+    "id": "T146",
+    "name": "Adaptive Compute"
+  },
+  {
+    "id": "T147",
+    "name": "Parallel Fan-Out"
+  },
+  {
+    "id": "T148",
+    "name": "Conditional Branching"
+  },
+  {
+    "id": "T149",
+    "name": "Priority Queue"
+  },
+  {
+    "id": "T150",
+    "name": "Request Coalescing / Singleflight"
+  },
+  {
+    "id": "T151",
+    "name": "Lazy Loading de Ferramentas"
+  },
+  {
+    "id": "T152",
+    "name": "Token Budget Allocation"
+  },
+  {
+    "id": "T153",
+    "name": "Output Streaming com Interrupção"
+  },
+  {
+    "id": "T154",
+    "name": "Multi-Turn Conversation Management"
+  },
+  {
+    "id": "T155",
+    "name": "System Prompt Optimization"
+  },
+  {
+    "id": "T156",
+    "name": "Temperature Tuning"
+  },
+  {
+    "id": "T157",
+    "name": "Prefix Hashing"
+  },
+  {
+    "id": "T158",
+    "name": "Tool Registry"
+  },
+  {
+    "id": "T159",
+    "name": "Durable Execution"
+  },
+  {
+    "id": "T160",
+    "name": "DAG Scheduling"
+  },
+  {
+    "id": "T161",
+    "name": "Critical Path Analysis"
+  },
+  {
+    "id": "T162",
+    "name": "Idempotência"
+  },
+  {
+    "id": "T163",
+    "name": "Backoff com Jitter"
+  },
+  {
+    "id": "T164",
+    "name": "Retry-After"
+  },
+  {
+    "id": "T165",
+    "name": "Half-Open Circuit Breaker"
+  },
+  {
+    "id": "T166",
+    "name": "Queue Fairness / Aging"
+  },
+  {
+    "id": "T167",
+    "name": "Token Bucket"
+  },
+  {
+    "id": "T168",
+    "name": "Soft Limit / Hard Limit de Tokens"
+  },
+  {
+    "id": "T169",
+    "name": "Multi-Agent com Contextos Isolados"
+  },
+  {
+    "id": "T170",
+    "name": "Tool Schema Versioning"
+  },
+  {
+    "id": "T171",
+    "name": "Cache-Aware Orchestration"
+  },
+  {
+    "id": "T172",
+    "name": "Streaming Controller"
+  },
+  {
+    "id": "T173",
+    "name": "Model Fallback Controlado"
+  },
+  {
+    "id": "T174",
+    "name": "Priority-Based Scheduling"
+  },
+  {
+    "id": "T175",
+    "name": "Rate Limiting com Fallback"
+  },
+  {
+    "id": "T176",
+    "name": "Token-Aware Planning"
+  },
+  {
+    "id": "T177",
+    "name": "Fine-Tuning"
+  },
+  {
+    "id": "T178",
+    "name": "Knowledge Distillation"
+  },
+  {
+    "id": "T179",
+    "name": "Context Distillation Paramétrica"
+  },
+  {
+    "id": "T180",
+    "name": "Prompt Distillation"
+  },
+  {
+    "id": "T181",
+    "name": "Agent Memory Distillation"
+  },
+  {
+    "id": "T182",
+    "name": "LoRA"
+  },
+  {
+    "id": "T183",
+    "name": "QLoRA"
+  },
+  {
+    "id": "T184",
+    "name": "Mixture of Experts — MoE"
+  },
+  {
+    "id": "T185",
+    "name": "Constitutional AI"
+  },
+  {
+    "id": "T186",
+    "name": "Debate entre Agentes"
+  },
+  {
+    "id": "T187",
+    "name": "Ensemble Voting"
+  },
+  {
+    "id": "T188",
+    "name": "Self-Consistency"
+  },
+  {
+    "id": "T189",
+    "name": "Best-of-N Verification"
+  },
+  {
+    "id": "T190",
+    "name": "Verifier Loop"
+  },
+  {
+    "id": "T191",
+    "name": "Chain-of-Verification"
+  },
+  {
+    "id": "T192",
+    "name": "Self-Refine"
+  },
+  {
+    "id": "T193",
+    "name": "Guardrails"
+  },
+  {
+    "id": "T194",
+    "name": "Process Supervision"
+  },
+  {
+    "id": "T195",
+    "name": "Verificação Baseada em Execução"
+  },
+  {
+    "id": "T196",
+    "name": "Constrained Decoding"
+  },
+  {
+    "id": "T197",
+    "name": "JSON Schema Validation"
+  },
+  {
+    "id": "T198",
+    "name": "Calibrated Confidence"
+  },
+  {
+    "id": "T199",
+    "name": "Aprendizagem por Avaliação"
+  },
+  {
+    "id": "T200",
+    "name": "Independent Verification"
+  },
+  {
+    "id": "T201",
+    "name": "Agent Test-Time Scaling"
+  },
+  {
+    "id": "T202",
+    "name": "Uncertainty-Aware Planning"
+  },
+  {
+    "id": "T203",
+    "name": "Correctness-Based Routing"
+  },
+  {
+    "id": "T204",
+    "name": "Skills / Procedural Learning"
+  },
+  {
+    "id": "T205",
+    "name": "Semantic Equivalence Testing"
+  },
+  {
+    "id": "T206",
+    "name": "Process Verification"
+  },
+  {
+    "id": "R001",
+    "name": "MemGPT"
+  },
+  {
+    "id": "R002",
+    "name": "Letta / Letta MemFS"
+  },
+  {
+    "id": "R003",
+    "name": "LongMem"
+  },
+  {
+    "id": "R004",
+    "name": "Generative Agents"
+  },
+  {
+    "id": "R005",
+    "name": "LLMLingua"
+  },
+  {
+    "id": "R006",
+    "name": "PRISM"
+  },
+  {
+    "id": "R007",
+    "name": "SADA"
+  },
+  {
+    "id": "R008",
+    "name": "LangGraph"
+  },
+  {
+    "id": "R009",
+    "name": "vLLM"
+  },
+  {
+    "id": "R010",
+    "name": "Hugging Face TGI"
+  },
+  {
+    "id": "R011",
+    "name": "NVIDIA TensorRT-LLM"
+  },
+  {
+    "id": "R012",
+    "name": "Tinker Prompt Distillation"
+  }
+]

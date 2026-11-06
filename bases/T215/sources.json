@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "V2A-S003",
+    "title": "The Complexity Trap: Simple Observation Masking Is as Efficient as LLM Summarization for Agent Context Management",
+    "url": "https://kairos.jetbrains.com/research/articles/the-complexity-trap",
+    "publisher": "JetBrains Research",
+    "source_type": "research_article",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Comparação controlada de mascaramento de observações e resumo de trajetória; são transformações distintas.",
+    "limitations": "Consulta documental primária. Não houve reprodução de experimentos, instalação do produto nem validação de disponibilidade na infraestrutura LAI. Receitas e testes das entradas são propostas editoriais.",
+    "web_ref": "turn57view5"
+  },
+  {
+    "source_id": "V3C-S031",
+    "title": "Claude Platform — Compaction overview",
+    "url": "https://platform.claude.com/docs/en/build-with-claude/compaction",
+    "publisher": "Anthropic",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Distingue compactação sob demanda e por limiar, preservação de turnos recentes e gestão do bloco resultante.",
+    "limitations": "Documentação dinâmica e recursos em beta na consulta; nenhuma flag ou suporte local foi presumido.",
+    "web_ref": "turn140view0"
+  },
+  {
+    "source_id": "V4C-S031",
+    "title": "The Complexity Trap: Simple Observation Masking Is as Efficient as LLM Summarization for Agent Context Management",
+    "url": "https://arxiv.org/html/2508.21433v1",
+    "publisher": "Lindenbauer et al. / arXiv",
+    "source_type": "research_paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-08-29",
+    "supports": "Comparação de masking e sumarização em agentes de engenharia de software, com custos e comportamento de continuidade.",
+    "limitations": "Estudo experimental, não implantação de bigtech; resultados limitados a modelos, harness, tarefas e configurações avaliadas.",
+    "web_ref": "turn310view0"
+  },
+  {
+    "source_id": "C-S026",
+    "title": "Making retries safe with idempotent APIs",
+    "url": "https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/",
+    "publisher": "Amazon Web Services",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Identificador de intenção do cliente permite repetir uma solicitação sem repetir seu efeito lógico.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn34view2"
+  },
+  {
+    "source_id": "V4C-S030",
+    "title": "Harness engineering: leveraging Codex in an agent-first world",
+    "url": "https://openai.com/index/harness-engineering/",
+    "publisher": "OpenAI",
+    "source_type": "engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-02-11",
+    "supports": "Beta com usuários internos reais: aplicações por worktree, observabilidade isolada, planos versionados, instruções curtas e verificações mecânicas de arquitetura.",
+    "limitations": "Experimento operacional de um time; não equivale a produto geral sem supervisão nem demonstra substituição por modelos pequenos. Ganhos autoestimados não transferidos.",
+    "web_ref": "turn308view0"
+  }
+]

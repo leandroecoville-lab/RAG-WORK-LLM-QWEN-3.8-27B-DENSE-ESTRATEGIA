@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Commit é um snapshot completo do agente?",
+    "answer": "Não. Ele representa arquivos versionados e metadados; conversa, memória volátil e efeitos externos exigem mecanismos próprios."
+  },
+  {
+    "question": "Worktrees impedem todos os conflitos entre agentes?",
+    "answer": "Não. Isolam diretórios de trabalho, mas alterações ainda precisam ser integradas e serviços ou recursos externos podem continuar compartilhados."
+  },
+  {
+    "question": "Mesmo conteúdo implica mesmo commit?",
+    "answer": "Não. Pais e metadados também compõem o commit; compare árvores quando a questão for conteúdo."
+  },
+  {
+    "question": "Testar o working tree valida um commit parcialmente staged?",
+    "answer": "Somente se os conteúdos coincidirem. Verifique a árvore candidata ou teste um checkout construído a partir dela."
+  }
+]

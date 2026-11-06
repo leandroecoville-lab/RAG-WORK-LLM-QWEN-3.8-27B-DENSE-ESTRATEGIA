@@ -1,0 +1,51 @@
+{
+  "id": "T003",
+  "technical_details": "A unidade segura de descarte pode ser maior que uma mensagem: uma chamada e seu resultado formam uma dependência de protocolo. A janela também precisa preservar estados não resolvidos, como uma pergunta ainda sem resposta. Uma implementação robusta calcula um fechamento de dependências antes de cortar o histórico; recência define preferência, não validade semântica.",
+  "boundary_condition": "A hipótese de que o passado é dispensável falha quando uma restrição antiga permanece vigente ou uma ação atual depende de identificadores removidos.",
+  "implementation_contract": {
+    "inputs": "Histórico ordenado, orçamento e grupos de mensagens dependentes.",
+    "outputs": "Contexto válido com fronteira de descarte e referências ao arquivo completo.",
+    "state": "Cursor de arquivamento e conjunto de fatos protegidos ainda necessários.",
+    "invariant": "Nenhum resultado de ferramenta fica associado a uma chamada inexistente no protocolo enviado."
+  },
+  "tradeoffs": [
+    "FIFO é previsível e barato, mas ignora valor de informações antigas.",
+    "Proteger dependências melhora continuidade, porém pode impedir que a janela caiba sem outra forma de redução."
+  ],
+  "failure_test": "Teste proposto: inserir uma chamada no limite da janela e seu resultado depois do corte. A montagem deve manter o par necessário ou externalizá-lo por um mecanismo compatível, sem histórico inválido.",
+  "evaluation_plan": "Avaliação proposta: comparar FIFO por mensagens e descarte por grupos completos. Variar tamanho das saídas e distância de restrições relevantes; medir erros de protocolo, recuperação posterior e sucesso das etapas dependentes.",
+  "comparisons": [
+    {
+      "entry_id": "T041",
+      "relation": "complements",
+      "reason": "Last-N escolhe tamanho por quantidade de mensagens; a janela genérica pode usar outras unidades."
+    },
+    {
+      "entry_id": "T039",
+      "relation": "alternative",
+      "reason": "Seleção por importância pode preservar um fato antigo que FIFO retiraria."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Context editing documenta remoção de resultados antigos com placeholders e opções de preservação.",
+    "source_ids": [
+      "V3A-S008"
+    ],
+    "support": "direct",
+    "caveat": "Isso apoia uma implementação específica de descarte; não demonstra que todo histórico admite FIFO sem perda."
+  },
+  "advanced_qa": [
+    {
+      "question": "Arquivar torna o descarte sem perdas?",
+      "answer": "Preserva o original no armazenamento, mas ainda pode falhar a recuperação no momento necessário. Perda operacional e perda física são propriedades diferentes."
+    },
+    {
+      "question": "E quando todos os blocos restantes forem obrigatórios?",
+      "answer": "O montador deve declarar orçamento insuficiente e mudar a estratégia: reduzir tarefa, buscar outra representação válida ou usar capacidade compatível."
+    }
+  ],
+  "source_ids": [
+    "V3A-S008"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

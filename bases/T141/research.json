@@ -1,0 +1,52 @@
+{
+  "id": "T141",
+  "technical_details": "Definir properties em JSON Schema não torna os campos obrigatórios: required estabelece presença. Também é diferente aceitar null e permitir ausência. Ao compor schemas, additionalProperties considera propriedades reconhecidas no seu escopo; extensões com allOf podem surpreender quem presume união informal dos campos. Versões mais recentes oferecem unevaluatedProperties para controlar o que já foi avaliado, mas um decodificador pode suportar somente parte desse vocabulário.",
+  "boundary_condition": "A garantia estrutural depende do dialeto, do validador e do subconjunto efetivamente aceito pelo mecanismo de geração.",
+  "implementation_contract": {
+    "inputs": "Schema identificado, dialeto, política de campos extras e estado esperado da resposta.",
+    "outputs": "Documento validado ou diagnóstico por campo, incluindo término incompleto.",
+    "state": "Versão compilada do schema, capacidades do backend e registros de validação.",
+    "invariant": "Ausência, null, recusa e truncamento são estados distintos no contrato."
+  },
+  "tradeoffs": [
+    "Fechar objetos facilita detectar erros de digitação e dificulta evolução aditiva de campos.",
+    "Validação posterior cobre vocabulário adicional, mas não impede que a geração gaste tokens em uma saída rejeitada."
+  ],
+  "failure_test": "Teste proposto: gerar objeto sem campo requerido, objeto com null, campo extra e extensão via allOf; conferir resultado no validador e comportamento do backend separadamente.",
+  "evaluation_plan": "Comparar geração livre validada e decodificação restrita usando o mesmo schema e modelo. Medir conformidade inicial, tentativas de correção, truncamento e correção de domínio. Aprovar o contrato somente com matriz explícita de recursos suportados.",
+  "comparisons": [
+    {
+      "entry_id": "T196",
+      "relation": "complements",
+      "reason": "Decodificação restrita pode evitar algumas violações durante a geração."
+    },
+    {
+      "entry_id": "T197",
+      "relation": "complements",
+      "reason": "Validação completa do documento ocorre com um validador do dialeto definido."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação JSON Schema diferencia definição de propriedades, obrigatoriedade e controle de propriedades adicionais.",
+    "source_ids": [
+      "V3C-S013"
+    ],
+    "support": "direct",
+    "caveat": "Isso não garante suporte integral do mesmo vocabulário em todos os provedores de geração."
+  },
+  "advanced_qa": [
+    {
+      "question": "Campo opcional e campo nullable são iguais?",
+      "answer": "Não. Opcional permite ausência; nullable admite null como valor quando o campo está presente, conforme o schema."
+    },
+    {
+      "question": "Por que um schema válido pode falhar no gerador?",
+      "answer": "Porque validade do schema e suporte do decodificador são propriedades diferentes; o backend pode aceitar um subconjunto."
+    }
+  ],
+  "source_ids": [
+    "V3C-S013",
+    "V3C-S004"
+  ],
+  "research_note": "Contratos, testes e critérios são propostas editoriais; as fontes sustentam os mecanismos indicados."
+}

@@ -1,0 +1,41 @@
+{
+  "id": "T153",
+  "name": "Output Streaming com interrupção",
+  "canonical_name": "Output Streaming com Interrupção",
+  "canonical_id": "T153",
+  "aliases": [
+    "streaming cancelável",
+    "Output Streaming com Interrupção"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T089",
+    "T172"
+  ],
+  "source_ids": [
+    "C-S018",
+    "C-S006",
+    "V3C-S005",
+    "V3C-S019",
+    "V3C-S004",
+    "V3C-S007",
+    "V4C-S015",
+    "V3C-S030",
+    "C-S030",
+    "V3C-S037",
+    "C-S026",
+    "V4D-S003",
+    "V4D-S004",
+    "V4D-S009",
+    "V4D-S012",
+    "V4D-S013"
+  ],
+  "namespace": "T153",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T153",
+  "chunk_count": 9
+}

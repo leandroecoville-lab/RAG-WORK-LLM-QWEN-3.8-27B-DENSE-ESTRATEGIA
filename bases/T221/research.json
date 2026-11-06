@@ -1,0 +1,52 @@
+{
+  "id": "T221",
+  "technical_details": "Nessa política editorial, o lembrete deve ser uma projeção da versão vigente do objetivo, não um novo objetivo redigido livremente. Mudanças autorizadas precisam invalidar lembretes antigos; repetir ambos aumenta conflito. O conteúdo proposto distingue resultado desejado, critérios de conclusão e próxima decisão, evitando transformar detalhes do plano em requisitos permanentes. Inserção frequente demais compete por contexto com a evidência que permitiria cumprir o objetivo.",
+  "boundary_condition": "Lembrar uma meta incorreta ou obsoleta reforça desvio em vez de corrigi-lo.",
+  "implementation_contract": {
+    "inputs": "Objetivo versionado, alterações autorizadas e critérios ainda pendentes.",
+    "outputs": "Lembrete curto vinculado à revisão vigente e ponto de uso.",
+    "state": "Versão ativa, lembretes emitidos e critérios resolvidos.",
+    "invariant": "O lembrete não acrescenta requisito nem preserva instrução revogada como se continuasse vigente."
+  },
+  "tradeoffs": [
+    "Repetição frequente reduz esquecimento e aumenta custo e redundância.",
+    "Lembretes por evento são mais seletivos e dependem de bons sinais de desvio ou transição."
+  ],
+  "failure_test": "Teste proposto: alterar o escopo no meio da tarefa e acionar novo lembrete; exigir referência à nova versão e remoção da obrigação revogada.",
+  "evaluation_plan": "Comparar ausência de lembrete, periodicidade fixa e gatilhos por troca de sessão ou plano. Usar tarefas longas com mudanças de escopo documentadas. Medir conclusão correta, persistência de metas antigas e consumo adicional; não presumir eficácia universal.",
+  "comparisons": [
+    {
+      "entry_id": "T211",
+      "relation": "complements",
+      "reason": "Handoff transporta objetivo e decisões para a próxima sessão."
+    },
+    {
+      "entry_id": "T212",
+      "relation": "complements",
+      "reason": "Após compactação, o lembrete pode reintroduzir critérios vigentes sem reconstruir todo o histórico."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A Anthropic identifica declaração prematura de conclusão e perda de continuidade como falhas de agentes em tarefas longas.",
+    "source_ids": [
+      "V2A-S004"
+    ],
+    "support": "related",
+    "caveat": "A fonte motiva o controle de objetivo; Goal Reminder Injection é uma proposta operacional, não técnica validada isoladamente pelo artigo."
+  },
+  "advanced_qa": [
+    {
+      "question": "O lembrete deve repetir todo o plano?",
+      "answer": "Não. O plano pode mudar; resultado desejado e critérios vigentes são mais estáveis e úteis para orientar a próxima decisão."
+    },
+    {
+      "question": "Como impedir que lembretes entrem em conflito?",
+      "answer": "Vinculá-los à versão do objetivo e tratar alteração autorizada como supersessão explícita da versão anterior."
+    }
+  ],
+  "source_ids": [
+    "V2A-S004",
+    "V3C-S031"
+  ],
+  "research_note": "Mecanismos referenciados em fontes primárias; contratos e verificação descritos são propostas, não ensaios executados."
+}

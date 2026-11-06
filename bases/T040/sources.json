@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "A-S022",
+    "title": "Persistence",
+    "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+    "publisher": "LangChain",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Checkpointers para estado por thread; stores para dados duráveis entre threads.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn11view3"
+  },
+  {
+    "source_id": "A-S029",
+    "title": "Transaction Isolation",
+    "url": "https://www.postgresql.org/docs/current/transaction-iso.html",
+    "publisher": "PostgreSQL Global Development Group",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Níveis de isolamento e anomalias de concorrência, incluindo serialização.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn15view3"
+  },
+  {
+    "source_id": "V3A-S031",
+    "title": "LangGraph Checkpointers",
+    "url": "https://docs.langchain.com/oss/python/langgraph/checkpointers",
+    "publisher": "LangChain",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Checkpoints por super-step, StateSnapshot e pending writes de tarefas concluídas; estado de execução e retomada.",
+    "limitations": "Documentação dinâmica consultada nesta data. APIs e comportamento dependem da versão instalada; nenhum runtime foi executado ou alterado nesta pesquisa.",
+    "web_ref": "turn145view2"
+  },
+  {
+    "source_id": "V3A-S030",
+    "title": "LangGraph Fault tolerance",
+    "url": "https://docs.langchain.com/oss/python/langgraph/fault-tolerance",
+    "publisher": "LangChain",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Reexecução de nós, fronteiras de checkpoints, chaves idempotentes e resultado desconhecido quando falta confirmação externa.",
+    "limitations": "Documentação dinâmica consultada nesta data. APIs e comportamento dependem da versão instalada; nenhum runtime foi executado ou alterado nesta pesquisa.",
+    "web_ref": "turn145view1"
+  },
+  {
+    "source_id": "V4A-S002",
+    "title": "Context engineering: memory, compaction, and tool clearing",
+    "url": "https://platform.claude.com/cookbook/tool-use-context-engineering-context-engineering-tools",
+    "publisher": "Anthropic",
+    "source_type": "official_cookbook",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-03-20",
+    "supports": "Distingue compactação, remoção de resultados e memória; explicita uso de estratégias no Claude Code.",
+    "limitations": "Escopo limitado ao material aberto. Disponibilidade, resultados experimentais e implantação histórica são classes distintas; não demonstra desempenho de modelos 3–30B no ambiente do usuário.",
+    "web_ref": "turn229view1"
+  }
+]

@@ -1,0 +1,258 @@
+{
+  "coverage": {
+    "entry_id": "T195",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 3,
+    "verified_bigtech_llm_production_exact": 3,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 1,
+    "unique_cases_associated": 4,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 7,
+    "target_met": false,
+    "strict_case_ids": [
+      "V4B-C019",
+      "V4B-C020",
+      "V4B-C021"
+    ],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Verificação baseada em execução",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C019",
+      "company": "Google DeepMind",
+      "organization_class": "bigtech",
+      "system": "AlphaEvolve em infraestrutura Google",
+      "title": "Busca evolutiva com avaliadores aplicada à infraestrutura do operador",
+      "evidence_level": "production_documented",
+      "observed_use": "O operador relata heurística incorporada ao Borg e aplicações posteriores na infraestrutura, além de melhorias de algoritmos e projetos de hardware. É contado como um sistema, não como vários exemplos artificiais.",
+      "technical_mechanism": "Modelos propõem programas; avaliadores automáticos executam e pontuam candidatos; um banco evolutivo alimenta novas iterações. No caso de circuito, verificações preservaram funcionalidade antes da integração descrita.",
+      "event_date": "2025-05-14",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S022",
+        "V4B-S023"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T190",
+          "match": "exact",
+          "rationale": "Candidatos recebem avaliação e alimentam novas propostas."
+        },
+        {
+          "entry_id": "T195",
+          "match": "exact",
+          "rationale": "Execução e avaliadores de código produzem sinais verificáveis."
+        },
+        {
+          "entry_id": "T199",
+          "match": "family",
+          "rationale": "Avaliação orienta seleção ou revisão de candidatos; isso não prova aprendizagem persistente do modelo por essa avaliação."
+        },
+        {
+          "entry_id": "T201",
+          "match": "family",
+          "rationale": "Há busca entre candidatos, mas não é simplesmente best-of-N independente."
+        },
+        {
+          "entry_id": "T205",
+          "match": "family",
+          "rationale": "Há verificação de funcionalidade e desempenho, sem equivaler a qualquer receita de treinamento por recompensas."
+        },
+        {
+          "entry_id": "T217",
+          "match": "family",
+          "rationale": "O sistema modifica programas com avaliação; não demonstra todos os mecanismos de aplicação de patch."
+        },
+        {
+          "entry_id": "P016",
+          "match": "analogy",
+          "rationale": "Avaliação local pode inspirar a proposta LAI; o produto editorial não foi implantado."
+        }
+      ],
+      "small_model_transfer": "Proposta: usar um 3–30B para gerar alterações pequenas com avaliadores baratos, preservando um baseline e um orçamento de busca.",
+      "limits": "Modelos Gemini de fronteira foram usados; não demonstra a mesma capacidade com 3–30B. Uma melhoria de uma função avaliada não prova correção geral do software.",
+      "canonical_case_id": "V4B-C019",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T195",
+        "match": "exact",
+        "rationale": "Execução e avaliadores de código produzem sinais verificáveis."
+      }
+    },
+    {
+      "case_id": "V4B-C020",
+      "company": "Meta",
+      "organization_class": "bigtech",
+      "system": "ACH — Automated Compliance Hardening",
+      "title": "Testes orientados por mutações em ensaio industrial",
+      "evidence_level": "production_documented",
+      "observed_use": "A Meta relata aplicação em Facebook Feed, Instagram, Messenger e WhatsApp e descreve um ensaio industrial delimitado, com revisão por engenheiros.",
+      "technical_mechanism": "LLMs produzem mutações que representam comportamentos indesejados e testes capazes de detectar essas mudanças; compilação, execução e revisão restringem os candidatos.",
+      "event_date": "2025-02-05",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S024",
+        "V4B-S025"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T195",
+          "match": "exact",
+          "rationale": "Testes executáveis validam candidatos."
+        },
+        {
+          "entry_id": "T199",
+          "match": "family",
+          "rationale": "Avaliação orienta seleção ou revisão de candidatos; isso não prova aprendizagem persistente do modelo por essa avaliação."
+        },
+        {
+          "entry_id": "T200",
+          "match": "family",
+          "rationale": "A detecção exige evidência específica, mas o oráculo continua limitado ao comportamento modelado."
+        },
+        {
+          "entry_id": "T217",
+          "match": "family",
+          "rationale": "Geração de testes é parte da engenharia de código, não prova qualquer mecanismo de patch."
+        }
+      ],
+      "small_model_transfer": "Proposta: para modelos pequenos, restringir mutações a uma classe de risco e exigir que o teste passe no original e falhe no mutante correspondente.",
+      "limits": "Ensaio industrial não significa implantação irrestrita em todo código. Matar um mutante não demonstra ausência de outros defeitos nem equivalência a modelos maiores.",
+      "canonical_case_id": "V4B-C020",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T195",
+        "match": "exact",
+        "rationale": "Testes executáveis validam candidatos."
+      }
+    },
+    {
+      "case_id": "V4B-C021",
+      "company": "Meta",
+      "organization_class": "bigtech",
+      "system": "TestGen-LLM",
+      "title": "Ampliação de testes com filtros em uso industrial relatado pelos autores",
+      "evidence_level": "production_documented",
+      "observed_use": "Os autores relatam test-a-thons e integração de testes gerados aceitos por engenheiros. A classificação se apoia nessa descrição explícita de uso, não no fato de existir um paper.",
+      "technical_mechanism": "Geração de testes a partir de código e suítes existentes, seguida de filtros de compilação, execução confiável e aumento de cobertura.",
+      "event_date": "2024-02-14",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S026"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T195",
+          "match": "exact",
+          "rationale": "Testes são executados para aceitar candidatos."
+        },
+        {
+          "entry_id": "T199",
+          "match": "family",
+          "rationale": "Avaliação orienta seleção ou revisão de candidatos; isso não prova aprendizagem persistente do modelo por essa avaliação."
+        },
+        {
+          "entry_id": "T190",
+          "match": "family",
+          "rationale": "Há geração e crítica por ferramentas; isso não implica refinamento livre multiagente."
+        },
+        {
+          "entry_id": "T217",
+          "match": "family",
+          "rationale": "Ampliação de suíte se relaciona a engenharia de código com escopo específico."
+        }
+      ],
+      "small_model_transfer": "Proposta: um 3–30B especializado pode propor testes pequenos, aproveitando compilador e suíte como verificadores externos.",
+      "limits": "Uso industrial delimitado, com avaliação humana. Cobertura de linhas não equivale a correção semântica; resultados publicados não são uma previsão para o repositório do usuário.",
+      "canonical_case_id": "V4B-C021",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T195",
+        "match": "exact",
+        "rationale": "Testes são executados para aceitar candidatos."
+      }
+    },
+    {
+      "case_id": "V4C-C010",
+      "company": "Uber",
+      "system": "AutoClean com PolyglotPiranha — evolução do cleanup",
+      "title": "Agentes delimitados e transformações determinísticas em cleanup contínuo",
+      "evidence_level": "production_documented",
+      "observed_use": "A Uber descreve AutoClean executando continuamente nos monorepos, produzindo diffs de remoção de flags com CI e validação antes da revisão humana.",
+      "technical_mechanism": "Agente chama transformação determinística por MCP; falhas de CI passam primeiro por fixers mecânicos; verificadores CodeCourt por propriedade executam em paralelo e agregam decisão.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S008",
+        "V4C-S009"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T140",
+          "match": "exact",
+          "rationale": "PolyglotPiranha é exposto ao agente por MCP."
+        },
+        {
+          "entry_id": "T232",
+          "match": "exact",
+          "rationale": "Transformações determinísticas de código ficam no PolyglotPiranha."
+        },
+        {
+          "entry_id": "T217",
+          "match": "exact",
+          "rationale": "Atualizações do diff são reavaliadas por CI até sucesso ou limite de tentativas."
+        },
+        {
+          "entry_id": "T237",
+          "match": "exact",
+          "rationale": "Fixers e verificadores recebem papéis e escopos específicos."
+        },
+        {
+          "entry_id": "T190",
+          "match": "exact",
+          "rationale": "Verificadores avaliam propriedades após geração e CI."
+        },
+        {
+          "entry_id": "T195",
+          "match": "exact",
+          "rationale": "Compilação e testes contribuem para validação do resultado."
+        },
+        {
+          "entry_id": "T200",
+          "match": "exact",
+          "rationale": "CodeCourt separa propriedades de aceitação do agente que fez a limpeza."
+        },
+        {
+          "entry_id": "T206",
+          "match": "family",
+          "rationale": "Propriedades como ausência de desvio de intenção verificam requisitos do processo, sem prova formal."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "O gate de propriedades inspira o componente proposto, sem demonstrar um produto LAI."
+        },
+        {
+          "entry_id": "T147",
+          "match": "exact",
+          "rationale": "CodeCourt executa revisores por propriedade em paralelo e agrega todos os resultados antes de encaminhar o diff."
+        }
+      ],
+      "small_model_transfer": "Proposta: 3–7B classifica falhas mecânicas; 8–14B propõe alteração localizada; 15–30B avalia propagação de mudanças. Transformações booleanas e gates permanecem determinísticos; cada banda precisa de avaliação própria.",
+      "limits": "O operador não informa que as faixas propostas de modelos reproduzam o sistema. CI verde não prova semântica, e vereditos de agentes continuam sujeitos a erro. Pipeline e sua evolução histórica contam uma vez.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C010",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T195",
+        "match": "exact",
+        "rationale": "Compilação e testes contribuem para validação do resultado."
+      }
+    }
+  ]
+}

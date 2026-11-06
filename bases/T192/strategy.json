@@ -1,0 +1,119 @@
+{
+  "id": "T192",
+  "novelty": "A v3 exigiu críticas acionáveis e preservação da versão anterior. Esta camada distingue melhoria de apresentação de correção factual e define quando incorporar evidência externa ao refinamento.",
+  "deep_layers": [
+    {
+      "name": "Critério antes da crítica",
+      "detail": "Defina o que pode melhorar: clareza, cobertura de requisitos, correção ou concisão. O mesmo modelo pode editar estilo de modo útil e continuar incapaz de detectar um erro factual. Não misture essas dimensões num pedido genérico para 'melhorar tudo', que dificulta medir progresso.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S045",
+        "V3B-S019",
+        "V4C-S009"
+      ]
+    },
+    {
+      "name": "Feedback com evidência",
+      "detail": "Peça localização do defeito e motivo verificável. Quando a crítica exige conhecimento ausente, busque fonte ou ferramenta antes da revisão. O trabalho sobre limites de autocorreção alerta que feedback interno não substitui sinal externo; uma nova resposta mais confiante pode ser apenas outra hipótese.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S045",
+        "V3B-S019",
+        "V4C-S009"
+      ]
+    },
+    {
+      "name": "Seleção entre versões",
+      "detail": "Conserve versões e escolha pela rubrica, permitindo manter a inicial. Uma revisão pode satisfazer um requisito e perder outro; avalie o conjunto completo no fim. Limite alterações ao escopo autorizado e pare quando mudanças adicionais não oferecem benefício observado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S045",
+        "V3B-S019",
+        "V4C-S009"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Texto de domínio",
+      "scenario": "A informação já foi verificada, mas a apresentação está ruim.",
+      "strategy": "Forneça uma rubrica de clareza e requisitos imutáveis. Peça revisão e compare se fatos, números e citações foram preservados.",
+      "small_model_role": "Um 3–7B pode melhorar forma de textos curtos com conteúdo estável.",
+      "acceptance": "Medir preservação factual e cumprimento de requisitos, sem premiar comprimento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S045",
+        "V3B-S019",
+        "V4C-S009"
+      ]
+    },
+    {
+      "name": "Resposta parcialmente correta",
+      "scenario": "O avaliador externo aponta falhas específicas.",
+      "strategy": "Use feedback localizado para revisar o mínimo necessário e reexecute checagens. Se não houver sinal externo, registre a revisão como hipótese.",
+      "small_model_role": "Um 8–14B pode refinar soluções especializadas com ferramentas, sujeito à validação.",
+      "acceptance": "A versão escolhida deve corrigir falha observada sem criar regressões.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S045",
+        "V3B-S019",
+        "V4C-S009"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Bom candidato para ajustes de forma e erros estreitos; autocorreção geral não é presumida.",
+    "8_14b": "Contexto suficiente para requisitos e diferenças entre versões ajuda a reduzir regressões.",
+    "15_30b": "Um 15–30B pode revisar problemas maiores, mas continua sujeito a vieses compartilhados com a geração.",
+    "training_or_runtime_requirements": "Workflow em runtime, sem atualização persistente de pesos. Aprendizagem exige outro ciclo explícito.",
+    "do_not_use_when": "Não tratar a declaração 'agora está correto' do próprio modelo como evidência de melhoria."
+  },
+  "connections": [
+    {
+      "target_id": "T190",
+      "relation": "complements",
+      "how": "Um loop com verificador externo transforma críticas em condições de aceite.",
+      "interface": "Versões e falhas específicas.",
+      "condition": "Verificador examina a revisão final.",
+      "acceptance": "Comparar refinamento interno e refinamento com evidência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S045",
+        "V3B-S019",
+        "V4C-S009"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T205",
+      "relation": "complements",
+      "how": "Testes de equivalência ajudam a preservar significado durante edição.",
+      "interface": "Observáveis, tolerâncias e versões.",
+      "condition": "Critério de equivalência adequado à tarefa.",
+      "acceptance": "Detectar mudanças de números, unidades ou efeitos laterais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S045",
+        "V3B-S019",
+        "V4C-S009"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Manter a opção de rejeitar a revisão e conservar o original.",
+    "Não interpretar maior fluência como maior correção."
+  ],
+  "frontier_comparison": "Compare revisões com avaliação cega e critérios separados. Self-Refine pode melhorar uma resposta específica, mas não demonstra que repetição interna aproxima indefinidamente um modelo pequeno da fronteira.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q011"
+    ],
+    "scope_note": "Pesquisa de refinamento e casos de revisão industrial consultados. AutoClean fornece exemplo de feedback externo; não é classificado como prova de autocorreção puramente interna."
+  },
+  "source_ids": [
+    "C-S045",
+    "V3B-S019",
+    "V4C-S009"
+  ]
+}

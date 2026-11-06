@@ -1,0 +1,121 @@
+{
+  "id": "T069",
+  "novelty": "A v3 corrigiu o nome para consolidação externa por resumos. Aqui o resumo é uma vista de consulta por finalidade, mantendo separação de T179.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Produza vistas diferentes para localizar informação, retomar tarefa e explicar decisão. Um único resumo universal tende a misturar detalhes irrelevantes e omitir condições úteis a um consumidor específico.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S005",
+        "A-S040",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Considere o resumo como projeção reconstruível. Quando a finalidade mudar, gerar nova vista a partir das fontes; não empilhar resumos de finalidades diferentes até perder a ligação com origem.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S005",
+        "A-S040",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare resumo único e vistas por finalidade. Meça decisões sustentadas, custo de reconstrução e dependência do texto original; nenhum desses processos atualiza pesos do modelo. Unidade de avaliação: vista resumida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S005",
+        "A-S040",
+        "V4A-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Retomada de projeto",
+      "scenario": "Equipe precisa estado operacional curto.",
+      "strategy": "Gerar vista de pendências e decisões confirmadas, com referências para justificativas. Não incluir hipótese descartada como regra ativa.",
+      "small_model_role": "3–7B lê vista operacional.",
+      "acceptance": "Próxima ação deve respeitar decisão vigente e evidência necessária.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S005",
+        "A-S040",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Consulta histórica",
+      "scenario": "Usuário quer entender mudança de posição.",
+      "strategy": "Criar vista cronológica a partir de versões originais, preservando o que era desconhecido em cada etapa.",
+      "small_model_role": "15–30B explica evolução.",
+      "acceptance": "Não reescrever passado usando conclusão atual como se sempre fosse conhecida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S005",
+        "A-S040",
+        "V4A-S002"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Consumidor de resumos estruturados por tarefa e campos.",
+    "8_14b": "Autor de síntese local com fontes por afirmação.",
+    "15_30b": "Integrador de vistas históricas ou contraditórias.",
+    "training_or_runtime_requirements": "Origens preservadas, finalidade e versão da vista; distilação paramétrica é outro processo, identificado por T179.",
+    "do_not_use_when": "Resumo vira única cópia do conhecimento ou é reutilizado para finalidade que exige detalhes omitidos."
+  },
+  "connections": [
+    {
+      "target_id": "T179",
+      "relation": "alternative",
+      "how": "Escolher internalização em pesos somente como projeto distinto.",
+      "interface": "Corpus, objetivo e critério de atualização.",
+      "condition": "Houver dados e treino apropriados, não mera escrita de resumo.",
+      "acceptance": "Verificar mudança de pesos antes de chamar processo de destilação paramétrica.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S005",
+        "A-S040",
+        "V4A-S002"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T072",
+      "relation": "requires",
+      "how": "Versionar vista e finalidade junto da origem.",
+      "interface": "Resumo, purpose_id, fontes e revisão.",
+      "condition": "Dependências permitirem reconstrução.",
+      "acceptance": "Mudar finalidade e detectar vista incompatível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S005",
+        "A-S040",
+        "V4A-S002"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não afirmar aprendizado paramétrico por ter salvo resumo.",
+    "Não converter hipótese sintetizada em fato confirmado."
+  ],
+  "frontier_comparison": "Comparar utilidade da vista para tarefa específica; resumir externamente melhora acesso, não aumenta por si só conhecimento dos pesos.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q013",
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S005",
+    "A-S040",
+    "V4A-S002"
+  ]
+}

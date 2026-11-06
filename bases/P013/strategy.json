@@ -1,0 +1,129 @@
+{
+  "id": "P013",
+  "novelty": "Aprofunda a proposta de confiabilidade com isolamento por domínio de falha, teste controlado de recuperação e orçamento contra tempestade de retries.",
+  "source_ids": [
+    "C-S005",
+    "C-S026",
+    "V3D-S017",
+    "V4C-S005"
+  ],
+  "deep_layers": [
+    {
+      "name": "Domínio de falha correto",
+      "detail": "Proposta: particionar circuitos por recurso e falha observável, evitando que um cliente inválido bloqueie todos os demais. Falhas de autenticação, sobrecarga e indisponibilidade têm respostas distintas. Preservar métricas por tenant e operação ajuda a evitar um circuito que apenas oculta defeitos de contrato.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S005",
+        "C-S026",
+        "V3D-S017",
+        "V4C-S005"
+      ]
+    },
+    {
+      "name": "Recuperação com carga limitada",
+      "detail": "Usar probes com orçamento e competição controlada. A volta de uma dependência não autoriza liberar toda a fila acumulada de uma vez. Reintroduzir tráfego gradualmente e observar p95, rejeições e sucesso; um teste simples de conexão pode passar enquanto a operação real ainda falha.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S005",
+        "C-S026",
+        "V3D-S017",
+        "V4C-S005"
+      ]
+    },
+    {
+      "name": "Amplificação entre camadas",
+      "detail": "Calcular o máximo de tentativas efetivas considerando SDK, gateway, workflow e agente. Um teto por camada pode multiplicar carga. A política global distribui créditos e conserva identidade lógica; jitter reduz sincronização, mas não cria capacidade ausente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S005",
+        "C-S026",
+        "V3D-S017",
+        "V4C-S005"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Provedor de modelo degradado",
+      "scenario": "Latência aumenta e alguns pedidos retornam erro transitório.",
+      "strategy": "Limitar concorrência, usar deadline residual e alternar apenas para rota compatível quando houver orçamento.",
+      "small_model_role": "LLM pequena continua tarefas elegíveis; a política de falha usa telemetria externa.",
+      "acceptance": "Carga no provedor cai durante falha e retorno não dispara pico maior que a capacidade medida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S005",
+        "C-S026",
+        "V3D-S017",
+        "V4C-S005"
+      ]
+    },
+    {
+      "name": "Ferramenta com erro permanente",
+      "scenario": "Argumentos ou credenciais inválidos geram repetição inútil.",
+      "strategy": "Classificar erro e encerrar retry de transporte; reparar contrato somente em fluxo apropriado.",
+      "small_model_role": "Modelo pode explicar o erro tipado sem receber segredo ou autoridade de ignorar política.",
+      "acceptance": "Erros permanentes não consomem toda a fila nem o orçamento de tentativas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S005",
+        "C-S026",
+        "V3D-S017",
+        "V4C-S005"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "3–7B: classificação auxiliar de mensagens, sem autoridade exclusiva sobre retry.",
+    "8_14b": "8–14B: reparo de argumentos dentro de schema e limite de tentativas.",
+    "15_30b": "15–30B: diagnóstico complexo sob demanda, sem ocupar o caminho crítico de cada requisição.",
+    "training_or_runtime_requirements": "Métricas, limites e estados do circuito pertencem ao runtime e precisam de testes de falha.",
+    "do_not_use_when": "Não usar fallback que viole o requisito da tarefa só para manter resposta disponível."
+  },
+  "connections": [
+    {
+      "target_id": "T138",
+      "relation": "complements",
+      "how": "Associar circuito ao recurso e classe de falha adequados.",
+      "interface": "Chave do circuito, estado, amostra e orçamento de probes.",
+      "condition": "Dependência apresenta falha correlacionada.",
+      "acceptance": "Erros de um escopo não derrubam escopos independentes sem evidência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S005",
+        "C-S026",
+        "V3D-S017",
+        "V4C-S005"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T163",
+      "relation": "complements",
+      "how": "Distribuir esperas e tentativas dentro do teto lógico.",
+      "interface": "Deadline, retry_credit e identidade da operação.",
+      "condition": "Falha é transitória e repetição é segura.",
+      "acceptance": "Retries de todas as camadas respeitam o mesmo limite efetivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S005",
+        "C-S026",
+        "V3D-S017",
+        "V4C-S005"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não usar indiscriminadamente liveness para reiniciar serviço saudável dependente de outro indisponível.",
+    "Não interpretar jitter como proteção suficiente contra sobrecarga."
+  ],
+  "frontier_comparison": "Comparar sucesso e custo em falhas injetadas, não apenas operação normal. Reportar rejeições controladas e tempo até recuperação sem mascarar falhas.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q001",
+      "V4C-Q003",
+      "V4C-Q004"
+    ],
+    "scope_note": "P013 é proposta. AWS, SRE Google e plataformas de fila sustentam mecanismos e limites, sem comprovar o controlador editorial completo."
+  }
+}

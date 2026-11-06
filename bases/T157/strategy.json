@@ -1,0 +1,109 @@
+{
+  "id": "T157",
+  "novelty": "A v3 detalhava hash encadeado de blocos. Esta camada considera migração de versões, isolamento entre domínios e investigação de falsos acertos, com decisões que preservam equivalência computacional.",
+  "deep_layers": [
+    {
+      "name": "Namespace de execução",
+      "detail": "Construa a identidade de cache a partir da configuração efetivamente servida, não do alias comercial do modelo. Troca de quantização, adaptador ou template deve ser avaliada como mudança de execução. Um namespace explícito reduz o risco de um alias mutável apontar para pesos novos enquanto blocos antigos continuam elegíveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S015"
+      ]
+    },
+    {
+      "name": "Invalidar com alcance definido",
+      "detail": "Organize quais mudanças invalidam todos os blocos e quais afetam apenas uma ramificação do prefixo. Uma alteração no núcleo inicial invalida seus descendentes; mudar somente o último documento não precisa destruir prefixos anteriores compatíveis. Esse desenho permite publicar prompts novos com convivência controlada entre gerações.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S015",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Auditar equivalência",
+      "detail": "Acompanhe acertos por classe de chave e compare amostras com recomputação sem cache. Um resultado incorreto pode vir de colisão lógica por metadado ausente, mesmo sem colisão criptográfica. Testes devem trocar imagem, adaptador, tenant e template separadamente para localizar a dimensão que a chave deixou de representar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S015"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Assistentes por organização",
+      "scenario": "Vários clientes usam instruções parecidas e documentos diferentes.",
+      "strategy": "Compartilhe somente o prefixo cuja reutilização seja permitida e computacionalmente compatível; introduza identidade de domínio onde necessário. Documentos privados não se tornam compartilháveis apenas porque o texto inicial coincide. Compare isolamento estrito e compartilhamento aprovado sob carga.",
+      "small_model_role": "3–7B atende tarefas curtas; o runtime determina identidade, sem delegá-la ao modelo.",
+      "acceptance": "Proposta: nenhum reaproveitamento entre domínios proibidos e redução de prefill nos casos elegíveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S015"
+      ]
+    },
+    {
+      "name": "Atualização de instruções",
+      "scenario": "O mesmo agente recebe uma revisão do núcleo operacional.",
+      "strategy": "Publique nova geração do prompt, mantenha a anterior para execuções já iniciadas e contabilize aquecimento. Não misture tokens de um template com estado calculado por outro. Expire versões antigas quando suas execuções e requisitos de retenção terminarem.",
+      "small_model_role": "8–14B e 15–30B mantêm papéis; a compatibilidade depende da configuração, não do porte.",
+      "acceptance": "Proposta: resposta equivalente à recomputação e custo de aquecimento explicitado na migração.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S015",
+        "V4C-S014"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Beneficiar-se de prefixos curtos muito repetidos, sem esperar ganho quando decode domina.",
+    "8_14b": "Usar templates estáveis de extração e registrar variações por tarefa.",
+    "15_30b": "Reaproveitar instruções longas e repositórios comuns, medindo pressão de KV e concorrência.",
+    "training_or_runtime_requirements": "Backend com identidade documentada, política de expulsão e telemetria por versão; não reimplementar hash ad hoc.",
+    "do_not_use_when": "Não compartilhar estado entre modelos ou representações multimodais apenas porque textos visíveis são iguais."
+  },
+  "connections": [
+    {
+      "target_id": "T171",
+      "relation": "feeds",
+      "how": "Fornecer identidade e idade de residência para decisão de afinidade, mantendo possibilidade de recomputar.",
+      "interface": "Chave de prefixo, namespace e timestamp de telemetria.",
+      "condition": "Estimativa de economia compete com espera na fila.",
+      "acceptance": "Rota correta mesmo após expulsão de bloco.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S015"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T155",
+      "relation": "complements",
+      "how": "Avaliar edição do prompt também pelo quanto invalida prefixos frequentes.",
+      "interface": "Versões de módulos e distribuição de reutilização.",
+      "condition": "Qualidade é aprovada antes da economia de cache.",
+      "acceptance": "Comparar custo total após troca e não apenas tokens removidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S015"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Hash forte não corrige a ausência de uma dimensão semântica da chave.",
+    "Telemetria de hit não comprova equivalência; manter teste de recomputação em mudanças de runtime."
+  ],
+  "frontier_comparison": "Compare pequeno e fronteira com cache frio e quente separados. Vantagem por prefixo repetido é propriedade da carga e infraestrutura, não equivalência geral de raciocínio.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q009",
+      "V4C-Q017"
+    ],
+    "scope_note": "Fontes de vLLM e políticas Uber apoiam implementação e afinidade. Request collapsing de CDN não é prefix KV cache e não foi contado como o mesmo mecanismo."
+  },
+  "source_ids": [
+    "V3C-S015",
+    "V4C-S014",
+    "V4C-S030"
+  ]
+}

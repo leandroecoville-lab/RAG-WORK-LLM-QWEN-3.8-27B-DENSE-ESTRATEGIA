@@ -1,0 +1,46 @@
+{
+  "id": "P012",
+  "name": "Verification Engine / Verification Controller",
+  "canonical_name": "Verification Engine / Verification Controller",
+  "canonical_id": "P012",
+  "aliases": [
+    "motor proposto de verificação de resultados",
+    "controlador proposto de verificação"
+  ],
+  "category": "componentes_propostos",
+  "kind": "component",
+  "scope": "proposta",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T195",
+    "T197",
+    "T200",
+    "T205",
+    "T206",
+    "P010",
+    "P011",
+    "P016"
+  ],
+  "source_ids": [
+    "C-S049",
+    "C-S048",
+    "C-S043",
+    "V2C-S004",
+    "C-S050",
+    "V4C-S009",
+    "C-S030",
+    "V4C-S002",
+    "V4C-S006",
+    "V4C-S007",
+    "V4C-S008",
+    "V4C-S010",
+    "V4C-S017",
+    "V4C-S029",
+    "V4C-S030"
+  ],
+  "namespace": "P012",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/P012",
+  "chunk_count": 9
+}

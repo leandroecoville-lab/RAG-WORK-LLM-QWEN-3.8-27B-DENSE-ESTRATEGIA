@@ -1,0 +1,29 @@
+{
+  "id": "T078",
+  "name": "Semantic Page Fault",
+  "canonical_name": "Semantic Page Fault",
+  "canonical_id": "T078",
+  "aliases": [
+    "falta semântica de página",
+    "lacuna de contexto"
+  ],
+  "category": "memoria",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T044",
+    "T062",
+    "T063",
+    "T067"
+  ],
+  "source_ids": [
+    "A-S009",
+    "A-S010"
+  ],
+  "namespace": "T078",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T078",
+  "chunk_count": 9
+}

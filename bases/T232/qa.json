@@ -1,0 +1,18 @@
+[
+  {
+    "question": "AST Editing e CST Editing são iguais?",
+    "answer": "Não. Ambas operam sobre estrutura, mas a representação concreta retém detalhes textuais que uma AST frequentemente descarta."
+  },
+  {
+    "question": "Uma refatoração por AST dispensa testes?",
+    "answer": "Não. Ela melhora a precisão da seleção sintática, mas não prova que os consumidores e efeitos do código preservam o comportamento esperado."
+  },
+  {
+    "question": "Uma árvore sintaticamente válida prova refatoração correta?",
+    "answer": "Não. A mudança pode atingir outro vínculo ou alterar comportamento, apesar de preservar a gramática."
+  },
+  {
+    "question": "Posso reutilizar metadados depois de substituir nós?",
+    "answer": "Somente conforme o contrato da ferramenta; referências por identidade podem pertencer à árvore anterior e precisar de nova resolução."
+  }
+]

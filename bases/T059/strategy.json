@@ -1,0 +1,112 @@
+{
+  "id": "T059",
+  "novelty": "A v3 separou replay e efeitos. Aqui Event Sourcing sustenta evolução de esquema e reconstrução de memórias com projetores alternativos.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Eventos devem representar fatos de domínio, não frases livres do agente. Campos de intenção, tentativa e confirmação precisam ser distintos para reconstruir estado sem inventar sucesso.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S027",
+        "V4A-S012"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Versione schema e projetor. Upcasting pode adaptar formato antigo, mas não deve criar informação que nunca existiu; marcar ausência preserva honestidade da reconstrução.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S027",
+        "V4A-S012"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare projeção atual e nova sobre o mesmo log, sem emitir efeitos externos. Meça divergências por tipo de evento e decisões afetadas; verificar eventos desconhecidos e fora de ordem. Unidade de avaliação: stream de eventos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S027",
+        "V4A-S012"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Migração de memória",
+      "scenario": "Novo schema separa hipóteses de decisões.",
+      "strategy": "Reprocessar eventos em projeção paralela, comparar consultas e publicar somente após explicar diferenças materiais.",
+      "small_model_role": "3–7B classifica candidatos; código projeta.",
+      "acceptance": "Nenhum evento ambíguo pode ser reinterpretado silenciosamente como confirmação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S027",
+        "V4A-S012"
+      ]
+    },
+    {
+      "name": "Auditoria de tarefa",
+      "scenario": "É necessário explicar sequência de ações.",
+      "strategy": "Reconstruir estado com versão histórica do projetor e separar reavaliação atual em outro artefato.",
+      "small_model_role": "8–14B explica sequência.",
+      "acceptance": "Explicação deve apontar eventos que realmente ocorreram.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S027",
+        "V4A-S012"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extrator de campos para propostas de evento, com validação externa.",
+    "8_14b": "Leitor e explicador de projeção determinística.",
+    "15_30b": "Analista de divergências entre projetores, sem controlar aplicação irrestrita de eventos.",
+    "training_or_runtime_requirements": "Log append-only, esquema versionado, ordenação definida e projetores determinísticos quando possível.",
+    "do_not_use_when": "Operações externas são repetidas no replay ou o histórico mistura intenção e confirmação."
+  },
+  "connections": [
+    {
+      "target_id": "T072",
+      "relation": "complements",
+      "how": "Versionar projetor e schema como parte da memória.",
+      "interface": "Stream, projector_version e migration_id.",
+      "condition": "Reconstrução declarar interpretação usada.",
+      "acceptance": "Reprocessar evento antigo com campo ausente e preservar desconhecido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S027",
+        "V4A-S012"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T075",
+      "relation": "feeds",
+      "how": "Enviar divergências de projeção para reconciliação.",
+      "interface": "Estado anterior, novo estado e eventos causadores.",
+      "condition": "Reconciliação não apagar log de origem.",
+      "acceptance": "Detectar diferença material antes de trocar projeção ativa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S027",
+        "V4A-S012"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não executar novamente pagamentos, mensagens ou gravações externas no replay.",
+    "Não usar timestamp de chegada como ordem causal universal."
+  ],
+  "frontier_comparison": "Comparar explicações sobre log idêntico; reconstrução determinística deve ficar em código, não depender do porte do LLM.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q005",
+      "V4A-Q008"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S027",
+    "V4A-S012"
+  ]
+}

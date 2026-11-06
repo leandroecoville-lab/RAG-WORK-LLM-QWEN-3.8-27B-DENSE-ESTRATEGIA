@@ -1,0 +1,140 @@
+{
+  "coverage": {
+    "entry_id": "T193",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 2,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Guardrails",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C022",
+      "company": "Amazon Web Services",
+      "organization_class": "bigtech",
+      "system": "Bedrock Automated Reasoning checks",
+      "title": "Verificação de respostas contra políticas formais documentadas",
+      "evidence_level": "operational_product",
+      "observed_use": "A documentação descreve uma funcionalidade disponível de verificação por raciocínio automatizado para respostas em linguagem natural vinculadas a políticas.",
+      "technical_mechanism": "Políticas são expressas formalmente e a tradução de texto para afirmações é analisada. O recurso é de detecção e possui restrições de idioma e resposta completa.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S027"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T193",
+          "match": "exact",
+          "rationale": "Guardrail verifica uma política expressa formalmente."
+        },
+        {
+          "entry_id": "T200",
+          "match": "exact",
+          "rationale": "A aceitação é sustentada por um verificador externo dentro do escopo da política."
+        }
+      ],
+      "small_model_transfer": "Proposta: usar um 3–30B para redigir respostas e um verificador externo para políticas formalizáveis, encaminhando traduções ambíguas para revisão.",
+      "limits": "Disponibilidade não comprova adoção específica. Validade em uma política não garante verdade externa, atualização dos fatos ou correção da tradução de linguagem natural.",
+      "canonical_case_id": "V4B-C022",
+      "deployment_domain": "llm_framework",
+      "mapping": {
+        "entry_id": "T193",
+        "match": "exact",
+        "rationale": "Guardrail verifica uma política expressa formalmente."
+      }
+    },
+    {
+      "case_id": "V4D-C006",
+      "company": "Microsoft",
+      "system": "Learning Zone / Kahoot! / Phi Silica LoRA",
+      "title": "Especialização, saída validada e avaliação humana",
+      "evidence_level": "operational_product",
+      "observed_use": "Equipe descreveu a preparação de um recurso educacional com Phi Silica especializado e avaliação do resultado; a capability Learning Zone consta na documentação atual.",
+      "technical_mechanism": "Dados do professor filtrados alimentam LoRA; prompt reforça formato; guardrails precedem exibição; avaliação por agentes é confrontada com humanos.",
+      "event_date": "2025-07-31",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4D-S012",
+        "V4D-S013"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T177",
+          "match": "exact",
+          "rationale": "Ajuste para uma tarefa educacional delimitada."
+        },
+        {
+          "entry_id": "T178",
+          "match": "exact",
+          "rationale": "Professor gera exemplos para treinar o modelo menor."
+        },
+        {
+          "entry_id": "T182",
+          "match": "exact",
+          "rationale": "Especialização realizada por adaptadores LoRA."
+        },
+        {
+          "entry_id": "T183",
+          "match": "family",
+          "rationale": "Treino contra modelo quantizado não comprova todos os detalhes do método QLoRA original."
+        },
+        {
+          "entry_id": "T155",
+          "match": "exact",
+          "rationale": "Especialização permitiu reduzir o prompt mantendo instrução explícita de formato."
+        },
+        {
+          "entry_id": "T180",
+          "match": "exact",
+          "rationale": "Parte das instruções foi absorvida no adaptador; avaliação continua necessária."
+        },
+        {
+          "entry_id": "T193",
+          "match": "exact",
+          "rationale": "Restrições verificáveis rejeitam saídas inadequadas antes da exibição."
+        },
+        {
+          "entry_id": "T186",
+          "match": "exact",
+          "rationale": "Reviewer/Critic/Meta-Reviewer apoiam avaliação offline."
+        },
+        {
+          "entry_id": "T200",
+          "match": "family",
+          "rationale": "Estudo humano confronta os julgamentos, mas não demonstra independência causal de todo erro."
+        },
+        {
+          "entry_id": "T153",
+          "match": "family",
+          "rationale": "Entrega incremental documentada; a fonte consultada não especifica propagação de interrupção/cancelamento ao processamento."
+        },
+        {
+          "entry_id": "T172",
+          "match": "family",
+          "rationale": "Guardas controlam liberação de perguntas; não se documenta o ciclo completo do controlador, com pressão reversa e encerramento."
+        }
+      ],
+      "small_model_transfer": "Proposta: especializar um aluno 3–30B em objetos de negócio e remover do caminho online o professor caro; medir rejeição, acerto factual, custo por resultado aceito e divergência do juiz.",
+      "limits": "Não chamar o experimento de 2025 de rollout geral: o artigo previa public preview. A ficha atual documenta o produto, sem comprovar escala nem identidade integral da configuração. Melhoria relativa de preferência não é multiplicação de inteligência ou precisão geral.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4D-C006",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T193",
+        "match": "exact",
+        "rationale": "Restrições verificáveis rejeitam saídas inadequadas antes da exibição."
+      }
+    }
+  ]
+}

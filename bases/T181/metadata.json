@@ -1,0 +1,29 @@
+{
+  "id": "T181",
+  "name": "Agent Memory Distillation",
+  "canonical_name": "Agent Memory Distillation",
+  "canonical_id": "T181",
+  "aliases": [
+    "AMD",
+    "destilação de memória de agentes"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T055",
+    "T062",
+    "T178",
+    "T204"
+  ],
+  "source_ids": [
+    "C-S035",
+    "V4B-S032"
+  ],
+  "namespace": "T181",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T181",
+  "chunk_count": 9
+}

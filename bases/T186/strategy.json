@@ -1,0 +1,119 @@
+{
+  "id": "T186",
+  "novelty": "A v3 preservou respostas iniciais e destacou erros correlacionados. O aprofundamento diferencia debate, revisão paralela e arbitragem, e propõe medir se a interação acrescenta evidência ou só persuasão.",
+  "deep_layers": [
+    {
+      "name": "Papéis com informação distinta",
+      "detail": "Separar agentes por nomes não cria independência. Dê a cada papel um critério verificável ou fonte distinta, como contrato, execução e risco de regressão. Se todos recebem o mesmo texto e não acessam evidência adicional, a rodada pode apenas amplificar uma hipótese inicial convincente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S040",
+        "V4D-S012",
+        "V4C-S009"
+      ]
+    },
+    {
+      "name": "Mudança rastreável",
+      "detail": "Registre alegações, contraexemplos e motivo de cada revisão. Uma conclusão deve mudar por evidência identificada ou violação demonstrada, não porque um agente falou por último. Limite rodadas e permita manter desacordo; obrigar consenso pode apagar sinais úteis de incerteza.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S040",
+        "V4D-S012",
+        "V4C-S009"
+      ]
+    },
+    {
+      "name": "Custo e juiz",
+      "detail": "Um árbitro pode herdar os mesmos vieses dos participantes. Learning Zone descreve papéis de revisão e comparação com humanos em avaliação; AutoClean usa revisores por propriedade. Esses casos apoiam desenhos delimitados, sem provar que debate livre melhora qualquer tarefa ou que todos os modelos pequenos julgam corretamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S040",
+        "V4D-S012",
+        "V4C-S009"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Revisão de objeto de negócio",
+      "scenario": "Uma saída precisa atender conteúdo, formato e consistência.",
+      "strategy": "Faça avaliações separadas por critério e peça discussão somente sobre conflitos concretos. Use validadores determinísticos quando o critério puder ser formalizado.",
+      "small_model_role": "Modelos 3–7B podem revisar aspectos estreitos, preservando um árbitro externo para casos difíceis.",
+      "acceptance": "Medir defeitos adicionais detectados por rodada e custo de falsos alarmes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S040",
+        "V4D-S012",
+        "V4C-S009"
+      ]
+    },
+    {
+      "name": "Planejamento com hipóteses concorrentes",
+      "scenario": "Há duas estratégias plausíveis para resolver uma tarefa.",
+      "strategy": "Peça planos independentes, busque evidências que os discriminem e use debate para atualizar pressupostos. Pare quando o orçamento acabar ou a evidência for suficiente.",
+      "small_model_role": "Um 8–14B pode explorar alternativas com ferramentas, sem ser tratado como especialista universal.",
+      "acceptance": "Comparar decisão final com baseline de uma chamada sob orçamento equivalente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S040",
+        "V4D-S012",
+        "V4C-S009"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Papéis estreitos e verificadores externos reduzem exigência cognitiva de cada participante.",
+    "8_14b": "Diversidade de fontes e critérios importa mais que multiplicar instâncias idênticas.",
+    "15_30b": "Um 15–30B pode arbitrar casos mais complexos, mas deve ser avaliado contra julgamentos independentes.",
+    "training_or_runtime_requirements": "Orquestração em runtime; não implica treinamento. Resultados dependem de prompts, fontes, juiz e tarefa.",
+    "do_not_use_when": "Não interpretar unanimidade como probabilidade calibrada nem confundir revisão paralela sem interação com debate."
+  },
+  "connections": [
+    {
+      "target_id": "T200",
+      "relation": "complements",
+      "how": "Uma verificação externa pode resolver desacordos sem depender da retórica.",
+      "interface": "Alegação contestada e evidência reproduzível.",
+      "condition": "Verificador possui critério independente.",
+      "acceptance": "Injetar argumento persuasivo falso e exigir rejeição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S040",
+        "V4D-S012",
+        "V4C-S009"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T193",
+      "relation": "complements",
+      "how": "Critérios verificáveis podem funcionar como barreiras antes da discussão.",
+      "interface": "Resultados por regra e motivos de falha.",
+      "condition": "Guardrail cobre apenas o que realmente consegue verificar.",
+      "acceptance": "Evitar gastar debate em erros estruturais já decidíveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S040",
+        "V4D-S012",
+        "V4C-S009"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Preservar respostas iniciais para medir influência e ancoragem.",
+    "Não ajustar o juiz até concordar com a conclusão desejada."
+  ],
+  "frontier_comparison": "Compare debate com uma chamada e com amostragem adicional sob o mesmo orçamento. Mais agentes podem ajudar numa tarefa, mas não equivalem a mais inteligência independente por definição.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q011"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "C-S040",
+    "V4D-S012",
+    "V4C-S009"
+  ]
+}

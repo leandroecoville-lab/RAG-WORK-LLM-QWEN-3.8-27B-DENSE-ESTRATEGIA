@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Uma janela de 32 mil permite 32 mil tokens de entrada?",
+    "answer": "Depende do backend e da reserva de saída; não se deve assumir."
+  },
+  {
+    "question": "Reduzir tokens sempre melhora?",
+    "answer": "Não. Pode remover evidência crítica e aumentar erros."
+  },
+  {
+    "question": "Tokens de prefixo em cache deixam de ocupar contexto?",
+    "answer": "Não necessariamente. Reutilização computacional e capacidade lógica da janela são dimensões distintas."
+  },
+  {
+    "question": "Por que reservar espaço para ferramentas futuras?",
+    "answer": "Porque a chamada pode caber e seu resultado não; sem plano de ingestão, a observação necessária pode ser perdida."
+  }
+]

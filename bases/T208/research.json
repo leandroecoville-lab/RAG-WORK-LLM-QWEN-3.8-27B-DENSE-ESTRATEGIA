@@ -1,0 +1,52 @@
+{
+  "id": "T208",
+  "technical_details": "A fronteira entre planejador e executor deve incluir pré-condições verificáveis e dependências simbólicas. O executor não precisa receber toda a discussão que produziu o plano; precisa saber o que realizar, com quais entradas e como reconhecer sucesso. Replanejamento exige preservar a identidade das intenções já confirmadas, pois renumerar etapas e repeti-las como novas pode duplicar efeitos. Revisão do plano e tentativa de execução são eixos separados.",
+  "boundary_condition": "A separação é pouco útil quando o planejador não recebe evidências suficientes para distinguir falha de ferramenta e falha de sua premissa.",
+  "implementation_contract": {
+    "inputs": "Objetivo, estado confirmado, ferramentas e resultados das etapas anteriores.",
+    "outputs": "Plano versionado ou revisão com dependências e critérios de aceitação.",
+    "state": "Intenções estáveis, etapas, evidências e motivo de replanejamento.",
+    "invariant": "Uma nova versão do plano não transforma automaticamente efeito já concluído em trabalho pendente."
+  },
+  "tradeoffs": [
+    "Executor simples reduz custo por etapa e depende de instruções operacionais claras.",
+    "Planejador mais frequente adapta melhor e aumenta latência e consumo de contexto."
+  ],
+  "failure_test": "Teste proposto: confirmar uma escrita e depois invalidar uma premissa de uma etapa posterior; exigir replanejamento sem repetir a escrita confirmada.",
+  "evaluation_plan": "Comparar executor com autonomia limitada, executor reativo e plano detalhado. Controlar ferramentas e objetivos. Medir revisões, efeitos duplicados, passos descartados e custo por conclusão. Escolher separação pela quantidade de dependências que o plano consegue antecipar.",
+  "comparisons": [
+    {
+      "entry_id": "T143",
+      "relation": "complements",
+      "reason": "Plan-Then-Act descreve a ordem lógica; Planner–Executor explicita responsabilidades e contrato de retorno."
+    },
+    {
+      "entry_id": "T144",
+      "relation": "alternative",
+      "reason": "Um agente reativo pode escolher a próxima ação sem manter dois papéis separados."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "LLMCompiler organiza planejamento de chamadas, despacho e execução como componentes distintos.",
+    "source_ids": [
+      "V3C-S002"
+    ],
+    "support": "direct",
+    "caveat": "O artigo não determina a granularidade ideal dos papéis nem garante economia em toda tarefa."
+  },
+  "advanced_qa": [
+    {
+      "question": "Replanejar deve zerar o histórico do executor?",
+      "answer": "Não. O estado confirmado e as intenções concluídas precisam continuar disponíveis para evitar repetição de efeitos."
+    },
+    {
+      "question": "Qual é o retorno mínimo útil do executor?",
+      "answer": "Resultado observado, evidência de conclusão, erro classificado e premissa afetada; apenas dizer que falhou deixa o planejador sem diagnóstico."
+    }
+  ],
+  "source_ids": [
+    "V3C-S002",
+    "V3C-S012"
+  ],
+  "research_note": "Fontes primárias reabertas nesta pesquisa; contratos, cenários de falha e avaliação são propostas editoriais."
+}

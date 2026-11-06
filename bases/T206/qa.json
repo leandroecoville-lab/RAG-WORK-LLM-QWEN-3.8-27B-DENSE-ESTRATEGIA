@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Process Verification é Process Supervision?",
+    "answer": "Não. Uma verifica execução; a outra treina usando feedback sobre etapas."
+  },
+  {
+    "question": "Log escrito pelo agente prova que a ferramenta rodou?",
+    "answer": "Não sozinho; o registro precisa estar ligado a evidência da execução."
+  },
+  {
+    "question": "Pode reconstruir ordem apenas pelo relógio?",
+    "answer": "Nem sempre. Relógios diferentes e concorrência exigem relações causais e identificadores, além dos horários."
+  },
+  {
+    "question": "Processo correto garante objetivo correto?",
+    "answer": "Pode cumprir uma especificação errada ou incompleta; valide também se critérios e pós-condições correspondem à necessidade real."
+  }
+]

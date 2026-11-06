@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "C-S001",
+    "title": "RouteLLM: Learning to Route LLMs with Preference Data",
+    "url": "https://arxiv.org/abs/2406.18665",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Roteadores aprendidos escolhem entre modelos considerando qualidade e custo; resultados dependem do conjunto de tarefas.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn8view1"
+  },
+  {
+    "source_id": "C-S050",
+    "title": "On Calibration of Modern Neural Networks",
+    "url": "https://arxiv.org/abs/1706.04599",
+    "publisher": "Guo e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Calibração relaciona probabilidades previstas à frequência de acerto; temperatura de calibração não é temperatura de geração.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn16view11"
+  },
+  {
+    "source_id": "V3B-S019",
+    "title": "Large Language Models Cannot Self-Correct Reasoning Yet",
+    "url": "https://arxiv.org/abs/2310.01798",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-10-03",
+    "supports": "Limites empíricos da autocorreção intrínseca sem feedback externo.",
+    "limitations": "Estudo de modelos e tarefas específicos; não é impossibilidade universal ou avaliação de modelos atuais do usuário.",
+    "web_ref": "turn180view5"
+  }
+]

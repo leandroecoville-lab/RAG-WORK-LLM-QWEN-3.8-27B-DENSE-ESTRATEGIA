@@ -1,0 +1,119 @@
+{
+  "id": "T126",
+  "novelty": "A v3 explicou reescala e saliência por ativações. O aprofundamento considera mudanças após adaptação, escolha entre métodos e verificação da exportação como parte da validade do resultado.",
+  "deep_layers": [
+    {
+      "name": "Saliência dependente do uso",
+      "detail": "Canais relevantes numa distribuição podem mudar com domínio, idioma ou fine-tuning. Se adapters alteram ativações, quantizar antes ou depois da adaptação não precisa produzir o mesmo comportamento. Trate ordem das operações como escolha experimental e registre qual combinação foi efetivamente avaliada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S014",
+        "B-S036",
+        "V4B-S011"
+      ]
+    },
+    {
+      "name": "Busca de escalas e critério",
+      "detail": "A reescala preserva a operação antes do arredondamento, mas a busca procura uma boa distribuição de erro depois da quantização. Verifique a métrica usada e sua relação com a tarefa. Melhor reconstrução numa amostra não garante melhor geração, sobretudo quando a resposta exige detalhes raros.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S014",
+        "B-S036",
+        "V4B-S011"
+      ]
+    },
+    {
+      "name": "Entrega do modelo",
+      "detail": "As transformações de escala devem ser incorporadas ou executadas consistentemente. Exportações entre backends podem alterar fusões, layout e kernels. Faça comparação camada a camada em entradas controladas e confirme que o servidor carrega o artefato pretendido, sem fallback silencioso para outra precisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S014",
+        "B-S036",
+        "V4B-S011"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Assistente especializado com adapter",
+      "scenario": "A base será adaptada e distribuída em memória limitada.",
+      "strategy": "Compare base quantizada com adapter separado e modelo adaptado seguido de quantização, quando as ferramentas suportarem ambas as rotas. Preserve dados de avaliação independentes.",
+      "small_model_role": "Um 8–14B pode combinar especialização e economia, mas a composição precisa ser medida.",
+      "acceptance": "Verificar tarefa, retenção de capacidades e pico de memória em cada rota.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S014",
+        "B-S036",
+        "V4B-S011"
+      ]
+    },
+    {
+      "name": "Seleção entre receitas de quatro bits",
+      "scenario": "Há opções GPTQ, AWQ e formatos distintos.",
+      "strategy": "Use o mesmo checkpoint e orçamento de avaliação. Separe diferença de método de diferença de kernel, reportando qualidade e desempenho de ambos os componentes.",
+      "small_model_role": "Um 15–30B pode ganhar viabilidade de serving sem uma receita universalmente superior.",
+      "acceptance": "Escolher pelo serviço completo e por falhas toleráveis, não por um ranking genérico.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S014",
+        "B-S036",
+        "V4B-S011"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Uma implementação suportada e bem validada pode ser mais útil que otimizações adicionais de escala.",
+    "8_14b": "Avalie reescala com prompts representativos e efeitos dos adapters de domínio.",
+    "15_30b": "Medições devem incluir custo de carregar e manter múltiplas variantes, além do arquivo quantizado.",
+    "training_or_runtime_requirements": "Quantização pós-treino guiada por ativações; suporte anunciado por TensorRT-LLM não comprova configuração local.",
+    "do_not_use_when": "Não afirmar que AWQ mantém necessariamente uma porcentagem fixa de pesos em FP16."
+  },
+  "connections": [
+    {
+      "target_id": "T182",
+      "relation": "complements",
+      "how": "Adapters podem mudar a distribuição que orientou a quantização.",
+      "interface": "Base, adapter, ordem de aplicação e escalas.",
+      "condition": "Ferramentas suportam a composição específica.",
+      "acceptance": "Comparar qualidade e ativações antes e depois da adaptação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S014",
+        "B-S036",
+        "V4B-S011"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T124",
+      "relation": "feeds",
+      "how": "AWQ produz uma política concreta de baixa precisão que exige metadados e kernels adequados.",
+      "interface": "Pesos, grupos e reescalas.",
+      "condition": "Exportador e runtime concordam.",
+      "acceptance": "Comparar camada de referência e medição física de memória.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S014",
+        "B-S036",
+        "V4B-S011"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Evitar atribuir ganho de kernel ao algoritmo de quantização sem ablação.",
+    "Não reutilizar calibração antiga automaticamente depois de mudar domínio ou pesos."
+  ],
+  "frontier_comparison": "Compare a versão AWQ com a base e com um serviço de fronteira na tarefa específica. Qualidade preservada em um domínio não comprova ausência de perdas em todos os tipos de pergunta.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q025"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S014",
+    "B-S036",
+    "V4B-S011"
+  ]
+}

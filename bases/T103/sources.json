@@ -1,0 +1,80 @@
+[
+  {
+    "source_id": "B-S022",
+    "title": "SGLang: Efficient Execution of Structured Language Model Programs",
+    "url": "https://arxiv.org/abs/2312.07104",
+    "publisher": "Zheng e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-12-12",
+    "supports": "RadixAttention reutiliza KV com estrutura de prefixos.",
+    "limitations": "Resumo e versão HTML abertos; foco no mecanismo de reuso. Resultados publicados não reproduzidos.",
+    "web_ref": "turn33view0"
+  },
+  {
+    "source_id": "V3B-S011",
+    "title": "SGLang: Efficient Execution of Structured Language Model Programs — full text",
+    "url": "https://arxiv.org/html/2312.07104v2",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-12-12",
+    "supports": "RadixAttention, busca de prefixos e ciclo de vida/remoção de cache em árvore.",
+    "limitations": "Texto do projeto consultado; não representa garantia de compatibilidade de implantação ou reprodução de resultados.",
+    "web_ref": "turn134view0"
+  },
+  {
+    "source_id": "V4B-S031",
+    "title": "HiCache in SGLang: hybrid-model caching with up to 15.5× input throughput",
+    "url": "https://www.sglang.io/blog/hicache",
+    "publisher": "SGLang",
+    "source_type": "technical_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Hierarquia GPU/CPU/armazenamento, HiRadixTree, políticas de restauração e requisitos adicionais de estado híbrido/draft.",
+    "limitations": "Resultados são benchmarks do projeto, não implantação específica de cliente; ganho publicado não transferido.",
+    "web_ref": "turn290view0"
+  },
+  {
+    "source_id": "V4D-S017",
+    "title": "Mooncake x SGLang HiCache System Design",
+    "url": "https://kvcache-ai.github.io/Mooncake/design/hicache-design.html",
+    "publisher": "Mooncake / SGLang",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Co-uso documentado de RadixAttention/HiRadixTree e cache de KV em GPU, host e armazenamento distribuído.",
+    "limitations": "Documento de integração disponível, sem prova de adoção de toda essa configuração pelo serviço Kimi. Hierarquia de cache tensorial não é memória semântica de agente.",
+    "web_ref": "turn311view3"
+  },
+  {
+    "source_id": "V4D-S018",
+    "title": "Mooncake Architecture",
+    "url": "https://kvcache-ai.github.io/Mooncake/design/architecture.html",
+    "publisher": "Mooncake",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Contratos de plano de controle/dados, buffers, leases, armazenamento compartilhado e roteamento por prefixo.",
+    "limitations": "Capacidades de componentes atuais não são evidência de que todo cliente utilize todos eles; suporte depende do backend e da configuração.",
+    "web_ref": "turn313view0"
+  },
+  {
+    "source_id": "V4D-S019",
+    "title": "Mooncake Transfer Engine",
+    "url": "https://kvcache-ai.github.io/Mooncake/design/transfer-engine/index.html",
+    "publisher": "Mooncake",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Segment/BatchTransfer, buffers registrados, transporte RDMA e escolha de caminho segundo topologia, com recuperação de falhas.",
+    "limitations": "Documentação de biblioteca; submissão validada não torna transferência posterior atômica. Suporte amplo de transporte não comprova o caminho usado numa implantação específica.",
+    "web_ref": "turn313view1"
+  }
+]

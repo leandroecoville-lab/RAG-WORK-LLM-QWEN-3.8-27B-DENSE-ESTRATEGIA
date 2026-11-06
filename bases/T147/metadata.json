@@ -1,0 +1,35 @@
+{
+  "id": "T147",
+  "name": "Parallel Fan-Out",
+  "canonical_name": "Parallel Fan-Out",
+  "canonical_id": "T147",
+  "aliases": [
+    "distribuição paralela em ramos"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T001",
+    "T139",
+    "T169"
+  ],
+  "source_ids": [
+    "C-S006",
+    "V3C-S006",
+    "V3C-S007",
+    "C-S030",
+    "V3C-S009",
+    "V4C-S003",
+    "V4C-S009",
+    "V4C-S017",
+    "V4C-S004",
+    "V4C-S008"
+  ],
+  "namespace": "T147",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T147",
+  "chunk_count": 9
+}

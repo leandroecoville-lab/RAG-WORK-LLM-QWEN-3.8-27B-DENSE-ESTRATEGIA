@@ -1,0 +1,42 @@
+{
+  "entry_id": "R009",
+  "edges": [
+    {
+      "edge_id": "E-R009-01",
+      "from": "R009",
+      "to": "T082",
+      "relation": "complements",
+      "how": "O Hiring Assistant usa prefix caching no serving descrito pelo LinkedIn.",
+      "interface": "Prefixo compatível e configuração de serviço.",
+      "condition": "Escopo do caso documentado.",
+      "acceptance": "Medir tokens realmente reutilizados e latência.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4B-S010"
+      ],
+      "case_ids": [
+        "V4B-C001"
+      ],
+      "evidence_stage": "production_documented"
+    },
+    {
+      "edge_id": "E-R009-02",
+      "from": "R009",
+      "to": "T088",
+      "relation": "complements",
+      "how": "O mesmo caso descreve continuous batching junto ao serving vLLM.",
+      "interface": "Sequências ativas e política de lote.",
+      "condition": "Configuração e modelo compatíveis.",
+      "acceptance": "Avaliar carga aberta e prazos por requisição.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4B-S010"
+      ],
+      "case_ids": [
+        "V4B-C001"
+      ],
+      "evidence_stage": "production_documented"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

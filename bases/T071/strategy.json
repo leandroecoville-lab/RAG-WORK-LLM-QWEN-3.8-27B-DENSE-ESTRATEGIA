@@ -1,0 +1,113 @@
+{
+  "id": "T071",
+  "novelty": "A v3 separou promoção e mudança de pasta. Aqui promoção exige período de uso observado e critérios diferentes por tipo de memória.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Crie estados candidato, validado para escopo e ativo. Preferência explícita pode ter caminho curto; regra inferida de episódios precisa de suporte e teste de transferência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S037",
+        "V4A-S017"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Antes de promoção ampla, usar candidato em modo de comparação sem alterar decisões reais. Registrar quando ele ajudaria, conflitaria ou ampliaria incorretamente o escopo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S037",
+        "V4A-S017"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare admissão imediata e promoção por evidência. Meça falsos fatos ativos, utilidade futura e tempo até corrigir promoção indevida; mais candidatos aprovados não indica melhor aprendizado. Unidade de avaliação: candidato promovido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S037",
+        "V4A-S017"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Preferência declarada",
+      "scenario": "Usuário define padrão para um projeto.",
+      "strategy": "Registrar fonte explícita, escopo e condição de revisão; recuperar em tarefa elegível e evitar generalização para outros projetos.",
+      "small_model_role": "3–7B extrai declaração.",
+      "acceptance": "Escopo armazenado deve corresponder ao pedido literal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S037",
+        "V4A-S017"
+      ]
+    },
+    {
+      "name": "Regra operacional inferida",
+      "scenario": "Vários incidentes sugerem recomendação.",
+      "strategy": "Consolidar evidências independentes, testar em caso novo e promover apenas condições verificadas. Manter exceções junto da regra.",
+      "small_model_role": "15–30B compara casos.",
+      "acceptance": "Regra deve recusar aplicação fora das condições validadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S037",
+        "V4A-S017"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extrator de candidatos explícitos com tipo e origem.",
+    "8_14b": "Revisor de suporte local e compatibilidade de escopo.",
+    "15_30b": "Analista de abstrações entre episódios, com validação externa.",
+    "training_or_runtime_requirements": "Estados de promoção, critérios por tipo e caminho de revogação; autoridade não deriva do texto produzido pelo modelo.",
+    "do_not_use_when": "Não há fonte para o candidato ou o único suporte é repetição da mesma inferência."
+  },
+  "connections": [
+    {
+      "target_id": "T058",
+      "relation": "requires",
+      "how": "Receber candidato consolidado com divergências preservadas.",
+      "interface": "Proposição, fontes, exceções e limites.",
+      "condition": "Consolidação não apagar evidência contrária.",
+      "acceptance": "Testar candidato aparentemente consensual derivado de uma única origem.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S037",
+        "V4A-S017"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T075",
+      "relation": "complements",
+      "how": "Revisar promoção após evidência nova.",
+      "interface": "Memória ativa, correção e dependentes.",
+      "condition": "Revogação alcançar projeções e resumos.",
+      "acceptance": "Corrigir regra e verificar que uso futuro deixa de aplicá-la.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S037",
+        "V4A-S017"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não promover conclusão pelo grau de confiança verbal.",
+    "Não interpretar frequência de uso como confirmação independente."
+  ],
+  "frontier_comparison": "Comparar qualidade de memórias ativas no futuro; promoção controlada reduz erro acumulado sem tornar o modelo infalível.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q013",
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S037",
+    "V4A-S017"
+  ]
+}

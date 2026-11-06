@@ -1,0 +1,115 @@
+{
+  "id": "T216",
+  "novelty": "A v3 explicava ranking de símbolos e limites do grafo estático. A expansão usa o mapa para formular leituras direcionadas, verifica sua validade incremental e combina estrutura de código com evidência de execução.",
+  "deep_layers": [
+    {
+      "name": "Mapa orienta, arquivo decide",
+      "detail": "Inclua símbolos, caminhos e relações suficientes para localizar candidatos, mas confirme conteúdo atual antes de editar. Nomes centrais podem ser irrelevantes para a falha; arquivos raros ativados por configuração podem ser decisivos. Use o mapa como índice de hipóteses de localização, sem tratá-lo como descrição completa do comportamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S033",
+        "V4C-S026"
+      ]
+    },
+    {
+      "name": "Atualização por mudança",
+      "detail": "Uma edição pode alterar assinatura, import ou relação de dependência. Marque partes afetadas do mapa e regenere o índice correspondente antes de delegar nova tarefa. Um mapa ligado ao commit original pode continuar útil para explicar o passado, mas não deve orientar substituição textual em uma revisão posterior sem revalidação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S033",
+        "V3C-S027"
+      ]
+    },
+    {
+      "name": "Estrutura e execução",
+      "detail": "Combine símbolos estáticos com trace, teste ou configuração que indique o caminho realmente exercitado. Não acrescente todo o runtime ao mapa: mantenha camadas consultáveis por finalidade. O modelo pequeno recebe uma trilha curta de arquivos e a evidência que justificou cada leitura, reduzindo busca ampla sem ocultar alternativas relevantes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S026",
+        "V4C-S029"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Defeito em monorepo",
+      "scenario": "O agente precisa localizar a implementação entre muitos módulos.",
+      "strategy": "Comece por ponto de entrada e símbolo provável, leia interfaces e siga chamadores ou consumidores relevantes. Se o teste aponta para código gerado ou import dinâmico, abandone a hipótese puramente estática e examine geração e configuração. Atualize a trilha de evidência após cada descoberta.",
+      "small_model_role": "3–7B lê funções curtas; 8–14B navega dependências; 15–30B resolve ligações transversais.",
+      "acceptance": "Proposta: localizar o arquivo correto com menos leituras, sem perder defeitos ativados por configuração.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S033",
+        "V4C-S026"
+      ]
+    },
+    {
+      "name": "Delegação por módulo",
+      "scenario": "Vários agentes editam partes independentes do projeto.",
+      "strategy": "Forneça mapa global curto e mapa local da revisão atribuída. Defina símbolos compartilhados que não podem mudar sem coordenação. Ao integrar, regenere relações afetadas e verifique se todos os consumidores continuam compatíveis.",
+      "small_model_role": "8–14B executa módulos; integrador maior usa o mapa para escolher testes de fronteira.",
+      "acceptance": "Proposta: nenhum uso de assinatura obsoleta e custo de atualização menor que reconstrução desnecessária do mapa inteiro.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S033",
+        "V4C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Contexto local com assinatura e poucas relações; evitar mapas enormes que só repetem nomes.",
+    "8_14b": "Navegação entre arquivos e seleção de leituras baseada em dependências explícitas.",
+    "15_30b": "Análise de impacto entre módulos, com confirmação em código e testes.",
+    "training_or_runtime_requirements": "Índice por revisão, extração de símbolos confiável e acesso ao conteúdo atual dos arquivos.",
+    "do_not_use_when": "Não editar somente a partir do mapa nem presumir que análise estática captura configuração e geração dinâmica."
+  },
+  "connections": [
+    {
+      "target_id": "T238",
+      "relation": "feeds",
+      "how": "Transformar caminhos e símbolos do mapa em pedidos de leitura de trechos relevantes.",
+      "interface": "Arquivo, revisão, símbolo e intervalo a resolver.",
+      "condition": "Posições são recalculadas ou validadas contra o conteúdo atual.",
+      "acceptance": "Leitura inclui contexto suficiente para a alteração pretendida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S033"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T213",
+      "relation": "complements",
+      "how": "Usar relações estruturais para escolher unidades com baixo acoplamento e interfaces explícitas.",
+      "interface": "Subgrafo de módulos e símbolos compartilhados.",
+      "condition": "Critérios de aceite cobrem as fronteiras entre unidades.",
+      "acceptance": "Integração detecta consumidores omitidos pelo mapa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S033",
+        "V4C-S030"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Mapas muito compactos podem ocultar a única relação necessária ao diagnóstico.",
+    "A centralidade no grafo não substitui evidência de que o código participa do comportamento defeituoso."
+  ],
+  "frontier_comparison": "Compare localização e reparo com mapa, busca textual e modelo de fronteira sob o mesmo acesso ao repositório. Redução de leitura não demonstra compreensão completa do sistema.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q023",
+      "V4C-Q024",
+      "V4C-Q027"
+    ],
+    "scope_note": "Aider documenta repo map; relatos internos mostram navegação assistida, mas não foram convertidos em adoções exatas do algoritmo de ranking do Aider."
+  },
+  "source_ids": [
+    "V3C-S033",
+    "V4C-S026",
+    "V3C-S027",
+    "V4C-S029",
+    "V4C-S030"
+  ]
+}

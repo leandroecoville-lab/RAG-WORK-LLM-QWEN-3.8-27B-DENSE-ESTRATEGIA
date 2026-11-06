@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Context distillation sempre exige um professor maior?",
+    "answer": "Não. No trabalho Learning by Distilling Context, o mesmo modelo condicionado por instruções gera supervisão para treinar comportamento sem aquele contexto."
+  },
+  {
+    "question": "Agent Memory Distillation implica atualizar pesos?",
+    "answer": "No estudo identificado em T181, não: trajetórias do professor originam memórias externas hierárquicas utilizadas pelo aluno."
+  },
+  {
+    "question": "Posso treinar apenas com respostas aprovadas pelo próprio professor?",
+    "answer": "Isso mantém risco de erros correlacionados; use critérios independentes e casos difíceis reservados."
+  },
+  {
+    "question": "Qual artefato comprova a melhoria?",
+    "answer": "Relatório comparativo por tarefa, com dados e configuração identificados, além do checkpoint treinado e seus limites."
+  }
+]

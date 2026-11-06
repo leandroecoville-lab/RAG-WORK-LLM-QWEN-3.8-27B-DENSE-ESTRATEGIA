@@ -1,0 +1,31 @@
+{
+  "id": "T076",
+  "name": "Git-Backed Memory",
+  "canonical_name": "Git-Backed Memory",
+  "canonical_id": "T076",
+  "aliases": [
+    "memória versionada em Git"
+  ],
+  "category": "memoria",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T053",
+    "T055",
+    "T072",
+    "R002"
+  ],
+  "source_ids": [
+    "A-S010",
+    "A-S028",
+    "V3A-S040",
+    "V2B-S003",
+    "V3A-S046"
+  ],
+  "namespace": "T076",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T076",
+  "chunk_count": 9
+}

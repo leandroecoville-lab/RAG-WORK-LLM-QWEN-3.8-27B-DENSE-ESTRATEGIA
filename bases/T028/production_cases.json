@@ -1,0 +1,100 @@
+{
+  "coverage": {
+    "entry_id": "T028",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Reranking",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C008",
+      "company": "Microsoft",
+      "system": "Bing: transformers na busca global",
+      "title": "Bing: transformers na busca global — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "Operador afirma modelos transformer aplicados às consultas Bing globais no período descrito.",
+      "technical_mechanism": "Compreensão contextual de consultas e páginas com inferência otimizada.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S008"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T028",
+          "match": "family",
+          "rationale": "Ranking neural é relacionado; fonte não especifica integralmente o pipeline desta ficha."
+        },
+        {
+          "entry_id": "T036",
+          "match": "family",
+          "rationale": "Consulta orienta compreensão e seleção; não comprova leitor RAG específico."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Empregar modelo compacto para julgar pares consulta-trecho, medindo custo e ordenação.",
+      "limits": "BERT destilado do relato não é um gerador 3–30B; números de infraestrutura não são transportáveis. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4B-C009",
+      "deployment_domain": "non_generative_nlp",
+      "deduplication_note": "Consolidado com V4B-C009 para contagem. Mapeamentos e versões das fontes permanecem separados; não se presume simultaneidade de todos os mecanismos.",
+      "mapping": {
+        "entry_id": "T028",
+        "match": "family",
+        "rationale": "Ranking neural é relacionado; fonte não especifica integralmente o pipeline desta ficha."
+      }
+    },
+    {
+      "case_id": "V4A-C014",
+      "company": "Microsoft",
+      "system": "Azure AI Search semantic ranker",
+      "title": "Azure AI Search semantic ranker — evidência delimitada",
+      "evidence_level": "operational_product",
+      "observed_use": "Documentação descreve recurso comercial disponível.",
+      "technical_mechanism": "Ranking secundário sobre resultados BM25/RRF, redução de campos e extração de captions.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S009"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T027",
+          "match": "exact",
+          "rationale": "Documenta canal híbrido com RRF como entrada elegível."
+        },
+        {
+          "entry_id": "T028",
+          "match": "exact",
+          "rationale": "Segundo ranking explícito."
+        },
+        {
+          "entry_id": "T037",
+          "match": "family",
+          "rationale": "Redução de entrada é relacionada, sem igualdade ao RECOMP."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Avaliar reranker pequeno com filtros e campo prioritário; manter cobertura de candidatos constante.",
+      "limits": "Disponibilidade não comprova escala de cliente; limites atuais do serviço não são universais. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C014",
+      "deployment_domain": "llm_framework",
+      "mapping": {
+        "entry_id": "T028",
+        "match": "exact",
+        "rationale": "Segundo ranking explícito."
+      }
+    }
+  ]
+}

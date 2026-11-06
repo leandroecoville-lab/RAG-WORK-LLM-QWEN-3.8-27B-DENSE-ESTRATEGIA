@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "A-S031",
+    "title": "SemanticSimilarityExampleSelector",
+    "url": "https://reference.langchain.com/python/langchain-core/example_selectors/semantic_similarity/SemanticSimilarityExampleSelector",
+    "publisher": "LangChain",
+    "source_type": "official_docs",
+    "verification": "search_result",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Seleção de exemplos por similaridade semântica.",
+    "limitations": "Resultado de busca e módulo oficial consultados; abertura direta rejeitada por content-type text/markdown.",
+    "web_ref": "turn15search9"
+  },
+  {
+    "source_id": "V3A-S016",
+    "title": "What Makes Good In-Context Examples for GPT-3?",
+    "url": "https://arxiv.org/abs/2101.06804",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2021-01-17",
+    "supports": "Seleção de demonstrações por recuperação de exemplos semelhantes; comportamento depende do conjunto e do modelo.",
+    "limitations": "Fonte primária consultada. Sem reprodução de resultados, instalação ou verificação de servidor; detalhes operacionais propostos são inferências editoriais.",
+    "web_ref": "turn105view0"
+  },
+  {
+    "source_id": "V3A-S017",
+    "title": "Fantastically Ordered Prompts and Where to Find Them: Overcoming Few-Shot Prompt Order Sensitivity",
+    "url": "https://aclanthology.org/2022.acl-long.556/",
+    "publisher": "Autores / ACL Anthology",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Sensibilidade à ordem de demonstrações e não transferência automática de uma boa permutação entre modelos.",
+    "limitations": "Fonte primária consultada. Sem reprodução de resultados, instalação ou verificação de servidor; detalhes operacionais propostos são inferências editoriais.",
+    "web_ref": "turn105view1"
+  }
+]

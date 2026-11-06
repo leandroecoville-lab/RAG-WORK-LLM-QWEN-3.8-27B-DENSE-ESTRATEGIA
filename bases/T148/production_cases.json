@@ -1,0 +1,140 @@
+{
+  "coverage": {
+    "entry_id": "T148",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 2,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Conditional Branching",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C006",
+      "company": "Netflix",
+      "system": "Conductor — plataforma interna atualizada",
+      "title": "Avaliação assíncrona e coordenação durável de workflows",
+      "evidence_level": "production_documented",
+      "observed_use": "A Netflix descreve Conductor em pipelines de mídia e anúncios, com Timestone, persistência de tarefas e mecanismos de reparação operacional.",
+      "technical_mechanism": "O motor avalia um blueprint e carrega dados específicos; a fila assíncrona e regras de estado reduzem disputas, enquanto estratégias sequenciais serializam execuções por chave.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S004",
+        "V4C-S003"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T159",
+          "match": "exact",
+          "rationale": "O relato inclui recuperação de processos distribuídos longos."
+        },
+        {
+          "entry_id": "T147",
+          "match": "exact",
+          "rationale": "Workflows incluem forks paralelos e junções."
+        },
+        {
+          "entry_id": "T148",
+          "match": "exact",
+          "rationale": "O DSL representa condicionais e outras transições."
+        },
+        {
+          "entry_id": "T160",
+          "match": "exact",
+          "rationale": "Blueprint e avaliação coordenam dependências e tarefas elegíveis."
+        },
+        {
+          "entry_id": "T228",
+          "match": "family",
+          "rationale": "Filas atrasadas e reparação apoiam retomada, sem provar uma política única de backoff exponencial."
+        },
+        {
+          "entry_id": "P011",
+          "match": "analogy",
+          "rationale": "O motor inspira responsabilidades do executor editorial."
+        },
+        {
+          "entry_id": "P014",
+          "match": "analogy",
+          "rationale": "Recuperação de workflows é analogia da capacidade proposta."
+        }
+      ],
+      "small_model_transfer": "Proposta: orquestrar chamadas pequenas com payloads externos por referência, lendo apenas resultados necessários à decisão; manter transições e concorrência fora do modelo.",
+      "limits": "Um único caso de plataforma, sem contar cada pipeline como caso adicional. Recursos explicitamente descritos como roadmap não são tratados como já implantados.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C006",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T148",
+        "match": "exact",
+        "rationale": "O DSL representa condicionais e outras transições."
+      }
+    },
+    {
+      "case_id": "V4C-C004",
+      "company": "Uber",
+      "system": "Up CD",
+      "title": "Deploy por etapas com gates e histórico por commit",
+      "evidence_level": "production_documented",
+      "observed_use": "O relato de Up CD descreve adoção interna de deployment automatizado, gates implementados em Cadence e incorporação de ações manuais na visão do serviço.",
+      "technical_mechanism": "Eventos de commits identificam serviços afetados; workflows de gates liberam estágios conforme condições e mantêm vínculo entre revisão e estado implantado.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S002"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T148",
+          "match": "exact",
+          "rationale": "Gates condicionam a transição entre estágios de deployment."
+        },
+        {
+          "entry_id": "T160",
+          "match": "exact",
+          "rationale": "Etapas e gates coordenam dependências da implantação."
+        },
+        {
+          "entry_id": "T236",
+          "match": "family",
+          "rationale": "O sistema acompanha commits, mas não demonstra um agente criando commit por micro-missão."
+        },
+        {
+          "entry_id": "T243",
+          "match": "exact",
+          "rationale": "Ações manuais são incorporadas à representação do estado efetivo."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "Critérios de gate ilustram um verificador editorial."
+        },
+        {
+          "entry_id": "P015",
+          "match": "analogy",
+          "rationale": "Vínculo entre revisão e implantação ilustra integridade de execução."
+        }
+      ],
+      "small_model_transfer": "Proposta: modelo pequeno prepara mudança e diagnóstico; código verifica commit, resultados e condições antes de promover uma etapa. Retorno do modelo nunca substitui o gate determinístico.",
+      "limits": "Caso de CD de software, não benchmark de agente de programação. Gates relevantes ao usuário precisam ser definidos e medidos localmente.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C004",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T148",
+        "match": "exact",
+        "rationale": "Gates condicionam a transição entre estágios de deployment."
+      }
+    }
+  ]
+}

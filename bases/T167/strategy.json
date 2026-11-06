@@ -1,0 +1,114 @@
+{
+  "id": "T167",
+  "novelty": "A v3 apresentava saldo, capacidade e pedidos grandes demais. A ampliação introduz reservas para custo desconhecido, coordenação entre buckets e contabilização de chamadas canceladas ou parcialmente executadas.",
+  "deep_layers": [
+    {
+      "name": "Reserva com liquidação",
+      "detail": "Para inferência, o custo final pode ser desconhecido antes da chamada. Reserve uma estimativa ou limite permitido e ajuste após receber consumo confiável. Se liberar toda a reserva no cancelamento enquanto o servidor continua gerando, o sistema cria créditos fictícios. Mantenha estado pendente até confirmação ou política conservadora de expiração.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S021",
+        "V2A-S012"
+      ]
+    },
+    {
+      "name": "Composição de limites",
+      "detail": "Uma requisição pode depender de créditos de organização, usuário e recurso. Reservar um bucket e aguardar outro pode reter capacidade sem progresso. Use aquisição coordenada, ordem estável ou devolução controlada; defina se todos precisam estar disponíveis antes do envio. A atomicidade entre processos depende do armazenamento e não surge da fórmula local.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S021",
+        "V3C-S009"
+      ]
+    },
+    {
+      "name": "Quota por finalidade",
+      "detail": "Separe orçamento de tráfego original, retries e sondas. Um bucket único pode deixar a recuperação consumir todos os créditos ou bloquear uma sonda barata que revelaria retorno do serviço. Os limites compartilham um teto superior quando usam a mesma capacidade física, evitando que três quotas independentes somem mais do que o serviço suporta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S012",
+        "V3C-S010"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Agentes com saídas variáveis",
+      "scenario": "Um assistente ora extrai um campo, ora gera uma análise extensa.",
+      "strategy": "Classifique a operação antes da admissão e reserve segundo o teto da classe. Após concluir, liquide com uso observado. Se a saída atingir o limite, não continue automaticamente com uma segunda chamada sem nova admissão e sem somar o consumo anterior.",
+      "small_model_role": "3–7B extrai com teto curto; 15–30B recebe reserva maior apenas quando a tarefa exige.",
+      "acceptance": "Proposta: saldo consistente com consumo real, inclusive cancelamentos e falhas após envio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S021"
+      ]
+    },
+    {
+      "name": "Recuperação de API degradada",
+      "scenario": "Chamadas novas e repetidas disputam capacidade reduzida.",
+      "strategy": "Use bucket de retry além da admissão normal, expondo motivo de recusa ao controlador. Uma tentativa que não obteve crédito ainda não foi enviada; seu estado não deve sugerir efeito remoto incerto. Reabastecimento acompanha política operacional, não decisão improvisada da LLM.",
+      "small_model_role": "8–14B reformula o plano após recusa tipada; não cria créditos.",
+      "acceptance": "Proposta: retries limitados durante falha sustentada e preservação de tráfego útil.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S012"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Operações de custo delimitado tornam reservas mais precisas e baratas.",
+    "8_14b": "Estimar classe de consumo a partir de tarefa e entrada, validando erro de previsão.",
+    "15_30b": "Planejar decomposição de chamadas que excedem capacidade sem ocultar custo agregado.",
+    "training_or_runtime_requirements": "Relógio monotônico, armazenamento concorrente, unidade de crédito definida e reconciliação de reservas pendentes.",
+    "do_not_use_when": "Não esperar indefinidamente por q maior que capacidade nem devolver crédito de trabalho remoto ainda ativo."
+  },
+  "connections": [
+    {
+      "target_id": "T163",
+      "relation": "complements",
+      "how": "AWS usa créditos de retry para limitar repetição além do backoff temporal.",
+      "interface": "Saldo de retry e resultado da tentativa.",
+      "condition": "A política distingue chamadas iniciais e adicionais.",
+      "acceptance": "Falha prolongada não gera tentativas ilimitadas.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V2A-S012"
+      ],
+      "case_ids": [
+        "V4C-C002"
+      ]
+    },
+    {
+      "target_id": "T137",
+      "relation": "complements",
+      "how": "O limitador transforma disponibilidade de créditos em admissão e resposta ao solicitante.",
+      "interface": "Quantidade reservada, escopo e motivo da rejeição.",
+      "condition": "Reserva corresponde a capacidade definida, não a pontuação subjetiva.",
+      "acceptance": "Nenhum envio ocorre quando os buckets obrigatórios recusam admissão.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V2A-S012"
+      ],
+      "case_ids": [
+        "V4C-C002"
+      ]
+    }
+  ],
+  "failure_controls": [
+    "Contabilidade local por réplica pode multiplicar uma quota supostamente global.",
+    "Refill baseado em relógio de parede pode criar saldo errado após ajuste de hora."
+  ],
+  "frontier_comparison": "Compare custo e qualidade sob a mesma quota efetiva. Melhor throughput de um modelo pequeno não justifica reservas inconsistentes nem omissão do trabalho cancelado.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q001",
+      "V4C-Q004"
+    ],
+    "scope_note": "SDK AWS documenta uso operacional para retries. Reservas por token e composição de múltiplos escopos são propostas que exigem implementação concorrente correta."
+  },
+  "source_ids": [
+    "V3C-S021",
+    "V2A-S012",
+    "V3C-S009",
+    "V3C-S010"
+  ]
+}

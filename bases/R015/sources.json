@@ -1,0 +1,28 @@
+[
+  {
+    "source_id": "A-S040",
+    "title": "Learning by Distilling Context",
+    "url": "https://arxiv.org/abs/2209.15189",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2022-09-30",
+    "supports": "Fine-tuning para internalizar benefícios de instruções e exemplos antes fornecidos no contexto.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn20view3"
+  },
+  {
+    "source_id": "A-S011",
+    "title": "PRISM: Prompt Representation Internalization via Selective Compression into LoRA Weights",
+    "url": "https://aclanthology.org/2026.emnlp-main.2431/",
+    "publisher": "ACL Anthology / autores",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Diagnóstico de componentes do prompt e autodestilação seletiva em adaptadores LoRA.",
+    "limitations": "Identificação pelo título completo; há projetos homônimos. Resultados publicados não foram reproduzidos nesta entrega.",
+    "web_ref": "turn1view0"
+  }
+]

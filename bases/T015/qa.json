@@ -1,0 +1,18 @@
+[
+  {
+    "question": "O modelo conhece o arquivo ao receber seu caminho?",
+    "answer": "Não. Ele precisa de conteúdo recuperado ou de uma ferramenta que o leia."
+  },
+  {
+    "question": "Devo usar apenas o nome do arquivo?",
+    "answer": "Prefira ID e versão; nomes podem colidir, mudar ou apontar para conteúdo diferente."
+  },
+  {
+    "question": "Uma URL prova que o conteúdo foi lido?",
+    "answer": "Não. Ela prova apenas que uma localização foi fornecida. O relato deve distinguir referência recebida, leitura bem-sucedida e conteúdo efetivamente utilizado."
+  },
+  {
+    "question": "Como evitar referências que perdem validade?",
+    "answer": "Defina retenção e versões recuperáveis compatíveis com a tarefa; registre falhas e preserve uma representação autorizada quando o contrato exigir continuidade."
+  }
+]

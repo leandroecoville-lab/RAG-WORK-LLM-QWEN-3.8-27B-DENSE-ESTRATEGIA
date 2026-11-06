@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "A-S019",
+    "title": "Lost in the Middle: How Language Models Use Long Contexts",
+    "url": "https://arxiv.org/abs/2307.03172",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-07-06",
+    "supports": "Avaliação de efeitos da posição da evidência em perguntas e recuperação de pares chave-valor.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn11view0"
+  },
+  {
+    "source_id": "V3A-S015",
+    "title": "RULER: What's the Real Context Size of Your Long-Context Language Models?",
+    "url": "https://arxiv.org/abs/2404.06654",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2024-04-09",
+    "supports": "Capacidade de contexto medida em tarefas distintas, incluindo rastreamento e agregação, além de recuperação literal.",
+    "limitations": "Foram consultados resumo e descrição geral das capacidades, sem perguntas ou gabaritos. Resultados de modelos históricos não qualificam modelos atuais automaticamente.",
+    "web_ref": "turn96view3"
+  },
+  {
+    "source_id": "V4A-S019",
+    "title": "Building Contextually Faithful RAG Applications with SFR-RAG",
+    "url": "https://www.salesforce.com/blog/sfr-rag/",
+    "publisher": "Salesforce AI Research",
+    "source_type": "research_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2024-09-17",
+    "supports": "Modelo especializado de 9B para fidelidade contextual, citações e ausência de resposta; pesquisa.",
+    "limitations": "Escopo limitado ao material aberto. Disponibilidade, resultados experimentais e implantação histórica são classes distintas; não demonstra desempenho de modelos 3–30B no ambiente do usuário.",
+    "web_ref": "turn246view8"
+  }
+]

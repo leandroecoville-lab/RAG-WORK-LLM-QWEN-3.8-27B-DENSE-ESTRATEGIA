@@ -1,0 +1,293 @@
+{
+  "coverage": {
+    "entry_id": "T155",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 2,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 4,
+    "operational_product_cases": 2,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "System Prompt Optimization / prompt de sistema enxuto",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C007",
+      "company": "Anthropic",
+      "system": "Claude Research — sistema multiagente",
+      "title": "Pesquisa com líder, subagentes e recuperação operacional",
+      "evidence_level": "production_documented",
+      "observed_use": "A Anthropic relata a passagem de seu sistema Research a produção, com líder, subagentes paralelos, ferramentas e checkpoints.",
+      "technical_mechanism": "O líder decompõe perguntas, delega objetivos e formatos, agrega resultados e preserva estado; ferramentas podem executar em paralelo e falhas são tratadas com adaptação e proteções determinísticas.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "C-S030"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T169",
+          "match": "exact",
+          "rationale": "Subagentes possuem contextos próprios no sistema relatado."
+        },
+        {
+          "entry_id": "T237",
+          "match": "exact",
+          "rationale": "O líder delega pesquisa e recebe resultados condensados."
+        },
+        {
+          "entry_id": "T139",
+          "match": "exact",
+          "rationale": "O relato identifica chamadas paralelas de ferramentas."
+        },
+        {
+          "entry_id": "T147",
+          "match": "exact",
+          "rationale": "O líder cria subagentes em paralelo e agrega suas saídas."
+        },
+        {
+          "entry_id": "T208",
+          "match": "exact",
+          "rationale": "Responsabilidades de líder planejador e trabalhadores são explícitas."
+        },
+        {
+          "entry_id": "T155",
+          "match": "exact",
+          "rationale": "Prompt engineering e simulações foram usados para corrigir falhas de delegação."
+        },
+        {
+          "entry_id": "T060",
+          "match": "exact",
+          "rationale": "O sistema utiliza checkpoints regulares e retomada após erros."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "Rubricas de avaliação ilustram verificações propostas, não o produto editorial LAI."
+        }
+      ],
+      "small_model_transfer": "Proposta: reservar agentes 3–30B a buscas delimitadas e extração com fontes, escalando síntese difícil conforme verificação. Medir custo total e cobertura, pois paralelismo aumenta consumo.",
+      "limits": "A implantação usa modelos Claude citados pelo operador; não demonstra que 3–30B reproduzam seus resultados. Ganhos do estudo interno não são transferidos; execução assíncrona plena aparece como direção futura.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4C-C007",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T155",
+        "match": "exact",
+        "rationale": "Prompt engineering e simulações foram usados para corrigir falhas de delegação."
+      }
+    },
+    {
+      "case_id": "V4C-C029",
+      "company": "OpenAI",
+      "system": "Codex no desenvolvimento interno e harness beta",
+      "title": "Adoção interna de Codex com ambiente verificável",
+      "evidence_level": "production_documented",
+      "observed_use": "Uso diário por equipes e beta interno com usuários reais relatados em duas publicações do operador.",
+      "technical_mechanism": "Código e planos no repositório, aplicação e observabilidade por worktree, ferramentas de revisão e restrições estruturais executáveis.",
+      "event_date": "2026-02-11",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S029",
+        "V4C-S030"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R021",
+          "match": "exact",
+          "rationale": "Uso interno de Codex confirmado pelo operador."
+        },
+        {
+          "entry_id": "T239",
+          "match": "exact",
+          "rationale": "Artigo de harness usa uma aplicação e observabilidade isoladas por Git worktree."
+        },
+        {
+          "entry_id": "T213",
+          "match": "exact",
+          "rationale": "Operador relata decompor metas em blocos de design, código, revisão e testes com planos versionados."
+        },
+        {
+          "entry_id": "T155",
+          "match": "exact",
+          "rationale": "Instrução monolítica foi substituída por mapa curto."
+        },
+        {
+          "entry_id": "T233",
+          "match": "exact",
+          "rationale": "Linters e testes estruturais verificam invariantes."
+        },
+        {
+          "entry_id": "T234",
+          "match": "exact",
+          "rationale": "AGENTS.md curto e documentação versionada no repositório oferecem memória persistente do projeto; não é mera configuração CI."
+        },
+        {
+          "entry_id": "T237",
+          "match": "exact",
+          "rationale": "Agentes revisam outros agentes no processo descrito."
+        },
+        {
+          "entry_id": "T217",
+          "match": "family",
+          "rationale": "Há ciclos de implementação e testes, mas não fica provado test-first para todas as alterações."
+        },
+        {
+          "entry_id": "R027",
+          "match": "exact",
+          "rationale": "Git e worktrees sustentam o ambiente."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "Gates verificáveis inspiram o componente editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: reproduzir tarefas pequenas com a mesma infraestrutura de testes e isolamento usando 3–30B; medir custo completo, inclusive supervisão e revisão.",
+      "limits": "Consolidado para evitar somar equipes e artigos como adoções independentes. Beta operacional não é prova de autonomia geral; modelos do relato não são demonstrados como 3–30B.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4C-C029",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T155",
+        "match": "exact",
+        "rationale": "Instrução monolítica foi substituída por mapa curto."
+      }
+    },
+    {
+      "case_id": "V4C-C027",
+      "company": "Klarna / relato LangChain",
+      "system": "AI Assistant com LangGraph",
+      "title": "Assistente de suporte descrito pelo fornecedor",
+      "evidence_level": "operational_product",
+      "observed_use": "Relato de fornecedor identifica tarefas de suporte com roteamento e instruções adaptadas.",
+      "technical_mechanism": "LangGraph coordena tarefas; LangSmith apoia observação, avaliação e evolução de prompts.",
+      "event_date": "2025-02-12",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S028"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R008",
+          "match": "exact",
+          "rationale": "Fonte nomeia LangGraph na arquitetura."
+        },
+        {
+          "entry_id": "T134",
+          "match": "family",
+          "rationale": "Roteamento entre tarefas é relatado, sem protocolo exato de seleção de ferramentas."
+        },
+        {
+          "entry_id": "T155",
+          "match": "exact",
+          "rationale": "Adaptação e otimização de prompts são descritas."
+        },
+        {
+          "entry_id": "T169",
+          "match": "family",
+          "rationale": "Arquitetura multiagente é mencionada sem especificação de isolamento."
+        }
+      ],
+      "small_model_transfer": "Proposta: usar estados curtos e prompts por tarefa em modelos pequenos, avaliando erros de roteamento e resolução.",
+      "limits": "Classificação conservadora: nesta pesquisa detalhes técnicos vêm do fornecedor, sem abertura de relato técnico do operador. Não conta para dez casos de produção.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C027",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T155",
+        "match": "exact",
+        "rationale": "Adaptação e otimização de prompts são descritas."
+      }
+    },
+    {
+      "case_id": "V4D-C006",
+      "company": "Microsoft",
+      "system": "Learning Zone / Kahoot! / Phi Silica LoRA",
+      "title": "Especialização, saída validada e avaliação humana",
+      "evidence_level": "operational_product",
+      "observed_use": "Equipe descreveu a preparação de um recurso educacional com Phi Silica especializado e avaliação do resultado; a capability Learning Zone consta na documentação atual.",
+      "technical_mechanism": "Dados do professor filtrados alimentam LoRA; prompt reforça formato; guardrails precedem exibição; avaliação por agentes é confrontada com humanos.",
+      "event_date": "2025-07-31",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4D-S012",
+        "V4D-S013"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T177",
+          "match": "exact",
+          "rationale": "Ajuste para uma tarefa educacional delimitada."
+        },
+        {
+          "entry_id": "T178",
+          "match": "exact",
+          "rationale": "Professor gera exemplos para treinar o modelo menor."
+        },
+        {
+          "entry_id": "T182",
+          "match": "exact",
+          "rationale": "Especialização realizada por adaptadores LoRA."
+        },
+        {
+          "entry_id": "T183",
+          "match": "family",
+          "rationale": "Treino contra modelo quantizado não comprova todos os detalhes do método QLoRA original."
+        },
+        {
+          "entry_id": "T155",
+          "match": "exact",
+          "rationale": "Especialização permitiu reduzir o prompt mantendo instrução explícita de formato."
+        },
+        {
+          "entry_id": "T180",
+          "match": "exact",
+          "rationale": "Parte das instruções foi absorvida no adaptador; avaliação continua necessária."
+        },
+        {
+          "entry_id": "T193",
+          "match": "exact",
+          "rationale": "Restrições verificáveis rejeitam saídas inadequadas antes da exibição."
+        },
+        {
+          "entry_id": "T186",
+          "match": "exact",
+          "rationale": "Reviewer/Critic/Meta-Reviewer apoiam avaliação offline."
+        },
+        {
+          "entry_id": "T200",
+          "match": "family",
+          "rationale": "Estudo humano confronta os julgamentos, mas não demonstra independência causal de todo erro."
+        },
+        {
+          "entry_id": "T153",
+          "match": "family",
+          "rationale": "Entrega incremental documentada; a fonte consultada não especifica propagação de interrupção/cancelamento ao processamento."
+        },
+        {
+          "entry_id": "T172",
+          "match": "family",
+          "rationale": "Guardas controlam liberação de perguntas; não se documenta o ciclo completo do controlador, com pressão reversa e encerramento."
+        }
+      ],
+      "small_model_transfer": "Proposta: especializar um aluno 3–30B em objetos de negócio e remover do caminho online o professor caro; medir rejeição, acerto factual, custo por resultado aceito e divergência do juiz.",
+      "limits": "Não chamar o experimento de 2025 de rollout geral: o artigo previa public preview. A ficha atual documenta o produto, sem comprovar escala nem identidade integral da configuração. Melhoria relativa de preferência não é multiplicação de inteligência ou precisão geral.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4D-C006",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T155",
+        "match": "exact",
+        "rationale": "Especialização permitiu reduzir o prompt mantendo instrução explícita de formato."
+      }
+    }
+  ]
+}

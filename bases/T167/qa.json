@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Bucket token significa token do tokenizer?",
+    "answer": "Não. A unidade é definida pela aplicação, embora possa representar tokens de inferência."
+  },
+  {
+    "question": "Uma tarefa maior que B entra depois de esperar?",
+    "answer": "Não sem política especial; o saldo nunca ultrapassa B."
+  },
+  {
+    "question": "Por que um pedido grande pode esperar para sempre?",
+    "answer": "Se seu custo excede a capacidade máxima e a reserva exige o custo integral, nenhuma reposição produzirá saldo suficiente."
+  },
+  {
+    "question": "A taxa r limita concorrência?",
+    "answer": "Não. Ela limita reposição de crédito; duração das operações determina quantas podem permanecer ativas."
+  }
+]

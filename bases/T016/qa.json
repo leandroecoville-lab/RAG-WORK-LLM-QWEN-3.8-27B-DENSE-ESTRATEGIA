@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Truncar é a mesma coisa que resumir?",
+    "answer": "Não. Truncar remove partes; resumir reescreve conteúdo. Ambos podem perder informação de maneiras diferentes."
+  },
+  {
+    "question": "Posso declarar não há erros após ler os primeiros resultados?",
+    "answer": "Só se a ferramenta verificou todo o conjunto e retornou esse resultado de forma explícita."
+  },
+  {
+    "question": "Truncar e resumir são equivalentes?",
+    "answer": "Não. Truncar retém uma parte literal; resumir produz outra representação. Ambos podem perder informação, mas têm riscos e testes de fidelidade diferentes."
+  },
+  {
+    "question": "O marcador de truncamento deve ficar só no log?",
+    "answer": "Não. Quem toma a decisão precisa conhecer a cobertura. O marcador deve acompanhar o trecho entregue ao consumidor."
+  }
+]

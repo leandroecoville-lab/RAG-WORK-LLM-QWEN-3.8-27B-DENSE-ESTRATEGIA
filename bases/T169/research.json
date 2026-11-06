@@ -1,0 +1,52 @@
+{
+  "id": "T169",
+  "technical_details": "Isolar contexto muda a distribuição de informação entre agentes, mas cria custo de integração. Um resumo final pode perder exceções descobertas pelo especialista; por isso, o retorno proposto inclui artefatos, evidências, versões de entrada e pendências. Se agentes compartilham diretório, escritas concorrentes continuam possíveis. Contexto separado e exclusão de escrita são propriedades independentes, assim como custo faturado por cada agente.",
+  "boundary_condition": "A delegação pode piorar tarefas curtas ou fortemente acopladas quando a comunicação custa mais que o trabalho paralelo aproveitável.",
+  "implementation_contract": {
+    "inputs": "Submissões delimitadas, versões comuns, recursos atribuídos e critério de entrega.",
+    "outputs": "Resultado por agente, artefatos, fontes e conflitos identificados.",
+    "state": "Responsáveis por arquivos, bases de edição e estados dos ramos.",
+    "invariant": "O coordenador não confunde resumo do especialista com evidência completa de alteração ou teste."
+  },
+  "tradeoffs": [
+    "Especialização concentra informação relevante e pode ocultar premissas necessárias à integração.",
+    "Isolamento de escrita reduz conflito e exige etapa explícita de merge."
+  ],
+  "failure_test": "Teste proposto: dois agentes recebem a mesma base e produzem mudanças incompatíveis no mesmo contrato; exigir detecção da divergência antes de consolidar ambos.",
+  "evaluation_plan": "Comparar agente único e divisão por responsabilidades com orçamento total equivalente. Medir qualidade integrada, retrabalho, tokens de comunicação e tempo final. A decisão deve considerar resultado do conjunto, não apenas rapidez individual de cada agente.",
+  "comparisons": [
+    {
+      "entry_id": "T237",
+      "relation": "complements",
+      "reason": "Offloading define a unidade delegada; isolamento de contexto define parte da fronteira de execução."
+    },
+    {
+      "entry_id": "T239",
+      "relation": "complements",
+      "reason": "Worktrees podem separar árvores de edição, sem substituir contratos de integração."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Claude Code documenta subagentes com contexto próprio e consumo de solicitações associado ao mesmo conjunto de limites.",
+    "source_ids": [
+      "V2A-S018"
+    ],
+    "support": "direct",
+    "caveat": "Inicialização, ferramentas e permissões variam por tipo e versão; não se presume isolamento de sistema operacional."
+  },
+  "advanced_qa": [
+    {
+      "question": "Dois agentes com contextos separados podem sobrescrever o mesmo arquivo?",
+      "answer": "Sim, se compartilham a árvore de trabalho; é necessário separar responsabilidade ou controlar versões."
+    },
+    {
+      "question": "Como avaliar se delegar economizou?",
+      "answer": "Contabilizar coordenação, resumos, merge e correções no custo total do objetivo, além do trabalho de cada agente."
+    }
+  ],
+  "source_ids": [
+    "V2A-S018",
+    "V3C-S028"
+  ],
+  "research_note": "Síntese técnica com contratos e testes propostos; não há alegação de implantação ou medição LAI."
+}

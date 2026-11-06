@@ -1,0 +1,121 @@
+{
+  "id": "T035",
+  "novelty": "A v3 tratou contaminação do prefixo contextual. Aqui a expansão contextual é controlada por contrafactuais de identidade e granularidade.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Limite contexto adicionado a identificadores e localização que realmente desambiguam o trecho. Comentário explicativo longo pode dominar embedding e aproximar chunks diferentes indevidamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S025",
+        "V3A-S014",
+        "V4A-S023"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Separe texto original, contexto gerado e campos estruturados. A busca pode usar todos; o leitor deve saber qual parte foi extraída e qual foi inferida na ingestão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S025",
+        "V3A-S014",
+        "V4A-S023"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare prefixos curtos, longos e ausência de prefixo. Troque entidades em documentos estruturalmente iguais para detectar vazamento de identidade e medir ranking de homônimos. Unidade de avaliação: chunk contextualizado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S025",
+        "V3A-S014",
+        "V4A-S023"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Relatórios padronizados",
+      "scenario": "Trechos iguais pertencem a períodos distintos.",
+      "strategy": "Adicionar organização, período e seção verificados; preservar esses atributos também como filtros, não apenas palavras no prefixo.",
+      "small_model_role": "3–7B gera contexto a partir de campos.",
+      "acceptance": "Consulta histórica não pode recuperar período errado por similaridade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S025",
+        "V3A-S014",
+        "V4A-S023"
+      ]
+    },
+    {
+      "name": "Documentação de componentes",
+      "scenario": "Pronome referencia módulo distante.",
+      "strategy": "Resolver referente pelo escopo documental e anexar identificação mínima; se houver ambiguidade, manter candidatos em vez de escolher silenciosamente.",
+      "small_model_role": "8–14B resolve referência local.",
+      "acceptance": "Toda identidade adicionada precisa de apoio no documento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S025",
+        "V3A-S014",
+        "V4A-S023"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Gerador de prefixo determinístico verbalizado a partir de metadados.",
+    "8_14b": "Resolvedor contextual para pronomes e escopo de seção.",
+    "15_30b": "Revisor de casos ambíguos que atravessam vários documentos.",
+    "training_or_runtime_requirements": "Campos verificados, marcação de conteúdo gerado e reindexação quando escopo mudar.",
+    "do_not_use_when": "Contexto só pode ser obtido por especulação ou prefixo melhora similaridade mas piora precisão de evidências."
+  },
+  "connections": [
+    {
+      "target_id": "T066",
+      "relation": "requires",
+      "how": "Confirmar entidade e versão usadas no prefixo.",
+      "interface": "Identificador, escopo e evidência da resolução.",
+      "condition": "Resolver preservar ambiguidade não resolvida.",
+      "acceptance": "Testar duas entidades de mesmo nome.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S025",
+        "V3A-S014",
+        "V4A-S023"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T027",
+      "relation": "complements",
+      "how": "Aplicar contexto com avaliação separada por canal.",
+      "interface": "Texto original, prefixo e campos filtráveis.",
+      "condition": "Prefixo não apagar termos literais raros.",
+      "acceptance": "Medir contribuição lexical e vetorial independentemente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S025",
+        "V3A-S014",
+        "V4A-S023"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não citar prefixo gerado como fonte primária.",
+    "Evitar copiar título desatualizado para todos os chunks."
+  ],
+  "frontier_comparison": "Comparar desambiguação e precisão; contexto adicional pode ajudar indexação e prejudicar um leitor pequeno se não for rotulado.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q009",
+      "V4A-Q019",
+      "V4A-Q022"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S025",
+    "V3A-S014",
+    "V4A-S023"
+  ]
+}

@@ -1,0 +1,28 @@
+[
+  {
+    "source_id": "A-S028",
+    "title": "Git Internals — Git Objects",
+    "url": "https://git-scm.com/book/en/v2/Git-Internals-Git-Objects",
+    "publisher": "Git / Pro Git",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Objetos endereçados por conteúdo e composição de árvores e commits.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn15view2"
+  },
+  {
+    "source_id": "V3A-S038",
+    "title": "Content Identifiers (CIDs)",
+    "url": "https://docs.ipfs.tech/concepts/content-addressing/",
+    "publisher": "IPFS",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "CIDs combinam hash e informações de codec; identidade de conteúdo depende da representação e parâmetros de blocos.",
+    "limitations": "Fonte primária consultada. Desempenho não foi reproduzido, não foram usadas perguntas ou respostas dos benchmarks, e propostas de integração não representam execução na LAI.",
+    "web_ref": "turn160view5"
+  }
+]

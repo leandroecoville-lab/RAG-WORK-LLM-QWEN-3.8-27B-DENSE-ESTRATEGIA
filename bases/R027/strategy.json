@@ -1,0 +1,137 @@
+{
+  "id": "R027",
+  "novelty": "Aprofunda a identidade de commits com atestação da árvore efetivamente testada, integração concorrente e vínculo entre código, modelo e medições.",
+  "source_ids": [
+    "V3C-S037",
+    "V3C-S036",
+    "V4C-S020",
+    "V4C-S021",
+    "V4C-S030"
+  ],
+  "deep_layers": [
+    {
+      "name": "Teste ligado à árvore",
+      "detail": "Proposta: registrar hash da árvore, dependências relevantes e configuração de teste no resultado. Se qualquer entrada muda após o teste, a evidência deixa de autorizar promoção. O commit preserva uma versão; não prova que essa versão é exatamente a que foi exercitada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S037",
+        "V3C-S036",
+        "V4C-S020",
+        "V4C-S021",
+        "V4C-S030"
+      ]
+    },
+    {
+      "name": "Integração concorrente",
+      "detail": "Validar cada candidato em isolamento e depois validar a composição. Dois patches corretos na mesma base podem interagir ao serem unidos. A atualização final de referência usa revisão esperada e o controlador trata rejeição concorrente como necessidade de reintegração, não como retry cego.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S037",
+        "V3C-S036",
+        "V4C-S020",
+        "V4C-S021",
+        "V4C-S030"
+      ]
+    },
+    {
+      "name": "Experimento versionado",
+      "detail": "Vincular revisão de código, checksum de pesos/adaptador, política de prompt e dataset ao relatório de desempenho. Grandes artefatos podem permanecer fora do repositório, identificados por manifestos. Reverter código sem reverter configuração do modelo pode não restaurar o comportamento observado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S037",
+        "V3C-S036",
+        "V4C-S020",
+        "V4C-S021",
+        "V4C-S030"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Integração de agentes de código",
+      "scenario": "Dois trabalhadores mudam módulos relacionados.",
+      "strategy": "Criar candidatos isolados, verificar contratos locais e executar testes de interação sobre a árvore combinada.",
+      "small_model_role": "Modelos pequenos produzem mudanças estreitas; Git e CI preservam identidade e promoção.",
+      "acceptance": "Uma mudança concorrente de base invalida o aceite antigo e exige nova verificação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S037",
+        "V3C-S036",
+        "V4C-S020",
+        "V4C-S021",
+        "V4C-S030"
+      ]
+    },
+    {
+      "name": "Comparação de sistemas 3–30B",
+      "scenario": "Experimento mistura alterações de prompt, quantização e retrieval.",
+      "strategy": "Congelar manifestos por condição e separar ablações em revisões identificáveis.",
+      "small_model_role": "O modelo é objeto do experimento; não decide qual revisão foi executada.",
+      "acceptance": "Reproduzir o relatório a partir dos manifestos ou registrar precisamente a dependência indisponível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S037",
+        "V3C-S036",
+        "V4C-S020",
+        "V4C-S021",
+        "V4C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "3–7B: editar unidades pequenas com diffs legíveis; versionamento não compensa raciocínio insuficiente.",
+    "8_14b": "8–14B: refatorações locais com integração validada por árvore.",
+    "15_30b": "15–30B: alterações maiores continuam exigindo controles de concorrência e evidência.",
+    "training_or_runtime_requirements": "Git atua sobre artefatos; não requer treino nem conhece semântica da tarefa.",
+    "do_not_use_when": "Não armazenar volumes ilimitados de traces ou pesos no Git apenas porque o repositório aceita arquivos."
+  },
+  "connections": [
+    {
+      "target_id": "T239",
+      "relation": "complements",
+      "how": "Isolar candidatos e conservar a identidade de suas bases.",
+      "interface": "Worktree, tarefa e commit-base.",
+      "condition": "Há edição concorrente.",
+      "acceptance": "Nenhum índice ou diretório de um trabalhador contamina o candidato de outro.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S037",
+        "V3C-S036",
+        "V4C-S020",
+        "V4C-S021",
+        "V4C-S030"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T233",
+      "relation": "complements",
+      "how": "Invalidar a aprovação quando a árvore do candidato muda.",
+      "interface": "Tree_hash, ambiente de teste e revisão esperada da referência.",
+      "condition": "Uma alteração será integrada.",
+      "acceptance": "Só a árvore verificada é promovida, com nova validação após composição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S037",
+        "V3C-S036",
+        "V4C-S020",
+        "V4C-S021",
+        "V4C-S030"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir Sapling/Piper com Git por oferecerem operações semelhantes.",
+    "Não interpretar hash ou assinatura como prova de correção funcional."
+  ],
+  "frontier_comparison": "Comparar taxa de mudanças aceitas e custo de integração, incluindo conflitos. Controle de versão é infraestrutura comum aos modelos comparados, não uma vantagem paramétrica.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q015",
+      "V4C-Q016",
+      "V4C-Q011"
+    ],
+    "scope_note": "Windows/Git, GitHub e Codex fornecem evidências delimitadas. Sapling e Scion mantêm mapeamentos de família/analogia quando o mecanismo Git não está comprovado."
+  }
+}

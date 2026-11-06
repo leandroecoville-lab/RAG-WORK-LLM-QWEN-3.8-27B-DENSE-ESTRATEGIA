@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Um arquivo de logs já é um event store suficiente?",
+    "answer": "Somente se seus registros forem completos, duráveis, ordenáveis e interpretáveis para reconstruir o estado definido."
+  },
+  {
+    "question": "Replay deve executar novamente uma transferência externa?",
+    "answer": "Não por padrão. Deve reconstruir o estado usando o resultado registrado; reexecutar efeitos requer protocolo próprio de reconciliação e idempotência."
+  },
+  {
+    "question": "Todo log permite replay?",
+    "answer": "Não. Ele precisa conter os fatos necessários, sua ordem relevante e schemas interpretáveis."
+  },
+  {
+    "question": "O que torna a projeção recuperável?",
+    "answer": "Eventos preservados, cursor consistente, projetor versionado e processamento repetível com deduplicação."
+  }
+]

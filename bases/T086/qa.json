@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Preciso quantizar os pesos também?",
+    "answer": "Não. As decisões são separadas, desde que o runtime aceite a combinação."
+  },
+  {
+    "question": "KV menor aumenta o contexto treinado do modelo?",
+    "answer": "Não. Aumenta capacidade operacional de armazenamento; não cria competência para posições não validadas."
+  },
+  {
+    "question": "Redução teórica de bits basta para estimar capacidade?",
+    "answer": "Não. Escalas, alinhamento, cópias temporárias e partes não quantizadas também ocupam memória."
+  },
+  {
+    "question": "Por que medir qualidade em contexto longo?",
+    "answer": "A atenção pode depender de poucos estados distantes; erro pequeno médio pode ocultar falha relevante de recuperação."
+  }
+]

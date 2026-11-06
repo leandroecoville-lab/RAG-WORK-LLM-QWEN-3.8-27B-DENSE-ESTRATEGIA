@@ -1,0 +1,51 @@
+{
+  "id": "R013",
+  "technical_details": "No MemFS atual, arquivos de memória na raiz são carregados a cada turno; agentes antigos podem usar a pasta system. Diretórios com índice MEMORY.md permanecem fora da janela até consulta. Essa organização transforma nomes e descrições em sinais de descoberta. O mecanismo não inclui índice semântico por padrão: busca por arquivos, memória vetorial opcional e busca no histórico conversacional são capacidades separadas com requisitos próprios.",
+  "boundary_condition": "Um arquivo persistido num diretório profundo pode continuar invisível na prática se o índice não orientar sua descoberta ou se o agente não abrir a referência necessária.",
+  "implementation_contract": {
+    "inputs": "Checkout do agente, arquivos com metadados, índices de diretórios e configuração de busca efetivamente instalada.",
+    "outputs": "Contexto essencial carregado, referências descobríveis e conteúdo aprofundado lido sob demanda.",
+    "state": "Commits, alterações locais, sincronização e índices opcionais com revisões correspondentes.",
+    "invariant": "Alegar que uma memória foi usada exige leitura ou carregamento efetivo; presença no repositório não basta."
+  },
+  "tradeoffs": [
+    "Arquivos essenciais na raiz simplificam acesso recorrente e consomem orçamento em toda chamada.",
+    "Hierarquia reduz contexto ativo e depende de bons índices; busca semântica opcional acrescenta instalação, indexação e manutenção."
+  ],
+  "failure_test": "Teste proposto: adicionar memória profunda sem atualizar seu índice e depois mover o arquivo. A avaliação deve detectar perda de descoberta e referências quebradas, mesmo que o conteúdo continue versionado no Git.",
+  "evaluation_plan": "Avaliação proposta: comparar organização plana e hierárquica com tarefas que exigem referências antigas. Medir memória encontrada, arquivos abertos, tokens fixos e sincronização entre computadores; avaliar busca lexical e semântica como configurações distintas.",
+  "comparisons": [
+    {
+      "entry_id": "R014",
+      "relation": "complements",
+      "reason": "R014 é um alias desta mesma referência, preservado para discutir colaboração; não representa outro mecanismo independente."
+    },
+    {
+      "entry_id": "T014",
+      "relation": "specializes",
+      "reason": "MemFS concretiza carregamento progressivo por organização de arquivos e índices."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação MemFS descreve raiz ativa, diretórios sob demanda, ausência de índice vetorial padrão e sincronização via commits e push.",
+    "source_ids": [
+      "A-S010"
+    ],
+    "support": "direct",
+    "caveat": "Documentação dinâmica consultada em 2026-11-05; instalações antigas e modalidades locais podem ter organização e disponibilidade distintas."
+  },
+  "advanced_qa": [
+    {
+      "question": "MemFS inclui automaticamente embeddings?",
+      "answer": "Não. A documentação distingue busca comum de arquivos e modos semânticos ou híbridos opcionais, com componentes adicionais e indexação."
+    },
+    {
+      "question": "Busca de conversa e busca de memória são a mesma operação?",
+      "answer": "Não. Conversas possuem histórico próprio; arquivos MemFS representam memória organizada. Encontrar um item num desses acervos não comprova cobertura do outro."
+    }
+  ],
+  "source_ids": [
+    "A-S010"
+  ],
+  "research_note": "MemFS reaberto em 2026-11-05. Mantida a equivalência nominal oficial com context repository e a identidade canônica R013. Aprofundamento baseado na documentação atual, sem afirmar instalação de mods, índice semântico ou sincronização no ambiente do usuário. Contratos e testes são propostas."
+}

@@ -1,0 +1,32 @@
+{
+  "id": "T067",
+  "name": "Active Memory Retrieval",
+  "canonical_name": "Active Memory Retrieval",
+  "canonical_id": "T067",
+  "aliases": [
+    "recuperação ativa de memória"
+  ],
+  "category": "memoria",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T036",
+    "T044",
+    "T066",
+    "T078"
+  ],
+  "source_ids": [
+    "A-S009",
+    "A-S023",
+    "V3A-S010",
+    "V3A-S009",
+    "V4A-S014",
+    "C-S030"
+  ],
+  "namespace": "T067",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T067",
+  "chunk_count": 9
+}

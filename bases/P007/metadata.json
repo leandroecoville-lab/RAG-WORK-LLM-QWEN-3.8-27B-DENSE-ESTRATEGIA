@@ -1,0 +1,37 @@
+{
+  "id": "P007",
+  "name": "Memory Retriever",
+  "canonical_name": "Memory Retriever",
+  "canonical_id": "P007",
+  "aliases": [
+    "recuperador proposto de memória"
+  ],
+  "category": "componentes_propostos",
+  "kind": "component",
+  "scope": "proposta",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T009",
+    "T027",
+    "T032",
+    "T056",
+    "T067",
+    "P001",
+    "P004"
+  ],
+  "source_ids": [
+    "A-S007",
+    "A-S020",
+    "A-S021",
+    "A-S032",
+    "V2C-S003",
+    "V4A-S009",
+    "V4A-S022",
+    "V4A-S023"
+  ],
+  "namespace": "P007",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/P007",
+  "chunk_count": 9
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Soft limit é uma capacidade do modelo?",
+    "answer": "É uma política da aplicação, salvo recurso específico do backend."
+  },
+  {
+    "question": "Hard limit garante resposta completa?",
+    "answer": "Não. Precisa de reserva e tratamento de truncamento."
+  },
+  {
+    "question": "Por que não compactar somente ao atingir o máximo?",
+    "answer": "Porque a própria operação ou resultados ainda em voo podem precisar de espaço que já não existe."
+  },
+  {
+    "question": "Limite suave deve ser um percentual fixo?",
+    "answer": "Não necessariamente. O tamanho da próxima etapa e o custo de recuperação podem ser mais informativos que uma fração constante."
+  }
+]

@@ -1,0 +1,112 @@
+{
+  "id": "T169",
+  "novelty": "A v3 separava isolamento de contexto e exclusão de escrita. A camada nova define fronteiras de conhecimento, contratos de retorno e seleção de trabalhadores pequenos conforme a verificabilidade de cada subtarefa.",
+  "deep_layers": [
+    {
+      "name": "Pacote mínimo suficiente",
+      "detail": "O trabalhador recebe objetivo local, entradas necessárias, critérios de aceite e limites da conclusão. Não envie toda a conversa apenas para parecer completo. Inclua exceções capazes de mudar a decisão: uma tarefa de remoção de código precisa saber quais comportamentos preservar. Isolamento útil reduz distração sem amputar dependências informacionais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Resultado com evidência recuperável",
+      "detail": "Peça artefato e referências precisas, não apenas um parágrafo de confiança. O integrador deve conseguir reabrir a evidência e descobrir o que foi inferido, testado ou deixado pendente. Se um resultado depende de uma versão antiga, essa incompatibilidade precisa aparecer antes da síntese, mesmo que o texto final pareça coerente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030"
+      ]
+    },
+    {
+      "name": "Diversidade de papéis e falhas",
+      "detail": "Especializar por objeto ou propriedade reduz mistura de responsabilidades, mas agentes do mesmo modelo ainda compartilham vieses. Faça verificação por mecanismos diferentes quando possível: parser, compilador e teste de execução. Revisores independentes de contexto podem detectar problemas distintos sem se tornarem provas independentes de verdade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009",
+        "C-S030"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Revisão por propriedade",
+      "scenario": "Um patch deve preservar comportamento e não introduzir mudanças fora de escopo.",
+      "strategy": "Dê a cada revisor uma propriedade e acesso ao diff e às evidências pertinentes. Agregue resultados identificando exatamente qual propriedade falhou; não use maioria para anular uma violação obrigatória. Reabra evidência quando houver conflito entre revisores.",
+      "small_model_role": "3–7B faz checklist estreito; 8–14B examina relações locais; 15–30B integra conflitos.",
+      "acceptance": "Proposta: detectar violações inseridas e medir falsos bloqueios por propriedade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009"
+      ]
+    },
+    {
+      "name": "Pesquisa especializada",
+      "scenario": "Fontes técnicas pertencem a ecossistemas distintos.",
+      "strategy": "Divida por pergunta verificável, distribua orçamento e exija fonte primária com data. O integrador verifica se dois trabalhadores citaram a mesma evidência antes de tratá-los como confirmação independente. Encaminhe lacunas específicas, sem repetir a missão inteira para cada agente.",
+      "small_model_role": "8–14B extrai por documento; integrador maior resolve contradições e limites.",
+      "acceptance": "Proposta: cobertura por questão, duplicação de coleta e custo total de coordenação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Subtarefas estreitas, com entradas curtas e saída verificável por contrato.",
+    "8_14b": "Especialistas com poucos documentos e critérios claros de abstenção.",
+    "15_30b": "Integração de dependências e conflitos; não delegar mais contexto do que o próximo passo exige.",
+    "training_or_runtime_requirements": "Registro de versões, artefatos compartilhados com dono e política de concorrência; contabilização por agente.",
+    "do_not_use_when": "Não dividir uma decisão cuja evidência precisa ser comparada conjuntamente sem preservar ponte de integração."
+  },
+  "connections": [
+    {
+      "target_id": "T237",
+      "relation": "complements",
+      "how": "Claude Research distribui tarefas a subagentes e recebe resultados com referências para integração.",
+      "interface": "Objetivo local, orçamento e artefato retornado.",
+      "condition": "Tarefas distinguíveis e mecanismo de reunião.",
+      "acceptance": "Verificar suficiência do retorno antes de declarar cobertura.",
+      "basis": "source_documented",
+      "source_ids": [
+        "C-S030"
+      ],
+      "case_ids": [
+        "V4C-C007"
+      ]
+    },
+    {
+      "target_id": "T171",
+      "relation": "complements",
+      "how": "Harness Uber diferencia perfis de cache entre interação e subagentes, articulando contexto e custo.",
+      "interface": "Perfil de sessão, prefixo estável e política de retenção.",
+      "condition": "Compatibilidade do provedor e configuração atual.",
+      "acceptance": "Medir economia sem misturar estados incompatíveis.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S014"
+      ],
+      "case_ids": [
+        "V4C-C015"
+      ]
+    }
+  ],
+  "failure_controls": [
+    "Contexto separado não impede dois agentes de escreverem no mesmo arquivo.",
+    "Confirmações que derivam da mesma fonte ou do mesmo erro não contam como evidências independentes."
+  ],
+  "frontier_comparison": "Compare uma equipe pequena com um agente de fronteira sob orçamento total equivalente. Ganhos em tarefas paralelizáveis não significam superioridade em raciocínio indivisível.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q009",
+      "V4C-Q010"
+    ],
+    "scope_note": "Claude Research e harnesses Uber fornecem casos operacionais. O papel por faixa de parâmetros é proposta: as fontes não informam que os trabalhadores usados sejam 3–30B."
+  },
+  "source_ids": [
+    "C-S030",
+    "V4C-S014",
+    "V4C-S009"
+  ]
+}

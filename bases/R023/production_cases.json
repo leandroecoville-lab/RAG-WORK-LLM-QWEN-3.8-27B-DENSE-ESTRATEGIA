@@ -1,0 +1,129 @@
+{
+  "coverage": {
+    "entry_id": "R023",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 1,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Hugging Face Transformers",
+    "scope": "referencia"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C006",
+      "company": "Uber",
+      "organization_class": "technology_operator",
+      "system": "Michelangelo — infraestrutura interna de LLM",
+      "title": "Pipeline de treinamento e scorer distribuído",
+      "evidence_level": "production_documented",
+      "observed_use": "Uber descreve uma infraestrutura interna usada para preparar dados, treinar modelos, salvar checkpoints e avaliar resultados com scorer distribuído.",
+      "technical_mechanism": "Ray coordena workers; Transformers Trainer e DeepSpeed realizam treino; vLLM participa da avaliação offline. LoRA/QLoRA aparecem nos estudos de configurações suportadas.",
+      "event_date": "2026-04-14",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S006"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T177",
+          "match": "exact",
+          "rationale": "O fluxo interno executa ajuste de modelos e gerencia resultados."
+        },
+        {
+          "entry_id": "R023",
+          "match": "exact",
+          "rationale": "Transformers integra explicitamente a pilha de treino."
+        },
+        {
+          "entry_id": "R009",
+          "match": "exact",
+          "rationale": "O scorer offline implementado utiliza servidores vLLM."
+        },
+        {
+          "entry_id": "T182",
+          "match": "family",
+          "rationale": "LoRA é avaliada, sem afirmar que toda configuração é modelo de produto lançado."
+        },
+        {
+          "entry_id": "T183",
+          "match": "family",
+          "rationale": "QLoRA é configuração estudada na infraestrutura; métricas são experimentais."
+        },
+        {
+          "entry_id": "P016",
+          "match": "analogy",
+          "rationale": "O scorer inspira avaliação de artefatos da proposta editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: separar preparação, treino e avaliação para modelos 3–30B, mantendo artefatos de dados e checkpoints reproduzíveis e avaliação independente do treino.",
+      "limits": "Produção aqui qualifica plataforma interna, não todos os modelos/otimizações experimentais. Não replicar a formulação imprecisa do blog de que FlashAttention densa elimina a complexidade aritmética quadrática.",
+      "canonical_case_id": "V4B-C006",
+      "deployment_domain": "llm_training",
+      "mapping": {
+        "entry_id": "R023",
+        "match": "exact",
+        "rationale": "Transformers integra explicitamente a pilha de treino."
+      }
+    },
+    {
+      "case_id": "V4B-C013",
+      "company": "Hugging Face",
+      "organization_class": "technology_operator",
+      "system": "Transformers ContinuousBatchingManager",
+      "title": "Batching contínuo e configuração de serving documentados",
+      "evidence_level": "operational_product",
+      "observed_use": "A documentação atual expõe geração por lote contínuo e interface para submissão e recuperação de requisições.",
+      "technical_mechanism": "Configuração de memória/scheduling separada da configuração de geração, com recursos de cache paginado e prefixos conforme backend.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S014"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R023",
+          "match": "exact",
+          "rationale": "O recurso faz parte da biblioteca Transformers documentada."
+        },
+        {
+          "entry_id": "T088",
+          "match": "exact",
+          "rationale": "Recomposição de batch a cada geração é o mecanismo descrito."
+        },
+        {
+          "entry_id": "T093",
+          "match": "exact",
+          "rationale": "A documentação inclui gerenciamento paginado do cache."
+        },
+        {
+          "entry_id": "T082",
+          "match": "exact",
+          "rationale": "Prefix caching integra os recursos descritos."
+        },
+        {
+          "entry_id": "P009",
+          "match": "analogy",
+          "rationale": "Ilustra capacidades que um adaptador de engine poderia negociar."
+        }
+      ],
+      "small_model_transfer": "Proposta: experimentar serving de 3–30B com manifestos de versão e comparação contra outros runtimes, sem presumir que uma API de biblioteca substitui todos os controles operacionais.",
+      "limits": "Guia não comprova uso por uma organização cliente. Defaults e APIs podem mudar; instalação local não foi executada.",
+      "canonical_case_id": "V4B-C013",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "R023",
+        "match": "exact",
+        "rationale": "O recurso faz parte da biblioteca Transformers documentada."
+      }
+    }
+  ]
+}

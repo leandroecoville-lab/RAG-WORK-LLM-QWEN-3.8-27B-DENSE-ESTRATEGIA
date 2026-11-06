@@ -1,0 +1,33 @@
+{
+  "id": "T068",
+  "name": "Memory-Augmented Generation",
+  "canonical_name": "Memory-Augmented Generation",
+  "canonical_id": "T068",
+  "aliases": [
+    "geração aumentada por memória",
+    "MAG"
+  ],
+  "category": "memoria",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T009",
+    "T047",
+    "T052",
+    "T062",
+    "R003"
+  ],
+  "source_ids": [
+    "A-S013",
+    "A-S023",
+    "V3A-S047",
+    "V4A-S019",
+    "V4A-S014"
+  ],
+  "namespace": "T068",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T068",
+  "chunk_count": 9
+}

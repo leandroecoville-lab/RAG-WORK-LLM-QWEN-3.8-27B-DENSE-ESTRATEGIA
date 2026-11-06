@@ -1,0 +1,120 @@
+{
+  "id": "T020",
+  "novelty": "A v3 discutiu compatibilidade e amortização. Aqui o desenho novo adapta compressor ao consumidor e acompanha mudanças de domínio.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Treine ou selecione compressor conforme o leitor final. Tokens que um modelo grande reconstrói podem ser ambíguos para 3–7B; a função de perda precisa refletir tarefa do consumidor.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S001",
+        "V3A-S004",
+        "V4A-S028"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Use perfil de compressão por domínio e detectar mudança de distribuição com amostras de reconstrução funcional. A detecção não exige restaurar todo o texto, mas preservar respostas a requisitos definidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S001",
+        "V3A-S004",
+        "V4A-S028"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare compressor universal, especializado e extração determinística. Inclua treino, manutenção e falhas de transferência no custo amortizado. Unidade de avaliação: par compressor-consumidor. Após quantizar ou trocar o consumidor, repetir teste de preservação é obrigatório: o compressor não mudou, mas sua linguagem pode ter ficado menos interpretável. Compare erros em números, relações e exceções, além de acerto global. Se o ganho desaparecer, usar texto menos comprimido pode ser melhor que retreinar toda a cadeia.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S001",
+        "V3A-S004",
+        "V4A-S028"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Leitor local de manuais",
+      "scenario": "Modelo pequeno recebe contexto de servidor.",
+      "strategy": "Aprender seleção de trechos que preservam campos necessários; enviar conteúdo original quando detector indicar domínio desconhecido.",
+      "small_model_role": "3–7B lê formato treinado.",
+      "acceptance": "Qualidade deve atingir mínimo no domínio e degradar de forma detectável fora dele.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S001",
+        "V3A-S004",
+        "V4A-S028"
+      ]
+    },
+    {
+      "name": "Fluxo com várias tarefas",
+      "scenario": "Mesmo corpus atende perguntas distintas.",
+      "strategy": "Usar compressor geral para descoberta e compressão específica após selecionar objetivo; manter ambos vinculados à origem.",
+      "small_model_role": "8–14B decide campos necessários.",
+      "acceptance": "Não reutilizar representação específica para objetivo incompatível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S001",
+        "V3A-S004",
+        "V4A-S028"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Consumidor treinado em representação simples e explícita.",
+    "8_14b": "Compressor ou leitor especializado em poucas famílias de tarefa.",
+    "15_30b": "Professor ou avaliador de preservação funcional, sem garantir decodificação universal.",
+    "training_or_runtime_requirements": "Dados de treino separados por origem, leitor fixado por versão e avaliação após quantização.",
+    "do_not_use_when": "Modelo é fechado sem interface compatível para memória latente ou domínio muda rápido demais."
+  },
+  "connections": [
+    {
+      "target_id": "T177",
+      "relation": "complements",
+      "how": "Adaptar leitura ao formato comprimido.",
+      "interface": "Pares original/comprimido e tarefa rotulada.",
+      "condition": "Treino autorizado e dados separados.",
+      "acceptance": "Medir benefício além de simples exposição ao domínio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S001",
+        "V3A-S004",
+        "V4A-S028"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T037",
+      "relation": "complements",
+      "how": "Aplicar compressão condicionada à pergunta quando necessário.",
+      "interface": "Consulta, representação e versão do compressor.",
+      "condition": "Objetivo da consulta permanecer estável.",
+      "acceptance": "Trocar pergunta e detectar necessidade de recompressão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S001",
+        "V3A-S004",
+        "V4A-S028"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não transportar estados latentes entre arquiteturas apenas pela dimensão.",
+    "Conservar caminho de leitura sem compressão."
+  ],
+  "frontier_comparison": "Comparar pares completos compressor-leitor; ganho isolado do compressor não demonstra qualidade do sistema.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q017",
+      "V4A-Q024"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S001",
+    "V3A-S004",
+    "V4A-S028"
+  ]
+}

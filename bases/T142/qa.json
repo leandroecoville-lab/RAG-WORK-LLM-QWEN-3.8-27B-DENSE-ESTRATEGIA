@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Framework com planning pensa melhor sozinho?",
+    "answer": "Não. Ele organiza execução; a qualidade depende de modelos, ferramentas e validação."
+  },
+  {
+    "question": "LangGraph impõe um planejador?",
+    "answer": "Não. Seu runtime permite definir arquitetura e controle de fluxo."
+  },
+  {
+    "question": "Um reducer que concatena listas é idempotente?",
+    "answer": "Em geral, não: aplicar duas vezes a mesma atualização duplica elementos, salvo deduplicação por identidade."
+  },
+  {
+    "question": "Compilação do grafo prova que o plano resolve a tarefa?",
+    "answer": "Não. Ela verifica aspectos estruturais do grafo, enquanto viabilidade e suficiência do plano exigem critérios da tarefa."
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "FP8 é igual a INT8?",
+    "answer": "Não. FP8 representa expoente e mantissa; INT8 usa inteiros com esquema de escala."
+  },
+  {
+    "question": "FP8 sempre reduz pela metade toda a VRAM?",
+    "answer": "Não. Parte dos dados continua em outros formatos e existem buffers, escalas e overhead."
+  },
+  {
+    "question": "E4M3 e E5M2 são intercambiáveis?",
+    "answer": "Não sem considerar escala, alcance e erro; os mesmos bits representam valores de forma diferente."
+  },
+  {
+    "question": "Escala global basta sempre?",
+    "answer": "Não. Distribuições muito heterogêneas podem exigir outra granularidade, avaliada junto do custo de metadados."
+  }
+]

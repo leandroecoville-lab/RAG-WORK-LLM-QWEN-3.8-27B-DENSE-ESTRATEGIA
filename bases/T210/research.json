@@ -1,0 +1,52 @@
+{
+  "id": "T210",
+  "technical_details": "Rotacionar sessões pode ser tratado como transferência de responsabilidade sobre uma versão de estado. A sessão antiga publica um ponto consistente; a nova confirma leitura e assume a geração vigente. Chamadas atrasadas da sessão anterior continuam possíveis, por isso escritas precisam ser associadas à revisão ou propriedade atual. Uma lease ajuda a detectar ausência de comunicação, mas não impede sozinha um processo antigo de escrever em serviço externo que ignora essa identidade.",
+  "boundary_condition": "Se a sessão nova recebe apenas um resumo sem cursor, artefatos e operações pendentes, ela não consegue reconstruir o limite entre concluído e desconhecido.",
+  "implementation_contract": {
+    "inputs": "Estado confirmado, manifesto de transferência e geração atual da missão.",
+    "outputs": "Sessão sucessora preparada e responsabilidade de escrita transferida.",
+    "state": "Geração, cursor, operações em voo e confirmação de leitura.",
+    "invariant": "A sessão anterior não aplica atualizações obsoletas a um estado que já mudou de responsável."
+  },
+  "tradeoffs": [
+    "Esperar drenar operações simplifica transferência e pode alongar a pausa.",
+    "Transferir com operações pendentes reduz espera e exige reconciliação explícita."
+  ],
+  "failure_test": "Teste proposto: iniciar uma nova sessão e entregar depois um resultado da antiga; exigir tratamento como resposta tardia vinculada à tentativa original, sem sobrescrever decisões novas.",
+  "evaluation_plan": "Comparar rotação em fronteira estável e rotação durante operação. Medir retomada correta, duplicação, perda de estado e tempo de reorientação. Aceitar a política quando preservar o mesmo objetivo e evidências sob interrupção.",
+  "comparisons": [
+    {
+      "entry_id": "T211",
+      "relation": "complements",
+      "reason": "Handoff carrega o manifesto e os pontos necessários à transferência."
+    },
+    {
+      "entry_id": "T243",
+      "relation": "complements",
+      "reason": "Operações pendentes precisam de reconciliação após a troca de sessão."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "etcd fornece transações condicionais por revisão e leases que expiram na ausência de keepalive.",
+    "source_ids": [
+      "V3C-S028"
+    ],
+    "support": "related",
+    "caveat": "Essas primitivas apoiam coordenação; a proteção contra escritor antigo precisa alcançar cada destino de escrita."
+  },
+  "advanced_qa": [
+    {
+      "question": "Encerrar a sessão cancela todos os efeitos antigos?",
+      "answer": "Não. Operações remotas podem continuar; sua identidade e resultado devem atravessar a transferência."
+    },
+    {
+      "question": "O resumo basta para assumir a missão?",
+      "answer": "Não quando há estado operacional. A nova sessão precisa localizar versões, pendências e critérios de conclusão verificáveis."
+    }
+  ],
+  "source_ids": [
+    "V3C-S028",
+    "V2A-S004"
+  ],
+  "research_note": "Fontes primárias reabertas nesta pesquisa; contratos, cenários de falha e avaliação são propostas editoriais."
+}

@@ -1,0 +1,42 @@
+{
+  "entry_id": "P008",
+  "edges": [
+    {
+      "edge_id": "E-P008-01",
+      "from": "P008",
+      "to": "T059",
+      "relation": "complements",
+      "how": "Definir quais eventos são fonte de verdade e quais são projeções.",
+      "interface": "Envelope versionado, sequência e identidade causal.",
+      "condition": "Estado precisa ser reconstruído.",
+      "acceptance": "Uma reconstrução completa tem critérios explícitos de equivalência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S018",
+        "V4C-S024",
+        "V4C-S025"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-P008-02",
+      "from": "P008",
+      "to": "T241",
+      "relation": "feeds",
+      "how": "Entregar eventos para reprodução em modo sem efeitos externos.",
+      "interface": "Histórico, cursor e versão da projeção.",
+      "condition": "Há recuperação ou correção de projeção.",
+      "acceptance": "Reexecução preserva fatos sem duplicar operações.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S018",
+        "V4C-S024",
+        "V4C-S025"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

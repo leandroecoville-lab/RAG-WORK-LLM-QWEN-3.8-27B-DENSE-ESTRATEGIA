@@ -1,0 +1,128 @@
+{
+  "id": "T124",
+  "novelty": "A v3 definiu o contrato W4A16. O aprofundamento trata quantização mista, escolhas de kernel por lote e o processo de entrega de um artefato que precisa continuar interpretável entre ferramentas.",
+  "deep_layers": [
+    {
+      "name": "Quatro bits não em tudo",
+      "detail": "Uma política pode quantizar matrizes grandes e preservar embeddings, normalizações ou projeções sensíveis. Calcule tamanho real e descreva exceções. O rótulo W4 não basta para reproduzir o modelo; grupos, zeros, escalas, ordem de canais e tensores preservados precisam acompanhar os códigos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S046",
+        "V3B-S014",
+        "V4B-S011",
+        "V4D-S009"
+      ]
+    },
+    {
+      "name": "Regime de execução",
+      "detail": "Desempacotar e desquantizar pode ser amortizado de forma diferente em prefill e decode. Um kernel favorável a lote pequeno pode perder vantagem em multiplicações maiores. Valide variantes no workload esperado e não transfira números entre CPU, GPU e NPU; o blog Phi Silica descreve uma receita própria, não uma garantia universal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S046",
+        "V3B-S014",
+        "V4B-S011",
+        "V4D-S009"
+      ]
+    },
+    {
+      "name": "Cadeia de artefatos",
+      "detail": "O produtor de pesos e o consumidor precisam concordar sobre layout e semântica. Faça uma inspeção de metadados e teste uma camada isolada antes de carregar o modelo inteiro. Uma conversão que muda agrupamento ou ordem requer transformação explícita, não apenas renomear o arquivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S046",
+        "V3B-S014",
+        "V4B-S011",
+        "V4D-S009"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Distribuição local especializada",
+      "scenario": "Um modelo precisa caber num orçamento de memória limitado.",
+      "strategy": "Escolha formato suportado, calibre com dados representativos e teste tarefas críticas. Meça memória total com contexto e servidor, além do tamanho em disco.",
+      "small_model_role": "Um 3–7B pode atender tarefas locais com evidência externa e validação determinística.",
+      "acceptance": "Aceitar somente se a economia física e a qualidade forem medidas no ambiente real.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S046",
+        "V3B-S014",
+        "V4B-S011",
+        "V4D-S009"
+      ]
+    },
+    {
+      "name": "Comparar W4 e precisão maior",
+      "scenario": "Há capacidade para várias configurações.",
+      "strategy": "Fixe checkpoint, prompts e política de geração; compare erro, prefill e decode separadamente. Depois avalie se a memória liberada permite mais sessões úteis.",
+      "small_model_role": "Um 15–30B pode trocar precisão por capacidade, mas isso exige decisão de produto mensurada.",
+      "acceptance": "Relatar falhas por categoria e custo de respostas completas, não só tokens por segundo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S046",
+        "V3B-S014",
+        "V4B-S011",
+        "V4D-S009"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "O ganho mais claro pode ser viabilidade de carregamento, sem aceleração garantida.",
+    "8_14b": "Verifique kernels para formas reais e efeitos de contexto longo na memória total.",
+    "15_30b": "Inclua réplicas, escalas e buffers temporários ao dimensionar modelos maiores.",
+    "training_or_runtime_requirements": "Quantização pós-treino ou treinamento específico conforme método; W4A16 é uma descrição de precisões, não uma receita única.",
+    "do_not_use_when": "Não atribuir o mesmo comportamento a artefatos GPTQ, AWQ e GGUF apenas porque usam quatro bits."
+  },
+  "connections": [
+    {
+      "target_id": "T125",
+      "relation": "alternative",
+      "how": "GPTQ é uma possível forma de produzir pesos de baixa precisão com reconstrução calibrada.",
+      "interface": "Pesos, grupos e metadados.",
+      "condition": "Runtime entende o formato gerado.",
+      "acceptance": "Comparar qualidade e execução com outras receitas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S046",
+        "V3B-S014",
+        "V4B-S011",
+        "V4D-S009"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T126",
+      "relation": "alternative",
+      "how": "AWQ usa informação das ativações para proteger canais relevantes antes de quantizar.",
+      "interface": "Escalas e transformações associadas.",
+      "condition": "Compensações preservadas na exportação.",
+      "acceptance": "Validar camadas e tarefas após conversão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S046",
+        "V3B-S014",
+        "V4B-S011",
+        "V4D-S009"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não estimar VRAM como parâmetros multiplicados por meio byte sem demais componentes.",
+    "Testar entradas fora da calibração, inclusive idiomas e formatos relevantes ao produto."
+  ],
+  "frontier_comparison": "Compare especialização e economia junto com a perda introduzida pela quantização. Um modelo que cabe em menos memória não adquiriu capacidade adicional por esse motivo.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q006",
+      "V4B-Q025"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S046",
+    "V3B-S014",
+    "V4B-S011",
+    "V4D-S009"
+  ]
+}

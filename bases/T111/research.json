@@ -1,0 +1,46 @@
+{
+  "id": "T111",
+  "technical_details": "O custo de selecionar conexões integra o orçamento da atenção. Um seletor que calcula todos os produtos QK antes de escolher top-k pode economizar armazenamento posterior sem eliminar o cálculo denso inicial. Roteamento por agrupamentos procura evitar essa etapa, mas enfrenta grupos desequilibrados e seleção instável: pequenas alterações de representação podem mover uma chave entre conjuntos e mudar abruptamente o contexto consultado.",
+  "boundary_condition": "A seleção baseada em conteúdo pode perder uma evidência importante sem produzir erro de execução ou sinal explícito de baixa confiança.",
+  "implementation_contract": {
+    "inputs": "Representações para seleção, capacidade dos grupos e restrições causais.",
+    "outputs": "Conjunto de conexões selecionadas e atenção normalizada nesse conjunto.",
+    "state": "Centroides ou índice, alocações de grupos e metadados de capacidade.",
+    "invariant": "A seleção e a atenção usam posições compatíveis e não introduzem acesso futuro."
+  },
+  "tradeoffs": [
+    "Seleção adaptativa pode encontrar dependências distantes e custa computação própria.",
+    "Limitar capacidade controla memória e pode descartar candidatos relevantes."
+  ],
+  "failure_test": "Teste proposto: criar um grupo muito popular e colocar evidência rara em sua fronteira. Perturbar levemente a consulta e verificar estabilidade, candidatos perdidos e comportamento ao exceder capacidade.",
+  "evaluation_plan": "Plano proposto: comparar padrão fixo, seleção dinâmica e referência densa com o mesmo orçamento declarado. Separar tempo de roteamento e atenção; medir cobertura da evidência, qualidade e distribuição de tamanhos de grupos.",
+  "comparisons": [
+    {
+      "entry_id": "T097",
+      "relation": "complements",
+      "reason": "Seleção dinâmica pode produzir blocos, mas o custo de construir seus metadados precisa ser contabilizado."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Routing Transformer aprende padrões esparsos dependentes do conteúdo usando um módulo baseado em k-means online.",
+    "source_ids": [
+      "B-S025"
+    ],
+    "support": "direct",
+    "caveat": "Essa realização não define todas as técnicas de atenção dinâmica nem garante seleção ótima."
+  },
+  "advanced_qa": [
+    {
+      "question": "Top-k após scores densos elimina O(n²)?",
+      "answer": "Não o custo de produzir esses scores; é necessário examinar onde a seleção realmente acontece."
+    },
+    {
+      "question": "Mais confiança do roteador prova relevância?",
+      "answer": "Não. Compare candidatos selecionados com evidência necessária e avalie falhas por mudança de domínio."
+    }
+  ],
+  "source_ids": [
+    "B-S025"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

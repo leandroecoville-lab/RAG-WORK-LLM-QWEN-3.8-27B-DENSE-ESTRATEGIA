@@ -1,0 +1,44 @@
+{
+  "entry_id": "R018",
+  "edges": [
+    {
+      "edge_id": "E-R018-01",
+      "from": "R018",
+      "to": "T241",
+      "relation": "complements",
+      "how": "Reproduzir transições registradas sem recriar efeitos externos.",
+      "interface": "Histórico, versão de worker e decisões persistidas.",
+      "condition": "Recuperação ou upgrade exige replay.",
+      "acceptance": "Histórico suportado reproduz comandos compatíveis e não repete chamada sem necessidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S018",
+        "V3C-S023",
+        "V3C-S024",
+        "V3C-S040"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-R018-02",
+      "from": "R018",
+      "to": "T243",
+      "relation": "complements",
+      "how": "Encaminhar estados remotos incertos ao reconciliador.",
+      "interface": "Operation_id, tentativa, prazo e observações do destino.",
+      "condition": "Timeout não resolve o resultado de negócio.",
+      "acceptance": "Cada ambiguidade recebe estado verificável antes de retry de efeito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S018",
+        "V3C-S023",
+        "V3C-S024",
+        "V3C-S040"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

@@ -1,0 +1,64 @@
+{
+  "coverage": {
+    "entry_id": "R010",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 1,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Hugging Face TGI",
+    "scope": "referencia"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C010",
+      "company": "Hugging Face",
+      "organization_class": "technology_operator",
+      "system": "HuggingChat — relato de 2023",
+      "title": "TGI como backend de chat público",
+      "evidence_level": "production_documented",
+      "observed_use": "O operador informou em 2023 que TGI alimentava HuggingChat e integrava seus serviços de inferência.",
+      "technical_mechanism": "Servidor dedicado de geração com streaming e otimizações disponíveis na pilha; o relato identifica o runtime efetivamente usado.",
+      "event_date": "2023-07-17",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S019",
+        "V3D-S006"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R010",
+          "match": "exact",
+          "rationale": "A fonte do operador afirma TGI como backend de HuggingChat naquele período."
+        },
+        {
+          "entry_id": "T088",
+          "match": "family",
+          "rationale": "É recurso do TGI, mas a fonte não detalha a configuração exata de batching desse deployment."
+        },
+        {
+          "entry_id": "P009",
+          "match": "analogy",
+          "rationale": "Caso histórico de separação entre interface de chat e runtime de inferência."
+        }
+      ],
+      "small_model_transfer": "Proposta: usar o caso como referência de migração e compatibilidade; novos serviços 3–30B devem considerar estado atual de manutenção e testar alternativas.",
+      "limits": "Não demonstra stack atual do HuggingChat. O maintenance mode documentado em 2026 é preservado, e disponibilidade histórica não é recomendação automática de nova adoção.",
+      "canonical_case_id": "V4B-C010",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "R010",
+        "match": "exact",
+        "rationale": "A fonte do operador afirma TGI como backend de HuggingChat naquele período."
+      }
+    }
+  ]
+}

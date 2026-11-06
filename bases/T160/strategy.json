@@ -1,0 +1,115 @@
+{
+  "id": "T160",
+  "novelty": "A v3 separava prontidão topológica e sucesso funcional. Esta camada acrescenta artefatos tipados nas arestas, expansão controlada do grafo e reaproveitamento de resultados após invalidação seletiva.",
+  "deep_layers": [
+    {
+      "name": "Arestas carregam contratos",
+      "detail": "Cada dependência deve declarar qual artefato ou propriedade exige. Terminar análise sintática pode liberar edição local, mas não publicação se ainda faltar teste de integração. Distinga dependências de dados, exclusão de recurso e barreiras de qualidade; representar tudo como uma seta sem tipo dificulta explicar por que o nó está bloqueado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S004",
+        "C-S024"
+      ]
+    },
+    {
+      "name": "Expansão com fechamento",
+      "detail": "Permita que a etapa de descoberta produza novos nós, mas defina quando o conjunto descoberto está fechado. Sem essa barreira, um integrador pode terminar antes de chegar a última subtarefa. Valide IDs estáveis, ausência de ciclos e teto de expansão; revisões posteriores abrem uma nova versão do subgrafo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S004"
+      ]
+    },
+    {
+      "name": "Invalidação mínima",
+      "detail": "Associe resultados à versão de suas entradas. Quando um arquivo muda, marque como obsoletos apenas descendentes que realmente dependem dele, desde que os contratos permitam essa análise. Um nó com efeitos já publicados exige compensação ou nova versão, não simples apagamento do estado de conclusão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S002",
+        "V4C-S004"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Refatoração entre pacotes",
+      "scenario": "Alterar uma API exige consumidores, testes e documentação coordenados.",
+      "strategy": "Construa nós por mudança verificável e arestas por contrato de interface. Paralelize consumidores independentes após fixar o schema. Só libere integração quando todos os artefatos obrigatórios da mesma revisão estiverem aceitos; resultados antigos não satisfazem uma API nova.",
+      "small_model_role": "3–7B corrige chamadas; 8–14B analisa dependências locais; 15–30B propõe o grafo.",
+      "acceptance": "Proposta: nenhum consumidor publicado contra contrato incompatível e redução da espera evitável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S017",
+        "V4C-S004"
+      ]
+    },
+    {
+      "name": "Relatório com fontes independentes",
+      "scenario": "Tópicos podem ser investigados em paralelo, mas conclusões se cruzam.",
+      "strategy": "Produza tabelas de evidências por tópico e adie a síntese comparativa até a barreira de cobertura. Se uma contradição exigir consulta adicional, acrescente um subgrafo de resolução com prazo e critério de encerramento.",
+      "small_model_role": "8–14B coleta fatos delimitados; integrador maior reconcilia dependências informacionais.",
+      "acceptance": "Proposta: detectar conclusão emitida antes da cobertura e medir tempo do caminho efetivo até relatório aceito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4C-S004"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Executar nós pequenos cujo contrato de saída caiba em schema e exemplos.",
+    "8_14b": "Validar suficiência de artefatos e sugerir subdivisões de um nó bloqueado.",
+    "15_30b": "Construir dependências e alternativas, submetidas à validação determinística do grafo.",
+    "training_or_runtime_requirements": "Executor deve distinguir pronto, em execução, aceito, falho e obsoleto; versionar entradas por aresta.",
+    "do_not_use_when": "Não usar DAG rígido para trabalho com ciclos de feedback sem representar a repetição como estado ou expansão limitada."
+  },
+  "connections": [
+    {
+      "target_id": "T148",
+      "relation": "complements",
+      "how": "Conductor coordena tarefas e evolução de workflows; o grafo precisa compartilhar estados operacionais com o executor.",
+      "interface": "Versão do workflow, estado das tarefas e dependências.",
+      "condition": "A semântica de falha e término está definida no fluxo.",
+      "acceptance": "Não liberar dependente quando predecessor falhou sem alternativa válida.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S004"
+      ],
+      "case_ids": [
+        "V4C-C006"
+      ]
+    },
+    {
+      "target_id": "T161",
+      "relation": "feeds",
+      "how": "Calcular caminho dominante sobre dependências e durações observadas para priorizar trabalho pronto.",
+      "interface": "DAG versionado e distribuição de duração por nó.",
+      "condition": "Estimativas incluem recursos e filas relevantes.",
+      "acceptance": "Otimização proposta reduz término, não só duração de nó com folga.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S025"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Fechar explicitamente a descoberta antes da junção final.",
+    "Separar reexecução de cálculo da repetição de efeito publicado."
+  ],
+  "frontier_comparison": "Compare ganhos com os mesmos modelos e recursos antes de atribuí-los ao porte. Um DAG bem definido pode tornar tarefas menores viáveis sem resolver planejamento aberto.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q003",
+      "V4C-Q012"
+    ],
+    "scope_note": "Conductor e UpCD sustentam coordenação operacional; a especialização para tarefas de 3–30B e invalidação por artefatos é proposta."
+  },
+  "source_ids": [
+    "V4C-S004",
+    "C-S024",
+    "V4C-S002",
+    "V4C-S017",
+    "C-S030",
+    "C-S025"
+  ]
+}

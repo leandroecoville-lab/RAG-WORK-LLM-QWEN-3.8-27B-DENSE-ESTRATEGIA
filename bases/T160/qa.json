@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Todo workflow de agente é DAG?",
+    "answer": "Não. Agentes frequentemente têm ciclos; é preciso modelá-los separadamente."
+  },
+  {
+    "question": "Ordem topológica é ordem ótima de execução?",
+    "answer": "Não. Ela respeita dependências, mas não otimiza recursos ou duração sozinha."
+  },
+  {
+    "question": "Marcar done significa que a tarefa teve sucesso?",
+    "answer": "Para o ordenador, significa liberação topológica; a aplicação deve decidir se essa transição representa sucesso ou outro estado permitido."
+  },
+  {
+    "question": "Por que pode haver fila mesmo com vários nós prontos?",
+    "answer": "Porque prontidão trata dependências; CPU, memória, quota e concorrência continuam limitando execução."
+  }
+]

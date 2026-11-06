@@ -1,0 +1,29 @@
+{
+  "id": "T063",
+  "name": "Virtual Context Management — memória virtual de contexto, estilo MemGPT",
+  "canonical_name": "Virtual Context Management — MemGPT",
+  "canonical_id": "T063",
+  "aliases": [
+    "gerenciamento de contexto virtual",
+    "Virtual Context Management — MemGPT"
+  ],
+  "category": "memoria",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T062",
+    "T067",
+    "T078",
+    "R001"
+  ],
+  "source_ids": [
+    "A-S009",
+    "A-S010"
+  ],
+  "namespace": "T063",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T063",
+  "chunk_count": 9
+}

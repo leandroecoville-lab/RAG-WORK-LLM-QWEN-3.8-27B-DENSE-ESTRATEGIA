@@ -1,0 +1,18 @@
+[
+  {
+    "question": "JSON válido significa resposta correta?",
+    "answer": "Não. O objeto pode cumprir a estrutura e ainda conter valores falsos ou incompatíveis com a evidência."
+  },
+  {
+    "question": "Basta escrever uma gramática no prompt?",
+    "answer": "Não. A restrição precisa ser implementada pelo backend durante a decodificação; o prompt também deve explicar o conteúdo esperado."
+  },
+  {
+    "question": "Posso compartilhar o mesmo matcher entre pedidos?",
+    "answer": "Não como estado mutável único: cada sequência precisa de seu próprio progresso gramatical."
+  },
+  {
+    "question": "JSON válido prova resposta correta?",
+    "answer": "Não. Sintaxe, regras de domínio e correspondência com evidência precisam de verificações distintas."
+  }
+]

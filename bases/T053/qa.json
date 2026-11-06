@@ -1,0 +1,18 @@
+[
+  {
+    "question": "O arquivo deve conter todo o raciocínio do modelo?",
+    "answer": "Não. Deve guardar decisões, justificativas concisas, evidências e estado operacional necessário."
+  },
+  {
+    "question": "Guardar uma referência economiza contexto sempre?",
+    "answer": "Somente se a recuperação seletiva custar menos que reenviar o material e mantiver a qualidade necessária."
+  },
+  {
+    "question": "O arquivo precisa conter raciocínio interno completo?",
+    "answer": "Não. Registre decisões, motivos verificáveis, resultados, pendências e referências necessários à continuidade, sem alegar extrair estados internos ocultos."
+  },
+  {
+    "question": "Como saber qual nota prevalece?",
+    "answer": "Use revisão publicada e regras de autoridade. Data de modificação do filesystem pode refletir cópia ou sincronização, e não a ordem lógica das decisões."
+  }
+]

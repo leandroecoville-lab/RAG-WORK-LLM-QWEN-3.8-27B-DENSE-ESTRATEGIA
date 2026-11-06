@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "C-S049",
+    "title": "JSON Schema Validation: A Vocabulary for Structural Validation of JSON",
+    "url": "https://json-schema.org/draft/2020-12/json-schema-validation",
+    "publisher": "JSON Schema",
+    "source_type": "standard",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Vocabulário de tipos, valores, arrays e objetos valida estrutura; não valida veracidade factual.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn12view7"
+  },
+  {
+    "source_id": "V3B-S024",
+    "title": "JSON Schema — Object reference",
+    "url": "https://json-schema.org/understanding-json-schema/reference/object",
+    "publisher": "JSON Schema",
+    "source_type": "documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Campos obrigatórios, propriedades adicionais e composição com unevaluatedProperties.",
+    "limitations": "Validação estrutural depende do dialeto e implementação; não demonstra fatos externos ou autorização.",
+    "web_ref": "turn181view0"
+  },
+  {
+    "source_id": "V4B-S015",
+    "title": "Structural Tag Usage — XGrammar",
+    "url": "https://xgrammar.mlc.ai/docs/latest/structural_tag/structural_tag.html",
+    "publisher": "XGrammar / MLC",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Composição de formatos, tags, regiões livres/estruturadas e delimitadores de tokens.",
+    "limitations": "Restrições formais não validam autorização, conteúdo factual nem sucesso de ferramenta.",
+    "web_ref": "turn221view1"
+  },
+  {
+    "source_id": "V4B-S027",
+    "title": "What are Automated Reasoning checks in Amazon Bedrock Guardrails?",
+    "url": "https://docs.aws.amazon.com/en_en/bedrock/latest/userguide/guardrails-automated-reasoning-checks.html",
+    "publisher": "AWS",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Verificação contra política, resultados detect-only, limites de variáveis, idioma e ausência de streaming; recomenda testar tradução linguagem-lógica.",
+    "limitations": "Consistência com política não valida fatos não modelados nem protege sozinha contra injeção; recursos não são caso de adoção de cliente.",
+    "web_ref": "turn251view1"
+  },
+  {
+    "source_id": "V4B-S016",
+    "title": "Tool Calling and Reasoning — XGrammar",
+    "url": "https://xgrammar.mlc.ai/docs/latest/structural_tag/tool_calling_and_reasoning.html",
+    "publisher": "XGrammar / MLC",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Gramáticas específicas de formato de modelo e escolhas auto/required/forced/none para chamadas de ferramenta.",
+    "limitations": "Lista de estilos não verifica checkpoint do usuário; interoperabilidade precisa ensaio por tokenizer e backend.",
+    "web_ref": "turn221view2"
+  }
+]

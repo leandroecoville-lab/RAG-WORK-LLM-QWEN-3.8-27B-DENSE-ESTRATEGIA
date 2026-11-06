@@ -1,0 +1,51 @@
+{
+  "id": "T172",
+  "technical_details": "Um controlador de streaming precisa limitar filas em uma unidade adequada. Contar fragmentos pode esconder grandes diferenças de tamanho; contar bytes aproxima memória ocupada. O high-water mark é um sinal para pressão reversa, não necessariamente uma barreira absoluta se o produtor ignora o sinal ou envia um fragmento enorme. Framing, sequência e estados de fechamento permitem distinguir atraso temporário, término normal e erro após conteúdo parcial.",
+  "boundary_condition": "Se o produtor não coopera com pressão reversa, o controlador precisa aplicar outra política de buffer, descarte ou encerramento.",
+  "implementation_contract": {
+    "inputs": "Fluxo de eventos, tamanho de cada fragmento e velocidade do consumidor.",
+    "outputs": "Fragmentos ordenados, sinais de pressão e término classificado.",
+    "state": "Fila com tamanho, sequência, consumidor ativo e estado de cancelamento.",
+    "invariant": "O evento final e os erros não são descartados como se fossem fragmentos opcionais."
+  },
+  "tradeoffs": [
+    "Buffer maior absorve diferenças de velocidade e aumenta memória e atraso acumulado.",
+    "Buffer pequeno expõe lentidão cedo e pode reduzir throughput se o framing for muito granular."
+  ],
+  "failure_test": "Teste proposto: desacelerar o consumidor e enviar um fragmento maior que a marca de água; verificar limitação operacional e tratamento explícito, sem crescimento indefinido da fila.",
+  "evaluation_plan": "Comparar filas por contagem e por bytes sob tamanhos variáveis. Medir pico de memória, atraso por fragmento, interrupções e integridade da sequência. Escolher estratégia conforme payload e cooperação real do backend.",
+  "comparisons": [
+    {
+      "entry_id": "T153",
+      "relation": "complements",
+      "reason": "Interrupção do usuário precisa propagar pelo controlador até a origem."
+    },
+    {
+      "entry_id": "T137",
+      "relation": "distinct_from",
+      "reason": "Controle de fluxo entre produtor e consumidor não é a mesma política de admissão de requisições."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O padrão WHATWG calcula desiredSize a partir da marca de água e do tamanho da fila para sinalizar backpressure.",
+    "source_ids": [
+      "V3C-S019"
+    ],
+    "support": "direct",
+    "caveat": "O produtor ainda precisa responder ao sinal; o padrão não transforma cada marca em limite físico universal."
+  },
+  "advanced_qa": [
+    {
+      "question": "Dez chunks garantem pouca memória?",
+      "answer": "Não. Um chunk pode ser muito grande; a estratégia deve considerar tamanho quando memória for a restrição."
+    },
+    {
+      "question": "Fila vazia significa término?",
+      "answer": "Não. Pode significar que o produtor está temporariamente sem dados; término requer evento ou estado explícito."
+    }
+  ],
+  "source_ids": [
+    "V3C-S019"
+  ],
+  "research_note": "Síntese técnica com contratos e testes propostos; não há alegação de implantação ou medição LAI."
+}

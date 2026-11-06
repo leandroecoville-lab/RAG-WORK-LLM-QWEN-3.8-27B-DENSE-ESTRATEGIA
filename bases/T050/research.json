@@ -1,0 +1,51 @@
+{
+  "id": "T050",
+  "technical_details": "A janela de trabalho é uma visão operacional derivada de estado e fontes, com vida útil ligada à etapa. Convém separar itens fixos, como objetivo vigente, de itens temporários, como uma observação que serve à próxima decisão. Após a etapa, parte do conteúdo pode ser promovida a memória durável e parte descartada. Essa rotação não corresponde a apagar parâmetros nem a modificar diretamente estados neurais ocultos.",
+  "boundary_condition": "Se a tarefa exige relações entre muitos itens simultâneos, externalizar tudo sem uma representação de ligação pode impedir que o modelo compare as evidências necessárias.",
+  "implementation_contract": {
+    "inputs": "Objetivo atual, transição pretendida, observações recentes e referências a conteúdo disponível.",
+    "outputs": "Visão compacta com dependências suficientes para a decisão e lacunas explicitamente abertas.",
+    "state": "Revisão da visão, conteúdo fixado, observações temporárias e orçamento reservado à próxima interação.",
+    "invariant": "Toda decisão baseada na janela identifica a versão do estado e das evidências que estavam presentes."
+  },
+  "tradeoffs": [
+    "Reduzir material temporário diminui ruído e pode aumentar consultas repetidas.",
+    "Fixar conteúdo essencial protege continuidade e reduz espaço para novas evidências; o conjunto fixo também precisa revisão."
+  ],
+  "failure_test": "Teste proposto: concluir uma subtarefa e mudar o objetivo mantendo uma hipótese anterior no bloco fixo. A reconstrução deve revisar a hipótese e carregar dependências do novo objetivo.",
+  "evaluation_plan": "Avaliação proposta: comparar janela recente e visão por etapa, mantendo o mesmo orçamento. Medir ações corretas, abertura repetida de fontes, uso de hipóteses obsoletas e custo de reconstrução; testar tarefas que exigem comparação simultânea.",
+  "comparisons": [
+    {
+      "entry_id": "T063",
+      "relation": "complements",
+      "reason": "Memória virtual move conteúdo entre níveis; a janela de trabalho especifica o conjunto ativo para a etapa."
+    },
+    {
+      "entry_id": "T043",
+      "relation": "complements",
+      "reason": "Compactação pode reconstruir a visão, mas não é necessária a cada atualização pequena."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "MemGPT propõe mover informação entre níveis de memória para utilizar conteúdo além da janela ativa limitada.",
+    "source_ids": [
+      "A-S009"
+    ],
+    "support": "direct",
+    "caveat": "A janela de trabalho aqui descrita é uma política arquitetural; não é acesso ao raciocínio interno ou à memória biológica de um modelo."
+  },
+  "advanced_qa": [
+    {
+      "question": "O scratchpad inteiro deve ficar ativo?",
+      "answer": "Não necessariamente. Mantenha os campos que condicionam a próxima decisão e referências para detalhes, verificando se as relações necessárias continuam disponíveis."
+    },
+    {
+      "question": "Uma referência ocupa menos tokens que seu conteúdo; por que não usar só referências?",
+      "answer": "Porque o modelo precisa ler a informação relevante para decidir. Ponteiros economizam espaço apenas quando podem ser resolvidos a tempo."
+    }
+  ],
+  "source_ids": [
+    "A-S009"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

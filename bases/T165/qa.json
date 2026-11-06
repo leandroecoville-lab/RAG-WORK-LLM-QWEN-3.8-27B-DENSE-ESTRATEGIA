@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Half-open quer dizer liberar metade das requisições?",
+    "answer": "Não. O nome identifica um estado; a quota de teste é definida pela implementação e pode ser apenas uma chamada."
+  },
+  {
+    "question": "Um sucesso basta para fechar o circuito?",
+    "answer": "Somente se essa for a política validada. Pode ser necessário exigir vários sucessos representativos e condições de latência aceitáveis."
+  },
+  {
+    "question": "Um sucesso antigo prova recuperação atual?",
+    "answer": "Não. É necessário saber em qual fase e condições a operação foi iniciada e se é representativa da sondagem vigente."
+  },
+  {
+    "question": "Uma sonda por processo significa uma sonda global?",
+    "answer": "Não. Com várias réplicas, a carga pode multiplicar; o escopo da quota deve ser declarado."
+  }
+]

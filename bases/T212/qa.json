@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Auto-Compact aumenta a janela física do modelo?",
+    "answer": "Não. Reorganiza ou reduz o conteúdo enviado, dentro dos limites suportados pelo modelo e pelo runtime."
+  },
+  {
+    "question": "O gatilho precisa usar apenas tokens?",
+    "answer": "Não. Pode combinar tokens, fase da tarefa e crescimento previsto, desde que a regra seja observável e testável."
+  },
+  {
+    "question": "Um resumo gerado em paralelo pode substituir o histórico inteiro?",
+    "answer": "Somente se abranger exatamente essa versão; caso contrário, é necessário preservar a cauda que chegou depois."
+  },
+  {
+    "question": "Taxa de compressão alta prova boa compactação?",
+    "answer": "Não. É preciso medir preservação de decisões, evidências e capacidade de continuar o trabalho."
+  }
+]

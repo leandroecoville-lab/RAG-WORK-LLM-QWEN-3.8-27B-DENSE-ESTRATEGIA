@@ -1,0 +1,32 @@
+{
+  "id": "T184",
+  "name": "Mixture of Experts — MoE",
+  "canonical_name": "Mixture of Experts — MoE",
+  "canonical_id": "T184",
+  "aliases": [
+    "MoE",
+    "mistura de especialistas"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T133",
+    "T146",
+    "T169"
+  ],
+  "source_ids": [
+    "C-S038",
+    "V3B-S016",
+    "V4B-S020",
+    "V4B-S003",
+    "V4D-S014",
+    "V4D-S015"
+  ],
+  "namespace": "T184",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T184",
+  "chunk_count": 9
+}

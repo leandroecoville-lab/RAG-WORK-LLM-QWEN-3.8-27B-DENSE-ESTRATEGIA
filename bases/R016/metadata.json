@@ -1,0 +1,33 @@
+{
+  "id": "R016",
+  "name": "Lost in the Middle",
+  "canonical_name": "Lost in the Middle: How Language Models Use Long Contexts",
+  "canonical_id": "R016",
+  "aliases": [
+    "efeito de posição em contexto longo",
+    "lost-in-the-middle effect"
+  ],
+  "category": "referencias",
+  "kind": "paper",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "T009",
+    "T013",
+    "T018",
+    "T028",
+    "T037",
+    "T039",
+    "T222"
+  ],
+  "source_ids": [
+    "A-S019",
+    "V3A-S015",
+    "V4A-S019"
+  ],
+  "namespace": "R016",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R016",
+  "chunk_count": 9
+}

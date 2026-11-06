@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Self-Refine treina o modelo?",
+    "answer": "Não no procedimento descrito; modifica saídas dentro da execução."
+  },
+  {
+    "question": "É auditoria independente?",
+    "answer": "Não. O mesmo modelo pode repetir seus próprios pontos cegos."
+  },
+  {
+    "question": "Mais rodadas significam mais inteligência útil?",
+    "answer": "Não. Elas podem gerar oscilação, redundância ou regressão; acompanhe mudança real no objetivo."
+  },
+  {
+    "question": "Como detectar ausência de progresso?",
+    "answer": "Compare defeitos pendentes e resultados externos entre versões; paráfrases e aumento de detalhes não contam automaticamente como melhoria."
+  }
+]

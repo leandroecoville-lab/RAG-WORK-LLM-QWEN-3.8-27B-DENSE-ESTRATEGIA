@@ -1,0 +1,119 @@
+{
+  "id": "T102",
+  "novelty": "A v3 definiu entrega íntegra do KV antes do decode. A expansão aborda filas independentes, transferência por camada, cancelamento e ponto de equilíbrio, para dimensionar a arquitetura por demanda real e não por promessa abstrata de separação.",
+  "deep_layers": [
+    {
+      "name": "Capacidade em duas filas",
+      "detail": "Estime chegadas de tokens de entrada e de saída separadamente. Um pool de prefill rápido pode inundar decode com estados que não cabem; um pool de decode amplo pode ficar ocioso se não receber prompts prontos. Use controle de admissão que considere vagas no destino antes de produzir KV caro de transportar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S010",
+        "V4B-S002",
+        "V4B-S003"
+      ]
+    },
+    {
+      "name": "Transferência progressiva",
+      "detail": "Um sistema pode começar a transferir camadas já prontas enquanto o restante do prefill executa, como no relato da Perplexity. A aplicação precisa de manifesto e confirmação por segmento, com início do decode condicionado à prontidão exigida. Sobreposição reduz espera possível, mas não elimina bytes nem necessidade de consistência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S010",
+        "V4B-S002",
+        "V4B-S003"
+      ]
+    },
+    {
+      "name": "Cancelamento e propriedade",
+      "detail": "Se o cliente cancelar durante transporte, coordene liberação na origem e no destino. Uma confirmação tardia não pode reativar a requisição. Use identificador de tentativa e geração do estado para impedir que uma transferência antiga seja anexada a uma repetição posterior do mesmo pedido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S010",
+        "V4B-S002",
+        "V4B-S003"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Entradas longas e saídas interativas",
+      "scenario": "Prefills extensos interrompem frequentemente o streaming.",
+      "strategy": "Compare chunked prefill local com pools separados. Inclua banda, buffers, filas e falhas no ensaio. Escolha separação apenas se aumentar tarefas dentro do SLO; alocar mais máquinas sem igualar custo não demonstra superioridade da arquitetura.",
+      "small_model_role": "Um 15–30B pode justificar separação em volume alto, sem que isso seja necessário em um único servidor.",
+      "acceptance": "Aprovar por goodput e custo completo, com TTFT e intervalos de saída separados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S010",
+        "V4B-S002",
+        "V4B-S003"
+      ]
+    },
+    {
+      "name": "Fleet com recursos diferentes",
+      "scenario": "Há dispositivos adequados a cálculo e outros com maior memória disponível.",
+      "strategy": "Planeje perfis de prefill/decode compatíveis em pesos, layout e dtype. Valide transferência antes de experimentar hardware heterogêneo. Se for necessária conversão de KV, meça erro e tempo; não suponha interoperabilidade binária.",
+      "small_model_role": "Um 3–14B só merece essa complexidade se demanda e custo de fila compensarem.",
+      "acceptance": "Exigir continuidade numérica e recuperação sem duplicação após falha de worker.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S010",
+        "V4B-S002",
+        "V4B-S003"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, começar pelo serviço agregado; overhead de transporte pode superar interferência evitada.",
+    "8_14b": "Em 8–14B, avaliar separação apenas após medir mistura de comprimentos e demanda sustentada.",
+    "15_30b": "Em 15–30B, perfilar crescimento KV e dimensionar pools pela distribuição de entrada/saída.",
+    "training_or_runtime_requirements": "Requer runtime/conector compatíveis, transferência de estados e coordenação; não altera pesos nem competência do modelo.",
+    "do_not_use_when": "Não adotar em baixa demanda apenas por ser usado em infraestruturas de grande escala."
+  },
+  "connections": [
+    {
+      "target_id": "T122",
+      "relation": "complements",
+      "how": "Transferir KV por camada com conclusão observável antes do consumo.",
+      "interface": "Páginas KV, metadados e sinalização entre workers.",
+      "condition": "Caminho RDMA e registro de memória são suportados.",
+      "acceptance": "Medir transporte e impedir decode com estado parcial.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4B-S002"
+      ],
+      "case_ids": [
+        "V4B-C002"
+      ]
+    },
+    {
+      "target_id": "T094",
+      "relation": "alternative",
+      "how": "Reduzir interferência mantendo fases no mesmo worker quando transporte não compensa.",
+      "interface": "Orçamento de chunks e SLO por fase.",
+      "condition": "Runtime local consegue intercalar trabalho corretamente.",
+      "acceptance": "Comparar custo igualado e caudas nas mesmas chegadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S010",
+        "V4B-S002",
+        "V4B-S003"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Impor backpressure quando decode não possui capacidade para novo KV.",
+    "Testar cancelamento, replay e transferência atrasada com IDs de tentativa diferentes."
+  ],
+  "frontier_comparison": "Comparar responsividade de uma tarefa contra a fronteira incluindo todos os nós e rede. Separação pode melhorar eficiência do serviço; não amplia conhecimento, raciocínio ou precisão do checkpoint.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q003"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S010",
+    "V4B-S002",
+    "V4B-S003"
+  ]
+}

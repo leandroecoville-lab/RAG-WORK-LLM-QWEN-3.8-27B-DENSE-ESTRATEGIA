@@ -1,0 +1,42 @@
+{
+  "entry_id": "T019",
+  "edges": [
+    {
+      "edge_id": "E-T019-01",
+      "from": "T019",
+      "to": "T046",
+      "relation": "complements",
+      "how": "Selecionar subconjunto por confusão prevista.",
+      "interface": "Intenção, classes candidatas e exemplos elegíveis.",
+      "condition": "Selector não consultar resposta esperada.",
+      "acceptance": "Testar exemplos irrelevantes com formato semelhante.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S016",
+        "V3A-S017",
+        "V4A-S019"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T019-02",
+      "from": "T019",
+      "to": "T198",
+      "relation": "feeds",
+      "how": "Calibrar abstenção com exemplos difíceis.",
+      "interface": "Classe, evidência e sinal mensurável de incerteza.",
+      "condition": "Calibração independente dos exemplos exibidos.",
+      "acceptance": "Comparar erros confiantes antes e depois da poda.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S016",
+        "V3A-S017",
+        "V4A-S019"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

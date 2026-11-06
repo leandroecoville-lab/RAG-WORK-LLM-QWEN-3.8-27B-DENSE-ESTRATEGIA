@@ -1,0 +1,32 @@
+{
+  "id": "T020",
+  "name": "Learned Prompt Compression",
+  "canonical_name": "Learned Prompt Compression",
+  "canonical_id": "T020",
+  "aliases": [
+    "compressão aprendida de prompts"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T006",
+    "T022",
+    "T052",
+    "R005"
+  ],
+  "source_ids": [
+    "A-S015",
+    "A-S033",
+    "V3A-S001",
+    "V3A-S004",
+    "V4A-S028",
+    "V4A-S020"
+  ],
+  "namespace": "T020",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T020",
+  "chunk_count": 9
+}

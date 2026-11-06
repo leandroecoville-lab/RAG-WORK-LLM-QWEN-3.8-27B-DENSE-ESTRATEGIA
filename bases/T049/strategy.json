@@ -1,0 +1,112 @@
+{
+  "id": "T049",
+  "novelty": "A v3 tratou episódios e vazamento retrospectivo. Aqui recuperação usa semelhança de condições e resultados negativos para evitar transferência superficial.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Indexe condições iniciais, ação, resultado e fatores desconhecidos separadamente. Episódios com narrativa parecida podem exigir ações opostas quando uma pré-condição muda.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008",
+        "V3A-S002"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Recupere exemplos de sucesso e falha com condições próximas. Ausência de falhas no histórico pode refletir seleção de registros, não prova de segurança do procedimento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008",
+        "V3A-S002"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare recuperação por texto integral e por condições estruturadas. Meça recomendações transferidas indevidamente, cobertura de falhas e qualidade em episódios com resultado ainda pendente. Unidade de avaliação: episódio completo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008",
+        "V3A-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Diagnóstico recorrente",
+      "scenario": "Sintomas semelhantes tiveram causas diferentes.",
+      "strategy": "Recuperar episódios por ambiente e versão, comparar testes discriminantes e evitar repetir ação que falhou nas mesmas condições.",
+      "small_model_role": "8–14B compara episódios.",
+      "acceptance": "Recomendação deve explicar condição compartilhada e diferença que pode invalidar transferência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008",
+        "V3A-S002"
+      ]
+    },
+    {
+      "name": "Aprendizado de projeto",
+      "scenario": "Uma decisão anterior parece reutilizável.",
+      "strategy": "Carregar contexto da escolha e alternativas rejeitadas; testar se restrições atuais ainda coincidem antes de aplicar.",
+      "small_model_role": "15–30B integra experiências.",
+      "acceptance": "Não usar resultado posterior que ainda não era conhecido na data avaliada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008",
+        "V3A-S002"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extrator de condições, ações e resultados explícitos.",
+    "8_14b": "Comparador de poucos episódios com esquema comum.",
+    "15_30b": "Planejador de testes para adaptar experiência a contexto parcialmente diferente.",
+    "training_or_runtime_requirements": "Registro de episódios com estados pendente/concluído e documentação das condições observadas.",
+    "do_not_use_when": "Histórico registra somente casos bem-sucedidos ou omite condições que determinam o resultado."
+  },
+  "connections": [
+    {
+      "target_id": "T070",
+      "relation": "requires",
+      "how": "Buscar episódios por campos e não apenas similaridade.",
+      "interface": "Condições, tempo, ação e estado do resultado.",
+      "condition": "Store permitir filtros e paginação verificável.",
+      "acceptance": "Recuperar também falha rara com mesmas pré-condições.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008",
+        "V3A-S002"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T055",
+      "relation": "feeds",
+      "how": "Transformar experiência em procedimento candidato.",
+      "interface": "Episódios de suporte, limites e exceções.",
+      "condition": "Transferência validada antes de uso geral.",
+      "acceptance": "Aplicar a contexto com pré-condição ausente e exigir recusa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008",
+        "V3A-S002"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não tratar correlação entre ação e resultado como causalidade.",
+    "Não transformar resultado desconhecido em falha."
+  ],
+  "frontier_comparison": "Comparar transferência correta de experiência, não plausibilidade da narrativa recuperada.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q008",
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S008",
+    "V3A-S002"
+  ]
+}

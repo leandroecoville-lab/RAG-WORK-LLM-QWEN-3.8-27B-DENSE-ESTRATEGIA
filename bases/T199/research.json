@@ -1,0 +1,46 @@
+{
+  "id": "T199",
+  "technical_details": "O ciclo de avaliação só produz aprendizagem quando modifica um componente persistente identificável: prompt, exemplos, roteador, recuperação, procedimento ou pesos. Otimizar repetidamente contra a mesma suíte transforma essa suíte em dado de desenvolvimento. O conjunto final precisa permanecer separado, inclusive de decisões manuais sobre quais mudanças manter. Uma métrica proxy pode ser explorada por respostas que aparentam sucesso sem cumprir a tarefa.",
+  "boundary_condition": "Melhora no conjunto consultado a cada tentativa pode representar adaptação ao teste, sem generalização para novas tarefas.",
+  "implementation_contract": {
+    "inputs": "Casos de desenvolvimento, métrica, componente editável, orçamento e avaliação final reservada.",
+    "outputs": "Nova versão do componente com diferenças e evidência independente.",
+    "state": "Histórico de experimentos, dados vistos e critérios de seleção.",
+    "invariant": "Toda alegação de melhoria aponta para a alteração concreta que será reutilizada em execuções futuras."
+  },
+  "tradeoffs": [
+    "Mais buscas de configuração ampliam oportunidades e risco de sobreajuste.",
+    "Métricas baratas aceleram iteração e podem perder aspectos relevantes do objetivo."
+  ],
+  "failure_test": "Teste proposto: adicionar um atalho que reconhece exemplos de desenvolvimento sem resolver variantes novas. Esperar ganho local e reprovação na avaliação independente, expondo o sobreajuste.",
+  "evaluation_plan": "Plano proposto: comparar versão inicial e selecionada em casos inéditos agrupados por origem. Medir qualidade, custo e regressões; reportar número de tentativas e mudanças avaliadas, aceitando ganhos somente fora do processo de seleção.",
+  "comparisons": [
+    {
+      "entry_id": "T177",
+      "relation": "distinct_from",
+      "reason": "A melhoria pode otimizar prompts ou exemplos sem atualizar pesos; fine-tuning é somente um mecanismo possível."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "DSPy descreve módulos parametrizados e otimização de pipelines para uma métrica especificada.",
+    "source_ids": [
+      "C-S020"
+    ],
+    "support": "direct",
+    "caveat": "A métrica escolhida não garante representar integralmente o objetivo de negócio ou correção factual."
+  },
+  "advanced_qa": [
+    {
+      "question": "Salvar resultados já é aprender?",
+      "answer": "É registrar evidência; falta uma regra que altere comportamento persistente e uma avaliação dessa alteração."
+    },
+    {
+      "question": "Por que separar validação e teste final?",
+      "answer": "Escolher repetidamente com a validação adapta decisões a ela; uma reserva independente estima melhor o desempenho após essa seleção."
+    }
+  ],
+  "source_ids": [
+    "C-S020"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

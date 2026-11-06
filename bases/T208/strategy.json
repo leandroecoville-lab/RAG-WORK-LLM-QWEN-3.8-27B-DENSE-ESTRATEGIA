@@ -1,0 +1,119 @@
+{
+  "id": "T208",
+  "novelty": "A v3 definia pré-condições e separava revisão do plano de tentativa. A camada nova organiza replanning por diagnóstico, delegação com autoridade delimitada e uma ponte explícita entre plano global e execução local adaptativa.",
+  "deep_layers": [
+    {
+      "name": "Plano como contrato executável",
+      "detail": "Cada etapa precisa de resultado, entradas e condição de parada. O executor pode escolher detalhes locais enquanto não muda esse contrato. Se descobrir requisito incompatível, devolve evidência e impedimento ao planejador; não altera a missão silenciosamente para transformar falha em sucesso. O plano é revisável, mas sua identidade continua rastreável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S015",
+        "V3C-S012"
+      ]
+    },
+    {
+      "name": "Replanejar a causa correta",
+      "detail": "Separe falha de transporte, ausência de capacidade, evidência que contradiz premissa e teste que rejeita resultado. Retry trata algumas falhas temporárias; reparo modifica uma chamada; replanejamento modifica dependências ou objetivo operacional. Uma mensagem genérica de erro impede escolher a reação adequada e incentiva o planejador a repetir a mesma ideia.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S015",
+        "V2A-S012"
+      ]
+    },
+    {
+      "name": "Escopo de autonomia",
+      "detail": "O planejador entrega limites de ferramentas, orçamento e autoridade por etapa. O executor não herda automaticamente todas as permissões do supervisor. O retorno inclui evidências para a junção e o que ficou desconhecido. Quando um modelo maior planeja para um menor, as etapas precisam caber nas capacidades realmente testadas do trabalhador.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014",
+        "C-S030"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Migração de API",
+      "scenario": "Um plano global define contrato novo e sequência entre consumidores.",
+      "strategy": "Fixe a interface antes de distribuir edições. Executores fazem busca e testes locais, retornando patches com revisão base. Se vários consumidores exigirem exceção não prevista, suspenda a integração e revise a interface, preservando candidatos compatíveis.",
+      "small_model_role": "15–30B planeja; 3–7B edita chamadas simples; 8–14B trata diagnóstico local.",
+      "acceptance": "Proposta: taxa de integração correta e quantidade de etapas refeitas por premissa errada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S017",
+        "V4C-S030"
+      ]
+    },
+    {
+      "name": "Pesquisa longa",
+      "scenario": "O supervisor define questões e cada trabalhador explora uma fonte ou subtema.",
+      "strategy": "Use plano global estável para cobertura e loop local para consultas adaptativas. O trabalhador para quando satisfaz a pergunta, esgota orçamento ou encontra contradição relevante. A síntese recebe evidências e lacunas, não uma declaração genérica de tarefa concluída.",
+      "small_model_role": "8–14B coleta e extrai; 15–30B revisa o plano quando fontes mudam a hipótese.",
+      "acceptance": "Proposta: cobertura por pergunta e custo de replanejamento, sem duplicar consultas confirmadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4C-S015"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Etapas pequenas com ferramentas delimitadas e critérios de sucesso objetivos.",
+    "8_14b": "Execução local adaptativa em domínio conhecido, devolvendo erro estruturado.",
+    "15_30b": "Planejamento e integração de várias etapas; modelos de fronteira continuam elegíveis para exceções difíceis.",
+    "training_or_runtime_requirements": "Estado versionado, efeitos identificados, resultados persistidos e limites por executor.",
+    "do_not_use_when": "Não separar papéis se o custo de transferência excede a tarefa ou se faltam critérios de aceite."
+  },
+  "connections": [
+    {
+      "target_id": "T144",
+      "relation": "complements",
+      "how": "Hiring Assistant combina planejamento com execução local baseada em ReAct.",
+      "interface": "Plano global, tarefa local e observações do executor.",
+      "condition": "O loop local respeita o escopo da tarefa delegada.",
+      "acceptance": "Falha de premissa volta ao supervisor com evidência.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S015"
+      ],
+      "case_ids": [
+        "V4C-C016"
+      ]
+    },
+    {
+      "target_id": "T237",
+      "relation": "complements",
+      "how": "Claude Research usa liderança e trabalhadores especializados para executar partes do plano.",
+      "interface": "Pergunta, orçamento e artefato de retorno.",
+      "condition": "A tarefa permite divisão e integração verificável.",
+      "acceptance": "Reunir cobertura sem contar duplicatas como confirmação independente.",
+      "basis": "source_documented",
+      "source_ids": [
+        "C-S030"
+      ],
+      "case_ids": [
+        "V4C-C007"
+      ]
+    }
+  ],
+  "failure_controls": [
+    "Replanejar não renova orçamento já consumido.",
+    "Revisar números de etapas não deve criar novas identidades para efeitos já confirmados."
+  ],
+  "frontier_comparison": "Compare divisão entre modelos e um executor de fronteira com o mesmo conjunto de ferramentas. Vantagens em campanhas decomponíveis não demonstram planejamento geral equivalente.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q010",
+      "V4C-Q012"
+    ],
+    "scope_note": "LinkedIn e Claude Research sustentam combinação operacional de planejamento e execução. Bandas de parâmetros e testes propostos não foram medidos localmente."
+  },
+  "source_ids": [
+    "V4C-S015",
+    "V3C-S012",
+    "V2A-S012",
+    "V4C-S014",
+    "C-S030",
+    "V4C-S017",
+    "V4C-S030"
+  ]
+}

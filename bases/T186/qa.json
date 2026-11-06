@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Três agentes concordando provam um fato?",
+    "answer": "Não. Fontes e erros podem ser compartilhados."
+  },
+  {
+    "question": "Debate exige modelos diferentes?",
+    "answer": "Não, mas diversidade de modelo ou evidência pode alterar correlação dos erros."
+  },
+  {
+    "question": "Agentes com nomes diferentes são diversos?",
+    "answer": "Não necessariamente. Diversidade relevante envolve fontes, estratégias e padrões de erro, não apenas personas."
+  },
+  {
+    "question": "O árbitro deve escolher o argumento mais longo?",
+    "answer": "Não. Deve aplicar critérios de evidência e correção; comprimento ou confiança verbal podem favorecer um erro persuasivo."
+  }
+]

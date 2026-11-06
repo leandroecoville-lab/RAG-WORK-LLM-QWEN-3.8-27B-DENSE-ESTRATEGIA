@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Todo arquivo GGUF é quantizado em quatro bits?",
+    "answer": "Não. GGUF admite múltiplas representações e pode armazenar tensores sem quantização de quatro bits."
+  },
+  {
+    "question": "Dois GGUF do mesmo modelo têm desempenho equivalente?",
+    "answer": "Não necessariamente. Tipos de tensor, conversão, template, revisão e kernels do executor podem mudar memória, velocidade e qualidade."
+  },
+  {
+    "question": "Extensão .gguf prova que foi quantizado?",
+    "answer": "Não. É necessário inspecionar os tipos dos tensores e o histórico de conversão."
+  },
+  {
+    "question": "Um hash correto prova conversão correta?",
+    "answer": "Prova integridade do arquivo identificado, não que pesos, tokenizer e metadados correspondam semanticamente ao modelo pretendido."
+  }
+]

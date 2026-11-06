@@ -1,0 +1,116 @@
+{
+  "id": "T238",
+  "novelty": "A v3 associava faixa de linhas à revisão e âncora. A expansão escolhe unidades de leitura por hipótese, controla ampliação de contexto e registra o que não foi lido para evitar conclusões globais a partir de fragmentos.",
+  "deep_layers": [
+    {
+      "name": "Leitura guiada por decisão",
+      "detail": "Antes de abrir um trecho, explicite a dúvida que ele deve resolver: assinatura, guard, chamador ou comportamento de erro. A faixa inicial inclui contexto suficiente para essa decisão. Se surge dependência externa ao trecho, faça leitura adicional direcionada, sem presumir que ausência no fragmento significa ausência no arquivo ou projeto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S033",
+        "V4C-S026"
+      ]
+    },
+    {
+      "name": "Âncora e revisão",
+      "detail": "Resolva símbolo ou padrão na revisão atual e obtenha a faixa a partir dessa resolução. Guardar números de linha continua útil para rastreabilidade, mas não como endereço permanente após edição. Para arquivos gerados ou renomeados, recupere também origem e processo de geração; editar a saída errada pode ser desfeito pelo próximo build.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S033",
+        "V3C-S027"
+      ]
+    },
+    {
+      "name": "Orçamento de expansão",
+      "detail": "Defina progressão de leitura: trecho, função, contexto de classe ou módulo, consumidores relevantes. Uma expansão deve responder a necessidade concreta e ser contabilizada. Quando muitas dependências cruzadas aparecem, pode ser mais barato ler uma unidade maior ou trocar a decomposição do que fazer dezenas de chamadas minúsculas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S027",
+        "V4C-S030"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Correção localizada",
+      "scenario": "Um erro aponta para função em arquivo grande.",
+      "strategy": "Leia a função com assinatura, decorators e tratamento de erro, examine definição dos símbolos usados e teste que reproduz o defeito. Só então edite. Após a mudança, recalcule faixa e valide o código atual; não reutilize trechos anteriores como se fossem bytes vigentes.",
+      "small_model_role": "3–7B analisa funções curtas; 8–14B segue dependências; 15–30B decide quando ampliar escopo.",
+      "acceptance": "Proposta: localizar e corrigir com menos tokens sem omitir contexto que muda o significado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S026",
+        "V3C-S033"
+      ]
+    },
+    {
+      "name": "Revisão de patch em monorepo",
+      "scenario": "Um revisor precisa verificar alteração sem carregar todo o projeto.",
+      "strategy": "Parta do diff e leia contexto ao redor, contratos chamados e consumidores afetados. Registre quais propriedades foram verificadas e quais exigiriam leitura maior. Materialização sob demanda pode reduzir I/O, mas não equivale a ter analisado tudo que permanece remoto.",
+      "small_model_role": "8–14B revisa partes; 15–30B integra propriedades que atravessam módulos.",
+      "acceptance": "Proposta: mesma detecção de falhas relevantes com leitura total e custo de recuperação contabilizados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S027",
+        "V4C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Trechos semanticamente completos e poucas dependências reduzem carga de contexto.",
+    "8_14b": "Navegação por símbolos e escolha da próxima faixa a partir de hipótese explícita.",
+    "15_30b": "Análise de impacto e decisão de juntar contexto quando leitura fragmentada perde relações.",
+    "training_or_runtime_requirements": "Ferramenta de leitura com revisão, offsets e indicadores de truncamento; acesso ao conteúdo integral quando necessário.",
+    "do_not_use_when": "Não declarar propriedade global do repositório depois de ler somente linhas selecionadas."
+  },
+  "connections": [
+    {
+      "target_id": "T216",
+      "relation": "complements",
+      "how": "Repo map fornece símbolos e relações para decidir quais faixas ler primeiro.",
+      "interface": "Caminho, símbolo, revisão e hipótese de localização.",
+      "condition": "Mapa corresponde à revisão ou é revalidado.",
+      "acceptance": "Trecho obtido contém a definição efetiva, não uma posição obsoleta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S033"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T233",
+      "relation": "complements",
+      "how": "Leituras de contexto apoiam validação do patch, sem substituir teste da árvore completa quando necessário.",
+      "interface": "Diff, base e trechos de dependências.",
+      "condition": "Escopo da conclusão acompanha escopo da inspeção.",
+      "acceptance": "Revisor não afirma cobertura que não realizou.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S037"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Linhas omitidas podem conter guard, import ou efeito que altera a interpretação.",
+    "Scion materializa conteúdo sob demanda; isso não prova a API específica de faixas de linhas proposta aqui."
+  ],
+  "frontier_comparison": "Compare tokens lidos, chamadas de ferramenta e correção sob a mesma tarefa. Modelos pequenos podem aproveitar leitura dirigida, mas não inferem com segurança código que nunca foi observado.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q024",
+      "V4C-Q027",
+      "V4C-Q023"
+    ],
+    "scope_note": "Relatos operacionais de navegação e Scion apoiam leitura seletiva como família. A estratégia por linhas e seus critérios são proposta, sem contagem indevida de adoção exata."
+  },
+  "source_ids": [
+    "V3C-S033",
+    "V4C-S026",
+    "V3C-S027",
+    "V4C-S027",
+    "V4C-S030",
+    "V3C-S037"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "coverage": {
+    "entry_id": "T106",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Otimização de KV com MQA/GQA",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C016",
+      "company": "Alibaba / Qwen Team",
+      "organization_class": "bigtech",
+      "system": "Qwen3 — modelos publicados",
+      "title": "Família densa e MoE com heads agrupadas e modos de raciocínio",
+      "evidence_level": "operational_product",
+      "observed_use": "O Qwen Team publicou checkpoints densos e MoE, com configurações de heads Q/KV e distinção entre parâmetros totais e ativos.",
+      "technical_mechanism": "Modelos como Qwen3-30B-A3B têm dimensão total distinta da quantidade ativada por token; os checkpoints densos listados usam configurações próprias de heads.",
+      "event_date": "2025-04-29",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S020"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R022",
+          "match": "exact",
+          "rationale": "Fonte oficial identifica a família e seus checkpoints."
+        },
+        {
+          "entry_id": "T184",
+          "match": "exact",
+          "rationale": "Variantes MoE são explicitamente publicadas."
+        },
+        {
+          "entry_id": "T100",
+          "match": "exact",
+          "rationale": "Tabela Q/KV documenta agrupamento nas variantes pertinentes."
+        },
+        {
+          "entry_id": "T106",
+          "match": "family",
+          "rationale": "Configuração permite dimensionar KV, mas economia física depende do executor."
+        }
+      ],
+      "small_model_transfer": "Proposta: selecionar revisões específicas dentro de 3–30B por tarefa e memória total, comparando denso e MoE sem tratar parâmetros ativos como memória de pesos.",
+      "limits": "Lançamento e benchmarks não comprovam implantação cliente nem checkpoint atual do usuário. Qwen3-32B fica fora da faixa 15–30B estrita e não é usado como exemplo dentro dela.",
+      "canonical_case_id": "V4B-C016",
+      "deployment_domain": "llm_training",
+      "mapping": {
+        "entry_id": "T106",
+        "match": "family",
+        "rationale": "Configuração permite dimensionar KV, mas economia física depende do executor."
+      }
+    }
+  ]
+}

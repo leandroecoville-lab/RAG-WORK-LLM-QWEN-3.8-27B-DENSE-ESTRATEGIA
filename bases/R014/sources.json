@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "A-S010",
+    "title": "MemFS",
+    "url": "https://docs.letta.com/concepts/memfs",
+    "publisher": "Letta",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Memória em repositório Git, projeção em arquivos e carregamento por índices.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn1view2"
+  },
+  {
+    "source_id": "V2B-S003",
+    "title": "Introducing Context Repositories: Git-based Memory for Coding Agents",
+    "url": "https://www.letta.com/blog/context-repositories/",
+    "publisher": "Letta",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Origem do nome Context Repositories, memória em Git, divulgação progressiva e trabalho de subagentes em worktrees.",
+    "limitations": "Anúncio histórico de fevereiro de 2026; descreve system/ e ativação antigos. Regras atuais de MemFS prevalecem. Não houve reprodução dos fluxos descritos.",
+    "web_ref": "turn51view0"
+  },
+  {
+    "source_id": "V3A-S046",
+    "title": "Letta Shared memory",
+    "url": "https://docs.letta.com/concepts/shared-memory",
+    "publisher": "Letta",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "MemFS pertence a um agente; repositório compartilhado pertence à organização e requer commit, push e pull para sincronização entre checkouts.",
+    "limitations": "Fonte primária dinâmica consultada; leitura de documentação ou código sem instalação, execução ou reprodução de resultados. Branch e documentação podem evoluir; fixar revisão antes de implementar.",
+    "web_ref": "turn184view5"
+  }
+]

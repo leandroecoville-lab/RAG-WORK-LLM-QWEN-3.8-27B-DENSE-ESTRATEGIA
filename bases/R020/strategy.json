@@ -1,0 +1,127 @@
+{
+  "id": "R020",
+  "novelty": "Aprofunda o uso de Claude Code como referência de engenharia: medir contaminação da memória de projeto, perda de obrigações na compactação e qualidade dos limites de delegação.",
+  "source_ids": [
+    "V4C-S026",
+    "V2A-S025",
+    "V3C-S030",
+    "V4C-S014"
+  ],
+  "deep_layers": [
+    {
+      "name": "Memória por evidência",
+      "detail": "Proposta para harness próprio: cada orientação persistida distingue fato do repositório, preferência e hipótese. Vincular instruções derivadas de código à revisão observada e revalidá-las quando arquivos relevantes mudarem. A memória deixa de ser um depósito de conclusões que se perpetuam sem teste.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S026",
+        "V2A-S025",
+        "V3C-S030",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Compactação com obrigações",
+      "detail": "Antes de compactar, extrair condições de aceite, decisões pendentes, efeitos confirmados e artefatos por hash. Depois, executar uma recuperação de obrigações numa tarefa de controle. Texto menor só é melhoria se preservar os compromissos que governam a próxima ação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S026",
+        "V2A-S025",
+        "V3C-S030",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Delegação e retorno mínimo",
+      "detail": "Definir tarefa, arquivos permitidos, budget e formato de evidência antes de criar um trabalhador. O retorno inclui achado, fonte e incerteza; não concatena toda a sessão. O integrador precisa verificar conflitos de base e qualidade do resultado, mesmo quando o subagente afirma ter concluído.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S026",
+        "V2A-S025",
+        "V3C-S030",
+        "V4C-S014"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Diagnóstico assistido de incidente",
+      "scenario": "Logs extensos e muitas hipóteses competem por contexto.",
+      "strategy": "Separar coleta, teste de hipótese e alteração; manter trace e comando que sustenta cada achado.",
+      "small_model_role": "Um trabalhador pequeno pode extrair padrões; autorização e execução permanecem no controlador.",
+      "acceptance": "Hipótese só vira fato depois de evidência reproduzível; medir falsas conclusões e tempo até diagnóstico.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S026",
+        "V2A-S025",
+        "V3C-S030",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Sessão longa de manutenção",
+      "scenario": "Múltiplas subtarefas atravessam compactações.",
+      "strategy": "Persistir obrigações e estado por módulo; retomar lendo artefatos atuais antes de editar.",
+      "small_model_role": "No harness próprio, leitor 8–14B recompõe contexto local sob schema.",
+      "acceptance": "Após compactação, recuperar todos os aceites ainda abertos sem restaurar histórico irrelevante.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S026",
+        "V2A-S025",
+        "V3C-S030",
+        "V4C-S014"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "3–7B: aplicar padrões de localização e extração em harness compatível; não se afirma suporte do Claude Code a qualquer modelo pequeno.",
+    "8_14b": "8–14B: reproduzir contratos de memória/retomada no próprio sistema, com validação externa.",
+    "15_30b": "15–30B: avaliar integração de subtarefas; não presumir reprodução da qualidade dos modelos Claude.",
+    "training_or_runtime_requirements": "Separar aprendizado arquitetural de disponibilidade comercial e de backends documentados do produto.",
+    "do_not_use_when": "Não usar rewind como rollback universal de banco, rede ou arquivos não cobertos."
+  },
+  "connections": [
+    {
+      "target_id": "T234",
+      "relation": "complements",
+      "how": "Versionar instruções persistidas junto de sua evidência e escopo.",
+      "interface": "Regra, módulo, revisão de origem e condição de revalidação.",
+      "condition": "Conhecimento de projeto é reutilizado entre sessões.",
+      "acceptance": "Regra obsoleta é detectada antes de orientar uma alteração.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S026",
+        "V2A-S025",
+        "V3C-S030",
+        "V4C-S014"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T212",
+      "relation": "complements",
+      "how": "Compactar somente com registro explícito de obrigações e artefatos.",
+      "interface": "Pacote de retomada com pendências e hashes.",
+      "condition": "A sessão atinge orçamento de contexto.",
+      "acceptance": "A retomada conserva os aceites ativos e não inventa conclusão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S026",
+        "V2A-S025",
+        "V3C-S030",
+        "V4C-S014"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não apresentar uso interno de Claude Code como evidência de modelos 3–30B.",
+    "Não promover automaticamente anotações de subagente a instruções permanentes."
+  ],
+  "frontier_comparison": "Comparar o padrão de harness no modelo pequeno com execução de referência na mesma tarefa, distinguindo diferenças de ferramentas, permissões e infraestrutura.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q024"
+    ],
+    "scope_note": "Casos de uso interno Anthropic e medições Uber foram identificados. Uma equipe, um recurso e uma fonte adicional do mesmo produto não foram multiplicados como implantações independentes."
+  }
+}

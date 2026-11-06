@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Commit local significa que todos os agentes já recebem a mudança?",
+    "answer": "Não. Sincronização e atualização do checkout do consumidor precisam ocorrer."
+  },
+  {
+    "question": "Git impede uma memória falsa?",
+    "answer": "Não. Ele permite rastrear a introdução e a correção, mas a validação factual é outra responsabilidade."
+  },
+  {
+    "question": "Commit local significa que outro agente recebeu a memória?",
+    "answer": "Não. É necessário publicar e atualizar o checkout consumidor conforme o fluxo de sincronização; registre ambos os estados quando a continuidade depender disso."
+  },
+  {
+    "question": "Uma branch antiga pode continuar sendo útil?",
+    "answer": "Sim, para reprodução ou experimentação. Identifique seu propósito e impeça que seja confundida com a revisão vigente para decisões operacionais."
+  }
+]

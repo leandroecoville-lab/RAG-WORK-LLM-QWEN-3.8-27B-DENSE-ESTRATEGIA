@@ -1,0 +1,51 @@
+{
+  "id": "T045",
+  "technical_details": "Adiar uma ferramenta no contexto não significa remover sua definição do transporte ao servidor. Na implementação documentada pela Anthropic, o catálogo completo continua no parâmetro de ferramentas; a busca devolve referências expandidas para o modelo. Assim, economia de contexto e redução de bytes enviados são métricas distintas. O mecanismo também precisa diferenciar busca sem correspondência, falha da busca e ferramenta descoberta mas indisponível.",
+  "boundary_condition": "Quando o catálogo é pequeno e quase todas as ferramentas serão usadas, o custo e a latência de descoberta podem superar a economia na janela.",
+  "implementation_contract": {
+    "inputs": "Catálogo completo e versionado, consulta de capacidade e restrições da sessão.",
+    "outputs": "Referências resolvíveis e schemas compatíveis, ou resultado explícito de ausência ou falha.",
+    "state": "Ferramentas já carregadas, versão do catálogo e disponibilidade verificada no momento da chamada.",
+    "invariant": "Um nome recuperado só pode ser executado com definição conhecida e validação vigente de argumentos."
+  },
+  "tradeoffs": [
+    "Carregar poucas ferramentas reduz competição de descrições e introduz uma etapa adicional.",
+    "Preservar o catálogo completo no servidor simplifica resolução, mas mantém custos de transporte e governança do catálogo."
+  ],
+  "failure_test": "Teste proposto: remover uma definição mantendo sua referência em resultados antigos. A chamada deve detectar a incompatibilidade; não deve inventar parâmetros nem substituir por ferramenta parecida.",
+  "evaluation_plan": "Avaliação proposta: comparar catálogo integral e descoberta com tarefas de uma e várias ferramentas. Medir recall de capacidade, tentativas inválidas, tokens ativos, bytes transmitidos e latência; separar erro de seleção de indisponibilidade do serviço.",
+  "comparisons": [
+    {
+      "entry_id": "T014",
+      "relation": "specializes",
+      "reason": "A ferramenta é uma unidade específica de carregamento progressivo com schema executável."
+    },
+    {
+      "entry_id": "T015",
+      "relation": "complements",
+      "reason": "Referências economizam representação somente quando o resolvedor pode obter a definição correspondente."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Tool search retorna referências que a API expande; definições adiadas continuam incluídas no catálogo enviado nas requisições.",
+    "source_ids": [
+      "A-S038"
+    ],
+    "support": "direct",
+    "caveat": "Esse contrato pertence à implementação documentada da Anthropic; um catálogo customizado pode usar transporte e expansão diferentes."
+  },
+  "advanced_qa": [
+    {
+      "question": "Resultado vazio significa que a capacidade não existe?",
+      "answer": "Significa ausência de correspondência nessa busca. Descrição ruim, filtro ou consulta inadequada também podem ocultar uma ferramenta existente."
+    },
+    {
+      "question": "A referência pode substituir o schema para sempre?",
+      "answer": "Não. Ela precisa ser resolvida por um contrato compatível. Sua existência não garante versão, permissão ou disponibilidade da implementação."
+    }
+  ],
+  "source_ids": [
+    "A-S038"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

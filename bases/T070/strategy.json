@@ -1,0 +1,112 @@
+{
+  "id": "T070",
+  "novelty": "A v3 separou top-k e enumeração. Aqui o store permite amostragem controlada e análise de cobertura sem enviesar avaliação pela recuperação.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Mantenha consultas de busca e de auditoria separadas. A primeira prioriza relevância; a segunda precisa enumerar ou amostrar população com probabilidades conhecidas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S002",
+        "V3A-S032"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Registre episódios pendentes, fracassados e incompletos. Excluir esses registros pode transformar o store numa coleção de sucessos e produzir procedimentos excessivamente otimistas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S002",
+        "V3A-S032"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare resultados sobre episódios recuperados e sobre amostra independente. Meça viés de seleção, cobertura de falhas e perda por paginação; um top-k não define distribuição da população. Unidade de avaliação: população de episódios.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S002",
+        "V3A-S032"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Revisão de desempenho",
+      "scenario": "Equipe quer saber quais falhas se repetem.",
+      "strategy": "Consultar episódios por intervalo e status, amostrar de forma reproduzível e agregar causas somente quando sustentadas.",
+      "small_model_role": "3–7B categoriza; código agrega.",
+      "acceptance": "Contagens devem refletir população ou amostra explicitada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S002",
+        "V3A-S032"
+      ]
+    },
+    {
+      "name": "Memória para decisão atual",
+      "scenario": "É preciso recuperar caso parecido.",
+      "strategy": "Buscar por condições, incluir exemplos negativos elegíveis e preservar referência ao episódio completo.",
+      "small_model_role": "8–14B compara contexto.",
+      "acceptance": "Não inferir frequência de sucesso pela ordem de similaridade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S002",
+        "V3A-S032"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Classificador de episódios com campos e status explícitos.",
+    "8_14b": "Leitor de pequenos conjuntos relevantes com casos negativos.",
+    "15_30b": "Analista de padrões de experiências com estatísticas calculadas externamente.",
+    "training_or_runtime_requirements": "IDs estáveis, paginação consistente, filtros temporais e estados de conclusão; índices são projeções do store.",
+    "do_not_use_when": "Não há forma de distinguir episódio ausente, incompleto ou excluído da consulta."
+  },
+  "connections": [
+    {
+      "target_id": "T049",
+      "relation": "feeds",
+      "how": "Retornar experiência com contexto suficiente.",
+      "interface": "Condições, ações, resultado e campos desconhecidos.",
+      "condition": "Recuperação preservar episódio completo ou link.",
+      "acceptance": "Testar episódio sem resultado e impedir preenchimento por suposição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S002",
+        "V3A-S032"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T056",
+      "relation": "requires",
+      "how": "Aplicar corte de conhecimento em auditoria histórica.",
+      "interface": "Tempos de ocorrência e registro.",
+      "condition": "Amostra usar perspectiva temporal declarada.",
+      "acceptance": "Inserir episódio atrasado e comparar consultas antes e depois.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S002",
+        "V3A-S032"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não calcular taxa de sucesso usando apenas top-k.",
+    "Não confundir deduplicação de relato com remoção de episódio distinto."
+  ],
+  "frontier_comparison": "Comparar qualidade de decisão com amostragem e busca adequadas; tamanho do store não mede memória efetivamente utilizável.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q008",
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S002",
+    "V3A-S032"
+  ]
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "QLoRA significa treinar todos os pesos em quatro bits?",
+    "answer": "Não. A base fica congelada; os adaptadores recebem as atualizações."
+  },
+  {
+    "question": "Rodar modelo INT4 prova que consigo treiná-lo?",
+    "answer": "Não. Treino exige memória e operadores adicionais."
+  },
+  {
+    "question": "O checkpoint final necessariamente é NF4?",
+    "answer": "Não. A estratégia de exportação e serviço pode usar outra representação, exigindo avaliação após a conversão."
+  },
+  {
+    "question": "Quatro bits no peso significam quatro bits no cálculo?",
+    "answer": "Não. Desquantização e acumulação podem usar precisão maior; inspecione o caminho efetivo."
+  }
+]

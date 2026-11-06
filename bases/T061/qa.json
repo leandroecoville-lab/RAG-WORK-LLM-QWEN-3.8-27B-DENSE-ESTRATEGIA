@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Um hash comprova que a afirmação do arquivo é verdadeira?",
+    "answer": "Não. Comprova identidade ou alteração dos bytes em relação ao hash esperado."
+  },
+  {
+    "question": "É preciso usar Git?",
+    "answer": "Não. Git exemplifica esse modelo, mas ele pode ser implementado em bancos ou armazenamento de objetos."
+  },
+  {
+    "question": "Mesmo CID garante que o objeto estará disponível?",
+    "answer": "Não. O identificador permite conferir o conteúdo encontrado, mas alguém ainda precisa armazenar e servir os blocos necessários."
+  },
+  {
+    "question": "Posso usar latest num store por conteúdo?",
+    "answer": "Pode manter um alias mutável separado. Para reproduzir uma decisão, registre também o identificador imutável para o qual o alias foi resolvido."
+  }
+]

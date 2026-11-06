@@ -1,0 +1,99 @@
+{
+  "coverage": {
+    "entry_id": "T075",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 2,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Memory Reconciliation",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C007",
+      "company": "Amazon",
+      "system": "Dynamo em serviços Amazon",
+      "title": "Dynamo em serviços Amazon — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "Autores descrevem adoção de Dynamo por serviços centrais da Amazon.",
+      "technical_mechanism": "Versionamento de objetos e resolução de conflitos assistida pela aplicação.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S006"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T072",
+          "match": "family",
+          "rationale": "Versões de dados são precursor de memória versionada, sem semântica do agente."
+        },
+        {
+          "entry_id": "T075",
+          "match": "family",
+          "rationale": "Conflitos de objetos são resolvidos pela aplicação; não confirma reconciliação de efeitos LLM."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Apresentar versões concorrentes ao reconciliador pequeno sem permitir que ele descarte evidência sozinho.",
+      "limits": "Dynamo histórico não equivale a todos os produtos DynamoDB; particionamento por hash não é CAS. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C007",
+      "deployment_domain": "distributed_data_system",
+      "mapping": {
+        "entry_id": "T075",
+        "match": "family",
+        "rationale": "Conflitos de objetos são resolvidos pela aplicação; não confirma reconciliação de efeitos LLM."
+      }
+    },
+    {
+      "case_id": "V4A-C010",
+      "company": "Meta",
+      "system": "TAO e observabilidade Polaris",
+      "title": "TAO e observabilidade Polaris — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "Meta descreve caches operados e monitoramento de inconsistências observáveis pelo cliente.",
+      "technical_mechanism": "Invalidações e preenchimentos concorrem; verificações em diferentes tempos identificam divergências.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S011"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T031",
+          "match": "family",
+          "rationale": "Invalidação de cache convencional, não proximidade semântica."
+        },
+        {
+          "entry_id": "T075",
+          "match": "family",
+          "rationale": "Detecção de versões divergentes fundamenta reconciliação de estado."
+        },
+        {
+          "entry_id": "T051",
+          "match": "family",
+          "rationale": "TAO pertence à família de armazenamento em grafo, sem provar memória de agente."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Monitorar respostas derivadas após correções, incluindo eventos atrasados e evicção de versões.",
+      "limits": "Não transferir percentuais de consistência a caches RAG; uma única implantação não vira vários casos. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C010",
+      "deployment_domain": "distributed_data_system",
+      "mapping": {
+        "entry_id": "T075",
+        "match": "family",
+        "rationale": "Detecção de versões divergentes fundamenta reconciliação de estado."
+      }
+    }
+  ]
+}

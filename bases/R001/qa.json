@@ -1,0 +1,18 @@
+[
+  {
+    "question": "MemGPT aumenta os parâmetros do modelo?",
+    "answer": "O gerenciamento virtual de contexto é uma arquitetura de sistema; consultar memória externa não adiciona automaticamente conhecimento aos pesos."
+  },
+  {
+    "question": "Ter memória externa garante lembrar o fato certo?",
+    "answer": "Não. É necessário testar descoberta, recuperação, validade temporal e uso correto do que foi recuperado."
+  },
+  {
+    "question": "O resumo da fila contém todo o conhecimento antigo?",
+    "answer": "Não. Ele é uma representação reduzida. O histórico completo fica no armazenamento externo e precisa de operações de recuperação para detalhes omitidos."
+  },
+  {
+    "question": "Continuação automática elimina necessidade de limites?",
+    "answer": "Não. Defina orçamento e condição de progresso. Um agente pode continuar chamando memória sem obter evidência adicional ou resolver a tarefa."
+  }
+]

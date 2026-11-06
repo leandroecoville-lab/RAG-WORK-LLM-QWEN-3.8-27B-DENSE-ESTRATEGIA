@@ -1,0 +1,119 @@
+{
+  "id": "T194",
+  "novelty": "A v3 definiu unidades e rótulos de etapa. Esta camada examina qualidade do sinal local, custo de anotação e diferença entre supervisionar processo no treino e verificar uma execução em runtime.",
+  "deep_layers": [
+    {
+      "name": "O que uma etapa demonstra",
+      "detail": "Um passo pode ser válido, irrelevante, incompleto ou depender de premissa falsa. Use rótulos que preservem essas distinções quando úteis ao objetivo. Julgar somente fluência ou plausibilidade pode ensinar o avaliador a premiar explicações elegantes, sem detectar o primeiro erro que compromete a solução.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S047",
+        "V3B-S018",
+        "V4B-S022"
+      ]
+    },
+    {
+      "name": "Trajetórias parciais",
+      "detail": "Para treinar um avaliador de processo, mantenha contexto suficiente e não forneça o resultado futuro como pista indevida. Inclua erros próximos de passos corretos e trajetórias que chegam à resposta certa por coincidência. Separe problemas de origem entre treino e teste para evitar memorização de soluções.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S047",
+        "V3B-S018",
+        "V4B-S022"
+      ]
+    },
+    {
+      "name": "Processo e execução observável",
+      "detail": "Relatos de busca como AlphaEvolve usam avaliadores de programas e desempenho, mas isso não comprova supervisão de cada passo interno de raciocínio. Em agentes, estados de ferramenta e transições oferecem observáveis mais concretos que uma narrativa retrospectiva. Escolha a unidade de supervisão conforme o que pode ser validado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S047",
+        "V3B-S018",
+        "V4B-S022"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Resolução técnica segmentada",
+      "scenario": "Uma tarefa possui etapas com critérios locais verificáveis.",
+      "strategy": "Anote o primeiro erro e requisitos por transição, treine ou avalie o verificador e use-o para orientar revisão. Confirme se aprovação local leva a sucesso final.",
+      "small_model_role": "Um 8–14B pode aprender procedimentos com feedback específico, sem presumir generalização irrestrita.",
+      "acceptance": "Medir detecção do primeiro erro e resultado final em problemas novos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S047",
+        "V3B-S018",
+        "V4B-S022"
+      ]
+    },
+    {
+      "name": "Agente com ferramentas",
+      "scenario": "O workflow exige pré-condições antes de cada ação.",
+      "strategy": "Use estados reais e resultados das ferramentas como sinais de etapa. Não aceite um texto dizendo que a condição foi satisfeita sem observação correspondente.",
+      "small_model_role": "Um 3–7B pode executar etapas estreitas sob supervisão externa.",
+      "acceptance": "Verificar transições válidas e ausência de efeitos fora do plano.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S047",
+        "V3B-S018",
+        "V4B-S022"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Critérios locais simples podem tornar feedback mais útil que uma nota final genérica.",
+    "8_14b": "Avaliar processos mais longos exige cobertura de dependências e erros acumulados.",
+    "15_30b": "Maior porte pode produzir trajetórias mais complexas, elevando custo e ambiguidade da anotação.",
+    "training_or_runtime_requirements": "Supervisão de processo é treino ou avaliação de etapas; verificação em runtime é uso relacionado, não reprodução automática do método.",
+    "do_not_use_when": "Não equiparar cadeia de pensamento escrita a registro fiel de todos os mecanismos internos do modelo."
+  },
+  "connections": [
+    {
+      "target_id": "T206",
+      "relation": "complements",
+      "how": "Eventos observáveis podem fornecer unidades de processo verificáveis.",
+      "interface": "Estado anterior, ação e pós-condição.",
+      "condition": "Logs representam operações reais e possuem identidade.",
+      "acceptance": "Comparar narrativa com estado externo observado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S047",
+        "V3B-S018",
+        "V4B-S022"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T199",
+      "relation": "feeds",
+      "how": "Falhas localizadas podem orientar novos dados ou mudanças persistentes.",
+      "interface": "Etapa, tipo de erro e versão do componente.",
+      "condition": "Atualização explícita e avaliação independente.",
+      "acceptance": "Medir melhora em trajetórias novas, não só nos exemplos corrigidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S047",
+        "V3B-S018",
+        "V4B-S022"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Separar validade local, progresso e correção final.",
+    "Auditar discordâncias de anotadores antes de transformar rótulos em recompensa."
+  ],
+  "frontier_comparison": "Compare competência em processos definidos e verificáveis. Supervisão mais granular pode ajudar, mas não garante que um modelo pequeno tenha a capacidade necessária para todos os passos de uma tarefa de fronteira.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q011"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "C-S047",
+    "V3B-S018",
+    "V4B-S022"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "entry_id": "R004",
+  "edges": [
+    {
+      "edge_id": "E-R004-01",
+      "from": "R004",
+      "to": "T049",
+      "relation": "requires",
+      "how": "Registrar experiências com origem e observador.",
+      "interface": "Evento, agente, percepção e tempo.",
+      "condition": "Store distinguir observação de relato.",
+      "acceptance": "Introduzir rumor e rastrear sua propagação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-R004-02",
+      "from": "R004",
+      "to": "T051",
+      "relation": "complements",
+      "how": "Separar perspectivas e crenças no grafo.",
+      "interface": "Relação, agente que acredita e evidência.",
+      "condition": "Crença não ser promovida a fato do ambiente.",
+      "acceptance": "Consultar perspectiva individual e comparar com estado verdadeiro.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Noventa por cento dito pelo modelo é probabilidade real?",
+    "answer": "Não sem calibração observada."
+  },
+  {
+    "question": "Temperatura de calibração altera criatividade?",
+    "answer": "É outro uso da escala de logits, aplicado a confiança; não se confunde com temperatura de geração."
+  },
+  {
+    "question": "Confiança de 90% certifica um caso individual?",
+    "answer": "Não. O significado é frequencial em casos comparáveis, condicionado ao evento e à distribuição avaliados."
+  },
+  {
+    "question": "Aumentar temperatura sempre calibra?",
+    "answer": "Não. O parâmetro deve ser ajustado e validado; uma transformação adequada em um conjunto pode falhar sob mudança de distribuição."
+  }
+]

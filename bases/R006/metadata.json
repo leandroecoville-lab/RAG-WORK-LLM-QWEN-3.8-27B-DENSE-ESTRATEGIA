@@ -1,0 +1,29 @@
+{
+  "id": "R006",
+  "name": "PRISM",
+  "canonical_name": "PRISM: Prompt Representation Internalization via Selective Compression into LoRA Weights",
+  "canonical_id": "R006",
+  "aliases": [
+    "PRISM prompt compression",
+    "internalização seletiva em LoRA"
+  ],
+  "category": "referencias",
+  "kind": "paper",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "T179",
+    "T180",
+    "T182",
+    "R007"
+  ],
+  "source_ids": [
+    "A-S011",
+    "V4A-S020"
+  ],
+  "namespace": "R006",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R006",
+  "chunk_count": 9
+}

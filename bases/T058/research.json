@@ -1,0 +1,53 @@
+{
+  "id": "T058",
+  "technical_details": "Consolidar cria dependências entre uma representação derivada e várias fontes. A atualização de uma origem deve marcar derivados afetados, inclusive resumos de resumos. Há também um problema de concorrência: uma consolidação iniciada antes de uma correção pode terminar depois e publicar uma versão obsoleta. Um manifesto de entradas e revisões permite verificar se o conjunto ainda era válido no momento da publicação.",
+  "boundary_condition": "Sem referências e versões das entradas, é difícil distinguir síntese desatualizada de conflito real entre fontes ou reconstruir o conhecimento após uma correção.",
+  "implementation_contract": {
+    "inputs": "Conjunto de memórias relacionadas com identidade, revisão, fonte e status de verificação.",
+    "outputs": "Representação derivada, mapa de sustentação e conflitos que não foram resolvidos.",
+    "state": "Manifesto das entradas, algoritmo, revisão em preparação e descendentes dependentes.",
+    "invariant": "Consolidar não aumenta automaticamente confiança nem remove discordâncias só para produzir uma narrativa uniforme."
+  },
+  "tradeoffs": [
+    "Sínteses reduzem custo de leitura repetida e exigem atualização de dependências.",
+    "Consolidação incremental economiza processamento e pode acumular decisões antigas; reconstrução integral custa mais e oferece outra perspectiva."
+  ],
+  "failure_test": "Teste proposto: corrigir uma fonte durante a consolidação de um grupo. Antes de publicar, o processo deve detectar mudança na revisão e recalcular ou marcar o resultado como desatualizado.",
+  "evaluation_plan": "Avaliação proposta: comparar consolidação incremental e reconstrução a partir das fontes após sequências de correção. Medir sustentação, preservação de exceções, atraso de invalidação e custo; controlar a quantidade de cópias derivadas de uma única origem.",
+  "comparisons": [
+    {
+      "entry_id": "T069",
+      "relation": "complements",
+      "reason": "Resumo externo é uma forma específica de consolidação; consolidar também pode produzir relações e fatos candidatos."
+    },
+    {
+      "entry_id": "T072",
+      "relation": "complements",
+      "reason": "Versionamento identifica quais fontes e derivados pertencem à mesma revisão publicável."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A-MEM permite que novas memórias atualizem atributos e contexto de notas anteriores; PROV-DM oferece relações para registrar derivação.",
+    "source_ids": [
+      "V3A-S034",
+      "V3A-S037"
+    ],
+    "support": "related",
+    "caveat": "A verificação de manifesto e a publicação condicional são propostas editoriais, não garantias atribuídas a esses trabalhos."
+  },
+  "advanced_qa": [
+    {
+      "question": "Toda consolidação deve apagar os registros originais?",
+      "answer": "Não. Apagar impede auditoria e reprocessamento; retenção dos originais é uma decisão separada, com custo e finalidade próprios."
+    },
+    {
+      "question": "Como lidar com duas fontes incompatíveis?",
+      "answer": "Conserve as versões e o conflito, delimitando tempo, identidade e autoridade. A síntese deve comunicar a divergência quando não há base para resolvê-la."
+    }
+  ],
+  "source_ids": [
+    "V3A-S034",
+    "V3A-S037"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

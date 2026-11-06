@@ -1,0 +1,51 @@
+{
+  "id": "P001",
+  "technical_details": "Propõe-se que Context Engine produza um artefato de contexto, com versão e proveniência, antes da chamada ao modelo. A composição deve contabilizar instruções, schemas de ferramentas, histórico, evidências e reserva de saída. A seleção precisa tratar dependências: incluir uma conclusão sem sua condição ou uma alteração sem a versão de origem pode reduzir tokens e destruir o significado. O motor deve expor motivos de inclusão e exclusão, permitindo investigar falhas de recuperação e montagem separadamente.",
+  "boundary_condition": "O orçamento calculado depende do tokenizer e do protocolo realmente usados pelo servidor. Uma estimativa local não substitui a contagem do provedor quando existe diferença de serialização.",
+  "implementation_contract": {
+    "inputs": "Tarefa, identidade autorizada, snapshot de memória, candidatos recuperados, ferramentas elegíveis e orçamento do modelo.",
+    "outputs": "Contexto serializado, manifesto de evidências, contagem ou estimativa de tokens e justificativas de seleção.",
+    "state": "Versão da política de montagem, tokenizer, snapshot dos insumos e relações entre evidências e referências.",
+    "invariant": "Nenhum trecho deve perder sua identidade de fonte; exclusões não podem remover silenciosamente requisitos obrigatórios da tarefa."
+  },
+  "tradeoffs": [
+    "Montagem determinística facilita auditoria, enquanto seleção adaptativa pode melhorar relevância e introduzir variação.",
+    "Preservar dependências consome mais tokens por evidência, mas evita trechos isolados que induzem interpretação errada."
+  ],
+  "failure_test": "Proposta: fornecer duas versões contraditórias de um requisito e um limite insuficiente; exigir explicitação da versão escolhida ou insuficiência, sem combinar silenciosamente afirmações incompatíveis.",
+  "evaluation_plan": "Comparar montagem por ordem de chegada e composição com orçamento no mesmo conjunto de tarefas. Medir cobertura dos requisitos, fidelidade das citações, tokens e respostas aceitas. Avaliar exclusões manualmente em uma amostra reservada.",
+  "comparisons": [
+    {
+      "entry_id": "T024",
+      "relation": "complements",
+      "reason": "Context Broker e Builder podem realizar aquisição e composição."
+    },
+    {
+      "entry_id": "T152",
+      "relation": "complements",
+      "reason": "A alocação de tokens fornece o limite de montagem."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Engenharia de contexto abrange a seleção de informações disponíveis durante a inferência.",
+    "source_ids": [
+      "V3D-S021"
+    ],
+    "support": "related",
+    "caveat": "A fonte sustenta o problema; Context Engine e este contrato são uma proposta editorial própria."
+  },
+  "advanced_qa": [
+    {
+      "question": "Como localizar um erro do motor?",
+      "answer": "Compare candidatos recuperados, seleção e contexto final; uma fonte encontrada pode ter sido excluída na montagem."
+    },
+    {
+      "question": "O que aceitar como saída válida?",
+      "answer": "Contexto dentro do orçamento com requisitos preservados, referências resolvíveis e decisões de exclusão observáveis."
+    }
+  ],
+  "source_ids": [
+    "V3D-S021"
+  ],
+  "research_note": "Contrato, teste de falha e plano de avaliação são recomendações editoriais; nenhuma implantação ou medição deste mecanismo foi executada neste pacote."
+}

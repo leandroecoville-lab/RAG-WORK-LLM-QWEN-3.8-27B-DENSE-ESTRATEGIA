@@ -1,0 +1,51 @@
+{
+  "id": "T057",
+  "technical_details": "O conteúdo mínimo de uma memória causal inclui a pergunta estimada, a população, a intervenção, o desfecho e as premissas de identificação. Guardar somente “A causa B” apaga as condições que tornam a inferência defensável. Também convém separar o grafo assumido, o estimando identificado, a estimativa calculada e os testes de robustez: mudar uma dessas partes pode invalidar a conclusão sem alterar os dados brutos.",
+  "boundary_condition": "Um efeito não identificado pelas hipóteses e dados disponíveis não se torna identificado por armazená-lo num grafo, aumentar o histórico ou pedir explicações à LLM.",
+  "implementation_contract": {
+    "inputs": "Hipótese causal, desenho de estudo, dados, premissas, estimando e procedimento de estimação.",
+    "outputs": "Registro da conclusão com incerteza, testes, limites de transporte e evidências rastreáveis.",
+    "state": "Versões de dados, grafo assumido, estimador e resultados de análises de sensibilidade.",
+    "invariant": "Associação, sequência temporal e efeito causal identificado permanecem categorias distintas na memória."
+  },
+  "tradeoffs": [
+    "Registrar premissas torna conclusões revisáveis e aumenta o esforço de modelagem.",
+    "Testes de robustez detectam fragilidades, mas aprovação em testes não prova ausência de confundimento ou identificação correta."
+  ],
+  "failure_test": "Teste proposto: adicionar um confundidor plausível e repetir análise de sensibilidade. A memória deve registrar alteração e condições de fragilidade, sem manter a afirmação antiga como verdade incondicional.",
+  "evaluation_plan": "Avaliação proposta: avaliar recuperação de estimando, premissas e limites junto da conclusão. Comparar registro textual simples e ficha estruturada; medir confusão causal, reprodução da análise e comportamento diante de populações diferentes, sem inferir causalidade de acerto preditivo.",
+  "comparisons": [
+    {
+      "entry_id": "T051",
+      "relation": "distinct_from",
+      "reason": "Um grafo de memória organiza relações; um grafo causal exige interpretação e hipóteses adicionais."
+    },
+    {
+      "entry_id": "T049",
+      "relation": "complements",
+      "reason": "Episódios podem fornecer observações e hipóteses, mas precisam de desenho apropriado para estimar efeitos."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "DoWhy distingue controles negativos, validação de grafo e sensibilidade à violação de premissas nas refutações de estimativas.",
+    "source_ids": [
+      "V3A-S041"
+    ],
+    "support": "direct",
+    "caveat": "Refutações são diagnósticos; passar nelas não constitui prova de que todas as premissas causais sejam verdadeiras."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma LLM pode escolher o grafo causal?",
+      "answer": "Pode propor hipóteses para revisão. Conhecimento de domínio, desenho de estudo e restrições observáveis precisam sustentar a escolha."
+    },
+    {
+      "question": "Uma estimativa pode ser lembrada após mudança de população?",
+      "answer": "Pode ser recuperada como referência, preservando seu escopo. Transportá-la exige justificar compatibilidade dos mecanismos e das condições relevantes."
+    }
+  ],
+  "source_ids": [
+    "V3A-S041"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

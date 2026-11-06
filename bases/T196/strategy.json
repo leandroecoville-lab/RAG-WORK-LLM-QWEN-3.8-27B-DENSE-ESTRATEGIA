@@ -1,0 +1,133 @@
+{
+  "id": "T196",
+  "novelty": "A v3 explicou matcher e alinhamento de tokens. O aprofundamento trata regiões livres e estruturadas, interação com ferramentas e especulação e confirmação do objeto completo antes de uso.",
+  "deep_layers": [
+    {
+      "name": "Estrutura por regiões",
+      "detail": "XGrammar documenta structural tags para combinar texto livre e regiões com formato restrito. Isso permite tratar raciocínio, texto e chamada de ferramenta com estados distintos, mas exige delimitadores compatíveis com o formato do modelo. Não aplique uma gramática de um template a outro apenas porque ambos parecem JSON.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S025",
+        "C-S008",
+        "V4B-S015",
+        "V4B-S016",
+        "V4D-S002"
+      ]
+    },
+    {
+      "name": "Conclusão e entrega",
+      "detail": "Um prefixo permitido pode terminar por limite de tokens antes de formar objeto completo. O serviço deve comunicar término, validar estrutura final e impedir que fragmentos sejam executados como chamada de ferramenta. Streaming pode exibir progresso, mas não autoriza tratar uma chamada incompleta como ação confirmada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S025",
+        "C-S008",
+        "V4B-S015",
+        "V4B-S016",
+        "V4D-S002"
+      ]
+    },
+    {
+      "name": "Especulação e máscara",
+      "detail": "Propostas especulativas precisam respeitar o estado correto da gramática durante verificação e rollback. A Apple descreve combinação de geração guiada e especulação no framework local. Essa evidência sustenta a combinação naquela pilha, sem garantir suporte de qualquer runtime, tokenizer ou versão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S025",
+        "C-S008",
+        "V4B-S015",
+        "V4B-S016",
+        "V4D-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Chamada de ferramenta tipada",
+      "scenario": "O modelo precisa produzir nome e argumentos válidos.",
+      "strategy": "Compile restrições compatíveis, mantenha matcher por sequência e valide argumentos completos antes da autorização. Regras de negócio e permissões continuam externas.",
+      "small_model_role": "Um 3–7B pode preencher contratos estreitos com menos falhas sintáticas.",
+      "acceptance": "Medir validade estrutural, campos semanticamente corretos e chamadas indevidas separadamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S025",
+        "C-S008",
+        "V4B-S015",
+        "V4B-S016",
+        "V4D-S002"
+      ]
+    },
+    {
+      "name": "Saída mista",
+      "scenario": "A resposta contém explicação e um objeto que será consumido por software.",
+      "strategy": "Use regiões estruturadas explícitas e mantenha o parser alinhado ao template. Teste delimitadores dentro de strings e encerramento prematuro.",
+      "small_model_role": "Um 8–14B pode explicar e estruturar, sem que texto livre seja interpretado como comando.",
+      "acceptance": "Nenhum objeto parcial aceito e nenhuma confusão entre texto e ação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S025",
+        "C-S008",
+        "V4B-S015",
+        "V4B-S016",
+        "V4D-S002"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Restringir formato ajuda utilização prática, mas não ensina o significado dos campos.",
+    "8_14b": "Schemas complexos podem reduzir liberdade útil ou elevar custo de compilação; medir.",
+    "15_30b": "Maior porte não dispensa gramática quando a interface exige estrutura exata.",
+    "training_or_runtime_requirements": "Runtime com integração de logits e tokenizer; treino não é obrigatório para a restrição, mas o modelo precisa compreender a tarefa.",
+    "do_not_use_when": "Não confundir saída sintaticamente válida com dados verdadeiros ou autorização de ação."
+  },
+  "connections": [
+    {
+      "target_id": "T079",
+      "relation": "complements",
+      "how": "O framework Apple documenta geração guiada combinada com especulação.",
+      "interface": "Estado de restrição e tokens confirmados.",
+      "condition": "Suporte da pilha descrita, sem extrapolação para outros backends.",
+      "acceptance": "Testar aceitação e conclusão com gramática ativa.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4D-S002"
+      ],
+      "case_ids": [
+        "V4D-C001"
+      ]
+    },
+    {
+      "target_id": "T197",
+      "relation": "requires",
+      "how": "Validação final confirma o objeto no dialeto e regras adotados pelo consumidor.",
+      "interface": "Objeto completo e schema versionado.",
+      "condition": "Recursos do gerador e validador são compatíveis.",
+      "acceptance": "Testar limites de geração, campos extras e regras não suportadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S025",
+        "C-S008",
+        "V4B-S015",
+        "V4B-S016",
+        "V4D-S002"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Invalidar matcher ao reiniciar uma sequência com outro prefixo.",
+    "Não interpretar encerramento por limite como conclusão válida."
+  ],
+  "frontier_comparison": "A comparação com fronteira deve medir conteúdo correto dentro do contrato. Gramática pode equalizar parte da confiabilidade de interface, sem equalizar conhecimento ou capacidade de decisão.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q013"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S025",
+    "C-S008",
+    "V4B-S015",
+    "V4B-S016",
+    "V4D-S002"
+  ]
+}

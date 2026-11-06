@@ -1,0 +1,290 @@
+{
+  "coverage": {
+    "entry_id": "T079",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 2,
+    "verified_bigtech_llm_production_exact": 2,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 5,
+    "operational_product_cases": 1,
+    "research_cases": 2,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 8,
+    "target_met": false,
+    "strict_case_ids": [
+      "V4B-C001",
+      "V4D-C002"
+    ],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Speculative Decoding",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C001",
+      "company": "LinkedIn (Microsoft)",
+      "organization_class": "bigtech",
+      "system": "Hiring Assistant",
+      "title": "Serving de análises estruturadas com vLLM e especulação por n-gramas",
+      "evidence_level": "production_documented",
+      "observed_use": "O operador descreve uso em produção do Hiring Assistant para analisar correspondência entre vagas e candidatos, com saídas estruturadas e repetição de trechos de entrada.",
+      "technical_mechanism": "N-gramas propõem tokens e o alvo verifica; o serving descrito também reutiliza prefixos e recompõe lotes a cada iteração.",
+      "event_date": "2025-11-06",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S001",
+        "V4B-S010"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T079",
+          "match": "exact",
+          "rationale": "O artigo afirma uso real de speculative decoding."
+        },
+        {
+          "entry_id": "T130",
+          "match": "exact",
+          "rationale": "O proponente escolhido usa correspondências por n-gramas, sem modelo auxiliar."
+        },
+        {
+          "entry_id": "T082",
+          "match": "exact",
+          "rationale": "O relato de serving explicita reuso de prefixos comuns no Hiring Assistant."
+        },
+        {
+          "entry_id": "T088",
+          "match": "exact",
+          "rationale": "O operador descreve batching por iteração para o mesmo workload."
+        },
+        {
+          "entry_id": "R009",
+          "match": "exact",
+          "rationale": "vLLM é identificado como runtime do serviço."
+        },
+        {
+          "entry_id": "P009",
+          "match": "analogy",
+          "rationale": "Ilustra funções que a interface editorial Inference Engine poderia expor."
+        }
+      ],
+      "small_model_transfer": "Proposta: testar extração especializada com alvo 3–30B, n-gramas e prefixos estáveis, preservando aceitação correta e medindo custo por relatório válido.",
+      "limits": "Não comprova o porte exato do modelo do usuário nem ganhos em outro hardware. Distribuição preservada não implica a mesma amostra textual. É um único caso, embora apoie vários mecanismos.",
+      "canonical_case_id": "V4B-C001",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T079",
+        "match": "exact",
+        "rationale": "O artigo afirma uso real de speculative decoding."
+      }
+    },
+    {
+      "case_id": "V4D-C002",
+      "company": "Microsoft",
+      "system": "Windows Click to Do / Phi Silica NPU",
+      "title": "Ações de texto locais em Copilot+ PCs",
+      "evidence_level": "production_documented",
+      "observed_use": "Click to Do integra Phi Silica para operações locais sobre texto selecionado.",
+      "technical_mechanism": "A configuração publicada em dezembro/2024 descreve quantização e prefill em blocos. A documentação NPU consultada em novembro/2026 descreve draft speculative decoding. São evidências de versões diferentes do ecossistema Phi; não se afirma uma única pilha simultânea e imutável.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4D-S003",
+        "V4D-S004",
+        "V4D-S009"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T079",
+          "match": "exact",
+          "rationale": "Runtime NPU documenta especulação; não generalizar para GPU ou revisão histórica. Escopo: capacidade NPU da documentação consultada em 2026-11-05; não é inferida para GPU ou para a versão histórica de 2024."
+        },
+        {
+          "entry_id": "T132",
+          "match": "exact",
+          "rationale": "A API explica o modelo de rascunho menor verificado pelo principal na NPU. Escopo: capacidade NPU da documentação consultada em 2026-11-05; não é inferida para GPU ou para a versão histórica de 2024."
+        },
+        {
+          "entry_id": "T085",
+          "match": "exact",
+          "rationale": "Pilha Phi Silica publicada descreve quantização de pesos, com ressalva de revisão. Escopo: configuração técnica publicada em 2024-12-06, não confirmação de todos os detalhes da API atual."
+        },
+        {
+          "entry_id": "T125",
+          "match": "exact",
+          "rationale": "Implementação publicada usa GPTQ em pesos rotacionados; não afirmar que todo backend atual é idêntico. Escopo: configuração técnica publicada em 2024-12-06, não confirmação de todos os detalhes da API atual."
+        },
+        {
+          "entry_id": "T094",
+          "match": "exact",
+          "rationale": "Processamento do prompt em blocos de 64 preserva histórico KV na configuração publicada. Escopo: configuração técnica publicada em 2024-12-06, não confirmação de todos os detalhes da API atual."
+        },
+        {
+          "entry_id": "T153",
+          "match": "family",
+          "rationale": "Entrega incremental documentada; a fonte consultada não especifica propagação de interrupção/cancelamento ao processamento."
+        },
+        {
+          "entry_id": "T006",
+          "match": "family",
+          "rationale": "Compressão de prompt é recurso do runtime NPU; a fonte não prova sua ativação em toda ação Click to Do."
+        }
+      ],
+      "small_model_transfer": "Proposta: medir um executor local de reescrita/extração sobre seleções curtas, com contratos por backend, e adotar fallback somente após avaliar os erros reais.",
+      "limits": "Não fixa porte exato entre revisões nem prova fronteira. A documentação de novembro de 2026 anuncia mudança futura para Aion Instruct; todos os mecanismos têm escopo de versão/hardware. Fonte de 2024 não sustenta KV quadrático. Nenhuma destas configurações foi executada neste pacote.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4D-C002",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T079",
+        "match": "exact",
+        "rationale": "Runtime NPU documenta especulação; não generalizar para GPU ou revisão histórica. Escopo: capacidade NPU da documentação consultada em 2026-11-05; não é inferida para GPU ou para a versão histórica de 2024."
+      }
+    },
+    {
+      "case_id": "V4D-C001",
+      "company": "Apple",
+      "system": "Foundation Models / Apple Intelligence OS 26",
+      "title": "Modelo local especializado e runtime com geração guiada",
+      "evidence_level": "operational_product",
+      "observed_use": "Framework do modelo local disponibilizado no OS 26 e utilizado por aplicativos citados pela Apple.",
+      "technical_mechanism": "A descrição técnica associa modelo de cerca de 3B, quantização, adaptadores, ferramentas e combinação de geração guiada com especulação.",
+      "event_date": "2025-09-29",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4D-S002",
+        "V4D-S006",
+        "V4D-S011"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T079",
+          "match": "exact",
+          "rationale": "O daemon combina especulação com geração guiada."
+        },
+        {
+          "entry_id": "T085",
+          "match": "exact",
+          "rationale": "A descrição técnica especifica quantização do modelo local."
+        },
+        {
+          "entry_id": "T086",
+          "match": "exact",
+          "rationale": "KV do modelo local é quantizado a 8 bits."
+        },
+        {
+          "entry_id": "T140",
+          "match": "exact",
+          "rationale": "Tool calling integra o framework descrito."
+        },
+        {
+          "entry_id": "T141",
+          "match": "exact",
+          "rationale": "Tipos gerados são restringidos por geração guiada."
+        },
+        {
+          "entry_id": "T196",
+          "match": "exact",
+          "rationale": "Geração guiada compila restrições sobre a saída."
+        },
+        {
+          "entry_id": "T182",
+          "match": "family",
+          "rationale": "Adaptadores de baixo rank são documentados, mas não se deve universalizar o treino para qualquer LoRA externa."
+        }
+      ],
+      "small_model_transfer": "Proposta: restringir o pequeno modelo a extrair ou produzir objetos de domínio, validar conteúdo após a gramática e medir latência com especulação ligada/desligada.",
+      "limits": "Classificação conservadora de produto disponível: não há telemetria pública de uso de cada mecanismo nem demonstração de equivalência com fronteira. Aplicativos externos não são contados como implantações próprias da Apple.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4D-C001",
+      "deployment_domain": "llm_framework",
+      "mapping": {
+        "entry_id": "T079",
+        "match": "exact",
+        "rationale": "O daemon combina especulação com geração guiada."
+      }
+    },
+    {
+      "case_id": "V4B-C007",
+      "company": "Meta",
+      "organization_class": "bigtech",
+      "system": "Experimentos EAGLE para Llama",
+      "title": "Engenharia de especulação em grandes lotes",
+      "evidence_level": "research_only",
+      "observed_use": "Autores apresentam otimizações de treinamento e inferência de EAGLE para Llama em condições descritas como production scale.",
+      "technical_mechanism": "Atenção em árvore, verificação em múltiplas rodadas e otimizações de execução do proponente/target.",
+      "event_date": "2025-08-12",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S007"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T128",
+          "match": "exact",
+          "rationale": "O trabalho estuda EAGLE explicitamente."
+        },
+        {
+          "entry_id": "T079",
+          "match": "exact",
+          "rationale": "O mecanismo é speculative decoding com verificação pelo alvo."
+        },
+        {
+          "entry_id": "T132",
+          "match": "family",
+          "rationale": "Há componente de draft aprendido, com acoplamento específico que difere de qualquer modelo auxiliar genérico."
+        }
+      ],
+      "small_model_transfer": "Proposta: avaliar a viabilidade de treinamento de um draft compatível com um alvo 8–30B antes de investigar grandes lotes.",
+      "limits": "A página aberta não identifica implantação comercial específica; production scale não é convertido em production_documented. Ganhos em Llama grande e múltiplas H100 não são transferidos ao ambiente do usuário.",
+      "canonical_case_id": "V4B-C007",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "T079",
+        "match": "exact",
+        "rationale": "O mecanismo é speculative decoding com verificação pelo alvo."
+      }
+    },
+    {
+      "case_id": "V4B-C023",
+      "company": "Snowflake",
+      "organization_class": "technology_operator",
+      "system": "Suffix Decoding",
+      "title": "Propostas especulativas por árvores de sufixos",
+      "evidence_level": "research_only",
+      "observed_use": "A publicação apresenta método e avaliações de geração especulativa a partir de sufixos. O registro não transforma resultados experimentais em comprovação de implantação operacional.",
+      "technical_mechanism": "Estruturas de sufixos usam histórico de tokens para propor continuações que precisam ser verificadas pelo alvo.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "B-S040"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T131",
+          "match": "exact",
+          "rationale": "O mecanismo é suffix decoding."
+        },
+        {
+          "entry_id": "T079",
+          "match": "exact",
+          "rationale": "Os candidatos são usados em decodificação especulativa."
+        },
+        {
+          "entry_id": "R009",
+          "match": "family",
+          "rationale": "Integração com runtime não comprova toda configuração de vLLM."
+        }
+      ],
+      "small_model_transfer": "Proposta: avaliar em saídas com forte repetição, incluindo custo de atualizar e consultar o índice em CPU.",
+      "limits": "Sem caso específico de bigtech implantada confirmado nesta fonte; ganho depende de repetição, alvo, concorrência e custo do proponente.",
+      "canonical_case_id": "V4B-C023",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "T079",
+        "match": "exact",
+        "rationale": "Os candidatos são usados em decodificação especulativa."
+      }
+    }
+  ]
+}

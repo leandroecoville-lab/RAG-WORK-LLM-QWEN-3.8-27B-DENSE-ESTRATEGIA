@@ -1,0 +1,29 @@
+{
+  "id": "T191",
+  "name": "Chain-of-Verification",
+  "canonical_name": "Chain-of-Verification",
+  "canonical_id": "T191",
+  "aliases": [
+    "CoVe",
+    "cadeia de verificação"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T190",
+    "T200",
+    "T206"
+  ],
+  "source_ids": [
+    "C-S044",
+    "V4B-S027",
+    "V3B-S019"
+  ],
+  "namespace": "T191",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T191",
+  "chunk_count": 9
+}

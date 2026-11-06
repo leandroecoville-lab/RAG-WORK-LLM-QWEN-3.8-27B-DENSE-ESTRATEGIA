@@ -1,0 +1,119 @@
+{
+  "id": "T105",
+  "novelty": "A v3 separou expulsão reconstruível de remoção semântica. Esta estratégia acrescenta custo de oportunidade, proteção durante transferências e experimentos que medem o prejuízo futuro da decisão.",
+  "deep_layers": [
+    {
+      "name": "Valor por recurso escasso",
+      "detail": "Uma política proposta estima benefício de reúso dividido pelo recurso que bloqueia: bytes de GPU, banda de restore ou espaço de armazenamento. O recurso dominante muda durante a carga. Um prefixo popular pode merecer retenção na RAM sem merecer GPU; usar somente frequência mistura decisões de níveis distintos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031",
+        "B-S003"
+      ]
+    },
+    {
+      "name": "Estados em trânsito",
+      "detail": "Evicção, cópia e cancelamento podem se cruzar. Dê a cada transferência uma referência temporária e um destino ainda não publicável; a remoção da origem só é segura quando existe cópia confirmada ou reconstrução possível. Contadores de referências devem sobreviver a retries e não depender exclusivamente do término normal do pedido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031",
+        "B-S003"
+      ]
+    },
+    {
+      "name": "Custo contrafactual",
+      "detail": "Conte misses causados por expulsão recente e tempo gasto em reconstrução, preservando uma amostra de decisões. Isso permite distinguir uma política agressiva demais de uma mudança genuína de demanda. Não atribua toda queda de hit rate à evicção: versões de templates, adapters e distribuição de usuários também alteram os prefixos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031",
+        "B-S003"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Picos de conversas novas",
+      "scenario": "Uma campanha aumenta sessões sem histórico compartilhado.",
+      "strategy": "Reduza retenção de prefixos inativos antes de limitar sequências em execução. Preserve uma margem para crescimento dos decodes e revise a pressão depois do pico.",
+      "small_model_role": "Um 3–7B pode aceitar mais sessões sem alterar a semântica do contexto ativo.",
+      "acceptance": "Confirmar ausência de OOM e registrar reconstruções posteriores causadas pela intervenção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031",
+        "B-S003"
+      ]
+    },
+    {
+      "name": "Cache com documentos sensíveis",
+      "scenario": "Uma fonte é revogada ou expira.",
+      "strategy": "Propague invalidação por versão e domínio de acesso, tornando cópias antigas inelegíveis mesmo antes de sua remoção física. Não confunda liberação de memória com revogação lógica.",
+      "small_model_role": "O modelo pequeno continua recebendo somente contexto autorizado na nova versão.",
+      "acceptance": "Testar revogação em GPU, RAM e armazenamento, incluindo transferências já iniciadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031",
+        "B-S003"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Use políticas simples quando o custo de manutenção superar o prefill evitado; não deduza isso só do número de parâmetros.",
+    "8_14b": "Meça o conjunto de sessões simultâneas e o crescimento das respostas antes de reservar cache inativo.",
+    "15_30b": "Uma política favorável ao reúso pode impedir o carregamento de novos pedidos grandes; trate capacidade como orçamento explícito.",
+    "training_or_runtime_requirements": "Runtime precisa expor referências, cancelamento e residência. Remover tokens do contexto requer método aproximado separado.",
+    "do_not_use_when": "Não expulsar estados ativos sem reconstrução antes do próximo uso."
+  },
+  "connections": [
+    {
+      "target_id": "T084",
+      "relation": "complements",
+      "how": "A validade de prefixos inclui expiração e revogação, além de pressão de memória.",
+      "interface": "Versão, domínio de acesso e marcador de invalidação.",
+      "condition": "Workers observam a mesma regra de elegibilidade.",
+      "acceptance": "Repetir um pedido após revogação e provar que não ocorreu reúso antigo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031",
+        "B-S003"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T086",
+      "relation": "alternative",
+      "how": "Comparar compactação KV com evicção permite escolher entre perda numérica e recomputação.",
+      "interface": "Bytes liberados, erro observado e custo de restore.",
+      "condition": "Experimentos separam as duas intervenções.",
+      "acceptance": "Conferir qualidade e latência em ensaios isolados e depois combinados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031",
+        "B-S003"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não contabilizar memória ainda referenciada como capacidade imediatamente recuperada.",
+    "Simular cancelamento durante cópia e reinício do worker com restauração incompleta."
+  ],
+  "frontier_comparison": "A política deve ser comparada pelo custo de servir respostas válidas, incluindo reconstrução. Aumentar cache hit não estabelece vantagem de qualidade frente a um modelo de fronteira.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q022"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S011",
+    "V4B-S031",
+    "B-S003"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "T096",
+  "technical_details": "Esparsidade tem dois significados que precisam ser separados: pesos de atenção pequenos após softmax e conexões deliberadamente ausentes antes da normalização. Apenas o segundo define um padrão de cálculo que pode dispensar operações. Zerar valores depois de calcular a matriz densa não recupera o custo já pago. Além disso, normalizar sobre um subconjunto produz outra distribuição, salvo casos especiais de contribuição originalmente nula.",
+  "boundary_condition": "Um padrão com poucas conexões pode executar lentamente se sua irregularidade impedir agrupamento eficiente ou exigir seleção cara.",
+  "implementation_contract": {
+    "inputs": "Padrão permitido, tensores QKV, máscara causal e regra para linhas sem conexões.",
+    "outputs": "Saída normalizada apenas sobre posições admitidas pelo padrão.",
+    "state": "Índices ou estrutura do padrão e metadados necessários ao kernel.",
+    "invariant": "A exclusão ocorre antes da normalização e respeita as restrições causais."
+  },
+  "tradeoffs": [
+    "Conectividade menor economiza trabalho e restringe rotas de informação.",
+    "Padrões regulares favorecem kernels, mas podem representar pior dependências específicas."
+  ],
+  "failure_test": "Teste proposto: excluir uma chave com score dominante e comparar referência densa mascarada com kernel esparso. Também criar linha totalmente excluída e exigir comportamento definido, sem NaNs silenciosos.",
+  "evaluation_plan": "Plano proposto: comparar kernel esparso com máscara densa equivalente para correção, depois avaliar contra modelo de conectividade completa para qualidade. Medir custo de seleção, execução e tarefa final; aprovar somente a troca explicitamente escolhida.",
+  "comparisons": [
+    {
+      "entry_id": "T090",
+      "relation": "distinct_from",
+      "reason": "Atenção exata eficiente em IO pode preservar todas as conexões; sparsity seleciona quais permanecem."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Longformer combina atenção local e global para oferecer uma estrutura esparsa de conexões.",
+    "source_ids": [
+      "B-S015"
+    ],
+    "support": "direct",
+    "caveat": "A fonte sustenta esse padrão específico, não a preservação de qualidade para qualquer poda."
+  },
+  "advanced_qa": [
+    {
+      "question": "Muitos pesos próximos de zero bastam para acelerar?",
+      "answer": "Não se o kernel ainda calcula todos os scores e executa a mesma redução densa."
+    },
+    {
+      "question": "O resultado esparso pode ser exato?",
+      "answer": "Sim em relação à máscara declarada; isso não o torna idêntico à atenção original sem essa máscara."
+    }
+  ],
+  "source_ids": [
+    "B-S015"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

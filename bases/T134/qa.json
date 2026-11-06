@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Semantic routing é busca RAG?",
+    "answer": "Ambos podem usar embeddings, mas o roteamento escolhe um destino e a busca recupera conteúdo."
+  },
+  {
+    "question": "Similaridade alta autoriza uma ação?",
+    "answer": "Não. Autorização depende da identidade, do recurso e da operação."
+  },
+  {
+    "question": "Uma margem alta prova que a rota está correta?",
+    "answer": "Não. Um pedido fora do domínio pode ficar relativamente mais perto de uma classe errada que das demais."
+  },
+  {
+    "question": "Como representar duas intenções legítimas?",
+    "answer": "Decompor o pedido ou produzir um conjunto de destinos com dependências explícitas, sem esconder a segunda intenção em uma classe única."
+  }
+]

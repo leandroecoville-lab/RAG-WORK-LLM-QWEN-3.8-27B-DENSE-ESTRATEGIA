@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Best-of-N é votação?",
+    "answer": "Não. Um avaliador escolhe; o candidato mais frequente não precisa vencer."
+  },
+  {
+    "question": "N maior sempre melhora?",
+    "answer": "Não. Custo cresce e o verificador pode selecionar erros cada vez mais persuasivos."
+  },
+  {
+    "question": "Se há solução correta entre cem, o sistema acertou?",
+    "answer": "Somente se a identificar e entregar; cobertura do conjunto não é precisão da seleção."
+  },
+  {
+    "question": "Pode avaliar usando o mesmo verificador?",
+    "answer": "Isso mede alinhamento ao seletor; qualidade final precisa de evidência ou referência independente para detectar exploração do score."
+  }
+]

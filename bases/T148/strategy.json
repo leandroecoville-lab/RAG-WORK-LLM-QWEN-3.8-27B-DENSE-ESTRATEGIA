@@ -1,0 +1,115 @@
+{
+  "id": "T148",
+  "novelty": "A v3 distinguiu falso, desconhecido e erro. A camada nova valida exaustividade de caminhos, precedência entre guardas e estabilidade das decisões diante de eventos fora de ordem.",
+  "deep_layers": [
+    {
+      "name": "Tabela de decisão verificável",
+      "detail": "Escreva combinações relevantes de condições e o destino correspondente antes de codificar o grafo. Guardas sobrepostas precisam de prioridade explícita; condições não cobertas precisam de uma saída definida. Isso evita que a ordem acidental de ifs determine decisões diferentes após uma refatoração.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S004",
+        "V3C-S032"
+      ]
+    },
+    {
+      "name": "Versão da guarda e do estado",
+      "detail": "Uma decisão deve registrar qual estado observou e qual regra a produziu. Se houver evento concorrente relevante, reavalie antes do efeito ou use uma pré-condição atômica. O modelo pode sugerir uma categoria, mas a transição confirmada pertence ao controlador e ao contrato vigente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S028",
+        "V4C-S002"
+      ]
+    },
+    {
+      "name": "Estados terminais protegidos",
+      "detail": "Mensagens atrasadas não devem reabrir trabalho concluído por uma simples sobrescrita. Defina quais transições podem corrigir um estado terminal e exija um evento explícito para elas. Reabertura de tarefa é mudança de domínio distinta de retransmissão de uma atualização antiga.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S004"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Promoção de uma alteração de código",
+      "scenario": "Um patch precisa passar build, testes e revisão antes de avançar.",
+      "strategy": "Use guardas por evidência versionada, com estados aprovado, reprovado e ainda não avaliado. Quando o patch mudar, invalide os resultados dependentes. Uma mensagem tardia de sucesso da versão anterior não libera a nova alteração.",
+      "small_model_role": "3–30B pode explicar diagnóstico; regras de promoção continuam determinísticas.",
+      "acceptance": "Proposta: permutar ordem dos eventos de testes e exigir decisões idênticas para o mesmo conjunto de fatos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S002",
+        "V3C-S032"
+      ]
+    },
+    {
+      "name": "Fluxo conversacional com informação incompleta",
+      "scenario": "O usuário alterna entre consultar dados e preparar uma ação.",
+      "strategy": "Classifique intenção, resolva entidades e mantenha uma rota para informação insuficiente. Antes de escrever, confirme requisitos no estado atual. Se a consulta mudou, encerre ou substitua o plano antigo explicitamente, preservando o histórico.",
+      "small_model_role": "3–7B classifica; 8–14B extrai entidades; 15–30B propõe decomposição complexa.",
+      "acceptance": "Proposta: testar pedidos ambíguos, mudanças de objetivo e eventos duplicados, medindo ações incorretas e esclarecimentos úteis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S015"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: produzir enums de condição entre poucos caminhos com suporte explícito a desconhecido.",
+    "8_14b": "Proposta: extrair fatos para guardas compostas, sem decidir o efeito sozinho.",
+    "15_30b": "Proposta: propor novos caminhos para revisão, conservando a máquina de estados como autoridade operacional.",
+    "training_or_runtime_requirements": "Exige testes de tabela de decisão, versões de regras e pré-condições no backend que executa mutações.",
+    "do_not_use_when": "Não deixar transições críticas dependerem somente de texto livre ou de confiança não calibrada do modelo."
+  },
+  "connections": [
+    {
+      "target_id": "T141",
+      "relation": "feeds",
+      "how": "Enums e evidências estruturadas tornam a classificação consumível pela guarda.",
+      "interface": "Condição, origem, versão e estado de validação.",
+      "condition": "O parser distingue desconhecido de falso.",
+      "acceptance": "Fornecer valores inválidos e exigir rota de erro explícita.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S013"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T241",
+      "relation": "complements",
+      "how": "Replay deve reproduzir a interpretação de decisões usando versões compatíveis.",
+      "interface": "Eventos ordenados e versão do avaliador de guardas.",
+      "condition": "Regras históricas continuam disponíveis ou têm migração definida.",
+      "acceptance": "Reprocessar eventos permutáveis e conferir invariantes de estado terminal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S004",
+        "V3C-S018"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não liberar ação com base em evidência de artefato diferente.",
+    "Detectar guardas contraditórias e caminhos sem término antes de publicar o workflow."
+  ],
+  "frontier_comparison": "Compare modelos na classificação de entradas que alimentam as guardas, mantendo controlador igual. Desempenho do workflow não pode ser atribuído inteiro à LLM.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q003",
+      "V4C-Q002",
+      "V4C-Q010"
+    ],
+    "scope_note": "Conductor e Up CD sustentam coordenação por condições. A tabela de decisão e seus testes são propostas para a integração local."
+  },
+  "source_ids": [
+    "V4C-S004",
+    "V3C-S032",
+    "V3C-S028",
+    "V4C-S002",
+    "V4C-S015",
+    "V3C-S013",
+    "V3C-S018"
+  ]
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Modelo barato deve receber automaticamente toda tarefa curta?",
+    "answer": "Não. Tamanho é apenas um sinal; uma tarefa curta pode exigir capacidade específica ou verificação rigorosa."
+  },
+  {
+    "question": "Como julgar economia real de uma rota?",
+    "answer": "Pelo custo total até um resultado aceito, incluindo respostas rejeitadas, reruns, ferramentas e escalonamentos."
+  },
+  {
+    "question": "Qual objetivo otimizar?",
+    "answer": "Custo e tempo para uma tarefa aceita, preservando requisitos e limites de erro."
+  },
+  {
+    "question": "Como impedir loops de fallback?",
+    "answer": "Registre rotas visitadas, orçamento global, deadline e motivo final quando não resta opção válida."
+  }
+]

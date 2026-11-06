@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "B-S017",
+    "title": "torch.nn.functional.scaled_dot_product_attention",
+    "url": "https://docs.pytorch.org/docs/2.15/generated/torch.nn.functional.scaled_dot_product_attention.html",
+    "publisher": "PyTorch",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Seleção de implementações de atenção, máscaras e suporte dependente de backend.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn27view7"
+  },
+  {
+    "source_id": "V4B-S017",
+    "title": "FlexAttention Part II: FlexAttention for Inference",
+    "url": "https://pytorch.org/blog/flexattention-for-inference/",
+    "publisher": "PyTorch",
+    "source_type": "technical_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-04-30",
+    "supports": "Backend de decode, suporte a GQA e PagedAttention e diferenças entre formas de prefill/decode.",
+    "limitations": "Implementação e experimentos não constituem prova de adoção em produto; atenção customizada depende de máscara correta.",
+    "web_ref": "turn227view0"
+  },
+  {
+    "source_id": "V4B-S018",
+    "title": "FlexAttention + FlashAttention-4: Fast and Flexible",
+    "url": "https://pytorch.org/blog/flexattention-flashattention-4-fast-and-flexible/",
+    "publisher": "PyTorch",
+    "source_type": "technical_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-03-05",
+    "supports": "Backend FlashAttention-4 de FlexAttention em Hopper/Blackwell e geração de modificadores de score/máscara.",
+    "limitations": "Demonstração de backend; não transforma FA2/FA3 em versões equivalentes nem garante ganho em qualquer forma de tensor.",
+    "web_ref": "turn227view1"
+  }
+]

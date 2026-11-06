@@ -1,0 +1,116 @@
+{
+  "id": "T159",
+  "novelty": "A v3 tratava determinismo de replay e evolução de código. A ampliação define fronteiras de falha entre decisão cognitiva e efeitos, crescimento do histórico e retomada de atividades longas sem depender da memória conversacional.",
+  "deep_layers": [
+    {
+      "name": "Decisão registrada antes do efeito",
+      "detail": "Faça o resultado da LLM virar um artefato validado contendo ação, argumentos e versão do contrato. O workflow durável registra a decisão; uma atividade separada executa o efeito com identidade estável. Se a chamada ao modelo falhar antes de produzir decisão válida, uma nova geração pode ser legítima; depois da decisão confirmada, replay deve reutilizá-la.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S018",
+        "C-S026"
+      ]
+    },
+    {
+      "name": "Histórico finito e referências",
+      "detail": "Não persista documentos enormes em cada evento. Registre referências imutáveis, hashes e os campos necessários para decidir próximos passos. A existência do evento não garante que seu arquivo externo continue acessível: retenção do artefato e do histórico precisam ser coordenadas. Divida missões longas em segmentos com estado de passagem explícito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S001",
+        "V3C-S024"
+      ]
+    },
+    {
+      "name": "Operação sob versões múltiplas",
+      "detail": "Mantenha workers compatíveis com execuções antigas enquanto novas usam a versão aprovada. Exercite históricos de falhas, não apenas trajetórias felizes. Uma retomada que relança a atividade pode repetir acesso remoto; durabilidade do coordenador não elimina a necessidade de idempotência, reconciliação e classificação de falhas na integração.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S001",
+        "C-S026"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Migração de código demorada",
+      "scenario": "Uma campanha atravessa centenas de módulos e quedas de workers.",
+      "strategy": "Registre plano, revisão base e conclusão de cada unidade. Gere patch em atividade separada, valide e publique referência do candidato. Após queda, recupere o próximo módulo pendente; se a publicação ficou incerta, consulte seu identificador antes de refazer a alteração.",
+      "small_model_role": "3–7B edita unidades simples; 15–30B planeja dependências e exceções.",
+      "acceptance": "Proposta: nenhuma unidade esquecida ou publicada duas vezes após falhas injetadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S002",
+        "V3C-S018"
+      ]
+    },
+    {
+      "name": "Pesquisa interrompida por horas",
+      "scenario": "Coletas remotas e síntese não terminam na mesma sessão.",
+      "strategy": "Persistir cada fonte com data, conteúdo identificado e estado de extração. A retomada reutiliza observações confirmadas e reconsulta somente itens cuja validade venceu. Se a pergunta mudou, crie nova revisão em vez de reinterpretar silenciosamente decisões já registradas.",
+      "small_model_role": "8–14B extrai; coordenador durável controla fases e revisões.",
+      "acceptance": "Proposta: equivalência de cobertura entre execução contínua e retomada, com atualização explícita de fontes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V3C-S018"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Atividades pequenas com saída validável e baixa variância de duração.",
+    "8_14b": "Etapas com recuperação de documentos e retorno estruturado, desacopladas do histórico do workflow.",
+    "15_30b": "Planejamento mais amplo em atividade registrada; nunca executar chamadas externas diretamente no replay determinístico.",
+    "training_or_runtime_requirements": "Runtime durável, armazenamento de artefatos, versão de worker e contratos idempotentes na borda.",
+    "do_not_use_when": "Não prometer continuidade se somente mensagens de chat foram salvas ou se artefatos referenciados desaparecem."
+  },
+  "connections": [
+    {
+      "target_id": "T241",
+      "relation": "complements",
+      "how": "Cadence usa reprodução do histórico para continuidade e validação de execução.",
+      "interface": "Histórico compatível e versão do worker.",
+      "condition": "Operações externas têm resultados registrados.",
+      "acceptance": "Retomar após queda sem gerar decisões externas para reconstruir passado.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S001"
+      ],
+      "case_ids": [
+        "V4C-C003"
+      ]
+    },
+    {
+      "target_id": "T162",
+      "relation": "complements",
+      "how": "Associar efeito remoto a identidade estável quando uma atividade pode repetir.",
+      "interface": "Chave de intenção e parâmetros normalizados.",
+      "condition": "Serviço de destino oferece deduplicação ou reconciliação.",
+      "acceptance": "Queda após confirmação remota não duplica o efeito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não transformar um histórico incompatível em nova execução silenciosa.",
+    "Distinguir atividade não concluída de efeito remoto desconhecido antes de repetir."
+  ],
+  "frontier_comparison": "Compare modelos por qualidade das atividades; compare runtimes por recuperação. Um modelo pequeno com durabilidade pode completar mais missões interrompidas sem possuir maior capacidade cognitiva.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q002",
+      "V4C-Q022"
+    ],
+    "scope_note": "Uber documenta Cadence operacional; Cadence e Temporal permanecem produtos distintos. Fontes Temporal explicam contrato, sem inferir adoção de um a partir do outro."
+  },
+  "source_ids": [
+    "V3C-S018",
+    "C-S026",
+    "V4C-S001",
+    "V3C-S024",
+    "V4C-S002",
+    "C-S030"
+  ]
+}

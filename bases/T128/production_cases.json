@@ -1,0 +1,114 @@
+{
+  "coverage": {
+    "entry_id": "T128",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 1,
+    "research_cases": 1,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "EAGLE / EAGLE-3",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C011",
+      "company": "NVIDIA",
+      "organization_class": "bigtech",
+      "system": "TensorRT-LLM",
+      "title": "Runtime documentado com kernels e otimizações de serving",
+      "evidence_level": "operational_product",
+      "observed_use": "A documentação de produto descreve API de serving e runtime Python/PyTorch, com opções de quantização e especulação.",
+      "technical_mechanism": "Integra atenção paginada, in-flight batching, formatos de baixa precisão e proponentes como EAGLE/MTP, conforme suporte de modelo e hardware.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S011"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R011",
+          "match": "exact",
+          "rationale": "Produto e arquitetura do runtime são descritos diretamente."
+        },
+        {
+          "entry_id": "T123",
+          "match": "exact",
+          "rationale": "FP8 consta entre os formatos suportados."
+        },
+        {
+          "entry_id": "T124",
+          "match": "exact",
+          "rationale": "INT4/AWQ consta no conjunto de otimizações."
+        },
+        {
+          "entry_id": "T128",
+          "match": "exact",
+          "rationale": "EAGLE é recurso documentado."
+        },
+        {
+          "entry_id": "T129",
+          "match": "exact",
+          "rationale": "MTP é recurso documentado para modelos compatíveis."
+        }
+      ],
+      "small_model_transfer": "Proposta: criar uma matriz de recursos por checkpoint 3–30B, fixar build e testar a combinação mínima antes de habilitar otimizações adicionais.",
+      "limits": "É evidência de disponibilidade de produto, não deployment de cliente. Não comprova compatibilidade do servidor do usuário nem exige universalmente o antigo fluxo de engines compiladas.",
+      "canonical_case_id": "V4B-C011",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "T128",
+        "match": "exact",
+        "rationale": "EAGLE é recurso documentado."
+      }
+    },
+    {
+      "case_id": "V4B-C007",
+      "company": "Meta",
+      "organization_class": "bigtech",
+      "system": "Experimentos EAGLE para Llama",
+      "title": "Engenharia de especulação em grandes lotes",
+      "evidence_level": "research_only",
+      "observed_use": "Autores apresentam otimizações de treinamento e inferência de EAGLE para Llama em condições descritas como production scale.",
+      "technical_mechanism": "Atenção em árvore, verificação em múltiplas rodadas e otimizações de execução do proponente/target.",
+      "event_date": "2025-08-12",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S007"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T128",
+          "match": "exact",
+          "rationale": "O trabalho estuda EAGLE explicitamente."
+        },
+        {
+          "entry_id": "T079",
+          "match": "exact",
+          "rationale": "O mecanismo é speculative decoding com verificação pelo alvo."
+        },
+        {
+          "entry_id": "T132",
+          "match": "family",
+          "rationale": "Há componente de draft aprendido, com acoplamento específico que difere de qualquer modelo auxiliar genérico."
+        }
+      ],
+      "small_model_transfer": "Proposta: avaliar a viabilidade de treinamento de um draft compatível com um alvo 8–30B antes de investigar grandes lotes.",
+      "limits": "A página aberta não identifica implantação comercial específica; production scale não é convertido em production_documented. Ganhos em Llama grande e múltiplas H100 não são transferidos ao ambiente do usuário.",
+      "canonical_case_id": "V4B-C007",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "T128",
+        "match": "exact",
+        "rationale": "O trabalho estuda EAGLE explicitamente."
+      }
+    }
+  ]
+}

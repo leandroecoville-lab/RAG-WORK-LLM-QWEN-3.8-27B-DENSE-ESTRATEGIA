@@ -1,0 +1,52 @@
+{
+  "id": "T165",
+  "technical_details": "Sondas precisam pertencer à geração correta do estado do circuito. Uma chamada lenta iniciada antes da abertura pode terminar com sucesso durante uma sondagem posterior; usá-la para fechar o circuito confunde evidência antiga com recuperação atual. Uma proposta associa epoch à transição e contabiliza apenas resultados elegíveis daquela fase. Em várias réplicas, a quota efetiva é a soma das sondagens locais, salvo coordenação explícita.",
+  "boundary_condition": "Sondas que exercitam somente uma operação leve não comprovam recuperação da operação que causou a abertura.",
+  "implementation_contract": {
+    "inputs": "Destino, geração do circuito, quota de sondas e critérios de recuperação.",
+    "outputs": "Sonda admitida ou rejeitada e transição fundamentada em resultado vigente.",
+    "state": "Epoch, sondas em voo, sucessos válidos e prazo de observação.",
+    "invariant": "Resultado atrasado de geração anterior não fecha o circuito atual."
+  },
+  "tradeoffs": [
+    "Coordenação global limita rajadas e acrescenta dependência operacional.",
+    "Sondas representativas fornecem evidência melhor e podem custar mais ao serviço ainda frágil."
+  ],
+  "failure_test": "Teste proposto: atrasar uma chamada antiga, reabrir o circuito e entregar seu sucesso durante novo half-open; exigir que a resposta obsoleta não determine fechamento.",
+  "evaluation_plan": "Comparar sondagem simples e identificação por geração com falhas intermitentes. Medir fechamento prematuro, carga de sondas e tempo até recuperação sustentável. Escolher critérios pela capacidade que a operação realmente necessita.",
+  "comparisons": [
+    {
+      "entry_id": "T138",
+      "relation": "specializes",
+      "reason": "Half-open detalha a fase de recuperação da máquina de estados completa."
+    },
+    {
+      "entry_id": "T227",
+      "relation": "distinct_from",
+      "reason": "Probe de readiness do processo não substitui sonda da operação protegida."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Polly descreve sondagem após o período aberto e transição conforme o resultado, separada de retries.",
+    "source_ids": [
+      "V3C-S026"
+    ],
+    "support": "direct",
+    "caveat": "Epochs e coordenação entre réplicas são extensão editorial proposta, não recurso presumido de toda biblioteca."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um sucesso antigo prova recuperação atual?",
+      "answer": "Não. É necessário saber em qual fase e condições a operação foi iniciada e se é representativa da sondagem vigente."
+    },
+    {
+      "question": "Uma sonda por processo significa uma sonda global?",
+      "answer": "Não. Com várias réplicas, a carga pode multiplicar; o escopo da quota deve ser declarado."
+    }
+  ],
+  "source_ids": [
+    "V3C-S026",
+    "C-S005"
+  ],
+  "research_note": "Contratos e ensaios são propostas; os resultados citados pertencem às fontes, sem reprodução local."
+}

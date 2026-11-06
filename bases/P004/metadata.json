@@ -1,0 +1,40 @@
+{
+  "id": "P004",
+  "name": "LAI Memory Runtime",
+  "canonical_name": "LAI Memory Runtime",
+  "canonical_id": "P004",
+  "aliases": [
+    "runtime proposto de memória LAI"
+  ],
+  "category": "componentes_propostos",
+  "kind": "component",
+  "scope": "proposta",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T047",
+    "T056",
+    "T060",
+    "T072",
+    "T075",
+    "P003",
+    "P005"
+  ],
+  "source_ids": [
+    "A-S022",
+    "A-S023",
+    "A-S032",
+    "V2C-S002",
+    "V3D-S020",
+    "V4A-S004",
+    "V4A-S007",
+    "V3A-S032",
+    "V2B-S002",
+    "V4A-S005",
+    "V4A-S026"
+  ],
+  "namespace": "P004",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/P004",
+  "chunk_count": 9
+}

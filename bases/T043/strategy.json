@@ -1,0 +1,111 @@
+{
+  "id": "T043",
+  "novelty": "A v3 protegeu commit de compactação. Aqui o resumo é um contrato de retomada adaptado ao próximo consumidor e à fase da tarefa.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Defina campos mínimos por tarefa: objetivo vigente, decisões confirmadas, evidências, pendências e próximos testes. A compactação deve produzir um estado utilizável, não apenas narrativa da conversa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Teste o resumo com um leitor diferente do autor antes de usá-lo em fluxos críticos. Se o consumidor não consegue identificar próximo passo e condições de parada, reabrir conteúdo específico.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare retomada pelo mesmo modelo e por outro porte. Meça ações corretas após a fronteira, fatos reinterpretados e leituras adicionais; resumo que só seu autor entende é contrato frágil. Unidade de avaliação: ponto de retomada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Troca de modelo por custo",
+      "scenario": "Fronteira inicia e modelo local continua.",
+      "strategy": "Gerar pacote com decisões explícitas e exemplos de formato, retirar pressupostos tácitos e validar uma etapa de retomada.",
+      "small_model_role": "3–7B executa subtarefa; 15–30B resume integração.",
+      "acceptance": "Consumidor deve reproduzir restrições sem inventar decisões omitidas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006"
+      ]
+    },
+    {
+      "name": "Sessão longa de desenvolvimento",
+      "scenario": "Histórico contém tentativas descartadas.",
+      "strategy": "Guardar tentativas rejeitadas com motivo verificável, para que nova sessão não repita caminho inútil. Separar falha observada de hipótese não testada.",
+      "small_model_role": "8–14B retoma diagnóstico.",
+      "acceptance": "Medir repetição de tentativas já refutadas e preservação do teste pendente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Consumidor de estado estruturado com próximo passo delimitado.",
+    "8_14b": "Autor e leitor de pacote de retomada por módulo.",
+    "15_30b": "Integrador de decisões cruzadas e conflitos ainda abertos.",
+    "training_or_runtime_requirements": "Schema de retomada, revisão-base e teste de leitura por consumidor; preservar artefatos independentes do resumo.",
+    "do_not_use_when": "Não é possível representar obrigações essenciais e fontes no orçamento disponível."
+  },
+  "connections": [
+    {
+      "target_id": "T211",
+      "relation": "feeds",
+      "how": "Publicar pacote de retomada como handoff.",
+      "interface": "Objetivo, decisões, testes, artefatos e revisão.",
+      "condition": "Pacote corresponder à fronteira confirmada.",
+      "acceptance": "Retomar em sessão limpa sem acesso à conversa anterior.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T055",
+      "relation": "complements",
+      "how": "Carregar procedimento específico para a fase seguinte.",
+      "interface": "Procedimento versionado e pré-condições.",
+      "condition": "Resumo não substituir contrato de execução.",
+      "acceptance": "Verificar que instrução operacional completa foi aberta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não condensar resultados de ferramenta incertos como sucesso.",
+    "Não confundir reflexão interna com registro factual de execução."
+  ],
+  "frontier_comparison": "Comparar continuidade após troca de consumidor; compactação não preserva automaticamente capacidade de planejamento.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S002",
+    "A-S006"
+  ]
+}

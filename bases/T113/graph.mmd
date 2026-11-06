@@ -1,0 +1,6 @@
+flowchart TD
+    T113["T113 FlashAttention Tiling"]
+    T114["T114 Online Softmax"]
+    T113 -. "requires: proposta" .-> T114
+    T107["T107 Roofline Analysis"]
+    T113 -. "complements: proposta" .-> T107

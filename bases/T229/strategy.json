@@ -1,0 +1,117 @@
+{
+  "id": "T229",
+  "novelty": "A v3 distinguia destinos de aplicação e merge em três vias. A nova camada escolhe o delta mínimo verificável, controla escopo de patch e separa representação compacta de garantia semântica.",
+  "deep_layers": [
+    {
+      "name": "Delta com identidade de base",
+      "detail": "O patch deve declarar a revisão contra a qual foi produzido e os caminhos permitidos. Antes de aplicar, verifique base ou prepare uma adaptação explícita. Uma alteração pequena pode atingir o lugar errado em código repetido; contexto e hash ajudam a detectar divergência, mas não substituem revisão do resultado efetivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S034",
+        "V3C-S037"
+      ]
+    },
+    {
+      "name": "Escopo do candidato",
+      "detail": "Avalie adições, remoções, modos, renomes e arquivos gerados. Um modelo que deveria mudar uma função pode incluir alterações em configuração ou testes para facilitar o aceite. Defina limites por tarefa e rejeite mudanças não justificadas, sem confundir pequeno número de linhas com baixo impacto: uma linha pode alterar todo o sistema.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009",
+        "V3C-S034"
+      ]
+    },
+    {
+      "name": "Formato conforme capacidade",
+      "detail": "Diffs reduzem saída quando o arquivo é grande, mas exigem localizar corretamente os trechos. Em arquivos curtos ou modelos com baixa aderência ao formato, emissão completa pode ser mais confiável. Compare taxa de aplicação e correção final, incluindo reparo de formato, em vez de escolher diff apenas pela economia nominal de tokens.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S008",
+        "V3C-S042"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Edição local com 3–7B",
+      "scenario": "A mudança afeta poucas linhas num arquivo conhecido.",
+      "strategy": "Forneça trecho suficiente e base identificada, peça delta limitado e aplique em cópia isolada. Inspecione diff efetivo e execute teste focado. Se o patch não encaixar, releia a base atual antes de pedir reparo; não aumentar tolerância automaticamente até encaixar em qualquer lugar.",
+      "small_model_role": "3–7B produz delta curto; 8–14B diagnostica conflito de contexto.",
+      "acceptance": "Proposta: menos tokens por patch aceito, sem aumento de aplicação no alvo errado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S008",
+        "V3C-S034"
+      ]
+    },
+    {
+      "name": "Campanha de limpeza",
+      "scenario": "Muitas alterações repetitivas precisam ser auditáveis.",
+      "strategy": "Use ferramenta estrutural quando a transformação for formalizável e apresente diff para revisão. Agrupe candidatos por regra e execute validações de propriedade. A saída compacta permite revisar intenção, mas a preservação de comportamento continua dependendo dos testes e dos limites da regra.",
+      "small_model_role": "8–14B classifica exceções; 15–30B integra conflitos entre mudanças.",
+      "acceptance": "Proposta: rastrear cada delta à regra e rejeitar alterações fora do objetivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009",
+        "V4C-S006"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Patches pequenos com delimitadores estáveis e baixa ambiguidade de localização.",
+    "8_14b": "Edições em alguns arquivos, usando diagnóstico de conflito e contexto adicional.",
+    "15_30b": "Planejamento de mudanças maiores cuja execução continua dividida em deltas verificáveis.",
+    "training_or_runtime_requirements": "Aplicador com contrato conhecido, árvore isolada, base identificada e revisão do diff realmente aplicado.",
+    "do_not_use_when": "Não aceitar patch porque aplicou sem erro nem interpretar tamanho pequeno como prova de segurança semântica."
+  },
+  "connections": [
+    {
+      "target_id": "T233",
+      "relation": "complements",
+      "how": "Validar base, aplicação e comportamento antes de promover o candidato.",
+      "interface": "Patch, árvore base e resultados de verificação.",
+      "condition": "Testes correspondem aos bytes que serão entregues.",
+      "acceptance": "Rejeitar patch aplicado em revisão diferente sem nova validação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S037",
+        "V4C-S009"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T232",
+      "relation": "alternative",
+      "how": "Para padrões estruturais, gerar transformação AST e revisar o delta produzido em vez de pedir texto livre.",
+      "interface": "Regra, símbolos elegíveis e patch derivado.",
+      "condition": "Parser e resolução cobrem a linguagem e o caso.",
+      "acceptance": "Alteração preserva propriedades e falha explicitamente em ambiguidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009",
+        "V4C-S006"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Mudanças de fim de linha podem inflar o diff e esconder alteração real.",
+    "Não reformatar arquivos inteiros sem necessidade da tarefa, dificultando revisão e integração."
+  ],
+  "frontier_comparison": "Compare formatos com o mesmo modelo e tarefas antes de comparar portes. A redução de saída ajuda modelos pequenos, mas um patch sintaticamente correto ainda pode implementar a intenção errada.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q005",
+      "V4C-Q006",
+      "V4C-Q023"
+    ],
+    "scope_note": "Aider documenta representações; AutoClean e Getafix mostram reparos e transformações, sem provar que toda mudança usa exatamente este protocolo de patch."
+  },
+  "source_ids": [
+    "V3C-S034",
+    "V3C-S037",
+    "V4C-S009",
+    "V2A-S008",
+    "V3C-S042",
+    "V4C-S006"
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "id": "T164",
+  "novelty": "A v3 diferenciava data HTTP, segundos e relógio monotônico. A camada nova trata Retry-After como sinal compartilhado, combinando destino, tenant e prazo sem transformar uma resposta em bloqueio global indevido.",
+  "deep_layers": [
+    {
+      "name": "Escopo do sinal",
+      "detail": "Associe a orientação à entidade que a resposta realmente limita: recurso, conta, endpoint ou serviço. Um único cliente que esgotou sua quota não deve congelar clientes independentes. Quando o escopo for desconhecido, use política conservadora documentada e telemetria; não deduza independência apenas por URLs diferentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S028",
+        "V3C-S009"
+      ]
+    },
+    {
+      "name": "Agenda persistente",
+      "detail": "Converta a espera em elegibilidade futura e retire o worker da execução ativa quando a pausa for longa. Persistir a próxima data evita perder a orientação após reinício. Ao retomar, reconcilie relógio e deadline; um timer antigo não prova que ainda existe orçamento ou que o resultado continua necessário.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S028",
+        "V3C-S023"
+      ]
+    },
+    {
+      "name": "Retomada sem avalanche",
+      "detail": "O horário anunciado pode coincidir para muitos consumidores. Depois da elegibilidade mínima, uma política local de admissão distribui quem realmente envia primeiro. Acrescente atraso somente quando permitido pelo prazo; não subtraia jitter de uma espera mínima válida para antecipar chamadas que o servidor pediu para adiar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S012",
+        "C-S028"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Coleta de documentos com quota",
+      "scenario": "Um lote de agentes recebe limitação do mesmo serviço.",
+      "strategy": "Agrupe o sinal por escopo confirmado, suspenda novas tentativas daquele grupo e preserve outros serviços. No retorno, libere créditos gradualmente e verifique se respostas novas atualizam a orientação. Não carregue o texto inteiro do erro repetidamente no contexto dos agentes.",
+      "small_model_role": "3–7B interpreta a classificação já normalizada; runtime administra calendário.",
+      "acceptance": "Proposta: nenhuma chamada prematura e manutenção de progresso nos destinos independentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S028",
+        "V3C-S009"
+      ]
+    },
+    {
+      "name": "Missão com prazo curto",
+      "scenario": "A espera anunciada supera o tempo restante.",
+      "strategy": "Calcule se ainda cabe executar e validar o resultado. Se não couber, produza falha de prazo ou opção compatível, sem esperar inutilmente. Uma alternativa exige quota independente e preservação das capacidades; o sinal não justifica encaminhar dados a qualquer destino disponível.",
+      "small_model_role": "8–14B explica a limitação; 15–30B reformula o plano dentro do escopo autorizado.",
+      "acceptance": "Proposta: resposta final antes do deadline e ausência de tentativas sem chance de conclusão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S009",
+        "V3C-S001"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Consumir estrutura normalizada com atraso e escopo, sem fazer aritmética crítica em texto.",
+    "8_14b": "Associar operações pendentes ao destino correto e detectar pedido que ficou obsoleto.",
+    "15_30b": "Planejar alternativas com qualidade e prazo explícitos quando a espera inviabiliza a missão.",
+    "training_or_runtime_requirements": "Parser conforme HTTP, relógio confiável, limites para cabeçalhos inválidos e persistência de timers longos.",
+    "do_not_use_when": "Não assumir que Retry-After garante disponibilidade no horário indicado ou torna idempotente uma operação."
+  },
+  "connections": [
+    {
+      "target_id": "T163",
+      "relation": "complements",
+      "how": "A próxima tentativa respeita o sinal do servidor junto de backoff e orçamento local.",
+      "interface": "Elegibilidade mínima, classe da falha e tempo restante.",
+      "condition": "Todas as restrições devem permitir nova tentativa.",
+      "acceptance": "Datas passadas, valores inválidos e atraso excessivo têm resultados definidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S028",
+        "V2A-S012"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T175",
+      "relation": "complements",
+      "how": "A política decide esperar ou usar destino compatível com quota independente.",
+      "interface": "Escopo da quota e matriz de alternativas.",
+      "condition": "Troca preserva contrato e não mascara o consumo anterior.",
+      "acceptance": "Evitar circuito entre endpoints que compartilham a mesma limitação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S009"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não converter espera longa em bloqueio de thread ou vaga de GPU.",
+    "Um cabeçalho novo pode alterar a agenda; versionar o sinal para não usar timers obsoletos."
+  ],
+  "frontier_comparison": "Compare sistemas por conclusão dentro do prazo e requisições desperdiçadas. Nenhum porte de modelo consegue eliminar a espera contratual apenas gerando um plano diferente.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q001",
+      "V4C-Q004"
+    ],
+    "scope_note": "Fontes HTTP e AWS apoiam semântica e retries; não foi encontrado relato específico de dez bigtechs operando esta composição exata em agentes."
+  },
+  "source_ids": [
+    "C-S028",
+    "V3C-S009",
+    "V3C-S023",
+    "V2A-S012",
+    "V3C-S001"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "entry_id": "T221",
+  "edges": [
+    {
+      "edge_id": "E-T221-01",
+      "from": "T221",
+      "to": "T208",
+      "relation": "complements",
+      "how": "O planejador publica objetivo e critérios; o executor recebe lembrete apropriado à fase atual.",
+      "interface": "Versão da meta, restrições e próxima decisão.",
+      "condition": "O lembrete não substitui pré-condições da etapa.",
+      "acceptance": "Mudança autorizada invalida lembretes anteriores.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S015"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T221-02",
+      "from": "T221",
+      "to": "T223",
+      "relation": "complements",
+      "how": "A checagem compara o candidato com os requisitos vigentes lembrados, citando evidência concreta.",
+      "interface": "Critérios aplicáveis e artefato candidato.",
+      "condition": "Regras não aplicáveis são distinguidas de cumpridas.",
+      "acceptance": "Detectar um resultado elegante que não responde à pergunta atual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S032"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

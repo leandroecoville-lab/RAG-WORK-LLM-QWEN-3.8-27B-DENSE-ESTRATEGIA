@@ -1,0 +1,31 @@
+{
+  "id": "T129",
+  "name": "MTP — Multi-Token Prediction",
+  "canonical_name": "MTP — Multi-Token Prediction",
+  "canonical_id": "T129",
+  "aliases": [
+    "multi-token prediction",
+    "predição de múltiplos tokens"
+  ],
+  "category": "inferencia",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T079",
+    "T128",
+    "T132"
+  ],
+  "source_ids": [
+    "B-S039",
+    "V4B-S011",
+    "V4D-S008",
+    "V4D-S014",
+    "V4D-S015"
+  ],
+  "namespace": "T129",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T129",
+  "chunk_count": 9
+}

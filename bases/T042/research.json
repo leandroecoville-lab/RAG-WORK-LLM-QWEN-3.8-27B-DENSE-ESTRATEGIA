@@ -1,0 +1,52 @@
+{
+  "id": "T042",
+  "technical_details": "A contagem útil é da requisição efetivamente serializada, incluindo definições de ferramentas e conteúdo multimodal conforme o backend. Um estimador local pode errar de forma sistemática; medir seu resíduo permite escolher margem operacional baseada nos casos observados. O orçamento também precisa suportar resultados de ferramentas ainda não recebidos, evitando preencher toda a janela antes de uma etapa que necessariamente acrescentará conteúdo.",
+  "boundary_condition": "A garantia de caber deixa de valer se o servidor expande referências, muda o template ou aplica uma contagem que o estimador não representa.",
+  "implementation_contract": {
+    "inputs": "Requisição montada, estimador compatível, reserva de geração e necessidades previstas da próxima etapa.",
+    "outputs": "Plano de seleção e estimativa total com margem e componentes de custo identificados.",
+    "state": "Versão do tokenizer, template, erros observados e política para conteúdo obrigatório excedente.",
+    "invariant": "A reserva não é consumida implicitamente por schemas ou resultados adicionados depois da contagem."
+  },
+  "tradeoffs": [
+    "Contagem precisa melhora utilização e pode exigir chamada adicional ao provedor.",
+    "Margens conservadoras reduzem rejeições e também diminuem evidência disponível; devem ser ajustadas por classe de requisição."
+  ],
+  "failure_test": "Teste proposto: adicionar uma ferramenta cujo schema é grande após selecionar mensagens. A validação final deve recomputar o total e reduzir apenas conteúdo opcional ou dividir a tarefa.",
+  "evaluation_plan": "Avaliação proposta: comparar contagem aproximada e compatível com o backend; medir erro absoluto, rejeições e evidência descartada. Estratificar por idioma, ferramentas e anexos; escolher margem conforme custo observado de falha e perda de contexto.",
+  "comparisons": [
+    {
+      "entry_id": "T041",
+      "relation": "alternative",
+      "reason": "Um orçamento em tokens controla tamanho real de forma mais direta que quantidade de mensagens."
+    },
+    {
+      "entry_id": "T045",
+      "relation": "complements",
+      "reason": "Adiar definições de ferramentas pode reduzir tokens ativos, sem eliminar o catálogo necessário ao serviço."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação de memória curta do LangChain apresenta truncamento por orçamento de tokens e política de seleção de fronteiras.",
+    "source_ids": [
+      "A-S003"
+    ],
+    "support": "direct",
+    "caveat": "A fonte não estabelece a contagem exata de todos os provedores nem uma margem universal."
+  },
+  "advanced_qa": [
+    {
+      "question": "A janela nominal é um orçamento suficiente?",
+      "answer": "Não. Verifique as regras do modelo e servidor para entrada, saída e expansões. O valor anunciado não descreve sozinho o envelope operacional."
+    },
+    {
+      "question": "Devo reduzir sempre a mensagem mais longa?",
+      "answer": "Não. Ela pode conter a única evidência necessária. O custo em tokens precisa ser combinado com obrigatoriedade e relações entre unidades."
+    }
+  ],
+  "source_ids": [
+    "A-S003",
+    "A-S038"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

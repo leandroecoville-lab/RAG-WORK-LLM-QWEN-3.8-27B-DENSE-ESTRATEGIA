@@ -1,0 +1,109 @@
+{
+  "id": "T170",
+  "novelty": "A v3 distinguia compatibilidade estrutural e semântica. A expansão considera coexistência de consumidores, migração de resultados pendentes e o efeito das descrições sobre a escolha de ferramentas pela LLM.",
+  "deep_layers": [
+    {
+      "name": "Versão de comportamento",
+      "detail": "Versione unidades, defaults, efeitos e interpretação de erros junto do schema. Adicionar um campo opcional pode alterar o padrão escolhido pelo modelo mesmo quando o parser continua aceitando a resposta. A compatibilidade deve ser decidida em trajetórias de uso, incluindo quem produz argumentos e quem interpreta o retorno.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013",
+        "V3C-S013"
+      ]
+    },
+    {
+      "name": "Matriz produtor-consumidor",
+      "detail": "Mantenha fixtures de pedidos e respostas para as combinações que coexistirão. Um adaptador não deve inventar valor necessário ausente na versão antiga; precisa rejeitar ou representar ausência explicitamente. Mudanças de enum merecem casos de desconhecido, porque um consumidor pode receber valor novo antes de ter sido atualizado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S013",
+        "V4C-S013"
+      ]
+    },
+    {
+      "name": "Execuções em trânsito",
+      "detail": "Uma tarefa longa pode ter escolhido ferramenta com descritor antigo e invocá-la depois de um deploy. Revalide a revisão no momento de agir e registre qualquer tradução aplicada. Se a mudança altera intenção, volte ao planejamento; preservar o formato JSON não demonstra que o efeito desejado continua o mesmo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013",
+        "V3C-S018"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "API com mudança de unidade",
+      "scenario": "Um serviço passa a devolver duração em outra escala.",
+      "strategy": "Publique contrato explícito com unidade, migre consumidores e use exemplos numéricos de domínio para detectar conversões erradas. Proíba que a LLM deduza unidade pela ordem de grandeza. Durante convivência, anexe versão e normalize num adaptador determinístico antes de apresentar dados ao agente.",
+      "small_model_role": "3–7B interpreta dados já normalizados; 8–14B auxilia inventário de consumidores.",
+      "acceptance": "Proposta: matriz de versões sem conversões silenciosas ou valores plausíveis porém incorretos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S013"
+      ]
+    },
+    {
+      "name": "Catálogo de ferramentas renovado",
+      "scenario": "Uma descrição nova melhora descoberta, mas muda seleção de chamadas.",
+      "strategy": "Compare consultas representativas contra os dois catálogos, incluindo nomes parecidos e operações com efeitos diferentes. Faça publicação gradual por tarefas elegíveis; conserve histórico do catálogo usado em cada execução para investigar regressão.",
+      "small_model_role": "15–30B propõe descrição; seletores pequenos são avaliados com o mesmo conjunto de consultas.",
+      "acceptance": "Proposta: nenhum aumento de escolha de ferramenta semanticamente incompatível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Contratos estáveis e enums curtos, com rejeição explícita de valores desconhecidos.",
+    "8_14b": "Adaptar representações após validação e classificar mudanças por consumidor afetado.",
+    "15_30b": "Analisar migrações entre serviços, sem substituir testes de compatibilidade.",
+    "training_or_runtime_requirements": "Catálogo versionado, fixtures independentes e tradução determinística de campos com significado preciso.",
+    "do_not_use_when": "Não tratar semver, nome do endpoint ou sucesso de parsing como prova completa de compatibilidade."
+  },
+  "connections": [
+    {
+      "target_id": "T158",
+      "relation": "complements",
+      "how": "Proposta: vincular revisão semântica do contrato à publicação de descritores, estendendo a governança de configuração do gateway.",
+      "interface": "Revisão do contrato, dono e configuração habilitada.",
+      "condition": "A versão executável corresponde à definição recuperada.",
+      "acceptance": "Rollback de catálogo preserva explicação das execuções antigas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T141",
+      "relation": "complements",
+      "how": "Validar estrutura antes de aplicar testes semânticos e regras de domínio.",
+      "interface": "Schema, instância e versão declarada.",
+      "condition": "Campos desconhecidos e obrigatórios têm política explícita.",
+      "acceptance": "Casos válidos sintaticamente mas errados em unidade são rejeitados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S013"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Um adaptador pode produzir saída válida e semanticamente falsa; testar significado.",
+    "Não alterar um contrato já referenciado sem preservar identidade histórica."
+  ],
+  "frontier_comparison": "Compare modelos na migração de exemplos delimitados, com o mesmo adaptador e validação. Robustez do contrato não deve ser atribuída a raciocínio superior do agente.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q009",
+      "V4C-Q013"
+    ],
+    "scope_note": "Uber documenta controle de configuração e registro; a matriz completa de compatibilidade e suas bandas de modelos são propostas de engenharia."
+  },
+  "source_ids": [
+    "V4C-S013",
+    "V3C-S013",
+    "V3C-S018"
+  ]
+}

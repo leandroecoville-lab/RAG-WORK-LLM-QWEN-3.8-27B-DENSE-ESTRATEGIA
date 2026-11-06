@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Fine-tuning faz o modelo aprender automaticamente em cada conversa?",
+    "answer": "Não. É necessário um processo explícito de coleta, treinamento e avaliação."
+  },
+  {
+    "question": "RAG e fine-tuning competem?",
+    "answer": "Podem se complementar: fatos recuperáveis e habilidades treinadas têm funções distintas."
+  },
+  {
+    "question": "Mais tokens no dataset significam mais supervisão?",
+    "answer": "Não quando muitos estão mascarados; registre tokens efetivamente usados na loss e sua distribuição."
+  },
+  {
+    "question": "Treinar documentos substitui RAG atualizado?",
+    "answer": "Não. Pesos não oferecem automaticamente proveniência, remoção de fatos ou atualização imediata de conteúdo variável."
+  }
+]

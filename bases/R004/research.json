@@ -1,0 +1,51 @@
+{
+  "id": "R004",
+  "technical_details": "Generative Agents calcula recuperação combinando recência de acesso, importância atribuída e relevância à situação. Reflexões entram novamente no mesmo fluxo e podem sustentar reflexões posteriores por referências. Isso cria uma estrutura de derivação útil à coerência, mas também um caminho de autorreforço: uma interpretação incorreta pode reaparecer com aparência de conhecimento consolidado se não for distinguida da observação original.",
+  "boundary_condition": "Plausibilidade de comportamento numa simulação não mede a verdade de afirmações, capacidade causal ou confiabilidade de decisões num ambiente empresarial.",
+  "implementation_contract": {
+    "inputs": "Observações da simulação, situação atual, memórias anteriores e regras de planejamento.",
+    "outputs": "Ações planejadas, reflexões derivadas e memórias selecionadas para a próxima inferência.",
+    "state": "Fluxo de memória, tempos de criação e acesso, escores e referências das reflexões.",
+    "invariant": "Reflexão mantém status de inferência e não é confundida com nova observação independente do ambiente."
+  },
+  "tradeoffs": [
+    "Reflexões permitem abstrair padrões e podem amplificar interpretações erradas.",
+    "Recência por acesso mantém continuidade e pode privilegiar lembranças já usadas, reduzindo exposição a evidência esquecida."
+  ],
+  "failure_test": "Teste proposto: introduzir uma observação ambígua que gere inferência incorreta e depois apresentar correção direta. O sistema deve revisar derivados relevantes, sem contar reflexões repetidas como várias confirmações.",
+  "evaluation_plan": "Avaliação proposta: comparar arquitetura completa com remoção de reflexão ou variação do recuperador. Medir coerência, fidelidade às observações, propagação de correções e custo; mantenha plausibilidade e precisão factual como dimensões separadas.",
+  "comparisons": [
+    {
+      "entry_id": "T049",
+      "relation": "complements",
+      "reason": "O fluxo registra experiências situadas que podem ser recuperadas para orientar comportamento."
+    },
+    {
+      "entry_id": "T058",
+      "relation": "complements",
+      "reason": "Reflexões sintetizam memórias em abstrações, exigindo rastreabilidade das derivações."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O artigo combina relevância, recência e importância na recuperação e armazena reflexões com referências às memórias utilizadas.",
+    "source_ids": [
+      "A-S008"
+    ],
+    "support": "direct",
+    "caveat": "Pesos e limiares ilustrados pertencem à simulação estudada; não são recomendações universais para memória operacional."
+  },
+  "advanced_qa": [
+    {
+      "question": "A importância usada no artigo é confiança factual?",
+      "answer": "Não. Ela destaca a relevância percebida do evento para o agente simulado. Um item importante ainda pode conter interpretação equivocada."
+    },
+    {
+      "question": "Refletir sobre reflexões aumenta evidência disponível?",
+      "answer": "Aumenta organização e abstração, não o número de observações independentes. A cadeia deve continuar apontando às origens que realmente sustentam a conclusão."
+    }
+  ],
+  "source_ids": [
+    "A-S008"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

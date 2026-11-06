@@ -1,0 +1,111 @@
+{
+  "id": "T104",
+  "novelty": "A v3 discutiu afinidade e justiça. O aprofundamento acrescenta seleção entre recuperar, transferir e recomputar, considerando que o prefixo pode estar disponível em diferentes níveis de memória.",
+  "deep_layers": [
+    {
+      "name": "Hit com custo",
+      "detail": "Na hierarquia HiCache, localizar um prefixo não encerra a decisão: restaurá-lo consome banda e pode disputar recursos com decodes ativos. Proponha comparar tempo estimado de restauração com prefill restante. Um prefixo maior em armazenamento pode ser menos vantajoso que um prefixo menor já residente; registre qual alternativa foi escolhida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031"
+      ]
+    },
+    {
+      "name": "Afinidade sob mudança de carga",
+      "detail": "Preferência por uma família de prompts precisa reagir à taxa de chegada. Popularidade passada pode manter estados sem utilidade e concentrar fila num worker. Use janelas de observação e idade do pedido, mas evite recalcular prioridades a cada token: essa oscilação pode tornar a política mais cara que a economia.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031"
+      ]
+    },
+    {
+      "name": "Estado adicional",
+      "detail": "Modelos híbridos e mecanismos especulativos podem demandar estados além de KV convencional. Não restaure apenas a parcela que o índice conhece. A interface de cache deve enumerar componentes necessários, suas versões e o ponto até o qual representam o mesmo prefixo; caso contrário, trate o reúso como incompleto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Sessões com retomada",
+      "scenario": "Um usuário retorna a uma conversa longa depois de minutos.",
+      "strategy": "Conserve metadados leves, coloque tensores em camada mais barata e restaure sob prazo. Se a previsão de transferência falhar, recalcule a partir de tokens confirmados sem misturar duas histórias.",
+      "small_model_role": "Modelos 8–14B podem sustentar diálogos especializados com sessões intermitentes.",
+      "acceptance": "Medir tempo de retomada e consistência após expiração, sem contar restore como hit instantâneo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031"
+      ]
+    },
+    {
+      "name": "Lote com prefixos heterogêneos",
+      "scenario": "Consultas analíticas compartilham documentos diferentes.",
+      "strategy": "Agrupe por afinidade apenas até o limite de espera e intercale famílias pouco populares. Limite quanto cada família pode manter residente.",
+      "small_model_role": "Um 15–30B recebe contexto específico sem exigir que todos os documentos permaneçam na GPU.",
+      "acceptance": "Avaliar espera por família e total de trabalho concluído dentro do prazo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em prompts curtos, compare contra recomputação simples antes de adicionar armazenamento remoto.",
+    "8_14b": "Busque equilíbrio entre sessões ativas e prefixos adormecidos; ambos competem pela mesma capacidade.",
+    "15_30b": "Considere custo de restaurar várias camadas ou partições, e não apenas tamanho agregado.",
+    "training_or_runtime_requirements": "Runtime e formato de estado devem suportar o modelo escolhido; HiCache documentado não prova qualquer arquitetura.",
+    "do_not_use_when": "Não aplicar afinidade rígida quando uma família mantém fila permanentemente congestionada."
+  },
+  "connections": [
+    {
+      "target_id": "T083",
+      "relation": "complements",
+      "how": "A política consulta a hierarquia para escolher o melhor prefixo realmente materializável.",
+      "interface": "Residência, previsão de transferência e orçamento de banda.",
+      "condition": "Estimativas atualizadas e limite para restauração.",
+      "acceptance": "Induzir saturação da camada inferior e observar mudança para recomputação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T121",
+      "relation": "requires",
+      "how": "O agendamento deve considerar custo e justiça além do tamanho do prefixo.",
+      "interface": "Idade original, deadline e afinidade.",
+      "condition": "Prioridade não reiniciada após reencaminhamento.",
+      "acceptance": "Verificar ausência de starvation em mistura de prompts.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Separar taxa de localização lógica da taxa de reutilização efetivamente consumida.",
+    "Restaurar metadados e tensores como uma unidade consistente ou invalidar o candidato."
+  ],
+  "frontier_comparison": "A comparação com um serviço de fronteira deve usar retomadas e concorrência equivalentes. Radix Attention otimiza execução; não compensa uma janela treinada insuficiente nem assegura compreensão de documentos extensos.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q022"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S011",
+    "V4B-S031"
+  ]
+}

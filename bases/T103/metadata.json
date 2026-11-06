@@ -1,0 +1,33 @@
+{
+  "id": "T103",
+  "name": "Prefix Tree / Trie de prefixos",
+  "canonical_name": "Prefix Tree / Trie de Prefixos",
+  "canonical_id": "T103",
+  "aliases": [
+    "prefix trie",
+    "árvore de prefixos",
+    "Prefix Tree / Trie de Prefixos"
+  ],
+  "category": "inferencia",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T082",
+    "T104",
+    "T120"
+  ],
+  "source_ids": [
+    "B-S022",
+    "V3B-S011",
+    "V4B-S031",
+    "V4D-S017",
+    "V4D-S018",
+    "V4D-S019"
+  ],
+  "namespace": "T103",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T103",
+  "chunk_count": 9
+}

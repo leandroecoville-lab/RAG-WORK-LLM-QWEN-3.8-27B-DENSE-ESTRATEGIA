@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Contextos isolados tornam agentes independentes de verdade?",
+    "answer": "Não. Podem compartilhar modelo, fontes e erros correlacionados."
+  },
+  {
+    "question": "Mais agentes sempre ajudam?",
+    "answer": "Não. Coordenação e consumo podem superar o ganho em tarefas pouco separáveis."
+  },
+  {
+    "question": "Dois agentes com contextos separados podem sobrescrever o mesmo arquivo?",
+    "answer": "Sim, se compartilham a árvore de trabalho; é necessário separar responsabilidade ou controlar versões."
+  },
+  {
+    "question": "Como avaliar se delegar economizou?",
+    "answer": "Contabilizar coordenação, resumos, merge e correções no custo total do objetivo, além do trabalho de cada agente."
+  }
+]

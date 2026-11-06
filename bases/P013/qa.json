@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Todas as camadas devem fazer três tentativas?",
+    "answer": "Não. Tentativas aninhadas multiplicam chamadas; a política deve definir uma responsabilidade e orçamento comuns."
+  },
+  {
+    "question": "Um circuito fechado indica que o negócio funcionou?",
+    "answer": "Não. Indica que chamadas estão permitidas pela política; conclusão da operação ainda depende de sua resposta e confirmação verificável."
+  },
+  {
+    "question": "O que caracteriza uma tempestade de retries?",
+    "answer": "Tentativas em múltiplas camadas ampliam a carga justamente quando a dependência falha."
+  },
+  {
+    "question": "Reiniciar é sempre recuperação?",
+    "answer": "Não. Sem corrigir a condição ou retomar com estado consistente, o restart pode repetir o mesmo erro."
+  }
+]

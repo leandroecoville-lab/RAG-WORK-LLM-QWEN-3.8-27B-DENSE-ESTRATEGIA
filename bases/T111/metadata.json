@@ -1,0 +1,27 @@
+{
+  "id": "T111",
+  "name": "Dynamic Sparse Attention",
+  "canonical_name": "Dynamic Sparse Attention",
+  "canonical_id": "T111",
+  "aliases": [
+    "atenção esparsa dinâmica"
+  ],
+  "category": "inferencia",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T096",
+    "T097",
+    "T112"
+  ],
+  "source_ids": [
+    "B-S025",
+    "V4B-S017"
+  ],
+  "namespace": "T111",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T111",
+  "chunk_count": 9
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Backoff garante ausência de duplicação?",
+    "answer": "Não. Ele controla o tempo entre tentativas. Evitar efeitos duplicados depende de identidade, idempotência ou consulta confiável ao resultado."
+  },
+  {
+    "question": "O número máximo de tentativas basta?",
+    "answer": "Não. Um deadline também impede que tarefas permaneçam elegíveis quando o resultado já perdeu utilidade ou excedeu o orçamento permitido."
+  },
+  {
+    "question": "Persistir apenas o payload é suficiente?",
+    "answer": "Não. Sem intenção, tentativa, prazo e elegibilidade, a recuperação pode repetir cedo demais ou reiniciar o orçamento."
+  },
+  {
+    "question": "O fim da lease prova que o worker parou?",
+    "answer": "Não. Pode haver pausa ou isolamento de rede; resultados tardios precisam ser avaliados pela geração e pela identidade da operação."
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "É uma forma de resumo?",
+    "answer": "Não no sentido textual: aqui a compressão pretendida ocorre por aprendizado paramétrico."
+  },
+  {
+    "question": "O professor precisa ser outra LLM?",
+    "answer": "Não. O mesmo modelo com contexto adicional pode gerar supervisão."
+  },
+  {
+    "question": "Destilar é guardar uma cópia recuperável do contexto?",
+    "answer": "Não. O efeito fica distribuído nos parâmetros e não oferece consulta literal ou proveniência automática."
+  },
+  {
+    "question": "Quando manter RAG junto?",
+    "answer": "Quando fatos precisam de atualização, auditoria ou acesso condicionado à consulta, além do comportamento estável aprendido."
+  }
+]

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lai:rag:source:v1",
+  "title": "LAI RAG Source",
+  "type": "object",
+  "properties": {
+    "source_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "publisher": {
+      "type": "string"
+    },
+    "source_type": {
+      "type": "string"
+    },
+    "checked_on": {
+      "type": "string"
+    },
+    "supports": {
+      "type": "string"
+    },
+    "limitations": {
+      "type": "string"
+    },
+    "web_ref": {
+      "type": "string"
+    },
+    "verification": {
+      "type": "string",
+      "enum": [
+        "opened",
+        "search_result",
+        "unverified"
+      ]
+    },
+    "published_on": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "source_id",
+    "title",
+    "url",
+    "publisher",
+    "source_type",
+    "verification",
+    "checked_on",
+    "supports",
+    "limitations"
+  ],
+  "additionalProperties": true
+}

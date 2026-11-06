@@ -1,0 +1,53 @@
+{
+  "id": "P012",
+  "technical_details": "Verification Engine / Verification Controller propõe produzir decisões acompanhadas de evidência, distinguindo aprovado, reprovado e não verificável. Cada verificação deve identificar o artefato exato, idealmente por hash, o critério, a versão do verificador e o resultado. Validar um objeto JSON só cobre as regras expressas pelo schema; não comprova execução de uma ação nem verdade factual. Verificadores independentes precisam reduzir dependência de premissas compartilhadas, não apenas repetir a mesma pergunta.",
+  "boundary_condition": "Um verificador pode ter falsos positivos e negativos. Quando depende de modelo, sua concordância com o gerador não é prova suficiente de correção.",
+  "implementation_contract": {
+    "inputs": "Artefato identificado, critérios de aceite, evidências autorizadas, ambiente de teste e orçamento de verificação.",
+    "outputs": "Decisão por critério, evidência reproduzível, lacunas e motivos de insuficiência ou rejeição.",
+    "state": "Versões de verificadores, resultados anteriores por hash e dependências usadas para avaliar o artefato.",
+    "invariant": "Qualquer alteração no artefato ou critério invalida a aprovação que se referia à versão anterior."
+  },
+  "tradeoffs": [
+    "Verificação por execução pode ser forte para propriedades testáveis, mas depende da cobertura e do ambiente.",
+    "Múltiplos verificadores aumentam custo; correlação entre seus erros pode limitar o ganho real."
+  ],
+  "failure_test": "Proposta: validar um artefato, modificá-lo e tentar reutilizar o laudo antigo; exigir invalidação. Incluir saída com schema válido e regra de negócio violada para confirmar separação das verificações.",
+  "evaluation_plan": "Comparar verificação estrutural, testes executáveis e avaliação semântica em conjunto com defeitos conhecidos. Medir falsos aceites, rejeições indevidas, custo e cobertura por critério. Reservar casos que não orientaram a construção dos verificadores.",
+  "comparisons": [
+    {
+      "entry_id": "T197",
+      "relation": "complements",
+      "reason": "JSON Schema cobre uma parte estrutural do contrato."
+    },
+    {
+      "entry_id": "T200",
+      "relation": "complements",
+      "reason": "Verificação independente pode reduzir erros compartilhados quando usa evidência distinta."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "JSON Schema define validação estrutural; estudos de avaliação de código mostram a necessidade de testes discriminativos.",
+    "source_ids": [
+      "C-S049",
+      "C-S048"
+    ],
+    "support": "related",
+    "caveat": "A composição de verificadores e o vínculo por hash são propostas de engenharia, não resultados experimentais apresentados aqui."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma aprovação pode ser reutilizada após editar o arquivo?",
+      "answer": "Somente se o contrato provar equivalência relevante; por padrão a mudança exige nova verificação."
+    },
+    {
+      "question": "Como representar falta de evidência?",
+      "answer": "Use estado não verificável e liste a lacuna, sem converter ausência de falha em aprovação."
+    }
+  ],
+  "source_ids": [
+    "C-S049",
+    "C-S048"
+  ],
+  "research_note": "Contrato, teste de falha e plano de avaliação são recomendações editoriais; nenhuma implantação ou medição deste mecanismo foi executada neste pacote."
+}

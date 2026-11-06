@@ -1,0 +1,33 @@
+{
+  "id": "T062",
+  "name": "Hierarchical Memory",
+  "canonical_name": "Hierarchical Memory",
+  "canonical_id": "T062",
+  "aliases": [
+    "memória hierárquica"
+  ],
+  "category": "memoria",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T047",
+    "T048",
+    "T050",
+    "T063",
+    "T071"
+  ],
+  "source_ids": [
+    "A-S023",
+    "A-S009",
+    "V3A-S039",
+    "V4D-S017",
+    "V4D-S018",
+    "V4D-S019"
+  ],
+  "namespace": "T062",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T062",
+  "chunk_count": 9
+}

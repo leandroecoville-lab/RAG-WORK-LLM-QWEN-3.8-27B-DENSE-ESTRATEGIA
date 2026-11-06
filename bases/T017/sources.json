@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "A-S037",
+    "title": "Scaling Long-Horizon LLM Agent via Context-Folding",
+    "url": "https://context-folding.github.io/",
+    "publisher": "Autores / ByteDance Seed, CMU, Stanford",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Subtrajetórias branch/return e treinamento FoldGRPO para gestão do contexto.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn26view0"
+  },
+  {
+    "source_id": "V3A-S020",
+    "title": "Scaling Long-Horizon Agent via Context Folding",
+    "url": "https://proceedings.mlr.press/v306/sun26x.html",
+    "publisher": "Autores / PMLR",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Branch de subtrajetória, retorno resumido e treinamento FoldGRPO; não equivalente a simples resumo externo.",
+    "limitations": "Fonte primária consultada. Sem reprodução de resultados, instalação ou verificação de servidor; detalhes operacionais propostos são inferências editoriais.",
+    "web_ref": "turn105view4"
+  },
+  {
+    "source_id": "C-S030",
+    "title": "How we built our multi-agent research system",
+    "url": "https://www.anthropic.com/research/multi-agent-research-system",
+    "publisher": "Anthropic",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Arquitetura coordenador-especialistas e contextos separados pode paralelizar pesquisa e usar artefatos de transferência.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn34view9"
+  }
+]

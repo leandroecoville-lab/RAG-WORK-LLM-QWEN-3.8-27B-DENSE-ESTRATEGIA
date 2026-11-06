@@ -1,0 +1,36 @@
+{
+  "id": "T225",
+  "name": "Watchdog com Auto-Restart",
+  "canonical_name": "Watchdog com Auto-Restart",
+  "canonical_id": "T225",
+  "aliases": [
+    "watchdog",
+    "supervisor com reinício"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T226",
+    "T227",
+    "T243",
+    "T060"
+  ],
+  "source_ids": [
+    "V2A-S010",
+    "V2A-S011",
+    "V2A-S024",
+    "V3C-S028",
+    "V3C-S040",
+    "V2A-S012",
+    "V4C-S023",
+    "C-S026",
+    "V4C-S001"
+  ],
+  "namespace": "T225",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T225",
+  "chunk_count": 9
+}

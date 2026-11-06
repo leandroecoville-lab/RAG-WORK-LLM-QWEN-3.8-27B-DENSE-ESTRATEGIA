@@ -1,0 +1,34 @@
+{
+  "id": "T139",
+  "name": "Parallel Tool Calls",
+  "canonical_name": "Parallel Tool Calls",
+  "canonical_id": "T139",
+  "aliases": [
+    "chamadas concorrentes de ferramentas"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T147",
+    "T160",
+    "T162"
+  ],
+  "source_ids": [
+    "C-S006",
+    "V3C-S007",
+    "V3C-S005",
+    "V4C-S003",
+    "V4C-S015",
+    "V3A-S030",
+    "C-S030",
+    "V4C-S002",
+    "V3C-S009"
+  ],
+  "namespace": "T139",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T139",
+  "chunk_count": 9
+}

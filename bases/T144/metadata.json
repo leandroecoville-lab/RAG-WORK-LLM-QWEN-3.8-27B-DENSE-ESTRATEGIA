@@ -1,0 +1,33 @@
+{
+  "id": "T144",
+  "name": "ReAct Pattern",
+  "canonical_name": "ReAct Pattern",
+  "canonical_id": "T144",
+  "aliases": [
+    "reasoning and acting"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T143",
+    "T190",
+    "T199"
+  ],
+  "source_ids": [
+    "C-S011",
+    "V3C-S002",
+    "V3C-S012",
+    "C-S030",
+    "V4C-S015",
+    "V3C-S032",
+    "V4C-S009",
+    "V4C-S013"
+  ],
+  "namespace": "T144",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T144",
+  "chunk_count": 9
+}

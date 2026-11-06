@@ -1,0 +1,112 @@
+{
+  "id": "T063",
+  "novelty": "A v3 explicou limites da analogia com sistema operacional. Aqui contexto virtual usa prefetch condicionado e detecção de thrashing semântico.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Antecipe carregamento de dependências explícitas do próximo passo, como schema ou definição citada. Prefetch especulativo amplo pode ocupar a janela antes de saber o que será útil.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Detecte alternância repetida entre blocos que se expulsam mutuamente. A solução pode ser decompor a tarefa ou fixar conjunto mínimo, não apenas aumentar frequência de recuperação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare carga sob demanda e prefetch limitado. Meça acertos de antecipação, conteúdo carregado sem uso e ciclos de recarga; falta semântica continua inferida, não falha de endereço exata. Unidade de avaliação: sequência de cargas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Execução de procedimento",
+      "scenario": "Próxima etapa tem dependências conhecidas.",
+      "strategy": "Carregar schema e parâmetros antes da etapa, mantendo evidência da atual até confirmar conclusão. Liberar conjunto anterior pela transição.",
+      "small_model_role": "3–7B executa etapa delimitada.",
+      "acceptance": "Não expulsar condição necessária antes de concluir ação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010"
+      ]
+    },
+    {
+      "name": "Comparação de arquivos grandes",
+      "scenario": "Leitor alterna continuamente entre versões.",
+      "strategy": "Construir quadro de diferenças com referências e carregar pares correspondentes, evitando reler arquivos completos.",
+      "small_model_role": "8–14B compara pares.",
+      "acceptance": "Reduzir recargas sem perder diferenças relevantes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Consumidor de blocos pequenos selecionados por controlador explícito.",
+    "8_14b": "Gerente de comparação local com prefetch de dependências.",
+    "15_30b": "Planejador que reorganiza tarefa quando conjunto de trabalho não cabe.",
+    "training_or_runtime_requirements": "Mapa de residência, referências versionadas e telemetria de cargas; nenhum aumento físico da janela é presumido.",
+    "do_not_use_when": "Conjunto indispensável excede orçamento e não pode ser dividido sem perder relações essenciais."
+  },
+  "connections": [
+    {
+      "target_id": "T078",
+      "relation": "requires",
+      "how": "Representar falta específica que precisa de carga.",
+      "interface": "Requisito ausente, referência e decisão bloqueada.",
+      "condition": "Falta ter critério de resolução verificável.",
+      "acceptance": "Carregar trecho parecido e manter falta aberta se não responder.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T218",
+      "relation": "complements",
+      "how": "Detectar thrashing de blocos sem avanço.",
+      "interface": "Histórico de cargas, descarte e progresso.",
+      "condition": "Repetição ser medida por identidade e revisão.",
+      "acceptance": "Forçar alternância A/B e exigir replanejamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir paginação de texto com KV cache do modelo.",
+    "Não prometer memória ilimitada disponível em uma chamada."
+  ],
+  "frontier_comparison": "Comparar tarefas maiores que a janela com igual custo total; paginação útil depende da política de seleção.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S009",
+    "A-S010"
+  ]
+}

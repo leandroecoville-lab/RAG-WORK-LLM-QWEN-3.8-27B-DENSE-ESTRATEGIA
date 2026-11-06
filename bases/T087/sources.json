@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "B-S047",
+    "title": "Batchers — NVIDIA Triton Inference Server",
+    "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/batcher.html",
+    "publisher": "NVIDIA",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Batching dinâmico agrupa requisições compatíveis e permite controlar espera e filas.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn27view5"
+  },
+  {
+    "source_id": "V4B-S008",
+    "title": "How Amazon scaled Rufus by building multi-node inference using AWS Trainium chips and vLLM",
+    "url": "https://aws.amazon.com/blogs/machine-learning/how-amazon-scaled-rufus-by-building-multi-node-inference-using-aws-trainium-chips-and-vllm/",
+    "publisher": "Amazon / AWS",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-08-13",
+    "supports": "Rufus lançado com inferência multinó, Neuron, vLLM e continuous batching; relato de tráfego Prime Day.",
+    "limitations": "Arquitetura específica Trainium; não transpor escala, latência nem suporte de GPU a outro ambiente.",
+    "web_ref": "turn218view0"
+  },
+  {
+    "source_id": "V4B-S014",
+    "title": "Continuous batching — Transformers",
+    "url": "https://huggingface.co/docs/transformers/en/continuous_batching",
+    "publisher": "Hugging Face",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "ContinuousBatchingManager, generate_batch, configuração separada de geração e scheduling, cache paginado e recursos de serving.",
+    "limitations": "Documentação dinâmica; exemplos não são implantação de cliente. Verificar versão instalada e suporte arquitetural.",
+    "web_ref": "turn221view0"
+  },
+  {
+    "source_id": "V4B-S005",
+    "title": "The training infrastructure behind AI-Powered Job Search: 8X faster multi-teacher distillation",
+    "url": "https://www.linkedin.com/blog/engineering/infrastructure/the-training-infrastructure-behind-ai-powered-job-search-eight-x-faster-multi-teacher-distillation",
+    "publisher": "LinkedIn Engineering",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-08-06",
+    "supports": "Pipeline real de ranking com múltiplos professores e aluno 0,6B; cache e streaming de sinais de treino.",
+    "limitations": "Aluno publicado está abaixo de 3B; transferência à faixa solicitada é proposta, não reprodução da implantação.",
+    "web_ref": "turn215view0"
+  },
+  {
+    "source_id": "V4B-S010",
+    "title": "How we leveraged vLLM to power our GenAI applications at LinkedIn",
+    "url": "https://www.linkedin.com/blog/engineering/ai/how-we-leveraged-vllm-to-power-our-genai-applications",
+    "publisher": "LinkedIn Engineering",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-08-26",
+    "supports": "Adoção interna de vLLM para workloads online e offline; evolução do scheduler e interface de serving.",
+    "limitations": "Versões históricas do relato não são recomendação atual; casos citados não equivalem a implantações independentes de cada recurso.",
+    "web_ref": "turn219view1"
+  }
+]

@@ -1,0 +1,46 @@
+{
+  "id": "T119",
+  "technical_details": "Com p estágios equilibrados e m microbatches, um forward idealizado ocupa m+p−1 intervalos; a fração útil do pipeline é m/(m+p−1), ignorando comunicação e diferenças de custo. Essa conta explica bolhas de preenchimento e drenagem, mas não prevê diretamente decode autoregressivo: uma sequência depende do token anterior antes de iniciar o próximo. Concorrência entre sequências pode preencher parte dessas lacunas.",
+  "boundary_condition": "Um estágio mais lento determina a cadência; dividir camadas igualmente não garante equilíbrio de tempo ou memória.",
+  "implementation_contract": {
+    "inputs": "Camadas por estágio, microbatches ou requisições e protocolo de transporte.",
+    "outputs": "Saídas ordenadas com identidade de sequência preservada entre estágios.",
+    "state": "Filas intermediárias, créditos de capacidade e identificadores de passo.",
+    "invariant": "Um estágio nunca combina ativações de tokens ou requisições diferentes."
+  },
+  "tradeoffs": [
+    "Mais estágios reduzem pesos locais e aumentam travessias e bolhas.",
+    "Mais trabalho em andamento melhora utilização e pode elevar latência e memória de ativações."
+  ],
+  "failure_test": "Teste proposto: atrasar o estágio central e cancelar uma sequência enquanto outras atravessam o pipeline. Esperar backpressure e remoção consistente, sem reaproveitar ativação cancelada em outro pedido.",
+  "evaluation_plan": "Plano proposto: comparar partições com os mesmos pesos e carga. Medir duração por estágio, bolhas, tráfego e latência por sequência; aceitar balanceamento pela cadência efetiva e objetivos de serviço, não pelo número igual de camadas.",
+  "comparisons": [
+    {
+      "entry_id": "T118",
+      "relation": "complements",
+      "reason": "Tensor parallelism pode reduzir o custo de um estágio sem eliminar dependências entre estágios."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "GPipe particiona redes em sequências de camadas e divide lotes para preencher o pipeline.",
+    "source_ids": [
+      "B-S031"
+    ],
+    "support": "direct",
+    "caveat": "A fórmula apresentada é um modelo idealizado de forward; treinamento e decode exigem cronogramas próprios."
+  },
+  "advanced_qa": [
+    {
+      "question": "Mais microbatches sempre ajudam?",
+      "answer": "Não. Menores operações podem perder eficiência e mais itens pendentes ampliam filas e temporários."
+    },
+    {
+      "question": "Pipeline acelera uma única sequência curta?",
+      "answer": "Pode apenas permitir que o modelo caiba; a travessia serial e a dependência autoregressiva continuam presentes."
+    }
+  ],
+  "source_ids": [
+    "B-S031"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

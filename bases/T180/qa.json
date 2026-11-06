@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Prompt Distillation dispensa treino?",
+    "answer": "Na acepção usada aqui, não; o comportamento é incorporado aos parâmetros ou adaptadores."
+  },
+  {
+    "question": "É independente de Context Distillation?",
+    "answer": "É uma forma próxima e mais específica; mantemos o nome para recuperação."
+  },
+  {
+    "question": "Pode apagar o prompt original depois?",
+    "answer": "Preserve-o como especificação versionada; ele ajuda a auditar e reconstruir o comportamento pretendido."
+  },
+  {
+    "question": "Um rótulo válido basta para avaliar?",
+    "answer": "Não. Valide também sua correspondência com a entrada e as regras, especialmente exceções raras não cobertas pela geração sintética."
+  }
+]

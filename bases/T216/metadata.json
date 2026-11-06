@@ -1,0 +1,33 @@
+{
+  "id": "T216",
+  "name": "Repo Map / mapa do repositório",
+  "canonical_name": "Repo Map / mapa do repositório",
+  "canonical_id": "T216",
+  "aliases": [
+    "repository map",
+    "repo map"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T238",
+    "T222",
+    "T213"
+  ],
+  "source_ids": [
+    "V2A-S007",
+    "A-S006",
+    "V3C-S033",
+    "V3C-S027",
+    "V4C-S026",
+    "V4C-S029",
+    "V4C-S030"
+  ],
+  "namespace": "T216",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T216",
+  "chunk_count": 9
+}

@@ -1,0 +1,46 @@
+{
+  "id": "T125",
+  "technical_details": "O objetivo de reconstrução por camada pondera erro de pesos pelas entradas observadas: minimizar uma expressão como ||WX−WqX||² difere de minimizar apenas ||W−Wq||². A aproximação de curvatura depende de XXᵀ, portanto correlações da calibração influenciam compensações. O procedimento atualiza pesos ainda não quantizados para absorver parte do erro introduzido, exigindo estabilidade numérica na representação da informação de segunda ordem.",
+  "boundary_condition": "Calibração estreita pode preservar bem suas ativações e representar mal entradas com correlações diferentes.",
+  "implementation_contract": {
+    "inputs": "Pesos da camada, ativações de calibração, agrupamento e estabilização numérica.",
+    "outputs": "Pesos quantizados com metadados e erro de reconstrução registrado.",
+    "state": "Informação aproximada de curvatura, ordem de processamento e compensações pendentes.",
+    "invariant": "A compensação usa estatísticas correspondentes à camada e às entradas realmente calibradas."
+  },
+  "tradeoffs": [
+    "Calibração mais diversa custa coleta e pode melhorar cobertura.",
+    "Aproximação de segunda ordem adiciona trabalho offline e não remove erro de quantização."
+  ],
+  "failure_test": "Teste proposto: calibrar em entradas quase colineares e avaliar um domínio com outras correlações. Verificar estabilidade da fatoração, erro de reconstrução e degradação fora da amostra.",
+  "evaluation_plan": "Plano proposto: comparar arredondamento simples e GPTQ com mesmo orçamento de bits, grupos e dados. Separar erro local, qualidade final e custo de conversão; aceitar pelo conjunto de validação independente e pelo kernel de destino.",
+  "comparisons": [
+    {
+      "entry_id": "T126",
+      "relation": "alternative",
+      "reason": "AWQ orienta reescala por ativações; GPTQ usa compensações ligadas à reconstrução de camada."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O GPTQ utiliza informação aproximada de segunda ordem e atualiza pesos restantes durante a quantização.",
+    "source_ids": [
+      "V3B-S013"
+    ],
+    "support": "direct",
+    "caveat": "A qualidade de reconstrução em uma camada não garante desempenho de toda tarefa ou de domínios não vistos."
+  },
+  "advanced_qa": [
+    {
+      "question": "Por que magnitude do peso não basta?",
+      "answer": "O efeito do erro depende de quais entradas o multiplicam e de suas correlações."
+    },
+    {
+      "question": "PTQ significa nenhum dado?",
+      "answer": "Não. O método pode dispensar treino por gradientes do modelo completo e ainda exigir ativações representativas para calibração."
+    }
+  ],
+  "source_ids": [
+    "V3B-S013"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

@@ -1,0 +1,39 @@
+{
+  "id": "R021",
+  "name": "OpenAI Codex",
+  "canonical_name": "OpenAI Codex — agente e CLI de programação",
+  "canonical_id": "R021",
+  "aliases": [
+    "Codex CLI",
+    "codex exec"
+  ],
+  "category": "referencias",
+  "kind": "project",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "T211",
+    "T217",
+    "T218",
+    "T234",
+    "T235",
+    "T236",
+    "T239",
+    "R027"
+  ],
+  "source_ids": [
+    "V2B-S013",
+    "V2B-S014",
+    "V2B-S015",
+    "V3C-S039",
+    "V2A-S005",
+    "V2A-S017",
+    "V4C-S029",
+    "V4C-S030"
+  ],
+  "namespace": "R021",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R021",
+  "chunk_count": 9
+}

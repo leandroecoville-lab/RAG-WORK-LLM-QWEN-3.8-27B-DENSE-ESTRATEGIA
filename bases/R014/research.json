@@ -1,0 +1,54 @@
+{
+  "id": "R014",
+  "technical_details": "Esta entrada é um alias de R013, não um segundo produto. Seu foco complementar é a colaboração: worktrees podem isolar alterações de memória, mas integrar texto não valida conclusões. Também é necessário distinguir o context repository individual do agente de um shared memory repository organizacional. Ambos usam Git, porém propriedade, leitores e sincronização são contratos diferentes; compartilhar o mesmo formato não torna o escopo automaticamente comum.",
+  "boundary_condition": "Colaboração perde coerência quando agentes leem commits diferentes sem registrar a revisão, ou quando uma integração textual limpa combina conclusões incompatíveis.",
+  "implementation_contract": {
+    "inputs": "Repositório e proprietário, commits de base, mudanças de agentes e política de integração.",
+    "outputs": "Revisão integrada com conflitos resolvidos explicitamente e registro de publicação aos consumidores.",
+    "state": "Worktrees, branches, commits lidos, revisões pendentes e associação de agentes aos repositórios.",
+    "invariant": "Alias R014 resolve para R013; colaboração não aumenta a contagem de mecanismos independentes de memória."
+  },
+  "tradeoffs": [
+    "Worktrees permitem pesquisa paralela e tornam necessárias integração e revisão de dependências.",
+    "Repositórios compartilhados reduzem duplicação de conhecimento e ampliam o impacto de uma memória incorreta publicada."
+  ],
+  "failure_test": "Teste proposto: dois agentes alteram regras em arquivos distintos, produzindo incompatibilidade sem conflito de linhas. A revisão deve detectar o problema antes de publicar uma versão recomendada aos demais agentes.",
+  "evaluation_plan": "Avaliação proposta: comparar manutenção por um agente e trabalho paralelo com integração em tarefas equivalentes. Medir conflitos semânticos, tempo até convergência, revisões efetivamente lidas e correções propagadas; controlar a quantidade total de trabalho para não confundir paralelismo com qualidade.",
+  "comparisons": [
+    {
+      "entry_id": "R013",
+      "relation": "complements",
+      "reason": "É a mesma referência canônica; esta ficha acrescenta o recorte de colaboração e publicação."
+    },
+    {
+      "entry_id": "T076",
+      "relation": "specializes",
+      "reason": "O uso de Git para memória concretiza versionamento e sincronização, mantendo necessidade de revisão factual."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "MemFS é chamado context repository; Letta distingue memória individual e repositórios compartilhados e documenta commit, push e pull entre checkouts.",
+    "source_ids": [
+      "A-S010",
+      "V3A-S046"
+    ],
+    "support": "direct",
+    "caveat": "A equivalência de nomes não torna repositórios individuais e organizacionais idênticos em propriedade ou acesso."
+  },
+  "advanced_qa": [
+    {
+      "question": "Por que manter duas fichas se são aliases?",
+      "answer": "Para preservar o inventário solicitado e permitir busca pelos dois nomes. A identidade canônica impede contabilizar duas tecnologias onde há uma equivalência nominal."
+    },
+    {
+      "question": "Merge sem conflito significa memória correta?",
+      "answer": "Não. Git verifica compatibilidade textual de mudanças. Regras contraditórias, escopo errado ou fontes frágeis precisam de validação do conteúdo."
+    }
+  ],
+  "source_ids": [
+    "A-S010",
+    "V2B-S003",
+    "V3A-S046"
+  ],
+  "research_note": "Alias preservado: R014 → R013 conforme declaração explícita de MemFS na documentação Letta. O anúncio Context Repositories foi reaberto e a página atual Shared memory foi consultada para separar colaboração em memória individual de repositórios organizacionais. Nenhum produto independente foi inventado; contratos e testes são propostas."
+}

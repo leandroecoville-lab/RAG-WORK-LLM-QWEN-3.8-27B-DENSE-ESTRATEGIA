@@ -1,0 +1,119 @@
+{
+  "id": "T179",
+  "novelty": "A v3 estabeleceu o limite da informação privilegiada. Esta camada trata o que escolher para internalizar, como testar redução de dependência do contexto e como atualizar um comportamento que ficou nos pesos.",
+  "deep_layers": [
+    {
+      "name": "Decompor o contexto",
+      "detail": "Classifique o material do professor em procedimento estável, exemplos, fatos mutáveis e dados de acesso restrito. Internalizar procedimentos pode reduzir instruções; fatos dinâmicos continuam precisando de entrada ou recuperação. Dados que variam por usuário não devem desaparecer sem um identificador autorizado que preserve a distinção entre casos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S033",
+        "V4B-S012",
+        "V4B-S013"
+      ]
+    },
+    {
+      "name": "Teste de informação removida",
+      "detail": "Compare professor com contexto, aluno sem contexto e aluno com um resumo mínimo. Use casos em que a informação omitida muda a resposta para revelar limites de identificabilidade. Se o aluno acerta apenas por correlações do dataset, uma troca de entidade ou de versão pode expor a dependência indevida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S033",
+        "V4B-S012",
+        "V4B-S013"
+      ]
+    },
+    {
+      "name": "Atualização e revogação",
+      "detail": "Depois de incorporar um comportamento nos pesos, editar o documento de origem não atualiza o modelo. Versione a relação entre contexto e checkpoint e defina quando retreinar ou voltar a fornecer instruções explícitas. Remover um arquivo do RAG também não demonstra remoção de informação internalizada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S033",
+        "V4B-S012",
+        "V4B-S013"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Procedimento estável de classificação",
+      "scenario": "Um manual extenso define categorias duráveis.",
+      "strategy": "Produza exemplos contrastivos, incluindo fronteiras e exceções, e ajuste um aluno que recebe somente os campos variáveis. Mantenha a versão do manual no manifest e no teste.",
+      "small_model_role": "Um 3–7B pode classificar casos estreitos sem reler o manual inteiro a cada pedido.",
+      "acceptance": "Avaliar casos novos e mudanças controladas de regra, com abstenção quando faltam dados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S033",
+        "V4B-S012",
+        "V4B-S013"
+      ]
+    },
+    {
+      "name": "Rotina de ferramentas",
+      "scenario": "O professor usa contexto com convenções de uma API.",
+      "strategy": "Destile padrões estáveis, mas mantenha schema, versão e credenciais fora dos pesos. Teste execução contra a API atual e simule mudanças de contrato.",
+      "small_model_role": "Um 8–14B pode aprender procedimento sem memorizar valores de sessão.",
+      "acceptance": "Medir sucesso executável e capacidade de reconhecer contrato incompatível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S033",
+        "V4B-S012",
+        "V4B-S013"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Priorize regras simples e estáveis, com exceções claramente testáveis.",
+    "8_14b": "Procedimentos mais extensos podem ser estudados, mas não presuma retenção completa de um manual.",
+    "15_30b": "Compare com recuperação do contexto: maior capacidade pode tornar desnecessário internalizar fatos difíceis de atualizar.",
+    "training_or_runtime_requirements": "Exige treinamento e pares que removam do aluno exatamente a informação ausente no uso real.",
+    "do_not_use_when": "Não destilar variáveis secretas ou futuras como se o aluno pudesse inferi-las sem um canal de entrada."
+  },
+  "connections": [
+    {
+      "target_id": "T180",
+      "relation": "complements",
+      "how": "A decomposição do contexto identifica quais instruções do prompt podem virar comportamento.",
+      "interface": "Regras estáveis e parâmetros que permanecem explícitos.",
+      "condition": "Sem ambiguidade entre regimes de tarefa.",
+      "acceptance": "Testar mudanças de parâmetro que devem alterar a saída.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S033",
+        "V4B-S012",
+        "V4B-S013"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T009",
+      "relation": "complements",
+      "how": "Recuperação mantém fatos variáveis fora dos pesos enquanto procedimentos são aprendidos.",
+      "interface": "Documento vigente e versão do comportamento.",
+      "condition": "Aluno distingue evidência atual de padrão aprendido.",
+      "acceptance": "Testar contradições entre memória paramétrica e documento atualizado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S033",
+        "V4B-S012",
+        "V4B-S013"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Avaliar por origem e tempo, evitando que exemplos quase iguais ocultem falta de informação.",
+    "Não afirmar que redução de prompt preservou todos os detalhes sem testar as exceções."
+  ],
+  "frontier_comparison": "Compare com fronteira recebendo a mesma informação disponível na implantação. O aluno pode executar uma rotina específica com menos contexto, mas não reproduzir informação privada que foi retirada.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q009"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "C-S033",
+    "V4B-S012",
+    "V4B-S013"
+  ]
+}

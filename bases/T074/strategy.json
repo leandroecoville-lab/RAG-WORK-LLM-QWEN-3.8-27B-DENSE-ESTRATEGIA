@@ -1,0 +1,112 @@
+{
+  "id": "T074",
+  "novelty": "A v3 distinguiu expiração e capacidade. Aqui evicção usa custo de reconstituição e dependências ativas para reduzir trabalho repetido.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Calcule custo de recarga, reconstrução e verificação. Dois blocos do mesmo tamanho podem ter custos muito diferentes se um vem de arquivo local e outro de investigação longa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S039",
+        "V4A-S010"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Evite evictar fragmentos de um conjunto necessário em breve. A unidade de substituição pode ser grupo de dependências, desde que a reserva não torne toda memória permanentemente fixa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S039",
+        "V4A-S010"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare LRU, LFU e política por custo de reconstrução. Meça latência total, trabalho repetido e falhas de disponibilidade após evicção; hit rate isolado pode favorecer objetos baratos. Unidade de avaliação: decisão de evicção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S039",
+        "V4A-S010"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Agente local com pouca memória",
+      "scenario": "Contexto alterna entre módulos.",
+      "strategy": "Manter contratos caros de reconstruir e remover logs reabríveis; liberar grupo quando a fase encerrar.",
+      "small_model_role": "3–7B classifica recuperabilidade.",
+      "acceptance": "Nenhum bloco removido pode ser a única cópia de uma decisão ativa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S039",
+        "V4A-S010"
+      ]
+    },
+    {
+      "name": "Cache de artefatos derivados",
+      "scenario": "Resumos grandes competem com extrações pequenas.",
+      "strategy": "Priorizar valor por custo evitado e demanda prevista, usando tamanho e tempo de reconstrução medidos.",
+      "small_model_role": "8–14B sugere categorias; código aplica política.",
+      "acceptance": "Reduzir custo de recarga sem aumentar respostas obsoletas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S039",
+        "V4A-S010"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Classificador de tipo e disponibilidade de origem.",
+    "8_14b": "Avaliador de dependências de curto prazo por fase.",
+    "15_30b": "Planejador de reorganização quando conjunto ativo exceder capacidade.",
+    "training_or_runtime_requirements": "Medição de custo, referência à cópia canônica e condição de liberação de conteúdo fixado.",
+    "do_not_use_when": "Evicção é usada para apagar histórico ou a origem não pode ser recuperada confiavelmente."
+  },
+  "connections": [
+    {
+      "target_id": "T039",
+      "relation": "requires",
+      "how": "Receber prioridade e custo de reconstrução.",
+      "interface": "Objeto, valor, dependências e condição de fixação.",
+      "condition": "Estimativas atualizadas pela fase atual.",
+      "acceptance": "Comparar recargas após mudança de objetivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S039",
+        "V4A-S010"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T063",
+      "relation": "complements",
+      "how": "Acionar recarga identificada quando bloco voltar a ser necessário.",
+      "interface": "Referência, revisão e status de residência.",
+      "condition": "Evicção não invalidar identidade do conteúdo.",
+      "acceptance": "Evictar e recarregar verificando mesmos bytes e escopo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S039",
+        "V4A-S010"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não apagar metadados de versão necessários à reconciliação.",
+    "Não tratar conteúdo pouco acessado como dispensável sem verificar obrigações."
+  ],
+  "frontier_comparison": "Comparar custo útil e continuidade sob memória limitada; evicção sofisticada pode ser pior que LRU em carga simples.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q004",
+      "V4A-Q007"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S039",
+    "V4A-S010"
+  ]
+}

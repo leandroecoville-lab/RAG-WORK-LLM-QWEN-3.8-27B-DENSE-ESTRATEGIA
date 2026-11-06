@@ -1,0 +1,114 @@
+{
+  "id": "T234",
+  "novelty": "A v3 tratava descoberta e escopo de arquivos por módulo. A expansão organiza memória como conhecimento versionado com dono, separa instruções de fatos e cria uma rotina de manutenção vinculada a mudanças reais.",
+  "deep_layers": [
+    {
+      "name": "Mapa e conhecimento local",
+      "detail": "Mantenha entrada curta com estrutura do projeto e caminhos para detalhes. Regras específicas vivem perto do módulo correspondente, enquanto decisões transversais ficam numa fonte comum. A descoberta precisa ser testada no diretório e runtime usados; colocar um arquivo no repositório não garante que todos os agentes o lerão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S039"
+      ]
+    },
+    {
+      "name": "Fatos, instruções e decisões",
+      "detail": "Identifique natureza e validade de cada registro. Comando de teste é instrução operacional; resultado de teste é evidência de uma revisão; escolha arquitetural é decisão com contexto. Misturá-los faz uma evidência antiga parecer autorização atual ou um plano parecer execução. Referencie artefatos para evitar duplicar detalhes que envelhecem.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V4C-S026"
+      ]
+    },
+    {
+      "name": "Manutenção por mudança",
+      "detail": "Quando código ou contrato muda, atualize a memória afetada ou marque-a para revisão. Um agente pode propor correções, mas o critério é aderência ao estado real do projeto. Checagens de links e estrutura ajudam, enquanto a validade semântica pode exigir testes ou revisão. Não acumule toda sessão como instrução permanente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Projeto operado por modelos locais",
+      "scenario": "Agentes retomam trabalho em módulos sem carregar conversas anteriores.",
+      "strategy": "Forneça mapa geral curto, contrato do módulo, comandos válidos e decisões que limitam a alteração. Na retomada, confirme revisão e leia arquivos atuais. Ao concluir, proponha só fatos estáveis ou lições verificadas para memória, deixando logs transitórios em artefatos próprios.",
+      "small_model_role": "3–7B executa unidade; 8–14B atualiza registros locais; 15–30B revisa decisões transversais.",
+      "acceptance": "Proposta: menor custo de orientação e ausência de instruções incompatíveis com o código atual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030"
+      ]
+    },
+    {
+      "name": "Onboarding técnico",
+      "scenario": "Uma pessoa ou agente precisa entender a origem de um comportamento.",
+      "strategy": "Recupere decisão relevante e caminho de código, distinguindo justificativa histórica de implementação vigente. Se houver conflito, registre a divergência e investigue; não escolher o arquivo de memória apenas porque foi escrito com linguagem confiante.",
+      "small_model_role": "8–14B localiza documentação; 15–30B integra contexto e código.",
+      "acceptance": "Proposta: respostas com referências válidas e identificação de memória obsoleta em casos inseridos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S026",
+        "V4C-S029"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Instruções curtas por módulo e exemplos de comandos reduzem carga de descoberta.",
+    "8_14b": "Atualizações localizadas e checagem de referências, com validação contra o repositório.",
+    "15_30b": "Síntese de decisões entre módulos, sem transformar toda reflexão em regra global.",
+    "training_or_runtime_requirements": "Versionamento, escopo, dono da informação e testes de descoberta no runtime escolhido.",
+    "do_not_use_when": "Não armazenar segredos em arquivo de instrução nem considerar presença no disco como prova de carregamento."
+  },
+  "connections": [
+    {
+      "target_id": "T155",
+      "relation": "complements",
+      "how": "Harness Codex substitui instrução monolítica por mapa curto com referências para conhecimento do projeto.",
+      "interface": "Entrada de instruções, índice e documentos versionados.",
+      "condition": "Fontes detalhadas estão acessíveis quando necessárias.",
+      "acceptance": "Agente recupera regra relevante sem receber todo o manual.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S030"
+      ],
+      "case_ids": [
+        "V4C-C029"
+      ]
+    },
+    {
+      "target_id": "T213",
+      "relation": "complements",
+      "how": "Planos versionados e conhecimento do repositório acompanham decomposição em blocos verificáveis no harness.",
+      "interface": "Plano, decisão e contrato de módulo.",
+      "condition": "Mudanças de requisito atualizam tarefas afetadas.",
+      "acceptance": "Micro-missão não executa orientação antiga sem revalidar.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S030"
+      ],
+      "case_ids": [
+        "V4C-C029"
+      ]
+    }
+  ],
+  "failure_controls": [
+    "Memória corretamente carregada pode continuar semanticamente errada.",
+    "Não converter sucesso alegado em fato persistente sem evidência de execução."
+  ],
+  "frontier_comparison": "Compare continuidade e orientação por arquivo com histórico bruto sob o mesmo conjunto de tarefas. Memória externa pode aumentar utilidade de 3–30B sem alterar pesos ou garantir retenção factual interna.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q024",
+      "V4C-Q027"
+    ],
+    "scope_note": "Anthropic e OpenAI relatam uso interno de arquivos e conhecimento no repositório. O desenho por módulo e critérios de manutenção precisam ser validados no projeto do usuário."
+  },
+  "source_ids": [
+    "V4C-S030",
+    "V3C-S039",
+    "V4C-S026",
+    "V4C-S029"
+  ]
+}

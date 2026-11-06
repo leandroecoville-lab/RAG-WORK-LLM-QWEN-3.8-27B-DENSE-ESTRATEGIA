@@ -1,0 +1,120 @@
+{
+  "id": "T120",
+  "novelty": "A v3 distinguiu localização prevista de disponibilidade confirmada. A nova análise introduz custo de remanejamento, incerteza da observação e efeitos de afinidade na distribuição de capacidade.",
+  "deep_layers": [
+    {
+      "name": "Índice com atraso",
+      "detail": "Eventos de cache chegam depois de mudanças no worker. Guarde idade da observação e confiança da estimativa, em vez de tratar todos os hits anunciados como equivalentes. Uma confirmação negativa deve atualizar o índice e permitir prefill normal; repetir roteamento indefinidamente pode consumir o prazo sem executar trabalho.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S032",
+        "V4B-S004",
+        "V4B-S002"
+      ]
+    },
+    {
+      "name": "Afinidade versus fila",
+      "detail": "Um worker com prefixo pode ser pior destino que outro livre que precisa recomputar. Compare economia de prefill com espera, transferências e reservas já comprometidas. Session affinity, como documentada no Workers AI, é um mecanismo útil, mas não equivale por si só a otimização global baseada em inventário de KV.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S032",
+        "V4B-S004",
+        "V4B-S002"
+      ]
+    },
+    {
+      "name": "Evitar oscilação",
+      "detail": "Mover pedidos entre destinos conforme pequenas mudanças de fila pode gerar tráfego e decisões contraditórias. Aplique histerese e limite de reatribuições, mantendo uma decisão estável após reserva confirmada. Se houver migração de estado, o destino só assume propriedade depois de verificar completude e identidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S032",
+        "V4B-S004",
+        "V4B-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Chat com prefixo recorrente",
+      "scenario": "Sessões compartilham um contexto estável e alternam atividade.",
+      "strategy": "Use afinidade como sinal, junto com custo atual e prazo. Quando a réplica estiver congestionada, permita execução fria em outra sem alterar o conteúdo da conversa.",
+      "small_model_role": "Um 3–7B pode ser replicado para isolar picos e manter uma política simples.",
+      "acceptance": "Comparar ganho de reúso com aumento de espera por sessão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S032",
+        "V4B-S004",
+        "V4B-S002"
+      ]
+    },
+    {
+      "name": "Roteamento de documentos longos",
+      "scenario": "Pedidos próximos reutilizam documentos distintos.",
+      "strategy": "Indexe prefixos por versão e domínio, estime prefill evitado e limite concentração por família. Não mova contexto sensível para um destino inelegível.",
+      "small_model_role": "Um 15–30B pode economizar prefill caro quando o padrão de reúso é estável.",
+      "acceptance": "Medir hits consumidos, transferências inúteis e cumprimento de prazos por família.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S032",
+        "V4B-S004",
+        "V4B-S002"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Recomputar prompts curtos pode custar menos que manter um roteador sofisticado.",
+    "8_14b": "Use observações por réplica e meça a divergência entre custo previsto e real.",
+    "15_30b": "Quando um pedido ocupa vários dispositivos, destino significa um grupo saudável, não apenas uma GPU.",
+    "training_or_runtime_requirements": "Runtime precisa publicar disponibilidade e carga; arquitetura do modelo permanece a mesma.",
+    "do_not_use_when": "Não usar afinidade de sessão como autorização de acesso nem semântica aproximada para reutilizar KV."
+  },
+  "connections": [
+    {
+      "target_id": "T082",
+      "relation": "feeds",
+      "how": "O roteamento aumenta chance de consumir prefixos já calculados.",
+      "interface": "Identidade completa do prefixo e comprimento.",
+      "condition": "Hit confirmado no destino.",
+      "acceptance": "Atribuir economia apenas a tokens realmente reutilizados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S032",
+        "V4B-S004",
+        "V4B-S002"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T102",
+      "relation": "complements",
+      "how": "Em serviço desagregado, escolha de destino inclui quem fará prefill e quem manterá decode.",
+      "interface": "Plano de transferência e reserva em ambos os pools.",
+      "condition": "Custo do transporte entra na decisão.",
+      "acceptance": "Testar saturação de rede e fallback sem duplicar pedido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S032",
+        "V4B-S004",
+        "V4B-S002"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Limitar retries de roteamento e preservar idade original do pedido.",
+    "Separar misses de índice obsoleto, evicção e incompatibilidade de configuração."
+  ],
+  "frontier_comparison": "A comparação deve avaliar o serviço distribuído completo. Roteamento de cache pode baixar custo, mas não altera a informação ou capacidade disponíveis ao modelo.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q002",
+      "V4B-Q022"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S032",
+    "V4B-S004",
+    "V4B-S002"
+  ]
+}

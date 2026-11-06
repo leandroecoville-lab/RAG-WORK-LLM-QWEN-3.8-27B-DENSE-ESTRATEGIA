@@ -1,0 +1,120 @@
+{
+  "id": "T047",
+  "novelty": "A v3 separou escrita, busca e leitura. Aqui memória de longo prazo é avaliada por utilidade futura e custo de correções.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Admitir memória deve responder qual tarefa futura ela pode melhorar. Informação disponível externamente e barata de buscar pode merecer referência, enquanto preferência explícita recorrente pode merecer registro curto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S017",
+        "V4A-S026",
+        "V3A-S002"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Meça benefício depois de várias sessões e correções. Uma memória útil inicialmente pode tornar-se prejudicial quando contexto muda; atualização e esquecimento precisam de evidência observável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S017",
+        "V4A-S026",
+        "V3A-S002"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare lembrar tudo, admissão seletiva e nenhuma memória entre sessões. Meça respostas melhoradas, fatos antigos indevidamente aplicados e custo de manutenção, não somente volume armazenado. Unidade de avaliação: sequência de sessões.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S017",
+        "V4A-S026",
+        "V3A-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Preferências de projeto",
+      "scenario": "Usuário define convenções que evoluem.",
+      "strategy": "Guardar preferência com escopo e data, solicitar ou observar correção explícita e aplicar apenas em tarefas elegíveis.",
+      "small_model_role": "3–7B extrai declaração explícita.",
+      "acceptance": "Não transformar preferência de um projeto em regra global.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S017",
+        "V4A-S026",
+        "V3A-S002"
+      ]
+    },
+    {
+      "name": "Aprendizado operacional",
+      "scenario": "Incidentes revelam procedimento útil.",
+      "strategy": "Registrar resultado e condições do incidente, testar transferência em novo caso antes de promover regra reutilizável.",
+      "small_model_role": "8–14B recupera; 15–30B compara contexto.",
+      "acceptance": "Nova recomendação deve citar condições compartilhadas e diferenças relevantes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S017",
+        "V4A-S026",
+        "V3A-S002"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extrator de preferências explícitas e fatos estáveis em esquema simples.",
+    "8_14b": "Recuperador e leitor de pequenas memórias por projeto.",
+    "15_30b": "Comparador de experiências para decidir transferência entre contextos.",
+    "training_or_runtime_requirements": "Identidade, escopo, validade e caminho de correção; armazenamento externo não exige atualizar pesos.",
+    "do_not_use_when": "Memória não pode ser corrigida, atribuída à origem ou limitada ao contexto em que vale."
+  },
+  "connections": [
+    {
+      "target_id": "T071",
+      "relation": "requires",
+      "how": "Promover apenas candidato com utilidade e evidência.",
+      "interface": "Candidato, origem, escopo e critério de promoção.",
+      "condition": "Critério variar por tipo de memória.",
+      "acceptance": "Inserir hipótese plausível e impedir promoção como fato.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S017",
+        "V4A-S026",
+        "V3A-S002"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T075",
+      "relation": "complements",
+      "how": "Reconciliar memória anterior após correção.",
+      "interface": "Versões concorrentes e evento de correção.",
+      "condition": "Regra de preferência não apagar histórico relevante.",
+      "acceptance": "Retomar sessão após correção e verificar uso da versão certa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S017",
+        "V4A-S026",
+        "V3A-S002"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não prometer recordar tudo que foi salvo.",
+    "Não confundir frequência de menção com validade permanente."
+  ],
+  "frontier_comparison": "Comparar continuidade e correções ao longo de sessões; memória melhor não implica inteligência geral maior.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q013",
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S017",
+    "V4A-S026",
+    "V3A-S002"
+  ]
+}

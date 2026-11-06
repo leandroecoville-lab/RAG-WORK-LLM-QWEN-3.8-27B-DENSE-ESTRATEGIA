@@ -1,0 +1,28 @@
+{
+  "id": "T194",
+  "name": "Process Supervision",
+  "canonical_name": "Process Supervision",
+  "canonical_id": "T194",
+  "aliases": [
+    "supervisão de processo"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T177",
+    "T190",
+    "T206"
+  ],
+  "source_ids": [
+    "C-S047",
+    "V3B-S018",
+    "V4B-S022"
+  ],
+  "namespace": "T194",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T194",
+  "chunk_count": 9
+}

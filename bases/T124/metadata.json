@@ -1,0 +1,31 @@
+{
+  "id": "T124",
+  "name": "INT4 / W4A16 Quantization",
+  "canonical_name": "INT4 / W4A16 Quantization",
+  "canonical_id": "T124",
+  "aliases": [
+    "weight-only INT4",
+    "pesos 4 bits ativações 16 bits"
+  ],
+  "category": "inferencia",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T085",
+    "T125",
+    "T126",
+    "T127"
+  ],
+  "source_ids": [
+    "B-S046",
+    "V3B-S014",
+    "V4B-S011",
+    "V4D-S009"
+  ],
+  "namespace": "T124",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T124",
+  "chunk_count": 9
+}

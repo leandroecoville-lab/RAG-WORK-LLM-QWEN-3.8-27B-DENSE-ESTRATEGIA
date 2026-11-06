@@ -1,0 +1,47 @@
+{
+  "id": "T085",
+  "technical_details": "O orçamento de armazenamento depende de dados e metadados. Para N valores, b bits por valor, grupos de g valores e m bytes de escala ou zero por grupo, uma estimativa é N·b/8 + ceil(N/g)·m, antes de alinhamento e tensores mantidos em precisão maior. O dtype de armazenamento também não determina sozinho o dtype da multiplicação ou a velocidade do kernel.",
+  "boundary_condition": "Reduzir bits pode apenas liberar capacidade quando descompactação, conversões ou operadores não quantizados dominam o tempo total.",
+  "implementation_contract": {
+    "inputs": "Pesos, dados de calibração quando exigidos, granularidade e kernel pretendido.",
+    "outputs": "Artefato quantizado e relatório de erro, tamanho e operadores efetivamente usados.",
+    "state": "Escalas, zeros, layout, versão do artefato e tensores preservados.",
+    "invariant": "A avaliação identifica precisamente quais valores foram quantizados e onde ocorre arredondamento."
+  },
+  "tradeoffs": [
+    "Grupos menores adaptam melhor escalas, mas aumentam metadados.",
+    "Calibração representativa custa trabalho e pode não cobrir mudanças de domínio."
+  ],
+  "failure_test": "Teste proposto: introduzir ativações com outliers ausentes da calibração e verificar saturação, erro de logits e tarefa final. O simples carregamento do modelo não deve aprovar a conversão.",
+  "evaluation_plan": "Plano proposto: comparar com o mesmo checkpoint em maior precisão, controlando amostragem e backend. Separar memória de pesos, cache e temporários; medir qualidade, prefill e decode. Aceitar pela fronteira observada entre custo e perda tolerável.",
+  "comparisons": [
+    {
+      "entry_id": "T086",
+      "relation": "distinct_from",
+      "reason": "Quantizar pesos e quantizar cache modificam tensores e erros diferentes."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "SmoothQuant usa uma transformação equivalente para deslocar dificuldade de quantização das ativações para os pesos.",
+    "source_ids": [
+      "V3B-S003"
+    ],
+    "support": "direct",
+    "caveat": "A equivalência antecede a quantização; o arredondamento posterior continua sendo aproximado."
+  },
+  "advanced_qa": [
+    {
+      "question": "Menos bits significam menos latência?",
+      "answer": "Somente quando o caminho de execução explora a representação e a economia supera conversões e outros gargalos."
+    },
+    {
+      "question": "Uma escala serve para todos os contextos?",
+      "answer": "Pode servir ao contrato escolhido, mas sua adequação deve ser testada também em distribuições diferentes da calibração."
+    }
+  ],
+  "source_ids": [
+    "V3B-S003",
+    "B-S006"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

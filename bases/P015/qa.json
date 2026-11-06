@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Um hash-base elimina toda disputa de concorrência?",
+    "answer": "Somente quando a comparação e a escrita são protegidas pelo backend ou por protocolo equivalente; comparação local isolada não basta."
+  },
+  {
+    "question": "Qual estado registrar se a resposta da escrita se perdeu?",
+    "answer": "Resultado desconhecido, com os IDs da intenção e da tentativa, até obter evidência suficiente para reconciliar o desfecho."
+  },
+  {
+    "question": "Hash correto significa implementação correta?",
+    "answer": "Não. Ele identifica bytes; testes e critérios verificam propriedades e comportamento."
+  },
+  {
+    "question": "Quando uma operação fica pendente?",
+    "answer": "Quando houve intenção ou envio, mas a confirmação não permite determinar com segurança o efeito externo."
+  }
+]

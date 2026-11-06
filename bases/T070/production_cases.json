@@ -1,0 +1,64 @@
+{
+  "coverage": {
+    "entry_id": "T070",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Episodic Store",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C006",
+      "company": "Google",
+      "system": "Cloud Storage: metadados migrados para Spanner",
+      "title": "Cloud Storage: metadados migrados para Spanner — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "Operador descreve migração real de todos os metadados e listagem fortemente consistente.",
+      "technical_mechanism": "Metadados em banco distribuído consistente sustentam observação completa de objetos confirmados.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S007",
+        "V4A-S005"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T065",
+          "match": "exact",
+          "rationale": "Uso operacional de banco transacional consistente."
+        },
+        {
+          "entry_id": "T070",
+          "match": "analogy",
+          "rationale": "Listagem completa inspira enumeração de episódios; objeto não é episódio."
+        },
+        {
+          "entry_id": "P004",
+          "match": "analogy",
+          "rationale": "Inspira contrato de persistência; não demonstra runtime LAI."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Usar manifesto de artefatos confirmados para que redutor pequeno não conclua com lote incompleto.",
+      "limits": "Não é uma segunda contagem da mesma implantação F1; não se infere bitemporalidade ou escrita externa atômica. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C006",
+      "deployment_domain": "distributed_data_system",
+      "mapping": {
+        "entry_id": "T070",
+        "match": "analogy",
+        "rationale": "Listagem completa inspira enumeração de episódios; objeto não é episódio."
+      }
+    }
+  ]
+}

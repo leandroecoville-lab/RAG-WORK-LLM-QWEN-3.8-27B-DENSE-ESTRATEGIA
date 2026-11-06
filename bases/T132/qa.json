@@ -1,0 +1,18 @@
+[
+  {
+    "question": "O melhor draft é sempre o menor?",
+    "answer": "Não. Precisa equilibrar custo e concordância; pequeno demais pode gerar rejeições frequentes."
+  },
+  {
+    "question": "É uma técnica independente da especulação?",
+    "answer": "É uma implementação da família T079; o proponente aqui é explicitamente outro modelo."
+  },
+  {
+    "question": "Qual o limite quando α tende a um?",
+    "answer": "A expectativa tende a γ+1; isso ainda precisa ser comparado ao custo de produzir e verificar a rodada."
+  },
+  {
+    "question": "Dois modelos da mesma família bastam?",
+    "answer": "Não. É necessário verificar tokenização, configuração, custo e concordância; parentesco nominal não constitui contrato de compatibilidade."
+  }
+]

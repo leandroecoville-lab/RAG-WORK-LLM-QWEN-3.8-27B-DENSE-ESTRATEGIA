@@ -1,0 +1,141 @@
+{
+  "id": "T178",
+  "novelty": "A v3 explicou soft targets e destilação textual. Esta camada separa políticas de amostragem, professores múltiplos e limites de capacidade do aluno, usando casos industriais com seus portes efetivos.",
+  "deep_layers": [
+    {
+      "name": "Dados do aluno ou do professor",
+      "detail": "Na destilação on-policy, o professor avalia trajetórias que o aluno tende a produzir, aproximando treino das situações de implantação. Dados apenas do professor podem conter caminhos que o aluno raramente consegue seguir. A receita Tinker e o estudo associado descrevem essa diferença; o sinal disponível continua dependendo de logits ou texto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S017",
+        "V4B-S005",
+        "V4B-S009",
+        "V4B-S012",
+        "V4B-S013",
+        "V4D-S012"
+      ]
+    },
+    {
+      "name": "Professores com papéis",
+      "detail": "Combinar professores de relevância, engajamento ou embedding exige normalizar objetivos e resolver conflitos. O caso de busca de vagas do LinkedIn descreve esse desenho para um aluno de ranking de 0,6B. É evidência de mecanismo industrial, não demonstração de um gerador 3–30B equivalente nem do mesmo componente que interpreta consultas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S017",
+        "V4B-S005",
+        "V4B-S009",
+        "V4B-S012",
+        "V4B-S013",
+        "V4D-S012"
+      ]
+    },
+    {
+      "name": "Capacidade e cobertura",
+      "detail": "O aluno pode reproduzir padrões frequentes e falhar em exceções ou raciocínios longos. Meça cobertura de tipos de tarefa, não só concordância média. Uma política proposta mantém rótulos corretos e exemplos difíceis revisados, para que imitar o professor não se torne o único objetivo mesmo quando ele erra.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S017",
+        "V4B-S005",
+        "V4B-S009",
+        "V4B-S012",
+        "V4B-S013",
+        "V4D-S012"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Professor offline, aluno online",
+      "scenario": "Chamadas caras são aceitáveis na criação de dados.",
+      "strategy": "Gere exemplos por categorias, filtre erros com verificadores e ajuste o aluno. Compare custo de construir e atualizar o dataset com economia no uso recorrente.",
+      "small_model_role": "Um 3–7B pode executar uma tarefa estreita que não exige toda a capacidade do professor.",
+      "acceptance": "Qualidade em casos novos e custo total por resposta aceita após amortizar treinamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S017",
+        "V4B-S005",
+        "V4B-S009",
+        "V4B-S012",
+        "V4B-S013",
+        "V4D-S012"
+      ]
+    },
+    {
+      "name": "Aluno que sai do caminho esperado",
+      "scenario": "Trajetórias livres produzem estados não vistos no treino.",
+      "strategy": "Colete estados do aluno em ambiente controlado e obtenha correções do professor ou de ferramentas. Inclua falhas reais, mantendo um conjunto final intocado.",
+      "small_model_role": "Um 8–14B pode melhorar execução de procedimentos mediante supervisão compatível.",
+      "acceptance": "Avaliar sucesso de ponta a ponta e recuperação, não somente loss de imitação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S017",
+        "V4B-S005",
+        "V4B-S009",
+        "V4B-S012",
+        "V4B-S013",
+        "V4D-S012"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Adequado a habilidades e formatos delimitados; limites de capacidade devem aparecer na avaliação.",
+    "8_14b": "Pode absorver repertório maior, mas ainda precisa de evidência externa para fatos variáveis.",
+    "15_30b": "Compare destilar com adaptar diretamente o 15–30B; o custo de professor não é gratuito.",
+    "training_or_runtime_requirements": "Treinamento com proveniência do sinal; textos não reconstituem logits completos. Receitas e modelos disponíveis mudam entre versões.",
+    "do_not_use_when": "Não inferir porte de produção a partir de exemplos BERT ou ranking menores que 3B."
+  },
+  "connections": [
+    {
+      "target_id": "T182",
+      "relation": "complements",
+      "how": "Learning Zone descreve dados do professor usados na especialização por LoRA.",
+      "interface": "Exemplos filtrados e adapter treinado.",
+      "condition": "Escopo é a tarefa educacional documentada.",
+      "acceptance": "Confrontar avaliação automática com resultados humanos.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4D-S012"
+      ],
+      "case_ids": [
+        "V4D-C006"
+      ]
+    },
+    {
+      "target_id": "T199",
+      "relation": "complements",
+      "how": "Erros avaliados podem selecionar novos exemplos para o próximo ciclo.",
+      "interface": "Resultado verificado, categoria e versão.",
+      "condition": "Aprendizagem persistente exige uma atualização explícita.",
+      "acceptance": "Medir melhora em casos novos após a atualização.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S017",
+        "V4B-S005",
+        "V4B-S009",
+        "V4B-S012",
+        "V4B-S013",
+        "V4D-S012"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não treinar apenas sobre respostas que parecem convincentes sem checagem.",
+    "Registrar limitações de licença, acesso e fidelidade do sinal do professor no manifest operacional."
+  ],
+  "frontier_comparison": "A meta razoável é igualar ou superar um baseline em uma distribuição estreita com custo menor. A destilação não transfere automaticamente toda a inteligência, conhecimento ou robustez do professor.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q008",
+      "V4B-Q009"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S017",
+    "V4B-S005",
+    "V4B-S009",
+    "V4B-S012",
+    "V4B-S013",
+    "V4D-S012"
+  ]
+}

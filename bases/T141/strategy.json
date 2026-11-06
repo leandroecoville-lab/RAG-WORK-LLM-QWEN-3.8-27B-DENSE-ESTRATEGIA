@@ -1,0 +1,111 @@
+{
+  "id": "T141",
+  "novelty": "A v3 explicou vocabulário de JSON Schema e limites de decodificadores. A nova camada distingue proposta gerada, objeto validado e recibo de execução, impedindo que a mesma estrutura atribua autoridade a dados não verificados.",
+  "deep_layers": [
+    {
+      "name": "Schemas por fronteira",
+      "detail": "Use um schema pequeno para a proposta do modelo e outro para o registro persistido. O segundo inclui campos calculados pela aplicação, como identidade, revisão e status da validação. Aceitar JSON válido do modelo não lhe dá o direito de preencher esses campos como se a execução já tivesse acontecido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S013",
+        "V4C-S013"
+      ]
+    },
+    {
+      "name": "Campos incertos representáveis",
+      "detail": "Modele ausência de evidência explicitamente, com motivo e referência ao trecho disponível. Obrigar todo campo a conter uma string incentiva preenchimento inventado. Uma união controlada entre encontrado, ausente e ambíguo permite ao consumidor distinguir falta de dado de falha de geração sem interpretar texto livre.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S013"
+      ]
+    },
+    {
+      "name": "Semântica cruzada fora do parser",
+      "detail": "Depois de validar tipos, verifique relações entre campos: datas ordenadas, IDs pertencentes ao mesmo recurso, unidades e consistência entre total e parcelas. Essas regras não devem depender de uma segunda frase de autoconfiança. Registre qual versão da regra aceitou o objeto para reavaliá-lo quando o contrato mudar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013",
+        "V4C-S010"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Extração de configuração técnica",
+      "scenario": "Manuais descrevem parâmetros com versões e exceções.",
+      "strategy": "Peça valor, unidade, condição e fonte, permitindo ambiguidade. O runtime resolve referências e testa relações relevantes. Se houver conflito entre versões, produza candidatos separados e deixe a seleção depender da versão efetivamente utilizada.",
+      "small_model_role": "3–7B pode extrair campos em contexto curto; 8–14B distingue exceções locais.",
+      "acceptance": "Proposta: medir campos sustentados por fonte, conflitos detectados e objetos estruturalmente válidos porém incorretos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S013"
+      ]
+    },
+    {
+      "name": "Plano de manutenção executável",
+      "scenario": "Uma tarefa precisa virar etapas de ferramentas.",
+      "strategy": "Gere operações de um catálogo fechado com dependências e pré-condições. Converta a proposta em comandos apenas após validar recursos e ordem. Resultados confirmados entram num schema distinto, evitando que o modelo marque suas próprias etapas como concluídas.",
+      "small_model_role": "15–30B produz plano limitado; código verifica referências e estados.",
+      "acceptance": "Proposta: rejeitar ciclos, alvos inexistentes e confirmações sem recibo, comparando com planejamento livre em texto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S004",
+        "V4C-S013"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: objetos curtos, enums pequenos e estados de ausência explícitos, com recuperação local de valores.",
+    "8_14b": "Proposta: extrações com relações simples entre campos, verificadas posteriormente por regras.",
+    "15_30b": "Proposta: planos estruturados mais extensos, ainda sem autoridade para criar IDs ou estados confirmados.",
+    "training_or_runtime_requirements": "Conferir dialeto aceito pelo servidor e tratar truncamento; treino de formato não substitui avaliação factual.",
+    "do_not_use_when": "Não usar quando o schema força falsa precisão ou quando a aplicação não consegue tratar ausência e conflito."
+  },
+  "connections": [
+    {
+      "target_id": "T140",
+      "relation": "feeds",
+      "how": "A proposta estruturada alimenta argumentos somente depois da validação.",
+      "interface": "Objeto candidato, versão de schema e erros por campo.",
+      "condition": "Campos de identidade operacional vêm de fontes confiáveis.",
+      "acceptance": "Forçar ID plausível inexistente e exigir rejeição anterior à execução.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T170",
+      "relation": "complements",
+      "how": "Mudanças de schema precisam preservar significado nos produtores e consumidores.",
+      "interface": "Versão de contrato e conversor explicitamente identificado.",
+      "condition": "Migração não elimina estados de incerteza.",
+      "acceptance": "Reprocessar exemplos antigos e conferir que campos ausentes não viram fatos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S013",
+        "V4C-S013"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Recusar mensagem truncada antes de interpretá-la como objeto completo.",
+    "Separar falha de parsing, de schema e de regra de domínio nas métricas."
+  ],
+  "frontier_comparison": "Compare modelos pequenos e fronteira na extração sustentada, não apenas na taxa de JSON válido. Formato controlado pode equalizar sintaxe sem equalizar compreensão.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q009",
+      "V4C-Q013"
+    ],
+    "scope_note": "A pesquisa Google teve bloqueio de abertura; a ficha se apoia em JSON Schema e gateway aberto, sem inventar caso de uso Google em produção."
+  },
+  "source_ids": [
+    "V3C-S013",
+    "V4C-S013",
+    "V4C-S010",
+    "V4C-S004"
+  ]
+}

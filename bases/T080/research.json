@@ -1,0 +1,47 @@
+{
+  "id": "T080",
+  "technical_details": "O tamanho do rascunho deve minimizar tempo por token confirmado, e não maximizar isoladamente sua taxa de aceitação. Um controlador pode observar duração das propostas, verificação e quantidade aceita, mantendo limites e suavização para evitar oscilações. Confiança do assistente é apenas um sinal para decidir quanto especular; um assistente confiante também pode discordar sistematicamente do alvo.",
+  "boundary_condition": "Quando a carga muda mais rapidamente que a adaptação, estatísticas antigas podem produzir decisões piores que uma política fixa.",
+  "implementation_contract": {
+    "inputs": "Sinais por iteração, orçamento de latência e limites permitidos para propostas.",
+    "outputs": "Próximo tamanho do rascunho e motivo observável da decisão.",
+    "state": "Estatísticas móveis por classe de carga e configuração do par de modelos.",
+    "invariant": "A adaptação altera quantidade proposta, mantendo a mesma regra correta de verificação."
+  },
+  "tradeoffs": [
+    "Horizontes longos amortizam verificações, mas elevam desperdício após rejeição.",
+    "Controladores muito sensíveis podem reagir ao ruído do escalonador."
+  ],
+  "failure_test": "Teste proposto: alternar trechos fáceis e divergentes, injetando atrasos no assistente. Esperar redução do horizonte quando o custo aumenta, sem aceitar tokens pela confiança sozinha.",
+  "evaluation_plan": "Plano proposto: comparar horizonte constante, regra heurística e adaptação, com mesmos modelos e chegadas. Medir latência por token confirmado, variância, custo adicional e tempo de recuperação após mudanças; escolher pela distribuição real de serviço.",
+  "comparisons": [
+    {
+      "entry_id": "T079",
+      "relation": "complements",
+      "reason": "A política escolhe esforço; o algoritmo de aceitação continua responsável pela exatidão."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A implementação documentada pela Hugging Face pode interromper propostas usando a confiança do assistente.",
+    "source_ids": [
+      "B-S002"
+    ],
+    "support": "direct",
+    "caveat": "O limiar é uma heurística de execução; não equivale a calibração de correção factual ou concordância garantida."
+  },
+  "advanced_qa": [
+    {
+      "question": "É necessário treinar o assistente novamente?",
+      "answer": "Não para adaptar o horizonte; atualizar pesos online seria uma intervenção distinta, com outros custos e controles."
+    },
+    {
+      "question": "Qual unidade orienta a decisão?",
+      "answer": "Milissegundos por token confirmado, condicionados à carga, são mais úteis que a fração aceita observada isoladamente."
+    }
+  ],
+  "source_ids": [
+    "B-S002",
+    "V3B-S001"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

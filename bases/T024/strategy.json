@@ -1,0 +1,112 @@
+{
+  "id": "T024",
+  "novelty": "A v3 definiu manifesto e confiança. Aqui broker e builder negociam orçamento de aquisição por utilidade marginal e prazo.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "O broker propõe candidatos com custo, atraso e tipo de suporte. O builder seleciona evidências para afirmações prioritárias, expondo lacunas que justificam nova aquisição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S022"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Imponha prazo por estágio e caminho de resposta parcial. Fontes lentas só são aguardadas quando podem alterar decisão importante; paralelismo sem critério pode apenas aumentar custo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S022"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare busca fixa e negociação iterativa. Meça cobertura por afirmação, diversidade relevante e tempo até evidência suficiente. Unidade de avaliação: requisição com fontes. Simule fonte lenta que poderia alterar a conclusão e fonte lenta que só acrescentaria contexto decorativo. A política deve esperar ou marcar insuficiência no primeiro caso e poder concluir no segundo. Registre essa classificação antes do resultado chegar, para não avaliar decisão de espera com informação retrospectiva que o controlador não possuía.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S022"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Resposta com sistemas heterogêneos",
+      "scenario": "Fatos estão em documentos e APIs.",
+      "strategy": "Consultar primeiro dados estruturados para campos exatos, depois textos para justificativas; marcar divergências entre canais.",
+      "small_model_role": "3–7B roteia campos; 8–14B integra.",
+      "acceptance": "Cada fato deve vir do canal adequado e revisão conhecida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S022"
+      ]
+    },
+    {
+      "name": "Análise sob prazo",
+      "scenario": "Uma fonte externa está lenta.",
+      "strategy": "Preparar resposta parcial identificada e aguardar somente lacuna decisiva; atualizar quando evidência nova mudar conclusão.",
+      "small_model_role": "15–30B avalia impacto de lacunas.",
+      "acceptance": "Não afirmar completude enquanto fonte obrigatória estiver pendente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S022"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Roteador de necessidades tipadas para fontes autorizadas.",
+    "8_14b": "Compositor de pacotes por afirmação com orçamento moderado.",
+    "15_30b": "Planejador de aquisição condicional para perguntas interdependentes.",
+    "training_or_runtime_requirements": "Catálogo de fontes com custos e semântica de timeout; decisões de prioridade devem ser registradas.",
+    "do_not_use_when": "A política não consegue distinguir fonte opcional de evidência indispensável."
+  },
+  "connections": [
+    {
+      "target_id": "T152",
+      "relation": "requires",
+      "how": "Negociar tokens entre aquisição, evidência e saída.",
+      "interface": "Orçamento, prioridade e custo estimado.",
+      "condition": "Cotas respeitarem requisitos obrigatórios.",
+      "acceptance": "Testar fonte grande que compete com outra indispensável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S022"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T067",
+      "relation": "feeds",
+      "how": "Transformar lacuna específica em nova consulta.",
+      "interface": "claim_id, evidência faltante e limite de tentativas.",
+      "condition": "Consulta nova poder modificar a decisão.",
+      "acceptance": "Medir novas evidências úteis por tentativa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S022"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não tratar timeout como inexistência de informação.",
+    "Conservar conflitos entre fontes no pacote final."
+  ],
+  "frontier_comparison": "Comparar qualidade por prazo e custo; coordenação melhor não elimina limites do leitor.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q020"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "C-S030",
+    "V4A-S022"
+  ]
+}

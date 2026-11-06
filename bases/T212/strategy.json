@@ -1,0 +1,115 @@
+{
+  "id": "T212",
+  "novelty": "A v3 descrevia cursor de compactação e cauda concorrente. A expansão seleciona o que pode ser resumido, protege dependências abertas e mede o efeito da compactação sobre recuperação e término da tarefa.",
+  "deep_layers": [
+    {
+      "name": "Compactar por utilidade residual",
+      "detail": "Separe observações consumidas, decisões vigentes, evidências ainda necessárias e histórico de tentativas. Logs repetitivos podem ser candidatos; recibos de efeito e exceções pendentes precisam de preservação explícita. Um gatilho por ocupação inicia a análise, mas não decide sozinho quais unidades podem ser substituídas por resumo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014",
+        "V4C-S031"
+      ]
+    },
+    {
+      "name": "Resumo com acesso ao original",
+      "detail": "O resumo deve indicar o intervalo coberto e referências para recuperar detalhes. Se a próxima etapa falhar por falta de informação, registre essa reconsulta como custo da política. Compressão que reduz tokens agora e exige várias releituras depois pode piorar a missão; compare custo completo e não somente tamanho do prompt seguinte.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S031",
+        "V3C-S031"
+      ]
+    },
+    {
+      "name": "Efeito sobre comportamento",
+      "detail": "Resumir pode remover sinais de que uma abordagem já foi tentada ou de que o trabalho deve terminar. Preserve critérios de conclusão e hipóteses rejeitadas relevantes. Avalie repetição, duração e decisões após compactação, além de fidelidade textual. O mesmo modelo resumidor pode carregar o erro original para uma versão mais curta e convincente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S031",
+        "V3C-S032"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Longa sessão de ferramentas",
+      "scenario": "O histórico cresce com buscas e saídas intermediárias.",
+      "strategy": "Quando atingir limite suave, compactar apenas o prefixo fechado e manter observações protegidas. Valide o resumo contra obrigações pendentes antes de trocar o contexto. Se a validação falhar, use poda seletiva ou rotação com artefatos, sem insistir em resumir tudo.",
+      "small_model_role": "3–7B extrai estados simples; 8–14B resume trechos com schema; 15–30B revisa exceções.",
+      "acceptance": "Proposta: menor contexto ativo sem perda de campos necessários à próxima decisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S031",
+        "V4C-S031"
+      ]
+    },
+    {
+      "name": "Campanha de programação",
+      "scenario": "Várias iterações do mesmo teste ocupam a janela.",
+      "strategy": "Guarde logs integrais fora do prompt, resuma evolução do defeito e preserve último erro completo. Compare compactação por fase com masking de observações antigas. Não adote limiar de outro operador sem medir janela, tokenizer e custo dos próprios modelos.",
+      "small_model_role": "8–14B acompanha estado local; controlador mede gatilho e preserva logs.",
+      "acceptance": "Proposta: resolução, custo e repetição de hipóteses sob as duas políticas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014",
+        "V4C-S031"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extração de campos estáveis pode ser mais confiável que sumarização aberta de histórico extenso.",
+    "8_14b": "Resumos por episódio com referências e limites curtos, verificados antes da inserção.",
+    "15_30b": "Integração de episódios e exceções; compacidade não deve apagar obrigações críticas.",
+    "training_or_runtime_requirements": "Cursor consistente, reserva para resumir e validar, contagem real de tokens e arquivo integral recuperável.",
+    "do_not_use_when": "Não aplicar limiar de 400k de um harness com janela maior a um modelo pequeno sem compatibilidade real."
+  },
+  "connections": [
+    {
+      "target_id": "T222",
+      "relation": "complements",
+      "how": "Harness Uber usa ocupação de contexto como gatilho de compactação; a política local precisa de margem e contagem.",
+      "interface": "Ocupação, limiar e perfil do modelo.",
+      "condition": "Janela e implementação correspondem à configuração efetiva.",
+      "acceptance": "Compactação ocorre antes de estourar e deixa espaço para continuidade.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S014"
+      ],
+      "case_ids": [
+        "V4C-C015"
+      ]
+    },
+    {
+      "target_id": "T215",
+      "relation": "alternative",
+      "how": "Comparar resumo e masking para observações já consumidas, mantendo critérios iguais de tarefa e custo.",
+      "interface": "Histórico, observações protegidas e orçamento.",
+      "condition": "Ambas as políticas permitem recuperar detalhes necessários.",
+      "acceptance": "Escolher por resolução e consumo total, não pela sofisticação aparente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S031"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não resumir e apagar turnos que chegaram depois do cursor capturado.",
+    "Não apresentar resultados do estudo com 32B como prova direta da faixa solicitada de até 30B."
+  ],
+  "frontier_comparison": "Compare variantes dentro do mesmo harness antes de comparar portes. O estudo de masking mostra que estratégias simples merecem baseline, sem estabelecer uma vencedora universal.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q009",
+      "V4C-Q028",
+      "V4D-Q019"
+    ],
+    "scope_note": "Uber relata compactação operacional; o estudo comparativo é pesquisa. Critérios e bandas propostos permanecem sem medição neste ambiente. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+  },
+  "source_ids": [
+    "V4C-S014",
+    "V4C-S031",
+    "V3C-S031",
+    "V3C-S032"
+  ]
+}

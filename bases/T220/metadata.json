@@ -1,0 +1,34 @@
+{
+  "id": "T220",
+  "name": "Tool Call Repair",
+  "canonical_name": "Tool Call Repair",
+  "canonical_id": "T220",
+  "aliases": [
+    "tool argument repair",
+    "reparo de argumentos"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T243",
+    "T228",
+    "T218"
+  ],
+  "source_ids": [
+    "V2A-S022",
+    "V2A-S026",
+    "V3C-S038",
+    "V3C-S004",
+    "C-S026",
+    "V2A-S012",
+    "V4C-S013",
+    "V3C-S013"
+  ],
+  "namespace": "T220",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T220",
+  "chunk_count": 9
+}

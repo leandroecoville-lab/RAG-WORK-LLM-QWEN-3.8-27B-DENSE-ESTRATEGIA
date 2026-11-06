@@ -1,0 +1,140 @@
+{
+  "coverage": {
+    "entry_id": "P016",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 2,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Evaluation Engine",
+    "scope": "proposta"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C019",
+      "company": "Google DeepMind",
+      "organization_class": "bigtech",
+      "system": "AlphaEvolve em infraestrutura Google",
+      "title": "Busca evolutiva com avaliadores aplicada à infraestrutura do operador",
+      "evidence_level": "production_documented",
+      "observed_use": "O operador relata heurística incorporada ao Borg e aplicações posteriores na infraestrutura, além de melhorias de algoritmos e projetos de hardware. É contado como um sistema, não como vários exemplos artificiais.",
+      "technical_mechanism": "Modelos propõem programas; avaliadores automáticos executam e pontuam candidatos; um banco evolutivo alimenta novas iterações. No caso de circuito, verificações preservaram funcionalidade antes da integração descrita.",
+      "event_date": "2025-05-14",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S022",
+        "V4B-S023"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T190",
+          "match": "exact",
+          "rationale": "Candidatos recebem avaliação e alimentam novas propostas."
+        },
+        {
+          "entry_id": "T195",
+          "match": "exact",
+          "rationale": "Execução e avaliadores de código produzem sinais verificáveis."
+        },
+        {
+          "entry_id": "T199",
+          "match": "family",
+          "rationale": "Avaliação orienta seleção ou revisão de candidatos; isso não prova aprendizagem persistente do modelo por essa avaliação."
+        },
+        {
+          "entry_id": "T201",
+          "match": "family",
+          "rationale": "Há busca entre candidatos, mas não é simplesmente best-of-N independente."
+        },
+        {
+          "entry_id": "T205",
+          "match": "family",
+          "rationale": "Há verificação de funcionalidade e desempenho, sem equivaler a qualquer receita de treinamento por recompensas."
+        },
+        {
+          "entry_id": "T217",
+          "match": "family",
+          "rationale": "O sistema modifica programas com avaliação; não demonstra todos os mecanismos de aplicação de patch."
+        },
+        {
+          "entry_id": "P016",
+          "match": "analogy",
+          "rationale": "Avaliação local pode inspirar a proposta LAI; o produto editorial não foi implantado."
+        }
+      ],
+      "small_model_transfer": "Proposta: usar um 3–30B para gerar alterações pequenas com avaliadores baratos, preservando um baseline e um orçamento de busca.",
+      "limits": "Modelos Gemini de fronteira foram usados; não demonstra a mesma capacidade com 3–30B. Uma melhoria de uma função avaliada não prova correção geral do software.",
+      "canonical_case_id": "V4B-C019",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "P016",
+        "match": "analogy",
+        "rationale": "Avaliação local pode inspirar a proposta LAI; o produto editorial não foi implantado."
+      }
+    },
+    {
+      "case_id": "V4B-C006",
+      "company": "Uber",
+      "organization_class": "technology_operator",
+      "system": "Michelangelo — infraestrutura interna de LLM",
+      "title": "Pipeline de treinamento e scorer distribuído",
+      "evidence_level": "production_documented",
+      "observed_use": "Uber descreve uma infraestrutura interna usada para preparar dados, treinar modelos, salvar checkpoints e avaliar resultados com scorer distribuído.",
+      "technical_mechanism": "Ray coordena workers; Transformers Trainer e DeepSpeed realizam treino; vLLM participa da avaliação offline. LoRA/QLoRA aparecem nos estudos de configurações suportadas.",
+      "event_date": "2026-04-14",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S006"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T177",
+          "match": "exact",
+          "rationale": "O fluxo interno executa ajuste de modelos e gerencia resultados."
+        },
+        {
+          "entry_id": "R023",
+          "match": "exact",
+          "rationale": "Transformers integra explicitamente a pilha de treino."
+        },
+        {
+          "entry_id": "R009",
+          "match": "exact",
+          "rationale": "O scorer offline implementado utiliza servidores vLLM."
+        },
+        {
+          "entry_id": "T182",
+          "match": "family",
+          "rationale": "LoRA é avaliada, sem afirmar que toda configuração é modelo de produto lançado."
+        },
+        {
+          "entry_id": "T183",
+          "match": "family",
+          "rationale": "QLoRA é configuração estudada na infraestrutura; métricas são experimentais."
+        },
+        {
+          "entry_id": "P016",
+          "match": "analogy",
+          "rationale": "O scorer inspira avaliação de artefatos da proposta editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: separar preparação, treino e avaliação para modelos 3–30B, mantendo artefatos de dados e checkpoints reproduzíveis e avaliação independente do treino.",
+      "limits": "Produção aqui qualifica plataforma interna, não todos os modelos/otimizações experimentais. Não replicar a formulação imprecisa do blog de que FlashAttention densa elimina a complexidade aritmética quadrática.",
+      "canonical_case_id": "V4B-C006",
+      "deployment_domain": "llm_training",
+      "mapping": {
+        "entry_id": "P016",
+        "match": "analogy",
+        "rationale": "O scorer inspira avaliação de artefatos da proposta editorial."
+      }
+    }
+  ]
+}

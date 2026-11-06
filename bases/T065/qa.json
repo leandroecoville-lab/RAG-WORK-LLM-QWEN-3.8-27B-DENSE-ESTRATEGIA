@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Um arquivo JSON comum é transacional?",
+    "answer": "Não por si só. É necessário projetar gravação atômica, concorrência e recuperação."
+  },
+  {
+    "question": "Serializable elimina toda necessidade de retry?",
+    "answer": "Não. Sistemas podem abortar transações para manter isolamento, e o cliente precisa tratar isso corretamente."
+  },
+  {
+    "question": "Compare-and-swap resolve todas as invariantes?",
+    "answer": "Não. Protege uma condição de versão definida; regras envolvendo várias entidades podem exigir outra coordenação ou isolamento."
+  },
+  {
+    "question": "Uma LLM deve permanecer dentro de uma transação longa?",
+    "answer": "É uma escolha de arquitetura com custo de contenção. Pode ser preferível gerar fora e validar versão e pré-condições ao aplicar o resultado."
+  }
+]

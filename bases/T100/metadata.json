@@ -1,0 +1,29 @@
+{
+  "id": "T100",
+  "name": "Grouped-Query Attention — GQA",
+  "canonical_name": "Grouped-Query Attention — GQA",
+  "canonical_id": "T100",
+  "aliases": [
+    "grouped-query attention",
+    "atenção com consultas agrupadas"
+  ],
+  "category": "inferencia",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T099",
+    "T106",
+    "T108"
+  ],
+  "source_ids": [
+    "B-S019",
+    "V4B-S017",
+    "V4B-S020"
+  ],
+  "namespace": "T100",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T100",
+  "chunk_count": 9
+}

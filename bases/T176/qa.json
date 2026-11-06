@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Token-aware significa sempre usar prompt menor?",
+    "answer": "Não. Um trecho maior pode evitar várias chamadas e reduzir custo total."
+  },
+  {
+    "question": "A estimativa é garantia?",
+    "answer": "Não. Precisa de margem e revisão durante a execução."
+  },
+  {
+    "question": "Dividir sempre em tarefas menores economiza tokens?",
+    "answer": "Não. Instruções repetidas, resumos e integração podem superar a economia de cada chamada."
+  },
+  {
+    "question": "Como planejar uma saída de ferramenta sem tamanho conhecido?",
+    "answer": "Usar distribuição observada ou intervalo conservador e definir previamente como selecionar, paginar ou referenciar o excedente."
+  }
+]

@@ -1,0 +1,117 @@
+{
+  "id": "T221",
+  "novelty": "A v3 definia lembrete como projeção do objetivo vigente. A expansão escolhe pontos de inserção, limita conteúdo por decisão e verifica se o lembrete reduz desvio sem substituir evidência ou alterar requisitos.",
+  "deep_layers": [
+    {
+      "name": "Lembrete por transição",
+      "detail": "Insira orientação ao mudar de fase, retomar sessão ou receber observação que pode desviar o plano. Repetir o objetivo em todo turno aumenta custo e pode fazer o modelo ignorá-lo como ruído. O conteúdo deve apontar resultado exigido, condição de conclusão e próxima decisão, evitando um histórico resumido disfarçado de lembrete.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S031"
+      ]
+    },
+    {
+      "name": "Separar meta e método",
+      "detail": "Um plano contém meios que podem mudar; o objetivo contém o resultado autorizado. Se um lembrete fixa a primeira estratégia como requisito, o agente pode insistir nela apesar de evidência contrária. Mantenha restrições obrigatórias separadas das preferências e permita replanejar métodos preservando o critério de aceite.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S015",
+        "V3C-S012"
+      ]
+    },
+    {
+      "name": "Atualização com proveniência",
+      "detail": "Gere o lembrete a partir de campos versionados, não por livre reinterpretação de toda a conversa. Quando o usuário altera escopo, invalide projeções anteriores. Uma instrução encontrada em documento de ferramenta não se torna objetivo por estar recente; o controlador preserva origem e autoridade das mudanças.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S028"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Pesquisa com descobertas atraentes",
+      "scenario": "O agente encontra temas interessantes fora da pergunta original.",
+      "strategy": "Depois da coleta, apresente as perguntas ainda abertas e o critério de suficiência. Registre descobertas laterais como opcionais, sem expandir automaticamente a missão. Se uma descoberta altera uma premissa necessária, peça replanejamento explícito ligado ao objetivo, não abandono silencioso do escopo.",
+      "small_model_role": "3–7B classifica relevância local; 15–30B compara a descoberta com os requisitos.",
+      "acceptance": "Proposta: menor desvio de escopo e mesma cobertura das perguntas obrigatórias.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4C-S030"
+      ]
+    },
+    {
+      "name": "Programação com múltiplos ciclos",
+      "scenario": "Reparos sucessivos podem transformar uma mudança pequena em refatoração ampla.",
+      "strategy": "Antes de editar de novo, recupere comportamento desejado, arquivos autorizados e testes de aceite. Compare o próximo patch com esses campos. Se o escopo precisa aumentar, registre motivo e impacto; não use o lembrete como autorização para modificar tudo relacionado.",
+      "small_model_role": "8–14B avalia aderência de diff; 15–30B resolve conflitos de requisito.",
+      "acceptance": "Proposta: menos alterações fora de escopo sem bloquear ajustes necessários demonstrados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009",
+        "V4C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Lembretes curtos em campos estáveis ajudam tarefas estreitas, desde que não concorram com evidência essencial.",
+    "8_14b": "Checagem de aderência da próxima ação ao objetivo e ao teste de aceite.",
+    "15_30b": "Revisão de plano quando fatos novos exigem trocar o método preservando intenção.",
+    "training_or_runtime_requirements": "Objetivo versionado, autoridade de mudança e gatilhos por fase; contagem do custo de inserir lembretes.",
+    "do_not_use_when": "Não repetir requisito obsoleto nem transformar hipótese do agente em nova obrigação do usuário."
+  },
+  "connections": [
+    {
+      "target_id": "T208",
+      "relation": "complements",
+      "how": "O planejador publica objetivo e critérios; o executor recebe lembrete apropriado à fase atual.",
+      "interface": "Versão da meta, restrições e próxima decisão.",
+      "condition": "O lembrete não substitui pré-condições da etapa.",
+      "acceptance": "Mudança autorizada invalida lembretes anteriores.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S015"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T223",
+      "relation": "complements",
+      "how": "A checagem compara o candidato com os requisitos vigentes lembrados, citando evidência concreta.",
+      "interface": "Critérios aplicáveis e artefato candidato.",
+      "condition": "Regras não aplicáveis são distinguidas de cumpridas.",
+      "acceptance": "Detectar um resultado elegante que não responde à pergunta atual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S032"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Repetição excessiva pode ocupar espaço das fontes necessárias ao objetivo.",
+    "O lembrete é técnica editorial de controle em runtime, não garantia de alinhamento ou método de treino."
+  ],
+  "frontier_comparison": "Compare política por transição com ausência e repetição fixa de lembretes. Meça aderência e custo; melhoria em tarefas delimitadas não demonstra entendimento superior da intenção.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q010",
+      "V4C-Q027",
+      "V4D-Q022"
+    ],
+    "scope_note": "Fontes de planejamento e instruções persistidas apoiam princípios. Não foi comprovado produto ou técnica padronizada de bigtech com este nome editorial exato. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+  },
+  "source_ids": [
+    "V4C-S030",
+    "V3C-S031",
+    "V4C-S015",
+    "V3C-S012",
+    "V3C-S028",
+    "C-S030",
+    "V4C-S009",
+    "V3C-S032"
+  ]
+}

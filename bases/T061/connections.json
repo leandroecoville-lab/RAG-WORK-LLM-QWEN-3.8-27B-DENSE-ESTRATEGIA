@@ -1,0 +1,40 @@
+{
+  "entry_id": "T061",
+  "edges": [
+    {
+      "edge_id": "E-T061-01",
+      "from": "T061",
+      "to": "T073",
+      "relation": "complements",
+      "how": "Vincular evidência preservada a bytes verificáveis.",
+      "interface": "Digest, origem, retenção e manifestação de autoria.",
+      "condition": "Imutabilidade e autenticidade serem avaliadas separadamente.",
+      "acceptance": "Substituir conteúdo sob caminho e detectar divergência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S038",
+        "A-S028"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T061-02",
+      "from": "T061",
+      "to": "T072",
+      "relation": "feeds",
+      "how": "Versionar manifesto de artefatos derivados.",
+      "interface": "Raiz, dependências e versões de produtores.",
+      "condition": "Manifesto declarar conjunto completo da revisão.",
+      "acceptance": "Eliminar objeto referenciado e exigir falha explícita de integridade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S038",
+        "A-S028"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

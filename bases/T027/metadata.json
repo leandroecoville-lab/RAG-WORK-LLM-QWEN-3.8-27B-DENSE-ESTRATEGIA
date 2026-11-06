@@ -1,0 +1,31 @@
+{
+  "id": "T027",
+  "name": "Hybrid Retrieval — BM25 + vetores",
+  "canonical_name": "Hybrid Retrieval — BM25 + Vetores",
+  "canonical_id": "T027",
+  "aliases": [
+    "hybrid search",
+    "busca híbrida",
+    "Hybrid Retrieval — BM25 + Vetores"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T009",
+    "T028",
+    "T036"
+  ],
+  "source_ids": [
+    "A-S021",
+    "V3A-S022",
+    "V3A-S026",
+    "V4A-S009"
+  ],
+  "namespace": "T027",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T027",
+  "chunk_count": 9
+}

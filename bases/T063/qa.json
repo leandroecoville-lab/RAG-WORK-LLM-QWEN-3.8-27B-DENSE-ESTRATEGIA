@@ -1,0 +1,18 @@
+[
+  {
+    "question": "MemGPT fornece contexto infinito?",
+    "answer": "Não literalmente. Usa memória externa e movimentação de informação para trabalhar além do contexto ativo."
+  },
+  {
+    "question": "É a mesma coisa que simplesmente aumentar max_context?",
+    "answer": "Não. A estratégia organiza recuperação e persistência, enquanto a configuração altera o limite de entrada suportado."
+  },
+  {
+    "question": "A janela física do modelo aumenta?",
+    "answer": "Não por esse mecanismo. O sistema altera qual informação entra na janela e pode executar várias chamadas para trabalhar com um acervo maior."
+  },
+  {
+    "question": "É necessário modificar pesos para esse padrão?",
+    "answer": "A ideia pode ser implementada com ferramentas e controle externo. O desempenho depende da capacidade do modelo de usar essas operações corretamente."
+  }
+]

@@ -1,0 +1,52 @@
+{
+  "id": "T140",
+  "technical_details": "Uma chamada possui pelo menos três camadas de resultado: transporte ou protocolo, execução da ferramenta e efeito de domínio. Um envelope recebido corretamente pode carregar erro operacional, enquanto uma resposta perdida pode esconder um efeito bem-sucedido. Na revisão MCP analisada, o contrato de entrada e a saída estruturada são descritos separadamente; a existência de outputSchema torna possível verificar uma dimensão que simples texto não resolve.",
+  "boundary_condition": "Validar argumentos não confirma disponibilidade atual do alvo nem a conclusão do efeito solicitado.",
+  "implementation_contract": {
+    "inputs": "Identificador da ferramenta, revisão de contrato, argumentos e contexto de execução.",
+    "outputs": "Conteúdo, resultado estruturado quando previsto, erro operacional e referência ao recibo.",
+    "state": "Correlação entre chamada, tentativa, versão da ferramenta e resultado recebido.",
+    "invariant": "A mensagem que propõe a chamada não é registrada como prova de execução."
+  },
+  "tradeoffs": [
+    "Contratos mais estritos facilitam consumo automático e exigem migração quando o domínio evolui.",
+    "Separar falha de protocolo e falha de negócio aumenta precisão e amplia o número de estados tratados."
+  ],
+  "failure_test": "Teste proposto: enviar argumentos inválidos, receber erro de domínio em um envelope válido e perder uma resposta após confirmação remota; o executor deve distingui-los sem retry genérico.",
+  "evaluation_plan": "Comparar integração somente textual e integração estruturada em operações rotuladas. Fixar revisão do protocolo e schemas. Medir classificação de erros, argumentos rejeitados corretamente e efeitos confirmados; aceitar a integração quando estados ambíguos permanecerem rastreáveis.",
+  "comparisons": [
+    {
+      "entry_id": "T141",
+      "relation": "complements",
+      "reason": "Uma saída estruturada descreve o resultado, mas não executa a ferramenta."
+    },
+    {
+      "entry_id": "T243",
+      "relation": "complements",
+      "reason": "Reconciliação resolve efeitos incertos após falhas de comunicação."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "MCP 2025-11-25 especifica inputSchema, outputSchema opcional e resultados estruturados de ferramentas.",
+    "source_ids": [
+      "V3C-S004"
+    ],
+    "support": "direct",
+    "caveat": "A revisão foi consultada como contrato identificado, sem pressupor ser a mais recente ou estar instalada."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um isError falso equivale a objetivo cumprido?",
+      "answer": "Não necessariamente. É um sinal do contrato da ferramenta; o domínio pode exigir verificar recibo, estado ou pós-condição."
+    },
+    {
+      "question": "Por que registrar a revisão usada?",
+      "answer": "Porque o mesmo nome pode aceitar outros argumentos ou interpretar valores de maneira diferente após evolução do serviço."
+    }
+  ],
+  "source_ids": [
+    "V3C-S004",
+    "V3C-S005"
+  ],
+  "research_note": "Contratos, testes e critérios são propostas editoriais; as fontes sustentam os mecanismos indicados."
+}

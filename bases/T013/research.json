@@ -1,0 +1,52 @@
+{
+  "id": "T013",
+  "technical_details": "Capacidade útil precisa ser medida para a operação exigida: localizar um fato, reunir vários, aplicar uma exceção ou acompanhar uma cadeia de dependências. O mesmo comprimento pode funcionar para recuperação literal e falhar em agregação. A avaliação também deve variar posição e quantidade de distratores sem confundir tokens aceitos pela API com informação efetivamente usada na resposta.",
+  "boundary_condition": "O tamanho anunciado não assegura qualidade quando a tarefa muda, a informação fica distribuída ou a reserva de saída e os custos tornam a chamada impraticável.",
+  "implementation_contract": {
+    "inputs": "Entrada tokenizada, tarefa definida, limite documentado e orçamento de saída.",
+    "outputs": "Resposta com evidência e medidas de uso e duração.",
+    "state": "Modelo e configuração fixados, comprimento e posição dos fatos controlados.",
+    "invariant": "Uma chamada aceita não é contada automaticamente como compreensão bem-sucedida do contexto."
+  },
+  "tradeoffs": [
+    "Enviar tudo evita uma etapa de seleção, mas aumenta custo e exposição a ruído.",
+    "Recuperação reduz entrada, porém pode omitir dependências; a escolha depende da tarefa e da cobertura exigida."
+  ],
+  "failure_test": "Teste proposto: manter a resposta esperada constante e mover suas premissas para diferentes regiões da entrada, acrescentando distratores plausíveis. O sistema deve manter desempenho ou declarar a limitação observada.",
+  "evaluation_plan": "Avaliação proposta: comparar contexto integral e RAG com as mesmas fontes. Variar comprimento, posição, número de fatos e exigência de integração; medir exatidão, suporte, custo e latência por classe de tarefa, sem usar uma única nota agregada.",
+  "comparisons": [
+    {
+      "entry_id": "T009",
+      "relation": "alternative",
+      "reason": "RAG seleciona evidência antes da leitura; contexto longo permite mais conteúdo, mas ainda precisa utilizá-lo."
+    },
+    {
+      "entry_id": "R016",
+      "relation": "complements",
+      "reason": "Lost in the Middle fornece uma dimensão de teste relacionada à posição da evidência."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "RULER inclui rastreamento e agregação além de recuperação literal para examinar capacidade de contexto.",
+    "source_ids": [
+      "V3A-S015"
+    ],
+    "support": "direct",
+    "caveat": "Foram consultadas capacidades e conclusões gerais; nenhum gabarito ou pergunta do benchmark orientou esta entrada."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um bom teste de agulha basta para escolher o modelo?",
+      "answer": "Não. Ele demonstra uma habilidade restrita; a tarefa real pode exigir combinar premissas e distinguir versões contraditórias."
+    },
+    {
+      "question": "É sempre melhor usar a janela máxima?",
+      "answer": "Não. O ponto adequado depende de utilidade marginal da informação, custo, prazo e qualidade observada para a operação desejada."
+    }
+  ],
+  "source_ids": [
+    "V3A-S015",
+    "A-S019"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

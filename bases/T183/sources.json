@@ -1,0 +1,80 @@
+[
+  {
+    "source_id": "C-S037",
+    "title": "QLoRA: Efficient Finetuning of Quantized LLMs",
+    "url": "https://arxiv.org/abs/2305.14314",
+    "publisher": "Dettmers e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Treina adaptadores através de base quantizada e congelada; NF4, dupla quantização e otimizadores paginados fazem parte da proposta.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn16view2"
+  },
+  {
+    "source_id": "C-S036",
+    "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+    "url": "https://arxiv.org/abs/2106.09685",
+    "publisher": "Hu e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Pesos base congelados recebem atualização treinável fatorada de baixo posto.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn16view1"
+  },
+  {
+    "source_id": "V4B-S006",
+    "title": "Open Source and In-House: How Uber Optimizes LLM Training",
+    "url": "https://www.uber.com/us/en/blog/open-source-and-in-house-how-uber-optimizes-llm-training/",
+    "publisher": "Uber Engineering",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-04-14",
+    "supports": "Infraestrutura Michelangelo com Transformers, Ray e DeepSpeed; avaliações de LoRA/QLoRA e scorer distribuído com vLLM.",
+    "limitations": "Mistura uso interno com experimentos; não tratar todas as configurações testadas como produto lançado. FlashAttention densa não reduz a complexidade aritmética quadrática.",
+    "web_ref": "turn217view0"
+  },
+  {
+    "source_id": "V4B-S028",
+    "title": "Current and New Activation Checkpointing Techniques in PyTorch",
+    "url": "https://pytorch.org/blog/activation-checkpointing-techniques/",
+    "publisher": "PyTorch",
+    "source_type": "technical_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-03-05",
+    "supports": "Checkpoint seletivo por operação e políticas de memória/recomputação para forward/backward.",
+    "limitations": "Disponibilidade e estado experimental variam com versão; não demonstra aceleração de decode nem aplicação local.",
+    "web_ref": "turn278view0"
+  },
+  {
+    "source_id": "V4D-S012",
+    "title": "Phi Silica task specialization using LoRA in Microsoft Learning Zone: A technical deep dive",
+    "url": "https://blogs.windows.com/windowsdeveloper/2025/07/31/phi-silica-task-specialization-using-lora-in-microsoft-learning-zone-a-technical-deep-dive/",
+    "publisher": "Microsoft",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-07-31",
+    "supports": "Fluxo específico: dados do professor GPT-4o filtrados, adaptador LoRA, prompt menor, guardrails de formato e avaliação por agentes confrontada com avaliação humana.",
+    "limitations": "O artigo informa lançamento em public preview ainda futuro naquela data. Ganhos reportados pertencem ao experimento de perguntas Kahoot!, não a capacidade geral, precisão absoluta ou equivalência com fronteira.",
+    "web_ref": "turn267view0"
+  },
+  {
+    "source_id": "V4D-S013",
+    "title": "Application card: AI in Microsoft 365 Education",
+    "url": "https://learn.microsoft.com/en-us/microsoft-365/education/guide/1-reference/microsoft-365-education-ai-application-card",
+    "publisher": "Microsoft",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Learning Zone documentado como capacidade do produto, usando modelo de nuvem e Phi Silica local em hardware compatível, com validação e revisão de rascunhos.",
+    "limitations": "Documentação de produto não prova volume de uso real nem que todo caminho atual preserve o experimento Kahoot! de 2025. Conteúdo e idiomas podem alterar qualidade; não há garantia de acerto.",
+    "web_ref": "turn267view1"
+  }
+]

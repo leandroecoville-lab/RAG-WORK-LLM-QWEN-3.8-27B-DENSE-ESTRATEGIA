@@ -1,0 +1,52 @@
+{
+  "id": "T160",
+  "technical_details": "Prontidão topológica e sucesso operacional são estados diferentes. Em graphlib, done informa ao ordenador que um nó foi processado; a biblioteca não comprova que o artefato exigido por seus sucessores existe. O executor precisa decidir se falha bloqueia descendentes, permite alternativa ou satisfaz uma dependência explicitamente tolerante. Em grafos dinâmicos, adicionar trabalho depois do início também requer uma política que o ordenador estático não oferece automaticamente.",
+  "boundary_condition": "Um DAG sem ciclos pode ficar sem progresso por recursos indisponíveis ou por nós considerados prontos com entradas inválidas.",
+  "implementation_contract": {
+    "inputs": "Nós, predecessores, contratos de saída e recursos exigidos.",
+    "outputs": "Conjunto pronto, tarefas bloqueadas e decisões de admissão.",
+    "state": "Contadores de dependências, estados de execução e versão do grafo.",
+    "invariant": "Um sucessor só recebe disponibilidade semântica quando suas entradas requeridas estão confirmadas."
+  },
+  "tradeoffs": [
+    "Grafo estático facilita validação e limita expansão durante execução.",
+    "Grafo dinâmico adapta descoberta e exige mais controle sobre fechamento e detecção de ciclos."
+  ],
+  "failure_test": "Teste proposto: um predecessor termina com erro e outro produz resultado válido; impedir que a simples finalização de ambos libere um sucessor que exige os dois artefatos.",
+  "evaluation_plan": "Comparar execução sequencial e escalonamento por prontidão, com recursos e durações controlados. Medir espera por dependência, utilização, descendentes executados indevidamente e tempo total. Separar benefício topológico de ganho por aumentar hardware.",
+  "comparisons": [
+    {
+      "entry_id": "T161",
+      "relation": "complements",
+      "reason": "Caminho crítico ajuda a priorizar entre tarefas prontas, mas não muda dependências."
+    },
+    {
+      "entry_id": "T147",
+      "relation": "complements",
+      "reason": "Fan-out e junção podem ser subgrafos com critérios explícitos de completude."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "graphlib oferece prepare, get_ready e done para coordenar processamento topológico, incluindo detecção de ciclos.",
+    "source_ids": [
+      "C-S024"
+    ],
+    "support": "direct",
+    "caveat": "Conclusão funcional de uma tarefa não é verificada pelo ordenador topológico."
+  },
+  "advanced_qa": [
+    {
+      "question": "Marcar done significa que a tarefa teve sucesso?",
+      "answer": "Para o ordenador, significa liberação topológica; a aplicação deve decidir se essa transição representa sucesso ou outro estado permitido."
+    },
+    {
+      "question": "Por que pode haver fila mesmo com vários nós prontos?",
+      "answer": "Porque prontidão trata dependências; CPU, memória, quota e concorrência continuam limitando execução."
+    }
+  ],
+  "source_ids": [
+    "C-S024",
+    "V3C-S002"
+  ],
+  "research_note": "Contratos e ensaios são propostas; os resultados citados pertencem às fontes, sem reprodução local."
+}

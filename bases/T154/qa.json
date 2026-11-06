@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Histórico completo é memória suficiente?",
+    "answer": "Não. Precisa de identificação, atualidade e recuperação correta."
+  },
+  {
+    "question": "Checkpoint em RAM é durável?",
+    "answer": "Não após queda do processo; é necessário backend persistente."
+  },
+  {
+    "question": "Uma nova tentativa deve criar nova mensagem lógica?",
+    "answer": "Depende do contrato. Duplicata de entrega deve manter identidade; regeneração intencional pode criar versão ou ramo distinto."
+  },
+  {
+    "question": "Como explicar uma resposta baseada em decisão antiga?",
+    "answer": "Registrar a revisão de entrada permite identificar desatualização e decidir se a resposta precisa ser refeita."
+  }
+]

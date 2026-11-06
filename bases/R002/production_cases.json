@@ -1,0 +1,64 @@
+{
+  "coverage": {
+    "entry_id": "R002",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Letta",
+    "scope": "referencia"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C027",
+      "company": "Letta",
+      "system": "Framework de agentes stateful",
+      "title": "Framework de agentes stateful — evidência delimitada",
+      "evidence_level": "operational_product",
+      "observed_use": "Fornecedor distingue framework Letta do padrão MemGPT e oferece serviços stateful.",
+      "technical_mechanism": "Persistência do agente e ferramentas de memória externas ao modelo.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S026",
+        "V2B-S002"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R002",
+          "match": "exact",
+          "rationale": "Fornecedor e framework identificados."
+        },
+        {
+          "entry_id": "T064",
+          "match": "exact",
+          "rationale": "Estado persistente de agentes é recurso explícito."
+        },
+        {
+          "entry_id": "P004",
+          "match": "analogy",
+          "rationale": "Inspira contratos do runtime proposto."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Escolher modelo compatível por testes de protocolo e separar identidade de agente e conversa.",
+      "limits": "Letta não é bigtech; implantação facilitada não comprova cliente ou escala. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4A-C027",
+      "deployment_domain": "llm_framework",
+      "mapping": {
+        "entry_id": "R002",
+        "match": "exact",
+        "rationale": "Fornecedor e framework identificados."
+      }
+    }
+  ]
+}

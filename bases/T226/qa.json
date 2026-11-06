@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Heartbeat e progresso são a mesma coisa?",
+    "answer": "Não. O sinal informa presença recente; o marcador informa avanço definido pelo domínio. Os dois devem ser observados separadamente."
+  },
+  {
+    "question": "O último heartbeat sempre permite retomar exatamente?",
+    "answer": "Não. Ele pode estar atrasado ou conter informação apenas parcial. A retomada precisa validar o checkpoint e reconciliar resultados externos pendentes."
+  },
+  {
+    "question": "Heartbeatar a cada item elimina perda de progresso?",
+    "answer": "Não necessariamente, porque o SDK pode agrupar envios e o processo pode cair antes da transmissão."
+  },
+  {
+    "question": "Por que cancelamento pode demorar?",
+    "answer": "Porque a atividade pode receber o sinal por heartbeat, cuja frequência e throttling influenciam a entrega."
+  }
+]

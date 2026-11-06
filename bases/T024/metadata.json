@@ -1,0 +1,33 @@
+{
+  "id": "T024",
+  "name": "Context Broker e Context Builder",
+  "canonical_name": "Context Broker / Context Builder",
+  "canonical_id": "T024",
+  "aliases": [
+    "montador de contexto",
+    "gerenciador de contexto",
+    "Context Broker / Context Builder"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T014",
+    "T042",
+    "T067",
+    "T152"
+  ],
+  "source_ids": [
+    "A-S006",
+    "V3A-S019",
+    "V3A-S018",
+    "C-S030",
+    "V4A-S022"
+  ],
+  "namespace": "T024",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T024",
+  "chunk_count": 9
+}

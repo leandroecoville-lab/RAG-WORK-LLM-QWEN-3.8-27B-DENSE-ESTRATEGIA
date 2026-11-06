@@ -1,0 +1,47 @@
+{
+  "id": "T081",
+  "technical_details": "O cache evita recalcular projeções de tokens anteriores, mas a consulta nova ainda interage com as chaves preservadas. Portanto, atenção densa no decode mantém custo dependente do contexto. Em um loop incremental, devem entrar somente tokens ainda não processados, enquanto a máscara representa a extensão anterior mais a nova. Posições, pesos e adaptadores fazem parte da identidade lógica desse estado.",
+  "boundary_condition": "Prefixos editados, máscaras diferentes ou mudança de modelo invalidam estados mesmo quando parte do texto visível permanece igual.",
+  "implementation_contract": {
+    "inputs": "Tokens incrementais, posições, máscara completa e identidade do modelo.",
+    "outputs": "Logits atuais e cache estendido com comprimento lógico explícito.",
+    "state": "Chaves e valores por camada, posições válidas e revisão do prefixo.",
+    "invariant": "O cache representa exatamente o mesmo prefixo usado para calcular os logits."
+  },
+  "tradeoffs": [
+    "Menos recomputação exige memória crescente em atenção global.",
+    "Pré-alocação facilita estabilidade de formas, mas pode reservar capacidade ociosa."
+  ],
+  "failure_test": "Teste proposto: executar continuação com padding e depois alterar um token inicial sem invalidar o cache. Comparar logits com recomputação integral; a reutilização incompatível deve falhar na validação.",
+  "evaluation_plan": "Plano proposto: controlar pesos, dtype, máscara e sequência; comparar execução incremental com recomputação completa. Registrar erro numérico tolerado pelo backend, bytes por camada e latência por comprimento; avaliar separadamente prefill e decode.",
+  "comparisons": [
+    {
+      "entry_id": "T116",
+      "relation": "alternative",
+      "reason": "Recomputação recupera estados ausentes ao custo de trabalho adicional de inferência."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação de cache exige máscara cobrindo tokens passados e atuais no loop incremental.",
+    "source_ids": [
+      "V3B-S005"
+    ],
+    "support": "direct",
+    "caveat": "O contrato concreto depende da arquitetura; atenção bidirecional não herda automaticamente a propriedade causal."
+  },
+  "advanced_qa": [
+    {
+      "question": "Cache elimina todo custo quadrático?",
+      "answer": "Evita refazer o prefixo a cada passo; o prefill denso ainda possui interações quadráticas entre tokens."
+    },
+    {
+      "question": "Texto idêntico basta para reutilizar?",
+      "answer": "Não. Tokenização, posições, máscara e estado do modelo precisam corresponder, inclusive quando o template de conversa muda."
+    }
+  ],
+  "source_ids": [
+    "V3B-S005",
+    "B-S003"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

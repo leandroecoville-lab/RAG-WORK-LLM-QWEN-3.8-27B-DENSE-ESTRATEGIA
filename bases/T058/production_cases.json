@@ -1,0 +1,104 @@
+{
+  "coverage": {
+    "entry_id": "T058",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 0,
+    "research_cases": 1,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Memory Consolidation",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C004",
+      "company": "Google",
+      "system": "Percolator no índice web",
+      "title": "Percolator no índice web — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "Artigo afirma implantação do processamento incremental na construção do índice da busca Google.",
+      "technical_mechanism": "Transações distribuídas e notificações organizam pequenas atualizações.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S003"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T065",
+          "match": "exact",
+          "rationale": "Confirma gerenciamento transacional de alterações; adaptação para agentes é adicional."
+        },
+        {
+          "entry_id": "T058",
+          "match": "analogy",
+          "rationale": "Atualização incremental inspira consolidação, mas não é consolidação semântica."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Delegar extração a 3–7B e confirmar alterações por transações determinísticas.",
+      "limits": "Relato histórico; não prova event sourcing, checkpoints de agentes ou resumo incremental correto. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C004",
+      "deployment_domain": "distributed_data_system",
+      "mapping": {
+        "entry_id": "T058",
+        "match": "analogy",
+        "rationale": "Atualização incremental inspira consolidação, mas não é consolidação semântica."
+      }
+    },
+    {
+      "case_id": "V4A-C030",
+      "company": "Autores Generative Agents",
+      "system": "Generative Agents / Smallville",
+      "title": "Generative Agents / Smallville — evidência delimitada",
+      "evidence_level": "research_only",
+      "observed_use": "Estudo constrói agentes simulados que registram experiências e refletem.",
+      "technical_mechanism": "Memórias episódicas, recuperação, reflexão e planejamento em ambiente simulado.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "A-S008"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R004",
+          "match": "exact",
+          "rationale": "Trabalho identificado."
+        },
+        {
+          "entry_id": "T049",
+          "match": "exact",
+          "rationale": "Experiências recuperáveis integram a arquitetura."
+        },
+        {
+          "entry_id": "T058",
+          "match": "exact",
+          "rationale": "Reflexões consolidam observações."
+        },
+        {
+          "entry_id": "T054",
+          "match": "family",
+          "rationale": "Reflexões são abstrações, não fatos automaticamente validados."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Usar simulação restrita para estudar recuperação com 3–14B, distinguindo crenças de fatos.",
+      "limits": "Simulação e plausibilidade não comprovam produção, causalidade ou confiabilidade empresarial. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "research_group",
+      "canonical_case_id": "V4A-C030",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "T058",
+        "match": "exact",
+        "rationale": "Reflexões consolidam observações."
+      }
+    }
+  ]
+}

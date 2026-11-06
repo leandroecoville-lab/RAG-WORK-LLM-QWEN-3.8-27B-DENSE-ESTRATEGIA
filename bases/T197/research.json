@@ -1,0 +1,47 @@
+{
+  "id": "T197",
+  "technical_details": "Declarar uma propriedade não a torna obrigatória: presença é controlada por required. Em composição, additionalProperties observa o subschema em que foi declarado e pode rejeitar extensões pretendidas; unevaluatedProperties permite considerar propriedades avaliadas por outras partes, conforme o dialeto. O keyword format também pode funcionar como anotação, sem checagem de validade, se a configuração não exigir o vocabulário de asserção correspondente.",
+  "boundary_condition": "Dois validadores com dialetos ou suporte de format diferentes podem discordar sem que os mesmos bytes do JSON tenham mudado.",
+  "implementation_contract": {
+    "inputs": "JSON parseado, schema identificado, dialeto e configuração explícita do validador.",
+    "outputs": "Resultado com caminhos dos erros e indicação de recursos não suportados.",
+    "state": "Versões do schema, resoluções de referências e política de formatos.",
+    "invariant": "Uma restrição obrigatória desconhecida nunca é tratada como se tivesse sido verificada."
+  },
+  "tradeoffs": [
+    "Schemas fechados detectam campos inesperados e dificultam evolução.",
+    "Composição facilita reúso e exige compreender o escopo de cada restrição."
+  ],
+  "failure_test": "Teste proposto: remover campo declarado mas não required, acrescentar propriedade por allOf e usar format inválido. Esperar resultados coerentes com o dialeto e a configuração documentados, sem supor validação inexistente.",
+  "evaluation_plan": "Plano proposto: criar casos válidos e inválidos por restrição, comparar implementações quando necessário e verificar mensagens de erro. Medir cobertura do contrato e compatibilidade entre produtores/consumidores; adicionar checagens externas para fatos e autorização.",
+  "comparisons": [
+    {
+      "entry_id": "T196",
+      "relation": "complements",
+      "reason": "Uma gramática de geração pode impor parte do schema, mas o objeto final ainda precisa ser validado."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação JSON Schema diferencia propriedades declaradas, obrigatórias, adicionais e propriedades avaliadas através de composição.",
+    "source_ids": [
+      "V3B-S024"
+    ],
+    "support": "direct",
+    "caveat": "A evidência cobre estrutura; existência de registros e significado dos valores dependem de validações de domínio."
+  },
+  "advanced_qa": [
+    {
+      "question": "format email confirma que a caixa existe?",
+      "answer": "Não. Mesmo uma checagem sintática de formato não confirma existência, titularidade ou capacidade de entrega."
+    },
+    {
+      "question": "Schema válido prova argumento autorizado?",
+      "answer": "Não. Autorização depende do solicitante, recurso e operação, além da forma dos dados enviados."
+    }
+  ],
+  "source_ids": [
+    "V3B-S024",
+    "C-S049"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

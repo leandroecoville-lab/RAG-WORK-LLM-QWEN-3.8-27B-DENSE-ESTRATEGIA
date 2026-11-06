@@ -1,0 +1,115 @@
+{
+  "id": "T240",
+  "novelty": "A v3 exigia corte consistente entre estado e cursor. A ampliação define composição de snapshot para agentes, valida restauração antes de confiar no backup e separa dados recuperáveis de recursos que precisam ser reconstruídos.",
+  "deep_layers": [
+    {
+      "name": "Manifesto de componentes",
+      "detail": "Liste plano, estado de tarefas, referências de artefatos, decisões e operações externas pendentes. Inclua versão dos schemas e do código que interpreta cada parte. Não presumir que salvar mensagens captura filesystem, banco e subprocessos; cada componente precisa de fronteira declarada e procedimento de restauração ou reconstrução.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S028",
+        "V4C-S030"
+      ]
+    },
+    {
+      "name": "Captura coordenada",
+      "detail": "Escolha pausar escritores, usar snapshot transacional ou publicar versões imutáveis com um manifesto consistente. A estratégia depende do armazenamento. Um arquivo de estado copiado enquanto muda pode ser sintaticamente válido e semanticamente misturar momentos; hashes dos componentes não corrigem um corte inconsistente entre eles.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S029",
+        "V3C-S028"
+      ]
+    },
+    {
+      "name": "Restauração como teste",
+      "detail": "Verifique integridade, compatibilidade e capacidade de retomar antes de declarar o snapshot útil. Faça restauração em ambiente isolado e confirme invariantes de tarefa e referências. Recursos efêmeros, como conexão ou cache KV, podem ser reconstruídos; efeitos externos exigem consulta atual, porque o snapshot descreve o que se sabia, não o mundo presente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S001",
+        "C-S026"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Missão longa interrompível",
+      "scenario": "Uma campanha precisa sobreviver a manutenção e falhas.",
+      "strategy": "Capture fronteira após unidades aceitas, persistindo manifesto e cursores coerentes. Na restauração, reabra artefatos, valide revisão e reconcilie operações em andamento. Depois de confirmar o estado, retome pendências; não assumir que ausência no snapshot prova que nenhum efeito posterior ocorreu.",
+      "small_model_role": "3–7B executa unidades; 15–30B interpreta pendências complexas após recuperação.",
+      "acceptance": "Proposta: restauração reproduz estado aceito sem lacunas ou duplicações.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S001",
+        "V3C-S028"
+      ]
+    },
+    {
+      "name": "Experimento de estratégias",
+      "scenario": "É necessário comparar dois planos a partir do mesmo ponto.",
+      "strategy": "Crie snapshot de estado lógico e artefatos imutáveis, depois rode variantes em ambientes isolados. Requisições externas mutáveis precisam ser gravadas ou controladas para que as condições sejam comparáveis. Não tratar duas restaurações com fontes atualizadas em horários distintos como experimento idêntico.",
+      "small_model_role": "8–14B executa variante; avaliador externo compara resultados e custos.",
+      "acceptance": "Proposta: diferenças atribuíveis à estratégia, com condições de entrada documentadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S028",
+        "V4C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Estados compactos por unidade tornam snapshot e verificação mais simples.",
+    "8_14b": "Validar consistência de tarefas e referências após restauração.",
+    "15_30b": "Reconciliar dependências complexas e decidir replanejamento quando ambiente mudou.",
+    "training_or_runtime_requirements": "Armazenamento com protocolo de corte consistente, manifesto versionado e ensaios de restauração.",
+    "do_not_use_when": "Não chamar cópia de chat ou arquivo isolado de snapshot integral da execução."
+  },
+  "connections": [
+    {
+      "target_id": "T242",
+      "relation": "complements",
+      "how": "Snapshot serve como base para aplicar eventos posteriores e reduzir tempo de recuperação.",
+      "interface": "Estado, cursor e versão do processador.",
+      "condition": "Cursor corresponde exatamente ao conteúdo capturado.",
+      "acceptance": "Resultado equivale à reconstrução de referência sob as mesmas regras.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S041"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T243",
+      "relation": "complements",
+      "how": "Após restaurar estado local, consultar desfecho atual das intenções externas pendentes.",
+      "interface": "IDs de operação e último estado conhecido.",
+      "condition": "Snapshot não é tratado como rollback do serviço remoto.",
+      "acceptance": "Efeito ocorrido depois da captura é reconhecido antes de repetir.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Snapshot íntegro pode ser semanticamente incompatível com código novo.",
+    "Teste de restauração precisa incluir referências externas aos bytes do manifesto."
+  ],
+  "frontier_comparison": "Compare tempo e correção de retomada separadamente da qualidade da LLM. Snapshots podem tornar modelos pequenos operacionalmente persistentes sem aumentar a informação que conseguem processar por chamada.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q002",
+      "V4C-Q020",
+      "V4C-Q027"
+    ],
+    "scope_note": "Cadence e padrões de estado apoiam continuidade; Brooklin oferece offsets por tarefas, não prova snapshot global cognitivo. A composição proposta exige teste próprio."
+  },
+  "source_ids": [
+    "V3C-S028",
+    "V4C-S030",
+    "A-S029",
+    "V4C-S001",
+    "C-S026",
+    "V3C-S041"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "T009",
+  "name": "RAG — Retrieval-Augmented Generation; incluindo RAG temporal",
+  "canonical_name": "RAG com filtragem temporal explícita",
+  "canonical_id": "T009",
+  "aliases": [
+    "RAG — Retrieval-Augmented Generation",
+    "Retrieval-Augmented Generation",
+    "geração aumentada por recuperação",
+    "RAG temporal",
+    "temporal retrieval-augmented generation"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T027",
+    "T056",
+    "T072",
+    "P007"
+  ],
+  "source_ids": [
+    "A-S007",
+    "A-S032",
+    "V3A-S002",
+    "V3A-S009",
+    "V4A-S022",
+    "V4A-S019",
+    "V4A-S014",
+    "B-S026",
+    "V4A-S023",
+    "V4A-S025"
+  ],
+  "namespace": "T009",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T009",
+  "chunk_count": 9
+}

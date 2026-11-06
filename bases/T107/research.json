@@ -1,0 +1,46 @@
+{
+  "id": "T107",
+  "technical_details": "Um ponto de roofline só é interpretável quando operações e bytes correspondem ao mesmo nível de memória e caminho de instruções. Reúso em cache pode reduzir tráfego externo sem reduzir leituras internas. O teto de computação também depende de dtype e uso real das unidades matriciais. Distância ao teto sugere espaço para investigação, mas não identifica sozinha latência de lançamentos, dependências ou comunicação entre dispositivos.",
+  "boundary_condition": "Medir durante profiling pode alterar concorrência, aquecimento de cache e duração; comparar diretamente com tráfego normal exige cautela.",
+  "implementation_contract": {
+    "inputs": "Contadores de operações e tráfego, duração, dtype e configuração de profiling.",
+    "outputs": "Ponto de intensidade aritmética e hipóteses sobre o teto aplicável.",
+    "state": "Metadados de dispositivo, frequências, repetição e estado de cache.",
+    "invariant": "Numerador, denominador e tempo descrevem a mesma região de execução."
+  },
+  "tradeoffs": [
+    "Mais métricas esclarecem gargalos e podem exigir replay adicional.",
+    "Uma otimização local pode deslocar o gargalo para outra fase do serviço."
+  ],
+  "failure_test": "Teste proposto: calcular intensidade usando bytes alocados em vez de bytes transferidos e comparar com contadores. Esperar discrepância detectável que impeça concluir o gargalo com a estimativa incorreta.",
+  "evaluation_plan": "Plano proposto: separar medição de latência sem profiler e investigação de kernels selecionados. Controlar aquecimento, formas e dtype; cruzar contadores com implementação e decidir por melhorias end-to-end reproduzíveis, não por aproximação isolada ao teto.",
+  "comparisons": [
+    {
+      "entry_id": "T090",
+      "relation": "complements",
+      "reason": "Reduzir tráfego intermediário pode mudar a posição do kernel no roofline."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O guia Nsight Compute relaciona desempenho a intensidade aritmética e tetos de banda e computação, alertando para efeitos de profiling.",
+    "source_ids": [
+      "V3B-S012"
+    ],
+    "support": "direct",
+    "caveat": "O modelo é diagnóstico de execução; não prevê integralmente filas, rede ou qualidade de respostas."
+  },
+  "advanced_qa": [
+    {
+      "question": "Bytes reservados servem como tráfego?",
+      "answer": "Não. Um buffer pode ser lido várias vezes ou permanecer em cache; capacidade e movimentação são medidas diferentes."
+    },
+    {
+      "question": "Baixa utilização prova falta de trabalho paralelo?",
+      "answer": "Não exclusivamente. Dependências, comunicação, latência de memória ou instruções distintas também podem limitar a execução."
+    }
+  ],
+  "source_ids": [
+    "V3B-S012"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

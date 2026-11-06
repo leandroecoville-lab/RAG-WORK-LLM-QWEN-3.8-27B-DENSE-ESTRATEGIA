@@ -1,0 +1,33 @@
+{
+  "id": "T190",
+  "name": "Verifier Loop",
+  "canonical_name": "Verifier Loop",
+  "canonical_id": "T190",
+  "aliases": [
+    "ciclo de verificação"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T189",
+    "T192",
+    "T195",
+    "T200"
+  ],
+  "source_ids": [
+    "C-S043",
+    "C-S051",
+    "V4C-S009",
+    "V4B-S022",
+    "V4B-S023",
+    "V4B-S026",
+    "V4C-S008"
+  ],
+  "namespace": "T190",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T190",
+  "chunk_count": 9
+}

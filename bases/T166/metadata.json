@@ -1,0 +1,33 @@
+{
+  "id": "T166",
+  "name": "Queue Fairness / Aging",
+  "canonical_name": "Queue Fairness / Aging",
+  "canonical_id": "T166",
+  "aliases": [
+    "equidade de filas",
+    "envelhecimento de prioridade"
+  ],
+  "category": "orquestracao",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T149",
+    "T174"
+  ],
+  "source_ids": [
+    "C-S029",
+    "V3C-S020",
+    "V3C-S009",
+    "V3C-S021",
+    "V3C-S016",
+    "C-S025",
+    "V4C-S023",
+    "V4C-S003"
+  ],
+  "namespace": "T166",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T166",
+  "chunk_count": 9
+}

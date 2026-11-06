@@ -1,0 +1,18 @@
+[
+  {
+    "question": "As QAs deste RAG comprovam sua qualidade?",
+    "answer": "Não. Elas ajudam ensino e checagem interna, mas foram escritas a partir do conteúdo; um benchmark independente precisa de casos separados."
+  },
+  {
+    "question": "Como distinguir melhoria de custo de perda de qualidade?",
+    "answer": "Comparar custo por resultado aceito sob os mesmos critérios e reportar a qualidade por classe, incluindo falhas e tentativas adicionais."
+  },
+  {
+    "question": "Posso chamar 100% de busca por nome de qualidade geral?",
+    "answer": "Não. É um teste de cobertura literal, diferente de perguntas descritivas e de respostas corretas."
+  },
+  {
+    "question": "O que fazer após ver falhas na reserva?",
+    "answer": "Registrar a primeira rodada; usar esses casos para desenvolvimento futuro e criar outra reserva antes do próximo ajuste."
+  }
+]

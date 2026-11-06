@@ -1,0 +1,80 @@
+[
+  {
+    "source_id": "C-S047",
+    "title": "Let's Verify Step by Step",
+    "url": "https://arxiv.org/abs/2305.20050",
+    "publisher": "Lightman e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Supervisão por etapas difere de rotular apenas o resultado final.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn16view10"
+  },
+  {
+    "source_id": "C-S023",
+    "title": "Temporal Workflow Execution overview",
+    "url": "https://docs.temporal.io/workflow-execution",
+    "publisher": "Temporal",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Execução durável recupera estado por histórico de eventos e replay sujeito a determinismo.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn34view7"
+  },
+  {
+    "source_id": "V3B-S023",
+    "title": "OpenTelemetry — Traces",
+    "url": "https://opentelemetry.io/docs/concepts/signals/traces/",
+    "publisher": "OpenTelemetry",
+    "source_type": "documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Spans, relações de causalidade, eventos e metadados observáveis de execução.",
+    "limitations": "Tracing registra operações; checagem de invariantes e interpretação de sucesso são contratos adicionais propostos.",
+    "web_ref": "turn180view11"
+  },
+  {
+    "source_id": "V4C-S009",
+    "title": "Using AI to Delete Code: Agentic Tech Debt Cleanup at Uber",
+    "url": "https://www.uber.com/us/en/blog/ai-code-cleanup/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "AutoClean operacional combina agentes, PolyglotPiranha via MCP, CI, fixers delimitados, verificações estáticas e CodeCourt por propriedades.",
+    "limitations": "Fonte primária aberta. Desempenho relatado pertence ao sistema e ao período descritos; não foi reproduzido e não comprova transferência para modelos 3–30B.",
+    "web_ref": "turn238view0"
+  },
+  {
+    "source_id": "V4B-S022",
+    "title": "AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms",
+    "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+    "publisher": "Google DeepMind",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-05-14",
+    "supports": "Geração evolutiva com avaliadores executáveis; heurística descoberta implantada em Borg e verificações de circuitos.",
+    "limitations": "Não confundir ensemble de proponentes com votação nem transferir ganhos de sistemas Google a modelos 3–30B.",
+    "web_ref": "turn245view0"
+  },
+  {
+    "source_id": "V4C-S008",
+    "title": "Introducing Piranha: An Open Source Tool to Automatically Delete Stale Code",
+    "url": "https://www.uber.com/us/en/blog/piranha/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2020-03-17",
+    "supports": "Pipeline interno de remoção de flags obsoletas por transformação de AST e geração de diffs para revisão.",
+    "limitations": "Fonte primária aberta. Desempenho relatado pertence ao sistema e ao período descritos; não foi reproduzido e não comprova transferência para modelos 3–30B.",
+    "web_ref": "turn234view0"
+  }
+]

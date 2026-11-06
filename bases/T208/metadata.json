@@ -1,0 +1,35 @@
+{
+  "id": "T208",
+  "name": "Planner–Executor / Plan-and-Execute",
+  "canonical_name": "Planner–Executor / Plan-and-Execute",
+  "canonical_id": "T208",
+  "aliases": [
+    "plan and execute",
+    "planejador e executor"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T142",
+    "T213",
+    "T237"
+  ],
+  "source_ids": [
+    "V2A-S021",
+    "V3C-S002",
+    "V3C-S012",
+    "V4C-S015",
+    "V2A-S012",
+    "V4C-S014",
+    "C-S030",
+    "V4C-S017",
+    "V4C-S030"
+  ],
+  "namespace": "T208",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T208",
+  "chunk_count": 9
+}

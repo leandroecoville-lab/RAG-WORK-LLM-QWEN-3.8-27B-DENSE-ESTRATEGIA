@@ -1,0 +1,119 @@
+{
+  "id": "T083",
+  "novelty": "A v3 exigiu identidade completa e aquisição segura de referências. Esta ficha transforma o rótulo amplo em uma política multinível de admissão, retenção e observabilidade, para que advanced corresponda a capacidades demonstráveis e não a duplicação de nomes.",
+  "deep_layers": [
+    {
+      "name": "Camadas com custo explícito",
+      "detail": "Separe blocos ativos na GPU, prefixos ociosos retidos e eventual armazenamento secundário. Cada promoção precisa declarar bytes movidos, tempo e compatibilidade. Não presuma que copiar KV da CPU sempre vence recomputar; a comparação depende do comprimento, interconexão, disponibilidade do worker e urgência da requisição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S005",
+        "V3D-S004",
+        "V4B-S004"
+      ]
+    },
+    {
+      "name": "Admissão resistente à poluição",
+      "detail": "Um cliente pode enviar muitos prefixos únicos e deslocar conteúdo útil. Adote cotas por domínio, frequência mínima ou retenção limitada para entradas de uma só utilização. A política deve proteger sequências ativas e manter estatísticas por origem, sem transformar um prefixo compartilhado em canal de acesso a conteúdo de outro domínio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S005",
+        "V3D-S004",
+        "V4B-S004"
+      ]
+    },
+    {
+      "name": "Métricas por etapa do cache",
+      "detail": "Exponha busca de identidade, hit lógico, disponibilidade física e tempo de aquisição separadamente. Um índice pode anunciar um bloco que já foi removido ou que ainda está sendo transferido. Registre miss por incompatibilidade, expiração e capacidade; isso permite corrigir a política certa sem atribuir todo fracasso à taxa de hit.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S005",
+        "V3D-S004",
+        "V4B-S004"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Serviço com vários adaptadores",
+      "scenario": "Clientes usam a mesma base com comportamentos especializados.",
+      "strategy": "Inclua adaptador e revisão na chave, reserve orçamento por grupo e compartilhe somente estados cuja equivalência esteja comprovada. Evite usar o ID do modelo base como chave universal. Teste promoção e invalidação enquanto pedidos antigos ainda executam.",
+      "small_model_role": "Modelos 3–30B podem compartilhar infraestrutura, mantendo seus estados computacionais separados.",
+      "acceptance": "Exigir zero falso hit nos testes e custo menor que caches totalmente isolados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S005",
+        "V3D-S004",
+        "V4B-S004"
+      ]
+    },
+    {
+      "name": "Retenção entre reinícios",
+      "scenario": "Prompts institucionais são caros de reconstruir e muito recorrentes.",
+      "strategy": "Avalie armazenamento secundário para um conjunto pequeno de prefixos validados. Carregue sob demanda, confirme manifesto e descarte artefatos de revisão incompatível. Use TTL como política econômica, não como prova de validade.",
+      "small_model_role": "Um alvo 15–30B pode economizar prefill se transferência for efetivamente mais barata.",
+      "acceptance": "Medir retomada fria, bytes transferidos e impacto nas requisições sem reuso.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S005",
+        "V3D-S004",
+        "V4B-S004"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, começar com cache local simples; múltiplas camadas podem adicionar mais coordenação que economia.",
+    "8_14b": "Em 8–14B, quotas por adaptador e observabilidade de misses tendem a ser prioridades antes de tiering.",
+    "15_30b": "Em 15–30B, investigar armazenamento secundário somente após medir a pressão KV e a frequência de revisitas.",
+    "training_or_runtime_requirements": "Requer recursos concretos do runtime; nome advanced não implica transferência, isolamento ou persistência já implementados.",
+    "do_not_use_when": "Não usar índice de similaridade textual para reutilizar tensores exatos nem prometer todas as funções sob um único nome."
+  },
+  "connections": [
+    {
+      "target_id": "T105",
+      "relation": "complements",
+      "how": "Aplicar remoção por valor e referência ativa em cada camada de armazenamento.",
+      "interface": "Uso recente, custo de reconstrução, bytes e contagem de referências.",
+      "condition": "A remoção não toca estado necessário a um decode em andamento.",
+      "acceptance": "Injetar pressão e verificar que sequências ativas permanecem corretas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S005",
+        "V3D-S004",
+        "V4B-S004"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T157",
+      "relation": "requires",
+      "how": "Identificar prefixos e versões antes de consultar níveis de cache.",
+      "interface": "Hash encadeado, metadados multimodais e domínio de isolamento.",
+      "condition": "A serialização da identidade é determinística.",
+      "acceptance": "Alterar um componente por vez e exigir miss apropriado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S005",
+        "V3D-S004",
+        "V4B-S004"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Distinguir hit de índice de estado realmente pronto para consumo.",
+    "Limitar promoção de prefixos únicos e testar concorrência na invalidação."
+  ],
+  "frontier_comparison": "Comparar custo e SLO de workloads recorrentes com uma API de fronteira que ofereça cache documentado. O resultado caracteriza eficiência operacional, sem inferir equivalência de capacidades cognitivas.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q002"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S005",
+    "V3D-S004",
+    "V4B-S004"
+  ]
+}

@@ -1,0 +1,93 @@
+[
+  {
+    "source_id": "C-S001",
+    "title": "RouteLLM: Learning to Route LLMs with Preference Data",
+    "url": "https://arxiv.org/abs/2406.18665",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Roteadores aprendidos escolhem entre modelos considerando qualidade e custo; resultados dependem do conjunto de tarefas.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn8view1"
+  },
+  {
+    "source_id": "C-S002",
+    "title": "FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance",
+    "url": "https://arxiv.org/abs/2305.05176",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Cascatas de modelos e decisões de encaminhamento podem ser otimizadas sob orçamento.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn30view2"
+  },
+  {
+    "source_id": "C-S050",
+    "title": "On Calibration of Modern Neural Networks",
+    "url": "https://arxiv.org/abs/1706.04599",
+    "publisher": "Guo e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Calibração relaciona probabilidades previstas à frequência de acerto; temperatura de calibração não é temperatura de geração.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn16view11"
+  },
+  {
+    "source_id": "V2C-S004",
+    "title": "Evaluation best practices",
+    "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices",
+    "publisher": "OpenAI",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Evals específicas da tarefa, objetivos, datasets, métricas, comparação, acompanhamento contínuo e calibração com julgamento humano.",
+    "limitations": "Orientação metodológica, sem benchmark do pacote. As QA redigidas nas fichas são material didático, não teste independente.",
+    "web_ref": "turn70view1"
+  },
+  {
+    "source_id": "V4C-S011",
+    "title": "Understanding intelligent prompt routing in Amazon Bedrock",
+    "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-routing.html",
+    "publisher": "Amazon Web Services",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Recurso de roteamento entre dois modelos de uma família, critérios de qualidade e fallback; não prova uso por cliente específico.",
+    "limitations": "Fonte primária aberta. Desempenho relatado pertence ao sistema e ao período descritos; não foi reproduzido e não comprova transferência para modelos 3–30B.",
+    "web_ref": "turn233view0"
+  },
+  {
+    "source_id": "V4C-S012",
+    "title": "Navigating the LLM Landscape: Uber’s Innovation with GenAI Gateway",
+    "url": "https://www.uber.com/us/en/blog/genai-gateway/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2024-07-11",
+    "supports": "Gateway interno com adaptadores de modelos, interface unificada, controle de acesso e atribuição de consumo.",
+    "limitations": "Relato primário delimitado à data e sistema; não houve reprodução. Números e escolhas do operador não definem ganhos, preços ou limites para a LAI ou modelos 3–30B.",
+    "web_ref": "turn256view0"
+  },
+  {
+    "source_id": "V4C-S014",
+    "title": "Running a Software Factory Efficiently at Uber Scale",
+    "url": "https://www.uber.com/us/en/blog/efficient-software-factory/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-08-27",
+    "supports": "Harnesses internos, seleção por tarefas reais, modelos diferentes para subagentes, compactação, cache e code-mode.",
+    "limitations": "Relato primário delimitado à data e sistema; não houve reprodução. Números e escolhas do operador não definem ganhos, preços ou limites para a LAI ou modelos 3–30B.",
+    "web_ref": "turn257view0"
+  }
+]

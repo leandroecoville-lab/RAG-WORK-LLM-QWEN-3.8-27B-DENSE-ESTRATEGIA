@@ -1,0 +1,17 @@
+{
+  "entry_ids_preserved": true,
+  "scope_counts": {
+    "inventario": 243,
+    "referencia": 27,
+    "proposta": 17
+  },
+  "all_legacy_fields_preserved": true,
+  "all_legacy_sources_preserved": true,
+  "legacy_chunk_texts_preserved": true,
+  "legacy_chunk_count": 1722,
+  "base_count": 287,
+  "individual_files_complete": true,
+  "new_strategy_count": 287,
+  "qa_count": 1148,
+  "passed": true
+}

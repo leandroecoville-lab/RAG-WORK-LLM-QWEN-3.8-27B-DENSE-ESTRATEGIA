@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "C-S052",
+    "title": "Equipping agents for the real world with Agent Skills",
+    "url": "https://www.anthropic.com/research/equipping-agents-for-the-real-world-with-agent-skills",
+    "publisher": "Anthropic",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Skills empacotam instruções e recursos carregados progressivamente.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn34view8"
+  },
+  {
+    "source_id": "V3B-S021",
+    "title": "Agent Skills Specification",
+    "url": "https://agentskills.io/specification",
+    "publisher": "Agent Skills",
+    "source_type": "specification",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Estrutura SKILL.md, metadados, recursos e carregamento progressivo.",
+    "limitations": "Especificação de formato não prova correção do procedimento nem autorização universal de ferramentas.",
+    "web_ref": "turn180view9"
+  },
+  {
+    "source_id": "V4B-S032",
+    "title": "Agent Memory Distillation: Empowering Small LLM Agents with Hierarchical Teacher Memory",
+    "url": "https://agent-memory-distillation.github.io/",
+    "publisher": "Taeil Kim, Kangsan Kim, Sung Ju Hwang / KAIST",
+    "source_type": "research_project",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Memórias de workflow, subtarefa e função de trajetórias do professor, injeção proativa/reativa e experimentos com alunos pequenos sem treino.",
+    "limitations": "Pesquisa, sem implantação industrial comprovada nesta fonte; paridade é restrita a tarefas avaliadas.",
+    "web_ref": "turn290view1"
+  },
+  {
+    "source_id": "C-S035",
+    "title": "Agent Memory Distillation: Empowering Small LLM Agents with Hierarchical Teacher Memory",
+    "url": "https://arxiv.org/abs/2608.07169",
+    "publisher": "Kim, Kim e Hwang / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "AMD transfere trajetórias bem-sucedidas em memórias de workflow, subtarefa e função, sem atualizar pesos.",
+    "limitations": "Método identificado em fonte primária; resultados não reproduzidos nem extrapolados ao Qwen/Helena. A versão arXiv consultada diz under review; outra versão consta na ACL Anthology.",
+    "web_ref": "turn30view1"
+  }
+]

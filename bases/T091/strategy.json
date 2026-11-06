@@ -1,0 +1,127 @@
+{
+  "id": "T091",
+  "novelty": "A v3 examinou divisão de trabalho e registradores. Aqui o foco é escolher FA2 dentro de um conjunto de backends, lidar com comprimentos variáveis e distinguir ganhos da atenção de efeitos introduzidos por empacotamento ou compilação.",
+  "deep_layers": [
+    {
+      "name": "Forma de entrada como distribuição",
+      "detail": "Colete distribuição de batch, comprimento e dimensão de cabeça. Um único tensor grande pode favorecer a configuração escolhida e esconder degradações nas formas pequenas predominantes em produção. Construa uma grade baseada no uso e pese resultados por frequência, mantendo casos raros críticos separados da média.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S011",
+        "V3B-S006",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    },
+    {
+      "name": "Remoção de padding com fronteiras",
+      "detail": "Quando usar representação de comprimento variável, preserve os offsets cumulativos e a máscara de cada sequência. Remover padding altera layout, não autoriza atenção entre documentos. Valide exemplos com tamanhos extremos e lotes reordenados; uma saída plausível pode esconder mistura de contexto difícil de perceber visualmente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S011",
+        "V3B-S006",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    },
+    {
+      "name": "Ciclo de vida do backend",
+      "detail": "Fixe pacote, compilador e dispositivo do ensaio e registre o fallback disponível. Não selecione FA2 apenas pelo nome conhecido nem descarte uma implementação nova sem teste. Após atualização, reavalie formas efetivamente utilizadas, porque mudanças no despacho ou em máscaras podem ter mais impacto que o microbenchmark principal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S011",
+        "V3B-S006",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Lote de documentos desiguais",
+      "scenario": "Um classificador recebe textos curtos e longos juntos.",
+      "strategy": "Compare padding convencional com caminho varlen suportado, mantendo exemplos idênticos e mapeamento de IDs. Só então compare FA2 com outros backends. Isso evita atribuir à versão do kernel uma economia causada pela remoção de padding.",
+      "small_model_role": "Um especialista 3–14B pode se beneficiar de menos trabalho inútil nos prefills.",
+      "acceptance": "Aprovar com independência entre exemplos e redução de tempo ponderada pelo tráfego.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S011",
+        "V3B-S006",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    },
+    {
+      "name": "Migração de runtime",
+      "scenario": "Um modelo já funciona em um executor de referência.",
+      "strategy": "Monte testes diferenciais de máscara, posições e sampling, aqueça todas as formas relevantes e faça rollout gradual. Se houver backend ausente, falhe com diagnóstico ou use fallback conhecido; não ignore silenciosamente o padrão da arquitetura.",
+      "small_model_role": "Um 15–30B precisa preservar compatibilidade junto de TP, GQA e dtype selecionados.",
+      "acceptance": "Exigir qualidade equivalente e picos de memória dentro do orçamento do serviço.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S011",
+        "V3B-S006",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, medir formatos curtos e overhead de despacho para não escolher pelo cenário mais favorável ao kernel.",
+    "8_14b": "Em 8–14B, avaliar varlen e empacotamento com testes de isolamento dos exemplos.",
+    "15_30b": "Em 15–30B, incluir formas resultantes do particionamento por dispositivo, não apenas tensores do modelo inteiro.",
+    "training_or_runtime_requirements": "Runtime deve suportar a arquitetura, dtype e máscara; versão FA2 não é configuração universal de todo checkpoint.",
+    "do_not_use_when": "Não forçar FA2 quando o backend perde um recurso do modelo ou realiza conversões caras não medidas."
+  },
+  "connections": [
+    {
+      "target_id": "T087",
+      "relation": "complements",
+      "how": "Avaliar lote e layout juntamente, mantendo compatibilidade e identidade por sequência.",
+      "interface": "Comprimentos, offsets cumulativos e IDs dos exemplos.",
+      "condition": "Kernel varlen é suportado e não mistura sequências.",
+      "acceptance": "Comparar resultados com processamento independente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S011",
+        "V3B-S006",
+        "V4B-S017",
+        "V4B-S018"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T098",
+      "relation": "alternative",
+      "how": "Selecionar outro kernel eficiente quando oferecer melhor cobertura das formas reais.",
+      "interface": "Contrato de atenção e matriz de compatibilidade.",
+      "condition": "Ambas implementações preservam a mesma semântica.",
+      "acceptance": "Escolher por distribuição de latência e memória, não por nome de versão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S011",
+        "V3B-S006",
+        "V4B-S017",
+        "V4B-S018"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Testar lotes reordenados e comprimentos unitários.",
+    "Separar melhoria por unpadding, compilação e troca de kernel no relatório."
+  ],
+  "frontier_comparison": "Comparar uma aplicação de modelo pequeno com fronteira usando custo e prazo do serviço. FA2 pode melhorar eficiência; qualquer diferença de qualidade decorre do modelo ou da execução e deve ser investigada separadamente.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q005"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S011",
+    "V3B-S006",
+    "V4B-S017",
+    "V4B-S018"
+  ]
+}

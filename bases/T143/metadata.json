@@ -1,0 +1,35 @@
+{
+  "id": "T143",
+  "name": "Plan-Then-Act",
+  "canonical_name": "Plan-Then-Act",
+  "canonical_id": "T143",
+  "aliases": [
+    "planejar e depois agir"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T142",
+    "T144",
+    "T160"
+  ],
+  "source_ids": [
+    "C-S010",
+    "V3C-S012",
+    "V3C-S002",
+    "V4C-S015",
+    "V4C-S017",
+    "V4C-S004",
+    "V4C-S014",
+    "C-S030",
+    "V2A-S008",
+    "V3C-S042"
+  ],
+  "namespace": "T143",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T143",
+  "chunk_count": 9
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Fechar SSE garante cancelamento da LLM?",
+    "answer": "Não. O contrato do servidor precisa oferecer e executar esse cancelamento."
+  },
+  {
+    "question": "Streaming reduz custo automaticamente?",
+    "answer": "Não. Só pode economizar geração se ela realmente parar antes."
+  },
+  {
+    "question": "Fechar a aba prova que a geração foi cancelada?",
+    "answer": "Não. O sinal pode não chegar ao backend; confirmação ou observabilidade do servidor é necessária para afirmar isso."
+  },
+  {
+    "question": "Posso aproveitar texto parcial após interrupção?",
+    "answer": "Sim, se for identificado como parcial e não usado como estrutura completa ou confirmação de uma ação."
+  }
+]

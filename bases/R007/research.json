@@ -1,0 +1,51 @@
+{
+  "id": "R007",
+  "technical_details": "SADA aborda a diferença entre reproduzir uma resposta final e preservar estados internos próximos aos obtidos com contexto completo. Atribui divergência em camadas profundas à seleção de entrada inadequada e à supervisão insuficiente. Usa a saída do bloco de atenção como interface e alinhamento de estados na destilação. Isso exige acesso aos componentes internos; uma comparação apenas textual não reproduz o mecanismo proposto.",
+  "boundary_condition": "Estados internos semelhantes não garantem por si só resposta correta, e a interface aprendida pode perder validade quando mudam backbone, camadas ou distribuição do contexto.",
+  "implementation_contract": {
+    "inputs": "Modelo compatível, contexto professor, representações internas selecionadas e mecanismo de geração de adaptadores.",
+    "outputs": "Pesos temporários e avaliação da geração junto de medidas de divergência interna.",
+    "state": "Versões de camadas, treinamento, interface de features e configuração de leitura do adaptador.",
+    "invariant": "Um adaptador é vinculado ao modelo e contexto de origem; não é tratado como memória universal intercambiável."
+  },
+  "tradeoffs": [
+    "Comprimir contexto em parâmetros pode reduzir custo de inferência e exige computação para produzir e aplicar adaptadores.",
+    "Alinhar estados oferece sinal de treinamento adicional e aumenta acesso necessário à arquitetura e custo de adaptação."
+  ],
+  "failure_test": "Teste proposto: trocar o backbone ou a interface de camada mantendo o mapeamento treinado. Verifique divergência interna e qualidade da saída, sem aceitar compatibilidade apenas porque os tensores têm dimensões iguais.",
+  "evaluation_plan": "Avaliação proposta: comparar contexto explícito, adaptação sem alinhamento e SADA com backbone fixo. Medir saída sustentada, distância de estados por camada, memória e latência incluindo geração do adaptador; incluir situações em que reter texto explícito é preferível.",
+  "comparisons": [
+    {
+      "entry_id": "R006",
+      "relation": "distinct_from",
+      "reason": "PRISM diagnostica componentes dominantes; SADA trata seleção de interface e supervisão de estados na parametrização do contexto."
+    },
+    {
+      "entry_id": "T052",
+      "relation": "complements",
+      "reason": "O método depende de representações internas compatíveis, dentro da família ampla de contexto latente."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "SADA propõe attention-block output como interface e state-alignment distillation para reduzir divergência de estados frente ao modelo com contexto completo.",
+    "source_ids": [
+      "A-S012"
+    ],
+    "support": "direct",
+    "caveat": "Esta ficha refere-se ao artigo de Gao e coautores na ACL 2026; nenhuma garantia é transferida a trabalhos homônimos ou modelos arbitrários."
+  },
+  "advanced_qa": [
+    {
+      "question": "Por que comparar estados e respostas separadamente?",
+      "answer": "Divergência interna ajuda diagnosticar o mecanismo, mas a utilidade final depende da tarefa. Uma melhora em uma medida não substitui a outra."
+    },
+    {
+      "question": "O método equivale a resumir texto num arquivo?",
+      "answer": "Não. Ele produz parâmetros de adaptação por uma interface neural treinada. Persistir um resumo externo opera em outro nível do sistema."
+    }
+  ],
+  "source_ids": [
+    "A-S012"
+  ],
+  "research_note": "Identificação reconferida em 2026-11-05: SADA: Bridging In-Context Learning and Fine-Tuning via State-Aligned Distillation Adapters, Wenhao Gao, Tianlong Wang, Wei Jia, Linhao Zhang, Aiwei Liu, Miao Fan e Zhou Xiao, https://aclanthology.org/2026.acl-long.1046/. Escopo coincide com a v2. Link de código consta na publicação, mas não houve instalação nem execução; contratos e avaliações são propostas."
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "O comando de check substitui hash-base?",
+    "answer": "Não necessariamente. Aplicabilidade e identidade exata da base são verificações diferentes; o protocolo deve exigir cada uma conforme o risco."
+  },
+  {
+    "question": "O que fazer depois de um conflito?",
+    "answer": "Reler a revisão atual, preservar alterações independentes e reconstruir apenas o delta ainda necessário. Nunca forçar a base antiga por conveniência."
+  },
+  {
+    "question": "Um hash-base lido anteriormente elimina concorrência?",
+    "answer": "Não. A comparação precisa participar da guarda da escrita ou publicação, não ser apenas uma verificação separada."
+  },
+  {
+    "question": "Por que registrar hash do resultado testado?",
+    "answer": "Para demonstrar que o artefato entregue corresponde à versão avaliada e não a uma edição posterior sem validação."
+  }
+]

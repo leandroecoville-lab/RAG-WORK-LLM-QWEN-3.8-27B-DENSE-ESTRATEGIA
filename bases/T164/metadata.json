@@ -1,0 +1,32 @@
+{
+  "id": "T164",
+  "name": "Retry-After",
+  "canonical_name": "Retry-After",
+  "canonical_id": "T164",
+  "aliases": [
+    "cabeçalho Retry-After"
+  ],
+  "category": "orquestracao",
+  "kind": "protocol",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T137",
+    "T162",
+    "T163",
+    "T175"
+  ],
+  "source_ids": [
+    "C-S028",
+    "V3C-S010",
+    "V3C-S009",
+    "V3C-S023",
+    "V2A-S012",
+    "V3C-S001"
+  ],
+  "namespace": "T164",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T164",
+  "chunk_count": 9
+}

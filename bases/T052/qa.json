@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Um vetor consegue armazenar todo o histórico sem perda?",
+    "answer": "Não há essa garantia. Representações compactas preservam informação conforme o treinamento e têm limites."
+  },
+  {
+    "question": "Embedding e memória latente são a mesma coisa?",
+    "answer": "Embedding é um tipo de representação; memória latente pode envolver outras estruturas e interfaces especializadas."
+  },
+  {
+    "question": "Posso enviar esses slots para qualquer API de chat?",
+    "answer": "Não sem uma interface documentada que aceite e interprete a representação. Um endpoint de texto comum não oferece isso implicitamente."
+  },
+  {
+    "question": "Como auditar uma resposta baseada em slots?",
+    "answer": "Mantenha as fontes e versões acessíveis, avalie a resposta contra elas e registre o caminho de codificação. O vetor isolado não fornece uma citação legível."
+  }
+]

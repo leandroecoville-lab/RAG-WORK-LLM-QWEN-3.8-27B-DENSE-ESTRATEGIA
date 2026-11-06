@@ -1,0 +1,192 @@
+{
+  "coverage": {
+    "entry_id": "T102",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 2,
+    "verified_other_operator_production_exact": 1,
+    "unique_cases_associated": 3,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Disaggregated Inference / Disaggregated Prefill-Decode",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4D-C007",
+      "company": "DeepSeek-AI",
+      "system": "DeepSeek-V3/R1 — infraestrutura de inferência online",
+      "title": "DeepSeek-V3/R1 — infraestrutura de inferência online",
+      "evidence_level": "production_documented",
+      "observed_use": "Autores descrevem a implantação do serviço e publicam perfis associados a configurações de prefill e decode.",
+      "technical_mechanism": "Separação das fases, paralelismo tensorial/especialistas e sobreposição de comunicação com computação.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4D-S014",
+        "V4D-S015"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T102",
+          "match": "exact",
+          "rationale": "A seção de deployment separa explicitamente prefill e decoding."
+        },
+        {
+          "entry_id": "T118",
+          "match": "exact",
+          "rationale": "Atenção usa tensor parallelism no deployment descrito."
+        },
+        {
+          "entry_id": "T122",
+          "match": "exact",
+          "rationale": "Perfil do runtime descreve comunicação RDMA no decode, distinguindo o perfil simplificado da carga completa."
+        },
+        {
+          "entry_id": "T184",
+          "match": "exact",
+          "rationale": "O deployment distribui especialistas e ajusta redundância com estatísticas online."
+        },
+        {
+          "entry_id": "T129",
+          "match": "family",
+          "rationale": "MTP faz parte da pesquisa/treino do modelo; a fonte não comprova que a especulação MTP esteja ativa em toda implantação online."
+        }
+      ],
+      "small_model_transfer": "Proposta: medir sobreposição de comunicação e decisão de particionamento só quando o modelo/carga exigir múltiplos dispositivos; alunos que cabem em uma GPU devem ter esse caminho simples como baseline.",
+      "limits": "671B totais, fora da faixa solicitada. Configurações do artigo e do perfil não são idênticas. Trace simula balanceamento perfeito e não demonstra ganho em 3–30B.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4D-C007",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "T102",
+        "match": "exact",
+        "rationale": "A seção de deployment separa explicitamente prefill e decoding."
+      }
+    },
+    {
+      "case_id": "V4D-C008",
+      "company": "Moonshot AI",
+      "system": "Kimi / Mooncake serving",
+      "title": "Kimi / Mooncake serving",
+      "evidence_level": "production_documented",
+      "observed_use": "Autores identificam Mooncake como plataforma operacional do Kimi. O artigo histórico descreve a arquitetura; suas avaliações usam replay de traces e um modelo substituto.",
+      "technical_mechanism": "Pool de KV e scheduler centrado em cache combinados com separação prefill/decode e controle de admissibilidade por SLO.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4D-S016",
+        "V4D-S020"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T081",
+          "match": "exact",
+          "rationale": "A arquitetura reutiliza KV como recurso compartilhado do serving."
+        },
+        {
+          "entry_id": "T102",
+          "match": "exact",
+          "rationale": "A descrição operacional separa clusters de prefill e decode."
+        },
+        {
+          "entry_id": "T120",
+          "match": "exact",
+          "rationale": "Seção 5.1/Algoritmo 1 de Mooncake v1 escolhe worker usando prefixo reutilizável, fila, transferência prevista e TTFT/SLO."
+        },
+        {
+          "entry_id": "T121",
+          "match": "exact",
+          "rationale": "Scheduler equilibra throughput e SLO de requisições."
+        },
+        {
+          "entry_id": "T122",
+          "match": "exact",
+          "rationale": "Seção 3 de Mooncake v1 identifica Messenger baseado em (GPUDirect) RDMA para transferir blocos KV entre CPUs/GPUs. Não se generaliza a todos os backends posteriores."
+        },
+        {
+          "entry_id": "T082",
+          "match": "exact",
+          "rationale": "Seção 3, passos 1–2: recuperar prefixo KV existente e executar apenas prefill incremental. Escopo histórico v1; sem transferir automaticamente métricas para 3–30B."
+        },
+        {
+          "entry_id": "T088",
+          "match": "exact",
+          "rationale": "Seção 3, passo 4: requisição entra no próximo lote de decode por continuous batching. Escopo histórico v1; sem transferir automaticamente métricas para 3–30B."
+        },
+        {
+          "entry_id": "T094",
+          "match": "exact",
+          "rationale": "Seção 3, passo 2, e seção 4.1: prefill longo é dividido em chunks conforme limiar e processado em pipeline. Escopo histórico v1; sem transferir automaticamente métricas para 3–30B."
+        },
+        {
+          "entry_id": "T157",
+          "match": "exact",
+          "rationale": "Seção 5.1/Algoritmo 1: chave de bloco combina tokens locais e hash do bloco anterior. Escopo histórico v1; sem transferir automaticamente métricas para 3–30B."
+        }
+      ],
+      "small_model_transfer": "Proposta: testar decisão de transferir KV contra recomputar prefill, usando bytes, fila, reutilização e latência prevista; rejeitar cedo pedidos incapazes de cumprir SLO, preservando métricas de rejeição.",
+      "limits": "O artigo v1 descreve a plataforma Kimi, mas seus experimentos usam replay de traces e modelo substituto com arquitetura LLaMA2-70B. Métricas não são medições de um aluno 3–30B. A biblioteca atual e seus backends não são automaticamente a configuração histórica.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4D-C008",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "T102",
+        "match": "exact",
+        "rationale": "A descrição operacional separa clusters de prefill e decode."
+      }
+    },
+    {
+      "case_id": "V4B-C002",
+      "company": "Perplexity",
+      "organization_class": "technology_operator",
+      "system": "Engine de inferência com KV Messenger",
+      "title": "Prefill e decode separados com transferência KV por RDMA",
+      "evidence_level": "production_documented",
+      "observed_use": "A equipe descreve sua implementação de serving com workers de prefill e decode separados e um KV Messenger que coordena o transporte de estados.",
+      "technical_mechanism": "Transferência por camada e páginas via libfabric/RDMA, seguida de sinalização de conclusão antes de admitir decode; certos métodos exigem estado auxiliar.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S002"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T102",
+          "match": "exact",
+          "rationale": "Separação de pools e transporte de KV são descritos na implementação do operador."
+        },
+        {
+          "entry_id": "T122",
+          "match": "exact",
+          "rationale": "O caminho de dados usa RDMA com EFA e ConnectX compatíveis."
+        },
+        {
+          "entry_id": "T081",
+          "match": "family",
+          "rationale": "O decode consome estado recebido, mas o caso não demonstra todo tipo de reuso entre requisições."
+        },
+        {
+          "entry_id": "P009",
+          "match": "analogy",
+          "rationale": "Referência de contrato de transferência para um engine proposto."
+        }
+      ],
+      "small_model_transfer": "Proposta: considerar o desenho para 15–30B apenas quando interferência entre fases justificar rede e coordenação; comparar primeiro com chunked prefill agregado.",
+      "limits": "Fonte não fixa porte do modelo em cada deployment. Não autoriza prometer redução de TTFT: transporte pode aumentá-lo. Não é uma bigtech na classificação estrita.",
+      "canonical_case_id": "V4B-C002",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "T102",
+        "match": "exact",
+        "rationale": "Separação de pools e transporte de KV são descritos na implementação do operador."
+      }
+    }
+  ]
+}

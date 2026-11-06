@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Adaptive Compute é igual a MoE?",
+    "answer": "Não. MoE é arquitetura interna; aqui a política controla recursos da execução."
+  },
+  {
+    "question": "Deve usar sempre todo orçamento disponível?",
+    "answer": "Não. Encerrar cedo pode ser a melhor decisão quando o objetivo já foi comprovado."
+  },
+  {
+    "question": "Igualar tokens torna duas políticas comparáveis em latência?",
+    "answer": "Não. Sequencialidade, tamanho do modelo, ferramentas e filas alteram o tempo mesmo com consumo textual semelhante."
+  },
+  {
+    "question": "Por que cobrar o verificador no orçamento?",
+    "answer": "Porque seleção também consome recursos; omiti-la pode transformar uma aparente economia em custo total maior."
+  }
+]

@@ -1,0 +1,111 @@
+{
+  "id": "T050",
+  "novelty": "A v3 separou vista e persistência. Aqui a memória de trabalho é organizada por hipóteses ativas e custo de alternar tarefas.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Mantenha quadro com objetivo, hipótese em teste, evidência necessária e próxima decisão. Conteúdo entra por função nessa etapa, não apenas por ter aparecido recentemente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "A-S006"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Ao alternar tarefa, salve o quadro e carregue outro com identificação explícita. Misturar hipóteses de tarefas diferentes pode produzir respostas coerentes com o projeto errado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "A-S006"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare janela cronológica e quadro por hipótese. Meça retomada após interrupção, repetição de testes e confusão de entidades entre tarefas, mantendo o mesmo limite de tokens. Unidade de avaliação: etapa de raciocínio operacional.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "A-S006"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Depuração com interrupções",
+      "scenario": "Usuário muda prioridade durante investigação.",
+      "strategy": "Persistir hipótese e teste pendente, suspender trabalho e retomar somente após confirmar que revisão do código continua compatível.",
+      "small_model_role": "8–14B administra hipótese local.",
+      "acceptance": "Não repetir teste concluído nem aplicar resultado a revisão diferente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "A-S006"
+      ]
+    },
+    {
+      "name": "Leitura analítica",
+      "scenario": "Várias questões usam o mesmo corpus.",
+      "strategy": "Manter quadro por questão com evidências específicas; compartilhar apenas fontes, não conclusões provisórias entre quadros.",
+      "small_model_role": "3–7B extrai; 15–30B integra.",
+      "acceptance": "Cada resposta deve usar o quadro e o escopo corretos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "A-S006"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Executor de uma hipótese ou campo por etapa, com estado estruturado externo.",
+    "8_14b": "Analista de poucas hipóteses com identificação de evidência faltante.",
+    "15_30b": "Integrador de hipóteses interdependentes quando alternância simples não basta.",
+    "training_or_runtime_requirements": "Quadro serializável, identidade de tarefa e revisão da origem; o modelo não precisa reter todo histórico.",
+    "do_not_use_when": "A tarefa depende de contexto implícito que o quadro não representa e não pode recuperar."
+  },
+  "connections": [
+    {
+      "target_id": "T053",
+      "relation": "complements",
+      "how": "Persistir quadro de trabalho entre chamadas.",
+      "interface": "task_id, hipótese, teste e referência de evidência.",
+      "condition": "Arquivo não misturar tarefas sem namespace.",
+      "acceptance": "Interromper processo e retomar quadro correto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "A-S006"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T039",
+      "relation": "requires",
+      "how": "Fixar evidência da hipótese ativa temporariamente.",
+      "interface": "Blocos necessários e condição de liberação.",
+      "condition": "Hipótese ainda estiver aberta.",
+      "acceptance": "Encerrar hipótese e conferir liberação de espaço.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "A-S006"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não promover hipótese ativa automaticamente a memória durável.",
+    "Não usar resumo de tarefa anterior como estado atual."
+  ],
+  "frontier_comparison": "Comparar continuidade e precisão ao alternar tarefas; janela organizada não substitui capacidade de resolver a hipótese.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S003",
+    "A-S006"
+  ]
+}

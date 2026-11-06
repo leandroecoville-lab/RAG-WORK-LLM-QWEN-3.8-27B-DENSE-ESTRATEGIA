@@ -1,0 +1,80 @@
+[
+  {
+    "source_id": "B-S005",
+    "title": "Automatic Prefix Caching — design",
+    "url": "https://docs.vllm.ai/en/latest/design/prefix_caching/",
+    "publisher": "vLLM",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Identidade de blocos por prefixo, tokens e metadados; isolamento de reutilização por salt.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn10view1"
+  },
+  {
+    "source_id": "V3D-S004",
+    "title": "Automatic Prefix Caching — vLLM design",
+    "url": "https://docs.vllm.ai/en/latest/design/prefix_caching/",
+    "publisher": "vLLM project",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Identidade de blocos, hash do prefixo anterior, tokens e fatores adicionais como adaptador, multimodalidade e cache_salt.",
+    "limitations": "Documentação latest; não comprova configuração instalada nem ganho local.",
+    "web_ref": "turn137view0"
+  },
+  {
+    "source_id": "V4B-S004",
+    "title": "Powering the agents: Workers AI now runs large models, starting with Kimi K2.5",
+    "url": "https://blog.cloudflare.com/workers-ai-large-models/",
+    "publisher": "Cloudflare",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Workers AI descreve prefix caching, afinidade por sessão, métricas de cache e fila assíncrona orientada por capacidade.",
+    "limitations": "Disponibilidade por modelo e contexto temporal; política de preço e ganhos não extrapolados.",
+    "web_ref": "turn202view3"
+  },
+  {
+    "source_id": "V4D-S017",
+    "title": "Mooncake x SGLang HiCache System Design",
+    "url": "https://kvcache-ai.github.io/Mooncake/design/hicache-design.html",
+    "publisher": "Mooncake / SGLang",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Co-uso documentado de RadixAttention/HiRadixTree e cache de KV em GPU, host e armazenamento distribuído.",
+    "limitations": "Documento de integração disponível, sem prova de adoção de toda essa configuração pelo serviço Kimi. Hierarquia de cache tensorial não é memória semântica de agente.",
+    "web_ref": "turn311view3"
+  },
+  {
+    "source_id": "V4D-S018",
+    "title": "Mooncake Architecture",
+    "url": "https://kvcache-ai.github.io/Mooncake/design/architecture.html",
+    "publisher": "Mooncake",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Contratos de plano de controle/dados, buffers, leases, armazenamento compartilhado e roteamento por prefixo.",
+    "limitations": "Capacidades de componentes atuais não são evidência de que todo cliente utilize todos eles; suporte depende do backend e da configuração.",
+    "web_ref": "turn313view0"
+  },
+  {
+    "source_id": "V4D-S019",
+    "title": "Mooncake Transfer Engine",
+    "url": "https://kvcache-ai.github.io/Mooncake/design/transfer-engine/index.html",
+    "publisher": "Mooncake",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Segment/BatchTransfer, buffers registrados, transporte RDMA e escolha de caminho segundo topologia, com recuperação de falhas.",
+    "limitations": "Documentação de biblioteca; submissão validada não torna transferência posterior atômica. Suporte amplo de transporte não comprova o caminho usado numa implantação específica.",
+    "web_ref": "turn313view1"
+  }
+]

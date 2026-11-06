@@ -1,0 +1,34 @@
+{
+  "id": "T089",
+  "name": "Early Stopping — EOS, stop sequences, limites e parada semântica",
+  "canonical_name": "Critérios de término da geração",
+  "canonical_id": "T089",
+  "aliases": [
+    "Early Stopping",
+    "parada antecipada",
+    "EOS",
+    "stop sequences",
+    "parada semântica"
+  ],
+  "category": "inferencia",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T153",
+    "T195",
+    "T196",
+    "P012"
+  ],
+  "source_ids": [
+    "B-S009",
+    "C-S008",
+    "V4B-S015",
+    "V4B-S016"
+  ],
+  "namespace": "T089",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T089",
+  "chunk_count": 9
+}

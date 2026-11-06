@@ -1,0 +1,29 @@
+{
+  "id": "T098",
+  "name": "Memory-Efficient Attention",
+  "canonical_name": "Memory-Efficient Attention",
+  "canonical_id": "T098",
+  "aliases": [
+    "atenção eficiente em memória"
+  ],
+  "category": "inferencia",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T090",
+    "T091",
+    "T093",
+    "T113"
+  ],
+  "source_ids": [
+    "B-S017",
+    "V4B-S017",
+    "V4B-S018"
+  ],
+  "namespace": "T098",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T098",
+  "chunk_count": 9
+}

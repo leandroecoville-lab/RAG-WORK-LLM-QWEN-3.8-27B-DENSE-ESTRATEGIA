@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Estado estruturado substitui o histórico?",
+    "answer": "Não. Ele representa o momento atual; o histórico permite auditar e reconstruir como o estado foi obtido."
+  },
+  {
+    "question": "O estado deve ser editado livremente pela LLM?",
+    "answer": "A LLM pode propor atualizações; o runtime valida transições, versões e evidências antes de persistir."
+  },
+  {
+    "question": "O último timestamp basta para detectar conflito?",
+    "answer": "Nem sempre. Relógios e resolução temporal podem esconder concorrência. Prefira revisões ou condições de escrita definidas pelo armazenamento."
+  },
+  {
+    "question": "Uma ferramenta pode terminar depois do cancelamento?",
+    "answer": "Pode. Preserve o resultado tardio e reconcilie seu efeito; não trate o cancelamento local como prova de que o serviço parou."
+  }
+]

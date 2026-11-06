@@ -1,0 +1,46 @@
+{
+  "id": "T177",
+  "technical_details": "O objetivo é definido pelos tokens que recebem supervisão, não apenas pelos exemplos textuais. Em ajuste conversacional, calcular loss sobre respostas, mensagens de usuário ou todos os tokens produz problemas diferentes. Templates e máscaras precisam corresponder; um rótulo deslocado incorretamente pode treinar cópia ou previsão da posição errada. A divisão de dados também deve agrupar variantes da mesma origem para evitar validação artificialmente fácil.",
+  "boundary_condition": "Loss menor pode refletir memorização de templates ou conteúdo repetido sem melhorar a tarefa que será executada.",
+  "implementation_contract": {
+    "inputs": "Checkpoint, exemplos versionados, template, máscara de supervisão e conjunto de validação independente.",
+    "outputs": "Pesos ou adaptadores atualizados e relatório de tarefas preservadas e modificadas.",
+    "state": "Otimizador, scheduler, contador de tokens supervisionados e proveniência dos dados.",
+    "invariant": "Nenhum exemplo de validação influencia seleção de alvos ou ajustes durante o treinamento final."
+  },
+  "tradeoffs": [
+    "Supervisão mais específica concentra o aprendizado e pode reduzir cobertura geral.",
+    "Mais épocas reforçam exemplos e aumentam risco de memorização ou regressão."
+  ],
+  "failure_test": "Teste proposto: incluir exemplos com respostas curtas e prompts longos, inspecionando quais posições recebem loss. Introduzir uma máscara errada e exigir detecção antes de treinar o conjunto inteiro.",
+  "evaluation_plan": "Plano proposto: comparar base, prompt melhorado e ajuste fino com tarefas iguais. Controlar origem dos dados, contabilizar tokens supervisionados e medir qualidade, regressões e custo; aprovar apenas ganhos fora do conjunto usado para escolher hiperparâmetros.",
+  "comparisons": [
+    {
+      "entry_id": "T182",
+      "relation": "complements",
+      "reason": "LoRA restringe os parâmetros treináveis; definição dos alvos e avaliação continuam necessárias ao ajuste."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O SFT Trainer documenta opções distintas de loss sobre respostas do assistente e sobre completions.",
+    "source_ids": [
+      "V3B-S015"
+    ],
+    "support": "direct",
+    "caveat": "A existência dessas opções não confirma que o template do usuário produz máscaras corretas."
+  },
+  "advanced_qa": [
+    {
+      "question": "Mais tokens no dataset significam mais supervisão?",
+      "answer": "Não quando muitos estão mascarados; registre tokens efetivamente usados na loss e sua distribuição."
+    },
+    {
+      "question": "Treinar documentos substitui RAG atualizado?",
+      "answer": "Não. Pesos não oferecem automaticamente proveniência, remoção de fatos ou atualização imediata de conteúdo variável."
+    }
+  ],
+  "source_ids": [
+    "V3B-S015"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

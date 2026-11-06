@@ -1,0 +1,27 @@
+{
+  "id": "T057",
+  "name": "Causal Memory",
+  "canonical_name": "Causal Memory",
+  "canonical_id": "T057",
+  "aliases": [
+    "memória causal"
+  ],
+  "category": "memoria",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T049",
+    "T051",
+    "T056"
+  ],
+  "source_ids": [
+    "A-S036",
+    "V3A-S041"
+  ],
+  "namespace": "T057",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T057",
+  "chunk_count": 9
+}

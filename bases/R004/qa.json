@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Comportamento plausível prova competência comercial?",
+    "answer": "Não. Plausibilidade em uma simulação e resultado comercial real são critérios diferentes."
+  },
+  {
+    "question": "Reflexão deve virar memória comprovada?",
+    "answer": "Somente após critérios de validação adequados. Inicialmente, é uma interpretação do agente."
+  },
+  {
+    "question": "A importância usada no artigo é confiança factual?",
+    "answer": "Não. Ela destaca a relevância percebida do evento para o agente simulado. Um item importante ainda pode conter interpretação equivocada."
+  },
+  {
+    "question": "Refletir sobre reflexões aumenta evidência disponível?",
+    "answer": "Aumenta organização e abstração, não o número de observações independentes. A cadeia deve continuar apontando às origens que realmente sustentam a conclusão."
+  }
+]

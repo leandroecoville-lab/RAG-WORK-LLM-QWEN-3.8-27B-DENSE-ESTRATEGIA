@@ -1,0 +1,26 @@
+{
+  "id": "T109",
+  "name": "Local / Window Attention",
+  "canonical_name": "Local / Window Attention",
+  "canonical_id": "T095",
+  "aliases": [],
+  "category": "inferencia",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T095",
+    "T096",
+    "T110"
+  ],
+  "source_ids": [
+    "B-S015",
+    "V3B-S007",
+    "V4B-S017"
+  ],
+  "namespace": "T109",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T109",
+  "chunk_count": 9
+}

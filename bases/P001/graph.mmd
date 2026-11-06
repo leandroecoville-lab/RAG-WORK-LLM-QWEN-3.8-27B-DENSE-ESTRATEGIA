@@ -1,0 +1,8 @@
+flowchart TD
+    P001["P001 Context Engine"]
+    P007["P007 Memory Retriever"]
+    P001 -. "requires: proposta" .-> P007
+    P002["P002 Context Manager"]
+    P001 -. "requires: proposta" .-> P002
+    T200["T200 Independent Verification"]
+    P001 -. "feeds: proposta" .-> T200

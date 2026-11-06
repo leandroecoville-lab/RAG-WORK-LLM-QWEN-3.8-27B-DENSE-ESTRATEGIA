@@ -1,0 +1,852 @@
+{
+  "audit_id": "V4-AUDIT-C-B",
+  "auditor_group": "C",
+  "checked_on": "2026-11-05",
+  "scope": {
+    "case_count": 26,
+    "case_ids": [
+      "V4B-C001",
+      "V4B-C002",
+      "V4B-C003",
+      "V4B-C004",
+      "V4B-C005",
+      "V4B-C006",
+      "V4B-C007",
+      "V4B-C008",
+      "V4B-C009",
+      "V4B-C010",
+      "V4B-C011",
+      "V4B-C012",
+      "V4B-C013",
+      "V4B-C014",
+      "V4B-C015",
+      "V4B-C016",
+      "V4B-C017",
+      "V4B-C018",
+      "V4B-C019",
+      "V4B-C020",
+      "V4B-C021",
+      "V4B-C022",
+      "V4B-C023",
+      "V4B-C024",
+      "V4B-C025",
+      "V4B-C026"
+    ],
+    "method": "Revisão documental independente dos 26 registros, dos mecanismos centrais, da classe de evidência e dos vínculos com o catálogo. Foram abertas as 38 páginas primárias utilizadas pelos casos e examinados os trechos relevantes; vínculos de maior risco receberam comparação explícita com a definição das fichas.",
+    "depth_limit": "Não houve reprodução de modelos, cargas, código ou métricas das empresas. Não se afirma inspeção exaustiva de cada detalhe de todos os repositórios. Consultas reservadas e benchmark do pacote não foram lidos.",
+    "source_pages_opened": 38,
+    "source_scope": "29 fontes V4B novas usadas nos casos e 9 fontes reutilizadas. V4B-S028, V4B-S029 e V4B-S031 não são citadas nesses 26 registros e não integram esta revisão de páginas.",
+    "snapshot_mode": true,
+    "ready_b_observed_at_capture": true,
+    "inputs_unchanged": true,
+    "consolidation_rule": "Aplicar achados à cópia consolidada mantendo o staging congelado. A auditoria corresponde aos hashes registrados; alterações posteriores de conteúdo exigem registro de correção/delta.",
+    "authoring_c_frozen": true
+  },
+  "inputs": {
+    "cases_B.jsonl": {
+      "sha256": "afedb5f487b86bfb4d4f8ca8b69e33dc359c9bef27c31e4ba3111fa43d707690",
+      "count": 26
+    },
+    "sources_B.jsonl": {
+      "sha256": "29e5221a1d86284ec12895db838a0ca50fc27ad0adbb6ecbc38fa117a90108a7",
+      "count": 32
+    },
+    "strategy_B.jsonl": {
+      "sha256": "ff5327060651eb3cd7bc60b9a2cefabd5b037d718dab4e3381eb1eed9af575a6",
+      "count": 96
+    },
+    "searches_B.jsonl": {
+      "sha256": "1ec7ace61e0e9c66e8b944e87c808b3e135a7fc76cc8b06953cb72d070461f9e",
+      "count": 26
+    }
+  },
+  "summary": {
+    "cases_reviewed": 26,
+    "source_pages_opened": 38,
+    "evidence_levels_as_received": {
+      "production_documented": 13,
+      "research_only": 5,
+      "operational_product": 8
+    },
+    "medium_findings": 2,
+    "low_findings": 1,
+    "production_downgrades_recommended": 0,
+    "strict_production_exact_count_increase_recommended": 0,
+    "overall": "Dois mappings de um recurso Bedrock precisam de correção. Os demais mecanismos centrais e as classes de implantação examinadas são sustentados nos limites declarados. Uma observação menor recomenda reconhecer disponibilidade do recurso SuffixDecoding sem contá-lo como implantação.",
+    "staging_changed": false
+  },
+  "findings": [
+    {
+      "finding_id": "C-B-F001",
+      "severity": "medium",
+      "status": "open_for_consolidation",
+      "case_id": "V4B-C022",
+      "entry_ids": [
+        "T197"
+      ],
+      "field": "mappings[T197]",
+      "current": "family",
+      "claim": "Bedrock Automated Reasoning é evidência de família para JSON Schema Validation.",
+      "assessment": "A página descreve consistência lógica de conteúdo em linguagem natural com uma política. Um esquema de variáveis da política não é evidência de validação por JSON Schema. A proximidade genérica de checar restrições não demonstra o mecanismo de T197.",
+      "recommendation": "Remover o vínculo T197. Alternativamente, usar analogy somente como comparação ou proposta entre camadas, sem contá-lo como adoção da técnica.",
+      "source_ids": [
+        "V4B-S027"
+      ],
+      "web_refs": [
+        "turn399view0"
+      ],
+      "locator": "Seções What Automated Reasoning checks do e End-to-end workflow overview.",
+      "impact": "Evita caso de família indevido; não altera operational_product, T193/T200 ou a meta estrita de produção+exact."
+    },
+    {
+      "finding_id": "C-B-F002",
+      "severity": "medium",
+      "status": "open_for_consolidation",
+      "case_id": "V4B-C022",
+      "entry_ids": [
+        "T206"
+      ],
+      "field": "mappings[T206]",
+      "current": "family",
+      "claim": "Bedrock Automated Reasoning demonstra a família Process Verification.",
+      "assessment": "T206 trata etapas observáveis, ordem, precondições e invariantes da execução. A fonte verifica respostas completas contra uma política, sem demonstrar auditoria de transições ou trace. A justificativa sobre competência ancorada não corresponde ao mecanismo catalogado.",
+      "recommendation": "Remover o vínculo T206 ou registrar analogy explicitamente proposta para usar um verificador em um processo futuro.",
+      "source_ids": [
+        "V4B-S027"
+      ],
+      "web_refs": [
+        "turn399view0"
+      ],
+      "locator": "Seções What Automated Reasoning checks don't do e End-to-end workflow overview.",
+      "impact": "Evita confundir avaliação de resultado com verificação de processo. As conexões de estratégia T206 já são engineering_proposal e podem permanecer."
+    },
+    {
+      "finding_id": "C-B-F003",
+      "severity": "low",
+      "status": "optional_classification_refinement",
+      "case_id": "V4B-C023",
+      "entry_ids": [
+        "T131",
+        "T079",
+        "R009"
+      ],
+      "field": "evidence_level",
+      "current": "research_only",
+      "claim": "O registro é apenas pesquisa/benchmark.",
+      "assessment": "Além dos experimentos, a fonte anuncia implementação aberta de SuffixDecoding em Arctic Inference e integração com vLLM, fornecendo instruções de uso. Isso satisfaz recurso documentado, sem demonstrar uma implantação industrial identificada.",
+      "recommendation": "Considerar operational_product e ajustar observed_use para mencionar disponibilidade. Manter a ausência de implantação específica; nunca promover para production_documented apenas pelo título ou pela expressão production-ready.",
+      "source_ids": [
+        "B-S040"
+      ],
+      "web_refs": [
+        "turn403view0"
+      ],
+      "locator": "Introdução, Advanced implementation details e instruções de uso.",
+      "impact": "Melhora a precisão da classe de evidência; não aumenta a contagem estrita de casos bigtech em produção."
+    }
+  ],
+  "case_reviews": [
+    {
+      "case_id": "V4B-C001",
+      "company": "LinkedIn (Microsoft)",
+      "system": "Hiring Assistant",
+      "evidence_level_as_received": "production_documented",
+      "source_ids": [
+        "V4B-S001",
+        "V4B-S010"
+      ],
+      "web_refs": [
+        "turn374view0",
+        "turn380view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "Confirmado uso real no Hiring Assistant. A fonte descreve especulação por n-gramas em vLLM, batching contínuo e reutilização de prefixos. O caso distingue preservação da distribuição de identidade de uma amostra. Uma única implantação, mesmo com várias otimizações."
+    },
+    {
+      "case_id": "V4B-C002",
+      "company": "Perplexity",
+      "system": "Engine de inferência com KV Messenger",
+      "evidence_level_as_received": "production_documented",
+      "source_ids": [
+        "V4B-S002"
+      ],
+      "web_refs": [
+        "turn369view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "Confirmada implementação do operador: prefill e decode separados, KVMessenger e transporte com libfabric/RDMA. A sincronização do consumidor antes de utilizar KV está descrita. O texto mantém a ressalva sobre custo de transferência e TTFT; não presume ganho universal."
+    },
+    {
+      "case_id": "V4B-C003",
+      "company": "Meta",
+      "system": "Infraestrutura de inferência Meta AI",
+      "evidence_level_as_received": "production_documented",
+      "source_ids": [
+        "V4B-S003"
+      ],
+      "web_refs": [
+        "turn373view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "Confirmada infraestrutura de Meta AI com paralelismo de tensores, contexto e especialistas. Pass-KV/Pass-Q apoiam a relação de família com Ring Attention. A menção a disaggregation futura não foi transformada em implantação do mecanismo."
+    },
+    {
+      "case_id": "V4B-C004",
+      "company": "Cloudflare",
+      "system": "Workers AI",
+      "evidence_level_as_received": "production_documented",
+      "source_ids": [
+        "V4B-S004"
+      ],
+      "web_refs": [
+        "turn372view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "Confirmado Workers AI em operação e prefix caching preexistente. Sessão afim e fila assíncrona são documentadas; os vínculos de família preservam a diferença entre recurso e todo contrato avançado. A evidência primária inclui uso interno de Kimi, sem extrapolar seu porte para 3–30B."
+    },
+    {
+      "case_id": "V4B-C005",
+      "company": "LinkedIn (Microsoft)",
+      "system": "AI-Powered Job Search",
+      "evidence_level_as_received": "production_documented",
+      "source_ids": [
+        "V4B-S005",
+        "V4B-S010"
+      ],
+      "web_refs": [
+        "turn371view0",
+        "turn380view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "Confirmada destilação com vários professores para AI-Powered Job Search e serving de compreensão de consultas em vLLM. O caso separa explicitamente o aluno de ranking com 0,6B do outro componente de consulta; não declara que o mesmo aluno é o modelo servido em todos os estágios."
+    },
+    {
+      "case_id": "V4B-C006",
+      "company": "Uber",
+      "system": "Michelangelo — infraestrutura interna de LLM",
+      "evidence_level_as_received": "production_documented",
+      "source_ids": [
+        "V4B-S006"
+      ],
+      "web_refs": [
+        "turn368view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "Confirmada plataforma interna Michelangelo e integração de componentes de treinamento e avaliação. Exploração de LoRA/QLoRA não foi apresentada como implantação de cada combinação. O mapeamento family e a ressalva sobre variantes da plataforma são adequados."
+    },
+    {
+      "case_id": "V4B-C007",
+      "company": "Meta",
+      "system": "Experimentos EAGLE para Llama",
+      "evidence_level_as_received": "research_only",
+      "source_ids": [
+        "V4B-S007"
+      ],
+      "web_refs": [
+        "turn367view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "Publicação de pesquisa sobre especulação em escala, sem identificar uma implantação operacional concreta do método avaliado. research_only é adequado; mencionar escala de produção no problema experimental não satisfaz a definição de caso implantado."
+    },
+    {
+      "case_id": "V4B-C008",
+      "company": "Amazon",
+      "system": "Rufus",
+      "evidence_level_as_received": "production_documented",
+      "source_ids": [
+        "V4B-S008"
+      ],
+      "web_refs": [
+        "turn370view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "Confirmado Rufus escalado com Trainium e vLLM, batching contínuo, paralelismo e comunicação entre nós. A transferência para outros modelos e aceleradores continua proposta. A fonte sustenta o sistema identificado, sem exigir inferir outra implantação por técnica."
+    },
+    {
+      "case_id": "V4B-C009",
+      "company": "Microsoft",
+      "system": "Bing — inferência BERT",
+      "evidence_level_as_received": "production_documented",
+      "source_ids": [
+        "V4B-S009"
+      ],
+      "web_refs": [
+        "turn379view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "Confirmada adoção histórica no Bing de modelos BERT otimizados e destilados. O caso identifica que se trata de encoder de 2020, preservando a diferença para geração autorregressiva atual e para a faixa solicitada."
+    },
+    {
+      "case_id": "V4B-C010",
+      "company": "Hugging Face",
+      "system": "HuggingChat — relato de 2023",
+      "evidence_level_as_received": "production_documented",
+      "source_ids": [
+        "V4B-S019",
+        "V3D-S006"
+      ],
+      "web_refs": [
+        "turn386view0",
+        "turn396view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "A fonte de 2023 declara TGI como runtime de HuggingChat. A documentação atual informa manutenção e recomenda alternativas para novas aplicações; o caso mantém a qualificação histórica e não afirma que a pilha do produto continua igual hoje."
+    },
+    {
+      "case_id": "V4B-C011",
+      "company": "NVIDIA",
+      "system": "TensorRT-LLM",
+      "evidence_level_as_received": "operational_product",
+      "source_ids": [
+        "V4B-S011"
+      ],
+      "web_refs": [
+        "turn378view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "Documentação oficial sustenta recursos TensorRT LLM, incluindo quantização e mecanismos especulativos listados. operational_product é a classe correta: capacidade disponível não identifica cliente ou escala particular. O texto reconhece backends e compatibilidade por configuração."
+    },
+    {
+      "case_id": "V4B-C012",
+      "company": "Thinking Machines Lab",
+      "system": "Tinker Cookbook — destilação",
+      "evidence_level_as_received": "research_only",
+      "source_ids": [
+        "V4B-S012",
+        "V4B-S013",
+        "V3D-S008"
+      ],
+      "web_refs": [
+        "turn384view0",
+        "turn381view0",
+        "turn395view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "Receitas oficiais e experimento de destilação apoiam os mecanismos. Prompt distillation envolve internalização por treinamento, distinguindo-se de resumo externo. research_only e os limites dos modelos usados no exemplo evitam transferir resultados para qualquer 3–30B."
+    },
+    {
+      "case_id": "V4B-C013",
+      "company": "Hugging Face",
+      "system": "Transformers ContinuousBatchingManager",
+      "evidence_level_as_received": "operational_product",
+      "source_ids": [
+        "V4B-S014"
+      ],
+      "web_refs": [
+        "turn377view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "Documentação Transformers descreve escalonamento a cada passo, atenção paginada e caching de prefixo. operational_product preserva o caráter de recurso documentado, sem convertê-lo em adoção industrial do usuário ou em promessa de desempenho."
+    },
+    {
+      "case_id": "V4B-C014",
+      "company": "MLC / XGrammar",
+      "system": "XGrammar structural tags",
+      "evidence_level_as_received": "operational_product",
+      "source_ids": [
+        "V4B-S015",
+        "V4B-S016"
+      ],
+      "web_refs": [
+        "turn383view0",
+        "turn382view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "XGrammar documenta geração estruturada intercalada com texto livre e restrições de chamadas de ferramentas. Os recursos estruturais apoiam o mapeamento; a família de JSON Schema permanece distinta de cobertura de todas as propriedades e de validação semântica."
+    },
+    {
+      "case_id": "V4B-C015",
+      "company": "Guidance",
+      "system": "Guidance — geração programática",
+      "evidence_level_as_received": "operational_product",
+      "source_ids": [
+        "V4B-S030",
+        "V3D-S015",
+        "V3D-S014"
+      ],
+      "web_refs": [
+        "turn401view0",
+        "turn402view0",
+        "turn408view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "Guidance documenta geração por gramática, JSON e token healing com limites de backend. O caso não transforma formato válido em ausência de alucinação e não afirma controle de logits em qualquer endpoint. operational_product é sustentado."
+    },
+    {
+      "case_id": "V4B-C016",
+      "company": "Alibaba / Qwen Team",
+      "system": "Qwen3 — modelos publicados",
+      "evidence_level_as_received": "operational_product",
+      "source_ids": [
+        "V4B-S020"
+      ],
+      "web_refs": [
+        "turn390view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "Lançamento Qwen3 distingue variantes densas e MoE, parâmetros totais/ativos e configuração GQA. O caso preserva essas diferenças e marca o modelo de 32B fora da faixa. Publicação de checkpoint sustenta recurso disponível, não implantação de cliente."
+    },
+    {
+      "case_id": "V4B-C017",
+      "company": "Anthropic",
+      "system": "Claude — treinamento com constituição",
+      "evidence_level_as_received": "production_documented",
+      "source_ids": [
+        "V4B-S021"
+      ],
+      "web_refs": [
+        "turn393view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "Anthropic descreve a constituição como parte do treinamento de Claude. O vínculo com Constitutional AI é sustentado no nível declarado; não atribui ao produto atual todos os detalhes de uma receita histórica nem prova pesos abertos de pequeno porte."
+    },
+    {
+      "case_id": "V4B-C018",
+      "company": "PyTorch",
+      "system": "FlexAttention para inferência",
+      "evidence_level_as_received": "operational_product",
+      "source_ids": [
+        "V4B-S017",
+        "V4B-S018"
+      ],
+      "web_refs": [
+        "turn388view0",
+        "turn391view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "Documentação e artigos PyTorch sustentam FlexAttention, BlockMask e integração de kernels. O caso trata resultados de hardware e benchmarks como dependentes da configuração; recurso documentado não é apresentado como implantação de cliente."
+    },
+    {
+      "case_id": "V4B-C019",
+      "company": "Google DeepMind",
+      "system": "AlphaEvolve em infraestrutura Google",
+      "evidence_level_as_received": "production_documented",
+      "source_ids": [
+        "V4B-S022",
+        "V4B-S023"
+      ],
+      "web_refs": [
+        "turn387view0",
+        "turn389view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "As fontes Google descrevem algoritmos AlphaEvolve implantados em infraestrutura e uso de avaliação executável. Family para mecanismos mais amplos evita dizer que testes finitos provam equivalência universal. Há frase editorial sobre treinamento por recompensas na justificativa de T205, dispensável, mas sem alterar o suporte central."
+    },
+    {
+      "case_id": "V4B-C020",
+      "company": "Meta",
+      "system": "ACH — Automated Compliance Hardening",
+      "evidence_level_as_received": "production_documented",
+      "source_ids": [
+        "V4B-S024",
+        "V4B-S025"
+      ],
+      "web_refs": [
+        "turn392view0",
+        "turn400view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "As fontes Meta descrevem uso industrial de ACH, mutantes orientados por falhas e testes que os detectam. Não há base para rebaixar automaticamente a implantação por coexistirem avaliação e experimento industrial; o caso já explicita os limites."
+    },
+    {
+      "case_id": "V4B-C021",
+      "company": "Meta",
+      "system": "TestGen-LLM",
+      "evidence_level_as_received": "production_documented",
+      "source_ids": [
+        "V4B-S026"
+      ],
+      "web_refs": [
+        "turn397view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "O artigo primário TestGen-LLM relata testes em aplicações Meta e recomendações aceitas para produção. O caso não apresenta a porcentagem de aceitação como sucesso universal nem como execução local reproduzida nesta pesquisa."
+    },
+    {
+      "case_id": "V4B-C022",
+      "company": "Amazon Web Services",
+      "system": "Bedrock Automated Reasoning checks",
+      "evidence_level_as_received": "operational_product",
+      "source_ids": [
+        "V4B-S027"
+      ],
+      "web_refs": [
+        "turn399view0"
+      ],
+      "result": "needs_mapping_correction",
+      "conclusion": "O recurso de Bedrock está corretamente classificado e sustenta guardrail/verificador independente no escopo de política. Os vínculos com JSON Schema Validation e Process Verification excedem a evidência; ver C-B-F001 e C-B-F002."
+    },
+    {
+      "case_id": "V4B-C023",
+      "company": "Snowflake",
+      "system": "Suffix Decoding",
+      "evidence_level_as_received": "research_only",
+      "source_ids": [
+        "B-S040"
+      ],
+      "web_refs": [
+        "turn403view0"
+      ],
+      "result": "supported_with_optional_classification_refinement",
+      "conclusion": "Fonte sustenta o método, avaliação e integração distribuída com Arctic Inference/vLLM. Não identifica implantação específica de cliente; production_documented não deve ser usado. research_only é conservador, mas operational_product descreve melhor a disponibilidade publicada; ver observação C-B-F003."
+    },
+    {
+      "case_id": "V4B-C024",
+      "company": "Projeto llama.cpp",
+      "system": "llama.cpp server",
+      "evidence_level_as_received": "operational_product",
+      "source_ids": [
+        "V3D-S012",
+        "B-S037"
+      ],
+      "web_refs": [
+        "turn404view0",
+        "turn407view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "README do servidor e especificação GGUF sustentam runtime utilizável e contêiner de tensores/metadados. O caso não confunde GGUF com um algoritmo único de quantização nem supõe compatibilidade de qualquer checkpoint/hardware."
+    },
+    {
+      "case_id": "V4B-C025",
+      "company": "Google DeepMind",
+      "system": "RETRO",
+      "evidence_level_as_received": "research_only",
+      "source_ids": [
+        "B-S026"
+      ],
+      "web_refs": [
+        "turn406view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "O artigo RETRO sustenta recuperação integrada à arquitetura com encoder e cross-attention por trechos. research_only e a distinção para RAG externo estão corretos; adaptação de um transformer convencional exige procedimento de treinamento, não apenas uma opção do servidor."
+    },
+    {
+      "case_id": "V4B-C026",
+      "company": "Autores de Agent Memory Distillation",
+      "system": "AMD",
+      "evidence_level_as_received": "research_only",
+      "source_ids": [
+        "V4B-S032",
+        "C-S035"
+      ],
+      "web_refs": [
+        "turn398view0",
+        "turn405view0"
+      ],
+      "result": "supported_with_stated_limits",
+      "conclusion": "Artigo e projeto AMD identificados confirmam memória hierárquica de trajetórias e recuperação proativa/reativa em agentes 4–8B, sem atualização de pesos. O caso preserva o escopo de pesquisa e não converte proximidade ao professor em equivalência geral ou implantação."
+    }
+  ],
+  "opened_sources": [
+    {
+      "source_id": "V4B-S001",
+      "verification": "opened",
+      "web_refs": [
+        "turn374view0"
+      ],
+      "title": "Accelerating LLM inference with speculative decoding: Lessons from LinkedIn's Hiring Assistant (https://www.linkedin.com/blog/engineering/ai/accelerating-llm-inference-with-speculative-decoding-lessons-from-linkedins-hiring-assistant)"
+    },
+    {
+      "source_id": "V4B-S002",
+      "verification": "opened",
+      "web_refs": [
+        "turn369view0"
+      ],
+      "title": "Disaggregated Prefill and Decode (https://www.perplexity.ai/en-GB/hub/blog/disaggregated-prefill-and-decode)"
+    },
+    {
+      "source_id": "V4B-S003",
+      "verification": "opened",
+      "web_refs": [
+        "turn373view0"
+      ],
+      "title": "Scaling LLM Inference: Innovations in Tensor Parallelism, Context Parallelism, and Expert Parallelism - Engineering at Meta (https://engineering.fb.com/2025/10/17/ai-research/scaling-llm-inference-innovations-tensor-parallelism-context-parallelism-expert-parallelism/)"
+    },
+    {
+      "source_id": "V4B-S004",
+      "verification": "opened",
+      "web_refs": [
+        "turn372view0"
+      ],
+      "title": "Powering the agents: Workers AI now runs large models, starting with Kimi K2.5 | Cloudflare Blog (https://blog.cloudflare.com/workers-ai-large-models/)"
+    },
+    {
+      "source_id": "V4B-S005",
+      "verification": "opened",
+      "web_refs": [
+        "turn371view0"
+      ],
+      "title": "The training infrastructure behind AI-Powered Job Search: 8X faster multi-teacher distillation (https://www.linkedin.com/blog/engineering/infrastructure/the-training-infrastructure-behind-ai-powered-job-search-eight-x-faster-multi-teacher-distillation)"
+    },
+    {
+      "source_id": "V4B-S006",
+      "verification": "opened",
+      "web_refs": [
+        "turn368view0"
+      ],
+      "title": "Open Source and In-House: How Uber Optimizes LLM Training (https://www.uber.com/us/en/blog/open-source-and-in-house-how-uber-optimizes-llm-training/)"
+    },
+    {
+      "source_id": "V4B-S007",
+      "verification": "opened",
+      "web_refs": [
+        "turn367view0"
+      ],
+      "title": "Efficient Speculative Decoding for Llama at Scale: Challenges and Solutions | Research - AI at Meta (https://ai.meta.com/research/publications/efficient-speculative-decoding-for-llama-at-scale-challenges-and-solutions/)"
+    },
+    {
+      "source_id": "V4B-S008",
+      "verification": "opened",
+      "web_refs": [
+        "turn370view0"
+      ],
+      "title": "How Amazon scaled Rufus by building multi-node inference using AWS Trainium chips and vLLM | Artificial Intelligence (https://aws.amazon.com/blogs/machine-learning/how-amazon-scaled-rufus-by-building-multi-node-inference-using-aws-trainium-chips-and-vllm/)"
+    },
+    {
+      "source_id": "V4B-S009",
+      "verification": "opened",
+      "web_refs": [
+        "turn379view0"
+      ],
+      "title": "Microsoft open sources breakthrough optimizations for transformer inference on GPU and CPU (https://opensource.microsoft.com/blog/2020/01/21/microsoft-onnx-open-source-optimizations-transformer-inference-gpu-cpu/)"
+    },
+    {
+      "source_id": "V4B-S010",
+      "verification": "opened",
+      "web_refs": [
+        "turn380view0"
+      ],
+      "title": "How we leveraged vLLM to power our GenAI applications at LinkedIn (https://www.linkedin.com/blog/engineering/ai/how-we-leveraged-vllm-to-power-our-genai-applications)"
+    },
+    {
+      "source_id": "V4B-S011",
+      "verification": "opened",
+      "web_refs": [
+        "turn378view0"
+      ],
+      "title": "TensorRT LLM | NVIDIA Developer (https://developer.nvidia.com/tensorrt-llm)"
+    },
+    {
+      "source_id": "V4B-S012",
+      "verification": "opened",
+      "web_refs": [
+        "turn384view0"
+      ],
+      "title": "Model Distillation - Tinker Documentation (https://tinker-docs.thinkingmachines.ai/cookbook/recipes/distillation/)"
+    },
+    {
+      "source_id": "V4B-S013",
+      "verification": "opened",
+      "web_refs": [
+        "turn381view0"
+      ],
+      "title": "On-Policy Distillation - Thinking Machines Lab (https://thinkingmachines.ai/blog/on-policy-distillation/)"
+    },
+    {
+      "source_id": "V4B-S014",
+      "verification": "opened",
+      "web_refs": [
+        "turn377view0"
+      ],
+      "title": "Continuous batching · Hugging Face (https://huggingface.co/docs/transformers/en/continuous_batching)"
+    },
+    {
+      "source_id": "V4B-S015",
+      "verification": "opened",
+      "web_refs": [
+        "turn383view0"
+      ],
+      "title": "Structural Tag Usage - XGrammar 0.2.8 (https://xgrammar.mlc.ai/docs/latest/structural_tag/structural_tag.html)"
+    },
+    {
+      "source_id": "V4B-S016",
+      "verification": "opened",
+      "web_refs": [
+        "turn382view0"
+      ],
+      "title": "Tool Calling and Reasoning - XGrammar 0.2.8 (https://xgrammar.mlc.ai/docs/latest/structural_tag/tool_calling_and_reasoning.html)"
+    },
+    {
+      "source_id": "V4B-S017",
+      "verification": "opened",
+      "web_refs": [
+        "turn388view0"
+      ],
+      "title": "FlexAttention Part II: FlexAttention for Inference - PyTorch (https://pytorch.org/blog/flexattention-for-inference/)"
+    },
+    {
+      "source_id": "V4B-S018",
+      "verification": "opened",
+      "web_refs": [
+        "turn391view0"
+      ],
+      "title": "FlexAttention + FlashAttention-4: Fast and Flexible - PyTorch (https://pytorch.org/blog/flexattention-flashattention-4-fast-and-flexible/)"
+    },
+    {
+      "source_id": "V4B-S019",
+      "verification": "opened",
+      "web_refs": [
+        "turn386view0"
+      ],
+      "title": "Open-Source Text Generation & LLM Ecosystem at Hugging Face (https://huggingface.co/blog/os-llms)"
+    },
+    {
+      "source_id": "V4B-S020",
+      "verification": "opened",
+      "web_refs": [
+        "turn390view0"
+      ],
+      "title": "Qwen3: Think Deeper, Act Faster | Qwen (https://qwenlm.github.io/blog/qwen3/)"
+    },
+    {
+      "source_id": "V4B-S021",
+      "verification": "opened",
+      "web_refs": [
+        "turn393view0"
+      ],
+      "title": "Claude's new constitution \\ Anthropic (https://www.anthropic.com/news/claude-new-constitution)"
+    },
+    {
+      "source_id": "V4B-S022",
+      "verification": "opened",
+      "web_refs": [
+        "turn387view0"
+      ],
+      "title": "AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms — Google DeepMind (https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/)"
+    },
+    {
+      "source_id": "V4B-S023",
+      "verification": "opened",
+      "web_refs": [
+        "turn389view0"
+      ],
+      "title": "AlphaEvolve: Gemini-powered coding agent scaling impact across fields — Google DeepMind (https://deepmind.google/blog/alphaevolve-impact/)"
+    },
+    {
+      "source_id": "V4B-S024",
+      "verification": "opened",
+      "web_refs": [
+        "turn392view0"
+      ],
+      "title": "Revolutionizing software testing: Introducing LLM-powered bug catchers - Engineering at Meta (https://engineering.fb.com/2025/02/05/security/revolutionizing-software-testing-llm-powered-bug-catchers-meta-ach/)"
+    },
+    {
+      "source_id": "V4B-S025",
+      "verification": "opened",
+      "web_refs": [
+        "turn400view0"
+      ],
+      "title": "LLMs Are the Key to Mutation Testing and Better Compliance - Engineering at Meta (https://engineering.fb.com/2025/09/30/security/llms-are-the-key-to-mutation-testing-and-better-compliance/)"
+    },
+    {
+      "source_id": "V4B-S026",
+      "verification": "opened",
+      "web_refs": [
+        "turn397view0"
+      ],
+      "title": "[2402.09171] Automated Unit Test Improvement using Large Language Models at Meta (https://arxiv.org/abs/2402.09171)"
+    },
+    {
+      "source_id": "V4B-S027",
+      "verification": "opened",
+      "web_refs": [
+        "turn399view0"
+      ],
+      "title": "What are Automated Reasoning checks in Amazon Bedrock Guardrails? - Amazon Bedrock (https://docs.aws.amazon.com/en_en/bedrock/latest/userguide/guardrails-automated-reasoning-checks.html)"
+    },
+    {
+      "source_id": "V4B-S030",
+      "verification": "opened",
+      "web_refs": [
+        "turn401view0"
+      ],
+      "title": "Token healing — Guidance latest documentation (https://guidance.readthedocs.io/en/latest/example_notebooks/tutorials/token_healing.html)"
+    },
+    {
+      "source_id": "V4B-S032",
+      "verification": "opened",
+      "web_refs": [
+        "turn398view0"
+      ],
+      "title": "Agent Memory Distillation: Empowering Small LLM Agents with Hierarchical Teacher Memory (https://agent-memory-distillation.github.io/)"
+    },
+    {
+      "source_id": "V3D-S006",
+      "verification": "opened",
+      "web_refs": [
+        "turn396view0"
+      ],
+      "title": "Text Generation Inference · Hugging Face (https://huggingface.co/docs/text-generation-inference/en/index)"
+    },
+    {
+      "source_id": "V3D-S008",
+      "verification": "opened",
+      "web_refs": [
+        "turn395view0"
+      ],
+      "title": "Prompt Distillation - Tinker Documentation (https://tinker-docs.thinkingmachines.ai/cookbook/recipes/prompt-distillation/)"
+    },
+    {
+      "source_id": "V3D-S015",
+      "verification": "opened",
+      "web_refs": [
+        "turn402view0"
+      ],
+      "title": "Introduction to guidance — Guidance latest documentation (https://guidance.readthedocs.io/en/latest/example_notebooks/tutorials/intro_to_guidance.html)"
+    },
+    {
+      "source_id": "V3D-S014",
+      "verification": "opened",
+      "web_refs": [
+        "turn408view0"
+      ],
+      "title": "guidance.json — Guidance latest documentation (https://guidance.readthedocs.io/en/latest/generated/guidance.json.html)"
+    },
+    {
+      "source_id": "B-S040",
+      "verification": "opened",
+      "web_refs": [
+        "turn403view0"
+      ],
+      "title": "SuffixDecoding at Production Scale with Arctic Inference and vLLM (https://www.snowflake.com/en/blog/engineering/suffixdecoding-arctic-inference-vllm/)"
+    },
+    {
+      "source_id": "V3D-S012",
+      "verification": "opened",
+      "web_refs": [
+        "turn404view0"
+      ],
+      "title": "llama.cpp/tools/server/README.md at master · ggml-org/llama.cpp · GitHub (https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md)"
+    },
+    {
+      "source_id": "B-S037",
+      "verification": "opened",
+      "web_refs": [
+        "turn407view0"
+      ],
+      "title": "ggml/docs/gguf.md at master · ggml-org/ggml · GitHub (https://github.com/ggml-org/ggml/blob/master/docs/gguf.md)"
+    },
+    {
+      "source_id": "B-S026",
+      "verification": "opened",
+      "web_refs": [
+        "turn406view0"
+      ],
+      "title": "[2112.04426] Improving language models by retrieving from trillions of tokens (https://arxiv.org/abs/2112.04426)"
+    },
+    {
+      "source_id": "C-S035",
+      "verification": "opened",
+      "web_refs": [
+        "turn405view0"
+      ],
+      "title": "[2608.07169] Agent Memory Distillation: Empowering Small LLM Agents with Hierarchical Teacher Memory (https://arxiv.org/abs/2608.07169)"
+    }
+  ],
+  "revision_history": [
+    {
+      "date": "2026-11-05",
+      "action": "Relatório inicial sobre snapshot congelado B; nenhuma alteração de staging."
+    }
+  ]
+}

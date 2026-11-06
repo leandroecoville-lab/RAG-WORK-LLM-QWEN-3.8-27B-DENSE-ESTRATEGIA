@@ -1,0 +1,8 @@
+flowchart TD
+    P002["P002 Context Manager"]
+    T222["T222 Context Budget Monitor"]
+    P002 -. "requires: proposta" .-> T222
+    T043["T043 Context Compaction"]
+    P002 -. "complements: proposta" .-> T043
+    P001["P001 Context Engine"]
+    P002 -. "feeds: proposta" .-> P001

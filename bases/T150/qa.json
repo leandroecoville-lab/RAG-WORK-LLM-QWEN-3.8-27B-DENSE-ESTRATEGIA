@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Singleflight garante uma execução para sempre?",
+    "answer": "Não. Suprime duplicatas concorrentes dentro do escopo implementado."
+  },
+  {
+    "question": "Substitui idempotência?",
+    "answer": "Não. Uma nova tentativa futura ainda pode repetir efeito e precisa de proteção própria."
+  },
+  {
+    "question": "Coalescer erros equivale a cache negativo?",
+    "answer": "Não. O erro é compartilhado entre aguardantes da chamada ativa; guardá-lo depois exige política adicional de expiração."
+  },
+  {
+    "question": "A chave pode ser só o nome do documento?",
+    "answer": "Não se revisão, escopo ou parâmetros alterarem a leitura; a chave deve representar equivalência real do resultado."
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Toda micro-missão deve virar um subagente?",
+    "answer": "Não. A divisão organiza o trabalho; delegação e paralelismo só ajudam quando há independência e contexto suficiente."
+  },
+  {
+    "question": "Qual é o tamanho correto?",
+    "answer": "O menor que ainda produza um resultado útil e verificável sem impor coordenação excessiva ou perder contexto essencial."
+  },
+  {
+    "question": "Uma micro-missão deve caber em uma única chamada?",
+    "answer": "Não necessariamente. A unidade útil é definida por resultado e dependências, embora orçamento e janela limitem sua execução."
+  },
+  {
+    "question": "Como reconhecer uma divisão ruim?",
+    "answer": "Quando cada parte depende de decisões ainda mutáveis das outras e a integração exige refazer grande parte do trabalho."
+  }
+]

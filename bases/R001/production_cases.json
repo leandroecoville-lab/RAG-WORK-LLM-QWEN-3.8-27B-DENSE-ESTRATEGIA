@@ -1,0 +1,63 @@
+{
+  "coverage": {
+    "entry_id": "R001",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 1,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "MemGPT",
+    "scope": "referencia"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C026",
+      "company": "UC Berkeley; autores MemGPT",
+      "system": "MemGPT original",
+      "title": "MemGPT original — evidência delimitada",
+      "evidence_level": "research_only",
+      "observed_use": "Pesquisa avalia gestão de contexto virtual em documentos e conversas.",
+      "technical_mechanism": "Ferramentas movimentam informação entre janela e armazenamento externo.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "A-S009"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R001",
+          "match": "exact",
+          "rationale": "Identidade do artigo original."
+        },
+        {
+          "entry_id": "T063",
+          "match": "exact",
+          "rationale": "Virtual context management é o mecanismo estudado."
+        },
+        {
+          "entry_id": "T078",
+          "match": "analogy",
+          "rationale": "Semantic Page Fault é rótulo editorial inspirado em necessidade de informação."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Treinar política curta de consultar, carregar e verificar para 3–14B antes de delegar controle livre.",
+      "limits": "Não comprova produção bigtech nem memória ilimitada; experimentos não são garantias do runtime. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "research_group",
+      "canonical_case_id": "V4A-C026",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "R001",
+        "match": "exact",
+        "rationale": "Identidade do artigo original."
+      }
+    }
+  ]
+}

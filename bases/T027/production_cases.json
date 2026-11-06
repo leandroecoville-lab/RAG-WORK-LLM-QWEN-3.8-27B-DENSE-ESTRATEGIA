@@ -1,0 +1,63 @@
+{
+  "coverage": {
+    "entry_id": "T027",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Hybrid Retrieval — BM25 + vetores",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C014",
+      "company": "Microsoft",
+      "system": "Azure AI Search semantic ranker",
+      "title": "Azure AI Search semantic ranker — evidência delimitada",
+      "evidence_level": "operational_product",
+      "observed_use": "Documentação descreve recurso comercial disponível.",
+      "technical_mechanism": "Ranking secundário sobre resultados BM25/RRF, redução de campos e extração de captions.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S009"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T027",
+          "match": "exact",
+          "rationale": "Documenta canal híbrido com RRF como entrada elegível."
+        },
+        {
+          "entry_id": "T028",
+          "match": "exact",
+          "rationale": "Segundo ranking explícito."
+        },
+        {
+          "entry_id": "T037",
+          "match": "family",
+          "rationale": "Redução de entrada é relacionada, sem igualdade ao RECOMP."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Avaliar reranker pequeno com filtros e campo prioritário; manter cobertura de candidatos constante.",
+      "limits": "Disponibilidade não comprova escala de cliente; limites atuais do serviço não são universais. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C014",
+      "deployment_domain": "llm_framework",
+      "mapping": {
+        "entry_id": "T027",
+        "match": "exact",
+        "rationale": "Documenta canal híbrido com RRF como entrada elegível."
+      }
+    }
+  ]
+}

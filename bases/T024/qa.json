@@ -1,0 +1,18 @@
+[
+  {
+    "question": "É obrigatório usar um framework específico?",
+    "answer": "Não. A interface pode ser implementada com funções e armazenamento próprios."
+  },
+  {
+    "question": "O broker deve resumir tudo?",
+    "answer": "Não. Ele decide quais originais, resumos e referências são adequados à chamada atual."
+  },
+  {
+    "question": "O manifesto precisa copiar todo o prompt?",
+    "answer": "Não necessariamente. Pode referenciar blocos imutáveis e registrar versões e posições, desde que permita reconstrução autorizada da entrada."
+  },
+  {
+    "question": "Como diagnosticar uma resposta sem fundamento?",
+    "answer": "Verifique primeiro se a evidência existia, depois se foi recuperada, incluída e corretamente interpretada. Cada etapa exige observáveis diferentes."
+  }
+]

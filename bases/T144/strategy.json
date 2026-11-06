@@ -1,0 +1,114 @@
+{
+  "id": "T144",
+  "novelty": "A v3 analisou ganho informacional por observação. A camada nova delimita episódios de exploração, separa hipótese de fato e usa memória de decisões para impedir que cada turno reabra problemas já resolvidos.",
+  "deep_layers": [
+    {
+      "name": "Observação com pergunta associada",
+      "detail": "Cada chamada deve responder a uma lacuna explícita: localizar arquivo, verificar hipótese ou obter dado necessário. Ao retornar, registre se a lacuna foi resolvida e qual evidência mudou. Isso permite avaliar o ciclo por decisões melhoradas, sem depender da extensão de deliberação ou da quantidade bruta de ferramentas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4C-S015"
+      ]
+    },
+    {
+      "name": "Subciclo dentro de contrato",
+      "detail": "Um executor reativo pode explorar livremente dentro de uma micro-missão, mas não alterar silenciosamente seu critério de término. Quando descobrir que o objetivo é impossível ou que falta autorização, devolva esse estado ao supervisor. A flexibilidade local fica separada da responsabilidade por redefinir o trabalho.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S015"
+      ]
+    },
+    {
+      "name": "Hipóteses com validade",
+      "detail": "Mantenha hipóteses descartadas e a evidência usada, associadas à revisão observada. Uma mudança de código pode reabrir uma hipótese legitimamente; repetição sem mudança não. Essa distinção evita tanto a perseveração quanto o bloqueio indevido de caminhos que se tornaram relevantes após nova informação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S032",
+        "V4C-S009"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Investigação de teste intermitente",
+      "scenario": "O mesmo teste falha apenas em algumas condições.",
+      "strategy": "Comece por reproduzir e registrar ambiente; escolha próxima ferramenta conforme a hipótese ainda não testada. Se a falha não se repetir, preserve a incerteza e busque evidência adicional. Não aplique correção apenas porque um novo run passou.",
+      "small_model_role": "8–14B organiza hipóteses locais; 15–30B relaciona concorrência e dependências.",
+      "acceptance": "Proposta: medir hipóteses eliminadas, chamadas redundantes e correções confirmadas sob repetição controlada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S032",
+        "V4C-S009"
+      ]
+    },
+    {
+      "name": "Navegação de catálogo de ferramentas",
+      "scenario": "A primeira ferramenta encontrada não possui os campos necessários.",
+      "strategy": "Inspecione o schema, reformule a busca por capacidade e teste a compatibilidade antes de invocar. Guarde candidatos rejeitados e motivo para não redescobrir repetidamente o mesmo contrato inadequado.",
+      "small_model_role": "3–7B executa escolhas entre poucos candidatos e estados tipados.",
+      "acceptance": "Proposta: usar consultas ambíguas e contratos próximos; aceitar seleção correta ou impedimento explícito dentro do orçamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: ciclos curtos de seleção e leitura, com pequena lista de ações e resultado verificável.",
+    "8_14b": "Proposta: diagnóstico local com memória de hipóteses e evidências estruturadas.",
+    "15_30b": "Proposta: exploração mais ampla dentro de uma missão delimitada, com supervisão do objetivo.",
+    "training_or_runtime_requirements": "O runtime precisa conservar estado factual separado do texto gerado e limitar tempo, ferramentas e repetição.",
+    "do_not_use_when": "Evitar ciclos abertos quando uma função determinística ou um plano estável já resolve a tarefa com menos chamadas."
+  },
+  "connections": [
+    {
+      "target_id": "T218",
+      "relation": "feeds",
+      "how": "Mudanças de hipótese e observações fornecem sinais para detectar estagnação.",
+      "interface": "Estado semântico, evidências novas e ação realizada.",
+      "condition": "O detector distingue repetição legítima após mudança de entrada.",
+      "acceptance": "Injetar respostas idênticas de ferramentas e exigir parada ou mudança fundamentada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S032"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T208",
+      "relation": "complements",
+      "how": "O supervisor delega exploração local e recebe resultado ou impedimento.",
+      "interface": "Missão, fatos confirmados e próximo requisito não satisfeito.",
+      "condition": "Escopo e término são definidos antes da delegação.",
+      "acceptance": "Comparar retorno do executor com o plano vigente, detectando desvio de objetivo.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S015"
+      ],
+      "case_ids": [
+        "V4C-C016"
+      ]
+    }
+  ],
+  "failure_controls": [
+    "Não promover uma sugestão do modelo a observação da ferramenta.",
+    "Proibir que o loop esconda falha mudando o requisito que pretendia satisfazer."
+  ],
+  "frontier_comparison": "Compare taxa de diagnóstico correto e custo por resolução com fronteira sob mesmas ferramentas. Loops adicionais podem ampliar erros de um modelo pequeno quando os verificadores são fracos.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q006",
+      "V4C-Q009",
+      "V4C-Q010"
+    ],
+    "scope_note": "Hiring Assistant usa ReAct localmente; isso não prova que um loop genérico sem estados e verificadores seja apropriado a qualquer modelo pequeno."
+  },
+  "source_ids": [
+    "C-S030",
+    "V4C-S015",
+    "V3C-S032",
+    "V4C-S009",
+    "V4C-S013"
+  ]
+}

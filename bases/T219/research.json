@@ -1,0 +1,52 @@
+{
+  "id": "T219",
+  "technical_details": "Um limite de profundidade não limita necessariamente o trabalho total. Em uma árvore com fator de ramificação b e profundidade d, a quantidade de nós pode crescer como 1+b+…+bᵈ. Já supersteps de um grafo podem conter vários nós paralelos. O contador precisa indicar sua unidade: etapas do grafo, chamadas de modelo, delegações aninhadas ou operações. Um orçamento compartilhado evita que cada filho receba inadvertidamente o orçamento integral da missão.",
+  "boundary_condition": "Elevar o limite resolve apenas interrupção por orçamento insuficiente; não corrige uma condição de término ausente.",
+  "implementation_contract": {
+    "inputs": "Unidade de contagem, limite, orçamento global e contexto da delegação.",
+    "outputs": "Permissão para novo passo ou interrupção com estado retomável.",
+    "state": "Consumo acumulado, profundidade corrente e reservas dos filhos.",
+    "invariant": "A soma do trabalho delegado permanece contabilizada no objetivo principal."
+  },
+  "tradeoffs": [
+    "Limites apertados reduzem explosão de trabalho e podem interromper tarefas válidas.",
+    "Limites amplos acomodam fluxos complexos e aumentam custo de um ciclo defeituoso."
+  ],
+  "failure_test": "Teste proposto: criar árvore rasa com muitos filhos e cadeia profunda sem ramificação; verificar que a política distingue volume total e profundidade, sem usar um contador como substituto do outro.",
+  "evaluation_plan": "Comparar limite único e orçamento multidimensional em grafos conhecidos. Medir interrupções corretas, falsas interrupções e consumo máximo. Calibrar pela estrutura observada e preservar diagnóstico do contador que realmente atingiu a fronteira.",
+  "comparisons": [
+    {
+      "entry_id": "T218",
+      "relation": "distinct_from",
+      "reason": "Detecção de estagnação interpreta progresso; limite de execução apenas impõe um teto."
+    },
+    {
+      "entry_id": "T147",
+      "relation": "complements",
+      "reason": "Fan-out pode aumentar trabalho total sem ampliar muito a profundidade."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "LangGraph distingue supersteps paralelos e sequenciais e documenta limite de passos até uma condição de parada.",
+    "source_ids": [
+      "V3C-S006"
+    ],
+    "support": "direct",
+    "caveat": "Esse contador não equivale automaticamente à pilha de recursão de Python ou ao total de chamadas externas."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um grafo com dez nós exige dez passos?",
+      "answer": "Não necessariamente. Nós paralelos podem compartilhar superstep, enquanto ciclos podem executar o mesmo nó várias vezes."
+    },
+    {
+      "question": "Por que limitar só profundidade de subagentes é insuficiente?",
+      "answer": "Porque muitos agentes podem ser criados em cada nível; o total de trabalho cresce mesmo com profundidade pequena."
+    }
+  ],
+  "source_ids": [
+    "V3C-S006",
+    "V2A-S009"
+  ],
+  "research_note": "Mecanismos referenciados em fontes primárias; contratos e verificação descritos são propostas, não ensaios executados."
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Comprimir contexto equivale a treinar o modelo?",
+    "answer": "Não. Muitos métodos alteram apenas a entrada; alguns métodos latentes ou paramétricos exigem treinamento."
+  },
+  {
+    "question": "Menos tokens significa menor custo total?",
+    "answer": "Só se a economia superar o custo da compressão, de buscas extras e de eventuais reexecuções."
+  },
+  {
+    "question": "Texto extraído garante fidelidade?",
+    "answer": "Garante que os trechos selecionados vieram da entrada quando o processo é realmente extrativo. Não garante que o conjunto preservou o sentido e as condições do original."
+  },
+  {
+    "question": "Como interpretar uma compressão vazia?",
+    "answer": "Como decisão de não acrescentar evidência, não como prova de que não existe resposta. O gerador precisa respeitar as regras de evidência da tarefa."
+  }
+]

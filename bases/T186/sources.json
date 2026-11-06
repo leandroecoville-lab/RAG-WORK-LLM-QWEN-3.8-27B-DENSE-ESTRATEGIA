@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "C-S040",
+    "title": "Improving Factuality and Reasoning in Language Models through Multiagent Debate",
+    "url": "https://arxiv.org/abs/2305.14325",
+    "publisher": "Du e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Instâncias debatem propostas em rodadas; concordância não é garantia universal de correção.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn16view5"
+  },
+  {
+    "source_id": "V4D-S012",
+    "title": "Phi Silica task specialization using LoRA in Microsoft Learning Zone: A technical deep dive",
+    "url": "https://blogs.windows.com/windowsdeveloper/2025/07/31/phi-silica-task-specialization-using-lora-in-microsoft-learning-zone-a-technical-deep-dive/",
+    "publisher": "Microsoft",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-07-31",
+    "supports": "Fluxo específico: dados do professor GPT-4o filtrados, adaptador LoRA, prompt menor, guardrails de formato e avaliação por agentes confrontada com avaliação humana.",
+    "limitations": "O artigo informa lançamento em public preview ainda futuro naquela data. Ganhos reportados pertencem ao experimento de perguntas Kahoot!, não a capacidade geral, precisão absoluta ou equivalência com fronteira.",
+    "web_ref": "turn267view0"
+  },
+  {
+    "source_id": "V4C-S009",
+    "title": "Using AI to Delete Code: Agentic Tech Debt Cleanup at Uber",
+    "url": "https://www.uber.com/us/en/blog/ai-code-cleanup/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "AutoClean operacional combina agentes, PolyglotPiranha via MCP, CI, fixers delimitados, verificações estáticas e CodeCourt por propriedades.",
+    "limitations": "Fonte primária aberta. Desempenho relatado pertence ao sistema e ao período descritos; não foi reproduzido e não comprova transferência para modelos 3–30B.",
+    "web_ref": "turn238view0"
+  },
+  {
+    "source_id": "V4D-S013",
+    "title": "Application card: AI in Microsoft 365 Education",
+    "url": "https://learn.microsoft.com/en-us/microsoft-365/education/guide/1-reference/microsoft-365-education-ai-application-card",
+    "publisher": "Microsoft",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Learning Zone documentado como capacidade do produto, usando modelo de nuvem e Phi Silica local em hardware compatível, com validação e revisão de rascunhos.",
+    "limitations": "Documentação de produto não prova volume de uso real nem que todo caminho atual preserve o experimento Kahoot! de 2025. Conteúdo e idiomas podem alterar qualidade; não há garantia de acerto.",
+    "web_ref": "turn267view1"
+  }
+]

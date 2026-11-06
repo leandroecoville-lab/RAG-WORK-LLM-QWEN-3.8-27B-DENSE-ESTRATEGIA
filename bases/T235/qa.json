@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Headless significa que o agente possui mais permissões?",
+    "answer": "Não. A ausência de interface interativa não amplia autorização. O controlador deve respeitar as capacidades e controles configurados."
+  },
+  {
+    "question": "Quais flags devo usar?",
+    "answer": "Consulte a documentação oficial da versão instalada de Codex ou Claude Code. Esta entrada descreve o padrão operacional e não prescreve flags não verificadas."
+  },
+  {
+    "question": "Uma resposta final válida em JSON confirma os testes?",
+    "answer": "Não. Ela é uma declaração estruturada; testes e artefatos exigem recibos ou resultados verificáveis."
+  },
+  {
+    "question": "O que impede um loop headless infinito?",
+    "answer": "Critérios de término, orçamento global e análise de progresso implementados no controlador, não a ausência de interface gráfica."
+  }
+]

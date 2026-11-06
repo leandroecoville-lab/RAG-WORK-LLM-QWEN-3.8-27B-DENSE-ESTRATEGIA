@@ -1,0 +1,51 @@
+{
+  "id": "T156",
+  "technical_details": "Para logits zᵢ e temperatura T positiva, a amostragem pode usar pᵢ(T)=exp(zᵢ/T)/Σⱼexp(zⱼ/T), antes ou em composição com outros filtros. Diminuir T amplia diferenças relativas, mas não corrige a ordenação de candidatos que o modelo já calculou incorretamente. O limite T→0 concentra massa nos maiores logits; um backend pode oferecer modo guloso em vez de aceitar divisão numérica por zero.",
+  "boundary_condition": "Quando filtros, penalidades ou implementação mudam, o mesmo valor de temperatura não descreve sozinho a distribuição final.",
+  "implementation_contract": {
+    "inputs": "Logits, temperatura, demais filtros e configuração de amostragem.",
+    "outputs": "Token amostrado ou escolha gulosa, com configuração identificada.",
+    "state": "Seed quando suportada, sequência anterior e versão do backend.",
+    "invariant": "Comparações de temperatura mantêm iguais os demais fatores de geração."
+  },
+  "tradeoffs": [
+    "Concentração reduz diversidade e pode repetir consistentemente um erro dominante.",
+    "Diversidade amplia exploração e aumenta o trabalho para selecionar respostas corretas."
+  ],
+  "failure_test": "Teste proposto: usar um caso em que a alternativa mais provável é errada; comparar múltiplas amostras sem assumir que temperatura baixa melhora factualidade.",
+  "evaluation_plan": "Comparar temperaturas com várias repetições, controlando modelo, prompt, top-p e limite de saída. Medir correção, diversidade útil e custo do verificador. Escolher por tarefa, reportando variabilidade; uma seed isolada não sustenta conclusão geral.",
+  "comparisons": [
+    {
+      "entry_id": "T146",
+      "relation": "complements",
+      "reason": "Diversidade de amostragem pode compor a largura da busca sob orçamento."
+    },
+    {
+      "entry_id": "T198",
+      "relation": "distinct_from",
+      "reason": "Concentração dos logits não equivale à calibração de confiança factual."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Transformers documenta TemperatureLogitsWarper e sua combinação com filtros top-k e top-p.",
+    "source_ids": [
+      "V3C-S017"
+    ],
+    "support": "direct",
+    "caveat": "O contrato exato de temperatura zero e determinismo depende da biblioteca e do modo de geração."
+  },
+  "advanced_qa": [
+    {
+      "question": "Temperatura zero produz verdade?",
+      "answer": "Não. Ela tende a escolher o candidato dominante; se a distribuição favorece um erro, esse erro pode se repetir."
+    },
+    {
+      "question": "Por que variar também top-p atrapalha o teste?",
+      "answer": "Porque muda o conjunto de tokens elegíveis, impedindo atribuir o efeito observado somente à temperatura."
+    }
+  ],
+  "source_ids": [
+    "V3C-S017"
+  ],
+  "research_note": "Contratos e ensaios são propostas; os resultados citados pertencem às fontes, sem reprodução local."
+}

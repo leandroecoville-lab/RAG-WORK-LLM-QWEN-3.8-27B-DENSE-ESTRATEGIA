@@ -1,0 +1,55 @@
+{
+  "id": "R005",
+  "technical_details": "O LLMLingua original combina controle de orçamento, compressão iterativa de tokens e alinhamento de distribuição entre modelos. O repositório atual reúne variantes com mecanismos diferentes: LongLLMLingua condiciona a tarefa de contexto longo, enquanto LLMLingua-2 usa classificação aprendida de tokens. Reproduzir um resultado exige registrar variante, checkpoint e configuração; citar apenas o nome do pacote não identifica o método executado.",
+  "boundary_condition": "A redução de tokens pode deixar de compensar quando o custo do compressor domina ou quando detalhes removidos provocam novas buscas e geração adicional.",
+  "implementation_contract": {
+    "inputs": "Prompt estruturado, orçamento, variante escolhida e trechos que não podem ser comprimidos.",
+    "outputs": "Texto reduzido, métricas de tamanho e referências ao original para validar conteúdo preservado.",
+    "state": "Checkpoint do compressor, tokenizer, parâmetros e versões do gerador consumidor.",
+    "invariant": "Preservar uma palavra ou símbolo não é tratado como garantia de preservar a relação lógica da frase."
+  },
+  "tradeoffs": [
+    "Compressão extrativa conserva partes do original e pode quebrar relações entre elas.",
+    "Seções protegidas reduzem risco de perder contratos e limitam a compressão máxima alcançável."
+  ],
+  "failure_test": "Teste proposto: proteger os tokens de uma condição, mas permitir remoção da ligação entre condição e consequência. A verificação deve detectar a mudança semântica apesar de todas as palavras protegidas continuarem presentes.",
+  "evaluation_plan": "Avaliação proposta: comparar prompt integral, seleção por passagem e variante específica do LLMLingua com mesmo gerador. Medir sustentação, preservação de exceções, custo do compressor e latência total; incluir taxas de compressão graduais, sem presumir um ganho fixo.",
+  "comparisons": [
+    {
+      "entry_id": "T037",
+      "relation": "complements",
+      "reason": "Condicionamento à pergunta é relevante em variantes apropriadas, mas não define todos os métodos do pacote."
+    },
+    {
+      "entry_id": "R006",
+      "relation": "distinct_from",
+      "reason": "LLMLingua entrega contexto reduzido ao gerador; PRISM transfere comportamento para adaptadores treinados."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O artigo original descreve compressão coarse-to-fine; o repositório distingue variantes e documenta preservação de tokens e seções.",
+    "source_ids": [
+      "A-S015",
+      "V3A-S044"
+    ],
+    "support": "direct",
+    "caveat": "Opções de uma variante não devem ser atribuídas automaticamente às demais; a pesquisa não executou o pacote."
+  },
+  "advanced_qa": [
+    {
+      "question": "O gerador precisa ler texto perfeitamente gramatical?",
+      "answer": "Nem sempre, mas a tarefa precisa conservar sentido suficiente. Aparência estranha não prova perda, e texto fluente não prova fidelidade."
+    },
+    {
+      "question": "A taxa configurada é a economia final da aplicação?",
+      "answer": "Não. Some compressor, reprocessamento, overhead e possíveis releituras. O custo líquido depende do uso real e da qualidade preservada."
+    }
+  ],
+  "source_ids": [
+    "A-S015",
+    "A-S018",
+    "V3A-S001",
+    "V3A-S044"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

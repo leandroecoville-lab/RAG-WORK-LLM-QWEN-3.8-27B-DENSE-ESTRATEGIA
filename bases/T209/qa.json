@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Reflexion e Self-Refine são sinônimos?",
+    "answer": "Não. Reflexion mantém feedback reflexivo entre tentativas; Self-Refine itera geração, autocrítica e revisão de uma saída."
+  },
+  {
+    "question": "Uma reflexão correta garante a próxima solução?",
+    "answer": "Não. Ela é orientação contextual; a nova execução continua precisando de avaliação independente e controle de efeitos."
+  },
+  {
+    "question": "Uma reflexão deve sempre orientar a próxima tarefa?",
+    "answer": "Não. É necessário comparar escopo, condições e evidências; uma regra local pode ser incorreta fora da tentativa original."
+  },
+  {
+    "question": "Como distinguir aprendizado de repetição retórica?",
+    "answer": "Verificar se a próxima ação muda de maneira relevante e se o erro deixa de ocorrer sob avaliação independente."
+  }
+]

@@ -1,0 +1,51 @@
+{
+  "id": "T004",
+  "technical_details": "A atualização recorrente s_t=f(s_(t-1),bloco_t) cria dependência de caminho: um fato ausente de s_(t-1) não reaparece sem consulta ao original. Por isso, uma cadeia deve separar resumo narrativo de campos verificáveis, como identificadores e decisões vigentes. Aumentar a fluência da síntese pode esconder degradação factual acumulada em ciclos longos.",
+  "boundary_condition": "Quando a tarefa exige detalhes arbitrários do passado, um resumo de tamanho fixo não oferece garantia de recuperação completa, independentemente da qualidade aparente da prosa.",
+  "implementation_contract": {
+    "inputs": "Resumo anterior versionado, novo bloco e política de preservação.",
+    "outputs": "Nova síntese e referências às evidências incorporadas ou substituídas.",
+    "state": "Originais recuperáveis, versão do sumarizador e decisões protegidas.",
+    "invariant": "Correções explícitas permanecem distinguíveis das afirmações anteriores que corrigem."
+  },
+  "tradeoffs": [
+    "Atualização incremental reduz leitura repetida, mas transmite erros entre ciclos.",
+    "Campos estruturados preservam precisão, porém exigem esquema e manutenção além do texto livre."
+  ],
+  "failure_test": "Teste proposto: introduzir um valor, corrigi-lo após vários blocos e continuar resumindo. A memória final deve indicar o valor vigente e permitir verificar a correção sem reconstruí-la por adivinhação.",
+  "evaluation_plan": "Avaliação proposta: comparar resumo recorrente com resumo regenerado dos originais sob orçamento equivalente. Variar número de ciclos e frequência de correções; medir omissões, inversões de negação, atribuição e custo acumulado.",
+  "comparisons": [
+    {
+      "entry_id": "T008",
+      "relation": "alternative",
+      "reason": "A hierarquia preserva caminhos locais para revisar perdas sem reprocessar toda a cadeia."
+    },
+    {
+      "entry_id": "T069",
+      "relation": "complements",
+      "reason": "O resultado textual pode alimentar consolidação persistente sem alterar parâmetros do modelo."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O método de memória recursiva combina memória anterior com diálogos subsequentes para produzir a próxima memória.",
+    "source_ids": [
+      "V3A-S005"
+    ],
+    "support": "direct",
+    "caveat": "Ganhos experimentais de consistência não equivalem a conservação integral do histórico."
+  },
+  "advanced_qa": [
+    {
+      "question": "Como detectar deriva sem reler tudo?",
+      "answer": "Amostre fatos críticos, verifique referências e compare campos protegidos com sua fonte. Essa auditoria reduz risco, mas não prova ausência de perdas não amostradas."
+    },
+    {
+      "question": "Um resumo antigo pode ser a única fonte?",
+      "answer": "Pode ser a única representação disponível, mas deve ser marcado como evidência derivada. Sem o original, não é possível confirmar detalhes que ele omitiu."
+    }
+  ],
+  "source_ids": [
+    "V3A-S005"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

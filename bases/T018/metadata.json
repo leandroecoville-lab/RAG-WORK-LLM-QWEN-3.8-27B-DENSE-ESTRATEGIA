@@ -1,0 +1,28 @@
+{
+  "id": "T018",
+  "name": "Context Pruning",
+  "canonical_name": "Context Pruning",
+  "canonical_id": "T018",
+  "aliases": [
+    "poda de contexto"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T006",
+    "T038",
+    "T039"
+  ],
+  "source_ids": [
+    "A-S016",
+    "V3A-S001",
+    "V4A-S028"
+  ],
+  "namespace": "T018",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T018",
+  "chunk_count": 9
+}

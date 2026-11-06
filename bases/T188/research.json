@@ -1,0 +1,46 @@
+{
+  "id": "T188",
+  "technical_details": "Agregar respostas exige uma função de equivalência anterior à contagem: 0,5 e 1/2 podem representar o mesmo número, mas 1 metro e 1 centímetro não. A diversidade dos caminhos amostrados também depende de temperatura, seeds e formulação da tarefa. Se todos convergem ao mesmo erro por conhecimento compartilhado, aumentar amostras estabiliza uma maioria incorreta em vez de corrigi-la.",
+  "boundary_condition": "Frequência de uma resposta entre amostras não é automaticamente probabilidade calibrada de que ela esteja correta.",
+  "implementation_contract": {
+    "inputs": "Problema, política de amostragem, orçamento e normalizador de respostas.",
+    "outputs": "Resposta agregada com contagens, candidatos rejeitados e possíveis ambiguidades.",
+    "state": "Amostras independentes de execução, unidades, equivalências e critérios de validade.",
+    "invariant": "Somente respostas semanticamente equivalentes e válidas participam da mesma classe de votos."
+  },
+  "tradeoffs": [
+    "Mais amostras reduzem ruído de contagem e aumentam custo.",
+    "Normalização agressiva pode fundir respostas distintas; normalização literal pode separar equivalentes."
+  ],
+  "failure_test": "Teste proposto: gerar respostas numericamente equivalentes com formatos distintos e respostas iguais com unidades diferentes. Esperar agrupamento correto e preservação das diferenças de unidade.",
+  "evaluation_plan": "Plano proposto: comparar uma amostra, maioria literal e maioria normalizada em tarefas com referência externa. Controlar orçamento e amostragem; medir correção, diversidade efetiva, erros do normalizador e custo, sem aprovar apenas pelo aumento de concordância.",
+  "comparisons": [
+    {
+      "entry_id": "T189",
+      "relation": "alternative",
+      "reason": "Best-of-N usa uma nota de qualidade; self-consistency seleciona pela massa de respostas equivalentes."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O trabalho original amostra caminhos diversos e agrega as respostas resultantes para selecionar a mais consistente.",
+    "source_ids": [
+      "C-S042"
+    ],
+    "support": "direct",
+    "caveat": "A intuição sobre múltiplos caminhos não garante que a resposta dominante seja verdadeira em toda distribuição."
+  },
+  "advanced_qa": [
+    {
+      "question": "Usar a mesma seed em todas as chamadas ajuda?",
+      "answer": "Pode eliminar diversidade útil; registre como a amostragem realmente varia e verifique duplicatas."
+    },
+    {
+      "question": "Pode parar quando uma resposta lidera?",
+      "answer": "É uma política possível, mas precisa considerar incerteza da contagem e risco de viés introduzido pela parada adaptativa."
+    }
+  ],
+  "source_ids": [
+    "C-S042"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

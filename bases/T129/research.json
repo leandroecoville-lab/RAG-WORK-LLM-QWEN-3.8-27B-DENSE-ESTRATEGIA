@@ -1,0 +1,46 @@
+{
+  "id": "T129",
+  "technical_details": "Prever posições futuras com cabeças auxiliares modifica o objetivo de treinamento. Cabeças que partem de uma representação compartilhada não produzem automaticamente a mesma fatoração autoregressiva de gerar um token e condicionar o próximo nele. Usá-las como propostas exige um procedimento de verificação apropriado. Também é possível usar o objetivo apenas como supervisão auxiliar e manter um caminho convencional na implantação.",
+  "boundary_condition": "Um checkpoint treinado somente para próximo token não ganha cabeças úteis apenas por habilitar uma opção de execução.",
+  "implementation_contract": {
+    "inputs": "Arquitetura com cabeças compatíveis, alvos deslocados e política de uso na inferência.",
+    "outputs": "Perdas auxiliares no treino ou propostas verificáveis durante geração.",
+    "state": "Pesos das cabeças, alinhamento dos alvos e estados compartilhados.",
+    "invariant": "Cada cabeça é supervisionada pela posição futura correta, sem acesso indevido ao alvo."
+  },
+  "tradeoffs": [
+    "Supervisão adicional pode mudar representações e exige controlar comparações de treinamento.",
+    "Mais candidatos por passo elevam potencial de amortização e trabalho de verificação."
+  ],
+  "failure_test": "Teste proposto: deslocar em uma posição os rótulos de uma cabeça e comparar com a indexação correta. Esperar perda e aceitação anormais; verificar também fronteiras e padding de exemplos.",
+  "evaluation_plan": "Plano proposto: separar experimento de qualidade do treinamento e experimento de velocidade na inferência. Controlar dados, orçamento e arquitetura; medir métricas de tarefa, custo das cabeças e tokens confirmados, evitando atribuir todo ganho ao paralelismo de saída.",
+  "comparisons": [
+    {
+      "entry_id": "T079",
+      "relation": "complements",
+      "reason": "Cabeças futuras podem fornecer candidatos, mas a regra especulativa determina sua confirmação exata."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O trabalho de multi-token prediction treina cabeças independentes sobre um tronco compartilhado para prever vários tokens futuros.",
+    "source_ids": [
+      "B-S039"
+    ],
+    "support": "direct",
+    "caveat": "O resultado não implica que previsões simultâneas possam ser publicadas sem verificação preservando a distribuição original."
+  },
+  "advanced_qa": [
+    {
+      "question": "MTP exige usar todas as cabeças no serviço?",
+      "answer": "Não necessariamente; o objetivo auxiliar e o uso acelerado na inferência são decisões distintas."
+    },
+    {
+      "question": "Previsão futura já conhece o token intermediário amostrado?",
+      "answer": "Não por definição. Examine o condicionamento da arquitetura antes de tratá-la como uma cadeia autoregressiva comum."
+    }
+  ],
+  "source_ids": [
+    "B-S039"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

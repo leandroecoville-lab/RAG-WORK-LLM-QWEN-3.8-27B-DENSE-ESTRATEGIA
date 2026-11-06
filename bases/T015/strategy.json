@@ -1,0 +1,113 @@
+{
+  "id": "T015",
+  "novelty": "A v3 separou referência e leitura. Aqui referências transportam prova de disponibilidade e uma política de resolução por tarefa.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Uma referência entregue a outro agente deve declarar conteúdo disponível, recorte permitido e custo de abertura. O receptor pode planejar sem fingir que já leu.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S019",
+        "V4A-S025"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Use leases ou verificação equivalente para artefatos temporários. Se a validade expirar, renovar acesso ou materializar cópia identificada antes da etapa dependente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S019",
+        "V4A-S025"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare transporte integral e referências em tarefas com reuso desigual. Medir leituras evitadas, referências quebradas e conclusões sem abertura. Unidade de avaliação: cadeia de referências. Inclua referência válida no momento da delegação e indisponível na retomada. O receptor deve produzir diagnóstico de indisponibilidade, não reconstruir conteúdo a partir do título ou de um resumo antigo. Compare materialização antecipada e leitura tardia segundo prazo e probabilidade de uso; referências economizam transporte, mas podem aumentar risco operacional quando a origem é temporária.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S019",
+        "V4A-S025"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Delegação de análise",
+      "scenario": "Subagente produz relatório extenso.",
+      "strategy": "Retornar índice de afirmações e referências a evidências; líder abre somente suportes que usará no texto final.",
+      "small_model_role": "3–7B produz índice; 15–30B integra.",
+      "acceptance": "Nenhuma citação final pode apontar conteúdo não verificado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S019",
+        "V4A-S025"
+      ]
+    },
+    {
+      "name": "Resultados grandes de ferramenta",
+      "scenario": "Tabela excede a janela.",
+      "strategy": "Persistir resultado, devolver schema e referência; consultas posteriores pedem colunas ou linhas necessárias.",
+      "small_model_role": "8–14B escolhe projeções pequenas.",
+      "acceptance": "Resposta deve preservar filtro e versão da tabela.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S019",
+        "V4A-S025"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Consumidor de identificadores e schemas, com resolução determinística.",
+    "8_14b": "Seletor de recortes e projeções por pergunta.",
+    "15_30b": "Integrador que compara fontes grandes por aberturas direcionadas.",
+    "training_or_runtime_requirements": "Resolver com identidade, versão e status de disponibilidade; validade de acesso deve ser verificável.",
+    "do_not_use_when": "A origem não ficará acessível até o fim da tarefa e não há cópia durável."
+  },
+  "connections": [
+    {
+      "target_id": "T066",
+      "relation": "requires",
+      "how": "Resolver identidade antes de interpretar o conteúdo.",
+      "interface": "URI lógica, revisão, hash e seletor.",
+      "condition": "Resolver não substituir versão silenciosamente.",
+      "acceptance": "Testar expiração e versão inexistente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S019",
+        "V4A-S025"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T061",
+      "relation": "complements",
+      "how": "Vincular artefato recuperado ao digest esperado.",
+      "interface": "Bytes, codec e digest.",
+      "condition": "Hash representar o artefato efetivamente lido.",
+      "acceptance": "Alterar objeto e impedir aceitação pelo identificador antigo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S019",
+        "V4A-S025"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não resumir referência como se fosse evidência lida.",
+    "Conservar limite de acesso quando a referência atravessar agentes."
+  ],
+  "frontier_comparison": "Comparar custo de transporte e qualidade das citações, não presumir que referência curta melhora entendimento.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q019",
+      "V4A-Q022"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S019",
+    "V4A-S025"
+  ]
+}

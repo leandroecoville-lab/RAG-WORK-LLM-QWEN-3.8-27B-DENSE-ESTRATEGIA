@@ -1,0 +1,28 @@
+[
+  {
+    "source_id": "A-S036",
+    "title": "DoWhy",
+    "url": "https://github.com/py-why/dowhy",
+    "publisher": "PyWhy",
+    "source_type": "official_repository",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Modelagem explícita e testes de premissas causais.",
+    "limitations": "Fundamenta a distinção entre associação e identificação causal; não define uma técnica universal chamada Causal Memory.",
+    "web_ref": "turn26view3"
+  },
+  {
+    "source_id": "V3A-S041",
+    "title": "DoWhy Refuting Effect Estimates",
+    "url": "https://www.pywhy.org/dowhy/main/user_guide/refuting_causal_estimates/refuting_effect_estimates/index.html",
+    "publisher": "PyWhy",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Controles negativos, testes de robustez, validação de grafo e sensibilidade a pressupostos causais.",
+    "limitations": "Fonte primária consultada. Desempenho não foi reproduzido, não foram usadas perguntas ou respostas dos benchmarks, e propostas de integração não representam execução na LAI.",
+    "web_ref": "turn166view0"
+  }
+]

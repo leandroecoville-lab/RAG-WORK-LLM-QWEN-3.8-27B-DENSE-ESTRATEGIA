@@ -1,0 +1,119 @@
+{
+  "id": "T116",
+  "novelty": "A v3 separou reconstrução de cache e emissão de tokens. A nova camada formula recomputação como escolha de recuperação, com orçamento, pontos seguros e prevenção de trabalho repetido em cascata.",
+  "deep_layers": [
+    {
+      "name": "Reconstruir versus restaurar",
+      "detail": "Se houver cópia em memória inferior, compare seu custo com prefill do histórico confirmado. Um caminho longo com baixa banda pode favorecer recomputação; um histórico caro pode favorecer transferência. Estime ambos com medições da fase relevante e use margem para erro, evitando decisões baseadas só em bytes ou tokens.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S014",
+        "V3B-S005",
+        "V4B-S031"
+      ]
+    },
+    {
+      "name": "Preempção repetida",
+      "detail": "Sob pressão, a mesma sequência pode ser reconstruída e novamente preemptada antes de avançar. Conte trabalho descartado e proteja temporariamente pedidos que já pagaram esse custo, dentro de limites de justiça. Sem esse controle, o serviço pode consumir recursos intensamente e entregar poucos tokens novos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S014",
+        "V3B-S005",
+        "V4B-S031"
+      ]
+    },
+    {
+      "name": "Recuperação após falha",
+      "detail": "Persistir tokens confirmados e identidade do modelo permite reconstruir estado depois de perder um worker, mas não recupera automaticamente chamadas de ferramenta ou efeitos externos. O protocolo de resposta precisa distinguir texto emitido, ação solicitada e ação concluída; retomar a geração não autoriza repetir uma operação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S014",
+        "V3B-S005",
+        "V4B-S031"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Sessão longa pouco ativa",
+      "scenario": "Manter KV residente custa mais que o padrão de uso justifica.",
+      "strategy": "Descarte a cópia reconstruível após inatividade e mantenha histórico autorizado e versão. Na retomada, aplique limite de custo e informe estado de carregamento no serviço.",
+      "small_model_role": "Um 3–7B pode oferecer sessões esporádicas com capacidade reduzida de cache.",
+      "acceptance": "Retomada deve preservar tokens anteriores e não duplicar eventos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S014",
+        "V3B-S005",
+        "V4B-S031"
+      ]
+    },
+    {
+      "name": "Falha de worker",
+      "scenario": "Uma resposta é interrompida antes de terminar.",
+      "strategy": "Reatribua a sequência com cursor confirmado; reconstrua até esse ponto e gere somente a continuação faltante. Se a versão não estiver disponível, aplique política explícita de reinício.",
+      "small_model_role": "Um 8–14B pode ter réplicas independentes mais econômicas que cache distribuído complexo.",
+      "acceptance": "Injetar falha em vários pontos e verificar entrega única e histórico coerente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S014",
+        "V3B-S005",
+        "V4B-S031"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Históricos curtos podem favorecer recomputação simples, mas frequência de retomada importa.",
+    "8_14b": "Compare restore e prefill sob concorrência, incluindo impacto em outros usuários.",
+    "15_30b": "Recomputar contextos extensos em 15–30B pode consumir capacidade significativa; reserve orçamento e evite ciclos.",
+    "training_or_runtime_requirements": "Runtime precisa manter tokens confirmados, versão e estado das ações. Isso não exige novo treinamento.",
+    "do_not_use_when": "Não reamostrar prefixos publicados nem reconstruir com adapter diferente fingindo continuidade idêntica."
+  },
+  "connections": [
+    {
+      "target_id": "T105",
+      "relation": "complements",
+      "how": "Evicção só pode escolher recomputação se houver histórico e identidade suficientes.",
+      "interface": "Tokens confirmados e motivo de remoção.",
+      "condition": "Custo futuro estimado e estado reconstruível.",
+      "acceptance": "Medir quantas evicções levam a trabalho repetido sem progresso.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S014",
+        "V3B-S005",
+        "V4B-S031"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T120",
+      "relation": "feeds",
+      "how": "Roteamento escolhe worker considerando prefill restante e disponibilidade real.",
+      "interface": "Cursor e custo estimado de reconstrução.",
+      "condition": "Destino consegue executar a mesma identidade do modelo.",
+      "acceptance": "Comparar decisões com tempos observados na retomada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S014",
+        "V3B-S005",
+        "V4B-S031"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Limitar o número de reconstruções consecutivas sem avanço.",
+    "Separar idempotência de ações externas da reconstrução de estado matemático."
+  ],
+  "frontier_comparison": "O benefício é operacional em sessões interrompidas. Compare tempo e custo de recuperação com a mesma qualidade de modelo; recomputar histórico não acrescenta evidência nova nem corrige respostas anteriores.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q022"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S014",
+    "V3B-S005",
+    "V4B-S031"
+  ]
+}

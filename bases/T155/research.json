@@ -1,0 +1,52 @@
+{
+  "id": "T155",
+  "technical_details": "Otimizar instruções exige distinguir busca do prompt e avaliação final. Examinar repetidamente o mesmo conjunto para escolher candidatos adapta o prompt àquele conjunto, mesmo sem gradiente ou atualização de pesos. MIPROv2 combina propostas de instruções e demonstrações; isso mostra que o objetivo pode melhorar com um prompt maior, não necessariamente mais enxuto. Redução de tokens deve entrar como critério separado ou restrição explícita.",
+  "boundary_condition": "Uma edição que melhora a métrica escolhida pode remover comportamento necessário que o avaliador não mede.",
+  "implementation_contract": {
+    "inputs": "Programa de prompts, exemplos de ajuste, métrica e regras obrigatórias.",
+    "outputs": "Prompt candidato versionado, resultados de seleção e avaliação reservada.",
+    "state": "Histórico de candidatos, orçamento de busca e divisões de dados.",
+    "invariant": "Casos usados para escolher o prompt não são apresentados como teste independente."
+  },
+  "tradeoffs": [
+    "Busca extensa encontra combinações e aumenta risco de sobreajuste à métrica.",
+    "Instruções curtas reduzem custo por chamada e podem exigir exemplos ou contexto adicional para desambiguar."
+  ],
+  "failure_test": "Teste proposto: inserir no conjunto reservado uma obrigação ausente dos exemplos de ajuste; verificar se a redução do prompt preserva esse comportamento.",
+  "evaluation_plan": "Comparar prompt original, edição manual e otimização automática com o mesmo modelo. Medir qualidade por requisito, tokens, custo de busca e ponto de amortização em chamadas futuras. Aprovar alterações somente se a economia mantiver os critérios definidos.",
+  "comparisons": [
+    {
+      "entry_id": "T179",
+      "relation": "distinct_from",
+      "reason": "Destilação paramétrica altera o modelo; busca de instruções altera a entrada utilizada em inferência."
+    },
+    {
+      "entry_id": "T152",
+      "relation": "complements",
+      "reason": "Orçamento identifica custo de contexto, mas não escolhe automaticamente a melhor instrução."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "MIPROv2 otimiza conjuntamente instruções e exemplos por busca sobre candidatos.",
+    "source_ids": [
+      "V3C-S014"
+    ],
+    "support": "direct",
+    "caveat": "A melhoria depende da métrica e dos dados; o otimizador não garante prompt mínimo ou generalização."
+  },
+  "advanced_qa": [
+    {
+      "question": "Otimização sem treino pode sobreajustar?",
+      "answer": "Sim. A seleção repetida de candidatos pode explorar particularidades do conjunto de validação, mesmo com pesos congelados."
+    },
+    {
+      "question": "Como saber se otimizar compensou financeiramente?",
+      "answer": "Somar custo da busca e medir economia por chamada aceita, estimando quantas chamadas reais amortizam a preparação."
+    }
+  ],
+  "source_ids": [
+    "V3C-S014",
+    "V2C-S004"
+  ],
+  "research_note": "Contratos e ensaios são propostas; os resultados citados pertencem às fontes, sem reprodução local."
+}

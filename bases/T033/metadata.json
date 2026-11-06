@@ -1,0 +1,30 @@
+{
+  "id": "T033",
+  "name": "Structure-Aware Chunking",
+  "canonical_name": "Structure-Aware Chunking",
+  "canonical_id": "T033",
+  "aliases": [
+    "segmentação consciente da estrutura"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T010",
+    "T012",
+    "T032",
+    "T035"
+  ],
+  "source_ids": [
+    "A-S039",
+    "V3A-S027",
+    "V4A-S013",
+    "V4A-S025"
+  ],
+  "namespace": "T033",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T033",
+  "chunk_count": 9
+}

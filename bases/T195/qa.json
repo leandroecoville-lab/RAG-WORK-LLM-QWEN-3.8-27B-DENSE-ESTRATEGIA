@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Passar em todos os testes prova perfeição?",
+    "answer": "Não. Prova apenas comportamento nos casos e propriedades cobertos."
+  },
+  {
+    "question": "Só serve para código?",
+    "answer": "Não. Pode verificar cálculos, schemas, arquivos e efeitos de workflows controlados."
+  },
+  {
+    "question": "Um exit code zero prova sucesso?",
+    "answer": "Somente se o programa e o harness definem esse código de forma confiável e os critérios necessários foram realmente executados."
+  },
+  {
+    "question": "Como testar o próprio verificador?",
+    "answer": "Use casos com resultados conhecidos, mutações que deveriam falhar e falhas de infraestrutura deliberadas para conferir a classificação dos resultados."
+  }
+]

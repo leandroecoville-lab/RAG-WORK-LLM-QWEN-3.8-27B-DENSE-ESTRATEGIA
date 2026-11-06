@@ -1,0 +1,69 @@
+{
+  "package": "LAI_RAG_218",
+  "version": "1.0.0",
+  "language": "pt-BR",
+  "curation_date": "2026-11-05",
+  "validated_at": "2026-11-05T09:39:40.561330-03:00",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "stats": {
+    "entries": 218,
+    "chunks": 872,
+    "qa": 436,
+    "source_records": 147,
+    "unique_source_urls": 141,
+    "categories": {
+      "contexto_recuperacao": 46,
+      "memoria": 32,
+      "inferencia": 54,
+      "orquestracao": 44,
+      "verificacao_treinamento": 30,
+      "referencias": 12
+    },
+    "evidence_status": {
+      "supported": 168,
+      "related_support": 46,
+      "terminology_correction": 4
+    },
+    "source_verification": {
+      "opened": 143,
+      "search_result": 4
+    },
+    "canonical_ids": 209,
+    "words_editorial": 68068
+  },
+  "corpus_sha256": "d5e9e25469580d4105d06e2654b9f9a1facdda540bb97cc00fc9375180601809",
+  "verification": {
+    "unit_tests": {
+      "tests_run": 24,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": true,
+      "duration_seconds": 2.116,
+      "external_model_calls": 0,
+      "external_embedding_calls": 0,
+      "note": "Clientes externos exercitados com respostas simuladas; recuperação lexical executada sobre o corpus real."
+    },
+    "structural": true,
+    "names_hit_at_3": 1.0,
+    "queries_hit_at_5": 0.9583333333333334,
+    "queries_mrr_at_10": 0.7986111111111112
+  },
+  "not_executed": [
+    "inferencia_real_de_LLM",
+    "embeddings_reais",
+    "instalacao_na_Helena",
+    "benchmarks_de_GPU",
+    "experimentos_individuais_das_206_entradas"
+  ],
+  "runtime": {
+    "default_retrieval": "BM25 local",
+    "optional_retrieval": [
+      "cosine",
+      "RRF"
+    ],
+    "generated_embeddings_included": false,
+    "generation_client": "chat/completions; endpoint/modelo explícitos"
+  }
+}

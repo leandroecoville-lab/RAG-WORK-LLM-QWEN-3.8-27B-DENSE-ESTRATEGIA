@@ -1,0 +1,119 @@
+{
+  "id": "T089",
+  "novelty": "A v3 distinguiu EOS, sequência textual e truncamento. Esta expansão define término como evento de protocolo: produção encerrada, artefato completo, validação concluída e resultado publicável são estados distintos que precisam de critérios próprios.",
+  "deep_layers": [
+    {
+      "name": "Estados de conclusão",
+      "detail": "Mantenha razões separadas para EOS, stop configurado, limite, cancelamento e erro. Depois do encerramento, valide o artefato antes de declarar sucesso. Uma resposta pode terminar normalmente e falhar no contrato, ou ser interrompida após já produzir um objeto completo; a aplicação precisa decidir sem apagar a causa real.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S009",
+        "V4B-S015",
+        "V4B-S016"
+      ]
+    },
+    {
+      "name": "Streaming e fronteira de publicação",
+      "detail": "Quando texto parcial não pode ser consumido com segurança, acumule uma região mínima até que o parser reconheça uma unidade completa. Não retenha a resposta inteira se campos independentes podem ser publicados. Porém, uma validação final pode invalidar o conjunto; deixe explícito ao consumidor quais fragmentos são provisórios.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S009",
+        "V4B-S015",
+        "V4B-S016"
+      ]
+    },
+    {
+      "name": "Parada orientada à tarefa",
+      "detail": "Use um critério externo para encerrar busca ou refinamento quando a tarefa observável estiver satisfeita. Um modelo afirmar pronto não basta. Se o critério é teste executável, registre qual teste passou e qual cobertura ele fornece; se depende de evidência faltante, termine com abstenção ou encaminhamento explícito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S009",
+        "V4B-S015",
+        "V4B-S016"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Extração de objeto estruturado",
+      "scenario": "Um endpoint deve devolver um registro com campos obrigatórios.",
+      "strategy": "Combine gramática com parser incremental e limite de tamanho. Ao concluir o objeto, valide schema e regras de domínio; pare geração de texto residual apenas se o formato do modelo permitir. Não conserte silenciosamente chaves ou valores importantes.",
+      "small_model_role": "Um 3–7B pode produzir a estrutura, enquanto código determinístico decide completude.",
+      "acceptance": "Exigir término classificado e rejeição de truncamentos, objetos duplicados ou campos inválidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S009",
+        "V4B-S015",
+        "V4B-S016"
+      ]
+    },
+    {
+      "name": "Revisão de código com orçamento",
+      "scenario": "Um agente tenta corrigir um defeito verificável.",
+      "strategy": "Encerre ao passar o conjunto de critérios ou ao atingir limite de tentativas/tempo. Preserve a melhor versão válida e o histórico de falhas. Não trate esgotamento de orçamento como aprovação do último patch.",
+      "small_model_role": "Um 8–30B pode propor alterações; o ambiente de testes determina quando cessar tentativas.",
+      "acceptance": "Medir custo por correção aceita e taxa de encerramento indevido, com falhas deliberadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S009",
+        "V4B-S015",
+        "V4B-S016"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, formatos curtos e critérios determinísticos reduzem geração desnecessária sem depender de autocrítica sofisticada.",
+    "8_14b": "Em 8–14B, separar resposta final e regiões auxiliares evita cortar delimitadores exigidos pelo template.",
+    "15_30b": "Em 15–30B, controlar saídas longas por orçamento explícito e checkpoint de artefatos já válidos.",
+    "training_or_runtime_requirements": "É runtime/aplicação; EOS e convenções de template pertencem ao checkpoint, enquanto sucesso pertence ao domínio.",
+    "do_not_use_when": "Não usar uma palavra comum como stop global nem assumir que fim do stream significa resultado íntegro."
+  },
+  "connections": [
+    {
+      "target_id": "T196",
+      "relation": "complements",
+      "how": "Restringir a linguagem de saída e reconhecer término permitido pelo matcher.",
+      "interface": "Estado do parser, delimitadores e token de término.",
+      "condition": "Gramática e tokenizer representam a mesma convenção.",
+      "acceptance": "Testar limites em cada posição e objetos incompletos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S009",
+        "V4B-S015",
+        "V4B-S016"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T190",
+      "relation": "feeds",
+      "how": "Enviar razão de encerramento e artefato ao verificador antes de publicar sucesso.",
+      "interface": "Conteúdo, finish reason, tentativa e critérios satisfeitos.",
+      "condition": "O verificador distingue falha, incompletude e validade.",
+      "acceptance": "Interromper em limites artificiais e conferir classificação correta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S009",
+        "V4B-S015",
+        "V4B-S016"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Preservar razões originais de término em logs e respostas.",
+    "Testar padrões stop dentro de valores escapados e nas fronteiras de fragmentos."
+  ],
+  "frontier_comparison": "Comparar custo por artefato completo e correto com a fronteira, incluindo recusas e truncamentos. Parar cedo economiza trabalho somente quando preserva o objetivo; não compensa capacidade insuficiente.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q013"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S009",
+    "V4B-S015",
+    "V4B-S016"
+  ]
+}

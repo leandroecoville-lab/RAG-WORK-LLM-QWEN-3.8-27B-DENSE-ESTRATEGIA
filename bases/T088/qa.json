@@ -1,0 +1,18 @@
+[
+  {
+    "question": "É apenas aumentar batch_size?",
+    "answer": "Não. O conjunto de sequências muda entre iterações; batch_size fixo não descreve toda a política."
+  },
+  {
+    "question": "Qual a métrica principal?",
+    "answer": "Throughput dentro do prazo exigido, acompanhado de latência de cauda e preempções."
+  },
+  {
+    "question": "Mais sequências ativas significa mais trabalho útil?",
+    "answer": "Não quando a pressão provoca preempções repetidas e reconstrução do mesmo contexto."
+  },
+  {
+    "question": "Por que versionar o slot?",
+    "answer": "Após cancelamento e reutilização, uma resposta atrasada poderia ser aplicada à sequência errada sem essa distinção."
+  }
+]

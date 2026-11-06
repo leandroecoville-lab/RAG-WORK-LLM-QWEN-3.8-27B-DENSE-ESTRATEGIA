@@ -1,0 +1,28 @@
+[
+  {
+    "source_id": "A-S001",
+    "title": "MapReduce: Simplified Data Processing on Large Clusters",
+    "url": "https://research.google/pubs/mapreduce-simplified-data-processing-on-large-clusters/",
+    "publisher": "Google Research",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Modelo map/reduce, agrupamento por chave e execução distribuída tolerante a falhas.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn9view0"
+  },
+  {
+    "source_id": "C-S030",
+    "title": "How we built our multi-agent research system",
+    "url": "https://www.anthropic.com/research/multi-agent-research-system",
+    "publisher": "Anthropic",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Arquitetura coordenador-especialistas e contextos separados pode paralelizar pesquisa e usar artefatos de transferência.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn34view9"
+  }
+]

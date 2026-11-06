@@ -1,0 +1,113 @@
+{
+  "id": "T023",
+  "novelty": "A v3 examinou erro recursivo. Aqui a árvore pode ser materializada sob demanda e manter níveis orientados a perguntas distintas.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Crie nós apenas quando houver utilidade de consulta, evitando resumir todos os níveis antecipadamente. Popularidade da região e custo de atualização orientam materialização.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S021",
+        "V4A-S024"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Separe resumo descritivo e índice de perguntas respondíveis pelo nó. O índice melhora roteamento; o resumo sozinho pode ocultar detalhe que seria necessário.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S021",
+        "V4A-S024"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare árvore completa e parcial sob carga com consultas frequentes e raras. Meça tempo inicial, atualização e custo acumulado. Unidade de avaliação: árvore de sínteses. Inclua uma consulta rara sobre folha recém-adicionada e uma consulta frequente sobre ramo já materializado. A árvore parcial deve responder ambas sem apresentar nó pendente como vazio. Medir tempo de primeira consulta e custo acumulado distingue trabalho adiado de trabalho eliminado, evitando atribuir economia a uma construção simplesmente incompleta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S021",
+        "V4A-S024"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Acervo crescente",
+      "scenario": "Novos documentos chegam continuamente.",
+      "strategy": "Adicionar folhas e materializar ancestrais de regiões consultadas; marcar nós pendentes para que o leitor não trate ausência como resumo vazio.",
+      "small_model_role": "3–7B extrai índice de perguntas.",
+      "acceptance": "Consulta rara deve chegar à folha mesmo sem ancestral pronto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S021",
+        "V4A-S024"
+      ]
+    },
+    {
+      "name": "Relatórios em múltiplos níveis",
+      "scenario": "Diretoria e operação exigem detalhes diferentes.",
+      "strategy": "Construir vistas por granularidade usando as mesmas folhas; manter divergências disponíveis em ambos os níveis.",
+      "small_model_role": "15–30B redige síntese executiva.",
+      "acceptance": "Conclusão executiva não pode contrariar evidência operacional.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S021",
+        "V4A-S024"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Gerador de descritores de folha e perguntas possíveis.",
+    "8_14b": "Resumidor de conjuntos pequenos com teste de cobertura.",
+    "15_30b": "Integrador de vistas com escopos e granularidades diferentes.",
+    "training_or_runtime_requirements": "Catálogo de nós materializados, custo de geração e dependências de origem; política de atualização explícita.",
+    "do_not_use_when": "Cada consulta exige combinação inédita que atravessa quase toda a árvore."
+  },
+  "connections": [
+    {
+      "target_id": "T026",
+      "relation": "feeds",
+      "how": "Usar índice de perguntas para navegar até evidências.",
+      "interface": "node_id, temas, perguntas cobertas e filhos.",
+      "condition": "Índice não for tratado como resposta comprovada.",
+      "acceptance": "Testar pergunta cuja resposta está em folha pouco popular.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S021",
+        "V4A-S024"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T007",
+      "relation": "complements",
+      "how": "Cachear síntese por conjunto de filhos e política.",
+      "interface": "Digest dos filhos, prompt e versão do leitor.",
+      "condition": "Dependências completas comporem a chave.",
+      "acceptance": "Modificar folha e exigir regeneração do ancestral consultado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S021",
+        "V4A-S024"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não apresentar nó não materializado como ausência de conteúdo.",
+    "Evitar circularidade entre síntese e sua própria evidência."
+  ],
+  "frontier_comparison": "Comparar amortização por perfil de consulta; síntese hierárquica não deve substituir evidência de detalhe.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q021",
+      "V4A-Q022"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S021",
+    "V4A-S024"
+  ]
+}

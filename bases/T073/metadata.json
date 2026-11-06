@@ -1,0 +1,29 @@
+{
+  "id": "T073",
+  "name": "Immutable Evidence Store",
+  "canonical_name": "Immutable Evidence Store",
+  "canonical_id": "T073",
+  "aliases": [
+    "repositório imutável de evidências",
+    "evidence store"
+  ],
+  "category": "memoria",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T059",
+    "T061",
+    "T072"
+  ],
+  "source_ids": [
+    "A-S034",
+    "V3A-S038",
+    "V3A-S037"
+  ],
+  "namespace": "T073",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T073",
+  "chunk_count": 9
+}

@@ -1,0 +1,120 @@
+{
+  "id": "T121",
+  "novelty": "A v3 definiu unidades heterogêneas e pontos de decisão. O aprofundamento acrescenta erro de previsão, contratos de justiça e estratégias de admissão que tornam o serviço estável em sobrecarga.",
+  "deep_layers": [
+    {
+      "name": "Previsões revisáveis",
+      "detail": "Comprimento de saída raramente é conhecido antes de gerar. Reserve margem inicial e atualize estimativas conforme o pedido avança, sem contar memória futura como gratuita. Registre erro da previsão por classe; uma classe com respostas longas pode consumir capacidade muito além do custo estimado na admissão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S004",
+        "V4B-S008",
+        "V4B-S014"
+      ]
+    },
+    {
+      "name": "Justiça observável",
+      "detail": "Prioridade de negócio precisa de limite de espera e de capacidade ocupada. Meça distribuição de atraso por classe e por tamanho, não só média global. Uma política pode melhorar números agregados deixando pedidos longos sem progresso; envelhecimento e cotas oferecem controles, mas devem ser testados sob chegada contínua.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S004",
+        "V4B-S008",
+        "V4B-S014"
+      ]
+    },
+    {
+      "name": "Sobrecarga explícita",
+      "detail": "Quando a chegada excede capacidade, fila ilimitada não cria throughput. Use admissão, deadlines e cancelamento para evitar gastar GPU em respostas que o cliente já abandonou. Distinga rejeição antecipada de falha depois de consumir recursos, e exponha causas para que o cliente não multiplique retries agressivos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S004",
+        "V4B-S008",
+        "V4B-S014"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Assistente interativo e lote interno",
+      "scenario": "As duas cargas compartilham a mesma frota.",
+      "strategy": "Reserve capacidade para o interativo e permita ao lote usar sobra com checkpoints ou reexecução delimitada. Defina quais unidades podem ser interrompidas e o custo dessa decisão.",
+      "small_model_role": "Um 3–7B pode assumir tarefas de lote enquanto um modelo maior atende casos complexos, se houver roteamento validado.",
+      "acceptance": "Medir prazos das duas classes e custo de trabalho descartado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S004",
+        "V4B-S008",
+        "V4B-S014"
+      ]
+    },
+    {
+      "name": "Pico de demanda imprevisível",
+      "scenario": "Pedidos novos têm tamanho muito variável.",
+      "strategy": "Adote orçamento por tokens e memória, revise durante execução e cancele trabalho expirado. Aumente capacidade com réplicas somente após separar gargalo de fila, prefill e decode.",
+      "small_model_role": "Modelos 8–14B podem oferecer capacidade especializada sob limites explícitos.",
+      "acceptance": "Estabilidade da fila e proporção de respostas úteis dentro do prazo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S004",
+        "V4B-S008",
+        "V4B-S014"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Muitas sequências pequenas podem ser limitadas por overhead; política simples pode ser suficiente.",
+    "8_14b": "Separar prefill e decode no orçamento ajuda a lidar com documentos longos.",
+    "15_30b": "Reservas maiores precisam incluir crescimento de KV e grupo de dispositivos quando distribuído.",
+    "training_or_runtime_requirements": "Runtime deve oferecer pontos seguros de agendamento e cancelamento; não há preempção arbitrária garantida de kernels.",
+    "do_not_use_when": "Não maximizar tokens por segundo ignorando tempo de espera, abandono ou respostas truncadas."
+  },
+  "connections": [
+    {
+      "target_id": "T094",
+      "relation": "complements",
+      "how": "Prefill em blocos permite intercalar trabalho longo e decodes.",
+      "interface": "Custo do próximo bloco e prazo das sequências.",
+      "condition": "Backend suporta a granularidade escolhida.",
+      "acceptance": "Verificar melhora de prazos sem excesso de fragmentação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S004",
+        "V4B-S008",
+        "V4B-S014"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T087",
+      "relation": "requires",
+      "how": "Continuous batching executa a agenda com entrada e saída dinâmica.",
+      "interface": "Lote ativo e reservas por sequência.",
+      "condition": "Admissão respeita memória e crescimento.",
+      "acceptance": "Aplicar carga aberta para observar saturação real.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S004",
+        "V4B-S008",
+        "V4B-S014"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Preservar idade e deadline ao reenfileirar ou migrar.",
+    "Medir cancelamento efetivo na GPU, não apenas desconexão do cliente."
+  ],
+  "frontier_comparison": "Compare respostas válidas por orçamento sob a mesma chegada de usuários. Um serviço rápido em teste fechado pode falhar sob sobrecarga real; isso precisa ser separado de qualidade do modelo.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q004",
+      "V4B-Q014"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S004",
+    "V4B-S008",
+    "V4B-S014"
+  ]
+}

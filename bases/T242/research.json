@@ -1,0 +1,52 @@
+{
+  "id": "T242",
+  "technical_details": "O snapshot precisa declarar se seu cursor representa último evento incluído ou próximo evento a aplicar. Se incorpora até 100, o sufixo começa em 101; essa convenção evita dupla aplicação ou lacuna. Versão do reducer, schema e identidade do stream também precisam ser compatíveis. Um snapshot corrompido deve permitir recorrer a uma versão anterior ou ao replay integral, desde que o histórico necessário ainda exista.",
+  "boundary_condition": "Apagar eventos antigos após snapshot elimina a recuperação integral e torna disponibilidade e compatibilidade desse snapshot mais críticas.",
+  "implementation_contract": {
+    "inputs": "Snapshot, cursor com semântica explícita, stream e processador compatível.",
+    "outputs": "Estado restaurado, sufixo aplicado e evidência de continuidade.",
+    "state": "Versões, integridade do snapshot e intervalo disponível de eventos.",
+    "invariant": "Nenhum evento lógico é omitido ou aplicado duas vezes na fronteira da recuperação."
+  },
+  "tradeoffs": [
+    "Snapshots frequentes encurtam replay e consomem escrita e armazenamento.",
+    "Retenção curta reduz volume e diminui opções de reconstrução após corrupção ou mudança de código."
+  ],
+  "failure_test": "Teste proposto: deslocar o cursor em uma unidade e corromper o snapshot mais recente; exigir detecção da inconsistência e fallback para base recuperável sem repetir efeitos externos.",
+  "evaluation_plan": "Comparar replay integral e recuperação híbrida em históricos de tamanhos variados. Verificar igualdade do estado esperado, duração e custo de snapshots. Escolher frequência pela relação entre taxa de eventos, custo de projeção e objetivo de recuperação.",
+  "comparisons": [
+    {
+      "entry_id": "T240",
+      "relation": "requires",
+      "reason": "O mecanismo híbrido pressupõe uma base de snapshot válida ou retorna ao replay integral."
+    },
+    {
+      "entry_id": "T241",
+      "relation": "requires",
+      "reason": "Aplicar os eventos posteriores é parte constitutiva da recuperação híbrida."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Event sourcing usa histórico ordenado para reidratar estado, e snapshots podem reduzir o trabalho de reconstrução.",
+    "source_ids": [
+      "A-S027"
+    ],
+    "support": "direct",
+    "caveat": "A fonte apoia o padrão; convenção do cursor e fallback precisam ser definidos e verificados pela aplicação."
+  },
+  "advanced_qa": [
+    {
+      "question": "O snapshot permite apagar imediatamente todo o histórico?",
+      "answer": "Não sem mudar o contrato de recuperação e auditoria; erros de snapshot ou novas projeções podem precisar dos eventos antigos."
+    },
+    {
+      "question": "Como verificar a fronteira do cursor?",
+      "answer": "Comparar a recuperação híbrida com uma projeção de referência e incluir eventos imediatamente antes e depois da posição declarada."
+    }
+  ],
+  "source_ids": [
+    "A-S027",
+    "V3C-S041"
+  ],
+  "research_note": "Contratos, cenários de falha e planos de avaliação são propostas editoriais fundamentadas nas fontes indicadas."
+}

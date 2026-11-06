@@ -1,0 +1,119 @@
+{
+  "id": "T092",
+  "novelty": "A v3 analisou pipeline assíncrono e baixa precisão. Esta ficha acrescenta gestão de compatibilidade de hardware, controle de regressão por forma e decisão de upgrade, sem transformar uma versão otimizada para uma arquitetura em recomendação universal.",
+  "deep_layers": [
+    {
+      "name": "Matriz de elegibilidade",
+      "detail": "Antes de habilitar um caminho FA3, registre arquitetura do dispositivo, dtype, dimensão de cabeça e recursos exigidos pelo pacote. Separe suporte declarado de execução verificada. Uma GPU da mesma marca ou uma versão recente do driver não prova que o caminho assíncrono original esteja disponível ou seja selecionado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S012",
+        "V4B-S018",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Dupla linha de base",
+      "detail": "Compare primeiro o caminho de mesma precisão com o backend atual; depois avalie caminhos de precisão reduzida. Mantenha a máscara e os dados constantes. Essa separação permite localizar se um ganho veio da organização do cálculo ou de mudança numérica, e se uma regressão pertence ao kernel ou à quantização.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S012",
+        "V4B-S018",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Política de atualização",
+      "detail": "Versione o artefato de compilação e mantenha rollback. A existência de backends mais novos, como a integração documentada de FA4 em FlexAttention, reforça a necessidade de medir, não de atualizar automaticamente. O backend escolhido deve vencer no conjunto de formas do serviço e passar o mesmo contrato de exatidão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S012",
+        "V4B-S018",
+        "V4B-S017"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Pool com hardware heterogêneo",
+      "scenario": "Workers de diferentes gerações servem o mesmo checkpoint.",
+      "strategy": "Defina perfil de backend por classe de dispositivo. Compare resultados por precisão e evite encaminhar um artefato compilado para destino incompatível. Exponha o perfil usado em cada requisição para diagnosticar divergências e caudas.",
+      "small_model_role": "Um 8–30B pode manter pesos comuns com execução específica por dispositivo.",
+      "acceptance": "Exigir fallback previsível e ausência de erro silencioso em workers não elegíveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S012",
+        "V4B-S018",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Prefill de alta intensidade",
+      "scenario": "Sequências longas consomem parcela relevante do tempo GPU.",
+      "strategy": "Teste FA3 no intervalo de shapes de produção e meça aquecimento, sincronização e pico de memória. Avalie low precision como experimento adicional, com corpus de valores extremos e consultas sensíveis a pequenas mudanças.",
+      "small_model_role": "Um 3–14B só justifica a troca se atenção realmente dominar o perfil.",
+      "acceptance": "Aceitar por tempo total, tolerância numérica e qualidade por segmento, sem portar speedups publicados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S012",
+        "V4B-S018",
+        "V4B-S017"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, o overhead restante pode limitar benefício; priorizar medição do caminho completo.",
+    "8_14b": "Em 8–14B, variar contexto e batch para identificar onde o caminho otimizado realmente compensa.",
+    "15_30b": "Em 15–30B, testar compatibilidade com sharding, GQA e formatos quantizados do restante da rede.",
+    "training_or_runtime_requirements": "Exige runtime e hardware adequados; não é atualização de pesos nem aumento de contexto treinado.",
+    "do_not_use_when": "Não alegar compatibilidade com uma GPU específica do usuário sem identificar e testar dispositivo, build e backend."
+  },
+  "connections": [
+    {
+      "target_id": "T123",
+      "relation": "complements",
+      "how": "Avaliar o caminho FP8 separadamente da reorganização assíncrona.",
+      "interface": "Escalas, dtype e erros por camada ou saída.",
+      "condition": "Implementação oferece o caminho numérico no hardware selecionado.",
+      "acceptance": "Comparar primeiro mesma precisão e depois baixa precisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S012",
+        "V4B-S018",
+        "V4B-S017"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T107",
+      "relation": "requires",
+      "how": "Localizar se espera de memória, cálculo ou sincronização domina cada forma.",
+      "interface": "Perfil de kernels e tempo no serviço.",
+      "condition": "Instrumentação não altera materialmente o regime observado.",
+      "acceptance": "Repetir com aquecimento e relatar variância e custos externos à atenção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S012",
+        "V4B-S018",
+        "V4B-S017"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Registrar a implementação realmente selecionada em cada worker.",
+    "Manter fallback e testes numéricos após recompilação ou upgrade."
+  ],
+  "frontier_comparison": "A comparação com fronteira deve usar tarefa, qualidade e custo observados. Uma otimização específica de hardware pode melhorar latência local, sem sustentar alegação de inteligência equivalente ou superior.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q005"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S012",
+    "V4B-S018",
+    "V4B-S017"
+  ]
+}

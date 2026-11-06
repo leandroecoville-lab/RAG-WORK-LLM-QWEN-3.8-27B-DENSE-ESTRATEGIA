@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "V2B-S022",
+    "title": "XGrammar — Quick Start",
+    "url": "https://xgrammar.mlc.ai/docs/latest/start/quick_start.html",
+    "publisher": "XGrammar contributors",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Compilação de gramáticas, JSON Schema, tokenizer e integração de geração restrita.",
+    "limitations": "Documentação primária consultada nesta data; nenhum teste de integração, geração real ou benchmark no ambiente LAI foi executado.",
+    "web_ref": "turn72view4"
+  },
+  {
+    "source_id": "V2B-S023",
+    "title": "XGrammar — Integration with LLM Engine",
+    "url": "https://xgrammar.mlc.ai/docs/latest/using_xgrammar/engine_integration.html",
+    "publisher": "XGrammar contributors",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Gramática compartilhável, matcher por solicitação, máscaras de tokens, aceitação e término.",
+    "limitations": "Documentação primária consultada nesta data; nenhum teste de integração, geração real ou benchmark no ambiente LAI foi executado.",
+    "web_ref": "turn74view3"
+  },
+  {
+    "source_id": "V3D-S013",
+    "title": "XGrammar — Engine integration",
+    "url": "https://xgrammar.mlc.ai/docs/latest/using_xgrammar/engine_integration.html",
+    "publisher": "MLC / XGrammar",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Objetos de tokenizer, compilação, matcher por sequência e máscara antes da amostragem.",
+    "limitations": "Integração exige sincronização com a sequência; restrição sintática não comprova correção semântica.",
+    "web_ref": "turn139view1"
+  },
+  {
+    "source_id": "V4B-S015",
+    "title": "Structural Tag Usage — XGrammar",
+    "url": "https://xgrammar.mlc.ai/docs/latest/structural_tag/structural_tag.html",
+    "publisher": "XGrammar / MLC",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Composição de formatos, tags, regiões livres/estruturadas e delimitadores de tokens.",
+    "limitations": "Restrições formais não validam autorização, conteúdo factual nem sucesso de ferramenta.",
+    "web_ref": "turn221view1"
+  },
+  {
+    "source_id": "V4B-S016",
+    "title": "Tool Calling and Reasoning — XGrammar",
+    "url": "https://xgrammar.mlc.ai/docs/latest/structural_tag/tool_calling_and_reasoning.html",
+    "publisher": "XGrammar / MLC",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Gramáticas específicas de formato de modelo e escolhas auto/required/forced/none para chamadas de ferramenta.",
+    "limitations": "Lista de estilos não verifica checkpoint do usuário; interoperabilidade precisa ensaio por tokenizer e backend.",
+    "web_ref": "turn221view2"
+  }
+]

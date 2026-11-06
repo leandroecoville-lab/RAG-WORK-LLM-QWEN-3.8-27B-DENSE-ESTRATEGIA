@@ -1,0 +1,41 @@
+{
+  "id": "T196",
+  "name": "Constrained Decoding / Grammar-Constrained Decoding",
+  "canonical_name": "Decodificação restrita por gramática",
+  "canonical_id": "T196",
+  "aliases": [
+    "Constrained Decoding",
+    "decodificação restrita",
+    "grammar-guided decoding",
+    "Grammar-Constrained Decoding",
+    "grammar-constrained generation"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T197",
+    "T195",
+    "P012",
+    "P015"
+  ],
+  "source_ids": [
+    "C-S008",
+    "C-S049",
+    "V3B-S025",
+    "V4B-S015",
+    "V4B-S016",
+    "V4D-S002",
+    "V3D-S014",
+    "V3D-S015",
+    "V4B-S030",
+    "V4D-S006",
+    "V4D-S011"
+  ],
+  "namespace": "T196",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T196",
+  "chunk_count": 9
+}

@@ -1,0 +1,46 @@
+{
+  "entry_id": "R027",
+  "edges": [
+    {
+      "edge_id": "E-R027-01",
+      "from": "R027",
+      "to": "T239",
+      "relation": "complements",
+      "how": "Isolar candidatos e conservar a identidade de suas bases.",
+      "interface": "Worktree, tarefa e commit-base.",
+      "condition": "Há edição concorrente.",
+      "acceptance": "Nenhum índice ou diretório de um trabalhador contamina o candidato de outro.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S037",
+        "V3C-S036",
+        "V4C-S020",
+        "V4C-S021",
+        "V4C-S030"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-R027-02",
+      "from": "R027",
+      "to": "T233",
+      "relation": "complements",
+      "how": "Invalidar a aprovação quando a árvore do candidato muda.",
+      "interface": "Tree_hash, ambiente de teste e revisão esperada da referência.",
+      "condition": "Uma alteração será integrada.",
+      "acceptance": "Só a árvore verificada é promovida, com nova validação após composição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S037",
+        "V3C-S036",
+        "V4C-S020",
+        "V4C-S021",
+        "V4C-S030"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

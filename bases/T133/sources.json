@@ -1,0 +1,93 @@
+[
+  {
+    "source_id": "C-S001",
+    "title": "RouteLLM: Learning to Route LLMs with Preference Data",
+    "url": "https://arxiv.org/abs/2406.18665",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Roteadores aprendidos escolhem entre modelos considerando qualidade e custo; resultados dependem do conjunto de tarefas.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn8view1"
+  },
+  {
+    "source_id": "V3C-S001",
+    "title": "RouteLLM — repository and threshold calibration",
+    "url": "https://github.com/lm-sys/RouteLLM",
+    "publisher": "LMSYS / autores do RouteLLM",
+    "source_type": "official_source_code",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Calibração de limiares depende da distribuição de consultas e da fração pretendida de chamadas ao modelo forte.",
+    "limitations": "README em branch mutável; exemplos numéricos não são limiares recomendados para LAI.",
+    "web_ref": "turn93view3"
+  },
+  {
+    "source_id": "V4C-S011",
+    "title": "Understanding intelligent prompt routing in Amazon Bedrock",
+    "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-routing.html",
+    "publisher": "Amazon Web Services",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Recurso de roteamento entre dois modelos de uma família, critérios de qualidade e fallback; não prova uso por cliente específico.",
+    "limitations": "Fonte primária aberta. Desempenho relatado pertence ao sistema e ao período descritos; não foi reproduzido e não comprova transferência para modelos 3–30B.",
+    "web_ref": "turn233view0"
+  },
+  {
+    "source_id": "V4C-S012",
+    "title": "Navigating the LLM Landscape: Uber’s Innovation with GenAI Gateway",
+    "url": "https://www.uber.com/us/en/blog/genai-gateway/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2024-07-11",
+    "supports": "Gateway interno com adaptadores de modelos, interface unificada, controle de acesso e atribuição de consumo.",
+    "limitations": "Relato primário delimitado à data e sistema; não houve reprodução. Números e escolhas do operador não definem ganhos, preços ou limites para a LAI ou modelos 3–30B.",
+    "web_ref": "turn256view0"
+  },
+  {
+    "source_id": "V4C-S014",
+    "title": "Running a Software Factory Efficiently at Uber Scale",
+    "url": "https://www.uber.com/us/en/blog/efficient-software-factory/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-08-27",
+    "supports": "Harnesses internos, seleção por tarefas reais, modelos diferentes para subagentes, compactação, cache e code-mode.",
+    "limitations": "Relato primário delimitado à data e sistema; não houve reprodução. Números e escolhas do operador não definem ganhos, preços ou limites para a LAI ou modelos 3–30B.",
+    "web_ref": "turn257view0"
+  },
+  {
+    "source_id": "V4C-S010",
+    "title": "Software Engineering at Google — Static Analysis",
+    "url": "https://abseil.io/resources/swe-book/html/ch20.html",
+    "publisher": "Google / Abseil",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Tricorder integrado a Critique, análises ligadas à revisão de código e importância de falsos positivos efetivos.",
+    "limitations": "Fonte primária aberta. Desempenho relatado pertence ao sistema e ao período descritos; não foi reproduzido e não comprova transferência para modelos 3–30B.",
+    "web_ref": "turn236view0"
+  },
+  {
+    "source_id": "V3C-S015",
+    "title": "vLLM — Automatic Prefix Caching design",
+    "url": "https://docs.vllm.ai/en/latest/design/prefix_caching/",
+    "publisher": "vLLM",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Hash de blocos incorpora hash do pai, tokens e extras como IDs LoRA, conteúdo multimodal e salting de cache.",
+    "limitations": "Layout e implementação dependem da versão; reutilização não é garantia de qualidade ou disponibilidade permanente do bloco.",
+    "web_ref": "turn108view0"
+  }
+]

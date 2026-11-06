@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "C-S046",
+    "title": "NeMo Guardrails",
+    "url": "https://github.com/NVIDIA-NeMo/Guardrails",
+    "publisher": "NVIDIA",
+    "source_type": "official_repository",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Ferramentas programáveis para impor controles a sistemas conversacionais; uso não substitui autorização no backend.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn19view2"
+  },
+  {
+    "source_id": "V4B-S027",
+    "title": "What are Automated Reasoning checks in Amazon Bedrock Guardrails?",
+    "url": "https://docs.aws.amazon.com/en_en/bedrock/latest/userguide/guardrails-automated-reasoning-checks.html",
+    "publisher": "AWS",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Verificação contra política, resultados detect-only, limites de variáveis, idioma e ausência de streaming; recomenda testar tradução linguagem-lógica.",
+    "limitations": "Consistência com política não valida fatos não modelados nem protege sozinha contra injeção; recursos não são caso de adoção de cliente.",
+    "web_ref": "turn251view1"
+  },
+  {
+    "source_id": "V4D-S012",
+    "title": "Phi Silica task specialization using LoRA in Microsoft Learning Zone: A technical deep dive",
+    "url": "https://blogs.windows.com/windowsdeveloper/2025/07/31/phi-silica-task-specialization-using-lora-in-microsoft-learning-zone-a-technical-deep-dive/",
+    "publisher": "Microsoft",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-07-31",
+    "supports": "Fluxo específico: dados do professor GPT-4o filtrados, adaptador LoRA, prompt menor, guardrails de formato e avaliação por agentes confrontada com avaliação humana.",
+    "limitations": "O artigo informa lançamento em public preview ainda futuro naquela data. Ganhos reportados pertencem ao experimento de perguntas Kahoot!, não a capacidade geral, precisão absoluta ou equivalência com fronteira.",
+    "web_ref": "turn267view0"
+  },
+  {
+    "source_id": "V4D-S013",
+    "title": "Application card: AI in Microsoft 365 Education",
+    "url": "https://learn.microsoft.com/en-us/microsoft-365/education/guide/1-reference/microsoft-365-education-ai-application-card",
+    "publisher": "Microsoft",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Learning Zone documentado como capacidade do produto, usando modelo de nuvem e Phi Silica local em hardware compatível, com validação e revisão de rascunhos.",
+    "limitations": "Documentação de produto não prova volume de uso real nem que todo caminho atual preserve o experimento Kahoot! de 2025. Conteúdo e idiomas podem alterar qualidade; não há garantia de acerto.",
+    "web_ref": "turn267view1"
+  }
+]

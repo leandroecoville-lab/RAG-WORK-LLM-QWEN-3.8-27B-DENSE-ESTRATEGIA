@@ -1,0 +1,52 @@
+{
+  "id": "T026",
+  "technical_details": "A navegação descendente pode tornar um erro inicial irreversível: ao excluir uma coleção no topo, seus melhores trechos deixam de competir. Uma alternativa é manter mais de um caminho e combinar candidatos de níveis diferentes, com deduplicação por evidência. Resumos superiores orientam descoberta, mas os detalhes recuperados ainda precisam sustentar a resposta final.",
+  "boundary_condition": "Quando títulos e resumos não representam os fatos procurados, restringir busca a poucos ramos reduz recall mesmo com um excelente buscador local.",
+  "implementation_contract": {
+    "inputs": "Consulta, hierarquia versionada e orçamento de caminhos e candidatos.",
+    "outputs": "Evidências selecionadas com nível, origem e caminho de recuperação.",
+    "state": "Mapeamento entre nós e folhas, pontuações e ramos descartados.",
+    "invariant": "A resposta distingue material original de sínteses usadas para orientar a busca."
+  },
+  "tradeoffs": [
+    "Busca em poucos ramos reduz custo, mas amplifica erros de roteamento.",
+    "Combinar níveis aumenta cobertura e pode repetir a mesma evidência em resumo e folha."
+  ],
+  "failure_test": "Teste proposto: ocultar um fato relevante sob um título pouco relacionado à pergunta. Comparar navegação restrita e busca global de fallback; a política deve reconhecer a limitação do roteamento inicial.",
+  "evaluation_plan": "Avaliação proposta: comparar busca plana, descendente e combinação de níveis com igual orçamento final. Medir recall por estágio, diversidade de fontes, duplicação e latência; decidir conforme perguntas locais e globais do domínio.",
+  "comparisons": [
+    {
+      "entry_id": "T032",
+      "relation": "complements",
+      "reason": "Parent-child expande o entorno após localizar um filho; a hierarquia também pode orientar a localização inicial."
+    },
+    {
+      "entry_id": "T030",
+      "relation": "complements",
+      "reason": "RAPTOR oferece uma estrutura concreta de recuperação em níveis de abstração."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "RAPTOR constrói representações recursivas e permite recuperar informação em diferentes níveis de abstração.",
+    "source_ids": [
+      "A-S014"
+    ],
+    "support": "direct",
+    "caveat": "A política de múltiplos caminhos e fallback proposta precisa ser avaliada separadamente da arquitetura publicada."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um nó relevante garante filhos relevantes?",
+      "answer": "Não. A síntese pode representar apenas parte dos descendentes. É preciso selecionar e verificar quais folhas sustentam a pergunta."
+    },
+    {
+      "question": "Como contar cobertura sem inflá-la?",
+      "answer": "Deduplicate referências à mesma evidência e registre a contribuição de cada nível. Um fato citado pelo resumo e pela folha não se torna duas confirmações independentes."
+    }
+  ],
+  "source_ids": [
+    "A-S014",
+    "V3A-S011"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

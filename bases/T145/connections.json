@@ -1,0 +1,39 @@
+{
+  "entry_id": "T145",
+  "edges": [
+    {
+      "edge_id": "E-T145-01",
+      "from": "T145",
+      "to": "T168",
+      "relation": "complements",
+      "how": "O limite suave dispara encerramento planejado antes do teto que pode truncar o resultado.",
+      "interface": "Consumo atual, reserva de saída e semântica do servidor.",
+      "condition": "O orçamento é medido na unidade correta.",
+      "acceptance": "Forçar limite próximo e exigir estado de conclusão coerente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S018"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T145-02",
+      "from": "T145",
+      "to": "T218",
+      "relation": "feeds",
+      "how": "A política recebe sinais de estagnação para decidir se outra etapa é útil.",
+      "interface": "Mudança de artefato, teste e hipótese entre rodadas.",
+      "condition": "A tarefa admite medir progresso observável.",
+      "acceptance": "Comparar parada por teto com parada por falta de progresso em falhas conhecidas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S032",
+        "V4C-S009"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

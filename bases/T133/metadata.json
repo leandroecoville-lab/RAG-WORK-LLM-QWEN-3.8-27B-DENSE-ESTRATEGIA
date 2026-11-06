@@ -1,0 +1,33 @@
+{
+  "id": "T133",
+  "name": "Model Routing",
+  "canonical_name": "Model Routing",
+  "canonical_id": "T133",
+  "aliases": [
+    "roteamento de modelos"
+  ],
+  "category": "orquestracao",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T134",
+    "T135",
+    "T173",
+    "T203"
+  ],
+  "source_ids": [
+    "C-S001",
+    "V3C-S001",
+    "V4C-S011",
+    "V4C-S012",
+    "V4C-S014",
+    "V4C-S010",
+    "V3C-S015"
+  ],
+  "namespace": "T133",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T133",
+  "chunk_count": 9
+}

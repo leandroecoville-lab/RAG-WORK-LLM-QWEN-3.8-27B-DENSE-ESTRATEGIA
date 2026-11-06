@@ -1,0 +1,112 @@
+{
+  "id": "T004",
+  "novelty": "A v3 examinou deriva acumulada. Aqui resumos são especializados por consumidor e acompanhados de um registro de mudanças de entendimento.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Produza resumo operacional e resumo explicativo distintos. O primeiro contém próximos passos e restrições; o segundo conserva justificativas. Um consumidor pequeno recebe apenas o primeiro e abre justificativas quando identifica conflito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S005",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Cada atualização declara fatos adicionados, corrigidos e ainda incertos. A cadeia pode assim detectar transformação de hipótese em certeza, mesmo quando o texto final continua fluente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S005",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare consumidores recebendo resumo único e duas visões especializadas. Meça decisões corretas e frequência de abertura do original, incluindo custo dessas leituras. Unidade de avaliação: histórico com revisões. Uma prova útil fornece resumo operacional com decisão vigente e resumo explicativo ainda defendendo a decisão anterior. O consumidor deve detectar a revisão incompatível antes de agir. Conte casos de retomada correta, justificativa incoerente e abertura necessária do original; isso avalia a interface entre vistas, não apenas a qualidade individual de cada resumo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S005",
+        "V4A-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Passagem entre turnos de operação",
+      "scenario": "Equipes retomam trabalho incompleto.",
+      "strategy": "Gerar quadro de pendências e histórico de decisões separadamente; exigir evidência da conclusão antes de retirar pendência.",
+      "small_model_role": "3–7B atualiza campos; 8–14B explica desvios.",
+      "acceptance": "Preservar responsável, prazo e condição de cada pendência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S005",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Pesquisa com hipóteses concorrentes",
+      "scenario": "Novas fontes alteram conclusões.",
+      "strategy": "Manter resumo por hipótese e um quadro de diferenças; somente consolidar após comparar evidências conflitantes.",
+      "small_model_role": "15–30B integra argumentos com citações.",
+      "acceptance": "Não converter falta de evidência em refutação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S005",
+        "V4A-S002"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Atualização de campos fechados a partir de observação curta.",
+    "8_14b": "Produção de resumo operacional com rastreio de alterações.",
+    "15_30b": "Síntese de justificativas concorrentes, com verificação por fonte.",
+    "training_or_runtime_requirements": "Esquema de diferenças e fontes estáveis; exemplos de correções ajudam ajuste supervisionado.",
+    "do_not_use_when": "Exatidão literal integral é obrigatória ou a sequência não possui evidências recuperáveis."
+  },
+  "connections": [
+    {
+      "target_id": "T072",
+      "relation": "requires",
+      "how": "Versionar cada visão e sua base comum.",
+      "interface": "revision_id, covered_until e lista de alterações.",
+      "condition": "Visões derivadas da mesma revisão.",
+      "acceptance": "Detectar mistura de resumo operacional novo e explicativo antigo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S005",
+        "V4A-S002"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T015",
+      "relation": "complements",
+      "how": "Ligar justificativas a originais sob demanda.",
+      "interface": "Afirmação, referência e intervalo de origem.",
+      "condition": "Referência resolver conteúdo específico.",
+      "acceptance": "Conferir leitura original quando uma hipótese muda.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S005",
+        "V4A-S002"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Registrar queda de certeza explicitamente.",
+    "Não fundir opiniões de fontes distintas como consenso."
+  ],
+  "frontier_comparison": "Comparar decisões após sucessivas correções, sem usar concisão ou fluência como medida principal.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q022"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S005",
+    "V4A-S002"
+  ]
+}

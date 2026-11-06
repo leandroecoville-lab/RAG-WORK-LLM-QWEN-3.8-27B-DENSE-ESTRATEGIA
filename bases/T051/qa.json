@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Grafo de memória exige Neo4j?",
+    "answer": "Não. A representação pode existir em banco relacional, documentos ou bibliotecas de grafo."
+  },
+  {
+    "question": "Uma conexão no grafo prova causa?",
+    "answer": "Não. Causalidade exige significado da relação e evidência compatível, não apenas um caminho."
+  },
+  {
+    "question": "Toda aresta precisa apontar a uma fonte?",
+    "answer": "Para uso como evidência, deve ter suporte rastreável ou status explícito de hipótese. Arestas puramente organizacionais também precisam de tipo claro."
+  },
+  {
+    "question": "Um ciclo no grafo é sempre erro?",
+    "answer": "Não. Relações sociais ou dependências informacionais podem formar ciclos. A validade depende da semântica do tipo de relação."
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "id": "T236",
+  "name": "Git Commit por etapa",
+  "canonical_name": "Git Commit por etapa",
+  "canonical_id": "T236",
+  "aliases": [
+    "incremental commits",
+    "checkpoint de código em Git"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T211",
+    "T233",
+    "T239",
+    "T240"
+  ],
+  "source_ids": [
+    "A-S028",
+    "V2A-S004",
+    "V3C-S036",
+    "V3C-S034",
+    "V4C-S030",
+    "V4C-S021",
+    "V3C-S037",
+    "C-S026",
+    "V4C-S002",
+    "V4C-S016",
+    "V4C-S020",
+    "V4C-S027"
+  ],
+  "namespace": "T236",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T236",
+  "chunk_count": 9
+}

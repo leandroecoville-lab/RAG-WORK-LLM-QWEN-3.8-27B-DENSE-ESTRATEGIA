@@ -1,0 +1,46 @@
+{
+  "id": "T113",
+  "technical_details": "Os tiles de consulta e de chave podem ter tamanhos diferentes porque seus papéis no reúso são distintos. O acumulador de saída e estatísticas de normalização precisam sobreviver ao percurso dos blocos KV. Nas bordas, posições físicas extras devem ser mascaradas sem afetar máximos e somas. A disposição dos dados também influencia coalescência e pressão de registradores, além do simples número de operações.",
+  "boundary_condition": "Um tile que cabe nominalmente em memória compartilhada pode executar mal por registradores, sincronização ou baixa ocupação.",
+  "implementation_contract": {
+    "inputs": "Formas QKV, strides, máscara e dimensões dos tiles.",
+    "outputs": "Blocos de saída consolidados e estatísticas necessárias ao backward quando aplicável.",
+    "state": "Acumuladores persistentes no kernel e buffers temporários com limites válidos.",
+    "invariant": "Padding de tile nunca entra no normalizador nem contribui para a saída."
+  },
+  "tradeoffs": [
+    "Tiles maiores aumentam reúso e podem reduzir paralelismo residente.",
+    "Layouts especializados melhoram acesso e podem exigir conversões antes da atenção."
+  ],
+  "failure_test": "Teste proposto: usar sequências com comprimento um acima e um abaixo do múltiplo do tile, preenchendo padding com valores extremos. Esperar saída independente desses valores inválidos.",
+  "evaluation_plan": "Plano proposto: comparar configurações com entradas, precisão e máscara fixas. Medir duração incluindo conversão de layout, memória temporária e correção nas bordas; selecionar por famílias de formas, evitando assumir um tile ótimo para todo serviço.",
+  "comparisons": [
+    {
+      "entry_id": "T114",
+      "relation": "complements",
+      "reason": "A normalização incremental permite combinar contribuições dos tiles sem armazenar todos os scores."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O tutorial oficial de atenção fundida do Triton percorre blocos KV enquanto atualiza acumuladores de saída e normalização.",
+    "source_ids": [
+      "B-S027"
+    ],
+    "support": "direct",
+    "caveat": "O exemplo é uma implementação didática otimizada; configurações adequadas dependem de dispositivo e versão."
+  },
+  "advanced_qa": [
+    {
+      "question": "Tiling torna a atenção esparsa?",
+      "answer": "Não por si só. Todos os blocos permitidos ainda podem ser visitados; sparsity exige excluir conexões."
+    },
+    {
+      "question": "Por que testar strides não contíguos?",
+      "answer": "Um kernel que pressupõe layout incorreto pode ler endereços errados mesmo com shapes aparentemente compatíveis."
+    }
+  ],
+  "source_ids": [
+    "B-S027"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

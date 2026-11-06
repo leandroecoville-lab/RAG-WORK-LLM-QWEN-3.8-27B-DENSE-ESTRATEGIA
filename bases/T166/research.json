@@ -1,0 +1,52 @@
+{
+  "id": "T166",
+  "technical_details": "Justiça precisa definir a unidade distribuída: número de requisições, tokens, tempo de serviço ou custo. Atender uma chamada de cada cliente pode ser injusto quando os tamanhos diferem muito. Aging combate espera prolongada, mas não mede sozinho a parcela já consumida. Como referência distinta, o EEVDF acompanha lag de CPU e deadline virtual; transportar essa ideia a agentes exige estimar custo de tarefas que podem não ser preemptíveis.",
+  "boundary_condition": "Nenhuma política garante atendimento finito para todas as classes se a carga sustentada excede a capacidade sem admissão ou descarte.",
+  "implementation_contract": {
+    "inputs": "Itens, cliente, custo estimado, peso e tempo de espera.",
+    "outputs": "Ordem de admissão e justificativa de prioridade efetiva.",
+    "state": "Serviço acumulado por cliente, espera e dívida de atendimento.",
+    "invariant": "A unidade de justiça permanece explícita e comparável entre clientes."
+  },
+  "tradeoffs": [
+    "Aging reduz inanição e pode atrasar tarefas urgentes recém-chegadas.",
+    "Cobrança por custo aproxima equidade e depende de estimativas corrigidas após execução."
+  ],
+  "failure_test": "Teste proposto: um cliente envia tarefas longas e outro tarefas curtas; comparar igualdade por contagem com igualdade por serviço, sem interpretar ambas como a mesma justiça.",
+  "evaluation_plan": "Comparar FIFO, prioridade pura e política com aging ou pesos sob carga admissível e saturada. Medir espera por classe, parcela de serviço e rejeições. Escolher o objetivo de justiça antes de ajustar o algoritmo.",
+  "comparisons": [
+    {
+      "entry_id": "T149",
+      "relation": "complements",
+      "reason": "A fila implementa ordenação; a política define como a prioridade muda."
+    },
+    {
+      "entry_id": "T174",
+      "relation": "complements",
+      "reason": "Escalonamento precisa combinar justiça, capacidade e urgência."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "EEVDF usa lag para representar parcela de CPU devida e seleciona tarefas elegíveis por deadline virtual.",
+    "source_ids": [
+      "V3C-S020"
+    ],
+    "support": "direct",
+    "caveat": "Essa referência de CPU não fornece implementação pronta para chamadas remotas longas e não preemptíveis."
+  },
+  "advanced_qa": [
+    {
+      "question": "Rodízio de requisições garante equidade de custo?",
+      "answer": "Não quando requisições têm tamanhos diferentes; a unidade distribuída precisa representar o recurso escasso."
+    },
+    {
+      "question": "Aging resolve sobrecarga ilimitada?",
+      "answer": "Não. Ele reorganiza espera; capacidade insuficiente exige reduzir admissão, reagendar ou rejeitar trabalho."
+    }
+  ],
+  "source_ids": [
+    "V3C-S020",
+    "V3C-S009"
+  ],
+  "research_note": "Contratos e ensaios são propostas; os resultados citados pertencem às fontes, sem reprodução local."
+}

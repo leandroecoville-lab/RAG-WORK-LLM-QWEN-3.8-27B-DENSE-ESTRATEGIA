@@ -1,0 +1,80 @@
+[
+  {
+    "source_id": "A-S003",
+    "title": "Short-term memory",
+    "url": "https://docs.langchain.com/oss/python/langchain/short-term-memory",
+    "publisher": "LangChain",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Histórico por thread, redução de mensagens e persistência do estado de curta duração.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn7view0"
+  },
+  {
+    "source_id": "A-S023",
+    "title": "Memory overview",
+    "url": "https://docs.langchain.com/oss/python/concepts/memory",
+    "publisher": "LangChain",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Distinções de escopo, memória semântica, episódica e procedural; gestão do histórico.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn7view2"
+  },
+  {
+    "source_id": "A-S040",
+    "title": "Learning by Distilling Context",
+    "url": "https://arxiv.org/abs/2209.15189",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2022-09-30",
+    "supports": "Fine-tuning para internalizar benefícios de instruções e exemplos antes fornecidos no contexto.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn20view3"
+  },
+  {
+    "source_id": "V3A-S005",
+    "title": "Recursively Summarizing Enables Long-Term Dialogue Memory in Large Language Models",
+    "url": "https://arxiv.org/abs/2308.15022",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-08-29",
+    "supports": "Atualização recursiva de memória a partir do resumo anterior e novos diálogos, sem equivaler a mudança dos pesos.",
+    "limitations": "Consulta de fonte primária; não houve reprodução experimental. Resultados e APIs são limitados ao trabalho ou documentação citados, consultados em 2026-11-05.",
+    "web_ref": "turn85view2"
+  },
+  {
+    "source_id": "V4A-S002",
+    "title": "Context engineering: memory, compaction, and tool clearing",
+    "url": "https://platform.claude.com/cookbook/tool-use-context-engineering-context-engineering-tools",
+    "publisher": "Anthropic",
+    "source_type": "official_cookbook",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-03-20",
+    "supports": "Distingue compactação, remoção de resultados e memória; explicita uso de estratégias no Claude Code.",
+    "limitations": "Escopo limitado ao material aberto. Disponibilidade, resultados experimentais e implantação histórica são classes distintas; não demonstra desempenho de modelos 3–30B no ambiente do usuário.",
+    "web_ref": "turn229view1"
+  },
+  {
+    "source_id": "V4D-S005",
+    "title": "Pixel December 2023 feature drop",
+    "url": "https://blog.google/products-and-platforms/devices/pixel/pixel-feature-drop-december-2023/",
+    "publisher": "Google",
+    "source_type": "product_release",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-12-06",
+    "supports": "Lançamento de Gemini Nano em Pixel 8 Pro e resumo offline no Recorder.",
+    "limitations": "Não identifica o checkpoint nem sua contagem de parâmetros. Smart Reply no Gboard era developer preview; não confundir resumo com cadeia hierárquica ou destilação.",
+    "web_ref": "turn206view3"
+  }
+]

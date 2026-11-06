@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "C-S044",
+    "title": "Chain-of-Verification Reduces Hallucination in Large Language Models",
+    "url": "https://arxiv.org/abs/2309.11495",
+    "publisher": "Dhuliawala e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Rascunho, perguntas de checagem, respostas independentes e revisão final compõem CoVe.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn16view8"
+  },
+  {
+    "source_id": "V4B-S027",
+    "title": "What are Automated Reasoning checks in Amazon Bedrock Guardrails?",
+    "url": "https://docs.aws.amazon.com/en_en/bedrock/latest/userguide/guardrails-automated-reasoning-checks.html",
+    "publisher": "AWS",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Verificação contra política, resultados detect-only, limites de variáveis, idioma e ausência de streaming; recomenda testar tradução linguagem-lógica.",
+    "limitations": "Consistência com política não valida fatos não modelados nem protege sozinha contra injeção; recursos não são caso de adoção de cliente.",
+    "web_ref": "turn251view1"
+  },
+  {
+    "source_id": "V3B-S019",
+    "title": "Large Language Models Cannot Self-Correct Reasoning Yet",
+    "url": "https://arxiv.org/abs/2310.01798",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-10-03",
+    "supports": "Limites empíricos da autocorreção intrínseca sem feedback externo.",
+    "limitations": "Estudo de modelos e tarefas específicos; não é impossibilidade universal ou avaliação de modelos atuais do usuário.",
+    "web_ref": "turn180view5"
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "id": "T154",
+  "name": "Multi-Turn Conversation Management",
+  "canonical_name": "Multi-Turn Conversation Management",
+  "canonical_id": "T154",
+  "aliases": [
+    "gerenciamento de conversas multiturno"
+  ],
+  "category": "orquestracao",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T043",
+    "T049",
+    "T064",
+    "T075"
+  ],
+  "source_ids": [
+    "C-S019",
+    "A-S022",
+    "V3C-S006",
+    "V4C-S015",
+    "C-S026",
+    "V3C-S028",
+    "V4C-S016",
+    "V3C-S037",
+    "V2A-S004"
+  ],
+  "namespace": "T154",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T154",
+  "chunk_count": 9
+}

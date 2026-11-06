@@ -1,0 +1,52 @@
+{
+  "id": "T136",
+  "technical_details": "Uma cadeia de alternativas precisa conservar a semântica do resultado e classificar em que momento a primeira rota falhou. Antes do envio, a troca costuma ser simples; depois de uma resposta parcial ou de um possível efeito remoto, existe estado a reconciliar. A disponibilidade de outro fornecedor não resolve essa ambiguidade. Quotas e dependências compartilhadas também tornam falhas correlacionadas: duas URLs podem terminar no mesmo serviço congestionado.",
+  "boundary_condition": "Fallback perde utilidade quando todos os destinos compartilham o gargalo ou quando a mudança altera um requisito obrigatório.",
+  "implementation_contract": {
+    "inputs": "Operação, estágio da falha, destinos elegíveis e deadline global.",
+    "outputs": "Destino escolhido, estado migrado e desfecho confirmado ou desconhecido.",
+    "state": "Rotas já visitadas, custos acumulados e identificadores das tentativas.",
+    "invariant": "Nenhum ciclo reinicia o prazo ou apaga um possível efeito já enviado."
+  },
+  "tradeoffs": [
+    "Diversidade de fornecedores reduz algumas correlações e aumenta diferenças de contrato.",
+    "Migrar contexto integral facilita continuidade, mas custa tokens e exige preservar versões e formatos."
+  ],
+  "failure_test": "Teste proposto: interromper o primeiro destino após produzir saída parcial e simular saturação também no segundo; a cadeia deve terminar dentro do prazo, sem fundir respostas como se fossem uma execução única.",
+  "evaluation_plan": "Comparar falha explícita, fila e fallback sob os mesmos incidentes injetados. Medir objetivos concluídos, custo ampliado, atraso e incompatibilidades semânticas. Escolher alternativas por capacidade observada e independência de falhas, não apenas pelo número de endpoints.",
+  "comparisons": [
+    {
+      "entry_id": "T173",
+      "relation": "complements",
+      "reason": "Model Fallback Controlado detalha o caso específico de troca de modelo dentro de uma cadeia geral de alternativas."
+    },
+    {
+      "entry_id": "T243",
+      "relation": "complements",
+      "reason": "Desfechos remotos incertos exigem reconciliação antes de uma repetição equivalente."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O tratamento de sobrecarga precisa considerar como os clientes reagem às rejeições para evitar ampliar o incidente.",
+    "source_ids": [
+      "V3C-S009"
+    ],
+    "support": "related",
+    "caveat": "A fonte de SRE apoia a dinâmica de sobrecarga; migração entre modelos é uma proposta específica desta ficha."
+  },
+  "advanced_qa": [
+    {
+      "question": "Por que duas alternativas podem falhar juntas?",
+      "answer": "Porque podem compartilhar provedor, quota, banco, rede ou serviço de recuperação, embora apresentem nomes diferentes."
+    },
+    {
+      "question": "Posso substituir silenciosamente uma resposta parcialmente transmitida?",
+      "answer": "Somente com um contrato explícito de substituição; o consumidor precisa saber qual tentativa e versão está recebendo."
+    }
+  ],
+  "source_ids": [
+    "V3C-S009",
+    "C-S003"
+  ],
+  "research_note": "Contratos, testes e critérios são propostas editoriais; as fontes sustentam os mecanismos indicados."
+}

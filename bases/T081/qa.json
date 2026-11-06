@@ -1,0 +1,18 @@
+[
+  {
+    "question": "KV guarda o conhecimento da empresa?",
+    "answer": "Não. Guarda representações dependentes de uma execução específica do modelo."
+  },
+  {
+    "question": "Posso reutilizar em outro modelo?",
+    "answer": "Não de forma geral; formato e significado dos estados dependem dos pesos e da arquitetura."
+  },
+  {
+    "question": "Cache elimina todo custo quadrático?",
+    "answer": "Evita refazer o prefixo a cada passo; o prefill denso ainda possui interações quadráticas entre tokens."
+  },
+  {
+    "question": "Texto idêntico basta para reutilizar?",
+    "answer": "Não. Tokenização, posições, máscara e estado do modelo precisam corresponder, inclusive quando o template de conversa muda."
+  }
+]

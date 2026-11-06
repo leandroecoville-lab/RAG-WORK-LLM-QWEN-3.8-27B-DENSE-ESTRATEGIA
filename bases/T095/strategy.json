@@ -1,0 +1,119 @@
+{
+  "id": "T095",
+  "novelty": "A v3 distinguiu campo receptivo e posição lógica do cache circular. Agora a aplicação considera a distância das dependências, arquitetura híbrida e recuperação externa, para selecionar um modelo com janela local sem prometer acesso fiel a qualquer detalhe remoto.",
+  "deep_layers": [
+    {
+      "name": "Mapa de dependências da tarefa",
+      "detail": "Antes de escolher a janela, identifique quais respostas dependem de evidências distantes e quais precisam apenas da vizinhança recente. Construa exemplos que movem a mesma evidência pelo documento. A qualidade deve ser medida por distância e tipo de relação, pois bom desempenho em resumos não garante recuperação de exceções antigas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S007",
+        "V4B-S017",
+        "V4D-S002"
+      ]
+    },
+    {
+      "name": "Camadas locais e globais",
+      "detail": "Em modelos híbridos, mantenha políticas KV diferentes por camada. A economia das camadas locais pode ser real enquanto as globais continuam crescendo com o contexto. Dimensione o serviço pela soma concreta dessas camadas e não pela largura nominal de uma janela publicada como característica geral do modelo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S007",
+        "V4B-S017",
+        "V4D-S002"
+      ]
+    },
+    {
+      "name": "Reconexão por artefatos externos",
+      "detail": "Quando a tarefa exigir detalhe fora do alcance efetivo, recupere o trecho original e reapresente-o no contexto permitido. Essa estratégia opera na aplicação e precisa de proveniência; não transforma atenção local em global. Meça se a recuperação trouxe a evidência correta antes de atribuir falha ao gerador.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S007",
+        "V4B-S017",
+        "V4D-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Assistente para fluxo temporal",
+      "scenario": "Eventos recentes dominam a decisão, mas algumas regras permanecem estáveis.",
+      "strategy": "Mantenha os eventos recentes no contexto local e carregue regras relevantes sob demanda. Teste mudanças de regra e referências a eventos antigos. Use armazenamento externo para fatos que precisam sobreviver, sem confiar em influência difusa entre camadas.",
+      "small_model_role": "Um 3–7B local pode interpretar eventos recentes com custo limitado, dentro de uma tarefa estreita.",
+      "acceptance": "Aceitar por acerto em dependências recentes e recuperação correta das exceções antigas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S007",
+        "V4B-S017",
+        "V4D-S002"
+      ]
+    },
+    {
+      "name": "Análise de arquivo extenso",
+      "scenario": "Há seções independentes e relações pontuais entre elas.",
+      "strategy": "Selecione um checkpoint treinado com padrão compatível. Faça leitura por seções com referências para trechos distantes, verificando relações cruzadas. Se o modelo híbrido já oferecer alcance global, teste esse caminho antes de acrescentar orquestração.",
+      "small_model_role": "Um 8–30B pode combinar processamento local e consultas dirigidas sem ingerir tudo repetidamente.",
+      "acceptance": "Comparar erros por distância e custo total, incluindo recuperação e múltiplas chamadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S007",
+        "V4B-S017",
+        "V4D-S002"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, preferir tarefas com dependências locais e memória externa explícita para fatos persistentes.",
+    "8_14b": "Em 8–14B, testar modelos híbridos por camada e evitar inferir qualidade pelo tamanho anunciado do contexto.",
+    "15_30b": "Em 15–30B, avaliar se camadas globais tornam KV dominante apesar da janela local.",
+    "training_or_runtime_requirements": "Padrão pertence à arquitetura e ao treinamento; runtime deve implementar máscara e descarte compatíveis com cada camada.",
+    "do_not_use_when": "Não impor janela nova a um checkpoint denso como otimização supostamente equivalente."
+  },
+  "connections": [
+    {
+      "target_id": "T009",
+      "relation": "complements",
+      "how": "Recuperar a evidência antiga e inseri-la como novo contexto quando necessário.",
+      "interface": "Trecho original, fonte e posição documental.",
+      "condition": "Recuperação pode localizar a dependência e respeita o orçamento.",
+      "acceptance": "Mover evidências para fora da janela e verificar recuperação antes da resposta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S007",
+        "V4B-S017",
+        "V4D-S002"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T106",
+      "relation": "complements",
+      "how": "Calcular memória pelo padrão de retenção e cabeças de cada camada.",
+      "interface": "Configuração local/global, heads KV e dtype.",
+      "condition": "A configuração do checkpoint foi inspecionada.",
+      "acceptance": "Comparar estimativa com alocação real em diferentes comprimentos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S007",
+        "V4B-S017",
+        "V4D-S002"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Testar fatos antigos contraditos por mensagens recentes.",
+    "Separar limite de cache, alcance arquitetural e competência demonstrada."
+  ],
+  "frontier_comparison": "Comparar tarefas com dependências locais e remotas contra a fronteira. Eficiência local pode ser suficiente para o domínio, mas não sustenta paridade em síntese global ou raciocínio sobre documentos arbitrários.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q005"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S007",
+    "V4B-S017",
+    "V4D-S002"
+  ]
+}

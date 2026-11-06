@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Desagregar significa executar duas cópias completas da mesma geração?",
+    "answer": "Não. As fases são separadas e compartilham os estados necessários; duplicar o trabalho eliminaria parte do benefício esperado."
+  },
+  {
+    "question": "O recurso do vLLM promete mais throughput?",
+    "answer": "A documentação consultada o apresenta para ajustar TTFT e ITL e declara que não melhora throughput; resultados de outras arquiteturas exigem medição própria."
+  },
+  {
+    "question": "Goodput é igual a tokens por segundo?",
+    "answer": "Não. Aqui interessa trabalho concluído atendendo aos prazos definidos, não apenas produção bruta."
+  },
+  {
+    "question": "É suficiente enviar o tensor?",
+    "answer": "Não. O destino também precisa saber posições, formas, dtype, identidade dos pesos e qual continuação aquele estado representa."
+  }
+]

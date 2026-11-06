@@ -1,0 +1,102 @@
+{
+  "coverage": {
+    "entry_id": "T001",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 1,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 9,
+    "target_met": false,
+    "strict_case_ids": [
+      "V4A-C001"
+    ],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Map-Reduce",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C001",
+      "company": "Google",
+      "system": "MapReduce nos clusters Google",
+      "title": "MapReduce nos clusters Google — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "Artigo dos operadores descreve execução recorrente de jobs nos clusters Google.",
+      "technical_mechanism": "Map por pares, agrupamento por chave e reduce distribuído.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "A-S001"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T001",
+          "match": "exact",
+          "rationale": "Mesmo modelo de programação map/shuffle/reduce; a adaptação com LLM continua proposta."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Usar extratores pequenos independentes e reduzir registros estruturados; verificar cobertura antes da síntese.",
+      "limits": "Relato de 2004; não é implantação de redução linguística nem comprovação de escala atual. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C001",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T001",
+        "match": "exact",
+        "rationale": "Mesmo modelo de programação map/shuffle/reduce; a adaptação com LLM continua proposta."
+      }
+    },
+    {
+      "case_id": "V4A-C002",
+      "company": "Anthropic",
+      "system": "Research multi-agent system",
+      "title": "Research multi-agent system — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "A equipe descreve passagem do protótipo à produção do recurso Research.",
+      "technical_mechanism": "Agente líder salva plano, delega pesquisa paralela, recebe sínteses e decide novas buscas.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "C-S030"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T001",
+          "match": "family",
+          "rationale": "Distribuição e agregação de pesquisa, sem garantia de semântica MapReduce."
+        },
+        {
+          "entry_id": "T024",
+          "match": "family",
+          "rationale": "Coordena aquisição e síntese de contexto; não usa o nome editorial como produto."
+        },
+        {
+          "entry_id": "T067",
+          "match": "exact",
+          "rationale": "Novas buscas dependem das descobertas intermediárias."
+        },
+        {
+          "entry_id": "P001",
+          "match": "analogy",
+          "rationale": "Inspira montagem de contexto; não comprova Context Engine LAI."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Atribuir pesquisas delimitadas a 3–14B e reservar integração difícil a 15–30B ou escalonamento.",
+      "limits": "Relato usa Claude Opus/Sonnet; custo, qualidade e métricas publicados não se transferem aos portes propostos. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4C-C007",
+      "deployment_domain": "llm_application",
+      "deduplication_note": "Consolidado com V4C-C007 para contagem. Mapeamentos e versões das fontes permanecem separados; não se presume simultaneidade de todos os mecanismos.",
+      "mapping": {
+        "entry_id": "T001",
+        "match": "family",
+        "rationale": "Distribuição e agregação de pesquisa, sem garantia de semântica MapReduce."
+      }
+    }
+  ]
+}

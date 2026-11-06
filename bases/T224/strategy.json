@@ -1,0 +1,114 @@
+{
+  "id": "T224",
+  "novelty": "A v3 conectava requisito, tarefa e evidência. A expansão transforma essa rastreabilidade em mecanismo de mudança controlada, com especificação mínima suficiente e resolução explícita de ambiguidades.",
+  "deep_layers": [
+    {
+      "name": "Especificação executável onde possível",
+      "detail": "Separe intenção de detalhes escolhidos pelo implementador. Converta requisitos objetivos em exemplos, invariantes ou contratos verificáveis. Texto que apenas descreve a solução favorita do agente não serve como critério independente de aceite. Quando a propriedade é subjetiva, declare avaliador e exemplos de fronteira em vez de simular precisão matemática.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S034",
+        "V4C-S030"
+      ]
+    },
+    {
+      "name": "Mudança de requisito",
+      "detail": "Ao revisar a especificação, identifique decisões, patches e testes afetados. Preserve a versão anterior para explicar resultados já obtidos, mas impeça publicar um candidato que só satisfaz o contrato antigo. Uma alteração aparentemente pequena de comportamento pode invalidar muitos consumidores; a rastreabilidade torna esse alcance visível antes de continuar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S034"
+      ]
+    },
+    {
+      "name": "Granularidade útil",
+      "detail": "Uma especificação deve permitir começar trabalho verificável sem tentar prever cada linha. Requisitos grandes demais deixam o agente preencher lacunas; excesso de detalhe cria custo de manutenção e congela decisões que deveriam ser locais. Use contratos de fronteira e exemplos para permitir autonomia dentro das restrições, com questões abertas explicitamente listadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Feature entregue por modelos pequenos",
+      "scenario": "Uma funcionalidade possui entradas, saída e regras claras.",
+      "strategy": "Defina casos de aceite antes de distribuir micro-missões. Gere implementação por módulo e mantenha uma matriz de requisito para teste e artefato. Se o agente encontra ambiguidade que muda comportamento, interrompa essa parte e obtenha decisão; não trate palpite como requisito aprovado.",
+      "small_model_role": "3–7B implementa unidades; 8–14B cria candidatos de teste; 15–30B verifica coerência do contrato.",
+      "acceptance": "Proposta: todos os requisitos obrigatórios têm evidência na versão final e nenhum teste contradiz a intenção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S034"
+      ]
+    },
+    {
+      "name": "Refatoração com comportamento preservado",
+      "scenario": "A arquitetura muda, mas o contrato externo deve permanecer.",
+      "strategy": "Especifique propriedades que não podem mudar e variações permitidas. Use comparação de comportamento, testes existentes e invariantes estruturais. Se o teste depende de implementação antiga sem necessidade de domínio, revise-o com justificativa, mantendo evidência independente da compatibilidade externa.",
+      "small_model_role": "8–14B altera módulos; 15–30B analisa efeitos de fronteira.",
+      "acceptance": "Proposta: preservação dos contratos externos e redução mensurada da complexidade definida pelo projeto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009",
+        "V4C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Implementação de contratos pequenos e bem exemplificados, sem interpretação extensa de linguagem vaga.",
+    "8_14b": "Transformação de requisitos em candidatos de teste e identificação de inconsistências locais.",
+    "15_30b": "Revisão de escopo e dependências entre requisitos, preservando origem das decisões.",
+    "training_or_runtime_requirements": "Especificação versionada, matriz de rastreabilidade e avaliação independente de implementação.",
+    "do_not_use_when": "Não considerar documento preenchido ou número de páginas como evidência de qualidade da especificação."
+  },
+  "connections": [
+    {
+      "target_id": "T213",
+      "relation": "feeds",
+      "how": "Dividir requisitos em micro-missões com saídas e testes ligados à mesma versão de especificação.",
+      "interface": "ID do requisito, contrato e critério de aceite.",
+      "condition": "Dependências entre requisitos estão explícitas.",
+      "acceptance": "Integração não deixa requisito sem dono ou sem prova.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T217",
+      "relation": "complements",
+      "how": "Testes de comportamento materializam parte do contrato e orientam ciclos de reparo.",
+      "interface": "Exemplo esperado, teste executável e revisão do candidato.",
+      "condition": "O teste falha pela propriedade correta.",
+      "acceptance": "Não ajustar requisito para justificar implementação que falhou.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S032",
+        "V4C-S009"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Spec desatualizada pode produzir software coerente com o documento e errado para a intenção atual.",
+    "Gerador e avaliador precisam consultar a origem do requisito, não apenas suas interpretações recíprocas."
+  ],
+  "frontier_comparison": "Compare entrega de requisitos delimitados com o mesmo conjunto de testes e revisão. Uma arquitetura rigorosa pode ampliar utilidade de 3–30B sem provar que compreendem requisitos inéditos como modelos de fronteira.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q007",
+      "V4C-Q027"
+    ],
+    "scope_note": "Harness Codex oferece invariantes e planos operacionais; não foi tomado como prova de adoção específica do Spec Kit nem de um método universal com este nome."
+  },
+  "source_ids": [
+    "V3C-S034",
+    "V4C-S030",
+    "V3C-S002",
+    "V4C-S009",
+    "V3C-S032"
+  ]
+}

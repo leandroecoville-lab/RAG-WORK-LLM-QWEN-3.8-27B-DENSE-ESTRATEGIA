@@ -1,0 +1,116 @@
+{
+  "id": "T135",
+  "novelty": "A v3 formalizou custo esperado e propagação da primeira resposta. A camada nova usa cascatas por evidência e orçamento de erro, com transferência seletiva de artefatos entre estágios.",
+  "deep_layers": [
+    {
+      "name": "Portões heterogêneos",
+      "detail": "Não use um único escore de confiança em todos os estágios. Extração pode ser verificada por schema e localização; cálculo por execução; resposta documental por cobertura das fontes. A cascata só escala quando o verificador identifica uma lacuna específica que o estágio seguinte tem chance de resolver.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009",
+        "C-S002"
+      ]
+    },
+    {
+      "name": "Escalonar evidência, não persuasão",
+      "detail": "Prepare um pacote com entrada original, fatos confirmados, falhas do verificador e trechos necessários. A resposta anterior entra como candidato explicitamente falível. Em tarefas suscetíveis a ancoragem, execute a rota forte primeiro sem o candidato e compare depois; esse custo adicional precisa entrar na avaliação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014",
+        "C-S002"
+      ]
+    },
+    {
+      "name": "Interrupção com resultado parcial",
+      "detail": "Reserve uma etapa de encerramento antes de consumir todo o orçamento. Ela identifica o que foi confirmado, o que ficou pendente e o motivo de parada. Um último modelo mais forte não deve ser iniciado quando o prazo restante não permite executar também sua verificação obrigatória.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S011",
+        "V2A-S012"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Extração documental com resolução localizada",
+      "scenario": "Documentos contêm campos simples e poucas cláusulas ambíguas.",
+      "strategy": "O modelo econômico extrai campos com referências; regras validam formato e consistência. Reenvie apenas cláusulas inconclusivas junto de contexto suficiente. Se a ambiguidade for documental, preserve-a em vez de continuar pagando por modelos maiores.",
+      "small_model_role": "3–7B executa extração fechada; 15–30B examina exceções com fontes.",
+      "acceptance": "Proposta: comparar custo total, campos corrigidos e erros introduzidos na escalada, sem esconder documentos abandonados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S002",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Cascata de reparadores de CI",
+      "scenario": "Falhas de build incluem ajustes mecânicos e problemas semânticos.",
+      "strategy": "Aplique reparadores determinísticos reconhecidos; encaminhe os demais a um modelo com escopo de arquivos restrito. Rode CI novamente e finalize após limite sem progresso. Nunca permita alterar código de produção apenas para contornar um teste válido.",
+      "small_model_role": "8–14B propõe reparos locais; 15–30B analisa dependências entre falhas.",
+      "acceptance": "Proposta: medir correções aceitas, regressões e alterações fora do escopo em falhas reais retidas da calibração.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: primeiro estágio para respostas curtas verificáveis e seleção de regras mecânicas.",
+    "8_14b": "Proposta: resolver exceções locais depois de receber diagnósticos concretos, sem revisar tudo novamente.",
+    "15_30b": "Proposta: último estágio local para integração de evidências, com possibilidade explícita de encaminhar além da banda.",
+    "training_or_runtime_requirements": "O verificador precisa detectar erro relevante melhor que mera autoconfiança; contabilizar todos os estágios.",
+    "do_not_use_when": "Não usar quando quase toda tarefa exige a rota forte ou quando o verificador aprova sistematicamente respostas erradas."
+  },
+  "connections": [
+    {
+      "target_id": "T200",
+      "relation": "complements",
+      "how": "O portão precisa de evidência separada para decidir se continua.",
+      "interface": "Resultado por critério, falha localizada e artefato avaliado.",
+      "condition": "A independência exigida é funcional; erro correlacionado deve ser medido.",
+      "acceptance": "Testar candidatos plausíveis mas incorretos e observar escalonamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S002",
+        "V4C-S009"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T220",
+      "relation": "complements",
+      "how": "Falhas reconhecidas alimentam reparo de chamada antes de trocar de modelo.",
+      "interface": "Erro tipado, argumentos originais e schema vigente.",
+      "condition": "Não existe efeito remoto ainda desconhecido.",
+      "acceptance": "Confirmar que reparar formato não cria nova intenção de negócio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009",
+        "V3C-S038"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Impedir que cada estágio reinicie o orçamento da tarefa.",
+    "Separar rejeição por falta de evidência de rejeição por indisponibilidade operacional."
+  ],
+  "frontier_comparison": "Compare cascata com fronteira fixa na mesma carga e com todas as tarefas contabilizadas. Economia média pode esconder latência pior e erros concentrados em casos difíceis.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q008",
+      "V4C-Q009",
+      "V4C-Q006"
+    ],
+    "scope_note": "AutoClean mostra cascata de reparadores, não prova uma cascata universal de tamanhos de LLM. Bedrock routing é recurso distinto de cascata pós-resposta."
+  },
+  "source_ids": [
+    "V4C-S009",
+    "C-S002",
+    "V4C-S014",
+    "V4C-S011",
+    "V2A-S012",
+    "V3C-S038"
+  ]
+}

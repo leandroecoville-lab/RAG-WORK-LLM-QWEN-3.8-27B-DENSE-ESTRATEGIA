@@ -1,0 +1,52 @@
+{
+  "id": "T218",
+  "technical_details": "Detectar ciclos pode usar assinatura de ação normalizada, estado relevante e observação resultante. Igualdade de comando não basta: polling legítimo repete consultas enquanto o estado externo avança. Também não basta uma mensagem nova, pois reformular texto pode esconder a mesma falta de progresso. Uma proposta acompanha variáveis de domínio, como requisitos resolvidos, artefatos confirmados ou hipóteses eliminadas, junto do custo das repetições.",
+  "boundary_condition": "Um limite de passos detecta consumo excessivo, mas não demonstra estagnação; tarefas válidas podem exigir muitas iterações.",
+  "implementation_contract": {
+    "inputs": "Traço de ações, estado relevante, objetivos pendentes e orçamento.",
+    "outputs": "Sinal de ciclo provável, evidências e ação de recuperação indicada.",
+    "state": "Assinaturas recentes, progresso confirmado e janelas temporais.",
+    "invariant": "Repetição é avaliada contra mudança de estado e finalidade, não somente contra similaridade textual."
+  },
+  "tradeoffs": [
+    "Assinaturas muito específicas deixam passar ciclos com pequenas variações.",
+    "Normalização agressiva pode confundir ações parecidas sobre recursos diferentes."
+  ],
+  "failure_test": "Teste proposto: alternar duas consultas equivalentes sem nova informação e, separadamente, repetir polling com progresso real; exigir alerta no primeiro caso e continuidade controlada no segundo.",
+  "evaluation_plan": "Comparar contagem de passos, repetição textual e assinatura com progresso em trajetórias rotuladas. Medir detecção precoce, falsos positivos e custo evitado. Definir resposta proporcional: buscar informação, mudar estratégia ou encerrar com pendências.",
+  "comparisons": [
+    {
+      "entry_id": "T219",
+      "relation": "distinct_from",
+      "reason": "Limite de execução estabelece uma fronteira de orçamento; detecção de loop interpreta comportamento."
+    },
+    {
+      "entry_id": "T145",
+      "relation": "complements",
+      "reason": "Profundidade adaptativa pode consumir o sinal de progresso para decidir continuidade."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "LangGraph informa que GRAPH_RECURSION_LIMIT pode resultar de ciclos, mas também de grafos complexos válidos.",
+    "source_ids": [
+      "V2A-S009"
+    ],
+    "support": "related",
+    "caveat": "O detector semântico de progresso é proposta editorial, não capacidade demonstrada por esse erro do runtime."
+  },
+  "advanced_qa": [
+    {
+      "question": "Trocar palavras na próxima tentativa desfaz um loop?",
+      "answer": "Não se ação, informação disponível e efeito esperado continuam iguais sem nova evidência."
+    },
+    {
+      "question": "O que fazer depois de detectar estagnação?",
+      "answer": "Registrar a hipótese do bloqueio e escolher uma intervenção que altere informação ou estratégia; repetir o mesmo passo com prazo maior pode não ajudar."
+    }
+  ],
+  "source_ids": [
+    "V2A-S009",
+    "V3C-S006"
+  ],
+  "research_note": "Fontes primárias reabertas nesta pesquisa; contratos, cenários de falha e avaliação são propostas editoriais."
+}

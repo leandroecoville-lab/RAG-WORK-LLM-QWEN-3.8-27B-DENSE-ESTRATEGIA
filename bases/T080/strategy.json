@@ -1,0 +1,120 @@
+{
+  "id": "T080",
+  "novelty": "A v3 tratou horizonte variável e estabilidade do controlador. Aqui a adaptação considera censura por encerramento, prazo restante e mudança de carga, permitindo aprender uma política sem confundir facilidade do texto com capacidade disponível do servidor.",
+  "deep_layers": [
+    {
+      "name": "Sinais que não enviesam a decisão",
+      "detail": "Uma sequência encerrada por EOS não fornece a mesma observação que um rascunho rejeitado. Marque passos censurados por término, cancelamento ou limite. Mantenha histogramas por posição proposta e classe de tarefa, pois a média global pode esconder aceitação alta no primeiro token e quase nula no restante.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S002",
+        "V3B-S001",
+        "V4B-S014"
+      ]
+    },
+    {
+      "name": "Controle em dois tempos",
+      "detail": "Use uma política rápida para escolher o próximo horizonte a partir do prefixo recente e uma política lenta para ajustar limites conforme fila e memória. A rápida não deve aumentar candidatos quando a lenta identifica saturação. Registre ambas as decisões para distinguir mudança de texto de mudança de capacidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S002",
+        "V3B-S001",
+        "V4B-S014"
+      ]
+    },
+    {
+      "name": "Aprendizado com exploração limitada",
+      "detail": "Reserve uma parcela controlada de tráfego elegível para comparar horizontes alternativos. Sem exploração, a política só observa os regimes que ela própria escolheu e pode ficar presa em uma configuração ruim. A exploração deve respeitar prazo, orçamento KV e disponibilidade do caminho convencional, com desligamento imediato se o SLO piorar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S002",
+        "V3B-S001",
+        "V4B-S014"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Saída heterogênea",
+      "scenario": "Uma mesma resposta alterna enumerações previsíveis e explicações abertas.",
+      "strategy": "Use segmentos observáveis do formato como sinais auxiliares, sem presumir que JSON sempre é fácil. Reduza o horizonte após divergências consecutivas e recupere lentamente quando tokens confirmados por custo voltarem a crescer.",
+      "small_model_role": "Alvos pequenos podem beneficiar-se principalmente nos segmentos repetitivos.",
+      "acceptance": "Aprovar por tempo total e cauda; exigir que adaptação não altere critérios de aceitação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S002",
+        "V3B-S001",
+        "V4B-S014"
+      ]
+    },
+    {
+      "name": "Tráfego com rajadas",
+      "scenario": "O servidor atende agentes durante picos de requisições.",
+      "strategy": "Imponha limite global de trabalho especulativo. Ao crescer a fila, compare horizonte menor e desligamento temporário; reative com histerese quando a pressão cair. Não use um limiar único de confiança para todos os modelos.",
+      "small_model_role": "Um 8–30B pode compartilhar GPU com outros trabalhos; a política preserva capacidade útil.",
+      "acceptance": "Medir tempo de recuperação após rajada, preempções e latência dos pedidos que não especulam.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S002",
+        "V3B-S001",
+        "V4B-S014"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, exigir evidência de que a própria instrumentação e decisão custam menos que a economia obtida.",
+    "8_14b": "Em 8–14B, perfilar transições entre formatos e idiomas para evitar uma política dominada pelo tráfego mais frequente.",
+    "15_30b": "Em 15–30B, controlar horizonte conjuntamente com reserva KV e trabalho de verificação concorrente.",
+    "training_or_runtime_requirements": "A adaptação é runtime; confiança do proponente precisa ser acessível e qualquer aprendizado de política exige dados separados.",
+    "do_not_use_when": "Não aplicar política treinada em baixa carga diretamente à saturação, nem interpretar EOS como rejeição."
+  },
+  "connections": [
+    {
+      "target_id": "T079",
+      "relation": "requires",
+      "how": "Adaptar apenas a quantidade proposta, preservando o algoritmo de verificação do mecanismo base.",
+      "interface": "Horizonte escolhido, candidatos e máscara de posições válidas.",
+      "condition": "A proposta variável é suportada pelo backend.",
+      "acceptance": "Testar todos os horizontes contra o mesmo alvo convencional.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S002",
+        "V3B-S001",
+        "V4B-S014"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T121",
+      "relation": "complements",
+      "how": "Combinar orçamento especulativo com admissão por GPU para proteger requisições já ativas.",
+      "interface": "Fila, prazo restante, bytes KV e custo por passo.",
+      "condition": "O scheduler informa pressão em tempo útil.",
+      "acceptance": "Reproduzir rajadas e verificar ausência de oscilação persistente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S002",
+        "V3B-S001",
+        "V4B-S014"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Versionar política e manter histórico das decisões para detectar drift.",
+    "Separar observações censuradas e impor um horizonte máximo verificável."
+  ],
+  "frontier_comparison": "O experimento com fronteira deve comparar custo por resposta correta em diferentes níveis de carga. Adaptar horizonte melhora utilização quando funciona; não transforma um modelo menor em especialista mais competente.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q001",
+      "V4B-Q018"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S002",
+    "V3B-S001",
+    "V4B-S014"
+  ]
+}

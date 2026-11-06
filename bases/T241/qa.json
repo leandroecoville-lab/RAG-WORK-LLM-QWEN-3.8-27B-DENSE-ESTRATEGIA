@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Replay pode reproduzir uma resposta antiga de ferramenta?",
+    "answer": "Pode usar o resultado registrado como evidência histórica, desde que a identidade e o conteúdo estejam preservados. Isso não exige chamar novamente a ferramenta."
+  },
+  {
+    "question": "Reexecutar uma ação externa durante recuperação é sempre proibido?",
+    "answer": "Não, mas é uma decisão separada, dependente de autorização, idempotência e reconciliação. Não deve ocorrer implicitamente por leitura do histórico."
+  },
+  {
+    "question": "Mesmo log sempre produz o mesmo estado?",
+    "answer": "Somente sob regras, ordem e entradas auxiliares compatíveis; trocar o processador pode mudar a projeção."
+  },
+  {
+    "question": "Posso usar a data atual para completar um evento antigo?",
+    "answer": "Não como se fosse um fato original. Isso introduz dependência externa e altera o significado histórico."
+  }
+]

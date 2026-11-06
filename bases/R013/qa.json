@@ -1,0 +1,18 @@
+[
+  {
+    "question": "MemFS exige carregar todo o repositório no prompt?",
+    "answer": "Não. Sua hierarquia distingue conteúdo sempre carregado de referências lidas conforme a necessidade."
+  },
+  {
+    "question": "Um commit prova que a memória é verdadeira?",
+    "answer": "Não. Ele registra uma versão; a confirmação factual depende das evidências e da revisão do conteúdo."
+  },
+  {
+    "question": "MemFS inclui automaticamente embeddings?",
+    "answer": "Não. A documentação distingue busca comum de arquivos e modos semânticos ou híbridos opcionais, com componentes adicionais e indexação."
+  },
+  {
+    "question": "Busca de conversa e busca de memória são a mesma operação?",
+    "answer": "Não. Conversas possuem histórico próprio; arquivos MemFS representam memória organizada. Encontrar um item num desses acervos não comprova cobertura do outro."
+  }
+]

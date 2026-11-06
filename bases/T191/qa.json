@@ -1,0 +1,18 @@
+[
+  {
+    "question": "CoVe prova uma afirmação só porque fez perguntas?",
+    "answer": "Não. A qualidade depende das respostas de verificação e suas evidências."
+  },
+  {
+    "question": "Exige outro modelo?",
+    "answer": "Não na formulação básica, embora verificadores distintos possam ser avaliados."
+  },
+  {
+    "question": "Perguntas neutras garantem verdade?",
+    "answer": "Não. Elas reduzem indução, mas o respondente ainda pode desconhecer o fato ou consultar fonte errada."
+  },
+  {
+    "question": "Pode retornar só o texto final?",
+    "answer": "Pode, mas preservar internamente o mapa de cobertura permite auditar quais afirmações receberam evidência e quais continuam incertas."
+  }
+]

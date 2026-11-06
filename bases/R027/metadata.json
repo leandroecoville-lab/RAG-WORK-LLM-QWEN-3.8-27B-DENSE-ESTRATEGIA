@@ -1,0 +1,43 @@
+{
+  "id": "R027",
+  "name": "Git",
+  "canonical_name": "Git — controle distribuído de versões",
+  "canonical_id": "R027",
+  "aliases": [
+    "Git version control",
+    "controle de versões com Git"
+  ],
+  "category": "referencias",
+  "kind": "project",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "T060",
+    "T061",
+    "T072",
+    "T076",
+    "T229",
+    "T233",
+    "T236",
+    "T239",
+    "R013"
+  ],
+  "source_ids": [
+    "A-S028",
+    "V2B-S026",
+    "V3C-S037",
+    "V3C-S036",
+    "V2A-S019",
+    "V4C-S020",
+    "V4C-S021",
+    "V4C-S030",
+    "V4C-S016",
+    "V4C-S027",
+    "V4C-S029"
+  ],
+  "namespace": "R027",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R027",
+  "chunk_count": 9
+}

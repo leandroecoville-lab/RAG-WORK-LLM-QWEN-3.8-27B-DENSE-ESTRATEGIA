@@ -1,0 +1,18 @@
+[
+  {
+    "question": "GQA é igual a MQA?",
+    "answer": "MQA representa o caso de uma cabeça KV; GQA geralmente usa um número intermediário de grupos."
+  },
+  {
+    "question": "GQA reduz a quantidade de tokens de entrada?",
+    "answer": "Não. Reduz parte dos estados por token, mantendo a sequência."
+  },
+  {
+    "question": "Mudar Hkv no arquivo de configuração basta?",
+    "answer": "Não. Formas e significado dos pesos precisam corresponder; editar metadados não produz pesos corretamente adaptados."
+  },
+  {
+    "question": "Por que medir memória por GPU?",
+    "answer": "A redução lógica pode ser parcialmente anulada por replicação necessária ao particionamento ou por expansões introduzidas no kernel."
+  }
+]

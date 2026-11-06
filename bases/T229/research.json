@@ -1,0 +1,53 @@
+{
+  "id": "T229",
+  "technical_details": "Uma edição baseada em patch define o delta sobre uma base, mas o aplicador determina como usa contexto e resolve conflitos. Em Git, aplicar à árvore de trabalho, ao índice ou a ambos são operações diferentes. A opção de merge em três vias depende de identidades de blobs e disponibilidade da base; não é uma forma genérica de adivinhar qualquer patch. Após aplicação, o delta efetivo precisa ser inspecionado, pois contexto parecido pode ocultar alvo errado.",
+  "boundary_condition": "Patches pequenos podem ser ambíguos em trechos repetidos e não garantem preservação de comportamento fora da alteração.",
+  "implementation_contract": {
+    "inputs": "Patch, revisão-base, destino e modo de aplicação declarado.",
+    "outputs": "Delta aplicado ou conflito explícito, com revisão resultante.",
+    "state": "Base, índice quando usado, arquivos alterados e resultado do aplicador.",
+    "invariant": "A alteração efetiva permanece dentro do escopo pretendido e referenciada à base correta."
+  },
+  "tradeoffs": [
+    "Contexto amplo reduz ambiguidade e aumenta tamanho transmitido.",
+    "Merge em três vias pode aproveitar base conhecida e deixar conflitos que exigem resolução semântica."
+  ],
+  "failure_test": "Teste proposto: aplicar o mesmo hunk a arquivo com dois blocos parecidos e base divergente; exigir falha ou identificação inequívoca, seguida de inspeção do delta real.",
+  "evaluation_plan": "Comparar substituição integral, search/replace e patch em mudanças localizadas. Medir taxa de aplicação correta, conflitos, tokens e alterações involuntárias. Separar sucesso de aplicação e testes de comportamento.",
+  "comparisons": [
+    {
+      "entry_id": "T230",
+      "relation": "complements",
+      "reason": "Unified Diff é um formato possível para representar mudanças localizadas; edição por patches também admite outras convenções."
+    },
+    {
+      "entry_id": "T233",
+      "relation": "complements",
+      "reason": "Validação verifica base, escopo e comportamento antes de considerar a edição concluída."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "git-apply diferencia árvore e índice e condiciona merge em três vias à presença de identidades e blobs necessários.",
+    "source_ids": [
+      "V2A-S014"
+    ],
+    "support": "direct",
+    "caveat": "O sucesso do aplicador verifica compatibilidade textual, sem demonstrar correção funcional da mudança."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um patch aplicado sem erro pode estar errado?",
+      "answer": "Sim. Pode alterar um local semanticamente inadequado ou produzir comportamento incorreto apesar da compatibilidade textual."
+    },
+    {
+      "question": "Um diff do Aider é sempre Unified Diff?",
+      "answer": "Não. O formato chamado diff pelo Aider usa blocos search/replace; formato e aplicador precisam corresponder."
+    }
+  ],
+  "source_ids": [
+    "V2A-S014",
+    "V3C-S034",
+    "V2A-S008"
+  ],
+  "research_note": "Mecanismos referenciados em fontes primárias; contratos e verificação descritos são propostas, não ensaios executados."
+}

@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "B-S028",
+    "title": "Online normalizer calculation for softmax",
+    "url": "https://arxiv.org/abs/1805.02867",
+    "publisher": "Milakov e Gimelshein / NVIDIA / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2018-05-08",
+    "supports": "Cálculo online do normalizador de softmax com menos acessos à memória.",
+    "limitations": "Resumo e metadados acessados; artigo integral não auditado e resultados não reproduzidos.",
+    "web_ref": "turn18view4"
+  },
+  {
+    "source_id": "B-S027",
+    "title": "Fused Attention",
+    "url": "https://triton-lang.org/main/getting-started/tutorials/06-fused-attention.html",
+    "publisher": "Triton / OpenAI kernel team",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Implementação de referência de atenção em blocos com kernel fundido.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn25view4"
+  },
+  {
+    "source_id": "V4B-S017",
+    "title": "FlexAttention Part II: FlexAttention for Inference",
+    "url": "https://pytorch.org/blog/flexattention-for-inference/",
+    "publisher": "PyTorch",
+    "source_type": "technical_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-04-30",
+    "supports": "Backend de decode, suporte a GQA e PagedAttention e diferenças entre formas de prefill/decode.",
+    "limitations": "Implementação e experimentos não constituem prova de adoção em produto; atenção customizada depende de máscara correta.",
+    "web_ref": "turn227view0"
+  }
+]

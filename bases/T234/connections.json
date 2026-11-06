@@ -1,0 +1,42 @@
+{
+  "entry_id": "T234",
+  "edges": [
+    {
+      "edge_id": "E-T234-01",
+      "from": "T234",
+      "to": "T155",
+      "relation": "complements",
+      "how": "Harness Codex substitui instrução monolítica por mapa curto com referências para conhecimento do projeto.",
+      "interface": "Entrada de instruções, índice e documentos versionados.",
+      "condition": "Fontes detalhadas estão acessíveis quando necessárias.",
+      "acceptance": "Agente recupera regra relevante sem receber todo o manual.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S030"
+      ],
+      "case_ids": [
+        "V4C-C029"
+      ],
+      "evidence_stage": "production_documented"
+    },
+    {
+      "edge_id": "E-T234-02",
+      "from": "T234",
+      "to": "T213",
+      "relation": "complements",
+      "how": "Planos versionados e conhecimento do repositório acompanham decomposição em blocos verificáveis no harness.",
+      "interface": "Plano, decisão e contrato de módulo.",
+      "condition": "Mudanças de requisito atualizam tarefas afetadas.",
+      "acceptance": "Micro-missão não executa orientação antiga sem revalidar.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S030"
+      ],
+      "case_ids": [
+        "V4C-C029"
+      ],
+      "evidence_stage": "production_documented"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

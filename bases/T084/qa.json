@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Fechar o servidor deve apagar a conversa?",
+    "answer": "Não. A conversa deve sobreviver na persistência; somente a aceleração computacional pode ser perdida."
+  },
+  {
+    "question": "Uma sessão autoriza reuso após edição?",
+    "answer": "Não. A revisão do histórico e a identidade dos tokens também precisam coincidir."
+  },
+  {
+    "question": "Pode salvar apenas o cache como memória?",
+    "answer": "Isso dificulta auditoria e migração; preserve também o histórico necessário para reconstruir estados compatíveis."
+  },
+  {
+    "question": "O cancelamento apaga todos os tokens gerados?",
+    "answer": "O contrato precisa distinguir tokens já confirmados dos provisórios e definir precisamente qual revisão permanece válida."
+  }
+]

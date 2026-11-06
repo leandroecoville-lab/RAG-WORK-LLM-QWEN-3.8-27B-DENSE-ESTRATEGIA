@@ -1,0 +1,40 @@
+{
+  "id": "T155",
+  "name": "System Prompt Optimization / prompt de sistema enxuto",
+  "canonical_name": "Otimização e concisão do prompt de sistema",
+  "canonical_id": "T155",
+  "aliases": [
+    "System Prompt Optimization",
+    "otimização do prompt de sistema",
+    "prompt de sistema enxuto"
+  ],
+  "category": "orquestracao",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T151",
+    "T176",
+    "P001",
+    "P016"
+  ],
+  "source_ids": [
+    "C-S020",
+    "A-S006",
+    "V2C-S004",
+    "V3C-S014",
+    "V4C-S030",
+    "V4C-S014",
+    "V3C-S015",
+    "C-S030",
+    "V4C-S028",
+    "V4C-S029",
+    "V4D-S012",
+    "V4D-S013"
+  ],
+  "namespace": "T155",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T155",
+  "chunk_count": 9
+}

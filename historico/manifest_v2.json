@@ -1,0 +1,100 @@
+{
+  "package": "LAI_RAG_243",
+  "version": "2.0.0",
+  "language": "pt-BR",
+  "curation_date": "2026-11-05",
+  "validated_at": "2026-11-05T11:19:39.051874-03:00",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "stats": {
+    "entries": 287,
+    "chunks": 1148,
+    "qa": 574,
+    "source_records": 203,
+    "unique_source_urls": 188,
+    "entries_by_scope": {
+      "inventario": 243,
+      "referencia": 27,
+      "proposta": 17
+    },
+    "categories": {
+      "contexto_recuperacao": 46,
+      "memoria": 32,
+      "inferencia": 54,
+      "orquestracao": 44,
+      "verificacao_treinamento": 30,
+      "continuidade_programacao": 37,
+      "referencias": 27,
+      "componentes_propostos": 17
+    },
+    "evidence_status": {
+      "supported": 207,
+      "related_support": 78,
+      "terminology_correction": 2
+    },
+    "source_verification": {
+      "opened": 199,
+      "search_result": 4
+    },
+    "canonical_ids": 279,
+    "words_editorial": 97720
+  },
+  "corpus_sha256": "201e97a867ef3fbe9434c2a8c0b47f61247791b513980b78d93bded014c78207",
+  "previous_package_sha256": "0f2247beab15163b086823ceada195c542d5015d6b2bd5bb543f86e8042ea851",
+  "verification": {
+    "required_gates_passed": true,
+    "unit_tests": {
+      "tests_run": 33,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": true,
+      "duration_seconds": 2.054,
+      "external_model_calls": 0,
+      "external_embedding_calls": 0,
+      "note": "Clientes externos exercitados com respostas simuladas; busca lexical executada sobre o corpus real."
+    },
+    "structural": true,
+    "migration": true,
+    "names_hit_at_3": 1.0,
+    "queries_hit_at_5": 0.9333333333333333,
+    "queries_mrr_at_10": 0.780216049382716,
+    "suites": {
+      "baseline_v1_retestada": {
+        "cases": 48,
+        "hits_at_5": 46,
+        "hit_at_5": 0.9583333333333334,
+        "mrr_at_10": 0.7686342592592593
+      },
+      "escopos_revisados_v2": {
+        "cases": 5,
+        "hits_at_5": 4,
+        "hit_at_5": 0.8,
+        "mrr_at_10": 0.7
+      },
+      "novos_itens_v2": {
+        "cases": 37,
+        "hits_at_5": 34,
+        "hit_at_5": 0.918918918918919,
+        "mrr_at_10": 0.806081081081081
+      }
+    }
+  },
+  "not_executed": [
+    "inferencia_real_de_LLM",
+    "embeddings_reais",
+    "instalacao_na_Helena",
+    "benchmarks_de_GPU",
+    "experimentos_individuais_das_243_entradas",
+    "implementacao_dos_17_componentes_propostos"
+  ],
+  "runtime": {
+    "default_retrieval": "BM25 local",
+    "optional_retrieval": [
+      "cosine",
+      "RRF"
+    ],
+    "generated_embeddings_included": false,
+    "generation_client": "chat/completions; endpoint/modelo explícitos"
+  }
+}

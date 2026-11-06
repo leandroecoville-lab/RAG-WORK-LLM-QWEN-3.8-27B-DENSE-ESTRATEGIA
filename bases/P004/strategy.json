@@ -1,0 +1,136 @@
+{
+  "id": "P004",
+  "novelty": "A v3 definiu persistência e projeções. Aqui LAI Memory Runtime é proposto com contratos explícitos de visibilidade após escrita e reconstrução.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Diferencie commit no registro canônico e visibilidade no índice. Uma escrita confirmada pode ainda não aparecer em busca; o cliente precisa receber revisão e cursor de projeção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S004",
+        "V4A-S007",
+        "V3A-S032"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Ofereça leitura por identidade para confirmar atualização recente e busca para descoberta. Exigir read-your-writes em toda busca pode custar mais; declare onde a garantia é necessária e como verificar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S004",
+        "V4A-S007",
+        "V3A-S032"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare leitura imediata, busca assíncrona e fallback ao canônico. Meça atraso de projeção, respostas obsoletas e tempo de reconstrução; durabilidade do banco não garante atualização do embedding. Unidade de avaliação: operação de memória.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S004",
+        "V4A-S007",
+        "V3A-S032"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Correção de memória ativa",
+      "scenario": "Usuário corrige fato usado no próximo turno.",
+      "strategy": "Confirmar registro, retornar revisão e consultar diretamente a versão nova até índice alcançar cursor correspondente.",
+      "small_model_role": "3–7B extrai correção.",
+      "acceptance": "Próxima resposta não pode recuperar versão revogada como vigente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S004",
+        "V4A-S007",
+        "V3A-S032"
+      ]
+    },
+    {
+      "name": "Reconstrução de índice",
+      "scenario": "Embedding muda ou índice falha.",
+      "strategy": "Reconstruir a partir do canônico em paralelo, validar amostra e trocar manifesto ativo sem interromper consultas pinadas.",
+      "small_model_role": "8–14B valida conteúdo; código reconstrói.",
+      "acceptance": "Nenhuma consulta pode combinar índices com versões incompatíveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S004",
+        "V4A-S007",
+        "V3A-S032"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Gerador de propostas tipadas e leitor de objetos identificados.",
+    "8_14b": "Leitor de projeções com capacidade de detectar atraso e lacuna.",
+    "15_30b": "Analista de conflitos entre registros e reconstruções, sem controlar transações livremente.",
+    "training_or_runtime_requirements": "Store canônico, cursor de projeção, versões e recuperação testável; componente LAI não está implementado neste pacote.",
+    "do_not_use_when": "O único registro é o índice vetorial ou o sistema não consegue dizer qual revisão foi lida."
+  },
+  "connections": [
+    {
+      "target_id": "T065",
+      "relation": "requires",
+      "how": "Confirmar registro e evento de atualização localmente.",
+      "interface": "Objeto, versão esperada, commit e evento.",
+      "condition": "Invariantes locais cobertos pela transação.",
+      "acceptance": "Interromper entre escrita e publicação e verificar recuperação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S004",
+        "V4A-S007",
+        "V3A-S032"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "P007",
+      "relation": "feeds",
+      "how": "Expor revisão e atraso para recuperação.",
+      "interface": "Objeto, index_revision e projection_cursor.",
+      "condition": "Retriever respeitar requisito de frescor.",
+      "acceptance": "Consultar logo após correção e detectar índice atrasado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S004",
+        "V4A-S007",
+        "V3A-S032"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T072",
+      "relation": "requires",
+      "how": "Publicar manifesto coerente de projeções.",
+      "interface": "Store_revision, embedding e índices ativos.",
+      "condition": "Troca preservar leitores pinados.",
+      "acceptance": "Reconstruir índice e comparar objetos ausentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S004",
+        "V4A-S007",
+        "V3A-S032"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não transformar confirmação do índice em prova de verdade.",
+    "Não presumir atomicidade entre todos os serviços externos."
+  ],
+  "frontier_comparison": "Comparar consistência percebida pelo leitor; modelos maiores também erram quando a camada de memória entrega revisão obsoleta.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q005",
+      "V4A-Q008",
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S004",
+    "V4A-S007",
+    "V3A-S032"
+  ]
+}

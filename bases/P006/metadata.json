@@ -1,0 +1,33 @@
+{
+  "id": "P006",
+  "name": "Progressive Loader",
+  "canonical_name": "Progressive Loader",
+  "canonical_id": "P006",
+  "aliases": [
+    "carregador progressivo proposto"
+  ],
+  "category": "componentes_propostos",
+  "kind": "component",
+  "scope": "proposta",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T044",
+    "T045",
+    "T151",
+    "T204",
+    "P001",
+    "P003"
+  ],
+  "source_ids": [
+    "C-S052",
+    "C-S016",
+    "A-S038",
+    "V3A-S018",
+    "A-S010"
+  ],
+  "namespace": "P006",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/P006",
+  "chunk_count": 9
+}

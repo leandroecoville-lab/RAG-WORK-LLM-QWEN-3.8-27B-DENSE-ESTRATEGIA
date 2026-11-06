@@ -1,0 +1,120 @@
+{
+  "id": "T073",
+  "novelty": "A v3 distinguiu retenção WORM e autoridade. Aqui evidências imutáveis recebem verificação periódica de legibilidade e preservação de contexto.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Preserve artefato, metadados de captura e informação necessária para interpretá-lo. Bytes íntegros de uma tabela sem schema ou unidade podem ser inúteis na auditoria.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S034",
+        "V3A-S038",
+        "V3A-S037"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Verifique disponibilidade e legibilidade periodicamente, sem alterar o objeto original. Migrações de formato devem produzir novos derivados com vínculo explícito e comparação de conteúdo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S034",
+        "V3A-S038",
+        "V3A-S037"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare armazenamento de arquivo isolado e pacote interpretável. Meça restauração, integridade e reprodução de extrações; retenção imutável não garante que o formato continue utilizável. Unidade de avaliação: pacote de evidência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S034",
+        "V3A-S038",
+        "V3A-S037"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Auditoria de resposta",
+      "scenario": "É preciso comprovar o que foi consultado.",
+      "strategy": "Guardar recorte e documento de origem com revisão, data de captura e parser; permitir reconstruir o contexto efetivamente enviado.",
+      "small_model_role": "3–7B lê manifesto; 8–14B explica.",
+      "acceptance": "Citação deve resolver exatamente a evidência usada na decisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S034",
+        "V3A-S038",
+        "V3A-S037"
+      ]
+    },
+    {
+      "name": "Mudança de parser",
+      "scenario": "Novo extrator altera tabelas antigas.",
+      "strategy": "Manter original, gerar extração nova e comparar células e relações antes de substituí-la na busca.",
+      "small_model_role": "15–30B revisa divergências sem alterar original.",
+      "acceptance": "Nenhuma conversão pode apagar evidência da interpretação anterior.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S034",
+        "V3A-S038",
+        "V3A-S037"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Leitor de manifestos e verificações de integridade feitas por código.",
+    "8_14b": "Comparador de extrações antigas e novas em blocos pequenos.",
+    "15_30b": "Analista de divergências materiais entre interpretações do mesmo artefato.",
+    "training_or_runtime_requirements": "Retenção, hashes, metadados e leitores de formato; autenticidade exige evidência adicional à imutabilidade.",
+    "do_not_use_when": "A política impede correção de dados ativos e mistura evidência histórica com verdade vigente."
+  },
+  "connections": [
+    {
+      "target_id": "T061",
+      "relation": "requires",
+      "how": "Verificar identidade física de cada artefato.",
+      "interface": "Digest, codec, tamanho e localização.",
+      "condition": "Verificação usar bytes efetivamente recuperados.",
+      "acceptance": "Corromper objeto e exigir falha antes da leitura pelo modelo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S034",
+        "V3A-S038",
+        "V3A-S037"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T072",
+      "relation": "feeds",
+      "how": "Versionar derivados e interpretações sem substituir origem.",
+      "interface": "Original, extração, parser e manifesto.",
+      "condition": "Relação de derivação permanecer rastreável.",
+      "acceptance": "Reproduzir resposta usando a versão histórica correta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S034",
+        "V3A-S038",
+        "V3A-S037"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não usar WORM como prova de que o conteúdo é verdadeiro.",
+    "Não confundir exclusão da janela com eliminação do arquivo de evidência."
+  ],
+  "frontier_comparison": "Comparar auditabilidade das respostas; modelo de fronteira não recupera contexto que nunca foi preservado.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q025",
+      "V4A-Q026"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S034",
+    "V3A-S038",
+    "V3A-S037"
+  ]
+}

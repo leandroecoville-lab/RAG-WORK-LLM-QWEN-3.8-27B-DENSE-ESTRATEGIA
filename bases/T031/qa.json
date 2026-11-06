@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Um TTL curto resolve tudo?",
+    "answer": "Não. Ainda existe uma janela de obsolescência e TTL curto pode anular a economia do cache."
+  },
+  {
+    "question": "Preciso refazer todos os embeddings após mudar uma resposta?",
+    "answer": "Não necessariamente. A política deve distinguir atualização de resposta, metadados e representação vetorial."
+  },
+  {
+    "question": "Um cache negativo pode ser reutilizado?",
+    "answer": "Somente se a ausência observada tiver escopo e validade definidos. Falha de recuperação ou indisponibilidade não equivale a inexistência do fato."
+  },
+  {
+    "question": "Como tratar uma entrada acessada durante invalidação?",
+    "answer": "Defina o contrato de consistência. Para exigência forte, verifique versão ou época no caminho de leitura; apenas apagar em segundo plano deixa uma janela de reutilização."
+  }
+]

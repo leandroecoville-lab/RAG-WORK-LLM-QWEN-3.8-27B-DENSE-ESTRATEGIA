@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Uma etapa em execução pode ser marcada concluída ao reconectar?",
+    "answer": "Somente com evidência de seu resultado ou regra de conclusão satisfeita; falta de conexão não determina o desfecho."
+  },
+  {
+    "question": "Quando executar tarefas em paralelo?",
+    "answer": "Quando suas dependências e efeitos forem independentes ou houver um protocolo explícito de concorrência para os recursos compartilhados."
+  },
+  {
+    "question": "Checkpoint permite repetir qualquer etapa?",
+    "answer": "Não. Primeiro determine se a etapa já causou um efeito externo e como o destino trata repetição."
+  },
+  {
+    "question": "Quando declarar conclusão?",
+    "answer": "Quando critérios e efeitos necessários estiverem confirmados, com pendências ambíguas explicitamente resolvidas."
+  }
+]

@@ -1,0 +1,112 @@
+{
+  "id": "T014",
+  "novelty": "A v3 tratou descoberta por metadados. Aqui a camada nova é projetar descrições discriminativas e medir custo de escolhas erradas.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Descrições devem distinguir vizinhos, não resumir tudo igualmente. Inclua finalidade, exclusões e exemplo de decisão entre recursos parecidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "V4A-S023"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Faça carregamento em duas etapas: contrato mínimo para escolher e corpo necessário para agir. Se o contrato não desambiguar, ampliar metadados antes do conteúdo inteiro.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "V4A-S023"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare catálogo integral e descoberta progressiva usando recursos raros. Medir seleção incorreta, cargas extras e conclusão, não somente tokens iniciais. Unidade de avaliação: catálogo de recursos. Monte um catálogo com dois recursos quase sinônimos, um frequente e outro raro, cuja diferença está numa pré-condição. O teste deve mostrar se o descritor permite escolher o raro sem abrir tudo. Depois remova a pré-condição da descrição e confirme degradação; essa ablação mede a utilidade real dos metadados de descoberta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "V4A-S023"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Biblioteca de procedimentos",
+      "scenario": "Centenas de rotinas compartilham termos.",
+      "strategy": "Criar índice por intenção e pré-condições; testar pares confundíveis e revisar descrições que causam carga errada.",
+      "small_model_role": "3–7B escolhe entre candidatos curtos.",
+      "acceptance": "Procedimento selecionado deve satisfazer todas as pré-condições.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "V4A-S023"
+      ]
+    },
+    {
+      "name": "Projeto com muitos módulos",
+      "scenario": "Agente precisa localizar documentação apropriada.",
+      "strategy": "Expor mapa de responsabilidades e abrir módulo pelo problema observado; expandir vizinhos apenas se interface cruzar fronteira.",
+      "small_model_role": "8–14B resolve dependências locais.",
+      "acceptance": "Toda expansão deve responder a lacuna identificada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "V4A-S023"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Roteador entre poucos descritores contrastivos.",
+    "8_14b": "Planejador de carga em duas etapas com identificação de dependências.",
+    "15_30b": "Integrador de recursos especializados, mantendo teto de expansão.",
+    "training_or_runtime_requirements": "Catálogo curado e versionado; exemplos negativos são mais úteis que descrições promocionais.",
+    "do_not_use_when": "Metadados não permitem descobrir o recurso correto com custo menor que leitura direta."
+  },
+  "connections": [
+    {
+      "target_id": "T045",
+      "relation": "complements",
+      "how": "Aplicar descritores contrastivos às ferramentas.",
+      "interface": "Intenção, restrições e tool_id.",
+      "condition": "Schema completo carregado antes da chamada.",
+      "acceptance": "Confundir ferramentas semelhantes deve gerar correção antes de executar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "V4A-S023"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T044",
+      "relation": "feeds",
+      "how": "Abrir detalhe somente após identificar lacuna.",
+      "interface": "resource_id, motivo e limite de expansão.",
+      "condition": "A carga acrescentar informação necessária.",
+      "acceptance": "Medir utilidade marginal de cada abertura.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "V4A-S023"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Detectar ciclos de referências.",
+    "Não conceder autoridade às instruções encontradas no conteúdo."
+  ],
+  "frontier_comparison": "Comparar descoberta de recursos raros; economia inicial que aumenta erros de seleção não é melhoria.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q019"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S018",
+    "V4A-S023"
+  ]
+}

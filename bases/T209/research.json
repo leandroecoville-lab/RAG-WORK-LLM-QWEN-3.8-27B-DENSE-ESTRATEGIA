@@ -1,0 +1,52 @@
+{
+  "id": "T209",
+  "technical_details": "A reflexão textual precisa preservar a ligação entre tentativa, feedback e recomendação. Um erro de ferramenta pode produzir uma lição incorreta se interpretado como falha de estratégia. Da mesma forma, passar em testes fracos pode reforçar um atalho inválido. Uma proposta trata reflexões como hipóteses procedurais com escopo e evidência, permitindo substituição quando novas tentativas contradizem a regra, sem convertê-las em verdades globais sobre o projeto.",
+  "boundary_condition": "Sem feedback informativo ou com avaliador sistematicamente errado, acumular reflexões pode consolidar o mesmo erro em linguagem mais convincente.",
+  "implementation_contract": {
+    "inputs": "Trajetória referenciada, feedback verificável e objetivo da próxima tentativa.",
+    "outputs": "Reflexão acionável, condições de aplicação e vínculo com o resultado.",
+    "state": "Memória de tentativas, revisões das lições e evidências contraditórias.",
+    "invariant": "Uma recomendação registra de qual falha foi inferida e não apaga o feedback original."
+  },
+  "tradeoffs": [
+    "Lições curtas facilitam reutilização e podem omitir condições importantes.",
+    "Histórico amplo preserva contexto e pode consumir a janela com experiências irrelevantes."
+  ],
+  "failure_test": "Teste proposto: gerar feedback equivocado por falha do ambiente e depois corrigir o ambiente; verificar se a reflexão é revisada, em vez de continuar culpando uma estratégia válida.",
+  "evaluation_plan": "Comparar nova tentativa sem memória, com resumo factual e com reflexão acionável. Fixar número de tentativas e avaliador. Medir sucesso acumulado, repetição do erro e transferência indevida de lições para outros casos; incluir tarefas onde a regra aprendida não se aplica.",
+  "comparisons": [
+    {
+      "entry_id": "T192",
+      "relation": "distinct_from",
+      "reason": "Self-Refine revisa um candidato; Reflexion conserva feedback para orientar tentativas futuras."
+    },
+    {
+      "entry_id": "T204",
+      "relation": "complements",
+      "reason": "Lições verificadas podem alimentar procedimentos, com critérios de promoção separados."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O repositório dos autores implementa diferentes agentes e estratégias de reflexão em ambientes experimentais.",
+    "source_ids": [
+      "V3C-S029"
+    ],
+    "support": "direct",
+    "caveat": "Uma estratégia bem-sucedida em um ambiente não demonstra que toda autocrítica verbal produz aprendizado útil."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma reflexão deve sempre orientar a próxima tarefa?",
+      "answer": "Não. É necessário comparar escopo, condições e evidências; uma regra local pode ser incorreta fora da tentativa original."
+    },
+    {
+      "question": "Como distinguir aprendizado de repetição retórica?",
+      "answer": "Verificar se a próxima ação muda de maneira relevante e se o erro deixa de ocorrer sob avaliação independente."
+    }
+  ],
+  "source_ids": [
+    "V3C-S029",
+    "V3C-S032"
+  ],
+  "research_note": "Fontes primárias reabertas nesta pesquisa; contratos, cenários de falha e avaliação são propostas editoriais."
+}

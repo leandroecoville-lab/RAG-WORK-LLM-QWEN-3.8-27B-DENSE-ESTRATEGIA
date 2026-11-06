@@ -1,0 +1,53 @@
+{
+  "id": "T065",
+  "technical_details": "Atomicidade e isolamento resolvem problemas diferentes: gravar vários campos juntos evita atualização parcial, mas transações concorrentes ainda podem violar regras se o nível de isolamento for insuficiente. Em PostgreSQL, falhas de serialização exigem repetir a transação inteira com nova leitura. Reutilizar uma decisão calculada antes do conflito pode reaplicar pressupostos que já não valem, mesmo que a nova escrita seja aceita.",
+  "boundary_condition": "A transação do banco não inclui automaticamente inferência remota, arquivos externos ou publicação em outro serviço; a garantia termina no seu domínio de coordenação.",
+  "implementation_contract": {
+    "inputs": "Comando, versão esperada, pré-condições de domínio e registros que devem mudar conjuntamente.",
+    "outputs": "Estado confirmado e intenções de publicação persistidas, ou conflito sem avanço parcial.",
+    "state": "Revisões, chaves de operação, outbox e política limitada de repetição por conflito.",
+    "invariant": "Uma decisão abortada não produz efeito externo irreversível apenas porque foi calculada dentro do bloco transacional."
+  },
+  "tradeoffs": [
+    "Isolamento mais forte simplifica certas invariantes e pode aumentar abortos e repetição.",
+    "Outbox evita perda da intenção junto do estado, mas admite entrega repetida e exige consumidores compatíveis."
+  ],
+  "failure_test": "Teste proposto: duas transações leem a mesma condição e tentam consumir a última capacidade. Uma delas deve falhar ou ser reavaliada; repetir não pode enviar duas notificações equivalentes ao mesmo destinatário.",
+  "evaluation_plan": "Avaliação proposta: comparar atualização simples, versão esperada e isolamento adequado sob concorrência controlada. Medir invariantes violadas, abortos, custo de repetição e publicações duplicadas; simular queda entre persistir outbox e confirmar entrega.",
+  "comparisons": [
+    {
+      "entry_id": "T060",
+      "relation": "complements",
+      "reason": "Um checkpoint transacional pode usar o gerenciador para publicar estado e posição de execução de forma coerente."
+    },
+    {
+      "entry_id": "T075",
+      "relation": "complements",
+      "reason": "Reconciliação trata divergências e confirmações externas que continuam fora da atomicidade local."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "PostgreSQL documenta repetição integral após falhas de serialização; o padrão outbox da AWS reconhece possibilidade de mensagens duplicadas.",
+    "source_ids": [
+      "A-S029",
+      "V2C-S001"
+    ],
+    "support": "direct",
+    "caveat": "Essas garantias não equivalem a uma transação distribuída universal nem a efeitos externos executados exatamente uma vez."
+  },
+  "advanced_qa": [
+    {
+      "question": "Compare-and-swap resolve todas as invariantes?",
+      "answer": "Não. Protege uma condição de versão definida; regras envolvendo várias entidades podem exigir outra coordenação ou isolamento."
+    },
+    {
+      "question": "Uma LLM deve permanecer dentro de uma transação longa?",
+      "answer": "É uma escolha de arquitetura com custo de contenção. Pode ser preferível gerar fora e validar versão e pré-condições ao aplicar o resultado."
+    }
+  ],
+  "source_ids": [
+    "A-S029",
+    "V2C-S001"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

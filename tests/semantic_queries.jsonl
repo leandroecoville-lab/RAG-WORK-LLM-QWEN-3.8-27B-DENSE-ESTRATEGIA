@@ -1,0 +1,90 @@
+{"case_id": "Q01", "query": "Processar documentos em paralelo e combinar os resultados parciais no final", "expected_ids": ["T001", "T147"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q02", "query": "Reaproveitar o prefixo idêntico do prompt entre chamadas para reduzir o prefill", "expected_ids": ["T002", "T082", "T081"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q03", "query": "Guardar respostas para perguntas semanticamente semelhantes e invalidar quando a fonte muda", "expected_ids": ["T005", "T031"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q04", "query": "Recuperar documentos por palavras exatas e vetores semânticos na mesma busca", "expected_ids": ["T027"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q05", "query": "Buscar um trecho pequeno mas devolver o documento pai para preservar contexto", "expected_ids": ["T032", "T026"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q06", "query": "Carregar instruções de skills e ferramentas somente quando necessárias", "expected_ids": ["T014", "T151", "T045"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q07", "query": "Salvar estado da missão em arquivo e manter apenas referências no contexto ativo", "expected_ids": ["T053", "T015", "T064"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q08", "query": "Lembrar uma experiência com ações resultado e evidências da execução anterior", "expected_ids": ["T049", "T070"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q09", "query": "Consultar quando um fato era válido e quando o sistema tomou conhecimento dele", "expected_ids": ["T056"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q10", "query": "Reconstruir estado atual a partir de um histórico imutável de eventos", "expected_ids": ["T059"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q11", "query": "Retomar a execução depois de uma queda usando um checkpoint persistido", "expected_ids": ["T060", "T159", "T064"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q12", "query": "Distinguir memória de fatos de memória de procedimentos e habilidades", "expected_ids": ["T054", "T055", "T204"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q13", "query": "Compactar instruções nos pesos do aluno e retirar o prompt longo na inferência", "expected_ids": ["T179", "T180", "R012"], "suite": "baseline_v1_retestada", "change_note": "T069 agora é consolidação externa por resumos; deixou de apontar para destilação paramétrica."}
+{"case_id": "Q14", "query": "Organizar memória do agente em camadas e trazer detalhes apenas quando solicitados", "expected_ids": ["T062", "T063", "R001"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q15", "query": "Modelo menor propõe tokens e o modelo maior verifica aceitação para acelerar geração", "expected_ids": ["T079", "T132"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q16", "query": "Reduzir memória do cache de chaves e valores por quantização", "expected_ids": ["T086"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q17", "query": "Inserir novas requisições no lote enquanto outras sequências terminam", "expected_ids": ["T088"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q18", "query": "Atenção exata eficiente usando blocos e menor tráfego entre memória e GPU", "expected_ids": ["T090", "T113", "T098"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q19", "query": "Gerenciar cache KV em páginas para reduzir fragmentação", "expected_ids": ["T093"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q20", "query": "Dividir o processamento inicial de um prompt longo para não bloquear a decodificação", "expected_ids": ["T094"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q21", "query": "Compartilhar cabeças de chaves e valores em grupos de cabeças de consulta", "expected_ids": ["T100", "T106"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q22", "query": "Separar prefill e decode em grupos de GPU diferentes com transferência do cache", "expected_ids": ["T102"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q23", "query": "Saber se a inferência está limitada por largura de banda ou operações aritméticas", "expected_ids": ["T107"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q24", "query": "Distribuir tensores das mesmas camadas entre várias GPUs", "expected_ids": ["T118"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q25", "query": "Distribuir grupos de camadas sequenciais em dispositivos diferentes", "expected_ids": ["T119"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q26", "query": "GGUF é um algoritmo de quantização ou um formato de arquivo?", "expected_ids": ["T127"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q27", "query": "Escolher modelo barato ou modelo forte conforme dificuldade e qualidade exigida", "expected_ids": ["T133", "T135", "T203"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q28", "query": "Parar chamadas para um serviço com falhas e permitir sondas após um intervalo", "expected_ids": ["T138", "T165"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q29", "query": "Evitar que duas requisições simultâneas idênticas façam o mesmo trabalho", "expected_ids": ["T150"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q30", "query": "Repetir uma operação após timeout sem duplicar o efeito externo", "expected_ids": ["T162"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q31", "query": "Adicionar aleatoriedade às novas tentativas para evitar avalanche sincronizada", "expected_ids": ["T163"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q32", "query": "Executar tarefas de um grafo apenas quando as dependências terminarem", "expected_ids": ["T160"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q33", "query": "Evitar que tarefas de baixa prioridade fiquem para sempre esperando na fila", "expected_ids": ["T166"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q34", "query": "Permitir rajadas controladas respeitando uma taxa média de requisições", "expected_ids": ["T167", "T137"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q35", "query": "Reservar espaço para resposta antes de preencher a janela com documentos", "expected_ids": ["T152", "T168", "T176"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q36", "query": "Adaptar um modelo treinando matrizes de baixo posto mantendo pesos base congelados", "expected_ids": ["T182"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q37", "query": "Treinar adaptadores com modelo base quantizado em quatro bits", "expected_ids": ["T183"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q38", "query": "Gerar várias soluções e selecionar a resposta consistente entre amostras", "expected_ids": ["T188", "T187", "T189"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q39", "query": "Validar o código produzido executando testes em ambiente isolado", "expected_ids": ["T195"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q40", "query": "Restringir tokens gerados para obedecer gramática ou estrutura JSON", "expected_ids": ["T196", "T141"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q41", "query": "Checar tipos e campos obrigatórios de um JSON depois da geração", "expected_ids": ["T197"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q42", "query": "Medir se probabilidades de confiança correspondem à frequência real de acerto", "expected_ids": ["T198"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q43", "query": "Verificar cada etapa intermediária do processo e não só a resposta final", "expected_ids": ["T194", "T206"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q44", "query": "Um agente independente revisa o resultado com evidências separadas", "expected_ids": ["T200"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q45", "query": "Transferir experiências do professor como memórias de workflows sem treinar pesos", "expected_ids": ["T181"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q46", "query": "Comprimir prompts em adaptadores LoRA no método PRISM", "expected_ids": ["R006"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q47", "query": "Qual é o estado de manutenção do servidor Text Generation Inference?", "expected_ids": ["R010"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q48", "query": "Como persistir um grafo de execução LangGraph entre interrupções?", "expected_ids": ["R008", "T159", "T060"], "suite": "baseline_v1_retestada"}
+{"case_id": "Q49", "query": "Registrar observações em uma sequência cronológica recuperável de experiências", "expected_ids": ["T207", "R004"], "suite": "novos_itens_v2"}
+{"case_id": "Q50", "query": "Separar o agente que planeja daquele que executa passos e retorna resultados", "expected_ids": ["T208", "T143"], "suite": "novos_itens_v2"}
+{"case_id": "Q51", "query": "Usar feedback de tentativas anteriores como reflexão textual para melhorar uma nova tentativa", "expected_ids": ["T209"], "suite": "novos_itens_v2"}
+{"case_id": "Q52", "query": "Trocar a sessão que ficou saturada sem perder objetivos e estado confirmado", "expected_ids": ["T210"], "suite": "novos_itens_v2"}
+{"case_id": "Q53", "query": "Deixar um arquivo de passagem com trabalho concluído pendências e próximos passos", "expected_ids": ["T211"], "suite": "novos_itens_v2"}
+{"case_id": "Q54", "query": "Disparar compactação automaticamente quando a ocupação do contexto cruza um limiar", "expected_ids": ["T212"], "suite": "novos_itens_v2"}
+{"case_id": "Q55", "query": "Dividir uma missão longa em pequenas tarefas com entregas e critérios de aceite", "expected_ids": ["T213"], "suite": "novos_itens_v2"}
+{"case_id": "Q56", "query": "Remover campos irrelevantes da saída de ferramentas antes de levar ao modelo", "expected_ids": ["T214", "T016"], "suite": "novos_itens_v2"}
+{"case_id": "Q57", "query": "Ocultar observações antigas de ferramentas mantendo as ações e os resultados necessários", "expected_ids": ["T215"], "suite": "novos_itens_v2"}
+{"case_id": "Q58", "query": "Dar ao agente um mapa de símbolos e dependências de um repositório grande", "expected_ids": ["T216", "R019"], "suite": "novos_itens_v2"}
+{"case_id": "Q59", "query": "Repetir implementação teste e correção até satisfazer comportamento especificado", "expected_ids": ["T217", "T195"], "suite": "novos_itens_v2"}
+{"case_id": "Q60", "query": "Detectar que o agente repete as mesmas ações sem progresso verificável", "expected_ids": ["T218"], "suite": "novos_itens_v2"}
+{"case_id": "Q61", "query": "Impor profundidade máxima ao grafo para impedir chamadas recursivas infinitas", "expected_ids": ["T219"], "suite": "novos_itens_v2"}
+{"case_id": "Q62", "query": "Corrigir argumentos de uma ferramenta depois de erro de schema sem repetir efeitos já executados", "expected_ids": ["T220"], "suite": "novos_itens_v2"}
+{"case_id": "Q63", "query": "Reintroduzir periodicamente o objetivo vigente para evitar que a execução se desvie", "expected_ids": ["T221"], "suite": "novos_itens_v2"}
+{"case_id": "Q64", "query": "Monitorar tokens de entrada saída reservada e limite de contexto a cada etapa", "expected_ids": ["T222", "T152"], "suite": "novos_itens_v2"}
+{"case_id": "Q65", "query": "Fazer uma checagem explícita da saída contra princípios escritos antes de concluir", "expected_ids": ["T223"], "suite": "novos_itens_v2"}
+{"case_id": "Q66", "query": "Executar tarefas a partir de uma especificação com estados e critérios de conclusão", "expected_ids": ["T224"], "suite": "novos_itens_v2"}
+{"case_id": "Q67", "query": "Um supervisor externo detecta processo travado e o reinicia de modo controlado", "expected_ids": ["T225"], "suite": "novos_itens_v2"}
+{"case_id": "Q68", "query": "Publicar um sinal periódico de progresso com contador de etapa e timestamp", "expected_ids": ["T226"], "suite": "novos_itens_v2"}
+{"case_id": "Q69", "query": "Distinguir processo vivo pronto para tráfego e trabalho efetivamente avançando", "expected_ids": ["T227"], "suite": "novos_itens_v2"}
+{"case_id": "Q70", "query": "Persistir tentativas com instante futuro elegível backoff e limite de repetição", "expected_ids": ["T228"], "suite": "novos_itens_v2"}
+{"case_id": "Q71", "query": "Modificar apenas os trechos necessários de um arquivo usando patches verificáveis", "expected_ids": ["T229"], "suite": "novos_itens_v2"}
+{"case_id": "Q72", "query": "Representar linhas removidas adicionadas e contexto em um formato de diff unificado", "expected_ids": ["T230"], "suite": "novos_itens_v2"}
+{"case_id": "Q73", "query": "Editar texto por bloco de busca e substituição com correspondência única", "expected_ids": ["T231"], "suite": "novos_itens_v2"}
+{"case_id": "Q74", "query": "Modificar o código com base em nós de uma árvore sintática", "expected_ids": ["T232"], "suite": "novos_itens_v2"}
+{"case_id": "Q75", "query": "Recusar um patch quando o hash do arquivo base mudou desde a preparação", "expected_ids": ["T233"], "suite": "novos_itens_v2"}
+{"case_id": "Q76", "query": "Manter regras e comandos do projeto em arquivo persistente com instruções por módulo", "expected_ids": ["T234"], "suite": "novos_itens_v2"}
+{"case_id": "Q77", "query": "Executar um agente sem interface em um controlador que entrega uma tarefa por iteração", "expected_ids": ["T235"], "suite": "novos_itens_v2"}
+{"case_id": "Q78", "query": "Criar um commit pequeno por etapa validada para rastrear e recuperar progresso", "expected_ids": ["T236"], "suite": "novos_itens_v2"}
+{"case_id": "Q79", "query": "Delegar leitura pesada a outro agente com contexto próprio e receber uma síntese com fontes", "expected_ids": ["T237", "T169"], "suite": "novos_itens_v2"}
+{"case_id": "Q80", "query": "Localizar uma ocorrência e ler somente a faixa relevante de linhas com contexto suficiente", "expected_ids": ["T238"], "suite": "novos_itens_v2"}
+{"case_id": "Q81", "query": "Trabalhar em branches simultâneas usando diretórios Git independentes no mesmo repositório", "expected_ids": ["T239"], "suite": "novos_itens_v2"}
+{"case_id": "Q82", "query": "Materializar uma imagem consistente do estado em determinado instante", "expected_ids": ["T240"], "suite": "novos_itens_v2"}
+{"case_id": "Q83", "query": "Reconstruir uma projeção reproduzindo eventos registrados sem reenviar efeitos externos", "expected_ids": ["T241"], "suite": "novos_itens_v2"}
+{"case_id": "Q84", "query": "Restaurar o snapshot e aplicar somente os eventos posteriores ao seu cursor", "expected_ids": ["T242"], "suite": "novos_itens_v2"}
+{"case_id": "Q85", "query": "Após timeout descobrir se a operação externa aconteceu antes de decidir repetir", "expected_ids": ["T243"], "suite": "novos_itens_v2"}
+{"case_id": "Q86", "query": "Consolidar sessões em resumos externos sem atualizar pesos do modelo", "expected_ids": ["T069"], "suite": "escopos_revisados_v2"}
+{"case_id": "Q87", "query": "Recuperar fatos válidos em uma data passada sem misturar a informação conhecida depois", "expected_ids": ["T009", "T056"], "suite": "escopos_revisados_v2"}
+{"case_id": "Q88", "query": "Aplicar gramática durante a geração para impedir uma estrutura de saída inválida", "expected_ids": ["T196", "R025", "R026"], "suite": "escopos_revisados_v2"}
+{"case_id": "Q89", "query": "Persistir checkpoint de estado e cursor de execução numa mesma transação", "expected_ids": ["T060", "T065"], "suite": "escopos_revisados_v2"}
+{"case_id": "Q90", "query": "Qual componente proposto da LAI reuniria memória de trabalho episódios e procedimentos?", "expected_ids": ["P004", "P005"], "suite": "escopos_revisados_v2"}

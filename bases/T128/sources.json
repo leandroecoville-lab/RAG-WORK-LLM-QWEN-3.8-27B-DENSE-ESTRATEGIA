@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "B-S038",
+    "title": "EAGLE-3: Scaling up Inference Acceleration of Large Language Models via Training-Time Test",
+    "url": "https://arxiv.org/abs/2503.01840",
+    "publisher": "Li e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-03-03",
+    "supports": "EAGLE-3 usa fusão de características de múltiplas camadas para predição direta de tokens; não equivale ao EAGLE original.",
+    "limitations": "Resumo e metadados acessados; artigo integral não auditado e resultados não reproduzidos.",
+    "web_ref": "turn17view1"
+  },
+  {
+    "source_id": "V3B-S001",
+    "title": "Fast Inference from Transformers via Speculative Decoding",
+    "url": "https://proceedings.mlr.press/v202/leviathan23a/leviathan23a.pdf",
+    "publisher": "PMLR / Leviathan, Kalman e Matias",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Algoritmo de aceitação, distribuição residual e análise idealizada de custo.",
+    "limitations": "Texto do algoritmo e análise consultados; resultados experimentais não reproduzidos; pressupostos de paralelismo não certificam servidor local.",
+    "web_ref": "turn98view0"
+  },
+  {
+    "source_id": "V4B-S007",
+    "title": "Efficient Speculative Decoding for Llama at Scale: Challenges and Solutions",
+    "url": "https://ai.meta.com/research/publications/efficient-speculative-decoding-for-llama-at-scale-challenges-and-solutions/",
+    "publisher": "Meta AI",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-08-12",
+    "supports": "Engenharia de EAGLE para Llama, incluindo atenção em árvore e grandes lotes.",
+    "limitations": "Production scale descreve escala de experimento; página não identifica implantação comercial específica suficiente para contagem de produção.",
+    "web_ref": "turn205view2"
+  },
+  {
+    "source_id": "V4B-S029",
+    "title": "Per-Request Acceptance Metrics — vLLM",
+    "url": "https://docs.vllm.ai/en/latest/features/speculative_decoding/acceptance_metrics/",
+    "publisher": "vLLM",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Métricas de aceitação por requisição, histograma de comprimentos e distinção do token bônus; interface experimental.",
+    "limitations": "Medições de aceitação não garantem ganho; coleta, streaming e múltiplas sequências têm condições específicas.",
+    "web_ref": "turn278view1"
+  },
+  {
+    "source_id": "V4B-S011",
+    "title": "NVIDIA TensorRT LLM",
+    "url": "https://developer.nvidia.com/tensorrt-llm",
+    "publisher": "NVIDIA",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Runtime Python/PyTorch, cache paginado, batching, quantização e especulação documentados.",
+    "limitations": "Página de produto demonstra recursos disponíveis, não adoção comprovada por cliente nem compatibilidade do hardware local.",
+    "web_ref": "turn219view2"
+  }
+]

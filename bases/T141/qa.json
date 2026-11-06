@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Structured output acaba com alucinação?",
+    "answer": "Não. Restringe formato; a factualidade ainda exige fontes e verificação."
+  },
+  {
+    "question": "Todo JSON é structured output garantido?",
+    "answer": "Não. O contrato e o mecanismo de validação precisam ser especificados."
+  },
+  {
+    "question": "Campo opcional e campo nullable são iguais?",
+    "answer": "Não. Opcional permite ausência; nullable admite null como valor quando o campo está presente, conforme o schema."
+  },
+  {
+    "question": "Por que um schema válido pode falhar no gerador?",
+    "answer": "Porque validade do schema e suporte do decodificador são propriedades diferentes; o backend pode aceitar um subconjunto."
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "AMD modifica os pesos do aluno?",
+    "answer": "O trabalho identificado usa transferência por memória externa, sem treinamento do aluno."
+  },
+  {
+    "question": "Resultados em modelos pequenos provam ganho no meu Qwen?",
+    "answer": "Não. Essa combinação precisa de avaliação própria."
+  },
+  {
+    "question": "Por que sucesso do professor não basta?",
+    "answer": "Pode depender de ferramentas, contexto ou habilidades que o aluno não possui; condições de execução precisam acompanhar a memória."
+  },
+  {
+    "question": "AMD é necessariamente fine-tuning?",
+    "answer": "Não no método identificado por esta ficha: trata-se de framework training-free que fornece memórias ao aluno."
+  }
+]

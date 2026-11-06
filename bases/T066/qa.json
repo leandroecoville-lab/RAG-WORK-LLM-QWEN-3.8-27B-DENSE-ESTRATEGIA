@@ -1,0 +1,18 @@
+[
+  {
+    "question": "O resolvedor também decide relevância?",
+    "answer": "Pode integrar-se à busca, mas sua função principal é obter o objeto exato pedido com garantias de identidade e acesso."
+  },
+  {
+    "question": "Posso retornar só texto?",
+    "answer": "Metadados de versão, origem e completude ajudam a evitar interpretações incorretas e devem acompanhar o texto."
+  },
+  {
+    "question": "Um recurso encontrado já foi lido?",
+    "answer": "Não. Descoberta fornece metadados ou referência. A resposta deve distinguir recurso listado, conteúdo aberto e conteúdo parcialmente consumido."
+  },
+  {
+    "question": "Posso recuperar por similaridade após not_found?",
+    "answer": "Pode iniciar outra busca, mas devolva candidatos como alternativas. Não finja que um registro parecido é a versão exata que estava referenciada."
+  }
+]

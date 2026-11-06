@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "entries": 287,
+  "chunks": 2583,
+  "sources": 449,
+  "entries_by_scope": {
+    "inventario": 243,
+    "referencia": 27,
+    "proposta": 17
+  },
+  "source_verification": {
+    "opened": 444,
+    "search_result": 5
+  },
+  "errors": [],
+  "scope": "Integridade estrutural. Não substitui revisão factual ou avaliação de geração."
+}

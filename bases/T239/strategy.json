@@ -1,0 +1,116 @@
+{
+  "id": "T239",
+  "novelty": "A v3 distinguia objetos compartilhados e recursos externos. A expansão trata worktrees como unidades de experimento, organiza ambiente e limpeza e integra candidatos sem confundir isolamento de arquivos com isolamento completo de execução.",
+  "deep_layers": [
+    {
+      "name": "Ambiente por candidato",
+      "detail": "Além do checkout, associe portas, banco, diretórios temporários e observabilidade à identidade do candidato. O harness Codex relata aplicação e métricas por worktree; a transferência proposta replica esse princípio conforme o projeto. Se algum recurso precisa ser compartilhado, documente coordenação ou somente leitura, evitando testes concorrentes que alteram o mesmo estado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V2A-S019"
+      ]
+    },
+    {
+      "name": "Ciclo de vida recuperável",
+      "detail": "Registre criação, branch, tarefa, processos ativos e prazo de retenção. Remover diretório não encerra necessariamente servidor iniciado por um agente. Antes da limpeza, classifique tarefas e efeitos pendentes, preserve artefatos necessários e finalize recursos próprios. Não apagar worktree só porque o processo principal terminou com exit code zero.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S039"
+      ]
+    },
+    {
+      "name": "Integração condicional",
+      "detail": "Candidatos partem de uma base identificada, mas a branch principal pode avançar enquanto os testes rodam. Escolher um candidato não elimina a necessidade de reconciliar essa diferença. Depois de rebase, merge ou combinação de patches, teste a árvore resultante; a aprovação antiga pertencia à versão isolada anterior.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S037",
+        "V4C-S030"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Alternativas de reparo",
+      "scenario": "Vários modelos tentam resolver o mesmo defeito.",
+      "strategy": "Crie worktree e recursos por candidato, aplique o patch e rode o mesmo teste reproduzível. Compare resultados e preserve só candidatos necessários à revisão. Evite que um trabalhador leia arquivos não confirmados do outro e transforme variantes em soluções correlacionadas inadvertidamente.",
+      "small_model_role": "3–7B gera reparos locais; 15–30B integra evidência e escolhe candidato.",
+      "acceptance": "Proposta: resultados reproduzíveis sem interferência entre testes ou servidores.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V2A-S019"
+      ]
+    },
+    {
+      "name": "Trabalho simultâneo por módulos",
+      "scenario": "Agentes executam micro-missões independentes no mesmo repositório.",
+      "strategy": "Atribua worktree e branch por missão, fixe interfaces compartilhadas e integre por ordem de dependência. Use registro de tarefas para evitar alterações concorrentes incompatíveis; worktree não é mutex do domínio. Após integrar, limpe ambientes e mantenha evidência de validação.",
+      "small_model_role": "8–14B executa módulo; 15–30B coordena dependências de integração.",
+      "acceptance": "Proposta: nenhuma colisão de recurso externo e rastreabilidade da árvore testada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S037"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Isolamento permite testar patches pequenos sem arriscar alterações de outra tarefa.",
+    "8_14b": "Executar módulo com ambiente próprio e devolver artefato identificado.",
+    "15_30b": "Gerenciar combinação de candidatos e conflitos sem supor independência semântica por diretório.",
+    "training_or_runtime_requirements": "Git compatível, branches e recursos únicos, limpeza de subprocessos e registros de criação/retomada.",
+    "do_not_use_when": "Não usar worktree lock como trava de edição nem presumir bancos e portas isolados automaticamente."
+  },
+  "connections": [
+    {
+      "target_id": "R021",
+      "relation": "complements",
+      "how": "Harness interno OpenAI executa Codex com aplicação e observabilidade específicas por Git worktree.",
+      "interface": "Revisão candidata, instância da aplicação e logs correspondentes.",
+      "condition": "Recursos externos da tarefa são isolados conforme o projeto.",
+      "acceptance": "Agente valida comportamento na instância do próprio candidato.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S030"
+      ],
+      "case_ids": [
+        "V4C-C029"
+      ]
+    },
+    {
+      "target_id": "T233",
+      "relation": "complements",
+      "how": "Fornecer árvore isolada para aplicar e testar antes de publicação condicionada.",
+      "interface": "Base, árvore final e evidência de testes.",
+      "condition": "Nenhuma mudança posterior invalida a prova sem nova verificação.",
+      "acceptance": "Artefato entregue corresponde ao candidato aceito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S037",
+        "V4C-S030"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Refs e objetos compartilhados podem mudar mesmo sem alterações nos arquivos do outro worktree.",
+    "Limpeza precisa tratar processos e recursos fora da árvore, não apenas remover o checkout."
+  ],
+  "frontier_comparison": "Compare throughput de candidatos com custo de ambiente e validação incluídos. Paralelismo com modelos pequenos só ajuda quando CPU, memória e integração suportam a concorrência.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q027",
+      "V4C-Q015",
+      "V4C-Q016"
+    ],
+    "scope_note": "OpenAI oferece caso direto de worktrees; Git/GVFS, Sapling e Scion não foram convertidos em casos exatos deste mecanismo."
+  },
+  "source_ids": [
+    "V4C-S030",
+    "V2A-S019",
+    "V3C-S039",
+    "V3C-S037"
+  ]
+}

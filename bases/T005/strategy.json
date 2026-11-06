@@ -1,0 +1,112 @@
+{
+  "id": "T005",
+  "novelty": "A v3 tratou falsos hits e filtros. A camada nova é admissão seletiva de respostas e cache de artefatos parciais verificáveis.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Diferencie cache da resposta completa e cache de evidências recuperadas. Perguntas similares podem compartilhar documentos sem compartilhar conclusão. Priorize reuso de candidatos quando pequenas mudanças alterarem o resultado final.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S016",
+        "V3A-S007"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Admitir uma resposta exige fonte vigente e estabilidade do domínio. Registre quais atributos tornam a equivalência inválida, como versão, unidade e finalidade. Um classificador pode sugerir hit; regras fechadas confirmam elegibilidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S016",
+        "V3A-S007"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Construa pares mínimos que mudam somente um atributo decisivo. Compare taxa de aceitação errada e custo evitado, não apenas similaridade média. Unidade de avaliação: família de consultas. Separe validação de admissão e validação de reutilização. Uma resposta pode ter sido correta quando entrou no cache e inadequada para a consulta atual. Teste pares com mesma intenção geral, mas população, unidade ou versão diferente, e registre em qual filtro o hit foi recusado. Isso permite reduzir custo sem esconder falsos acertos no agregado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S016",
+        "V3A-S007"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Suporte com perguntas recorrentes",
+      "scenario": "Usuários reformulam dúvida sobre uma versão.",
+      "strategy": "Buscar candidato, validar versão e pré-condições, reutilizar resposta apenas se o contrato continuar equivalente.",
+      "small_model_role": "3–7B extrai atributos para filtros.",
+      "acceptance": "Nenhum hit em versão incompatível no conjunto de validação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S016",
+        "V3A-S007"
+      ]
+    },
+    {
+      "name": "Pesquisa repetida com novo critério",
+      "scenario": "Consultas variam o julgamento solicitado.",
+      "strategy": "Reusar trechos elegíveis e gerar nova conclusão; não devolver resposta anterior quando muda o critério de comparação.",
+      "small_model_role": "8–14B reinterpreta evidências existentes.",
+      "acceptance": "Citação atual e conclusão sensível à mudança do critério.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S016",
+        "V3A-S007"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extrator de atributos que alimenta chave de elegibilidade.",
+    "8_14b": "Verificador de equivalência contextual em candidatos curtos.",
+    "15_30b": "Leitor de evidências cacheadas para síntese de critérios múltiplos.",
+    "training_or_runtime_requirements": "Índice vetorial, metadados de dependência e caminho de bypass; calibrar limiar por domínio.",
+    "do_not_use_when": "Respostas variam por identidade, tempo ou estado que o cache não consegue verificar."
+  },
+  "connections": [
+    {
+      "target_id": "T031",
+      "relation": "requires",
+      "how": "Revogar itens derivados quando a base muda.",
+      "interface": "dependency_ids, revisão e lista de respostas afetadas.",
+      "condition": "Dependências registradas no momento de admissão.",
+      "acceptance": "Alterar fonte e medir sobrevivência indevida de hits.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S016",
+        "V3A-S007"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T205",
+      "relation": "complements",
+      "how": "Testar equivalência antes de reutilizar resposta.",
+      "interface": "Par de pedidos e atributos relevantes.",
+      "condition": "Verificação mais barata que refazer e validada no domínio.",
+      "acceptance": "Incluir negações e quantificadores quase iguais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S016",
+        "V3A-S007"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não reutilizar resposta cuja origem não pode ser reaberta.",
+    "Separar falha do cache de ausência de candidato."
+  ],
+  "frontier_comparison": "Comparar custo por resposta correta com reexecução completa; mais hits podem piorar o sistema.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q004",
+      "V4A-Q012"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S016",
+    "V3A-S007"
+  ]
+}

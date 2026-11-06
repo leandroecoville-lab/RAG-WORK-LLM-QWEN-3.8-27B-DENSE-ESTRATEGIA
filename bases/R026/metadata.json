@@ -1,0 +1,36 @@
+{
+  "id": "R026",
+  "name": "Guidance",
+  "canonical_name": "Guidance — programação controlada de geração",
+  "canonical_id": "R026",
+  "aliases": [
+    "guidance Python",
+    "Guidance library"
+  ],
+  "category": "referencias",
+  "kind": "project",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "T134",
+    "T140",
+    "T141",
+    "T196",
+    "T197",
+    "R023",
+    "R024",
+    "R025"
+  ],
+  "source_ids": [
+    "V2B-S024",
+    "V2B-S025",
+    "V3D-S014",
+    "V3D-S015",
+    "V4B-S030"
+  ],
+  "namespace": "R026",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R026",
+  "chunk_count": 9
+}

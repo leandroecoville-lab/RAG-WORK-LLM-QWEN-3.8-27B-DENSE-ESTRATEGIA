@@ -1,0 +1,6 @@
+flowchart TD
+    T092["T092 FlashAttention-3"]
+    T123["T123 FP8 Quantization"]
+    T092 -. "complements: proposta" .-> T123
+    T107["T107 Roofline Analysis"]
+    T092 -. "requires: proposta" .-> T107

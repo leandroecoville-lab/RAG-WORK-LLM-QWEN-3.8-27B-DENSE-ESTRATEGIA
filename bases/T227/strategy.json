@@ -1,0 +1,116 @@
+{
+  "id": "T227",
+  "novelty": "A v3 separava liveness, readiness e avanço da missão. A expansão propõe checagens por capacidade e classe de trabalho, com inicialização controlada e respostas de recuperação proporcionais ao que falhou.",
+  "deep_layers": [
+    {
+      "name": "Readiness por capacidade",
+      "detail": "Um servidor pode aceitar texto curto e não ter recursos para multimodalidade ou contextos longos. Exponha capacidades elegíveis e suas dependências, em vez de um único booleano que promete tudo. O roteador precisa considerar essa informação junto da quota; estar pronto para um contrato não significa estar pronto para qualquer tarefa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S011",
+        "V4C-S018"
+      ]
+    },
+    {
+      "name": "Inicialização e aquecimento",
+      "detail": "Carregamento de pesos, conexão e compilação podem levar mais tempo que uma chamada comum. Use fase explícita de startup e só admita tráfego quando recursos necessários estiverem disponíveis. Falha de readiness durante aquecimento não deve disparar repetição infinita do próprio aquecimento. Teste também a primeira chamada depois de deploy.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S011",
+        "V2A-S012"
+      ]
+    },
+    {
+      "name": "Cheque funcional delimitado",
+      "detail": "Uma checagem semântica pode validar parser, tokenizer e chamada mínima compatível, mas não representa toda distribuição de tarefas. Mantenha sondas baratas e limites para não competir com o serviço principal. Se a dependência externa cair, retire apenas capacidades afetadas quando o isolamento permitir, preservando funções saudáveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S011",
+        "V3C-S009"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Servidor de modelos local",
+      "scenario": "O processo responde HTTP enquanto o modelo ainda carrega ou ficou indisponível.",
+      "strategy": "Separe endpoint de vida do estado de carregamento e da elegibilidade por recurso. Antes de liberar tráfego, execute contrato mínimo e registre configuração. Se um modelo falhar, não marque todos os outros como mortos quando compartilham processo mas têm isolamento válido.",
+      "small_model_role": "3–7B e 15–30B têm perfis diferentes; checagem usa capacidade real, não só nome.",
+      "acceptance": "Proposta: nenhuma admissão prematura e recuperação sem ciclos de startup.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S018",
+        "V2A-S011"
+      ]
+    },
+    {
+      "name": "Agente com várias ferramentas",
+      "scenario": "Algumas integrações falham, mas outras permanecem úteis.",
+      "strategy": "Publique disponibilidade por ferramenta e mantenha tarefas dependentes em estado bloqueado. Não matar o supervisor saudável para corrigir API remota. Se a missão não progride apesar de todas as dependências prontas, encaminhe diagnóstico de tarefa, não uma falha genérica de servidor.",
+      "small_model_role": "8–14B explica degradação; controlador decide capacidade e ações.",
+      "acceptance": "Proposta: isolamento de falha e continuidade de trabalho independente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013",
+        "V3C-S009"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Serviços pequenos podem ter startup mais simples, mas ainda precisam de contrato funcional.",
+    "8_14b": "Classificar dependências afetadas por missão e produzir diagnóstico estruturado.",
+    "15_30b": "Replanejar trabalho durante degradação sem redefinir saúde por opinião textual.",
+    "training_or_runtime_requirements": "Probes com escopo, limiares e consequências definidos; métricas de primeira chamada e tráfego admitido.",
+    "do_not_use_when": "Não misturar health de processo com qualidade de resposta ou progresso da missão."
+  },
+  "connections": [
+    {
+      "target_id": "T138",
+      "relation": "complements",
+      "how": "Falhas funcionais de uma dependência alimentam breaker específico sem declarar todo o processo morto.",
+      "interface": "Capacidade afetada, classe da falha e janela observada.",
+      "condition": "Sonda corresponde ao caminho que o breaker protege.",
+      "acceptance": "Funções independentes continuam disponíveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S026",
+        "V2A-S011"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T226",
+      "relation": "complements",
+      "how": "Progresso por tarefa complementa saúde do serviço e detecta missão parada em servidor saudável.",
+      "interface": "Fase, último avanço e identidade da missão.",
+      "condition": "Progresso é definido por domínio.",
+      "acceptance": "Detectar tarefa sem avanço sem reiniciar outras tarefas válidas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S040"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Probe pesada pode causar a sobrecarga que pretende detectar.",
+    "Não interpretar readiness negativa como ordem universal de matar o processo."
+  ],
+  "frontier_comparison": "Compare disponibilidade funcional por classe e tempo de recuperação. Um modelo pequeno que cabe no recurso pode manter uma capacidade específica, sem substituir funcionalidades que não suporta.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q004",
+      "V4C-Q018"
+    ],
+    "scope_note": "Kubernetes fundamenta probes; fontes de serving e gateways apoiam capacidades. O desenho por classes para agentes é proposta, sem ganho operacional medido."
+  },
+  "source_ids": [
+    "V2A-S011",
+    "V4C-S018",
+    "V2A-S012",
+    "V3C-S009",
+    "V4C-S013",
+    "V3C-S026",
+    "V3C-S040"
+  ]
+}

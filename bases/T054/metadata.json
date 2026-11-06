@@ -1,0 +1,31 @@
+{
+  "id": "T054",
+  "name": "Semantic Memory",
+  "canonical_name": "Semantic Memory",
+  "canonical_id": "T054",
+  "aliases": [
+    "memória semântica"
+  ],
+  "category": "memoria",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T049",
+    "T055",
+    "T056",
+    "T075"
+  ],
+  "source_ids": [
+    "A-S023",
+    "V3A-S037",
+    "V4A-S017",
+    "V4A-S018",
+    "A-S008"
+  ],
+  "namespace": "T054",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T054",
+  "chunk_count": 9
+}

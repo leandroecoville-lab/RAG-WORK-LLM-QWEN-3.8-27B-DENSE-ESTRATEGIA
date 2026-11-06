@@ -1,0 +1,170 @@
+{
+  "coverage": {
+    "entry_id": "P010",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 3,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 3,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Routing Engine",
+    "scope": "proposta"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C013",
+      "company": "Uber",
+      "system": "GenAI Gateway",
+      "title": "Acesso unificado a modelos com atribuição de consumo",
+      "evidence_level": "production_documented",
+      "observed_use": "A Uber relata equipes internas utilizando o gateway para consultas a modelos externos e hospedados internamente.",
+      "technical_mechanism": "Adaptadores expõem uma interface comum e integram autenticação, política de dados, métricas e atribuição de custos.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S012"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T133",
+          "match": "family",
+          "rationale": "A plataforma oferece acesso a diferentes modelos, sem provar roteador de qualidade por pergunta nesta publicação."
+        },
+        {
+          "entry_id": "T170",
+          "match": "analogy",
+          "rationale": "Tradução de interfaces ilustra compatibilidade, mas a fonte não demonstra versionamento integral de schemas de ferramentas."
+        },
+        {
+          "entry_id": "P010",
+          "match": "analogy",
+          "rationale": "O gateway é referência para infraestrutura de rotas, não valida o motor editorial completo."
+        }
+      ],
+      "small_model_transfer": "Proposta: centralizar adapters de 3–30B e registrar capacidades reais de cada endpoint; separar seleção do modelo da tradução de protocolos e da medição do custo por tarefa aceita.",
+      "limits": "Interface compatível não torna modelos semanticamente equivalentes. Não mapear automaticamente disponibilidade de múltiplos fornecedores a cascata ou fallback comprovado.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C013",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "P010",
+        "match": "analogy",
+        "rationale": "O gateway é referência para infraestrutura de rotas, não valida o motor editorial completo."
+      }
+    },
+    {
+      "case_id": "V4C-C015",
+      "company": "Uber",
+      "system": "Harnesses da Software Factory",
+      "title": "Orçamento de contexto e especialização de modelos na frota de agentes",
+      "evidence_level": "production_documented",
+      "observed_use": "A Uber relata wrappers e políticas compartilhadas para sessões de agentes, incluindo subagentes com modelos mais econômicos e compactação configurada.",
+      "technical_mechanism": "Seleção usa trabalho real, custo por resultado e qualidade; tool search, code-mode e políticas de cache reduzem trabalho repetido conforme o tipo de sessão.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S014"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T133",
+          "match": "family",
+          "rationale": "A fonte descreve seleção por workload, modelo principal e padrão de subagentes; estratégias mais amplas de routing são discutidas como direção futura, não decisão preditiva por consulta demonstrada."
+        },
+        {
+          "entry_id": "T169",
+          "match": "exact",
+          "rationale": "Subagentes delimitados usam modelo padrão mais econômico que o principal."
+        },
+        {
+          "entry_id": "T212",
+          "match": "exact",
+          "rationale": "Compactação automática é configurada nos harnesses interativos."
+        },
+        {
+          "entry_id": "T222",
+          "match": "exact",
+          "rationale": "Métricas de tokens por requisição e sessão orientam controle de contexto."
+        },
+        {
+          "entry_id": "T171",
+          "match": "exact",
+          "rationale": "Política de cache distingue sessões interativas e subagentes de duração curta."
+        },
+        {
+          "entry_id": "T214",
+          "match": "exact",
+          "rationale": "Code-mode mantém polling e dados intermediários fora do contexto da LLM."
+        },
+        {
+          "entry_id": "R020",
+          "match": "family",
+          "rationale": "Medições incluem sessões Claude Code, sem demonstrar todos os recursos do produto."
+        },
+        {
+          "entry_id": "P010",
+          "match": "analogy",
+          "rationale": "Seleção por resultado é referência para o roteador editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: avaliar separadamente líder e workers 3–30B, com orçamento de contexto ajustado à tarefa e ao checkpoint escolhido. Medir custo por alteração aceita mantendo modelo e mistura de tarefas constantes.",
+      "limits": "Os limiares e preços da publicação são específicos dos provedores e modelos usados; não são recomendados para janelas menores. Não se afirma que a frota use exatamente modelos das bandas propostas.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C015",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "P010",
+        "match": "analogy",
+        "rationale": "Seleção por resultado é referência para o roteador editorial."
+      }
+    },
+    {
+      "case_id": "V4C-C012",
+      "company": "Amazon Web Services",
+      "system": "Amazon Bedrock Intelligent Prompt Routing",
+      "title": "Roteamento configurável de prompts como recurso comercial",
+      "evidence_level": "operational_product",
+      "observed_use": "A documentação disponibiliza um endpoint de roteamento que prevê qualidade e escolhe entre dois modelos compatíveis da mesma família.",
+      "technical_mechanism": "Configuração define modelos, critério e fallback; resposta informa o modelo usado. A página é documentação de produto, não relato de implantação de um cliente.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S011"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T133",
+          "match": "exact",
+          "rationale": "Escolha de modelo por consulta é o recurso documentado."
+        },
+        {
+          "entry_id": "T173",
+          "match": "family",
+          "rationale": "Fallback do roteador é definido por critério de qualidade, não equivale automaticamente a recuperação por indisponibilidade."
+        },
+        {
+          "entry_id": "P010",
+          "match": "analogy",
+          "rationale": "O serviço oferece referência para um componente editorial de roteamento."
+        }
+      ],
+      "small_model_transfer": "Proposta: comparar um roteador local 3–30B com regras simples, rotas fixas e escalonamento após validação. Rejeitar candidatos sem capacidade necessária antes de estimar qualidade.",
+      "limits": "Classificado como operational_product. Não conta para dez casos comprovados em produção; lista de modelos e regiões muda. Exemplos com modelos maiores não validam as bandas pequenas.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C012",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "P010",
+        "match": "analogy",
+        "rationale": "O serviço oferece referência para um componente editorial de roteamento."
+      }
+    }
+  ]
+}

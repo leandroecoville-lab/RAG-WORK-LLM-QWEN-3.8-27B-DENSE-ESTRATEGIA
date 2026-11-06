@@ -1,0 +1,227 @@
+{
+  "coverage": {
+    "entry_id": "P014",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 4,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 4,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Execution Resilience",
+    "scope": "proposta"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C008",
+      "company": "Google",
+      "system": "Google Search — degradação sob sobrecarga",
+      "title": "Preservação de serviço por redução de trabalho",
+      "evidence_level": "production_documented",
+      "observed_use": "O livro de SRE descreve Google Search reduzindo a fração pesquisada do índice e desativando recursos em sobrecarga, além de testes acima da capacidade nominal.",
+      "technical_mechanism": "O sistema reduz trabalho e funcionalidades para preservar serviço útil; a degradação é específica do produto.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S005"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T136",
+          "match": "family",
+          "rationale": "Resposta degradada é alternativa operacional, sem ser necessariamente troca de modelo."
+        },
+        {
+          "entry_id": "T146",
+          "match": "analogy",
+          "rationale": "Reduzir trabalho em busca é analogia para adaptar esforço de inferência."
+        },
+        {
+          "entry_id": "T175",
+          "match": "family",
+          "rationale": "Controle de sobrecarga combinado com degradação é relacionado a fallback por limite."
+        },
+        {
+          "entry_id": "P013",
+          "match": "analogy",
+          "rationale": "Política de degradação é princípio do controlador editorial."
+        },
+        {
+          "entry_id": "P014",
+          "match": "analogy",
+          "rationale": "Manter objetivos de serviço sob falha ilustra resiliência transversal."
+        }
+      ],
+      "small_model_transfer": "Proposta: sob saturação de um servidor 3–30B, reduzir ramos opcionais de exploração e preservar verificações obrigatórias; informar cobertura reduzida em vez de chamar a saída de equivalente.",
+      "limits": "Relato histórico; recursos citados, como Instant, não devem ser interpretados como estado atual do Search. Nenhuma equivalência de qualidade de respostas LLM foi demonstrada.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C008",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "P014",
+        "match": "analogy",
+        "rationale": "Manter objetivos de serviço sob falha ilustra resiliência transversal."
+      }
+    },
+    {
+      "case_id": "V4C-C023",
+      "company": "Google",
+      "system": "Borg",
+      "title": "Admissão e isolamento de cargas em clusters Google",
+      "evidence_level": "production_documented",
+      "observed_use": "O artigo dos operadores descreve Borg executando aplicações e jobs nos clusters do Google ao longo de experiência operacional.",
+      "technical_mechanism": "O resumo aberto combina admissão, empacotamento, compartilhamento de máquinas, isolamento e recuperação de falhas.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S023"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T174",
+          "match": "family",
+          "rationale": "Há políticas de scheduling operacionais, mas o abstract não detalha todos os algoritmos de prioridade."
+        },
+        {
+          "entry_id": "T137",
+          "match": "family",
+          "rationale": "Admissão de cargas é relacionada a controle de capacidade, sem especificar o rate limiter da ficha."
+        },
+        {
+          "entry_id": "P014",
+          "match": "analogy",
+          "rationale": "Isolamento e recuperação fornecem princípios de resiliência para a proposta."
+        }
+      ],
+      "small_model_transfer": "Proposta: separar classes interativas e batch para 3–30B e medir memória e concorrência reais, conservando isolamento e uma política explícita para falta de capacidade.",
+      "limits": "O PDF completo ficou inacessível nesta consulta; detalhes finos de prioridade, fairness ou preempção não são atribuídos ao abstract. Nenhum ganho de inferência foi medido.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C023",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "P014",
+        "match": "analogy",
+        "rationale": "Isolamento e recuperação fornecem princípios de resiliência para a proposta."
+      }
+    },
+    {
+      "case_id": "V4C-C006",
+      "company": "Netflix",
+      "system": "Conductor — plataforma interna atualizada",
+      "title": "Avaliação assíncrona e coordenação durável de workflows",
+      "evidence_level": "production_documented",
+      "observed_use": "A Netflix descreve Conductor em pipelines de mídia e anúncios, com Timestone, persistência de tarefas e mecanismos de reparação operacional.",
+      "technical_mechanism": "O motor avalia um blueprint e carrega dados específicos; a fila assíncrona e regras de estado reduzem disputas, enquanto estratégias sequenciais serializam execuções por chave.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S004",
+        "V4C-S003"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T159",
+          "match": "exact",
+          "rationale": "O relato inclui recuperação de processos distribuídos longos."
+        },
+        {
+          "entry_id": "T147",
+          "match": "exact",
+          "rationale": "Workflows incluem forks paralelos e junções."
+        },
+        {
+          "entry_id": "T148",
+          "match": "exact",
+          "rationale": "O DSL representa condicionais e outras transições."
+        },
+        {
+          "entry_id": "T160",
+          "match": "exact",
+          "rationale": "Blueprint e avaliação coordenam dependências e tarefas elegíveis."
+        },
+        {
+          "entry_id": "T228",
+          "match": "family",
+          "rationale": "Filas atrasadas e reparação apoiam retomada, sem provar uma política única de backoff exponencial."
+        },
+        {
+          "entry_id": "P011",
+          "match": "analogy",
+          "rationale": "O motor inspira responsabilidades do executor editorial."
+        },
+        {
+          "entry_id": "P014",
+          "match": "analogy",
+          "rationale": "Recuperação de workflows é analogia da capacidade proposta."
+        }
+      ],
+      "small_model_transfer": "Proposta: orquestrar chamadas pequenas com payloads externos por referência, lendo apenas resultados necessários à decisão; manter transições e concorrência fora do modelo.",
+      "limits": "Um único caso de plataforma, sem contar cada pipeline como caso adicional. Recursos explicitamente descritos como roadmap não são tratados como já implantados.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C006",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "P014",
+        "match": "analogy",
+        "rationale": "Recuperação de workflows é analogia da capacidade proposta."
+      }
+    },
+    {
+      "case_id": "V4C-C003",
+      "company": "Uber",
+      "system": "Cadence — plataforma interna",
+      "title": "Workflows duráveis em serviços da Uber",
+      "evidence_level": "production_documented",
+      "observed_use": "A Uber relata Cadence em serviços internos de diferentes criticidades e em processos longos, orquestração e pipelines.",
+      "technical_mechanism": "Histórico persistente, workers, retomada e compatibilidade de workflows em andamento são tratados junto de isolamento e observabilidade operacional.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S001"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T159",
+          "match": "exact",
+          "rationale": "Execução durável de workflows é o mecanismo central relatado."
+        },
+        {
+          "entry_id": "T160",
+          "match": "family",
+          "rationale": "Orquestração coordena dependências, embora nem todo workflow seja um DAG estático."
+        },
+        {
+          "entry_id": "T241",
+          "match": "exact",
+          "rationale": "A fonte descreve replay/shadowing de históricos para detectar incompatibilidades."
+        },
+        {
+          "entry_id": "P011",
+          "match": "analogy",
+          "rationale": "Plataforma de workflows é referência para o controlador editorial."
+        },
+        {
+          "entry_id": "P014",
+          "match": "analogy",
+          "rationale": "Retomada e isolamento sustentam uma analogia de resiliência, não implementação LAI."
+        }
+      ],
+      "small_model_transfer": "Proposta: manter chamadas a modelos 3–30B em atividades com saída persistida e usar o histórico para reconstruir decisões; testar evolução do código com execuções antigas antes de migrar workers.",
+      "limits": "Escala e disponibilidade citadas pelo operador pertencem à publicação e não são projetadas para LAI. Cadence não é Temporal, apesar de princípios relacionados.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C003",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "P014",
+        "match": "analogy",
+        "rationale": "Retomada e isolamento sustentam uma analogia de resiliência, não implementação LAI."
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "RETRO é igual a colocar texto recuperado no prompt?",
+    "answer": "Não. Sua arquitetura inclui recuperação, codificação e cross-attention por trechos."
+  },
+  {
+    "question": "O nome descreve um único algoritmo?",
+    "answer": "Não. É uma família; cada implementação deve informar o que recupera e onde usa a informação."
+  },
+  {
+    "question": "Mudar o banco atualiza os pesos?",
+    "answer": "Não. Atualiza memória externa; o modelo ainda depende de suas capacidades treinadas de utilizar o material recuperado."
+  },
+  {
+    "question": "Boa recuperação garante resposta correta?",
+    "answer": "Não. O conteúdo pode ser mal interpretado, e o índice também pode conter evidência conflitante ou desatualizada."
+  }
+]

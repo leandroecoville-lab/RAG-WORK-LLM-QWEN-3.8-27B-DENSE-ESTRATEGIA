@@ -1,0 +1,114 @@
+{
+  "id": "T207",
+  "novelty": "A v3 distinguia observações, inferências e recência de acesso. A expansão propõe manutenção de validade, recuperação por tipo de decisão e tratamento de contradições sem transformar um fluxo de memória em registro infalível.",
+  "deep_layers": [
+    {
+      "name": "Evento e fato vigente",
+      "detail": "Guarde que algo foi observado em determinado momento, mas represente separadamente se continua válido. Uma mudança posterior não apaga a observação antiga; cria vínculo de substituição ou contradição. O recuperador precisa saber se a pergunta é histórica ou atual para não apresentar como vigente uma preferência ou configuração já revogada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008",
+        "V4C-S015"
+      ]
+    },
+    {
+      "name": "Recuperação por finalidade",
+      "detail": "Uma lembrança útil para explicar uma decisão pode ser insuficiente para executar uma ação. Defina políticas por finalidade: evidência original para comprovar, resumo para orientar, estado confirmado para continuar. Recência e similaridade entram depois da elegibilidade por tipo e validade; acessos frequentes não elevam automaticamente a autoridade do conteúdo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008",
+        "V3C-S028"
+      ]
+    },
+    {
+      "name": "Memória derivada revisável",
+      "detail": "Reflexões e resumos devem apontar para os eventos que os sustentam. Se uma origem for corrigida ou retirada, marque derivados afetados para revisão. Essa linhagem impede que uma inferência sobreviva como fato isolado após sua evidência mudar. O índice de recuperação é reconstruível; não deve ser a única cópia das observações.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008",
+        "V4C-S025"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Continuidade de projeto",
+      "scenario": "Um agente acompanha mudanças de arquitetura ao longo de várias sessões.",
+      "strategy": "Registre decisões com revisão do repositório e alternativas rejeitadas. Ao retomar, recupere primeiro decisões vigentes do módulo e depois o histórico necessário para explicar exceções. Se documentação e código divergirem, abrir verificação em vez de escolher a memória mais recente por reflexo.",
+      "small_model_role": "3–7B extrai eventos tipados; 8–14B relaciona decisões; 15–30B resolve contradições.",
+      "acceptance": "Proposta: consultas históricas e atuais respondem com períodos e fontes corretos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "A-S008"
+      ]
+    },
+    {
+      "name": "Assistência assíncrona",
+      "scenario": "Pedidos evoluem enquanto tarefas permanecem abertas.",
+      "strategy": "Separe mensagem recebida, interpretação e decisão confirmada. Uma atualização pode invalidar somente parte das tarefas; preserve resultados ainda compatíveis e marque quais foram produzidos sob objetivo antigo. A memória não deve sobrescrever silenciosamente o contrato de uma operação já enviada.",
+      "small_model_role": "8–14B classifica mudança de intenção; controlador conserva causalidade e estado externo.",
+      "acceptance": "Proposta: nenhum resultado antigo apresentado como resposta à revisão nova sem verificação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S015"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extração de fatos e eventos com campos obrigatórios e links de origem.",
+    "8_14b": "Recuperação especializada por módulo ou tarefa, com filtro temporal e de validade.",
+    "15_30b": "Síntese de conflitos apoiada em eventos originais; não criar autoridade por narrativa.",
+    "training_or_runtime_requirements": "Armazenamento de origens, IDs estáveis, índice reconstruível e política de correção de derivados.",
+    "do_not_use_when": "Não usar relevância vetorial como prova de verdade nem tratar broker de eventos como memória cognitiva pronta."
+  },
+  "connections": [
+    {
+      "target_id": "P008",
+      "relation": "complements",
+      "how": "Usar o Event Store editorial como substrato de observações, mantendo índices e inferências em camadas separadas.",
+      "interface": "Evento, origem, tempo e referências de derivação.",
+      "condition": "Retenção e correção preservam rastreabilidade.",
+      "acceptance": "Reconstruir índice e identificar derivados de evento corrigido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S025",
+        "A-S008"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T211",
+      "relation": "feeds",
+      "how": "Selecionar decisões vigentes e pendências para um pacote curto de continuidade.",
+      "interface": "Memórias elegíveis, versão do objetivo e links originais.",
+      "condition": "O handoff declara o que é observado e inferido.",
+      "acceptance": "Sessão seguinte recupera a evidência necessária sem receber todo o fluxo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "A-S008"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Correção precisa alcançar resumos e índices que repetem o fato anterior.",
+    "Brooklin demonstra transporte de eventos; isso não comprova relevância, reflexão ou memória de agente."
+  ],
+  "frontier_comparison": "Compare memória estruturada com histórico bruto usando perguntas temporais e decisões verificáveis. Um modelo pequeno pode recuperar melhor quando o estado é curado, sem ganhar memória factual intrínseca.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q010",
+      "V4C-Q020"
+    ],
+    "scope_note": "Hiring Assistant relata memória cognitiva, sem provar o algoritmo Memory Stream. Generative Agents fornece o conceito experimental; Brooklin entra apenas como família de infraestrutura."
+  },
+  "source_ids": [
+    "A-S008",
+    "V4C-S015",
+    "V3C-S028",
+    "V4C-S025",
+    "V4C-S030"
+  ]
+}

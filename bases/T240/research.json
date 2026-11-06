@@ -1,0 +1,52 @@
+{
+  "id": "T240",
+  "technical_details": "Um snapshot composto precisa representar um corte consistente. Ler estado e cursor em momentos diferentes pode capturar estado anterior com cursor posterior, pulando eventos na recuperação. No PostgreSQL, duas consultas sob Read Committed podem observar versões diferentes mesmo dentro da mesma transação; portanto, apenas escrever BEGIN não define a consistência necessária. A captura deve usar isolamento, transação de gravação ou protocolo compatível com o armazenamento e seu invariante.",
+  "boundary_condition": "Nenhum snapshot local inclui automaticamente estado de serviços externos ou arquivos modificados fora de sua fronteira.",
+  "implementation_contract": {
+    "inputs": "Estado a capturar, cursor, versões de schema e fronteira de consistência.",
+    "outputs": "Snapshot identificado, manifesto e posição exata de reconstrução.",
+    "state": "Revisões dos membros, método de captura e confirmação de persistência.",
+    "invariant": "Estado e cursor correspondem à mesma fronteira lógica declarada."
+  },
+  "tradeoffs": [
+    "Captura coordenada melhora consistência e pode bloquear ou exigir mais armazenamento.",
+    "Captura incremental reduz volume e acrescenta dependências entre versões para restaurar."
+  ],
+  "failure_test": "Teste proposto: atualizar estado entre leitura do conteúdo e leitura do cursor; exigir detecção da mistura ou captura que preserve o invariante.",
+  "evaluation_plan": "Comparar captura sem coordenação e captura consistente sob escrita concorrente. Medir divergência após restauração, duração da pausa e tamanho do artefato. Validar o escopo restaurável, incluindo componentes deliberadamente externos.",
+  "comparisons": [
+    {
+      "entry_id": "T242",
+      "relation": "complements",
+      "reason": "Recuperação híbrida depende de uma posição de snapshot coerente com os eventos restantes."
+    },
+    {
+      "entry_id": "T060",
+      "relation": "distinct_from",
+      "reason": "Checkpoint acrescenta semântica de retomada do runtime ao estado capturado."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "PostgreSQL documenta que consultas sucessivas em Read Committed podem ver dados diferentes na mesma transação.",
+    "source_ids": [
+      "A-S029"
+    ],
+    "support": "direct",
+    "caveat": "Isolamento de banco resolve apenas a fronteira que ele controla, não um snapshot global de todos os sistemas."
+  },
+  "advanced_qa": [
+    {
+      "question": "BEGIN garante que duas leituras vejam o mesmo instante?",
+      "answer": "Não em todo nível de isolamento; é preciso conhecer a semântica da transação utilizada."
+    },
+    {
+      "question": "Qual é o risco de um cursor adiantado?",
+      "answer": "A recuperação pode considerar já incorporados eventos que não estão no estado capturado, perdendo mudanças."
+    }
+  ],
+  "source_ids": [
+    "A-S029",
+    "V3C-S028"
+  ],
+  "research_note": "Contratos, cenários de falha e planos de avaliação são propostas editoriais fundamentadas nas fontes indicadas."
+}

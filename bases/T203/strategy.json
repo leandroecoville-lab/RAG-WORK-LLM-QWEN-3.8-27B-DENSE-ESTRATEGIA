@@ -1,0 +1,119 @@
+{
+  "id": "T203",
+  "novelty": "A v3 tratou viés de seleção e definição de correção. Esta camada propõe roteamento como política versionada, com experimentos contrafactuais, custo de escalonamento e limites de elegibilidade antes da otimização.",
+  "deep_layers": [
+    {
+      "name": "Elegibilidade primeiro",
+      "detail": "Antes de estimar acerto, filtre executores por acesso, ferramentas, contexto, formato e prazo. Um modelo forte sem acesso à evidência necessária pode ser uma escolha pior que outro com ferramentas adequadas. Capacidade e autorização não devem ser comprimidas numa única nota de confiança.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S001",
+        "C-S050",
+        "V3B-S019"
+      ]
+    },
+    {
+      "name": "Contrafactuais medidos",
+      "detail": "Numa amostra autorizada, execute candidatos sob condições equivalentes para estimar quais casos cada um resolve. Dados históricos do roteador anterior refletem suas escolhas e podem ocultar alternativas melhores. Registre custo de produzir essa amostra e mantenha avaliação final independente da política aprendida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S001",
+        "C-S050",
+        "V3B-S019"
+      ]
+    },
+    {
+      "name": "Escalonar tem custo",
+      "detail": "Uma tentativa pequena seguida de modelo maior soma fila, geração e verificação. Se o primeiro caminho raramente resolve uma classe, encaminhar diretamente pode ser mais econômico. Além disso, o modelo maior precisa receber evidências e falhas relevantes, sem herdar como verdade a resposta incorreta anterior.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S001",
+        "C-S050",
+        "V3B-S019"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Automação com modelo pequeno",
+      "scenario": "Grande parte dos pedidos é rotineira e verificável.",
+      "strategy": "Use executor 3–7B nas classes validadas, aplique verificador e escale falhas com diagnóstico. Compare com encaminhamento direto para evitar dupla cobrança sem benefício.",
+      "small_model_role": "O pequeno modelo assume a região de competência demonstrada, não todos os pedidos por padrão.",
+      "acceptance": "Medir correção, cobertura, custo e prazo por caminho completo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S001",
+        "C-S050",
+        "V3B-S019"
+      ]
+    },
+    {
+      "name": "Escolha entre especialista e generalista",
+      "scenario": "Há modelos com capacidades complementares.",
+      "strategy": "Colete resultados por domínio e evidência disponível, calibre a política e monitore deriva. Mantenha opção de buscar dados ou abster-se quando nenhum executor é adequado.",
+      "small_model_role": "Um 8–14B especializado pode ser preferível em tarefas estreitas mesmo diante de modelo maior.",
+      "acceptance": "Comparar contrafactuais e evitar regressões em classes raras.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S001",
+        "C-S050",
+        "V3B-S019"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Priorize contratos fechados com checagem barata para automatização seletiva.",
+    "8_14b": "Especialização deve ser demonstrada com dados de resultado e não pelo nome do checkpoint.",
+    "15_30b": "Um 15–30B pode ser destino intermediário; o número de etapas precisa justificar custo e latência.",
+    "training_or_runtime_requirements": "Runtime com política e sinais calibrados; treino do roteador é opcional. Preferência humana não é idêntica a correção.",
+    "do_not_use_when": "Não encaminhar indefinidamente para modelos maiores quando falta informação ou a tarefa é mal definida."
+  },
+  "connections": [
+    {
+      "target_id": "T198",
+      "relation": "requires",
+      "how": "A política usa sinais avaliados contra o evento de sucesso definido.",
+      "interface": "Scores, domínio e resultados observados.",
+      "condition": "Calibração válida para o caminho de implantação.",
+      "acceptance": "Medir erro e cobertura após seleção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S001",
+        "C-S050",
+        "V3B-S019"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T195",
+      "relation": "complements",
+      "how": "Execução pode confirmar resultado e decidir escalonamento em tarefas verificáveis.",
+      "interface": "Artefato, testes e falhas.",
+      "condition": "Oráculo cobre a propriedade relevante.",
+      "acceptance": "Comparar sucesso completo e custo de duas tentativas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S001",
+        "C-S050",
+        "V3B-S019"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não treinar o roteador apenas com resultados dos destinos escolhidos historicamente sem declarar o viés.",
+    "Preservar contexto e evidências ao escalar, sem validar automaticamente a resposta anterior."
+  ],
+  "frontier_comparison": "Compare a política inteira com um baseline de fronteira, incluindo tentativas pequenas que falharam. A vantagem possível é custo em uma distribuição específica, sem promessa de equivalência geral.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q019"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "C-S001",
+    "C-S050",
+    "V3B-S019"
+  ]
+}

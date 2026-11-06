@@ -1,0 +1,36 @@
+{
+  "id": "P005",
+  "name": "Context & Memory Controller",
+  "canonical_name": "Context & Memory Controller",
+  "canonical_id": "P005",
+  "aliases": [
+    "controlador proposto de contexto e memória"
+  ],
+  "category": "componentes_propostos",
+  "kind": "component",
+  "scope": "proposta",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T058",
+    "T069",
+    "T071",
+    "T075",
+    "P001",
+    "P002",
+    "P004",
+    "P007"
+  ],
+  "source_ids": [
+    "A-S006",
+    "A-S023",
+    "A-S022",
+    "V3D-S016",
+    "V3A-S032",
+    "V4A-S002"
+  ],
+  "namespace": "P005",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/P005",
+  "chunk_count": 9
+}

@@ -1,0 +1,73 @@
+{
+  "coverage": {
+    "entry_id": "T124",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "INT4 / W4A16 Quantization",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C011",
+      "company": "NVIDIA",
+      "organization_class": "bigtech",
+      "system": "TensorRT-LLM",
+      "title": "Runtime documentado com kernels e otimizações de serving",
+      "evidence_level": "operational_product",
+      "observed_use": "A documentação de produto descreve API de serving e runtime Python/PyTorch, com opções de quantização e especulação.",
+      "technical_mechanism": "Integra atenção paginada, in-flight batching, formatos de baixa precisão e proponentes como EAGLE/MTP, conforme suporte de modelo e hardware.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S011"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R011",
+          "match": "exact",
+          "rationale": "Produto e arquitetura do runtime são descritos diretamente."
+        },
+        {
+          "entry_id": "T123",
+          "match": "exact",
+          "rationale": "FP8 consta entre os formatos suportados."
+        },
+        {
+          "entry_id": "T124",
+          "match": "exact",
+          "rationale": "INT4/AWQ consta no conjunto de otimizações."
+        },
+        {
+          "entry_id": "T128",
+          "match": "exact",
+          "rationale": "EAGLE é recurso documentado."
+        },
+        {
+          "entry_id": "T129",
+          "match": "exact",
+          "rationale": "MTP é recurso documentado para modelos compatíveis."
+        }
+      ],
+      "small_model_transfer": "Proposta: criar uma matriz de recursos por checkpoint 3–30B, fixar build e testar a combinação mínima antes de habilitar otimizações adicionais.",
+      "limits": "É evidência de disponibilidade de produto, não deployment de cliente. Não comprova compatibilidade do servidor do usuário nem exige universalmente o antigo fluxo de engines compiladas.",
+      "canonical_case_id": "V4B-C011",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "T124",
+        "match": "exact",
+        "rationale": "INT4/AWQ consta no conjunto de otimizações."
+      }
+    }
+  ]
+}

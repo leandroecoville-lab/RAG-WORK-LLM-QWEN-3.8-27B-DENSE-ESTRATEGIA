@@ -1,0 +1,118 @@
+{
+  "id": "T149",
+  "novelty": "A v3 tratou heaps, desempate e atualização de prioridades. Aqui a fila distingue urgência, elegibilidade e custo previsto, evitando que um item prioritário bloqueado impeça trabalho realmente executável.",
+  "deep_layers": [
+    {
+      "name": "Elegibilidade antes da ordem",
+      "detail": "Mantenha dependências e disponibilidade de recurso fora da chave de prioridade. Um item urgente sem artefato de entrada não está pronto. Separar filas de aguardando e elegível evita retirar e reinserir continuamente o mesmo trabalho, reduzindo custo de coordenação e diagnósticos enganosos de saturação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S004",
+        "V3C-S024"
+      ]
+    },
+    {
+      "name": "Deadline não é duração",
+      "detail": "Ordenar pelo prazo pode ser adequado para urgência, mas duas tarefas com o mesmo prazo podem ter custos muito diferentes. Registre estimativa e margem de término; uma tarefa que já não cabe no prazo precisa de decisão explícita, e não de prioridade infinita que comprometa todas as demais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S003"
+      ]
+    },
+    {
+      "name": "Particionamento por chave de efeito",
+      "detail": "Quando vários itens alteram o mesmo recurso, selecione apenas um elegível por chave. Outras chaves podem avançar em paralelo. A exclusão deve sobreviver a falha do worker e distinguir entrega duplicada de uma nova intenção, preservando a ordem relevante para aquele recurso.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S003",
+        "C-S026"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Fila de inferência compartilhada",
+      "scenario": "Pedidos curtos interativos convivem com relatórios longos.",
+      "strategy": "Crie classes e estimativas de consumo, mantendo cotas mínimas para trabalho antigo. Antes de iniciar uma geração longa, confira capacidade e deadline; evite interrompê-la se o servidor não consegue recuperar estado de forma útil.",
+      "small_model_role": "Modelos 3–30B recebem trabalhos admitidos; a fila não delega política de prioridade à LLM.",
+      "acceptance": "Proposta: medir latência por classe, taxa de conclusão e espera máxima observada em carga mista repetível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S009",
+        "V4C-S003"
+      ]
+    },
+    {
+      "name": "Aplicação de patches por repositório",
+      "scenario": "Vários agentes preparam alterações que podem compartilhar uma base.",
+      "strategy": "Use chave de exclusão para integração, não para toda pesquisa. Revisões e testes independentes podem ocorrer antes; ao liberar integração, confira novamente a base e revalide o patch que ficou esperando.",
+      "small_model_role": "8–30B produz candidatos, enquanto código coordena ordem e conflitos.",
+      "acceptance": "Proposta: introduzir alterações concorrentes e verificar que nenhuma prioridade permite sobrescrever trabalho não incorporado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S003",
+        "V3C-S037"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: classificação de tipo de trabalho e extração de prazo de campos confiáveis, sem inventar urgência.",
+    "8_14b": "Proposta: estimar subtarefas e identificar dependências para a fila verificar.",
+    "15_30b": "Proposta: preparar alternativas de execução quando o prazo original se tornar inviável.",
+    "training_or_runtime_requirements": "Exige relógio apropriado, persistência de leases e telemetria de duração; prioridade textual não é mecanismo de autorização.",
+    "do_not_use_when": "Não usar uma única ordem global quando diferentes recursos ou efeitos exigem exclusão e capacidade independentes."
+  },
+  "connections": [
+    {
+      "target_id": "T174",
+      "relation": "feeds",
+      "how": "Timestone combina seleção por deadline com restrições de trabalho não paralelizável.",
+      "interface": "Mensagem, deadline e chave de exclusão.",
+      "condition": "O trabalho tem identidade e critério de elegibilidade.",
+      "acceptance": "Proposta: verificar ordem e ausência de execução concorrente da mesma chave.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S003"
+      ],
+      "case_ids": [
+        "V4C-C005"
+      ]
+    },
+    {
+      "target_id": "T166",
+      "relation": "complements",
+      "how": "Aging evita que prioridade fixa esconda espera indefinida.",
+      "interface": "Tempo de espera, classe e prioridade efetiva.",
+      "condition": "A política define como a espera modifica a ordem.",
+      "acceptance": "Comparar distribuição de espera por tenant, não somente média global.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S020",
+        "V3C-S008"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não descartar silenciosamente itens que expiraram enquanto aguardavam.",
+    "Impedir que workers criem prioridades novas para suas próprias tentativas sem política comum."
+  ],
+  "frontier_comparison": "Compare modelos e rotas sob a mesma política de fila. Melhoria de latência por scheduler não demonstra que o modelo menor resolveu tarefas mais difíceis.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q003",
+      "V4C-Q018"
+    ],
+    "scope_note": "Timestone oferece caso operacional direto; Borg foi acessado apenas pelo abstract, sem atribuir-lhe algoritmos não verificados."
+  },
+  "source_ids": [
+    "V4C-S004",
+    "V3C-S024",
+    "V4C-S003",
+    "C-S026",
+    "V3C-S009",
+    "V3C-S037",
+    "V3C-S020",
+    "V3C-S008"
+  ]
+}

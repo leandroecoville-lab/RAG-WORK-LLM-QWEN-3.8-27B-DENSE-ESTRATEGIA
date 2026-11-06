@@ -1,0 +1,28 @@
+{
+  "id": "T084",
+  "name": "Session-Based Caching",
+  "canonical_name": "Session-Based Caching",
+  "canonical_id": "T084",
+  "aliases": [],
+  "category": "inferencia",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T081",
+    "T082",
+    "T154",
+    "T064"
+  ],
+  "source_ids": [
+    "B-S003",
+    "V3B-S005",
+    "V4B-S004",
+    "V3D-S016"
+  ],
+  "namespace": "T084",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T084",
+  "chunk_count": 9
+}

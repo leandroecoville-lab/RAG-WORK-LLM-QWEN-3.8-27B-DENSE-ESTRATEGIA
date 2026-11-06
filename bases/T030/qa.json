@@ -1,0 +1,18 @@
+[
+  {
+    "question": "RAPTOR muda os pesos da LLM?",
+    "answer": "A estrutura de recuperação não exige, por si só, retreinar o gerador."
+  },
+  {
+    "question": "Basta uma pasta com resumos para ter RAPTOR?",
+    "answer": "Não. É preciso implementar e registrar o processo específico de agrupamento, níveis e recuperação ou declarar que é apenas inspirado nele."
+  },
+  {
+    "question": "BIC escolhe o melhor número de grupos para responder perguntas?",
+    "answer": "Não diretamente. Ele avalia um critério estatístico do modelo de mistura, não a utilidade downstream de cada agrupamento."
+  },
+  {
+    "question": "Posso trocar o embedding sem reconstruir a estrutura?",
+    "answer": "Isso pode tornar representações e grupos incompatíveis. A migração deve incluir nova indexação e validação, preservando a versão anterior para comparação."
+  }
+]

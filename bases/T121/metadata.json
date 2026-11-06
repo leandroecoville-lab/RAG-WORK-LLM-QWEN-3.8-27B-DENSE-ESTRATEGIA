@@ -1,0 +1,35 @@
+{
+  "id": "T121",
+  "name": "GPU Scheduling",
+  "canonical_name": "GPU Scheduling",
+  "canonical_id": "T121",
+  "aliases": [
+    "escalonamento de GPU"
+  ],
+  "category": "inferencia",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T088",
+    "T094",
+    "T149",
+    "T166",
+    "T174"
+  ],
+  "source_ids": [
+    "B-S008",
+    "B-S047",
+    "V3B-S004",
+    "V4B-S008",
+    "V4B-S014",
+    "V4B-S004",
+    "V4D-S016",
+    "V4D-S020"
+  ],
+  "namespace": "T121",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T121",
+  "chunk_count": 9
+}

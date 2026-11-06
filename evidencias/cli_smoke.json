@@ -1,0 +1,73 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "name": "ID",
+      "args": [
+        "search",
+        "T243",
+        "--id",
+        "T243"
+      ],
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "new_layer",
+      "args": [
+        "context",
+        "T009",
+        "--id",
+        "T009",
+        "--layer",
+        "advanced"
+      ],
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "scope_conflict",
+      "args": [
+        "search",
+        "T243",
+        "--id",
+        "T243",
+        "--scope",
+        "proposta"
+      ],
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "no_server",
+      "args": [
+        "ask",
+        "T243"
+      ],
+      "exit_code": 2,
+      "passed": true
+    },
+    {
+      "name": "graph",
+      "args": [
+        "graph",
+        "T140"
+      ],
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "strict_cases",
+      "args": [
+        "cases",
+        "T079",
+        "--production-only",
+        "--bigtech-only",
+        "--exact-only"
+      ],
+      "exit_code": 0,
+      "passed": true
+    }
+  ],
+  "external_calls": 0
+}

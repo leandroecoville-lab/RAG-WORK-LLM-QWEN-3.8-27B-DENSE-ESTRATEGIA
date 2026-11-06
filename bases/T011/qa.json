@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Semantic chunking usa sempre uma LLM geradora?",
+    "answer": "Não. Muitas implementações usam embeddings e regras de distância, sem geração de texto."
+  },
+  {
+    "question": "Devo substituir todos os trechos fixos?",
+    "answer": "Só após comparar em perguntas reais. A complexidade e o custo adicionais precisam produzir ganho observado."
+  },
+  {
+    "question": "Limiar por percentil evita calibragem?",
+    "answer": "Não. Ele troca a escala absoluta por uma regra relativa, cuja frequência de cortes ainda precisa ser justificada e testada."
+  },
+  {
+    "question": "Coerência do chunk basta para boa recuperação?",
+    "answer": "Não. A unidade também precisa conter o fato e suas condições em tamanho que o recuperador e o gerador utilizem adequadamente."
+  }
+]

@@ -1,0 +1,119 @@
+{
+  "id": "T182",
+  "novelty": "A v3 descreveu fatores, inicialização e escala. O aprofundamento cobre seleção de módulos, composição de adapters e consistência entre treinamento, fusão e serving.",
+  "deep_layers": [
+    {
+      "name": "Capacidade onde importa",
+      "detail": "Posto maior aumenta parâmetros treináveis, mas o efeito depende dos módulos escolhidos. Compare projeções de atenção, MLP e outras opções suportadas mediante uma hipótese de erro. Alterar todos os módulos e o posto simultaneamente impede entender qual intervenção ajudou; mantenha uma matriz pequena de ablações.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S036",
+        "V4B-S006",
+        "V4D-S012"
+      ]
+    },
+    {
+      "name": "Composição e identidade",
+      "detail": "Adapters podem ser alternados, combinados ou fundidos, mas essas operações não garantem compatibilidade semântica. Registre base, escala e ordem. Um adapter de formato e outro de domínio podem interferir; avalie a combinação explicitamente e inclua identidade do adapter em cache de prefixo e roteamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S036",
+        "V4B-S006",
+        "V4D-S012"
+      ]
+    },
+    {
+      "name": "Fusão e precisão",
+      "detail": "Fundir a atualização aos pesos pode reduzir overhead de execução, mas exige evitar aplicação dupla. Se a base está quantizada, desquantizar, fundir e requantizar pode introduzir erro adicional. Teste o caminho final de distribuição, não somente o adapter separado no ambiente de treinamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S036",
+        "V4B-S006",
+        "V4D-S012"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Especialização por cliente",
+      "scenario": "Clientes compartilham base, mas possuem contratos distintos.",
+      "strategy": "Mantenha adapters versionados e seleção autorizada por pedido. Valide isolamento e evite cache reutilizado entre configurações diferentes. Compare custo de servir vários adapters com réplicas especializadas.",
+      "small_model_role": "Um 8–14B pode compartilhar base mantendo adaptações pequenas.",
+      "acceptance": "Nenhuma mistura de comportamento ou cache entre clientes; qualidade medida por contrato.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S036",
+        "V4B-S006",
+        "V4D-S012"
+      ]
+    },
+    {
+      "name": "Professor cria dados para aluno",
+      "scenario": "Uma tarefa possui respostas verificáveis.",
+      "strategy": "Use exemplos filtrados para LoRA e mantenha validação externa. Learning Zone documenta essa combinação em escopo educacional, com limites de disponibilidade e avaliação humana.",
+      "small_model_role": "Um 3–7B pode aprender formato e terminologia sem ajuste completo.",
+      "acceptance": "Melhora em origens novas e manutenção de capacidades necessárias.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S036",
+        "V4B-S006",
+        "V4D-S012"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Posto pequeno não é garantia de suficiência; testar erros do domínio e exceções.",
+    "8_14b": "Vários adapters exigem governança de identidade e avaliação de interferência.",
+    "15_30b": "Economia de parâmetros treináveis não elimina memória de ativações nem custo da base 15–30B.",
+    "training_or_runtime_requirements": "Treinamento de fatores e runtime compatível; módulos-alvo e orientação devem corresponder ao checkpoint real.",
+    "do_not_use_when": "Não aplicar adapter a uma base apenas porque nome e dimensões parecem semelhantes."
+  },
+  "connections": [
+    {
+      "target_id": "T178",
+      "relation": "complements",
+      "how": "Learning Zone descreve dados do professor alimentando especialização LoRA.",
+      "interface": "Dados filtrados e configuração de adaptação.",
+      "condition": "Escopo especializado, sem equivalência geral.",
+      "acceptance": "Confrontar avaliação automática e humana.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4D-S012"
+      ],
+      "case_ids": [
+        "V4D-C006"
+      ]
+    },
+    {
+      "target_id": "T082",
+      "relation": "requires",
+      "how": "Cache de prefixo precisa distinguir adapters que alteram os estados.",
+      "interface": "Identificador e versão do adapter.",
+      "condition": "Reúso somente com identidade completa igual.",
+      "acceptance": "Executar o mesmo prompt com adapters diferentes e verificar isolamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S036",
+        "V4B-S006",
+        "V4D-S012"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Detectar atualização aplicada duas vezes depois de fusão.",
+    "Comparar saídas antes e depois de exportar, fundir ou requantizar."
+  ],
+  "frontier_comparison": "LoRA pode tornar um pequeno modelo competitivo numa tarefa delimitada. O número de parâmetros treinados não mede o conhecimento transferido nem assegura ausência de regressões.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q007"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "C-S036",
+    "V4B-S006",
+    "V4D-S012"
+  ]
+}

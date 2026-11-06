@@ -1,0 +1,36 @@
+{
+  "id": "T229",
+  "name": "Diff-Only Editing / Patch-Based Coding",
+  "canonical_name": "Diff-Only Editing / Patch-Based Coding",
+  "canonical_id": "T229",
+  "aliases": [
+    "patch based coding",
+    "edição por patch"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T230",
+    "T231",
+    "T233",
+    "T239"
+  ],
+  "source_ids": [
+    "V2A-S008",
+    "V2A-S014",
+    "V3C-S034",
+    "V3C-S037",
+    "V4C-S009",
+    "V3C-S042",
+    "V4C-S006",
+    "V4C-S007",
+    "V4C-S017"
+  ],
+  "namespace": "T229",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T229",
+  "chunk_count": 9
+}

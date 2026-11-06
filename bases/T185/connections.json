@@ -1,0 +1,42 @@
+{
+  "entry_id": "T185",
+  "edges": [
+    {
+      "edge_id": "E-T185-01",
+      "from": "T185",
+      "to": "T193",
+      "relation": "complements",
+      "how": "Guardrails externos implementam requisitos verificáveis e atualizáveis.",
+      "interface": "Política versionada e resultados de checagem.",
+      "condition": "Norma externa não contradiz silenciosamente o comportamento treinado.",
+      "acceptance": "Testar conflitos e registrar qual regra determinou o resultado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S039",
+        "V4B-S021",
+        "V3B-S018"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T185-02",
+      "from": "T185",
+      "to": "T198",
+      "relation": "complements",
+      "how": "Confiança e abstenção devem ser avaliadas separadamente da adesão normativa.",
+      "interface": "Predições, rótulos e razões de recusa.",
+      "condition": "Conjunto cobre casos permitidos e proibidos.",
+      "acceptance": "Medir erro e recusa por categoria, sem recompensa por estilo apenas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S039",
+        "V4B-S021",
+        "V3B-S018"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

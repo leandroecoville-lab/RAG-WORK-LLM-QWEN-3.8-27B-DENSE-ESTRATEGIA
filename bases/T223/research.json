@@ -1,0 +1,52 @@
+{
+  "id": "T223",
+  "technical_details": "Uma autochecagem por princípios precisa testar aplicabilidade, evidência e conflito entre regras. Pedir apenas uma nota geral incentiva aprovação superficial. A proposta vincula cada princípio relevante a uma parte concreta do candidato e registra satisfeito, violado ou não determinado. Critério não aplicável não equivale a critério cumprido. Se a revisão altera o artefato, verificações afetadas precisam ser refeitas sobre a nova versão.",
+  "boundary_condition": "Autocrítica pelo mesmo modelo pode reproduzir o erro inicial; concordância interna não substitui uma evidência externa disponível.",
+  "implementation_contract": {
+    "inputs": "Candidato versionado, princípios vigentes e evidências necessárias.",
+    "outputs": "Diagnóstico por princípio, correções propostas e pontos inconclusivos.",
+    "state": "Versão das regras, aplicabilidade e artefato revisado.",
+    "invariant": "Uma revisão não declara aprovação em dimensões para as quais não possui evidência."
+  },
+  "tradeoffs": [
+    "Regras detalhadas tornam revisão mais rastreável e podem conflitar ou ocupar muito contexto.",
+    "Checagem interna é barata relativamente a revisão externa e compartilha vieses do produtor."
+  ],
+  "failure_test": "Teste proposto: incluir dois princípios que exigem interpretação conflitante e um fato impossível de verificar; exigir identificação do conflito e inconclusão factual, sem nota única de aprovação.",
+  "evaluation_plan": "Comparar autochecagem, checklist determinístico e revisão independente em candidatos com violações conhecidas. Medir falsa aprovação, correções que introduzem defeitos e custo. Separar avaliação da proposta da avaliação do artefato já corrigido.",
+  "comparisons": [
+    {
+      "entry_id": "T200",
+      "relation": "complements",
+      "reason": "Verificação independente testa dimensões que a autochecagem pode interpretar incorretamente."
+    },
+    {
+      "entry_id": "T206",
+      "relation": "complements",
+      "reason": "Verificação de processo acompanha se a sequência respeitou critérios definidos."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Constitutional AI utiliza princípios em crítica e revisão como parte de um método de treinamento mais amplo.",
+    "source_ids": [
+      "V2A-S020"
+    ],
+    "support": "related",
+    "caveat": "A checagem de inferência desta ficha é adaptação editorial e não reproduz o treinamento descrito no paper."
+  },
+  "advanced_qa": [
+    {
+      "question": "Não encontrar uma violação prova conformidade?",
+      "answer": "Não. Pode refletir cobertura limitada ou critério mal interpretado; o relatório deve explicitar escopo e evidência."
+    },
+    {
+      "question": "Preciso verificar novamente após uma correção?",
+      "answer": "Sim, nas dimensões afetadas: o artefato mudou e a evidência anterior pode não valer para a nova versão."
+    }
+  ],
+  "source_ids": [
+    "V2A-S020",
+    "V3C-S032"
+  ],
+  "research_note": "Mecanismos referenciados em fontes primárias; contratos e verificação descritos são propostas, não ensaios executados."
+}

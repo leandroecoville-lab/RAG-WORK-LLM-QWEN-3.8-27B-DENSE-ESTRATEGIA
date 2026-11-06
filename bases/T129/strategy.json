@@ -1,0 +1,120 @@
+{
+  "id": "T129",
+  "novelty": "A v3 separou supervisão auxiliar e proposta especulativa. O aprofundamento analisa transferência entre treino e serving, qualidade por distância futura e custo de manter cabeças que podem não ser usadas.",
+  "deep_layers": [
+    {
+      "name": "Objetivo e implantação",
+      "detail": "Um modelo pode ter sido treinado com alvos futuros sem disponibilizar todas as cabeças na exportação. Inspecione artefato e runtime antes de planejar MTP na inferência. Uma descrição do treinamento não comprova que a implantação usa geração de múltiplos tokens por passo ou que o checkpoint público inclui os componentes necessários.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S039",
+        "V4B-S011",
+        "V4D-S008"
+      ]
+    },
+    {
+      "name": "Distância da previsão",
+      "detail": "Quanto mais distante o token previsto, maior pode ser a incerteza sem observar as escolhas intermediárias. Meça acerto e aceitação por horizonte, categoria e configuração de amostragem. Uma média agregada pode esconder uma primeira cabeça útil e demais posições que só acrescentam custo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S039",
+        "V4B-S011",
+        "V4D-S008"
+      ]
+    },
+    {
+      "name": "Compartilhamento de computação",
+      "detail": "Cabeças auxiliares podem reaproveitar representações, mas ainda exigem operações e estado. Quantifique memória e tempo adicionais e confirme se o backend executa de modo eficiente. A alternativa de draft externo possui outro custo e outra flexibilidade; a comparação depende da implementação concreta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S039",
+        "V4B-S011",
+        "V4D-S008"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Escolha de checkpoint",
+      "scenario": "Dois modelos semelhantes diferem em suporte MTP.",
+      "strategy": "Compare qualidade do caminho convencional, disponibilidade das cabeças e benefício da verificação. Não escolha só pelo número de tokens que o material promocional diz prever.",
+      "small_model_role": "Um 15–30B pode ser candidato quando respostas longas tornam a economia relevante.",
+      "acceptance": "Aceitar pela latência completa, memória e qualidade no mesmo domínio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S039",
+        "V4B-S011",
+        "V4D-S008"
+      ]
+    },
+    {
+      "name": "Pesquisa de treinamento",
+      "scenario": "Há controle sobre um modelo especializado.",
+      "strategy": "Adicione objetivos futuros com alinhamento rigoroso e avalie se melhoram representação ou serving. Separe efeito do treinamento do efeito de executar as cabeças na geração.",
+      "small_model_role": "Um 3–7B pode servir como escala de experimento antes de investimento maior.",
+      "acceptance": "Ablacionar objetivo auxiliar e modo de inferência em comparações distintas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S039",
+        "V4B-S011",
+        "V4D-S008"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "O benefício pode estar no treinamento, mesmo sem aceleração em serving; não misturar as conclusões.",
+    "8_14b": "Use horizonte curto inicialmente e registre retornos decrescentes por posição.",
+    "15_30b": "Inclua estados auxiliares no orçamento e na transferência entre workers, quando presentes.",
+    "training_or_runtime_requirements": "Requer arquitetura e pesos compatíveis, além de verificação apropriada na inferência. Não é um flag que cria cabeças treinadas.",
+    "do_not_use_when": "Não emitir previsões independentes como se fossem a mesma fatoração autoregressiva do alvo."
+  },
+  "connections": [
+    {
+      "target_id": "T079",
+      "relation": "feeds",
+      "how": "Cabeças MTP podem produzir candidatos para verificação especulativa.",
+      "interface": "Propostas e informações exigidas pelo algoritmo.",
+      "condition": "Runtime suporta o checkpoint e a regra de confirmação.",
+      "acceptance": "Comparar distribuição e medir tokens confirmados por rodada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S039",
+        "V4B-S011",
+        "V4D-S008"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T102",
+      "relation": "complements",
+      "how": "Separar fases pode exigir transferir estados auxiliares junto ao KV.",
+      "interface": "Manifesto de estados por sequência.",
+      "condition": "Destino conhece todos os componentes necessários.",
+      "acceptance": "Testar retomada sem perda ou mistura de cabeças e posições.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S039",
+        "V4B-S011",
+        "V4D-S008"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Verificar se as cabeças existem no artefato entregue, não somente no paper.",
+    "Separar disponibilidade do recurso em TensorRT-LLM de adoção por um produto específico."
+  ],
+  "frontier_comparison": "MTP não permite inferir qualidade geral a partir de quantos tokens são propostos. Compare a resposta do modelo e o custo de produzi-la; melhoria de treinamento e aceleração são hipóteses diferentes.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q001",
+      "V4B-Q018"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S039",
+    "V4B-S011",
+    "V4D-S008"
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "id": "P003",
+  "novelty": "A v3 definiu residentes e fixação. Aqui Virtual Context Manager é proposto como controlador de conjuntos de trabalho e custos de recarga.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Agrupe blocos que precisam coexistir para uma decisão. Se o conjunto inteiro não couber, decompor a decisão ou criar representação intermediária verificável; evicção individual pode causar alternância sem progresso.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010",
+        "V3A-S039"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Antecipe dependências explícitas e cancele prefetch quando o plano mudar. Registrar conteúdo carregado sem uso permite perceber quando antecipação desperdiça janela.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010",
+        "V3A-S039"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare carga sob demanda, prefetch e grupos fixados. Meça recargas, avanço por chamada e perda de condições; uma falta semântica é hipótese operacional com critério, não falha de endereço universal. Unidade de avaliação: conjunto de trabalho.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010",
+        "V3A-S039"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Comparação de versões grandes",
+      "scenario": "Leitor alterna entre documentos.",
+      "strategy": "Carregar pares de seções correspondentes e guardar diferenças estruturadas; manter referências aos originais para revisar conflito.",
+      "small_model_role": "8–14B compara pares.",
+      "acceptance": "Toda diferença relevante deve permanecer verificável sem releitura integral.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010",
+        "V3A-S039"
+      ]
+    },
+    {
+      "name": "Procedimento com várias etapas",
+      "scenario": "Cada passo usa recursos distintos.",
+      "strategy": "Carregar dependências do próximo passo, confirmar persistência do resultado atual e só então liberar blocos anteriores.",
+      "small_model_role": "3–7B executa; 15–30B replaneja.",
+      "acceptance": "Nenhuma unidade modificada pode sair sem cópia durável identificada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010",
+        "V3A-S039"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Leitor de blocos explicitamente escolhidos por controlador.",
+    "8_14b": "Comparador local com conjunto de trabalho pequeno e estável.",
+    "15_30b": "Planejador de decomposição quando dependências não cabem juntas.",
+    "training_or_runtime_requirements": "Mapa de residência, dependências, referências versionadas e confirmação de persistência; módulo permanece proposta.",
+    "do_not_use_when": "A informação necessária não pode ser recuperada ou conjunto indispensável não cabe e não admite decomposição."
+  },
+  "connections": [
+    {
+      "target_id": "P002",
+      "relation": "requires",
+      "how": "Obter limite de residência e reserva.",
+      "interface": "Orçamento útil, modelo e contratos fixados.",
+      "condition": "Contagem incluir dependências de cada bloco.",
+      "acceptance": "Adicionar bloco que excede conjunto e exigir decisão explícita.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010",
+        "V3A-S039"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "P006",
+      "relation": "complements",
+      "how": "Carregar conteúdo e dependências por referência.",
+      "interface": "Recurso, revisão, seletor e custo.",
+      "condition": "Loader verificar identidade do corpo.",
+      "acceptance": "Renomear recurso e detectar referência incompatível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010",
+        "V3A-S039"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T218",
+      "relation": "requires",
+      "how": "Detectar alternância de cargas sem avanço.",
+      "interface": "Sequência de residentes, faltas e progresso.",
+      "condition": "Identidades dos blocos serem estáveis.",
+      "acceptance": "Forçar ciclo entre conjuntos e exigir mudança de estratégia.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010",
+        "V3A-S039"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir contexto virtual com KV cache.",
+    "Não apagar armazenamento ao remover bloco da janela."
+  ],
+  "frontier_comparison": "Comparar progresso por custo de leitura em tarefas maiores que a janela; seleção imperfeita limita qualquer porte.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S009",
+    "A-S010",
+    "V3A-S039"
+  ]
+}

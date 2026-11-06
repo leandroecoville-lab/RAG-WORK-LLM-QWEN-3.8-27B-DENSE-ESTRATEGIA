@@ -1,0 +1,114 @@
+{
+  "id": "T222",
+  "novelty": "A v3 separava ocupação e consumo acumulado. A expansão transforma o monitor em controlador de ações com previsão de payload, orçamento de emergência e telemetria que explica por que uma janela cresceu.",
+  "deep_layers": [
+    {
+      "name": "Contabilidade por origem",
+      "detail": "Atribua tokens a instruções, histórico, documentos, schemas, ferramentas e saída prevista. Uma mudança de catálogo pode elevar uso sem novos turnos do usuário. Mostre diferenças por chamada e por revisão do prompt, permitindo corrigir a causa em vez de compactar tudo indiscriminadamente. Valores estimados e observados devem permanecer distinguíveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Previsão do próximo passo",
+      "detail": "Antes da ferramenta, estime intervalo de saída e a margem para processá-la. Quando o tamanho não é limitado, escolha paginação, projeção ou arquivo externo. O monitor não deve esperar o payload chegar para descobrir que já não cabe; a decisão de admissão usa o risco de crescimento, não somente ocupação atual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013",
+        "V3C-S022"
+      ]
+    },
+    {
+      "name": "Ações ordenadas por perda",
+      "detail": "Priorize remover duplicatas recuperáveis, podar campos dispensáveis e ocultar observações encerradas antes de resumir evidência crítica. Cada ação possui custo e risco. Reserve capacidade para handoff se nenhuma redução preservar o requisito; o monitor deve poder bloquear a próxima chamada e produzir um estado retomável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S031",
+        "V3C-S022"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Muitas ferramentas disponíveis",
+      "scenario": "Schemas consomem a maior parte da janela de um modelo local.",
+      "strategy": "Meça contribuição do catálogo e substitua carga integral por descoberta progressiva. Registre schemas carregados por tarefa e descarte apenas os que não serão necessários ao próximo passo. Se uma ferramenta muda de versão, invalide seu descritor e atualize a estimativa.",
+      "small_model_role": "3–7B usa conjunto mínimo; 8–14B seleciona ferramentas; runtime mede bytes e tokens reais.",
+      "acceptance": "Proposta: maior espaço útil para evidência sem queda na seleção correta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ]
+    },
+    {
+      "name": "Missão de edição longa",
+      "scenario": "O agente aproxima-se do limite enquanto ainda precisa testar e entregar.",
+      "strategy": "Reserve explicitamente retorno de testes, interpretação e relatório final. Quando a previsão ameaça essa reserva, interrompa expansão e compacte ou faça handoff em ponto seguro. Não confunda redução do prompt com devolução de custo já gasto no provedor.",
+      "small_model_role": "15–30B integra etapas; modelos menores executam blocos com teto local.",
+      "acceptance": "Proposta: nenhum estouro inesperado e conclusão com evidência de validação disponível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014",
+        "V3C-S022"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Monitor externo evita gastar contexto do próprio modelo para contar a janela.",
+    "8_14b": "Classificação de conteúdo por utilidade pode apoiar ações, mantendo contagem determinística.",
+    "15_30b": "Planejamento de contingência e tradeoffs quando várias obrigações competem por espaço.",
+    "training_or_runtime_requirements": "Tokenizer e template reais, telemetria do servidor, limites conhecidos e reserva para operações de recuperação.",
+    "do_not_use_when": "Não tratar contador aproximado como garantia de caber nem expor apenas porcentagem sem ação correspondente."
+  },
+  "connections": [
+    {
+      "target_id": "T212",
+      "relation": "complements",
+      "how": "Harness Uber usa ocupação para disparar compactação em seu perfil de contexto.",
+      "interface": "Uso observado, limiar configurado e política de compactação.",
+      "condition": "O limiar pertence ao modelo e backend usados.",
+      "acceptance": "Gatilho deixa margem e o resumo mantém informação necessária.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S014"
+      ],
+      "case_ids": [
+        "V4C-C015"
+      ]
+    },
+    {
+      "target_id": "T214",
+      "relation": "complements",
+      "how": "O monitor identifica custo de ferramenta e orienta projeção antes da próxima transferência.",
+      "interface": "Previsão de payload e campos necessários.",
+      "condition": "Projeção preserva erro, identidade e completude.",
+      "acceptance": "Redução medida sem omissão de campo exigido pelo aceite.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Multimodalidade e mensagens ocultas do runtime podem invalidar estimativa textual simples.",
+    "Compactar reduz ocupação futura, não apaga consumo acumulado da missão."
+  ],
+  "frontier_comparison": "Compare taxa de conclusão dentro da janela e custo total por tarefa entre portes. Um bom monitor torna limites previsíveis, mas não aumenta a capacidade intrínseca de raciocinar sobre informação excluída.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q009",
+      "V4C-Q014",
+      "V4C-Q028"
+    ],
+    "scope_note": "Uber e NVIDIA fornecem controles concretos; a ordem de ações e reserva por tarefa são propostas avaliáveis, não resultados observados neste ambiente."
+  },
+  "source_ids": [
+    "V4C-S013",
+    "V4C-S014",
+    "V3C-S022",
+    "V4C-S031"
+  ]
+}

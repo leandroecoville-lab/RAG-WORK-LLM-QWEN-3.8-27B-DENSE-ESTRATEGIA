@@ -1,0 +1,111 @@
+{
+  "id": "T017",
+  "novelty": "A v3 definiu retorno do folding. Aqui a novidade é decidir quais subtarefas merecem contexto isolado e medir a suficiência do retorno.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Escolha folding quando exploração produz muito material descartável e poucos resultados estáveis. Dependências densas entre subtarefas podem tornar o custo de comunicar estado maior que a economia.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S020",
+        "C-S030"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Retorne resultado, evidências e perguntas ainda abertas em canais separados. O chamador pode pedir expansão pontual sem reiniciar toda a exploração nem aceitar conclusão sem base.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S020",
+        "C-S030"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare execução monolítica e subcontextos com mesmo limite total de chamadas. Meça trabalho duplicado, suficiência do retorno e necessidade de reabrir exploração. Unidade de avaliação: subtarefa delegada. Inclua subtarefa cujo resultado é correto localmente, mas incompatível com uma restrição do chamador. O contrato deve carregar essa restrição desde a delegação e devolver conflito, não uma solução aparentemente completa. Medir retrabalho por retorno insuficiente ajuda a decidir quando isolamento de contexto compensa a comunicação adicional entre trabalhadores.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S020",
+        "C-S030"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Investigação de componente",
+      "scenario": "Um erro pode estar em três módulos.",
+      "strategy": "Abrir subcontexto por hipótese, exigir evidência discriminante e retornar também hipóteses descartadas com motivo.",
+      "small_model_role": "3–7B localiza; 8–14B investiga módulo.",
+      "acceptance": "Líder deve distinguir ausência de evidência de hipótese refutada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S020",
+        "C-S030"
+      ]
+    },
+    {
+      "name": "Pesquisa de alternativas",
+      "scenario": "Cada opção tem documentação extensa.",
+      "strategy": "Delegar coleta em esquema comum e comparar somente atributos respaldados; reabrir opção quando critério novo surgir.",
+      "small_model_role": "15–30B integra comparações.",
+      "acceptance": "Nenhuma diferença deve resultar apenas de cobertura desigual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S020",
+        "C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Subtarefa estreita de localização ou extração com retorno fechado.",
+    "8_14b": "Investigador local capaz de pedir uma expansão adicional.",
+    "15_30b": "Coordenador de retornos heterogêneos e lacunas entre hipóteses.",
+    "training_or_runtime_requirements": "Contrato de retorno, referências duráveis e orçamento por subcontexto; folding aprendido exige treino próprio.",
+    "do_not_use_when": "Todos os trabalhadores precisam continuamente do mesmo estado mutável."
+  },
+  "connections": [
+    {
+      "target_id": "T169",
+      "relation": "complements",
+      "how": "Isolar exploração por hipótese e devolver contrato comum.",
+      "interface": "Objetivo, limites, resultado e evidências.",
+      "condition": "Não houver escrita concorrente irrestrita.",
+      "acceptance": "Medir duplicação e efeitos de informação omitida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S020",
+        "C-S030"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T015",
+      "relation": "feeds",
+      "how": "Retornar referências para detalhes reabríveis.",
+      "interface": "Resultado, artifact_id e seletores.",
+      "condition": "Artefato sobreviver ao encerramento do subcontexto.",
+      "acceptance": "Reabrir suporte após encerrar o trabalhador.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S020",
+        "C-S030"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir isolamento de contexto com isolamento de efeitos.",
+    "Conservar incertezas no retorno condensado."
+  ],
+  "frontier_comparison": "Comparar tarefas decomponíveis; dobrar agentes não garante compensar um leitor insuficiente.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S020",
+    "C-S030"
+  ]
+}

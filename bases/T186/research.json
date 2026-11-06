@@ -1,0 +1,46 @@
+{
+  "id": "T186",
+  "technical_details": "Uma rodada de debate pode acrescentar informação ou apenas redistribuir a mesma crença. Como proposta experimental, preserve respostas iniciais independentes antes de expor argumentos, registre quais alegações mudaram e exija evidência para a mudança. Agentes com pesos, fontes e prompts semelhantes tendem a compartilhar falhas; multiplicar instâncias não equivale a obter observações independentes. A ordem de exposição também pode induzir ancoragem.",
+  "boundary_condition": "Consenso crescente pode esconder contágio de uma premissa falsa, especialmente quando um participante escreve de maneira mais persuasiva.",
+  "implementation_contract": {
+    "inputs": "Problema, propostas iniciais isoladas, regras de interação e evidências acessíveis.",
+    "outputs": "Resposta selecionada com divergências e mudanças justificadas.",
+    "state": "Histórico por rodada, origem das alegações e orçamento de chamadas.",
+    "invariant": "Nenhuma afirmação ganha validade apenas por ser repetida por vários participantes."
+  },
+  "tradeoffs": [
+    "Rodadas adicionais ampliam oportunidade de crítica e custo de coordenação.",
+    "Diversidade pode revelar erros e produzir conflitos que exigem adjudicação externa."
+  ],
+  "failure_test": "Teste proposto: inserir uma justificativa convincente com premissa falsa em um participante e variar sua posição na rodada. Esperar detecção por evidência independente e medir propagação do erro.",
+  "evaluation_plan": "Plano proposto: comparar resposta única, votação sem interação e debate com orçamento de tokens equivalente. Medir correção externa, erros compartilhados, mudanças corretas/incorretas e custo; aprovar debate quando seu ganho supera alternativas igualmente custosas.",
+  "comparisons": [
+    {
+      "entry_id": "T187",
+      "relation": "alternative",
+      "reason": "Votação agrega propostas; debate permite que participantes revisem suas próprias respostas após interação."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O estudo de debate multiagente usa múltiplas instâncias que propõem e discutem respostas em rodadas.",
+    "source_ids": [
+      "C-S040"
+    ],
+    "support": "direct",
+    "caveat": "Melhorias experimentais não provam independência dos agentes nem tornam consenso um certificado."
+  },
+  "advanced_qa": [
+    {
+      "question": "Agentes com nomes diferentes são diversos?",
+      "answer": "Não necessariamente. Diversidade relevante envolve fontes, estratégias e padrões de erro, não apenas personas."
+    },
+    {
+      "question": "O árbitro deve escolher o argumento mais longo?",
+      "answer": "Não. Deve aplicar critérios de evidência e correção; comprimento ou confiança verbal podem favorecer um erro persuasivo."
+    }
+  ],
+  "source_ids": [
+    "C-S040"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

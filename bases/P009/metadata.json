@@ -1,0 +1,44 @@
+{
+  "id": "P009",
+  "name": "Inference Engine",
+  "canonical_name": "Inference Engine",
+  "canonical_id": "P009",
+  "aliases": [
+    "motor proposto de inferência"
+  ],
+  "category": "componentes_propostos",
+  "kind": "component",
+  "scope": "proposta",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T087",
+    "T088",
+    "T089",
+    "T102",
+    "T196",
+    "P001",
+    "P010"
+  ],
+  "source_ids": [
+    "B-S044",
+    "D-S003",
+    "B-S009",
+    "C-S008",
+    "V3D-S007",
+    "V3D-S012",
+    "V4B-S010",
+    "V4B-S008",
+    "V4B-S014",
+    "B-S037",
+    "V3D-S006",
+    "V4B-S001",
+    "V4B-S002",
+    "V4B-S003",
+    "V4B-S019"
+  ],
+  "namespace": "P009",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/P009",
+  "chunk_count": 9
+}

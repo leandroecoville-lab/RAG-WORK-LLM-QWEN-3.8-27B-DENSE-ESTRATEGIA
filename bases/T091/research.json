@@ -1,0 +1,46 @@
+{
+  "id": "T091",
+  "technical_details": "No particionamento descrito para o forward, dividir consultas entre warps permite que cada grupo produza sua própria fatia de saída. Dividir chaves entre warps pode exigir somar resultados parciais com comunicação adicional. A seleção de tiles também envolve registradores: aumentar o bloco reduz certas transferências, porém pode provocar spilling ou impedir que blocos suficientes permaneçam simultaneamente ativos no dispositivo.",
+  "boundary_condition": "Formas pequenas podem não oferecer paralelismo suficiente; a configuração eficiente varia com dimensão da cabeça e recursos disponíveis.",
+  "implementation_contract": {
+    "inputs": "Tensores, máscara e configuração de tiles compatível com o dispositivo.",
+    "outputs": "Resultado da atenção e informações sobre o kernel realmente selecionado.",
+    "state": "Registradores, memória compartilhada e distribuição de linhas de consulta.",
+    "invariant": "Cada linha recebe contribuições de todas as chaves permitidas exatamente uma vez."
+  },
+  "tradeoffs": [
+    "Tiles maiores podem reduzir tráfego e diminuir ocupação ao mesmo tempo.",
+    "Menos operações escalares ajuda quando essas operações limitam o kernel."
+  ],
+  "failure_test": "Teste proposto: variar dimensões próximas aos limites de especialização e registrar spilling ou fallback. Comparar numericamente com referência e exigir que configurações não suportadas falhem de modo explícito.",
+  "evaluation_plan": "Plano proposto: comparar implementações sob mesmas formas e precisão, separando prefill e decode. Medir tempo, ocupação e tráfego compartilhado quando disponíveis; escolher pelo tempo total, sem usar utilização teórica isolada como critério de sucesso.",
+  "comparisons": [
+    {
+      "entry_id": "T090",
+      "relation": "specializes",
+      "reason": "Mantém a atenção e melhora sua distribuição de trabalho entre recursos da GPU."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O artigo descreve dividir Q entre warps para reduzir comunicação que surgia no esquema com K repartido.",
+    "source_ids": [
+      "V3B-S006"
+    ],
+    "support": "direct",
+    "caveat": "O detalhamento refere-se ao algoritmo publicado; kernels posteriores podem escolher outras decomposições."
+  },
+  "advanced_qa": [
+    {
+      "question": "O maior tile é o melhor?",
+      "answer": "Não. Registradores e memória compartilhada limitam quantos blocos podem executar simultaneamente e podem causar spill."
+    },
+    {
+      "question": "Backward tem exatamente a mesma vantagem?",
+      "answer": "Não. As dependências entre gradientes exigem coordenação adicional; meça o caminho de treinamento separadamente."
+    }
+  ],
+  "source_ids": [
+    "V3B-S006"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

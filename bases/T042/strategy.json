@@ -1,0 +1,112 @@
+{
+  "id": "T042",
+  "novelty": "A v3 contou serialização completa. Aqui orçamento por tokens é distribuído por incerteza de saída e custo de evidência.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Reserve saída conforme tipo de resposta e modo de execução. Uma extração de campos tem distribuição diferente de uma análise aberta; reserva fixa desperdiça espaço ou produz truncamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V4A-S015"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Selecione evidências pelo custo marginal de incluir unidade completa. Um trecho barato pode exigir cabeçalho e definição adicionais; orçamento precisa cobrar esse conjunto, não só o texto selecionado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V4A-S015"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare reserva fixa e reserva por tarefa. Meça estouro, término por limite, evidências excluídas e respostas aceitas; validar quantis em tráfego novo, não apenas no conjunto usado para escolher reservas. Unidade de avaliação: requisição serializada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V4A-S015"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Serviço local concorrente",
+      "scenario": "Várias sessões competem por memória.",
+      "strategy": "Reduzir orçamento por sessão conforme concorrência medida, preservando campos obrigatórios; encaminhar tarefa grande para fila própria.",
+      "small_model_role": "3–7B responde pacotes curtos.",
+      "acceptance": "Não ultrapassar memória de pico com carga simultânea.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V4A-S015"
+      ]
+    },
+    {
+      "name": "Relatório com tabela",
+      "scenario": "Número de linhas determina saída.",
+      "strategy": "Estimar saída por schema e linhas, reservar espaço e dividir relatório quando conjunto obrigatório não couber.",
+      "small_model_role": "8–14B gera seções; código monta tabela.",
+      "acceptance": "Nenhuma linha pode desaparecer por término prematuro.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V4A-S015"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Saída estruturada curta com reserva previsível por schema.",
+    "8_14b": "Resposta de tamanho moderado com estimativa por número de evidências.",
+    "15_30b": "Síntese extensa apenas quando reserva e hardware sustentarem contexto e saída.",
+    "training_or_runtime_requirements": "Tokenizer e protocolo reais, telemetria de término e modelo de memória do servidor; parâmetros não definem sozinhos custo.",
+    "do_not_use_when": "O conjunto obrigatório excede a janela útil e a aplicação não permite decomposição."
+  },
+  "connections": [
+    {
+      "target_id": "T152",
+      "relation": "complements",
+      "how": "Distribuir orçamento entre fases antes de montar entrada.",
+      "interface": "Cotas, prioridades e estimativa de saída.",
+      "condition": "Soma incluir overhead e reservas.",
+      "acceptance": "Trocar modelo e recalcular todas as cotas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V4A-S015"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T033",
+      "relation": "requires",
+      "how": "Contar custo de unidades completas.",
+      "interface": "Bloco, dependências e tokens agregados.",
+      "condition": "Estruturas não poderem ser cortadas arbitrariamente.",
+      "acceptance": "Testar tabela cuja legenda torna o bloco maior que a cota.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V4A-S015"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não descontar tokens cacheados do limite da janela.",
+    "Não usar caracteres como tokens sem medir erro da aproximação."
+  ],
+  "frontier_comparison": "Comparar qualidade com orçamento efetivo igual; respostas truncadas entram na taxa de falha.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q011"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S006",
+    "V4A-S015"
+  ]
+}

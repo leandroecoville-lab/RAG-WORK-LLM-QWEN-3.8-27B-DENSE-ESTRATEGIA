@@ -1,0 +1,119 @@
+{
+  "id": "T201",
+  "novelty": "A v3 separou largura, profundidade e custo de ferramentas. Esta camada propõe alocação marginal de orçamento, controle de caminhos improdutivos e comparação entre busca e obtenção de nova informação.",
+  "deep_layers": [
+    {
+      "name": "Valor da próxima ação",
+      "detail": "Decida entre gerar outro candidato, revisar, executar teste ou buscar evidência conforme a falha atual. Se todos os candidatos usam a mesma premissa falsa, mais geração tem pouco valor. Uma política proposta estima benefício esperado e custo, mas precisa ser validada; a estimativa do próprio modelo não é uma probabilidade confiável por definição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S020",
+        "V4B-S022",
+        "V4B-S023"
+      ]
+    },
+    {
+      "name": "Portfólio de busca",
+      "detail": "Combine algumas alternativas independentes com refinamento dos candidatos promissores, preservando diversidade relevante. AlphaEvolve usa busca evolutiva com avaliadores, em um domínio executável. A transferência para um agente pequeno exige oráculos e representações adequados, sem transportar automaticamente os resultados da infraestrutura Google.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S020",
+        "V4B-S022",
+        "V4B-S023"
+      ]
+    },
+    {
+      "name": "Custo e parada",
+      "detail": "Inclua tokens, ferramentas, filas e verificadores no orçamento. Pare por sucesso verificado, benefício marginal baixo ou limite explícito; não apenas quando o agente se declara satisfeito. Guarde a melhor solução válida e pendências, evitando que uma última tentativa pior destrua progresso anterior.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S020",
+        "V4B-S022",
+        "V4B-S023"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Otimização de função pequena",
+      "scenario": "Há desempenho mensurável e testes de correção.",
+      "strategy": "Gere diversidade inicial, elimine incorretas e refine soluções válidas. Use entradas reservadas para evitar explorar particularidades do benchmark de desenvolvimento.",
+      "small_model_role": "Um 8–14B pode explorar um espaço local com avaliações baratas.",
+      "acceptance": "Melhora reproduzível em entradas novas e custo total de busca conhecido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S020",
+        "V4B-S022",
+        "V4B-S023"
+      ]
+    },
+    {
+      "name": "Tarefa de pesquisa delimitada",
+      "scenario": "Uma resposta depende de poucas evidências ainda ausentes.",
+      "strategy": "Invista chamadas em localizar e confrontar fontes antes de aumentar amostras de redação. Reavalie necessidade de refinamento quando a informação estiver completa.",
+      "small_model_role": "Um 3–7B pode organizar trabalho e síntese curta com recuperação confiável.",
+      "acceptance": "Cobertura factual e tempo até resposta sustentada, não número de pensamentos produzidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S020",
+        "V4B-S022",
+        "V4B-S023"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Computação adicional ajuda quando o modelo já produz candidatos úteis ou consegue usar ferramentas.",
+    "8_14b": "Aumente orçamento por dificuldade observada e capacidade do verificador.",
+    "15_30b": "Compare custo de várias tentativas 15–30B com uma chamada mais forte, incluindo latência serial.",
+    "training_or_runtime_requirements": "Orquestração em inferência; pode usar modelos fixos. Treinamento para aproveitar orçamento é outra intervenção.",
+    "do_not_use_when": "Não assumir que dobrar tokens duplica qualidade nem chamar repetição sem evidência de raciocínio superior."
+  },
+  "connections": [
+    {
+      "target_id": "T189",
+      "relation": "complements",
+      "how": "Best-of-N investe orçamento em alternativas selecionadas por verificação.",
+      "interface": "Candidatos e custos marginais.",
+      "condition": "Verificador distingue qualidade real.",
+      "acceptance": "Comparar largura com profundidade em orçamento equivalente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S020",
+        "V4B-S022",
+        "V4B-S023"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T202",
+      "relation": "complements",
+      "how": "Planejamento por incerteza decide quando observar em vez de gerar.",
+      "interface": "Lacunas e ações de aquisição de informação.",
+      "condition": "Observações são acessíveis e relevantes.",
+      "acceptance": "Medir redução de erro por ação adicional.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S020",
+        "V4B-S022",
+        "V4B-S023"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Cobrar no custo tentativas descartadas e verificações inconclusivas.",
+    "Não ajustar a política de busca sobre os casos finais de avaliação."
+  ],
+  "frontier_comparison": "Avalie curvas de sucesso versus custo e prazo. Em tarefas verificáveis, busca pode reduzir uma lacuna específica; fora delas, mais computação pode apenas ampliar erro e custo.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q011"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S020",
+    "V4B-S022",
+    "V4B-S023"
+  ]
+}

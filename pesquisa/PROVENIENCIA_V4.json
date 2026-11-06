@@ -1,0 +1,2457 @@
+{
+  "method": "Lotes congelados antes da consolidação; revisões explícitas aplicadas depois, sem modificar staging/v3.",
+  "groups": {
+    "A": {
+      "ready_sha256": "304fcd46bb5c8c205cc8fca8665030e280430e99086999beb91e898c1c858c8b",
+      "files": {
+        "sources_A.jsonl": {
+          "sha256": "316cc6f04254900142a1cbc63676db230461dbf8542a3fbb8fd66c442e35f9ec",
+          "records": 27
+        },
+        "cases_A.jsonl": {
+          "sha256": "d319201a96798293c146633ce9c65cdab25adb4967e34ee8e9bdb0dc180a4e87",
+          "records": 33
+        },
+        "searches_A.jsonl": {
+          "sha256": "b3bfcd6ad221298f4b8184526e99c4911b5326a7abd2184c7761ae561d72e2b1",
+          "records": 26
+        },
+        "strategy_A.jsonl": {
+          "sha256": "3f40dff40ca6f5fab64dfec1093ddd5319fa064c545553b986a2fe030c595099",
+          "records": 96
+        }
+      },
+      "raw_receipt": {
+        "group": "A",
+        "status": "READY",
+        "validated_on": "2026-11-05",
+        "counts": {
+          "strategy_A.jsonl": 96,
+          "sources_A.jsonl": 27,
+          "cases_A.jsonl": 33,
+          "searches_A.jsonl": 26
+        },
+        "sha256": {
+          "strategy_A.jsonl": "3f40dff40ca6f5fab64dfec1093ddd5319fa064c545553b986a2fe030c595099",
+          "sources_A.jsonl": "316cc6f04254900142a1cbc63676db230461dbf8542a3fbb8fd66c442e35f9ec",
+          "cases_A.jsonl": "d319201a96798293c146633ce9c65cdab25adb4967e34ee8e9bdb0dc180a4e87",
+          "searches_A.jsonl": "b3bfcd6ad221298f4b8184526e99c4911b5326a7abd2184c7761ae561d72e2b1"
+        },
+        "connections": 199,
+        "content_words": 32361,
+        "content_words_range": [
+          294,
+          420
+        ],
+        "case_classes": {
+          "production_documented": 13,
+          "operational_product": 10,
+          "research_only": 10
+        },
+        "notes": [
+          "96 IDs completos; fontes, consultas e alvos resolvidos.",
+          "199 conexões são propostas de engenharia, sem alegação de integração operacional comprovada.",
+          "Boilerplate removido conforme revisão da raiz; densidade específica priorizada sobre quota de palavras.",
+          "R014 é alias editorial de R013; P usa apenas analogy nos casos.",
+          "A meta de dez casos exatos por base não foi preenchida artificialmente.",
+          "Staging A congelado após este READY."
+        ]
+      }
+    },
+    "B": {
+      "ready_sha256": "5734410d7deb208a404869e05b1290a9801dc26dfbce1d3cd58a6abc1c4bccc4",
+      "files": {
+        "sources_B.jsonl": {
+          "sha256": "29e5221a1d86284ec12895db838a0ca50fc27ad0adbb6ecbc38fa117a90108a7",
+          "records": 32
+        },
+        "cases_B.jsonl": {
+          "sha256": "afedb5f487b86bfb4d4f8ca8b69e33dc359c9bef27c31e4ba3111fa43d707690",
+          "records": 26
+        },
+        "searches_B.jsonl": {
+          "sha256": "1ec7ace61e0e9c66e8b944e87c808b3e135a7fc76cc8b06953cb72d070461f9e",
+          "records": 26
+        },
+        "strategy_B.jsonl": {
+          "sha256": "ff5327060651eb3cd7bc60b9a2cefabd5b037d718dab4e3381eb1eed9af575a6",
+          "records": 96
+        }
+      },
+      "raw_receipt": {
+        "group": "B",
+        "checked_on": "2026-11-05",
+        "files": {
+          "strategy_B.jsonl": {
+            "count": 96,
+            "sha256": "ff5327060651eb3cd7bc60b9a2cefabd5b037d718dab4e3381eb1eed9af575a6"
+          },
+          "cases_B.jsonl": {
+            "count": 26,
+            "sha256": "afedb5f487b86bfb4d4f8ca8b69e33dc359c9bef27c31e4ba3111fa43d707690"
+          },
+          "sources_B.jsonl": {
+            "count": 32,
+            "sha256": "29e5221a1d86284ec12895db838a0ca50fc27ad0adbb6ecbc38fa117a90108a7"
+          },
+          "searches_B.jsonl": {
+            "count": 26,
+            "sha256": "1ec7ace61e0e9c66e8b944e87c808b3e135a7fc76cc8b06953cb72d070461f9e"
+          }
+        },
+        "validation": {
+          "assignment_ids_complete": true,
+          "schema_and_references_errors": 0,
+          "documented_connections_checked": 19,
+          "case_classes": {
+            "production_documented": 13,
+            "operational_product": 8,
+            "research_only": 5
+          },
+          "production_bigtech_cases": 8,
+          "notes": [
+            "450–700 palavras tratado como guia, sem enchimento para atingir quota.",
+            "P009, P016 e P017 somente propostas; casos P usam analogy.",
+            "Nenhuma consulta reservada lida ou execução de modelo/hardware alegada.",
+            "Oito sistemas classificados produção+bigtech no grupo; cobertura por base é calculada na consolidação, sem inflar dez exemplos.",
+            "Métricas e receitas externas não transferidas para servidor local."
+          ]
+        },
+        "frozen": true
+      }
+    },
+    "C": {
+      "ready_sha256": "19eec92afb6a8763342836aad0715693df6b06e8c87bab4e9dd750de1b419cf9",
+      "files": {
+        "sources_C.jsonl": {
+          "sha256": "5cc007c7d2065f747f852a20d5ca452f71873ab672833e937f027d744a2016ab",
+          "records": 31
+        },
+        "cases_C.jsonl": {
+          "sha256": "1db7ad772bf650c8c3ed034941217bc2a99fd3d68bc2c341ef8a81be5c37a219",
+          "records": 30
+        },
+        "searches_C.jsonl": {
+          "sha256": "158d02ea082e2b198fbf561e5729f0ce2464519404f4fd5e62b3f59e911b289e",
+          "records": 29
+        },
+        "strategy_C.jsonl": {
+          "sha256": "de087ca4574e88653d1483a3a5a690f8d4f3870337ed96ebf3c3dc8aa5796777",
+          "records": 95
+        }
+      },
+      "raw_receipt": {
+        "group": "C",
+        "checked_on": "2026-11-05",
+        "files": {
+          "strategy_C.jsonl": {
+            "count": 95,
+            "sha256": "de087ca4574e88653d1483a3a5a690f8d4f3870337ed96ebf3c3dc8aa5796777"
+          },
+          "cases_C.jsonl": {
+            "count": 30,
+            "sha256": "1db7ad772bf650c8c3ed034941217bc2a99fd3d68bc2c341ef8a81be5c37a219"
+          },
+          "sources_C.jsonl": {
+            "count": 31,
+            "sha256": "5cc007c7d2065f747f852a20d5ca452f71873ab672833e937f027d744a2016ab"
+          },
+          "searches_C.jsonl": {
+            "count": 29,
+            "sha256": "158d02ea082e2b198fbf561e5729f0ce2464519404f4fd5e62b3f59e911b289e"
+          }
+        },
+        "validation": {
+          "assignment_ids_complete": true,
+          "schema_and_references_errors": 0,
+          "strategies": 95,
+          "connections": 190,
+          "documented_connections_checked": 39,
+          "engineering_proposal_connections": 151,
+          "content_words": 49774,
+          "content_words_range": [
+            404,
+            572
+          ],
+          "case_classes": {
+            "production_documented": 23,
+            "operational_product": 6,
+            "research_only": 1
+          },
+          "notes": [
+            "81 fichas T autoradas pelo grupo C e 14 fichas R/P do tail da raiz incorporadas após amostragem e validação.",
+            "Conexões source_documented possuem caso operacional com origem e alvo exact e fonte em comum; P mantém somente proposta e casos analogy.",
+            "Auditoria cruzada A revisou casos/fontes; cinco achados e três reclassificações conservadoras adicionais resolvidos antes do congelamento.",
+            "A meta de dez casos por base não foi preenchida artificialmente; pesquisa, recurso documentado e implantação permanecem separados.",
+            "Nenhuma consulta reservada lida nem execução de modelo ou ganho local alegados.",
+            "Fonte Coinbase com divergência entre busca e abertura não foi registrada como caso confirmado."
+          ]
+        },
+        "frozen": true
+      }
+    },
+    "D": {
+      "ready_sha256": "d5de4470d8159842bf611e27dfe620a100a694f969ee64f22b2de1f31ab4dba0",
+      "files": {
+        "sources_D.jsonl": {
+          "sha256": "fd60682869d3c13d71f347e8f2cc425c11ae97af148f5ebb09eb6ed50001a729",
+          "records": 13
+        },
+        "cases_D.jsonl": {
+          "sha256": "391fcdb7657ab5ee5139d9d45b2a527e1b17d9fe48749b0356e1c8fca87757a8",
+          "records": 6
+        },
+        "searches_D.jsonl": {
+          "sha256": "10a7c295f2aab55fce580d2bd18e78386d62a361cd53aeac937e42c66dc35e03",
+          "records": 12
+        }
+      },
+      "raw_receipt": {
+        "group": "D",
+        "role": "pesquisa transversal; sem fichas individuais atribuídas",
+        "files": {
+          "sources_D.jsonl": {
+            "count": 13,
+            "sha256": "fd60682869d3c13d71f347e8f2cc425c11ae97af148f5ebb09eb6ed50001a729"
+          },
+          "cases_D.jsonl": {
+            "count": 6,
+            "sha256": "391fcdb7657ab5ee5139d9d45b2a527e1b17d9fe48749b0356e1c8fca87757a8"
+          },
+          "searches_D.jsonl": {
+            "count": 12,
+            "sha256": "10a7c295f2aab55fce580d2bd18e78386d62a361cd53aeac937e42c66dc35e03"
+          }
+        }
+      }
+    },
+    "D_extra": {
+      "ready_sha256": "0374113d629cc8ac7b974e5e67ee5d06980d49808048aa6e03b01fb4f5e4fe75",
+      "files": {
+        "sources_D_extra.jsonl": {
+          "sha256": "00a337466cea722697f8a3701f4564ddfdf8b0f7e293114ceb34c470e8f9fbaf",
+          "records": 6
+        },
+        "cases_D_extra.jsonl": {
+          "sha256": "1555cb704135a981350829440f6798cac043e017d345ea9a37250660fd2926da",
+          "records": 3
+        },
+        "searches_D_extra.jsonl": {
+          "sha256": "d908b396f344636dcc87367e31ead1454b4f04ca46dac3e4378b3d7a65c63317",
+          "records": 4
+        }
+      },
+      "raw_receipt": {
+        "group": "D_extra",
+        "files": {
+          "sources_D_extra.jsonl": {
+            "count": 6,
+            "sha256": "00a337466cea722697f8a3701f4564ddfdf8b0f7e293114ceb34c470e8f9fbaf"
+          },
+          "cases_D_extra.jsonl": {
+            "count": 3,
+            "sha256": "1555cb704135a981350829440f6798cac043e017d345ea9a37250660fd2926da"
+          },
+          "searches_D_extra.jsonl": {
+            "count": 4,
+            "sha256": "d908b396f344636dcc87367e31ead1454b4f04ca46dac3e4378b3d7a65c63317"
+          }
+        }
+      }
+    }
+  },
+  "review_adjustments": [
+    {
+      "registry": "case",
+      "id": "V4A-C001",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "infrastructure",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C002",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C003",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C004",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "distributed_data_system",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C005",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "distributed_data_system",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C006",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "distributed_data_system",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C007",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "distributed_data_system",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C008",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "non_generative_nlp",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C009",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "infrastructure",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C010",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "distributed_data_system",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C011",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "distributed_data_system",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C012",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C013",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "non_generative_nlp",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C014",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_framework",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C015",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_framework",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C016",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_serving",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C017",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_serving",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C018",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C019",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C020",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C021",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_research",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C022",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_research",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C023",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_research",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C024",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_research",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C025",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_framework",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C026",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_research",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C027",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_framework",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C028",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_framework",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C029",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_research",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C030",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_research",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C031",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_research",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C032",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_research",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C033",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_research",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C001",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C002",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_serving",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C003",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_serving",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C004",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_serving",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C005",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C006",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_training",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C007",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_research",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C008",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_serving",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C009",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "non_generative_nlp",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C010",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C011",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_serving",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C012",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_research",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C013",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_serving",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C014",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_framework",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C015",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_framework",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C016",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_training",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C017",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_training",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C018",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_serving",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C019",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C020",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C021",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C022",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_framework",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C023",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_research",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C024",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_serving",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C025",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_research",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C026",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_research",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C001",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "infrastructure",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C002",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "infrastructure",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C003",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "infrastructure",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C004",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "infrastructure",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C005",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "infrastructure",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C006",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "infrastructure",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C007",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C008",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "infrastructure",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C009",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "software_analysis_without_llm",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C010",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C011",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "software_analysis_without_llm",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C012",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_serving",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C013",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_serving",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C014",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C015",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C016",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C017",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C018",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C019",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_framework",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C020",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "infrastructure",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C021",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "infrastructure",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C022",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "infrastructure",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C023",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "infrastructure",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C024",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "distributed_data_system",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C025",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C026",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "infrastructure",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C027",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C028",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_framework",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C029",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C030",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_research",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4D-C001",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_framework",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4D-C002",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4D-C003",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4D-C004",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_framework",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4D-C005",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_research",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4D-C006",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_application",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4D-C007",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_serving",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4D-C008",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_serving",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4D-C009",
+      "path": [
+        "deployment_domain"
+      ],
+      "value": "llm_serving",
+      "reason": "Classificação editorial do domínio efetivamente descrito; transferência para LLMs permanece proposta quando o sistema não demonstra LLM."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C002",
+      "path": [
+        "canonical_case_id"
+      ],
+      "expected": "V4A-C002",
+      "value": "V4C-C007",
+      "reason": "Relatos complementares do mesmo sistema agrupados conservadoramente; preserva escopo temporal e fonte de cada registro, sem contar outra implantação."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C002",
+      "path": [
+        "deduplication_note"
+      ],
+      "value": "Consolidado com V4C-C007 para contagem. Mapeamentos e versões das fontes permanecem separados; não se presume simultaneidade de todos os mecanismos.",
+      "reason": "Explicitar identidade canônica sem misturar evidências de versões diferentes."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C012",
+      "path": [
+        "canonical_case_id"
+      ],
+      "expected": "V4A-C012",
+      "value": "V4B-C008",
+      "reason": "Relatos complementares do mesmo sistema agrupados conservadoramente; preserva escopo temporal e fonte de cada registro, sem contar outra implantação."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C012",
+      "path": [
+        "deduplication_note"
+      ],
+      "value": "Consolidado com V4B-C008 para contagem. Mapeamentos e versões das fontes permanecem separados; não se presume simultaneidade de todos os mecanismos.",
+      "reason": "Explicitar identidade canônica sem misturar evidências de versões diferentes."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C016",
+      "path": [
+        "canonical_case_id"
+      ],
+      "expected": "V4C-C016",
+      "value": "V4B-C001",
+      "reason": "Relatos complementares do mesmo sistema agrupados conservadoramente; preserva escopo temporal e fonte de cada registro, sem contar outra implantação."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C016",
+      "path": [
+        "deduplication_note"
+      ],
+      "value": "Consolidado com V4B-C001 para contagem. Mapeamentos e versões das fontes permanecem separados; não se presume simultaneidade de todos os mecanismos.",
+      "reason": "Explicitar identidade canônica sem misturar evidências de versões diferentes."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C008",
+      "path": [
+        "canonical_case_id"
+      ],
+      "expected": "V4A-C008",
+      "value": "V4B-C009",
+      "reason": "Relatos complementares do mesmo sistema agrupados conservadoramente; preserva escopo temporal e fonte de cada registro, sem contar outra implantação."
+    },
+    {
+      "registry": "case",
+      "id": "V4A-C008",
+      "path": [
+        "deduplication_note"
+      ],
+      "value": "Consolidado com V4B-C009 para contagem. Mapeamentos e versões das fontes permanecem separados; não se presume simultaneidade de todos os mecanismos.",
+      "reason": "Explicitar identidade canônica sem misturar evidências de versões diferentes."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C025",
+      "path": [
+        "canonical_case_id"
+      ],
+      "expected": "V4C-C025",
+      "value": "V4A-C003",
+      "reason": "Relatos complementares do mesmo sistema agrupados conservadoramente; preserva escopo temporal e fonte de cada registro, sem contar outra implantação."
+    },
+    {
+      "registry": "case",
+      "id": "V4C-C025",
+      "path": [
+        "deduplication_note"
+      ],
+      "value": "Consolidado com V4A-C003 para contagem. Mapeamentos e versões das fontes permanecem separados; não se presume simultaneidade de todos os mecanismos.",
+      "reason": "Explicitar identidade canônica sem misturar evidências de versões diferentes."
+    },
+    {
+      "registry": "case",
+      "id": "V4D-C002",
+      "path": [
+        "mappings"
+      ],
+      "expected": [
+        {
+          "entry_id": "T079",
+          "match": "exact",
+          "rationale": "Runtime NPU documenta especulação; não generalizar para GPU ou revisão histórica."
+        },
+        {
+          "entry_id": "T132",
+          "match": "exact",
+          "rationale": "A API explica o modelo de rascunho menor verificado pelo principal na NPU."
+        },
+        {
+          "entry_id": "T085",
+          "match": "exact",
+          "rationale": "Pilha Phi Silica publicada descreve quantização de pesos, com ressalva de revisão."
+        },
+        {
+          "entry_id": "T125",
+          "match": "exact",
+          "rationale": "Implementação publicada usa GPTQ em pesos rotacionados; não afirmar que todo backend atual é idêntico."
+        },
+        {
+          "entry_id": "T094",
+          "match": "exact",
+          "rationale": "Processamento do prompt em blocos de 64 preserva histórico KV na configuração publicada."
+        },
+        {
+          "entry_id": "T153",
+          "match": "exact",
+          "rationale": "Click to Do mostra o resultado à medida que é gerado."
+        },
+        {
+          "entry_id": "T006",
+          "match": "family",
+          "rationale": "Compressão de prompt é recurso do runtime NPU; a fonte não prova sua ativação em toda ação Click to Do."
+        }
+      ],
+      "value": [
+        {
+          "entry_id": "T079",
+          "match": "exact",
+          "rationale": "Runtime NPU documenta especulação; não generalizar para GPU ou revisão histórica. Escopo: capacidade NPU da documentação consultada em 2026-11-05; não é inferida para GPU ou para a versão histórica de 2024."
+        },
+        {
+          "entry_id": "T132",
+          "match": "exact",
+          "rationale": "A API explica o modelo de rascunho menor verificado pelo principal na NPU. Escopo: capacidade NPU da documentação consultada em 2026-11-05; não é inferida para GPU ou para a versão histórica de 2024."
+        },
+        {
+          "entry_id": "T085",
+          "match": "exact",
+          "rationale": "Pilha Phi Silica publicada descreve quantização de pesos, com ressalva de revisão. Escopo: configuração técnica publicada em 2024-12-06, não confirmação de todos os detalhes da API atual."
+        },
+        {
+          "entry_id": "T125",
+          "match": "exact",
+          "rationale": "Implementação publicada usa GPTQ em pesos rotacionados; não afirmar que todo backend atual é idêntico. Escopo: configuração técnica publicada em 2024-12-06, não confirmação de todos os detalhes da API atual."
+        },
+        {
+          "entry_id": "T094",
+          "match": "exact",
+          "rationale": "Processamento do prompt em blocos de 64 preserva histórico KV na configuração publicada. Escopo: configuração técnica publicada em 2024-12-06, não confirmação de todos os detalhes da API atual."
+        },
+        {
+          "entry_id": "T153",
+          "match": "family",
+          "rationale": "Entrega incremental documentada; a fonte consultada não especifica propagação de interrupção/cancelamento ao processamento."
+        },
+        {
+          "entry_id": "T006",
+          "match": "family",
+          "rationale": "Compressão de prompt é recurso do runtime NPU; a fonte não prova sua ativação em toda ação Click to Do."
+        }
+      ],
+      "reason": "Auditoria A-D-F02/F03/F04: limitar mecanismos ao que a fonte e sua versão comprovam."
+    },
+    {
+      "registry": "case",
+      "id": "V4D-C006",
+      "path": [
+        "mappings"
+      ],
+      "expected": [
+        {
+          "entry_id": "T177",
+          "match": "exact",
+          "rationale": "Ajuste para uma tarefa educacional delimitada."
+        },
+        {
+          "entry_id": "T178",
+          "match": "exact",
+          "rationale": "Professor gera exemplos para treinar o modelo menor."
+        },
+        {
+          "entry_id": "T182",
+          "match": "exact",
+          "rationale": "Especialização realizada por adaptadores LoRA."
+        },
+        {
+          "entry_id": "T183",
+          "match": "family",
+          "rationale": "Treino contra modelo quantizado não comprova todos os detalhes do método QLoRA original."
+        },
+        {
+          "entry_id": "T155",
+          "match": "exact",
+          "rationale": "Especialização permitiu reduzir o prompt mantendo instrução explícita de formato."
+        },
+        {
+          "entry_id": "T180",
+          "match": "exact",
+          "rationale": "Parte das instruções foi absorvida no adaptador; avaliação continua necessária."
+        },
+        {
+          "entry_id": "T193",
+          "match": "exact",
+          "rationale": "Restrições verificáveis rejeitam saídas inadequadas antes da exibição."
+        },
+        {
+          "entry_id": "T186",
+          "match": "exact",
+          "rationale": "Reviewer/Critic/Meta-Reviewer apoiam avaliação offline."
+        },
+        {
+          "entry_id": "T200",
+          "match": "family",
+          "rationale": "Estudo humano confronta os julgamentos, mas não demonstra independência causal de todo erro."
+        },
+        {
+          "entry_id": "T153",
+          "match": "exact",
+          "rationale": "Perguntas são exibidas progressivamente após validação."
+        },
+        {
+          "entry_id": "T172",
+          "match": "exact",
+          "rationale": "A validação é uma barreira anterior à liberação de conteúdo ao usuário."
+        }
+      ],
+      "value": [
+        {
+          "entry_id": "T177",
+          "match": "exact",
+          "rationale": "Ajuste para uma tarefa educacional delimitada."
+        },
+        {
+          "entry_id": "T178",
+          "match": "exact",
+          "rationale": "Professor gera exemplos para treinar o modelo menor."
+        },
+        {
+          "entry_id": "T182",
+          "match": "exact",
+          "rationale": "Especialização realizada por adaptadores LoRA."
+        },
+        {
+          "entry_id": "T183",
+          "match": "family",
+          "rationale": "Treino contra modelo quantizado não comprova todos os detalhes do método QLoRA original."
+        },
+        {
+          "entry_id": "T155",
+          "match": "exact",
+          "rationale": "Especialização permitiu reduzir o prompt mantendo instrução explícita de formato."
+        },
+        {
+          "entry_id": "T180",
+          "match": "exact",
+          "rationale": "Parte das instruções foi absorvida no adaptador; avaliação continua necessária."
+        },
+        {
+          "entry_id": "T193",
+          "match": "exact",
+          "rationale": "Restrições verificáveis rejeitam saídas inadequadas antes da exibição."
+        },
+        {
+          "entry_id": "T186",
+          "match": "exact",
+          "rationale": "Reviewer/Critic/Meta-Reviewer apoiam avaliação offline."
+        },
+        {
+          "entry_id": "T200",
+          "match": "family",
+          "rationale": "Estudo humano confronta os julgamentos, mas não demonstra independência causal de todo erro."
+        },
+        {
+          "entry_id": "T153",
+          "match": "family",
+          "rationale": "Entrega incremental documentada; a fonte consultada não especifica propagação de interrupção/cancelamento ao processamento."
+        },
+        {
+          "entry_id": "T172",
+          "match": "family",
+          "rationale": "Guardas controlam liberação de perguntas; não se documenta o ciclo completo do controlador, com pressão reversa e encerramento."
+        }
+      ],
+      "reason": "Auditoria A-D-F02/F03/F04: limitar mecanismos ao que a fonte e sua versão comprovam."
+    },
+    {
+      "registry": "case",
+      "id": "V4D-C002",
+      "path": [
+        "technical_mechanism"
+      ],
+      "expected": "Documentação do produto e do runtime confirma Phi Silica NPU; a pilha publicada inclui especulação com draft e, na descrição histórica de 2024, quantização GPTQ/QuaRot e prefill em blocos.",
+      "value": "A configuração publicada em dezembro/2024 descreve quantização e prefill em blocos. A documentação NPU consultada em novembro/2026 descreve draft speculative decoding. São evidências de versões diferentes do ecossistema Phi; não se afirma uma única pilha simultânea e imutável.",
+      "reason": "Auditoria A-D-F04: delimitação temporal por mecanismo."
+    },
+    {
+      "registry": "case",
+      "id": "V4D-C008",
+      "path": [
+        "mappings"
+      ],
+      "expected": [
+        {
+          "entry_id": "T081",
+          "match": "exact",
+          "rationale": "A arquitetura reutiliza KV como recurso compartilhado do serving."
+        },
+        {
+          "entry_id": "T102",
+          "match": "exact",
+          "rationale": "A descrição operacional separa clusters de prefill e decode."
+        },
+        {
+          "entry_id": "T120",
+          "match": "exact",
+          "rationale": "Scheduler considera a localização/reutilização de KV na arquitetura centrada no cache."
+        },
+        {
+          "entry_id": "T121",
+          "match": "exact",
+          "rationale": "Scheduler equilibra throughput e SLO de requisições."
+        },
+        {
+          "entry_id": "T122",
+          "match": "family",
+          "rationale": "RDMA existe na infraestrutura documentada, mas esta evidência de serving não fixa todos os transportes da configuração Kimi."
+        }
+      ],
+      "value": [
+        {
+          "entry_id": "T081",
+          "match": "exact",
+          "rationale": "A arquitetura reutiliza KV como recurso compartilhado do serving."
+        },
+        {
+          "entry_id": "T102",
+          "match": "exact",
+          "rationale": "A descrição operacional separa clusters de prefill e decode."
+        },
+        {
+          "entry_id": "T120",
+          "match": "exact",
+          "rationale": "Seção 5.1/Algoritmo 1 de Mooncake v1 escolhe worker usando prefixo reutilizável, fila, transferência prevista e TTFT/SLO."
+        },
+        {
+          "entry_id": "T121",
+          "match": "exact",
+          "rationale": "Scheduler equilibra throughput e SLO de requisições."
+        },
+        {
+          "entry_id": "T122",
+          "match": "exact",
+          "rationale": "Seção 3 de Mooncake v1 identifica Messenger baseado em (GPUDirect) RDMA para transferir blocos KV entre CPUs/GPUs. Não se generaliza a todos os backends posteriores."
+        },
+        {
+          "entry_id": "T082",
+          "match": "exact",
+          "rationale": "Seção 3, passos 1–2: recuperar prefixo KV existente e executar apenas prefill incremental. Escopo histórico v1; sem transferir automaticamente métricas para 3–30B."
+        },
+        {
+          "entry_id": "T088",
+          "match": "exact",
+          "rationale": "Seção 3, passo 4: requisição entra no próximo lote de decode por continuous batching. Escopo histórico v1; sem transferir automaticamente métricas para 3–30B."
+        },
+        {
+          "entry_id": "T094",
+          "match": "exact",
+          "rationale": "Seção 3, passo 2, e seção 4.1: prefill longo é dividido em chunks conforme limiar e processado em pipeline. Escopo histórico v1; sem transferir automaticamente métricas para 3–30B."
+        },
+        {
+          "entry_id": "T157",
+          "match": "exact",
+          "rationale": "Seção 5.1/Algoritmo 1: chave de bloco combina tokens locais e hash do bloco anterior. Escopo histórico v1; sem transferir automaticamente métricas para 3–30B."
+        }
+      ],
+      "reason": "A-D-F01 + leitura direta pela raiz das seções 3–5, turn326view0/turn332view1; mecanismos explícitos, sem multiplicar caso."
+    },
+    {
+      "registry": "case",
+      "id": "V4D-C008",
+      "path": [
+        "source_ids"
+      ],
+      "expected": [
+        "V4D-S016"
+      ],
+      "value": [
+        "V4D-S016",
+        "V4D-S020"
+      ],
+      "reason": "A-D-F01: incorporar fonte direta do algoritmo."
+    },
+    {
+      "registry": "case",
+      "id": "V4D-C008",
+      "path": [
+        "observed_use"
+      ],
+      "expected": "Projeto identifica Mooncake como plataforma de serving do Kimi e distingue resultados de carga real de simulações.",
+      "value": "Autores identificam Mooncake como plataforma operacional do Kimi. O artigo histórico descreve a arquitetura; suas avaliações usam replay de traces e um modelo substituto.",
+      "reason": "Separar declaração de implantação da natureza dos experimentos; não apresentar replay como telemetria direta da implantação."
+    },
+    {
+      "registry": "case",
+      "id": "V4D-C008",
+      "path": [
+        "limits"
+      ],
+      "expected": "Ganho publicado do Kimi não é ganho de aluno 3–30B. Integrações modernas e transporte de cada backend não são automaticamente parte da configuração histórica de produção.",
+      "value": "O artigo v1 descreve a plataforma Kimi, mas seus experimentos usam replay de traces e modelo substituto com arquitetura LLaMA2-70B. Métricas não são medições de um aluno 3–30B. A biblioteca atual e seus backends não são automaticamente a configuração histórica.",
+      "reason": "A-D-F01 e leitura direta da seção 1.2; delimitar fonte histórica e métricas."
+    },
+    {
+      "registry": "strategy",
+      "id": "P012",
+      "path": [
+        "novelty"
+      ],
+      "expected": "Aprofunda o verificador proposto com cobertura de critérios, dependência entre juízes e invalidação de evidência depois de mudanças no artefato.",
+      "value": "Avança além de cobertura, hashes e independência já tratados na v3: propõe cascatas de verificação por risco, auditoria amostral das respostas aceitas e testes contra exploração do próprio verificador.",
+      "reason": "Auditoria A-tail: substituir repetição da v3 por novas camadas de falha, decisão e validação; staging original permanece congelado."
+    },
+    {
+      "registry": "strategy",
+      "id": "P012",
+      "path": [
+        "source_ids"
+      ],
+      "expected": [
+        "C-S049",
+        "C-S048",
+        "V4C-S009",
+        "V4C-S010"
+      ],
+      "value": [
+        "C-S048",
+        "C-S050",
+        "V4C-S009",
+        "C-S049"
+      ],
+      "reason": "Auditoria A-tail: substituir repetição da v3 por novas camadas de falha, decisão e validação; staging original permanece congelado."
+    },
+    {
+      "registry": "strategy",
+      "id": "P012",
+      "path": [
+        "deep_layers"
+      ],
+      "expected": [
+        {
+          "name": "Matriz de cobertura",
+          "detail": "Proposta: para cada requisito, declarar verificador, domínio coberto e condição não verificável. Schema cobre estrutura; teste cobre comportamentos exercitados; fonte sustenta afirmação delimitada. Combinar resultados não transforma lacunas em aprovação. Uma decisão pode ficar pendente por ausência de evidência.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S049",
+            "C-S048",
+            "V4C-S009",
+            "V4C-S010"
+          ]
+        },
+        {
+          "name": "Juízes correlacionados",
+          "detail": "Separar origem da evidência, instruções e métodos dos verificadores. Vários agentes usando a mesma resposta como premissa podem concordar no mesmo erro. Medir falsos aceites por classe em amostra rotulada antes de atribuir valor ao consenso.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S049",
+            "C-S048",
+            "V4C-S009",
+            "V4C-S010"
+          ]
+        },
+        {
+          "name": "Validade temporal da prova",
+          "detail": "Anexar hash do artefato e versão do ambiente a cada resultado. Alterar código, dados, prompt ou dependência pode invalidar uma verificação anterior. Definir explicitamente quais mudanças exigem repetir quais testes evita tanto aceitar prova velha quanto executar tudo sem necessidade.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S049",
+            "C-S048",
+            "V4C-S009",
+            "V4C-S010"
+          ]
+        }
+      ],
+      "value": [
+        {
+          "name": "Cascata com abstenção calibrada",
+          "detail": "Proposta: ordenar verificadores por custo e poder discriminativo medidos no domínio. Um teste barato pode reprovar cedo; sua aprovação não encerra automaticamente casos de alto risco. Calibrar limiares numa divisão de desenvolvimento e congelá-los antes da avaliação final. Medir curva de cobertura versus erro entre aceitos, incluindo o custo dos verificadores adicionais.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S048",
+            "C-S050",
+            "V4C-S009",
+            "C-S049"
+          ]
+        },
+        {
+          "name": "Auditoria depois do aceite",
+          "detail": "Revisar uma amostra dos itens que passaram, incluindo respostas de alta confiança. Amostrar apenas rejeições deixa os falsos aceites invisíveis. Se erros raros forem superamostrados, guardar probabilidades de inclusão e reportar estratos separadamente ou ponderar a estimativa; não apresentar a amostra enriquecida como frequência natural do tráfego.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S048",
+            "C-S050",
+            "V4C-S009",
+            "C-S049"
+          ]
+        },
+        {
+          "name": "Exploração do juiz e testes discriminativos",
+          "detail": "Um gerador ajustado repetidamente ao mesmo juiz pode melhorar a pontuação sem melhorar o requisito. Manter testes finais fora do loop de ajuste e introduzir negativos conhecidos e transformações metamórficas cuja invariância seja justificada pelo domínio. Mutantes equivalentes ou transformações inválidas devem ser excluídos antes de julgar a qualidade do verificador.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S048",
+            "C-S050",
+            "V4C-S009",
+            "C-S049"
+          ]
+        }
+      ],
+      "reason": "Auditoria A-tail: substituir repetição da v3 por novas camadas de falha, decisão e validação; staging original permanece congelado."
+    },
+    {
+      "registry": "strategy",
+      "id": "P012",
+      "path": [
+        "advanced_uses"
+      ],
+      "expected": [
+        {
+          "name": "Resposta factual com fontes",
+          "scenario": "Um leitor pequeno produz afirmações a partir de trechos.",
+          "strategy": "Separar afirmações verificáveis, checar suporte e marcar lacunas; fatos críticos recebem teste ou evidência adicional.",
+          "small_model_role": "3–14B extrai e compara alegações; verificador determinístico controla referências.",
+          "acceptance": "Medir suporte real em amostra humana e taxa de afirmações sem evidência.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S049",
+            "C-S048",
+            "V4C-S009",
+            "V4C-S010"
+          ]
+        },
+        {
+          "name": "Patch de código gerado",
+          "scenario": "Mudança parece correta e passa em um teste local.",
+          "strategy": "Vincular testes à árvore, cobrir requisito original e executar regressões relevantes antes de integrar.",
+          "small_model_role": "LLM sugere casos adicionais sem autorizar sucesso sozinha.",
+          "acceptance": "Falha no requisito bloqueia aceite mesmo quando formatação e schema estão válidos.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S049",
+            "C-S048",
+            "V4C-S009",
+            "V4C-S010"
+          ]
+        }
+      ],
+      "value": [
+        {
+          "name": "Leitor pequeno com escalada seletiva",
+          "scenario": "Grande volume de respostas factuais permite auditoria humana limitada.",
+          "strategy": "Executar checagem barata, escalar classes difíceis e auditar aleatoriamente parte dos aceitos; revisar política apenas fora da avaliação congelada.",
+          "small_model_role": "3–14B gera ou classifica alegações; aceitação depende da política calibrada, não de autoconfiança verbal.",
+          "acceptance": "Estimar falsos aceites por classe e custo por resultado correto; publicar cobertura e quantidade enviada à revisão.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S048",
+            "C-S050",
+            "V4C-S009",
+            "C-S049"
+          ]
+        },
+        {
+          "name": "Código que aprende a passar no juiz",
+          "scenario": "Repetidos reparos usam retorno de testes conhecidos e podem explorar lacunas.",
+          "strategy": "Separar feedback de desenvolvimento e testes finais; usar entradas metamórficas válidas e defeitos semânticos rotulados para medir discriminação.",
+          "small_model_role": "Modelo pequeno propõe candidatos; um executor compara propriedades independentes da pontuação narrativa.",
+          "acceptance": "Detectar defeitos inseridos sem reprovar transformações equivalentes; congelar avaliação após escolhas de hiperparâmetros.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S048",
+            "C-S050",
+            "V4C-S009",
+            "C-S049"
+          ]
+        }
+      ],
+      "reason": "Auditoria A-tail: substituir repetição da v3 por novas camadas de falha, decisão e validação; staging original permanece congelado."
+    },
+    {
+      "registry": "strategy",
+      "id": "P012",
+      "path": [
+        "small_model_fit"
+      ],
+      "expected": {
+        "3_7b": "3–7B: extração de critérios e checagens locais, calibradas contra rótulos externos.",
+        "8_14b": "8–14B: julgamento restrito de pares evidência/afirmação, com possibilidade de abstenção.",
+        "15_30b": "15–30B: análise de casos ambíguos sem substituir provas executáveis disponíveis.",
+        "training_or_runtime_requirements": "Exige dados de avaliação e critérios versionados; consenso por si só não calibra precisão.",
+        "do_not_use_when": "Não declarar verdade universal a partir de JSON válido ou acordo entre modelos."
+      },
+      "value": {
+        "3_7b": "3–7B: primeiro estágio barato quando sua taxa de falsos aceites estiver medida; abstenção deve ser permitida.",
+        "8_14b": "8–14B: juiz especializado de evidência em domínio estreito, sujeito a auditoria de exemplos aceitos.",
+        "15_30b": "15–30B: estágio adicional para classes difíceis apenas se o ganho discriminativo compensar custo e correlação.",
+        "training_or_runtime_requirements": "Exige rótulos independentes, política versionada, amostragem conhecida e avaliação separada do ajuste.",
+        "do_not_use_when": "Não otimizar indefinidamente no mesmo juiz ou tratar taxa de aprovação como qualidade verdadeira."
+      },
+      "reason": "Auditoria A-tail: substituir repetição da v3 por novas camadas de falha, decisão e validação; staging original permanece congelado."
+    },
+    {
+      "registry": "strategy",
+      "id": "P012",
+      "path": [
+        "connections"
+      ],
+      "expected": [
+        {
+          "target_id": "T195",
+          "relation": "complements",
+          "how": "Executar critérios mensuráveis sobre o artefato identificado.",
+          "interface": "Artefato, ambiente, comando e resultado observado.",
+          "condition": "O requisito tem manifestação executável.",
+          "acceptance": "O verificador diferencia não executado, falha e sucesso.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S049",
+            "C-S048",
+            "V4C-S009",
+            "V4C-S010"
+          ],
+          "case_ids": []
+        },
+        {
+          "target_id": "T197",
+          "relation": "complements",
+          "how": "Usar schema como primeira camada de contrato.",
+          "interface": "Schema versionado e payload exato.",
+          "condition": "Saída estruturada atravessa componentes.",
+          "acceptance": "Formato válido não é promovido automaticamente a sucesso semântico.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S049",
+            "C-S048",
+            "V4C-S009",
+            "V4C-S010"
+          ],
+          "case_ids": []
+        }
+      ],
+      "value": [
+        {
+          "target_id": "T198",
+          "relation": "complements",
+          "how": "Usar calibração empírica para definir quando aceitar, verificar novamente ou abster-se.",
+          "interface": "Score, classe da tarefa, versão da calibração e rótulos externos.",
+          "condition": "Há dados representativos suficientes para avaliar erro entre aceitos.",
+          "acceptance": "Curvas por classe mostram cobertura e erro; limiares não são escolhidos no conjunto final.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S048",
+            "C-S050",
+            "V4C-S009",
+            "C-S049"
+          ],
+          "case_ids": []
+        },
+        {
+          "target_id": "T205",
+          "relation": "complements",
+          "how": "Aplicar equivalências justificadas como testes metamórficos do candidato e do juiz.",
+          "interface": "Transformação, precondições e propriedade que deve permanecer.",
+          "condition": "O domínio oferece relações semânticas conhecidas.",
+          "acceptance": "O sistema distingue violações reais de mudanças equivalentes sem depender de igualdade textual.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S048",
+            "C-S050",
+            "V4C-S009",
+            "C-S049"
+          ],
+          "case_ids": []
+        }
+      ],
+      "reason": "Auditoria A-tail: substituir repetição da v3 por novas camadas de falha, decisão e validação; staging original permanece congelado."
+    },
+    {
+      "registry": "strategy",
+      "id": "P012",
+      "path": [
+        "failure_controls"
+      ],
+      "expected": [
+        "Não expor o gabarito ao gerador durante avaliação final.",
+        "Não deixar o modelo reescrever o critério para justificar seu resultado."
+      ],
+      "value": [
+        "Não interpretar ausência de erro numa amostra pequena como risco zero.",
+        "Não somar votos correlacionados como se fossem ensaios independentes.",
+        "Não esconder timeouts e abstinências ao calcular custo e cobertura."
+      ],
+      "reason": "Auditoria A-tail: substituir repetição da v3 por novas camadas de falha, decisão e validação; staging original permanece congelado."
+    },
+    {
+      "registry": "strategy",
+      "id": "P012",
+      "path": [
+        "frontier_comparison"
+      ],
+      "expected": "Comparar falsos aceites e falsos rejeites do sistema inteiro, com juízes externos ao ajuste. Qualidade do verificador pode limitar todo o ganho de test-time compute.",
+      "value": "Comparar candidato 3–30B e baseline na mesma política, depois ablar a cascata. Auditar falsos aceites também na rota de fronteira; medir qualidade observada e incerteza sem chamar maior aprovação de maior inteligência.",
+      "reason": "Auditoria A-tail: substituir repetição da v3 por novas camadas de falha, decisão e validação; staging original permanece congelado."
+    },
+    {
+      "registry": "strategy",
+      "id": "P015",
+      "path": [
+        "novelty"
+      ],
+      "expected": "Aprofunda o controlador de integridade com autorização vinculada ao artefato, revalidação no commit e fronteiras de confirmação entre sistemas independentes.",
+      "value": "Vai além do hash-base e da reconciliação já tratados: distingue igualdade de bytes de história de alterações, trata expiração da deduplicação e impede reutilizar uma identidade de operação com intenção diferente.",
+      "reason": "Auditoria A-tail: substituir repetição da v3 por novas camadas de falha, decisão e validação; staging original permanece congelado."
+    },
+    {
+      "registry": "strategy",
+      "id": "P015",
+      "path": [
+        "source_ids"
+      ],
+      "expected": [
+        "C-S026",
+        "V3D-S018",
+        "V3C-S037",
+        "V4C-S027"
+      ],
+      "value": [
+        "V4D-S021",
+        "V3C-S025",
+        "V3C-S028",
+        "V3D-S018"
+      ],
+      "reason": "Auditoria A-tail: substituir repetição da v3 por novas camadas de falha, decisão e validação; staging original permanece congelado."
+    },
+    {
+      "registry": "strategy",
+      "id": "P015",
+      "path": [
+        "deep_layers"
+      ],
+      "expected": [
+        {
+          "name": "Decisão vinculada ao candidato",
+          "detail": "Proposta: o aceite identifica alvo, alteração exata, revisão-base e escopo. Se o candidato mudar depois da revisão, a decisão não se transfere automaticamente. Isso evita aprovar um diff e publicar outro por concorrência, reparo tardio ou atualização de dependência.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S026",
+            "V3D-S018",
+            "V3C-S037",
+            "V4C-S027"
+          ]
+        },
+        {
+          "name": "Revalidar no limite do efeito",
+          "detail": "Conferir precondição imediatamente antes da mutação e registrar resposta do destino. A checagem feita durante planejamento pode estar obsoleta no commit. Quando o destino não oferece compare-and-set ou idempotência, explicitar a janela residual e a estratégia de reconciliação possível.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S026",
+            "V3D-S018",
+            "V3C-S037",
+            "V4C-S027"
+          ]
+        },
+        {
+          "name": "Confirmação por domínio",
+          "detail": "Separar confirmação de arquivo, referência Git, banco e API. Uma outbox aproxima mudança local e intenção de publicação, mas não torna tudo uma transação global. O estado composto registra quais partes confirmaram e quais permanecem ambíguas ou exigem compensação.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S026",
+            "V3D-S018",
+            "V3C-S037",
+            "V4C-S027"
+          ]
+        }
+      ],
+      "value": [
+        {
+          "name": "A→B→A: bytes iguais, história diferente",
+          "detail": "Proposta: quando a regra depende de nenhuma alteração intermediária, comparar somente conteúdo não detecta uma escrita seguida de restauração. Exigir revisão ou geração monotônica com comparação atômica no destino, incluindo identidade da criação quando uma chave pode ser apagada e recriada. Se o contrato depende apenas dos bytes atuais, a alteração histórica pode ser irrelevante; não impor bloqueio sem necessidade.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "V4D-S021",
+            "V3C-S025",
+            "V3C-S028",
+            "V3D-S018"
+          ]
+        },
+        {
+          "name": "Janela finita de idempotência",
+          "detail": "Persistir a semântica de retenção do destino junto da operação. Uma chave que já foi expurgada pode representar nova requisição; retomada muito tardia precisa consultar recibo/status ou permanecer em reconciliação. Manter registro local não obriga o servidor remoto a deduplicar. Versionar a política: comportamento de respostas falhas e retenção pode diferir entre versões de API.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "V4D-S021",
+            "V3C-S025",
+            "V3C-S028",
+            "V3D-S018"
+          ]
+        },
+        {
+          "name": "Identidade com impressão da intenção",
+          "detail": "Vincular operation_id a tenant, destino estável, versão da API e argumentos normalizados sob regra explícita. Reutilizar a chave com parâmetros diferentes deve ser conflito, não retry. Duas solicitações legítimas iguais em conteúdo precisam de identidades distintas quando representam duas intenções; deduplicar apenas pelo hash dos argumentos pode suprimir trabalho válido.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "V4D-S021",
+            "V3C-S025",
+            "V3C-S028",
+            "V3D-S018"
+          ]
+        }
+      ],
+      "reason": "Auditoria A-tail: substituir repetição da v3 por novas camadas de falha, decisão e validação; staging original permanece congelado."
+    },
+    {
+      "registry": "strategy",
+      "id": "P015",
+      "path": [
+        "advanced_uses"
+      ],
+      "expected": [
+        {
+          "name": "Patch revisado antes de integrar",
+          "scenario": "A base muda depois de testes e revisão.",
+          "strategy": "Comparar base e candidato no commit; invalidar evidência se a composição alterar a árvore.",
+          "small_model_role": "Modelo pequeno prepara patch; o controlador decide se a autorização ainda vale.",
+          "acceptance": "Corrida entre revisão e integração produz recusa ou nova validação, sem publicação silenciosa.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S026",
+            "V3D-S018",
+            "V3C-S037",
+            "V4C-S027"
+          ]
+        },
+        {
+          "name": "Ação externa com retry",
+          "scenario": "Confirmação de uma operação pode se perder na rede.",
+          "strategy": "Usar identidade estável, consultar resultado e só repetir conforme contrato do destino.",
+          "small_model_role": "LLM interpreta resposta tipada, sem fabricar confirmação ausente.",
+          "acceptance": "Timeout após sucesso remoto termina reconciliado, com um único efeito ou limitação registrada.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S026",
+            "V3D-S018",
+            "V3C-S037",
+            "V4C-S027"
+          ]
+        }
+      ],
+      "value": [
+        {
+          "name": "Retomada após longa indisponibilidade",
+          "scenario": "O agente reaparece depois da janela de deduplicação remota.",
+          "strategy": "Preservar a identidade original e verificar evidência do destino; não gerar chave nova para contornar estado desconhecido.",
+          "small_model_role": "3–14B interpreta status documentado; o controlador decide conforme contrato de retenção.",
+          "acceptance": "Simular expurgo da chave e confirmar que resultado incerto não dispara efeito duplicado automaticamente.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "V4D-S021",
+            "V3C-S025",
+            "V3C-S028",
+            "V3D-S018"
+          ]
+        },
+        {
+          "name": "Configuração alterada e restaurada",
+          "scenario": "Outro processo modifica um recurso e devolve o conteúdo inicial antes do commit.",
+          "strategy": "Usar comparação atômica da revisão de modificação e identidade da criação quando histórico importa; rejeitar guardas somente de conteúdo nesse contrato.",
+          "small_model_role": "LLM propõe mudança; backend aplica precondição de revisão, sem delegar detecção ao texto.",
+          "acceptance": "Teste A→B→A é rejeitado quando o contrato exige ausência de intervenção; igualdade de bytes continua aceita quando for o requisito correto.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "V4D-S021",
+            "V3C-S025",
+            "V3C-S028",
+            "V3D-S018"
+          ]
+        }
+      ],
+      "reason": "Auditoria A-tail: substituir repetição da v3 por novas camadas de falha, decisão e validação; staging original permanece congelado."
+    },
+    {
+      "registry": "strategy",
+      "id": "P015",
+      "path": [
+        "small_model_fit"
+      ],
+      "expected": {
+        "3_7b": "3–7B: formular candidatos estreitos com campos e precondições explícitos.",
+        "8_14b": "8–14B: relacionar intenção e alteração em operações locais verificáveis.",
+        "15_30b": "15–30B: analisar conflitos complexos sem substituir precondições determinísticas.",
+        "training_or_runtime_requirements": "Exige suporte dos destinos e protocolo de publicação; texto ou parâmetros do modelo não fornecem atomicidade.",
+        "do_not_use_when": "Não prometer exactly-once global entre serviços independentes sem contrato que o sustente."
+      },
+      "value": {
+        "3_7b": "3–7B: emitir intenção estruturada sem fabricar IDs de recursos ou revisar sozinho as regras de deduplicação.",
+        "8_14b": "8–14B: interpretar respostas e conflitos documentados, mantendo decisão temporal no controlador.",
+        "15_30b": "15–30B: investigar casos ambíguos com evidências; capacidade maior não recupera recibo inexistente.",
+        "training_or_runtime_requirements": "Exige contratos de retenção, comparação atômica e namespace do destino; restauração de backend também precisa de política de épocas.",
+        "do_not_use_when": "Não confundir um hash de conteúdo, versão reiniciável ou chave expirada com garantia histórica permanente."
+      },
+      "reason": "Auditoria A-tail: substituir repetição da v3 por novas camadas de falha, decisão e validação; staging original permanece congelado."
+    },
+    {
+      "registry": "strategy",
+      "id": "P015",
+      "path": [
+        "connections"
+      ],
+      "expected": [
+        {
+          "target_id": "T233",
+          "relation": "complements",
+          "how": "Vincular validação ao patch e à base que serão realmente publicados.",
+          "interface": "Hash-base, hash-candidato, evidências e revisão esperada.",
+          "condition": "Uma alteração passa da preparação para integração.",
+          "acceptance": "Mudança em qualquer identidade relevante exige revalidação.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S026",
+            "V3D-S018",
+            "V3C-S037",
+            "V4C-S027"
+          ],
+          "case_ids": []
+        },
+        {
+          "target_id": "T243",
+          "relation": "feeds",
+          "how": "Produzir estado explícito para efeitos externos sem confirmação suficiente.",
+          "interface": "Intenção, identidade remota e observações parciais.",
+          "condition": "Operação cruza fronteira transacional.",
+          "acceptance": "Nenhuma falta de resposta é convertida automaticamente em falha ou sucesso.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "C-S026",
+            "V3D-S018",
+            "V3C-S037",
+            "V4C-S027"
+          ],
+          "case_ids": []
+        }
+      ],
+      "value": [
+        {
+          "target_id": "T162",
+          "relation": "complements",
+          "how": "Aplicar deduplicação sob identidade de intenção, escopo e janela conhecidos.",
+          "interface": "Operation_id, fingerprint de argumentos, namespace, API_version e política de retenção.",
+          "condition": "Uma ação pode ser repetida ou retomada após interrupção longa.",
+          "acceptance": "Mesma chave/intenção retorna estado conhecido; chave com intenção diferente é recusada e chave expurgada não é presumida segura.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "V4D-S021",
+            "V3C-S025",
+            "V3C-S028",
+            "V3D-S018"
+          ],
+          "case_ids": []
+        },
+        {
+          "target_id": "T072",
+          "relation": "complements",
+          "how": "Escolher revisão de estado capaz de representar o requisito de concorrência.",
+          "interface": "Content_hash, revisão de modificação, geração/criação e guarda atômica.",
+          "condition": "O efeito depende da história de alterações e não apenas de bytes atuais.",
+          "acceptance": "Teste de alteração e restauração distingue equivalência de conteúdo de continuidade da versão.",
+          "basis": "engineering_proposal",
+          "source_ids": [
+            "V4D-S021",
+            "V3C-S025",
+            "V3C-S028",
+            "V3D-S018"
+          ],
+          "case_ids": []
+        }
+      ],
+      "reason": "Auditoria A-tail: substituir repetição da v3 por novas camadas de falha, decisão e validação; staging original permanece congelado."
+    },
+    {
+      "registry": "strategy",
+      "id": "P015",
+      "path": [
+        "failure_controls"
+      ],
+      "expected": [
+        "Não confundir posse de chave idempotente com garantia do servidor de respeitá-la.",
+        "Não aceitar evidência de outro artefato apenas porque o nome do arquivo é igual."
+      ],
+      "value": [
+        "Não normalizar argumentos de modo a apagar diferenças semanticamente relevantes.",
+        "Não inferir sucesso da própria operação pela existência de recurso semelhante.",
+        "Não tratar restauração de snapshot do backend como continuidade automática da mesma época."
+      ],
+      "reason": "Auditoria A-tail: substituir repetição da v3 por novas camadas de falha, decisão e validação; staging original permanece congelado."
+    },
+    {
+      "registry": "strategy",
+      "id": "P015",
+      "path": [
+        "frontier_comparison"
+      ],
+      "expected": "Comparar efeitos corretos e duplicações sob concorrência e perda de respostas. O objetivo é integridade de execução do sistema, além da qualidade textual do modelo.",
+      "value": "Injetar expiração de chaves, troca de parâmetros, exclusão/recriação e restauração A→B→A nos sistemas comparados. Medir duplicação e supressão indevida; essas falhas podem persistir mesmo com um gerador de fronteira.",
+      "reason": "Auditoria A-tail: substituir repetição da v3 por novas camadas de falha, decisão e validação; staging original permanece congelado."
+    },
+    {
+      "registry": "strategy",
+      "id": "T139",
+      "path": [
+        "production_search"
+      ],
+      "expected": {
+        "search_ids": [
+          "V4C-Q003",
+          "V4C-Q010"
+        ],
+        "scope_note": "Claude Research comprova uso de ferramentas paralelas; outros sistemas fornecem princípios de consistência. Transferência de porte permanece proposta."
+      },
+      "value": {
+        "search_ids": [
+          "V4C-Q003",
+          "V4C-Q010",
+          "V4D-Q018"
+        ],
+        "scope_note": "Claude Research comprova uso de ferramentas paralelas; outros sistemas fornecem princípios de consistência. Transferência de porte permanece proposta. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+      },
+      "reason": "Lacuna real de rastreabilidade resolvida por nova consulta efetivamente executada, preservando consulta e staging anteriores."
+    },
+    {
+      "registry": "strategy",
+      "id": "T140",
+      "path": [
+        "production_search"
+      ],
+      "expected": {
+        "search_ids": [
+          "V4C-Q006",
+          "V4C-Q009"
+        ],
+        "scope_note": "AutoClean e MCP Gateway comprovam combinações específicas. Não se contam cada ferramenta ou cada estágio desses sistemas como novos deployments."
+      },
+      "value": {
+        "search_ids": [
+          "V4C-Q006",
+          "V4C-Q009",
+          "V4D-Q018"
+        ],
+        "scope_note": "AutoClean e MCP Gateway comprovam combinações específicas. Não se contam cada ferramenta ou cada estágio desses sistemas como novos deployments. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+      },
+      "reason": "Lacuna real de rastreabilidade resolvida por nova consulta efetivamente executada, preservando consulta e staging anteriores."
+    },
+    {
+      "registry": "strategy",
+      "id": "T172",
+      "path": [
+        "production_search"
+      ],
+      "expected": {
+        "search_ids": [
+          "V4C-Q010",
+          "V4C-Q009"
+        ],
+        "scope_note": "LinkedIn descreve integração operacional de trabalho assíncrono e streaming; a implementação de cursor e retenção proposta precisa de validação própria."
+      },
+      "value": {
+        "search_ids": [
+          "V4C-Q010",
+          "V4C-Q009",
+          "V4D-Q020"
+        ],
+        "scope_note": "LinkedIn descreve integração operacional de trabalho assíncrono e streaming; a implementação de cursor e retenção proposta precisa de validação própria. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+      },
+      "reason": "Lacuna real de rastreabilidade resolvida por nova consulta efetivamente executada, preservando consulta e staging anteriores."
+    },
+    {
+      "registry": "strategy",
+      "id": "T212",
+      "path": [
+        "production_search"
+      ],
+      "expected": {
+        "search_ids": [
+          "V4C-Q009",
+          "V4C-Q028"
+        ],
+        "scope_note": "Uber relata compactação operacional; o estudo comparativo é pesquisa. Critérios e bandas propostos permanecem sem medição neste ambiente."
+      },
+      "value": {
+        "search_ids": [
+          "V4C-Q009",
+          "V4C-Q028",
+          "V4D-Q019"
+        ],
+        "scope_note": "Uber relata compactação operacional; o estudo comparativo é pesquisa. Critérios e bandas propostos permanecem sem medição neste ambiente. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+      },
+      "reason": "Lacuna real de rastreabilidade resolvida por nova consulta efetivamente executada, preservando consulta e staging anteriores."
+    },
+    {
+      "registry": "strategy",
+      "id": "T214",
+      "path": [
+        "production_search"
+      ],
+      "expected": {
+        "search_ids": [
+          "V4C-Q009",
+          "V4C-Q028"
+        ],
+        "scope_note": "Gateway Uber documenta ResponseProjection e exposição progressiva. Critérios de preservação para cada tarefa são propostas a testar."
+      },
+      "value": {
+        "search_ids": [
+          "V4C-Q009",
+          "V4C-Q028",
+          "V4D-Q019"
+        ],
+        "scope_note": "Gateway Uber documenta ResponseProjection e exposição progressiva. Critérios de preservação para cada tarefa são propostas a testar. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+      },
+      "reason": "Lacuna real de rastreabilidade resolvida por nova consulta efetivamente executada, preservando consulta e staging anteriores."
+    },
+    {
+      "registry": "strategy",
+      "id": "T218",
+      "path": [
+        "production_search"
+      ],
+      "expected": {
+        "search_ids": [
+          "V4C-Q009",
+          "V4C-Q028"
+        ],
+        "scope_note": "Uber descreve mover polling mecânico para código. Não foi encontrado deployment que comprove exatamente o detector semântico proposto."
+      },
+      "value": {
+        "search_ids": [
+          "V4C-Q009",
+          "V4C-Q028",
+          "V4D-Q019"
+        ],
+        "scope_note": "Uber descreve mover polling mecânico para código. Não foi encontrado deployment que comprove exatamente o detector semântico proposto. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+      },
+      "reason": "Lacuna real de rastreabilidade resolvida por nova consulta efetivamente executada, preservando consulta e staging anteriores."
+    },
+    {
+      "registry": "strategy",
+      "id": "T219",
+      "path": [
+        "production_search"
+      ],
+      "expected": {
+        "search_ids": [
+          "V4C-Q002",
+          "V4C-Q010",
+          "V4C-Q021"
+        ],
+        "scope_note": "Documentação de grafos e agentes apoia os controles; relatos de delegação não demonstram esta política completa de limites nem justificam dez casos exatos."
+      },
+      "value": {
+        "search_ids": [
+          "V4C-Q002",
+          "V4C-Q010",
+          "V4C-Q021",
+          "V4D-Q021"
+        ],
+        "scope_note": "Documentação de grafos e agentes apoia os controles; relatos de delegação não demonstram esta política completa de limites nem justificam dez casos exatos. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+      },
+      "reason": "Lacuna real de rastreabilidade resolvida por nova consulta efetivamente executada, preservando consulta e staging anteriores."
+    },
+    {
+      "registry": "strategy",
+      "id": "T221",
+      "path": [
+        "production_search"
+      ],
+      "expected": {
+        "search_ids": [
+          "V4C-Q010",
+          "V4C-Q027"
+        ],
+        "scope_note": "Fontes de planejamento e instruções persistidas apoiam princípios. Não foi comprovado produto ou técnica padronizada de bigtech com este nome editorial exato."
+      },
+      "value": {
+        "search_ids": [
+          "V4C-Q010",
+          "V4C-Q027",
+          "V4D-Q022"
+        ],
+        "scope_note": "Fontes de planejamento e instruções persistidas apoiam princípios. Não foi comprovado produto ou técnica padronizada de bigtech com este nome editorial exato. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+      },
+      "reason": "Lacuna real de rastreabilidade resolvida por nova consulta efetivamente executada, preservando consulta e staging anteriores."
+    },
+    {
+      "registry": "strategy",
+      "id": "T223",
+      "path": [
+        "production_search"
+      ],
+      "expected": {
+        "search_ids": [
+          "V4C-Q006",
+          "V4C-Q027"
+        ],
+        "scope_note": "AutoClean documenta revisão por propriedades, não adoção do rótulo Constitucional Self-Check. O componente desta ficha é composição editorial em inferência."
+      },
+      "value": {
+        "search_ids": [
+          "V4C-Q006",
+          "V4C-Q027",
+          "V4D-Q023"
+        ],
+        "scope_note": "AutoClean documenta revisão por propriedades, não adoção do rótulo Constitucional Self-Check. O componente desta ficha é composição editorial em inferência. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+      },
+      "reason": "Lacuna real de rastreabilidade resolvida por nova consulta efetivamente executada, preservando consulta e staging anteriores."
+    },
+    {
+      "registry": "strategy",
+      "id": "T230",
+      "path": [
+        "production_search"
+      ],
+      "expected": {
+        "search_ids": [
+          "V4C-Q023",
+          "V4C-Q015"
+        ],
+        "scope_note": "Documentação Git e Aider apoia formatos e distinções. Não foi inferida produção de Unified Diff apenas porque uma empresa usa controle de versões."
+      },
+      "value": {
+        "search_ids": [
+          "V4C-Q023",
+          "V4C-Q015",
+          "V4D-Q024"
+        ],
+        "scope_note": "Documentação Git e Aider apoia formatos e distinções. Não foi inferida produção de Unified Diff apenas porque uma empresa usa controle de versões. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+      },
+      "reason": "Lacuna real de rastreabilidade resolvida por nova consulta efetivamente executada, preservando consulta e staging anteriores."
+    },
+    {
+      "registry": "case",
+      "id": "V4B-C022",
+      "path": [
+        "mappings"
+      ],
+      "expected": [
+        {
+          "entry_id": "T193",
+          "match": "exact",
+          "rationale": "Guardrail verifica uma política expressa formalmente."
+        },
+        {
+          "entry_id": "T200",
+          "match": "exact",
+          "rationale": "A aceitação é sustentada por um verificador externo dentro do escopo da política."
+        },
+        {
+          "entry_id": "T197",
+          "match": "family",
+          "rationale": "Há validação de restrições; não é somente validação estrutural de JSON."
+        },
+        {
+          "entry_id": "T206",
+          "match": "family",
+          "rationale": "Uma ferramenta fornece verificação especializada, mas não prova toda arquitetura de competência ancorada."
+        }
+      ],
+      "value": [
+        {
+          "entry_id": "T193",
+          "match": "exact",
+          "rationale": "Guardrail verifica uma política expressa formalmente."
+        },
+        {
+          "entry_id": "T200",
+          "match": "exact",
+          "rationale": "A aceitação é sustentada por um verificador externo dentro do escopo da política."
+        }
+      ],
+      "reason": "Auditoria independente C-B: verificar uma resposta contra política lógica não comprova JSON Schema nem verificação de um trace de processo; retirar associações para reduzir ruído."
+    }
+  ],
+  "supplemental_search_records": 8,
+  "supplemental_searches_sha256": "1231b1f4c522eb12e5cc1964fd65cbc459e949314bcbd7ed2f52a8d2e6c99f81",
+  "supplemental_source_records": 2,
+  "supplemental_sources_sha256": "f0706a4ac41ba4b8246732363b140be9f84e30210d3ade184fc44eb3c013b2a1",
+  "old_entries_sha256": "ae94ba51f981055b5eafa3654be755eb538451414159e3e7338e614c9a52c50f",
+  "old_sources_sha256": "979de5fa4de15e4a5571af78da884ed3c2f7855fccbe9ba2161efc19643d7ef0",
+  "new_entries_sha256": "0dac5e03f3dfd56c6d150f6cd3e485d5e232ef8a88d427604aa8e713cc47a898",
+  "new_sources_sha256": "4c1559656bbe35c8042c63be9598399a6618332c4b36ed6c82509148b277b9c9"
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Commit por etapa garante que cada commit passa todos os testes?",
+    "answer": "Não. Essa é uma política adicional. Se um commit representar trabalho intermediário, seu estado e as limitações precisam estar claros."
+  },
+  {
+    "question": "Reverter o commit desfaz uma chamada de API?",
+    "answer": "Não. Git registra código versionado; efeitos externos exigem reconciliação ou compensação específica quando disponível e autorizada."
+  },
+  {
+    "question": "Testar antes de git commit basta?",
+    "answer": "Somente se o estado testado corresponder ao índice/árvore que será registrado; staging parcial pode quebrar essa equivalência."
+  },
+  {
+    "question": "Um commit de checkpoint deve ser apresentado como pronto?",
+    "answer": "Não. Pode preservar progresso incompleto, desde que esse estado e as pendências sejam explícitos."
+  }
+]

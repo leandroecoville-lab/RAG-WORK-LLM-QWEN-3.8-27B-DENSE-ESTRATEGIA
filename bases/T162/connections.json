@@ -1,0 +1,39 @@
+{
+  "entry_id": "T162",
+  "edges": [
+    {
+      "edge_id": "E-T162-01",
+      "from": "T162",
+      "to": "T243",
+      "relation": "complements",
+      "how": "Resolver efeito desconhecido por identidade antes de escolher retry ou compensação.",
+      "interface": "Chave, parâmetros, confirmação remota e janela de retenção.",
+      "condition": "O destino permite consulta ou deduplicação verificável.",
+      "acceptance": "Falha após efeito confirmado não produz uma segunda alteração.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T162-02",
+      "from": "T162",
+      "to": "T159",
+      "relation": "complements",
+      "how": "Persistir a chave no estado durável para que todas as tentativas representem a mesma intenção.",
+      "interface": "Workflow, atividade lógica e identificador externo.",
+      "condition": "A identidade sobrevive ao reinício do worker.",
+      "acceptance": "Reproduzir histórico e repetir atividade mantendo a chave.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S018",
+        "C-S026"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

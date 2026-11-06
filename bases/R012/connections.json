@@ -1,0 +1,42 @@
+{
+  "entry_id": "R012",
+  "edges": [
+    {
+      "edge_id": "E-R012-01",
+      "from": "R012",
+      "to": "T180",
+      "relation": "feeds",
+      "how": "A receita concretiza transferência de instruções estáveis para comportamento do aluno.",
+      "interface": "Prompt professor, consultas e respostas revisadas.",
+      "condition": "Parâmetros variáveis preservados na entrada.",
+      "acceptance": "Testar com e sem instrução original em famílias novas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S008",
+        "V4B-S012",
+        "V4B-S013"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-R012-02",
+      "from": "R012",
+      "to": "T178",
+      "relation": "complements",
+      "how": "On-policy e off-policy são escolhas de distribuição do sinal de destilação.",
+      "interface": "Trajetórias, logits ou textos disponíveis.",
+      "condition": "Objetivo e acesso ao professor explícitos.",
+      "acceptance": "Comparar cobertura e qualidade sob orçamento total.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S008",
+        "V4B-S012",
+        "V4B-S013"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

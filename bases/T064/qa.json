@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Estado persistente significa memória de longo prazo?",
+    "answer": "É uma forma de persistência operacional. Memória de conhecimento tem finalidade e política de recuperação diferentes."
+  },
+  {
+    "question": "Salvar após a resposta final basta?",
+    "answer": "Não para missões longas. Falhas podem ocorrer antes; pontos críticos precisam de confirmação durante a execução."
+  },
+  {
+    "question": "O estado deve guardar credenciais diretamente?",
+    "answer": "Prefira referências a mecanismos apropriados de resolução. A persistência precisa permitir renovar acesso sem transformar um segredo expirado em dependência irrecuperável."
+  },
+  {
+    "question": "Posso identificar execução apenas pelo usuário?",
+    "answer": "Não quando há missões ou tentativas simultâneas. Identifique proprietário, missão, thread e tentativa conforme as unidades reais de concorrência."
+  }
+]

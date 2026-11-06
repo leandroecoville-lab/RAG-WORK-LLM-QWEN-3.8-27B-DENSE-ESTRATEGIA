@@ -1,0 +1,111 @@
+{
+  "id": "T181",
+  "novelty": "A v3 distinguiu memória proativa e reativa. Esta camada organiza a memória como artefato executável versionado, com seleção por pré-condições, avaliação de transferência e expiração de procedimentos.",
+  "deep_layers": [
+    {
+      "name": "Memória com pré-condições",
+      "detail": "Uma trajetória bem-sucedida só é reutilizável quando ferramentas, permissões e estado do problema são compatíveis. Extraia pré-condições e resultados observados junto ao procedimento. Memória de workflow orienta o plano; memória de função deve preservar argumentos, efeitos e erros conhecidos, sem transformar valores de uma sessão em constantes universais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S035",
+        "V4B-S032"
+      ]
+    },
+    {
+      "name": "Recuperação antes do erro",
+      "detail": "Falha sintática é um gatilho fácil, mas uma ferramenta pode retornar sucesso com conteúdo inadequado. Acrescente verificações de pós-condição e divergência de estado para acionar memória reativa. O aluno deve poder rejeitar uma recomendação quando suas condições não se aplicam, em vez de segui-la como instrução absoluta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S035",
+        "V4B-S032"
+      ]
+    },
+    {
+      "name": "Validade temporal",
+      "detail": "Mudanças de API e ambiente podem tornar memórias antigas nocivas. Versione fonte, data e contrato, e suspenda exemplos que falham em reexecução controlada. O projeto AMD apresenta pesquisa em agentes pequenos; isso não comprova funcionamento contínuo em produção nem elimina manutenção do acervo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S035",
+        "V4B-S032"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Agente em API especializada",
+      "scenario": "As falhas se concentram em convenções pouco intuitivas.",
+      "strategy": "Colete trajetórias autorizadas com resultados verificáveis, extraia padrões de função e recupere somente os compatíveis com a versão atual. Teste erros que exigem abandonar a receita.",
+      "small_model_role": "Um 3–7B pode receber instrução procedural concreta em vez de inferir tudo do nome da ferramenta.",
+      "acceptance": "Medir conclusão de tarefa e ações incorretas, incluindo casos novos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S035",
+        "V4B-S032"
+      ]
+    },
+    {
+      "name": "Workflow com muitas etapas",
+      "scenario": "O aluno se perde entre subtarefas recorrentes.",
+      "strategy": "Recupere um esqueleto de workflow, depois detalhe apenas a etapa atual. Preserve estado real fora do texto e verifique cada transição relevante.",
+      "small_model_role": "Um 8–14B pode usar memória hierárquica para reduzir carga de planejamento.",
+      "acceptance": "Avaliar execução completa, adaptação a desvios e custo de recuperação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S035",
+        "V4B-S032"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Memórias curtas e condicionais podem ajudar tarefas limitadas; excesso de exemplos compete pela janela.",
+    "8_14b": "Explore hierarquia e seleção por etapa, evitando inserir todo o acervo em cada prompt.",
+    "15_30b": "Compare benefício marginal com capacidade própria do 15–30B e custo de manter memórias.",
+    "training_or_runtime_requirements": "No método descrito, memória externa não exige necessariamente atualizar pesos; não confundir com destilação paramétrica.",
+    "do_not_use_when": "Não reaproveitar credenciais, caminhos ou dados de clientes contidos em trajetórias sem tratamento apropriado."
+  },
+  "connections": [
+    {
+      "target_id": "T204",
+      "relation": "complements",
+      "how": "Memórias de função podem virar habilidades com contrato de entrada, saída e versão.",
+      "interface": "Procedimento, pré-condições e pós-condições.",
+      "condition": "Execução atual satisfaz o contrato.",
+      "acceptance": "Reexecutar em casos novos e detectar incompatibilidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S035",
+        "V4B-S032"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T195",
+      "relation": "requires",
+      "how": "Ferramentas e testes verificam se a trajetória transferida realmente funcionou.",
+      "interface": "Resultados de execução e estado final.",
+      "condition": "Oráculo de sucesso independente da narrativa do agente.",
+      "acceptance": "Rejeitar trajetórias que apenas declaram sucesso.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S035",
+        "V4B-S032"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Separar recomendações do professor de resultados efetivamente observados.",
+    "Testar memórias obsoletas e instruções conflitantes antes de liberar o acervo."
+  ],
+  "frontier_comparison": "Compare agentes na mesma tarefa, ferramentas e orçamento. Benchmarks AMD não demonstram equivalência geral; o benefício depende de o procedimento ser recuperado e executável no ambiente atual.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q023"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "C-S035",
+    "V4B-S032"
+  ]
+}

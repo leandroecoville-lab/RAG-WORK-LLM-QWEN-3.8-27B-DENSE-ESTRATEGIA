@@ -1,0 +1,28 @@
+[
+  {
+    "source_id": "A-S009",
+    "title": "MemGPT: Towards LLMs as Operating Systems",
+    "url": "https://arxiv.org/abs/2310.08560",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-10-12",
+    "supports": "Gerência de contexto virtual entre níveis de memória e controle de fluxo.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn1view3"
+  },
+  {
+    "source_id": "A-S010",
+    "title": "MemFS",
+    "url": "https://docs.letta.com/concepts/memfs",
+    "publisher": "Letta",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Memória em repositório Git, projeção em arquivos e carregamento por índices.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn1view2"
+  }
+]

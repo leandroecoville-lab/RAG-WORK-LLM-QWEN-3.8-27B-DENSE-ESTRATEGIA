@@ -1,0 +1,46 @@
+{
+  "id": "T183",
+  "technical_details": "A base quantizada permanece congelada, mas o gradiente atravessa a operação que a utiliza para chegar aos adaptadores. NF4 é uma representação de quatro bits com níveis próprios, não sinônimo de inteiro uniforme INT4. Double quantization comprime constantes de quantização; otimizadores paginados tratam picos de memória de treinamento. Nenhum desses componentes descreve automaticamente o cache KV ou o caminho final do servidor.",
+  "boundary_condition": "A memória reduzida da base não elimina ativações extensas, temporários e estados dos parâmetros treináveis.",
+  "implementation_contract": {
+    "inputs": "Base quantizada, configuração NF4 ou alternativa declarada, adaptadores e dados de ajuste.",
+    "outputs": "Adaptador treinado e avaliação no caminho exato de implantação.",
+    "state": "Escalas quantizadas, base congelada, otimizador e dtype de computação.",
+    "invariant": "Somente os parâmetros autorizados recebem atualização; representação da base permanece identificável."
+  },
+  "tradeoffs": [
+    "Base menor permite ajuste em menos memória e introduz aproximação numérica.",
+    "Exportar e requantizar pode acrescentar erro além daquele observado durante treino."
+  ],
+  "failure_test": "Teste proposto: verificar que pesos base não mudam enquanto fatores recebem gradientes; depois comparar adaptador separado, fusão e requantização. Esperar diferenças explicitamente medidas, não equivalência presumida.",
+  "evaluation_plan": "Plano proposto: comparar LoRA em base de maior precisão e QLoRA com mesmos dados e módulos. Medir memória de cada parcela, estabilidade e qualidade final; repetir a avaliação após exportação no runtime de destino antes de aprovar implantação.",
+  "comparisons": [
+    {
+      "entry_id": "T093",
+      "relation": "distinct_from",
+      "reason": "Paged optimizers gerenciam memória de treinamento; PagedAttention organiza KV de inferência."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "QLoRA combina base quantizada congelada, adaptadores, NF4, quantização de constantes e otimizadores paginados.",
+    "source_ids": [
+      "C-S037"
+    ],
+    "support": "direct",
+    "caveat": "Esses mecanismos descrevem o método original; uma implementação chamada QLoRA pode selecionar opções diferentes."
+  },
+  "advanced_qa": [
+    {
+      "question": "O checkpoint final necessariamente é NF4?",
+      "answer": "Não. A estratégia de exportação e serviço pode usar outra representação, exigindo avaliação após a conversão."
+    },
+    {
+      "question": "Quatro bits no peso significam quatro bits no cálculo?",
+      "answer": "Não. Desquantização e acumulação podem usar precisão maior; inspecione o caminho efetivo."
+    }
+  ],
+  "source_ids": [
+    "C-S037"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

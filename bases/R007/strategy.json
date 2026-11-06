@@ -1,0 +1,112 @@
+{
+  "id": "R007",
+  "novelty": "A v3 identificou SADA e interface de estados. Aqui adapters derivados de contexto recebem isolamento, expiração e avaliação funcional por sessão.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Preserve identidade: Bridging In-Context Learning and Fine-Tuning via State-Aligned Distillation Adapters. A proposta exige relacionar adapter ao contexto que o produziu, ao modelo-base e à interface de estados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S012",
+        "V3A-S004"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Se o contexto muda ou pertence a outro escopo, o adapter anterior não pode ser reutilizado por semelhança. Cache de adapter precisa de identidade exata e condições de validade, não apenas nome da tarefa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S012",
+        "V3A-S004"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare erro de alinhamento interno e qualidade final separadamente. Teste contexto correto, trocado e revogado; estados próximos podem produzir resposta errada ou conservar informação que já deveria ser desconsiderada. Unidade de avaliação: adapter e contexto de origem.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S012",
+        "V3A-S004"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Contexto recorrente especializado",
+      "scenario": "Muitas chamadas usam o mesmo material estável.",
+      "strategy": "Avaliar custo de criar adapter e reutilizá-lo, mantendo caminho de leitura textual para mudanças e auditoria.",
+      "small_model_role": "15–30B modelo aberto experimental.",
+      "acceptance": "Amortização deve incluir geração, troca e invalidação do adapter.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S012",
+        "V3A-S004"
+      ]
+    },
+    {
+      "name": "Sessões isoladas",
+      "scenario": "Cada tarefa contém informações próprias.",
+      "strategy": "Associar adapter a sessão e contexto, impedir carga cruzada e verificar limpeza ao trocar tarefa.",
+      "small_model_role": "8–14B somente se arquitetura adaptada.",
+      "acceptance": "Nenhuma saída pode usar conteúdo de contexto de outra sessão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S012",
+        "V3A-S004"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Baseline textual ou aluno experimental restrito, sem compatibilidade presumida.",
+    "8_14b": "Consumidor adaptado apenas com acesso a estados e treinamento validado.",
+    "15_30b": "Alvo de pesquisa com instrumentação de camadas e análise de custo.",
+    "training_or_runtime_requirements": "Modelo aberto compatível, acesso aos estados, treino e versionamento; a pesquisa não é API universal para modelos fechados.",
+    "do_not_use_when": "Não há controle da interface neural ou o contexto muda antes de amortizar adaptação."
+  },
+  "connections": [
+    {
+      "target_id": "T052",
+      "relation": "requires",
+      "how": "Fixar significado da representação alinhada.",
+      "interface": "Camada, tensor, máscara e versão do modelo.",
+      "condition": "Interface coincidir com o treinamento.",
+      "acceptance": "Trocar camada de leitura e medir falha funcional.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S012",
+        "V3A-S004"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T031",
+      "relation": "complements",
+      "how": "Invalidar adapter quando contexto ou escopo mudar.",
+      "interface": "Context_digest, session_id e validade.",
+      "condition": "Relação com contexto de origem ser verificável.",
+      "acceptance": "Revogar contexto e impedir carregamento do adapter antigo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S012",
+        "V3A-S004"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir SADA com siglas homônimas.",
+    "Não usar alinhamento de estados como prova suficiente de correção."
+  ],
+  "frontier_comparison": "Comparar tarefa e modelo-base fixos com contexto textual; não prometer equivalência geral ao professor.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q017",
+      "V4A-Q024"
+    ],
+    "scope_note": "Não foi estabelecida implantação bigtech exata do SADA identificado. A transferência a 3–30B permanece proposta dependente de arquitetura, treino e avaliação."
+  },
+  "source_ids": [
+    "A-S012",
+    "V3A-S004"
+  ]
+}

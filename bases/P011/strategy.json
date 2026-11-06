@@ -1,0 +1,129 @@
+{
+  "id": "P011",
+  "novelty": "Aprofunda o executor proposto com posse temporária de tarefas, fencing e commits de resultado vinculados à revisão do plano.",
+  "source_ids": [
+    "V3D-S019",
+    "C-S026",
+    "V4C-S001",
+    "V4C-S004"
+  ],
+  "deep_layers": [
+    {
+      "name": "Posse e fencing",
+      "detail": "Proposta: concessão temporária identifica o worker autorizado e recebe uma época monotônica. Após expiração, um worker antigo pode continuar vivo; o destino precisa validar a época antes de aceitar escrita. Um lease local sozinho não impede efeitos de um executor atrasado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S019",
+        "C-S026",
+        "V4C-S001",
+        "V4C-S004"
+      ]
+    },
+    {
+      "name": "Commit de etapa",
+      "detail": "Separar produzir candidato, verificar candidato e publicar resultado. O commit inclui revisão do plano e do estado de entrada. Uma mudança de objetivo invalida trabalhos pendentes sem apagar sua evidência. Operações externas ainda exigem identidade estável e reconciliação própria.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S019",
+        "C-S026",
+        "V4C-S001",
+        "V4C-S004"
+      ]
+    },
+    {
+      "name": "Decomposição com barreiras",
+      "detail": "Executar em paralelo apenas etapas com dependências satisfeitas e recursos compatíveis. A barreira não significa simplesmente esperar todos os textos: precisa decidir quorum, resultados obrigatórios e tratamento de falha parcial conforme a tarefa. Cancelar um ramo não desfaz efeito já confirmado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S019",
+        "C-S026",
+        "V4C-S001",
+        "V4C-S004"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Processamento de lotes documentais",
+      "scenario": "Workers podem cair durante extração e validação.",
+      "strategy": "Conceder tarefas por lease, persistir candidato e confirmar somente com época vigente.",
+      "small_model_role": "3–7B extrai campos; controlador determina publicação.",
+      "acceptance": "Worker antigo não sobrescreve resultado novo após reatribuição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S019",
+        "C-S026",
+        "V4C-S001",
+        "V4C-S004"
+      ]
+    },
+    {
+      "name": "Plano de manutenção com ações externas",
+      "scenario": "Algumas etapas apenas leem; outras alteram recursos.",
+      "strategy": "Separar fases de preparação e commit e preservar resultado ambíguo para reconciliação.",
+      "small_model_role": "8–30B propõe etapas; contratos executáveis limitam transições e efeitos.",
+      "acceptance": "Falhas entre preparação e confirmação não duplicam ações nem marcam conclusão indevida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S019",
+        "C-S026",
+        "V4C-S001",
+        "V4C-S004"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "3–7B: trabalhadores estreitos com contrato explícito de entrada/saída.",
+    "8_14b": "8–14B: planos curtos e verificáveis, executados por máquina de estados externa.",
+    "15_30b": "15–30B: decomposição de maior alcance somente se invariantes e testes limitarem o erro.",
+    "training_or_runtime_requirements": "Lease, fencing e persistência dependem dos serviços participantes; não são garantias da LLM.",
+    "do_not_use_when": "Não paralelizar etapas que disputam o mesmo estado sem protocolo de concorrência."
+  },
+  "connections": [
+    {
+      "target_id": "T159",
+      "relation": "complements",
+      "how": "Persistir transições e resultados necessários à retomada.",
+      "interface": "Task_id, etapa, época, revisão e resultado.",
+      "condition": "Execução deve sobreviver ao processo.",
+      "acceptance": "Retomada identifica a última etapa confirmada sem confiar no texto final.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S019",
+        "C-S026",
+        "V4C-S001",
+        "V4C-S004"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T243",
+      "relation": "feeds",
+      "how": "Encaminhar efeitos sem confirmação para investigação de status.",
+      "interface": "Identidade da operação e provas de envio/retorno.",
+      "condition": "Destino externo pode completar após timeout.",
+      "acceptance": "O executor não resolve ambiguidade repetindo cegamente a ação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S019",
+        "C-S026",
+        "V4C-S001",
+        "V4C-S004"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não afirmar fencing se o destino não valida o token.",
+    "Não considerar cancelamento como compensação de efeito já ocorrido."
+  ],
+  "frontier_comparison": "Avaliar conclusão correta sob workers duplicados, atraso e mudança de plano. Medir trabalho descartado e efeitos indevidos além de throughput.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q002",
+      "V4C-Q003",
+      "V4C-Q012"
+    ],
+    "scope_note": "P011 permanece componente proposto. Cadence, Conductor e fluxos internos fornecem referências operacionais, não adoção literal deste controlador."
+  }
+}

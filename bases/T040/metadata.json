@@ -1,0 +1,31 @@
+{
+  "id": "T040",
+  "name": "State-Aware Window",
+  "canonical_name": "State-Aware Window",
+  "canonical_id": "T040",
+  "aliases": [
+    "janela orientada ao estado"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T024",
+    "T060",
+    "T064",
+    "T065"
+  ],
+  "source_ids": [
+    "A-S022",
+    "A-S029",
+    "V3A-S031",
+    "V3A-S030",
+    "V4A-S002"
+  ],
+  "namespace": "T040",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T040",
+  "chunk_count": 9
+}

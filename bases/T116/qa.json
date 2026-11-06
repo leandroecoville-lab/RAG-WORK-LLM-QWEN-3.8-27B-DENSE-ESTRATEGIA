@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Recomputation altera os pesos?",
+    "answer": "Não. Executa novamente parte do mesmo modelo para recuperar estados temporários."
+  },
+  {
+    "question": "É igual a recuperar memória episódica?",
+    "answer": "Não. Recuperação episódica seleciona registros; recomputação KV refaz representações numéricas de tokens."
+  },
+  {
+    "question": "Recomputar é o mesmo que fazer nova resposta?",
+    "answer": "Não. Deve processar tokens confirmados como entrada e retomar somente onde ainda falta gerar."
+  },
+  {
+    "question": "Pode restaurar com outro adaptador?",
+    "answer": "Isso altera as projeções e possivelmente a distribuição futura; exige uma mudança declarada de configuração, não simples recuperação de cache."
+  }
+]

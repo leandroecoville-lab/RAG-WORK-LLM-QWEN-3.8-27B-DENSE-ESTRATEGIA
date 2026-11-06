@@ -1,0 +1,32 @@
+{
+  "id": "R010",
+  "name": "Hugging Face TGI",
+  "canonical_name": "Hugging Face TGI",
+  "canonical_id": "R010",
+  "aliases": [
+    "Text Generation Inference",
+    "TGI"
+  ],
+  "category": "referencias",
+  "kind": "project",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "R009",
+    "R011",
+    "T088",
+    "T141"
+  ],
+  "source_ids": [
+    "B-S042",
+    "V3D-S006",
+    "V4B-S019",
+    "V4B-S014",
+    "V4B-S010"
+  ],
+  "namespace": "R010",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R010",
+  "chunk_count": 9
+}

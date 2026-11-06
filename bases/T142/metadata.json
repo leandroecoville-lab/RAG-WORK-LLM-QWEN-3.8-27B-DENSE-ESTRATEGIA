@@ -1,0 +1,34 @@
+{
+  "id": "T142",
+  "name": "Agent Frameworks com Planning",
+  "canonical_name": "Agent Frameworks com Planning",
+  "canonical_id": "T142",
+  "aliases": [
+    "frameworks de agentes com planejamento"
+  ],
+  "category": "orquestracao",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T143",
+    "T159",
+    "T160",
+    "R008"
+  ],
+  "source_ids": [
+    "C-S009",
+    "V3C-S006",
+    "V3C-S002",
+    "V4C-S004",
+    "V4C-S001",
+    "V4C-S015",
+    "V3C-S018",
+    "V4C-S017"
+  ],
+  "namespace": "T142",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T142",
+  "chunk_count": 9
+}

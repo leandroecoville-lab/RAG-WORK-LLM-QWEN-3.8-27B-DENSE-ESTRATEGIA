@@ -1,0 +1,8 @@
+flowchart TD
+    P003["P003 Virtual Context Manager"]
+    P002["P002 Context Manager"]
+    P003 -. "requires: proposta" .-> P002
+    P006["P006 Progressive Loader"]
+    P003 -. "complements: proposta" .-> P006
+    T218["T218 Loop Detection / detecção de estagnação e ciclos"]
+    P003 -. "requires: proposta" .-> T218

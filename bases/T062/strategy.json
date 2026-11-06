@@ -1,0 +1,112 @@
+{
+  "id": "T062",
+  "novelty": "A v3 separou armazenamento e abstração. Aqui hierarquia é otimizada por custo de movimento e localidade de tarefa.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Meça quanto custa mover e interpretar cada unidade entre arquivo, índice e janela. Um resumo curto pode ser barato de carregar e caro de desambiguar; latência física não é custo total.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "V3A-S039"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Promova residência temporária por fase da tarefa, não por popularidade global. Múltiplas tarefas concorrentes podem ter conjuntos de trabalho distintos e competir por níveis rápidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "V3A-S039"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare política estática, por recência e por fase. Meça recargas, latência de leitura e decisões erradas por usar abstração inadequada; separar nível físico do nível semântico na telemetria. Unidade de avaliação: trajetória de acessos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "V3A-S039"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Projeto com módulos ativos",
+      "scenario": "Somente parte do repositório muda.",
+      "strategy": "Manter contratos dos módulos ativos na janela, descritores no nível intermediário e originais externos; rebaixar após encerrar fase.",
+      "small_model_role": "3–7B usa contratos; 8–14B abre detalhe.",
+      "acceptance": "Mudança de módulo deve carregar versão correta antes de agir.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "V3A-S039"
+      ]
+    },
+    {
+      "name": "Pesquisa em acervo extenso",
+      "scenario": "Consulta alterna visão geral e detalhe.",
+      "strategy": "Usar síntese para navegação e originais para afirmações precisas; contabilizar custo de expandir cada nível.",
+      "small_model_role": "15–30B integra níveis.",
+      "acceptance": "Detalhe factual deve continuar verificável no original.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "V3A-S039"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Consumidor de nível intermediário explícito com referências simples.",
+    "8_14b": "Controlador de expansão entre poucos níveis por necessidade.",
+    "15_30b": "Integrador global que decide quais detalhes precisam subir à janela.",
+    "training_or_runtime_requirements": "Catálogo de níveis, custo de recarga e dependências; não pressupor equivalência entre RAM, contexto e resumo.",
+    "do_not_use_when": "Custo de movimentar níveis excede benefício ou a abstração perde informação indispensável sem recuperação."
+  },
+  "connections": [
+    {
+      "target_id": "T074",
+      "relation": "complements",
+      "how": "Escolher residência por fase e custo de retorno.",
+      "interface": "Objeto, nível, custo e condição de fixação.",
+      "condition": "Evicção não alterar retenção canônica.",
+      "acceptance": "Medir oscilações entre os mesmos dois níveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "V3A-S039"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T008",
+      "relation": "complements",
+      "how": "Criar abstrações para navegação, separadas da localização física.",
+      "interface": "Resumo, nível semântico e referências.",
+      "condition": "Originais permanecerem disponíveis.",
+      "acceptance": "Comparar resposta detalhada com resumo e com folha.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "V3A-S039"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não chamar disco de memória semântica apenas por ser durável.",
+    "Não usar resumo como substituto literal da evidência."
+  ],
+  "frontier_comparison": "Comparar custo total de acesso e leitura; mais níveis podem aumentar complexidade sem melhorar respostas.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S009",
+    "V3A-S039"
+  ]
+}

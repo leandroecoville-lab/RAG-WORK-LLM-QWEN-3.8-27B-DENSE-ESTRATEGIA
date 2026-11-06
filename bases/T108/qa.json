@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Cada cabeça é um agente?",
+    "answer": "Não. É um conjunto de projeções e operações internas treinadas conjuntamente."
+  },
+  {
+    "question": "Trocar MHA por GQA preserva o modelo automaticamente?",
+    "answer": "Não. A mudança requer uma conversão válida e avaliação, normalmente com treinamento adicional."
+  },
+  {
+    "question": "Uma cabeça corresponde sempre a uma função humana?",
+    "answer": "Não. Especializações podem surgir, mas precisam de evidência; a numeração sozinha não carrega significado."
+  },
+  {
+    "question": "A escala garante boa calibração?",
+    "answer": "Não. Ela regula magnitude dos scores de atenção, não a probabilidade de uma resposta factual estar correta."
+  }
+]

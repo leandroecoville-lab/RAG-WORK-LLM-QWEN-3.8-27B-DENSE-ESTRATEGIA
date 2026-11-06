@@ -1,0 +1,33 @@
+{
+  "id": "T058",
+  "name": "Memory Consolidation",
+  "canonical_name": "Memory Consolidation",
+  "canonical_id": "T058",
+  "aliases": [
+    "consolidação de memória"
+  ],
+  "category": "memoria",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T049",
+    "T054",
+    "T071",
+    "T075"
+  ],
+  "source_ids": [
+    "A-S008",
+    "A-S023",
+    "V3A-S034",
+    "V3A-S037",
+    "V3A-S033",
+    "V4A-S002",
+    "V4A-S003"
+  ],
+  "namespace": "T058",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T058",
+  "chunk_count": 9
+}

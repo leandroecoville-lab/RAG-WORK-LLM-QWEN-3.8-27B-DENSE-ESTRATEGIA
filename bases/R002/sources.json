@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "V2B-S001",
+    "title": "Letta Documentation",
+    "url": "https://docs.letta.com/",
+    "publisher": "Letta",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Plataforma de agentes com estado, harness aberto, Agent SDK e opções de execução administrada ou própria.",
+    "limitations": "Página oficial consultada; recursos disponíveis dependem da versão e implantação. Não houve instalação nem ensaio no ambiente LAI.",
+    "web_ref": "turn45view1"
+  },
+  {
+    "source_id": "V2B-S002",
+    "title": "Stateful agents",
+    "url": "https://docs.letta.com/concepts/stateful-agents",
+    "publisher": "Letta",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Identidade persistente, memória compartilhada entre conversas do mesmo agente e distinção entre agentes locais e com backup em nuvem.",
+    "limitations": "Documentação atual consultada; não comprova isolamento ou durabilidade de uma implantação específica.",
+    "web_ref": "turn51view1"
+  },
+  {
+    "source_id": "V3A-S046",
+    "title": "Letta Shared memory",
+    "url": "https://docs.letta.com/concepts/shared-memory",
+    "publisher": "Letta",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "MemFS pertence a um agente; repositório compartilhado pertence à organização e requer commit, push e pull para sincronização entre checkouts.",
+    "limitations": "Fonte primária dinâmica consultada; leitura de documentação ou código sem instalação, execução ou reprodução de resultados. Branch e documentação podem evoluir; fixar revisão antes de implementar.",
+    "web_ref": "turn184view5"
+  },
+  {
+    "source_id": "V4A-S026",
+    "title": "MemGPT Is Now Part of Letta",
+    "url": "https://www.letta.com/blog/memgpt-and-letta/",
+    "publisher": "Letta",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2024-09-23",
+    "supports": "Distingue padrão de memória MemGPT e framework Letta; persistência de agentes como serviço.",
+    "limitations": "Não demonstra dez implantações bigtech nem desempenho de um pipeline local 3–30B.",
+    "web_ref": "turn264view0"
+  }
+]

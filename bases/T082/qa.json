@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Prefix cache aumenta a janela?",
+    "answer": "Não. Reaproveita cálculo; o prefixo continua fazendo parte da sequência atendida."
+  },
+  {
+    "question": "É igual a response caching?",
+    "answer": "Não. Response caching devolve saída armazenada; prefix caching ainda gera uma nova resposta."
+  },
+  {
+    "question": "Prefix caching acelera automaticamente o decode?",
+    "answer": "Não. Seu benefício direto é evitar construção repetida de estados do prefixo; a atenção sobre eles continua necessária."
+  },
+  {
+    "question": "Como comparar caches com blocos diferentes?",
+    "answer": "Use tokens e tempo realmente poupados, além da memória ocupada; uma taxa bruta de hits não é comparável."
+  }
+]

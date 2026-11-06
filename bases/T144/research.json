@@ -1,0 +1,53 @@
+{
+  "id": "T144",
+  "technical_details": "A vantagem do ciclo observação–ação aparece quando a informação recém-obtida muda a próxima escolha. Seu custo cresce se cada rodada reenviar grandes resultados anteriores ou repetir uma consulta porque o estado de conclusão não está explícito. Um controle proposto identifica observações pelo conteúdo e pela origem, registra o que elas mudaram e diferencia investigação adicional de repetição sem informação nova.",
+  "boundary_condition": "Em tarefas com dependências já conhecidas e ferramentas independentes, o ciclo estritamente serial pode introduzir latência evitável.",
+  "implementation_contract": {
+    "inputs": "Estado da tarefa, última observação, catálogo de ações e orçamento.",
+    "outputs": "Próxima ação justificada por evidência operacional ou término verificável.",
+    "state": "Chamadas anteriores, observações referenciadas e hipóteses atualizadas.",
+    "invariant": "Repetir uma ação exige nova finalidade, mudança de entrada ou política explícita de recuperação."
+  },
+  "tradeoffs": [
+    "Reagir a cada resultado aumenta adaptação e também número de interações com o modelo.",
+    "Agrupar observações economiza chamadas e pode retardar a percepção de um resultado decisivo."
+  ],
+  "failure_test": "Teste proposto: uma ferramenta devolve repetidamente o mesmo resultado sem avanço; exigir identificação da repetição e mudança de estratégia ou encerramento com limitação.",
+  "evaluation_plan": "Comparar ReAct serial, planejamento antecipado e execução de grupos independentes. Fixar informação disponível e critérios de sucesso. Medir observações úteis por chamada, repetições, latência e conclusão; usar cenários onde resultados realmente alterem decisões.",
+  "comparisons": [
+    {
+      "entry_id": "T143",
+      "relation": "alternative",
+      "reason": "O plano antecipado evita algumas rodadas, mas depende mais de premissas estáveis."
+    },
+    {
+      "entry_id": "T218",
+      "relation": "complements",
+      "reason": "Um detector de repetição pode limitar ciclos sem informação adicional."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "LLMCompiler identifica custos da chamada sequencial e propõe planejamento, despacho e execução paralela de funções.",
+    "source_ids": [
+      "V3C-S002"
+    ],
+    "support": "direct",
+    "caveat": "A comparação apoia um limite do serialismo, não a superioridade de paralelismo em tarefas com dependências desconhecidas."
+  },
+  "advanced_qa": [
+    {
+      "question": "Reagir a toda observação é sempre mais inteligente?",
+      "answer": "Não. Algumas observações apenas confirmam passos previsíveis; a chamada adicional pode não mudar nenhuma decisão."
+    },
+    {
+      "question": "Como distinguir retry útil de loop?",
+      "answer": "Pela categoria do erro, mudança de condições e evidência de progresso; igualdade de texto sozinha não decide todos os casos."
+    }
+  ],
+  "source_ids": [
+    "V3C-S002",
+    "V3C-S012",
+    "C-S011"
+  ],
+  "research_note": "Detalhamento e avaliação propostos; a fonte apoia o mecanismo, sem comprovar implementação LAI."
+}

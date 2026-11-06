@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Recuperação hierárquica exige resumos por LLM?",
+    "answer": "Não. Cabeçalhos, pastas e metadados podem fornecer a hierarquia."
+  },
+  {
+    "question": "É igual a Parent-Child Retrieval?",
+    "answer": "Parent-child é um caso particular; uma hierarquia pode ter muitos níveis e diferentes políticas de expansão."
+  },
+  {
+    "question": "Um nó relevante garante filhos relevantes?",
+    "answer": "Não. A síntese pode representar apenas parte dos descendentes. É preciso selecionar e verificar quais folhas sustentam a pergunta."
+  },
+  {
+    "question": "Como contar cobertura sem inflá-la?",
+    "answer": "Deduplicate referências à mesma evidência e registre a contribuição de cada nível. Um fato citado pelo resumo e pela folha não se torna duas confirmações independentes."
+  }
+]

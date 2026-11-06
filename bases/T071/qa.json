@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Promoção precisa alterar pesos?",
+    "answer": "Não. Pode mudar estado editorial e disponibilidade de uma memória externa."
+  },
+  {
+    "question": "É possível reverter uma promoção?",
+    "answer": "O desenho deve permitir: correções e novos resultados podem exigir rebaixar confiança ou retirar um procedimento de uso."
+  },
+  {
+    "question": "Toda hipótese precisa ser promovida para ser útil?",
+    "answer": "Não. Pode orientar investigação com seu status explícito. O erro é tratá-la como premissa confirmada sem a mudança de evidência necessária."
+  },
+  {
+    "question": "Como rebaixar um procedimento sem apagar aprendizado?",
+    "answer": "Preserve histórico e motivo, suspenda recomendação no escopo afetado e mantenha acesso aos casos que ainda explicam quando ele funcionou."
+  }
+]

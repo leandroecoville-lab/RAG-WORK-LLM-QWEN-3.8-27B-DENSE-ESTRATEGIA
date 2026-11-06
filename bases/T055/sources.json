@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "A-S023",
+    "title": "Memory overview",
+    "url": "https://docs.langchain.com/oss/python/concepts/memory",
+    "publisher": "LangChain",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Distinções de escopo, memória semântica, episódica e procedural; gestão do histórico.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn7view2"
+  },
+  {
+    "source_id": "A-S026",
+    "title": "Equipping agents for the real world with Agent Skills",
+    "url": "https://www.anthropic.com/research/equipping-agents-for-the-real-world-with-agent-skills",
+    "publisher": "Anthropic",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-10-16",
+    "supports": "Skills descobertas por metadados, com instruções e recursos carregados sob demanda.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn5view1"
+  },
+  {
+    "source_id": "V3A-S018",
+    "title": "Agent Skills specification",
+    "url": "https://agentskills.io/specification",
+    "publisher": "Agent Skills",
+    "source_type": "specification",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Carregamento progressivo de metadados, instruções e recursos; estrutura e escopo de arquivos de skills.",
+    "limitations": "Fonte primária consultada. Sem reprodução de resultados, instalação ou verificação de servidor; detalhes operacionais propostos são inferências editoriais.",
+    "web_ref": "turn105view2"
+  },
+  {
+    "source_id": "V2A-S016",
+    "title": "How Claude remembers your project",
+    "url": "https://code.claude.com/docs/en/memory",
+    "publisher": "Anthropic",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Instruções persistentes em arquivos e memória automática; escopo e carregamento dependem da configuração.",
+    "limitations": "Consulta documental primária. Não houve reprodução de experimentos, instalação do produto nem validação de disponibilidade na infraestrutura LAI. Receitas e testes das entradas são propostas editoriais.",
+    "web_ref": "turn56view7"
+  }
+]

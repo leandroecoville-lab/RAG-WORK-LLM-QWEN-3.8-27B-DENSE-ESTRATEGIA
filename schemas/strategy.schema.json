@@ -1,0 +1,276 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lai:rag:strategy:v4",
+  "title": "LAI RAG strategy",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[TRP][0-9]{3}$"
+    },
+    "novelty": {
+      "type": "string",
+      "minLength": 1
+    },
+    "deep_layers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "detail": {
+            "type": "string",
+            "minLength": 1
+          },
+          "basis": {
+            "enum": [
+              "engineering_proposal",
+              "source_documented"
+            ]
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "name",
+          "detail",
+          "basis",
+          "source_ids"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 3
+    },
+    "advanced_uses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scenario": {
+            "type": "string",
+            "minLength": 1
+          },
+          "strategy": {
+            "type": "string",
+            "minLength": 1
+          },
+          "small_model_role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "acceptance": {
+            "type": "string",
+            "minLength": 1
+          },
+          "basis": {
+            "enum": [
+              "engineering_proposal",
+              "source_documented"
+            ]
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "name",
+          "scenario",
+          "strategy",
+          "small_model_role",
+          "acceptance",
+          "basis",
+          "source_ids"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 2
+    },
+    "small_model_fit": {
+      "type": "object",
+      "properties": {
+        "3_7b": {
+          "type": "string",
+          "minLength": 1
+        },
+        "8_14b": {
+          "type": "string",
+          "minLength": 1
+        },
+        "15_30b": {
+          "type": "string",
+          "minLength": 1
+        },
+        "training_or_runtime_requirements": {
+          "type": "string",
+          "minLength": 1
+        },
+        "do_not_use_when": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "3_7b",
+        "8_14b",
+        "15_30b",
+        "training_or_runtime_requirements",
+        "do_not_use_when"
+      ],
+      "additionalProperties": false
+    },
+    "connections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "target_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[TRP][0-9]{3}$"
+          },
+          "relation": {
+            "enum": [
+              "feeds",
+              "requires",
+              "complements",
+              "alternative",
+              "conflicts"
+            ]
+          },
+          "how": {
+            "type": "string",
+            "minLength": 1
+          },
+          "interface": {
+            "type": "string",
+            "minLength": 1
+          },
+          "condition": {
+            "type": "string",
+            "minLength": 1
+          },
+          "acceptance": {
+            "type": "string",
+            "minLength": 1
+          },
+          "basis": {
+            "enum": [
+              "engineering_proposal",
+              "source_documented"
+            ]
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "case_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "target_id",
+          "relation",
+          "how",
+          "interface",
+          "condition",
+          "acceptance",
+          "basis",
+          "source_ids",
+          "case_ids"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 2,
+      "maxItems": 4
+    },
+    "failure_controls": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 2
+    },
+    "frontier_comparison": {
+      "type": "string",
+      "minLength": 1
+    },
+    "production_search": {
+      "type": "object",
+      "properties": {
+        "search_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "scope_note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "search_ids",
+        "scope_note"
+      ],
+      "additionalProperties": false
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "id",
+    "novelty",
+    "deep_layers",
+    "advanced_uses",
+    "small_model_fit",
+    "connections",
+    "failure_controls",
+    "frontier_comparison",
+    "production_search",
+    "source_ids"
+  ],
+  "additionalProperties": false
+}

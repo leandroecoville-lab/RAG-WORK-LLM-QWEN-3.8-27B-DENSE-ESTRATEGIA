@@ -1,0 +1,128 @@
+{
+  "id": "T106",
+  "novelty": "A v3 calculou KV por camada e dispositivo. A nova camada liga esse orçamento ao limite de concorrência, à arquitetura efetiva do checkpoint e ao caminho de execução que pode desperdiçar a economia lógica.",
+  "deep_layers": [
+    {
+      "name": "Do checkpoint à reserva",
+      "detail": "Extraia número de cabeças KV, dimensões, tipos de camada e limites de retenção do checkpoint real. Converta a estimativa em reserva por sequência usando comprimento de entrada e crescimento permitido da saída. Dividir VRAM apenas pelo tamanho dos pesos ignora justamente o benefício e o custo que MQA/GQA pretendem controlar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S019",
+        "B-S018",
+        "V4B-S020",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Representação versus expansão",
+      "detail": "Algumas interfaces aceitam grupos de consultas mas expandem K/V temporariamente para atender um kernel. Isso pode preservar resultados e ainda aumentar pico de memória ou tráfego. Examine o caminho selecionado, incluindo fallback, para saber se a redução arquitetural chega ao armazenamento e às leituras relevantes durante decode.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S019",
+        "B-S018",
+        "V4B-S020",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Comparação de modelos",
+      "detail": "Dois checkpoints com igual quantidade de parâmetros podem ter largura, profundidade e grupos KV distintos. A comparação operacional deve incluir bytes por token e custo de atenção, além de pesos. Qwen3 publica configurações diferentes; sua família não autoriza presumir a configuração ou o backend do modelo existente no servidor.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S019",
+        "B-S018",
+        "V4B-S020",
+        "V4B-S017"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Dimensionamento de sessões",
+      "scenario": "Um serviço precisa suportar conversas de tamanhos variados.",
+      "strategy": "Construa classes de reserva por contexto e libere margem ao terminar cada pedido. Use configuração real e medição física para calibrar o estimador.",
+      "small_model_role": "Um 8–14B pode ser escolhido por equilíbrio entre qualidade especializada e custo por sessão.",
+      "acceptance": "Estimativas devem prever pico por dispositivo sem subestimar réplicas ou buffers.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S019",
+        "B-S018",
+        "V4B-S020",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Seleção de checkpoint",
+      "scenario": "Há candidatos 3–30B com respostas semelhantes no domínio.",
+      "strategy": "Compare qualidade, memória dos pesos, KV por token e latência sob a mesma distribuição de contexto. Evite converter um MHA existente apenas para obter uma linha melhor na planilha.",
+      "small_model_role": "O modelo menor assume tarefas cujo conhecimento vem de evidência recuperada.",
+      "acceptance": "Selecionar pelo serviço dentro do orçamento, com testes de dependência longa preservados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S019",
+        "B-S018",
+        "V4B-S020",
+        "V4B-S017"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Uma redução de KV pode ampliar concorrência mesmo quando pesos já cabem; confirme que o trabalho é limitado por cache.",
+    "8_14b": "Com grupos KV suficientes, particionamento pode ser conveniente, mas divisibilidade deve ser verificada.",
+    "15_30b": "Em 15–30B, atenção, pesos e comunicação competem; reduzir KV não elimina o restante do consumo.",
+    "training_or_runtime_requirements": "Arquitetura requer pesos compatíveis. Otimização de layout e kernels é de runtime, mantendo a estrutura treinada.",
+    "do_not_use_when": "Não trocar número de cabeças KV em configuração e esperar preservação automática da função."
+  },
+  "connections": [
+    {
+      "target_id": "T100",
+      "relation": "requires",
+      "how": "A economia GQA depende da razão entre cabeças de consulta e KV do checkpoint.",
+      "interface": "Configuração por camada e layout físico.",
+      "condition": "Carregamento confirma grupos e projeções corretos.",
+      "acceptance": "Comparar logits e bytes com implementação de referência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S019",
+        "B-S018",
+        "V4B-S020",
+        "V4B-S017"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T087",
+      "relation": "feeds",
+      "how": "O orçamento de cache informa admissão de sequências no lote contínuo.",
+      "interface": "Reserva por sequência e capacidade livre real.",
+      "condition": "Crescimento futuro incluído na admissão.",
+      "acceptance": "Submeter mistura de contextos e observar falta de memória e espera.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S019",
+        "B-S018",
+        "V4B-S020",
+        "V4B-S017"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não apresentar parâmetros ativos de MoE como tamanho dos pesos residentes.",
+    "Relatar separadamente memória útil, alocada e pico de temporários."
+  ],
+  "frontier_comparison": "Um modelo pequeno com GQA pode servir mais contexto simultâneo que outro candidato, mas isso não demonstra raciocínio superior. Compare tarefas cuja evidência cabe na janela e que tenham resposta verificável.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q016",
+      "V4B-Q005"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S019",
+    "B-S018",
+    "V4B-S020",
+    "V4B-S017"
+  ]
+}

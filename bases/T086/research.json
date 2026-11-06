@@ -1,0 +1,47 @@
+{
+  "id": "T086",
+  "technical_details": "Erros nas chaves alteram produtos consulta-chave e a distribuição do softmax; erros nos valores alteram a combinação ponderada resultante. Por isso, os eixos de quantização podem ser diferentes. A análise do KIVI favorece chaves por canal e valores por token nos cenários estudados. O custo real inclui escalas, agrupamento, conversões e eventual região recente mantida em precisão maior.",
+  "boundary_condition": "Contextos curtos ou lotes pequenos podem não amortizar quantização e desquantização, mesmo que o número de bytes diminua.",
+  "implementation_contract": {
+    "inputs": "Estados K e V, agrupamento, escalas e política para a região recente.",
+    "outputs": "Cache comprimido acompanhado de metadados suficientes para leitura correta.",
+    "state": "Posições lógicas, fronteiras de grupos e dtype por segmento.",
+    "invariant": "Nunca interpretar metadados de uma camada ou grupo como pertencentes a outro."
+  },
+  "tradeoffs": [
+    "Menos memória permite mais concorrência, mas essa concorrência pode elevar latência individual.",
+    "Granularidade fina reduz erro local e aumenta custo de escalas."
+  ],
+  "failure_test": "Teste proposto: inserir um valor extremo e uma evidência importante distante no contexto. Comparar recuperação e logits com cache de maior precisão, verificando se a degradação se concentra em posições específicas.",
+  "evaluation_plan": "Plano proposto: manter pesos e prompts fixos e variar somente a representação KV. Medir bytes completos, tempo de conversão, TTFT, latência entre tokens e qualidade em diferentes comprimentos; aprovar conforme orçamento e perda previamente definidos.",
+  "comparisons": [
+    {
+      "entry_id": "T085",
+      "relation": "complements",
+      "reason": "A quantização de pesos pode coexistir, mas seus ganhos não devem ser multiplicados sem medição."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O KIVI propõe tratamento assimétrico dos eixos de quantização de chaves e valores.",
+    "source_ids": [
+      "V3B-S002"
+    ],
+    "support": "direct",
+    "caveat": "A observação dos autores não garante que o mesmo agrupamento seja ótimo para toda arquitetura."
+  },
+  "advanced_qa": [
+    {
+      "question": "Redução teórica de bits basta para estimar capacidade?",
+      "answer": "Não. Escalas, alinhamento, cópias temporárias e partes não quantizadas também ocupam memória."
+    },
+    {
+      "question": "Por que medir qualidade em contexto longo?",
+      "answer": "A atenção pode depender de poucos estados distantes; erro pequeno médio pode ocultar falha relevante de recuperação."
+    }
+  ],
+  "source_ids": [
+    "V3B-S002",
+    "B-S007"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

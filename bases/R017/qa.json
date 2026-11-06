@@ -1,0 +1,18 @@
+[
+  {
+    "question": "LangChain e LangGraph são sinônimos?",
+    "answer": "Não. LangChain oferece composição de agentes e integrações; LangGraph é uma camada de orquestração para controle mais detalhado."
+  },
+  {
+    "question": "Instalar LangChain cria um RAG completo?",
+    "answer": "Não. Fontes, ingestão, recuperação, montagem de contexto, validação e avaliação precisam ser definidos na aplicação."
+  },
+  {
+    "question": "Mensagem de erro ao modelo prova que houve retry?",
+    "answer": "Não. O traço precisa registrar tentativas efetivas; feedback e repetição são mecanismos diferentes."
+  },
+  {
+    "question": "Por que medir chamadas fora do contador de turnos?",
+    "answer": "Uma chamada lógica pode envolver retries ou fallback, aumentando custo e efeitos sem acrescentar turno visível."
+  }
+]

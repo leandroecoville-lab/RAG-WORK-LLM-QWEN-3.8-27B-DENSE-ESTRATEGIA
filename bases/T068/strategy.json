@@ -1,0 +1,123 @@
+{
+  "id": "T068",
+  "novelty": "A v3 separou memória textual e neural. Aqui o uso da memória é testado por intervenção para distinguir acesso de influência real.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Encontrar e inserir memória não prova que o gerador a utilizou. Compare resposta com memória correta, removida e trocada por versão incompatível, mantendo pergunta igual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S013",
+        "V3A-S047",
+        "V4A-S019"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Defina política para conflito entre memória e conhecimento paramétrico. Para tarefas sobre documentos privados, o modelo deve citar a evidência fornecida e sinalizar conflito, não substituir silenciosamente por lembrança.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S013",
+        "V3A-S047",
+        "V4A-S019"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Meça fidelidade, sensibilidade à troca e abstenção quando memória fica insuficiente. Separar falha de recuperação, falha de leitura e adesão indevida a fonte errada evita atribuição enganosa de ganho. Unidade de avaliação: resposta condicionada à memória.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S013",
+        "V3A-S047",
+        "V4A-S019"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Assistente de produto privado",
+      "scenario": "Fatos não aparecem no pré-treino.",
+      "strategy": "Recuperar documentação versionada, exigir suporte por afirmação e testar nomes fictícios controlados que impedem acerto por familiaridade.",
+      "small_model_role": "8–14B leitor especializado.",
+      "acceptance": "Resposta deve acompanhar mudança documentada do atributo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S013",
+        "V3A-S047",
+        "V4A-S019"
+      ]
+    },
+    {
+      "name": "Memória neural experimental",
+      "scenario": "Modelo aberto lê estados externos.",
+      "strategy": "Instrumentar contribuição da memória e comparar com RAG textual sob recursos equivalentes; não avaliar apenas perda de linguagem.",
+      "small_model_role": "15–30B consumidor treinável.",
+      "acceptance": "Memória errada deve ser detectável na avaliação, sem ocultar dependência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S013",
+        "V3A-S047",
+        "V4A-S019"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Leitor extrativo de texto recuperado com citações e campos ausentes.",
+    "8_14b": "Leitor contextual especializado para integrar poucas memórias conflitantes.",
+    "15_30b": "Consumidor neural ou integrador complexo quando houver treino e instrumentação.",
+    "training_or_runtime_requirements": "Interface de memória definida, versão do consumidor e testes contrafactuais próprios; texto e tensores exigem contratos distintos.",
+    "do_not_use_when": "O consumidor ignora memória ou segue conteúdo irrelevante sem capacidade de abster."
+  },
+  "connections": [
+    {
+      "target_id": "T009",
+      "relation": "complements",
+      "how": "Separar busca de evidência e leitura gerativa.",
+      "interface": "Consulta, documentos, referências e status de cobertura.",
+      "condition": "Memória textual elegível estar disponível.",
+      "acceptance": "Trocar evidência mantendo consulta e medir dependência correta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S013",
+        "V3A-S047",
+        "V4A-S019"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T052",
+      "relation": "requires",
+      "how": "Especificar interface quando memória for latente.",
+      "interface": "Encoder, estados, máscaras e versão.",
+      "condition": "Consumidor treinado para a representação.",
+      "acceptance": "Testar incompatibilidade após troca de checkpoint.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S013",
+        "V3A-S047",
+        "V4A-S019"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não atribuir ao componente memória acerto que ocorreria sem ele.",
+    "Não tratar texto recuperado como autoridade de execução."
+  ],
+  "frontier_comparison": "Comparar fidelidade com a mesma evidência; sucesso num domínio privado não demonstra paridade geral com fronteira.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q010",
+      "V4A-Q016",
+      "V4A-Q018",
+      "V4A-Q020",
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S013",
+    "V3A-S047",
+    "V4A-S019"
+  ]
+}

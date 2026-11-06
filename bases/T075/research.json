@@ -1,0 +1,51 @@
+{
+  "id": "T075",
+  "technical_details": "Reconciliação envolve observações incompletas, além de contradições textuais. Uma operação externa pode ter sido aplicada enquanto sua confirmação se perdeu; o estado local fica desconhecido, não fracassado. A reconciliação busca recibo ou estado remoto usando identidade estável da operação, registra o resultado observado e só então decide continuidade. Para conhecimento, a mesma disciplina separa correção temporal, disputa de fonte e simples duplicação.",
+  "boundary_condition": "Sem identificador correlacionável ou interface de consulta do serviço, pode ser impossível determinar automaticamente se um efeito ocorreu; a incerteza deve permanecer explícita.",
+  "implementation_contract": {
+    "inputs": "Registros divergentes, identidades, versões, tempos e observações de fontes autoritativas.",
+    "outputs": "Estado reconciliado ou disputa persistente, com justificativa e evidências da decisão.",
+    "state": "Tentativas, chaves de operação, revisões corrigidas e derivados que precisam invalidação.",
+    "invariant": "Ausência de confirmação local nunca é convertida automaticamente em prova de não execução externa."
+  },
+  "tradeoffs": [
+    "Consultar a fonte autoritativa reduz duplicação e acrescenta latência e dependência de disponibilidade.",
+    "Resolução automática acelera convergência e precisa ser limitada quando autoridade ou identidade permanecem ambíguas."
+  ],
+  "failure_test": "Teste proposto: simular sucesso remoto seguido de perda da resposta e reinício local. A reconciliação deve consultar o efeito pela identidade conhecida, evitando reenviar cegamente ou compensar algo cujo resultado ainda não foi confirmado.",
+  "evaluation_plan": "Avaliação proposta: comparar última escrita vence e reconciliação por identidade e evidência em duplicatas, atualizações e resultados incertos. Medir convergência correta, efeitos duplicados, conflitos preservados e tempo; incluir fontes indisponíveis e recibos atrasados.",
+  "comparisons": [
+    {
+      "entry_id": "T065",
+      "relation": "complements",
+      "reason": "Transações protegem estado local; reconciliação observa o que ocorreu fora dessa fronteira."
+    },
+    {
+      "entry_id": "T058",
+      "relation": "complements",
+      "reason": "Consolidações dependentes devem ser reavaliadas quando a reconciliação muda o conhecimento vigente."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação de tolerância a falhas do LangGraph orienta tratar confirmação perdida como resultado desconhecido e consultar o provedor.",
+    "source_ids": [
+      "V3A-S030"
+    ],
+    "support": "direct",
+    "caveat": "Isso não fornece uma solução automática para qualquer serviço; deduplicação e consulta dependem das garantias da API externa."
+  },
+  "advanced_qa": [
+    {
+      "question": "A memória mais recente deve sempre vencer?",
+      "answer": "Não. Ela pode ser uma cópia atrasada, hipótese ou erro. Compare autoridade, validade, identidade e evidências antes de decidir."
+    },
+    {
+      "question": "Posso repetir usando uma nova chave de operação?",
+      "answer": "Uma nova chave pode representar outra ação e duplicar o efeito. Reutilize identidade conforme o contrato do provedor e investigue o resultado anterior."
+    }
+  ],
+  "source_ids": [
+    "V3A-S030"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

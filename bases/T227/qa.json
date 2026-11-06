@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Readiness falha reinicia o processo?",
+    "answer": "No modelo documentado de Kubernetes, readiness regula disponibilidade para tráfego; ela não equivale por si só ao gatilho de reinício de liveness."
+  },
+  {
+    "question": "Como medir progresso sem tarefas ativas?",
+    "answer": "Não há avanço de missão a exigir. O estado deve ser ocioso ou aguardando, acompanhado de checks de capacidade para receber trabalho."
+  },
+  {
+    "question": "Readiness falsa deve sempre causar restart?",
+    "answer": "Não. Frequentemente significa apenas que a instância não deve receber tráfego enquanto recupera capacidade."
+  },
+  {
+    "question": "Liveness verdadeira prova que a tarefa avança?",
+    "answer": "Não. O processo pode responder a uma sonda simples enquanto uma missão está estagnada."
+  }
+]

@@ -1,0 +1,121 @@
+{
+  "id": "T048",
+  "novelty": "A v3 definiu ciclo de vida. Aqui gestão de memória usa orçamentos separados por tipo e mede custo de qualidade do acervo.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Separe orçamento de evidências, fatos, episódios e procedimentos. Remover detalhe episódico antigo pode ser aceitável; remover evidência de uma regra ativa pode quebrar auditabilidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S032",
+        "V4A-S010",
+        "V4A-S017"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Crie fila de manutenção com prioridade por impacto: memória sem fonte, conflito ativo, índice atrasado e candidato redundante exigem tratamentos distintos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S032",
+        "V4A-S010",
+        "V4A-S017"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare políticas sob crescimento contínuo do acervo. Meça utilidade por consulta, registros inválidos recuperados e tempo de manutenção; custo de indexação e reparo entra junto com armazenamento. Unidade de avaliação: coleção de memórias.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S032",
+        "V4A-S010",
+        "V4A-S017"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Assistente de múltiplos projetos",
+      "scenario": "Memórias competem por espaço.",
+      "strategy": "Aplicar quotas por projeto e tipo, mantendo referências a evidências de decisões ativas. Evitar que projeto muito acessado elimine histórico necessário de outro.",
+      "small_model_role": "3–7B classifica tipo; regras aplicam quotas.",
+      "acceptance": "Nenhuma remoção pode quebrar decisão ainda ativa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S032",
+        "V4A-S010",
+        "V4A-S017"
+      ]
+    },
+    {
+      "name": "Acervo com correções frequentes",
+      "scenario": "Índices e resumos ficam atrasados.",
+      "strategy": "Priorizar reparo de objetos usados em tarefas pendentes e suspender promoção quando manutenção estiver atrasada demais.",
+      "small_model_role": "8–14B identifica dependências afetadas.",
+      "acceptance": "Consulta sensível deve detectar projeção desatualizada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S032",
+        "V4A-S010",
+        "V4A-S017"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Classificador de tipo, duplicação e estado de manutenção.",
+    "8_14b": "Revisor de conflitos e propostas de consolidação locais.",
+    "15_30b": "Planejador de manutenção entre coleções com dependências complexas.",
+    "training_or_runtime_requirements": "Inventário por tipo, métricas de consulta e dependências; ações irreversíveis exigem política explícita do sistema.",
+    "do_not_use_when": "A mesma operação mistura relevância, retenção e exclusão sem estados separados."
+  },
+  "connections": [
+    {
+      "target_id": "T058",
+      "relation": "feeds",
+      "how": "Encaminhar redundâncias para consolidação verificável.",
+      "interface": "Conjunto candidato, dependências e escopo.",
+      "condition": "Consolidação preservar evidência e divergência.",
+      "acceptance": "Comparar respostas antes e depois da manutenção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S032",
+        "V4A-S010",
+        "V4A-S017"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T074",
+      "relation": "complements",
+      "how": "Gerenciar residência sem apagar memória canônica.",
+      "interface": "Objeto, custo de recarga e estado de retenção.",
+      "condition": "Evicção e exclusão terem operações distintas.",
+      "acceptance": "Remover da janela e recuperar da origem durável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S032",
+        "V4A-S010",
+        "V4A-S017"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não usar tamanho do acervo como indicador de aprendizado.",
+    "Não deixar manutenção apagar a única origem de uma conclusão."
+  ],
+  "frontier_comparison": "Comparar qualidade da memória sob crescimento e correção; armazenamento maior não garante respostas melhores.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q004",
+      "V4A-Q013",
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S032",
+    "V4A-S010",
+    "V4A-S017"
+  ]
+}

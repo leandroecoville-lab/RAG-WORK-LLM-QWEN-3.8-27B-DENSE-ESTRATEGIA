@@ -1,0 +1,18 @@
+[
+  {
+    "question": "RadixAttention substitui o Transformer?",
+    "answer": "Não. É uma técnica de runtime para aproveitar estados já calculados."
+  },
+  {
+    "question": "É sinônimo de todo prefix caching?",
+    "answer": "Não. É uma implementação específica; cache de prefixos também pode usar outras estruturas."
+  },
+  {
+    "question": "Pode usar hits como único objetivo?",
+    "answer": "Não. Eles ignoram quem está esperando e o custo de memória imposto às sequências ativas."
+  },
+  {
+    "question": "RadixAttention altera os pesos de atenção?",
+    "answer": "Seu mecanismo de reúso organiza estados já calculados; uma implementação correta preserva a operação do modelo."
+  }
+]

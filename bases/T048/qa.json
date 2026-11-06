@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Gerenciar memória exige uma LLM?",
+    "answer": "Não em todas as etapas. Integridade, versões, acesso e expiração podem ser determinísticos."
+  },
+  {
+    "question": "Qual é o melhor sinal de memória útil?",
+    "answer": "Melhoria comprovada na execução de novas tarefas, com origem e validade das informações utilizadas."
+  },
+  {
+    "question": "É preciso apagar uma memória para esquecer seu uso?",
+    "answer": "Não. Pode removê-la da seleção ativa, reduzir prioridade ou arquivar o índice, preservando o registro quando necessário."
+  },
+  {
+    "question": "Qual custo precisa entrar na decisão?",
+    "answer": "Escrita, manutenção, indexação, recuperação, releitura e correção. Otimizar somente tokens da próxima resposta pode aumentar o custo total."
+  }
+]

@@ -1,0 +1,93 @@
+[
+  {
+    "source_id": "A-S009",
+    "title": "MemGPT: Towards LLMs as Operating Systems",
+    "url": "https://arxiv.org/abs/2310.08560",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-10-12",
+    "supports": "Gerência de contexto virtual entre níveis de memória e controle de fluxo.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn1view3"
+  },
+  {
+    "source_id": "A-S006",
+    "title": "Effective context engineering for AI agents",
+    "url": "https://www.anthropic.com/research/effective-context-engineering-for-ai-agents",
+    "publisher": "Anthropic",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-09-29",
+    "supports": "Gestão seletiva de contexto, recuperação sob demanda e técnicas de continuidade de agentes.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn5view0"
+  },
+  {
+    "source_id": "A-S022",
+    "title": "Persistence",
+    "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+    "publisher": "LangChain",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Checkpointers para estado por thread; stores para dados duráveis entre threads.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn11view3"
+  },
+  {
+    "source_id": "A-S010",
+    "title": "MemFS",
+    "url": "https://docs.letta.com/concepts/memfs",
+    "publisher": "Letta",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Memória em repositório Git, projeção em arquivos e carregamento por índices.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn1view2"
+  },
+  {
+    "source_id": "V3A-S039",
+    "title": "Redis Key eviction",
+    "url": "https://redis.io/docs/latest/develop/reference/eviction/",
+    "publisher": "Redis",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Políticas de eviction, noeviction, LRU aproximado, LFU probabilístico e distinção entre expiração e pressão de capacidade.",
+    "limitations": "Fonte primária consultada. Desempenho não foi reproduzido, não foram usadas perguntas ou respostas dos benchmarks, e propostas de integração não representam execução na LAI.",
+    "web_ref": "turn161view2"
+  },
+  {
+    "source_id": "V2B-S003",
+    "title": "Introducing Context Repositories: Git-based Memory for Coding Agents",
+    "url": "https://www.letta.com/blog/context-repositories/",
+    "publisher": "Letta",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Origem do nome Context Repositories, memória em Git, divulgação progressiva e trabalho de subagentes em worktrees.",
+    "limitations": "Anúncio histórico de fevereiro de 2026; descreve system/ e ativação antigos. Regras atuais de MemFS prevalecem. Não houve reprodução dos fluxos descritos.",
+    "web_ref": "turn51view0"
+  },
+  {
+    "source_id": "V3A-S046",
+    "title": "Letta Shared memory",
+    "url": "https://docs.letta.com/concepts/shared-memory",
+    "publisher": "Letta",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "MemFS pertence a um agente; repositório compartilhado pertence à organização e requer commit, push e pull para sincronização entre checkouts.",
+    "limitations": "Fonte primária dinâmica consultada; leitura de documentação ou código sem instalação, execução ou reprodução de resultados. Branch e documentação podem evoluir; fixar revisão antes de implementar.",
+    "web_ref": "turn184view5"
+  }
+]

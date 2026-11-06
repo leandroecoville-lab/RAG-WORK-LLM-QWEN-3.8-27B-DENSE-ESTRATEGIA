@@ -1,0 +1,120 @@
+{
+  "id": "T198",
+  "novelty": "A v3 definiu calibração estatística e Brier. Esta camada orienta definição do evento, avaliação de cobertura e manutenção de limiares quando modelo, domínio ou política de seleção mudam.",
+  "deep_layers": [
+    {
+      "name": "Evento mensurável",
+      "detail": "Escolha o que significa sucesso: campo correto, teste passado, resposta sustentada ou tarefa concluída. Um único número para toda resposta pode esconder componentes com riscos diferentes. Para linguagem aberta, rotule com critérios consistentes e preserve discordâncias; sem evento definido, a confiança não possui interpretação operacional estável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S050",
+        "V3B-S019",
+        "V4B-S027"
+      ]
+    },
+    {
+      "name": "Seleção altera distribuição",
+      "detail": "Um roteador pode mandar apenas casos difíceis ao modelo maior e apenas casos fáceis ao menor. Calibração medida antes dessa seleção pode deixar de valer. Avalie por caminho efetivo, incluindo abstenções e rejeições. A precisão dos casos respondidos deve ser acompanhada da fração de casos que o sistema aceita responder.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S050",
+        "V3B-S019",
+        "V4B-S027"
+      ]
+    },
+    {
+      "name": "Mudanças de versão",
+      "detail": "Quantização, adapter, prompt e ferramenta podem alterar a relação entre score e acerto. Monitore deriva e reavalie limiares com dados recentes separados. Não ajuste continuamente sobre a mesma amostra que será usada para anunciar melhoria; registre quais dados informaram cada versão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S050",
+        "V3B-S019",
+        "V4B-S027"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Roteamento com abstenção",
+      "scenario": "Uma aplicação aceita automatizar apenas casos de baixo risco.",
+      "strategy": "Calibre um sinal contra resultado verificável, escolha limiar no desenvolvimento e avalie cobertura/erro em dados independentes. Encaminhe ou busque evidência quando o sinal não basta.",
+      "small_model_role": "Um 3–7B pode atender a região em que foi validado, sem fingir confiança universal.",
+      "acceptance": "Medir erro entre aceitos e custo dos encaminhamentos por categoria.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S050",
+        "V3B-S019",
+        "V4B-S027"
+      ]
+    },
+    {
+      "name": "Extração com revisão humana",
+      "scenario": "Alguns campos exigem mais certeza que outros.",
+      "strategy": "Calibre por tipo de campo e contexto, usando evidência do documento e sinais do modelo. Mostre incerteza útil para revisão, evitando um percentual decorativo.",
+      "small_model_role": "Um 8–14B pode produzir valores e sinais, mas o número final depende de validação.",
+      "acceptance": "Reduzir trabalho de revisão sem aumentar erros importantes omitidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S050",
+        "V3B-S019",
+        "V4B-S027"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Confiança verbal do 3–7B não é uma probabilidade calibrada; usar dados de resultado.",
+    "8_14b": "Modelos intermediários precisam de avaliação por domínio e tipo de tarefa.",
+    "15_30b": "Maior porte pode melhorar acerto sem melhorar calibração na mesma proporção.",
+    "training_or_runtime_requirements": "Etapa estatística sobre resultados observados; não basta pedir ao modelo uma nota de certeza.",
+    "do_not_use_when": "Não interpretar aprovação de schema ou de política formal como probabilidade de verdade de toda resposta."
+  },
+  "connections": [
+    {
+      "target_id": "T203",
+      "relation": "feeds",
+      "how": "Estimativas calibradas ajudam a escolher executores e escalonamento.",
+      "interface": "Probabilidade do evento definido, custo e domínio.",
+      "condition": "Distribuição de implantação compatível ou monitorada.",
+      "acceptance": "Comparar correção e cobertura por destino.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S050",
+        "V3B-S019",
+        "V4B-S027"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T202",
+      "relation": "complements",
+      "how": "Incerteza pode orientar qual observação adicional adquirir.",
+      "interface": "Lacuna e efeito esperado de obter evidência.",
+      "condition": "Sinal tem interpretação validada.",
+      "acceptance": "Medir se a ação reduz erro, não apenas aumenta confiança.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S050",
+        "V3B-S019",
+        "V4B-S027"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Avaliar subgrupos em que a média global esconde falhas.",
+    "Manter abstenções e casos rejeitados no relatório de cobertura."
+  ],
+  "frontier_comparison": "Compare curvas de erro e cobertura sob o mesmo critério de sucesso. Uma confiança calibrada permite decidir onde usar um modelo pequeno; não amplia sua capacidade nem garante cada resposta individual.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q019",
+      "V4B-Q024"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "C-S050",
+    "V3B-S019",
+    "V4B-S027"
+  ]
+}

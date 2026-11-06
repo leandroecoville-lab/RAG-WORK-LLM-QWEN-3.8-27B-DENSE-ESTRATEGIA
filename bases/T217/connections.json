@@ -1,0 +1,42 @@
+{
+  "entry_id": "T217",
+  "edges": [
+    {
+      "edge_id": "E-T217-01",
+      "from": "T217",
+      "to": "T232",
+      "relation": "complements",
+      "how": "AutoClean combina transformação AST com CI e reparadores especializados em falhas.",
+      "interface": "Patch estrutural, resultado de build e classe de diagnóstico.",
+      "condition": "Reparador respeita o tipo de arquivo e efeito autorizado.",
+      "acceptance": "Transformação passa validação sem relaxar o requisito original.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S009"
+      ],
+      "case_ids": [
+        "V4C-C010"
+      ],
+      "evidence_stage": "production_documented"
+    },
+    {
+      "edge_id": "E-T217-02",
+      "from": "T217",
+      "to": "T233",
+      "relation": "complements",
+      "how": "SapFix/Sapienz usa sinais de falha e valida candidatos antes de revisão.",
+      "interface": "Candidato, reprodução e resultados de testes.",
+      "condition": "A validação pertence à revisão candidata.",
+      "acceptance": "Rejeitar correção que não resolve a falha ou introduz regressão detectada.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S007"
+      ],
+      "case_ids": [
+        "V4C-C009"
+      ],
+      "evidence_stage": "production_documented"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

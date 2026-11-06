@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Um commit Git é imutabilidade absoluta?",
+    "answer": "Não. Objetos podem ter hashes estáveis, mas referências e retenção dependem do controle do repositório."
+  },
+  {
+    "question": "WORM comprova a veracidade do arquivo?",
+    "answer": "Não. Protege contra determinadas alterações; qualidade, autoria e contexto da evidência continuam exigindo validação."
+  },
+  {
+    "question": "Um objeto protegido pode ter informação errada?",
+    "answer": "Sim. Guarde correção separada com vínculo à evidência e impeça que a consulta atual use o registro errado sem seu status."
+  },
+  {
+    "question": "Guardar o hash no mesmo local resolve autenticidade?",
+    "answer": "Não. Um administrador que controla ambas as partes pode substituir a narrativa de origem. A cadeia de confiança exige controles apropriados ao produtor e ao armazenamento."
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "GPU a 100% significa cálculo no limite?",
+    "answer": "Não. Utilização agregada não revela qual recurso limita o kernel."
+  },
+  {
+    "question": "Roofline prevê qualidade da resposta?",
+    "answer": "Não. É análise de execução; a qualidade precisa de avaliações separadas."
+  },
+  {
+    "question": "Bytes reservados servem como tráfego?",
+    "answer": "Não. Um buffer pode ser lido várias vezes ou permanecer em cache; capacidade e movimentação são medidas diferentes."
+  },
+  {
+    "question": "Baixa utilização prova falta de trabalho paralelo?",
+    "answer": "Não exclusivamente. Dependências, comunicação, latência de memória ou instruções distintas também podem limitar a execução."
+  }
+]

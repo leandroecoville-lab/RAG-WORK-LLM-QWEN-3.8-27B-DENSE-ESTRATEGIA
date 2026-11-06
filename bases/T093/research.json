@@ -1,0 +1,46 @@
+{
+  "id": "T093",
+  "technical_details": "Compartilhar blocos físicos requer separar referência lógica de propriedade da escrita. Quando duas continuações compartilham um bloco parcialmente preenchido, a próxima escrita pode exigir cópia antes de modificar o conteúdo. A fragmentação restante depende da granularidade: para uma sequência com T tokens e blocos de B tokens, a capacidade alocada é ceil(T/B)·B, salvo compartilhamento e reservas adicionais.",
+  "boundary_condition": "A paginação reduz desperdício de alocação; não reduz por si só a quantidade matemática de estados necessários à atenção.",
+  "implementation_contract": {
+    "inputs": "Comprimento lógico, tabela de blocos, referências compartilhadas e solicitação de crescimento.",
+    "outputs": "Mapeamento atualizado e blocos privados quando houver escrita divergente.",
+    "state": "Contadores de referência, ocupação parcial e lista de blocos livres.",
+    "invariant": "Nenhuma sequência observa uma escrita privada realizada por outra continuação."
+  },
+  "tradeoffs": [
+    "Blocos menores reduzem sobra final e aumentam metadados e indireções.",
+    "Compartilhamento economiza memória, mas requer contagem e cópia consistentes."
+  ],
+  "failure_test": "Teste proposto: bifurcar duas gerações no meio de um bloco, escrever tokens diferentes e cancelar uma delas. Esperar preservação da outra saída e liberação somente quando não restarem referências.",
+  "evaluation_plan": "Plano proposto: comparar alocação contígua e paginada em comprimentos e ramificações controlados. Medir bytes úteis, reservados, cópias, falhas de alocação e throughput; decidir pela capacidade entregue e latência, incluindo custo de gestão.",
+  "comparisons": [
+    {
+      "entry_id": "T082",
+      "relation": "complements",
+      "reason": "Compartilhamento físico pode sustentar reúso de prefixos, mas identidade do conteúdo continua necessária."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O projeto de PagedAttention usa contagem de referências e cópia na escrita para blocos compartilhados que divergem.",
+    "source_ids": [
+      "V3B-S009"
+    ],
+    "support": "direct",
+    "caveat": "A evidência descreve o desenho original; tamanho de bloco e políticas atuais dependem do runtime."
+  },
+  "advanced_qa": [
+    {
+      "question": "Paginação comprime os valores?",
+      "answer": "Não. Ela reorganiza alocação e compartilhamento; quantização é uma transformação separada da representação."
+    },
+    {
+      "question": "Pode liberar ao terminar uma resposta?",
+      "answer": "Somente depois de remover sua referência e confirmar que nenhum outro consumidor utiliza aquele bloco físico."
+    }
+  ],
+  "source_ids": [
+    "V3B-S009"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

@@ -1,0 +1,34 @@
+{
+  "id": "T201",
+  "name": "Agent Test-Time Scaling",
+  "canonical_name": "Agent Test-Time Scaling",
+  "canonical_id": "T201",
+  "aliases": [
+    "escalada de computação em execução de agentes"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T145",
+    "T146",
+    "T169",
+    "T189"
+  ],
+  "source_ids": [
+    "C-S012",
+    "C-S030",
+    "C-S043",
+    "V3B-S020",
+    "V4B-S022",
+    "V4B-S023",
+    "V4D-S008",
+    "V4D-S010"
+  ],
+  "namespace": "T201",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T201",
+  "chunk_count": 9
+}

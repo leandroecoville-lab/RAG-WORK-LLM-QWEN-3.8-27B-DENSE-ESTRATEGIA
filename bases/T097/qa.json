@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Blocos do KV tornam atenção esparsa?",
+    "answer": "Não. Paginação pode armazenar atenção densa; sparsity define quais interações são calculadas."
+  },
+  {
+    "question": "Qual tamanho de bloco é melhor?",
+    "answer": "Depende do kernel e padrão; mede-se equilíbrio entre trabalho redundante e overhead."
+  },
+  {
+    "question": "Mudar máscara sempre exige recompilar?",
+    "answer": "Não necessariamente; mudar metadados e recompilar código são operações distintas, mas os metadados precisam representar o novo padrão."
+  },
+  {
+    "question": "Por que testar fronteiras de documentos?",
+    "answer": "Um bloco parcialmente válido pode conter posições de documentos diferentes; marcá-lo como completo cria vazamento de contexto."
+  }
+]

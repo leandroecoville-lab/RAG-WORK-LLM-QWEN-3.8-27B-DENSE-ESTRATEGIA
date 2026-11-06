@@ -1,0 +1,52 @@
+{
+  "id": "T011",
+  "technical_details": "O detector de fronteiras depende de como representa cada sentença e seu entorno. Um limiar absoluto de distância e um percentil das distâncias do próprio documento produzem comportamentos diferentes: o segundo pode impor cortes até em um texto uniforme. Mudanças de idioma, listas e tabelas também alteram a distribuição dos escores sem necessariamente representar uma troca real de assunto.",
+  "boundary_condition": "Quando coerência local já é preservada por seções naturais, o cálculo semântico pode acrescentar custo sem melhorar a evidência recuperada.",
+  "implementation_contract": {
+    "inputs": "Texto, segmentação de sentenças, embedding e política explícita de fronteiras.",
+    "outputs": "Chunks com escores de corte, offsets e limites de tamanho.",
+    "state": "Versões do segmentador e do modelo, mais distribuição observada de tamanhos.",
+    "invariant": "A fronteira semântica não elimina a necessidade de limite operacional do consumidor."
+  },
+  "tradeoffs": [
+    "Grupos maiores preservam continuidade, mas podem acumular assuntos independentes.",
+    "Ajustar cortes por documento adapta a distribuição, porém dificulta comparar escores entre coleções."
+  ],
+  "failure_test": "Teste proposto: usar um documento uniforme e outro com mudança de idioma sem mudança de assunto. Verificar cortes artificiais e a preservação de referências que atravessam a fronteira.",
+  "evaluation_plan": "Avaliação proposta: comparar tamanho fixo, divisão estrutural e semântica sob orçamento final equivalente. Controlar embedding e reranker; medir ingestão, distribuição de tamanho, evidência recuperada e resposta, incluindo documentos fora do domínio de ajuste.",
+  "comparisons": [
+    {
+      "entry_id": "T010",
+      "relation": "alternative",
+      "reason": "Tamanho fixo fornece baseline de custo e permite identificar ganhos atribuíveis às fronteiras."
+    },
+    {
+      "entry_id": "T033",
+      "relation": "alternative",
+      "reason": "Estrutura editorial pode oferecer fronteiras úteis sem inferir mudança de assunto por vetor."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O estudo de Qu e colaboradores encontrou benefícios inconsistentes da segmentação semântica nas tarefas examinadas.",
+    "source_ids": [
+      "V3A-S013"
+    ],
+    "support": "direct",
+    "caveat": "Não é prova de inutilidade; o resultado exige avaliar domínio, baseline e custo específicos."
+  },
+  "advanced_qa": [
+    {
+      "question": "Limiar por percentil evita calibragem?",
+      "answer": "Não. Ele troca a escala absoluta por uma regra relativa, cuja frequência de cortes ainda precisa ser justificada e testada."
+    },
+    {
+      "question": "Coerência do chunk basta para boa recuperação?",
+      "answer": "Não. A unidade também precisa conter o fato e suas condições em tamanho que o recuperador e o gerador utilizem adequadamente."
+    }
+  ],
+  "source_ids": [
+    "V3A-S013",
+    "A-S041"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

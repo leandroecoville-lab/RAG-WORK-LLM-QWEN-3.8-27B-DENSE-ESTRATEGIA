@@ -1,0 +1,47 @@
+{
+  "id": "T128",
+  "technical_details": "As variantes EAGLE não devem ser descritas como um mecanismo imutável: o artigo EAGLE-3 distingue sua predição direta de tokens da restrição anterior de prever características, usando fusão de características de várias camadas. Isso torna a interface entre alvo e módulo auxiliar parte do artefato treinado. Alterar camadas de origem, dimensões ou normalização pode quebrar o proponente mesmo quando seu arquivo carrega.",
+  "boundary_condition": "Aceleração depende da qualidade das propostas e do custo do caminho integrado, não apenas de adicionar um módulo auxiliar.",
+  "implementation_contract": {
+    "inputs": "Alvo identificado, módulo auxiliar compatível, características esperadas e política de verificação.",
+    "outputs": "Candidatos e tokens confirmados com contagem de aceitação.",
+    "state": "Estados do proponente, seleção de características e cache provisório.",
+    "invariant": "Somente a verificação correta do alvo autoriza confirmar candidatos no histórico."
+  },
+  "tradeoffs": [
+    "Treinar proponente especializado pode elevar concordância e aumenta preparação e manutenção.",
+    "Acoplar características reduz portabilidade entre checkpoints e implementações."
+  ],
+  "failure_test": "Teste proposto: trocar o checkpoint alvo por outro de mesma dimensão ou permutar camadas de características. Esperar falha de compatibilidade ou queda detectada de aceitação, sem assumir que shapes iguais bastam.",
+  "evaluation_plan": "Plano proposto: comparar alvo sozinho e proponente compatível sob mesmos prompts, lotes e amostragem. Medir custo de características, propostas e verificação, além de distribuição de saída; aprovar somente aceleração observada e sem alteração indevida da regra de aceitação.",
+  "comparisons": [
+    {
+      "entry_id": "T132",
+      "relation": "alternative",
+      "reason": "O proponente integrado usa características do alvo, enquanto um draft externo pode produzir propostas independentemente."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "EAGLE-3 abandona a restrição de predição de características em favor de tokens e combina características de múltiplas camadas.",
+    "source_ids": [
+      "B-S038"
+    ],
+    "support": "direct",
+    "caveat": "A fonte descreve a variante publicada; não confirma suporte no checkpoint ou hardware do usuário."
+  },
+  "advanced_qa": [
+    {
+      "question": "Treinar um bom proponente garante exatidão?",
+      "answer": "Não. A garantia de distribuição depende também do algoritmo de aceitação e do tratamento de rejeições."
+    },
+    {
+      "question": "Pode reutilizar após fine-tuning do alvo?",
+      "answer": "É necessário validar compatibilidade e concordância; pesos alterados podem mudar as características que o auxiliar aprendeu a consumir."
+    }
+  ],
+  "source_ids": [
+    "B-S038",
+    "V3B-S001"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

@@ -1,0 +1,52 @@
+{
+  "id": "T024",
+  "technical_details": "O montador de contexto pode ser tratado como uma função observável: recebe estado e candidatos, produz a requisição e um manifesto de seleção. Isso permite distinguir falha de recuperação de falha de montagem. Categorias como instrução vigente, observação externa e hipótese derivada precisam permanecer identificáveis; concatenar tudo como texto homogêneo facilita confusão de autoridade e origem.",
+  "boundary_condition": "Um builder não consegue reparar uma fonte inexistente ou um estado inconsistente apenas reorganizando mensagens; precisa detectar e expor a falta.",
+  "implementation_contract": {
+    "inputs": "Objetivo, estado versionado, regras vigentes, candidatos e orçamento do modelo.",
+    "outputs": "Requisição compatível e manifesto de blocos incluídos e excluídos.",
+    "state": "Versões de seletores, fontes, templates e contagem de tokens.",
+    "invariant": "Conteúdo recuperado permanece evidência ou dado, sem ganhar autoridade de instrução pelo simples posicionamento."
+  },
+  "tradeoffs": [
+    "Centralizar seleção facilita auditoria, mas pode criar ponto de latência e acoplamento.",
+    "Regras determinísticas melhoram reprodução; relevância aprendida acrescenta adaptação e variabilidade."
+  ],
+  "failure_test": "Teste proposto: inserir em um documento recuperado uma instrução que contradiga o objetivo. O manifesto deve mantê-la como conteúdo da fonte e a montagem não deve promovê-la a regra do sistema.",
+  "evaluation_plan": "Avaliação proposta: comparar montagem fixa e seletiva com candidatos idênticos. Medir fatos excluídos indevidamente, custo, estabilidade entre execuções e clareza da proveniência; decidir pela qualidade da tarefa e capacidade de explicar a seleção.",
+  "comparisons": [
+    {
+      "entry_id": "T222",
+      "relation": "complements",
+      "reason": "O monitor fornece orçamento; o builder decide como distribui-lo entre conteúdos."
+    },
+    {
+      "entry_id": "T066",
+      "relation": "complements",
+      "reason": "O resolvedor entrega versões e conteúdos que o builder pode incorporar."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "MCP descreve recursos como dados de contexto cuja incorporação é decidida pela aplicação hospedeira.",
+    "source_ids": [
+      "V3A-S019"
+    ],
+    "support": "related",
+    "caveat": "A fonte apoia a responsabilidade do host; Context Broker é um componente arquitetural proposto, não uma API universal."
+  },
+  "advanced_qa": [
+    {
+      "question": "O manifesto precisa copiar todo o prompt?",
+      "answer": "Não necessariamente. Pode referenciar blocos imutáveis e registrar versões e posições, desde que permita reconstrução autorizada da entrada."
+    },
+    {
+      "question": "Como diagnosticar uma resposta sem fundamento?",
+      "answer": "Verifique primeiro se a evidência existia, depois se foi recuperada, incluída e corretamente interpretada. Cada etapa exige observáveis diferentes."
+    }
+  ],
+  "source_ids": [
+    "V3A-S019",
+    "V3A-S018"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

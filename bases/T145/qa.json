@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Adaptive Depth reduz camadas do Qwen?",
+    "answer": "Não nesta proposta; atua no workflow do agente."
+  },
+  {
+    "question": "Qual profundidade é ideal?",
+    "answer": "Depende de tarefa e verificador e deve ser estimada por avaliação."
+  },
+  {
+    "question": "Uma resposta mais longa demonstra maior profundidade útil?",
+    "answer": "Não. O ganho deve aparecer em evidências, hipóteses resolvidas ou resultados verificados, não em extensão textual."
+  },
+  {
+    "question": "Quando a política deve registrar inconclusão?",
+    "answer": "Quando o objetivo permanece pendente e não há orçamento ou ação elegível que sustente nova etapa."
+  }
+]

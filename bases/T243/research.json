@@ -1,0 +1,53 @@
+{
+  "id": "T243",
+  "technical_details": "Reconciliação precisa distinguir efeito observado e efeito desta intenção. Encontrar um objeto parecido não prova que a tentativa incerta o criou; correlação por chave, ID ou recibo é mais forte. Uma consulta pode ainda refletir consistência eventual e retornar ausência temporária. A proposta usa estados confirmado, ausente com evidência suficiente e desconhecido, mantendo prazo e política de nova observação antes de decidir repetir ou compensar.",
+  "boundary_condition": "Se o sistema externo não oferece identidade consultável nem leitura com garantias adequadas, alguns desfechos permanecem desconhecidos.",
+  "implementation_contract": {
+    "inputs": "Intenção, tentativa, chave externa, resultado incerto e contrato de consulta.",
+    "outputs": "Conclusão fundamentada, nova observação ou ação de recuperação elegível.",
+    "state": "Recibos, consultas realizadas, versões e janela de convergência.",
+    "invariant": "Ausência de resposta ou de leitura imediata não é tratada automaticamente como ausência de efeito."
+  },
+  "tradeoffs": [
+    "Observar mais vezes reduz algumas incertezas e aumenta atraso e custo.",
+    "Compensar pode corrigir efeito indesejado e criar outro efeito que também exige rastreabilidade."
+  ],
+  "failure_test": "Teste proposto: perder a resposta de uma escrita e atrasar sua visibilidade na consulta; exigir estado desconhecido inicial e reconhecimento posterior, sem criar um segundo objeto.",
+  "evaluation_plan": "Comparar retry imediato e reconciliação sob resposta perdida, duplicatas e leitura atrasada. Medir efeitos duplicados, tempo até conclusão e casos corretamente mantidos como desconhecidos. Usar o contrato real de idempotência e retenção do serviço.",
+  "comparisons": [
+    {
+      "entry_id": "T162",
+      "relation": "complements",
+      "reason": "A chave idempotente ajuda reconhecer uma intenção, dentro de seu escopo e prazo."
+    },
+    {
+      "entry_id": "T228",
+      "relation": "complements",
+      "reason": "A fila deve conservar estado incerto para não converter reconciliação em nova execução cega."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Kubernetes descreve controllers que observam estado atual e agem para aproximá-lo do estado desejado.",
+    "source_ids": [
+      "V2A-S024"
+    ],
+    "support": "related",
+    "caveat": "A identificação de efeitos externos incertos é aplicação editorial desse princípio, complementada por contratos concretos de idempotência."
+  },
+  "advanced_qa": [
+    {
+      "question": "Não encontrei o objeto: posso repetir imediatamente?",
+      "answer": "Somente se a leitura e o contrato sustentarem ausência conclusiva; com consistência eventual, pode ser cedo demais."
+    },
+    {
+      "question": "Compensação é igual a rollback?",
+      "answer": "Não. É outra operação de domínio, possivelmente com efeitos observáveis e falhas próprias, que precisa de identidade e verificação."
+    }
+  ],
+  "source_ids": [
+    "V2A-S024",
+    "V3C-S025",
+    "V3C-S028"
+  ],
+  "research_note": "Contratos, cenários de falha e planos de avaliação são propostas editoriais fundamentadas nas fontes indicadas."
+}

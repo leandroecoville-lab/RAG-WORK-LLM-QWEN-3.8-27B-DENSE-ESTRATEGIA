@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Grammar-Constrained Decoding valida só depois da geração?",
+    "answer": "Não. Restringe escolhas durante a geração; validação posterior permanece útil para integridade final e regras de domínio."
+  },
+  {
+    "question": "Uma gramática garante um identificador real e autorizado?",
+    "answer": "Não. Pode garantir a forma do identificador; existência e autorização precisam de consulta e verificação externas."
+  },
+  {
+    "question": "Token estruturalmente permitido pode estar errado?",
+    "answer": "Sim. Um número ou identificador pode obedecer à gramática e designar um valor incorreto."
+  },
+  {
+    "question": "EOS sempre significa JSON completo?",
+    "answer": "Somente se o protocolo de término exige completude; truncamento e políticas de parada externas precisam ser tratados separadamente."
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "id": "T044",
+  "name": "Progressive Context Expansion",
+  "canonical_name": "Progressive Context Expansion",
+  "canonical_id": "T044",
+  "aliases": [
+    "expansão progressiva de contexto"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T014",
+    "T026",
+    "T067",
+    "T078"
+  ],
+  "source_ids": [
+    "A-S006",
+    "A-S026",
+    "V3A-S010",
+    "C-S030",
+    "V4A-S023"
+  ],
+  "namespace": "T044",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T044",
+  "chunk_count": 9
+}

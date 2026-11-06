@@ -1,0 +1,28 @@
+[
+  {
+    "source_id": "B-S026",
+    "title": "Improving language models by retrieving from trillions of tokens",
+    "url": "https://arxiv.org/abs/2112.04426",
+    "publisher": "Borgeaud e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2021-12-08",
+    "supports": "RETRO combina recuperação, codificador e cross-attention por trechos.",
+    "limitations": "Resumo e metadados acessados; artigo integral não auditado e resultados não reproduzidos.",
+    "web_ref": "turn18view3"
+  },
+  {
+    "source_id": "V4B-S020",
+    "title": "Qwen3: Think Deeper, Act Faster",
+    "url": "https://qwenlm.github.io/blog/qwen3/",
+    "publisher": "Qwen Team / Alibaba",
+    "source_type": "model_release",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-04-29",
+    "supports": "Modelos densos e MoE, cabeças Q/KV, distinção entre parâmetros totais/ativos e modos de raciocínio.",
+    "limitations": "Resultados de modelo publicado não verificam checkpoint local nem equivalência geral com modelos de fronteira.",
+    "web_ref": "turn227view3"
+  }
+]

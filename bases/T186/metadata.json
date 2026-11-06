@@ -1,0 +1,31 @@
+{
+  "id": "T186",
+  "name": "Debate entre agentes",
+  "canonical_name": "Debate entre Agentes",
+  "canonical_id": "T186",
+  "aliases": [
+    "multiagent debate",
+    "Debate entre Agentes"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T169",
+    "T187",
+    "T188",
+    "T200"
+  ],
+  "source_ids": [
+    "C-S040",
+    "V4D-S012",
+    "V4C-S009",
+    "V4D-S013"
+  ],
+  "namespace": "T186",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T186",
+  "chunk_count": 9
+}

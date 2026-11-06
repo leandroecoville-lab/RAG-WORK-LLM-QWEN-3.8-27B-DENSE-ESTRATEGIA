@@ -1,0 +1,58 @@
+{
+  "coverage": {
+    "entry_id": "T150",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Request Coalescing / Singleflight",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C022",
+      "company": "Cloudflare",
+      "system": "CDN — request collapsing",
+      "title": "Compartilhamento de busca de asset ausente",
+      "evidence_level": "operational_product",
+      "observed_use": "A documentação descreve cache lock para solicitações simultâneas do mesmo asset em um data center.",
+      "technical_mechanism": "A primeira solicitação busca a origem; as demais aguardam e recebem a resposta compartilhada. O escopo é por localização, não exclusão global de todas as chamadas.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S022"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T150",
+          "match": "exact",
+          "rationale": "Há coalescência explícita de solicitações simultâneas por chave de asset."
+        },
+        {
+          "entry_id": "T172",
+          "match": "family",
+          "rationale": "A resposta é transmitida aos aguardantes, sem descrever um controlador completo de streaming LLM."
+        }
+      ],
+      "small_model_transfer": "Proposta: coalescer leitura idêntica de documentos ou inferência determinística com escopo e versões iguais, separando cancelamento de um consumidor do trabalho compartilhado.",
+      "limits": "Operational_product: documentação de comportamento do serviço sem deployment específico de cliente. Cache HTTP não demonstra equivalência de respostas probabilísticas de LLM.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C022",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T150",
+        "match": "exact",
+        "rationale": "Há coalescência explícita de solicitações simultâneas por chave de asset."
+      }
+    }
+  ]
+}

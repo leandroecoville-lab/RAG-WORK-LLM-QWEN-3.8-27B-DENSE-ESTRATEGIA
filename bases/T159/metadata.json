@@ -1,0 +1,35 @@
+{
+  "id": "T159",
+  "name": "Durable Execution",
+  "canonical_name": "Durable Execution",
+  "canonical_id": "T159",
+  "aliases": [
+    "execução durável"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T059",
+    "T060",
+    "T162",
+    "R008"
+  ],
+  "source_ids": [
+    "C-S023",
+    "V3C-S018",
+    "V3C-S024",
+    "C-S026",
+    "V4C-S001",
+    "V4C-S002",
+    "C-S030",
+    "V4C-S003",
+    "V4C-S004"
+  ],
+  "namespace": "T159",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T159",
+  "chunk_count": 9
+}

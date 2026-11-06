@@ -1,0 +1,38 @@
+{
+  "id": "T200",
+  "name": "Independent Verification",
+  "canonical_name": "Independent Verification",
+  "canonical_id": "T200",
+  "aliases": [
+    "verificação independente"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T169",
+    "T186",
+    "T190",
+    "T195"
+  ],
+  "source_ids": [
+    "C-S048",
+    "C-S044",
+    "V3B-S019",
+    "V4C-S009",
+    "V4B-S027",
+    "V4B-S024",
+    "V4B-S025",
+    "V4C-S006",
+    "V4C-S007",
+    "V4C-S008",
+    "V4D-S012",
+    "V4D-S013"
+  ],
+  "namespace": "T200",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T200",
+  "chunk_count": 9
+}

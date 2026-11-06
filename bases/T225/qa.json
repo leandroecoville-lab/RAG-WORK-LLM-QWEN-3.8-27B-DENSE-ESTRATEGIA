@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Auto-restart garante continuidade correta?",
+    "answer": "Não. Ele precisa de estado persistente, controle de concorrência e tratamento das operações que podem ter concluído antes da queda."
+  },
+  {
+    "question": "Toda falha de dependência pede restart?",
+    "answer": "Não. Reiniciar pode piorar uma indisponibilidade compartilhada. A política deve distinguir processo quebrado de serviço temporariamente inacessível."
+  },
+  {
+    "question": "Processo vivo mas sem avanço deve sempre reiniciar?",
+    "answer": "Não. Primeiro distinguir espera legítima, bloqueio externo e defeito local; cada caso exige resposta diferente."
+  },
+  {
+    "question": "Um novo processo pode começar pela primeira etapa?",
+    "answer": "Somente se o contrato garantir repetição segura; caso contrário, deve recuperar estado e reconciliar efeitos já enviados."
+  }
+]

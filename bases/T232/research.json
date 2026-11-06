@@ -1,0 +1,52 @@
+{
+  "id": "T232",
+  "technical_details": "Renomear um identificador exige resolver vínculo, não somente reconhecer um nó Name. O mesmo texto pode referir-se a importação, variável local ou símbolo sombreado. LibCST oferece metadados de escopo e nomes qualificados, inclusive múltiplos candidatos em situações condicionais. Uma transformação deve preservar ambiguidades não resolvidas em vez de escolher um vínculo arbitrário. Após mudar a árvore, metadados da versão anterior podem precisar ser recalculados.",
+  "boundary_condition": "Reflexão, geração dinâmica de nomes e imports condicionais podem impedir resolução estática completa.",
+  "implementation_contract": {
+    "inputs": "Árvore da revisão atual, metadados de escopo, alvo semântico e regra de transformação.",
+    "outputs": "Código transformado, locais alterados e casos não resolvidos.",
+    "state": "Versão do parser, árvore de origem e metadados associados.",
+    "invariant": "Uma transformação usa metadados da mesma árvore cuja identidade está sendo analisada."
+  },
+  "tradeoffs": [
+    "CST preserva comentários e formatação com maior complexidade de estrutura.",
+    "Análise estática reduz colisões textuais e não cobre toda semântica dinâmica da linguagem."
+  ],
+  "failure_test": "Teste proposto: usar o mesmo identificador em importação, parâmetro e variável sombreada, além de import condicional; alterar somente o vínculo especificado e reportar ambiguidade restante.",
+  "evaluation_plan": "Comparar substituição textual e codemod em casos com escopos variados. Medir mudanças corretas, preservação de comentários, parse após edição e comportamento. Testes funcionais continuam necessários mesmo quando a transformação produz sintaxe válida.",
+  "comparisons": [
+    {
+      "entry_id": "T231",
+      "relation": "alternative",
+      "reason": "Busca literal é mais simples quando o alvo é inequívoco; estrutura ajuda quando texto igual possui significados diferentes."
+    },
+    {
+      "entry_id": "T216",
+      "relation": "complements",
+      "reason": "O mapa do repositório orienta descoberta de símbolos, mas não substitui metadados do trecho editado."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "QualifiedNameProvider do LibCST pode devolver múltiplos nomes possíveis para um nó em situações como imports condicionais.",
+    "source_ids": [
+      "V3C-S033"
+    ],
+    "support": "direct",
+    "caveat": "Os metadados são análise estática e não demonstram qual caminho foi executado em todos os ambientes."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma árvore sintaticamente válida prova refatoração correta?",
+      "answer": "Não. A mudança pode atingir outro vínculo ou alterar comportamento, apesar de preservar a gramática."
+    },
+    {
+      "question": "Posso reutilizar metadados depois de substituir nós?",
+      "answer": "Somente conforme o contrato da ferramenta; referências por identidade podem pertencer à árvore anterior e precisar de nova resolução."
+    }
+  ],
+  "source_ids": [
+    "V3C-S033",
+    "V3C-S035"
+  ],
+  "research_note": "Contratos, cenários de falha e planos de avaliação são propostas editoriais fundamentadas nas fontes indicadas."
+}

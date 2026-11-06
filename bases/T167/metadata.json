@@ -1,0 +1,29 @@
+{
+  "id": "T167",
+  "name": "Token Bucket",
+  "canonical_name": "Token Bucket",
+  "canonical_id": "T167",
+  "aliases": [
+    "balde de tokens"
+  ],
+  "category": "orquestracao",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T137",
+    "T175"
+  ],
+  "source_ids": [
+    "C-S004",
+    "V3C-S021",
+    "V2A-S012",
+    "V3C-S009",
+    "V3C-S010"
+  ],
+  "namespace": "T167",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T167",
+  "chunk_count": 9
+}

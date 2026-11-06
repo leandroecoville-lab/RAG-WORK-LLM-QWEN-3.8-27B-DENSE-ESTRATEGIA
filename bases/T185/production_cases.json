@@ -1,0 +1,63 @@
+{
+  "coverage": {
+    "entry_id": "T185",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 1,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Constitutional AI",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C017",
+      "company": "Anthropic",
+      "organization_class": "ai_lab",
+      "system": "Claude — treinamento com constituição",
+      "title": "Constituição declarada como componente direto do treinamento",
+      "evidence_level": "production_documented",
+      "observed_use": "A Anthropic descreve uso direto da constituição no processo que treina Claude, incluindo geração de exemplos e orientação de avaliações. O registro delimita a prática de treinamento do operador.",
+      "technical_mechanism": "Princípios textuais orientam dados e julgamentos usados para ajustar comportamento; o documento evolui entre versões.",
+      "event_date": "2026-01-22",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S021"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T185",
+          "match": "exact",
+          "rationale": "Princípios constitucionais são usados no treinamento por feedback de IA."
+        },
+        {
+          "entry_id": "T177",
+          "match": "family",
+          "rationale": "O processo inclui treinamento do modelo, mas a publicação não revela todos os detalhes da receita."
+        },
+        {
+          "entry_id": "P017",
+          "match": "analogy",
+          "rationale": "Uma política LAI poderia inspirar dados próprios; não há implantação da proposta editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: criar princípios restritos ao domínio e validar com julgamentos humanos antes de usá-los em dados para 3–30B.",
+      "limits": "Laboratório de IA, separado de bigtech na contagem estrita. Não comprova receita reproduzível, porte 3–30B nem cumprimento perfeito dos princípios.",
+      "canonical_case_id": "V4B-C017",
+      "deployment_domain": "llm_training",
+      "mapping": {
+        "entry_id": "T185",
+        "match": "exact",
+        "rationale": "Princípios constitucionais são usados no treinamento por feedback de IA."
+      }
+    }
+  ]
+}

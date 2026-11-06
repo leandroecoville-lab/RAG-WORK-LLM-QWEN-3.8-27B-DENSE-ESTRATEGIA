@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Few-shot pruning modifica os pesos?",
+    "answer": "Não. Ele muda o conjunto de exemplos apresentado na entrada."
+  },
+  {
+    "question": "É igual a seleção dinâmica?",
+    "answer": "Não. Pode produzir um subconjunto fixo; seleção dinâmica escolhe exemplos para cada nova consulta."
+  },
+  {
+    "question": "Exemplos quase duplicados são sempre dispensáveis?",
+    "answer": "Não. Podem mostrar diferenças mínimas que ensinam uma fronteira de decisão. Verifique a função do exemplo antes de comparar apenas o texto."
+  },
+  {
+    "question": "Posso escolher o subconjunto pela melhor nota final?",
+    "answer": "Use desenvolvimento separado. Escolher com o teste final transforma a avaliação em otimização sobre o gabarito e superestima generalização."
+  }
+]

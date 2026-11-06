@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "B-S046",
+    "title": "INT4 W4A16",
+    "url": "https://github.com/vllm-project/vllm/blob/main/docs/features/quantization/llm_compressor/int4.md",
+    "publisher": "vLLM",
+    "source_type": "official_repository",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Pesos em quatro bits e ativações em dezesseis; receita exige calibração e formato compatível.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn32view1"
+  },
+  {
+    "source_id": "V3B-S014",
+    "title": "AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration — full text",
+    "url": "https://arxiv.org/html/2306.00978v6",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-06-01",
+    "supports": "Escalonamento por canal baseado em ativações, quantização weight-only e distinção de mixed precision.",
+    "limitations": "Texto consultado na revisão v6 disponível em 2026-11-05; nenhuma versão de servidor foi presumida.",
+    "web_ref": "turn149view1"
+  },
+  {
+    "source_id": "V4B-S011",
+    "title": "NVIDIA TensorRT LLM",
+    "url": "https://developer.nvidia.com/tensorrt-llm",
+    "publisher": "NVIDIA",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Runtime Python/PyTorch, cache paginado, batching, quantização e especulação documentados.",
+    "limitations": "Página de produto demonstra recursos disponíveis, não adoção comprovada por cliente nem compatibilidade do hardware local.",
+    "web_ref": "turn219view2"
+  },
+  {
+    "source_id": "V4D-S009",
+    "title": "Phi Silica, small but mighty on-device SLM",
+    "url": "https://blogs.windows.com/windowsexperience/2024/12/06/phi-silica-small-but-mighty-on-device-slm/",
+    "publisher": "Microsoft",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2024-12-06",
+    "supports": "Integração Windows: quantização de pesos com QuaRot/GPTQ, ativações de 16 bits na configuração descrita, prefill em blocos de 64 e KV compartilhado entre fases.",
+    "limitations": "Não confirma 3,3B para essa revisão: descreve derivado de Phi-3.5-mini. A generalização textual de crescimento quadrático do KV é imprecisa para cache padrão de arquitetura fixa; não foi adotada nesta curadoria. Especulação da API atual não é atribuída automaticamente a dezembro de 2024.",
+    "web_ref": "turn265view0"
+  }
+]

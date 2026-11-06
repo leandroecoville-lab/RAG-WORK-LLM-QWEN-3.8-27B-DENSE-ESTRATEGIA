@@ -1,0 +1,18 @@
+[
+  {
+    "question": "A especulação muda a qualidade?",
+    "answer": "A variante exata preserva a distribuição do alvo sob suas premissas; implementações aproximadas precisam avaliação própria."
+  },
+  {
+    "question": "Sempre fica mais rápido?",
+    "answer": "Não. Baixa aceitação ou concorrência alta pode tornar a execução mais lenta."
+  },
+  {
+    "question": "Aceitação alta garante aceleração?",
+    "answer": "Não. O custo de produzir e verificar candidatos pode exceder o trabalho economizado, sobretudo em lotes grandes."
+  },
+  {
+    "question": "Por que descartar o sufixo rejeitado?",
+    "answer": "Sua distribuição foi condicionada a uma continuação que deixou de existir; reutilizá-lo corrompe o estado autoregressivo."
+  }
+]

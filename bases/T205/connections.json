@@ -1,0 +1,44 @@
+{
+  "entry_id": "T205",
+  "edges": [
+    {
+      "edge_id": "E-T205-01",
+      "from": "T205",
+      "to": "T195",
+      "relation": "complements",
+      "how": "Execução fornece observações para comparação diferencial.",
+      "interface": "Artefatos, entradas e efeitos registrados.",
+      "condition": "Ambientes comparáveis e referência confiável.",
+      "acceptance": "Reproduzir e minimizar divergências.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S022",
+        "V4B-S022",
+        "V4B-S024",
+        "V4B-S025"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T205-02",
+      "from": "T205",
+      "to": "T188",
+      "relation": "feeds",
+      "how": "Agregação de respostas precisa agrupar somente equivalentes semanticamente.",
+      "interface": "Forma canônica e regras de unidade.",
+      "condition": "Normalizador validado no domínio.",
+      "acceptance": "Testar frações, unidades e respostas condicionais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S022",
+        "V4B-S022",
+        "V4B-S024",
+        "V4B-S025"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

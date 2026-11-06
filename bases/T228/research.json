@@ -1,0 +1,52 @@
+{
+  "id": "T228",
+  "technical_details": "Uma fila de retries persistente precisa distinguir elegibilidade temporal e posse temporária do item. Após crash do consumidor, uma lease expira e outro pode assumir; o consumidor antigo ainda pode terminar tarde. Persistir attempt e next_attempt_at sem identidade de intenção e geração de execução não impede duplicatas. Um item cujo prazo acabou deve sair da fila elegível com motivo, em vez de circular indefinidamente.",
+  "boundary_condition": "Backoff correto em memória não sobrevive reinício se o próximo instante e o orçamento não forem persistidos.",
+  "implementation_contract": {
+    "inputs": "Operação repetível, erro, intenção, deadline e próxima elegibilidade.",
+    "outputs": "Item reagendado, atribuído ou encerrado com resultado verificável.",
+    "state": "Tentativas, lease, geração, payload versionado e recibos.",
+    "invariant": "Cada posse reconhece a geração vigente; reentrega conserva a intenção lógica original."
+  },
+  "tradeoffs": [
+    "Leases curtas recuperam consumidores mortos cedo e aumentam disputa com tarefas lentas.",
+    "Leases longas reduzem troca indevida e atrasam retomada após crash."
+  ],
+  "failure_test": "Teste proposto: derrubar o consumidor após executar a operação e antes de confirmar a fila; a nova tentativa deve reconciliar ou repetir de modo idempotente, sem criar outro efeito.",
+  "evaluation_plan": "Comparar fila volátil e durável com crashes em diferentes pontos. Medir trabalhos perdidos, duplicados, atraso de elegibilidade e prazo excedido. Validar semântica de entrega e efeito separadamente.",
+  "comparisons": [
+    {
+      "entry_id": "T163",
+      "relation": "complements",
+      "reason": "Backoff calcula atraso; a fila conserva o calendário e o estado entre processos."
+    },
+    {
+      "entry_id": "T243",
+      "relation": "complements",
+      "reason": "Reentrega de efeito incerto exige reconciliação antes de tratar o item como novo."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Temporal distingue política de retry por atividade e limites por tentativas e duração total.",
+    "source_ids": [
+      "V3C-S023"
+    ],
+    "support": "direct",
+    "caveat": "A fila genérica descrita nesta ficha é proposta; não herda automaticamente as garantias do serviço Temporal."
+  },
+  "advanced_qa": [
+    {
+      "question": "Persistir apenas o payload é suficiente?",
+      "answer": "Não. Sem intenção, tentativa, prazo e elegibilidade, a recuperação pode repetir cedo demais ou reiniciar o orçamento."
+    },
+    {
+      "question": "O fim da lease prova que o worker parou?",
+      "answer": "Não. Pode haver pausa ou isolamento de rede; resultados tardios precisam ser avaliados pela geração e pela identidade da operação."
+    }
+  ],
+  "source_ids": [
+    "V3C-S023",
+    "V3C-S028"
+  ],
+  "research_note": "Mecanismos referenciados em fontes primárias; contratos e verificação descritos são propostas, não ensaios executados."
+}

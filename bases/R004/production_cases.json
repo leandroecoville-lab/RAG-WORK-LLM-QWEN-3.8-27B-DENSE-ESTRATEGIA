@@ -1,0 +1,68 @@
+{
+  "coverage": {
+    "entry_id": "R004",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 1,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Generative Agents",
+    "scope": "referencia"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C030",
+      "company": "Autores Generative Agents",
+      "system": "Generative Agents / Smallville",
+      "title": "Generative Agents / Smallville — evidência delimitada",
+      "evidence_level": "research_only",
+      "observed_use": "Estudo constrói agentes simulados que registram experiências e refletem.",
+      "technical_mechanism": "Memórias episódicas, recuperação, reflexão e planejamento em ambiente simulado.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "A-S008"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R004",
+          "match": "exact",
+          "rationale": "Trabalho identificado."
+        },
+        {
+          "entry_id": "T049",
+          "match": "exact",
+          "rationale": "Experiências recuperáveis integram a arquitetura."
+        },
+        {
+          "entry_id": "T058",
+          "match": "exact",
+          "rationale": "Reflexões consolidam observações."
+        },
+        {
+          "entry_id": "T054",
+          "match": "family",
+          "rationale": "Reflexões são abstrações, não fatos automaticamente validados."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Usar simulação restrita para estudar recuperação com 3–14B, distinguindo crenças de fatos.",
+      "limits": "Simulação e plausibilidade não comprovam produção, causalidade ou confiabilidade empresarial. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "research_group",
+      "canonical_case_id": "V4A-C030",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "R004",
+        "match": "exact",
+        "rationale": "Trabalho identificado."
+      }
+    }
+  ]
+}

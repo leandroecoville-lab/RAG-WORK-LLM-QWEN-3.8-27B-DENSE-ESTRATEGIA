@@ -1,0 +1,47 @@
+{
+  "id": "T082",
+  "technical_details": "Um hit de prefixo economiza parte do prefill, mas as consultas do sufixo ainda atendem ao prefixo reutilizado. O benefício depende dos tokens efetivamente cobertos e do custo evitado, não apenas da quantidade de requisições com algum hit. Em caches por blocos completos, um prefixo quase coincidente pode reutilizar menos tokens que seu comprimento textual sugere.",
+  "boundary_condition": "Prompts com conteúdo variável no início ou poucas repetições podem consumir memória de cache sem amortizar sua construção.",
+  "implementation_contract": {
+    "inputs": "Tokens de entrada, identidade do modelo, domínio de compartilhamento e tamanho dos blocos.",
+    "outputs": "Extensão reutilizada e sufixo que ainda necessita processamento.",
+    "state": "Blocos completos indexados com ancestralidade do prefixo.",
+    "invariant": "O hit termina antes da primeira divergência efetiva de tokens ou identidade."
+  },
+  "tradeoffs": [
+    "Reservar prefixos aumenta reúso, mas reduz espaço para sequências ativas.",
+    "Reorganizar prompts só é aceitável quando preserva significado e instruções."
+  ],
+  "failure_test": "Teste proposto: variar um token próximo à fronteira de bloco e alternar templates de chat. Esperar hits apenas nos blocos anteriores compatíveis, com saída equivalente à execução fria.",
+  "evaluation_plan": "Plano proposto: comparar cache frio e aquecido sob a mesma mistura de prompts. Variar tamanho do prefixo e do sufixo, medir tokens reutilizados, TTFT, ocupação e caudas; aprovar pela redução de custo end-to-end sem divergência.",
+  "comparisons": [
+    {
+      "entry_id": "T088",
+      "relation": "complements",
+      "reason": "O escalonador pode aproveitar menos trabalho de prefill sem eliminar contenção entre requisições."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O projeto de prefix caching do vLLM identifica blocos com ancestralidade e armazena somente blocos completos.",
+    "source_ids": [
+      "B-S005"
+    ],
+    "support": "direct",
+    "caveat": "Esse detalhe descreve o projeto documentado; outros servidores podem adotar granularidades diferentes."
+  },
+  "advanced_qa": [
+    {
+      "question": "Prefix caching acelera automaticamente o decode?",
+      "answer": "Não. Seu benefício direto é evitar construção repetida de estados do prefixo; a atenção sobre eles continua necessária."
+    },
+    {
+      "question": "Como comparar caches com blocos diferentes?",
+      "answer": "Use tokens e tempo realmente poupados, além da memória ocupada; uma taxa bruta de hits não é comparável."
+    }
+  ],
+  "source_ids": [
+    "B-S005",
+    "B-S004"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

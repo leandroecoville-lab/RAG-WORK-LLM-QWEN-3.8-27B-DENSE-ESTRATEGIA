@@ -1,0 +1,29 @@
+{
+  "id": "T158",
+  "name": "Tool Registry",
+  "canonical_name": "Tool Registry",
+  "canonical_id": "T158",
+  "aliases": [
+    "registro de ferramentas"
+  ],
+  "category": "orquestracao",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T045",
+    "T151",
+    "T170"
+  ],
+  "source_ids": [
+    "C-S007",
+    "V3C-S004",
+    "V4C-S013",
+    "V3C-S013"
+  ],
+  "namespace": "T158",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T158",
+  "chunk_count": 9
+}

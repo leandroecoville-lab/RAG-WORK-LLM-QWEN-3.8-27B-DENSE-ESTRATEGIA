@@ -1,0 +1,42 @@
+{
+  "entry_id": "T058",
+  "edges": [
+    {
+      "edge_id": "E-T058-01",
+      "from": "T058",
+      "to": "T072",
+      "relation": "requires",
+      "how": "Publicar candidato com retorno possível à versão anterior.",
+      "interface": "Manifesto antigo, candidato e dependências.",
+      "condition": "Mudanças permanecerem reversíveis na camada de memória.",
+      "acceptance": "Reverter candidato que removeu exceção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S033",
+        "V3A-S034",
+        "V4A-S002"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T058-02",
+      "from": "T058",
+      "to": "T071",
+      "relation": "feeds",
+      "how": "Encaminhar abstração para promoção por tipo.",
+      "interface": "Candidato, suporte, limites e resultados de comparação.",
+      "condition": "Promoção exigir evidência apropriada.",
+      "acceptance": "Impedir hipótese agrupada de virar fato confirmado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S033",
+        "V3A-S034",
+        "V4A-S002"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

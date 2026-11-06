@@ -1,0 +1,31 @@
+{
+  "id": "T128",
+  "name": "EAGLE / EAGLE-3",
+  "canonical_name": "EAGLE / EAGLE-3",
+  "canonical_id": "T128",
+  "aliases": [
+    "EAGLE",
+    "EAGLE-3"
+  ],
+  "category": "inferencia",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T079",
+    "T080",
+    "T132"
+  ],
+  "source_ids": [
+    "B-S038",
+    "V3B-S001",
+    "V4B-S007",
+    "V4B-S029",
+    "V4B-S011"
+  ],
+  "namespace": "T128",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T128",
+  "chunk_count": 9
+}

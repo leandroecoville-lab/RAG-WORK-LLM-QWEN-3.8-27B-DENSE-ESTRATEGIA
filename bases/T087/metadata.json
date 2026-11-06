@@ -1,0 +1,33 @@
+{
+  "id": "T087",
+  "name": "Batching — Static Batching e Dynamic Batching",
+  "canonical_name": "Static Batching e Dynamic Batching",
+  "canonical_id": "T087",
+  "aliases": [
+    "Batching",
+    "processamento em lotes",
+    "lote estático",
+    "lote dinâmico"
+  ],
+  "category": "inferencia",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T088",
+    "T137",
+    "P009"
+  ],
+  "source_ids": [
+    "B-S047",
+    "V4B-S008",
+    "V4B-S014",
+    "V4B-S005",
+    "V4B-S010"
+  ],
+  "namespace": "T087",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T087",
+  "chunk_count": 9
+}

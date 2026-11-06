@@ -1,0 +1,29 @@
+{
+  "id": "R003",
+  "name": "LongMem",
+  "canonical_name": "LongMem — Augmenting Language Models with Long-Term Memory",
+  "canonical_id": "R003",
+  "aliases": [
+    "Long-Term Memory augmented language model",
+    "memória neural de longo prazo"
+  ],
+  "category": "referencias",
+  "kind": "architecture",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "T052",
+    "T068",
+    "T062"
+  ],
+  "source_ids": [
+    "A-S013",
+    "V3A-S045",
+    "V3A-S047"
+  ],
+  "namespace": "R003",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R003",
+  "chunk_count": 9
+}

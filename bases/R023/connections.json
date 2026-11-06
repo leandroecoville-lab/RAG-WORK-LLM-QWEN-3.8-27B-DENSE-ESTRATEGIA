@@ -1,0 +1,42 @@
+{
+  "entry_id": "R023",
+  "edges": [
+    {
+      "edge_id": "E-R023-01",
+      "from": "R023",
+      "to": "T088",
+      "relation": "complements",
+      "how": "A documentação de continuous batching oferece gerenciamento de pedidos ativos.",
+      "interface": "Requisições e configuração de agendamento.",
+      "condition": "Modelo e backend suportados.",
+      "acceptance": "Testar entrada, saída e cancelamento de sequências.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4B-S014"
+      ],
+      "case_ids": [
+        "V4B-C013"
+      ],
+      "evidence_stage": "operational_product"
+    },
+    {
+      "edge_id": "E-R023-02",
+      "from": "R023",
+      "to": "T082",
+      "relation": "complements",
+      "how": "O caminho documentado inclui cache de prefixos onde suportado.",
+      "interface": "Identidade de tokens e configuração de cache.",
+      "condition": "Compatibilidade e isolamento confirmados.",
+      "acceptance": "Medir reúso consumido e evitar mistura de estado.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4B-S014"
+      ],
+      "case_ids": [
+        "V4B-C013"
+      ],
+      "evidence_stage": "operational_product"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

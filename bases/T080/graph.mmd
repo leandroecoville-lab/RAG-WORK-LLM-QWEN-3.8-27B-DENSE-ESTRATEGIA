@@ -1,0 +1,6 @@
+flowchart TD
+    T080["T080 Adaptive Speculative Decoding"]
+    T079["T079 Speculative Decoding"]
+    T080 -. "requires: proposta" .-> T079
+    T121["T121 GPU Scheduling"]
+    T080 -. "complements: proposta" .-> T121

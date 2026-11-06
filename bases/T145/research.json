@@ -1,0 +1,51 @@
+{
+  "id": "T145",
+  "technical_details": "Profundidade adaptativa pode usar o ganho observado entre etapas como sinal de continuidade: um novo teste elimina uma hipótese, uma busca resolve uma lacuna ou uma revisão corrige um defeito. Contar palavras de deliberação não mede esse ganho. Uma política proposta combina orçamento residual e evidência de progresso, reservando uma saída explícita quando a próxima rodada não tem uma operação verificável capaz de alterar a conclusão.",
+  "boundary_condition": "Um sinal de progresso mal definido pode premiar reformulações repetidas e interromper cedo tarefas difíceis cujo benefício aparece apenas depois.",
+  "implementation_contract": {
+    "inputs": "Estado atual, critérios pendentes, custo da próxima etapa e limite global.",
+    "outputs": "Continuar, concluir ou interromper com pendências identificadas.",
+    "state": "Profundidade percorrida, mudanças verificadas e recursos restantes.",
+    "invariant": "Maior profundidade não substitui evidência de satisfação do requisito."
+  },
+  "tradeoffs": [
+    "Parar cedo reduz desperdício e pode perder soluções de descoberta tardia.",
+    "Manter exploração mínima melhora cobertura e aumenta custo em casos já resolvidos."
+  ],
+  "failure_test": "Teste proposto: oferecer uma tarefa resolvida na primeira rodada e outra que exige buscar um dado ausente; verificar se a política diferencia conclusão de simples confiança declarada.",
+  "evaluation_plan": "Comparar número fixo de rodadas e política adaptativa sob o mesmo orçamento máximo. Estratificar por dificuldade medida independentemente. Avaliar sucesso, custo e interrupções prematuras; decidir pela fronteira entre qualidade e trabalho adicional, sem limiar universal.",
+  "comparisons": [
+    {
+      "entry_id": "T146",
+      "relation": "specializes",
+      "reason": "Profundidade controla número de etapas; adaptive compute também distribui largura, modelos e verificadores."
+    },
+    {
+      "entry_id": "T219",
+      "relation": "complements",
+      "reason": "O limite global de passos encerra a execução; profundidade adaptativa decide como distribuir esforço dentro desse limite."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O estudo de computação em inferência mostra que a utilidade das estratégias varia com a dificuldade da consulta.",
+    "source_ids": [
+      "V3C-S003"
+    ],
+    "support": "related",
+    "caveat": "Os experimentos de raciocínio não validam diretamente este detector de progresso para workflows."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma resposta mais longa demonstra maior profundidade útil?",
+      "answer": "Não. O ganho deve aparecer em evidências, hipóteses resolvidas ou resultados verificados, não em extensão textual."
+    },
+    {
+      "question": "Quando a política deve registrar inconclusão?",
+      "answer": "Quando o objetivo permanece pendente e não há orçamento ou ação elegível que sustente nova etapa."
+    }
+  ],
+  "source_ids": [
+    "V3C-S003"
+  ],
+  "research_note": "Detalhamento e avaliação propostos; a fonte apoia o mecanismo, sem comprovar implementação LAI."
+}

@@ -1,0 +1,52 @@
+{
+  "id": "T008",
+  "technical_details": "A profundidade da hierarquia influencia tanto navegação quanto número de transformações sofridas por uma evidência. Atualizar uma folha exige invalidar os resumos que dependem dela; conservar um nó superior antigo junto de folhas novas cria versões incoerentes. Uma política de reconstrução deve registrar dependências e publicar uma árvore consistente, em vez de trocar nós isolados sem fronteira identificável.",
+  "boundary_condition": "Quando perguntas exigem detalhes que os resumos descartaram e as folhas não são recuperáveis, mais níveis apenas reorganizam a perda.",
+  "implementation_contract": {
+    "inputs": "Unidades originais versionadas, agrupamento e orçamento por nível.",
+    "outputs": "Nós resumidos com referências aos descendentes e à revisão da árvore.",
+    "state": "DAG de dependências, versões de sumarizadores e fila de nós inválidos.",
+    "invariant": "Cada afirmação resumida é distinguida da evidência original e aponta para sua origem."
+  },
+  "tradeoffs": [
+    "Mais níveis reduzem contexto por leitura, mas aumentam ingestão e manutenção.",
+    "Resumos amplos ajudam perguntas globais, enquanto trechos locais preservam especificidade e exceções."
+  ],
+  "failure_test": "Teste proposto: corrigir uma folha depois de construir a hierarquia. Consultas não devem combinar a correção com um resumo ancestral que ainda afirme o valor antigo sem sinalizar desatualização.",
+  "evaluation_plan": "Avaliação proposta: comparar busca apenas nas folhas com busca em múltiplos níveis, mantendo o orçamento final. Medir recuperação de fatos, perguntas globais, custo de atualização e proporção de nós obsoletos após mudanças.",
+  "comparisons": [
+    {
+      "entry_id": "T023",
+      "relation": "complements",
+      "reason": "A árvore recursiva explicita uma organização possível da sumarização hierárquica."
+    },
+    {
+      "entry_id": "T030",
+      "relation": "complements",
+      "reason": "RAPTOR combina hierarquia com embeddings, agrupamento e recuperação em seus níveis."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O código oficial de RAPTOR permite construir, persistir e carregar uma árvore para recuperação.",
+    "source_ids": [
+      "V3A-S011"
+    ],
+    "support": "direct",
+    "caveat": "A publicação de estados consistentes e a invalidação incremental aqui descritas são propostas de engenharia."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma árvore de resumos garante rastreabilidade?",
+      "answer": "Somente se a implementação preservar referências e versões. Uma árvore contendo apenas prosa pode perder a ligação verificável com as fontes."
+    },
+    {
+      "question": "Devo sempre recuperar a raiz?",
+      "answer": "Não. A raiz pode ser genérica demais. Selecione o nível conforme a pergunta e expanda até evidência suficiente, respeitando o orçamento."
+    }
+  ],
+  "source_ids": [
+    "V3A-S011",
+    "A-S014"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

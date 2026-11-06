@@ -1,0 +1,44 @@
+{
+  "entry_id": "T197",
+  "edges": [
+    {
+      "edge_id": "E-T197-01",
+      "from": "T197",
+      "to": "T196",
+      "relation": "complements",
+      "how": "Decodificação restrita pode reduzir saídas estruturalmente inválidas antes da checagem final.",
+      "interface": "Schema suportado e objeto completo.",
+      "condition": "Conjunto de recursos aceitos por ambos é conhecido.",
+      "acceptance": "Testar casos que a gramática não consegue expressar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S049",
+        "V3B-S024",
+        "V4B-S015",
+        "V4B-S027"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T197-02",
+      "from": "T197",
+      "to": "T193",
+      "relation": "feeds",
+      "how": "Resultado estrutural é uma entrada para controles de negócio e autorização.",
+      "interface": "Objeto validado, versão e erros.",
+      "condition": "Nenhuma regra externa é presumida pela aprovação estrutural.",
+      "acceptance": "Submeter objeto válido com valor não autorizado e exigir bloqueio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S049",
+        "V3B-S024",
+        "V4B-S015",
+        "V4B-S027"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

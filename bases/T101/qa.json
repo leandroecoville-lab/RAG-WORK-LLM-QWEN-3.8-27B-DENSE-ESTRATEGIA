@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Ring Attention aumenta a capacidade aprendida de contexto?",
+    "answer": "Não por si só. Distribui o cálculo; posições e comportamento do checkpoint continuam limitando a utilidade."
+  },
+  {
+    "question": "Elimina o tráfego de rede?",
+    "answer": "Não. Organiza a circulação de KV e tenta sobrepor o tráfego ao cálculo."
+  },
+  {
+    "question": "O anel reduz o número de pares atendidos?",
+    "answer": "Não necessariamente. Pode preservar a atenção densa e apenas distribuir onde suas interações são calculadas."
+  },
+  {
+    "question": "Por que posições globais importam?",
+    "answer": "A causalidade deve acompanhar a sequência original; índices locais de cada shard não determinam quais tokens estão no futuro."
+  }
+]

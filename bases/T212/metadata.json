@@ -1,0 +1,31 @@
+{
+  "id": "T212",
+  "name": "Auto-Compact por gatilho",
+  "canonical_name": "Auto-Compact por gatilho",
+  "canonical_id": "T212",
+  "aliases": [
+    "compactação automática por limiar"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T222",
+    "T004",
+    "T210"
+  ],
+  "source_ids": [
+    "V2A-S025",
+    "A-S006",
+    "V3C-S031",
+    "V4C-S014",
+    "V4C-S031",
+    "V3C-S032"
+  ],
+  "namespace": "T212",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T212",
+  "chunk_count": 9
+}

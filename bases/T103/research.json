@@ -1,0 +1,46 @@
+{
+  "id": "T103",
+  "technical_details": "A árvore representa ancestralidade exata: compartilhar um sufixo textual não torna dois caminhos equivalentes se seus prefixos anteriores diferem. Numa radix tree, uma aresta pode carregar vários tokens; uma divergência no meio dessa aresta exige divisão sem perder a correspondência entre posições e referências KV. A complexidade de busca depende dos tokens comparados e da representação das arestas, não somente do número de nós.",
+  "boundary_condition": "Uma árvore de strings normalizadas pode produzir identidade diferente da tokenização realmente usada pelo modelo.",
+  "implementation_contract": {
+    "inputs": "Sequências de token IDs, domínio de identidade e referências dos estados disponíveis.",
+    "outputs": "Maior prefixo compatível e ponto exato para inserir ou dividir caminhos.",
+    "state": "Rótulos de arestas, ligações, comprimentos e referências de cache.",
+    "invariant": "O caminho completo desde a raiz identifica o contexto; um nó isolado não basta."
+  },
+  "tradeoffs": [
+    "Arestas comprimidas reduzem nós e complicam divisões parciais.",
+    "Índice maior melhora cobertura potencial e aumenta manutenção e memória de CPU."
+  ],
+  "failure_test": "Teste proposto: inserir sequências que divergem dentro da mesma aresta e outras com sufixos iguais. Esperar divisão correta e nenhum hit baseado apenas na igualdade dos últimos tokens.",
+  "evaluation_plan": "Plano proposto: comparar trie simples e radix tree com as mesmas sequências. Medir tokens comparados, nós, memória e tempo de atualização; exigir que todas as buscas concordem com uma referência linear de maior prefixo.",
+  "comparisons": [
+    {
+      "entry_id": "T104",
+      "relation": "complements",
+      "reason": "RadixAttention usa a estrutura para organizar estados; a árvore sozinha não executa atenção."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O SGLang descreve radix tree com arestas que podem representar sequências de tokens de comprimentos variados.",
+    "source_ids": [
+      "V3B-S011"
+    ],
+    "support": "direct",
+    "caveat": "A estrutura de dados não determina política de escalonamento, memória física ou validade dos pesos."
+  },
+  "advanced_qa": [
+    {
+      "question": "Pode indexar pelo texto decodificado?",
+      "answer": "Somente com um contrato que preserve identidade de tokenização; textos aparentes iguais não garantem os mesmos IDs."
+    },
+    {
+      "question": "Dividir uma aresta exige copiar todo o KV?",
+      "answer": "Não necessariamente. A divisão lógica pode alterar referências para segmentos existentes quando o armazenamento permite compartilhamento."
+    }
+  ],
+  "source_ids": [
+    "V3B-S011"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

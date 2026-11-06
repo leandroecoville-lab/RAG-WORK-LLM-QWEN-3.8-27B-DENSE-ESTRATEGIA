@@ -1,0 +1,18 @@
+[
+  {
+    "question": "MCP versiona automaticamente meu schema de negócio?",
+    "answer": "Não. A aplicação precisa manter seu próprio contrato e compatibilidade."
+  },
+  {
+    "question": "Adicionar campo é sempre seguro?",
+    "answer": "Não. Depende do comportamento dos consumidores e validadores."
+  },
+  {
+    "question": "Adicionar campo opcional é sempre retrocompatível?",
+    "answer": "Não. Consumidores que rejeitam propriedades extras podem falhar ao receber o novo campo."
+  },
+  {
+    "question": "Como detectar mudança de segundos para milissegundos?",
+    "answer": "Registrar unidade no contrato e usar casos de domínio; ambos os valores continuam sendo números válidos para um schema genérico."
+  }
+]

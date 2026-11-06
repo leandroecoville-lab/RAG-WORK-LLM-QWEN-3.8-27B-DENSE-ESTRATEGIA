@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "B-S002",
+    "title": "Faster Assisted Generation with Dynamic Speculation",
+    "url": "https://huggingface.co/blog/dynamic_speculation_lookahead",
+    "publisher": "Hugging Face e Intel",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2024-10-08",
+    "supports": "Comprimento adaptativo do rascunho e interrupção por confiança do modelo assistente.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn10view7"
+  },
+  {
+    "source_id": "V3B-S001",
+    "title": "Fast Inference from Transformers via Speculative Decoding",
+    "url": "https://proceedings.mlr.press/v202/leviathan23a/leviathan23a.pdf",
+    "publisher": "PMLR / Leviathan, Kalman e Matias",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Algoritmo de aceitação, distribuição residual e análise idealizada de custo.",
+    "limitations": "Texto do algoritmo e análise consultados; resultados experimentais não reproduzidos; pressupostos de paralelismo não certificam servidor local.",
+    "web_ref": "turn98view0"
+  },
+  {
+    "source_id": "V4B-S014",
+    "title": "Continuous batching — Transformers",
+    "url": "https://huggingface.co/docs/transformers/en/continuous_batching",
+    "publisher": "Hugging Face",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "ContinuousBatchingManager, generate_batch, configuração separada de geração e scheduling, cache paginado e recursos de serving.",
+    "limitations": "Documentação dinâmica; exemplos não são implantação de cliente. Verificar versão instalada e suporte arquitetural.",
+    "web_ref": "turn221view0"
+  }
+]

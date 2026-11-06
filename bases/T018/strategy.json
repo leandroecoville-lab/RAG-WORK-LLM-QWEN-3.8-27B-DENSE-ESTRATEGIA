@@ -1,0 +1,111 @@
+{
+  "id": "T018",
+  "novelty": "A v3 preservou dependências na poda. Aqui o novo critério é medir valor marginal dos blocos com ablações e controlar deriva da política.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Remova blocos candidatos individualmente em validação e observe quais decisões mudam. Atribua importância pelo efeito na tarefa, separando evidência redundante de condição rara.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S016",
+        "V4A-S028"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Aprenda política de poda por família de pergunta e congele sua versão durante avaliação. Feedback de uso pode criar viés se só forem observadas respostas que passaram pelo filtro.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S016",
+        "V4A-S028"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare poda baseada em comprimento, score e efeito contrafactual. Meça perda de requisitos raros e ganho de custo, incluindo expansão de recuperação. Unidade de avaliação: pacote de evidências. Uma ablação deve remover um bloco redundante e outra deve remover uma condição rara do mesmo tamanho. Se a política atribuir valor semelhante aos dois, o score não representa utilidade da tarefa. Registre quais respostas mudaram e se houve recuperação posterior; avaliação apenas sobre tokens removidos esconderia perda de capacidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S016",
+        "V4A-S028"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Dossiê com duplicatas",
+      "scenario": "Muitos textos repetem o mesmo anúncio.",
+      "strategy": "Reter origem primária e versões que adicionam condição nova; não remover discordância por parecer redundante.",
+      "small_model_role": "3–7B detecta duplicação com verificação de campos.",
+      "acceptance": "Manter todas as condições únicas relevantes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S016",
+        "V4A-S028"
+      ]
+    },
+    {
+      "name": "Assistência técnica",
+      "scenario": "Logs comuns escondem uma exceção.",
+      "strategy": "Proteger códigos de erro e mudança de estado; podar mensagens repetidas e recuperar bloco completo se diagnóstico permanecer ambíguo.",
+      "small_model_role": "8–14B interpreta conjunto reduzido.",
+      "acceptance": "Causa escolhida deve persistir no teste com log integral.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S016",
+        "V4A-S028"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Classificador de blocos elegíveis para remoção, sob regras determinísticas.",
+    "8_14b": "Leitor que sinaliza requisito perdido e pede expansão.",
+    "15_30b": "Avaliador de conflitos entre blocos antes da poda final.",
+    "training_or_runtime_requirements": "Amostras de ablação e rastreamento de blocos descartados; não usar respostas de avaliação como treino.",
+    "do_not_use_when": "Não existe forma de recuperar conteúdo removido e omissão tem custo alto."
+  },
+  "connections": [
+    {
+      "target_id": "T039",
+      "relation": "feeds",
+      "how": "Transformar valor marginal em prioridade da janela.",
+      "interface": "block_id, ganho observado e dependências.",
+      "condition": "Estimativa válida para a família de tarefa.",
+      "acceptance": "Verificar estabilidade em novas fontes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S016",
+        "V4A-S028"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T044",
+      "relation": "complements",
+      "how": "Reabrir bloco quando surgir lacuna concreta.",
+      "interface": "Requisito faltante e referência descartada.",
+      "condition": "Política registrar o descarte.",
+      "acceptance": "Comparar recuperação dirigida com reinserção integral.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S016",
+        "V4A-S028"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Conservar casos rejeitados para avaliar viés de seleção.",
+    "Não usar frequência de acesso como único valor."
+  ],
+  "frontier_comparison": "Comparar perda causada pela poda em leitores pequenos e fronteira; tolerância à informação incompleta varia.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q024"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S016",
+    "V4A-S028"
+  ]
+}

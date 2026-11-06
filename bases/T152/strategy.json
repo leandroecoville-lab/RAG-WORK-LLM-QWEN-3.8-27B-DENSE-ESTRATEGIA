@@ -1,0 +1,114 @@
+{
+  "id": "T152",
+  "novelty": "A v3 separou janela, gasto acumulado e reservas para ferramentas. A camada nova atribui utilidade a segmentos de contexto e vincula redução de tokens à preservação de obrigações verificáveis.",
+  "deep_layers": [
+    {
+      "name": "Orçamento por função documental",
+      "detail": "Reserve espaço para objetivo vigente, restrições, fatos, incertezas e saída. Cada segmento tem uma política de redução: logs podem virar referências, mas critérios de aceite não devem desaparecer por serem antigos. Distribuição fixa pode servir de baseline; adaptação só deve ocorrer com métricas de perda e custo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014",
+        "V3C-S022"
+      ]
+    },
+    {
+      "name": "Custo de ida e volta",
+      "detail": "Uma economia local pode gerar consultas adicionais depois. Remover detalhe de uma ferramenta reduz a entrada atual, mas pode exigir releitura ou induzir erro. Meça tokens e tempo até a tarefa aceita, incluindo resumos, buscas e reparos, para evitar otimizar um contador enquanto piora o fluxo completo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014",
+        "V4C-S013"
+      ]
+    },
+    {
+      "name": "Reserva por etapa e tokenizer",
+      "detail": "Um plano com modelos diferentes não compartilha necessariamente a mesma contagem. Reconstrua o pacote no template do destino e reserve espaço para validação e resposta final. O custo faturado do prefixo e sua ocupação da janela continuam sendo medidas distintas, especialmente quando cache e compactação se combinam.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S022",
+        "V4C-S018"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Análise de repositório em janela curta",
+      "scenario": "O agente precisa alterar uma função sem carregar o projeto inteiro.",
+      "strategy": "Inclua contrato, trecho alvo, chamadas relevantes e teste que define o comportamento. Use mapa para solicitar detalhes por necessidade; se a alteração afetar uma dependência, transfira parte do orçamento exploratório para essa evidência, preservando critérios de aceite.",
+      "small_model_role": "3–7B executa mudanças muito locais; 8–30B amplia escopo apenas com evidências recuperadas.",
+      "acceptance": "Proposta: medir regressões, leituras adicionais e tokens totais contra contexto amplo uniforme.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014",
+        "V2A-S007"
+      ]
+    },
+    {
+      "name": "Pesquisa com muitas respostas de ferramenta",
+      "scenario": "Cada consulta retorna texto e metadados volumosos.",
+      "strategy": "Projete campos, mantenha referências e extraia somente fatos que respondem aos critérios. Antes de sintetizar, verifique cobertura; se uma lacuna depender de material omitido, recupere-o especificamente em vez de aumentar toda a janela.",
+      "small_model_role": "8–14B estrutura evidências; 15–30B integra conclusões condicionais.",
+      "acceptance": "Proposta: comparar sustentação, completude e custo incluindo recuperação posterior.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013",
+        "C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: orçamento focado em fatos diretamente usados na próxima operação, com respostas curtas.",
+    "8_14b": "Proposta: múltiplos segmentos documentais pequenos e reconsulta orientada por lacuna.",
+    "15_30b": "Proposta: integração de evidências mais extensa, reservando verificação e conclusão desde o início.",
+    "training_or_runtime_requirements": "Contar com tokenizer e template reais; registrar consumo observado por etapa, não apenas estimativa prévia.",
+    "do_not_use_when": "Não reduzir contexto quando detalhes aparentemente acessórios determinam exceções ou identidade do recurso."
+  },
+  "connections": [
+    {
+      "target_id": "T222",
+      "relation": "feeds",
+      "how": "O monitor informa ocupação e erro de previsão para ajustar reservas futuras.",
+      "interface": "Contagem real, estimativa, segmento e revisão do template.",
+      "condition": "As unidades são comparáveis dentro do mesmo backend.",
+      "acceptance": "Detectar mudança de tokenizer por desvio sistemático de contagem.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S022"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T214",
+      "relation": "complements",
+      "how": "Poda por campos implementa parte da redução planejada sem reescrever todos os dados.",
+      "interface": "Lista de campos necessários e referência ao payload integral.",
+      "condition": "O contrato preserva informação de controle e incerteza.",
+      "acceptance": "Reexecutar casos com campo decisivo fora da projeção inicial.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não gastar a reserva de verificação para produzir mais deliberação ou candidatos.",
+    "Manter separados tokenização real, caracteres e preços do provedor."
+  ],
+  "frontier_comparison": "Compare modelos com orçamento total e critérios iguais, incluindo releituras. Um modelo pequeno bem contextualizado pode resolver tarefas delimitadas sem equivalência geral de janela ou conhecimento.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q009",
+      "V4C-Q014"
+    ],
+    "scope_note": "Uber documenta otimizações por sessão e NVIDIA controles específicos; nenhum limiar corporativo é recomendado automaticamente para 3–30B."
+  },
+  "source_ids": [
+    "V4C-S014",
+    "V3C-S022",
+    "V4C-S013",
+    "V4C-S018",
+    "V2A-S007",
+    "C-S030"
+  ]
+}

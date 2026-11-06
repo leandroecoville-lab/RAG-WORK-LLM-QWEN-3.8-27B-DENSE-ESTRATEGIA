@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Adaptive RAG é só escolher top-k?",
+    "answer": "Não. Pode mudar número de buscas, decomposição e uso do gerador; top-k é apenas uma possível variável."
+  },
+  {
+    "question": "O modelo decide sozinho que não precisa buscar?",
+    "answer": "Pode sugerir, mas regras de atualidade e acesso devem restringir essa escolha."
+  },
+  {
+    "question": "Self-RAG é a mesma implementação?",
+    "answer": "Não. Self-RAG treina um modelo com tokens de reflexão para controlar recuperação e crítica. O roteador de Adaptive-RAG constitui outro desenho."
+  },
+  {
+    "question": "Devo continuar buscando até obter alguma resposta?",
+    "answer": "Não. Defina suficiência e orçamento; ausência persistente de evidência precisa levar a lacuna explícita, não a uma conclusão forçada."
+  }
+]

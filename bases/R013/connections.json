@@ -1,0 +1,42 @@
+{
+  "entry_id": "R013",
+  "edges": [
+    {
+      "edge_id": "E-R013-01",
+      "from": "R013",
+      "to": "T014",
+      "relation": "complements",
+      "how": "Usar descritores para selecionar arquivos antes da carga.",
+      "interface": "Caminho, escopo, versão e finalidade.",
+      "condition": "Descrição distinguir recursos próximos.",
+      "acceptance": "Testar arquivo raro necessário à tarefa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-R013-02",
+      "from": "R013",
+      "to": "T076",
+      "relation": "requires",
+      "how": "Preservar revisão das alterações de memória.",
+      "interface": "Commit, arquivo, diff e origem.",
+      "condition": "Merge semântico revisado quando necessário.",
+      "acceptance": "Detectar duas decisões incompatíveis em arquivos separados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

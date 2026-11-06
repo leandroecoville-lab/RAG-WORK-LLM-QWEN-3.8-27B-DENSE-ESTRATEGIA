@@ -1,0 +1,70 @@
+{
+  "coverage": {
+    "entry_id": "R013",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Letta MemFS",
+    "scope": "referencia"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C028",
+      "company": "Letta",
+      "system": "MemFS e Context Repositories",
+      "title": "MemFS e Context Repositories — evidência delimitada",
+      "evidence_level": "operational_product",
+      "observed_use": "Documentação descreve memória em arquivos e repositórios de contexto.",
+      "technical_mechanism": "Conteúdo seletivamente residente, edição de arquivos e versionamento Git.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R013",
+          "match": "exact",
+          "rationale": "MemFS é referência principal."
+        },
+        {
+          "entry_id": "R014",
+          "match": "exact",
+          "rationale": "Alias editorial da mesma família; não segundo caso."
+        },
+        {
+          "entry_id": "T076",
+          "match": "exact",
+          "rationale": "Versionamento Git explicitado."
+        },
+        {
+          "entry_id": "P003",
+          "match": "analogy",
+          "rationale": "Inspira paginação de contexto proposta."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Usar índice de arquivos conciso e carregar procedimento por referência exata; validar conflitos.",
+      "limits": "Um único sistema não vira dois casos por alias; não prova conhecimento correto nem busca semântica automática. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4A-C028",
+      "deployment_domain": "llm_framework",
+      "mapping": {
+        "entry_id": "R013",
+        "match": "exact",
+        "rationale": "MemFS é referência principal."
+      }
+    }
+  ]
+}

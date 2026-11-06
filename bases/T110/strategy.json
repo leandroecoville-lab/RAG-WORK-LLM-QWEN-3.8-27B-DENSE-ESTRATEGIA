@@ -1,0 +1,111 @@
+{
+  "id": "T110",
+  "novelty": "A v3 explicou caminhos e complexidade dos tokens globais. Esta camada examina seleção de posições, capacidade de agregação e avaliação de gargalos que permanecem mesmo com conectividade ampla.",
+  "deep_layers": [
+    {
+      "name": "Seleção orientada à tarefa",
+      "detail": "Escolher posições globais é uma decisão de representação: pergunta, delimitadores ou resumos podem ter papéis diferentes. Defina a regra antes da avaliação e teste mudanças na posição dos fatos. Escolher globais depois de conhecer a resposta produz uma vantagem artificial que não estará disponível durante uso real.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Gargalo de agregação",
+      "detail": "Poucos tokens globais precisam condensar muitas relações. Acesso ao documento inteiro não garante retenção de todos os detalhes: largura e treinamento limitam o que é transmitido. Aumentar posições globais pode reduzir esse gargalo, mas acrescenta computação e memória; procure um compromisso medido na tarefa concreta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Direção e causalidade",
+      "detail": "Em geração autoregressiva, uma posição global também deve obedecer à disponibilidade temporal. Uma máscara bidirecional de encoder não pode ser transferida diretamente para decoder. Para streaming, especifique quando um resumo global é atualizado e se tokens posteriores dependem de sua versão antiga ou nova.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "V4B-S017"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Pergunta sobre documento longo",
+      "scenario": "Uma arquitetura compatível precisa relacionar seções distantes.",
+      "strategy": "Designe a pergunta e marcadores estruturais como candidatos globais, mantendo a seleção independente da resposta. Compare com recuperação segmentada sob o mesmo orçamento.",
+      "small_model_role": "Um 8–14B treinado para o padrão pode executar leitura especializada com menos conexões que atenção densa.",
+      "acceptance": "Testar resposta, localização da evidência e resistência a trechos irrelevantes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Síntese de fluxo delimitado",
+      "scenario": "Eventos locais precisam alimentar um estado resumido.",
+      "strategy": "Use posições de agregação apenas na arquitetura que permita atualizá-las corretamente; fora dela, implemente resumo externo explícito, sem apresentar essa alternativa como o mesmo mecanismo.",
+      "small_model_role": "Um 3–7B pode manter sínteses de domínio estreito apoiadas em registros originais.",
+      "acceptance": "Medir quais fatos deixam de sobreviver quando aumenta o número de eventos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "V4B-S017"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Poucos globais podem virar gargalo severo; comece com tarefas de baixa entropia e evidência curta.",
+    "8_14b": "Explore seleção estrutural e número de globais separadamente, evitando trocar vários fatores ao mesmo tempo.",
+    "15_30b": "Maior capacidade não elimina crescimento de custo quando a quantidade de globais acompanha o contexto.",
+    "training_or_runtime_requirements": "Exige modelo e máscara compatíveis; adicionar um token especial ao prompt de um LLM comum não cria atenção global arquitetural.",
+    "do_not_use_when": "Não prometer cobertura integral apenas porque existe um caminho no grafo de atenção."
+  },
+  "connections": [
+    {
+      "target_id": "T109",
+      "relation": "complements",
+      "how": "Conexões globais suplementam vizinhanças locais na arquitetura prevista.",
+      "interface": "Máscaras por camada e posições selecionadas.",
+      "condition": "Treinamento e inferência compartilham semântica.",
+      "acceptance": "Testar fronteiras, causalidade e relações distantes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "V4B-S017"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T097",
+      "relation": "complements",
+      "how": "Blocos podem representar o padrão misto e evitar materialização densa.",
+      "interface": "Metadados de blocos locais e globais.",
+      "condition": "Granularidade não introduz conexões proibidas.",
+      "acceptance": "Comparar máscara realizada com a máscara de referência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "V4B-S017"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não selecionar tokens globais usando rótulos ou informação da resposta.",
+    "Registrar crescimento do número de conexões quando aumentar a quantidade de globais."
+  ],
+  "frontier_comparison": "A comparação com fronteira deve avaliar relações distantes e detalhes omitidos, não somente tamanho aceito de entrada. Conectividade e compreensão são propriedades distintas.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q005"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S015",
+    "V4B-S017"
+  ]
+}

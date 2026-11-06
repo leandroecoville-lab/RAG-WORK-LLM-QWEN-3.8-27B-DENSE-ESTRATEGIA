@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "B-S029",
+    "title": "torch.utils.checkpoint",
+    "url": "https://docs.pytorch.org/docs/2.15/checkpoint.html",
+    "publisher": "PyTorch",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Checkpointing de ativações economiza memória e recompõe tensores durante backward.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn27view6"
+  },
+  {
+    "source_id": "V4B-S028",
+    "title": "Current and New Activation Checkpointing Techniques in PyTorch",
+    "url": "https://pytorch.org/blog/activation-checkpointing-techniques/",
+    "publisher": "PyTorch",
+    "source_type": "technical_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-03-05",
+    "supports": "Checkpoint seletivo por operação e políticas de memória/recomputação para forward/backward.",
+    "limitations": "Disponibilidade e estado experimental variam com versão; não demonstra aceleração de decode nem aplicação local.",
+    "web_ref": "turn278view0"
+  },
+  {
+    "source_id": "V4B-S006",
+    "title": "Open Source and In-House: How Uber Optimizes LLM Training",
+    "url": "https://www.uber.com/us/en/blog/open-source-and-in-house-how-uber-optimizes-llm-training/",
+    "publisher": "Uber Engineering",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-04-14",
+    "supports": "Infraestrutura Michelangelo com Transformers, Ray e DeepSpeed; avaliações de LoRA/QLoRA e scorer distribuído com vLLM.",
+    "limitations": "Mistura uso interno com experimentos; não tratar todas as configurações testadas como produto lançado. FlashAttention densa não reduz a complexidade aritmética quadrática.",
+    "web_ref": "turn217view0"
+  }
+]

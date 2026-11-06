@@ -1,0 +1,38 @@
+{
+  "id": "T178",
+  "name": "Knowledge Distillation",
+  "canonical_name": "Knowledge Distillation",
+  "canonical_id": "T178",
+  "aliases": [
+    "destilação de conhecimento"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T177",
+    "T179",
+    "T180",
+    "T181"
+  ],
+  "source_ids": [
+    "C-S032",
+    "V3B-S017",
+    "V4B-S005",
+    "V4B-S009",
+    "V4B-S012",
+    "V4B-S013",
+    "V4D-S012",
+    "V3D-S008",
+    "V4B-S010",
+    "V4D-S008",
+    "V4D-S010",
+    "V4D-S013"
+  ],
+  "namespace": "T178",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T178",
+  "chunk_count": 9
+}

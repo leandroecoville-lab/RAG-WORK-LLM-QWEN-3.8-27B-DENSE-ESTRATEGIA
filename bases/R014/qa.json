@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Context Repositories é um produto autônomo?",
+    "answer": "A fonte atual o apresenta como outro nome de MemFS; esta base não cria um terceiro produto."
+  },
+  {
+    "question": "Worktrees resolvem contradições de memória?",
+    "answer": "Eles isolam alterações. Resolver contradições exige comparar significado, evidência e validade temporal, além de integrar o Git."
+  },
+  {
+    "question": "Por que manter duas fichas se são aliases?",
+    "answer": "Para preservar o inventário solicitado e permitir busca pelos dois nomes. A identidade canônica impede contabilizar duas tecnologias onde há uma equivalência nominal."
+  },
+  {
+    "question": "Merge sem conflito significa memória correta?",
+    "answer": "Não. Git verifica compatibilidade textual de mudanças. Regras contraditórias, escopo errado ou fontes frágeis precisam de validação do conteúdo."
+  }
+]

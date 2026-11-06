@@ -1,0 +1,44 @@
+{
+  "id": "T217",
+  "name": "Test-Driven Loop",
+  "canonical_name": "Test-Driven Loop",
+  "canonical_id": "T217",
+  "aliases": [
+    "test driven development loop",
+    "ciclo orientado por testes"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T224",
+    "T213",
+    "T233"
+  ],
+  "source_ids": [
+    "V2A-S004",
+    "V2A-S023",
+    "V3C-S032",
+    "C-S048",
+    "V4C-S007",
+    "V4C-S009",
+    "V4C-S010",
+    "V4B-S022",
+    "V4B-S023",
+    "V4B-S024",
+    "V4B-S025",
+    "V4B-S026",
+    "V4C-S006",
+    "V4C-S008",
+    "V4C-S017",
+    "V4C-S026",
+    "V4C-S029",
+    "V4C-S030"
+  ],
+  "namespace": "T217",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T217",
+  "chunk_count": 9
+}

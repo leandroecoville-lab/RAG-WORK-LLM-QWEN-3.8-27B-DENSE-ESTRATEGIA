@@ -1,0 +1,32 @@
+{
+  "id": "T219",
+  "name": "Limite de recursão / profundidade de execução",
+  "canonical_name": "Limite de recursão / profundidade de execução",
+  "canonical_id": "T219",
+  "aliases": [
+    "execution depth limit",
+    "recursion budget"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T218",
+    "T237",
+    "T243"
+  ],
+  "source_ids": [
+    "V2A-S009",
+    "V2A-S018",
+    "V3C-S006",
+    "C-S030",
+    "V4C-S014",
+    "V3C-S032"
+  ],
+  "namespace": "T219",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T219",
+  "chunk_count": 9
+}

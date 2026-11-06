@@ -1,0 +1,46 @@
+{
+  "id": "T190",
+  "technical_details": "Cada veredito deve vincular-se à revisão exata do artefato inspecionado. Uma correção posterior pode invalidar testes anteriores, inclusive quando tenta resolver outro problema. Como proposta de controle, mantenha hash ou revisão, lista de falhas e critérios de progresso; repetições sem melhoria e ciclos entre duas versões precisam encerrar com diagnóstico. Um timeout do verificador é desconhecimento, não aprovação.",
+  "boundary_condition": "O ciclo pode nunca convergir quando requisitos são inconsistentes, o gerador não tem capacidade ou o verificador produz falsos negativos.",
+  "implementation_contract": {
+    "inputs": "Artefato versionado, critérios executáveis ou rubrica, orçamento e evidências anteriores.",
+    "outputs": "Versão aprovada para critérios definidos ou relatório explícito de pendências.",
+    "state": "Histórico de revisões, vereditos, falhas e consumo de tentativas.",
+    "invariant": "Aprovação sempre referencia o mesmo conteúdo que será entregue ou executado."
+  },
+  "tradeoffs": [
+    "Mais iterações oferecem correções e ampliam custo e risco de regressão.",
+    "Verificador estrito pode rejeitar alternativas válidas quando o contrato é incompleto."
+  ],
+  "failure_test": "Teste proposto: aprovar uma versão, modificá-la e reutilizar deliberadamente o veredito antigo. Esperar invalidação; injetar também alternância entre duas correções para testar parada por ciclo.",
+  "evaluation_plan": "Plano proposto: comparar geração única e loop limitado em casos com defeitos conhecidos. Medir taxa de correção, regressões, falsos aceites, custo e não convergência; aprovar apenas se o ganho externo justificar o esforço adicional.",
+  "comparisons": [
+    {
+      "entry_id": "T195",
+      "relation": "complements",
+      "reason": "Execução pode fornecer evidência objetiva para alguns critérios do loop, sem cobrir toda a especificação."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Verificadores treinados podem classificar soluções e orientar seleção de candidatos, como no estudo de problemas matemáticos.",
+    "source_ids": [
+      "C-S043"
+    ],
+    "support": "related",
+    "caveat": "O protocolo de revisão, progresso e parada desta ficha é proposta de engenharia; o paper não o padroniza."
+  },
+  "advanced_qa": [
+    {
+      "question": "Passou uma vez, está resolvido para sempre?",
+      "answer": "Não. Mudança de conteúdo, dependências ou ambiente pode invalidar o resultado anterior."
+    },
+    {
+      "question": "O próprio gerador pode verificar?",
+      "answer": "Pode contribuir com crítica, mas seus erros podem ser correlacionados; critérios objetivos e fontes independentes fortalecem a evidência."
+    }
+  ],
+  "source_ids": [
+    "C-S043"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

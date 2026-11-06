@@ -1,0 +1,29 @@
+{
+  "id": "T108",
+  "name": "Multi-Head Attention — MHA",
+  "canonical_name": "Multi-Head Attention — MHA",
+  "canonical_id": "T108",
+  "aliases": [
+    "multi-head attention",
+    "atenção multicabeças"
+  ],
+  "category": "inferencia",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T099",
+    "T100",
+    "T106",
+    "T090"
+  ],
+  "source_ids": [
+    "B-S024",
+    "V4B-S017"
+  ],
+  "namespace": "T108",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T108",
+  "chunk_count": 9
+}

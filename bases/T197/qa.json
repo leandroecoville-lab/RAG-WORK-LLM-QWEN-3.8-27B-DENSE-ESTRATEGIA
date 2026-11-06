@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Schema valida a veracidade do valor?",
+    "answer": "Não. Valida restrições especificadas; fatos precisam de outra verificação."
+  },
+  {
+    "question": "Required impede null?",
+    "answer": "Não sozinho. É preciso também definir um tipo que exclua null."
+  },
+  {
+    "question": "format email confirma que a caixa existe?",
+    "answer": "Não. Mesmo uma checagem sintática de formato não confirma existência, titularidade ou capacidade de entrega."
+  },
+  {
+    "question": "Schema válido prova argumento autorizado?",
+    "answer": "Não. Autorização depende do solicitante, recurso e operação, além da forma dos dados enviados."
+  }
+]

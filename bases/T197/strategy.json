@@ -1,0 +1,128 @@
+{
+  "id": "T197",
+  "novelty": "A v3 explicou required e dialetos. A nova camada trata schemas como versões de interface, limites de resolução e a separação entre validação de forma e invariantes que dependem de estado externo.",
+  "deep_layers": [
+    {
+      "name": "Evolução do contrato",
+      "detail": "Adicionar um campo opcional pode ser compatível para alguns consumidores e quebrar outros que rejeitam propriedades extras. Versione schema e política de compatibilidade, incluindo defaults aplicados fora da validação. Teste produtor antigo com consumidor novo e a direção inversa antes de anunciar uma mudança transparente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S049",
+        "V3B-S024",
+        "V4B-S015",
+        "V4B-S027"
+      ]
+    },
+    {
+      "name": "Referências e recursos",
+      "detail": "Resolução de referências precisa ser previsível e limitada. Prefira schemas conhecidos e cacheados, com limites de profundidade e tamanho quando entradas não são confiáveis. Um validador pode ser correto no dialeto e ainda consumir recursos excessivos em estruturas complexas; faça essa avaliação separadamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S049",
+        "V3B-S024",
+        "V4B-S015",
+        "V4B-S027"
+      ]
+    },
+    {
+      "name": "Semântica além da forma",
+      "detail": "Schema pode garantir que valor é número e campo existe, mas não que saldo está atualizado, entidade pertence ao usuário ou citação sustenta a frase. Encaminhe essas condições a regras de negócio e fontes. Uma validação formal de política, como no Bedrock, é outra camada com alcance próprio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S049",
+        "V3B-S024",
+        "V4B-S015",
+        "V4B-S027"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "API consumida por modelo pequeno",
+      "scenario": "O serviço exige argumentos tipados.",
+      "strategy": "Use schema restrito ao que o gerador e o validador suportam, valide o objeto completo e gere erros por caminho. Reparo deve preservar campos já corretos e revalidar o conjunto.",
+      "small_model_role": "Um 3–7B pode preencher contratos simples com ajuda de geração restrita.",
+      "acceptance": "Medir campos corretos e falhas de negócio, além da taxa de JSON parseável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S049",
+        "V3B-S024",
+        "V4B-S015",
+        "V4B-S027"
+      ]
+    },
+    {
+      "name": "Migração de interface",
+      "scenario": "Uma ferramenta passa a exigir novos dados.",
+      "strategy": "Crie adaptador explícito ou nova versão, mantendo testes cruzados. Não preencha automaticamente um valor de negócio desconhecido só para satisfazer required.",
+      "small_model_role": "Um 8–14B pode explicar ou coletar o dado ausente, sem inventar defaults.",
+      "acceptance": "Detectar incompatibilidades e impedir execução com dados fabricados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S049",
+        "V3B-S024",
+        "V4B-S015",
+        "V4B-S027"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Schemas pequenos e campos claros reduzem carga de seleção e reparo.",
+    "8_14b": "Composição complexa exige cobertura de teste e diagnóstico de erros compreensível.",
+    "15_30b": "Mesmo 15–30B deve ter validação determinística na fronteira da interface.",
+    "training_or_runtime_requirements": "Biblioteca de validação, dialeto e recursos suportados explicitamente; não exige treinamento.",
+    "do_not_use_when": "Não assumir que annotation format foi validada nem que campos presentes são factualmente corretos."
+  },
+  "connections": [
+    {
+      "target_id": "T196",
+      "relation": "complements",
+      "how": "Decodificação restrita pode reduzir saídas estruturalmente inválidas antes da checagem final.",
+      "interface": "Schema suportado e objeto completo.",
+      "condition": "Conjunto de recursos aceitos por ambos é conhecido.",
+      "acceptance": "Testar casos que a gramática não consegue expressar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S049",
+        "V3B-S024",
+        "V4B-S015",
+        "V4B-S027"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T193",
+      "relation": "feeds",
+      "how": "Resultado estrutural é uma entrada para controles de negócio e autorização.",
+      "interface": "Objeto validado, versão e erros.",
+      "condition": "Nenhuma regra externa é presumida pela aprovação estrutural.",
+      "acceptance": "Submeter objeto válido com valor não autorizado e exigir bloqueio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S049",
+        "V3B-S024",
+        "V4B-S015",
+        "V4B-S027"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não tratar keywords obrigatórios desconhecidos como verificados.",
+    "Manter testes negativos para campos extras, tipos, limites e referências."
+  ],
+  "frontier_comparison": "Validação determinística pode tornar a interface de um modelo pequeno confiável quanto à estrutura. Compare qualidade dos dados separadamente; schema não é uma medida de inteligência.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q013",
+      "V4B-Q019"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "C-S049",
+    "V3B-S024",
+    "V4B-S015",
+    "V4B-S027"
+  ]
+}

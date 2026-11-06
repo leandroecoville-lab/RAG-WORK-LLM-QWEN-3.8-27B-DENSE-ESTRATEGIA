@@ -1,0 +1,111 @@
+{
+  "id": "T032",
+  "novelty": "A v3 tratou consistência filho-pai. Aqui a expansão é seletiva por regiões do pai, com cota compartilhada entre evidências concorrentes.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Expanda somente regiões que restauram dependências do filho, como cabeçalho, definição e ressalva. Carregar o pai inteiro pode introduzir ruído e consumir a janela de outros documentos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2C-S003",
+        "V4A-S013"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Una filhos do mesmo pai antes de expandir e preserve todos os motivos de seleção. A deduplicação do pai não pode apagar evidência de que vários trechos respondem a partes distintas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2C-S003",
+        "V4A-S013"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare expansão integral, janela local e blocos estruturais. Meça cobertura de condições por token, diversidade de pais e versões indevidas; manter constante a recuperação inicial. Unidade de avaliação: grupo de filhos recuperados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2C-S003",
+        "V4A-S013"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Contratos técnicos",
+      "scenario": "Cláusula recuperada depende de definição anterior.",
+      "strategy": "Abrir definição e exceções relacionadas, preservando seções e revisão; gerar resposta condicionada ao escopo do contrato.",
+      "small_model_role": "8–14B integra fragmentos.",
+      "acceptance": "A resposta deve incluir condição que muda interpretação da cláusula.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2C-S003",
+        "V4A-S013"
+      ]
+    },
+    {
+      "name": "Código distribuído",
+      "scenario": "Função encontrada depende de tipo ou chamada.",
+      "strategy": "Expandir assinatura, tipo referenciado e ponto de uso, não todo o arquivo. Se dependência não resolver, declarar lacuna.",
+      "small_model_role": "3–7B localiza; 15–30B integra fluxo.",
+      "acceptance": "Não atribuir comportamento sem verificar interfaces relevantes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2C-S003",
+        "V4A-S013"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Localizador de trechos e dependências explícitas de um filho.",
+    "8_14b": "Leitor de pequenos conjuntos de blocos do mesmo pai.",
+    "15_30b": "Integrador entre pais quando a resposta exige contexto cruzado.",
+    "training_or_runtime_requirements": "Mapeamento filho-pai com offsets e revisão, parser estrutural e orçamento por evidência.",
+    "do_not_use_when": "Os vínculos não são confiáveis ou todo pai é necessário para qualquer interpretação."
+  },
+  "connections": [
+    {
+      "target_id": "T033",
+      "relation": "requires",
+      "how": "Identificar blocos que completam contexto.",
+      "interface": "Cabeçalho, definição, ressalva e intervalos.",
+      "condition": "Parser conservar identidade dos blocos.",
+      "acceptance": "Testar cláusula com exceção distante.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2C-S003",
+        "V4A-S013"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T042",
+      "relation": "complements",
+      "how": "Distribuir expansão entre pais distintos.",
+      "interface": "Tokens previstos, requisitos e número de pais únicos.",
+      "condition": "Pai dominante não consumir toda a cota.",
+      "acceptance": "Comparar respostas com evidência distribuída em vários pais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2C-S003",
+        "V4A-S013"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Reaplicar filtros no conteúdo expandido.",
+    "Não confundir número de filhos com número de fontes independentes."
+  ],
+  "frontier_comparison": "Comparar completude interpretativa por token; contexto extra só ajuda se o leitor distinguir escopo e exceções.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q009"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V2C-S003",
+    "V4A-S013"
+  ]
+}

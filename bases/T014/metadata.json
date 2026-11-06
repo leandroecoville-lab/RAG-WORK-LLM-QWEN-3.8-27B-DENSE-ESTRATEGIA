@@ -1,0 +1,30 @@
+{
+  "id": "T014",
+  "name": "Progressive Disclosure",
+  "canonical_name": "Progressive Disclosure",
+  "canonical_id": "T014",
+  "aliases": [
+    "divulgação progressiva",
+    "carregamento por camadas"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T015",
+    "T044",
+    "T045",
+    "T151"
+  ],
+  "source_ids": [
+    "A-S026",
+    "V3A-S018",
+    "V4A-S023"
+  ],
+  "namespace": "T014",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T014",
+  "chunk_count": 9
+}

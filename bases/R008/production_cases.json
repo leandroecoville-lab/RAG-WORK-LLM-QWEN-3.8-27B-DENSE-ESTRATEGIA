@@ -1,0 +1,68 @@
+{
+  "coverage": {
+    "entry_id": "R008",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "LangGraph",
+    "scope": "referencia"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C027",
+      "company": "Klarna / relato LangChain",
+      "system": "AI Assistant com LangGraph",
+      "title": "Assistente de suporte descrito pelo fornecedor",
+      "evidence_level": "operational_product",
+      "observed_use": "Relato de fornecedor identifica tarefas de suporte com roteamento e instruções adaptadas.",
+      "technical_mechanism": "LangGraph coordena tarefas; LangSmith apoia observação, avaliação e evolução de prompts.",
+      "event_date": "2025-02-12",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S028"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R008",
+          "match": "exact",
+          "rationale": "Fonte nomeia LangGraph na arquitetura."
+        },
+        {
+          "entry_id": "T134",
+          "match": "family",
+          "rationale": "Roteamento entre tarefas é relatado, sem protocolo exato de seleção de ferramentas."
+        },
+        {
+          "entry_id": "T155",
+          "match": "exact",
+          "rationale": "Adaptação e otimização de prompts são descritas."
+        },
+        {
+          "entry_id": "T169",
+          "match": "family",
+          "rationale": "Arquitetura multiagente é mencionada sem especificação de isolamento."
+        }
+      ],
+      "small_model_transfer": "Proposta: usar estados curtos e prompts por tarefa em modelos pequenos, avaliando erros de roteamento e resolução.",
+      "limits": "Classificação conservadora: nesta pesquisa detalhes técnicos vêm do fornecedor, sem abertura de relato técnico do operador. Não conta para dez casos de produção.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C027",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "R008",
+        "match": "exact",
+        "rationale": "Fonte nomeia LangGraph na arquitetura."
+      }
+    }
+  ]
+}

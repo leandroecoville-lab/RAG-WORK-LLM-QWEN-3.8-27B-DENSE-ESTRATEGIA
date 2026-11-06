@@ -1,0 +1,112 @@
+{
+  "id": "T055",
+  "novelty": "A v3 distinguiu receita e workflow. Aqui procedimentos são recuperados por pré-condição e adaptados somente em pontos explicitamente variáveis.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Divida procedimento em invariantes e parâmetros. Caminhos, versões e limites podem variar; uma verificação obrigatória não deve desaparecer durante adaptação para outro projeto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "V2A-S016"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Antes de executar, comparar ambiente observado com pré-condições. Quando incompatível, registrar necessidade de adaptação e testar em contexto limitado, evitando improvisar uma nova receita sob o mesmo nome.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "V2A-S016"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare seleção por título e por pré-condições. Meça procedimento inadequado escolhido, adaptações indevidas e conclusão verificada; instrução lida não equivale a execução bem-sucedida. Unidade de avaliação: procedimento em contexto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "V2A-S016"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Rotina de manutenção",
+      "scenario": "Mesma tarefa ocorre em versões distintas.",
+      "strategy": "Recuperar procedimento compatível, preencher parâmetros com dados observados e testar passo reversível antes de continuar.",
+      "small_model_role": "3–7B preenche parâmetros; 8–14B verifica.",
+      "acceptance": "Nenhuma etapa pode usar parâmetro inventado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "V2A-S016"
+      ]
+    },
+    {
+      "name": "Aprendizado de nova rotina",
+      "scenario": "Um incidente gerou solução candidata.",
+      "strategy": "Extrair pré-condições e falhas conhecidas, repetir em caso controlado e promover somente após evidência de transferência.",
+      "small_model_role": "15–30B analisa adaptação.",
+      "acceptance": "Não generalizar solução de um caso para todos os ambientes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "V2A-S016"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Executor de procedimento curto com parâmetros e verificações explícitas.",
+    "8_14b": "Avaliador de compatibilidade do ambiente e exceções locais.",
+    "15_30b": "Adaptador de rotina com mudanças justificadas e validação independente.",
+    "training_or_runtime_requirements": "Procedimento versionado, precondições verificáveis e registro do que foi executado; ajuste de pesos é opcional.",
+    "do_not_use_when": "Ambiente não satisfaz pré-condições ou faltam ferramentas necessárias ao teste de aceite."
+  },
+  "connections": [
+    {
+      "target_id": "T045",
+      "relation": "requires",
+      "how": "Carregar ferramentas compatíveis com a rotina.",
+      "interface": "Capacidades, schemas e versões exigidas.",
+      "condition": "Ferramentas disponíveis no ambiente atual.",
+      "acceptance": "Substituir ferramenta por versão incompatível e exigir bloqueio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "V2A-S016"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T195",
+      "relation": "complements",
+      "how": "Verificar resultado por execução observável.",
+      "interface": "Passo, saída esperada e resultado real.",
+      "condition": "Teste medir propriedade relevante.",
+      "acceptance": "Detectar rotina que termina sem produzir artefato correto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "V2A-S016"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir memória de procedimento com autorização para efeitos.",
+    "Não ocultar adaptação sob identidade da versão original."
+  ],
+  "frontier_comparison": "Comparar execução fiel em ambientes novos; decorar passos não demonstra capacidade de adaptação geral.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q019"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S018",
+    "V2A-S016"
+  ]
+}

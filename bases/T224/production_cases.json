@@ -1,0 +1,68 @@
+{
+  "coverage": {
+    "entry_id": "T224",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Spec-Driven Loop",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C011",
+      "company": "Google",
+      "system": "Tricorder integrado a Critique",
+      "title": "Análise estática no momento da revisão",
+      "evidence_level": "production_documented",
+      "observed_use": "O livro de engenharia do Google descreve Tricorder como plataforma interna integrada à revisão de código, com análises de mudanças e feedback aos responsáveis.",
+      "technical_mechanism": "Analisadores recebem metadados da mudança e acessam versões pertinentes; resultados aparecem junto ao diff, com controle de utilidade e falsos positivos.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S010"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T233",
+          "match": "exact",
+          "rationale": "Análises são associadas à mudança de código antes da integração."
+        },
+        {
+          "entry_id": "T238",
+          "match": "family",
+          "rationale": "A infraestrutura lê versões pertinentes à mudança, mas não demonstra leitura LLM por faixas de linhas."
+        },
+        {
+          "entry_id": "T224",
+          "match": "family",
+          "rationale": "Verificações expressam critérios de engenharia, sem afirmar um processo integral spec-driven."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "Validação vinculada à revisão e ao responsável inspira o gate editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: um modelo pequeno transforma diagnósticos em candidatos de reparo, mantendo analisadores como fontes de evidência. Medir avisos acionáveis, introdução de regressões e tempo de revisão, não apenas número de alertas.",
+      "limits": "Caso de análise estática sem LLM de 3–30B. Ausência de diagnóstico não garante ausência de erro; resultados históricos não definem capacidade atual.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C011",
+      "deployment_domain": "software_analysis_without_llm",
+      "mapping": {
+        "entry_id": "T224",
+        "match": "family",
+        "rationale": "Verificações expressam critérios de engenharia, sem afirmar um processo integral spec-driven."
+      }
+    }
+  ]
+}

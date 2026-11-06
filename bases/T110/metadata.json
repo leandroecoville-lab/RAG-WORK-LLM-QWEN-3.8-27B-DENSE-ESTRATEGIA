@@ -1,0 +1,27 @@
+{
+  "id": "T110",
+  "name": "Global Token Attention",
+  "canonical_name": "Global Token Attention",
+  "canonical_id": "T110",
+  "aliases": [
+    "atenção em tokens globais"
+  ],
+  "category": "inferencia",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T095",
+    "T109",
+    "T096"
+  ],
+  "source_ids": [
+    "B-S015",
+    "V4B-S017"
+  ],
+  "namespace": "T110",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T110",
+  "chunk_count": 9
+}

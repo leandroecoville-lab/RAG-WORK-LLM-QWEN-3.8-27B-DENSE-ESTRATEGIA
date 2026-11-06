@@ -1,0 +1,46 @@
+{
+  "id": "T099",
+  "technical_details": "O compartilhamento de K e V preserva múltiplas consultas, mas reduz a diversidade dos espaços de chave e valor. Para camadas homogêneas, o cache idealizado ocupa 2·L·B·T·Hkv·d·s bytes, com camadas L, sequências B, tokens T, cabeças KV Hkv, dimensão d e bytes por valor s. Em MQA, Hkv é um, antes de replicações, padding e metadados.",
+  "boundary_condition": "Essa redução é arquitetural; um checkpoint MHA não se converte de forma equivalente simplesmente descartando suas cabeças KV.",
+  "implementation_contract": {
+    "inputs": "Pesos compatíveis com MQA, consultas múltiplas e KV compartilhado.",
+    "outputs": "Saídas por cabeça de consulta usando o mesmo conjunto KV.",
+    "state": "Cache com uma cabeça KV lógica por camada e sequência.",
+    "invariant": "Compartilhamento não modifica a correspondência entre posições e estados do histórico."
+  },
+  "tradeoffs": [
+    "Menor tráfego KV pode favorecer decode com contexto extenso.",
+    "Capacidade representacional diferente pode exigir treinamento ou adaptação para preservar qualidade."
+  ],
+  "failure_test": "Teste proposto: comparar kernel compartilhado com referência que expande virtualmente K e V para todas as consultas. Injetar mapeamento posicional errado e esperar divergência detectável.",
+  "evaluation_plan": "Plano proposto: validar equivalência entre implementações do mesmo modelo antes de comparar arquiteturas treinadas. Medir bytes reais, replicações, latência por comprimento e qualidade; não atribuir diferenças de checkpoint somente ao número de cabeças.",
+  "comparisons": [
+    {
+      "entry_id": "T100",
+      "relation": "alternative",
+      "reason": "GQA mantém mais de um grupo KV e oferece outra troca entre compartilhamento e capacidade."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O artigo de MQA compartilha chaves e valores entre cabeças para reduzir tráfego no decode incremental.",
+    "source_ids": [
+      "B-S018"
+    ],
+    "support": "direct",
+    "caveat": "A redução de tráfego é motivação arquitetural, não uma previsão universal de tempo end-to-end."
+  },
+  "advanced_qa": [
+    {
+      "question": "A dimensão das consultas também cai?",
+      "answer": "Não necessariamente. Múltiplas cabeças Q podem permanecer, enquanto o conjunto de K e V é compartilhado."
+    },
+    {
+      "question": "A fórmula representa toda a memória do servidor?",
+      "answer": "Não. Pesos, temporários, reservas, tabelas e cópias distribuídas são parcelas adicionais que precisam ser medidas."
+    }
+  ],
+  "source_ids": [
+    "B-S018"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

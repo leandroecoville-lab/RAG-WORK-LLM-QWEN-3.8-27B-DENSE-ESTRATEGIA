@@ -1,0 +1,46 @@
+{
+  "id": "T130",
+  "technical_details": "O tamanho da chave controla especificidade do padrão: correspondências curtas ocorrem mais, mas podem propor continuações ambíguas; longas têm menos cobertura. O comprimento da continuação controla trabalho adicional de verificação. Ambos precisam ser avaliados conjuntamente com concorrência. A consulta deve operar em token IDs compatíveis com o alvo, pois coincidência de caracteres após decodificação não garante a mesma segmentação.",
+  "boundary_condition": "Em texto pouco repetitivo, manutenção do dicionário e verificação de candidatos podem custar mais que os passos economizados.",
+  "implementation_contract": {
+    "inputs": "Histórico permitido de tokens, comprimentos de chave e proposta, política para múltiplas ocorrências.",
+    "outputs": "Continuação candidata e sua origem no índice.",
+    "state": "Pares de padrões, frequência ou ordem das ocorrências e limites de memória.",
+    "invariant": "Correspondência serve apenas para propor; confirmação continua dependente do modelo alvo."
+  },
+  "tradeoffs": [
+    "Chaves longas aumentam precisão de padrão e reduzem frequência de hits.",
+    "Dicionários grandes ampliam cobertura e podem piorar localidade na CPU."
+  ],
+  "failure_test": "Teste proposto: repetir o mesmo n-grama com continuações conflitantes e inserir mudança de tokenização. Esperar seleção determinável pela política e rejeição de índices incompatíveis.",
+  "evaluation_plan": "Plano proposto: comparar geração sem propostas e diferentes pares de comprimentos na mesma carga. Medir lookup, atualização, verificação, tokens confirmados e latência por concorrência; escolher pelo tempo total e não apenas pelo comprimento aceito.",
+  "comparisons": [
+    {
+      "entry_id": "T131",
+      "relation": "alternative",
+      "reason": "Estruturas de sufixos suportam padrões variáveis e outra organização das continuações históricas."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A implementação documentada de N-Gram constrói padrões chave-continuação e verifica no alvo as propostas encontradas.",
+    "source_ids": [
+      "B-S041"
+    ],
+    "support": "direct",
+    "caveat": "O custo e as configurações eficientes descritos no artigo dependem da carga; não são defaults universais."
+  },
+  "advanced_qa": [
+    {
+      "question": "Correspondência exata dispensa o alvo?",
+      "answer": "Não. O padrão pode ter surgido em outro contexto e a próxima distribuição pode ser diferente."
+    },
+    {
+      "question": "Pode funcionar sem um segundo modelo?",
+      "answer": "Sim. O proponente pode ser uma estrutura de tokens na CPU; ainda existem custo de busca e verificação."
+    }
+  ],
+  "source_ids": [
+    "B-S041"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

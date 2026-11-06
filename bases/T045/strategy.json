@@ -1,0 +1,112 @@
+{
+  "id": "T045",
+  "novelty": "A v3 descreveu schemas adiados. Aqui busca de ferramentas é avaliada como descoberta de capacidade e compatibilidade operacional.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Indexe finalidade, entradas necessárias, efeitos e limites. Nome parecido não basta: ferramenta de consultar e ferramenta de modificar podem atender palavras iguais com consequências diferentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S038",
+        "V4A-S023"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Depois da recuperação, valide que argumentos disponíveis satisfazem schema e que capacidade está habilitada. Se faltar dado obrigatório, coletá-lo antes de tentar chamada e reparo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S038",
+        "V4A-S023"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare catálogo integral e recuperação em tarefas com ferramentas raras e versões concorrentes. Meça seleção correta, chamadas inviáveis e custo de carregar schemas não usados. Unidade de avaliação: seleção de ferramenta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S038",
+        "V4A-S023"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Catálogo empresarial amplo",
+      "scenario": "Agente conhece intenção mas não ferramenta.",
+      "strategy": "Recuperar poucas capacidades, comparar efeitos e pré-condições e carregar contrato completo da escolhida.",
+      "small_model_role": "3–7B roteia capacidades.",
+      "acceptance": "Nenhuma ferramenta de escrita deve ser escolhida para pedido apenas de leitura.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S038",
+        "V4A-S023"
+      ]
+    },
+    {
+      "name": "Ferramentas versionadas",
+      "scenario": "Dois schemas têm campos diferentes.",
+      "strategy": "Resolver versão elegível, mapear argumentos a partir de dados observados e rejeitar preenchimento inventado.",
+      "small_model_role": "8–14B constrói chamada.",
+      "acceptance": "Chamada deve validar no schema efetivamente carregado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S038",
+        "V4A-S023"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Selector de capacidades descritas por metadados contrastivos.",
+    "8_14b": "Construtor de argumentos para poucas ferramentas elegíveis.",
+    "15_30b": "Planejador de composição entre ferramentas quando dependências exigirem várias etapas.",
+    "training_or_runtime_requirements": "Registry versionado, filtros de disponibilidade e validação de argumentos; treino de tool use depende do modelo.",
+    "do_not_use_when": "Ferramenta não está disponível ou o catálogo não distingue efeitos e pré-condições."
+  },
+  "connections": [
+    {
+      "target_id": "T158",
+      "relation": "requires",
+      "how": "Recuperar somente capacidades registradas e habilitadas.",
+      "interface": "tool_id, versão, efeitos e disponibilidade.",
+      "condition": "Registry ser fonte autorizada do contrato.",
+      "acceptance": "Remover ferramenta e impedir chamada por lembrança do modelo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S038",
+        "V4A-S023"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T170",
+      "relation": "requires",
+      "how": "Fixar versão após descoberta.",
+      "interface": "Schema, revisão e compatibilidade dos argumentos.",
+      "condition": "Versão não mudar silenciosamente entre seleção e execução.",
+      "acceptance": "Alterar campo obrigatório e exigir revalidação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S038",
+        "V4A-S023"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir busca sem resultado com catálogo vazio.",
+    "Não executar a partir de descrição resumida quando schema falta."
+  ],
+  "frontier_comparison": "Comparar sucesso de chamada válida e seleção de efeitos; bom ranking textual não demonstra uso correto de ferramentas.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q019"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S038",
+    "V4A-S023"
+  ]
+}

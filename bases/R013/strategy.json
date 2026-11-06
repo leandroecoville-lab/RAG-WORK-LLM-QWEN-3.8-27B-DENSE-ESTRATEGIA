@@ -1,0 +1,119 @@
+{
+  "id": "R013",
+  "novelty": "A v3 explicou residência e carregamento do MemFS. Aqui a proposta organiza arquivos por estabilidade, custo de leitura e frequência de mudança.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Separe identidade e convenções estáveis de notas voláteis de tarefa. Arquivo sempre carregado deve ser pequeno e discriminativo; detalhes grandes ficam em caminhos descobríveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Projete índice para distinguir arquivos parecidos e declarar quando abri-los. Nome de arquivo sozinho pode não informar escopo; descritores devem apontar finalidade e limites.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare memória plana e organização por estabilidade. Meça arquivos abertos sem uso, leituras repetidas e instruções antigas aplicadas; contar tokens iniciais não capta custo de expansão. Unidade de avaliação: repositório de memória.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Agente de projeto longo",
+      "scenario": "Memória reúne decisões e notas temporárias.",
+      "strategy": "Manter visão inicial de objetivos e índices, carregar módulo ativo e arquivar detalhes concluídos com referência. Não promover nota temporária para convenção.",
+      "small_model_role": "3–7B lê índice; 8–14B trabalha por módulo.",
+      "acceptance": "Retomada deve carregar decisões vigentes sem trazer hipóteses encerradas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ]
+    },
+    {
+      "name": "Conhecimento compartilhado",
+      "scenario": "Vários agentes precisam dos mesmos procedimentos.",
+      "strategy": "Separar conteúdo comum de notas individuais, versionar correções e testar se cada leitor abre procedimento completo quando necessário.",
+      "small_model_role": "15–30B integra conflitos.",
+      "acceptance": "Mudança compartilhada deve ser visível na revisão declarada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Consumidor de índice curto e arquivos com estrutura explícita.",
+    "8_14b": "Agente que carrega e atualiza módulos limitados.",
+    "15_30b": "Integrador de memórias compartilhadas com conflitos entre fontes.",
+    "training_or_runtime_requirements": "MemFS e versão do produto identificados, arquivos acessíveis e política de edição; não presumir indexação semântica automática.",
+    "do_not_use_when": "Arquivos crescem sem catálogo ou usuários confundem conteúdo no disco com conteúdo recebido pelo modelo."
+  },
+  "connections": [
+    {
+      "target_id": "T014",
+      "relation": "complements",
+      "how": "Usar descritores para selecionar arquivos antes da carga.",
+      "interface": "Caminho, escopo, versão e finalidade.",
+      "condition": "Descrição distinguir recursos próximos.",
+      "acceptance": "Testar arquivo raro necessário à tarefa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T076",
+      "relation": "requires",
+      "how": "Preservar revisão das alterações de memória.",
+      "interface": "Commit, arquivo, diff e origem.",
+      "condition": "Merge semântico revisado quando necessário.",
+      "acceptance": "Detectar duas decisões incompatíveis em arquivos separados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir busca de conversa com índice semântico dos arquivos.",
+    "Não contar R014 como implantação adicional deste mesmo sistema."
+  ],
+  "frontier_comparison": "Comparar qualidade de retomada e custo de leitura; estrutura de arquivos não compensa instruções ambíguas.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S010",
+    "V2B-S003",
+    "V3A-S046"
+  ]
+}

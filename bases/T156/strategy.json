@@ -1,0 +1,110 @@
+{
+  "id": "T156",
+  "novelty": "A v3 explicava temperatura e diversidade. A expansão trata políticas de amostragem por fase, repetição útil e seleção verificável, evitando usar aleatoriedade para mascarar um problema de contrato.",
+  "deep_layers": [
+    {
+      "name": "Exploração e emissão separadas",
+      "detail": "Use diversidade onde alternativas podem ser avaliadas: hipóteses de causa, estratégias de consulta ou candidatos de patch. Na emissão de argumentos de ferramenta, privilegie o contrato validável. Não altere a temperatura de uma conversa inteira só porque uma das fases exige criatividade; registre a política em cada chamada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S018",
+        "V3C-S017"
+      ]
+    },
+    {
+      "name": "Diversidade efetiva",
+      "detail": "Múltiplas amostras que diferem apenas em nomes de variáveis não representam explorações independentes. Agrupe candidatos por alteração semântica ou hipótese e contabilize famílias distintas. Quando todos seguem a mesma interpretação errada, forneça evidência nova ou mude a decomposição; aumentar o número de amostras pode apenas multiplicar custo correlacionado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S017",
+        "V4C-S029"
+      ]
+    },
+    {
+      "name": "Configuração completa",
+      "detail": "Temperatura participa de uma política que também contém top-p, penalidades, limites e modo de raciocínio. A documentação Nemotron diferencia regimes de geração; essa configuração não é um padrão universal. Na migração de backend, valide o comportamento efetivo e confirme se algum parâmetro foi ignorado pelo servidor.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S018"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Busca de reparos pequenos",
+      "scenario": "Há teste reproduzível que distingue alterações corretas de incorretas.",
+      "strategy": "Gere candidatos diversos em cópias isoladas, deduplique patches equivalentes e rode primeiro o teste que reproduz o defeito. Se todos falharem da mesma forma, interrompa a rodada e solicite observação adicional antes de aumentar diversidade.",
+      "small_model_role": "3–7B produz alternativas locais; verificador executável escolhe elegíveis.",
+      "acceptance": "Proposta: medir taxa de solução por família de candidatos e custo até o primeiro patch aceito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S029",
+        "V3C-S017"
+      ]
+    },
+    {
+      "name": "Extração com ambiguidades",
+      "scenario": "Documento permite duas interpretações de um campo.",
+      "strategy": "Faça uma primeira extração com política estável. Quando validação de domínio detectar ambiguidade, peça candidatos estruturados apoiados em trechos, em vez de reamostrar silenciosamente até surgir valor conveniente. Preserve a possibilidade de não resolver o campo.",
+      "small_model_role": "8–14B gera interpretações; 15–30B confronta evidência conflitante.",
+      "acceptance": "Proposta: erro factual, abstenção apropriada e estabilidade entre repetições.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S017"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Amostras curtas em domínio estreito, com parser e teste externos.",
+    "8_14b": "Explorar estratégias de consulta e pequenas interpretações alternativas sem substituir evidência.",
+    "15_30b": "Comparar candidatos de maior alcance mantendo orçamento e verificador independente.",
+    "training_or_runtime_requirements": "Registrar política inteira, versão de pesos, runtime e seed quando suportada; usar várias repetições.",
+    "do_not_use_when": "Não usar diversidade como substituto de dado ausente nem voto de modelos como prova de verdade."
+  },
+  "connections": [
+    {
+      "target_id": "T146",
+      "relation": "complements",
+      "how": "Dedicar largura de busca a famílias diferentes de hipótese, usando amostragem como uma das fontes de variedade.",
+      "interface": "Identidade do candidato, política e grupo semântico.",
+      "condition": "Existe avaliador capaz de comparar resultados.",
+      "acceptance": "Ganho por candidato útil, incluindo custo dos descartados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S017"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T200",
+      "relation": "complements",
+      "how": "Enviar candidatos ao verificador antes de selecionar uma resposta definitiva.",
+      "interface": "Artefato imutável, resultado de teste e motivo da rejeição.",
+      "condition": "Critério independente da preferência textual do gerador.",
+      "acceptance": "Rejeitar candidato eloquente que falha o requisito objetivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Baixa temperatura pode reproduzir deterministicamente o erro dominante.",
+    "Votar entre amostras correlacionadas não gera confiança calibrada; reportar desacordo e origem das alternativas."
+  ],
+  "frontier_comparison": "Compare custo por solução validada, controlando quantas amostras o modelo de fronteira recebe. Um pequeno modelo com muitas tentativas não deve ser comparado a uma única tentativa sem explicitar orçamento.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q014",
+      "V4C-Q027"
+    ],
+    "scope_note": "Nemotron documenta parâmetros por regime; OpenAI relata seleção entre candidatos. Não foi encontrado ensaio operacional que determine temperatura universal por faixa de parâmetros."
+  },
+  "source_ids": [
+    "V4C-S018",
+    "V3C-S017",
+    "V4C-S029",
+    "V4C-S009"
+  ]
+}

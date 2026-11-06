@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "A-S034",
+    "title": "Locking objects with Object Lock",
+    "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html",
+    "publisher": "Amazon Web Services",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Armazenamento WORM e proteção de versões de objetos contra alteração e exclusão.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn23view5"
+  },
+  {
+    "source_id": "V3A-S038",
+    "title": "Content Identifiers (CIDs)",
+    "url": "https://docs.ipfs.tech/concepts/content-addressing/",
+    "publisher": "IPFS",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "CIDs combinam hash e informações de codec; identidade de conteúdo depende da representação e parâmetros de blocos.",
+    "limitations": "Fonte primária consultada. Desempenho não foi reproduzido, não foram usadas perguntas ou respostas dos benchmarks, e propostas de integração não representam execução na LAI.",
+    "web_ref": "turn160view5"
+  },
+  {
+    "source_id": "V3A-S037",
+    "title": "PROV-DM: The PROV Data Model",
+    "url": "https://www.w3.org/TR/prov-dm/",
+    "publisher": "W3C",
+    "source_type": "standard",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2013-04-30",
+    "supports": "Entidades, atividades, agentes, derivação, atribuição e proveniência de registros derivados.",
+    "limitations": "Fonte primária consultada. Desempenho não foi reproduzido, não foram usadas perguntas ou respostas dos benchmarks, e propostas de integração não representam execução na LAI.",
+    "web_ref": "turn160view4"
+  }
+]

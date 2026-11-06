@@ -1,0 +1,53 @@
+{
+  "id": "R021",
+  "technical_details": "Na automação do Codex, eventos e resposta final têm contratos distintos. --json produz eventos JSONL; --output-schema define o schema da resposta final, não a validação de todos os eventos. O consumidor distingue itens intermediários, conclusão e falha de turno, preservando eventos desconhecidos para diagnóstico em mudanças de versão. Retomar por ID identifica a conversa; o controlador ainda precisa associá-la ao diretório e à revisão de trabalho. A descoberta de AGENTS.md segue escopos e limites documentados: existir um arquivo no repositório não prova que entrou no contexto daquela execução.",
+  "boundary_condition": "Interromper o processo pode deixar artefatos sem resposta final. Texto válido em stdout não demonstra que o turno ou a tarefa foram aceitos.",
+  "implementation_contract": {
+    "inputs": "Versão da CLI, sessão explícita, diretório, revisão Git, schema final e política de ferramentas.",
+    "outputs": "Log de eventos, resposta final quando disponível e manifesto dos arquivos produzidos.",
+    "state": "Último evento persistido, status terminal, instruções carregadas e revisão verificada.",
+    "invariant": "Artefatos e evidências ficam vinculados à sessão e ao conteúdo analisado; eventos intermediários não definem sucesso."
+  },
+  "tradeoffs": [
+    "JSONL permite acompanhamento incremental, mas exige parser tolerante a evolução e interrupções.",
+    "Schema final facilita integração, porém não comprova correção das mudanças ou completude dos testes."
+  ],
+  "failure_test": "Teste proposto: encerrar uma execução após alteração de arquivo e antes do evento terminal. Exigir estado incompleto; retomar por ID e revalidar a revisão antes de aceitar o resultado.",
+  "evaluation_plan": "Comparar parser incremental com leitura da resposta final em traços controlados de sucesso, falha e truncamento. Medir classificações incorretas, perda de eventos e rastreabilidade; exigir identificação inequívoca do término.",
+  "comparisons": [
+    {
+      "entry_id": "T235",
+      "relation": "complements",
+      "reason": "O controlador headless transforma eventos e artefatos do executor em estado persistente da missão."
+    },
+    {
+      "entry_id": "R027",
+      "relation": "complements",
+      "reason": "A revisão Git identifica o conteúdo; a sessão identifica a conversa e não substitui esse vínculo."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "--output-schema especifica o formato da resposta final; --json disponibiliza eventos separados em JSONL.",
+    "source_ids": [
+      "V3C-S039"
+    ],
+    "support": "direct",
+    "caveat": "A CLI não foi localizada no PATH nesta pesquisa; a análise documental não valida flags em instalação local."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um evento item.completed encerra necessariamente a tarefa?",
+      "answer": "Não. Concluir um item não substitui o status do turno e a verificação externa dos artefatos."
+    },
+    {
+      "question": "Por que evitar a sessão implicitamente mais recente?",
+      "answer": "Execuções paralelas podem tornar a escolha ambígua; registre e retome o identificador da missão."
+    }
+  ],
+  "source_ids": [
+    "V3C-S039",
+    "V2A-S005",
+    "V2A-S017"
+  ],
+  "research_note": "Síntese documental; contrato e testes são propostas editoriais, sem execução do produto neste trabalho."
+}

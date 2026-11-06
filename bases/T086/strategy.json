@@ -1,0 +1,119 @@
+{
+  "id": "T086",
+  "novelty": "A v3 analisou eixos de quantização de chaves e valores. O novo desenho considera qualidade conforme idade dos tokens, admissão de sessões e propagação de erro, separando aumento de capacidade do cache de melhora perceptível ao usuário.",
+  "deep_layers": [
+    {
+      "name": "Erro ao longo da conversa",
+      "detail": "Avalie o cache em turnos sucessivos, não somente em uma resposta isolada. Um detalhe antigo pode ser consultado muito depois de sua quantização. Organize testes por distância entre evidência e pergunta, incluindo correções contraditórias, entidades parecidas e instruções que mudam o significado de uma passagem anterior.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S002",
+        "B-S007",
+        "V4D-S002"
+      ]
+    },
+    {
+      "name": "Reserva recente e promoção",
+      "detail": "Quando o backend suportar região recente em maior precisão, trate seu tamanho como parâmetro de serviço. Uma região maior protege interações recentes, mas consome memória e adiciona conversão ao envelhecer. Meça esse custo de promoção; não conclua que manter o último trecho exato preserva toda a resposta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S002",
+        "B-S007",
+        "V4D-S002"
+      ]
+    },
+    {
+      "name": "Capacidade entregue",
+      "detail": "Use bytes economizados para uma decisão observável: aumentar contexto admitido, concorrência ou margem contra preempção. Escolha apenas uma variável por experimento inicial. Se todas crescerem ao mesmo tempo, a análise não distinguirá piora de qualidade numérica de aumento de interferência e pressão de memória.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S002",
+        "B-S007",
+        "V4D-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Conversas com evidência distante",
+      "scenario": "Um assistente precisa recuperar condições citadas muitos turnos antes.",
+      "strategy": "Fixe pesos e política de contexto, altere somente o formato KV e faça perguntas em diferentes distâncias. Rejeite formatos que perdem exceções relevantes mesmo se a pontuação média permanecer estável.",
+      "small_model_role": "Um 3–14B deve manter evidências externas disponíveis para conferir respostas quando a memória computacional é aproximada.",
+      "acceptance": "Comparar exatidão por distância e tipo de informação, juntamente com bytes efetivamente poupados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S002",
+        "B-S007",
+        "V4D-S002"
+      ]
+    },
+    {
+      "name": "Pico de sessões simultâneas",
+      "scenario": "A memória KV limita novas admissões antes de saturar o cálculo.",
+      "strategy": "Quantize o cache suportado e aumente concorrência em etapas. Observe conversão, preempção e intervalos de streaming. Se o ganho de capacidade provocar cauda pior, mantenha parte da economia como reserva.",
+      "small_model_role": "Um 15–30B pode atender mais sessões, sem que isso implique decode individual mais rápido.",
+      "acceptance": "Aprovar pelo número de sessões que cumprem qualidade e prazo, não pela ocupação máxima.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S002",
+        "B-S007",
+        "V4D-S002"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, o cache pode superar pesos em contextos longos; medir a composição antes de priorizar peso quantizado.",
+    "8_14b": "Em 8–14B, testar variações de contexto e idiomas com o mesmo checkpoint para localizar regressões de longo alcance.",
+    "15_30b": "Em 15–30B, projetar admissão com bytes reais por token, incluindo escalas e regiões não quantizadas.",
+    "training_or_runtime_requirements": "É runtime apenas quando há cache e kernel compatíveis; a política assimétrica do KIVI não é propriedade de qualquer FP8.",
+    "do_not_use_when": "Não aplicar redução de precisão sem medir tarefas que dependem de tokens antigos ou quando o executor recopia tudo em alta precisão."
+  },
+  "connections": [
+    {
+      "target_id": "T088",
+      "relation": "complements",
+      "how": "Converter economia KV em um limite controlado de sequências ativas.",
+      "interface": "Memória livre, crescimento por token e limites de admissão.",
+      "condition": "Scheduler reconhece o tamanho físico do formato.",
+      "acceptance": "Comparar sessões dentro do SLO com a mesma mistura de comprimentos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S002",
+        "B-S007",
+        "V4D-S002"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T085",
+      "relation": "complements",
+      "how": "Validar combinação de pesos e cache quantizados depois dos experimentos isolados.",
+      "interface": "Receitas de conversão e matriz de resultados por precisão.",
+      "condition": "Nenhuma mudança simultânea de modelo ou prompt.",
+      "acceptance": "Detectar perdas conjuntas que os testes separados não previram.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S002",
+        "B-S007",
+        "V4D-S002"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Incluir escalas, buffers e promoção nas contas de memória.",
+    "Não usar perplexidade média como único teste de manutenção de evidências."
+  ],
+  "frontier_comparison": "Avaliar atendimento com contexto longo diante de uma fronteira, igualando tarefa e evidência disponível. KV menor amplia capacidade operacional; aproximar estados não cria capacidade cognitiva nem corrige alucinações.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q006"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S002",
+    "B-S007",
+    "V4D-S002"
+  ]
+}

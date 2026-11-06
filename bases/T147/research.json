@@ -1,0 +1,52 @@
+{
+  "id": "T147",
+  "technical_details": "A junção de um fan-out precisa saber quando o conjunto esperado está completo. Em expansão dinâmica, terminar a criação dos ramos é um evento diferente de terminar os ramos existentes. Uma política pode exigir todos, quorum ou melhor resultado até o deadline, mas cada escolha muda o significado da entrega. Agregações sensíveis à ordem devem usar uma chave lógica, pois ordem de término depende de latência e não de relevância.",
+  "boundary_condition": "Ramos que editam o mesmo artefato ou dependem da saída uns dos outros não são independentes apenas porque foram delegados separadamente.",
+  "implementation_contract": {
+    "inputs": "Unidades de trabalho identificadas, cardinalidade ou condição de fechamento e regra de junção.",
+    "outputs": "Agregado, cobertura dos ramos e ausências explicitadas.",
+    "state": "Ramos previstos, criados, concluídos, falhos e cancelados.",
+    "invariant": "A junção não declara completude antes do fechamento da expansão."
+  },
+  "tradeoffs": [
+    "Esperar todos preserva cobertura e fica sujeito ao ramo mais lento.",
+    "Aceitar quorum reduz cauda de latência e exige provar que o requisito tolera resultados ausentes."
+  ],
+  "failure_test": "Teste proposto: atrasar a descoberta do último ramo e concluir rapidamente os demais; impedir que o agregador feche a tarefa antes de conhecer a cardinalidade final.",
+  "evaluation_plan": "Comparar junção completa e parcial com distribuição de latências controlada. Medir cobertura, tempo do ramo crítico, consumo e qualidade do agregado. Adotar entrega parcial apenas quando o critério da tarefa a distinguir de conclusão integral.",
+  "comparisons": [
+    {
+      "entry_id": "T139",
+      "relation": "complements",
+      "reason": "Concorrência de chamadas é um mecanismo de execução dos ramos."
+    },
+    {
+      "entry_id": "T160",
+      "relation": "complements",
+      "reason": "Um DAG representa dependências e a condição de prontidão da junção."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "LangGraph oferece Send para fan-out dinâmico e reducers para agregar atualizações de estado.",
+    "source_ids": [
+      "V3C-S006"
+    ],
+    "support": "direct",
+    "caveat": "A biblioteca não determina o quorum de negócio nem garante independência dos efeitos de cada ramo."
+  },
+  "advanced_qa": [
+    {
+      "question": "Quando todos os ramos existentes terminaram, o fan-out acabou?",
+      "answer": "Somente se a fase que pode criar novos ramos também estiver encerrada."
+    },
+    {
+      "question": "Uma lista de resultados em ordem de chegada é reproduzível?",
+      "answer": "Não necessariamente; preservar IDs e aplicar ordenação estável quando o consumidor depende da sequência."
+    }
+  ],
+  "source_ids": [
+    "V3C-S006",
+    "V3C-S007"
+  ],
+  "research_note": "Detalhamento e avaliação propostos; a fonte apoia o mecanismo, sem comprovar implementação LAI."
+}

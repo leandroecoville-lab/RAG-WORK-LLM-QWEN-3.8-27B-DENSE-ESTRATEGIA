@@ -1,0 +1,44 @@
+{
+  "entry_id": "R010",
+  "edges": [
+    {
+      "edge_id": "E-R010-01",
+      "from": "R010",
+      "to": "R009",
+      "relation": "alternative",
+      "how": "vLLM pode ser candidato de migração quando atende o contrato e o modelo.",
+      "interface": "Requisições, eventos e métricas equivalentes.",
+      "condition": "Suporte verificado no ambiente.",
+      "acceptance": "Comparar casos de erro e carga, além de geração normal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S006",
+        "V4B-S019",
+        "V4B-S014",
+        "V4B-S010"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-R010-02",
+      "from": "R010",
+      "to": "R023",
+      "relation": "alternative",
+      "how": "Transformers documenta recursos atuais de batching contínuo que devem ser avaliados conforme o uso.",
+      "interface": "Configuração de geração e scheduling.",
+      "condition": "API e arquitetura compatíveis na versão fixada.",
+      "acceptance": "Verificar operação e manutenção antes de adotar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S006",
+        "V4B-S019",
+        "V4B-S014",
+        "V4B-S010"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

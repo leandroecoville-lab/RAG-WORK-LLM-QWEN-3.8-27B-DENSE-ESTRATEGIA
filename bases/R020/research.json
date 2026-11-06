@@ -1,0 +1,53 @@
+{
+  "id": "R020",
+  "technical_details": "O checkpoint de Claude Code tem escopo de sessão e distingue restauração de código, conversa ou ambos. Resumir a conversa não altera arquivos. Há uma diferença operacional no rastreamento: após a ferramenta de edição tocar um arquivo, mudanças posteriores por Bash nesse arquivo podem ser desfeitas; um arquivo modificado somente por Bash permanece fora desse rastreamento. Edições de subagentes têm regras específicas de execução e de arquivos já acompanhados, portanto não cabem na suposição de restauração integral. O controlador deve registrar o conjunto coberto antes de usar rewind como recuperação.",
+  "boundary_condition": "Snapshots sujeitos à retenção podem desaparecer. Caminhos simbólicos ou hard links são ignorados pela restauração documentada; efeitos em bancos não pertencem ao checkpoint.",
+  "implementation_contract": {
+    "inputs": "ID da sessão, checkpoint escolhido, escopo de restauração e inventário de arquivos e efeitos.",
+    "outputs": "Código e/ou conversa restaurados, com lista de caminhos preservados ou ignorados.",
+    "state": "Snapshots disponíveis, arquivos rastreados e revisão Git anterior à tentativa.",
+    "invariant": "A recuperação só declara concluído o escopo cuja restauração foi conferida por conteúdo."
+  },
+  "tradeoffs": [
+    "Rewind facilita experimentar alternativas, mas sua cobertura depende de como cada alteração ocorreu.",
+    "Restaurar só a conversa conserva trabalho útil, porém pode deixar o modelo sem explicação das mudanças atuais."
+  ],
+  "failure_test": "Teste proposto: editar um arquivo pela ferramenta e outro apenas por Bash; executar mudança externa. Restaurar código e conferir hashes: exigir cobertura documentada e reconciliação separada do efeito externo.",
+  "evaluation_plan": "Comparar rewind e reconstrução por revisão Git em cenários equivalentes. Medir arquivos recuperados, alterações remanescentes e tempo de retomada; escolher o mecanismo conforme o escopo exigido.",
+  "comparisons": [
+    {
+      "entry_id": "T240",
+      "relation": "distinct_from",
+      "reason": "Snapshot genérico precisa definir cobertura; o checkpoint do produto cobre apenas o estado documentado da sessão."
+    },
+    {
+      "entry_id": "R027",
+      "relation": "complements",
+      "reason": "Git mantém histórico versionado de código independente da retenção dos checkpoints da conversa."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Arquivo alterado somente por Bash não é rastreado; alterações por Bash em arquivo previamente editado pela ferramenta podem ser restauradas.",
+    "source_ids": [
+      "V3C-S030"
+    ],
+    "support": "direct",
+    "caveat": "Regras consultadas nesta data; não afirmar que todos os subagentes ou tipos de arquivo têm cobertura idêntica."
+  },
+  "advanced_qa": [
+    {
+      "question": "Restaurar a conversa restaura o código?",
+      "answer": "A ação permite conservar o código; os dois estados devem ser selecionados e verificados separadamente."
+    },
+    {
+      "question": "Um checkpoint listado garante arquivos recuperáveis?",
+      "answer": "Não. Snapshots podem ter sido removidos; é necessário conferir disponibilidade e resultado da restauração."
+    }
+  ],
+  "source_ids": [
+    "V3C-S030",
+    "V2A-S018",
+    "V2A-S025"
+  ],
+  "research_note": "Síntese documental; contrato e testes são propostas editoriais, sem execução do produto neste trabalho."
+}

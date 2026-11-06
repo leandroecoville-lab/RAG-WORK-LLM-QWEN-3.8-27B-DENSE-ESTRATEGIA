@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Um arquivo JSON salvo é checkpoint transacional?",
+    "answer": "Pode ser um snapshot, mas o nome transacional exige atomicidade definida para todos os elementos associados e uma estratégia verificável de recuperação."
+  },
+  {
+    "question": "Commit local garante exatamente uma chamada externa?",
+    "answer": "Não. Outbox, idempotência e reconciliação tratam a fronteira externa; o commit protege somente os dados participantes da transação."
+  },
+  {
+    "question": "Salvar todas as variáveis garante retomada?",
+    "answer": "Não. Também são necessários fluxo de controle, identidade de operações, compatibilidade do código e acesso aos artefatos referenciados."
+  },
+  {
+    "question": "Retornar a um checkpoint desfaz uma publicação externa?",
+    "answer": "Não. Isso altera a execução local. É necessário observar o serviço externo e, se apropriado, executar uma compensação explicitamente autorizada."
+  }
+]

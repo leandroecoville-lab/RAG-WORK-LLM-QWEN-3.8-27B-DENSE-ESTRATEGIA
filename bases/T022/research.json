@@ -1,0 +1,52 @@
+{
+  "id": "T022",
+  "technical_details": "Instruções devem ser testadas como contratos de comportamento: condição, ação, exceção e precedência. Uma reescrita curta pode preservar os verbos e perder o escopo de uma proibição. Em compressão latente, a verificação muda de inspeção textual para comportamento do par encoder/consumidor. Ambas exigem casos que distingam interpretações próximas, não apenas exemplos típicos de sucesso.",
+  "boundary_condition": "Quando uma regra nova contradiz ou especializa a antiga, reutilizar sua representação comprimida sem atualização pode manter um comportamento obsoleto.",
+  "implementation_contract": {
+    "inputs": "Instruções versionadas, casos de comportamento e método de compressão declarado.",
+    "outputs": "Texto reduzido ou representação latente ligada ao consumidor correto.",
+    "state": "Versão da política original, compressor e resultados de validação.",
+    "invariant": "Exceções e limites de autorização não desaparecem por serem pouco frequentes nos exemplos."
+  },
+  "tradeoffs": [
+    "Reescrita textual é inspecionável, mas depende da interpretação posterior.",
+    "Compressão aprendida pode reutilizar representações, porém exige compatibilidade e testes quando as regras mudam."
+  ],
+  "failure_test": "Teste proposto: usar uma regra geral com exceção explícita e depois alterar somente a exceção. A representação nova deve acompanhar a mudança, enquanto a anterior permanece identificável como obsoleta.",
+  "evaluation_plan": "Avaliação proposta: comparar instrução integral e comprimida em pares de casos que diferem em condição, negação ou precedência. Medir violações por regra, tokens e custo, mantendo exemplos de desenvolvimento separados dos testes finais.",
+  "comparisons": [
+    {
+      "entry_id": "T020",
+      "relation": "complements",
+      "reason": "Métodos aprendidos podem comprimir instruções, mas também outros tipos de contexto."
+    },
+    {
+      "entry_id": "T179",
+      "relation": "distinct_from",
+      "reason": "Destilação paramétrica pode eliminar a necessidade do contexto de tarefa; compressão textual ainda precisa ser fornecida."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Gisting treina um modelo com máscaras de atenção para representar prompts em conjuntos menores de gist tokens.",
+    "source_ids": [
+      "A-S033"
+    ],
+    "support": "direct",
+    "caveat": "O mecanismo requer treinamento e consumidor compatível; não é uma abreviação que qualquer API de texto interprete."
+  },
+  "advanced_qa": [
+    {
+      "question": "Posso validar somente se a resposta parece adequada?",
+      "answer": "Isso perde violações raras. Transforme cada regra relevante em casos observáveis e examine erros por categoria."
+    },
+    {
+      "question": "Qual conteúdo não convém abreviar agressivamente?",
+      "answer": "Identificadores, condições numéricas, exceções e escopos que mudam decisões precisam de representação inequívoca; a escolha deve seguir o contrato da tarefa."
+    }
+  ],
+  "source_ids": [
+    "A-S033",
+    "V3A-S001"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

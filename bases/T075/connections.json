@@ -1,0 +1,42 @@
+{
+  "entry_id": "T075",
+  "edges": [
+    {
+      "edge_id": "E-T075-01",
+      "from": "T075",
+      "to": "T243",
+      "relation": "requires",
+      "how": "Tratar efeitos incertos pelo protocolo do serviço.",
+      "interface": "operation_id, consulta de status e recibos.",
+      "condition": "Serviço oferecer mecanismo ou intervenção definida.",
+      "acceptance": "Simular efeito concluído com resposta perdida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S006",
+        "V4A-S011",
+        "V2A-S026"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T075-02",
+      "from": "T075",
+      "to": "T056",
+      "relation": "complements",
+      "how": "Separar recência do relato e validade do fato.",
+      "interface": "Tempos de validade, registro e fonte.",
+      "condition": "Escopos temporais serem comparáveis.",
+      "acceptance": "Inserir correção tardia e impedir vitória automática do último relato.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S006",
+        "V4A-S011",
+        "V2A-S026"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

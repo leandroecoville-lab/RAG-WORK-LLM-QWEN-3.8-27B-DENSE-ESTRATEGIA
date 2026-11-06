@@ -1,0 +1,112 @@
+{
+  "id": "T140",
+  "novelty": "A v3 separou transporte, execução e efeito. A nova estratégia introduz fronteira de responsabilidade entre LLM e ferramenta, contratos de intenção e descoberta progressiva de capacidades reais.",
+  "deep_layers": [
+    {
+      "name": "Decomposição pela verificabilidade",
+      "detail": "Entregue ao modelo escolhas semânticas que precisam de interpretação e mantenha transformações precisas em código. Em edição, decidir onde simplificar pode exigir contexto, enquanto simplificar uma expressão booleana pode ser função determinística. Essa divisão reduz a quantidade de comportamento que depende de instruções longas ou de raciocínio textual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009"
+      ]
+    },
+    {
+      "name": "Definição não é disponibilidade",
+      "detail": "A ferramenta descoberta precisa estar habilitada, com schema e destino resolvidos na revisão usada. Um catálogo pode conter definições ainda não expostas. A aplicação deve distinguir conhecer a operação, poder invocá-la e ter recebido confirmação do seu efeito, devolvendo cada estado ao agente de modo explícito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ]
+    },
+    {
+      "name": "Envelope mínimo de execução",
+      "detail": "Associe argumentos ao objetivo, alvo e base esperada antes do envio. Campos de controle, credenciais e identidades são preenchidos pelo runtime, não inventados pela LLM. O resultado volta com dados necessários à próxima decisão e referência ao artefato completo quando houver detalhes extensos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026",
+        "V4C-S013"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Refatoração com cálculo determinístico",
+      "scenario": "Modelo precisa remover ramificações associadas a uma flag obsoleta.",
+      "strategy": "Deixe o modelo localizar os fluxos e propor o escopo; uma ferramenta transforma a estrutura e produz diff. Compile e teste antes de solicitar revisão. Se a decisão sobre a flag estiver incerta, não trate transformação correta como autorização para removê-la.",
+      "small_model_role": "8–14B identifica locais; 15–30B acompanha propagação entre funções.",
+      "acceptance": "Proposta: medir preservação de comportamento, alterações indevidas e esforço de revisão, com flags fora dos exemplos do prompt.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009"
+      ]
+    },
+    {
+      "name": "Consulta corporativa com payload grande",
+      "scenario": "Uma API devolve centenas de campos, mas a tarefa usa poucos.",
+      "strategy": "Descubra o schema, selecione campos necessários e execute projeção no gateway. Guarde referência ao resultado integral quando permitido. Se o verificador precisar de campo omitido, faça nova leitura específica em vez de inferir seu valor.",
+      "small_model_role": "3–7B escolhe campos em schema pequeno e produz resposta com referências.",
+      "acceptance": "Proposta: comparar tokens, campos recuperados e erros por omissão contra resposta integral, mantendo mesmas perguntas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: uma ferramenta de cada vez, enumerações curtas e validação externa dos argumentos.",
+    "8_14b": "Proposta: cadeias curtas com resultados tipados e reparo delimitado de contratos.",
+    "15_30b": "Proposta: coordenação entre ferramentas, mantendo identidades e mutações controladas pelo runtime.",
+    "training_or_runtime_requirements": "Pode exigir treino de formato ou exemplos do protocolo; suporte nominal a JSON não demonstra seleção correta de ferramenta.",
+    "do_not_use_when": "Não usar agente para substituir cálculo exato disponível ou para inventar campos que o serviço não retornou."
+  },
+  "connections": [
+    {
+      "target_id": "T232",
+      "relation": "feeds",
+      "how": "No AutoClean, o agente invoca PolyglotPiranha por MCP para transformações estruturais.",
+      "interface": "Chamada de ferramenta e código alvo; a integração local define versão e recibo adicionais.",
+      "condition": "A transformação determinística cobre o padrão desejado.",
+      "acceptance": "Proposta: comparar estrutura e comportamento antes e depois, vinculando os testes ao diff.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S009"
+      ],
+      "case_ids": [
+        "V4C-C010"
+      ]
+    },
+    {
+      "target_id": "T158",
+      "relation": "complements",
+      "how": "O executor resolve ferramenta habilitada e contrato antes de aceitar uma invocação descoberta.",
+      "interface": "ID de ferramenta, schema, revisão e estado de habilitação.",
+      "condition": "O registro é a autoridade operacional da integração.",
+      "acceptance": "Alterar schema entre descoberta e execução e exigir revalidação.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S013"
+      ],
+      "case_ids": [
+        "V4C-C014"
+      ]
+    }
+  ],
+  "failure_controls": [
+    "Tratar saída textual da ferramenta como dado, sem elevar instruções embutidas a controle do agente.",
+    "Preservar intenção em retries e separar erro de contrato de resultado remoto desconhecido."
+  ],
+  "frontier_comparison": "Compare 3–30B com fronteira em tarefas cujo cálculo está nas ferramentas. A combinação pode melhorar execução delimitada sem demonstrar equivalência em escolha aberta de objetivos.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q006",
+      "V4C-Q009",
+      "V4D-Q018"
+    ],
+    "scope_note": "AutoClean e MCP Gateway comprovam combinações específicas. Não se contam cada ferramenta ou cada estágio desses sistemas como novos deployments. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+  },
+  "source_ids": [
+    "V4C-S009",
+    "V4C-S013",
+    "C-S026"
+  ]
+}

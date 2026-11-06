@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "B-S035",
+    "title": "GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers",
+    "url": "https://arxiv.org/abs/2210.17323",
+    "publisher": "Frantar e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2022-10-31",
+    "supports": "Quantização de pesos pós-treino usando aproximação de informação de segunda ordem.",
+    "limitations": "Resumo e metadados acessados; artigo integral não auditado e resultados não reproduzidos.",
+    "web_ref": "turn17view3"
+  },
+  {
+    "source_id": "V3B-S013",
+    "title": "GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers — full text",
+    "url": "https://arxiv.org/html/2210.17323v2",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2022-10-31",
+    "supports": "Objetivo quadrático de reconstrução por camada, Hessiana aproximada, compensação de erro e estabilidade.",
+    "limitations": "Seções metodológicas consultadas; calibração e resultados publicados não validam checkpoints locais.",
+    "web_ref": "turn149view0"
+  },
+  {
+    "source_id": "V4D-S009",
+    "title": "Phi Silica, small but mighty on-device SLM",
+    "url": "https://blogs.windows.com/windowsexperience/2024/12/06/phi-silica-small-but-mighty-on-device-slm/",
+    "publisher": "Microsoft",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2024-12-06",
+    "supports": "Integração Windows: quantização de pesos com QuaRot/GPTQ, ativações de 16 bits na configuração descrita, prefill em blocos de 64 e KV compartilhado entre fases.",
+    "limitations": "Não confirma 3,3B para essa revisão: descreve derivado de Phi-3.5-mini. A generalização textual de crescimento quadrático do KV é imprecisa para cache padrão de arquitetura fixa; não foi adotada nesta curadoria. Especulação da API atual não é atribuída automaticamente a dezembro de 2024.",
+    "web_ref": "turn265view0"
+  },
+  {
+    "source_id": "V4D-S003",
+    "title": "Get started with Phi Silica in the Windows App SDK",
+    "url": "https://learn.microsoft.com/en-us/windows/ai/apis/phi-silica",
+    "publisher": "Microsoft",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Execução local; diferenças NPU/GPU; especulação com modelo de rascunho na NPU; preparação do modelo e transição anunciada para Aion Instruct.",
+    "limitations": "Página mutável consultada em 2026-11-05. Rollout retail/removação em janeiro de 2027 é plano futuro. Especulação e compressão NPU não estão disponíveis no caminho GPU descrito; não inferir equivalência entre revisões.",
+    "web_ref": "turn206view2"
+  },
+  {
+    "source_id": "V4D-S004",
+    "title": "Manage Click to Do",
+    "url": "https://learn.microsoft.com/en-us/windows/client-management/manage-click-to-do",
+    "publisher": "Microsoft",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Ações locais de texto do Click to Do usam Phi Silica em Copilot+ PCs; resposta exibida progressivamente e controles de administração.",
+    "limitations": "Não demonstra memória persistente aprendida. Ação e seleção da interface não provam qual técnica de compressão interna foi utilizada em cada chamada.",
+    "web_ref": "turn222view0"
+  }
+]

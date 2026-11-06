@@ -1,0 +1,42 @@
+{
+  "entry_id": "T038",
+  "edges": [
+    {
+      "edge_id": "E-T038-01",
+      "from": "T038",
+      "to": "T018",
+      "relation": "complements",
+      "how": "Usar estratos como política específica de poda.",
+      "interface": "Token, classe funcional, dependência e score.",
+      "condition": "Poda preservar fechamento das relações.",
+      "acceptance": "Testar frase previsível cuja negação muda a decisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S016",
+        "V3A-S001",
+        "V4A-S028"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T038-02",
+      "from": "T038",
+      "to": "T195",
+      "relation": "complements",
+      "how": "Verificar expressão ou código após seleção.",
+      "interface": "Representação original e selecionada.",
+      "condition": "Existir propriedade executável adequada.",
+      "acceptance": "Detectar mudança de operador apesar de formato válido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S016",
+        "V3A-S001",
+        "V4A-S028"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

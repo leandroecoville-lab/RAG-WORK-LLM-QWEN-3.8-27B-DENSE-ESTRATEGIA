@@ -1,0 +1,32 @@
+{
+  "id": "T051",
+  "name": "Graph-Based Memory",
+  "canonical_name": "Graph-Based Memory",
+  "canonical_id": "T051",
+  "aliases": [
+    "memória baseada em grafos"
+  ],
+  "category": "memoria",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T029",
+    "T057",
+    "T077"
+  ],
+  "source_ids": [
+    "A-S035",
+    "V3A-S034",
+    "V3A-S035",
+    "V4A-S018",
+    "A-S024",
+    "V4A-S011",
+    "V4A-S024"
+  ],
+  "namespace": "T051",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T051",
+  "chunk_count": 9
+}

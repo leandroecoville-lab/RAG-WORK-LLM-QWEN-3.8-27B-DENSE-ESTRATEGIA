@@ -1,0 +1,18 @@
+[
+  {
+    "question": "A função é executada pelo modelo?",
+    "answer": "O modelo emite a proposta; o runtime ou serviço executa."
+  },
+  {
+    "question": "JSON válido prova que a ação foi correta?",
+    "answer": "Não. É preciso validar semântica e conferir o efeito."
+  },
+  {
+    "question": "Um isError falso equivale a objetivo cumprido?",
+    "answer": "Não necessariamente. É um sinal do contrato da ferramenta; o domínio pode exigir verificar recibo, estado ou pós-condição."
+  },
+  {
+    "question": "Por que registrar a revisão usada?",
+    "answer": "Porque o mesmo nome pode aceitar outros argumentos ou interpretar valores de maneira diferente após evolução do serviço."
+  }
+]

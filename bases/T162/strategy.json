@@ -1,0 +1,110 @@
+{
+  "id": "T162",
+  "novelty": "A v3 tratava expiração e reutilização de chaves. A ampliação modela idempotência como protocolo de intenção, com decisões para duplicatas concorrentes, mudança legítima de objetivo e resultados cujo efeito persiste além da sessão.",
+  "deep_layers": [
+    {
+      "name": "Intenção antes de tentativa",
+      "detail": "Gere o identificador da operação no controlador e persista-o antes do primeiro envio. Todas as tentativas da mesma intenção usam essa identidade, inclusive após reinício. Uma nova intenção com os mesmos parâmetros recebe outra chave; duas instâncias iguais podem ser desejadas. O texto do pedido sozinho não define equivalência operacional.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026"
+      ]
+    },
+    {
+      "name": "Reserva e resultado atômicos",
+      "detail": "No destino, associe chave, parâmetros e estado da operação. Se o processo registra a chave e cai antes do efeito, precisa retomar ou indicar pendência; se realiza o efeito e perde o registro, a deduplicação falha. A implementação deve garantir atomicidade onde possível e usar reconciliação quando atravessa sistemas sem transação comum.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026"
+      ]
+    },
+    {
+      "name": "Efeito versus representação",
+      "detail": "Uma resposta anterior pode continuar sendo a resposta semântica da tentativa mesmo que o recurso tenha mudado depois. Repetir a chamada não deve recriar um objeto que o usuário apagou legitimamente. Separe consultar o estado atual de repetir a intenção histórica; exponha essa diferença aos agentes que interpretam o resultado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026",
+        "V3C-S025"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Criação de ambiente de teste",
+      "scenario": "Um agente solicita infraestrutura e perde a conexão durante a criação.",
+      "strategy": "Persista pedido e chave; após timeout, consulte a operação por essa chave. Somente crie nova intenção quando o primeiro resultado estiver reconciliado ou quando o usuário realmente pedir outro ambiente. Expiração do registro exige investigação antes de tentar novamente.",
+      "small_model_role": "3–7B preenche parâmetros; código durável administra identidade e reconciliação.",
+      "acceptance": "Proposta: nenhuma duplicação sob timeout após commit remoto, queda local e resposta atrasada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026"
+      ]
+    },
+    {
+      "name": "Publicação de artefato",
+      "scenario": "A mesma alteração é entregue após retomadas de vários workers.",
+      "strategy": "Identifique publicação por tarefa, revisão base e hash do artefato. Uma segunda tentativa com conteúdo diferente deve falhar como conflito de intenção, não sobrescrever silenciosamente. Para substituir o candidato, crie uma nova revisão e preserve a ligação com a anterior.",
+      "small_model_role": "8–14B explica conflitos; 15–30B decide reformulação sem controlar o ledger por linguagem natural.",
+      "acceptance": "Proposta: duplicata retorna resultado consistente e divergência de payload é detectada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026",
+        "V3C-S037"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Executar ações tipadas de escopo restrito com IDs fornecidos pelo runtime.",
+    "8_14b": "Classificar resposta em concluída, pendente ou conflitante conforme contrato verificável.",
+    "15_30b": "Planejar compensações e revisões sem confundir nova intenção com nova tentativa.",
+    "training_or_runtime_requirements": "Ledger persistente, retenção alinhada ao horizonte de repetição e payload normalizado; evitar IDs gerados de novo após crash.",
+    "do_not_use_when": "Não afirmar exatamente uma vez quando o destino não deduplica e o efeito não é consultável."
+  },
+  "connections": [
+    {
+      "target_id": "T243",
+      "relation": "complements",
+      "how": "Resolver efeito desconhecido por identidade antes de escolher retry ou compensação.",
+      "interface": "Chave, parâmetros, confirmação remota e janela de retenção.",
+      "condition": "O destino permite consulta ou deduplicação verificável.",
+      "acceptance": "Falha após efeito confirmado não produz uma segunda alteração.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T159",
+      "relation": "complements",
+      "how": "Persistir a chave no estado durável para que todas as tentativas representem a mesma intenção.",
+      "interface": "Workflow, atividade lógica e identificador externo.",
+      "condition": "A identidade sobrevive ao reinício do worker.",
+      "acceptance": "Reproduzir histórico e repetir atividade mantendo a chave.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S018",
+        "C-S026"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Mesmo payload pode representar intenção nova; mesmo ID com payload novo é conflito.",
+    "A chave expirada não autoriza presumir que o efeito original nunca ocorreu."
+  ],
+  "frontier_comparison": "Compare sistemas pelo número de efeitos corretos, inclusive sob falhas. Capacidade linguística superior não substitui atomicidade nem identidade persistente da operação.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q001",
+      "V4C-Q019"
+    ],
+    "scope_note": "EC2 é caso operacional de API idempotente. A aplicação a patches e agentes pequenos é proposta; deduplicação de mensagens não foi confundida com efeito exatamente uma vez."
+  },
+  "source_ids": [
+    "C-S026",
+    "V3C-S025",
+    "V3C-S037",
+    "V3C-S018"
+  ]
+}

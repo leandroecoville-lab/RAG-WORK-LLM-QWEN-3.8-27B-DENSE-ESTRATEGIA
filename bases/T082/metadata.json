@@ -1,0 +1,40 @@
+{
+  "id": "T082",
+  "name": "Prefix Caching",
+  "canonical_name": "Prefix Caching",
+  "canonical_id": "T082",
+  "aliases": [
+    "automatic prefix caching",
+    "cache de prefixos"
+  ],
+  "category": "inferencia",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T002",
+    "T007",
+    "T081",
+    "T083",
+    "T103",
+    "T171"
+  ],
+  "source_ids": [
+    "B-S004",
+    "B-S005",
+    "V4B-S001",
+    "V4B-S004",
+    "V4B-S010",
+    "V4B-S014",
+    "V4D-S016",
+    "V4D-S017",
+    "V4D-S018",
+    "V4D-S019",
+    "V4D-S020"
+  ],
+  "namespace": "T082",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T082",
+  "chunk_count": 9
+}

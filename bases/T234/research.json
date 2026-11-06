@@ -1,0 +1,52 @@
+{
+  "id": "T234",
+  "technical_details": "Memória por módulo depende de descoberta e escopo, não apenas de existir um arquivo no disco. No Codex documentado, arquivos de instrução são coletados ao longo do caminho até o diretório corrente, com precedência entre nomes e um limite de tamanho. Assim, um guia de módulo pode não ser carregado em uma execução iniciada noutro local. Uma proposta mantém decisões e fatos separados de instruções operacionais, incluindo revisão e referência à evidência.",
+  "boundary_condition": "Um arquivo antigo pode continuar sendo carregado corretamente e ainda transmitir informação obsoleta sobre o projeto.",
+  "implementation_contract": {
+    "inputs": "Diretório de execução, política de descoberta, arquivos do projeto e revisão vigente.",
+    "outputs": "Conjunto efetivamente carregado e referências de memória aplicáveis ao módulo.",
+    "state": "Versões, precedência e responsáveis por atualização das decisões.",
+    "invariant": "Existência de um arquivo não é registrada como prova de que o agente o recebeu ou aplicou."
+  },
+  "tradeoffs": [
+    "Arquivos locais ao módulo reduzem contexto irrelevante e podem fragmentar regras compartilhadas.",
+    "Um arquivo central facilita governança e cresce até perder densidade ou ultrapassar limites de carregamento."
+  ],
+  "failure_test": "Teste proposto: iniciar execuções em diretórios diferentes com instruções locais divergentes; conferir o conjunto carregado e a versão utilizada antes de avaliar comportamento.",
+  "evaluation_plan": "Comparar memória central e por módulo em tarefas que atravessam fronteiras do projeto. Medir contexto carregado, decisões obsoletas e contradições. Definir fonte canônica para regras compartilhadas e referências explícitas entre módulos.",
+  "comparisons": [
+    {
+      "entry_id": "T211",
+      "relation": "distinct_from",
+      "reason": "Handoff descreve uma transferência de trabalho; memória de projeto conserva conhecimento reutilizável."
+    },
+    {
+      "entry_id": "T155",
+      "relation": "complements",
+      "reason": "Instruções enxutas podem apontar para detalhes de módulo carregados quando necessários."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação Codex descreve descoberta de AGENTS.md por caminho, arquivos de override e limite de tamanho combinado.",
+    "source_ids": [
+      "V2A-S017"
+    ],
+    "support": "direct",
+    "caveat": "Essas regras são do produto documentado; outros agentes podem carregar arquivos de modo diferente."
+  },
+  "advanced_qa": [
+    {
+      "question": "Colocar AGENTS.md em qualquer pasta garante leitura?",
+      "answer": "Não. É necessário conhecer o caminho de descoberta, o diretório de execução e os limites do produto."
+    },
+    {
+      "question": "Memória de módulo deve copiar todas as regras globais?",
+      "answer": "Não por padrão. Referências e responsabilidades claras reduzem divergência entre cópias que envelhecem separadamente."
+    }
+  ],
+  "source_ids": [
+    "V2A-S017",
+    "V3C-S039"
+  ],
+  "research_note": "Contratos, cenários de falha e planos de avaliação são propostas editoriais fundamentadas nas fontes indicadas."
+}

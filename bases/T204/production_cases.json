@@ -1,0 +1,64 @@
+{
+  "coverage": {
+    "entry_id": "T204",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 1,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Skills / Procedural Learning",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C026",
+      "company": "Autores de Agent Memory Distillation",
+      "organization_class": "research_group",
+      "system": "AMD",
+      "title": "Memória hierárquica de trajetórias para agentes pequenos",
+      "evidence_level": "research_only",
+      "observed_use": "O projeto apresenta avaliação de agentes de 4–8B com memória derivada de trajetórias de um professor.",
+      "technical_mechanism": "Memórias de workflow, subtarefa e função apoiam recuperação proativa e reativa a falhas, sem exigir que toda a memória seja absorvida por atualização dos pesos.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S032",
+        "C-S035"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T181",
+          "match": "exact",
+          "rationale": "A referência trata de Agent Memory Distillation."
+        },
+        {
+          "entry_id": "T204",
+          "match": "family",
+          "rationale": "Memórias procedurais se relacionam a habilidades recuperáveis."
+        },
+        {
+          "entry_id": "P017",
+          "match": "analogy",
+          "rationale": "Pode inspirar uma proposta LAI, sem comprovar sua adoção."
+        }
+      ],
+      "small_model_transfer": "Proposta: extrair procedimentos de trajetórias autorizadas, validar executabilidade e recuperar somente passos compatíveis com o ambiente atual.",
+      "limits": "Benchmarks de pesquisa não demonstram implantação em bigtech nem equivalência geral a modelos maiores. Memória externa continua dependente de seleção, validade temporal e ferramentas.",
+      "canonical_case_id": "V4B-C026",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "T204",
+        "match": "family",
+        "rationale": "Memórias procedurais se relacionam a habilidades recuperáveis."
+      }
+    }
+  ]
+}

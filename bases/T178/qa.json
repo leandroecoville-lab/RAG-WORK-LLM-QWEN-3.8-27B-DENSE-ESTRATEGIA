@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Destilação exige logits do professor?",
+    "answer": "Não. Pode usar exemplos de saída, embora o sinal de treinamento seja diferente."
+  },
+  {
+    "question": "O aluno precisa ser menor?",
+    "answer": "Não, mas redução de custo é uma motivação comum."
+  },
+  {
+    "question": "Temperatura alta sempre melhora?",
+    "answer": "Não. Pode dar mais peso a alternativas pouco informativas; é um hiperparâmetro para validação."
+  },
+  {
+    "question": "Professor e aluno precisam ter tamanhos diferentes?",
+    "answer": "Não. A distinção é o papel de supervisão; podem até compartilhar arquitetura e checkpoint inicial."
+  }
+]

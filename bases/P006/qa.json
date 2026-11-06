@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Carregar metadados basta para executar uma ferramenta?",
+    "answer": "Somente se o contrato completo necessário já estiver disponível; caso contrário, a definição deve ser carregada antes da execução."
+  },
+  {
+    "question": "Como evitar expansão recursiva sem fim?",
+    "answer": "Registrar IDs e versões visitados, limitar profundidade e orçamento e interromper ciclos com uma dependência explícita."
+  },
+  {
+    "question": "Qual é o custo escondido do carregamento progressivo?",
+    "answer": "Seleção errada, ida adicional ao armazenamento e expansão que consome o orçamento economizado."
+  },
+  {
+    "question": "Quando o recurso pode ser reutilizado?",
+    "answer": "Quando versão, autorização e finalidade permanecem compatíveis com a requisição atual."
+  }
+]

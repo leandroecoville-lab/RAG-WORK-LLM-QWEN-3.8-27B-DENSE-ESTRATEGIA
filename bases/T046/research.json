@@ -1,0 +1,53 @@
+{
+  "id": "T046",
+  "technical_details": "A seleção dinâmica altera a distribuição das demonstrações vista a cada pergunta. Buscar vizinhos muito semelhantes pode concentrar uma classe e induzir o modelo a tratá-la como resposta padrão. A ordem também é parte do experimento: manter exemplos selecionados e variar sua sequência pode modificar resultados. Um banco de exemplos precisa registrar origem para que duplicatas de um mesmo documento não atravessem as divisões de avaliação.",
+  "boundary_condition": "Similaridade de superfície é insuficiente quando exemplos parecidos exigem decisões diferentes por uma exceção, versão de schema ou condição negativa.",
+  "implementation_contract": {
+    "inputs": "Consulta, exemplos validados, origem documental e política de cobertura por tarefa.",
+    "outputs": "Demonstrações elegíveis com ordem, orçamento e justificativa de seleção registrados.",
+    "state": "Encoder, banco versionado, divisões por origem e histórico de revisão das saídas.",
+    "invariant": "Exemplos de avaliação e suas variantes derivadas não entram no banco usado para avaliá-los."
+  },
+  "tradeoffs": [
+    "Vizinhos semânticos aproximam a demonstração da pergunta e podem reduzir diversidade de decisões.",
+    "Controlar classe, dificuldade e ordem melhora diagnóstico, mas torna a seleção mais complexa e menos puramente baseada em distância."
+  ],
+  "failure_test": "Teste proposto: criar vizinhos quase idênticos com rótulos distintos por uma única condição. O seletor deve conservar exemplos que mostrem a fronteira, sem escolher todos de uma classe.",
+  "evaluation_plan": "Avaliação proposta: comparar exemplos fixos, aleatórios e recuperados com tokens equivalentes. Variar ordem separadamente, medir desempenho por classe e estabilidade, e fazer divisão por documento ou origem; não atribuir ganho de quantidade ao algoritmo de seleção.",
+  "comparisons": [
+    {
+      "entry_id": "T019",
+      "relation": "complements",
+      "reason": "Poda reduz o conjunto de demonstrações; seleção dinâmica determina quais são úteis para a consulta atual."
+    },
+    {
+      "entry_id": "T005",
+      "relation": "distinct_from",
+      "reason": "Uma demonstração orienta comportamento, enquanto uma resposta em cache tenta reutilizar um resultado já produzido."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Pesquisas sobre exemplos em contexto investigam seleção por similaridade e mostram sensibilidade à ordem das demonstrações.",
+    "source_ids": [
+      "V3A-S016",
+      "V3A-S017"
+    ],
+    "support": "direct",
+    "caveat": "Os resultados dependem de modelos e tarefas estudados; uma ordenação favorável não transfere automaticamente para outro modelo."
+  },
+  "advanced_qa": [
+    {
+      "question": "É preciso recuperar entrada e saída juntas?",
+      "answer": "A busca pode usar a entrada, mas a demonstração final precisa de saída validada e compatível. Não busque por uma resposta de teste desconhecida."
+    },
+    {
+      "question": "Mais diversidade sempre ajuda?",
+      "answer": "Não. Exemplos desconectados podem confundir a tarefa. Compare diversidade condicionada ao objetivo com similaridade pura usando o mesmo orçamento."
+    }
+  ],
+  "source_ids": [
+    "V3A-S016",
+    "V3A-S017"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

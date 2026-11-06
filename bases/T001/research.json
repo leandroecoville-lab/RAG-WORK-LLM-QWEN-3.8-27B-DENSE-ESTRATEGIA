@@ -1,0 +1,46 @@
+{
+  "id": "T001",
+  "technical_details": "A etapa de redução precisa distinguir identidade da partição e identidade da evidência. Repetir um map após falha não pode multiplicar um achado. Em uma adaptação com LLMs, a agregação textual pode depender da ordem e do agrupamento: propriedades algébricas de somas ou conjuntos não são herdadas por resumos. Partições desbalanceadas também deixam o tempo total dominado pelo trabalhador mais lento.",
+  "boundary_condition": "O paralelismo perde valor quando a conclusão exige relações entre documentos que nenhum map observou, ou quando custo de coordenação supera processamento local.",
+  "implementation_contract": {
+    "inputs": "Partições versionadas, chaves de agrupamento e contrato de extração comum.",
+    "outputs": "Resultados identificados e síntese com cobertura e lacunas declaradas.",
+    "state": "Tentativas por partição, evidências deduplicadas e versão do redutor.",
+    "invariant": "Cada evidência original contribui uma vez para uma contagem, mesmo quando a execução é repetida."
+  },
+  "tradeoffs": [
+    "Partições pequenas aumentam paralelismo, chamadas e fronteiras que podem separar fatos relacionados.",
+    "Redução hierárquica limita contexto, mas adiciona oportunidades de perda e dependência da ordem."
+  ],
+  "failure_test": "Teste proposto: repetir deliberadamente uma partição e omitir outra. O redutor deve deduplicar a repetição, identificar a lacuna e não apresentar cobertura integral.",
+  "evaluation_plan": "Avaliação proposta: comparar processamento sequencial e paralelo com os mesmos documentos e extrator. Medir cobertura, consistência de contagens, custo e duração; variar distribuição de tamanho e ordem de redução antes de escolher a decomposição.",
+  "comparisons": [
+    {
+      "entry_id": "T008",
+      "relation": "complements",
+      "reason": "Uma hierarquia pode organizar a redução, mas ainda exige identidade das evidências e controle das perdas."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "No modelo MapReduce, valores intermediários são agrupados pela chave para processamento pelo redutor.",
+    "source_ids": [
+      "A-S001"
+    ],
+    "support": "direct",
+    "caveat": "A fonte descreve processamento distribuído; contratos para síntese por agentes são uma adaptação editorial."
+  },
+  "advanced_qa": [
+    {
+      "question": "Quando um combiner local é correto?",
+      "answer": "Quando a operação admite a combinação parcial usada e preserva o resultado esperado. Essa propriedade deve ser demonstrada para o contrato, não presumida para texto gerado."
+    },
+    {
+      "question": "Como comparar dois redutores que escrevem diferente?",
+      "answer": "Compare fatos, contagens, conflitos e evidências preservadas. Igualdade literal de prosa mede uma propriedade diferente de equivalência factual."
+    }
+  ],
+  "source_ids": [
+    "A-S001"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

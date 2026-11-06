@@ -1,0 +1,52 @@
+{
+  "id": "T143",
+  "technical_details": "Um plano útil representa dependências de informação, não apenas ordem textual. Uma etapa pode declarar que consumirá o resultado ainda desconhecido de outra, preservando um espaço reservado em vez de inventar esse valor. ReWOO explora separar planejamento e observações para evitar reprocessar toda a trajetória a cada chamada. A economia depende de quanto da estrutura pode ser antecipado; contingências reais ainda exigem revisão do plano.",
+  "boundary_condition": "Planejamento antecipado perde precisão quando a próxima ação depende de conteúdo imprevisível ou de efeitos difíceis de reverter.",
+  "implementation_contract": {
+    "inputs": "Objetivo, ferramentas disponíveis, hipóteses e critérios por etapa.",
+    "outputs": "Plano versionado, dependências simbólicas e condições para replanejar.",
+    "state": "Etapas confirmadas, resultados referenciados e premissas ainda não verificadas.",
+    "invariant": "Uma variável de resultado não é substituída por valor imaginado antes da observação."
+  },
+  "tradeoffs": [
+    "Um plano amplo reduz chamadas ao planejador e amplia o custo de corrigir premissas erradas.",
+    "Etapas menores permitem revisão frequente e aumentam overhead de coordenação."
+  ],
+  "failure_test": "Teste proposto: uma ferramenta devolve entidade diferente da esperada na etapa inicial; verificar se o executor invalida dependências afetadas e preserva etapas ainda válidas.",
+  "evaluation_plan": "Comparar plano único, replanejamento por etapa e gatilhos por premissa invalidada. Controlar ferramentas e casos. Medir chamadas de planejamento, etapas descartadas, custo total e objetivos concluídos; escolher frequência pela volatilidade observada.",
+  "comparisons": [
+    {
+      "entry_id": "T144",
+      "relation": "alternative",
+      "reason": "ReAct incorpora observações a cada ciclo, enquanto o planejamento antecipado tenta reutilizar estrutura prevista."
+    },
+    {
+      "entry_id": "T208",
+      "relation": "complements",
+      "reason": "Separar planejador e executor oferece um lugar explícito para validar o plano."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "ReWOO desacopla planejamento de observações para reduzir redundância de contexto.",
+    "source_ids": [
+      "V3C-S012"
+    ],
+    "support": "direct",
+    "caveat": "O estudo não permite presumir que todas as dependências possam ser previstas antes da execução."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um plano pode conter chamadas ainda sem todos os argumentos?",
+      "answer": "Sim, como dependências simbólicas explícitas; a execução aguarda valores reais antes de enviar a chamada."
+    },
+    {
+      "question": "Devo descartar todo o plano após uma surpresa?",
+      "answer": "Não necessariamente. Invalidar o subgrafo dependente da premissa alterada pode preservar trabalho ainda correto."
+    }
+  ],
+  "source_ids": [
+    "V3C-S012",
+    "V3C-S002"
+  ],
+  "research_note": "Detalhamento e avaliação propostos; a fonte apoia o mecanismo, sem comprovar implementação LAI."
+}

@@ -1,0 +1,119 @@
+{
+  "id": "T085",
+  "novelty": "A v3 contabilizou metadados e distinguiu armazenamento de cálculo. Agora a decisão usa orçamento de erro por componente, mudança de domínio e qualidade pós-integração, tratando compressão como uma sequência de experimentos reversíveis e não como escolha isolada de bits.",
+  "deep_layers": [
+    {
+      "name": "Orçamento de erro composto",
+      "detail": "Separe os efeitos de quantizar pesos, ativações e KV. Teste cada alteração individualmente antes de combinar, pois pequenas perdas podem interagir em respostas longas ou raras. Defina quais erros são toleráveis por tarefa: falha de sintaxe, troca de entidade, omissão de exceção e erro numérico não têm o mesmo custo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S006",
+        "V3B-S003",
+        "V4D-S002"
+      ]
+    },
+    {
+      "name": "Calibração como amostragem do uso",
+      "detail": "Construa um conjunto de calibração que represente comprimentos, idiomas e padrões de ferramentas. Reserve domínios e períodos posteriores para validação. Uma conversão excelente em texto geral pode distorcer canais importantes para código, números ou terminologia especializada; nenhum pequeno conjunto comprova robustez universal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S006",
+        "V3B-S003",
+        "V4D-S002"
+      ]
+    },
+    {
+      "name": "Escolha pelo sistema final",
+      "detail": "Meça peso carregado, buffers temporários, cache e tempo de desquantização no runtime de destino. Uma representação mais compacta pode perder para outra com kernel melhor. Avalie também tempo de carregamento e capacidade de manter réplicas, porque o benefício operacional pode vir de maior concorrência, mesmo sem acelerar uma requisição isolada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S006",
+        "V3B-S003",
+        "V4D-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Especialista local de extração",
+      "scenario": "O modelo precisa caber em um dispositivo com orçamento fixo.",
+      "strategy": "Compare uma base menor em maior precisão e uma base maior quantizada. Preserve o mesmo conjunto de documentos e verificador de campos. Escolha por resultados válidos dentro de prazo, incluindo entradas longas e categorias raras.",
+      "small_model_role": "A faixa 3–7B pode vencer pela simplicidade; 8–14B só merece compressão se acrescentar qualidade mensurável.",
+      "acceptance": "Aceitar perda dentro do limite pré-definido por classe, sem ocultar regressões na média.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S006",
+        "V3B-S003",
+        "V4D-S002"
+      ]
+    },
+    {
+      "name": "Serviço de múltiplos especialistas",
+      "scenario": "Vários modelos ou adaptadores disputam memória de GPU.",
+      "strategy": "Quantize primeiro componentes que liberam capacidade suficiente para aumentar réplicas ou reduzir preempção. Depois verifique comportamento combinado com cache e batching. Mantenha artefato de referência para reverter conversões problemáticas.",
+      "small_model_role": "Um 15–30B pode tornar-se viável, mas memória total continua incluindo estados e temporários.",
+      "acceptance": "Comparar custo por tarefa aceita e SLO sob carga, não apenas tamanho do arquivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S006",
+        "V3B-S003",
+        "V4D-S002"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, preservar qualidade em tarefas estreitas pode importar mais que obter a menor representação possível.",
+    "8_14b": "Em 8–14B, comparar técnicas com calibração do domínio e kernels realmente disponíveis no executor escolhido.",
+    "15_30b": "Em 15–30B, quantização pode decidir viabilidade de memória; incluir margem para contexto e concorrência.",
+    "training_or_runtime_requirements": "PTQ usa calibração quando o método exige; QAT demanda treinamento; formatos e kernels devem ser compatíveis.",
+    "do_not_use_when": "Não reduzir bits de todos os tensores por padrão nem anunciar economia de memória como ganho equivalente de velocidade."
+  },
+  "connections": [
+    {
+      "target_id": "T198",
+      "relation": "complements",
+      "how": "Recalibrar o critério de confiança após a conversão, pois probabilidades podem mudar.",
+      "interface": "Predições, rótulos independentes e revisão do artefato quantizado.",
+      "condition": "Há dados de validação fora da calibração numérica.",
+      "acceptance": "Comparar risco seletivo e taxa de abstenção antes/depois.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S006",
+        "V3B-S003",
+        "V4D-S002"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T107",
+      "relation": "complements",
+      "how": "Verificar se a redução de tráfego desloca o gargalo para cálculo ou conversão.",
+      "interface": "Bytes movimentados, kernels e latência por fase.",
+      "condition": "Profiler mede a execução real do formato escolhido.",
+      "acceptance": "Explicar a diferença entre ganho de capacidade e ganho de tempo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S006",
+        "V3B-S003",
+        "V4D-S002"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Guardar base, receita de conversão e hashes do conjunto de calibração.",
+    "Testar combinações de precisão, inclusive respostas longas e valores extremos."
+  ],
+  "frontier_comparison": "Comparar tarefas especializadas contra a fronteira com o mesmo critério de correção. Compressão pode reduzir custo mantendo qualidade suficiente naquele recorte; não demonstra equivalência geral nem imunidade a erros raros.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q006"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S006",
+    "V3B-S003",
+    "V4D-S002"
+  ]
+}

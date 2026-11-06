@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Embeddings provam que dois textos dizem a mesma coisa?",
+    "answer": "Não. Proximidade semântica pode esconder contradição."
+  },
+  {
+    "question": "Teste de equivalência prova todos os casos?",
+    "answer": "Só se existir prova formal apropriada; testes comuns têm cobertura limitada."
+  },
+  {
+    "question": "Similaridade de embeddings prova equivalência textual?",
+    "answer": "Não. Textos semanticamente próximos podem inverter uma condição, quantidade ou negação decisiva."
+  },
+  {
+    "question": "Round-trip perfeito prova um codec correto?",
+    "answer": "Não sozinho. Encoder e decoder podem compartilhar o mesmo erro; compare também com especificação ou implementação independente."
+  }
+]

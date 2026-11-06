@@ -1,0 +1,111 @@
+{
+  "id": "T103",
+  "novelty": "A v3 explicou ancestralidade e divisão de arestas. Esta camada trata o trie como catálogo de disponibilidade distribuída: possuir um caminho lógico não significa que seus tensores estejam prontos para consumo.",
+  "deep_layers": [
+    {
+      "name": "Identidade versus residência",
+      "detail": "Separe a chave lógica, formada pelo prefixo tokenizado e sua configuração, do descritor de residência. Um nó pode apontar para GPU, RAM, armazenamento ou reconstrução pendente. A consulta deve retornar comprimento reutilizável e custo estimado de materialização; considerar todo nó encontrado um hit rápido mascara transferências e pode piorar a primeira resposta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031"
+      ]
+    },
+    {
+      "name": "Publicação de caminhos",
+      "detail": "Insira referências inicialmente privadas e publique apenas estados completos. Se o produtor for cancelado durante prefill, o caminho não pode anunciar um bloco parcialmente escrito. Um protocolo proposto marca geração, quantidade válida e confirmação; consumidores leem uma visão consistente enquanto divisões de arestas e remoções avançam.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031"
+      ]
+    },
+    {
+      "name": "Granularidade de persistência",
+      "detail": "Uma árvore pode comprimir arestas em tokens, enquanto o armazenamento transfere páginas maiores. Mantenha o deslocamento entre ambas as unidades e contabilize bytes úteis versus transportados. Prefixos ligeiramente divergentes podem multiplicar páginas mesmo quando a representação lógica permanece compacta; a cardinalidade dos nós não estima sozinha o consumo físico.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Biblioteca de ferramentas estável",
+      "scenario": "Agentes compartilham descrições extensas de ferramentas.",
+      "strategy": "Ordene componentes por estabilidade, versione o template e mantenha dados voláteis após a região compartilhada. Consulte a árvore antes de reservar a cópia física, preservando isolamento entre locatários.",
+      "small_model_role": "Um 3–7B consome um contrato de ferramentas consistente sem depender de memória paramétrica adicional.",
+      "acceptance": "Comparar tokens reutilizados e bytes transferidos, além de testar revogação de ferramentas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031"
+      ]
+    },
+    {
+      "name": "Auditoria de divergência",
+      "scenario": "Duas versões do serviço perdem reutilização inesperadamente.",
+      "strategy": "Instrumente o primeiro token divergente, a versão do tokenizer e o template. Produza um diagnóstico agregado sem registrar segredos presentes nos prompts.",
+      "small_model_role": "Um modelo pequeno pode explicar relatórios já sanitizados; o cálculo da divergência é determinístico.",
+      "acceptance": "Localizar mudanças introduzidas deliberadamente e não confundir divergência legítima com erro.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Priorize poucos prefixos de alta repetição; uma árvore ampla pode custar mais que recomputar prompts curtos.",
+    "8_14b": "Teste várias famílias de prompts e limite a retenção por família, evitando que um fluxo domine o catálogo.",
+    "15_30b": "Modele residência por dispositivo: encontrar um prefixo de um 30B pode exigir transferência incompatível com o prazo.",
+    "training_or_runtime_requirements": "Recurso de runtime; tokenizer, pesos, adapters e posições participam da identidade.",
+    "do_not_use_when": "Não reutilizar caminhos entre configurações incompatíveis ou usar semântica textual aproximada como igualdade KV."
+  },
+  "connections": [
+    {
+      "target_id": "T104",
+      "relation": "feeds",
+      "how": "A árvore fornece candidatos de prefixo para a política de Radix Attention.",
+      "interface": "Comprimento compatível, referências, residência e custo.",
+      "condition": "O escalonador interpreta somente estados confirmados.",
+      "acceptance": "Cancelar produtores e verificar que consumidores não leem estados incompletos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T105",
+      "relation": "complements",
+      "how": "Expulsão física atualiza disponibilidade sem apagar necessariamente a descrição lógica.",
+      "interface": "Estado de presença e plano de reconstrução.",
+      "condition": "Não existir consumidor ativo sem referência protegida.",
+      "acceptance": "Comparar resultado após restore com execução fria.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não exportar tokens de prompts privados em métricas de divergência.",
+    "Testar split, merge e remoção concorrentes com prefixos que terminam dentro de uma página."
+  ],
+  "frontier_comparison": "Compare o serviço completo em uma coleção fixa de consultas repetidas. O trie pode reduzir recomputação; não melhora a resposta de um modelo pequeno a uma pergunta que ele não consegue resolver.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q022"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S011",
+    "V4B-S031"
+  ]
+}

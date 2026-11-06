@@ -1,0 +1,53 @@
+{
+  "id": "P007",
+  "technical_details": "Memory Retriever é proposto como interface de recuperação que recebe escopo, tempo e objetivo, além do texto da consulta. A filtragem precisa alcançar todas as rotas de busca e também a expansão de um trecho para seu documento pai. Combinar rankings lexicais e vetoriais pode ampliar cobertura, mas scores de origens diferentes não devem ser somados sem uma regra explícita. O retorno deve preservar por que cada evidência foi escolhida e qual versão estava disponível.",
+  "boundary_condition": "Uma consulta histórica exige distinguir fatos válidos na data de interesse e fatos conhecidos na data da decisão. Recuperação recente por similaridade não responde automaticamente a essa pergunta temporal.",
+  "implementation_contract": {
+    "inputs": "Consulta, identidade autorizada, filtros temporais, tipos de memória, orçamento e versão dos índices.",
+    "outputs": "Evidências com IDs, fontes, tempos, scores ou posições e indicação de cobertura insuficiente.",
+    "state": "Índices, mapeamento de documentos, versões de embeddings e políticas de fusão e expansão.",
+    "invariant": "Filtrar apenas a lista final é insuficiente quando expansões ou etapas intermediárias podem expor conteúdo fora do escopo."
+  },
+  "tradeoffs": [
+    "Busca híbrida melhora cobertura em alguns conjuntos, mas adiciona índices, latência e decisões de fusão.",
+    "Reranking pode melhorar ordem dos candidatos, sem recuperar evidência que ficou fora da etapa inicial."
+  ],
+  "failure_test": "Proposta: criar documentos semanticamente iguais em escopos distintos e um pai com conteúdo restrito; verificar isolamento em busca lexical, vetorial, fusão e expansão de contexto.",
+  "evaluation_plan": "Comparar recuperação lexical, vetorial e híbrida com mesmas perguntas e filtros. Medir Recall@k, MRR, precisão das evidências, latência e violações de escopo; separar consultas temporais das perguntas factuais atuais.",
+  "comparisons": [
+    {
+      "entry_id": "T027",
+      "relation": "complements",
+      "reason": "Busca híbrida combina canais de candidatos."
+    },
+    {
+      "entry_id": "T032",
+      "relation": "complements",
+      "reason": "Expansão parent-child exige manter escopo e proveniência."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "RRF funde rankings por posição; modelos temporais permitem distinguir validade e registro.",
+    "source_ids": [
+      "A-S021",
+      "A-S032"
+    ],
+    "support": "related",
+    "caveat": "A combinação, filtros e invariantes deste retriever são projeto editorial, não garantias dos produtos citados."
+  },
+  "advanced_qa": [
+    {
+      "question": "Score alto significa evidência verdadeira?",
+      "answer": "Não. Ranking estima correspondência à consulta; validade e qualidade da fonte precisam de critérios próprios."
+    },
+    {
+      "question": "Por que testar o documento pai?",
+      "answer": "Uma expansão pode reintroduzir conteúdo que a busca inicial filtrou corretamente."
+    }
+  ],
+  "source_ids": [
+    "A-S021",
+    "A-S032"
+  ],
+  "research_note": "Contrato, teste de falha e plano de avaliação são recomendações editoriais; nenhuma implantação ou medição deste mecanismo foi executada neste pacote."
+}

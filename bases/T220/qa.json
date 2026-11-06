@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Modo estrito elimina a necessidade de reparo?",
+    "answer": "Não. Ele pode restringir o formato a um esquema suportado, mas não confirma existência do alvo, permissão ou consistência de negócio."
+  },
+  {
+    "question": "Quando um retry deixa de ser reparo?",
+    "answer": "Quando a chamada já foi executada ou seu resultado é desconhecido. Nessa situação, repetição é uma decisão de recuperação com controle de idempotência."
+  },
+  {
+    "question": "Preencher um campo ausente com valor plausível é reparo válido?",
+    "answer": "Somente se houver fonte ou default contratual; plausibilidade não fornece o dado que falta."
+  },
+  {
+    "question": "Quando reparar deveria parar?",
+    "answer": "Quando falta informação indispensável, a mesma classe de erro persiste ou o orçamento acaba, preservando o diagnóstico."
+  }
+]

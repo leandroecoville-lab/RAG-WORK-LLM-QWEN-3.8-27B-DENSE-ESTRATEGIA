@@ -1,0 +1,135 @@
+{
+  "package": "LAI_RAG_243_COMPLETO_v3",
+  "version": "3.0.0",
+  "language": "pt-BR",
+  "curation_date": "2026-11-05",
+  "validated_at": "2026-11-05T17:14:28.117042-03:00",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "stats": {
+    "entries": 287,
+    "chunks": 1722,
+    "qa": 1148,
+    "source_records": 338,
+    "unique_source_urls": 303,
+    "entries_by_scope": {
+      "inventario": 243,
+      "referencia": 27,
+      "proposta": 17
+    },
+    "categories": {
+      "contexto_recuperacao": 46,
+      "memoria": 32,
+      "inferencia": 54,
+      "orquestracao": 44,
+      "verificacao_treinamento": 30,
+      "continuidade_programacao": 37,
+      "referencias": 27,
+      "componentes_propostos": 17
+    },
+    "evidence_status": {
+      "supported": 207,
+      "related_support": 78,
+      "terminology_correction": 2
+    },
+    "source_verification": {
+      "opened": 333,
+      "search_result": 5
+    },
+    "canonical_ids": 279,
+    "words_editorial": 207203,
+    "deepened_entries": 287,
+    "typed_relations": 485,
+    "traceable_claims": 287,
+    "proposed_experiment_protocols": 287
+  },
+  "corpus_sha256": "1ab5db8ce6a48b7b0b476275f4a08a5a398f98542b5bb3b19da2e34e7ac25c00",
+  "previous_package_sha256": "6d065a59bf926479a743105689e516c092522f583319f291fa5a998f44101cb6",
+  "verification": {
+    "required_gates_passed": true,
+    "unit_tests": {
+      "tests_run": 41,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": true,
+      "duration_seconds": 28.001,
+      "external_model_calls": 0,
+      "external_embedding_calls": 0,
+      "note": "Clientes externos simulados; recuperação local executada no corpus real."
+    },
+    "structural": true,
+    "migration": true,
+    "evaluations": {
+      "desenvolvimento_expandido": {
+        "cases": 90,
+        "hits_at_5": 87,
+        "hit_at_5": 0.9666666666666667,
+        "mrr_at_10": 0.8599206349206349,
+        "names_hit_at_3": 1.0,
+        "failed_queries": [
+          "Q50",
+          "Q82",
+          "Q90"
+        ]
+      },
+      "desenvolvimento_exato": {
+        "cases": 90,
+        "hits_at_5": 84,
+        "hit_at_5": 0.9333333333333333,
+        "mrr_at_10": 0.8275132275132275,
+        "names_hit_at_3": 1.0,
+        "failed_queries": [
+          "Q14",
+          "Q24",
+          "Q50",
+          "Q71",
+          "Q82",
+          "Q90"
+        ]
+      },
+      "reserva_expandida": {
+        "cases": 40,
+        "hits_at_5": 38,
+        "hit_at_5": 0.95,
+        "mrr_at_10": 0.7863095238095238,
+        "names_hit_at_3": 1.0,
+        "failed_queries": [
+          "H05",
+          "H31"
+        ]
+      },
+      "reserva_exata": {
+        "cases": 40,
+        "hits_at_5": 38,
+        "hit_at_5": 0.95,
+        "mrr_at_10": 0.7360416666666667,
+        "names_hit_at_3": 1.0,
+        "failed_queries": [
+          "H01",
+          "H08"
+        ]
+      },
+      "reserve_usage": "primeira_execucao"
+    }
+  },
+  "runtime": {
+    "default_retrieval": "BM25 com variantes lexicais e pontuação por entrada",
+    "default_profile": "expanded",
+    "baseline_profile": "exact",
+    "optional_retrieval": [
+      "cosine",
+      "RRF"
+    ],
+    "generated_embeddings_included": false,
+    "generation_client": "chat/completions; endpoint/modelo explícitos"
+  },
+  "not_executed": [
+    "inferencia_real_de_LLM",
+    "embeddings_reais",
+    "instalacao_na_Helena",
+    "benchmarks_de_GPU",
+    "experimentos_individuais_das_243_entradas",
+    "implementacao_dos_17_componentes_propostos"
+  ]
+}

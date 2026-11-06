@@ -1,0 +1,47 @@
+{
+  "id": "T118",
+  "technical_details": "Uma multiplicação linear pode ser repartida por colunas de saída ou por dimensões contraídas de entrada. No segundo caso, os produtos parciais precisam ser somados; no primeiro, o consumidor pode operar com saídas repartidas ou exigir reunião posterior. A localização das coletivas determina custo e dependências. Mais shards reduzem a parte de pesos por dispositivo, mas podem tornar a comunicação dominante em pequenos lotes.",
+  "boundary_condition": "Dimensões, cabeças e grupos KV nem sempre são divisíveis pelo grau escolhido sem padding, replicação ou implementação específica.",
+  "implementation_contract": {
+    "inputs": "Pesos, plano de shards, topologia e convenções das coletivas.",
+    "outputs": "Saída equivalente à camada completa, repartida ou reunida conforme o próximo operador.",
+    "state": "Mapa global de parâmetros, grupos de comunicação e buffers parciais.",
+    "invariant": "Cada contribuição é somada ou concatenada uma única vez, na ordem semântica correta."
+  },
+  "tradeoffs": [
+    "Maior grau reduz memória de pesos local e aumenta sincronização.",
+    "Sobrepor comunicação ajuda apenas quando existem operações independentes suficientes."
+  ],
+  "failure_test": "Teste proposto: carregar uma fatia de pesos na posição errada e atrasar um participante da coletiva. Esperar divergência detectada no primeiro caso e timeout controlado no segundo.",
+  "evaluation_plan": "Plano proposto: comparar graus de paralelismo com modelo e orçamento total explícitos. Medir memória, tempo de coletivas, prefill e decode por lote; escolher pela capacidade e latência reais, evitando inferir speedup linear.",
+  "comparisons": [
+    {
+      "entry_id": "T119",
+      "relation": "complements",
+      "reason": "Particionar dentro da camada pode coexistir com distribuição de conjuntos de camadas em estágios."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Megatron-LM apresenta paralelismo intra-camada com operações de comunicação para combinar o trabalho distribuído.",
+    "source_ids": [
+      "B-S030"
+    ],
+    "support": "direct",
+    "caveat": "A receita do artigo é uma arquitetura de treinamento; cada implementação de inferência precisa validar seu plano."
+  },
+  "advanced_qa": [
+    {
+      "question": "Dividir por duas GPUs divide a latência por dois?",
+      "answer": "Não. Comunicação, partes não paralelizáveis e formas menores alteram o custo."
+    },
+    {
+      "question": "Como validar um checkpoint repartido?",
+      "answer": "Reconstrua ou compare a função global em exemplos controlados, conferindo offsets e orientação das matrizes, não apenas seus tamanhos."
+    }
+  ],
+  "source_ids": [
+    "B-S030",
+    "B-S045"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

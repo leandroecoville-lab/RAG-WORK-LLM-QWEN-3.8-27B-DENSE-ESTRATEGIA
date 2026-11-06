@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "A-S016",
+    "title": "Compressing Context to Enhance Inference Efficiency of Large Language Models",
+    "url": "https://aclanthology.org/2023.emnlp-main.391/",
+    "publisher": "ACL Anthology / autores",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Selective Context: remoção de redundância no contexto de entrada.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn20view1"
+  },
+  {
+    "source_id": "V3A-S001",
+    "title": "LLMLingua-2: Data Distillation for Efficient and Faithful Task-Agnostic Prompt Compression",
+    "url": "https://aclanthology.org/2024.findings-acl.57/",
+    "publisher": "Autores / ACL Anthology",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Compressão extrativa treinada como classificação de tokens, com contexto bidirecional e distilação de dados.",
+    "limitations": "Consulta de fonte primária; não houve reprodução experimental. Resultados e APIs são limitados ao trabalho ou documentação citados, consultados em 2026-11-05.",
+    "web_ref": "turn81view0"
+  },
+  {
+    "source_id": "V4A-S028",
+    "title": "LLMLingua Series",
+    "url": "https://www.microsoft.com/en-us/research/project/llmlingua/",
+    "publisher": "Microsoft Research",
+    "source_type": "research_project",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Diferencia LLMLingua, LongLLMLingua e LLMLingua-2; página declara finalidade de demonstração de pesquisa.",
+    "limitations": "Não demonstra dez implantações bigtech nem desempenho de um pipeline local 3–30B.",
+    "web_ref": "turn264view2"
+  },
+  {
+    "source_id": "V4A-S027",
+    "title": "LLMLingua Prompt Compression — Prompt flow",
+    "url": "https://microsoft.github.io/promptflow/integrations/tools/llmlingua-prompt-compression-tool.html",
+    "publisher": "Microsoft",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Integração documentada de compressor e contrato de entrada/saída; não comprova carga real.",
+    "limitations": "Não demonstra dez implantações bigtech nem desempenho de um pipeline local 3–30B.",
+    "web_ref": "turn264view1"
+  }
+]

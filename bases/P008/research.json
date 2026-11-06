@@ -1,0 +1,51 @@
+{
+  "id": "P008",
+  "technical_details": "Event Store / Event Log é proposto como registro ordenado de fatos de execução, com ID do evento, entidade, sequência e versão de schema. Projeções devem guardar o último ponto aplicado e tolerar reentrega. Quando uma transação altera estado e precisa notificar outro sistema, uma outbox pode vincular a alteração ao evento pendente. A publicação posterior continua sujeita a duplicatas, portanto o consumidor precisa reconhecer eventos já processados.",
+  "boundary_condition": "Um log de observabilidade não é automaticamente um histórico suficiente para reconstruir estado. Campos omitidos, eventos perdidos e mudanças de schema podem inviabilizar replay.",
+  "implementation_contract": {
+    "inputs": "Evento identificado, versão de schema, sequência por entidade, payload autorizado e revisão esperada.",
+    "outputs": "Confirmação de gravação, posição no log e notificações ou projeções derivadas com seu próprio status.",
+    "state": "Eventos, offsets por consumidor, versões de projetores e chaves de deduplicação.",
+    "invariant": "Uma projeção só avança o cursor quando aplica o evento de forma consistente; repetir o mesmo evento não deve duplicar seu efeito lógico."
+  },
+  "tradeoffs": [
+    "Histórico completo facilita reconstrução e auditoria, mas aumenta custo e exige política de retenção compatível.",
+    "Projeções assíncronas desacoplam consumidores e introduzem atraso que precisa ser exposto ao leitor."
+  ],
+  "failure_test": "Proposta: publicar o mesmo evento duas vezes, interromper consumidor após aplicar e antes de confirmar, e reaplicar desde snapshot; verificar estado final e cursor sem efeito duplicado.",
+  "evaluation_plan": "Comparar reconstrução integral e snapshot mais replay em sequência conhecida. Medir tempo de recuperação, atraso de projeções, divergências e compatibilidade após evolução de schema. Não afirmar exatamente uma vez para efeitos externos sem contrato adicional.",
+  "comparisons": [
+    {
+      "entry_id": "T059",
+      "relation": "complements",
+      "reason": "Event Sourcing utiliza eventos como fonte de reconstrução."
+    },
+    {
+      "entry_id": "T241",
+      "relation": "complements",
+      "reason": "Replay consome o histórico com regras determinísticas e versionadas."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A outbox grava alteração local e evento na mesma transação; consumidores ainda precisam tratar duplicatas.",
+    "source_ids": [
+      "V3D-S018"
+    ],
+    "support": "related",
+    "caveat": "O registro proposto exige decisões próprias de ordenação, retenção e evolução de schema."
+  },
+  "advanced_qa": [
+    {
+      "question": "Todo log permite replay?",
+      "answer": "Não. Ele precisa conter os fatos necessários, sua ordem relevante e schemas interpretáveis."
+    },
+    {
+      "question": "O que torna a projeção recuperável?",
+      "answer": "Eventos preservados, cursor consistente, projetor versionado e processamento repetível com deduplicação."
+    }
+  ],
+  "source_ids": [
+    "V3D-S018"
+  ],
+  "research_note": "Contrato, teste de falha e plano de avaliação são recomendações editoriais; nenhuma implantação ou medição deste mecanismo foi executada neste pacote."
+}

@@ -1,0 +1,153 @@
+{
+  "id": "P016",
+  "novelty": "A v3 protegeu conjunto reservado e separou recuperação de resposta. Esta proposta acrescenta diagnóstico causal, avaliação de seletores e governança das versões promovidas. Nenhum benchmark reservado foi consultado para escrever estas estratégias.",
+  "deep_layers": [
+    {
+      "name": "Métricas em camadas",
+      "detail": "Avalie entrada, recuperação, contexto, geração e ação separadamente, mantendo um resultado de tarefa final. Isso permite localizar se a falha veio de documento ausente, interpretação ou execução. Uma métrica intermediária não substitui sucesso de ponta a ponta; melhoria local pode piorar custo ou qualidade global.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S002",
+        "C-S048",
+        "C-S050",
+        "V4B-S026",
+        "V3B-S020"
+      ]
+    },
+    {
+      "name": "Seleção também é sistema",
+      "detail": "Roteadores, juízes e políticas de parada precisam de avaliação própria. Meça se o conjunto contém solução correta e se o seletor a escolhe; registre abstenções e casos rejeitados. A precisão dos resultados aceitos deve ser acompanhada de cobertura e custo dos descartados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S002",
+        "C-S048",
+        "C-S050",
+        "V4B-S026",
+        "V3B-S020"
+      ]
+    },
+    {
+      "name": "Promoção reproduzível",
+      "detail": "Cada rodada registra hashes de dados, corpus, modelo e configuração, além das mudanças propostas. Mantenha desenvolvimento, calibração e aceitação separados. Depois que falhas de um conjunto reservado orientam alterações, ele passa a ser dado de desenvolvimento para versões futuras; a governança deve reconhecer essa mudança.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S002",
+        "C-S048",
+        "C-S050",
+        "V4B-S026",
+        "V3B-S020"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Escolher modelo 3–30B",
+      "scenario": "Há candidatos com custos e habilidades diferentes.",
+      "strategy": "Defina tarefas e critérios antes da comparação, use ferramentas equivalentes e avalie por categoria. Inclua casos desconhecidos, abstinência e tempo completo.",
+      "small_model_role": "Um modelo pequeno pode ser escolhido na região de competência demonstrada.",
+      "acceptance": "Qualidade suficiente, cobertura e custo por resultado correto dentro do objetivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S002",
+        "C-S048",
+        "C-S050",
+        "V4B-S026",
+        "V3B-S020"
+      ]
+    },
+    {
+      "name": "Validar otimização de runtime",
+      "scenario": "Cache ou quantização promete mais capacidade.",
+      "strategy": "Compare semântica e qualidade primeiro, depois prefill, decode, fila e memória em carga representativa. Separe efeito do algoritmo de diferenças de modelo e template.",
+      "small_model_role": "O porte orienta orçamento, mas não substitui ensaio do checkpoint real.",
+      "acceptance": "Nenhuma regressão relevante escondida por tokens por segundo ou média global.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S002",
+        "C-S048",
+        "C-S050",
+        "V4B-S026",
+        "V3B-S020"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Testes de domínio e contratos fechados ajudam a identificar onde o 3–7B é útil.",
+    "8_14b": "Para 8–14B, examine ganhos de especialização e falhas fora da distribuição.",
+    "15_30b": "Para 15–30B, inclua custo de infraestrutura e vantagem marginal frente a opções menores.",
+    "training_or_runtime_requirements": "Proposta de avaliação, não execução realizada. Requer dados, critérios, instrumentação e ambiente adequados.",
+    "do_not_use_when": "Não ajustar ranking às consultas reservadas nem alterar gabarito depois de ver falha para melhorar o score."
+  },
+  "connections": [
+    {
+      "target_id": "T198",
+      "relation": "feeds",
+      "how": "Calibração precisa de dados e métricas independentes na avaliação.",
+      "interface": "Evento de sucesso, score e divisão dos dados.",
+      "condition": "Amostra representa o caminho de uso.",
+      "acceptance": "Relatar confiabilidade e cobertura por categoria.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S002",
+        "C-S048",
+        "C-S050",
+        "V4B-S026",
+        "V3B-S020"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T203",
+      "relation": "feeds",
+      "how": "A avaliação mede roteamento completo, incluindo tentativas e escalonamento.",
+      "interface": "Decisões, contrafactuais amostrados e custos.",
+      "condition": "Comparações têm acesso equivalente a ferramentas e evidências.",
+      "acceptance": "Aceitar política pelo resultado final, não pela confiança prevista.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S002",
+        "C-S048",
+        "C-S050",
+        "V4B-S026",
+        "V3B-S020"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "P017",
+      "relation": "complements",
+      "how": "Destilação proposta usa avaliação para promover ou rejeitar aluno.",
+      "interface": "Checkpoint, dados e contrato de uso.",
+      "condition": "Teste final não participa do treino ou seleção.",
+      "acceptance": "Medir generalização e regressões depois da transferência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S002",
+        "C-S048",
+        "C-S050",
+        "V4B-S026",
+        "V3B-S020"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não transformar percentuais relativos de preferência em multiplicadores de inteligência.",
+    "Preservar resultados por caso e limitações, não somente um score composto."
+  ],
+  "frontier_comparison": "O engine proposto deve sustentar comparações delimitadas com fronteira. Um conjunto finito de tarefas não comprova supremacia universal; nenhuma medição inexistente deve ser apresentada como resultado.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q011",
+      "V4B-Q012"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3D-S002",
+    "C-S048",
+    "C-S050",
+    "V4B-S026",
+    "V3B-S020"
+  ]
+}

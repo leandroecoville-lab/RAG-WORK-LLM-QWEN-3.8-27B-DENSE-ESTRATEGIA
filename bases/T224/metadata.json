@@ -1,0 +1,35 @@
+{
+  "id": "T224",
+  "name": "Spec-Driven Loop",
+  "canonical_name": "Spec-Driven Loop",
+  "canonical_id": "T224",
+  "aliases": [
+    "spec driven development loop",
+    "ciclo orientado por especificação"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T208",
+    "T213",
+    "T217",
+    "T221"
+  ],
+  "source_ids": [
+    "V2A-S023",
+    "V2A-S021",
+    "V3C-S034",
+    "V4C-S030",
+    "V3C-S002",
+    "V4C-S009",
+    "V3C-S032",
+    "V4C-S010"
+  ],
+  "namespace": "T224",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T224",
+  "chunk_count": 9
+}

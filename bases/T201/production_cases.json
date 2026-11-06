@@ -1,0 +1,126 @@
+{
+  "coverage": {
+    "entry_id": "T201",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 0,
+    "research_cases": 1,
+    "family_or_analogy_cases": 2,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Agent Test-Time Scaling",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C019",
+      "company": "Google DeepMind",
+      "organization_class": "bigtech",
+      "system": "AlphaEvolve em infraestrutura Google",
+      "title": "Busca evolutiva com avaliadores aplicada à infraestrutura do operador",
+      "evidence_level": "production_documented",
+      "observed_use": "O operador relata heurística incorporada ao Borg e aplicações posteriores na infraestrutura, além de melhorias de algoritmos e projetos de hardware. É contado como um sistema, não como vários exemplos artificiais.",
+      "technical_mechanism": "Modelos propõem programas; avaliadores automáticos executam e pontuam candidatos; um banco evolutivo alimenta novas iterações. No caso de circuito, verificações preservaram funcionalidade antes da integração descrita.",
+      "event_date": "2025-05-14",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S022",
+        "V4B-S023"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T190",
+          "match": "exact",
+          "rationale": "Candidatos recebem avaliação e alimentam novas propostas."
+        },
+        {
+          "entry_id": "T195",
+          "match": "exact",
+          "rationale": "Execução e avaliadores de código produzem sinais verificáveis."
+        },
+        {
+          "entry_id": "T199",
+          "match": "family",
+          "rationale": "Avaliação orienta seleção ou revisão de candidatos; isso não prova aprendizagem persistente do modelo por essa avaliação."
+        },
+        {
+          "entry_id": "T201",
+          "match": "family",
+          "rationale": "Há busca entre candidatos, mas não é simplesmente best-of-N independente."
+        },
+        {
+          "entry_id": "T205",
+          "match": "family",
+          "rationale": "Há verificação de funcionalidade e desempenho, sem equivaler a qualquer receita de treinamento por recompensas."
+        },
+        {
+          "entry_id": "T217",
+          "match": "family",
+          "rationale": "O sistema modifica programas com avaliação; não demonstra todos os mecanismos de aplicação de patch."
+        },
+        {
+          "entry_id": "P016",
+          "match": "analogy",
+          "rationale": "Avaliação local pode inspirar a proposta LAI; o produto editorial não foi implantado."
+        }
+      ],
+      "small_model_transfer": "Proposta: usar um 3–30B para gerar alterações pequenas com avaliadores baratos, preservando um baseline e um orçamento de busca.",
+      "limits": "Modelos Gemini de fronteira foram usados; não demonstra a mesma capacidade com 3–30B. Uma melhoria de uma função avaliada não prova correção geral do software.",
+      "canonical_case_id": "V4B-C019",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T201",
+        "match": "family",
+        "rationale": "Há busca entre candidatos, mas não é simplesmente best-of-N independente."
+      }
+    },
+    {
+      "case_id": "V4D-C005",
+      "company": "DeepSeek-AI",
+      "system": "DeepSeek-R1-Distill 7B/8B/14B",
+      "title": "Transferência de raciocínio por destilação",
+      "evidence_level": "research_only",
+      "observed_use": "Autores disponibilizam modelos menores afinados com amostras do professor e publicam avaliações.",
+      "technical_mechanism": "SFT/destilação de respostas de um modelo maior para modelos densos menores.",
+      "event_date": "2025-01-22",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4D-S008",
+        "V4D-S010"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T177",
+          "match": "exact",
+          "rationale": "Os modelos menores foram afinados com exemplos gerados pelo professor."
+        },
+        {
+          "entry_id": "T178",
+          "match": "exact",
+          "rationale": "O projeto descreve explicitamente destilação para modelos menores."
+        },
+        {
+          "entry_id": "T201",
+          "match": "family",
+          "rationale": "Avaliação inclui diferentes regimes de amostragem; não prova política ótima de compute adaptativo em produção."
+        }
+      ],
+      "small_model_transfer": "Proposta: selecionar tarefas verificáveis, filtrar demonstrações por teste externo, isolar famílias entre treino/teste e comparar custo total incluindo o professor.",
+      "limits": "Pesquisa, não produção. Comparadores são versões históricas; 32B/70B não pertencem à faixa solicitada. Mais amostras têm custo e consenso não elimina erros correlacionados.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4D-C005",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "T201",
+        "match": "family",
+        "rationale": "Avaliação inclui diferentes regimes de amostragem; não prova política ótima de compute adaptativo em produção."
+      }
+    }
+  ]
+}

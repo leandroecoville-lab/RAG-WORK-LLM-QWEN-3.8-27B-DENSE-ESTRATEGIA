@@ -1,0 +1,120 @@
+{
+  "id": "T029",
+  "novelty": "A v3 separou consultas locais e globais. Aqui o grafo distingue camadas de evidência, hipótese e decisão para evitar propagação indevida.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Crie arestas tipadas por natureza: relação declarada, inferência extraída e hipótese analítica. Não permita que comunidades resumidas tratem todas como observações equivalentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S024",
+        "V3A-S023",
+        "V3A-S024"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Propague proveniência por caminho e limite profundidade por utilidade. Um caminho longo com cada elo plausível pode produzir conclusão que nenhuma fonte sustenta; composição exige teste próprio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S024",
+        "V3A-S023",
+        "V3A-S024"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare busca textual, grafo factual e grafo com hipóteses separadas. Meça identidade correta, suporte de caminhos e afirmações novas indevidamente apresentadas como fatos. Unidade de avaliação: subgrafo consultado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S024",
+        "V3A-S023",
+        "V3A-S024"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Dependências de produto",
+      "scenario": "Documentos descrevem componentes e responsáveis.",
+      "strategy": "Extrair relações explícitas, resolver identidade e consultar impacto por caminho. Validar cada salto antes de recomendar mudança.",
+      "small_model_role": "3–7B extrai; 15–30B explica impacto.",
+      "acceptance": "Nenhum impacto obrigatório pode depender de aresta sem fonte.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S024",
+        "V3A-S023",
+        "V3A-S024"
+      ]
+    },
+    {
+      "name": "Panorama de controvérsias",
+      "scenario": "Fontes discordam sobre relações.",
+      "strategy": "Agrupar posições por origem e gerar resumo de comunidades mantendo arestas incompatíveis separadas.",
+      "small_model_role": "8–14B resume posições locais.",
+      "acceptance": "Preservar desacordo e independência das fontes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S024",
+        "V3A-S023",
+        "V3A-S024"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extrator de relações em ontologia pequena com opção desconhecido.",
+    "8_14b": "Resumidor de comunidade já validada por identidade.",
+    "15_30b": "Leitor de caminhos e controvérsias, sem inferir causalidade por conectividade.",
+    "training_or_runtime_requirements": "Ontologia, resolução de entidades e estados de evidência; orçamento de extração e atualização pode dominar consulta.",
+    "do_not_use_when": "Relações são instáveis ou pouco confiáveis e o grafo amplifica erros de extração."
+  },
+  "connections": [
+    {
+      "target_id": "T051",
+      "relation": "complements",
+      "how": "Persistir relações com tipo epistemológico e origem.",
+      "interface": "Entidades, aresta, fonte e status de evidência.",
+      "condition": "Grafo separar inferência de observação.",
+      "acceptance": "Inserir hipótese e impedir promoção automática a fato.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S024",
+        "V3A-S023",
+        "V3A-S024"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T057",
+      "relation": "conflicts",
+      "how": "Impedir leitura causal de simples conexão.",
+      "interface": "Caminho associativo e hipótese causal separada.",
+      "condition": "Não existir identificação causal independente.",
+      "acceptance": "Testar pergunta causal e exigir pressupostos explícitos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S024",
+        "V3A-S023",
+        "V3A-S024"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não usar centralidade como medida de verdade.",
+    "Evitar contar derivados da mesma origem como corroboradores independentes."
+  ],
+  "frontier_comparison": "Comparar perguntas relacionais específicas; um grafo maior pode apenas multiplicar conexões espúrias.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q015",
+      "V4A-Q021"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S024",
+    "V3A-S023",
+    "V3A-S024"
+  ]
+}

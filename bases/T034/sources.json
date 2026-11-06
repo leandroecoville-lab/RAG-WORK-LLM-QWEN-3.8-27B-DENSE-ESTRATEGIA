@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "A-S039",
+    "title": "Markdown node parser",
+    "url": "https://developers.llamaindex.ai/python/framework-api-reference/node_parsers/markdown/",
+    "publisher": "LlamaIndex",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Segmentação por cabeçalhos com metadados de caminho estrutural.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn26view2"
+  },
+  {
+    "source_id": "A-S041",
+    "title": "Semantic splitter",
+    "url": "https://developers.llamaindex.ai/python/framework-api-reference/node_parsers/semantic_splitter/",
+    "publisher": "LlamaIndex",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Implementação de parsers semânticos e janelas de sentenças.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn31view0"
+  },
+  {
+    "source_id": "V3A-S012",
+    "title": "Dense X Retrieval: What Retrieval Granularity Should We Use?",
+    "url": "https://arxiv.org/abs/2312.06648",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-12-11",
+    "supports": "Granularidade de recuperação e proposições autossuficientes como unidades de indexação.",
+    "limitations": "Consulta de fonte primária; não houve reprodução experimental. Resultados e APIs são limitados ao trabalho ou documentação citados, consultados em 2026-11-05.",
+    "web_ref": "turn96view0"
+  },
+  {
+    "source_id": "V4A-S013",
+    "title": "How content chunking works for knowledge bases",
+    "url": "https://docs.aws.amazon.com/en_en/bedrock/latest/userguide/kb-chunking.html",
+    "publisher": "Amazon Web Services",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Chunking fixo, semântico e hierarquia filho-pai como recursos do Bedrock.",
+    "limitations": "Escopo limitado ao material aberto. Disponibilidade, resultados experimentais e implantação histórica são classes distintas; não demonstra desempenho de modelos 3–30B no ambiente do usuário.",
+    "web_ref": "turn246view2"
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "id": "T120",
+  "name": "KV Cache Routing",
+  "canonical_name": "KV Cache Routing",
+  "canonical_id": "T120",
+  "aliases": [
+    "cache-aware routing",
+    "roteamento consciente de KV"
+  ],
+  "category": "inferencia",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T082",
+    "T102",
+    "T103",
+    "T133",
+    "T171"
+  ],
+  "source_ids": [
+    "B-S032",
+    "V4B-S004",
+    "V4B-S002",
+    "V4D-S016",
+    "V4D-S020"
+  ],
+  "namespace": "T120",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T120",
+  "chunk_count": 9
+}

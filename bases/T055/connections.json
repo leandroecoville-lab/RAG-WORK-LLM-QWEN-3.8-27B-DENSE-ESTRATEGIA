@@ -1,0 +1,40 @@
+{
+  "entry_id": "T055",
+  "edges": [
+    {
+      "edge_id": "E-T055-01",
+      "from": "T055",
+      "to": "T045",
+      "relation": "requires",
+      "how": "Carregar ferramentas compatíveis com a rotina.",
+      "interface": "Capacidades, schemas e versões exigidas.",
+      "condition": "Ferramentas disponíveis no ambiente atual.",
+      "acceptance": "Substituir ferramenta por versão incompatível e exigir bloqueio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "V2A-S016"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T055-02",
+      "from": "T055",
+      "to": "T195",
+      "relation": "complements",
+      "how": "Verificar resultado por execução observável.",
+      "interface": "Passo, saída esperada e resultado real.",
+      "condition": "Teste medir propriedade relevante.",
+      "acceptance": "Detectar rotina que termina sem produzir artefato correto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "V2A-S016"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

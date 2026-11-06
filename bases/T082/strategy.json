@@ -1,0 +1,133 @@
+{
+  "id": "T082",
+  "novelty": "A v3 mediu hits por tokens e discutiu prefixos comuns. O aprofundamento passa a desenhar famílias de prompts, políticas de retenção e experimentos econômicos, mantendo separados benefício do cache, mudança editorial do prompt e qualidade da tarefa.",
+  "deep_layers": [
+    {
+      "name": "Famílias estáveis de prompts",
+      "detail": "Crie versões explícitas de um prefixo por produto, idioma e conjunto de ferramentas. Coloque conteúdo variável após a região realmente compartilhável, preservando a ordem exigida pelo modelo. Não reúna instruções incompatíveis só para aumentar hits: prefixo mais longo também ocupa contexto e pode aumentar o decode.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S004",
+        "B-S005",
+        "V4B-S001",
+        "V4B-S004",
+        "V4B-S010"
+      ]
+    },
+    {
+      "name": "Valor de retenção",
+      "detail": "Estime valor de um prefixo por custo de prefill evitado vezes probabilidade de revisita, descontando memória ocupada e pressão sobre sequências ativas. Um prefixo popular e barato de reconstruir pode merecer menos espaço que outro caro e recorrente. Atualize a estimativa por classe de tráfego e não por média única.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S004",
+        "B-S005",
+        "V4B-S001",
+        "V4B-S004",
+        "V4B-S010"
+      ]
+    },
+    {
+      "name": "Experimento sem confusão causal",
+      "detail": "Mantenha duas comparações: mesmo prompt com cache ligado/desligado e prompt reorganizado com cache equivalente. A primeira isola o mecanismo; a segunda mede mudança de instruções e posicionamento. Relate cache frio, aquecido e após invalidação, porque o resultado de uma demonstração aquecida não representa implantação recém-iniciada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S004",
+        "B-S005",
+        "V4B-S001",
+        "V4B-S004",
+        "V4B-S010"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Análise de muitos documentos",
+      "scenario": "O mesmo contrato de extração processa documentos independentes.",
+      "strategy": "Versione instruções e exemplos fixos, deixando cada documento no sufixo. Distribua chamadas considerando afinidade e fila. Invalide o prefixo quando mudar schema ou adaptador, mesmo se o texto principal continuar parecido.",
+      "small_model_role": "Um especialista 3–14B pode atender extração repetitiva com verificação de campos.",
+      "acceptance": "Aprovar pela combinação de custo por documento válido, TTFT e ausência de mistura entre clientes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S004",
+        "B-S005",
+        "V4B-S001",
+        "V4B-S004",
+        "V4B-S010"
+      ]
+    },
+    {
+      "name": "Chat com ferramentas estáveis",
+      "scenario": "As definições de ferramentas se repetem entre turnos.",
+      "strategy": "Canonize a serialização das ferramentas e evite reordenar propriedades sem necessidade. Preserve o tokenizador e template; calcule quanto do prefixo é reutilizado depois de cada resposta. Limite retenção de sessões que não retornam.",
+      "small_model_role": "Um 15–30B mantém contexto útil sem recalcular tudo a cada turno.",
+      "acceptance": "Comparar tokens reutilizados e latência nas revisitas, incluindo custo de retenção ociosa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S004",
+        "B-S005",
+        "V4B-S001",
+        "V4B-S004",
+        "V4B-S010"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, prefira prefixos curtos e frequentes; não infle instruções para criar uma economia artificial de cache.",
+    "8_14b": "Em 8–14B, organizar famílias por ferramenta e tarefa pode melhorar reutilização sem misturar contratos.",
+    "15_30b": "Em 15–30B, medir a disputa entre prefixos residentes e KV de conversas longas antes de ampliar retenção.",
+    "training_or_runtime_requirements": "É otimização runtime; cache exige identidade de tokens e condições de execução, não similaridade semântica.",
+    "do_not_use_when": "Não esperar redução de tokens lógicos na janela nem reuso automático entre workers sem suporte explícito."
+  },
+  "connections": [
+    {
+      "target_id": "T120",
+      "relation": "complements",
+      "how": "Encaminhar para um worker com prefixo compatível somente se o ganho superar espera adicional.",
+      "interface": "Hash de identidade, comprimento reutilizável e estimativa de fila.",
+      "condition": "Métricas estão atualizadas e respeitam isolamento.",
+      "acceptance": "Comparar afinidade com balanceamento de carga sob rajadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S004",
+        "B-S005",
+        "V4B-S001",
+        "V4B-S004",
+        "V4B-S010"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T088",
+      "relation": "complements",
+      "how": "Compartilhar prefixos em lotes contínuos sem bloquear admissões por cache ocioso.",
+      "interface": "Referências KV e orçamento por iteração.",
+      "condition": "Scheduler e cache contabilizam blocos compartilhados uma única vez.",
+      "acceptance": "Medir concorrência útil e verificar liberação após cancelamento.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4B-S010"
+      ],
+      "case_ids": [
+        "V4B-C001"
+      ]
+    }
+  ],
+  "failure_controls": [
+    "Separar taxa de hit de economia efetiva em tokens e tempo.",
+    "Invalidar por revisão do template e testar início frio após implantação."
+  ],
+  "frontier_comparison": "Comparar extração ou atendimento com uma fronteira sob o mesmo nível de qualidade verificável. Prefix caching pode reduzir custo da solução pequena; não recupera conhecimento ausente nem melhora automaticamente a exatidão.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q002"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S004",
+    "B-S005",
+    "V4B-S001",
+    "V4B-S004",
+    "V4B-S010"
+  ]
+}

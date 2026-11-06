@@ -1,0 +1,80 @@
+[
+  {
+    "source_id": "A-S015",
+    "title": "LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models",
+    "url": "https://aclanthology.org/2023.emnlp-main.825/",
+    "publisher": "ACL Anthology / autores",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Compressão textual com orçamento e seleção iterativa de tokens.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn20view0"
+  },
+  {
+    "source_id": "A-S018",
+    "title": "LongLLMLingua: Accelerating and Enhancing LLMs in Long Context Scenarios via Prompt Compression",
+    "url": "https://arxiv.org/abs/2310.06839",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-10-10",
+    "supports": "Compressão voltada à informação relevante em contextos longos.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn20view4"
+  },
+  {
+    "source_id": "V3A-S001",
+    "title": "LLMLingua-2: Data Distillation for Efficient and Faithful Task-Agnostic Prompt Compression",
+    "url": "https://aclanthology.org/2024.findings-acl.57/",
+    "publisher": "Autores / ACL Anthology",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Compressão extrativa treinada como classificação de tokens, com contexto bidirecional e distilação de dados.",
+    "limitations": "Consulta de fonte primária; não houve reprodução experimental. Resultados e APIs são limitados ao trabalho ou documentação citados, consultados em 2026-11-05.",
+    "web_ref": "turn81view0"
+  },
+  {
+    "source_id": "V3A-S044",
+    "title": "LLMLingua official implementation",
+    "url": "https://github.com/microsoft/LLMLingua",
+    "publisher": "Microsoft / GitHub",
+    "source_type": "official_code",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Diferenciação das variantes LLMLingua, LongLLMLingua e LLMLingua-2; opções de preservação e compressão estruturada documentadas no README.",
+    "limitations": "Fonte primária dinâmica consultada; leitura de documentação ou código sem instalação, execução ou reprodução de resultados. Branch e documentação podem evoluir; fixar revisão antes de implementar.",
+    "web_ref": "turn184view1"
+  },
+  {
+    "source_id": "V4A-S027",
+    "title": "LLMLingua Prompt Compression — Prompt flow",
+    "url": "https://microsoft.github.io/promptflow/integrations/tools/llmlingua-prompt-compression-tool.html",
+    "publisher": "Microsoft",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Integração documentada de compressor e contrato de entrada/saída; não comprova carga real.",
+    "limitations": "Não demonstra dez implantações bigtech nem desempenho de um pipeline local 3–30B.",
+    "web_ref": "turn264view1"
+  },
+  {
+    "source_id": "V4A-S028",
+    "title": "LLMLingua Series",
+    "url": "https://www.microsoft.com/en-us/research/project/llmlingua/",
+    "publisher": "Microsoft Research",
+    "source_type": "research_project",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Diferencia LLMLingua, LongLLMLingua e LLMLingua-2; página declara finalidade de demonstração de pesquisa.",
+    "limitations": "Não demonstra dez implantações bigtech nem desempenho de um pipeline local 3–30B.",
+    "web_ref": "turn264view2"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "SHA-256 elimina todos os erros de cache?",
+    "answer": "Não. Um bom hash não corrige uma chave que deixou de fora informação relevante."
+  },
+  {
+    "question": "Como tratar temperatura maior que zero?",
+    "answer": "Reutilizar fixa uma amostra anterior; documente esse comportamento ou desative cache quando diversidade for necessária."
+  },
+  {
+    "question": "SHA-256 elimina todo risco de cache incorreto?",
+    "answer": "Não. Um hash forte não corrige uma chave incompleta nem uma resposta originalmente errada; colisão de projeto costuma ser mais relevante que colisão criptográfica."
+  },
+  {
+    "question": "Cache de resposta pode repetir uma ferramenta de escrita?",
+    "answer": "Reutilizar texto não equivale a executar nem confirmar um efeito. Operações de escrita precisam de identidade e reconciliação próprias, separadas deste cache."
+  }
+]

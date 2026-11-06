@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Ordenar documentos por data de publicação já produz RAG temporal?",
+    "answer": "É apenas uma heurística de recência. Consultas temporais exigem interpretar a pergunta e verificar quais versões eram válidas no intervalo solicitado."
+  },
+  {
+    "question": "Uma correção recebida hoje deve alterar toda resposta sobre o passado?",
+    "answer": "Depende da pergunta: pode corrigir o fato historicamente válido, mas não o que o sistema sabia antes de recebê-la."
+  },
+  {
+    "question": "Uma citação correta garante resposta correta?",
+    "answer": "Não. O trecho pode existir e ainda ser mal interpretado, estar fora do corte temporal ou não sustentar a conclusão apresentada."
+  },
+  {
+    "question": "Quando não recuperar é aceitável?",
+    "answer": "Quando o contrato da tarefa dispensa evidência externa e a decisão é justificada. Uma pergunta factual atual ou histórica pode exigir busca mesmo que pareça simples."
+  }
+]

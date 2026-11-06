@@ -1,0 +1,29 @@
+{
+  "id": "R001",
+  "name": "MemGPT",
+  "canonical_name": "MemGPT: Towards LLMs as Operating Systems",
+  "canonical_id": "R001",
+  "aliases": [
+    "Memory-GPT",
+    "gerenciamento virtual de contexto"
+  ],
+  "category": "referencias",
+  "kind": "paper",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "T062",
+    "T063",
+    "T067",
+    "R002"
+  ],
+  "source_ids": [
+    "A-S009",
+    "V4A-S026"
+  ],
+  "namespace": "R001",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R001",
+  "chunk_count": 9
+}

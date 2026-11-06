@@ -1,0 +1,46 @@
+{
+  "id": "T198",
+  "technical_details": "Calibração é uma propriedade estatística de previsões e resultados em uma distribuição. Agrupar exemplos por confiança e comparar frequência de acerto revela desvios, mas a escolha dos bins pode ocultar erros locais. Uma pontuação própria, como Brier, avalia probabilidades contra eventos observados sem depender apenas do rótulo vencedor. Para respostas abertas, o evento de acerto precisa ser definido antes de produzir o número.",
+  "boundary_condition": "Calibração em um domínio não se preserva automaticamente após mudança de modelo, prompt, ferramenta ou população de consultas.",
+  "implementation_contract": {
+    "inputs": "Predições probabilísticas, critério de correção e dados de calibração separados da avaliação.",
+    "outputs": "Estimador calibrado e relatório por faixa, domínio e cobertura.",
+    "state": "Transformação aprendida, versões e distribuição de referência.",
+    "invariant": "Nenhum resultado usado para ajustar a calibração conta como evidência independente de sua qualidade final."
+  },
+  "tradeoffs": [
+    "Calibrar pode melhorar decisões sem aumentar acurácia do classificador.",
+    "Abster-se reduz cobertura e pode diminuir erro entre respostas entregues."
+  ],
+  "failure_test": "Teste proposto: manter confiança constante enquanto muda a frequência real de acerto em outro domínio. Esperar detecção de descalibração e revisão da política de decisão.",
+  "evaluation_plan": "Plano proposto: comparar probabilidades originais e calibradas em dados novos. Medir Brier, curvas de confiabilidade, acurácia e risco versus cobertura; escolher limites de abstenção conforme custo dos erros, sem limiar universal inventado.",
+  "comparisons": [
+    {
+      "entry_id": "T203",
+      "relation": "complements",
+      "reason": "Estimativas calibradas podem orientar quando encaminhar uma tarefa a outro executor."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O estudo de calibração avalia discrepâncias entre confiança e acerto e métodos de ajuste, incluindo temperature scaling.",
+    "source_ids": [
+      "C-S050"
+    ],
+    "support": "direct",
+    "caveat": "Resultados de classificação não tornam confiança verbal de uma LLM automaticamente uma probabilidade válida."
+  },
+  "advanced_qa": [
+    {
+      "question": "Confiança de 90% certifica um caso individual?",
+      "answer": "Não. O significado é frequencial em casos comparáveis, condicionado ao evento e à distribuição avaliados."
+    },
+    {
+      "question": "Aumentar temperatura sempre calibra?",
+      "answer": "Não. O parâmetro deve ser ajustado e validado; uma transformação adequada em um conjunto pode falhar sob mudança de distribuição."
+    }
+  ],
+  "source_ids": [
+    "C-S050"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

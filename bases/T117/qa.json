@@ -1,0 +1,18 @@
+[
+  {
+    "question": "É simplesmente aumentar max_model_len?",
+    "answer": "Não. Exige distribuição real de estados e operações, além de compatibilidade do modelo."
+  },
+  {
+    "question": "Uma GPU usa context parallelism entre seus agentes?",
+    "answer": "Não nesse sentido distribuído; agentes paralelos e partição de uma sequência são mecanismos distintos."
+  },
+  {
+    "question": "CP é igual a TP?",
+    "answer": "Não. CP divide posições do contexto; TP divide operações ou parâmetros dentro das camadas, podendo coexistir."
+  },
+  {
+    "question": "Mais contexto distribuído prova melhor compreensão?",
+    "answer": "Não. A capacidade de executar a sequência e a capacidade do modelo de utilizar informação distante precisam ser avaliadas separadamente."
+  }
+]

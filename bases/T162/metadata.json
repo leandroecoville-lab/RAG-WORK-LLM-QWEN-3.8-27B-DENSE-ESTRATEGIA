@@ -1,0 +1,29 @@
+{
+  "id": "T162",
+  "name": "Idempotência",
+  "canonical_name": "Idempotência",
+  "canonical_id": "T162",
+  "aliases": [
+    "idempotency"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T136",
+    "T150",
+    "T159"
+  ],
+  "source_ids": [
+    "C-S026",
+    "V3C-S025",
+    "V3C-S037",
+    "V3C-S018"
+  ],
+  "namespace": "T162",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T162",
+  "chunk_count": 9
+}

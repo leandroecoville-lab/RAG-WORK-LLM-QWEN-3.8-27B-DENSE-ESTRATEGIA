@@ -1,0 +1,36 @@
+{
+  "group": "A",
+  "status": "READY",
+  "validated_on": "2026-11-05",
+  "counts": {
+    "strategy_A.jsonl": 96,
+    "sources_A.jsonl": 27,
+    "cases_A.jsonl": 33,
+    "searches_A.jsonl": 26
+  },
+  "sha256": {
+    "strategy_A.jsonl": "3f40dff40ca6f5fab64dfec1093ddd5319fa064c545553b986a2fe030c595099",
+    "sources_A.jsonl": "316cc6f04254900142a1cbc63676db230461dbf8542a3fbb8fd66c442e35f9ec",
+    "cases_A.jsonl": "d319201a96798293c146633ce9c65cdab25adb4967e34ee8e9bdb0dc180a4e87",
+    "searches_A.jsonl": "b3bfcd6ad221298f4b8184526e99c4911b5326a7abd2184c7761ae561d72e2b1"
+  },
+  "connections": 199,
+  "content_words": 32361,
+  "content_words_range": [
+    294,
+    420
+  ],
+  "case_classes": {
+    "production_documented": 13,
+    "operational_product": 10,
+    "research_only": 10
+  },
+  "notes": [
+    "96 IDs completos; fontes, consultas e alvos resolvidos.",
+    "199 conexões são propostas de engenharia, sem alegação de integração operacional comprovada.",
+    "Boilerplate removido conforme revisão da raiz; densidade específica priorizada sobre quota de palavras.",
+    "R014 é alias editorial de R013; P usa apenas analogy nos casos.",
+    "A meta de dez casos exatos por base não foi preenchida artificialmente.",
+    "Staging A congelado após este READY."
+  ]
+}

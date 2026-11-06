@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "B-S014",
+    "title": "Optimization and Tuning",
+    "url": "https://docs.vllm.ai/en/latest/configuration/optimization/",
+    "publisher": "vLLM",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Prefill em partes, orçamento de tokens e preempção com recomputação.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn10view2"
+  },
+  {
+    "source_id": "B-S003",
+    "title": "Cache strategies",
+    "url": "https://huggingface.co/docs/transformers/main/en/kv_cache",
+    "publisher": "Hugging Face",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Reuso de estados KV; caches dinâmico, estático e quantizado; controle de past_key_values.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn25view0"
+  },
+  {
+    "source_id": "V3B-S005",
+    "title": "How caching works",
+    "url": "https://huggingface.co/docs/transformers/main/en/cache_explanation",
+    "publisher": "Hugging Face",
+    "source_type": "documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Semântica causal de reutilização KV, máscara cobrindo passado e presente, estado por camada.",
+    "limitations": "Documentação dinâmica main consultada em 2026-11-05; contrato de sessão é inferência editorial, não API documentada.",
+    "web_ref": "turn113view1"
+  },
+  {
+    "source_id": "V4B-S031",
+    "title": "HiCache in SGLang: hybrid-model caching with up to 15.5× input throughput",
+    "url": "https://www.sglang.io/blog/hicache",
+    "publisher": "SGLang",
+    "source_type": "technical_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Hierarquia GPU/CPU/armazenamento, HiRadixTree, políticas de restauração e requisitos adicionais de estado híbrido/draft.",
+    "limitations": "Resultados são benchmarks do projeto, não implantação específica de cliente; ganho publicado não transferido.",
+    "web_ref": "turn290view0"
+  }
+]

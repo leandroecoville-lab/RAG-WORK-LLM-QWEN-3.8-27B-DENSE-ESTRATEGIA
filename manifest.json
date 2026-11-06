@@ -1,0 +1,189 @@
+{
+  "package": "LAI_RAG_243_COMPLETO_v4",
+  "version": "4.0.0",
+  "language": "pt-BR",
+  "curation_date": "2026-11-05",
+  "validated_at": "2026-11-05T23:41:26.055794+00:00",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "stats": {
+    "entries": 287,
+    "chunks": 2583,
+    "qa": 1148,
+    "source_records": 449,
+    "unique_source_urls": 414,
+    "entries_by_scope": {
+      "inventario": 243,
+      "referencia": 27,
+      "proposta": 17
+    },
+    "categories": {
+      "contexto_recuperacao": 46,
+      "memoria": 32,
+      "inferencia": 54,
+      "orquestracao": 44,
+      "verificacao_treinamento": 30,
+      "continuidade_programacao": 37,
+      "referencias": 27,
+      "componentes_propostos": 17
+    },
+    "evidence_status": {
+      "supported": 207,
+      "related_support": 78,
+      "terminology_correction": 2
+    },
+    "source_verification": {
+      "opened": 444,
+      "search_result": 5
+    },
+    "canonical_ids": 279,
+    "words_editorial": 498633,
+    "words_new_layers": 291430,
+    "deepened_entries": 287,
+    "typed_relations": 485,
+    "traceable_claims": 287,
+    "proposed_experiment_protocols": 287,
+    "strategic_entries": 287,
+    "advanced_uses": 574,
+    "requested_associations": 2870,
+    "verified_strict_associations": 50,
+    "remaining_to_target": 2820,
+    "entries_target_met": 0,
+    "entries_with_strict_production": 36,
+    "unique_cases": 93,
+    "case_records": 98,
+    "cases_by_evidence_level": {
+      "production_documented": 53,
+      "operational_product": 28,
+      "research_only": 17
+    },
+    "cases_by_organization_class": {
+      "bigtech": 55,
+      "ai_lab": 12,
+      "research_group": 7,
+      "technology_operator": 24
+    },
+    "strategy_edges": 584,
+    "strategy_edges_by_stage": {
+      "engineering_proposal": 526,
+      "production_documented": 50,
+      "operational_product": 8
+    },
+    "case_entry_mappings": 409,
+    "search_queries": 105,
+    "unique_cases_by_evidence_level": {
+      "production_documented": 48,
+      "operational_product": 28,
+      "research_only": 17
+    },
+    "verified_strict_llm_associations": 34,
+    "requested_inventory_associations": 2430,
+    "verified_strict_inventory_associations": 46,
+    "inventory_entries_target_met": 0
+  },
+  "corpus_sha256": "a959686a86fae91e2f3635e8f2db3fb9f0da7bc36b8d9ab02b484d3f2f22dc8c",
+  "previous_package_sha256": "e43ce03e384df85ee8107e8a6e8cb4cb2f1d107a641d5e08ff650aa6aea6c6b8",
+  "verification": {
+    "required_gates_passed": true,
+    "unit_tests": {
+      "tests_run": 55,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": true,
+      "duration_seconds": 75.107,
+      "external_model_calls": 0,
+      "external_embedding_calls": 0,
+      "note": "Recuperação local real; clientes externos e dados do comparador simulados nos testes."
+    },
+    "structural": true,
+    "migration": true,
+    "graph_counts": true,
+    "html": true,
+    "evaluations": {
+      "historicas90_expandido": {
+        "cases": 90,
+        "hits_at_5": 87,
+        "hit_at_5": 0.9666666666666667,
+        "mrr_at_10": 0.858641975308642,
+        "names_hit_at_3": 1.0,
+        "failed_queries": [
+          "Q50",
+          "Q82",
+          "Q90"
+        ]
+      },
+      "historicas90_exato": {
+        "cases": 90,
+        "hits_at_5": 86,
+        "hit_at_5": 0.9555555555555556,
+        "mrr_at_10": 0.8223280423280424,
+        "names_hit_at_3": 1.0,
+        "failed_queries": [
+          "Q24",
+          "Q50",
+          "Q82",
+          "Q90"
+        ]
+      },
+      "reserva_v3_conhecida40_expandido": {
+        "cases": 40,
+        "hits_at_5": 37,
+        "hit_at_5": 0.925,
+        "mrr_at_10": 0.8230555555555557,
+        "names_hit_at_3": 1.0,
+        "failed_queries": [
+          "H01",
+          "H02",
+          "H05"
+        ]
+      },
+      "reserva_v3_conhecida40_exato": {
+        "cases": 40,
+        "hits_at_5": 37,
+        "hit_at_5": 0.925,
+        "mrr_at_10": 0.7814583333333334,
+        "names_hit_at_3": 1.0,
+        "failed_queries": [
+          "H01",
+          "H02",
+          "H35"
+        ]
+      }
+    }
+  },
+  "runtime": {
+    "default_retrieval": "BM25 com variantes lexicais e pontuação por entrada",
+    "default_profile": "expanded",
+    "baseline_profile": "exact",
+    "optional_retrieval": [
+      "cosine",
+      "RRF"
+    ],
+    "layers": [
+      "all",
+      "base",
+      "advanced",
+      "production",
+      "connections",
+      "new"
+    ],
+    "generated_embeddings_included": false,
+    "generation_client": "chat/completions; endpoint/modelo explícitos"
+  },
+  "not_executed": [
+    "inferencia_real_de_LLM",
+    "embeddings_reais",
+    "instalacao_na_Helena",
+    "benchmarks_de_GPU",
+    "experimentos_individuais_das_243_entradas",
+    "implementacao_dos_17_componentes_propostos",
+    "comparacao_real_com_modelo_de_fronteira"
+  ],
+  "not_claimed": [
+    "dez_casos_comprovados_para_cada_base",
+    "maior_acervo_mundial",
+    "paridade_geral_com_fronteira",
+    "ausencia_absoluta_de_erros"
+  ]
+}

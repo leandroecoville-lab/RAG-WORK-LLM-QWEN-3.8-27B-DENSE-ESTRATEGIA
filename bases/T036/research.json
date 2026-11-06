@@ -1,0 +1,51 @@
+{
+  "id": "T036",
+  "technical_details": "Uma adaptação concreta é HyDE: gerar um documento hipotético para a pergunta, codificá-lo e buscar documentos reais próximos. O texto gerado pode conter falsidades; sua função é oferecer uma representação de busca. A decisão final precisa voltar às fontes recuperadas. Preservar consulta original e expansões permite diagnosticar deriva, especialmente quando a hipótese acrescenta uma entidade ou solução que o usuário não informou.",
+  "boundary_condition": "A expansão tende a prejudicar quando a pergunta depende de identificador exato, versão específica ou exceção que o gerador substitui por uma resposta típica.",
+  "implementation_contract": {
+    "inputs": "Pergunta original, restrições obrigatórias e política de geração de consultas derivadas.",
+    "outputs": "Consultas ou hipóteses de busca e evidências reais recuperadas separadamente.",
+    "state": "Origem de cada candidato, filtros aplicados e revisão dos modelos de expansão.",
+    "invariant": "Conteúdo sintético de expansão nunca serve como prova da própria resposta."
+  },
+  "tradeoffs": [
+    "A hipótese amplia correspondência semântica, mas pode aproximar a busca de uma solução errada.",
+    "Buscar também a consulta original aumenta custo e oferece uma comparação útil contra deriva da expansão."
+  ],
+  "failure_test": "Teste proposto: formular pergunta sobre uma versão antiga enquanto a hipótese gerada descreve a atual. Os filtros devem manter a versão solicitada; ausência de evidência deve continuar explícita.",
+  "evaluation_plan": "Avaliação proposta: comparar consulta original, reescrita e HyDE com mesmo orçamento de candidatos. Medir recall elegível, deriva de entidades, preservação de restrições e custo total; inspecionar respostas corretas por acaso apoiadas em documentação incompatível.",
+  "comparisons": [
+    {
+      "entry_id": "T037",
+      "relation": "distinct_from",
+      "reason": "Adaptar a busca muda candidatos; comprimir para a pergunta seleciona informação depois da recuperação."
+    },
+    {
+      "entry_id": "T025",
+      "relation": "complements",
+      "reason": "Um roteador pode decidir quando a expansão compensa, sem alterar filtros obrigatórios."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "HyDE utiliza um documento hipotético gerado para construir uma representação de consulta e recuperar documentos reais.",
+    "source_ids": [
+      "V3A-S028"
+    ],
+    "support": "direct",
+    "caveat": "A codificação da hipótese não oferece garantia de remover toda informação falsa ou recuperar suporte suficiente."
+  },
+  "advanced_qa": [
+    {
+      "question": "A hipótese deve aparecer na resposta?",
+      "answer": "Somente se identificada como hipótese e útil ao raciocínio comunicado. Não deve ser citada como descoberta documental."
+    },
+    {
+      "question": "Uma expansão pode adicionar filtros?",
+      "answer": "Pode propor filtros opcionais, mas não trocar restrições explícitas. Identidade, período e autorização devem ser controlados fora da geração livre."
+    }
+  ],
+  "source_ids": [
+    "V3A-S028"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

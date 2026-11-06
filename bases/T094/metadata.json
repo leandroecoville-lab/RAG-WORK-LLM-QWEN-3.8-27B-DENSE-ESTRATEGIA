@@ -1,0 +1,35 @@
+{
+  "id": "T094",
+  "name": "Chunked Prefill",
+  "canonical_name": "Chunked Prefill",
+  "canonical_id": "T094",
+  "aliases": [
+    "prefill em partes"
+  ],
+  "category": "inferencia",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T088",
+    "T102",
+    "T121"
+  ],
+  "source_ids": [
+    "B-S014",
+    "V3B-S004",
+    "V3B-S007",
+    "V4B-S002",
+    "V4B-S014",
+    "V4D-S003",
+    "V4D-S004",
+    "V4D-S009",
+    "V4D-S016",
+    "V4D-S020"
+  ],
+  "namespace": "T094",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T094",
+  "chunk_count": 9
+}

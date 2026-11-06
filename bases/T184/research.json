@@ -1,0 +1,46 @@
+{
+  "id": "T184",
+  "technical_details": "Parâmetros ativos por token e parâmetros totais medem custos distintos. Especialistas não selecionados podem continuar ocupando memória, enquanto dispatch e combinação geram comunicação. No Switch, a capacidade de cada especialista depende dos tokens do lote, número de especialistas e fator de capacidade; roteamento desigual pode excedê-la. A política para excedentes integra a função do modelo e precisa ser explicitada.",
+  "boundary_condition": "Poucos especialistas ativos não garantem baixa latência quando carga desigual ou tráfego entre dispositivos domina a execução.",
+  "implementation_contract": {
+    "inputs": "Representações, escores do roteador, capacidade dos especialistas e regra de overflow.",
+    "outputs": "Saídas combinadas e métricas de distribuição e tokens excedentes.",
+    "state": "Pesos totais, filas por especialista e mapas de dispatch.",
+    "invariant": "Cada token segue a política declarada de seleção, combinação e tratamento de capacidade."
+  },
+  "tradeoffs": [
+    "Capacidade maior reduz overflow e aumenta padding ou reservas.",
+    "Balanceamento forte distribui carga e pode competir com a especialização aprendida."
+  ],
+  "failure_test": "Teste proposto: construir entradas que concentram escolhas em um especialista e variar tamanho do lote. Esperar contagem explícita de overflow e resultado coerente com a política prevista.",
+  "evaluation_plan": "Plano proposto: comparar cargas uniformes e concentradas com mesmo modelo. Medir memória total, tokens ativos, distribuição, comunicação e qualidade; comparações com modelos densos devem declarar orçamento e treinamento, não apenas parâmetros ativos.",
+  "comparisons": [
+    {
+      "entry_id": "T203",
+      "relation": "distinct_from",
+      "reason": "Roteamento entre modelos externos decide qual sistema responderá; MoE roteia representações dentro de uma arquitetura treinada."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "No Switch Transformer, capacidade limitada pode provocar excedentes; aumentar o fator de capacidade reduz esse risco com custos adicionais.",
+    "source_ids": [
+      "V3B-S016"
+    ],
+    "support": "direct",
+    "caveat": "A política particular do Switch não é obrigatória em todos os modelos MoE."
+  },
+  "advanced_qa": [
+    {
+      "question": "Especialista corresponde a um assunto nomeado?",
+      "answer": "Não necessariamente. Especialização emerge do treino e precisa ser investigada; IDs de especialistas não garantem domínio semântico."
+    },
+    {
+      "question": "Pode carregar somente os ativos de cada token sem custo?",
+      "answer": "Não. Trazer pesos sob demanda introduz transporte e sincronização que precisam entrar na avaliação de latência."
+    }
+  ],
+  "source_ids": [
+    "V3B-S016"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

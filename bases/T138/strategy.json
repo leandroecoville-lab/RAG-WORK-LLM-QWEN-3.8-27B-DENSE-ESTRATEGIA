@@ -1,0 +1,114 @@
+{
+  "id": "T138",
+  "novelty": "A v3 examinou granularidade e amostragem do circuito. A nova camada define circuitos por capacidade observável, interações com degradação e separação entre falha operacional e reprovação semântica.",
+  "deep_layers": [
+    {
+      "name": "Dois painéis de falha",
+      "detail": "Mantenha disponibilidade e qualidade em métricas distintas. Erros de transporte podem justificar abrir circuito; respostas incorretas precisam de avaliação por domínio e versão. Misturar ambos no mesmo contador impede saber se a rota está fora do ar ou apenas inadequada para uma classe difícil de consultas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S026",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Circuito com estado durável limitado",
+      "detail": "Persistir a decisão de bloqueio ajuda após restart, mas copiar uma janela antiga cegamente pode bloquear dependência já recuperada. Guarde tempo, versão da política e motivo; ao restaurar, reavalie a validade da observação e coordene sondas sem permitir que cada réplica faça sua própria avalanche.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S026",
+        "V3C-S028"
+      ]
+    },
+    {
+      "name": "Recuperação sob demanda real",
+      "detail": "Uma sonda barata de saúde não representa necessariamente uma operação grande. Defina classes representativas para testar autenticação, contrato e capacidade, começando com chamadas sem efeitos. Retorno gradual deve aumentar carga apenas após resultados coerentes, com mecanismo para voltar a bloquear quando a recuperação não sustenta tráfego.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S026",
+        "V3D-S017"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Ferramenta parcialmente indisponível",
+      "scenario": "Busca funciona, mas escrita no mesmo serviço falha.",
+      "strategy": "Abra circuito apenas para a operação afetada, conservando consultas elegíveis. Marque ações pendentes e escolha se o fluxo pode produzir uma preparação útil sem afirmar que a escrita ocorreu.",
+      "small_model_role": "3–14B adapta a apresentação ao estado fornecido; não decide abrir ou fechar o circuito.",
+      "acceptance": "Proposta: falhar somente escrita e conferir que leituras continuam e nenhum efeito é declarado concluído sem recibo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S026",
+        "C-S026"
+      ]
+    },
+    {
+      "name": "Endpoint de inferência oscilante",
+      "scenario": "Uma revisão de servidor produz timeouts em contextos longos.",
+      "strategy": "Segmente telemetria por revisão e classe de entrada; reduza tráfego da combinação problemática e preserve o caminho estável. Antes de reabilitar, execute sondas representativas sem alterar a identidade de tarefas pendentes.",
+      "small_model_role": "15–30B pode servir como rota alternativa apenas para requisitos comprovadamente compatíveis.",
+      "acceptance": "Proposta: medir oscilações, tarefas preservadas e carga de sondagem, incluindo restart simultâneo de controladores.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014",
+        "V3C-S026"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: respostas de contingência e extração local durante bloqueio de dependências externas.",
+    "8_14b": "Proposta: continuar ramos independentes e preparar ações pendentes para confirmação posterior.",
+    "15_30b": "Proposta: substituir algumas inferências rejeitadas, respeitando capacidade e contexto do endpoint local.",
+    "training_or_runtime_requirements": "O estado do circuito pertence ao runtime; são necessários relógios, contadores e propagação da decisão entre réplicas.",
+    "do_not_use_when": "Não abrir circuito global por poucas respostas difíceis ou por erros permanentes dos argumentos do usuário."
+  },
+  "connections": [
+    {
+      "target_id": "T165",
+      "relation": "complements",
+      "how": "O retorno controlado usa sondas e admissão gradual quando a política inclui estado half-open.",
+      "interface": "Época do circuito, quota de sondas e resultado classificado.",
+      "condition": "Existe observação capaz de representar a dependência.",
+      "acceptance": "Testar competição entre réplicas e impedir fechamento por resposta de época antiga.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S026"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T175",
+      "relation": "feeds",
+      "how": "O circuito informa indisponibilidade operacional ao seletor de alternativas.",
+      "interface": "Rota bloqueada, causa, escopo e próxima reavaliação.",
+      "condition": "Fallback possui capacidade independente e requisitos preservados.",
+      "acceptance": "Forçar falha comum a todas as rotas e exigir encerramento, não circulação infinita.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S009"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Rejeitar respostas tardias que tentem fechar uma época já substituída.",
+    "Não reutilizar sondas com efeitos de negócio irreversíveis."
+  ],
+  "frontier_comparison": "Compare proteção operacional e conclusão correta usando servidores locais e de fronteira sujeitos às mesmas falhas. Circuit breaker não eleva competência cognitiva do modelo.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q001",
+      "V4C-Q004"
+    ],
+    "scope_note": "Fontes fundamentam proteção e sondagem. Casos de quota de retry não foram apresentados como prova de circuit breaker implantado."
+  },
+  "source_ids": [
+    "V3C-S026",
+    "V4C-S014",
+    "V3C-S028",
+    "V3D-S017",
+    "C-S026",
+    "V3C-S009"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "T095",
+  "name": "Sliding Window Attention",
+  "canonical_name": "Sliding Window Attention",
+  "canonical_id": "T095",
+  "aliases": [
+    "atenção de janela deslizante"
+  ],
+  "category": "inferencia",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T003",
+    "T096",
+    "T109",
+    "T110"
+  ],
+  "source_ids": [
+    "B-S015",
+    "B-S003",
+    "V3B-S007",
+    "V4B-S017",
+    "V4D-S002"
+  ],
+  "namespace": "T095",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T095",
+  "chunk_count": 9
+}

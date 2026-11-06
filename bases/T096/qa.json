@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Sparse Attention é sinônimo de FlashAttention?",
+    "answer": "Não. A primeira reduz conectividade; a versão densa de FlashAttention reorganiza a mesma atenção."
+  },
+  {
+    "question": "Menos FLOPs garante menor latência?",
+    "answer": "Não. Acesso irregular, seleção e overhead podem anular a economia."
+  },
+  {
+    "question": "Muitos pesos próximos de zero bastam para acelerar?",
+    "answer": "Não se o kernel ainda calcula todos os scores e executa a mesma redução densa."
+  },
+  {
+    "question": "O resultado esparso pode ser exato?",
+    "answer": "Sim em relação à máscara declarada; isso não o torna idêntico à atenção original sem essa máscara."
+  }
+]

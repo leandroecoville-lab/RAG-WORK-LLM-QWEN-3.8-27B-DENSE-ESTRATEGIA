@@ -1,0 +1,121 @@
+{
+  "id": "T037",
+  "novelty": "A v3 abordou utilidade e pontes de evidência. Aqui compressão por consulta produz pacotes diferentes para resposta e verificação.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "O leitor precisa de suporte suficiente; o verificador precisa também de contexto que possa desmentir a resposta. Usar um único recorte altamente favorável para ambos enfraquece auditoria.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S003",
+        "A-S018",
+        "V4A-S009"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Preserve identificadores e condições em faixa protegida, compactando explicações periféricas. A seleção deve poder retornar vazio sem obrigar o leitor a preencher uma resposta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S003",
+        "A-S018",
+        "V4A-S009"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare pacote único e pacote de verificação expandido. Meça respostas sustentadas, falsos aceites do verificador e custo adicional; avaliar perguntas cuja exceção fica fora da frase mais semelhante. Unidade de avaliação: consulta e documento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S003",
+        "A-S018",
+        "V4A-S009"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Resposta factual curta",
+      "scenario": "Documento longo contém um número condicionado.",
+      "strategy": "Extrair número, unidade, população e período; manter parágrafo adjacente para verificar ressalvas.",
+      "small_model_role": "3–7B lê campos; 8–14B verifica escopo.",
+      "acceptance": "Nenhum valor pode ser citado sem seus qualificadores relevantes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S003",
+        "A-S018",
+        "V4A-S009"
+      ]
+    },
+    {
+      "name": "Comparação de argumentos",
+      "scenario": "Há evidências dos dois lados.",
+      "strategy": "Produzir recortes separados de apoio e oposição, com ligação entre eles; não reduzir tudo a conclusão única.",
+      "small_model_role": "15–30B integra posições.",
+      "acceptance": "A síntese deve preservar objeção material presente na fonte.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S003",
+        "A-S018",
+        "V4A-S009"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extrator de spans diretamente ligados a campos da pergunta.",
+    "8_14b": "Compressor que preserva relações e exceções em poucos documentos.",
+    "15_30b": "Sintetizador de argumentos com pacote de auditoria separado.",
+    "training_or_runtime_requirements": "Consulta estável, alinhamento com origem e medição do par compressor-leitor; treinamento pode ser necessário para compressão abstrativa.",
+    "do_not_use_when": "Pergunta muda continuamente ou a seleção esconde contradições indispensáveis."
+  },
+  "connections": [
+    {
+      "target_id": "T200",
+      "relation": "feeds",
+      "how": "Entregar ao verificador contexto ampliado e independente.",
+      "interface": "Resposta candidata, spans e vizinhança de fonte.",
+      "condition": "Verificador não ficar limitado ao recorte favorável.",
+      "acceptance": "Incluir exceção fora do span selecionado e exigir detecção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S003",
+        "A-S018",
+        "V4A-S009"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T015",
+      "relation": "requires",
+      "how": "Manter acesso ao trecho integral.",
+      "interface": "Documento, revisão, offsets e tipo de transformação.",
+      "condition": "Referência permitir conferir paráfrases.",
+      "acceptance": "Abrir origem quando qualificador não estiver preservado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S003",
+        "A-S018",
+        "V4A-S009"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não reutilizar compressão de pergunta diferente.",
+    "Distinguir vazio por irrelevância de falha do compressor."
+  ],
+  "frontier_comparison": "Comparar precisão de qualificadores; leitor de fronteira pode compensar lacunas que 3–7B não consegue detectar.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q003",
+      "V4A-Q017",
+      "V4A-Q024"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S003",
+    "A-S018",
+    "V4A-S009"
+  ]
+}

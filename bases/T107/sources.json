@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "B-S023",
+    "title": "The Roofline Model: Visualizing and Optimizing Performance",
+    "url": "https://amcr.lbl.gov/departments/computer-science-department/ppan/roofline-performance-model/",
+    "publisher": "Lawrence Berkeley National Laboratory",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Limites de desempenho pela intensidade aritmética, banda de memória e capacidade de cálculo.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn27view2"
+  },
+  {
+    "source_id": "V3B-S012",
+    "title": "Nsight Compute Profiling Guide",
+    "url": "https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html",
+    "publisher": "NVIDIA",
+    "source_type": "documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Roofline, intensidade aritmética, níveis de memória e perturbações causadas por profiling/replay.",
+    "limitations": "Documentação dinâmica consultada; fórmulas de planejamento nas fichas são modelos simplificados, não medições locais.",
+    "web_ref": "turn131view6"
+  },
+  {
+    "source_id": "V4B-S003",
+    "title": "Scaling LLM Inference: Innovations in Tensor Parallelism, Context Parallelism, and Expert Parallelism",
+    "url": "https://engineering.fb.com/2025/10/17/ai-research/scaling-llm-inference-innovations-tensor-parallelism-context-parallelism-expert-parallelism/",
+    "publisher": "Meta Engineering",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-10-17",
+    "supports": "Técnicas implementadas para inferência de aplicações Meta AI; separação de métricas de prefill e decode e paralelismos.",
+    "limitations": "Escala e interconexão da Meta não representam servidor do usuário; não confirma cada técnica em todo modelo.",
+    "web_ref": "turn205view1"
+  }
+]

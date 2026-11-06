@@ -1,0 +1,119 @@
+{
+  "id": "T188",
+  "novelty": "A v3 definiu equivalência e erros de maioria. Esta camada analisa orçamento adaptativo de amostragem, dependência entre respostas e critérios de parada que não fabricam certeza.",
+  "deep_layers": [
+    {
+      "name": "Amostras informativas",
+      "detail": "Temperatura mais alta pode aumentar diversidade e também produzir saídas inválidas. Meça quantas amostras trazem soluções distintas e corretas, não apenas variação de redação. Se o modelo repete o mesmo erro estrutural, aumentar N pode estabilizar uma resposta errada com aparente confiança.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S042",
+        "V3B-S020",
+        "V3B-S019"
+      ]
+    },
+    {
+      "name": "Parada adaptativa",
+      "detail": "Interromper cedo quando uma resposta lidera reduz custo, mas muda a distribuição de casos que recebem mais computação. Avalie a política inteira num conjunto separado, incluindo casos em que a liderança inicial estava errada. Uma margem de votos escolhida a olho não é uma garantia estatística universal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S042",
+        "V3B-S020",
+        "V3B-S019"
+      ]
+    },
+    {
+      "name": "Resposta e raciocínio",
+      "detail": "O agrupamento deve priorizar o resultado verificável, preservando detalhes relevantes como unidade e condições. Não é necessário tratar explicações longas como prova de raciocínio correto. Quando existe um executor ou cálculo independente, use-o para distinguir candidatos que parecem diferentes mas representam o mesmo resultado válido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S042",
+        "V3B-S020",
+        "V3B-S019"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Problemas com resposta verificável",
+      "scenario": "Uma tarefa admite número, classe ou solução curta.",
+      "strategy": "Amostre com orçamento limitado, normalize respostas e valide restrições. Compare maioria com seleção por verificador para saber qual mecanismo realmente agrega valor.",
+      "small_model_role": "Um 3–7B pode melhorar em problemas que já resolve em parte das tentativas.",
+      "acceptance": "Medir probabilidade de incluir e selecionar a resposta correta separadamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S042",
+        "V3B-S020",
+        "V3B-S019"
+      ]
+    },
+    {
+      "name": "Decisão com custo variável",
+      "scenario": "Casos fáceis são frequentes e difíceis são raros.",
+      "strategy": "Use uma primeira amostra e sinais calibrados para decidir se ampliar o conjunto. Se faltar evidência, busque-a em vez de repetir geração.",
+      "small_model_role": "Um 8–14B pode gastar computação adicional apenas em situações justificadas.",
+      "acceptance": "Comparar política adaptativa com N fixo sob o mesmo orçamento médio e prazo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S042",
+        "V3B-S020",
+        "V3B-S019"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Amostragem ajuda apenas se existe massa de probabilidade em soluções corretas.",
+    "8_14b": "Teste tarefas distintas; uma política útil em matemática pode não ajudar extração factual.",
+    "15_30b": "Um 15–30B pode precisar de menos amostras, mas isso deve ser medido por tarefa.",
+    "training_or_runtime_requirements": "Runtime de amostragem e agregação; não é treinamento. Normalização e política de parada fazem parte do sistema.",
+    "do_not_use_when": "Não apresentar consistência como calibração nem supor independência porque as seeds diferem."
+  },
+  "connections": [
+    {
+      "target_id": "T189",
+      "relation": "alternative",
+      "how": "Um verificador pode selecionar candidatos quando frequência não corresponde a correção.",
+      "interface": "Conjunto de respostas e evidências.",
+      "condition": "Critério externo suficientemente informativo.",
+      "acceptance": "Comparar escolha por maioria e por verificação no mesmo conjunto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S042",
+        "V3B-S020",
+        "V3B-S019"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T202",
+      "relation": "complements",
+      "how": "Discordância pode acionar aquisição de informação, não apenas mais amostras.",
+      "interface": "Tipos de divergência e lacunas identificadas.",
+      "condition": "A ação adicional reduz uma incerteza relevante.",
+      "acceptance": "Medir se a observação muda a decisão corretamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S042",
+        "V3B-S020",
+        "V3B-S019"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Guardar respostas inválidas no denominador do custo, sem contá-las como votos úteis.",
+    "Separar amostras de desenvolvimento das usadas para avaliar a regra de parada."
+  ],
+  "frontier_comparison": "Compare sucesso e custo frente a fronteira sob orçamento total explícito. Self-consistency pode melhorar tarefas específicas, mas não cria conhecimento que todas as amostras desconhecem.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q011"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "C-S042",
+    "V3B-S020",
+    "V3B-S019"
+  ]
+}

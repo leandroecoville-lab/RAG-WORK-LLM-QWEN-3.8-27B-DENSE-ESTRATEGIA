@@ -1,0 +1,111 @@
+{
+  "id": "T112",
+  "novelty": "A v3 descreveu compatibilidade de índice e cross-attention. O aprofundamento separa atualizações de conhecimento, atualizações da arquitetura e requisitos de avaliação que detectam dependência indevida do banco recuperado.",
+  "deep_layers": [
+    {
+      "name": "Conhecimento versionado",
+      "detail": "Mudar o banco externo pode modificar respostas sem mudar pesos. Registre a versão do índice junto à versão do modelo e preserve snapshots para reproduzir erros. Uma retirada de documento precisa impedir sua recuperação futura; a presença de informação semelhante nos pesos é outro problema, não resolvido pela remoção do índice.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S026",
+        "V4B-S020"
+      ]
+    },
+    {
+      "name": "Contaminação de avaliação",
+      "detail": "Recuperação sobre corpus que contém respostas de teste pode inflar resultados sem demonstrar generalização. Deduplicate exemplos e vizinhos próximos por origem, não só por igualdade literal. Registre quais trechos foram recuperados e diferencie conhecimento disponível legitimamente de vazamento do conjunto usado para medir capacidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S026",
+        "V4B-S020"
+      ]
+    },
+    {
+      "name": "Alternativa externa",
+      "detail": "Antes de treinar atenção com recuperação, compare um RAG textual no checkpoint existente. A arquitetura integrada pode oferecer vantagens específicas, mas exige acoplamento de codificador, treino e runtime. A decisão deve considerar atualização do acervo, custo de manutenção e possibilidade de inspecionar evidências, além da métrica principal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S026",
+        "V4B-S020"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Acervo técnico mutável",
+      "scenario": "Manuais mudam com frequência e o modelo precisa consultar detalhes.",
+      "strategy": "Construa primeiro uma referência com recuperação textual, meça falhas e só investigue integração arquitetural quando houver hipótese clara sobre a limitação encontrada.",
+      "small_model_role": "Um 3–7B pode executar o baseline de domínio; não se presume que suporte RETRO.",
+      "acceptance": "Comparar atualização de fatos, latência de busca e qualidade em versões históricas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S026",
+        "V4B-S020"
+      ]
+    },
+    {
+      "name": "Pesquisa de modelo especializado",
+      "scenario": "Há orçamento para treinar uma arquitetura que consome vizinhos.",
+      "strategy": "Controle corpus, codificador e frequência de recuperação. Faça ablação sem vizinhos, com vizinhos relevantes e com vizinhos errados para medir dependência.",
+      "small_model_role": "Um 8–14B pode ser objeto de pesquisa controlada; porte isolado não define custo do treinamento.",
+      "acceptance": "A melhora deve sobreviver à remoção de duplicatas e a mudanças de distribuição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S026",
+        "V4B-S020"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "RAG textual costuma ser uma hipótese inicial operacional mais simples; medir antes de redesenhar o modelo.",
+    "8_14b": "Arquiteturas de recuperação podem ser estudadas com treino específico e corpus governado.",
+    "15_30b": "O custo do codificador e de buscas repetidas pode dominar mesmo quando o gerador é maior.",
+    "training_or_runtime_requirements": "RETRO exige pesos e runtime específicos; Qwen ou outro decoder convencional não recebe essa arquitetura por configuração.",
+    "do_not_use_when": "Não apresentar cross-attention de recuperação como funcionalidade genérica de qualquer endpoint."
+  },
+  "connections": [
+    {
+      "target_id": "T009",
+      "relation": "alternative",
+      "how": "Comparar recuperação textual e integração arquitetural sob o mesmo corpus.",
+      "interface": "Consultas, evidências e versões do índice.",
+      "condition": "Protocolos de teste evitam vazamento e igualam acesso a conhecimento.",
+      "acceptance": "Medir resposta correta com evidência e custo de atualizar o acervo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S026",
+        "V4B-S020"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T177",
+      "relation": "requires",
+      "how": "Arquitetura integrada precisa aprender a consumir os estados externos.",
+      "interface": "Pesos do codificador, módulos de atenção e dados de treino.",
+      "condition": "Objetivo e entrada refletem uso posterior.",
+      "acceptance": "Ablacionar recuperação e verificar comportamento com ausência de vizinhos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S026",
+        "V4B-S020"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir acesso ao documento correto com uso correto da informação.",
+    "Manter logs de proveniência sem expor conteúdo protegido a usuários não autorizados."
+  ],
+  "frontier_comparison": "A comparação deve igualar acesso ao acervo e considerar atualizações. Um modelo especializado pode vencer numa coleção específica sem possuir conhecimento ou capacidade geral equivalentes aos de fronteira.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q005"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S026",
+    "V4B-S020"
+  ]
+}

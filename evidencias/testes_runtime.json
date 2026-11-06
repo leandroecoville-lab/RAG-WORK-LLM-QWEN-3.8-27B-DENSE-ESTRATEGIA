@@ -1,0 +1,11 @@
+{
+  "tests_run": 55,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "passed": true,
+  "duration_seconds": 75.107,
+  "external_model_calls": 0,
+  "external_embedding_calls": 0,
+  "note": "Recuperação local real; clientes externos e dados do comparador simulados nos testes."
+}

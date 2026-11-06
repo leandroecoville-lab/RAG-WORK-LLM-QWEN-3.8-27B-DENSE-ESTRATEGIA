@@ -1,0 +1,52 @@
+{
+  "id": "T152",
+  "technical_details": "O orçamento deve distinguir ocupação da janela e consumo acumulado da missão. Um prefixo reutilizado pode continuar ocupando contexto mesmo quando seu custo computacional ou faturado diminui. Resultados de ferramentas ainda não recebidos precisam de reserva ou estratégia de truncamento controlado. A contagem antecipada inclui template, definições de ferramentas e multimodalidade, e continua sujeita às particularidades do backend.",
+  "boundary_condition": "Uma soma baseada apenas nos textos visíveis não protege o limite quando mensagens estruturadas acrescentam tokens ou quando a resposta esperada cresce.",
+  "implementation_contract": {
+    "inputs": "Capacidade do modelo, entrada montada, reservas de saída e resultados esperados.",
+    "outputs": "Cotas por bloco, margem disponível e decisão de redução ou divisão.",
+    "state": "Estimativa inicial, consumo observado, reservas e orçamento acumulado.",
+    "invariant": "Economia por cache não é tratada automaticamente como aumento da janela física."
+  },
+  "tradeoffs": [
+    "Reservas generosas evitam estouro e podem excluir evidência útil.",
+    "Redistribuição dinâmica usa melhor a janela e exige recontagem após mudanças relevantes."
+  ],
+  "failure_test": "Teste proposto: adicionar uma ferramenta com schema longo e receber resultado maior que o previsto; exigir recontagem e política explícita de preservação dos dados necessários.",
+  "evaluation_plan": "Comparar cotas fixas e reservas adaptadas ao histórico de tamanho das ferramentas. Fixar tarefas e modelos. Medir estouro, qualidade de evidência, tokens descartados e custo acumulado. Ajustar a margem à variabilidade observada sem percentual universal.",
+  "comparisons": [
+    {
+      "entry_id": "T168",
+      "relation": "complements",
+      "reason": "Limites suave e rígido definem ações quando o orçamento se aproxima das fronteiras."
+    },
+    {
+      "entry_id": "T176",
+      "relation": "complements",
+      "reason": "O plano estima demandas futuras que precisam de reserva."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A contagem de tokens da Anthropic aceita mensagens estruturadas, ferramentas e entradas multimodais.",
+    "source_ids": [
+      "V3C-S022"
+    ],
+    "support": "direct",
+    "caveat": "O endpoint fornece estimativa específica do fornecedor e não conta por si todo o custo futuro da missão."
+  },
+  "advanced_qa": [
+    {
+      "question": "Tokens de prefixo em cache deixam de ocupar contexto?",
+      "answer": "Não necessariamente. Reutilização computacional e capacidade lógica da janela são dimensões distintas."
+    },
+    {
+      "question": "Por que reservar espaço para ferramentas futuras?",
+      "answer": "Porque a chamada pode caber e seu resultado não; sem plano de ingestão, a observação necessária pode ser perdida."
+    }
+  ],
+  "source_ids": [
+    "V3C-S022",
+    "V3C-S015"
+  ],
+  "research_note": "Detalhamento e avaliação propostos; a fonte apoia o mecanismo, sem comprovar implementação LAI."
+}

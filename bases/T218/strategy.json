@@ -1,0 +1,117 @@
+{
+  "id": "T218",
+  "novelty": "A v3 combinava assinatura de ações e progresso de domínio. A ampliação distingue repetição produtiva de repetição sem aprendizado e define intervenções graduais com critérios para terminar.",
+  "deep_layers": [
+    {
+      "name": "Assinatura semântica",
+      "detail": "Normalize ferramenta, argumentos relevantes, revisão de entrada e classe do resultado. Trocar a ordem de campos ou reformular a explicação não torna a ação nova. Ao mesmo tempo, consultar o mesmo ID depois de uma mudança de estado pode ser legítimo. A assinatura precisa incluir o que poderia alterar a conclusão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S006",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Progresso verificável",
+      "detail": "Acompanhe redução de pendências, novas evidências, hipóteses eliminadas ou artefatos aceitos. Aumento de texto e número de ferramentas não demonstram avanço. Uma ação sem resultado pode ser justificável uma vez para testar hipótese; repetição exige explicar qual variável mudou ou qual evento externo está sendo aguardado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S032",
+        "V4C-S031"
+      ]
+    },
+    {
+      "name": "Escada de intervenção",
+      "detail": "Primeiro sinalize o padrão, depois exija hipótese alternativa ou nova observação e por fim suspenda a etapa. A intervenção também consome orçamento; não crie um loop de críticos comentando a estagnação sem alterar a execução. Encerramento deve preservar o último estado válido e um impedimento específico para retomada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S006"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Reparo preso em teste",
+      "scenario": "O agente alterna duas alterações que produzem o mesmo erro.",
+      "strategy": "Compare hashes de diffs e assinatura da falha. Ao detectar oscilação, recupere requisito e contexto omitido, bloqueie temporariamente as duas propostas equivalentes e peça teste discriminante. Se não houver evidência nova dentro do orçamento, encaminhe a exceção com histórico mínimo.",
+      "small_model_role": "3–7B gera patch local; 8–14B classifica ciclo; 15–30B revisa premissa.",
+      "acceptance": "Proposta: reduzir tentativas inúteis sem interromper reparos que apresentam progresso objetivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009",
+        "V3C-S032"
+      ]
+    },
+    {
+      "name": "Polling prolongado",
+      "scenario": "Uma tarefa remota demora e o agente consulta repetidamente seu estado.",
+      "strategy": "Delegue polling mecânico ao runtime com intervalo e deadline. A repetição é válida enquanto houver contrato de espera e sinais externos; não invoque a LLM a cada estado idêntico. Se o prazo exceder o normal, gere diagnóstico com idade e último progresso confirmado.",
+      "small_model_role": "8–14B recebe somente transições relevantes; o temporizador não depende do modelo.",
+      "acceptance": "Proposta: menos chamadas de modelo e detecção de ausência de progresso sem falsos positivos por tarefa lenta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014",
+        "V3C-S023"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Evitar delegar loops abertos; receber ações delimitadas e retornar estados tipados.",
+    "8_14b": "Classificar repetições e propor uma observação que distinga hipóteses.",
+    "15_30b": "Reformular etapa ou plano quando o padrão indica premissa errada, sob orçamento remanescente.",
+    "training_or_runtime_requirements": "Registro de assinaturas, métricas de domínio e distinção entre espera externa e repetição cognitiva.",
+    "do_not_use_when": "Não usar somente limite de passos ou texto repetido como prova de estagnação."
+  },
+  "connections": [
+    {
+      "target_id": "T209",
+      "relation": "complements",
+      "how": "Transformar padrão de falha em hipótese procedimental testável e contextualizada.",
+      "interface": "Tentativas, feedback e variável proposta para mudança.",
+      "condition": "A reflexão recebe evidência suficiente de causa.",
+      "acceptance": "Nova tentativa altera fator relevante, sem repetir apenas a explicação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S029"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T219",
+      "relation": "complements",
+      "how": "O limite estrutural encerra consumo máximo enquanto o detector busca parar ciclos antes dele.",
+      "interface": "Contadores por unidade e sinal de progresso.",
+      "condition": "Teto não se reinicia após intervenção ou delegação.",
+      "acceptance": "Ciclo termina dentro do orçamento e tarefa lenta válida não é confundida com recursão excessiva.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S006"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Mascarar observações antigas pode esconder que uma tentativa já falhou.",
+    "Uma mensagem de progresso sem mudança de estado não deve reiniciar o watchdog cognitivo."
+  ],
+  "frontier_comparison": "Compare eficiência e falsos encerramentos em tarefas que contêm tanto polling legítimo quanto ciclos reais. O detector pode ajudar modelos pequenos, mas sua classificação também precisa ser avaliada.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q009",
+      "V4C-Q028",
+      "V4D-Q019"
+    ],
+    "scope_note": "Uber descreve mover polling mecânico para código. Não foi encontrado deployment que comprove exatamente o detector semântico proposto. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+  },
+  "source_ids": [
+    "V3C-S006",
+    "V4C-S014",
+    "V3C-S032",
+    "V4C-S031",
+    "V4C-S030",
+    "V4C-S009",
+    "V3C-S023",
+    "V3C-S029"
+  ]
+}

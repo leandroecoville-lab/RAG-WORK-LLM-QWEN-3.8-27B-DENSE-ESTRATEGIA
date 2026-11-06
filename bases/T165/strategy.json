@@ -1,0 +1,114 @@
+{
+  "id": "T165",
+  "novelty": "A v3 introduzia gerações e limites de sondagem. A expansão escolhe sondas representativas, separa recuperação parcial e explica por que sucesso superficial não autoriza reabrir toda a carga.",
+  "deep_layers": [
+    {
+      "name": "Sonda de capacidade real",
+      "detail": "Uma chamada de saúde barata pode passar enquanto a operação principal continua falhando. Defina uma sonda que exercite o caminho relevante com efeito controlado, ou use uma requisição real elegível sob quota pequena. Diferencie conectividade, aceitação e conclusão semântica; cada evidência sustenta uma transição diferente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S005",
+        "V3C-S026"
+      ]
+    },
+    {
+      "name": "Circuitos por classe",
+      "detail": "Serviços podem recuperar leitura antes de escrita, ou aceitar prompts curtos enquanto rejeitam contextos grandes. Um circuito único simplifica operação e pode bloquear trabalho saudável; fragmentar demais causa sondas excessivas. Escolha classes com falhas correlacionadas demonstráveis e limite o total agregado de sondas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S026",
+        "V3C-S009"
+      ]
+    },
+    {
+      "name": "Retorno graduado",
+      "detail": "Ao observar recuperação, aumente carga em etapas com critérios de recuo. Não confunda uma amostra bem-sucedida com capacidade para a fila acumulada. Defina quantos resultados elegíveis, em qual janela e sob qual carga sustentam a decisão; esses valores são parâmetros de operação a calibrar, não constantes da técnica.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S026",
+        "V2A-S012"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Provedor de inferência oscilante",
+      "scenario": "O endpoint responde a saúde, mas chamadas longas falham.",
+      "strategy": "Separe classes por contrato de entrada quando a evidência justificar. Use poucas solicitações representativas e acompanhe resultado completo, incluindo parser e prazo. Se a classe curta recuperar, libere apenas essa classe enquanto contextos extensos continuam em espera ou fallback.",
+      "small_model_role": "3–7B pode servir tarefa curta local; controlador decide abertura e elegibilidade.",
+      "acceptance": "Proposta: nenhuma reabertura global baseada em sonda inadequada e limite de carga durante recuperação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S026"
+      ]
+    },
+    {
+      "name": "Ferramenta de escrita remota",
+      "scenario": "Após incidente, é necessário testar uma API com efeitos.",
+      "strategy": "Prefira consulta que verifique a dependência crítica ou uma operação idempotente de teste aprovada. Não use criação repetida de objetos reais como sonda genérica. Se não houver teste seguro representativo, uma requisição real limitada precisa de reconciliação explícita.",
+      "small_model_role": "8–14B classifica resposta; 15–30B analisa alternativas de fluxo sem gerar sondas arbitrárias.",
+      "acceptance": "Proposta: recuperação detectada sem efeitos duplicados ou objetos órfãos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026",
+        "V3C-S026"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Atuar como fallback delimitado; não calcular a saúde do circuito por impressão textual.",
+    "8_14b": "Agrupar sintomas por tipo de operação e apoiar diagnóstico de recuperação parcial.",
+    "15_30b": "Propor reorganização do fluxo enquanto circuitos específicos continuam indisponíveis.",
+    "training_or_runtime_requirements": "Epoch do circuito, limites globais de sondas, contadores por classe e telemetria de resultado completo.",
+    "do_not_use_when": "Não sondar efeitos irreversíveis sem contrato adequado nem usar sucesso de outra geração para fechar o circuito."
+  },
+  "connections": [
+    {
+      "target_id": "T138",
+      "relation": "complements",
+      "how": "O estado half-open fornece evidência para a transição controlada do breaker.",
+      "interface": "Epoch, resultados elegíveis e limite de amostra.",
+      "condition": "Conclusões pertencem à geração corrente.",
+      "acceptance": "Sucesso tardio de chamada antiga não fecha circuito novo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S026"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T173",
+      "relation": "complements",
+      "how": "Mantenha fallback elegível enquanto a rota principal passa por recuperação parcial.",
+      "interface": "Capacidade restaurada por classe e contrato do pedido.",
+      "condition": "Voltar à rota principal não deve reiniciar efeitos já executados.",
+      "acceptance": "Transferência preserva tentativa, orçamento e resultado confirmado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S001",
+        "C-S026"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Contar sondas de todas as réplicas, não apenas de um processo.",
+    "Uma resposta HTTP bem-sucedida com conteúdo inválido não prova recuperação funcional."
+  ],
+  "frontier_comparison": "Compare disponibilidade e erro semântico sob incidentes reproduzíveis. Trocar por modelo de fronteira não corrige sondas mal escolhidas ou tempestade de reabertura.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q001",
+      "V4C-Q004"
+    ],
+    "scope_note": "Resilience4j documenta o estado; AWS/SRE apoiam limites de recuperação. A seleção semântica de sondas para agentes é proposta."
+  },
+  "source_ids": [
+    "C-S005",
+    "V3C-S026",
+    "V3C-S009",
+    "V2A-S012",
+    "C-S026",
+    "V3C-S001"
+  ]
+}

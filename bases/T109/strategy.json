@@ -1,0 +1,119 @@
+{
+  "id": "T109",
+  "novelty": "A v3 definiu orientação e fronteiras da janela. A nova análise distingue dependência alcançável em várias camadas, retenção efetiva de estados e posicionamento da informação relevante no fluxo.",
+  "deep_layers": [
+    {
+      "name": "Alcance efetivo",
+      "detail": "Camadas locais sucessivas podem transmitir informação além da janela de uma camada, mas isso não equivale a acesso direto a cada token remoto. O efeito depende de profundidade, resíduos e treinamento. Teste relações que exigem copiar um detalhe antigo, combinar fatos e revisar uma conclusão: cada tarefa expõe uma limitação diferente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "V3B-S007",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Janela e estado físico",
+      "detail": "Uma máscara local economiza trabalho apenas se o kernel explora o padrão e o runtime limita estados quando a arquitetura permite. Guardar todo KV enquanto mascara posições antigas pode preservar facilidade de implementação, mas não entrega a mesma economia de memória. Em modelos híbridos, algumas camadas continuam exigindo histórico maior.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "V3B-S007",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Organização do contexto",
+      "detail": "Mover fatos recentes para perto da pergunta pode ajudar uma arquitetura local, mas resumo não preserva todos os detalhes. Uma estratégia proposta mantém uma lista pequena de fatos verificáveis e recupera a origem quando necessário. A política de atualização deve detectar correções, não simplesmente acrescentar versões contraditórias.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "V3B-S007",
+        "V4B-S017"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Assistente de eventos recentes",
+      "scenario": "O sistema acompanha uma operação com histórico extenso.",
+      "strategy": "Use janela para o fluxo recente e um registro externo para decisões duráveis. Ao consultar um fato antigo, recupere a evidência e reinsira-a no contexto disponível.",
+      "small_model_role": "Um 3–7B atua sobre eventos e consultas delimitadas, com memória externa auditável.",
+      "acceptance": "Testar eventos antigos relevantes e medir omissões após várias rotações da janela.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "V3B-S007",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Extração de documentos segmentados",
+      "scenario": "A tarefa encontra informações locais em documentos longos.",
+      "strategy": "Segmente respeitando estrutura, sobreponha fronteiras e consolide resultados com identificadores de origem. Use uma etapa adicional para relações entre segmentos.",
+      "small_model_role": "Um 8–14B resolve trechos; uma agregação explícita trata dependências distantes.",
+      "acceptance": "Cobertura deve incluir fatos nas bordas e relações que cruzam seções.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "V3B-S007",
+        "V4B-S017"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Contextos locais e respostas curtas reduzem exigências, mas exigem mecanismo externo para fatos duráveis.",
+    "8_14b": "Janelas por camada e tokens recuperados precisam entrar na avaliação de leitura longa.",
+    "15_30b": "Um 15–30B não recupera automaticamente informação que sua máscara torna inacessível.",
+    "training_or_runtime_requirements": "Adotar janela diferente exige suporte arquitetural e validação; implementação do kernel não substitui treinamento.",
+    "do_not_use_when": "Não truncar contexto de um modelo denso e chamar o resultado de comportamento equivalente."
+  },
+  "connections": [
+    {
+      "target_id": "T110",
+      "relation": "complements",
+      "how": "Posições globais podem criar caminhos para informação que a janela não alcança diretamente.",
+      "interface": "Máscara global e identificadores de documentos.",
+      "condition": "Arquitetura treinada com a combinação.",
+      "acceptance": "Avaliar dependências remotas sem permitir leitura de tokens futuros.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "V3B-S007",
+        "V4B-S017"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T009",
+      "relation": "complements",
+      "how": "Recuperação externa reinsere fatos relevantes numa janela limitada.",
+      "interface": "Trechos, proveniência e versão.",
+      "condition": "Recuperador encontra a evidência necessária.",
+      "acceptance": "Separar falhas de recuperação de falhas de interpretação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "V3B-S007",
+        "V4B-S017"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Verificar comportamento no primeiro e último token de cada documento empacotado.",
+    "Não tratar resumo como cópia semanticamente perfeita do histórico removido."
+  ],
+  "frontier_comparison": "Avalie uma tarefa em que a evidência necessária é local ou recuperável. Uma vantagem de custo nesse cenário não demonstra equivalência em raciocínio sobre todo o histórico original.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q005"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S015",
+    "V3B-S007",
+    "V4B-S017"
+  ]
+}

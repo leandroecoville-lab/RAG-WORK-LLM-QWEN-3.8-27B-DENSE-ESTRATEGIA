@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Rotação mantém a memória interna do modelo?",
+    "answer": "Não. A continuidade depende do material persistido e do que o novo contexto consegue recuperar."
+  },
+  {
+    "question": "É sempre melhor começar uma sessão nova?",
+    "answer": "Não. Se o contexto atual ainda está adequado, a rotação pode aumentar custo e risco de perda de informações."
+  },
+  {
+    "question": "Encerrar a sessão cancela todos os efeitos antigos?",
+    "answer": "Não. Operações remotas podem continuar; sua identidade e resultado devem atravessar a transferência."
+  },
+  {
+    "question": "O resumo basta para assumir a missão?",
+    "answer": "Não quando há estado operacional. A nova sessão precisa localizar versões, pendências e critérios de conclusão verificáveis."
+  }
+]

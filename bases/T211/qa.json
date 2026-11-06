@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Handoff File é apenas um resumo?",
+    "answer": "Não necessariamente. Além de síntese, contém referências, precondições e um contrato operacional para a retomada."
+  },
+  {
+    "question": "Pode afirmar que um teste passou sem seu registro?",
+    "answer": "Deve registrar essa limitação. Uma conclusão verificável aponta para o resultado e para a revisão que foi testada."
+  },
+  {
+    "question": "Um arquivo chamado FINAL prova que está completo?",
+    "answer": "Não. É necessário verificar os membros, suas revisões e a publicação concluída conforme o contrato."
+  },
+  {
+    "question": "O que fazer se o código mudou desde o handoff?",
+    "answer": "Comparar revisões, identificar divergências e reconstruir o estado afetado antes de executar instruções baseadas na versão antiga."
+  }
+]

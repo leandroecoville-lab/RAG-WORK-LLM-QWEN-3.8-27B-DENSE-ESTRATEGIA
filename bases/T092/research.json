@@ -1,0 +1,46 @@
+{
+  "id": "T092",
+  "technical_details": "A execução assíncrona exige distinguir transferência iniciada de dados já disponíveis para consumo. Sobrepor movimento, multiplicação e normalização cria mais trabalho em andamento, mas também introduz dependências de buffers e barreiras. A variante de baixa precisão adiciona outro eixo: formato, escalas e tratamento de outliers precisam ser avaliados separadamente da vantagem do pipeline, evitando atribuir toda diferença a uma única mudança.",
+  "boundary_condition": "As técnicas do artigo exploram recursos de Hopper; o nome da família não certifica suporte em qualquer GPU posterior ou doméstica.",
+  "implementation_contract": {
+    "inputs": "Forma, dtype, recursos suportados e política de quantização quando usada.",
+    "outputs": "Atenção calculada e identificação do caminho assíncrono ou fallback.",
+    "state": "Buffers alternados, eventos de disponibilidade e escalas por bloco.",
+    "invariant": "Um buffer não é sobrescrito enquanto algum consumidor ainda depende dele."
+  },
+  "tradeoffs": [
+    "Mais sobreposição pode aumentar pressão sobre registradores e memória compartilhada.",
+    "Baixa precisão reduz tráfego, mas acrescenta erro e trabalho de escalonamento numérico."
+  ],
+  "failure_test": "Teste proposto: executar comprimentos irregulares e repetidas alternâncias de buffers, comparando com referência. Uma sincronização removida deve ser detectada por divergência ou ferramenta de verificação, não aceita como ganho.",
+  "evaluation_plan": "Plano proposto: avaliar primeiro caminhos de mesma precisão e depois variar precisão isoladamente. Controlar formas e backend; medir latência, erro de saída e uso de recursos. Aprovar somente configurações suportadas com qualidade dentro do requisito definido.",
+  "comparisons": [
+    {
+      "entry_id": "T123",
+      "relation": "complements",
+      "reason": "FP8 pode participar da implementação, mas precisão e assincronia são decisões independentes."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "FlashAttention-3 explora assincronia, especialização de warps e intercalamento de multiplicações com softmax em GPUs Hopper.",
+    "source_ids": [
+      "B-S012"
+    ],
+    "support": "direct",
+    "caveat": "A fonte apresenta uma arquitetura específica; não verifica a placa, o driver ou o servidor do usuário."
+  },
+  "advanced_qa": [
+    {
+      "question": "Ter suporte a FP8 basta para usar o kernel?",
+      "answer": "Não. O caminho pode depender de instruções, layouts e software adicionais."
+    },
+    {
+      "question": "Pipeline mais ocupado prova menor latência?",
+      "answer": "Não. Coordenação e pressão de recursos podem compensar a sobreposição; compare duração real do trabalho completo."
+    }
+  ],
+  "source_ids": [
+    "B-S012"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

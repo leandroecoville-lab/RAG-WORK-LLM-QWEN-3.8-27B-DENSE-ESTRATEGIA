@@ -1,0 +1,6 @@
+flowchart TD
+    T127["T127 GGUF — formato de modelos, não método único de quantização"]
+    R024["R024 llama.cpp"]
+    T127 -. "requires: proposta" .-> R024
+    T124["T124 INT4 / W4A16 Quantization"]
+    T127 -. "complements: proposta" .-> T124

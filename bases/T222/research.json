@@ -1,0 +1,52 @@
+{
+  "id": "T222",
+  "technical_details": "O monitor precisa observar ocupação por categoria e erro de estimativa. O aumento pode vir de schemas, multimodalidade ou mensagens adicionadas pelo runtime, não apenas de novos turnos. Uma proposta compara previsão e uso observado para atualizar margem, mantendo duas visões: tokens ativos na próxima chamada e consumo acumulado da missão. Sem essa separação, compactar pode parecer reduzir custos já incorridos.",
+  "boundary_condition": "Um contador sem ação associada apenas informa o estouro depois que o próximo resultado grande já foi produzido.",
+  "implementation_contract": {
+    "inputs": "Mensagens efetivas, modelo, tokenizer ou contador do backend e reservas pendentes.",
+    "outputs": "Ocupação estimada, margem, desvio de previsão e gatilho de ação.",
+    "state": "Histórico de estimativas, valores observados e eventos de crescimento.",
+    "invariant": "Tokens retirados da janela não são subtraídos do consumo acumulado já realizado."
+  },
+  "tradeoffs": [
+    "Contagem frequente melhora precisão e acrescenta chamadas ou processamento.",
+    "Amostragem por eventos reduz overhead e pode perder crescimento não instrumentado."
+  ],
+  "failure_test": "Teste proposto: manter texto do usuário fixo e aumentar o schema de ferramentas; exigir que o monitor detecte o crescimento e ajuste a decisão antes de enviar.",
+  "evaluation_plan": "Comparar contagem por caracteres, tokenizer e endpoint oficial quando disponível. Controlar modelos e estruturas. Medir erro por categoria, estouros evitados e overhead; dimensionar margem pela distribuição observada, sem pressupor equivalência entre idiomas.",
+  "comparisons": [
+    {
+      "entry_id": "T152",
+      "relation": "complements",
+      "reason": "A alocação consome os sinais do monitor para redistribuir espaço."
+    },
+    {
+      "entry_id": "T168",
+      "relation": "complements",
+      "reason": "Fronteiras suave e rígida convertem observação de orçamento em ação."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A API de contagem Anthropic considera system prompt, ferramentas e outros elementos estruturados da mensagem.",
+    "source_ids": [
+      "V3C-S022"
+    ],
+    "support": "direct",
+    "caveat": "A estimativa é específica do backend e não representa automaticamente métricas internas de outro modelo."
+  },
+  "advanced_qa": [
+    {
+      "question": "Reduzir a janela recupera tokens já faturados?",
+      "answer": "Não. Pode reduzir chamadas futuras; o consumo passado permanece no custo da missão."
+    },
+    {
+      "question": "Contar mensagens serve para estimar contexto?",
+      "answer": "É um sinal muito fraco quando mensagens e resultados têm tamanhos variados; contar unidades efetivas é mais informativo."
+    }
+  ],
+  "source_ids": [
+    "V3C-S022",
+    "V3C-S031"
+  ],
+  "research_note": "Mecanismos referenciados em fontes primárias; contratos e verificação descritos são propostas, não ensaios executados."
+}

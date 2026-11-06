@@ -1,0 +1,121 @@
+{
+  "id": "R017",
+  "novelty": "Aprofunda a ordem dos middlewares com contabilidade de tentativas aninhadas, contratos de adaptadores e diagnóstico da camada responsável por falhas.",
+  "source_ids": [
+    "V3C-S038",
+    "V2B-S004",
+    "V4C-S012"
+  ],
+  "deep_layers": [
+    {
+      "name": "Tentativa lógica e física",
+      "detail": "Proposta: atribuir um ID à operação lógica e outro a cada tentativa de provedor ou ferramenta. Consolidar duração, tokens e efeitos numa árvore de tentativas. Um middleware que oculta a exceção não deve apagar o custo nem transformar tentativa interrompida em sucesso.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S038",
+        "V2B-S004",
+        "V4C-S012"
+      ]
+    },
+    {
+      "name": "Adaptador sob teste",
+      "detail": "Construir testes de contrato por provedor para ferramenta inexistente, argumentos inválidos, saída truncada, cancelamento e erro transitório. A mesma interface Python não assegura a mesma semântica. Registrar quais capacidades foram verificadas na combinação exata de modelo e adaptador.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S038",
+        "V2B-S004",
+        "V4C-S012"
+      ]
+    },
+    {
+      "name": "Deadline único",
+      "detail": "Propagar tempo restante e teto de tentativas através da composição. Cada camada decide usando orçamento residual, não seu timeout original. Registrar a justificativa de fallback permite separar indisponibilidade, recusa por contrato e insuficiência de qualidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S038",
+        "V2B-S004",
+        "V4C-S012"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Gateway de dois modelos pequenos",
+      "scenario": "Uma tarefa estruturada pode usar duas famílias de modelos.",
+      "strategy": "Normalizar apenas campos comprovadamente equivalentes e recusar rotas que não preservem o contrato.",
+      "small_model_role": "Produzir conteúdo do domínio; o adaptador trata diferenças de protocolo.",
+      "acceptance": "Testar cancelamento e truncamento em ambos, medindo resultados aceitos e custo agregado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S038",
+        "V2B-S004",
+        "V4C-S012"
+      ]
+    },
+    {
+      "name": "Ferramenta com erro recuperável",
+      "scenario": "Falha de argumento precisa voltar ao agente sem duplicar efeitos.",
+      "strategy": "Reparar o argumento em etapa separada; retry de transporte conserva a identidade lógica.",
+      "small_model_role": "Corrigir o campo rejeitado, com limite de tentativas e schema atual.",
+      "acceptance": "Injetar falha após confirmação remota e garantir consulta/reconciliação antes de nova mutação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S038",
+        "V2B-S004",
+        "V4C-S012"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "3–7B: contratos estreitos e mensagens de erro curtas, sem exceções brutas extensas.",
+    "8_14b": "8–14B: reparo limitado de argumentos e seleção entre ferramentas verificadas.",
+    "15_30b": "15–30B: usar somente se a ambiguidade da tarefa justificar custo adicional medido.",
+    "training_or_runtime_requirements": "Compatibilidade depende das versões de bibliotecas, adaptadores e recursos do provedor.",
+    "do_not_use_when": "Não assumir que trocar o nome do modelo mantém ferramentas, streaming e limites idênticos."
+  },
+  "connections": [
+    {
+      "target_id": "T170",
+      "relation": "complements",
+      "how": "Executar contrato da ferramenta na versão que o middleware realmente envia.",
+      "interface": "Versão, schema normalizado e capacidades verificadas.",
+      "condition": "Há migração de provedor ou de ferramenta.",
+      "acceptance": "Payload incompatível falha antes de uma mutação externa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S038",
+        "V2B-S004",
+        "V4C-S012"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T136",
+      "relation": "complements",
+      "how": "Fazer fallback consumir o orçamento lógico compartilhado.",
+      "interface": "Tentativas consumidas, deadline e motivo de falha.",
+      "condition": "Mais de um backend é elegível.",
+      "acceptance": "Falhas aninhadas respeitam o teto global e preservam o requisito de saída.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S038",
+        "V2B-S004",
+        "V4C-S012"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não contar somente a última chamada no custo da tarefa.",
+    "Não converter toda exceção em instrução para tentar novamente."
+  ],
+  "frontier_comparison": "Comparar modelos com a mesma composição e incluir todas as tentativas. Uma melhoria causada por retry extra deve aparecer separada da qualidade do modelo.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q010",
+      "V4C-Q021",
+      "V4C-Q026"
+    ],
+    "scope_note": "As buscas verificaram relatos e frameworks relacionados. Uso de agentes, LangGraph ou interface comum não comprova automaticamente adoção de toda a biblioteca LangChain."
+  }
+}

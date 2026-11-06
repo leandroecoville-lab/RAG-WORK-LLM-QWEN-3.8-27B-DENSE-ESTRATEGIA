@@ -1,0 +1,36 @@
+{
+  "id": "R025",
+  "name": "XGrammar",
+  "canonical_name": "XGrammar — motor de geração estruturada",
+  "canonical_id": "R025",
+  "aliases": [
+    "xgrammar",
+    "XGrammar constrained decoding"
+  ],
+  "category": "referencias",
+  "kind": "project",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "T140",
+    "T141",
+    "T196",
+    "T197",
+    "R009",
+    "R011",
+    "R023",
+    "R026"
+  ],
+  "source_ids": [
+    "V2B-S022",
+    "V2B-S023",
+    "V3D-S013",
+    "V4B-S015",
+    "V4B-S016"
+  ],
+  "namespace": "R025",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R025",
+  "chunk_count": 9
+}

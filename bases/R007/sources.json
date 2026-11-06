@@ -1,0 +1,28 @@
+[
+  {
+    "source_id": "A-S012",
+    "title": "SADA: Bridging In-Context Learning and Fine-Tuning via State-Aligned Distillation Adapters",
+    "url": "https://aclanthology.org/2026.acl-long.1046/",
+    "publisher": "ACL Anthology / autores",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Mapeamento contexto-parâmetros e alinhamento de estados para adaptadores.",
+    "limitations": "Leitura do resumo e metadados; código não auditado e resultados não reproduzidos.",
+    "web_ref": "turn1view1"
+  },
+  {
+    "source_id": "V3A-S004",
+    "title": "In-context Autoencoder for Context Compression in a Large Language Model",
+    "url": "https://arxiv.org/abs/2307.06945",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-07-13",
+    "supports": "Slots de memória latente treinados por objetivos de reconstrução e linguagem; condicionamento de um consumidor compatível.",
+    "limitations": "Consulta de fonte primária; não houve reprodução experimental. Resultados e APIs são limitados ao trabalho ou documentação citados, consultados em 2026-11-05.",
+    "web_ref": "turn85view1"
+  }
+]

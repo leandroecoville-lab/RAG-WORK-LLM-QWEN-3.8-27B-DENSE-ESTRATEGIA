@@ -1,0 +1,111 @@
+{
+  "id": "T101",
+  "novelty": "A v3 descreveu sobreposição e buffers do anel. O aprofundamento passa a planejar topologia, tolerância a falhas e limites econômicos, distinguindo processamento distribuído do contexto de simples aumento nominal da janela de entrada.",
+  "deep_layers": [
+    {
+      "name": "Topologia observada",
+      "detail": "Meça bandas e latências entre os dispositivos realmente usados, incluindo saltos entre hosts e contenção de outros jobs. Um anel lógico pode atravessar enlaces muito diferentes. Ordene ranks considerando a topologia e compare comunicação efetiva com trabalho por bloco, sem usar banda de catálogo como se fosse atingível na aplicação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S020",
+        "V4B-S003"
+      ]
+    },
+    {
+      "name": "Falha como unidade coletiva",
+      "detail": "Uma rodada incompleta não pode produzir um resultado silenciosamente parcial. Defina timeout e cancelamento coordenado para todos os participantes, preservando o pedido para recomputação. Registre qual bloco e rank faltaram; retornar atenção sobre um subconjunto muda a função e não é um fallback exato.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S020",
+        "V4B-S003"
+      ]
+    },
+    {
+      "name": "Custo de reservar o grupo",
+      "detail": "Mesmo que um prompt longo execute mais rápido, vários dispositivos ficam comprometidos com uma única entrada. Compare a redução de latência com a quantidade de outras tarefas que poderiam ser atendidas. Para tráfego misto, reserve paralelismo de contexto a pedidos que ultrapassem um limiar de custo observado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S020",
+        "V4B-S003"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Leitura excepcionalmente longa",
+      "scenario": "Algumas entradas não cabem ou excedem o prazo em um dispositivo.",
+      "strategy": "Selecione somente essas entradas para o grupo distribuído e mantenha o restante em réplicas locais. Teste acesso a evidências distantes e valide máscara global. Se não houver benefício líquido, reduza contexto via recuperação em vez de distribuir automaticamente.",
+      "small_model_role": "Um 15–30B pode precisar de CP por contexto, mesmo quando seus pesos cabem localmente.",
+      "acceptance": "Aceitar por qualidade, prazo e custo de ocupação do grupo inteiro.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S020",
+        "V4B-S003"
+      ]
+    },
+    {
+      "name": "Experimento arquitetural",
+      "scenario": "Um estudo precisa validar atenção completa com sequência extensa.",
+      "strategy": "Compare anel e referência em tamanhos menores, depois aumente comprimento e número de ranks. Teste falhas de comunicação e desbalanceamento. Preserve logs de posições e normalizadores para localizar perda ou duplicação de blocos.",
+      "small_model_role": "Modelos 3–14B podem servir como protótipos controlados antes de ampliar recursos.",
+      "acceptance": "Exigir equivalência numérica e ausência de saída parcial quando um rank falha.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S020",
+        "V4B-S003"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, múltiplos dispositivos raramente se justificam sem contexto extremo ou objetivo experimental explícito.",
+    "8_14b": "Em 8–14B, medir se CP resolve memória de sequência melhor que outra estratégia de contexto.",
+    "15_30b": "Em 15–30B, considerar ocupação do grupo e interação com TP antes de combinar paralelismos.",
+    "training_or_runtime_requirements": "Requer runtime distribuído, topologia adequada e modelo que suporte o contexto; não amplia treinamento posicional por si só.",
+    "do_not_use_when": "Não usar anel quando transferência domina ou quando a tarefa pode recuperar poucos trechos suficientes."
+  },
+  "connections": [
+    {
+      "target_id": "T117",
+      "relation": "complements",
+      "how": "Implementar uma estratégia de comunicação para contexto particionado.",
+      "interface": "Blocos, posições globais e estado de normalização.",
+      "condition": "Todos os ranks compartilham a mesma semântica de atenção.",
+      "acceptance": "Comparar Pass-KV/alternativas com referência e medir custo coletivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S020",
+        "V4B-S003"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T122",
+      "relation": "complements",
+      "how": "Transportar blocos usando caminho de baixa intervenção CPU quando suportado.",
+      "interface": "Buffers registrados, eventos de conclusão e ordem de rodadas.",
+      "condition": "Hardware e biblioteca garantem visibilidade correta dos dados.",
+      "acceptance": "Injetar atrasos e verificar que consumo espera a transferência completa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S020",
+        "V4B-S003"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Nunca publicar resultado de uma rodada incompleta.",
+    "Relatar custo total de dispositivos e comunicação, além da latência isolada."
+  ],
+  "frontier_comparison": "Comparar perguntas de contexto extenso com fronteira incluindo custo de todos os dispositivos. Ring Attention viabiliza cálculo distribuído; não prova entendimento confiável de toda a informação acessível.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q003"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S020",
+    "V4B-S003"
+  ]
+}

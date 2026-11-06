@@ -1,0 +1,29 @@
+{
+  "id": "T080",
+  "name": "Adaptive Speculative Decoding",
+  "canonical_name": "Adaptive Speculative Decoding",
+  "canonical_id": "T080",
+  "aliases": [
+    "dynamic speculation lookahead",
+    "especulação adaptativa"
+  ],
+  "category": "inferencia",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T079",
+    "T145",
+    "T146"
+  ],
+  "source_ids": [
+    "B-S002",
+    "V3B-S001",
+    "V4B-S014"
+  ],
+  "namespace": "T080",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T080",
+  "chunk_count": 9
+}

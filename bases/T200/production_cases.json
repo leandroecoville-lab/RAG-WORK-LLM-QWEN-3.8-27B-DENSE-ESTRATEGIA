@@ -1,0 +1,321 @@
+{
+  "coverage": {
+    "entry_id": "T200",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 1,
+    "unique_cases_associated": 5,
+    "operational_product_cases": 2,
+    "research_cases": 0,
+    "family_or_analogy_cases": 3,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Independent Verification",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C010",
+      "company": "Uber",
+      "system": "AutoClean com PolyglotPiranha — evolução do cleanup",
+      "title": "Agentes delimitados e transformações determinísticas em cleanup contínuo",
+      "evidence_level": "production_documented",
+      "observed_use": "A Uber descreve AutoClean executando continuamente nos monorepos, produzindo diffs de remoção de flags com CI e validação antes da revisão humana.",
+      "technical_mechanism": "Agente chama transformação determinística por MCP; falhas de CI passam primeiro por fixers mecânicos; verificadores CodeCourt por propriedade executam em paralelo e agregam decisão.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S008",
+        "V4C-S009"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T140",
+          "match": "exact",
+          "rationale": "PolyglotPiranha é exposto ao agente por MCP."
+        },
+        {
+          "entry_id": "T232",
+          "match": "exact",
+          "rationale": "Transformações determinísticas de código ficam no PolyglotPiranha."
+        },
+        {
+          "entry_id": "T217",
+          "match": "exact",
+          "rationale": "Atualizações do diff são reavaliadas por CI até sucesso ou limite de tentativas."
+        },
+        {
+          "entry_id": "T237",
+          "match": "exact",
+          "rationale": "Fixers e verificadores recebem papéis e escopos específicos."
+        },
+        {
+          "entry_id": "T190",
+          "match": "exact",
+          "rationale": "Verificadores avaliam propriedades após geração e CI."
+        },
+        {
+          "entry_id": "T195",
+          "match": "exact",
+          "rationale": "Compilação e testes contribuem para validação do resultado."
+        },
+        {
+          "entry_id": "T200",
+          "match": "exact",
+          "rationale": "CodeCourt separa propriedades de aceitação do agente que fez a limpeza."
+        },
+        {
+          "entry_id": "T206",
+          "match": "family",
+          "rationale": "Propriedades como ausência de desvio de intenção verificam requisitos do processo, sem prova formal."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "O gate de propriedades inspira o componente proposto, sem demonstrar um produto LAI."
+        },
+        {
+          "entry_id": "T147",
+          "match": "exact",
+          "rationale": "CodeCourt executa revisores por propriedade em paralelo e agrega todos os resultados antes de encaminhar o diff."
+        }
+      ],
+      "small_model_transfer": "Proposta: 3–7B classifica falhas mecânicas; 8–14B propõe alteração localizada; 15–30B avalia propagação de mudanças. Transformações booleanas e gates permanecem determinísticos; cada banda precisa de avaliação própria.",
+      "limits": "O operador não informa que as faixas propostas de modelos reproduzam o sistema. CI verde não prova semântica, e vereditos de agentes continuam sujeitos a erro. Pipeline e sua evolução histórica contam uma vez.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C010",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T200",
+        "match": "exact",
+        "rationale": "CodeCourt separa propriedades de aceitação do agente que fez a limpeza."
+      }
+    },
+    {
+      "case_id": "V4B-C020",
+      "company": "Meta",
+      "organization_class": "bigtech",
+      "system": "ACH — Automated Compliance Hardening",
+      "title": "Testes orientados por mutações em ensaio industrial",
+      "evidence_level": "production_documented",
+      "observed_use": "A Meta relata aplicação em Facebook Feed, Instagram, Messenger e WhatsApp e descreve um ensaio industrial delimitado, com revisão por engenheiros.",
+      "technical_mechanism": "LLMs produzem mutações que representam comportamentos indesejados e testes capazes de detectar essas mudanças; compilação, execução e revisão restringem os candidatos.",
+      "event_date": "2025-02-05",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S024",
+        "V4B-S025"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T195",
+          "match": "exact",
+          "rationale": "Testes executáveis validam candidatos."
+        },
+        {
+          "entry_id": "T199",
+          "match": "family",
+          "rationale": "Avaliação orienta seleção ou revisão de candidatos; isso não prova aprendizagem persistente do modelo por essa avaliação."
+        },
+        {
+          "entry_id": "T200",
+          "match": "family",
+          "rationale": "A detecção exige evidência específica, mas o oráculo continua limitado ao comportamento modelado."
+        },
+        {
+          "entry_id": "T217",
+          "match": "family",
+          "rationale": "Geração de testes é parte da engenharia de código, não prova qualquer mecanismo de patch."
+        }
+      ],
+      "small_model_transfer": "Proposta: para modelos pequenos, restringir mutações a uma classe de risco e exigir que o teste passe no original e falhe no mutante correspondente.",
+      "limits": "Ensaio industrial não significa implantação irrestrita em todo código. Matar um mutante não demonstra ausência de outros defeitos nem equivalência a modelos maiores.",
+      "canonical_case_id": "V4B-C020",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T200",
+        "match": "family",
+        "rationale": "A detecção exige evidência específica, mas o oráculo continua limitado ao comportamento modelado."
+      }
+    },
+    {
+      "case_id": "V4C-C009",
+      "company": "Meta",
+      "system": "Getafix / SapFix / Sapienz — reparo de código",
+      "title": "Patches aprendidos, testes e revisão antes de integrar",
+      "evidence_level": "production_documented",
+      "observed_use": "A Meta relata Getafix e SapFix em seu processo de desenvolvimento, com correções testadas, aprovadas e levadas a produção.",
+      "technical_mechanism": "Padrões de reparo são extraídos de alterações por AST; candidatos passam por compilação e testes de persistência do erro e novas falhas, antes da revisão humana.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S006",
+        "V4C-S007"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T232",
+          "match": "exact",
+          "rationale": "A fonte identifica diferenças e modificações em AST para construir reparos."
+        },
+        {
+          "entry_id": "T229",
+          "match": "family",
+          "rationale": "Correções são produzidas e revisadas, mas o relato não documenta um protocolo específico de edição exclusivamente por diffs."
+        },
+        {
+          "entry_id": "T217",
+          "match": "exact",
+          "rationale": "Candidatos são avaliados e iterados com compilação e testes."
+        },
+        {
+          "entry_id": "T233",
+          "match": "exact",
+          "rationale": "Patches são verificados antes de serem oferecidos para integração."
+        },
+        {
+          "entry_id": "T200",
+          "match": "family",
+          "rationale": "Validação separada da geração e revisão humana fornecem sinais adicionais, sem independência estatística demonstrada."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "A cadeia de verificações exemplifica o componente editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: um 3–30B escolhe entre transformações conhecidas ou prepara candidato; analisadores e testes verificam propriedades fora do modelo. Avaliar bugs fora das famílias de treinamento para medir generalização.",
+      "limits": "Um único caso integrado, sem contar Getafix, SapFix e Sapienz como três deployments independentes. Ferramentas históricas não são LLMs modernas; não se transfere taxa de acerto.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C009",
+      "deployment_domain": "software_analysis_without_llm",
+      "mapping": {
+        "entry_id": "T200",
+        "match": "family",
+        "rationale": "Validação separada da geração e revisão humana fornecem sinais adicionais, sem independência estatística demonstrada."
+      }
+    },
+    {
+      "case_id": "V4B-C022",
+      "company": "Amazon Web Services",
+      "organization_class": "bigtech",
+      "system": "Bedrock Automated Reasoning checks",
+      "title": "Verificação de respostas contra políticas formais documentadas",
+      "evidence_level": "operational_product",
+      "observed_use": "A documentação descreve uma funcionalidade disponível de verificação por raciocínio automatizado para respostas em linguagem natural vinculadas a políticas.",
+      "technical_mechanism": "Políticas são expressas formalmente e a tradução de texto para afirmações é analisada. O recurso é de detecção e possui restrições de idioma e resposta completa.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S027"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T193",
+          "match": "exact",
+          "rationale": "Guardrail verifica uma política expressa formalmente."
+        },
+        {
+          "entry_id": "T200",
+          "match": "exact",
+          "rationale": "A aceitação é sustentada por um verificador externo dentro do escopo da política."
+        }
+      ],
+      "small_model_transfer": "Proposta: usar um 3–30B para redigir respostas e um verificador externo para políticas formalizáveis, encaminhando traduções ambíguas para revisão.",
+      "limits": "Disponibilidade não comprova adoção específica. Validade em uma política não garante verdade externa, atualização dos fatos ou correção da tradução de linguagem natural.",
+      "canonical_case_id": "V4B-C022",
+      "deployment_domain": "llm_framework",
+      "mapping": {
+        "entry_id": "T200",
+        "match": "exact",
+        "rationale": "A aceitação é sustentada por um verificador externo dentro do escopo da política."
+      }
+    },
+    {
+      "case_id": "V4D-C006",
+      "company": "Microsoft",
+      "system": "Learning Zone / Kahoot! / Phi Silica LoRA",
+      "title": "Especialização, saída validada e avaliação humana",
+      "evidence_level": "operational_product",
+      "observed_use": "Equipe descreveu a preparação de um recurso educacional com Phi Silica especializado e avaliação do resultado; a capability Learning Zone consta na documentação atual.",
+      "technical_mechanism": "Dados do professor filtrados alimentam LoRA; prompt reforça formato; guardrails precedem exibição; avaliação por agentes é confrontada com humanos.",
+      "event_date": "2025-07-31",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4D-S012",
+        "V4D-S013"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T177",
+          "match": "exact",
+          "rationale": "Ajuste para uma tarefa educacional delimitada."
+        },
+        {
+          "entry_id": "T178",
+          "match": "exact",
+          "rationale": "Professor gera exemplos para treinar o modelo menor."
+        },
+        {
+          "entry_id": "T182",
+          "match": "exact",
+          "rationale": "Especialização realizada por adaptadores LoRA."
+        },
+        {
+          "entry_id": "T183",
+          "match": "family",
+          "rationale": "Treino contra modelo quantizado não comprova todos os detalhes do método QLoRA original."
+        },
+        {
+          "entry_id": "T155",
+          "match": "exact",
+          "rationale": "Especialização permitiu reduzir o prompt mantendo instrução explícita de formato."
+        },
+        {
+          "entry_id": "T180",
+          "match": "exact",
+          "rationale": "Parte das instruções foi absorvida no adaptador; avaliação continua necessária."
+        },
+        {
+          "entry_id": "T193",
+          "match": "exact",
+          "rationale": "Restrições verificáveis rejeitam saídas inadequadas antes da exibição."
+        },
+        {
+          "entry_id": "T186",
+          "match": "exact",
+          "rationale": "Reviewer/Critic/Meta-Reviewer apoiam avaliação offline."
+        },
+        {
+          "entry_id": "T200",
+          "match": "family",
+          "rationale": "Estudo humano confronta os julgamentos, mas não demonstra independência causal de todo erro."
+        },
+        {
+          "entry_id": "T153",
+          "match": "family",
+          "rationale": "Entrega incremental documentada; a fonte consultada não especifica propagação de interrupção/cancelamento ao processamento."
+        },
+        {
+          "entry_id": "T172",
+          "match": "family",
+          "rationale": "Guardas controlam liberação de perguntas; não se documenta o ciclo completo do controlador, com pressão reversa e encerramento."
+        }
+      ],
+      "small_model_transfer": "Proposta: especializar um aluno 3–30B em objetos de negócio e remover do caminho online o professor caro; medir rejeição, acerto factual, custo por resultado aceito e divergência do juiz.",
+      "limits": "Não chamar o experimento de 2025 de rollout geral: o artigo previa public preview. A ficha atual documenta o produto, sem comprovar escala nem identidade integral da configuração. Melhoria relativa de preferência não é multiplicação de inteligência ou precisão geral.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4D-C006",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T200",
+        "match": "family",
+        "rationale": "Estudo humano confronta os julgamentos, mas não demonstra independência causal de todo erro."
+      }
+    }
+  ]
+}

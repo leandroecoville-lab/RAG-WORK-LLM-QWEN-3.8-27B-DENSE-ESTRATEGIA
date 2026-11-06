@@ -1,0 +1,112 @@
+{
+  "id": "T001",
+  "novelty": "A v3 tratou retries e redução não associativa. Aqui o foco novo é escolher partições pelo custo de inferência e separar agregação exata de síntese linguística.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Particione por unidades com custo estimado semelhante, não apenas quantidade de documentos. Um contrato extenso pode dominar o tempo de vários extratores 3–7B. Use amostra inicial para estimar tokens e reorganize apenas tarefas ainda não iniciadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S001",
+        "C-S030"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Produza tabela intermediária de afirmações e evidências. Agregações numéricas ficam em código; o redutor recebe discrepâncias e cobertura. Permita segunda passagem somente sobre grupos inconclusivos, evitando reprocessar o corpus inteiro.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S001",
+        "C-S030"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare partição por arquivo, por tokens e por domínio. A métrica decisiva é cobertura correta das unidades exigidas por tempo total, incluindo cauda dos trabalhadores. Unidade de avaliação: lote documental. Teste adicional: dividir uma entidade entre duas partições com nomes diferentes e exigir reconciliação pelo identificador canônico antes da soma. Compare tempo de cauda e cobertura quando uma partição contém documentos muito mais longos. Se redistribuir carga alterar a conclusão, investigar dependência do redutor à ordem, em vez de atribuir o problema ao paralelismo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S001",
+        "C-S030"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Inventário de interfaces",
+      "scenario": "Muitos módulos expõem contratos semelhantes.",
+      "strategy": "Extrair endpoints por módulo, normalizar assinaturas em código e enviar apenas colisões ao redutor. Interromper publicação quando faltar módulo obrigatório.",
+      "small_model_role": "3–7B extrai; 15–30B interpreta colisões.",
+      "acceptance": "Exigir correspondência com manifesto de módulos e ausência de endpoints inventados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S001",
+        "C-S030"
+      ]
+    },
+    {
+      "name": "Comparação de versões",
+      "scenario": "Documentação muda em várias áreas.",
+      "strategy": "Mapear somente arquivos alterados, preservar resultados anteriores compatíveis e reduzir efeitos cruzados. Reabrir dependências afetadas por mudança de identidade.",
+      "small_model_role": "8–14B compara alterações locais.",
+      "acceptance": "Confirmar cada conclusão com trechos de ambas as versões.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S001",
+        "C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extrator de esquema fixo com unidade curta e rejeição de campo desconhecido.",
+    "8_14b": "Classificador de alterações que decide quais grupos precisam nova extração.",
+    "15_30b": "Redutor de conflitos entre grupos, com acesso pontual às origens.",
+    "training_or_runtime_requirements": "Fila, manifesto de cobertura e estimativa de tokens por tarefa; treinamento opcional em extrações rotuladas.",
+    "do_not_use_when": "A conclusão depende de ler simultaneamente quase todas as unidades ou a divisão destrói relações essenciais."
+  },
+  "connections": [
+    {
+      "target_id": "T065",
+      "relation": "requires",
+      "how": "Confirmar resultados intermediários antes de reduzir.",
+      "interface": "job_id, partição, revisão e status de commit.",
+      "condition": "Existir armazenamento com confirmação verificável.",
+      "acceptance": "Injetar trabalhador atrasado e conferir que resultado parcial não fecha lote.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S001",
+        "C-S030"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T028",
+      "relation": "complements",
+      "how": "Ordenar discrepâncias para revisão do redutor.",
+      "interface": "Par de afirmações, fontes e prioridade.",
+      "condition": "Ranking não elimina discrepâncias obrigatórias.",
+      "acceptance": "Comparar fila completa e fila priorizada por conflitos resolvidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S001",
+        "C-S030"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Impor limite de tentativas por partição e preservar motivo da falha.",
+    "Deduplicar afirmações pela origem, sem apagar relatos divergentes."
+  ],
+  "frontier_comparison": "Avaliar extração completa e síntese de divergências; o ganho buscado é paralelismo controlado, não criatividade geral.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q001",
+      "V4A-Q002"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S001",
+    "C-S030"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "T207",
+  "name": "Memory Stream",
+  "canonical_name": "Memory Stream",
+  "canonical_id": "T207",
+  "aliases": [
+    "fluxo de experiências",
+    "stream de memória"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "R004",
+    "T059",
+    "T241"
+  ],
+  "source_ids": [
+    "A-S008",
+    "A-S027",
+    "V3C-S028",
+    "V4C-S015",
+    "V4C-S025",
+    "V4C-S030",
+    "V4C-S024"
+  ],
+  "namespace": "T207",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T207",
+  "chunk_count": 9
+}

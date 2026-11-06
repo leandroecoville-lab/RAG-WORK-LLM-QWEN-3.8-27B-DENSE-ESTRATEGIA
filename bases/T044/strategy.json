@@ -1,0 +1,112 @@
+{
+  "id": "T044",
+  "novelty": "A v3 expandiu por lacuna. Aqui a ordem de abertura considera valor esperado de informação e custo de verificar hipóteses.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Associe cada abertura a uma decisão que pode mudar. Abrir mais documentos sem hipótese de utilidade aumenta contexto e latência sem necessariamente reduzir incerteza.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S023"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Escolha primeiro a fonte com maior poder de discriminar alternativas, respeitando autoridade e custo. Se o resultado não mudar as opções, revise a hipótese antes de repetir busca semelhante.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S023"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare expansão por top-k e por lacuna discriminante. Meça decisões alteradas por abertura, leituras redundantes e tempo até evidência suficiente; incluir fontes indisponíveis. Unidade de avaliação: sequência de aberturas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S023"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Diagnóstico de erro",
+      "scenario": "Duas causas levam a correções diferentes.",
+      "strategy": "Abrir o log ou configuração que distingue causas, depois carregar código correspondente; não ler todo o repositório antecipadamente.",
+      "small_model_role": "8–14B escolhe teste discriminante.",
+      "acceptance": "Cada expansão deve reduzir alternativas ou justificar insuficiência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S023"
+      ]
+    },
+    {
+      "name": "Consulta de política",
+      "scenario": "Uma exceção pode mudar a regra.",
+      "strategy": "Abrir seção de exceções antes de resposta conclusiva, mantendo versão e escopo da regra principal.",
+      "small_model_role": "3–7B identifica condição; 15–30B integra.",
+      "acceptance": "Não afirmar regra absoluta sem verificar exceção aplicável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S023"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Detector de campo obrigatório ausente e seletor de referência exata.",
+    "8_14b": "Planejador de uma abertura discriminante por vez.",
+    "15_30b": "Coordenador de hipóteses múltiplas com limite de custo.",
+    "training_or_runtime_requirements": "Representação de lacunas e alternativas, referências estáveis e contabilização por abertura.",
+    "do_not_use_when": "O acervo não contém informação discriminante ou o sistema não consegue avaliar progresso."
+  },
+  "connections": [
+    {
+      "target_id": "T078",
+      "relation": "feeds",
+      "how": "Transformar falta semântica explícita em evento de carga.",
+      "interface": "Campo ausente, decisão afetada e candidatos.",
+      "condition": "Rótulo de falta ter critério verificável.",
+      "acceptance": "Recuperar conteúdo irrelevante e impedir encerramento falso da lacuna.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S023"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T218",
+      "relation": "complements",
+      "how": "Detectar repetição de expansões sem progresso.",
+      "interface": "Referências visitadas e alternativas restantes.",
+      "condition": "Equivalência de buscas ser observável.",
+      "acceptance": "Repetir consultas parafraseadas e exigir mudança de estratégia.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S023"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não interpretar volume lido como progresso.",
+    "Parar quando nenhuma abertura plausível puder alterar a decisão."
+  ],
+  "frontier_comparison": "Comparar resolução de hipóteses com custo de leitura; modelos maiores podem escolher aberturas melhores, exigindo medição local.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q019"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "C-S030",
+    "V4A-S023"
+  ]
+}

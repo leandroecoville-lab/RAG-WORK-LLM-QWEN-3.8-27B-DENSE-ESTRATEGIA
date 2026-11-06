@@ -1,0 +1,33 @@
+{
+  "id": "T150",
+  "name": "Request Coalescing / Singleflight",
+  "canonical_name": "Request Coalescing / Singleflight",
+  "canonical_id": "T150",
+  "aliases": [
+    "coalescência de solicitações",
+    "singleflight"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T005",
+    "T007",
+    "T162"
+  ],
+  "source_ids": [
+    "C-S015",
+    "V3C-S011",
+    "V4C-S022",
+    "V3C-S037",
+    "V3C-S017",
+    "V4C-S014",
+    "V3C-S015"
+  ],
+  "namespace": "T150",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T150",
+  "chunk_count": 9
+}

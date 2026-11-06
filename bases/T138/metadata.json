@@ -1,0 +1,33 @@
+{
+  "id": "T138",
+  "name": "Circuit Breaker",
+  "canonical_name": "Circuit Breaker",
+  "canonical_id": "T138",
+  "aliases": [
+    "disjuntor de chamadas"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T136",
+    "T163",
+    "T165"
+  ],
+  "source_ids": [
+    "C-S005",
+    "V3C-S010",
+    "V3C-S026",
+    "V4C-S014",
+    "V3C-S028",
+    "V3D-S017",
+    "C-S026",
+    "V3C-S009"
+  ],
+  "namespace": "T138",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T138",
+  "chunk_count": 9
+}

@@ -1,0 +1,120 @@
+{
+  "id": "T060",
+  "novelty": "A v3 distinguiu snapshot, checkpoint e efeitos incertos. Aqui retomada inclui compatibilidade do executável e migração do contrato de estado.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Um checkpoint precisa identificar código, modelo, schema e referências necessárias à próxima etapa. Estado serializado válido pode ser incompatível com nova versão do executor.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S030",
+        "V3A-S031",
+        "A-S022"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Restaure em modo de inspeção antes de liberar efeitos quando houve mudança de ambiente. Migração deve preservar operações pendentes e seus identificadores, sem convertê-las em novas tentativas automaticamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S030",
+        "V3A-S031",
+        "A-S022"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare retomada na mesma versão e após atualização controlada. Meça etapas refeitas, operações duplicadas e estados bloqueados corretamente; snapshot isolado não prova capacidade de continuar o fluxo. Unidade de avaliação: ponto de retomada durável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S030",
+        "V3A-S031",
+        "A-S022"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Atualização do agente",
+      "scenario": "Runtime muda enquanto tarefas estão pausadas.",
+      "strategy": "Validar schema, migrar campos conhecidos e marcar operação externa incerta para reconciliação antes de continuar.",
+      "small_model_role": "3–7B explica incompatibilidade; código migra.",
+      "acceptance": "Nenhuma operação pendente pode ganhar novo identificador sem decisão explícita.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S030",
+        "V3A-S031",
+        "A-S022"
+      ]
+    },
+    {
+      "name": "Falha durante coleta",
+      "scenario": "Alguns resultados já estão persistidos.",
+      "strategy": "Restaurar fronteira confirmada e reexecutar somente trabalho sem confirmação, usando os mesmos contratos de deduplicação.",
+      "small_model_role": "8–14B retoma tarefa.",
+      "acceptance": "Artefatos confirmados devem ser reutilizados e resultados ausentes identificados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S030",
+        "V3A-S031",
+        "A-S022"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Executor de etapa curta após checkpoint validado por código.",
+    "8_14b": "Leitor de estado migrado com testes de pré-condição.",
+    "15_30b": "Replanejador quando ambiente mudou e continuidade direta deixou de ser válida.",
+    "training_or_runtime_requirements": "Backend durável, manifestos de versão e protocolo de efeitos; checkpoint em memória não cobre reinício do processo.",
+    "do_not_use_when": "Referências essenciais expiraram ou não é possível determinar status das operações externas."
+  },
+  "connections": [
+    {
+      "target_id": "T243",
+      "relation": "requires",
+      "how": "Reconciliar efeitos sem confirmação antes de retomar.",
+      "interface": "operation_id, intenção, tentativa e recibo observado.",
+      "condition": "Serviço permitir consulta ou resolução explícita.",
+      "acceptance": "Simular sucesso externo com ACK perdido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S030",
+        "V3A-S031",
+        "A-S022"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T064",
+      "relation": "complements",
+      "how": "Serializar estado portátil e dependências.",
+      "interface": "Checkpoint, schema, código e referências duráveis.",
+      "condition": "Objetos não dependerem de handles efêmeros.",
+      "acceptance": "Restaurar em processo novo sem sessão original.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S030",
+        "V3A-S031",
+        "A-S022"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir salvar um arquivo com checkpoint transacional completo.",
+    "Não repetir efeitos para descobrir se a primeira tentativa funcionou."
+  ],
+  "frontier_comparison": "Comparar continuidade correta após falha; LLM maior não resolve ausência de protocolo de confirmação.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q005",
+      "V4A-Q008"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S030",
+    "V3A-S031",
+    "A-S022"
+  ]
+}

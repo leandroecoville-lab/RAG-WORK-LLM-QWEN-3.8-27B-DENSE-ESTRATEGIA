@@ -1,0 +1,39 @@
+{
+  "entry_id": "T230",
+  "edges": [
+    {
+      "edge_id": "E-T230-01",
+      "from": "T230",
+      "to": "T229",
+      "relation": "complements",
+      "how": "Unified Diff pode representar o delta de uma estratégia de edição por patch, conforme o aplicador escolhido.",
+      "interface": "Hunks, metadados e revisão base.",
+      "condition": "Formato e extensões são explicitamente suportados.",
+      "acceptance": "Delta aplicado corresponde à intenção e ao escopo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S034",
+        "V2A-S008"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T230-02",
+      "from": "T230",
+      "to": "T233",
+      "relation": "feeds",
+      "how": "Entregar a árvore candidata e a identidade da base para validação antes de publicação.",
+      "interface": "Patch parseado, árvore resultante e hashes.",
+      "condition": "Nenhum erro de aplicação foi ignorado.",
+      "acceptance": "Verificação final incide sobre o artefato exato a ser publicado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S037"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

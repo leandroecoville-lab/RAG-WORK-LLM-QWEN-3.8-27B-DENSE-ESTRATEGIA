@@ -1,0 +1,128 @@
+{
+  "id": "T205",
+  "novelty": "A v3 definiu observáveis e propriedades metamórficas. A nova camada considera domínio de equivalência, geração de contraexemplos e uso responsável de evidência empírica versus prova formal.",
+  "deep_layers": [
+    {
+      "name": "Domínio explícito",
+      "detail": "Declare entradas válidas, estados iniciais e tolerâncias. Duas implementações podem coincidir em números pequenos e divergir em overflow, Unicode, valores vazios ou concorrência. Excluir uma classe de entradas só é legítimo se o contrato também a exclui; não estreite o domínio depois de observar uma falha.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S022",
+        "V4B-S022",
+        "V4B-S024",
+        "V4B-S025"
+      ]
+    },
+    {
+      "name": "Contraexemplo útil",
+      "detail": "Quando houver divergência, reduza a entrada preservando o defeito para facilitar correção. Mantenha sementes e ambiente para reprodução. Testes por propriedades e metamorfismo são úteis quando não existe uma resposta completa para cada entrada, mas a própria propriedade pode estar errada ou ser fraca.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S022",
+        "V4B-S022",
+        "V4B-S024",
+        "V4B-S025"
+      ]
+    },
+    {
+      "name": "Força da evidência",
+      "detail": "Passar uma suíte finita oferece evidência limitada; prova formal tem alcance definido pelo modelo e premissas. AlphaEvolve relata verificação de funcionalidade em uma alteração de circuito, enquanto ACH usa mutações para testar detecção. Não use esses exemplos para declarar equivalência universal de qualquer patch gerado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S022",
+        "V4B-S022",
+        "V4B-S024",
+        "V4B-S025"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Refatoração automatizada",
+      "scenario": "Um modelo altera estrutura mantendo comportamento.",
+      "strategy": "Defina retornos, efeitos, exceções e ordenação relevantes; compare com referência e adicione propriedades. Teste entradas de fronteira e mudanças concorrentes quando aplicáveis.",
+      "small_model_role": "Um 3–7B pode propor refatorações locais, com aceitação externa.",
+      "acceptance": "Nenhuma divergência no domínio testado, com limites de cobertura registrados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S022",
+        "V4B-S022",
+        "V4B-S024",
+        "V4B-S025"
+      ]
+    },
+    {
+      "name": "Normalização de respostas",
+      "scenario": "Várias representações podem expressar o mesmo resultado.",
+      "strategy": "Use parser de domínio para números, unidades ou estruturas; preserve distinções como ordem e multiplicidade quando importam. Encaminhe ambiguidades em vez de forçar equivalência.",
+      "small_model_role": "Um 8–14B pode produzir candidatos, mas a regra de equivalência deve ser auditável.",
+      "acceptance": "Detectar exemplos aparentemente iguais com semântica diferente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S022",
+        "V4B-S022",
+        "V4B-S024",
+        "V4B-S025"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Mudanças pequenas e contratos claros tornam verificação mais viável.",
+    "8_14b": "Para transformações maiores, amplie cobertura e revise premissas do normalizador.",
+    "15_30b": "Um 15–30B não dispensa equivalência; pode produzir alterações mais complexas que exigem verificadores melhores.",
+    "training_or_runtime_requirements": "Ferramentas de teste, referências ou métodos formais conforme o domínio. Não exige treinamento do gerador.",
+    "do_not_use_when": "Não apagar diferenças relevantes com arredondamento, ordenação ou remoção de campos apenas para fazer testes passarem."
+  },
+  "connections": [
+    {
+      "target_id": "T195",
+      "relation": "complements",
+      "how": "Execução fornece observações para comparação diferencial.",
+      "interface": "Artefatos, entradas e efeitos registrados.",
+      "condition": "Ambientes comparáveis e referência confiável.",
+      "acceptance": "Reproduzir e minimizar divergências.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S022",
+        "V4B-S022",
+        "V4B-S024",
+        "V4B-S025"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T188",
+      "relation": "feeds",
+      "how": "Agregação de respostas precisa agrupar somente equivalentes semanticamente.",
+      "interface": "Forma canônica e regras de unidade.",
+      "condition": "Normalizador validado no domínio.",
+      "acceptance": "Testar frações, unidades e respostas condicionais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S022",
+        "V4B-S022",
+        "V4B-S024",
+        "V4B-S025"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Preservar os casos que revelaram divergência como regressões de desenvolvimento.",
+    "Distinguir ausência de contraexemplo encontrado de prova completa."
+  ],
+  "frontier_comparison": "Compare transformações corretas e custo de verificação. Equivalência de uma função ou resposta não demonstra competência geral do modelo que a produziu.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q011",
+      "V4B-Q012"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S022",
+    "V4B-S022",
+    "V4B-S024",
+    "V4B-S025"
+  ]
+}

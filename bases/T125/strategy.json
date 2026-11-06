@@ -1,0 +1,119 @@
+{
+  "id": "T125",
+  "novelty": "A v3 explicou reconstrução ponderada por ativações. Esta camada trata curadoria de calibração, composição dos erros entre camadas e rastreabilidade de escolhas numéricas.",
+  "deep_layers": [
+    {
+      "name": "Calibração por comportamento",
+      "detail": "Selecione exemplos que representem tarefas, formatos e comprimentos reais, sem contaminar avaliação. Uma coleção genérica pode deixar módulos pouco exercitados no domínio. Registre tokens processados e distribuição por categoria; quantidade de exemplos não informa sozinha a cobertura de ativações relevantes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S013",
+        "V4D-S009",
+        "B-S035"
+      ]
+    },
+    {
+      "name": "Erro que se propaga",
+      "detail": "Baixo erro local de reconstrução não garante baixo erro na saída final. Camadas quantizadas alteram entradas das seguintes, e avaliação autoregressiva acumula diferenças nas continuações. Compare reconstrução por camada, logits e tarefas completas; nenhuma dessas medidas substitui as outras.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S013",
+        "V4D-S009",
+        "B-S035"
+      ]
+    },
+    {
+      "name": "Estabilidade e escolhas",
+      "detail": "Agrupamento, ordem de processamento e estabilização influenciam o artefato. Preserve parâmetros e logs, incluindo falhas de fatoração ou fallback. Ajustar esses valores para melhorar um conjunto pequeno de testes pode gerar sobreajuste do processo de quantização; reserve uma validação independente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S013",
+        "V4D-S009",
+        "B-S035"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Modelo de domínio numérico",
+      "scenario": "Pequenos erros afetam respostas estruturadas ou cálculo.",
+      "strategy": "Calibre com dados de formato semelhante e use ferramentas externas para verificar resultados. Examine categorias sensíveis antes de decidir se certas camadas ficam em precisão maior.",
+      "small_model_role": "Um 8–14B pode continuar útil quando cálculo e validação são delegados a ferramentas.",
+      "acceptance": "Comparar taxa de erro por categoria com referência de maior precisão e com o mesmo verificador.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S013",
+        "V4D-S009",
+        "B-S035"
+      ]
+    },
+    {
+      "name": "Pipeline reproduzível de distribuição",
+      "scenario": "Várias versões do modelo serão quantizadas.",
+      "strategy": "Versione base, calibração, parâmetros, código e formato de saída. Automatize inspeção de metadados e teste de carregamento; aprove cada versão com uma avaliação separada.",
+      "small_model_role": "Modelos 3–7B permitem ciclos de validação rápidos, sem dispensar cobertura de casos críticos.",
+      "acceptance": "Reproduzir artefatos ou explicar diferenças com manifests completos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S013",
+        "V4D-S009",
+        "B-S035"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "A economia pode facilitar implantação local; avalie se o processo de calibração compensa o objetivo.",
+    "8_14b": "Mantenha variedade de tarefas e comprimentos; um único domínio textual estreito pode esconder perdas.",
+    "15_30b": "Quantização de 15–30B exige recursos para calibração e buffers, não somente para o arquivo final.",
+    "training_or_runtime_requirements": "Método pós-treino com dados de calibração e runtime compatível. A menção no Phi Silica não fixa uma receita aplicável a outro modelo.",
+    "do_not_use_when": "Não usar métricas de reconstrução como prova de correção factual ou de compatibilidade de kernel."
+  },
+  "connections": [
+    {
+      "target_id": "T124",
+      "relation": "feeds",
+      "how": "GPTQ pode gerar uma representação de pesos de quatro bits com metadados próprios.",
+      "interface": "Códigos, escalas, grupos e layout.",
+      "condition": "Consumidor implementa a representação específica.",
+      "acceptance": "Conferir saída de camadas após exportação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S013",
+        "V4D-S009",
+        "B-S035"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T198",
+      "relation": "complements",
+      "how": "Perdas de quantização podem alterar calibração de confiança e precisam de nova medição.",
+      "interface": "Predições e resultados rotulados por versão.",
+      "condition": "Conjunto independente do usado para calibrar pesos.",
+      "acceptance": "Comparar confiabilidade por faixa sem presumir preservação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S013",
+        "V4D-S009",
+        "B-S035"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Manter conjunto de avaliação fora da calibração e da escolha de hiperparâmetros.",
+    "Registrar exceções de precisão e fallback para não rotular artefatos diferentes como idênticos."
+  ],
+  "frontier_comparison": "A comparação correta primeiro mede a diferença causada por GPTQ e depois a adequação à tarefa frente a fronteira. Um bom erro de reconstrução não estabelece equivalência de raciocínio.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q006"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S013",
+    "V4D-S009",
+    "B-S035"
+  ]
+}

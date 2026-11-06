@@ -1,0 +1,18 @@
+[
+  {
+    "question": "O orçamento de entrada é igual à janela total?",
+    "answer": "Geralmente não. É preciso reservar geração e contabilizar overhead conforme o backend."
+  },
+  {
+    "question": "Devo cortar exatamente no último token disponível?",
+    "answer": "Não. Uma margem operacional reduz falhas por diferenças de contagem e expansão de conteúdo."
+  },
+  {
+    "question": "A janela nominal é um orçamento suficiente?",
+    "answer": "Não. Verifique as regras do modelo e servidor para entrada, saída e expansões. O valor anunciado não descreve sozinho o envelope operacional."
+  },
+  {
+    "question": "Devo reduzir sempre a mensagem mais longa?",
+    "answer": "Não. Ela pode conter a única evidência necessária. O custo em tokens precisa ser combinado com obrigatoriedade e relações entre unidades."
+  }
+]

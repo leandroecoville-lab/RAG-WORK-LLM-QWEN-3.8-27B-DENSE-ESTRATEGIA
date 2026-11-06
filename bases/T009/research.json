@@ -1,0 +1,54 @@
+{
+  "id": "T009",
+  "technical_details": "A qualidade final resulta de etapas separáveis: existir evidência elegível, recuperá-la, preservar seu sentido no contexto e usá-la corretamente. RAG temporal acrescenta filtros de validade e conhecimento: uma correção publicada hoje pode mudar a resposta sobre ontem sem mudar o que o sistema sabia ontem. Avaliar só similaridade do trecho mistura erros de indexação, tempo e leitura.",
+  "boundary_condition": "Se o acervo não contém evidência suficiente ou as datas representam publicação sem validade de domínio, recuperação não pode fabricar uma resposta temporal bem definida.",
+  "implementation_contract": {
+    "inputs": "Pergunta, escopo, instante de validade e eventual instante de conhecimento.",
+    "outputs": "Resposta com evidências elegíveis, versões e lacunas explicitadas.",
+    "state": "Índices por revisão, metadados temporais e registro dos candidatos utilizados.",
+    "invariant": "Nenhuma evidência posterior ao corte de conhecimento é apresentada como já conhecida naquele corte."
+  },
+  "tradeoffs": [
+    "Filtros temporais rígidos aumentam precisão histórica, mas exigem metadados confiáveis.",
+    "Mais candidatos ampliam cobertura e também ruído, custo e oportunidades de contradição."
+  ],
+  "failure_test": "Teste proposto: inserir um fato válido no passado e uma correção registrada depois. Perguntas sobre o passado segundo conhecimento atual e segundo conhecimento antigo devem produzir resultados compatíveis com seus cortes diferentes.",
+  "evaluation_plan": "Avaliação proposta: isolar recuperação e leitura usando candidatos conhecidos e depois o pipeline completo. Medir evidência elegível recuperada, atribuição, atualização e abstenção; comparar com busca sem filtro temporal sobre o mesmo corpus.",
+  "comparisons": [
+    {
+      "entry_id": "T056",
+      "relation": "complements",
+      "reason": "Bitemporalidade explicita os dois cortes necessários a consultas históricas mais rigorosas."
+    },
+    {
+      "entry_id": "T025",
+      "relation": "complements",
+      "reason": "Adaptive RAG decide estratégias adicionais de recuperação conforme a necessidade observada."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "LongMemEval distingue atualização de conhecimento, raciocínio temporal e abstenção como capacidades de memória.",
+    "source_ids": [
+      "V3A-S002"
+    ],
+    "support": "related",
+    "caveat": "A avaliação de memória apoia a separação de capacidades; o contrato temporal proposto não é uma API do benchmark."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma citação correta garante resposta correta?",
+      "answer": "Não. O trecho pode existir e ainda ser mal interpretado, estar fora do corte temporal ou não sustentar a conclusão apresentada."
+    },
+    {
+      "question": "Quando não recuperar é aceitável?",
+      "answer": "Quando o contrato da tarefa dispensa evidência externa e a decisão é justificada. Uma pergunta factual atual ou histórica pode exigir busca mesmo que pareça simples."
+    }
+  ],
+  "source_ids": [
+    "V3A-S002",
+    "A-S007",
+    "A-S032",
+    "V3A-S009"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

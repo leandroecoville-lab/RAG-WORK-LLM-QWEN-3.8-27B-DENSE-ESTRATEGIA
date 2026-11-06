@@ -1,0 +1,68 @@
+{
+  "coverage": {
+    "entry_id": "T084",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Session-Based Caching",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C004",
+      "company": "Cloudflare",
+      "organization_class": "technology_operator",
+      "system": "Workers AI",
+      "title": "Reuso de prefixos e afinidade de sessão em serviço de inferência",
+      "evidence_level": "production_documented",
+      "observed_use": "Cloudflare descreve prefix caching já utilizado no Workers AI e a exposição de tokens em cache, além de afinidade de sessão para alcançar a mesma instância.",
+      "technical_mechanism": "Reuso de tensores do prefill em prefixos idênticos; encaminhamento com identificador de afinidade e fila assíncrona que aproveita capacidade.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S004"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T082",
+          "match": "exact",
+          "rationale": "O operador afirma que o serviço usa prefix caching."
+        },
+        {
+          "entry_id": "T084",
+          "match": "family",
+          "rationale": "Afinidade por sessão aumenta chance de cache, mas não demonstra todo o contrato de revisão de sessão da ficha."
+        },
+        {
+          "entry_id": "T120",
+          "match": "family",
+          "rationale": "Roteamento busca a mesma instância, sem comprovar consulta dinâmica a blocos KV de todos os workers."
+        },
+        {
+          "entry_id": "T121",
+          "match": "family",
+          "rationale": "Admissão assíncrona usa capacidade observada, sem expor todos os detalhes do scheduler GPU."
+        }
+      ],
+      "small_model_transfer": "Proposta: em serviço 3–30B, testar afinidade com limite de espera e fallback, e medir tokens reutilizados sem confundir desconto comercial com economia de hardware.",
+      "limits": "A página destaca modelos grandes; não fixa aplicabilidade nem SLO para todos os modelos. Cloudflare é classificada como operador tecnológico, não contada automaticamente como bigtech estrita.",
+      "canonical_case_id": "V4B-C004",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "T084",
+        "match": "family",
+        "rationale": "Afinidade por sessão aumenta chance de cache, mas não demonstra todo o contrato de revisão de sessão da ficha."
+      }
+    }
+  ]
+}

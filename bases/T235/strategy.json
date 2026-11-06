@@ -1,0 +1,117 @@
+{
+  "id": "T235",
+  "novelty": "A v3 separava eventos, resposta final e estado de processo. A expansão define controlador não interativo por contrato de missão, gestão de recursos e parada explícita, evitando confundir autonomia de processo com conclusão correta.",
+  "deep_layers": [
+    {
+      "name": "Controlador é autoridade de ciclo",
+      "detail": "O processo do agente executa uma unidade; o controlador decide agendar, continuar, interromper ou finalizar. Use estados como em execução, aguardando dependência, candidato pronto e aceito. Exit code e texto final são sinais, não critérios únicos. Um processo que termina sem artefato pode estar inconclusivo; um que permanece vivo pode estar sem progresso.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S039",
+        "V4C-S016"
+      ]
+    },
+    {
+      "name": "Eventos e artefatos",
+      "detail": "Consuma eventos com parser tolerante a versões conhecidas e preserve tipos desconhecidos para diagnóstico. O artefato final passa por contrato próprio e deve apontar à revisão de trabalho. Não transforme evento de ferramenta concluída em missão concluída: a ferramenta pode ter retornado erro ou apenas preparado um candidato ainda sem validação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S039",
+        "V4C-S030"
+      ]
+    },
+    {
+      "name": "Recursos e encerramento",
+      "detail": "O controlador gerencia timeout, orçamento, logs, subprocessos e cancelamento cooperativo. Ao parar, classifica efeitos pendentes e preserva estado retomável. Agendar outro processo com o mesmo prompt não é retomada equivalente se a identidade da missão, diretório e revisão não forem conservados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S039",
+        "C-S026"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Pipeline de alterações em lote",
+      "scenario": "Um job dispara agentes para tarefas de programação repetitivas.",
+      "strategy": "Crie entrada estruturada por tarefa e workspace isolado. Execute agente, valide artefato e testes, e publique candidato para integração. Rejeição retorna diagnóstico limitado; após teto, encerre com pendências. Não manter loop infinito até o modelo declarar sucesso.",
+      "small_model_role": "3–7B cobre tarefas mecânicas; 8–14B repara falhas; 15–30B analisa exceções.",
+      "acceptance": "Proposta: cada job termina em resultado classificado, com custo e evidência completos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S016",
+        "V3C-S039"
+      ]
+    },
+    {
+      "name": "Pesquisa assíncrona",
+      "scenario": "Coleta e síntese precisam continuar sem interação contínua.",
+      "strategy": "Defina perguntas, limites de pesquisa e artefatos esperados antes de iniciar. O controlador acompanha fontes recuperadas e cobertura, acionando nova etapa somente quando pré-condições forem satisfeitas. Na falta de evidência, o resultado é lacuna explícita, não consulta infinita por obrigação de preencher quota.",
+      "small_model_role": "8–14B extrai; 15–30B integra dentro de critério de suficiência.",
+      "acceptance": "Proposta: cobertura rastreável e término previsível mesmo quando uma fonte fica indisponível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V3C-S039"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Jobs curtos, schema fixo e poucos estados facilitam execução não interativa confiável.",
+    "8_14b": "Tratamento de erros locais e geração de candidatos com evidência recuperável.",
+    "15_30b": "Coordenação de etapas amplas, com controlador determinístico mantendo limites e publicação.",
+    "training_or_runtime_requirements": "API ou CLI com eventos documentados, diretório e revisão fixados, captura de logs e política de parada.",
+    "do_not_use_when": "Não habilitar autoridade ilimitada só porque o modo não oferece prompts interativos."
+  },
+  "connections": [
+    {
+      "target_id": "T225",
+      "relation": "complements",
+      "how": "Watchdog recupera processo quando necessário, sem reiniciar automaticamente a missão lógica.",
+      "interface": "Estado do job, última evidência e geração.",
+      "condition": "Recuperação preserva identidade e orçamento acumulado.",
+      "acceptance": "Queda do processo não causa duplicação de efeitos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026",
+        "V3C-S040"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T233",
+      "relation": "feeds",
+      "how": "Resultado headless é candidato para validação, e só o gate decide aceite da alteração.",
+      "interface": "Artefato, base e registros de execução.",
+      "condition": "Contrato final foi satisfeito e os testes correspondem à revisão.",
+      "acceptance": "Texto de sucesso sem evidência é rejeitado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S039",
+        "V4C-S009"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não usar JSONL de eventos como se todos os itens obedecessem ao schema da resposta final.",
+    "Subprocessos e efeitos externos podem sobreviver ao encerramento do cliente."
+  ],
+  "frontier_comparison": "Compare custo por job aceito e taxa de intervenção com o mesmo controlador. Rodar um modelo pequeno sem UI não demonstra autonomia cognitiva equivalente à de um modelo de fronteira.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q011",
+      "V4C-Q027"
+    ],
+    "scope_note": "GitHub e OpenAI documentam agentes e interfaces operacionais; recursos disponíveis não provam implantação deste controlador específico nem justificam loops ilimitados."
+  },
+  "source_ids": [
+    "V3C-S039",
+    "V4C-S016",
+    "V4C-S030",
+    "C-S026",
+    "C-S030",
+    "V3C-S040",
+    "V4C-S009"
+  ]
+}

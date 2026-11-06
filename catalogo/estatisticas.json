@@ -1,0 +1,75 @@
+{
+  "entries": 287,
+  "chunks": 2583,
+  "qa": 1148,
+  "source_records": 449,
+  "unique_source_urls": 414,
+  "entries_by_scope": {
+    "inventario": 243,
+    "referencia": 27,
+    "proposta": 17
+  },
+  "categories": {
+    "contexto_recuperacao": 46,
+    "memoria": 32,
+    "inferencia": 54,
+    "orquestracao": 44,
+    "verificacao_treinamento": 30,
+    "continuidade_programacao": 37,
+    "referencias": 27,
+    "componentes_propostos": 17
+  },
+  "evidence_status": {
+    "supported": 207,
+    "related_support": 78,
+    "terminology_correction": 2
+  },
+  "source_verification": {
+    "opened": 444,
+    "search_result": 5
+  },
+  "canonical_ids": 279,
+  "words_editorial": 498633,
+  "words_new_layers": 291430,
+  "deepened_entries": 287,
+  "typed_relations": 485,
+  "traceable_claims": 287,
+  "proposed_experiment_protocols": 287,
+  "strategic_entries": 287,
+  "advanced_uses": 574,
+  "requested_associations": 2870,
+  "verified_strict_associations": 50,
+  "remaining_to_target": 2820,
+  "entries_target_met": 0,
+  "entries_with_strict_production": 36,
+  "unique_cases": 93,
+  "case_records": 98,
+  "cases_by_evidence_level": {
+    "production_documented": 53,
+    "operational_product": 28,
+    "research_only": 17
+  },
+  "cases_by_organization_class": {
+    "bigtech": 55,
+    "ai_lab": 12,
+    "research_group": 7,
+    "technology_operator": 24
+  },
+  "strategy_edges": 584,
+  "strategy_edges_by_stage": {
+    "engineering_proposal": 526,
+    "production_documented": 50,
+    "operational_product": 8
+  },
+  "case_entry_mappings": 409,
+  "search_queries": 105,
+  "unique_cases_by_evidence_level": {
+    "production_documented": 48,
+    "operational_product": 28,
+    "research_only": 17
+  },
+  "verified_strict_llm_associations": 34,
+  "requested_inventory_associations": 2430,
+  "verified_strict_inventory_associations": 46,
+  "inventory_entries_target_met": 0
+}

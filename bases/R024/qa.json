@@ -1,0 +1,18 @@
+[
+  {
+    "question": "GGUF significa automaticamente modelo de quatro bits?",
+    "answer": "Não. GGUF é um formato que pode armazenar diferentes tipos de tensores; a quantização precisa ser identificada separadamente."
+  },
+  {
+    "question": "API compatível dispensa teste de integração?",
+    "answer": "Não. Recursos, campos e detalhes de execução variam; o contrato efetivamente usado pela aplicação deve ser verificado."
+  },
+  {
+    "question": "GGUF identifica a qualidade de uma quantização?",
+    "answer": "Não. É preciso conhecer esquema, modelo de origem e avaliação da variante concreta."
+  },
+  {
+    "question": "Devo medir apenas tokens por segundo?",
+    "answer": "Não. Inclua prefill, latência de cauda, memória e proporção de respostas aceitas no uso real."
+  }
+]

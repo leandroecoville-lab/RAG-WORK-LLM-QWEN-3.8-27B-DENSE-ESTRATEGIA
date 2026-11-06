@@ -1,0 +1,136 @@
+{
+  "id": "P006",
+  "novelty": "A v3 tratou seleção e identidade. Aqui Progressive Loader é proposto com carregamento de dependências, cancelamento e verificação de utilidade.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Mantenha grafo de dependências declaradas por recurso. Carregar procedimento pode exigir schema e definição; a carga deve retornar conjunto completo ou lista de faltas, não sucesso parcial oculto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "A-S038",
+        "A-S010"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Prefetch só ocorre para dependência provável e dentro de cota. Se objetivo mudar, cancelar cargas pendentes e impedir que resultado tardio seja anexado à tarefa errada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "A-S038",
+        "A-S010"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare catálogo integral, carga simples e carga por dependências. Meça escolhas incorretas, conteúdo nunca usado e faltas detectadas antes da execução; bytes lidos não equivalem a informação útil. Unidade de avaliação: carga de recurso.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "A-S038",
+        "A-S010"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Ferramentas numerosas",
+      "scenario": "A ação exige schema raro.",
+      "strategy": "Selecionar capacidade por metadados, abrir schema e dependências, validar versão e somente então permitir argumentos.",
+      "small_model_role": "3–7B seleciona; 8–14B constrói chamada.",
+      "acceptance": "Nenhuma execução pode usar contrato apenas resumido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "A-S038",
+        "A-S010"
+      ]
+    },
+    {
+      "name": "Memória modular",
+      "scenario": "Uma tarefa referencia vários arquivos.",
+      "strategy": "Abrir índice, resolver conjunto mínimo de módulos e registrar versões; interromper ciclo e devolver dependência não satisfeita.",
+      "small_model_role": "15–30B integra módulos.",
+      "acceptance": "Conjunto carregado deve preservar referências necessárias sem expansão infinita.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "A-S038",
+        "A-S010"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Selector entre descritores contrastivos com carga controlada.",
+    "8_14b": "Leitor que identifica dependências e solicita recursos adicionais.",
+    "15_30b": "Planejador de carga entre módulos interdependentes com orçamento.",
+    "training_or_runtime_requirements": "Registry versionado, status de cargas e grafo de dependências; conteúdo recuperado conserva autoridade da origem.",
+    "do_not_use_when": "Descrições não discriminam recursos ou dependências não podem ser resolvidas dentro do limite útil."
+  },
+  "connections": [
+    {
+      "target_id": "T066",
+      "relation": "requires",
+      "how": "Resolver recurso e versão antes de aceitar corpo.",
+      "interface": "resource_id, versão, digest e seletor.",
+      "condition": "Corpo corresponder ao item selecionado.",
+      "acceptance": "Alterar versão entre descoberta e carga e exigir nova validação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "A-S038",
+        "A-S010"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "P002",
+      "relation": "requires",
+      "how": "Reservar orçamento antes de expandir dependências.",
+      "interface": "Custo total previsto, cota e prioridade.",
+      "condition": "Reserva considerar conjunto completo.",
+      "acceptance": "Testar dependência transitiva que ultrapassa limite.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "A-S038",
+        "A-S010"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T045",
+      "relation": "complements",
+      "how": "Aplicar busca de capacidade antes de carga pesada.",
+      "interface": "Descritores, efeitos e ferramentas candidatas.",
+      "condition": "Schema completo disponível antes de executar.",
+      "acceptance": "Selecionar ferramenta rara sem carregar catálogo inteiro.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S018",
+        "A-S038",
+        "A-S010"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não anexar resultado tardio a objetivo revogado.",
+    "Não permitir instrução do recurso alterar política superior."
+  ],
+  "frontier_comparison": "Comparar sucesso de descoberta e custo total de expansão; economia do prompt inicial não basta.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q019",
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S018",
+    "A-S038",
+    "A-S010"
+  ]
+}

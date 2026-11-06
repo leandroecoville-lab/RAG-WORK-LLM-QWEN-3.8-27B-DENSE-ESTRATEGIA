@@ -1,0 +1,68 @@
+{
+  "coverage": {
+    "entry_id": "T211",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Handoff File",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C021",
+      "company": "Meta",
+      "system": "Sapling — fluxo interno de commits",
+      "title": "Mudanças incrementais com pilhas revisadas",
+      "evidence_level": "production_documented",
+      "observed_use": "A Meta descreve Sapling utilizado no monorepo e pilhas de commits pequenos submetidos individualmente à revisão.",
+      "technical_mechanism": "Ferramentas visualizam dependências e evolução de commits; operações de recuperação e revisão integram o fluxo de desenvolvimento.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S021"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T236",
+          "match": "family",
+          "rationale": "A prática de etapas pequenas e revisadas é explícita, porém usa Sapling e não o comando Git commit."
+        },
+        {
+          "entry_id": "T213",
+          "match": "analogy",
+          "rationale": "Decomposição de uma feature em mudanças revisáveis inspira micro-missões."
+        },
+        {
+          "entry_id": "T211",
+          "match": "analogy",
+          "rationale": "Histórico e commits ajudam transferência de trabalho, sem provar handoff de agentes."
+        },
+        {
+          "entry_id": "R027",
+          "match": "family",
+          "rationale": "Fonte descreve um sistema de versionamento relacionado e diferenças para Git, não adoção interna integral de Git."
+        }
+      ],
+      "small_model_transfer": "Proposta: gerar mudanças 3–30B em dependências explícitas, validar cada etapa e revalidar descendentes quando a base mudar. A aplicação decide quando consolidar etapas para evitar fragmentação.",
+      "limits": "Sapling não é Git; a fonte informa diferenças como ausência de staging area. Um caso de versionamento, sem multiplicação por cada comando ou equipe.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C021",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T211",
+        "match": "analogy",
+        "rationale": "Histórico e commits ajudam transferência de trabalho, sem provar handoff de agentes."
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+flowchart TD
+    P011["P011 Execution Engine / Execution Controller"]
+    T159["T159 Durable Execution"]
+    P011 -. "complements: proposta" .-> T159
+    T243["T243 Reconciliação de operações externas"]
+    P011 -. "feeds: proposta" .-> T243

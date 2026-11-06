@@ -1,0 +1,52 @@
+{
+  "id": "T241",
+  "technical_details": "Replay de eventos históricos exige compatibilidade de representação e significado. Um upcaster pode converter o schema antigo para o atual durante a leitura, mas não deve inventar informação que nunca foi registrada. Mudança de regra de projeção também pode produzir estado diferente a partir dos mesmos fatos; nesse caso, reconstrução atual e reprodução histórica são objetivos distintos. O contrato precisa declarar qual versão do processador será utilizada.",
+  "boundary_condition": "Eventos incompletos, ordem incorreta ou transformações dependentes do relógio atual impedem reconstrução reproduzível.",
+  "implementation_contract": {
+    "inputs": "Eventos ordenados, cursor inicial, versão do reducer e conversões de schema.",
+    "outputs": "Projeção reconstruída, cursor final e eventos não interpretáveis.",
+    "state": "Versões de processamento, IDs já aplicados e falhas de conversão.",
+    "invariant": "Reconstrução da projeção não reenvia efeitos externos apenas porque encontra eventos antigos."
+  },
+  "tradeoffs": [
+    "Upcasting evita regravar o histórico e aumenta trabalho de leitura e manutenção.",
+    "Preservar processadores antigos permite reprodução histórica e amplia carga de compatibilidade."
+  ],
+  "failure_test": "Teste proposto: incluir evento antigo sem campo recém-exigido e converter usando um default que altera significado; exigir tratamento explícito da ausência, sem simular fato histórico inexistente.",
+  "evaluation_plan": "Comparar projeção antiga reproduzida e projeção nova reconstruída sobre o mesmo log. Medir divergências explicáveis, eventos rejeitados, tempo e efeitos externos indevidos. Separar regressão de mudança intencional de regra.",
+  "comparisons": [
+    {
+      "entry_id": "T170",
+      "relation": "complements",
+      "reason": "Evolução de schema também precisa de compatibilidade entre versões de eventos."
+    },
+    {
+      "entry_id": "T242",
+      "relation": "complements",
+      "reason": "Replay a partir de snapshot aplica somente o sufixo ainda não incorporado."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Marten descreve upcasting como transformação do schema antigo durante a leitura do evento.",
+    "source_ids": [
+      "V3C-S041"
+    ],
+    "support": "direct",
+    "caveat": "Conversão estrutural não prova preservação semântica; fatos ausentes continuam ausentes."
+  },
+  "advanced_qa": [
+    {
+      "question": "Mesmo log sempre produz o mesmo estado?",
+      "answer": "Somente sob regras, ordem e entradas auxiliares compatíveis; trocar o processador pode mudar a projeção."
+    },
+    {
+      "question": "Posso usar a data atual para completar um evento antigo?",
+      "answer": "Não como se fosse um fato original. Isso introduz dependência externa e altera o significado histórico."
+    }
+  ],
+  "source_ids": [
+    "V3C-S041",
+    "A-S027"
+  ],
+  "research_note": "Contratos, cenários de falha e planos de avaliação são propostas editoriais fundamentadas nas fontes indicadas."
+}

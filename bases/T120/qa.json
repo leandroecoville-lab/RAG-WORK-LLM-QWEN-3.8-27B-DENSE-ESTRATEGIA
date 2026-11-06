@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Roteamento de KV escolhe o melhor modelo?",
+    "answer": "Não necessariamente. Em geral escolhe uma instância compatível; model routing decide entre modelos."
+  },
+  {
+    "question": "Cache hit deve sempre ganhar?",
+    "answer": "Não. Espera e carga podem tornar um worker sem cache mais rápido no custo total."
+  },
+  {
+    "question": "Roteamento transfere automaticamente o KV?",
+    "answer": "Não necessariamente. A decisão de posicionamento e o mecanismo de transporte têm contratos separados."
+  },
+  {
+    "question": "Por que reservar carga ao decidir?",
+    "answer": "Sem contabilizar decisões simultâneas, vários pedidos podem escolher o mesmo worker aparentemente livre e criar uma fila inesperada."
+  }
+]

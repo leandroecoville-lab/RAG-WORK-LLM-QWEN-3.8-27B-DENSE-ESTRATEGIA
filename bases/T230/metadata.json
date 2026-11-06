@@ -1,0 +1,30 @@
+{
+  "id": "T230",
+  "name": "Unified Diff",
+  "canonical_name": "Unified Diff",
+  "canonical_id": "T230",
+  "aliases": [
+    "diff unificado"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "format",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T229",
+    "T233"
+  ],
+  "source_ids": [
+    "V2A-S013",
+    "V2A-S014",
+    "V3C-S034",
+    "V3C-S037",
+    "V2A-S008",
+    "V3C-S042"
+  ],
+  "namespace": "T230",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T230",
+  "chunk_count": 9
+}

@@ -1,0 +1,41 @@
+{
+  "id": "P013",
+  "name": "Resilience Engine / Reliability Controller",
+  "canonical_name": "Resilience Engine / Reliability Controller",
+  "canonical_id": "P013",
+  "aliases": [
+    "motor proposto de resiliência",
+    "controlador proposto de confiabilidade"
+  ],
+  "category": "componentes_propostos",
+  "kind": "component",
+  "scope": "proposta",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T137",
+    "T138",
+    "T162",
+    "T163",
+    "T164",
+    "T165",
+    "T228",
+    "P011",
+    "P015"
+  ],
+  "source_ids": [
+    "C-S003",
+    "C-S005",
+    "C-S026",
+    "C-S027",
+    "C-S028",
+    "V3D-S017",
+    "V4C-S005",
+    "V2A-S012",
+    "V3C-S010"
+  ],
+  "namespace": "P013",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/P013",
+  "chunk_count": 9
+}

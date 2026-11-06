@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Lazy loading elimina o registro de ferramentas?",
+    "answer": "Não. Precisa de metadados confiáveis para localizar o contrato."
+  },
+  {
+    "question": "O ganho é gratuito?",
+    "answer": "Não. Descoberta acrescenta latência e pode errar; precisa de medição."
+  },
+  {
+    "question": "Uma notificação de mudança elimina a necessidade de versionamento?",
+    "answer": "Não. Ela informa que algo mudou; ainda é necessário identificar o contrato efetivamente usado pela chamada."
+  },
+  {
+    "question": "Quando o carregamento tardio piora a tarefa?",
+    "answer": "Quando descoberta repetida e definições omitidas causam mais rodadas ou erros que a economia inicial de tokens."
+  }
+]

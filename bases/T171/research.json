@@ -1,0 +1,52 @@
+{
+  "id": "T171",
+  "technical_details": "A afinidade de cache deve competir com o custo de fila. Uma rota com prefixo reutilizável pode ser mais lenta que outra fria se estiver congestionada. Uma estimativa proposta soma espera, prefill não reutilizado, transferência e decode esperado. A informação de residência também envelhece: um bloco anunciado pode ser removido antes da admissão. O plano precisa tolerar cache miss sem alterar correção da resposta.",
+  "boundary_condition": "Quando decode ou ferramenta externa domina o tempo, economizar prefill pode ter efeito pequeno sobre a latência final.",
+  "implementation_contract": {
+    "inputs": "Prefixos identificados, residência estimada, carga dos destinos e requisitos do modelo.",
+    "outputs": "Rota elegível e expectativa separada de economia e espera.",
+    "state": "Hashes, versões, acertos observados e idade da telemetria.",
+    "invariant": "Uma decisão por cache nunca troca modelo ou contexto incompatível apenas para aumentar acertos."
+  },
+  "tradeoffs": [
+    "Afinidade aumenta reutilização e pode concentrar tráfego em poucos workers.",
+    "Balancear carga distribui filas e pode duplicar prefixos na memória de vários destinos."
+  ],
+  "failure_test": "Teste proposto: tornar o worker com cache quente lento e remover blocos após anunciar residência; exigir execução correta e registro de cache miss, sem insistência ilimitada no destino.",
+  "evaluation_plan": "Comparar balanceamento sem afinidade e política combinada sob diferentes tamanhos de prefixo e ocupação. Medir latência completa, prefill poupado, memória e desequilíbrio de filas. Decidir pela métrica de serviço, não só pela taxa de cache hit.",
+  "comparisons": [
+    {
+      "entry_id": "T157",
+      "relation": "complements",
+      "reason": "Identidade de prefixo permite verificar qual estado pode ser reutilizado."
+    },
+    {
+      "entry_id": "T120",
+      "relation": "complements",
+      "reason": "Roteamento de KV é uma aplicação específica dessa consideração de residência e custo."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O design de cache do vLLM identifica blocos reutilizáveis pelo contexto encadeado e metadados relevantes.",
+    "source_ids": [
+      "V3C-S015"
+    ],
+    "support": "related",
+    "caveat": "A fórmula de decisão entre fila e cache é uma proposta de orquestração, não garantia fornecida pelo hashing."
+  },
+  "advanced_qa": [
+    {
+      "question": "Mais cache hit significa menor latência sempre?",
+      "answer": "Não. Uma fila longa ou custo de transferência pode superar a economia de prefill."
+    },
+    {
+      "question": "Cache miss após o roteamento deve mudar a resposta?",
+      "answer": "Não por si. O backend deve recomputar o prefixo compatível; cache afeta custo e tempo, não a intenção da tarefa."
+    }
+  ],
+  "source_ids": [
+    "V3C-S015",
+    "B-S032"
+  ],
+  "research_note": "Síntese técnica com contratos e testes propostos; não há alegação de implantação ou medição LAI."
+}

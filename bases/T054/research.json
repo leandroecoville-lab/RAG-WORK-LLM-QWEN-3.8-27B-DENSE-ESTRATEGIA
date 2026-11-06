@@ -1,0 +1,51 @@
+{
+  "id": "T054",
+  "technical_details": "Uma memória semântica útil separa a proposição de suas evidências e qualificadores. “O componente aceita o formato” pode depender de versão, configuração e ambiente; retirar esses campos transforma uma afirmação local em regra geral. Também é necessário separar identidade lógica da proposição e identidade de uma versão, permitindo associar novas evidências sem reescrever silenciosamente o histórico de como o conhecimento mudou.",
+  "boundary_condition": "Generalizações a partir de poucos episódios falham quando as condições determinantes não foram registradas; maior repetição textual não corrige falta de escopo.",
+  "implementation_contract": {
+    "inputs": "Afirmações candidatas, entidades, qualificadores e evidências identificadas com suas revisões.",
+    "outputs": "Proposições consultáveis com escopo, status e relações de derivação ou contestação.",
+    "state": "Histórico de versões, evidências independentes e regras para revisão ou invalidação.",
+    "invariant": "Uma afirmação não perde condições necessárias ao ser transformada em memória reutilizável."
+  },
+  "tradeoffs": [
+    "Normalizar proposições melhora comparação e atualização, mas exige decisões de equivalência semântica.",
+    "Guardar múltiplos suportes aumenta robustez e requer distinguir cópias de observações independentes."
+  ],
+  "failure_test": "Teste proposto: extrair a mesma frase de duas versões de manual com compatibilidades diferentes. O sistema deve conservar os qualificadores e impedir que a busca retorne uma regra universal inexistente.",
+  "evaluation_plan": "Avaliação proposta: comparar passagens originais e proposições estruturadas em perguntas de escopo e exceção. Medir precisão de qualificadores, sustentação, atualização após correção e independência das evidências; testar consulta exata e busca semântica separadamente.",
+  "comparisons": [
+    {
+      "entry_id": "T049",
+      "relation": "distinct_from",
+      "reason": "Episódio conserva uma experiência situada; memória semântica abstrai uma proposição sem eliminar seu escopo."
+    },
+    {
+      "entry_id": "T058",
+      "relation": "complements",
+      "reason": "Consolidação pode produzir proposições candidatas, que ainda precisam de verificação e controle de versões."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "PROV-DM representa entidades, atividades e relações de derivação que permitem rastrear a origem de um registro produzido.",
+    "source_ids": [
+      "V3A-S037"
+    ],
+    "support": "related",
+    "caveat": "Proveniência descreve produção e responsabilidade; não certifica a verdade da proposição nem define sozinha sua equivalência semântica."
+  },
+  "advanced_qa": [
+    {
+      "question": "Duas frases parecidas devem ser fundidas?",
+      "answer": "Somente se sujeito, relação, qualificadores e validade forem compatíveis. Similaridade pode aproximar afirmações opostas ou referentes a versões distintas."
+    },
+    {
+      "question": "Uma afirmação com muitas fontes é mais confiável?",
+      "answer": "Depende da independência e qualidade das fontes. Dez republicações da mesma origem não equivalem a dez observações independentes."
+    }
+  ],
+  "source_ids": [
+    "V3A-S037"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

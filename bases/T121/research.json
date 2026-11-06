@@ -1,0 +1,46 @@
+{
+  "id": "T121",
+  "technical_details": "Uma fila de inferência contém trabalhos com custos heterogêneos: prefill longo, decode curto e crescimento futuro de KV não são equivalentes. Como proposta de escalonamento, use custos estimados e prioridades envelhecidas, reavaliando após cada unidade permitida de execução. Interromper uma requisição entre iterações é diferente de preemptar arbitrariamente um kernel já em execução; a granularidade oferecida pelo backend limita a política real.",
+  "boundary_condition": "Ocupação alta pode ocultar trabalho repetido, esperas injustas ou violações de prazo; utilização isolada não mede serviço útil.",
+  "implementation_contract": {
+    "inputs": "Fila, estimativas de trabalho, memória, prazos e pontos permitidos de decisão.",
+    "outputs": "Plano da próxima rodada e justificativas de admissão, espera ou preempção.",
+    "state": "Idades, custos previstos, progresso confirmado e reservas de crescimento.",
+    "invariant": "O escalonador respeita recursos e não confunde trabalho iniciado com trabalho concluído."
+  },
+  "tradeoffs": [
+    "Favorecer trabalhos curtos pode reduzir média e prejudicar longos sem envelhecimento.",
+    "Reservar margem de memória reduz falhas e pode deixar capacidade momentaneamente ociosa."
+  ],
+  "failure_test": "Teste proposto: misturar fluxo contínuo de pedidos curtos com um longo, além de saídas maiores que a previsão. Esperar progresso do longo e política explícita para pressão de memória.",
+  "evaluation_plan": "Plano proposto: comparar políticas com a mesma sequência de chegadas e comprimentos. Medir goodput, deadlines, TTFT, intervalos entre tokens e recomputação; aceitar apenas melhorias que preservem os requisitos por classe definidos previamente.",
+  "comparisons": [
+    {
+      "entry_id": "T088",
+      "relation": "complements",
+      "reason": "Continuous batching oferece pontos de decisão; a política define quais sequências participam."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Sarathi-Serve explora a separação de características entre prefill e decode para reduzir interferência no escalonamento.",
+    "source_ids": [
+      "V3B-S004"
+    ],
+    "support": "related",
+    "caveat": "O artigo apoia esse princípio; política de envelhecimento e reservas desta ficha é proposta, não configuração universal."
+  },
+  "advanced_qa": [
+    {
+      "question": "Token é uma unidade uniforme de custo?",
+      "answer": "Não. Seu custo depende da fase, contexto, modelo e lote; estimativas precisam ser calibradas na carga."
+    },
+    {
+      "question": "Pode prometer prazo pelo tamanho do prompt?",
+      "answer": "Não sozinho. Saída, fila, cache e comunicação também influenciam a conclusão."
+    }
+  ],
+  "source_ids": [
+    "V3B-S004"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

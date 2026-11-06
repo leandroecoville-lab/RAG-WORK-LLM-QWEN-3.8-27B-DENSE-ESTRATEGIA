@@ -1,0 +1,54 @@
+{
+  "id": "T047",
+  "technical_details": "A memória durável possui ao menos três pontos de perda: o escritor pode não registrar o fato, o recuperador pode não encontrá-lo e o leitor pode interpretá-lo incorretamente. Avaliar apenas a resposta final mistura esses erros. Também há diferença entre lembrar numa conversa antiga e transferir informação entre threads: a chave de sessão não identifica necessariamente o proprietário ou o escopo da memória compartilhável.",
+  "boundary_condition": "Persistir mais dados não ajuda quando a política de escrita omite fatos necessários ou quando os filtros de identidade impedem recuperá-los no contexto correto.",
+  "implementation_contract": {
+    "inputs": "Eventos candidatos, identidade estável, escopo de compartilhamento e política de admissão.",
+    "outputs": "Memórias duráveis com fonte e índice consultável, incluindo registro de correções posteriores.",
+    "state": "Revisão do escritor, namespace, índices e estado de processamento de cada evento.",
+    "invariant": "Uma sessão nova pode consultar apenas memórias elegíveis ao mesmo proprietário e escopo autorizado."
+  },
+  "tradeoffs": [
+    "Escrever fatos seletivos reduz leitura futura e pode perder detalhes ainda não considerados úteis.",
+    "Guardar também eventos originais permite reprocessamento e aumenta custos de armazenamento e recuperação."
+  ],
+  "failure_test": "Teste proposto: encerrar o processo, iniciar outra thread e perguntar por um fato alterado entre sessões. O sistema deve recuperar a versão apropriada com origem, sem confundir continuidade com histórico ativo.",
+  "evaluation_plan": "Avaliação proposta: separar avaliação de escrita, recuperação e leitura. Comparar histórico integral, memórias extraídas e combinação com originais; medir cobertura, atualização correta, abstinência quando falta evidência e custo acumulado ao longo de sessões.",
+  "comparisons": [
+    {
+      "entry_id": "T064",
+      "relation": "distinct_from",
+      "reason": "Estado persistente conserva execução; memória longa conserva conhecimento reutilizável que pode atravessar várias execuções."
+    },
+    {
+      "entry_id": "T068",
+      "relation": "complements",
+      "reason": "A geração aumentada por memória é uma forma de consumir registros duráveis selecionados."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Mem0 organiza extração, consolidação e recuperação; LongMemEval distingue etapas de indexação, recuperação e leitura.",
+    "source_ids": [
+      "V3A-S033",
+      "V3A-S002"
+    ],
+    "support": "direct",
+    "caveat": "A existência dessas arquiteturas não demonstra memória perfeita ou ganho automático no domínio do usuário."
+  },
+  "advanced_qa": [
+    {
+      "question": "Como saber se o problema está no banco ou na LLM?",
+      "answer": "Teste se o fato foi registrado, se aparece entre candidatos elegíveis e se a resposta o usa corretamente. Cada etapa exige uma verificação própria."
+    },
+    {
+      "question": "Persistência em RAM basta para memória longa?",
+      "answer": "Somente dentro da vida daquele processo. Para sobreviver a reinícios é necessário um armazenamento com durabilidade compatível com o contrato."
+    }
+  ],
+  "source_ids": [
+    "V3A-S033",
+    "V3A-S002",
+    "V3A-S032"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

@@ -1,0 +1,121 @@
+{
+  "id": "T058",
+  "novelty": "A v3 tratou linhagem e concorrência. Aqui consolidação é liberada por comparação funcional entre memórias anteriores e candidatas.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Mantenha versão candidata separada e consulte ambas em perguntas representativas do conteúdo alterado. A consolidação pode reduzir redundância e simultaneamente apagar exceção rara.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S033",
+        "V3A-S034",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Promova por tipo: fatos exigem suporte; procedimentos exigem condições e resultados; hipóteses podem ser agrupadas sem virar conclusões. Uma política única de resumo é insuficiente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S033",
+        "V3A-S034",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare versões pelo conjunto de decisões que elas sustentam. Meça respostas alteradas justificadamente, perdas de fonte e exceções esquecidas; não avaliar só semelhança textual do resumo. Unidade de avaliação: lote de consolidação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S033",
+        "V3A-S034",
+        "V4A-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Memória de projeto acumulada",
+      "scenario": "Notas repetidas ocupam recuperação.",
+      "strategy": "Agrupar por entidade e período, criar candidato com divergências preservadas e testar consultas sobre mudanças antes de publicar.",
+      "small_model_role": "8–14B consolida; 3–7B extrai campos.",
+      "acceptance": "Nenhuma decisão ativa pode perder sua condição ou evidência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S033",
+        "V3A-S034",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Procedimentos derivados de incidentes",
+      "scenario": "Várias experiências sugerem mesma regra.",
+      "strategy": "Extrair condições comuns e exceções, manter casos negativos e promover somente escopo que os dados sustentam.",
+      "small_model_role": "15–30B integra casos.",
+      "acceptance": "Procedimento deve recusar contexto fora do escopo validado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S033",
+        "V3A-S034",
+        "V4A-S002"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Agrupador de duplicatas e extrator de alterações explícitas.",
+    "8_14b": "Autor de consolidação local com referências por afirmação.",
+    "15_30b": "Revisor de abstrações entre episódios e procedimentos candidatos.",
+    "training_or_runtime_requirements": "Versões paralelas, linhagem e consultas de validação próprias; não usar perguntas do benchmark final como conteúdo.",
+    "do_not_use_when": "Não existe forma de recuperar versões anteriores ou avaliar perda de detalhes relevantes."
+  },
+  "connections": [
+    {
+      "target_id": "T072",
+      "relation": "requires",
+      "how": "Publicar candidato com retorno possível à versão anterior.",
+      "interface": "Manifesto antigo, candidato e dependências.",
+      "condition": "Mudanças permanecerem reversíveis na camada de memória.",
+      "acceptance": "Reverter candidato que removeu exceção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S033",
+        "V3A-S034",
+        "V4A-S002"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T071",
+      "relation": "feeds",
+      "how": "Encaminhar abstração para promoção por tipo.",
+      "interface": "Candidato, suporte, limites e resultados de comparação.",
+      "condition": "Promoção exigir evidência apropriada.",
+      "acceptance": "Impedir hipótese agrupada de virar fato confirmado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S033",
+        "V3A-S034",
+        "V4A-S002"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não contar várias paráfrases da mesma origem como confirmação.",
+    "Não destruir episódios originais após produzir resumo."
+  ],
+  "frontier_comparison": "Comparar utilidade futura e correção após mudanças; consolidação bem escrita não significa aprendizado verdadeiro.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q013",
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S033",
+    "V3A-S034",
+    "V4A-S002"
+  ]
+}

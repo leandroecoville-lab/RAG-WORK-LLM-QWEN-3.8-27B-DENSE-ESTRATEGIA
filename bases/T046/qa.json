@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Isso é fine-tuning?",
+    "answer": "Não. Os exemplos entram no contexto de cada chamada; os parâmetros do modelo permanecem iguais."
+  },
+  {
+    "question": "O exemplo mais parecido é sempre o melhor?",
+    "answer": "Não. Diversidade e cobertura de exceções podem ser mais úteis que repetição de um caso quase idêntico."
+  },
+  {
+    "question": "É preciso recuperar entrada e saída juntas?",
+    "answer": "A busca pode usar a entrada, mas a demonstração final precisa de saída validada e compatível. Não busque por uma resposta de teste desconhecida."
+  },
+  {
+    "question": "Mais diversidade sempre ajuda?",
+    "answer": "Não. Exemplos desconectados podem confundir a tarefa. Compare diversidade condicionada ao objetivo com similaridade pura usando o mesmo orçamento."
+  }
+]

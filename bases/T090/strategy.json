@@ -1,0 +1,119 @@
+{
+  "id": "T090",
+  "novelty": "A v3 explicou economia de intermediários e diferença prefill/decode. A nova camada trata seleção de backend como contrato de compatibilidade, validação numérica e atribuição causal de ganhos, evitando avaliar um kernel isolado e prometer desempenho de serviço.",
+  "deep_layers": [
+    {
+      "name": "Contrato completo do operador",
+      "detail": "Liste máscara causal, offsets, comprimentos variáveis, dimensão de cabeça, dtype e política de dropout antes de trocar backend. Verifique se o executor selecionou o kernel esperado ou fez fallback. Uma API com o mesmo nome pode escolher caminhos diferentes conforme a forma; registre essa decisão no ensaio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S010",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    },
+    {
+      "name": "Equivalência útil à tarefa",
+      "detail": "Compare saídas e, no treinamento, gradientes com uma referência apropriada. Pequenas diferenças numéricas são esperadas por ordem de redução; o limite aceitável depende da precisão e do uso. Além do erro tensorial, teste se classificações ou campos sensíveis mudam, sobretudo perto de empates entre tokens.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S010",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    },
+    {
+      "name": "Benefício além do kernel",
+      "detail": "Separe tempo de atenção de tokenização, projeções, comunicação e sampling. O ganho total é limitado pela parcela otimizada. Quando a memória liberada permitir lote maior, faça um segundo experimento: o primeiro mede troca de kernel, o segundo mede a nova configuração de serviço, preservando atribuição clara.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S010",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Prefill de documentos extensos",
+      "scenario": "O processamento de entrada domina o tempo inicial.",
+      "strategy": "Escolha um backend compatível, aqueça compilação e varie comprimentos reais. Preserve o mesmo padrão de atenção. Depois avalie se memória liberada pode servir mais pedidos sem piorar a cauda do decode.",
+      "small_model_role": "Um 3–30B de atenção densa pode aproveitar a implementação sem alterar pesos, quando suportado.",
+      "acceptance": "Aceitar somente com erro dentro da tolerância e ganho end-to-end, incluindo fallback.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S010",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    },
+    {
+      "name": "Ajuste fino com contexto longo",
+      "scenario": "Ativações de atenção limitam o microbatch.",
+      "strategy": "Valide backward, máscaras de padding e fronteiras entre exemplos empacotados. Aumente microbatch somente após comparar gradientes com a configuração original. Meça memória no pico do treino inteiro, não apenas durante atenção.",
+      "small_model_role": "Um 8–14B com adaptadores pode ganhar margem de ativações, sem reduzir a memória da base automaticamente.",
+      "acceptance": "Exigir estabilidade de treinamento e ausência de atenção entre exemplos independentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S010",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, outros operadores podem dominar; confirmar que atenção ocupa parcela relevante antes de otimizar.",
+    "8_14b": "Em 8–14B, ganhos de memória podem facilitar contexto ou microbatch, avaliados separadamente.",
+    "15_30b": "Em 15–30B, verificar coexistência com quantização, paralelismo e kernels de decode específicos.",
+    "training_or_runtime_requirements": "Troca de kernel é runtime quando semântica é preservada; suporte ao backward e arquitetura precisa ser confirmado.",
+    "do_not_use_when": "Não usar uma máscara esparsa nova como se fosse apenas substituição exata de implementação."
+  },
+  "connections": [
+    {
+      "target_id": "T107",
+      "relation": "complements",
+      "how": "Medir quanto tráfego e tempo de atenção representam no caminho crítico.",
+      "interface": "Perfil por operador e bytes de intermediários.",
+      "condition": "Formas e precisão são idênticas na comparação.",
+      "acceptance": "Relacionar ganho local ao limite de ganho total.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S010",
+        "V4B-S017",
+        "V4B-S018"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T115",
+      "relation": "complements",
+      "how": "Combinar redução de intermediários com recomputação seletiva no treinamento.",
+      "interface": "Política de checkpoint e operadores de atenção recompostos.",
+      "condition": "Backward e RNG são preservados.",
+      "acceptance": "Comparar memória de pico e tempo por passo com gradientes equivalentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S010",
+        "V4B-S017",
+        "V4B-S018"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Registrar fallback de backend como resultado, não excluí-lo.",
+    "Testar padding, offsets causais e sequências de comprimento extremo."
+  ],
+  "frontier_comparison": "Comparar custo de uma tarefa com fronteira mantendo qualidade fixa. FlashAttention melhora execução de atenção existente; não amplia o conhecimento nem transforma contexto numericamente suportado em compreensão confiável.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q005"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S010",
+    "V4B-S017",
+    "V4B-S018"
+  ]
+}

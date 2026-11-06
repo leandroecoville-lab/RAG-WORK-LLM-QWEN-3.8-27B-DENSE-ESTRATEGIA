@@ -1,0 +1,53 @@
+{
+  "id": "T237",
+  "technical_details": "A delegação precisa transferir uma unidade de decisão suficiente, sem depender de contexto que só o coordenador conhece. O retorno também deve separar resultado, evidência e limitações. Um subagente que afirma ter testado algo precisa devolver o alvo, revisão e resultado correspondente. Delegar pesquisa pode reduzir contexto do coordenador; delegar uma edição exige ainda um contrato de integração e propriedade sobre arquivos ou revisões.",
+  "boundary_condition": "Um subagente não consegue resolver uma dependência omitida apenas por possuir outro contexto ou mais chamadas de modelo.",
+  "implementation_contract": {
+    "inputs": "Objetivo delimitado, entradas versionadas, ferramentas necessárias e critério de entrega.",
+    "outputs": "Artefatos, fontes, decisões tomadas e questões não resolvidas.",
+    "state": "Responsável, orçamento delegado, revisão-base e estado da entrega.",
+    "invariant": "O coordenador valida o resultado integrado e não trata o resumo como prova automática de execução."
+  },
+  "tradeoffs": [
+    "Delegação reduz carga de contexto local e acrescenta custo de inicialização e comunicação.",
+    "Workers autônomos resolvem detalhes e podem divergir de premissas não explicitadas no contrato."
+  ],
+  "failure_test": "Teste proposto: omitir uma dependência crítica e fornecer duas tarefas que editam a mesma interface; exigir lacuna explícita e conflito identificado antes de integrar.",
+  "evaluation_plan": "Comparar execução central e offloading em subtarefas independentes e acopladas. Medir economia de contexto, retrabalho, tempo final e qualidade das evidências. Contabilizar chamadas de todos os agentes e trabalho do coordenador.",
+  "comparisons": [
+    {
+      "entry_id": "T169",
+      "relation": "complements",
+      "reason": "Contextos isolados são uma forma de executar a delegação, mas não seu critério de sucesso."
+    },
+    {
+      "entry_id": "T211",
+      "relation": "complements",
+      "reason": "O formato de handoff pode organizar entradas e devolução do subagente."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Claude Code descreve subagentes que trabalham em contexto próprio e devolvem resultados ao agente principal.",
+    "source_ids": [
+      "V2A-S018"
+    ],
+    "support": "direct",
+    "caveat": "Ferramentas, contexto inicial e persistência dependem do tipo e configuração; não se presume um padrão universal de fork."
+  },
+  "advanced_qa": [
+    {
+      "question": "Qual resultado de pesquisa é melhor que um resumo solto?",
+      "answer": "Uma síntese com fontes, alegações específicas, limitações e referências que o coordenador consiga conferir."
+    },
+    {
+      "question": "Quem responde pela qualidade após o merge?",
+      "answer": "O coordenador ou integrador definido pelo contrato; sucesso de cada tarefa isolada não prova compatibilidade do conjunto."
+    }
+  ],
+  "source_ids": [
+    "V2A-S018",
+    "V3C-S006",
+    "V3C-S027"
+  ],
+  "research_note": "Contratos, cenários de falha e planos de avaliação são propostas editoriais fundamentadas nas fontes indicadas."
+}

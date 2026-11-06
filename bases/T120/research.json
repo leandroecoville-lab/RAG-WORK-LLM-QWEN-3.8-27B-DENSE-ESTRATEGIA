@@ -1,0 +1,46 @@
+{
+  "id": "T120",
+  "technical_details": "O índice de localização é uma previsão de disponibilidade, não uma reserva irrevogável. Entre seleção e execução, um prefixo pode ser expulso ou o worker receber nova carga. Como proposta operacional, o destino confirma identidade e disponibilidade antes de reutilizar; um miss real deve provocar prefill explícito ou nova decisão, preservando o pedido. A função de custo precisa incluir trabalho já comprometido, não somente a fila observada.",
+  "boundary_condition": "Enviar sempre ao maior prefixo pode criar um ponto quente e piorar latência apesar de economizar tokens de prefill.",
+  "implementation_contract": {
+    "inputs": "Tokens normalizados, elegibilidade dos workers, afinidade de cache e carga projetada.",
+    "outputs": "Destino escolhido com estimativa de custo e confirmação do hit real.",
+    "state": "Índice de eventos, decisões pendentes e carga já atribuída.",
+    "invariant": "A localização sugerida nunca autoriza reutilizar estado incompatível ou ausente."
+  },
+  "tradeoffs": [
+    "Afinidade economiza reconstrução e pode concentrar carga.",
+    "Índices mais frequentes reduzem defasagem e aumentam tráfego de controle."
+  ],
+  "failure_test": "Teste proposto: remover o prefixo logo após o roteamento e atrasar seu evento de exclusão. Esperar miss reconhecido e recuperação correta, sem assumir que o índice garantiu presença.",
+  "evaluation_plan": "Plano proposto: comparar round-robin, carga e custo com cache sob chegadas idênticas. Medir hits confirmados, erro da previsão, TTFT e distribuição de carga; aceitar benefício sem degradar classes de pedidos menos reutilizáveis.",
+  "comparisons": [
+    {
+      "entry_id": "T102",
+      "relation": "complements",
+      "reason": "Em fases separadas, escolher workers e transferir estado são responsabilidades distintas."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O Dynamo combina sobreposição de prefixo com carga ativa de prefill e decode para escolher workers.",
+    "source_ids": [
+      "B-S032"
+    ],
+    "support": "direct",
+    "caveat": "O teste de índice defasado é uma proposta editorial; não declara um defeito observado no produto."
+  },
+  "advanced_qa": [
+    {
+      "question": "Roteamento transfere automaticamente o KV?",
+      "answer": "Não necessariamente. A decisão de posicionamento e o mecanismo de transporte têm contratos separados."
+    },
+    {
+      "question": "Por que reservar carga ao decidir?",
+      "answer": "Sem contabilizar decisões simultâneas, vários pedidos podem escolher o mesmo worker aparentemente livre e criar uma fila inesperada."
+    }
+  ],
+  "source_ids": [
+    "B-S032"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

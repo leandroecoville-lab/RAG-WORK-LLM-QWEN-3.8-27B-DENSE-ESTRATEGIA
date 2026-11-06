@@ -1,0 +1,52 @@
+{
+  "id": "T138",
+  "technical_details": "A chave de um circuito determina quais falhas compartilham destino operacional. Agregar todos os erros de um provedor pode interromper operações saudáveis porque apenas um recurso ou método falhou; granularidade excessiva gera amostras pequenas e estado demais. A janela de observação precisa diferenciar erro do cliente, rejeição por carga e indisponibilidade. Uma porcentagem de falhas sem volume mínimo pode oscilar violentamente em tráfego esparso.",
+  "boundary_condition": "Circuitos não detectam bem incidentes quando as chamadas observadas não representam a operação protegida ou quando a classificação de erros está errada.",
+  "implementation_contract": {
+    "inputs": "Resultado da chamada, chave do circuito, instante e categoria de falha.",
+    "outputs": "Permitir, rejeitar rapidamente ou admitir sonda, com motivo.",
+    "state": "Janela de resultados, transições, prazo de abertura e sondas ativas.",
+    "invariant": "Só falhas elegíveis alimentam o critério que protege aquela dependência."
+  },
+  "tradeoffs": [
+    "Circuitos finos isolam falhas e exigem mais dados para detectar tendência.",
+    "Abrir cedo reduz desperdício e pode interromper um serviço que já se recuperava."
+  ],
+  "failure_test": "Teste proposto: misturar erros de validação em uma operação e sucesso em outra no mesmo provedor; verificar que a chave e a classificação não bloqueiam indevidamente o caminho saudável.",
+  "evaluation_plan": "Comparar chave global e segmentada sob tráfego com falhas parciais. Medir requisições poupadas, bloqueios indevidos e tempo de recuperação. Ajustar janela e amostra mínima em dados de incidentes, sem adotar porcentagem universal.",
+  "comparisons": [
+    {
+      "entry_id": "T165",
+      "relation": "complements",
+      "reason": "Half-open detalha a fase de sondagem e retorno do circuito, enquanto o circuit breaker inclui todos os estados."
+    },
+    {
+      "entry_id": "T163",
+      "relation": "complements",
+      "reason": "Backoff pode espaçar tentativas permitidas, mas não substitui a decisão de abrir o circuito."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O padrão Microsoft separa bloqueio temporário de chamadas e tentativa de recuperação em estados distintos.",
+    "source_ids": [
+      "C-S005"
+    ],
+    "support": "direct",
+    "caveat": "Particionamento de chaves e critérios estatísticos descritos aqui são decisões de implementação propostas."
+  },
+  "advanced_qa": [
+    {
+      "question": "Todo HTTP 4xx deve contar como indisponibilidade?",
+      "answer": "Não. Muitos indicam erro de contrato ou autorização; a classificação deve seguir a semântica da operação e do serviço."
+    },
+    {
+      "question": "Por que 100% de falhas pode ser um sinal fraco?",
+      "answer": "Porque pode representar uma única observação; duração da janela e tamanho da amostra mudam sua interpretação."
+    }
+  ],
+  "source_ids": [
+    "C-S005",
+    "V3C-S010"
+  ],
+  "research_note": "Contratos, testes e critérios são propostas editoriais; as fontes sustentam os mecanismos indicados."
+}

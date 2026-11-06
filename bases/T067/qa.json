@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Active retrieval precisa de um banco vetorial?",
+    "answer": "Não. Uma leitura por ID ou consulta SQL também pode ser recuperação ativa."
+  },
+  {
+    "question": "Recuperar uma memória a torna verdadeira?",
+    "answer": "Não. Origem, validade e evidência continuam necessárias após a recuperação."
+  },
+  {
+    "question": "Preciso ter acesso a probabilidades de tokens?",
+    "answer": "Para reproduzir um gatilho baseado nelas, sim. Se a API não fornece o sinal, documente outra política em vez de alegar equivalência."
+  },
+  {
+    "question": "A busca deve substituir toda a resposta provisória?",
+    "answer": "Não necessariamente. Reavalie os trechos dependentes da nova evidência e preserve rastreabilidade; mudanças locais também podem alterar conclusões posteriores."
+  }
+]

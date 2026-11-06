@@ -1,0 +1,18 @@
+[
+  {
+    "question": "LoRA é uma base de conhecimento factual?",
+    "answer": "Não. É um mecanismo de treinamento de parâmetros adicionais."
+  },
+  {
+    "question": "Pode compartilhar adaptador entre modelos diferentes?",
+    "answer": "Só quando existe compatibilidade explicitamente demonstrada; não deve ser presumida."
+  },
+  {
+    "question": "Pode aplicar a qualquer base da mesma dimensão?",
+    "answer": "Dimensão compatível não garante significado compatível; preserve identidade exata da base e módulos."
+  },
+  {
+    "question": "Merge seguido de quantização é exato?",
+    "answer": "A soma em maior precisão pode ser equivalente antes da nova quantização; arredondamento adicional pode alterar o resultado."
+  }
+]

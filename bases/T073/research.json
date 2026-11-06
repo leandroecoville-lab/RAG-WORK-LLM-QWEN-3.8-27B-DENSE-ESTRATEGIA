@@ -1,0 +1,51 @@
+{
+  "id": "T073",
+  "technical_details": "Imutabilidade deve ser descrita por versão, duração e autoridade capaz de alterar a política. No S3 Object Lock, retenção se aplica a versões de objeto e os modos têm poderes administrativos diferentes. Proteger bytes não impede publicar uma versão nova ou alterar um alias para apontar a outra evidência. Um consumidor precisa fixar a versão protegida e verificar a cadeia de origem, não apenas confiar no nome do bucket.",
+  "boundary_condition": "Armazenamento WORM não prova que o conteúdo inicial era verdadeiro, completo ou produzido pelo agente alegado; integridade e autenticidade são propriedades diferentes.",
+  "implementation_contract": {
+    "inputs": "Evidências, identificadores de versão, política de retenção e informação sobre o produtor.",
+    "outputs": "Versões protegidas e recuperáveis com manifesto de integridade e proveniência associada.",
+    "state": "Retenção vigente, permissões administrativas, aliases e verificações de disponibilidade.",
+    "invariant": "Uma nova versão ou mudança de ponteiro não substitui silenciosamente a evidência citada numa decisão anterior."
+  },
+  "tradeoffs": [
+    "Proteção contra alteração reduz risco de reescrita e limita correções destrutivas.",
+    "Retenção prolongada preserva auditabilidade e aumenta custo; informações derivadas podem ser corrigidas sem apagar o original."
+  ],
+  "failure_test": "Teste proposto: manter uma versão protegida e trocar o alias para outro objeto. A auditoria da decisão anterior deve recuperar a versão original e detectar a mudança de referência.",
+  "evaluation_plan": "Avaliação proposta: avaliar controles com versões de teste e permissões distintas. Medir resistência à sobrescrita, detecção de ponteiros trocados e recuperação por versão; verificar também proveniência, pois um hash correto pode acompanhar uma evidência falsa.",
+  "comparisons": [
+    {
+      "entry_id": "T061",
+      "relation": "complements",
+      "reason": "Hash verifica identidade de conteúdo; retenção protege a existência e impossibilidade de alteração sob uma política."
+    },
+    {
+      "entry_id": "T072",
+      "relation": "complements",
+      "reason": "Histórico versionado permite corrigir interpretação sem reescrever a evidência originalmente registrada."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "S3 Object Lock oferece retenção e legal holds por versão, com modos governance e compliance de proteção distinta.",
+    "source_ids": [
+      "A-S034"
+    ],
+    "support": "direct",
+    "caveat": "A garantia depende da configuração e do modo; não equivale a certificação factual ou a durabilidade de qualquer sistema chamado imutável."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um objeto protegido pode ter informação errada?",
+      "answer": "Sim. Guarde correção separada com vínculo à evidência e impeça que a consulta atual use o registro errado sem seu status."
+    },
+    {
+      "question": "Guardar o hash no mesmo local resolve autenticidade?",
+      "answer": "Não. Um administrador que controla ambas as partes pode substituir a narrativa de origem. A cadeia de confiança exige controles apropriados ao produtor e ao armazenamento."
+    }
+  ],
+  "source_ids": [
+    "A-S034"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

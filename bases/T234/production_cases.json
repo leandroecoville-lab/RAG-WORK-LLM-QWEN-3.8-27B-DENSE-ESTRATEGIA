@@ -1,0 +1,202 @@
+{
+  "coverage": {
+    "entry_id": "T234",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 2,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 3,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Persistent Project Memory File — incluindo memória por módulo",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C025",
+      "company": "Anthropic",
+      "system": "Claude Code em equipes internas",
+      "title": "Navegação, depuração e implementação assistidas no operador",
+      "evidence_level": "production_documented",
+      "observed_use": "Equipes internas usam Claude Code em repositórios, testes e diagnóstico de incidentes.",
+      "technical_mechanism": "Leitura de instruções locais e código, testes executáveis, revisão de propostas e loops de implementação em tarefas delimitadas.",
+      "event_date": "2025-07-24",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S026"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R020",
+          "match": "exact",
+          "rationale": "O operador descreve uso de Claude Code."
+        },
+        {
+          "entry_id": "T234",
+          "match": "exact",
+          "rationale": "CLAUDE.md fornece instruções e contexto de navegação."
+        },
+        {
+          "entry_id": "T233",
+          "match": "family",
+          "rationale": "Uso de testes e revisão é relatado; o artigo não demonstra o contrato completo de validação de patch com identidade de base e publicação."
+        },
+        {
+          "entry_id": "T217",
+          "match": "family",
+          "rationale": "Correções e refatorações concretas, sem protocolo genérico de patch comprovado."
+        }
+      ],
+      "small_model_transfer": "Proposta: delegar localização e testes focados a 3–30B, mantendo execução real e revisão de mudanças como critérios.",
+      "limits": "Consolidado como um caso de adoção interna, sem multiplicar equipes; não demonstra equivalência de modelos pequenos.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4A-C003",
+      "deployment_domain": "llm_application",
+      "deduplication_note": "Consolidado com V4A-C003 para contagem. Mapeamentos e versões das fontes permanecem separados; não se presume simultaneidade de todos os mecanismos.",
+      "mapping": {
+        "entry_id": "T234",
+        "match": "exact",
+        "rationale": "CLAUDE.md fornece instruções e contexto de navegação."
+      }
+    },
+    {
+      "case_id": "V4C-C029",
+      "company": "OpenAI",
+      "system": "Codex no desenvolvimento interno e harness beta",
+      "title": "Adoção interna de Codex com ambiente verificável",
+      "evidence_level": "production_documented",
+      "observed_use": "Uso diário por equipes e beta interno com usuários reais relatados em duas publicações do operador.",
+      "technical_mechanism": "Código e planos no repositório, aplicação e observabilidade por worktree, ferramentas de revisão e restrições estruturais executáveis.",
+      "event_date": "2026-02-11",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S029",
+        "V4C-S030"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R021",
+          "match": "exact",
+          "rationale": "Uso interno de Codex confirmado pelo operador."
+        },
+        {
+          "entry_id": "T239",
+          "match": "exact",
+          "rationale": "Artigo de harness usa uma aplicação e observabilidade isoladas por Git worktree."
+        },
+        {
+          "entry_id": "T213",
+          "match": "exact",
+          "rationale": "Operador relata decompor metas em blocos de design, código, revisão e testes com planos versionados."
+        },
+        {
+          "entry_id": "T155",
+          "match": "exact",
+          "rationale": "Instrução monolítica foi substituída por mapa curto."
+        },
+        {
+          "entry_id": "T233",
+          "match": "exact",
+          "rationale": "Linters e testes estruturais verificam invariantes."
+        },
+        {
+          "entry_id": "T234",
+          "match": "exact",
+          "rationale": "AGENTS.md curto e documentação versionada no repositório oferecem memória persistente do projeto; não é mera configuração CI."
+        },
+        {
+          "entry_id": "T237",
+          "match": "exact",
+          "rationale": "Agentes revisam outros agentes no processo descrito."
+        },
+        {
+          "entry_id": "T217",
+          "match": "family",
+          "rationale": "Há ciclos de implementação e testes, mas não fica provado test-first para todas as alterações."
+        },
+        {
+          "entry_id": "R027",
+          "match": "exact",
+          "rationale": "Git e worktrees sustentam o ambiente."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "Gates verificáveis inspiram o componente editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: reproduzir tarefas pequenas com a mesma infraestrutura de testes e isolamento usando 3–30B; medir custo completo, inclusive supervisão e revisão.",
+      "limits": "Consolidado para evitar somar equipes e artigos como adoções independentes. Beta operacional não é prova de autonomia geral; modelos do relato não são demonstrados como 3–30B.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4C-C029",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T234",
+        "match": "exact",
+        "rationale": "AGENTS.md curto e documentação versionada no repositório oferecem memória persistente do projeto; não é mera configuração CI."
+      }
+    },
+    {
+      "case_id": "V4C-C017",
+      "company": "GitHub / Microsoft",
+      "system": "Copilot coding agent",
+      "title": "Execução de tarefa em ambiente isolado e entrega por PR",
+      "evidence_level": "operational_product",
+      "observed_use": "O anúncio documenta recurso que inicia ambiente GitHub Actions, consulta repositório, edita, valida e publica commits em draft PR.",
+      "technical_mechanism": "A tarefa mantém vínculo com issue, sessão, repositório e mudanças; instruções e feedback da revisão alimentam novas alterações.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S016"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T235",
+          "match": "exact",
+          "rationale": "O recurso executa trabalho em background com logs."
+        },
+        {
+          "entry_id": "T236",
+          "match": "exact",
+          "rationale": "O agente publica mudanças como commits em draft PR."
+        },
+        {
+          "entry_id": "T234",
+          "match": "exact",
+          "rationale": "Instruções do repositório são usadas como contexto."
+        },
+        {
+          "entry_id": "T233",
+          "match": "family",
+          "rationale": "Há etapas de validação, sem demonstração integral do protocolo de hash-base da ficha."
+        },
+        {
+          "entry_id": "T239",
+          "match": "analogy",
+          "rationale": "Ambiente isolado não é prova de uso do comando Git worktree."
+        },
+        {
+          "entry_id": "R027",
+          "match": "exact",
+          "rationale": "Clonagem, commits e pull requests compõem o fluxo documentado."
+        }
+      ],
+      "small_model_transfer": "Proposta: reproduzir a separação tarefa→checkout→patch→testes→revisão com um 3–30B, avaliando artefatos e custo em tarefas delimitadas. Implementar controles de publicação na aplicação, não no prompt.",
+      "limits": "Classificado operational_product: a página descreve recurso, não uma implantação identificada de cliente. Configurações e exigências de aprovação mudaram desde o anúncio.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C017",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T234",
+        "match": "exact",
+        "rationale": "Instruções do repositório são usadas como contexto."
+      }
+    }
+  ]
+}

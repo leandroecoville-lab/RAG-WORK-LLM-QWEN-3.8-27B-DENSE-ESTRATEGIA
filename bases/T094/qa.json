@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Chunked prefill reduz a quantidade de tokens do contexto?",
+    "answer": "Não. Distribui o cálculo no tempo mantendo o prompt lógico."
+  },
+  {
+    "question": "Qual tamanho devo usar?",
+    "answer": "Aquele que equilibra TTFT e ITL no perfil de carga e hardware medidos."
+  },
+  {
+    "question": "O cache reinicia em cada trecho?",
+    "answer": "Não quando o objetivo é preservar a mesma atenção; o estado permitido anterior precisa continuar acessível."
+  },
+  {
+    "question": "Chunk menor sempre reduz TTFT?",
+    "answer": "Não. Mais rodadas e sobrecarga podem alongar a conclusão do prefill, embora melhorem a cadência de outras respostas."
+  }
+]

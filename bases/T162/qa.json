@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Idempotência é não repetir chamada?",
+    "answer": "Não. Pode repetir a chamada preservando um único efeito lógico."
+  },
+  {
+    "question": "Timeout prova que a escrita falhou?",
+    "answer": "Não. O efeito pode ter ocorrido antes da perda da resposta."
+  },
+  {
+    "question": "Reusar a mesma chave dias depois é sempre seguro?",
+    "answer": "Não. É necessário conhecer retenção e expiração; após remoção, a chave pode criar uma nova operação."
+  },
+  {
+    "question": "É correto gerar nova chave a cada tentativa?",
+    "answer": "Não para a mesma intenção. Isso elimina a identidade que permite ao servidor reconhecer a repetição."
+  }
+]

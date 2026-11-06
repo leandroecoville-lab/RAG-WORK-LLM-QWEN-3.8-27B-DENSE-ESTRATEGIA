@@ -1,0 +1,52 @@
+{
+  "id": "T016",
+  "technical_details": "A política de truncamento precisa preservar sinais de estado independentes do corpo: código de saída, paginação, contagem quando disponível e existência de erro. Cortar apenas pelo começo pode remover o diagnóstico final; guardar começo e fim pode omitir o único erro intermediário. Portanto, uma saída parcial exige contrato de cobertura e caminho para leitura direcionada do restante.",
+  "boundary_condition": "Se o consumidor precisa provar ausência de ocorrências no conjunto inteiro, uma amostra truncada não fornece evidência suficiente, por maior que pareça.",
+  "implementation_contract": {
+    "inputs": "Resultado completo, limite de apresentação e metadados confiáveis da ferramenta.",
+    "outputs": "Trecho parcial identificado e referência recuperável ao original.",
+    "state": "Artefato completo, regiões exibidas e versão do seletor de trechos.",
+    "invariant": "Conteúdo omitido nunca é descrito como examinado apenas porque a ferramenta terminou sem erro de transporte."
+  },
+  "tradeoffs": [
+    "Limites rígidos protegem contexto, mas podem esconder o sinal mais importante.",
+    "Seleção orientada por erros preserva diagnóstico e exige conhecer o formato, sem substituir o original."
+  ],
+  "failure_test": "Teste proposto: colocar uma ocorrência relevante somente no meio omitido de um log. O agente deve reconhecer cobertura parcial e recuperar essa região antes de concluir ausência de problema.",
+  "evaluation_plan": "Avaliação proposta: comparar prefixo, início e fim, e seleção estruturada com igual orçamento. Medir diagnósticos preservados, releituras, falsos relatos de ausência e custo total; manter o original disponível em todas as variantes.",
+  "comparisons": [
+    {
+      "entry_id": "T214",
+      "relation": "distinct_from",
+      "reason": "Pruning pode selecionar campos ou regiões por relevância; truncamento aplica um limite de apresentação."
+    },
+    {
+      "entry_id": "T215",
+      "relation": "distinct_from",
+      "reason": "Masking substitui observações antigas por marcadores; truncamento também pode ocorrer no primeiro recebimento."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "MCP separa a referência de um recurso da operação que lê seu conteúdo.",
+    "source_ids": [
+      "V3A-S019"
+    ],
+    "support": "related",
+    "caveat": "Isso apoia externalização do original; o protocolo de truncamento descrito é uma proposta editorial."
+  },
+  "advanced_qa": [
+    {
+      "question": "Truncar e resumir são equivalentes?",
+      "answer": "Não. Truncar retém uma parte literal; resumir produz outra representação. Ambos podem perder informação, mas têm riscos e testes de fidelidade diferentes."
+    },
+    {
+      "question": "O marcador de truncamento deve ficar só no log?",
+      "answer": "Não. Quem toma a decisão precisa conhecer a cobertura. O marcador deve acompanhar o trecho entregue ao consumidor."
+    }
+  ],
+  "source_ids": [
+    "V3A-S019",
+    "V3A-S008"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

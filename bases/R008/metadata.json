@@ -1,0 +1,33 @@
+{
+  "id": "R008",
+  "name": "LangGraph",
+  "canonical_name": "LangGraph",
+  "canonical_id": "R008",
+  "aliases": [
+    "LangGraph runtime"
+  ],
+  "category": "referencias",
+  "kind": "project",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "T142",
+    "T154",
+    "T159",
+    "T160"
+  ],
+  "source_ids": [
+    "C-S009",
+    "C-S019",
+    "C-S023",
+    "V3C-S006",
+    "A-S022",
+    "V3D-S016",
+    "V4C-S028"
+  ],
+  "namespace": "R008",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R008",
+  "chunk_count": 9
+}

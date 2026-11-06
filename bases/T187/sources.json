@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "C-S041",
+    "title": "Voting Classifier — scikit-learn",
+    "url": "https://scikit-learn.org/stable/modules/ensemble.html#voting-classifier",
+    "publisher": "scikit-learn",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Hard voting usa votos de classe e soft voting agrega probabilidades.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn22view11"
+  },
+  {
+    "source_id": "V4B-S022",
+    "title": "AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms",
+    "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+    "publisher": "Google DeepMind",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-05-14",
+    "supports": "Geração evolutiva com avaliadores executáveis; heurística descoberta implantada em Borg e verificações de circuitos.",
+    "limitations": "Não confundir ensemble de proponentes com votação nem transferir ganhos de sistemas Google a modelos 3–30B.",
+    "web_ref": "turn245view0"
+  },
+  {
+    "source_id": "V3B-S019",
+    "title": "Large Language Models Cannot Self-Correct Reasoning Yet",
+    "url": "https://arxiv.org/abs/2310.01798",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-10-03",
+    "supports": "Limites empíricos da autocorreção intrínseca sem feedback externo.",
+    "limitations": "Estudo de modelos e tarefas específicos; não é impossibilidade universal ou avaliação de modelos atuais do usuário.",
+    "web_ref": "turn180view5"
+  }
+]

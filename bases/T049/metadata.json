@@ -1,0 +1,30 @@
+{
+  "id": "T049",
+  "name": "Episodic Memory",
+  "canonical_name": "Episodic Memory",
+  "canonical_id": "T049",
+  "aliases": [
+    "memória episódica"
+  ],
+  "category": "memoria",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T058",
+    "T070",
+    "T071",
+    "T181"
+  ],
+  "source_ids": [
+    "A-S008",
+    "A-S023",
+    "V3A-S037",
+    "V3A-S002"
+  ],
+  "namespace": "T049",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T049",
+  "chunk_count": 9
+}

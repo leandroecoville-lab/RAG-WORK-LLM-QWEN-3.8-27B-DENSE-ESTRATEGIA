@@ -1,0 +1,18 @@
+[
+  {
+    "question": "O mapa substitui a leitura do arquivo?",
+    "answer": "Não. Ele ajuda a localizar o arquivo e suas conexões; a implementação e seus invariantes continuam sendo a evidência do comportamento."
+  },
+  {
+    "question": "Um grafo de chamadas é obrigatório?",
+    "answer": "Não. Assinaturas e hierarquia de arquivos já ajudam. Relações adicionais devem ser usadas quando o extrator consegue produzi-las com precisão conhecida."
+  },
+  {
+    "question": "Posso editar apenas com assinatura vista no mapa?",
+    "answer": "Somente quando o contrato é suficiente e confirmado; normalmente é preciso ler implementação, usos e condições relevantes."
+  },
+  {
+    "question": "Por que registrar a revisão do mapa?",
+    "answer": "Porque arquivos, símbolos e linhas mudam; sem ela, uma referência aparentemente válida pode apontar para outra realidade."
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Priority queue implementa toda essa política?",
+    "answer": "Não. A fila só ordena itens; o scheduler decide admissão e recursos."
+  },
+  {
+    "question": "Prioridade maior sempre executa primeiro?",
+    "answer": "Somente entre tarefas admissíveis e recursos compatíveis."
+  },
+  {
+    "question": "Alta prioridade implica parar o que já está rodando?",
+    "answer": "Não. Pode significar apenas preferência na próxima admissão; preempção é uma política adicional."
+  },
+  {
+    "question": "Por que uma tarefa urgente pode continuar parada?",
+    "answer": "Porque falta recurso compatível ou uma dependência está bloqueada; reordenar a fila não remove essa condição."
+  }
+]

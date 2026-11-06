@@ -1,0 +1,113 @@
+{
+  "id": "T053",
+  "novelty": "A v3 tratou estados de persistência. Aqui scratchpad vira um documento de trabalho com seções de autoridade e leitura econômica.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Separe fatos observados, hipóteses, decisões e tarefas em seções identificadas. Atualizações do modelo não devem transformar hipótese em decisão apenas por mover uma linha.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S004",
+        "A-S010"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Use índice curto no início e detalhes referenciados por seção. O consumidor pequeno lê primeiro estado e pendências, abrindo justificativas somente quando a ação depender delas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S004",
+        "A-S010"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare arquivo narrativo e seções tipadas. Meça erros de retomada, repetição de trabalho e alterações concorrentes em seções diferentes; verificar também crescimento do arquivo. Unidade de avaliação: revisão de arquivo de trabalho.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S004",
+        "A-S010"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Projeto longo de código",
+      "scenario": "Estado precisa sobreviver à sessão.",
+      "strategy": "Registrar revisão do código, teste executado e próximo teste; manter resultado de execução distinto de intenção de executar.",
+      "small_model_role": "3–7B atualiza campos; 8–14B retoma.",
+      "acceptance": "Nenhum teste planejado pode aparecer como aprovado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S004",
+        "A-S010"
+      ]
+    },
+    {
+      "name": "Pesquisa colaborativa",
+      "scenario": "Agentes acrescentam descobertas.",
+      "strategy": "Cada agente escreve proposta com fonte e área de responsabilidade; integrador confirma decisões e resolve conflito entre seções.",
+      "small_model_role": "15–30B integra evidências.",
+      "acceptance": "Alteração deve preservar autoria e evidência de cada afirmação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S004",
+        "A-S010"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Atualizador de campos curtos com operações restritas por seção.",
+    "8_14b": "Leitor de estado e justificativas locais para retomar tarefa.",
+    "15_30b": "Integrador de contribuições com conflitos e dependências cruzadas.",
+    "training_or_runtime_requirements": "Formato de seções, revisão-base e escrita atômica; arquivo continua artefato externo, não treino de pesos.",
+    "do_not_use_when": "Scratchpad é a única cópia de evidências extensas ou cresce sem índice e política de manutenção."
+  },
+  "connections": [
+    {
+      "target_id": "T076",
+      "relation": "complements",
+      "how": "Versionar alterações de seções e decisões.",
+      "interface": "Arquivo, diff, revisão-base e autoria.",
+      "condition": "Conflitos semânticos revisados após merge textual.",
+      "acceptance": "Introduzir duas decisões incompatíveis em seções distintas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S004",
+        "A-S010"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T044",
+      "relation": "complements",
+      "how": "Ler justificativas sob demanda.",
+      "interface": "Índice, section_id e requisito da tarefa.",
+      "condition": "Seção manter referência ao conteúdo completo.",
+      "acceptance": "Retomar com índice apenas e abrir suporte necessário.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S004",
+        "A-S010"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não salvar segredos incidentais em notas reutilizáveis.",
+    "Não confundir presença no arquivo com confirmação externa."
+  ],
+  "frontier_comparison": "Comparar retomada em sessão limpa; modelos pequenos precisam de campos mais explícitos que narrativa livre.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q019",
+      "V4A-Q026"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V2A-S004",
+    "A-S010"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "classification": "regressao_conhecida; nao nova reserva cega",
+  "results": {
+    "historicas90_expandido": {
+      "cases": 90,
+      "hits_at_5": 87,
+      "hit_at_5": 0.9666666666666667,
+      "mrr_at_10": 0.858641975308642,
+      "names_hit_at_3": 1.0,
+      "failed_queries": [
+        "Q50",
+        "Q82",
+        "Q90"
+      ]
+    },
+    "historicas90_exato": {
+      "cases": 90,
+      "hits_at_5": 86,
+      "hit_at_5": 0.9555555555555556,
+      "mrr_at_10": 0.8223280423280424,
+      "names_hit_at_3": 1.0,
+      "failed_queries": [
+        "Q24",
+        "Q50",
+        "Q82",
+        "Q90"
+      ]
+    },
+    "reserva_v3_conhecida40_expandido": {
+      "cases": 40,
+      "hits_at_5": 37,
+      "hit_at_5": 0.925,
+      "mrr_at_10": 0.8230555555555557,
+      "names_hit_at_3": 1.0,
+      "failed_queries": [
+        "H01",
+        "H02",
+        "H05"
+      ]
+    },
+    "reserva_v3_conhecida40_exato": {
+      "cases": 40,
+      "hits_at_5": 37,
+      "hit_at_5": 0.925,
+      "mrr_at_10": 0.7814583333333334,
+      "names_hit_at_3": 1.0,
+      "failed_queries": [
+        "H01",
+        "H02",
+        "H35"
+      ]
+    }
+  }
+}

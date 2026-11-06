@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Qual banco devo usar?",
+    "answer": "O contrato e a carga orientam a escolha; armazenamento relacional com índice lexical pode ser suficiente inicialmente."
+  },
+  {
+    "question": "Devo guardar só o resumo para economizar?",
+    "answer": "Mantenha originais conforme retenção. Sem eles, o episódio perde capacidade de auditoria e reinterpretação."
+  },
+  {
+    "question": "Timestamp de conclusão é uma boa chave de ordenação única?",
+    "answer": "Pode haver empates, atrasos e episódios reabertos. Use critério determinístico adicional e semântica definida para atualizações."
+  },
+  {
+    "question": "O resumo deve ser o registro autoritativo?",
+    "answer": "Somente se esse for um contrato conscientemente limitado. Para reconstrução, preserve eventos e artefatos que permitem verificar o que o resumo afirma."
+  }
+]

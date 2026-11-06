@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Planejar elimina ReAct?",
+    "answer": "Não. Um plano global pode conter ciclos locais de observação e ação."
+  },
+  {
+    "question": "O plano precisa expor raciocínio interno completo?",
+    "answer": "Não. Objetivos, dependências e justificativas operacionais são suficientes."
+  },
+  {
+    "question": "Um plano pode conter chamadas ainda sem todos os argumentos?",
+    "answer": "Sim, como dependências simbólicas explícitas; a execução aguarda valores reais antes de enviar a chamada."
+  },
+  {
+    "question": "Devo descartar todo o plano após uma surpresa?",
+    "answer": "Não necessariamente. Invalidar o subgrafo dependente da premissa alterada pode preservar trabalho ainda correto."
+  }
+]

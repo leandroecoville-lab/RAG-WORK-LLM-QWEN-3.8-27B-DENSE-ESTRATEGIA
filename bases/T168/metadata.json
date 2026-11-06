@@ -1,0 +1,33 @@
+{
+  "id": "T168",
+  "name": "Soft Limit / Hard Limit de tokens",
+  "canonical_name": "Soft Limit / Hard Limit de Tokens",
+  "canonical_id": "T168",
+  "aliases": [
+    "limites suave e rígido de tokens",
+    "Soft Limit / Hard Limit de Tokens"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T043",
+    "T060",
+    "T152",
+    "T176"
+  ],
+  "source_ids": [
+    "C-S017",
+    "V3C-S022",
+    "V4C-S018",
+    "V4C-S013",
+    "V4C-S019",
+    "V4C-S030"
+  ],
+  "namespace": "T168",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T168",
+  "chunk_count": 9
+}

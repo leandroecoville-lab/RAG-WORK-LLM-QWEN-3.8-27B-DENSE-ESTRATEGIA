@@ -1,0 +1,4618 @@
+{
+  "corpus_sha256": "a959686a86fae91e2f3635e8f2db3fb9f0da7bc36b8d9ab02b484d3f2f22dc8c",
+  "mode": "lexical",
+  "lexical_profile": "expanded",
+  "semantic_cases": 90,
+  "semantic_hit_at_5": 0.9666666666666667,
+  "semantic_mrr_at_10": 0.858641975308642,
+  "name_lookup_cases": 287,
+  "name_lookup_hit_at_3": 1.0,
+  "cases": [
+    {
+      "case_id": "Q01",
+      "query": "Processar documentos em paralelo e combinar os resultados parciais no final",
+      "expected_ids": [
+        "T001",
+        "T147"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T147",
+        "T139",
+        "T117",
+        "T097",
+        "T028",
+        "T001",
+        "T118",
+        "R008",
+        "T094",
+        "T060"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q02",
+      "query": "Reaproveitar o prefixo idêntico do prompt entre chamadas para reduzir o prefill",
+      "expected_ids": [
+        "T002",
+        "T082",
+        "T081"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T082",
+        "T157",
+        "T104",
+        "T002",
+        "T081",
+        "T171",
+        "T094",
+        "T103",
+        "T120",
+        "T083"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q03",
+      "query": "Guardar respostas para perguntas semanticamente semelhantes e invalidar quando a fonte muda",
+      "expected_ids": [
+        "T005",
+        "T031"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T005",
+        "T082",
+        "T049",
+        "T044",
+        "T191",
+        "R025",
+        "R027",
+        "T188",
+        "R007",
+        "T031"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q04",
+      "query": "Recuperar documentos por palavras exatas e vetores semânticos na mesma busca",
+      "expected_ids": [
+        "T027"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T027",
+        "T052",
+        "T010",
+        "T011",
+        "T005",
+        "T035",
+        "T032",
+        "T036",
+        "T072",
+        "T028"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q05",
+      "query": "Buscar um trecho pequeno mas devolver o documento pai para preservar contexto",
+      "expected_ids": [
+        "T032",
+        "T026"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T032",
+        "T035",
+        "P007",
+        "P001",
+        "T036",
+        "T067",
+        "T010",
+        "T030",
+        "T017",
+        "T028"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q06",
+      "query": "Carregar instruções de skills e ferramentas somente quando necessárias",
+      "expected_ids": [
+        "T014",
+        "T151",
+        "T045"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T204",
+        "P006",
+        "T014",
+        "T055",
+        "T045",
+        "T212",
+        "T155",
+        "T151",
+        "T022",
+        "T222"
+      ],
+      "first_relevant_rank": 3,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q07",
+      "query": "Salvar estado da missão em arquivo e manter apenas referências no contexto ativo",
+      "expected_ids": [
+        "T053",
+        "T015",
+        "T064"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T053",
+        "T050",
+        "T168",
+        "T064",
+        "R013",
+        "T003",
+        "T211",
+        "P002",
+        "T234",
+        "T074"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q08",
+      "query": "Lembrar uma experiência com ações resultado e evidências da execução anterior",
+      "expected_ids": [
+        "T049",
+        "T070"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T049",
+        "T070",
+        "T207",
+        "T055",
+        "R004",
+        "T073",
+        "T235",
+        "T208",
+        "T221",
+        "R003"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q09",
+      "query": "Consultar quando um fato era válido e quando o sistema tomou conhecimento dele",
+      "expected_ids": [
+        "T056"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T056",
+        "T077",
+        "R001",
+        "T058",
+        "T009",
+        "P004",
+        "T063",
+        "T075",
+        "T029",
+        "T054"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q10",
+      "query": "Reconstruir estado atual a partir de um histórico imutável de eventos",
+      "expected_ids": [
+        "T059"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T059",
+        "T241",
+        "P008",
+        "T116",
+        "T069",
+        "T072",
+        "T207",
+        "T242",
+        "T081",
+        "T084"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q11",
+      "query": "Retomar a execução depois de uma queda usando um checkpoint persistido",
+      "expected_ids": [
+        "T060",
+        "T159",
+        "T064"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T060",
+        "P014",
+        "R020",
+        "T159",
+        "P011",
+        "T226",
+        "T154",
+        "R008",
+        "T210",
+        "T050"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q12",
+      "query": "Distinguir memória de fatos de memória de procedimentos e habilidades",
+      "expected_ids": [
+        "T054",
+        "T055",
+        "T204"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T058",
+        "T055",
+        "T204",
+        "T048",
+        "T179",
+        "P017",
+        "T071",
+        "T047",
+        "T181",
+        "T062"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q13",
+      "query": "Compactar instruções nos pesos do aluno e retirar o prompt longo na inferência",
+      "expected_ids": [
+        "T179",
+        "T180",
+        "R012"
+      ],
+      "suite": "baseline_v1_retestada",
+      "change_note": "T069 agora é consolidação externa por resumos; deixou de apontar para destilação paramétrica.",
+      "retrieved_ids": [
+        "T180",
+        "R012",
+        "R006",
+        "T179",
+        "R015",
+        "T155",
+        "P017",
+        "T022",
+        "T002",
+        "T094"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q14",
+      "query": "Organizar memória do agente em camadas e trazer detalhes apenas quando solicitados",
+      "expected_ids": [
+        "T062",
+        "T063",
+        "R001"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T062",
+        "R013",
+        "T014",
+        "T048",
+        "R017",
+        "T095",
+        "T234",
+        "T181",
+        "R004",
+        "T078"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q15",
+      "query": "Modelo menor propõe tokens e o modelo maior verifica aceitação para acelerar geração",
+      "expected_ids": [
+        "T079",
+        "T132"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T079",
+        "P009",
+        "T132",
+        "T131",
+        "T130",
+        "T129",
+        "R022",
+        "T080",
+        "T085",
+        "T176"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q16",
+      "query": "Reduzir memória do cache de chaves e valores por quantização",
+      "expected_ids": [
+        "T086"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T086",
+        "T081",
+        "R003",
+        "T099",
+        "T108",
+        "T085",
+        "T090",
+        "T113",
+        "T106",
+        "T123"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q17",
+      "query": "Inserir novas requisições no lote enquanto outras sequências terminam",
+      "expected_ids": [
+        "T088"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T088",
+        "T087",
+        "T089",
+        "T094",
+        "T103",
+        "T131",
+        "T119",
+        "T104",
+        "T121",
+        "T106"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q18",
+      "query": "Atenção exata eficiente usando blocos e menor tráfego entre memória e GPU",
+      "expected_ids": [
+        "T090",
+        "T113",
+        "T098"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T091",
+        "T097",
+        "T098",
+        "T090",
+        "T113",
+        "T101",
+        "T096",
+        "T099",
+        "T092",
+        "T117"
+      ],
+      "first_relevant_rank": 3,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q19",
+      "query": "Gerenciar cache KV em páginas para reduzir fragmentação",
+      "expected_ids": [
+        "T093"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T093",
+        "T106",
+        "T120",
+        "T086",
+        "T105",
+        "T116",
+        "T048",
+        "T082",
+        "T102",
+        "T081"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q20",
+      "query": "Dividir o processamento inicial de um prompt longo para não bloquear a decodificação",
+      "expected_ids": [
+        "T094"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T094",
+        "T196",
+        "T176",
+        "T088",
+        "T117",
+        "T082",
+        "T141",
+        "T002",
+        "R005",
+        "R025"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q21",
+      "query": "Compartilhar cabeças de chaves e valores em grupos de cabeças de consulta",
+      "expected_ids": [
+        "T100",
+        "T106"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T099",
+        "T100",
+        "T106",
+        "T108",
+        "T086",
+        "T111",
+        "R003",
+        "T081",
+        "T113",
+        "T085"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q22",
+      "query": "Separar prefill e decode em grupos de GPU diferentes com transferência do cache",
+      "expected_ids": [
+        "T102"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T102",
+        "T100",
+        "T121",
+        "T094",
+        "T171",
+        "T085",
+        "T122",
+        "T088",
+        "T120",
+        "T082"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q23",
+      "query": "Saber se a inferência está limitada por largura de banda ou operações aritméticas",
+      "expected_ids": [
+        "T107"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T107",
+        "T106",
+        "T109",
+        "T102",
+        "T095",
+        "R001",
+        "T122",
+        "T138",
+        "R024",
+        "T146"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q24",
+      "query": "Distribuir tensores das mesmas camadas entre várias GPUs",
+      "expected_ids": [
+        "T118"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T119",
+        "T118",
+        "T101",
+        "T122",
+        "T110",
+        "T107",
+        "T092",
+        "T091",
+        "T117",
+        "T102"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q25",
+      "query": "Distribuir grupos de camadas sequenciais em dispositivos diferentes",
+      "expected_ids": [
+        "T119"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T101",
+        "T119",
+        "T106",
+        "T117",
+        "T100",
+        "T118",
+        "T099",
+        "T122",
+        "T125",
+        "T184"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q26",
+      "query": "GGUF é um algoritmo de quantização ou um formato de arquivo?",
+      "expected_ids": [
+        "T127"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T127",
+        "R024",
+        "T124",
+        "T123",
+        "T125",
+        "T053",
+        "R019",
+        "T230",
+        "P009",
+        "T126"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q27",
+      "query": "Escolher modelo barato ou modelo forte conforme dificuldade e qualidade exigida",
+      "expected_ids": [
+        "T133",
+        "T135",
+        "T203"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T133",
+        "P010",
+        "T135",
+        "T145",
+        "T025",
+        "T146",
+        "T046",
+        "T201",
+        "T013",
+        "T132"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q28",
+      "query": "Parar chamadas para um serviço com falhas e permitir sondas após um intervalo",
+      "expected_ids": [
+        "T138",
+        "T165"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T138",
+        "T165",
+        "T167",
+        "P013",
+        "T227",
+        "T238",
+        "T225",
+        "T219",
+        "T163",
+        "T220"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q29",
+      "query": "Evitar que duas requisições simultâneas idênticas façam o mesmo trabalho",
+      "expected_ids": [
+        "T150"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T150",
+        "T137",
+        "T007",
+        "T210",
+        "T166",
+        "T082",
+        "T088",
+        "T239",
+        "T121",
+        "T119"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q30",
+      "query": "Repetir uma operação após timeout sem duplicar o efeito externo",
+      "expected_ids": [
+        "T162"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T243",
+        "R018",
+        "T228",
+        "T162",
+        "T060",
+        "P011",
+        "T136",
+        "P015",
+        "T159",
+        "T220"
+      ],
+      "first_relevant_rank": 4,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q31",
+      "query": "Adicionar aleatoriedade às novas tentativas para evitar avalanche sincronizada",
+      "expected_ids": [
+        "T163"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T163",
+        "T228",
+        "T164",
+        "T115",
+        "T199",
+        "T209",
+        "T053",
+        "T076",
+        "T138",
+        "P013"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q32",
+      "query": "Executar tarefas de um grafo apenas quando as dependências terminarem",
+      "expected_ids": [
+        "T160"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T160",
+        "T142",
+        "T051",
+        "T216",
+        "T166",
+        "P006",
+        "T029",
+        "T161",
+        "T096",
+        "T219"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q33",
+      "query": "Evitar que tarefas de baixa prioridade fiquem para sempre esperando na fila",
+      "expected_ids": [
+        "T166"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T149",
+        "T166",
+        "T174",
+        "T088",
+        "T121",
+        "T151",
+        "T087",
+        "T135",
+        "T137",
+        "T228"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q34",
+      "query": "Permitir rajadas controladas respeitando uma taxa média de requisições",
+      "expected_ids": [
+        "T167",
+        "T137"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T167",
+        "T137",
+        "T088",
+        "T080",
+        "T087",
+        "T164",
+        "T082",
+        "T105",
+        "T116",
+        "T024"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q35",
+      "query": "Reservar espaço para resposta antes de preencher a janela com documentos",
+      "expected_ids": [
+        "T152",
+        "T168",
+        "T176"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T152",
+        "T042",
+        "T176",
+        "T222",
+        "T013",
+        "T168",
+        "T137",
+        "T187",
+        "P001",
+        "T050"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q36",
+      "query": "Adaptar um modelo treinando matrizes de baixo posto mantendo pesos base congelados",
+      "expected_ids": [
+        "T182"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T182",
+        "T183",
+        "T118",
+        "T155",
+        "R003",
+        "T080",
+        "T100",
+        "T108",
+        "T085",
+        "T132"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q37",
+      "query": "Treinar adaptadores com modelo base quantizado em quatro bits",
+      "expected_ids": [
+        "T183"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T183",
+        "T127",
+        "T085",
+        "T124",
+        "T086",
+        "T126",
+        "R007",
+        "T125",
+        "T182",
+        "R006"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q38",
+      "query": "Gerar várias soluções e selecionar a resposta consistente entre amostras",
+      "expected_ids": [
+        "T188",
+        "T187",
+        "T189"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T188",
+        "T189",
+        "T201",
+        "T156",
+        "T187",
+        "T146",
+        "T194",
+        "R016",
+        "T224",
+        "T065"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q39",
+      "query": "Validar o código produzido executando testes em ambiente isolado",
+      "expected_ids": [
+        "T195"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T195",
+        "T240",
+        "T233",
+        "T142",
+        "T230",
+        "R019",
+        "T060",
+        "R021",
+        "T239",
+        "T193"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q40",
+      "query": "Restringir tokens gerados para obedecer gramática ou estrutura JSON",
+      "expected_ids": [
+        "T196",
+        "T141"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T196",
+        "R025",
+        "T141",
+        "R026",
+        "T197",
+        "T089",
+        "T086",
+        "T110",
+        "T232",
+        "P009"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q41",
+      "query": "Checar tipos e campos obrigatórios de um JSON depois da geração",
+      "expected_ids": [
+        "T197"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T141",
+        "T197",
+        "T007",
+        "T024",
+        "T148",
+        "T089",
+        "R026",
+        "T211",
+        "T043",
+        "R025"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q42",
+      "query": "Medir se probabilidades de confiança correspondem à frequência real de acerto",
+      "expected_ids": [
+        "T198"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T198",
+        "T132",
+        "T005",
+        "T107",
+        "T187",
+        "T080",
+        "T202",
+        "P010",
+        "T156",
+        "T189"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q43",
+      "query": "Verificar cada etapa intermediária do processo e não só a resposta final",
+      "expected_ids": [
+        "T194",
+        "T206"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T194",
+        "T206",
+        "R015",
+        "T235",
+        "T225",
+        "T145",
+        "R021",
+        "P014",
+        "T236",
+        "T090"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q44",
+      "query": "Um agente independente revisa o resultado com evidências separadas",
+      "expected_ids": [
+        "T200"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "T200",
+        "T237",
+        "T186",
+        "T169",
+        "T191",
+        "T144",
+        "P012",
+        "R004",
+        "T073",
+        "T049"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q45",
+      "query": "Transferir experiências do professor como memórias de workflows sem treinar pesos",
+      "expected_ids": [
+        "T181"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "P017",
+        "T181",
+        "T204",
+        "T207",
+        "T178",
+        "R004",
+        "R012",
+        "R015",
+        "T180",
+        "T058"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q46",
+      "query": "Comprimir prompts em adaptadores LoRA no método PRISM",
+      "expected_ids": [
+        "R006"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "R006",
+        "T183",
+        "T022",
+        "R005",
+        "R007",
+        "T020",
+        "T182",
+        "T157",
+        "T083",
+        "T177"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q47",
+      "query": "Qual é o estado de manutenção do servidor Text Generation Inference?",
+      "expected_ids": [
+        "R010"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "R010",
+        "P009",
+        "T068",
+        "T102",
+        "T009",
+        "T035",
+        "T196",
+        "T048",
+        "T131",
+        "T177"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q48",
+      "query": "Como persistir um grafo de execução LangGraph entre interrupções?",
+      "expected_ids": [
+        "R008",
+        "T159",
+        "T060"
+      ],
+      "suite": "baseline_v1_retestada",
+      "retrieved_ids": [
+        "R008",
+        "T219",
+        "T142",
+        "T060",
+        "T029",
+        "T225",
+        "T160",
+        "T051",
+        "T148",
+        "T159"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q49",
+      "query": "Registrar observações em uma sequência cronológica recuperável de experiências",
+      "expected_ids": [
+        "T207",
+        "R004"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "R004",
+        "T049",
+        "T207",
+        "T003",
+        "T055",
+        "T144",
+        "T069",
+        "T222",
+        "T058",
+        "T067"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q50",
+      "query": "Separar o agente que planeja daquele que executa passos e retorna resultados",
+      "expected_ids": [
+        "T208",
+        "T143"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T055",
+        "T144",
+        "R021",
+        "R017",
+        "T206",
+        "T235",
+        "T142",
+        "T219",
+        "R004",
+        "T194"
+      ],
+      "first_relevant_rank": 0,
+      "hit_at_5": false
+    },
+    {
+      "case_id": "Q51",
+      "query": "Usar feedback de tentativas anteriores como reflexão textual para melhorar uma nova tentativa",
+      "expected_ids": [
+        "T209"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T209",
+        "T218",
+        "R017",
+        "T067",
+        "T190",
+        "R004",
+        "T192",
+        "T163",
+        "T199",
+        "T228"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q52",
+      "query": "Trocar a sessão que ficou saturada sem perder objetivos e estado confirmado",
+      "expected_ids": [
+        "T210"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "P014",
+        "T210",
+        "T211",
+        "T168",
+        "T154",
+        "T136",
+        "T084",
+        "R018",
+        "T153",
+        "T218"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q53",
+      "query": "Deixar um arquivo de passagem com trabalho concluído pendências e próximos passos",
+      "expected_ids": [
+        "T211"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T211",
+        "T050",
+        "R020",
+        "T168",
+        "T004",
+        "T210",
+        "T121",
+        "T219",
+        "T087",
+        "T053"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q54",
+      "query": "Disparar compactação automaticamente quando a ocupação do contexto cruza um limiar",
+      "expected_ids": [
+        "T212"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T212",
+        "T222",
+        "T168",
+        "P002",
+        "T021",
+        "T043",
+        "T152",
+        "T101",
+        "T011",
+        "T038"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q55",
+      "query": "Dividir uma missão longa em pequenas tarefas com entregas e critérios de aceite",
+      "expected_ids": [
+        "T213"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T213",
+        "T143",
+        "T154",
+        "T088",
+        "T208",
+        "T013",
+        "T161",
+        "R018",
+        "P002",
+        "T147"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q56",
+      "query": "Remover campos irrelevantes da saída de ferramentas antes de levar ao modelo",
+      "expected_ids": [
+        "T214",
+        "T016"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T214",
+        "T173",
+        "T140",
+        "T170",
+        "T151",
+        "T018",
+        "T155",
+        "T176",
+        "T222",
+        "P001"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q57",
+      "query": "Ocultar observações antigas de ferramentas mantendo as ações e os resultados necessários",
+      "expected_ids": [
+        "T215"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T215",
+        "T214",
+        "T222",
+        "T144",
+        "T003",
+        "T212",
+        "T049",
+        "R017",
+        "T152",
+        "T241"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q58",
+      "query": "Dar ao agente um mapa de símbolos e dependências de um repositório grande",
+      "expected_ids": [
+        "T216",
+        "R019"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T216",
+        "T238",
+        "R014",
+        "R019",
+        "T169",
+        "T232",
+        "T176",
+        "T234",
+        "R002",
+        "T239"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q59",
+      "query": "Repetir implementação teste e correção até satisfazer comportamento especificado",
+      "expected_ids": [
+        "T217",
+        "T195"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T190",
+        "T217",
+        "T195",
+        "T089",
+        "R019",
+        "T232",
+        "T126",
+        "T090",
+        "T034",
+        "T144"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q60",
+      "query": "Detectar que o agente repete as mesmas ações sem progresso verificável",
+      "expected_ids": [
+        "T218"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T218",
+        "T044",
+        "T221",
+        "P014",
+        "T145",
+        "T227",
+        "T049",
+        "T235",
+        "T201",
+        "R017"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q61",
+      "query": "Impor profundidade máxima ao grafo para impedir chamadas recursivas infinitas",
+      "expected_ids": [
+        "T219"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T219",
+        "T023",
+        "T146",
+        "T029",
+        "T145",
+        "P006",
+        "T051",
+        "T012",
+        "T026",
+        "T167"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q62",
+      "query": "Corrigir argumentos de uma ferramenta depois de erro de schema sem repetir efeitos já executados",
+      "expected_ids": [
+        "T220"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T220",
+        "T140",
+        "T045",
+        "T162",
+        "R017",
+        "T193",
+        "T151",
+        "T209",
+        "T170",
+        "T098"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q63",
+      "query": "Reintroduzir periodicamente o objetivo vigente para evitar que a execução se desvie",
+      "expected_ids": [
+        "T221"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T221",
+        "P007",
+        "T073",
+        "P015",
+        "T003",
+        "T154",
+        "T021",
+        "T223",
+        "T075",
+        "T211"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q64",
+      "query": "Monitorar tokens de entrada saída reservada e limite de contexto a cada etapa",
+      "expected_ids": [
+        "T222",
+        "T152"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T168",
+        "T013",
+        "T176",
+        "T152",
+        "T222",
+        "T137",
+        "P001",
+        "T042",
+        "T024",
+        "T089"
+      ],
+      "first_relevant_rank": 4,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q65",
+      "query": "Fazer uma checagem explícita da saída contra princípios escritos antes de concluir",
+      "expected_ids": [
+        "T223"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T223",
+        "T160",
+        "T191",
+        "T193",
+        "T200",
+        "T185",
+        "T122",
+        "P016",
+        "T234",
+        "T239"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q66",
+      "query": "Executar tarefas a partir de uma especificação com estados e critérios de conclusão",
+      "expected_ids": [
+        "T224"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T055",
+        "T224",
+        "T160",
+        "P011",
+        "T200",
+        "T213",
+        "T040",
+        "T204",
+        "T052",
+        "T169"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q67",
+      "query": "Um supervisor externo detecta processo travado e o reinicia de modo controlado",
+      "expected_ids": [
+        "T225"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T227",
+        "T225",
+        "T235",
+        "T194",
+        "T206",
+        "R018",
+        "T243",
+        "T226",
+        "T218",
+        "T237"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q68",
+      "query": "Publicar um sinal periódico de progresso com contador de etapa e timestamp",
+      "expected_ids": [
+        "T226"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T226",
+        "T227",
+        "T145",
+        "T194",
+        "T219",
+        "T218",
+        "P014",
+        "T116",
+        "T236",
+        "T172"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q69",
+      "query": "Distinguir processo vivo pronto para tráfego e trabalho efetivamente avançando",
+      "expected_ids": [
+        "T227"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T227",
+        "T225",
+        "P014",
+        "P013",
+        "T235",
+        "T160",
+        "T174",
+        "R025",
+        "T149",
+        "T211"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q70",
+      "query": "Persistir tentativas com instante futuro elegível backoff e limite de repetição",
+      "expected_ids": [
+        "T228"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T163",
+        "T228",
+        "P013",
+        "T164",
+        "T167",
+        "T137",
+        "T138",
+        "T009",
+        "T056",
+        "R018"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q71",
+      "query": "Modificar apenas os trechos necessários de um arquivo usando patches verificáveis",
+      "expected_ids": [
+        "T229"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T238",
+        "T229",
+        "T233",
+        "T053",
+        "R019",
+        "T230",
+        "P008",
+        "T112",
+        "T028",
+        "T239"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q72",
+      "query": "Representar linhas removidas adicionadas e contexto em um formato de diff unificado",
+      "expected_ids": [
+        "T230"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T230",
+        "T229",
+        "R019",
+        "T238",
+        "T231",
+        "T215",
+        "T194",
+        "T003",
+        "R014",
+        "T022"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q73",
+      "query": "Editar texto por bloco de busca e substituição com correspondência única",
+      "expected_ids": [
+        "T231"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T231",
+        "T004",
+        "T216",
+        "T238",
+        "P003",
+        "T032",
+        "T097",
+        "T232",
+        "T083",
+        "T036"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q74",
+      "query": "Modificar o código com base em nós de uma árvore sintática",
+      "expected_ids": [
+        "T232"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T232",
+        "T233",
+        "R027",
+        "T012",
+        "T236",
+        "T239",
+        "T231",
+        "T238",
+        "T023",
+        "T131"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q75",
+      "query": "Recusar um patch quando o hash do arquivo base mudou desde a preparação",
+      "expected_ids": [
+        "T233"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T233",
+        "P015",
+        "T229",
+        "T211",
+        "T230",
+        "R019",
+        "T072",
+        "T238",
+        "T061",
+        "T007"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q76",
+      "query": "Manter regras e comandos do projeto em arquivo persistente com instruções por módulo",
+      "expected_ids": [
+        "T234"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T234",
+        "R013",
+        "R019",
+        "T155",
+        "T159",
+        "R020",
+        "T022",
+        "T053",
+        "R021",
+        "T211"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q77",
+      "query": "Executar um agente sem interface em um controlador que entrega uma tarefa por iteração",
+      "expected_ids": [
+        "T235"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T235",
+        "R021",
+        "T088",
+        "T080",
+        "R017",
+        "R004",
+        "T169",
+        "T160",
+        "T172",
+        "T219"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q78",
+      "query": "Criar um commit pequeno por etapa validada para rastrear e recuperar progresso",
+      "expected_ids": [
+        "T236"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T236",
+        "R027",
+        "T076",
+        "T227",
+        "T226",
+        "T159",
+        "P014",
+        "T072",
+        "T044",
+        "P011"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q79",
+      "query": "Delegar leitura pesada a outro agente com contexto próprio e receber uma síntese com fontes",
+      "expected_ids": [
+        "T237",
+        "T169"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T169",
+        "T237",
+        "T024",
+        "T063",
+        "R021",
+        "T191",
+        "T015",
+        "R004",
+        "T017",
+        "T069"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q80",
+      "query": "Localizar uma ocorrência e ler somente a faixa relevante de linhas com contexto suficiente",
+      "expected_ids": [
+        "T238"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T238",
+        "T231",
+        "T216",
+        "T016",
+        "T207",
+        "T214",
+        "T230",
+        "T229",
+        "T018",
+        "T070"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q81",
+      "query": "Trabalhar em branches simultâneas usando diretórios Git independentes no mesmo repositório",
+      "expected_ids": [
+        "T239"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "R027",
+        "T239",
+        "R014",
+        "T076",
+        "R013",
+        "R019",
+        "T236",
+        "R021",
+        "T234",
+        "T238"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q82",
+      "query": "Materializar uma imagem consistente do estado em determinado instante",
+      "expected_ids": [
+        "T240"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T056",
+        "T083",
+        "T139",
+        "T077",
+        "T173",
+        "T167",
+        "T164",
+        "T157",
+        "T240",
+        "T138"
+      ],
+      "first_relevant_rank": 9,
+      "hit_at_5": false
+    },
+    {
+      "case_id": "Q83",
+      "query": "Reconstruir uma projeção reproduzindo eventos registrados sem reenviar efeitos externos",
+      "expected_ids": [
+        "T241"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T241",
+        "P008",
+        "T059",
+        "T242",
+        "T240",
+        "T060",
+        "T207",
+        "R018",
+        "T243",
+        "R008"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q84",
+      "query": "Restaurar o snapshot e aplicar somente os eventos posteriores ao seu cursor",
+      "expected_ids": [
+        "T242"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T242",
+        "T240",
+        "P008",
+        "T241",
+        "T060",
+        "T059",
+        "T172",
+        "R020",
+        "T043",
+        "T226"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q85",
+      "query": "Após timeout descobrir se a operação externa aconteceu antes de decidir repetir",
+      "expected_ids": [
+        "T243"
+      ],
+      "suite": "novos_itens_v2",
+      "retrieved_ids": [
+        "T243",
+        "R018",
+        "T162",
+        "T228",
+        "P015",
+        "T226",
+        "T136",
+        "P011",
+        "T075",
+        "T163"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q86",
+      "query": "Consolidar sessões em resumos externos sem atualizar pesos do modelo",
+      "expected_ids": [
+        "T069"
+      ],
+      "suite": "escopos_revisados_v2",
+      "retrieved_ids": [
+        "T069",
+        "T058",
+        "T047",
+        "T004",
+        "T008",
+        "P004",
+        "R001",
+        "P005",
+        "P003",
+        "T112"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q87",
+      "query": "Recuperar fatos válidos em uma data passada sem misturar a informação conhecida depois",
+      "expected_ids": [
+        "T009",
+        "T056"
+      ],
+      "suite": "escopos_revisados_v2",
+      "retrieved_ids": [
+        "T056",
+        "P007",
+        "T164",
+        "T077",
+        "P004",
+        "T009",
+        "T104",
+        "T003",
+        "T047",
+        "T049"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q88",
+      "query": "Aplicar gramática durante a geração para impedir uma estrutura de saída inválida",
+      "expected_ids": [
+        "T196",
+        "R025",
+        "R026"
+      ],
+      "suite": "escopos_revisados_v2",
+      "retrieved_ids": [
+        "T196",
+        "R025",
+        "T197",
+        "T089",
+        "T141",
+        "T235",
+        "T206",
+        "P009",
+        "T232",
+        "T033"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q89",
+      "query": "Persistir checkpoint de estado e cursor de execução numa mesma transação",
+      "expected_ids": [
+        "T060",
+        "T065"
+      ],
+      "suite": "escopos_revisados_v2",
+      "retrieved_ids": [
+        "T060",
+        "T240",
+        "T065",
+        "P008",
+        "T226",
+        "T064",
+        "P011",
+        "P004",
+        "T242",
+        "T225"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "Q90",
+      "query": "Qual componente proposto da LAI reuniria memória de trabalho episódios e procedimentos?",
+      "expected_ids": [
+        "P004",
+        "P005"
+      ],
+      "suite": "escopos_revisados_v2",
+      "retrieved_ids": [
+        "T049",
+        "T070",
+        "T071",
+        "T058",
+        "T062",
+        "P012",
+        "T204",
+        "T199",
+        "T055",
+        "T047"
+      ],
+      "first_relevant_rank": 0,
+      "hit_at_5": false
+    }
+  ],
+  "name_lookup": [
+    {
+      "id": "T001",
+      "passed": true,
+      "retrieved_ids": [
+        "T001",
+        "T216",
+        "R019"
+      ]
+    },
+    {
+      "id": "T002",
+      "passed": true,
+      "retrieved_ids": [
+        "T002",
+        "T082",
+        "T007"
+      ]
+    },
+    {
+      "id": "T003",
+      "passed": true,
+      "retrieved_ids": [
+        "T003",
+        "T095",
+        "T109"
+      ]
+    },
+    {
+      "id": "T004",
+      "passed": true,
+      "retrieved_ids": [
+        "T004",
+        "T023",
+        "T136"
+      ]
+    },
+    {
+      "id": "T005",
+      "passed": true,
+      "retrieved_ids": [
+        "T005",
+        "T002",
+        "T157"
+      ]
+    },
+    {
+      "id": "T006",
+      "passed": true,
+      "retrieved_ids": [
+        "T006",
+        "T021",
+        "T020"
+      ]
+    },
+    {
+      "id": "T007",
+      "passed": true,
+      "retrieved_ids": [
+        "T007",
+        "T082",
+        "T083"
+      ]
+    },
+    {
+      "id": "T008",
+      "passed": true,
+      "retrieved_ids": [
+        "T008",
+        "T004",
+        "T026"
+      ]
+    },
+    {
+      "id": "T009",
+      "passed": true,
+      "retrieved_ids": [
+        "T009",
+        "T068",
+        "R003"
+      ]
+    },
+    {
+      "id": "T010",
+      "passed": true,
+      "retrieved_ids": [
+        "T010",
+        "T088",
+        "T035"
+      ]
+    },
+    {
+      "id": "T011",
+      "passed": true,
+      "retrieved_ids": [
+        "T011",
+        "T134",
+        "T031"
+      ]
+    },
+    {
+      "id": "T012",
+      "passed": true,
+      "retrieved_ids": [
+        "T012",
+        "T023",
+        "T030"
+      ]
+    },
+    {
+      "id": "T013",
+      "passed": true,
+      "retrieved_ids": [
+        "T013",
+        "R003",
+        "T069"
+      ]
+    },
+    {
+      "id": "T014",
+      "passed": true,
+      "retrieved_ids": [
+        "T014",
+        "P006",
+        "T044"
+      ]
+    },
+    {
+      "id": "T015",
+      "passed": true,
+      "retrieved_ids": [
+        "T015",
+        "T066",
+        "T078"
+      ]
+    },
+    {
+      "id": "T016",
+      "passed": true,
+      "retrieved_ids": [
+        "T016",
+        "T045",
+        "T220"
+      ]
+    },
+    {
+      "id": "T017",
+      "passed": true,
+      "retrieved_ids": [
+        "T017",
+        "T038",
+        "T024"
+      ]
+    },
+    {
+      "id": "T018",
+      "passed": true,
+      "retrieved_ids": [
+        "T018",
+        "T038",
+        "T019"
+      ]
+    },
+    {
+      "id": "T019",
+      "passed": true,
+      "retrieved_ids": [
+        "T019",
+        "T046",
+        "T038"
+      ]
+    },
+    {
+      "id": "T020",
+      "passed": true,
+      "retrieved_ids": [
+        "T020",
+        "R005",
+        "T022"
+      ]
+    },
+    {
+      "id": "T021",
+      "passed": true,
+      "retrieved_ids": [
+        "T021",
+        "T006",
+        "T020"
+      ]
+    },
+    {
+      "id": "T022",
+      "passed": true,
+      "retrieved_ids": [
+        "T022",
+        "T006",
+        "T020"
+      ]
+    },
+    {
+      "id": "T023",
+      "passed": true,
+      "retrieved_ids": [
+        "T023",
+        "T030",
+        "T012"
+      ]
+    },
+    {
+      "id": "T024",
+      "passed": true,
+      "retrieved_ids": [
+        "T024",
+        "P001",
+        "P002"
+      ]
+    },
+    {
+      "id": "T025",
+      "passed": true,
+      "retrieved_ids": [
+        "T025",
+        "T009",
+        "T145"
+      ]
+    },
+    {
+      "id": "T026",
+      "passed": true,
+      "retrieved_ids": [
+        "T026",
+        "T008",
+        "T062"
+      ]
+    },
+    {
+      "id": "T027",
+      "passed": true,
+      "retrieved_ids": [
+        "T027",
+        "T035",
+        "T009"
+      ]
+    },
+    {
+      "id": "T028",
+      "passed": true,
+      "retrieved_ids": [
+        "T028",
+        "P007",
+        "T027"
+      ]
+    },
+    {
+      "id": "T029",
+      "passed": true,
+      "retrieved_ids": [
+        "T029",
+        "T051",
+        "T066"
+      ]
+    },
+    {
+      "id": "T030",
+      "passed": true,
+      "retrieved_ids": [
+        "T030",
+        "T008",
+        "T026"
+      ]
+    },
+    {
+      "id": "T031",
+      "passed": true,
+      "retrieved_ids": [
+        "T031",
+        "T005",
+        "T002"
+      ]
+    },
+    {
+      "id": "T032",
+      "passed": true,
+      "retrieved_ids": [
+        "T032",
+        "T026",
+        "P007"
+      ]
+    },
+    {
+      "id": "T033",
+      "passed": true,
+      "retrieved_ids": [
+        "T033",
+        "T035",
+        "T011"
+      ]
+    },
+    {
+      "id": "T034",
+      "passed": true,
+      "retrieved_ids": [
+        "T034",
+        "T035",
+        "T011"
+      ]
+    },
+    {
+      "id": "T035",
+      "passed": true,
+      "retrieved_ids": [
+        "T035",
+        "T033",
+        "T032"
+      ]
+    },
+    {
+      "id": "T036",
+      "passed": true,
+      "retrieved_ids": [
+        "T036",
+        "T037",
+        "T176"
+      ]
+    },
+    {
+      "id": "T037",
+      "passed": true,
+      "retrieved_ids": [
+        "T037",
+        "T036",
+        "T006"
+      ]
+    },
+    {
+      "id": "T038",
+      "passed": true,
+      "retrieved_ids": [
+        "T038",
+        "T018",
+        "T019"
+      ]
+    },
+    {
+      "id": "T039",
+      "passed": true,
+      "retrieved_ids": [
+        "T039",
+        "T040",
+        "T003"
+      ]
+    },
+    {
+      "id": "T040",
+      "passed": true,
+      "retrieved_ids": [
+        "T040",
+        "T039",
+        "T003"
+      ]
+    },
+    {
+      "id": "T041",
+      "passed": true,
+      "retrieved_ids": [
+        "T041",
+        "T003",
+        "T189"
+      ]
+    },
+    {
+      "id": "T042",
+      "passed": true,
+      "retrieved_ids": [
+        "T042",
+        "T084",
+        "T095"
+      ]
+    },
+    {
+      "id": "T043",
+      "passed": true,
+      "retrieved_ids": [
+        "T043",
+        "P002",
+        "T038"
+      ]
+    },
+    {
+      "id": "T044",
+      "passed": true,
+      "retrieved_ids": [
+        "T044",
+        "P006",
+        "T014"
+      ]
+    },
+    {
+      "id": "T045",
+      "passed": true,
+      "retrieved_ids": [
+        "T045",
+        "T112",
+        "T009"
+      ]
+    },
+    {
+      "id": "T046",
+      "passed": true,
+      "retrieved_ids": [
+        "T046",
+        "T019",
+        "T087"
+      ]
+    },
+    {
+      "id": "T047",
+      "passed": true,
+      "retrieved_ids": [
+        "T047",
+        "R003",
+        "T069"
+      ]
+    },
+    {
+      "id": "T048",
+      "passed": true,
+      "retrieved_ids": [
+        "T048",
+        "T063",
+        "T154"
+      ]
+    },
+    {
+      "id": "T049",
+      "passed": true,
+      "retrieved_ids": [
+        "T049",
+        "T070",
+        "T050"
+      ]
+    },
+    {
+      "id": "T050",
+      "passed": true,
+      "retrieved_ids": [
+        "T050",
+        "R001",
+        "T003"
+      ]
+    },
+    {
+      "id": "T051",
+      "passed": true,
+      "retrieved_ids": [
+        "T051",
+        "T029",
+        "T077"
+      ]
+    },
+    {
+      "id": "T052",
+      "passed": true,
+      "retrieved_ids": [
+        "T052",
+        "T020",
+        "T006"
+      ]
+    },
+    {
+      "id": "T053",
+      "passed": true,
+      "retrieved_ids": [
+        "T053",
+        "T050",
+        "T234"
+      ]
+    },
+    {
+      "id": "T054",
+      "passed": true,
+      "retrieved_ids": [
+        "T054",
+        "T011",
+        "T134"
+      ]
+    },
+    {
+      "id": "T055",
+      "passed": true,
+      "retrieved_ids": [
+        "T055",
+        "T204",
+        "T181"
+      ]
+    },
+    {
+      "id": "T056",
+      "passed": true,
+      "retrieved_ids": [
+        "T056",
+        "T077",
+        "T072"
+      ]
+    },
+    {
+      "id": "T057",
+      "passed": true,
+      "retrieved_ids": [
+        "T057",
+        "T051",
+        "T207"
+      ]
+    },
+    {
+      "id": "T058",
+      "passed": true,
+      "retrieved_ids": [
+        "T058",
+        "T048",
+        "P005"
+      ]
+    },
+    {
+      "id": "T059",
+      "passed": true,
+      "retrieved_ids": [
+        "T059",
+        "T242",
+        "P008"
+      ]
+    },
+    {
+      "id": "T060",
+      "passed": true,
+      "retrieved_ids": [
+        "T060",
+        "T115",
+        "R017"
+      ]
+    },
+    {
+      "id": "T061",
+      "passed": true,
+      "retrieved_ids": [
+        "T061",
+        "R001",
+        "T070"
+      ]
+    },
+    {
+      "id": "T062",
+      "passed": true,
+      "retrieved_ids": [
+        "T062",
+        "T026",
+        "T008"
+      ]
+    },
+    {
+      "id": "T063",
+      "passed": true,
+      "retrieved_ids": [
+        "T063",
+        "P003",
+        "R001"
+      ]
+    },
+    {
+      "id": "T064",
+      "passed": true,
+      "retrieved_ids": [
+        "T064",
+        "T234",
+        "T060"
+      ]
+    },
+    {
+      "id": "T065",
+      "passed": true,
+      "retrieved_ids": [
+        "T065",
+        "P002",
+        "P003"
+      ]
+    },
+    {
+      "id": "T066",
+      "passed": true,
+      "retrieved_ids": [
+        "T066",
+        "T015",
+        "T076"
+      ]
+    },
+    {
+      "id": "T067",
+      "passed": true,
+      "retrieved_ids": [
+        "T067",
+        "T112",
+        "T009"
+      ]
+    },
+    {
+      "id": "T068",
+      "passed": true,
+      "retrieved_ids": [
+        "T068",
+        "T009",
+        "R003"
+      ]
+    },
+    {
+      "id": "T069",
+      "passed": true,
+      "retrieved_ids": [
+        "T069",
+        "R015",
+        "T179"
+      ]
+    },
+    {
+      "id": "T070",
+      "passed": true,
+      "retrieved_ids": [
+        "T070",
+        "T049",
+        "P008"
+      ]
+    },
+    {
+      "id": "T071",
+      "passed": true,
+      "retrieved_ids": [
+        "T071",
+        "T048",
+        "T047"
+      ]
+    },
+    {
+      "id": "T072",
+      "passed": true,
+      "retrieved_ids": [
+        "T072",
+        "T066",
+        "T048"
+      ]
+    },
+    {
+      "id": "T073",
+      "passed": true,
+      "retrieved_ids": [
+        "T073",
+        "T070",
+        "P008"
+      ]
+    },
+    {
+      "id": "T074",
+      "passed": true,
+      "retrieved_ids": [
+        "T074",
+        "T105",
+        "T048"
+      ]
+    },
+    {
+      "id": "T075",
+      "passed": true,
+      "retrieved_ids": [
+        "T075",
+        "T243",
+        "T048"
+      ]
+    },
+    {
+      "id": "T076",
+      "passed": true,
+      "retrieved_ids": [
+        "T076",
+        "P007",
+        "T044"
+      ]
+    },
+    {
+      "id": "T077",
+      "passed": true,
+      "retrieved_ids": [
+        "T077",
+        "T178",
+        "T051"
+      ]
+    },
+    {
+      "id": "T078",
+      "passed": true,
+      "retrieved_ids": [
+        "T078",
+        "P003",
+        "T063"
+      ]
+    },
+    {
+      "id": "T079",
+      "passed": true,
+      "retrieved_ids": [
+        "T079",
+        "T132",
+        "T080"
+      ]
+    },
+    {
+      "id": "T080",
+      "passed": true,
+      "retrieved_ids": [
+        "T080",
+        "T079",
+        "T132"
+      ]
+    },
+    {
+      "id": "T081",
+      "passed": true,
+      "retrieved_ids": [
+        "T081",
+        "T105",
+        "T120"
+      ]
+    },
+    {
+      "id": "T082",
+      "passed": true,
+      "retrieved_ids": [
+        "T082",
+        "T083",
+        "T157"
+      ]
+    },
+    {
+      "id": "T083",
+      "passed": true,
+      "retrieved_ids": [
+        "T083",
+        "T082",
+        "T157"
+      ]
+    },
+    {
+      "id": "T084",
+      "passed": true,
+      "retrieved_ids": [
+        "T084",
+        "T210",
+        "T082"
+      ]
+    },
+    {
+      "id": "T085",
+      "passed": true,
+      "retrieved_ids": [
+        "T085",
+        "T126",
+        "T124"
+      ]
+    },
+    {
+      "id": "T086",
+      "passed": true,
+      "retrieved_ids": [
+        "T086",
+        "T081",
+        "T120"
+      ]
+    },
+    {
+      "id": "T087",
+      "passed": true,
+      "retrieved_ids": [
+        "T087",
+        "T088",
+        "T046"
+      ]
+    },
+    {
+      "id": "T088",
+      "passed": true,
+      "retrieved_ids": [
+        "T088",
+        "T087",
+        "T121"
+      ]
+    },
+    {
+      "id": "T089",
+      "passed": true,
+      "retrieved_ids": [
+        "T089",
+        "P009",
+        "T196"
+      ]
+    },
+    {
+      "id": "T090",
+      "passed": true,
+      "retrieved_ids": [
+        "T090",
+        "T113",
+        "T092"
+      ]
+    },
+    {
+      "id": "T091",
+      "passed": true,
+      "retrieved_ids": [
+        "T091",
+        "T113",
+        "T090"
+      ]
+    },
+    {
+      "id": "T092",
+      "passed": true,
+      "retrieved_ids": [
+        "T092",
+        "T090",
+        "T113"
+      ]
+    },
+    {
+      "id": "T093",
+      "passed": true,
+      "retrieved_ids": [
+        "T093",
+        "T097",
+        "T183"
+      ]
+    },
+    {
+      "id": "T094",
+      "passed": true,
+      "retrieved_ids": [
+        "T094",
+        "T102",
+        "T081"
+      ]
+    },
+    {
+      "id": "T095",
+      "passed": true,
+      "retrieved_ids": [
+        "T095",
+        "T003",
+        "T109"
+      ]
+    },
+    {
+      "id": "T096",
+      "passed": true,
+      "retrieved_ids": [
+        "T096",
+        "T111",
+        "T097"
+      ]
+    },
+    {
+      "id": "T097",
+      "passed": true,
+      "retrieved_ids": [
+        "T097",
+        "T096",
+        "T111"
+      ]
+    },
+    {
+      "id": "T098",
+      "passed": true,
+      "retrieved_ids": [
+        "T098",
+        "T112",
+        "T100"
+      ]
+    },
+    {
+      "id": "T099",
+      "passed": true,
+      "retrieved_ids": [
+        "T099",
+        "T100",
+        "T108"
+      ]
+    },
+    {
+      "id": "T100",
+      "passed": true,
+      "retrieved_ids": [
+        "T100",
+        "T099",
+        "T108"
+      ]
+    },
+    {
+      "id": "T101",
+      "passed": true,
+      "retrieved_ids": [
+        "T101",
+        "T117",
+        "T112"
+      ]
+    },
+    {
+      "id": "T102",
+      "passed": true,
+      "retrieved_ids": [
+        "T102",
+        "T094",
+        "P009"
+      ]
+    },
+    {
+      "id": "T103",
+      "passed": true,
+      "retrieved_ids": [
+        "T103",
+        "T082",
+        "T157"
+      ]
+    },
+    {
+      "id": "T104",
+      "passed": true,
+      "retrieved_ids": [
+        "T104",
+        "T103",
+        "T112"
+      ]
+    },
+    {
+      "id": "T105",
+      "passed": true,
+      "retrieved_ids": [
+        "T105",
+        "T074",
+        "T086"
+      ]
+    },
+    {
+      "id": "T106",
+      "passed": true,
+      "retrieved_ids": [
+        "T106",
+        "T100",
+        "T099"
+      ]
+    },
+    {
+      "id": "T107",
+      "passed": true,
+      "retrieved_ids": [
+        "T107",
+        "T161"
+      ]
+    },
+    {
+      "id": "T108",
+      "passed": true,
+      "retrieved_ids": [
+        "T108",
+        "T099",
+        "T100"
+      ]
+    },
+    {
+      "id": "T109",
+      "passed": true,
+      "retrieved_ids": [
+        "T109",
+        "T095",
+        "T003"
+      ]
+    },
+    {
+      "id": "T110",
+      "passed": true,
+      "retrieved_ids": [
+        "T110",
+        "T109",
+        "T108"
+      ]
+    },
+    {
+      "id": "T111",
+      "passed": true,
+      "retrieved_ids": [
+        "T111",
+        "T096",
+        "T097"
+      ]
+    },
+    {
+      "id": "T112",
+      "passed": true,
+      "retrieved_ids": [
+        "T112",
+        "T027",
+        "T009"
+      ]
+    },
+    {
+      "id": "T113",
+      "passed": true,
+      "retrieved_ids": [
+        "T113",
+        "T090",
+        "T092"
+      ]
+    },
+    {
+      "id": "T114",
+      "passed": true,
+      "retrieved_ids": [
+        "T114",
+        "T108",
+        "T092"
+      ]
+    },
+    {
+      "id": "T115",
+      "passed": true,
+      "retrieved_ids": [
+        "T115",
+        "T060",
+        "T126"
+      ]
+    },
+    {
+      "id": "T116",
+      "passed": true,
+      "retrieved_ids": [
+        "T116",
+        "T105",
+        "T081"
+      ]
+    },
+    {
+      "id": "T117",
+      "passed": true,
+      "retrieved_ids": [
+        "T117",
+        "T119",
+        "T118"
+      ]
+    },
+    {
+      "id": "T118",
+      "passed": true,
+      "retrieved_ids": [
+        "T118",
+        "T117",
+        "T119"
+      ]
+    },
+    {
+      "id": "T119",
+      "passed": true,
+      "retrieved_ids": [
+        "T119",
+        "T117",
+        "T118"
+      ]
+    },
+    {
+      "id": "T120",
+      "passed": true,
+      "retrieved_ids": [
+        "T120",
+        "T171",
+        "T086"
+      ]
+    },
+    {
+      "id": "T121",
+      "passed": true,
+      "retrieved_ids": [
+        "T121",
+        "T174",
+        "T160"
+      ]
+    },
+    {
+      "id": "T122",
+      "passed": true,
+      "retrieved_ids": [
+        "T122",
+        "T102",
+        "T117"
+      ]
+    },
+    {
+      "id": "T123",
+      "passed": true,
+      "retrieved_ids": [
+        "T123",
+        "T126",
+        "T085"
+      ]
+    },
+    {
+      "id": "T124",
+      "passed": true,
+      "retrieved_ids": [
+        "T124",
+        "T126",
+        "T085"
+      ]
+    },
+    {
+      "id": "T125",
+      "passed": true,
+      "retrieved_ids": [
+        "T125",
+        "T124",
+        "T126"
+      ]
+    },
+    {
+      "id": "T126",
+      "passed": true,
+      "retrieved_ids": [
+        "T126",
+        "T124",
+        "T183"
+      ]
+    },
+    {
+      "id": "T127",
+      "passed": true,
+      "retrieved_ids": [
+        "T127",
+        "R024",
+        "T124"
+      ]
+    },
+    {
+      "id": "T128",
+      "passed": true,
+      "retrieved_ids": [
+        "T128",
+        "R011",
+        "T123"
+      ]
+    },
+    {
+      "id": "T129",
+      "passed": true,
+      "retrieved_ids": [
+        "T129",
+        "T108",
+        "T099"
+      ]
+    },
+    {
+      "id": "T130",
+      "passed": true,
+      "retrieved_ids": [
+        "T130",
+        "T079",
+        "T132"
+      ]
+    },
+    {
+      "id": "T131",
+      "passed": true,
+      "retrieved_ids": [
+        "T131",
+        "T079",
+        "T196"
+      ]
+    },
+    {
+      "id": "T132",
+      "passed": true,
+      "retrieved_ids": [
+        "T132",
+        "T130",
+        "T128"
+      ]
+    },
+    {
+      "id": "T133",
+      "passed": true,
+      "retrieved_ids": [
+        "T133",
+        "T120",
+        "T135"
+      ]
+    },
+    {
+      "id": "T134",
+      "passed": true,
+      "retrieved_ids": [
+        "T134",
+        "T171",
+        "T011"
+      ]
+    },
+    {
+      "id": "T135",
+      "passed": true,
+      "retrieved_ids": [
+        "T135",
+        "T132",
+        "T133"
+      ]
+    },
+    {
+      "id": "T136",
+      "passed": true,
+      "retrieved_ids": [
+        "T136",
+        "T173",
+        "T175"
+      ]
+    },
+    {
+      "id": "T137",
+      "passed": true,
+      "retrieved_ids": [
+        "T137",
+        "T175",
+        "T167"
+      ]
+    },
+    {
+      "id": "T138",
+      "passed": true,
+      "retrieved_ids": [
+        "T138",
+        "T165",
+        "P013"
+      ]
+    },
+    {
+      "id": "T139",
+      "passed": true,
+      "retrieved_ids": [
+        "T139",
+        "T147",
+        "T220"
+      ]
+    },
+    {
+      "id": "T140",
+      "passed": true,
+      "retrieved_ids": [
+        "T140",
+        "R011",
+        "T045"
+      ]
+    },
+    {
+      "id": "T141",
+      "passed": true,
+      "retrieved_ids": [
+        "T141",
+        "T239",
+        "T233"
+      ]
+    },
+    {
+      "id": "T142",
+      "passed": true,
+      "retrieved_ids": [
+        "T142",
+        "R017",
+        "T202"
+      ]
+    },
+    {
+      "id": "T143",
+      "passed": true,
+      "retrieved_ids": [
+        "T143",
+        "T208"
+      ]
+    },
+    {
+      "id": "T144",
+      "passed": true,
+      "retrieved_ids": [
+        "T144",
+        "T143",
+        "T208"
+      ]
+    },
+    {
+      "id": "T145",
+      "passed": true,
+      "retrieved_ids": [
+        "T145",
+        "T025",
+        "T146"
+      ]
+    },
+    {
+      "id": "T146",
+      "passed": true,
+      "retrieved_ids": [
+        "T146",
+        "T145",
+        "T025"
+      ]
+    },
+    {
+      "id": "T147",
+      "passed": true,
+      "retrieved_ids": [
+        "T147",
+        "T139",
+        "T213"
+      ]
+    },
+    {
+      "id": "T148",
+      "passed": true,
+      "retrieved_ids": [
+        "T148",
+        "T239",
+        "R027"
+      ]
+    },
+    {
+      "id": "T149",
+      "passed": true,
+      "retrieved_ids": [
+        "T149",
+        "T174",
+        "T166"
+      ]
+    },
+    {
+      "id": "T150",
+      "passed": true,
+      "retrieved_ids": [
+        "T150",
+        "T157",
+        "T171"
+      ]
+    },
+    {
+      "id": "T151",
+      "passed": true,
+      "retrieved_ids": [
+        "T151",
+        "T045",
+        "T158"
+      ]
+    },
+    {
+      "id": "T152",
+      "passed": true,
+      "retrieved_ids": [
+        "T152",
+        "T222",
+        "T110"
+      ]
+    },
+    {
+      "id": "T153",
+      "passed": true,
+      "retrieved_ids": [
+        "T153",
+        "T172",
+        "T141"
+      ]
+    },
+    {
+      "id": "T154",
+      "passed": true,
+      "retrieved_ids": [
+        "T154",
+        "T063",
+        "T099"
+      ]
+    },
+    {
+      "id": "T155",
+      "passed": true,
+      "retrieved_ids": [
+        "T155",
+        "T185",
+        "T106"
+      ]
+    },
+    {
+      "id": "T156",
+      "passed": true,
+      "retrieved_ids": [
+        "T156",
+        "T177",
+        "T198"
+      ]
+    },
+    {
+      "id": "T157",
+      "passed": true,
+      "retrieved_ids": [
+        "T157",
+        "T082",
+        "T103"
+      ]
+    },
+    {
+      "id": "T158",
+      "passed": true,
+      "retrieved_ids": [
+        "T158",
+        "T045",
+        "T220"
+      ]
+    },
+    {
+      "id": "T159",
+      "passed": true,
+      "retrieved_ids": [
+        "T159",
+        "R018",
+        "P011"
+      ]
+    },
+    {
+      "id": "T160",
+      "passed": true,
+      "retrieved_ids": [
+        "T160",
+        "T121",
+        "T174"
+      ]
+    },
+    {
+      "id": "T161",
+      "passed": true,
+      "retrieved_ids": [
+        "T161",
+        "T107",
+        "R021"
+      ]
+    },
+    {
+      "id": "T162",
+      "passed": true,
+      "retrieved_ids": [
+        "T162",
+        "T243",
+        "T059"
+      ]
+    },
+    {
+      "id": "T163",
+      "passed": true,
+      "retrieved_ids": [
+        "T163",
+        "T228",
+        "P013"
+      ]
+    },
+    {
+      "id": "T164",
+      "passed": true,
+      "retrieved_ids": [
+        "T164",
+        "T163",
+        "T175"
+      ]
+    },
+    {
+      "id": "T165",
+      "passed": true,
+      "retrieved_ids": [
+        "T165",
+        "T138",
+        "P013"
+      ]
+    },
+    {
+      "id": "T166",
+      "passed": true,
+      "retrieved_ids": [
+        "T166",
+        "T149",
+        "T174"
+      ]
+    },
+    {
+      "id": "T167",
+      "passed": true,
+      "retrieved_ids": [
+        "T167",
+        "T137",
+        "T163"
+      ]
+    },
+    {
+      "id": "T168",
+      "passed": true,
+      "retrieved_ids": [
+        "T168",
+        "T187",
+        "T137"
+      ]
+    },
+    {
+      "id": "T169",
+      "passed": true,
+      "retrieved_ids": [
+        "T169",
+        "T237",
+        "T142"
+      ]
+    },
+    {
+      "id": "T170",
+      "passed": true,
+      "retrieved_ids": [
+        "T170",
+        "T045",
+        "T158"
+      ]
+    },
+    {
+      "id": "T171",
+      "passed": true,
+      "retrieved_ids": [
+        "T171",
+        "T037",
+        "T120"
+      ]
+    },
+    {
+      "id": "T172",
+      "passed": true,
+      "retrieved_ids": [
+        "T172",
+        "T153",
+        "T235"
+      ]
+    },
+    {
+      "id": "T173",
+      "passed": true,
+      "retrieved_ids": [
+        "T173",
+        "T136",
+        "T133"
+      ]
+    },
+    {
+      "id": "T174",
+      "passed": true,
+      "retrieved_ids": [
+        "T174",
+        "T149",
+        "T121"
+      ]
+    },
+    {
+      "id": "T175",
+      "passed": true,
+      "retrieved_ids": [
+        "T175",
+        "T137",
+        "T167"
+      ]
+    },
+    {
+      "id": "T176",
+      "passed": true,
+      "retrieved_ids": [
+        "T176",
+        "T202",
+        "T126"
+      ]
+    },
+    {
+      "id": "T177",
+      "passed": true,
+      "retrieved_ids": [
+        "T177",
+        "P017",
+        "T199"
+      ]
+    },
+    {
+      "id": "T178",
+      "passed": true,
+      "retrieved_ids": [
+        "T178",
+        "T077",
+        "R012"
+      ]
+    },
+    {
+      "id": "T179",
+      "passed": true,
+      "retrieved_ids": [
+        "T179",
+        "T069",
+        "P017"
+      ]
+    },
+    {
+      "id": "T180",
+      "passed": true,
+      "retrieved_ids": [
+        "T180",
+        "R012",
+        "P017"
+      ]
+    },
+    {
+      "id": "T181",
+      "passed": true,
+      "retrieved_ids": [
+        "T181",
+        "P017",
+        "T204"
+      ]
+    },
+    {
+      "id": "T182",
+      "passed": true,
+      "retrieved_ids": [
+        "T182",
+        "R006",
+        "T183"
+      ]
+    },
+    {
+      "id": "T183",
+      "passed": true,
+      "retrieved_ids": [
+        "T183",
+        "T115",
+        "T182"
+      ]
+    },
+    {
+      "id": "T184",
+      "passed": true,
+      "retrieved_ids": [
+        "T184",
+        "R022",
+        "T146"
+      ]
+    },
+    {
+      "id": "T185",
+      "passed": true,
+      "retrieved_ids": [
+        "T185",
+        "T223",
+        "T120"
+      ]
+    },
+    {
+      "id": "T186",
+      "passed": true,
+      "retrieved_ids": [
+        "T186",
+        "R004",
+        "R017"
+      ]
+    },
+    {
+      "id": "T187",
+      "passed": true,
+      "retrieved_ids": [
+        "T187"
+      ]
+    },
+    {
+      "id": "T188",
+      "passed": true,
+      "retrieved_ids": [
+        "T188",
+        "T187",
+        "T192"
+      ]
+    },
+    {
+      "id": "T189",
+      "passed": true,
+      "retrieved_ids": [
+        "T189",
+        "T201",
+        "T188"
+      ]
+    },
+    {
+      "id": "T190",
+      "passed": true,
+      "retrieved_ids": [
+        "T190",
+        "T192",
+        "T235"
+      ]
+    },
+    {
+      "id": "T191",
+      "passed": true,
+      "retrieved_ids": [
+        "T191",
+        "P012",
+        "T206"
+      ]
+    },
+    {
+      "id": "T192",
+      "passed": true,
+      "retrieved_ids": [
+        "T192",
+        "T209",
+        "T188"
+      ]
+    },
+    {
+      "id": "T193",
+      "passed": true,
+      "retrieved_ids": [
+        "T193",
+        "T180",
+        "T186"
+      ]
+    },
+    {
+      "id": "T194",
+      "passed": true,
+      "retrieved_ids": [
+        "T194",
+        "T206",
+        "T225"
+      ]
+    },
+    {
+      "id": "T195",
+      "passed": true,
+      "retrieved_ids": [
+        "T195",
+        "T051",
+        "P010"
+      ]
+    },
+    {
+      "id": "T196",
+      "passed": true,
+      "retrieved_ids": [
+        "T196",
+        "R025",
+        "T131"
+      ]
+    },
+    {
+      "id": "T197",
+      "passed": true,
+      "retrieved_ids": [
+        "T197",
+        "T196",
+        "T233"
+      ]
+    },
+    {
+      "id": "T198",
+      "passed": true,
+      "retrieved_ids": [
+        "T198",
+        "T133",
+        "P012"
+      ]
+    },
+    {
+      "id": "T199",
+      "passed": true,
+      "retrieved_ids": [
+        "T199",
+        "T204",
+        "P016"
+      ]
+    },
+    {
+      "id": "T200",
+      "passed": true,
+      "retrieved_ids": [
+        "T200",
+        "P012",
+        "T206"
+      ]
+    },
+    {
+      "id": "T201",
+      "passed": true,
+      "retrieved_ids": [
+        "T201",
+        "T217",
+        "T056"
+      ]
+    },
+    {
+      "id": "T202",
+      "passed": true,
+      "retrieved_ids": [
+        "T202",
+        "T176",
+        "T142"
+      ]
+    },
+    {
+      "id": "T203",
+      "passed": true,
+      "retrieved_ids": [
+        "T203",
+        "T120",
+        "P010"
+      ]
+    },
+    {
+      "id": "T204",
+      "passed": true,
+      "retrieved_ids": [
+        "T204",
+        "T055",
+        "T076"
+      ]
+    },
+    {
+      "id": "T205",
+      "passed": true,
+      "retrieved_ids": [
+        "T205",
+        "T005",
+        "T011"
+      ]
+    },
+    {
+      "id": "T206",
+      "passed": true,
+      "retrieved_ids": [
+        "T206",
+        "T194",
+        "P012"
+      ]
+    },
+    {
+      "id": "T207",
+      "passed": true,
+      "retrieved_ids": [
+        "T207",
+        "R004",
+        "T153"
+      ]
+    },
+    {
+      "id": "T208",
+      "passed": true,
+      "retrieved_ids": [
+        "T208",
+        "T143",
+        "T142"
+      ]
+    },
+    {
+      "id": "T209",
+      "passed": true,
+      "retrieved_ids": [
+        "T209",
+        "T207"
+      ]
+    },
+    {
+      "id": "T210",
+      "passed": true,
+      "retrieved_ids": [
+        "T210",
+        "T084",
+        "R007"
+      ]
+    },
+    {
+      "id": "T211",
+      "passed": true,
+      "retrieved_ids": [
+        "T211",
+        "T234",
+        "T210"
+      ]
+    },
+    {
+      "id": "T212",
+      "passed": true,
+      "retrieved_ids": [
+        "T212",
+        "T021",
+        "T168"
+      ]
+    },
+    {
+      "id": "T213",
+      "passed": true,
+      "retrieved_ids": [
+        "T213",
+        "T210",
+        "T224"
+      ]
+    },
+    {
+      "id": "T214",
+      "passed": true,
+      "retrieved_ids": [
+        "T214",
+        "T141",
+        "T016"
+      ]
+    },
+    {
+      "id": "T215",
+      "passed": true,
+      "retrieved_ids": [
+        "T215",
+        "T214",
+        "T212"
+      ]
+    },
+    {
+      "id": "T216",
+      "passed": true,
+      "retrieved_ids": [
+        "T216",
+        "R019",
+        "T238"
+      ]
+    },
+    {
+      "id": "T217",
+      "passed": true,
+      "retrieved_ids": [
+        "T217",
+        "T224",
+        "T190"
+      ]
+    },
+    {
+      "id": "T218",
+      "passed": true,
+      "retrieved_ids": [
+        "T218",
+        "T190",
+        "T217"
+      ]
+    },
+    {
+      "id": "T219",
+      "passed": true,
+      "retrieved_ids": [
+        "T219",
+        "T145",
+        "T012"
+      ]
+    },
+    {
+      "id": "T220",
+      "passed": true,
+      "retrieved_ids": [
+        "T220",
+        "T003",
+        "T045"
+      ]
+    },
+    {
+      "id": "T221",
+      "passed": true,
+      "retrieved_ids": [
+        "T221"
+      ]
+    },
+    {
+      "id": "T222",
+      "passed": true,
+      "retrieved_ids": [
+        "T222",
+        "T152",
+        "T024"
+      ]
+    },
+    {
+      "id": "T223",
+      "passed": true,
+      "retrieved_ids": [
+        "T223",
+        "T185",
+        "T192"
+      ]
+    },
+    {
+      "id": "T224",
+      "passed": true,
+      "retrieved_ids": [
+        "T224",
+        "T217",
+        "T190"
+      ]
+    },
+    {
+      "id": "T225",
+      "passed": true,
+      "retrieved_ids": [
+        "T225",
+        "T226",
+        "T212"
+      ]
+    },
+    {
+      "id": "T226",
+      "passed": true,
+      "retrieved_ids": [
+        "T226",
+        "T227",
+        "R018"
+      ]
+    },
+    {
+      "id": "T227",
+      "passed": true,
+      "retrieved_ids": [
+        "T227",
+        "P013",
+        "T225"
+      ]
+    },
+    {
+      "id": "T228",
+      "passed": true,
+      "retrieved_ids": [
+        "T228",
+        "T163",
+        "P013"
+      ]
+    },
+    {
+      "id": "T229",
+      "passed": true,
+      "retrieved_ids": [
+        "T229",
+        "T230",
+        "T232"
+      ]
+    },
+    {
+      "id": "T230",
+      "passed": true,
+      "retrieved_ids": [
+        "T230",
+        "T229",
+        "R019"
+      ]
+    },
+    {
+      "id": "T231",
+      "passed": true,
+      "retrieved_ids": [
+        "T231",
+        "T229",
+        "R019"
+      ]
+    },
+    {
+      "id": "T232",
+      "passed": true,
+      "retrieved_ids": [
+        "T232",
+        "T229",
+        "T231"
+      ]
+    },
+    {
+      "id": "T233",
+      "passed": true,
+      "retrieved_ids": [
+        "T233",
+        "T229",
+        "P015"
+      ]
+    },
+    {
+      "id": "T234",
+      "passed": true,
+      "retrieved_ids": [
+        "T234",
+        "T211",
+        "T064"
+      ]
+    },
+    {
+      "id": "T235",
+      "passed": true,
+      "retrieved_ids": [
+        "T235",
+        "P012",
+        "P013"
+      ]
+    },
+    {
+      "id": "T236",
+      "passed": true,
+      "retrieved_ids": [
+        "T236",
+        "R027",
+        "T076"
+      ]
+    },
+    {
+      "id": "T237",
+      "passed": true,
+      "retrieved_ids": [
+        "T237",
+        "T169",
+        "R024"
+      ]
+    },
+    {
+      "id": "T238",
+      "passed": true,
+      "retrieved_ids": [
+        "T238",
+        "T214",
+        "T230"
+      ]
+    },
+    {
+      "id": "T239",
+      "passed": true,
+      "retrieved_ids": [
+        "T239",
+        "R027",
+        "T076"
+      ]
+    },
+    {
+      "id": "T240",
+      "passed": true,
+      "retrieved_ids": [
+        "T240",
+        "T242",
+        "T059"
+      ]
+    },
+    {
+      "id": "T241",
+      "passed": true,
+      "retrieved_ids": [
+        "T241",
+        "T059",
+        "P008"
+      ]
+    },
+    {
+      "id": "T242",
+      "passed": true,
+      "retrieved_ids": [
+        "T242",
+        "T059",
+        "P008"
+      ]
+    },
+    {
+      "id": "T243",
+      "passed": true,
+      "retrieved_ids": [
+        "T243",
+        "P011",
+        "P015"
+      ]
+    },
+    {
+      "id": "R001",
+      "passed": true,
+      "retrieved_ids": [
+        "R001",
+        "T063",
+        "P003"
+      ]
+    },
+    {
+      "id": "R002",
+      "passed": true,
+      "retrieved_ids": [
+        "R002",
+        "R014",
+        "R013"
+      ]
+    },
+    {
+      "id": "R003",
+      "passed": true,
+      "retrieved_ids": [
+        "R003",
+        "T068",
+        "T052"
+      ]
+    },
+    {
+      "id": "R004",
+      "passed": true,
+      "retrieved_ids": [
+        "R004",
+        "T207",
+        "T049"
+      ]
+    },
+    {
+      "id": "R005",
+      "passed": true,
+      "retrieved_ids": [
+        "R005",
+        "T038",
+        "T020"
+      ]
+    },
+    {
+      "id": "R006",
+      "passed": true,
+      "retrieved_ids": [
+        "R006",
+        "T022",
+        "R005"
+      ]
+    },
+    {
+      "id": "R007",
+      "passed": true,
+      "retrieved_ids": [
+        "R007",
+        "T052",
+        "R006"
+      ]
+    },
+    {
+      "id": "R008",
+      "passed": true,
+      "retrieved_ids": [
+        "R008",
+        "R017",
+        "T142"
+      ]
+    },
+    {
+      "id": "R009",
+      "passed": true,
+      "retrieved_ids": [
+        "R009",
+        "T102",
+        "P009"
+      ]
+    },
+    {
+      "id": "R010",
+      "passed": true,
+      "retrieved_ids": [
+        "R010",
+        "R023",
+        "T088"
+      ]
+    },
+    {
+      "id": "R011",
+      "passed": true,
+      "retrieved_ids": [
+        "R011",
+        "T123",
+        "T124"
+      ]
+    },
+    {
+      "id": "R012",
+      "passed": true,
+      "retrieved_ids": [
+        "R012",
+        "T180",
+        "T179"
+      ]
+    },
+    {
+      "id": "R013",
+      "passed": true,
+      "retrieved_ids": [
+        "R002",
+        "R013",
+        "R014"
+      ]
+    },
+    {
+      "id": "R014",
+      "passed": true,
+      "retrieved_ids": [
+        "R014",
+        "R013",
+        "R002"
+      ]
+    },
+    {
+      "id": "R015",
+      "passed": true,
+      "retrieved_ids": [
+        "R015",
+        "T179",
+        "P017"
+      ]
+    },
+    {
+      "id": "R016",
+      "passed": true,
+      "retrieved_ids": [
+        "R016",
+        "T013",
+        "R017"
+      ]
+    },
+    {
+      "id": "R017",
+      "passed": true,
+      "retrieved_ids": [
+        "R017",
+        "R008",
+        "T220"
+      ]
+    },
+    {
+      "id": "R018",
+      "passed": true,
+      "retrieved_ids": [
+        "R018",
+        "T077",
+        "T009"
+      ]
+    },
+    {
+      "id": "R019",
+      "passed": true,
+      "retrieved_ids": [
+        "R019",
+        "T216",
+        "T229"
+      ]
+    },
+    {
+      "id": "R020",
+      "passed": true,
+      "retrieved_ids": [
+        "R020",
+        "T237",
+        "T234"
+      ]
+    },
+    {
+      "id": "R021",
+      "passed": true,
+      "retrieved_ids": [
+        "R021",
+        "T239",
+        "T234"
+      ]
+    },
+    {
+      "id": "R022",
+      "passed": true,
+      "retrieved_ids": [
+        "R022",
+        "R011",
+        "T184"
+      ]
+    },
+    {
+      "id": "R023",
+      "passed": true,
+      "retrieved_ids": [
+        "R023",
+        "R010",
+        "T093"
+      ]
+    },
+    {
+      "id": "R024",
+      "passed": true,
+      "retrieved_ids": [
+        "R024",
+        "T127",
+        "R023"
+      ]
+    },
+    {
+      "id": "R025",
+      "passed": true,
+      "retrieved_ids": [
+        "R025",
+        "T196",
+        "T197"
+      ]
+    },
+    {
+      "id": "R026",
+      "passed": true,
+      "retrieved_ids": [
+        "R026",
+        "T196",
+        "T081"
+      ]
+    },
+    {
+      "id": "R027",
+      "passed": true,
+      "retrieved_ids": [
+        "R027",
+        "T076",
+        "T239"
+      ]
+    },
+    {
+      "id": "P001",
+      "passed": true,
+      "retrieved_ids": [
+        "P001",
+        "P009",
+        "P010"
+      ]
+    },
+    {
+      "id": "P002",
+      "passed": true,
+      "retrieved_ids": [
+        "P002",
+        "P003",
+        "T065"
+      ]
+    },
+    {
+      "id": "P003",
+      "passed": true,
+      "retrieved_ids": [
+        "P003",
+        "P002",
+        "T063"
+      ]
+    },
+    {
+      "id": "P004",
+      "passed": true,
+      "retrieved_ids": [
+        "P004",
+        "T098",
+        "T068"
+      ]
+    },
+    {
+      "id": "P005",
+      "passed": true,
+      "retrieved_ids": [
+        "P005",
+        "R014",
+        "P013"
+      ]
+    },
+    {
+      "id": "P006",
+      "passed": true,
+      "retrieved_ids": [
+        "P006",
+        "T044",
+        "T014"
+      ]
+    },
+    {
+      "id": "P007",
+      "passed": true,
+      "retrieved_ids": [
+        "P007",
+        "T112",
+        "P004"
+      ]
+    },
+    {
+      "id": "P008",
+      "passed": true,
+      "retrieved_ids": [
+        "P008",
+        "T059",
+        "T242"
+      ]
+    },
+    {
+      "id": "P009",
+      "passed": true,
+      "retrieved_ids": [
+        "P009",
+        "R010",
+        "T102"
+      ]
+    },
+    {
+      "id": "P010",
+      "passed": true,
+      "retrieved_ids": [
+        "P010",
+        "T120",
+        "T134"
+      ]
+    },
+    {
+      "id": "P011",
+      "passed": true,
+      "retrieved_ids": [
+        "P011",
+        "P015",
+        "P013"
+      ]
+    },
+    {
+      "id": "P012",
+      "passed": true,
+      "retrieved_ids": [
+        "P012",
+        "P013",
+        "P011"
+      ]
+    },
+    {
+      "id": "P013",
+      "passed": true,
+      "retrieved_ids": [
+        "P013",
+        "P014",
+        "P011"
+      ]
+    },
+    {
+      "id": "P014",
+      "passed": true,
+      "retrieved_ids": [
+        "P014",
+        "P013",
+        "P011"
+      ]
+    },
+    {
+      "id": "P015",
+      "passed": true,
+      "retrieved_ids": [
+        "P015",
+        "P011",
+        "P005"
+      ]
+    },
+    {
+      "id": "P016",
+      "passed": true,
+      "retrieved_ids": [
+        "P016",
+        "P009",
+        "T199"
+      ]
+    },
+    {
+      "id": "P017",
+      "passed": true,
+      "retrieved_ids": [
+        "P017",
+        "T178",
+        "R012"
+      ]
+    }
+  ],
+  "limitations": "Consultas locais elaboradas para este pacote; não são benchmark externo nem teste de qualidade de LLM. Nome exato mede endereçabilidade, não compreensão."
+}

@@ -1,0 +1,111 @@
+{
+  "id": "T003",
+  "novelty": "A v3 preservou pares de ferramentas. Aqui a janela móvel ganha transições planejadas por fase e testes de retenção de obrigações.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Defina fronteiras de fase em vez de descartar continuamente. Ao terminar coleta, transforme resultados confirmados em tabela e remova apenas conversas de busca. A janela da fase seguinte começa com objetivos e pendências explícitos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Use duas filas: observações recentes e obrigações ainda abertas. FIFO governa a primeira; uma obrigação só sai por resolução identificada. Isso evita que repetição de logs empurre uma condição antiga necessária.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Variar tamanho dos logs sem mudar decisões permite medir sensibilidade da política ao volume incidental. Avalie obrigações recuperadas corretamente após mudanças de fase. Unidade de avaliação: trajetória de tarefa. Inclua uma mudança de fase com resultado tardio pertencente à fase anterior. O controlador deve registrar a observação, avaliar se ela invalida decisão atual e evitar reinseri-la como instrução recente. Medir separadamente quantidade de eventos preservados e quantidade de obrigações corretamente aplicadas impede confundir arquivo completo com contexto útil.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "V4A-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Triagem contínua",
+      "scenario": "Chamados chegam durante um incidente.",
+      "strategy": "Agrupar observações por intervalo, persistir ações confirmadas e carregar pendências antigas antes de decidir próximo passo.",
+      "small_model_role": "3–7B classifica observações curtas.",
+      "acceptance": "Não perder restrição ativa quando o volume aumenta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Extração em etapas",
+      "scenario": "Um arquivo exige várias leituras.",
+      "strategy": "Manter cursor e campos faltantes fora da fila; trocar trechos a cada bloco sem reintroduzir páginas concluídas.",
+      "small_model_role": "8–14B reconcilia campos extraídos.",
+      "acceptance": "Cobrir todos os campos obrigatórios ou marcar ausência com referência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "V4A-S002"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Janela curta por fase com obrigações enumeradas em campos.",
+    "8_14b": "Janela com duas fontes simultâneas para comparar correções locais.",
+    "15_30b": "Integração de fases complexas usando referências, sem carregar histórico integral.",
+    "training_or_runtime_requirements": "Estado explícito de obrigações e cursor; limites calculados no tokenizer do leitor.",
+    "do_not_use_when": "A tarefa requer dependências globais que não podem ser representadas num estado compacto."
+  },
+  "connections": [
+    {
+      "target_id": "T040",
+      "relation": "complements",
+      "how": "Separar conteúdo recente de estado vigente.",
+      "interface": "Fila de observações e lista versionada de obrigações.",
+      "condition": "Existir evento explícito de conclusão.",
+      "acceptance": "Introduzir logs irrelevantes e verificar estabilidade da decisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "V4A-S002"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T070",
+      "relation": "feeds",
+      "how": "Arquivar unidades removidas para reconsulta.",
+      "interface": "Episódio, intervalo, cursor e motivo do descarte.",
+      "condition": "Armazenamento acessível após rotação.",
+      "acceptance": "Solicitar episódio antigo e conferir localização exata.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "V4A-S002"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não interpretar silêncio recente como cancelamento.",
+    "Aplicar descarte somente a grupos de protocolo completos."
+  ],
+  "frontier_comparison": "Comparar continuidade em tarefas com ruído volumoso; manter mesma informação obrigatória no baseline.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S003",
+    "V4A-S002"
+  ]
+}

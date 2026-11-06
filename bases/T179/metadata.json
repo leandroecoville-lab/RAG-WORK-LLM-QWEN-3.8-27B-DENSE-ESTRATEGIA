@@ -1,0 +1,30 @@
+{
+  "id": "T179",
+  "name": "Context Distillation Paramétrica",
+  "canonical_name": "Context Distillation",
+  "canonical_id": "T179",
+  "aliases": [
+    "destilação paramétrica de contexto"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T069",
+    "T177",
+    "T178",
+    "T180"
+  ],
+  "source_ids": [
+    "C-S033",
+    "V4B-S012",
+    "V4B-S013",
+    "V3D-S008"
+  ],
+  "namespace": "T179",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T179",
+  "chunk_count": 9
+}

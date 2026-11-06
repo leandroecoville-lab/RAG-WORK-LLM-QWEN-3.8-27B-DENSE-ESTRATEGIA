@@ -1,0 +1,141 @@
+{
+  "coverage": {
+    "entry_id": "T064",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 3,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 2,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Persistent Agent State",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C005",
+      "company": "Google",
+      "system": "Megastore em serviços interativos",
+      "title": "Megastore em serviços interativos — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "Autores relatam serviços Google em produção sobre Megastore.",
+      "technical_mechanism": "Partições recebem semântica ACID serializável e replicação síncrona.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S004"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T065",
+          "match": "exact",
+          "rationale": "Transações serializáveis delimitadas por partição."
+        },
+        {
+          "entry_id": "T064",
+          "match": "family",
+          "rationale": "Estado durável de serviços, não estado completo de um agente LLM."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Escolher agregado transacional por sessão/projeto e manter decisões do LLM como propostas.",
+      "limits": "A atomicidade não atravessa automaticamente partições e APIs externas; relato de 2011. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C005",
+      "deployment_domain": "distributed_data_system",
+      "mapping": {
+        "entry_id": "T064",
+        "match": "family",
+        "rationale": "Estado durável de serviços, não estado completo de um agente LLM."
+      }
+    },
+    {
+      "case_id": "V4A-C011",
+      "company": "Google",
+      "system": "MillWheel: detector contínuo de anomalias",
+      "title": "MillWheel: detector contínuo de anomalias — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "Artigo relata detector em uso e adoção do framework no Google.",
+      "technical_mechanism": "Grafo de computação sobre registros, estado persistente e tempo lógico.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S012"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T064",
+          "match": "family",
+          "rationale": "Estado de processamento é durável; não define serialização de um agente."
+        },
+        {
+          "entry_id": "T060",
+          "match": "family",
+          "rationale": "Tolerância a falhas de fluxo é relacionada à retomada, mas não prova checkpoint LLM."
+        },
+        {
+          "entry_id": "T077",
+          "match": "analogy",
+          "rationale": "Tempo lógico orienta processamento; não é grafo temporal de conhecimento."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Manter agregações em código; usar 3–7B apenas para categorizar observações recebidas.",
+      "limits": "Não confundir fluxo de eventos com Event Sourcing de domínio, nem inferir efeitos externos exatamente uma vez. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C011",
+      "deployment_domain": "distributed_data_system",
+      "mapping": {
+        "entry_id": "T064",
+        "match": "family",
+        "rationale": "Estado de processamento é durável; não define serialização de um agente."
+      }
+    },
+    {
+      "case_id": "V4A-C027",
+      "company": "Letta",
+      "system": "Framework de agentes stateful",
+      "title": "Framework de agentes stateful — evidência delimitada",
+      "evidence_level": "operational_product",
+      "observed_use": "Fornecedor distingue framework Letta do padrão MemGPT e oferece serviços stateful.",
+      "technical_mechanism": "Persistência do agente e ferramentas de memória externas ao modelo.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S026",
+        "V2B-S002"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R002",
+          "match": "exact",
+          "rationale": "Fornecedor e framework identificados."
+        },
+        {
+          "entry_id": "T064",
+          "match": "exact",
+          "rationale": "Estado persistente de agentes é recurso explícito."
+        },
+        {
+          "entry_id": "P004",
+          "match": "analogy",
+          "rationale": "Inspira contratos do runtime proposto."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Escolher modelo compatível por testes de protocolo e separar identidade de agente e conversa.",
+      "limits": "Letta não é bigtech; implantação facilitada não comprova cliente ou escala. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4A-C027",
+      "deployment_domain": "llm_framework",
+      "mapping": {
+        "entry_id": "T064",
+        "match": "exact",
+        "rationale": "Estado persistente de agentes é recurso explícito."
+      }
+    }
+  ]
+}

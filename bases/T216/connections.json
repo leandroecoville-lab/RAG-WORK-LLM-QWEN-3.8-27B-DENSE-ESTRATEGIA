@@ -1,0 +1,39 @@
+{
+  "entry_id": "T216",
+  "edges": [
+    {
+      "edge_id": "E-T216-01",
+      "from": "T216",
+      "to": "T238",
+      "relation": "feeds",
+      "how": "Transformar caminhos e símbolos do mapa em pedidos de leitura de trechos relevantes.",
+      "interface": "Arquivo, revisão, símbolo e intervalo a resolver.",
+      "condition": "Posições são recalculadas ou validadas contra o conteúdo atual.",
+      "acceptance": "Leitura inclui contexto suficiente para a alteração pretendida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S033"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T216-02",
+      "from": "T216",
+      "to": "T213",
+      "relation": "complements",
+      "how": "Usar relações estruturais para escolher unidades com baixo acoplamento e interfaces explícitas.",
+      "interface": "Subgrafo de módulos e símbolos compartilhados.",
+      "condition": "Critérios de aceite cobrem as fronteiras entre unidades.",
+      "acceptance": "Integração detecta consumidores omitidos pelo mapa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S033",
+        "V4C-S030"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

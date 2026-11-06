@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Posso usar o mesmo número para todos os limites?",
+    "answer": "Pode ser inadequado: profundidade, passos e chamadas têm escalas diferentes. Escolha cada teto com base no comportamento esperado e na unidade real do runtime."
+  },
+  {
+    "question": "Atingir o limite significa que o modelo falhou?",
+    "answer": "Não necessariamente. Pode indicar orçamento insuficiente, condição de parada incorreta ou tarefa maior que a prevista; o histórico permite distinguir as causas."
+  },
+  {
+    "question": "Um grafo com dez nós exige dez passos?",
+    "answer": "Não necessariamente. Nós paralelos podem compartilhar superstep, enquanto ciclos podem executar o mesmo nó várias vezes."
+  },
+  {
+    "question": "Por que limitar só profundidade de subagentes é insuficiente?",
+    "answer": "Porque muitos agentes podem ser criados em cada nível; o total de trabalho cresce mesmo com profundidade pequena."
+  }
+]

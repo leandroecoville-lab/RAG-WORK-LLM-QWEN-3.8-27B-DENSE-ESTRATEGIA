@@ -1,0 +1,111 @@
+{
+  "id": "T040",
+  "novelty": "A v3 exigiu revisão antes de efeitos. Aqui contexto é uma projeção tipada por estado, com transições que determinam quais informações mudam de função.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Defina vistas para coletar, verificar e executar. Evidência incompleta pode ser suficiente para coletar, mas não para confirmar ação; a mudança de fase altera requisitos do contexto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S030",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Registre por que cada campo entrou na vista. Quando objetivo muda, recalcule relevância e mantenha obrigações transversais; não preserve automaticamente todos os detalhes da fase anterior.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S030",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare janela uniforme e vistas por estado. Meça ações prematuras, repetição de coleta e perda de restrições em transições, incluindo resultados tardios de ferramentas. Unidade de avaliação: transição de tarefa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S030",
+        "V4A-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Preparação de alteração",
+      "scenario": "Agente passa de análise para edição.",
+      "strategy": "Na análise, carregar hipóteses; na execução, exigir especificação confirmada, revisão-base e teste de aceite. Bloquear salto sem esses campos.",
+      "small_model_role": "3–7B verifica checklist estruturado.",
+      "acceptance": "Nenhuma edição pode usar revisão-base desconhecida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S030",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Investigação interrompida",
+      "scenario": "Nova informação invalida plano.",
+      "strategy": "Voltar a estado de análise, marcar plano anterior como suspenso e reconstruir contexto com evidência nova.",
+      "small_model_role": "15–30B replaneja; 8–14B valida.",
+      "acceptance": "Não executar etapa pendente do plano revogado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S030",
+        "V4A-S002"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Validador de campos obrigatórios por estado, com máquina de estados externa.",
+    "8_14b": "Gerador de propostas locais dentro da fase autorizada.",
+    "15_30b": "Replanejador de transições complexas com justificativa de mudança.",
+    "training_or_runtime_requirements": "Máquina de estados, revisões e contratos de entrada por fase; prompt não substitui validação do controlador.",
+    "do_not_use_when": "Estado é inferido apenas da conversa e não existe registro confiável das transições."
+  },
+  "connections": [
+    {
+      "target_id": "T065",
+      "relation": "requires",
+      "how": "Confirmar transição e suas pré-condições juntas.",
+      "interface": "Estado anterior, revisão, evento e estado proposto.",
+      "condition": "Transação cobrir invariantes locais.",
+      "acceptance": "Simular duas transições concorrentes e rejeitar a obsoleta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S030",
+        "V4A-S002"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T043",
+      "relation": "complements",
+      "how": "Compactar por fases encerradas.",
+      "interface": "Fronteira de fase, obrigações ativas e referências.",
+      "condition": "Resumo não ocultar requisito da próxima fase.",
+      "acceptance": "Retomar execução com evidência obrigatória ausente e exigir bloqueio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S030",
+        "V4A-S002"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não tratar mensagem do modelo como confirmação de estado.",
+    "Distinguir intenção de executar e execução observada."
+  ],
+  "frontier_comparison": "Comparar correção de transições sob interrupções; capacidade linguística não substitui estado explícito.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S030",
+    "V4A-S002"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "T126",
+  "technical_details": "Proteger canais salientes por reescala não significa manter obrigatoriamente uma fração dos pesos em FP16. A transformação redistribui amplitude entre pesos e entradas preservando a operação antes do arredondamento; depois, a grade quantizada introduz erro. A saliência depende das ativações observadas, portanto um canal de peso numericamente pequeno pode ser importante quando multiplicado por entradas grandes.",
+  "boundary_condition": "Mudar domínio ou modalidade pode alterar quais canais são salientes; ausência de backpropagation não elimina essa dependência estatística.",
+  "implementation_contract": {
+    "inputs": "Pesos, estatísticas de ativações, grupos e busca de escalas definida.",
+    "outputs": "Pesos quantizados e transformações necessárias para executar a operação compatível.",
+    "state": "Escalas por canal, agrupamento e proveniência dos exemplos de calibração.",
+    "invariant": "A compensação de escala permanece consistente entre pesos e operações associadas."
+  },
+  "tradeoffs": [
+    "Reescala melhora resolução de canais escolhidos e pode deslocar erro para outros.",
+    "Grades compatíveis com kernels favorecem execução e limitam liberdade de representação."
+  ],
+  "failure_test": "Teste proposto: omitir a transformação compensatória ao carregar o artefato e trocar o domínio de entrada. Esperar detecção separada do erro de integração e da perda de generalização.",
+  "evaluation_plan": "Plano proposto: comparar quantização ingênua e AWQ no mesmo checkpoint e formato, incluindo dados fora da calibração. Medir erro de camada, qualidade, memória e tempo real; não atribuir ganho do kernel exclusivamente ao método de escalas.",
+  "comparisons": [
+    {
+      "entry_id": "T125",
+      "relation": "alternative",
+      "reason": "A escolha entre AWQ e GPTQ envolve diferentes objetivos de calibração e caminhos de execução."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O AWQ usa estatísticas de ativações para escolher reescala de canais, evitando exigir uma representação mista dos pesos protegidos.",
+    "source_ids": [
+      "V3B-S014"
+    ],
+    "support": "direct",
+    "caveat": "Resultados publicados não eliminam a necessidade de avaliar a distribuição de uso e o empacotamento do servidor."
+  },
+  "advanced_qa": [
+    {
+      "question": "Activation-aware quantiza as ativações?",
+      "answer": "O nome descreve informação usada para quantizar pesos; a variante weight-only pode manter ativações em maior precisão."
+    },
+    {
+      "question": "Escala equivalente garante saída idêntica?",
+      "answer": "A equivalência é anterior ao arredondamento; quantização e aritmética finita ainda alteram a operação."
+    }
+  ],
+  "source_ids": [
+    "V3B-S014"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

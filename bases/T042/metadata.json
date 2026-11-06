@@ -1,0 +1,30 @@
+{
+  "id": "T042",
+  "name": "Token-Based Window",
+  "canonical_name": "Token-Based Window",
+  "canonical_id": "T042",
+  "aliases": [
+    "janela baseada em tokens"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T003",
+    "T024",
+    "T152",
+    "T168"
+  ],
+  "source_ids": [
+    "A-S003",
+    "A-S038",
+    "A-S006",
+    "V4A-S015"
+  ],
+  "namespace": "T042",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T042",
+  "chunk_count": 9
+}

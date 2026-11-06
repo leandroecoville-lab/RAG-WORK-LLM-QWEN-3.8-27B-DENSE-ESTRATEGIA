@@ -1,0 +1,93 @@
+[
+  {
+    "source_id": "C-S051",
+    "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+    "url": "https://arxiv.org/abs/2303.11366",
+    "publisher": "Shinn e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Feedback verbal e memória episódica podem melhorar tentativas posteriores sem atualizar pesos.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn19view11"
+  },
+  {
+    "source_id": "C-S020",
+    "title": "DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines",
+    "url": "https://arxiv.org/abs/2310.03714",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Otimização de pipelines de chamadas de LLM com objetivo mensurável.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn12view11"
+  },
+  {
+    "source_id": "V4B-S022",
+    "title": "AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms",
+    "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+    "publisher": "Google DeepMind",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-05-14",
+    "supports": "Geração evolutiva com avaliadores executáveis; heurística descoberta implantada em Borg e verificações de circuitos.",
+    "limitations": "Não confundir ensemble de proponentes com votação nem transferir ganhos de sistemas Google a modelos 3–30B.",
+    "web_ref": "turn245view0"
+  },
+  {
+    "source_id": "V4B-S023",
+    "title": "AlphaEvolve: How our Gemini-powered coding agent is scaling impact across fields",
+    "url": "https://deepmind.google/blog/alphaevolve-impact/",
+    "publisher": "Google DeepMind",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-05-07",
+    "supports": "Uso continuado de algoritmos descobertos em infraestrutura Google, incluindo refinamento de heurísticas de Spanner.",
+    "limitations": "Aplicações diferentes não serão multiplicadas artificialmente em dez casos do mesmo sistema; detalhes experimentais e operacionais variam.",
+    "web_ref": "turn245view1"
+  },
+  {
+    "source_id": "V4B-S025",
+    "title": "LLMs Are the Key to Mutation Testing and Better Compliance",
+    "url": "https://engineering.fb.com/2025/09/30/security/llms-are-the-key-to-mutation-testing-and-better-compliance/",
+    "publisher": "Meta Engineering",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-09-30",
+    "supports": "Detalha implantação experimental industrial de ACH no fim de 2024 e revisão humana de testes; problema do oráculo permanece aberto.",
+    "limitations": "Trial industrial será identificado como tal; não afirmar rollout irrestrito, autonomia total ou todos os idiomas de programação.",
+    "web_ref": "turn247view1"
+  },
+  {
+    "source_id": "V4B-S024",
+    "title": "Revolutionizing software testing: Introducing LLM-powered bug catchers",
+    "url": "https://engineering.fb.com/2025/02/05/security/revolutionizing-software-testing-llm-powered-bug-catchers-meta-ach/",
+    "publisher": "Meta Engineering",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-02-05",
+    "supports": "ACH gera mutantes e testes, com aplicação explícita a plataformas Meta e evidência de detecção de falhas especificadas.",
+    "limitations": "Garantia limitada a mutantes/testes verificados; não é prova universal de software correto ou conformidade completa.",
+    "web_ref": "turn247view0"
+  },
+  {
+    "source_id": "V4B-S026",
+    "title": "Automated Unit Test Improvement using Large Language Models at Meta",
+    "url": "https://arxiv.org/abs/2402.09171",
+    "publisher": "Autores da Meta / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2024-02-14",
+    "supports": "Autores relatam implantação de TestGen-LLM em test-a-thons e recomendações aceitas para produção, com filtros de build, estabilidade e cobertura.",
+    "limitations": "Alegação de produção vem do relato explícito dos autores sobre deployment, não do fato de ser paper; cobertura não prova correção geral.",
+    "web_ref": "turn251view0"
+  }
+]

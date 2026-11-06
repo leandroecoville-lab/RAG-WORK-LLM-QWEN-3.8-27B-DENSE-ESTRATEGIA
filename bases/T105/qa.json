@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Apagar KV sempre faz o modelo esquecer?",
+    "answer": "Não se o estado for reconstruído antes do uso; poda sem reconstrução é uma operação diferente."
+  },
+  {
+    "question": "Eviction libera memória de pesos?",
+    "answer": "Não. Atua nos estados de atenção, não no checkpoint carregado."
+  },
+  {
+    "question": "Eviction é equivalente a esquecer informação?",
+    "answer": "Só quando o estado deixa de ser reconstruído antes de necessário; um cache dispensável pode ser removido sem perda semântica."
+  },
+  {
+    "question": "Qual métrica revela thrashing?",
+    "answer": "Recomputações repetidas dos mesmos tokens, associadas a transferências ou preempções, além de baixa progressão efetiva da geração."
+  }
+]

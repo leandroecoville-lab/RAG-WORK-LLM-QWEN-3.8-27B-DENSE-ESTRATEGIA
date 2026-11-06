@@ -1,0 +1,53 @@
+{
+  "id": "T173",
+  "technical_details": "Fallback entre modelos exige negociar capacidades antes de adaptar o pedido. Uma alternativa pode aceitar texto, mas não a modalidade de imagem, a mesma gramática ou o tamanho de saída. Transformações como resumir contexto são mudanças informacionais e precisam aparecer no registro da tentativa. Se a resposta original já foi transmitida, o consumidor deve reconhecer substituição, continuação ou nova tentativa como estados distintos.",
+  "boundary_condition": "A alternativa não é semanticamente equivalente quando exige remover evidências ou ferramentas indispensáveis à tarefa.",
+  "implementation_contract": {
+    "inputs": "Falha da rota atual, contrato de resposta, modalidades e contexto versionado.",
+    "outputs": "Rota compatível, transformações aplicadas e tentativa identificada.",
+    "state": "Capacidades efetivas, modelos já tentados e consumo acumulado.",
+    "invariant": "Nenhum campo obrigatório desaparece silenciosamente durante a adaptação ao novo modelo."
+  },
+  "tradeoffs": [
+    "Normalizar para um contrato mínimo amplia alternativas e pode excluir capacidades úteis.",
+    "Manter adapters específicos preserva recursos e aumenta testes de compatibilidade."
+  ],
+  "failure_test": "Teste proposto: o modelo principal falha em uma tarefa multimodal e o substituto suporta apenas texto; exigir bloqueio dessa rota ou reformulação explícita que ainda satisfaça o requisito.",
+  "evaluation_plan": "Comparar falha explícita e fallback em cenários de indisponibilidade com modelos elegíveis. Medir preservação do contrato, custo total e tempo até resultado aceito. Separar sucesso de transporte de qualidade da resposta substituta.",
+  "comparisons": [
+    {
+      "entry_id": "T136",
+      "relation": "specializes",
+      "reason": "É a cadeia geral aplicada a capacidades e contexto de modelos."
+    },
+    {
+      "entry_id": "T133",
+      "relation": "complements",
+      "reason": "O roteador fornece candidatos, mas a política de falha decide quando mudar."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "MCP e JSON Schema tornam explícitos contratos de entrada e saída que integrações precisam preservar.",
+    "source_ids": [
+      "V3C-S004"
+    ],
+    "support": "related",
+    "caveat": "A fonte apoia contratos estruturados; a migração entre modelos descrita aqui é proposta editorial."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um endpoint compatível com a mesma API é substituto completo?",
+      "answer": "Não. Modelos podem divergir em modalidades, janela, ferramentas e subconjunto de schema aceito."
+    },
+    {
+      "question": "Resumir a entrada para caber no fallback é neutro?",
+      "answer": "Não. Pode remover evidência relevante; a transformação deve ser avaliada e registrada como parte da tentativa."
+    }
+  ],
+  "source_ids": [
+    "V3C-S004",
+    "V3C-S013",
+    "V3C-S001"
+  ],
+  "research_note": "Síntese técnica com contratos e testes propostos; não há alegação de implantação ou medição LAI."
+}

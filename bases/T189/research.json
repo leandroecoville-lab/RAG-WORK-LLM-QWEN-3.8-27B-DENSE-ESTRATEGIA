@@ -1,0 +1,47 @@
+{
+  "id": "T189",
+  "technical_details": "Gerar mais candidatos melhora a chance de incluir uma solução correta somente sob hipóteses sobre a distribuição. Mesmo que exista um candidato correto, o seletor pode preferir outro. Maximizar um score imperfeito também seleciona extremos de seu erro: respostas que exploram o avaliador podem vencer com notas altas. Por isso, qualidade do conjunto de candidatos e qualidade da seleção devem ser medidas separadamente.",
+  "boundary_condition": "O melhor score observado não é uma estimativa imparcial de qualidade, principalmente quando N aumenta e o avaliador tem ruído.",
+  "implementation_contract": {
+    "inputs": "N candidatos, verificador versionado, regra de seleção e orçamento total.",
+    "outputs": "Candidato selecionado com notas, empates e evidências disponíveis.",
+    "state": "Todos os candidatos, configuração de geração e resultados independentes de avaliação.",
+    "invariant": "A nota usada para escolher não substitui a referência independente usada para medir acerto."
+  },
+  "tradeoffs": [
+    "Mais candidatos ampliam cobertura e custo de geração/verificação.",
+    "Seleção mais forte pode elevar qualidade e favorecer exploração de falhas da métrica."
+  ],
+  "failure_test": "Teste proposto: incluir candidato incorreto que satisfaz sinais superficiais do avaliador e candidato correto menos persuasivo. Esperar que a avaliação externa revele a seleção errada.",
+  "evaluation_plan": "Plano proposto: variar N com orçamento e comparadores declarados. Medir presença de solução correta, acerto da escolha, score proxy e resultado externo; aprovar escalabilidade somente quando a qualidade real acompanha o custo adicional.",
+  "comparisons": [
+    {
+      "entry_id": "T188",
+      "relation": "alternative",
+      "reason": "A seleção por nota não depende de uma resposta formar maioria entre amostras."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O estudo de overoptimization examina deterioração do objetivo de referência ao otimizar excessivamente um reward proxy, incluindo best-of-N.",
+    "source_ids": [
+      "V3B-S018"
+    ],
+    "support": "direct",
+    "caveat": "O experimento usa um ambiente sintético de reward models; não fornece um limiar universal seguro para N."
+  },
+  "advanced_qa": [
+    {
+      "question": "Se há solução correta entre cem, o sistema acertou?",
+      "answer": "Somente se a identificar e entregar; cobertura do conjunto não é precisão da seleção."
+    },
+    {
+      "question": "Pode avaliar usando o mesmo verificador?",
+      "answer": "Isso mede alinhamento ao seletor; qualidade final precisa de evidência ou referência independente para detectar exploração do score."
+    }
+  ],
+  "source_ids": [
+    "V3B-S018",
+    "C-S043"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

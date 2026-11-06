@@ -1,0 +1,42 @@
+{
+  "entry_id": "T073",
+  "edges": [
+    {
+      "edge_id": "E-T073-01",
+      "from": "T073",
+      "to": "T061",
+      "relation": "requires",
+      "how": "Verificar identidade física de cada artefato.",
+      "interface": "Digest, codec, tamanho e localização.",
+      "condition": "Verificação usar bytes efetivamente recuperados.",
+      "acceptance": "Corromper objeto e exigir falha antes da leitura pelo modelo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S034",
+        "V3A-S038",
+        "V3A-S037"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T073-02",
+      "from": "T073",
+      "to": "T072",
+      "relation": "feeds",
+      "how": "Versionar derivados e interpretações sem substituir origem.",
+      "interface": "Original, extração, parser e manifesto.",
+      "condition": "Relação de derivação permanecer rastreável.",
+      "acceptance": "Reproduzir resposta usando a versão histórica correta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S034",
+        "V3A-S038",
+        "V3A-S037"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

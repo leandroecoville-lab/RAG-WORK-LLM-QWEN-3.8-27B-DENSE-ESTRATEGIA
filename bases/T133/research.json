@@ -1,0 +1,47 @@
+{
+  "id": "T133",
+  "technical_details": "O limiar de um roteador aprendido deve ser interpretado na distribuição usada para calibrá-lo. Selecionar uma fração de chamadas ao modelo forte não estabelece uma probabilidade universal de correção. Há ainda viés de observação: registrar somente a resposta do modelo escolhido impede saber como a alternativa se comportaria naquela pergunta. Uma avaliação offline emparelhada permite estimar essa diferença antes de atualizar a política.",
+  "boundary_condition": "Uma mudança de domínio, idioma ou par de modelos pode alterar a ordenação de dificuldade e invalidar o limiar anterior.",
+  "implementation_contract": {
+    "inputs": "Consulta, capacidades obrigatórias, par de modelos versionado e orçamento restante.",
+    "outputs": "Rota elegível, pontuação, versão da política e justificativa operacional.",
+    "state": "Distribuição de calibração, histogramas de escores e resultados por classe.",
+    "invariant": "Restrições de capacidade são aplicadas antes da otimização de custo."
+  },
+  "tradeoffs": [
+    "Aumentar chamadas ao modelo forte pode melhorar cobertura, mas o ganho marginal depende das perguntas deslocadas.",
+    "Reavaliar ambos os modelos custa mais offline e reduz decisões baseadas em observações incompletas."
+  ],
+  "failure_test": "Teste proposto: calibrar em consultas curtas e avaliar depois documentos longos com ferramentas obrigatórias; registrar desvio da fração roteada e recusar destinos incompatíveis.",
+  "evaluation_plan": "Comparar roteador, seleção única e política simples no mesmo conjunto reservado. Controlar versões, prompts e verificadores. Reportar qualidade por classe, custo por sucesso e curva de compromisso; adotar a política somente se satisfizer os critérios definidos para a tarefa.",
+  "comparisons": [
+    {
+      "entry_id": "T135",
+      "relation": "distinct_from",
+      "reason": "Roteamento inicial escolhe antes da resposta; cascata pode observar a primeira tentativa."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O RouteLLM recomenda calibrar limiares com consultas semelhantes ao tráfego esperado.",
+    "source_ids": [
+      "V3C-S001"
+    ],
+    "support": "direct",
+    "caveat": "O repositório não garante que a fração estimada permaneça estável sob mudança de distribuição."
+  },
+  "advanced_qa": [
+    {
+      "question": "É correto interpretar escore 0,8 como 80% de acerto?",
+      "answer": "Somente se o escore tiver essa semântica e calibração demonstrada; um limiar de roteamento pode representar outra quantidade."
+    },
+    {
+      "question": "Como evitar aprender apenas com rotas já escolhidas?",
+      "answer": "Usar avaliação emparelhada separada, com resultados das alternativas e custo registrado, antes de alterar a política."
+    }
+  ],
+  "source_ids": [
+    "V3C-S001",
+    "C-S001"
+  ],
+  "research_note": "Contratos, testes e critérios são propostas editoriais; as fontes sustentam os mecanismos indicados."
+}

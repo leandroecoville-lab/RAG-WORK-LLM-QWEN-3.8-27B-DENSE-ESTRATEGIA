@@ -1,0 +1,31 @@
+{
+  "id": "T032",
+  "name": "Parent-Child Retrieval / Parent-Child Chunking",
+  "canonical_name": "Parent-Child Chunking e Parent-Child Retrieval",
+  "canonical_id": "T032",
+  "aliases": [
+    "Parent-Child Retrieval",
+    "recuperação pai-filho",
+    "Parent-Child Chunking",
+    "segmentação pai-filho"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T009",
+    "T026",
+    "T035",
+    "P007"
+  ],
+  "source_ids": [
+    "V2C-S003",
+    "V4A-S013"
+  ],
+  "namespace": "T032",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T032",
+  "chunk_count": 9
+}

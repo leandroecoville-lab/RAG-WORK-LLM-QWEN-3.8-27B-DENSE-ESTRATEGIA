@@ -1,0 +1,127 @@
+{
+  "id": "R021",
+  "novelty": "Aprofunda os contratos de automação com isolamento reproduzível por tarefa, verificação do artefato final e observabilidade que permite localizar onde o agente perdeu o requisito.",
+  "source_ids": [
+    "V4C-S029",
+    "V4C-S030",
+    "V3C-S039",
+    "V2A-S005"
+  ],
+  "deep_layers": [
+    {
+      "name": "Ambiente identificável",
+      "detail": "Proposta: associar cada execução a revisão de código, configuração de ferramentas e conjunto de testes. Isolar diretório e recursos por tarefa evita que um resultado aprovado em um ambiente seja atribuído ao código de outro trabalhador. Isso exige controle além da conversa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S029",
+        "V4C-S030",
+        "V3C-S039",
+        "V2A-S005"
+      ]
+    },
+    {
+      "name": "Evidência para o agente",
+      "detail": "Instrumentar comandos e testes com resultados concisos e referências ao trace completo. Dar ao modelo acesso sob demanda à falha relevante reduz a necessidade de despejar logs. A evidência precisa dizer o que foi executado, sobre qual artefato e qual condição falhou.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S029",
+        "V4C-S030",
+        "V3C-S039",
+        "V2A-S005"
+      ]
+    },
+    {
+      "name": "Conclusão composta",
+      "detail": "Tratar finalização do turno, término do processo, criação do patch e aceite como estados diferentes. A resposta final é uma declaração do agente; o controlador decide conclusão usando artefato e verificações. Se o processo termina antes do relatório, o resultado permanece desconhecido até reconciliação local.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S029",
+        "V4C-S030",
+        "V3C-S039",
+        "V2A-S005"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Fila de correções independentes",
+      "scenario": "Vários bugs podem ser trabalhados em paralelo.",
+      "strategy": "Criar ambiente por tarefa, limitar ferramentas e integrar somente a revisão que passou pelos testes registrados.",
+      "small_model_role": "No harness próprio, modelo pequeno resolve alteração local; integração continua externa.",
+      "acceptance": "Nenhum worker modifica base de outro; a árvore integrada é verificada novamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S029",
+        "V4C-S030",
+        "V3C-S039",
+        "V2A-S005"
+      ]
+    },
+    {
+      "name": "Falha de teste com log enorme",
+      "scenario": "O agente precisa interpretar uma regressão localizada.",
+      "strategy": "Extrair sumário determinístico e permitir leitura da seção relevante por referência.",
+      "small_model_role": "3–14B classifica causa provável e propõe próximo experimento curto.",
+      "acceptance": "O teste confirmatório diferencia a hipótese de causas alternativas antes de alterar código.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S029",
+        "V4C-S030",
+        "V3C-S039",
+        "V2A-S005"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "3–7B: transferir contratos de ferramenta e evidência ao próprio harness; não equiparar o modelo ao produto Codex.",
+    "8_14b": "8–14B: tarefas locais com ambiente reproduzível e execução real de testes.",
+    "15_30b": "15–30B: mudanças maiores somente quando orçamento, ferramentas e resultados justificarem.",
+    "training_or_runtime_requirements": "Suporte a modelo/backend é propriedade da versão instalada; a ficha não garante compatibilidade de qualquer 3–30B.",
+    "do_not_use_when": "Não concluir sucesso apenas porque houve evento final ou JSON válido."
+  },
+  "connections": [
+    {
+      "target_id": "T239",
+      "relation": "complements",
+      "how": "Associar cada tarefa a área de trabalho e base verificáveis.",
+      "interface": "Task_id, worktree, commit-base e recursos isolados.",
+      "condition": "Trabalhadores podem editar simultaneamente.",
+      "acceptance": "Os testes e o patch referem-se à mesma base e ao mesmo trabalhador.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S029",
+        "V4C-S030",
+        "V3C-S039",
+        "V2A-S005"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T195",
+      "relation": "feeds",
+      "how": "Produzir artefato verificável e solicitar execução real do critério.",
+      "interface": "Patch, comandos, ambiente e resultados observados.",
+      "condition": "Há critério executável para a mudança.",
+      "acceptance": "Aceite é derivado do resultado registrado, não da narrativa do agente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S029",
+        "V4C-S030",
+        "V3C-S039",
+        "V2A-S005"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não contabilizar testes descritos como se tivessem sido executados.",
+    "Não afirmar que ambiente isolado elimina dependências externas compartilhadas."
+  ],
+  "frontier_comparison": "Comparar sistemas na mesma revisão e infraestrutura, registrando tentativas e intervenção humana. O padrão de harness pode ser transferível sem reproduzir capacidades do modelo de referência.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q027"
+    ],
+    "scope_note": "Relatos OpenAI de uso interno e harness foram consolidados num caso. São referência de sistema real, sem demonstração de paridade de uma LLM pequena."
+  }
+}

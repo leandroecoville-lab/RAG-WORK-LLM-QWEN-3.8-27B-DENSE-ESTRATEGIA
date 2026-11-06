@@ -1,0 +1,42 @@
+{
+  "id": "T233",
+  "name": "Patch Validation — incluindo verificação de hash-base",
+  "canonical_name": "Patch Validation — incluindo verificação de hash-base",
+  "canonical_id": "T233",
+  "aliases": [
+    "base hash validation",
+    "validação de patch"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T229",
+    "T230",
+    "T236",
+    "T239"
+  ],
+  "source_ids": [
+    "V2A-S014",
+    "A-S028",
+    "V3C-S037",
+    "V3C-S034",
+    "V4C-S030",
+    "V4C-S009",
+    "V4C-S010",
+    "V3C-S027",
+    "V2A-S019",
+    "V3C-S036",
+    "V4C-S006",
+    "V4C-S007",
+    "V4C-S016",
+    "V4C-S026",
+    "V4C-S029"
+  ],
+  "namespace": "T233",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T233",
+  "chunk_count": 9
+}

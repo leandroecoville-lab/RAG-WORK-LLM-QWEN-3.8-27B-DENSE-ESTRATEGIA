@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "A-S033",
+    "title": "Learning to Compress Prompts with Gist Tokens",
+    "url": "https://arxiv.org/abs/2304.08467",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-04-17",
+    "supports": "Representações compactas de prompt treinadas com alterações de máscara de atenção.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn23view4"
+  },
+  {
+    "source_id": "A-S013",
+    "title": "Augmenting Language Models with Long-Term Memory",
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/ebd82705f44793b6f9ade5a669d0f0bf-Abstract-Conference.html",
+    "publisher": "NeurIPS / autores",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "LongMem: backbone congelado como codificador e rede lateral treinada para recuperação e leitura.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn20view5"
+  },
+  {
+    "source_id": "V3A-S004",
+    "title": "In-context Autoencoder for Context Compression in a Large Language Model",
+    "url": "https://arxiv.org/abs/2307.06945",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-07-13",
+    "supports": "Slots de memória latente treinados por objetivos de reconstrução e linguagem; condicionamento de um consumidor compatível.",
+    "limitations": "Consulta de fonte primária; não houve reprodução experimental. Resultados e APIs são limitados ao trabalho ou documentação citados, consultados em 2026-11-05.",
+    "web_ref": "turn85view1"
+  },
+  {
+    "source_id": "V3A-S047",
+    "title": "LongMem External_Memory implementation",
+    "url": "https://github.com/Victorwz/LongMem/blob/main/fairseq/fairseq/modules/dynamic_memory_with_chunk.py",
+    "publisher": "Autores de LongMem / GitHub",
+    "source_type": "official_code",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Banco de chaves e valores por cabeça, indexação da média das chaves em chunks e recuperação dos estados dos chunks selecionados.",
+    "limitations": "Leitura do código na branch main, sem execução. Detalhes representam esta implementação de pesquisa e não garantem compatibilidade com qualquer modelo ou ambiente.",
+    "web_ref": "turn193view4"
+  },
+  {
+    "source_id": "A-S012",
+    "title": "SADA: Bridging In-Context Learning and Fine-Tuning via State-Aligned Distillation Adapters",
+    "url": "https://aclanthology.org/2026.acl-long.1046/",
+    "publisher": "ACL Anthology / autores",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Mapeamento contexto-parâmetros e alinhamento de estados para adaptadores.",
+    "limitations": "Leitura do resumo e metadados; código não auditado e resultados não reproduzidos.",
+    "web_ref": "turn1view1"
+  }
+]

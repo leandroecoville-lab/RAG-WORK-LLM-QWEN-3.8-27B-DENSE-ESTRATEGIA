@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Parent-Child Chunking já executa recuperação?",
+    "answer": "Não. Ele prepara a hierarquia; a recuperação precisa consultar os filhos e resolver os pais armazenados."
+  },
+  {
+    "question": "O documento pai precisa ser o arquivo completo?",
+    "answer": "Não. Pode ser um bloco maior ou seção. A implementação oficial permite um parent_splitter separado do child_splitter."
+  },
+  {
+    "question": "Pai é sempre o documento completo?",
+    "answer": "Não. Pode ser um bloco maior gerado previamente. O tamanho adequado depende do contexto necessário e do orçamento de leitura."
+  },
+  {
+    "question": "Top-k de filhos é igual a top-k de pais?",
+    "answer": "Não. Vários filhos podem apontar ao mesmo pai. Controle diversidade e cobertura no nível realmente entregue ao gerador."
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "id": "T065",
+  "name": "Transactional State Manager",
+  "canonical_name": "Transactional State Manager",
+  "canonical_id": "T065",
+  "aliases": [
+    "gerenciador transacional de estado"
+  ],
+  "category": "memoria",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T059",
+    "T060",
+    "T064",
+    "T162"
+  ],
+  "source_ids": [
+    "A-S029",
+    "V2C-S001",
+    "V4A-S003",
+    "V4A-S004",
+    "V4A-S005",
+    "V4A-S007"
+  ],
+  "namespace": "T065",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T065",
+  "chunk_count": 9
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "TGI foi verificado como descontinuado definitivamente?",
+    "answer": "Não. A evidência consultada diz maintenance mode; esse é o estado exato registrado."
+  },
+  {
+    "question": "Preciso migrar imediatamente se já uso?",
+    "answer": "Não se conclui isso sem avaliar suporte, riscos e custo da instalação concreta."
+  },
+  {
+    "question": "Manutenção significa que o serviço parou?",
+    "answer": "Não. É uma mudança no escopo de evolução do projeto; operação depende da instalação."
+  },
+  {
+    "question": "Basta trocar a URL por outro servidor?",
+    "answer": "Não. Compare template, streaming, erros, término e qualidade nas tarefas reais antes da troca."
+  }
+]

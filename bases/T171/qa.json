@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Prefixo estável sempre é melhor?",
+    "answer": "Não se ele inclui conteúdo desnecessário ou desatualizado."
+  },
+  {
+    "question": "Cache-aware routing é a mesma coisa que semantic routing?",
+    "answer": "Não. Um usa estado de reutilização; o outro usa significado da solicitação."
+  },
+  {
+    "question": "Mais cache hit significa menor latência sempre?",
+    "answer": "Não. Uma fila longa ou custo de transferência pode superar a economia de prefill."
+  },
+  {
+    "question": "Cache miss após o roteamento deve mudar a resposta?",
+    "answer": "Não por si. O backend deve recomputar o prefixo compatível; cache afeta custo e tempo, não a intenção da tarefa."
+  }
+]

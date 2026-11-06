@@ -1,0 +1,32 @@
+{
+  "id": "T070",
+  "name": "Episodic Store",
+  "canonical_name": "Episodic Store",
+  "canonical_id": "T070",
+  "aliases": [
+    "repositório de episódios"
+  ],
+  "category": "memoria",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T049",
+    "T059",
+    "T060",
+    "T066"
+  ],
+  "source_ids": [
+    "A-S008",
+    "A-S022",
+    "V3A-S032",
+    "V3A-S002",
+    "V4A-S005",
+    "V4A-S007"
+  ],
+  "namespace": "T070",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T070",
+  "chunk_count": 9
+}

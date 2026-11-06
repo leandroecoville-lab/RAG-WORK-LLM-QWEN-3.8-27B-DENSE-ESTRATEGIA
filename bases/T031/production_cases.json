@@ -1,0 +1,99 @@
+{
+  "coverage": {
+    "entry_id": "T031",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 2,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Semantic Cache Invalidation",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C010",
+      "company": "Meta",
+      "system": "TAO e observabilidade Polaris",
+      "title": "TAO e observabilidade Polaris — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "Meta descreve caches operados e monitoramento de inconsistências observáveis pelo cliente.",
+      "technical_mechanism": "Invalidações e preenchimentos concorrem; verificações em diferentes tempos identificam divergências.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S011"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T031",
+          "match": "family",
+          "rationale": "Invalidação de cache convencional, não proximidade semântica."
+        },
+        {
+          "entry_id": "T075",
+          "match": "family",
+          "rationale": "Detecção de versões divergentes fundamenta reconciliação de estado."
+        },
+        {
+          "entry_id": "T051",
+          "match": "family",
+          "rationale": "TAO pertence à família de armazenamento em grafo, sem provar memória de agente."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Monitorar respostas derivadas após correções, incluindo eventos atrasados e evicção de versões.",
+      "limits": "Não transferir percentuais de consistência a caches RAG; uma única implantação não vira vários casos. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C010",
+      "deployment_domain": "distributed_data_system",
+      "mapping": {
+        "entry_id": "T031",
+        "match": "family",
+        "rationale": "Invalidação de cache convencional, não proximidade semântica."
+      }
+    },
+    {
+      "case_id": "V4A-C017",
+      "company": "Microsoft",
+      "system": "API Management semantic response cache",
+      "title": "API Management semantic response cache — evidência delimitada",
+      "evidence_level": "operational_product",
+      "observed_use": "Política disponível busca respostas em cache externo por proximidade.",
+      "technical_mechanism": "Embedding, limiar e particionamento de cache por expressões.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S016"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T005",
+          "match": "exact",
+          "rationale": "Retorno de resposta por similaridade semântica explicitado."
+        },
+        {
+          "entry_id": "T031",
+          "match": "family",
+          "rationale": "Particionamento protege escopo, mas política de invalidação completa é desenho adicional."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Aceitar somente domínio estável e validar pares quase iguais com entidades ou negações diferentes.",
+      "limits": "Não comprova implantação nem taxa de falsos acertos; limiares do serviço não são probabilidades. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C017",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "T031",
+        "match": "family",
+        "rationale": "Particionamento protege escopo, mas política de invalidação completa é desenho adicional."
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "T243",
+  "name": "Reconciliação de operações externas",
+  "canonical_name": "Reconciliação de operações externas",
+  "canonical_id": "T243",
+  "aliases": [
+    "external operation reconciliation",
+    "reconciliação de efeitos incertos"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T228",
+    "T220",
+    "T225",
+    "T241",
+    "T240"
+  ],
+  "source_ids": [
+    "V2A-S026",
+    "V2A-S012",
+    "V2A-S024",
+    "V3C-S025",
+    "V3C-S028",
+    "C-S026",
+    "V4C-S002",
+    "V3C-S037"
+  ],
+  "namespace": "T243",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T243",
+  "chunk_count": 9
+}

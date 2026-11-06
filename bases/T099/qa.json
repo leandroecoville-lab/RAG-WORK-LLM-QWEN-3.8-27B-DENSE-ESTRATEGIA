@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Posso converter MHA em MQA apenas configurando num_kv_heads=1?",
+    "answer": "Não. Isso muda a arquitetura e a interpretação dos pesos; uma conversão válida requer método e avaliação."
+  },
+  {
+    "question": "MQA é memória externa?",
+    "answer": "Não. É organização interna das projeções da atenção."
+  },
+  {
+    "question": "A dimensão das consultas também cai?",
+    "answer": "Não necessariamente. Múltiplas cabeças Q podem permanecer, enquanto o conjunto de K e V é compartilhado."
+  },
+  {
+    "question": "A fórmula representa toda a memória do servidor?",
+    "answer": "Não. Pesos, temporários, reservas, tabelas e cópias distribuídas são parcelas adicionais que precisam ser medidas."
+  }
+]

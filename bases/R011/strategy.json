@@ -1,0 +1,119 @@
+{
+  "id": "R011",
+  "novelty": "A v3 corrigiu a suposição de backend legado obrigatório. A nova camada estrutura a qualificação por recurso, precisão e arquitetura, separando disponibilidade anunciada de benefício medido.",
+  "deep_layers": [
+    {
+      "name": "Arquitetura atual e versão",
+      "detail": "A documentação consultada apresenta execução PyTorch nativa. Guias de engines legados podem ser relevantes apenas para versões históricas específicas. Registre versão e caminho usado, evitando combinar instruções de épocas diferentes numa receita que parece válida mas não corresponde ao produto instalado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S007",
+        "V4B-S011",
+        "B-S034"
+      ]
+    },
+    {
+      "name": "Matriz de capacidades",
+      "detail": "Quantização, speculative decoding, batching e paralelismo possuem requisitos próprios. Verifique a combinação concreta, pois suporte isolado a dois recursos não prova sua composição. Comece pelo checkpoint em caminho simples e acrescente uma otimização por vez, preservando testes de qualidade e conclusão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S007",
+        "V4B-S011",
+        "B-S034"
+      ]
+    },
+    {
+      "name": "Hardware e custo",
+      "detail": "Kernels e precisões especializadas dependem de geração de hardware e configuração. Uma página de produto não confirma compatibilidade da GPU local nem ganho de uma determinada quantização. Inclua tempo de inicialização, memória, aquecimento e operação sob carga na decisão, sem transportar números promocionais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S007",
+        "V4B-S011",
+        "B-S034"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Qualificar modelo especializado",
+      "scenario": "Um 15–30B precisa servir respostas com prazo definido.",
+      "strategy": "Fixe checkpoint, precisão e paralelismo, valide carregamento e resultados, depois teste otimizações elegíveis. Meça prefill e decode separadamente para orientar escolhas.",
+      "small_model_role": "O modelo mantém competência própria; o runtime procura executá-lo eficientemente.",
+      "acceptance": "Atender prazo e orçamento sem regressão de qualidade ou falhas de término.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S007",
+        "V4B-S011",
+        "B-S034"
+      ]
+    },
+    {
+      "name": "Explorar baixa precisão",
+      "scenario": "Há suporte potencial a FP8 ou quatro bits.",
+      "strategy": "Compare artefatos compatíveis, verifique kernels selecionados e identifique componentes que permanecem em precisão maior. Avalie erro por domínio antes de aumentar concorrência.",
+      "small_model_role": "Um 8–14B pode liberar memória para sessões se a quantização funcionar no ambiente.",
+      "acceptance": "Economia física e ganho de serviço medidos com configuração completa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S007",
+        "V4B-S011",
+        "B-S034"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Uma pilha especializada pode não ser necessária para um 3–7B de baixa carga.",
+    "8_14b": "Explore recursos somente quando o perfil identifica um gargalo relevante.",
+    "15_30b": "Modelos maiores exigem contabilizar KV, buffers e comunicação, além dos pesos.",
+    "training_or_runtime_requirements": "Runtime NVIDIA e hardware suportado na versão concreta; treinamento adicional depende do recurso, como módulos auxiliares treinados.",
+    "do_not_use_when": "Não assumir antigo fluxo de build obrigatório nem compatibilidade universal por ser uma GPU NVIDIA."
+  },
+  "connections": [
+    {
+      "target_id": "T123",
+      "relation": "complements",
+      "how": "FP8 é um recurso documentado, sujeito a formato e suporte do caminho.",
+      "interface": "Pesos, escalas e precisão de acumulação.",
+      "condition": "Combinação disponível na versão e hardware escolhidos.",
+      "acceptance": "Comparar qualidade e perfil com referência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S007",
+        "V4B-S011",
+        "B-S034"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T128",
+      "relation": "complements",
+      "how": "EAGLE é uma opção documentada que exige módulo compatível com o alvo.",
+      "interface": "Par alvo/proponente e configuração de verificação.",
+      "condition": "Artefatos e recurso suportados conjuntamente.",
+      "acceptance": "Medir aceitação e ganho líquido, sem confundir as métricas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S007",
+        "V4B-S011",
+        "B-S034"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Evitar misturar documentação latest com configuração de uma versão antiga.",
+    "Registrar fallback e precisão efetivamente usada, não apenas a solicitada."
+  ],
+  "frontier_comparison": "TensorRT-LLM pode melhorar operação de um modelo especializado. A comparação com fronteira deve medir a aplicação completa, sem atribuir capacidade cognitiva ao runtime ou à marca do hardware.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q025"
+    ],
+    "scope_note": "Busca de produto e eventual adoção consultada. O caso registrado é recurso operacional documentado; não foi confirmado um cliente específico de produção para cada otimização neste recorte."
+  },
+  "source_ids": [
+    "V3D-S007",
+    "V4B-S011",
+    "B-S034"
+  ]
+}

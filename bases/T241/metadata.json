@@ -1,0 +1,36 @@
+{
+  "id": "T241",
+  "name": "Event Replay",
+  "canonical_name": "Event Replay",
+  "canonical_id": "T241",
+  "aliases": [
+    "event replay",
+    "reprodução de eventos"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T059",
+    "T240",
+    "T242",
+    "T243"
+  ],
+  "source_ids": [
+    "A-S027",
+    "V2A-S026",
+    "V3C-S041",
+    "V4C-S001",
+    "V3C-S018",
+    "C-S026",
+    "C-S030",
+    "V4C-S024",
+    "V4C-S025"
+  ],
+  "namespace": "T241",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T241",
+  "chunk_count": 9
+}

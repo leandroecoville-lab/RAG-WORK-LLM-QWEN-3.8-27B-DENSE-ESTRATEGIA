@@ -1,0 +1,35 @@
+{
+  "id": "T173",
+  "name": "Model Fallback Controlado",
+  "canonical_name": "Model Fallback Controlado",
+  "canonical_id": "T136",
+  "aliases": [
+    "contingência controlada de modelo"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T133",
+    "T136",
+    "T140"
+  ],
+  "source_ids": [
+    "C-S003",
+    "C-S001",
+    "V3C-S004",
+    "V3C-S013",
+    "V3C-S001",
+    "V4C-S011",
+    "V4C-S018",
+    "V3C-S019",
+    "V4C-S015",
+    "C-S026"
+  ],
+  "namespace": "T173",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T173",
+  "chunk_count": 9
+}

@@ -1,0 +1,115 @@
+{
+  "id": "T072",
+  "novelty": "A v3 exigiu manifesto coerente. Aqui versionamento suporta branches de memória e comparação de políticas antes de publicação.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Mantenha branch candidato para mudanças de consolidação ou ontologia. Consultas experimentais podem apontar a ele sem alterar memória usada por tarefas em andamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S040",
+        "V3A-S037"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Defina merge semântico além do merge de arquivos: fatos com mesmo sujeito e valores diferentes, escopos sobrepostos e versões de índice incompatíveis exigem decisão explícita.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S040",
+        "V3A-S037"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare revisões com conjunto de perguntas próprio e diffs de afirmações. Meça regressões, fontes perdidas e respostas mudadas sem evidência nova; rollback precisa restaurar manifesto e projeções compatíveis. Unidade de avaliação: revisão de memória.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S040",
+        "V3A-S037"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Nova política de resumo",
+      "scenario": "Equipe quer reduzir memória ativa.",
+      "strategy": "Criar branch, gerar vistas candidatas e comparar respostas antes de mover referência ativa. Manter tarefas existentes pinadas à revisão inicial.",
+      "small_model_role": "8–14B revisa diferenças.",
+      "acceptance": "Nenhuma tarefa pode receber metade da revisão antiga e metade da nova.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S040",
+        "V3A-S037"
+      ]
+    },
+    {
+      "name": "Colaboração entre agentes",
+      "scenario": "Trabalhadores atualizam áreas relacionadas.",
+      "strategy": "Produzir mudanças por escopo, detectar conflito de significado e integrar somente após validar dependências cruzadas.",
+      "small_model_role": "15–30B reconcilia; código confirma.",
+      "acceptance": "Merge textual limpo não pode ocultar afirmações incompatíveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S040",
+        "V3A-S037"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extrator de diferenças de campos entre revisões.",
+    "8_14b": "Revisor de mudanças locais e compatibilidade de fontes.",
+    "15_30b": "Integrador de branches com conflitos semânticos e escopos cruzados.",
+    "training_or_runtime_requirements": "Manifestos imutáveis, referência ativa e política de pinning; índices precisam declarar revisão de origem.",
+    "do_not_use_when": "As versões são apenas nomes sem conteúdo recuperável ou rollback não restaura dependências."
+  },
+  "connections": [
+    {
+      "target_id": "T076",
+      "relation": "complements",
+      "how": "Usar Git para transportar diferenças e revisões.",
+      "interface": "Commit, branch, arquivos e manifesto.",
+      "condition": "Semântica ser validada fora do merge textual.",
+      "acceptance": "Criar conflito lógico em arquivos diferentes e exigir revisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S040",
+        "V3A-S037"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T075",
+      "relation": "requires",
+      "how": "Reconciliar afirmações concorrentes antes de publicar.",
+      "interface": "Diffs, fontes e escopos afetados.",
+      "condition": "Decisão preservar histórico e incerteza.",
+      "acceptance": "Rejeitar união automática de fatos incompatíveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S040",
+        "V3A-S037"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não usar latest em cada recurso durante uma tarefa pinada.",
+    "Não chamar backup isolado de histórico versionado completo."
+  ],
+  "frontier_comparison": "Comparar regressões por revisão; bom versionamento torna mudanças auditáveis, sem garantir que sejam melhorias.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q005",
+      "V4A-Q006",
+      "V4A-Q007",
+      "V4A-Q013",
+      "V4A-Q026"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S040",
+    "V3A-S037"
+  ]
+}

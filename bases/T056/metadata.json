@@ -1,0 +1,28 @@
+{
+  "id": "T056",
+  "name": "Bitemporal Memory",
+  "canonical_name": "Bitemporal Memory",
+  "canonical_id": "T056",
+  "aliases": [
+    "memória bitemporal",
+    "valid time e system time"
+  ],
+  "category": "memoria",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T054",
+    "T072",
+    "T077"
+  ],
+  "source_ids": [
+    "A-S032",
+    "V3A-S042"
+  ],
+  "namespace": "T056",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T056",
+  "chunk_count": 9
+}

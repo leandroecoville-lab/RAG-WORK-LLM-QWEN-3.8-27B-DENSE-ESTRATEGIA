@@ -1,0 +1,146 @@
+{
+  "coverage": {
+    "entry_id": "T051",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 3,
+    "operational_product_cases": 0,
+    "research_cases": 1,
+    "family_or_analogy_cases": 3,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Graph-Based Memory",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C013",
+      "company": "Google",
+      "system": "Knowledge Graph na busca Google",
+      "title": "Knowledge Graph na busca Google — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "Anúncio relata início da implantação a usuários da busca.",
+      "technical_mechanism": "Entidades e relações permitem desambiguação e apresentação de fatos relacionados.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S018"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T051",
+          "match": "family",
+          "rationale": "Grafo de conhecimento operacional; memória de agente não demonstrada."
+        },
+        {
+          "entry_id": "T054",
+          "match": "family",
+          "rationale": "Fatos estruturados se aproximam de memória semântica externa."
+        },
+        {
+          "entry_id": "T066",
+          "match": "family",
+          "rationale": "Desambiguação de entidades inspira resolução, sem contrato de versão desta ficha."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Fazer 3–7B propor entidades candidatas e confirmar identidade com chaves estruturadas.",
+      "limits": "Não comprova Microsoft GraphRAG, causalidade, bitemporalidade ou arquitetura LLM de 2012. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C013",
+      "deployment_domain": "non_generative_nlp",
+      "mapping": {
+        "entry_id": "T051",
+        "match": "family",
+        "rationale": "Grafo de conhecimento operacional; memória de agente não demonstrada."
+      }
+    },
+    {
+      "case_id": "V4A-C010",
+      "company": "Meta",
+      "system": "TAO e observabilidade Polaris",
+      "title": "TAO e observabilidade Polaris — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "Meta descreve caches operados e monitoramento de inconsistências observáveis pelo cliente.",
+      "technical_mechanism": "Invalidações e preenchimentos concorrem; verificações em diferentes tempos identificam divergências.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S011"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T031",
+          "match": "family",
+          "rationale": "Invalidação de cache convencional, não proximidade semântica."
+        },
+        {
+          "entry_id": "T075",
+          "match": "family",
+          "rationale": "Detecção de versões divergentes fundamenta reconciliação de estado."
+        },
+        {
+          "entry_id": "T051",
+          "match": "family",
+          "rationale": "TAO pertence à família de armazenamento em grafo, sem provar memória de agente."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Monitorar respostas derivadas após correções, incluindo eventos atrasados e evicção de versões.",
+      "limits": "Não transferir percentuais de consistência a caches RAG; uma única implantação não vira vários casos. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C010",
+      "deployment_domain": "distributed_data_system",
+      "mapping": {
+        "entry_id": "T051",
+        "match": "family",
+        "rationale": "TAO pertence à família de armazenamento em grafo, sem provar memória de agente."
+      }
+    },
+    {
+      "case_id": "V4A-C024",
+      "company": "Microsoft Research",
+      "system": "Project GraphRAG",
+      "title": "Project GraphRAG — evidência delimitada",
+      "evidence_level": "research_only",
+      "observed_use": "Projeto de pesquisa publica combinação de extração, análise de redes e geração.",
+      "technical_mechanism": "Grafo derivado de texto e resumos sustentam consulta em diferentes níveis.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S024",
+        "A-S024"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T029",
+          "match": "exact",
+          "rationale": "Trabalho específico GraphRAG."
+        },
+        {
+          "entry_id": "T008",
+          "match": "exact",
+          "rationale": "Síntese hierárquica faz parte da abordagem."
+        },
+        {
+          "entry_id": "T051",
+          "match": "family",
+          "rationale": "Grafo de evidência não implica memória episódica completa."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Extrair entidades com modelo pequeno e auditar amostra antes de resumir comunidades.",
+      "limits": "Projeto/README não prova implantação bigtech; densidade de grafo não equivale a qualidade. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C024",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "T051",
+        "match": "family",
+        "rationale": "Grafo de evidência não implica memória episódica completa."
+      }
+    }
+  ]
+}

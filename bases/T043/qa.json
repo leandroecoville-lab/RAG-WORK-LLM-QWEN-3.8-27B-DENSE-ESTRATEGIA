@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Compactação é uma memória permanente?",
+    "answer": "Não necessariamente. Ela é uma representação reduzida; persistência e recuperação precisam ser implementadas."
+  },
+  {
+    "question": "Posso confiar em uma compactação sem referências?",
+    "answer": "Ela serve como pista, mas não como prova suficiente de execução ou resultado."
+  },
+  {
+    "question": "Uma compactação precisa ser textual?",
+    "answer": "Não obrigatoriamente. Pode combinar campos estruturados, trechos literais e referências; a representação precisa ser consumível pelo runtime."
+  },
+  {
+    "question": "Como recuperar detalhe omitido?",
+    "answer": "Use referências ao prefixo original e reabra o trecho necessário. A síntese deve orientar a busca, não substituir a evidência em casos ambíguos."
+  }
+]

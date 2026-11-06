@@ -1,0 +1,46 @@
+{
+  "id": "T192",
+  "technical_details": "Feedback útil precisa identificar um defeito acionável e um critério de melhoria. Comentários genéricos podem apenas alongar a próxima resposta. Como proposta, conserve a versão anterior, registre mudanças e rejeite revisões que perdem requisitos já satisfeitos. O mesmo modelo pode alternar preferências entre rodadas; repetir até declarar satisfação não demonstra convergência para correção.",
+  "boundary_condition": "Em tarefas que exigem informação nova, revisão sem ferramenta ou fonte adicional pode reorganizar o mesmo erro com mais confiança.",
+  "implementation_contract": {
+    "inputs": "Saída inicial, rubrica, limites de revisão e evidências acessíveis.",
+    "outputs": "Versão escolhida acompanhada das mudanças relevantes e pendências.",
+    "state": "Histórico, críticas específicas, requisitos preservados e orçamento.",
+    "invariant": "Nenhuma revisão é considerada melhor apenas porque é posterior ou mais longa."
+  },
+  "tradeoffs": [
+    "Iterações podem corrigir defeitos locais e aumentar custo.",
+    "Guardar versões permite regressão controlada e exige comparação por critérios consistentes."
+  ],
+  "failure_test": "Teste proposto: começar com resposta correta e fornecer uma crítica equivocada produzida pelo próprio modelo. Esperar que a avaliação independente identifique a regressão e preserve ou restaure a versão anterior.",
+  "evaluation_plan": "Plano proposto: comparar geração única, revisão livre e revisão com rubrica em problemas independentes. Medir melhorias, regressões, comprimento e custo; aceitar o procedimento apenas quando o saldo de correção externa supera os danos introduzidos.",
+  "comparisons": [
+    {
+      "entry_id": "T190",
+      "relation": "alternative",
+      "reason": "Verifier loop exige critério de aceitação explícito; Self-Refine pode operar somente com feedback do mesmo modelo."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Self-Refine utiliza o mesmo LLM para gerar, criticar e refinar saídas sem treinamento adicional durante o procedimento.",
+    "source_ids": [
+      "C-S045"
+    ],
+    "support": "direct",
+    "caveat": "A fonte relata resultados de tarefas específicas, não uma garantia de autoavaliação confiável."
+  },
+  "advanced_qa": [
+    {
+      "question": "Mais rodadas significam mais inteligência útil?",
+      "answer": "Não. Elas podem gerar oscilação, redundância ou regressão; acompanhe mudança real no objetivo."
+    },
+    {
+      "question": "Como detectar ausência de progresso?",
+      "answer": "Compare defeitos pendentes e resultados externos entre versões; paráfrases e aumento de detalhes não contam automaticamente como melhoria."
+    }
+  ],
+  "source_ids": [
+    "C-S045"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

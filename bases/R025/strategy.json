@@ -1,0 +1,120 @@
+{
+  "id": "R025",
+  "novelty": "A v3 explicou matcher por sequência e rollback. A nova camada usa structural tags e modos de chamada de ferramenta para desenhar contratos mistos, com testes de fronteiras e custos de compilação.",
+  "deep_layers": [
+    {
+      "name": "Programa de saída",
+      "detail": "Structural tags permitem especificar regiões livres e estruturadas no fluxo. Modele transições entre explicação e objeto de ferramenta, em vez de aplicar uma restrição genérica a toda a resposta. Delimitadores precisam corresponder ao template do modelo e às regras do consumidor.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S013",
+        "V4B-S015",
+        "V4B-S016"
+      ]
+    },
+    {
+      "name": "Modos de ferramenta",
+      "detail": "A documentação distingue escolhas como automático, obrigatório, ferramenta forçada e ausência de chamada, conforme integração. O contrato deve refletir o modo realmente solicitado. Forçar uma ferramenta não demonstra que ela é apropriada para a intenção; seleção semântica e autorização continuam externas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S013",
+        "V4B-S015",
+        "V4B-S016"
+      ]
+    },
+    {
+      "name": "Compilação e reúso",
+      "detail": "Gramáticas compiladas podem ser reutilizadas quando tokenizer e contrato são compatíveis, mas matcher continua pertencendo à sequência. Meça compilação e cache em schemas dinâmicos. Um catálogo com muitas variações pode consumir memória e introduzir latência inicial que não aparece em benchmark com gramática já pronta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S013",
+        "V4B-S015",
+        "V4B-S016"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "API de domínio",
+      "scenario": "O agente deve escolher uma ferramenta e preencher argumentos.",
+      "strategy": "Use modo e tags compatíveis, compile schemas conhecidos e valide objeto completo antes de executar. Teste quando a resposta correta é não chamar ferramenta.",
+      "small_model_role": "Um 3–7B pode preencher contratos estreitos com menos erros de sintaxe.",
+      "acceptance": "Medir escolha correta, argumentos corretos e validade estrutural separadamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S013",
+        "V4B-S015",
+        "V4B-S016"
+      ]
+    },
+    {
+      "name": "Texto com trecho estruturado",
+      "scenario": "A aplicação precisa exibir explicação e consumir um objeto.",
+      "strategy": "Defina fronteiras inequívocas e teste tokens que incluem vários caracteres estruturais. Confirme conclusão e parser antes de liberar o objeto ao consumidor.",
+      "small_model_role": "Um 8–14B pode produzir resposta mista mantendo o controle do fluxo.",
+      "acceptance": "Nenhum fragmento livre interpretado como ação e nenhuma estrutura parcial aceita.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S013",
+        "V4B-S015",
+        "V4B-S016"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Schemas simples tornam a restrição útil sem sobrecarregar contexto ou compilação.",
+    "8_14b": "Teste tags e modos próprios do checkpoint; o mesmo desenho textual pode tokenizar diferente.",
+    "15_30b": "Modelos maiores não eliminam necessidade de matcher correto em lotes e especulação.",
+    "training_or_runtime_requirements": "Biblioteca integrada ao loop de amostragem; exige suporte do engine e do tokenizer, sem treino obrigatório.",
+    "do_not_use_when": "Não supor suporte integral a todo JSON Schema nem equivalência de templates entre famílias."
+  },
+  "connections": [
+    {
+      "target_id": "T196",
+      "relation": "feeds",
+      "how": "XGrammar implementa máscaras e estados para geração restringida.",
+      "interface": "Gramática compilada, matcher e logits.",
+      "condition": "Integração respeita sequência e rollback.",
+      "acceptance": "Testar prefixos, conclusão e tokens proibidos.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4B-S015",
+        "V4B-S016"
+      ],
+      "case_ids": [
+        "V4B-C014"
+      ]
+    },
+    {
+      "target_id": "T197",
+      "relation": "complements",
+      "how": "Validação final cobre contrato completo e diferenças de recursos suportados.",
+      "interface": "Objeto e schema versionado.",
+      "condition": "Dialeto e limites conhecidos.",
+      "acceptance": "Rejeitar saída truncada e campos semanticamente inválidos em camada própria.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S013",
+        "V4B-S015",
+        "V4B-S016"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não compartilhar matcher mutável entre sequências concorrentes.",
+    "Invalidar cache de gramática quando tokenizer ou contrato muda."
+  ],
+  "frontier_comparison": "XGrammar pode melhorar confiabilidade de interface de um modelo pequeno. Compare campos corretos e decisões de ferramenta; estrutura garantida não equivale a competência geral.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q013"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3D-S013",
+    "V4B-S015",
+    "V4B-S016"
+  ]
+}

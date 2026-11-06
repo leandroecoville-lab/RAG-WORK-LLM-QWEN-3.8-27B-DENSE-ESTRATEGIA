@@ -1,0 +1,32 @@
+{
+  "id": "T145",
+  "name": "Adaptive Depth",
+  "canonical_name": "Adaptive Depth",
+  "canonical_id": "T145",
+  "aliases": [
+    "profundidade adaptativa"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T146",
+    "T190",
+    "T201"
+  ],
+  "source_ids": [
+    "C-S012",
+    "V3C-S003",
+    "V4C-S018",
+    "V4C-S019",
+    "V4C-S014",
+    "V4C-S009",
+    "V3C-S032"
+  ],
+  "namespace": "T145",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T145",
+  "chunk_count": 9
+}

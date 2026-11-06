@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Reconciliar significa apagar a versão perdedora?",
+    "answer": "Não necessariamente. Manter o histórico ajuda a explicar por que a conclusão mudou."
+  },
+  {
+    "question": "Um modelo pode resolver todos os conflitos?",
+    "answer": "Não. Alguns exigem fonte adicional ou decisão autorizada; o sistema deve representar esse bloqueio."
+  },
+  {
+    "question": "A memória mais recente deve sempre vencer?",
+    "answer": "Não. Ela pode ser uma cópia atrasada, hipótese ou erro. Compare autoridade, validade, identidade e evidências antes de decidir."
+  },
+  {
+    "question": "Posso repetir usando uma nova chave de operação?",
+    "answer": "Uma nova chave pode representar outra ação e duplicar o efeito. Reutilize identidade conforme o contrato do provedor e investigue o resultado anterior."
+  }
+]

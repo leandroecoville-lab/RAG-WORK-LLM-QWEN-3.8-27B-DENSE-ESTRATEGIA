@@ -1,0 +1,29 @@
+{
+  "id": "T034",
+  "name": "Agentic Chunking",
+  "canonical_name": "Agentic Chunking",
+  "canonical_id": "T034",
+  "aliases": [
+    "segmentação por agente"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T011",
+    "T033",
+    "T195"
+  ],
+  "source_ids": [
+    "A-S039",
+    "A-S041",
+    "V3A-S012",
+    "V4A-S013"
+  ],
+  "namespace": "T034",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T034",
+  "chunk_count": 9
+}

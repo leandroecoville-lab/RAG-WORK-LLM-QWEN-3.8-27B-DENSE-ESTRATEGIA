@@ -1,0 +1,127 @@
+{
+  "id": "T200",
+  "novelty": "A v3 distinguiu eixos de independência. Esta camada define uma matriz de evidências, resolução de conflitos e testes que verificam se o revisor é sensível ao erro sem depender da conclusão do gerador.",
+  "deep_layers": [
+    {
+      "name": "Dependências compartilhadas",
+      "detail": "Mapeie modelo, fonte, código, biblioteca e dados usados pelo gerador e pelo verificador. Independência numa dimensão pode coexistir com dependência em outra. Dois revisores que consultam a mesma tabela errada não oferecem duas evidências independentes sobre o fato; um compilador pode verificar sintaxe sem verificar a intenção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S019",
+        "C-S048",
+        "V4C-S009",
+        "V4B-S027"
+      ]
+    },
+    {
+      "name": "Checagem cega quando útil",
+      "detail": "Forneça especificação e artefato, evitando apresentar a aprovação anterior como resultado esperado. Em tarefas factuais, peça busca da evidência original; em código, derive testes do contrato. Compare resultados com e sem a narrativa do gerador para medir ancoragem.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S019",
+        "C-S048",
+        "V4C-S009",
+        "V4B-S027"
+      ]
+    },
+    {
+      "name": "Conflito e alcance",
+      "detail": "Quando métodos discordam, examine contraexemplos e premissas antes de votar. O veredito deve indicar critérios cobertos e pendentes. AutoClean descreve revisores por propriedade antes da revisão humana; isso é um desenho operacional delimitado, não uma garantia de independência total nem ausência de erro compartilhado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S019",
+        "C-S048",
+        "V4C-S009",
+        "V4B-S027"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Revisar alteração de código",
+      "scenario": "O gerador declara que a mudança está pronta.",
+      "strategy": "Execute testes derivados do contrato e revise efeitos laterais em uma etapa separada. Preserve artefato e evidências para que o humano examine divergências reais.",
+      "small_model_role": "Um 3–7B pode gerar ou revisar partes estreitas; ferramentas decidem propriedades executáveis.",
+      "acceptance": "Detectar defeitos deliberados sem depender do texto de autoavaliação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S019",
+        "C-S048",
+        "V4C-S009",
+        "V4B-S027"
+      ]
+    },
+    {
+      "name": "Resposta com política e fatos",
+      "scenario": "Uma explicação combina regras e dados externos.",
+      "strategy": "Use verificador formal para a política e fontes para os fatos. Não deixe a aprovação de uma camada legitimar alegações que ela não examinou.",
+      "small_model_role": "Um 8–14B pode redigir a resposta e organizar evidências com limites explícitos.",
+      "acceptance": "Cada afirmação relevante deve ter suporte apropriado ao seu tipo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S019",
+        "C-S048",
+        "V4C-S009",
+        "V4B-S027"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Dividir trabalho por critérios verificáveis é mais concreto que pedir ao mesmo modelo para 'ser crítico'.",
+    "8_14b": "Modelos intermediários podem revisar contexto maior, mas dependências precisam continuar visíveis.",
+    "15_30b": "Um 15–30B como juiz não substitui referência independente nem garante resistência a persuasão.",
+    "training_or_runtime_requirements": "Arquitetura de verificação em runtime; independência é propriedade das evidências e métodos, não do nome do agente.",
+    "do_not_use_when": "Não tratar consenso entre revisores ou troca de marca de modelo como prova automática de independência."
+  },
+  "connections": [
+    {
+      "target_id": "T190",
+      "relation": "complements",
+      "how": "AutoClean usa avaliações por propriedade para controlar o fluxo de correção e revisão.",
+      "interface": "Artefato e relatórios de critérios.",
+      "condition": "Critérios ligados à revisão exata.",
+      "acceptance": "Medir falhas e discordâncias antes da liberação.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S009"
+      ],
+      "case_ids": [
+        "V4C-C010"
+      ]
+    },
+    {
+      "target_id": "T195",
+      "relation": "complements",
+      "how": "Execução oferece um método diferente de julgamento textual.",
+      "interface": "Contrato, testes e ambiente.",
+      "condition": "Oráculo não replica cegamente o erro do gerador.",
+      "acceptance": "Usar casos adversos e mutações conhecidas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S019",
+        "C-S048",
+        "V4C-S009",
+        "V4B-S027"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não fornecer a conclusão desejada como parte do critério de avaliação.",
+    "Registrar lacunas de cobertura mesmo quando todos os critérios executados passam."
+  ],
+  "frontier_comparison": "Verificação independente pode tornar uma solução pequena mais confiável em propriedades observáveis. A comparação com fronteira deve considerar falhas não cobertas e custo de toda a checagem.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q011",
+      "V4B-Q019"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S019",
+    "C-S048",
+    "V4C-S009",
+    "V4B-S027"
+  ]
+}

@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "B-S031",
+    "title": "GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism",
+    "url": "https://arxiv.org/abs/1811.06965",
+    "publisher": "Huang e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2018-11-16",
+    "supports": "Particionamento de camadas em estágios e execução por microbatches.",
+    "limitations": "Resumo e metadados acessados; artigo integral não auditado e resultados não reproduzidos.",
+    "web_ref": "turn18view7"
+  },
+  {
+    "source_id": "B-S045",
+    "title": "Parallelisms Guide — Megatron Bridge",
+    "url": "https://docs.nvidia.com/nemo/megatron-bridge/latest/parallelisms.html",
+    "publisher": "NVIDIA",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Context parallelism particiona dimensão de sequência; distinto do sequence parallelism descrito no guia.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn27view4"
+  },
+  {
+    "source_id": "V3B-S010",
+    "title": "DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving",
+    "url": "https://arxiv.org/abs/2401.09670",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2024-01-18",
+    "supports": "Interferência entre prefill/decode, objetivos TTFT/TPOT e alocação considerando banda de comunicação.",
+    "limitations": "Resumo consultado; regras de transferência e testes de falha das fichas são propostas editoriais.",
+    "web_ref": "turn131view1"
+  }
+]

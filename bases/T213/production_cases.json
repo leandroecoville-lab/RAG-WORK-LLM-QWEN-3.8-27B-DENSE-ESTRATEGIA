@@ -1,0 +1,208 @@
+{
+  "coverage": {
+    "entry_id": "T213",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 1,
+    "verified_bigtech_llm_production_exact": 1,
+    "verified_ai_lab_production_exact": 1,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 3,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 9,
+    "target_met": false,
+    "strict_case_ids": [
+      "V4C-C018"
+    ],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Task Decomposition em micro-missões",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C018",
+      "company": "Amazon",
+      "system": "Campanhas internas Java com Amazon Q Developer",
+      "title": "Modernização por ondas de dependências e validação de build",
+      "evidence_level": "production_documented",
+      "observed_use": "A AWS relata Amazon utilizando Q Developer em campanhas internas de atualização de aplicações Java de produção.",
+      "technical_mechanism": "Equipe central seleciona aplicações e dependências, define ondas e esforço residual; o agente propõe plano e alterações, seguidas de compilação e testes.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S017"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T143",
+          "match": "exact",
+          "rationale": "Transformação apresenta plano de dependências e substituições."
+        },
+        {
+          "entry_id": "T213",
+          "match": "exact",
+          "rationale": "Campanhas são decompostas em aplicações e ondas de dependências."
+        },
+        {
+          "entry_id": "T217",
+          "match": "family",
+          "rationale": "A fonte descreve testes e builds na transformação Java; não demonstra explicitamente o ciclo orientado por falha exigido nesta ficha."
+        },
+        {
+          "entry_id": "T229",
+          "match": "family",
+          "rationale": "A transformação produz mudanças de código, sem documentar que a representação e aplicação sejam exclusivamente patches localizados."
+        },
+        {
+          "entry_id": "T174",
+          "match": "family",
+          "rationale": "Ordem por dependência e valor orienta campanha, sem demonstrar um scheduler genérico de prioridade."
+        },
+        {
+          "entry_id": "P011",
+          "match": "analogy",
+          "rationale": "Orquestração de etapas inspira o executor editorial."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "Compilação e testes exemplificam critérios de aceite."
+        }
+      ],
+      "small_model_transfer": "Proposta: classificar previamente migrações reconhecidas; usar um 3–30B para substituições locais com documentação exata e ferramentas de build. Tratar bibliotecas internas ou upgrades parcialmente compilados como pendências específicas.",
+      "limits": "Modelos e tamanhos não identificados. Aplicação compilada não garante comportamento equivalente; números agregados de ganho não são reproduzidos nem projetados para outros códigos.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C018",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T213",
+        "match": "exact",
+        "rationale": "Campanhas são decompostas em aplicações e ondas de dependências."
+      }
+    },
+    {
+      "case_id": "V4C-C029",
+      "company": "OpenAI",
+      "system": "Codex no desenvolvimento interno e harness beta",
+      "title": "Adoção interna de Codex com ambiente verificável",
+      "evidence_level": "production_documented",
+      "observed_use": "Uso diário por equipes e beta interno com usuários reais relatados em duas publicações do operador.",
+      "technical_mechanism": "Código e planos no repositório, aplicação e observabilidade por worktree, ferramentas de revisão e restrições estruturais executáveis.",
+      "event_date": "2026-02-11",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S029",
+        "V4C-S030"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R021",
+          "match": "exact",
+          "rationale": "Uso interno de Codex confirmado pelo operador."
+        },
+        {
+          "entry_id": "T239",
+          "match": "exact",
+          "rationale": "Artigo de harness usa uma aplicação e observabilidade isoladas por Git worktree."
+        },
+        {
+          "entry_id": "T213",
+          "match": "exact",
+          "rationale": "Operador relata decompor metas em blocos de design, código, revisão e testes com planos versionados."
+        },
+        {
+          "entry_id": "T155",
+          "match": "exact",
+          "rationale": "Instrução monolítica foi substituída por mapa curto."
+        },
+        {
+          "entry_id": "T233",
+          "match": "exact",
+          "rationale": "Linters e testes estruturais verificam invariantes."
+        },
+        {
+          "entry_id": "T234",
+          "match": "exact",
+          "rationale": "AGENTS.md curto e documentação versionada no repositório oferecem memória persistente do projeto; não é mera configuração CI."
+        },
+        {
+          "entry_id": "T237",
+          "match": "exact",
+          "rationale": "Agentes revisam outros agentes no processo descrito."
+        },
+        {
+          "entry_id": "T217",
+          "match": "family",
+          "rationale": "Há ciclos de implementação e testes, mas não fica provado test-first para todas as alterações."
+        },
+        {
+          "entry_id": "R027",
+          "match": "exact",
+          "rationale": "Git e worktrees sustentam o ambiente."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "Gates verificáveis inspiram o componente editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: reproduzir tarefas pequenas com a mesma infraestrutura de testes e isolamento usando 3–30B; medir custo completo, inclusive supervisão e revisão.",
+      "limits": "Consolidado para evitar somar equipes e artigos como adoções independentes. Beta operacional não é prova de autonomia geral; modelos do relato não são demonstrados como 3–30B.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4C-C029",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T213",
+        "match": "exact",
+        "rationale": "Operador relata decompor metas em blocos de design, código, revisão e testes com planos versionados."
+      }
+    },
+    {
+      "case_id": "V4C-C021",
+      "company": "Meta",
+      "system": "Sapling — fluxo interno de commits",
+      "title": "Mudanças incrementais com pilhas revisadas",
+      "evidence_level": "production_documented",
+      "observed_use": "A Meta descreve Sapling utilizado no monorepo e pilhas de commits pequenos submetidos individualmente à revisão.",
+      "technical_mechanism": "Ferramentas visualizam dependências e evolução de commits; operações de recuperação e revisão integram o fluxo de desenvolvimento.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S021"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T236",
+          "match": "family",
+          "rationale": "A prática de etapas pequenas e revisadas é explícita, porém usa Sapling e não o comando Git commit."
+        },
+        {
+          "entry_id": "T213",
+          "match": "analogy",
+          "rationale": "Decomposição de uma feature em mudanças revisáveis inspira micro-missões."
+        },
+        {
+          "entry_id": "T211",
+          "match": "analogy",
+          "rationale": "Histórico e commits ajudam transferência de trabalho, sem provar handoff de agentes."
+        },
+        {
+          "entry_id": "R027",
+          "match": "family",
+          "rationale": "Fonte descreve um sistema de versionamento relacionado e diferenças para Git, não adoção interna integral de Git."
+        }
+      ],
+      "small_model_transfer": "Proposta: gerar mudanças 3–30B em dependências explícitas, validar cada etapa e revalidar descendentes quando a base mudar. A aplicação decide quando consolidar etapas para evitar fragmentação.",
+      "limits": "Sapling não é Git; a fonte informa diferenças como ausência de staging area. Um caso de versionamento, sem multiplicação por cada comando ou equipe.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C021",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T213",
+        "match": "analogy",
+        "rationale": "Decomposição de uma feature em mudanças revisáveis inspira micro-missões."
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Memory Stream é o mesmo que Event Sourcing?",
+    "answer": "Não. Um fluxo de memória pode conter relatos e inferências; Event Sourcing exige eventos adequados para reconstruir estado de domínio."
+  },
+  {
+    "question": "O agente precisa reler todo o fluxo?",
+    "answer": "Não. O fluxo pode crescer fora do contexto, enquanto a recuperação seleciona episódios e referências para a tarefa."
+  },
+  {
+    "question": "Uma memória muito acessada é mais confiável?",
+    "answer": "Não. Acesso mede uso; confiabilidade depende de fonte, validade e correções."
+  },
+  {
+    "question": "Uma reflexão deve substituir as observações que a originaram?",
+    "answer": "Não por padrão. Preservar o vínculo permite revisar a inferência quando uma observação for corrigida."
+  }
+]

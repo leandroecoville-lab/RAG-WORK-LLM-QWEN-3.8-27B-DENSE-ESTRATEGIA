@@ -1,0 +1,47 @@
+{
+  "id": "T114",
+  "technical_details": "Para blocos A e B, mantenha máximo m e soma l de exp(score−m). A combinação usa m=max(mA,mB) e l=exp(mA−m)·lA+exp(mB−m)·lB. O numerador ponderado pelos valores exige a mesma reescala antes da soma. Combinar médias locais diretamente é incorreto: blocos com massas de probabilidade diferentes não devem receber pesos iguais.",
+  "boundary_condition": "Linhas totalmente mascaradas precisam de regra explícita, pois operações com máximos negativos infinitos podem gerar formas indefinidas.",
+  "implementation_contract": {
+    "inputs": "Scores em blocos, máscara e valores quando houver atenção ponderada.",
+    "outputs": "Normalizador estável e resultado equivalente à redução global especificada.",
+    "state": "Máximo, soma reescalada e numerador parcial por linha.",
+    "invariant": "Todas as parcelas são expressas na mesma referência exponencial antes de serem combinadas."
+  },
+  "tradeoffs": [
+    "Acumulação em maior precisão reduz erro e ocupa mais recursos.",
+    "Ordem de blocos preserva álgebra real, mas pode alterar arredondamento finito."
+  ],
+  "failure_test": "Teste proposto: combinar blocos com máximos muito diferentes e substituir a reescala por média de saídas locais. A versão defeituosa deve divergir da referência; testar também linha vazia.",
+  "evaluation_plan": "Plano proposto: usar referência de alta precisão, permutar ordens e variar amplitudes dos scores. Medir erro absoluto/relativo e presença de valores não finitos; definir tolerância segundo dtype e uso, sem exigir igualdade bit a bit entre reduções distintas.",
+  "comparisons": [
+    {
+      "entry_id": "T101",
+      "relation": "complements",
+      "reason": "Estados de normalização podem combinar contribuições recebidas de diferentes partições do contexto."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O cálculo online do normalizador busca computar o softmax clássico com menos acessos à memória.",
+    "source_ids": [
+      "B-S028"
+    ],
+    "support": "direct",
+    "caveat": "A estabilidade numérica não torna arbitrariamente pequena a perda de precisão de qualquer dtype."
+  },
+  "advanced_qa": [
+    {
+      "question": "Pode normalizar cada tile e somar?",
+      "answer": "Somente se conservar e aplicar as massas relativas corretas; somar distribuições locais sem pesos produz outra distribuição."
+    },
+    {
+      "question": "Por que guardar o máximo?",
+      "answer": "Subtrair uma referência evita exponenciais excessivas e permite reescalar blocos quando surge um score maior."
+    }
+  ],
+  "source_ids": [
+    "B-S028",
+    "B-S027"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

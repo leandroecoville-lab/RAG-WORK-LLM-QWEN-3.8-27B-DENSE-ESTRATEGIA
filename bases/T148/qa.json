@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Uma LLM pode escolher o ramo?",
+    "answer": "Sim, mas sua saída deve pertencer ao conjunto permitido e respeitar controles externos."
+  },
+  {
+    "question": "Branching exige DAG?",
+    "answer": "Não. Pode existir em máquina de estados com ciclos limitados."
+  },
+  {
+    "question": "Desconhecido deve virar false automaticamente?",
+    "answer": "Não. A política precisa decidir se busca dados, espera ou termina inconclusiva; ausência e negação têm significados distintos."
+  },
+  {
+    "question": "Como tornar uma decisão reproduzível?",
+    "answer": "Persistir versão do estado, versão da regra e valor observado, em vez de recalcular a partir de um estado posterior."
+  }
+]

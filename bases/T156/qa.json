@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Temperatura baixa elimina alucinação?",
+    "answer": "Não. Pode repetir com maior estabilidade uma resposta errada."
+  },
+  {
+    "question": "Temperatura de calibração é a mesma coisa?",
+    "answer": "Não. Calibração ajusta probabilidades de confiança; amostragem escolhe tokens."
+  },
+  {
+    "question": "Temperatura zero produz verdade?",
+    "answer": "Não. Ela tende a escolher o candidato dominante; se a distribuição favorece um erro, esse erro pode se repetir."
+  },
+  {
+    "question": "Por que variar também top-p atrapalha o teste?",
+    "answer": "Porque muda o conjunto de tokens elegíveis, impedindo atribuir o efeito observado somente à temperatura."
+  }
+]

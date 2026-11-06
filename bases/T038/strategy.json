@@ -1,0 +1,119 @@
+{
+  "id": "T038",
+  "novelty": "A v3 explicou surprisal e alias de poda. Aqui a seleção é estratificada por função textual para evitar viés contra unidades previsíveis.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Negações, unidades e operadores podem ser previsíveis linguisticamente e decisivos semanticamente. Separe seleção de tokens livres e proteção de classes funcionais relevantes à tarefa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S016",
+        "V3A-S001",
+        "V4A-S028"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Calibre dentro de tipos de conteúdo, evitando que código, nomes raros ou OCR dominem score por surpresa. Alta perplexidade pode sinalizar ruído, não valor.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S016",
+        "V3A-S001",
+        "V4A-S028"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare seleção global e estratificada com mesmo número de tokens. Meça perda de relação, erro em negação e excesso de ruído preservado; o alvo é utilidade do leitor, não surpresa média. Unidade de avaliação: bloco selecionado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S016",
+        "V3A-S001",
+        "V4A-S028"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Especificação com fórmulas",
+      "scenario": "Símbolos curtos mudam condições.",
+      "strategy": "Proteger operadores e unidades, selecionar explicação por relevância e verificar fórmula completa após compressão.",
+      "small_model_role": "3–7B lê estrutura validada.",
+      "acceptance": "Expressão resultante deve manter equivalência operacional.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S016",
+        "V3A-S001",
+        "V4A-S028"
+      ]
+    },
+    {
+      "name": "Texto com OCR imperfeito",
+      "scenario": "Ruído recebe score elevado.",
+      "strategy": "Detectar regiões suspeitas, conferir imagem ou original e impedir que a seleção priorize lixo por raridade.",
+      "small_model_role": "8–14B interpreta trecho corrigido.",
+      "acceptance": "Não aumentar taxa de erro por preservar caracteres corrompidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S016",
+        "V3A-S001",
+        "V4A-S028"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Leitor de spans com operadores protegidos por regras.",
+    "8_14b": "Classificador de conteúdo útil versus ruído antes da seleção.",
+    "15_30b": "Revisor de relações complexas quando poda por token for insuficiente.",
+    "training_or_runtime_requirements": "Tags funcionais e amostra de validação por tipo; manter relação com T018 como especialização, não algoritmo universal novo.",
+    "do_not_use_when": "Proteções ocupam quase toda janela ou linguagem comprimida fica ilegível para o consumidor."
+  },
+  "connections": [
+    {
+      "target_id": "T018",
+      "relation": "complements",
+      "how": "Usar estratos como política específica de poda.",
+      "interface": "Token, classe funcional, dependência e score.",
+      "condition": "Poda preservar fechamento das relações.",
+      "acceptance": "Testar frase previsível cuja negação muda a decisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S016",
+        "V3A-S001",
+        "V4A-S028"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T195",
+      "relation": "complements",
+      "how": "Verificar expressão ou código após seleção.",
+      "interface": "Representação original e selecionada.",
+      "condition": "Existir propriedade executável adequada.",
+      "acceptance": "Detectar mudança de operador apesar de formato válido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S016",
+        "V3A-S001",
+        "V4A-S028"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não usar raridade como sinônimo de importância.",
+    "Não tratar LLMLingua-2 e Selective Context como mesmo estimador."
+  ],
+  "frontier_comparison": "Comparar preservação de relações com tokens iguais; score do compressor não mede compreensão do leitor.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q024"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S016",
+    "V3A-S001",
+    "V4A-S028"
+  ]
+}

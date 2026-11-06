@@ -1,0 +1,28 @@
+[
+  {
+    "source_id": "A-S009",
+    "title": "MemGPT: Towards LLMs as Operating Systems",
+    "url": "https://arxiv.org/abs/2310.08560",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-10-12",
+    "supports": "Gerência de contexto virtual entre níveis de memória e controle de fluxo.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn1view3"
+  },
+  {
+    "source_id": "V4A-S026",
+    "title": "MemGPT Is Now Part of Letta",
+    "url": "https://www.letta.com/blog/memgpt-and-letta/",
+    "publisher": "Letta",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2024-09-23",
+    "supports": "Distingue padrão de memória MemGPT e framework Letta; persistência de agentes como serviço.",
+    "limitations": "Não demonstra dez implantações bigtech nem desempenho de um pipeline local 3–30B.",
+    "web_ref": "turn264view0"
+  }
+]

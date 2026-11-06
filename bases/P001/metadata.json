@@ -1,0 +1,34 @@
+{
+  "id": "P001",
+  "name": "Context Engine",
+  "canonical_name": "Context Engine",
+  "canonical_id": "P001",
+  "aliases": [
+    "motor proposto de preparação de contexto"
+  ],
+  "category": "componentes_propostos",
+  "kind": "component",
+  "scope": "proposta",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T024",
+    "T009",
+    "T032",
+    "P002",
+    "P007",
+    "P009"
+  ],
+  "source_ids": [
+    "A-S006",
+    "A-S007",
+    "V2C-S003",
+    "V3D-S021",
+    "C-S030",
+    "V4A-S022"
+  ],
+  "namespace": "P001",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/P001",
+  "chunk_count": 9
+}

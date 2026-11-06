@@ -1,0 +1,119 @@
+{
+  "id": "T139",
+  "novelty": "A v3 discutiu cancelamento e políticas de erro do grupo. O aprofundamento acrescenta análise de efeitos, fan-out especulativo limitado e comparação consistente de resultados obtidos em momentos diferentes.",
+  "deep_layers": [
+    {
+      "name": "Independência por recurso",
+      "detail": "Construa uma matriz de leitura e escrita dos recursos envolvidos. Duas ferramentas com nomes distintos podem alterar o mesmo objeto; duas leituras podem produzir resultados incompatíveis se observarem versões diferentes. Paralelismo exige declarar tanto dependências de dados quanto a consistência necessária à junção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S003",
+        "V4C-S015"
+      ]
+    },
+    {
+      "name": "Especulação recuperável",
+      "detail": "Quando a próxima rota é incerta, uma busca barata pode começar enquanto outra classificação termina. Isso só compensa se o trabalho especulativo for cancelável, sem efeitos, e a latência economizada superar o custo de resultados descartados. Mantenha a especulação em orçamento separado para que ela não ocupe a capacidade das chamadas obrigatórias.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S007",
+        "V3C-S005"
+      ]
+    },
+    {
+      "name": "Junção com proveniência temporal",
+      "detail": "Cada resultado precisa trazer fonte, versão ou instante de observação e estado de conclusão. O agregador não deve escolher o mais rápido como se fosse o mais atual. Quando a decisão exige uma visão consistente, revalide os campos críticos após reunir as respostas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S007",
+        "V3A-S030"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Pesquisa técnica por evidências independentes",
+      "scenario": "Uma pergunta exige contrato, código e relato operacional.",
+      "strategy": "Dispare buscas em fontes distintas com objetivos delimitados; deduplique documentos e compare divergências. Se uma fonte falhar, preserve a lacuna e evite preencher seu papel com repetição das demais.",
+      "small_model_role": "3–7B extrai fatos por fonte; 8–30B confronta evidências sem transformar repetição em consenso.",
+      "acceptance": "Proposta: medir cobertura, duplicação de fontes e latência, mantendo o mesmo orçamento total da execução serial.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030"
+      ]
+    },
+    {
+      "name": "Diagnóstico de falha em aplicação",
+      "scenario": "Logs, métricas e revisão de código podem ser consultados simultaneamente.",
+      "strategy": "Leia cada superfície com um intervalo e revisão declarados; combine por identificadores de execução. Só depois escolha uma mutação. Se os dados pertencem a instantes incompatíveis, faça uma leitura focada antes de propor reparo.",
+      "small_model_role": "8–14B organiza hipóteses; 15–30B integra relações entre subsistemas.",
+      "acceptance": "Proposta: aceitar diagnóstico apenas quando cada hipótese decisiva aponta para evidência identificável e temporalmente compatível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S002",
+        "V3C-S007"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: workers de extração com uma ferramenta ou domínio por vez, retornando campos curtos.",
+    "8_14b": "Proposta: selecionar e combinar poucas consultas independentes sob limite explícito de concorrência.",
+    "15_30b": "Proposta: coordenar investigação mais ampla, reservando a junção e verificação como etapas obrigatórias.",
+    "training_or_runtime_requirements": "O servidor precisa suportar concorrência real; definir limites por endpoint, timeout e semântica de cancelamento.",
+    "do_not_use_when": "Não paralelizar mutações concorrentes no mesmo recurso nem consultas cujo segundo argumento depende do primeiro resultado."
+  },
+  "connections": [
+    {
+      "target_id": "T147",
+      "relation": "complements",
+      "how": "O fan-out define participantes e condição de junção das chamadas paralelas.",
+      "interface": "Lista fechada de tarefas e resultados com status individual.",
+      "condition": "O produtor sinaliza que terminou de criar participantes.",
+      "acceptance": "Injetar falha em um ramo e verificar completude segundo a política escolhida.",
+      "basis": "source_documented",
+      "source_ids": [
+        "C-S030"
+      ],
+      "case_ids": [
+        "V4C-C007"
+      ]
+    },
+    {
+      "target_id": "T137",
+      "relation": "complements",
+      "how": "Chamadas concorrentes precisam passar pela admissão para não transformar latência menor em sobrecarga.",
+      "interface": "Reserva por tentativa, destino e custo estimado.",
+      "condition": "O orçamento considera chamadas especulativas e retries.",
+      "acceptance": "Comparar pico de carga e tarefas aceitas contra execução serial.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S009",
+        "V3C-S007"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não interpretar cancelamento do grupo como desfazimento dos efeitos já realizados.",
+    "Descartar resultados sem identidade suficiente para ligá-los à subtarefa correta."
+  ],
+  "frontier_comparison": "Compare modelo pequeno com chamadas paralelas e modelo de fronteira serial ou paralelo sob custo igual. Ganho de latência da infraestrutura não prova ganho de raciocínio.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q003",
+      "V4C-Q010",
+      "V4D-Q018"
+    ],
+    "scope_note": "Claude Research comprova uso de ferramentas paralelas; outros sistemas fornecem princípios de consistência. Transferência de porte permanece proposta. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+  },
+  "source_ids": [
+    "V4C-S003",
+    "V4C-S015",
+    "V3C-S007",
+    "V3C-S005",
+    "V3A-S030",
+    "C-S030",
+    "V4C-S002",
+    "V3C-S009"
+  ]
+}

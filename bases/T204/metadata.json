@@ -1,0 +1,31 @@
+{
+  "id": "T204",
+  "name": "Skills / Procedural Learning",
+  "canonical_name": "Skills / Procedural Learning",
+  "canonical_id": "T204",
+  "aliases": [
+    "habilidades procedurais",
+    "aprendizagem procedural"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T014",
+    "T055",
+    "T071",
+    "T181"
+  ],
+  "source_ids": [
+    "C-S052",
+    "V3B-S021",
+    "V4B-S032",
+    "C-S035"
+  ],
+  "namespace": "T204",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T204",
+  "chunk_count": 9
+}

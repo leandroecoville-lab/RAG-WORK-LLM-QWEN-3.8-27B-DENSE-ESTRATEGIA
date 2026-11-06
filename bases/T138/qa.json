@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Circuit breaker substitui timeout?",
+    "answer": "Não. Timeout limita cada espera; o circuito controla novas tentativas após falhas."
+  },
+  {
+    "question": "Circuito aberto significa serviço definitivamente indisponível?",
+    "answer": "Não. É uma decisão temporária baseada em observações e política."
+  },
+  {
+    "question": "Todo HTTP 4xx deve contar como indisponibilidade?",
+    "answer": "Não. Muitos indicam erro de contrato ou autorização; a classificação deve seguir a semântica da operação e do serviço."
+  },
+  {
+    "question": "Por que 100% de falhas pode ser um sinal fraco?",
+    "answer": "Porque pode representar uma única observação; duração da janela e tamanho da amostra mudam sua interpretação."
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "group": "D",
+  "role": "pesquisa transversal; sem fichas individuais atribuídas",
+  "files": {
+    "sources_D.jsonl": {
+      "count": 13,
+      "sha256": "fd60682869d3c13d71f347e8f2cc425c11ae97af148f5ebb09eb6ed50001a729"
+    },
+    "cases_D.jsonl": {
+      "count": 6,
+      "sha256": "391fcdb7657ab5ee5139d9d45b2a527e1b17d9fe48749b0356e1c8fca87757a8"
+    },
+    "searches_D.jsonl": {
+      "count": 12,
+      "sha256": "10a7c295f2aab55fce580d2bd18e78386d62a361cd53aeac937e42c66dc35e03"
+    }
+  }
+}

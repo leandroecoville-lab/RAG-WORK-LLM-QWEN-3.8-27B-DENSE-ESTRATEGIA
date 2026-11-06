@@ -1,0 +1,29 @@
+{
+  "id": "T016",
+  "name": "Tool Result Truncation",
+  "canonical_name": "Tool Result Truncation",
+  "canonical_id": "T016",
+  "aliases": [
+    "limitação de saída de ferramenta"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T015",
+    "T043",
+    "T066"
+  ],
+  "source_ids": [
+    "A-S006",
+    "V3A-S019",
+    "V3A-S008",
+    "V4A-S002"
+  ],
+  "namespace": "T016",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T016",
+  "chunk_count": 9
+}

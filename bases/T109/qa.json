@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Local é necessariamente causal?",
+    "answer": "Não. Encoders podem ver vizinhos dos dois lados; decoders causais precisam impedir futuro."
+  },
+  {
+    "question": "É técnica independente de Sliding Window Attention?",
+    "answer": "A janela contígua frequentemente é a mesma ideia; outros padrões locais precisam ser definidos explicitamente."
+  },
+  {
+    "question": "Largura W define a máscara completamente?",
+    "answer": "Não. É preciso saber se inclui o centro, quantos tokens ficam em cada direção e quais fronteiras existem."
+  },
+  {
+    "question": "Pode reutilizar uma máscara em todo o lote?",
+    "answer": "Somente quando posições, comprimentos e separação documental produzem a mesma conectividade ou broadcasting corretamente definido."
+  }
+]

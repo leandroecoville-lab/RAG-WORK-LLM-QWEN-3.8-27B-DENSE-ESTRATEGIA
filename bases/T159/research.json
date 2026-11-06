@@ -1,0 +1,52 @@
+{
+  "id": "T159",
+  "technical_details": "Replay durável não exige que cada instrução de máquina seja idêntica; exige compatibilidade com o histórico de comandos observáveis pelo runtime. No Temporal, chamadas não determinísticas, inclusive consultas e LLMs, pertencem a Activities. Uma alteração que muda a ordem de comandos pode impedir retomar workflows antigos mesmo que o novo código funcione em execuções recém-criadas. Evolução do código é, portanto, parte do contrato de continuidade.",
+  "boundary_condition": "Persistir eventos sem manter código capaz de interpretá-los não garante retomada após uma atualização.",
+  "implementation_contract": {
+    "inputs": "Histórico, versão compatível do workflow e resultados registrados das atividades.",
+    "outputs": "Estado reconstruído e próximos comandos consistentes com o histórico.",
+    "state": "Versão de código, pontos de migração e resultados duráveis.",
+    "invariant": "Replay não solicita novamente uma observação externa apenas para reproduzir uma decisão já registrada."
+  },
+  "tradeoffs": [
+    "Histórico detalhado aumenta capacidade de reconstrução e custo de armazenamento.",
+    "Manter versões antigas facilita continuidade e aumenta esforço de operação e migração."
+  ],
+  "failure_test": "Teste proposto: pausar um workflow, trocar a ordem de duas atividades no código e tentar retomá-lo; exigir detecção de incompatibilidade ou migração prevista, nunca continuidade silenciosamente divergente.",
+  "evaluation_plan": "Comparar retomada com a versão original e com migração controlada. Medir falhas de replay, tarefas reexecutadas e tempo de recuperação. Usar históricos reais de desenvolvimento separados dos casos de decisão; aceitar mudança somente com compatibilidade demonstrada.",
+  "comparisons": [
+    {
+      "entry_id": "T241",
+      "relation": "complements",
+      "reason": "Replay é um mecanismo de reconstrução usado por runtimes duráveis."
+    },
+    {
+      "entry_id": "T162",
+      "relation": "complements",
+      "reason": "Efeitos de Activities continuam precisando de identidade e repetição segura."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Temporal exige compatibilidade determinística de comandos e orienta colocar operações externas em Activities.",
+    "source_ids": [
+      "V3C-S018"
+    ],
+    "support": "direct",
+    "caveat": "A semântica de durabilidade varia entre runtimes; a fonte não prova efeito remoto exatamente uma vez."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma LLM com temperatura zero pode rodar livremente dentro do replay?",
+      "answer": "Não se deve presumir determinismo externo. O resultado precisa ser registrado pelo mecanismo apropriado do runtime."
+    },
+    {
+      "question": "Por que testar apenas workflows novos é insuficiente?",
+      "answer": "Porque eles não exercitam históricos produzidos por versões anteriores, onde alterações de comandos podem quebrar a retomada."
+    }
+  ],
+  "source_ids": [
+    "V3C-S018",
+    "V3C-S024"
+  ],
+  "research_note": "Contratos e ensaios são propostas; os resultados citados pertencem às fontes, sem reprodução local."
+}

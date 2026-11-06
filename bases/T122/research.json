@@ -1,0 +1,46 @@
+{
+  "id": "T122",
+  "technical_details": "Conclusão da transferência no dispositivo de rede não substitui automaticamente a ordenação necessária para um kernel consumidor na GPU. A documentação GPUDirect distingue visibilidade e sincronização, incluindo o risco de leitura concorrente de dados parcialmente escritos. Um contrato de transporte precisa ligar conclusão de DMA, evento de disponibilidade e submissão do consumidor, além de manter a região registrada válida durante toda a operação.",
+  "boundary_condition": "Topologia, memória registrada, drivers e suporte do transporte condicionam o caminho direto; o nome RDMA não garante ausência de cópias.",
+  "implementation_contract": {
+    "inputs": "Regiões registradas, destino, tamanho, identificação da transferência e protocolo de conclusão.",
+    "outputs": "Dados disponíveis para consumo ordenado e confirmação verificável.",
+    "state": "Registros de memória, buffers em voo, eventos e propriedade dos slots.",
+    "invariant": "Nenhum consumidor lê ou libera um buffer antes da conclusão e ordenação exigidas."
+  },
+  "tradeoffs": [
+    "Caminho direto pode reduzir cópias de CPU e aumenta exigências de sincronização.",
+    "Registro e reutilização de buffers amortizam custos, mas exigem ciclo de vida correto."
+  ],
+  "failure_test": "Teste proposto: iniciar consumo antes da confirmação de transferência e depois aplicar o protocolo correto. O caso inválido deve ser rejeitado pelo controle, sem depender de corrupção aparecer aleatoriamente.",
+  "evaluation_plan": "Plano proposto: comparar transporte com staging e caminho direto sob mesmos tamanhos e topologia. Medir latência, banda efetiva, CPU, registro e integridade; aprovar o caminho completo, incluindo sincronização, não apenas tempo bruto da NIC.",
+  "comparisons": [
+    {
+      "entry_id": "T102",
+      "relation": "complements",
+      "reason": "Transferência KV entre fases exige esse cuidado quando usa comunicação direta com memória de GPU."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O guia GPUDirect RDMA alerta que kernels concorrentes podem observar dados antigos ou parcialmente escritos sem ordenação adequada.",
+    "source_ids": [
+      "B-S033"
+    ],
+    "support": "direct",
+    "caveat": "A fonte descreve requisitos CUDA/GPUDirect; outros transportes podem oferecer abstrações adicionais que devem ser verificadas."
+  },
+  "advanced_qa": [
+    {
+      "question": "RDMA significa zero latência?",
+      "answer": "Não. Existem transferência física, filas, registro e sincronização, mesmo quando cópias intermediárias são evitadas."
+    },
+    {
+      "question": "Checksum resolve ordenação?",
+      "answer": "Pode detectar corrupção, mas não torna válida uma leitura concorrente antes da disponibilidade; sincronização continua necessária."
+    }
+  ],
+  "source_ids": [
+    "B-S033"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

@@ -1,0 +1,93 @@
+[
+  {
+    "source_id": "V2B-S005",
+    "title": "Temporal Workflow",
+    "url": "https://docs.temporal.io/workflows",
+    "publisher": "Temporal",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Histórico de eventos, replay determinístico e reutilização de resultados de Activities já confirmadas.",
+    "limitations": "Documentação primária consultada nesta data; nenhuma instalação, benchmark ou avaliação no ambiente LAI foi executada.",
+    "web_ref": "turn58view3"
+  },
+  {
+    "source_id": "V2B-S006",
+    "title": "Activity Definition",
+    "url": "https://docs.temporal.io/activity-definition",
+    "publisher": "Temporal",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Activities para ações externas, possibilidade de múltiplas execuções e necessidade de idempotência.",
+    "limitations": "Documentação primária consultada nesta data; nenhuma instalação, benchmark ou avaliação no ambiente LAI foi executada.",
+    "web_ref": "turn58view2"
+  },
+  {
+    "source_id": "V2A-S010",
+    "title": "Detecting Activity failures",
+    "url": "https://docs.temporal.io/encyclopedia/detecting-activity-failures",
+    "publisher": "Temporal",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Timeouts de atividades, heartbeats, detalhes de progresso e tentativas posteriores.",
+    "limitations": "Consulta documental primária. Não houve reprodução de experimentos, instalação do produto nem validação de disponibilidade na infraestrutura LAI. Receitas e testes das entradas são propostas editoriais.",
+    "web_ref": "turn55view0"
+  },
+  {
+    "source_id": "V3C-S018",
+    "title": "Temporal Workflow Definition — determinism and code evolution",
+    "url": "https://docs.temporal.io/workflow-definition",
+    "publisher": "Temporal",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Replay exige compatibilidade da sequência de comandos com o histórico; evolução do código exige estratégia de versionamento.",
+    "limitations": "Determinação de comandos não significa igualdade de cada instrução ou captura de memória arbitrária do processo.",
+    "web_ref": "turn103view0"
+  },
+  {
+    "source_id": "V3C-S023",
+    "title": "Temporal — Retry Policies",
+    "url": "https://docs.temporal.io/encyclopedia/retry-policies",
+    "publisher": "Temporal",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Diferenças entre retries de Activities, Workflow Executions e Workflow Tasks; limites de tentativas e prazo total.",
+    "limitations": "Defaults e APIs são específicos do runtime; não foram presumidos como configurações LAI.",
+    "web_ref": "turn118view1"
+  },
+  {
+    "source_id": "V3C-S024",
+    "title": "Temporal — Activity Execution",
+    "url": "https://docs.temporal.io/activity-execution",
+    "publisher": "Temporal",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Ciclo de vida durável de Activities, despacho a workers e registro de resultados em workflows.",
+    "limitations": "Retomar a execução não garante por si efeito externo exatamente uma vez.",
+    "web_ref": "turn116view2"
+  },
+  {
+    "source_id": "V3C-S040",
+    "title": "Temporal — Long-Running Activity pattern",
+    "url": "https://github.com/temporalio/documentation/blob/main/docs/design-patterns/long-running-activity.mdx",
+    "publisher": "Temporal",
+    "source_type": "official_source_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Heartbeats transportam detalhes de progresso e ajudam retomada e entrega de cancelamento em atividades longas.",
+    "limitations": "Persistência depende de entrega ao serviço; heartbeat emitido localmente pode não sobreviver a crash antes do envio.",
+    "web_ref": "turn164view2"
+  }
+]

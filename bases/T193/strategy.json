@@ -1,0 +1,119 @@
+{
+  "id": "T193",
+  "novelty": "A v3 localizou controles antes e depois de ações. O aprofundamento trata composição de regras, semântica de bloqueio e observabilidade de falsos positivos e lacunas.",
+  "deep_layers": [
+    {
+      "name": "Camadas com escopo",
+      "detail": "Separe validação estrutural, autorização, regra de negócio e avaliação de conteúdo. Cada camada deve declarar o que prova e o que não examina. Bedrock Automated Reasoning verifica relações numa política formal; isso não equivale a checar toda verdade do mundo nem a tornar correta a tradução de texto automaticamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S046",
+        "V4B-S027",
+        "V4D-S012"
+      ]
+    },
+    {
+      "name": "Composição sem brechas",
+      "detail": "Todos os caminhos que executam uma ação precisam passar pela mesma decisão de autorização e pelo contrato aplicável. Uma alternativa de ferramenta ou retry não pode contornar a regra. Preserve identidade, argumentos efetivos e versão da política para que a decisão auditada corresponda à operação real.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S046",
+        "V4B-S027",
+        "V4D-S012"
+      ]
+    },
+    {
+      "name": "Falhas e experiência",
+      "detail": "Defina resultados permitidos, bloqueados e inconclusivos. Falha do serviço de verificação pode exigir suspensão, redução de escopo ou encaminhamento conforme a operação, mas não aprovação silenciosa. Meça rejeições indevidas e explique ao fluxo de produto qual dado ou condição falta para continuar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S046",
+        "V4B-S027",
+        "V4D-S012"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Geração de questões educacionais",
+      "scenario": "A saída precisa obedecer formato e restrições de conteúdo.",
+      "strategy": "Use modelo especializado para propor e filtros antes de exibir. Learning Zone descreve a combinação, mas a configuração e escala atuais não são assumidas a partir do artigo de preparação.",
+      "small_model_role": "Um 3–7B pode produzir objetos delimitados que passam por critérios externos.",
+      "acceptance": "Avaliar rejeição, correção e utilidade com revisão humana.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S046",
+        "V4B-S027",
+        "V4D-S012"
+      ]
+    },
+    {
+      "name": "Ação de negócio com efeitos",
+      "scenario": "O agente propõe alterar um registro.",
+      "strategy": "Valide schema, identidade, permissão e pré-condição sobre o estado atual; execute somente após confirmação da decisão. Verifique pós-condição observada.",
+      "small_model_role": "Um 8–14B pode interpretar intenção, enquanto controles determinísticos decidem a operação.",
+      "acceptance": "Nenhuma ação fora do contrato e distinção explícita entre falha e sucesso.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S046",
+        "V4B-S027",
+        "V4D-S012"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Controles externos permitem tarefas estreitas, mas não compensam toda incapacidade do modelo.",
+    "8_14b": "Especialização deve ser acompanhada de testes de cobertura e falsos bloqueios.",
+    "15_30b": "Mesmo 15–30B continua sujeito às mesmas regras de autorização e validação.",
+    "training_or_runtime_requirements": "Runtime e serviços externos; pode coexistir com treinamento, sem ser equivalente a alinhamento dos pesos.",
+    "do_not_use_when": "Não chamar validação de JSON de verificação factual nem verificação formal de política de garantia universal."
+  },
+  "connections": [
+    {
+      "target_id": "T182",
+      "relation": "complements",
+      "how": "Learning Zone combina especialização LoRA e guardrails antes da exibição.",
+      "interface": "Adapter, contrato de saída e resultado dos filtros.",
+      "condition": "Escopo especializado documentado.",
+      "acceptance": "Comparar qualidade e rejeição com avaliação humana.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4D-S012"
+      ],
+      "case_ids": [
+        "V4D-C006"
+      ]
+    },
+    {
+      "target_id": "T197",
+      "relation": "requires",
+      "how": "Schema valida o contrato estrutural antes de regras semânticas.",
+      "interface": "Objeto parseado e schema versionado.",
+      "condition": "Recursos usados são suportados pelo validador.",
+      "acceptance": "Testar campos ausentes, extras e tipos incorretos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S046",
+        "V4B-S027",
+        "V4D-S012"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Registrar qual camada bloqueou e qual propriedade foi realmente verificada.",
+    "Não permitir bypass por retry, ferramenta alternativa ou saída parcial."
+  ],
+  "frontier_comparison": "Compare taxa de resultados úteis e incorretos entregues, incluindo rejeições indevidas. Guardrails podem tornar uma aplicação pequena mais confiável no escopo, sem torná-la genericamente mais inteligente.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q019"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "C-S046",
+    "V4B-S027",
+    "V4D-S012"
+  ]
+}

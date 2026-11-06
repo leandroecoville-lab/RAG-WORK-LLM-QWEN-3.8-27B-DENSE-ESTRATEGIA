@@ -1,0 +1,38 @@
+{
+  "id": "T240",
+  "name": "Snapshot de estado",
+  "canonical_name": "Snapshot de estado",
+  "canonical_id": "T240",
+  "aliases": [
+    "state snapshot",
+    "snapshot persistente"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T060",
+    "T064",
+    "T242",
+    "T243"
+  ],
+  "source_ids": [
+    "A-S027",
+    "A-S022",
+    "V2A-S025",
+    "A-S029",
+    "V3C-S028",
+    "V4C-S030",
+    "V4C-S001",
+    "C-S026",
+    "V3C-S041",
+    "V4C-S024",
+    "V4C-S025"
+  ],
+  "namespace": "T240",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T240",
+  "chunk_count": 9
+}

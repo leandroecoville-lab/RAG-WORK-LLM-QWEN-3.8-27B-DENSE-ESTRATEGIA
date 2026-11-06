@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Quem decide o que vira memória reutilizável?",
+    "answer": "Nesta arquitetura proposta, a política do controlador, aplicando critérios de evidência e escopo; o runtime executa a persistência."
+  },
+  {
+    "question": "Uma decisão que desapareceu do resumo deixa de valer?",
+    "answer": "Não automaticamente. Deve existir revogação, supersessão ou condição de validade verificável no registro persistente."
+  },
+  {
+    "question": "Qual regra diferencia memória de contexto?",
+    "answer": "Uma informação pode ser útil agora sem merecer persistência, ou ser durável sem precisar ocupar a janela atual."
+  },
+  {
+    "question": "O que registrar em cada decisão?",
+    "answer": "Identidade, versão da política, origem, motivo e revisão dos dados usados para permitir auditoria."
+  }
+]

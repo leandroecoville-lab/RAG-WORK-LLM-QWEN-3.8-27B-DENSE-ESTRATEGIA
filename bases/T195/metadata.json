@@ -1,0 +1,35 @@
+{
+  "id": "T195",
+  "name": "Verificação baseada em execução",
+  "canonical_name": "Verificação Baseada em Execução",
+  "canonical_id": "T195",
+  "aliases": [
+    "execution-based verification",
+    "Verificação Baseada em Execução"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T189",
+    "T190",
+    "T200",
+    "T205"
+  ],
+  "source_ids": [
+    "C-S048",
+    "V4B-S022",
+    "V4B-S024",
+    "V4B-S025",
+    "V4B-S026",
+    "V4C-S009",
+    "V4B-S023",
+    "V4C-S008"
+  ],
+  "namespace": "T195",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T195",
+  "chunk_count": 9
+}

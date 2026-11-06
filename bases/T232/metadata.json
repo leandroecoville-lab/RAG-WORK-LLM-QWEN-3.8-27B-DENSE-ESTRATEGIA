@@ -1,0 +1,34 @@
+{
+  "id": "T232",
+  "name": "AST Editing",
+  "canonical_name": "AST Editing",
+  "canonical_id": "T232",
+  "aliases": [
+    "structural editing",
+    "codemod",
+    "CST Editing"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T231",
+    "T229",
+    "T217"
+  ],
+  "source_ids": [
+    "V2A-S015",
+    "V3C-S033",
+    "V3C-S035",
+    "V4C-S008",
+    "V4C-S009",
+    "V4C-S006",
+    "V4C-S007"
+  ],
+  "namespace": "T232",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T232",
+  "chunk_count": 9
+}

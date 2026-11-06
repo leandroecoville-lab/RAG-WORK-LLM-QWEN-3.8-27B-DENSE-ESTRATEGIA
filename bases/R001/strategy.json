@@ -1,0 +1,111 @@
+{
+  "id": "R001",
+  "novelty": "A v3 descreveu a arquitetura original MemGPT. Aqui a proposta mede competência de controle de memória antes de delegar esse controle a um modelo pequeno.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Separe lembrar informação e escolher quando escrevê-la ou buscá-la. Um modelo pode responder corretamente com evidência fornecida e ainda falhar ao decidir operações de memória.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "V4A-S026"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Comece com controlador externo e ações limitadas, como consultar referência e propor atualização. Amplie autonomia somente após medir perdas, buscas inúteis e escrita de hipóteses como fatos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "V4A-S026"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare memória controlada por código, pelo modelo e política híbrida. Meça recuperação de fatos antigos, qualidade das escritas e custo de chamadas; sucesso em conversa curta não valida gestão de contexto virtual. Unidade de avaliação: política de memória.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "V4A-S026"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Assistente local persistente",
+      "scenario": "Modelo 3–7B tem janela limitada.",
+      "strategy": "Manter perfil explícito e arquivo consultável; modelo solicita campos faltantes enquanto controlador decide persistência e limites.",
+      "small_model_role": "3–7B lê e propõe operações.",
+      "acceptance": "Não perder correção explícita nem gravar inferência como declaração do usuário.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "V4A-S026"
+      ]
+    },
+    {
+      "name": "Análise de documentos grandes",
+      "scenario": "A informação excede a janela.",
+      "strategy": "Criar índice de evidências e permitir cargas paginadas com objetivo definido; registrar progresso para evitar ciclos.",
+      "small_model_role": "8–14B pesquisa; 15–30B integra.",
+      "acceptance": "Cada resposta deve citar páginas efetivamente abertas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "V4A-S026"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Leitor com ferramentas de memória restritas e política externa.",
+    "8_14b": "Gerente de memória em domínio limitado, após testes de escrita e busca.",
+    "15_30b": "Controlador mais autônomo quando avaliação demonstrar operações consistentes.",
+    "training_or_runtime_requirements": "Ferramentas compatíveis, armazenamento externo e avaliação de controle; MemGPT é padrão de pesquisa, Letta é framework distinto.",
+    "do_not_use_when": "Modelo não usa ferramentas com confiabilidade ou aplicações exigem memória ilimitada sem custo de acesso."
+  },
+  "connections": [
+    {
+      "target_id": "T063",
+      "relation": "complements",
+      "how": "Implementar movimentação explícita entre níveis.",
+      "interface": "Bloco, referência, residência e orçamento.",
+      "condition": "Controlador não confundir arquivo e contexto ativo.",
+      "acceptance": "Testar tarefa com várias trocas de blocos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "V4A-S026"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T071",
+      "relation": "requires",
+      "how": "Validar propostas de escrita antes de promover.",
+      "interface": "Conteúdo, origem e tipo de memória.",
+      "condition": "Proposta não adquirir autoridade por ter sido gerada.",
+      "acceptance": "Inserir hipótese plausível e impedir promoção indevida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "V4A-S026"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não atribuir ao MemGPT todas as capacidades atuais do Letta.",
+    "Não contar sistema de pesquisa como implantação bigtech."
+  ],
+  "frontier_comparison": "Comparar política de memória com leitor fixo; distinguir melhora de acesso e melhora de capacidade do modelo.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S009",
+    "V4A-S026"
+  ]
+}

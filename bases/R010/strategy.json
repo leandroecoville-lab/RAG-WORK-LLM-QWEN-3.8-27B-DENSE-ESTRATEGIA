@@ -1,0 +1,127 @@
+{
+  "id": "R010",
+  "novelty": "A v3 registrou maintenance mode e equivalência de endpoints. A nova camada organiza a decisão entre manter e migrar, com inventário de dependências e experimentos de transição que preservam a interpretação dos resultados.",
+  "deep_layers": [
+    {
+      "name": "Manutenção datada",
+      "detail": "A documentação consultada em 05/11/2026 informa manutenção limitada do TGI. Isso pesa em novos desenvolvimentos e compatibilidade futura, mas não demonstra que um serviço existente está defeituoso. Liste necessidades reais, como novos modelos e recursos, antes de definir migração apenas pelo estado do projeto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S006",
+        "V4B-S019",
+        "V4B-S014",
+        "V4B-S010"
+      ]
+    },
+    {
+      "name": "Dependências do consumidor",
+      "detail": "Inventarie templates, parâmetros, erros, streaming, métricas, limites e comportamento de cancelamento usados pela aplicação. Uma troca de engine pode alterar defaults e tokenização sem mudar a rota HTTP. Compare requisições serializadas e estados terminais, não somente textos de exemplos felizes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S006",
+        "V4B-S019",
+        "V4B-S014",
+        "V4B-S010"
+      ]
+    },
+    {
+      "name": "Migração observável",
+      "detail": "Faça replay autorizado em ambiente de teste e compare semântica antes de desempenho. Depois, teste carga com as mesmas chegadas e contextos. Mantenha rollback e evidências da versão antiga. A adoção histórica no HuggingChat em 2023 não deve ser descrita como confirmação da configuração atual do produto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S006",
+        "V4B-S019",
+        "V4B-S014",
+        "V4B-S010"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Serviço TGI existente",
+      "scenario": "A aplicação funciona, mas precisa de recurso novo.",
+      "strategy": "Avalie se a versão atual atende o contrato e se o novo requisito justifica mudança. Crie testes de compatibilidade e compare candidatos, sem pressupor vencedor.",
+      "small_model_role": "Um 8–14B pode continuar útil no serviço existente enquanto a migração é qualificada.",
+      "acceptance": "Nenhuma regressão de formato, término, erro ou qualidade no caminho consumido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S006",
+        "V4B-S019",
+        "V4B-S014",
+        "V4B-S010"
+      ]
+    },
+    {
+      "name": "Novo serviço pequeno",
+      "scenario": "Não há dependência histórica de TGI.",
+      "strategy": "Compare engines com suporte atual ao checkpoint, incluindo Transformers continuous batching e outros runtimes. Use um caso mínimo representativo e meça operação completa.",
+      "small_model_role": "Um 3–7B permite iniciar simples; o runtime escolhido deve corresponder ao workload.",
+      "acceptance": "Escolher pela compatibilidade e manutenção requeridas, sem copiar benchmarks de outra pilha.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S006",
+        "V4B-S019",
+        "V4B-S014",
+        "V4B-S010"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Evite montar complexidade de shards se uma réplica atende o objetivo.",
+    "8_14b": "Serviços existentes merecem análise de custo de migração e contrato, não descarte automático.",
+    "15_30b": "Modelos 15–30B exigem qualificar paralelismo, quantização e memória no engine escolhido.",
+    "training_or_runtime_requirements": "TGI é runtime de serving; versão, container e suporte do checkpoint precisam ser fixados.",
+    "do_not_use_when": "Não afirmar que maintenance mode interrompe automaticamente produção nem que HuggingChat continua usando a mesma pilha de 2023."
+  },
+  "connections": [
+    {
+      "target_id": "R009",
+      "relation": "alternative",
+      "how": "vLLM pode ser candidato de migração quando atende o contrato e o modelo.",
+      "interface": "Requisições, eventos e métricas equivalentes.",
+      "condition": "Suporte verificado no ambiente.",
+      "acceptance": "Comparar casos de erro e carga, além de geração normal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S006",
+        "V4B-S019",
+        "V4B-S014",
+        "V4B-S010"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "R023",
+      "relation": "alternative",
+      "how": "Transformers documenta recursos atuais de batching contínuo que devem ser avaliados conforme o uso.",
+      "interface": "Configuração de geração e scheduling.",
+      "condition": "API e arquitetura compatíveis na versão fixada.",
+      "acceptance": "Verificar operação e manutenção antes de adotar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S006",
+        "V4B-S019",
+        "V4B-S014",
+        "V4B-S010"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não levar defaults de um engine para outro sem inspeção.",
+    "Separar evidência histórica de implantação de disponibilidade atual de recursos."
+  ],
+  "frontier_comparison": "A escolha do servidor modifica custo e operação. Para comparar com fronteira, mantenha o modelo e o contrato claros; uma migração de TGI não melhora automaticamente a qualidade das respostas.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q015"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3D-S006",
+    "V4B-S019",
+    "V4B-S014",
+    "V4B-S010"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "T091",
+  "name": "FlashAttention-2",
+  "canonical_name": "FlashAttention-2",
+  "canonical_id": "T091",
+  "aliases": [
+    "Flash Attention 2"
+  ],
+  "category": "inferencia",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T090",
+    "T092",
+    "T098",
+    "T113"
+  ],
+  "source_ids": [
+    "B-S011",
+    "V3B-S006",
+    "V4B-S017",
+    "V4B-S018"
+  ],
+  "namespace": "T091",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T091",
+  "chunk_count": 9
+}

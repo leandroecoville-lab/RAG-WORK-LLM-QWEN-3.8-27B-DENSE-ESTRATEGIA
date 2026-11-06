@@ -1,0 +1,42 @@
+{
+  "entry_id": "T147",
+  "edges": [
+    {
+      "edge_id": "E-T147-01",
+      "from": "T147",
+      "to": "T237",
+      "relation": "feeds",
+      "how": "A decomposição fornece tarefas delimitadas aos subagentes e recebe resultados por objetivo.",
+      "interface": "Objetivo, fontes, escopo, formato e estado de cada ramo.",
+      "condition": "A delegação possui lacunas identificáveis e resultados comparáveis.",
+      "acceptance": "Proposta: medir cobertura real sem contar respostas duplicadas como contribuição nova.",
+      "basis": "source_documented",
+      "source_ids": [
+        "C-S030"
+      ],
+      "case_ids": [
+        "V4C-C007"
+      ],
+      "evidence_stage": "production_documented"
+    },
+    {
+      "edge_id": "E-T147-02",
+      "from": "T147",
+      "to": "T200",
+      "relation": "complements",
+      "how": "CodeCourt usa revisores paralelos por propriedade e agrega seus vereditos.",
+      "interface": "Diff e critérios separados para cada revisor.",
+      "condition": "Cada propriedade obrigatória precisa passar.",
+      "acceptance": "Proposta: semear violações distintas e conferir qual revisor as identifica.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S009"
+      ],
+      "case_ids": [
+        "V4C-C010"
+      ],
+      "evidence_stage": "production_documented"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

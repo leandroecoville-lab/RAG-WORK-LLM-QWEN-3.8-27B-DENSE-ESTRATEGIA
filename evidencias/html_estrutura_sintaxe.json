@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "files": {
+    "ABRIR_CATALOGO.html": {
+      "html_sha256": "7a56eda73e80cd588aae36f485a476d6abc2d3681d4a22d081cd9e0217946725",
+      "remote_scripts": [],
+      "javascript_syntax_checked": true,
+      "javascript_syntax_valid": true,
+      "entries_complete": true,
+      "passed": true
+    },
+    "ABRIR_GRAFO.html": {
+      "html_sha256": "9bafdedc86293796192badad1a48fcfa9af602e341f5169c8bbf491b2248f884",
+      "remote_scripts": [],
+      "javascript_syntax_checked": true,
+      "javascript_syntax_valid": true,
+      "entries_complete": true,
+      "edges_complete": true,
+      "case_records_complete": true,
+      "passed": true
+    }
+  },
+  "dom_smoke": {
+    "passed": true,
+    "exit_code": 0,
+    "mode": "minimal_simulated_DOM",
+    "visual_browser_rendering_tested": false
+  },
+  "note": "Estrutura, sintaxe e lógica em DOM simulado quando Node está disponível; não é renderização visual de navegador."
+}

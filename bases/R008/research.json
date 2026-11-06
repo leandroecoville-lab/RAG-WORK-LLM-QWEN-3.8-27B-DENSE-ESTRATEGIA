@@ -1,0 +1,52 @@
+{
+  "id": "R008",
+  "technical_details": "No LangGraph, nós devolvem atualizações parciais e cada canal de estado define como combiná-las. O redutor padrão substitui o valor; acumulação precisa de regra explícita. Isso torna o merge parte da semântica, especialmente quando vários nós executam no mesmo superpasso. Separar schemas de entrada, saída e estado interno organiza a interface, mas não filtra automaticamente o streaming. Assim, um canal omitido da resposta de invoke ainda pode aparecer em eventos transmitidos se a aplicação não selecionar a projeção adequada. Checkpointer por thread e store entre threads também representam escopos diferentes.",
+  "boundary_condition": "Persistir estado não torna o redutor correto nem converte um canal privado em fronteira de acesso. Compatibilidade depende das versões do grafo e do backend.",
+  "implementation_contract": {
+    "inputs": "Atualizações tipadas, identificação da thread, versão do grafo e projeção permitida para streaming.",
+    "outputs": "Estado consolidado e eventos filtrados para cada consumidor.",
+    "state": "Canais, redutores, checkpoints e namespace do store explicitamente separados.",
+    "invariant": "Cada atualização preserva a identidade dos fatos; nenhuma saída pública inclui canais excluídos pelo contrato."
+  },
+  "tradeoffs": [
+    "Redutor acumulativo conserva contribuições, mas pode duplicar mensagens sem identidade estável.",
+    "Streaming melhora acompanhamento, porém amplia as superfícies que precisam de projeção e validação."
+  ],
+  "failure_test": "Teste proposto: dois nós escrevem no mesmo canal e um inclui dado interno. Variar ordem de conclusão, inspecionar invoke e stream; exigir merge previsto e ausência do dado no consumidor público.",
+  "evaluation_plan": "Comparar execução serial com paralela, fixando entradas e resultados dos nós. Medir equivalência do estado, duplicações, eventos indevidos e latência; adotar concorrência somente preservando as invariantes definidas.",
+  "comparisons": [
+    {
+      "entry_id": "R017",
+      "relation": "distinct_from",
+      "reason": "LangChain compõe agentes em nível mais alto; LangGraph expõe diretamente estado, transições e fusão de atualizações."
+    },
+    {
+      "entry_id": "T142",
+      "relation": "distinct_from",
+      "reason": "Framework com planejamento é uma família; configurar LangGraph não acrescenta um planejador automaticamente."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Schemas de entrada e saída restringem invoke, mas não ocultam canais do streaming por padrão.",
+    "source_ids": [
+      "V3C-S006"
+    ],
+    "support": "direct",
+    "caveat": "Comportamento documentado da Graph API consultada; mecanismos concretos devem corresponder à versão integrada."
+  },
+  "advanced_qa": [
+    {
+      "question": "O redutor padrão concatena mensagens concorrentes?",
+      "answer": "Não. É necessário escolher uma regra adequada ao canal e testar conflitos e repetição."
+    },
+    {
+      "question": "O store substitui o checkpointer da conversa?",
+      "answer": "Não. O store compartilha dados entre threads; a retomada do estado da thread exige persistência apropriada."
+    }
+  ],
+  "source_ids": [
+    "V3C-S006",
+    "A-S022"
+  ],
+  "research_note": "Síntese documental; contrato e testes são propostas editoriais, sem execução do produto neste trabalho."
+}

@@ -1,0 +1,40 @@
+{
+  "entry_id": "T158",
+  "edges": [
+    {
+      "edge_id": "E-T158-01",
+      "from": "T158",
+      "to": "T151",
+      "relation": "complements",
+      "how": "O registro do gateway fornece descoberta progressiva até a resolução do schema específico.",
+      "interface": "Servidor, ferramenta e revisão do schema.",
+      "condition": "Somente itens habilitados devem ser expostos.",
+      "acceptance": "Validar o schema recuperado no momento da invocação.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S013"
+      ],
+      "case_ids": [
+        "V4C-C014"
+      ],
+      "evidence_stage": "production_documented"
+    },
+    {
+      "edge_id": "E-T158-02",
+      "from": "T158",
+      "to": "T170",
+      "relation": "complements",
+      "how": "Publicar mudança de contrato junto do descritor e manter versões históricas.",
+      "interface": "Diferença semântica, versão e consumidores afetados.",
+      "condition": "Existe estratégia de migração ou compatibilidade comprovada.",
+      "acceptance": "Testar consultas antigas e novas antes de ativar a revisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

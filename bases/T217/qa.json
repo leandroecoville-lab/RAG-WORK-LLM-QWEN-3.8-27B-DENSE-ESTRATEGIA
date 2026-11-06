@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Todo ciclo precisa começar escrevendo um teste novo?",
+    "answer": "Não. Uma reprodução existente ou teste de contrato pode servir. A escolha depende do problema e do valor real da nova verificação."
+  },
+  {
+    "question": "O agente pode corrigir o teste?",
+    "answer": "Pode, se a expectativa estava errada e houver justificativa ligada ao requisito. Alterar a expectativa exige revisão, não deve ocultar uma falha do produto."
+  },
+  {
+    "question": "Um teste verde recém-criado prova que corrigi o defeito?",
+    "answer": "Não sozinho. É útil demonstrar falha na versão anterior pelo motivo esperado e sucesso após a alteração, com execução real do caso."
+  },
+  {
+    "question": "Por que testar sequências?",
+    "answer": "Porque criação, atualização e remoção podem interagir; cada operação isolada pode funcionar enquanto a sequência viola um invariante."
+  }
+]

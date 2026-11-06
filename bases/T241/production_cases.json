@@ -1,0 +1,125 @@
+{
+  "coverage": {
+    "entry_id": "T241",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 1,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Event Replay",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C003",
+      "company": "Uber",
+      "system": "Cadence — plataforma interna",
+      "title": "Workflows duráveis em serviços da Uber",
+      "evidence_level": "production_documented",
+      "observed_use": "A Uber relata Cadence em serviços internos de diferentes criticidades e em processos longos, orquestração e pipelines.",
+      "technical_mechanism": "Histórico persistente, workers, retomada e compatibilidade de workflows em andamento são tratados junto de isolamento e observabilidade operacional.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S001"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T159",
+          "match": "exact",
+          "rationale": "Execução durável de workflows é o mecanismo central relatado."
+        },
+        {
+          "entry_id": "T160",
+          "match": "family",
+          "rationale": "Orquestração coordena dependências, embora nem todo workflow seja um DAG estático."
+        },
+        {
+          "entry_id": "T241",
+          "match": "exact",
+          "rationale": "A fonte descreve replay/shadowing de históricos para detectar incompatibilidades."
+        },
+        {
+          "entry_id": "P011",
+          "match": "analogy",
+          "rationale": "Plataforma de workflows é referência para o controlador editorial."
+        },
+        {
+          "entry_id": "P014",
+          "match": "analogy",
+          "rationale": "Retomada e isolamento sustentam uma analogia de resiliência, não implementação LAI."
+        }
+      ],
+      "small_model_transfer": "Proposta: manter chamadas a modelos 3–30B em atividades com saída persistida e usar o histórico para reconstruir decisões; testar evolução do código com execuções antigas antes de migrar workers.",
+      "limits": "Escala e disponibilidade citadas pelo operador pertencem à publicação e não são projetadas para LAI. Cadence não é Temporal, apesar de princípios relacionados.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C003",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T241",
+        "match": "exact",
+        "rationale": "A fonte descreve replay/shadowing de históricos para detectar incompatibilidades."
+      }
+    },
+    {
+      "case_id": "V4C-C024",
+      "company": "LinkedIn / Microsoft",
+      "system": "Brooklin",
+      "title": "Streams operacionais com offsets e recuperação",
+      "evidence_level": "production_documented",
+      "observed_use": "O LinkedIn relata Brooklin em produção para mover dados e replicar Kafka entre clusters; a documentação oficial detalha estado de tarefas e checkpoints.",
+      "technical_mechanism": "Streams são particionados em tarefas atribuídas a instâncias; coordenadores e offsets preservam posições e permitem retomar processamento conforme o contrato dos conectores.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S024",
+        "V4C-S025"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T060",
+          "match": "exact",
+          "rationale": "Estado e offsets/checkpoints sustentam retomada de tarefas."
+        },
+        {
+          "entry_id": "T241",
+          "match": "family",
+          "rationale": "Releitura de streams a partir de posições é relacionada a replay, sem provar reconstrução integral de estado de agente."
+        },
+        {
+          "entry_id": "T240",
+          "match": "family",
+          "rationale": "Checkpoints de offsets não equivalem a snapshot completo e consistente de toda aplicação."
+        },
+        {
+          "entry_id": "T207",
+          "match": "analogy",
+          "rationale": "Fluxo de eventos pode abastecer memória, mas Brooklin não implementa por isso o algoritmo cognitivo Memory Stream."
+        },
+        {
+          "entry_id": "P008",
+          "match": "analogy",
+          "rationale": "Histórico e posições ilustram requisitos do event store editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: ingerir eventos de tarefas 3–30B com cursor por partição, deduplicação e referências de artefatos; reconstruir projeções sem reenviar efeitos externos durante replay.",
+      "limits": "Caso de plataforma de dados; garantias variam por conector e não são elevadas a exactly-once global. Não há implantação de memória cognitiva LAI demonstrada.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C024",
+      "deployment_domain": "distributed_data_system",
+      "mapping": {
+        "entry_id": "T241",
+        "match": "family",
+        "rationale": "Releitura de streams a partir de posições é relacionada a replay, sem provar reconstrução integral de estado de agente."
+      }
+    }
+  ]
+}

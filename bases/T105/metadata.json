@@ -1,0 +1,31 @@
+{
+  "id": "T105",
+  "name": "KV Cache Eviction",
+  "canonical_name": "KV Cache Eviction",
+  "canonical_id": "T105",
+  "aliases": [
+    "despejo de cache KV"
+  ],
+  "category": "inferencia",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T081",
+    "T093",
+    "T104",
+    "T116"
+  ],
+  "source_ids": [
+    "B-S005",
+    "B-S014",
+    "V3B-S011",
+    "V4B-S031",
+    "B-S003"
+  ],
+  "namespace": "T105",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T105",
+  "chunk_count": 9
+}

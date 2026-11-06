@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Um embedding muito parecido garante mesma resposta?",
+    "answer": "Não. Os detalhes decisivos podem ter pouco peso no vetor; use filtros e avaliação de equivalência."
+  },
+  {
+    "question": "Cache semântico substitui RAG?",
+    "answer": "Não. Ele reaproveita respostas; RAG recupera evidência para construir uma resposta nova."
+  },
+  {
+    "question": "Posso copiar um limiar entre modelos de embedding?",
+    "answer": "Não com confiança. Distribuições e métricas mudam; recalibre usando pares relevantes ao domínio e declare a unidade da distância."
+  },
+  {
+    "question": "Um hit frequente deve renovar a validade?",
+    "answer": "A frequência pode justificar permanência em memória, mas não atualidade factual. Renovar TTL sem validar dependências pode perpetuar uma resposta obsoleta."
+  }
+]

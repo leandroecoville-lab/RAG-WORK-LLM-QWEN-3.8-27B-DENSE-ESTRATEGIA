@@ -1,0 +1,52 @@
+{
+  "id": "T163",
+  "technical_details": "O atraso entre tentativas deve caber junto do tempo da próxima execução no deadline restante. Somar apenas os sleeps subestima a duração total quando cada tentativa leva tempo para falhar. Uma quota de retries adiciona um limite compartilhado de trabalho em falha; ela é diferente do teto de tentativas por chamada. O SDK AWS consultado usa esse tipo de quota e distingue políticas por modalidade e geração do comportamento.",
+  "boundary_condition": "Quando a falha é permanente, esperar mais apenas posterga a mesma rejeição; quando o efeito é incerto, repetir pode ser semanticamente incorreto.",
+  "implementation_contract": {
+    "inputs": "Erro classificado, tentativa, deadline, sinal do servidor e quota de retries.",
+    "outputs": "Próximo instante elegível ou término por orçamento ou erro não repetível.",
+    "state": "Contador, reserva de tentativa, atraso sorteado e tempo já consumido.",
+    "invariant": "Nova tentativa não começa sem orçamento para seu custo esperado e identificação da intenção."
+  },
+  "tradeoffs": [
+    "Janelas maiores reduzem pressão e prolongam recuperação de falhas breves.",
+    "Quota compartilhada protege a dependência e pode negar retries a requisições que individualmente ainda teriam saldo."
+  ],
+  "failure_test": "Teste proposto: cada tentativa demora quase todo o timeout e depois falha; exigir que o prazo global impeça uma sequência que o teto de sleeps permitiria.",
+  "evaluation_plan": "Comparar backoff isolado e backoff com quota global sob incidentes iguais. Medir amplificação de chamadas, recuperação, prazo excedido e dispersão de tentativas. Fixar política de classificação e separar falhas transitórias de permanentes.",
+  "comparisons": [
+    {
+      "entry_id": "T164",
+      "relation": "complements",
+      "reason": "Retry-After adiciona uma orientação temporal do servidor."
+    },
+    {
+      "entry_id": "T228",
+      "relation": "complements",
+      "reason": "Uma fila durável persiste elegibilidade e orçamento entre reinícios."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "AWS documenta um token bucket de quota que pode encerrar retries quando a capacidade de repetição se esgota.",
+    "source_ids": [
+      "V3C-S010"
+    ],
+    "support": "direct",
+    "caveat": "A página distingue comportamento recente com opt-in; não foi assumida configuração efetiva de nenhum SDK LAI."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um teto de atraso limita a duração total?",
+      "answer": "Não. Faltam quantidade de tentativas, duração das chamadas, filas e deadline global."
+    },
+    {
+      "question": "Quota de retries também atrasa a primeira chamada?",
+      "answer": "No mecanismo documentado, não; essa quota limita repetições, e admissão inicial pertence a outro controle."
+    }
+  ],
+  "source_ids": [
+    "V3C-S010",
+    "V3C-S023"
+  ],
+  "research_note": "Contratos e ensaios são propostas; os resultados citados pertencem às fontes, sem reprodução local."
+}

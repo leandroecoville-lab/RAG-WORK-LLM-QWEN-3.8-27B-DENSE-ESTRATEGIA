@@ -1,0 +1,122 @@
+{
+  "id": "T009",
+  "novelty": "A v3 separou recuperação temporal e leitura. Aqui o desenho novo é orçamento de evidência orientado por tipo de afirmação e custo do erro.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Classifique a resposta em afirmações verificáveis antes de preencher contexto. Uma data exige fonte exata; uma comparação exige evidências simétricas; um panorama exige diversidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S022",
+        "V4A-S019",
+        "V4A-S014"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Monte pacotes por afirmação com apoio, contradição e lacuna. O leitor pequeno deve decidir somente dentro do pacote, sem completar campos ausentes com lembrança paramétrica.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S022",
+        "V4A-S019",
+        "V4A-S014"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare recuperação única e pacotes de evidência mantendo o mesmo corpus. Conte respostas parcialmente corretas e citações que não sustentam a frase. Unidade de avaliação: pergunta com evidências. Use casos em que o documento recuperado é correto, mas o trecho não sustenta o atributo pedido. O sistema deve marcar essa célula como insuficiente, em vez de premiar a presença de uma citação. Para comparações, medir cobertura por alternativa impede que a opção mais documentada pareça melhor apenas por receber mais contexto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S022",
+        "V4A-S019",
+        "V4A-S014"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Comparação de produtos técnicos",
+      "scenario": "Atributos vêm de documentos diferentes.",
+      "strategy": "Recuperar cada atributo por item, normalizar unidades em código e gerar tabela com células ausentes explícitas.",
+      "small_model_role": "3–7B extrai; 8–14B redige comparação.",
+      "acceptance": "Cada célula preenchida precisa de suporte elegível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S022",
+        "V4A-S019",
+        "V4A-S014"
+      ]
+    },
+    {
+      "name": "Investigação de divergência",
+      "scenario": "Duas fontes discordam sobre uma decisão.",
+      "strategy": "Recuperar versões e contexto de autoria, separar conflito factual de diferença de escopo e evitar votação por quantidade.",
+      "small_model_role": "15–30B integra versões incompatíveis.",
+      "acceptance": "Resposta deve preservar conflito ainda não resolvido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S022",
+        "V4A-S019",
+        "V4A-S014"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Leitor extrativo de pacotes pequenos com abstenção por campo.",
+    "8_14b": "Leitor especializado em citações e comparação de poucas fontes.",
+    "15_30b": "Integrador multietapas quando cada elo possuir evidência recuperável.",
+    "training_or_runtime_requirements": "Esquema por afirmação, filtros e referências estáveis; especialização contextual é opcional, não garantia.",
+    "do_not_use_when": "As fontes necessárias não existem ou o objetivo exige descoberta que o corpus não sustenta."
+  },
+  "connections": [
+    {
+      "target_id": "T028",
+      "relation": "complements",
+      "how": "Ordenar candidatos por necessidade de evidência.",
+      "interface": "claim_id, candidato e tipo de suporte.",
+      "condition": "Reranker não excluir contradições obrigatórias.",
+      "acceptance": "Avaliar cobertura por afirmação, além do ranking global.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S022",
+        "V4A-S019",
+        "V4A-S014"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T200",
+      "relation": "requires",
+      "how": "Verificar suporte após geração.",
+      "interface": "Frase, citação e trecho utilizado.",
+      "condition": "Verificador acessar a origem exata.",
+      "acceptance": "Detectar citação verdadeira mas irrelevante para a frase.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S022",
+        "V4A-S019",
+        "V4A-S014"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não converter ausência de documento em prova de inexistência.",
+    "Separar dados recuperados de instruções de execução."
+  ],
+  "frontier_comparison": "Comparar fidelidade contextual e abstenção; capacidade geral do modelo permanece fora da conclusão.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q009",
+      "V4A-Q010",
+      "V4A-Q016",
+      "V4A-Q020"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S022",
+    "V4A-S019",
+    "V4A-S014"
+  ]
+}

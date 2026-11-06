@@ -1,0 +1,51 @@
+{
+  "id": "P005",
+  "technical_details": "Context & Memory Controller é proposto como coordenador entre o que pode ser lido, o que cabe no próximo turno e o que merece persistência. Uma resposta recém-gerada não deve virar fato durável só porque apareceu no diálogo. A admissão de memórias precisa distinguir observação, inferência e instrução, além de registrar fonte e validade. A admissão no contexto tem objetivo diferente: selecionar informação útil para a tarefa atual dentro de um orçamento.",
+  "boundary_condition": "Unificar políticas não exige um único banco ou processo. Centralização excessiva pode criar gargalo e misturar decisões de relevância com regras de autorização.",
+  "implementation_contract": {
+    "inputs": "Tarefa, identidade, candidatos de leitura, propostas de gravação, limites de contexto e políticas de retenção.",
+    "outputs": "Decisões justificadas de admitir, adiar, rejeitar ou revisar, com manifesto do contexto e da memória afetada.",
+    "state": "Versão das políticas, pendências de validação, referências de origem e métricas de pressão por sessão.",
+    "invariant": "Uma decisão de relevância não pode ampliar permissão; conteúdo inferido precisa continuar identificado como inferência ao ser persistido."
+  },
+  "tradeoffs": [
+    "Coordenação reduz divergências de política, mas exige interfaces claras para não concentrar toda execução em um componente.",
+    "Validar promoção de memória custa tempo; aceitar tudo acelera escrita e pode acumular conclusões incorretas."
+  ],
+  "failure_test": "Proposta: recuperar documento sem autorização, gerar hipótese plausível e tentar promovê-la como fato confirmado; exigir bloqueio de escopo e preservação explícita da natureza inferida.",
+  "evaluation_plan": "Comparar gravação irrestrita e admissão por proveniência em tarefas com correções e fontes conflitantes. Medir fatos indevidamente promovidos, utilidade no turno seguinte, custo e atrasos. Separar falhas de autorização de falhas de relevância.",
+  "comparisons": [
+    {
+      "entry_id": "P001",
+      "relation": "complements",
+      "reason": "A montagem de contexto consome decisões de admissão."
+    },
+    {
+      "entry_id": "P004",
+      "relation": "complements",
+      "reason": "O runtime de memória recebe gravações e consultas autorizadas."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Persistência de sessão e armazenamento durável entre sessões têm escopos distintos na documentação de memória.",
+    "source_ids": [
+      "V3D-S016"
+    ],
+    "support": "related",
+    "caveat": "O controlador unificado é proposta própria e precisa de implementação e avaliação específicas."
+  },
+  "advanced_qa": [
+    {
+      "question": "Qual regra diferencia memória de contexto?",
+      "answer": "Uma informação pode ser útil agora sem merecer persistência, ou ser durável sem precisar ocupar a janela atual."
+    },
+    {
+      "question": "O que registrar em cada decisão?",
+      "answer": "Identidade, versão da política, origem, motivo e revisão dos dados usados para permitir auditoria."
+    }
+  ],
+  "source_ids": [
+    "V3D-S016"
+  ],
+  "research_note": "Contrato, teste de falha e plano de avaliação são recomendações editoriais; nenhuma implantação ou medição deste mecanismo foi executada neste pacote."
+}

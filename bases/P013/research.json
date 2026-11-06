@@ -1,0 +1,53 @@
+{
+  "id": "P013",
+  "technical_details": "Resilience Engine / Reliability Controller propõe coordenar timeout, retry, circuit breaker e fallback sob um orçamento por operação. Cada camada não deve multiplicar tentativas sem conhecer o limite global. Falhas permanentes, como entrada inválida, precisam de tratamento diferente de indisponibilidade transitória. O controlador também deve distinguir processo vivo, serviço apto a receber tráfego e trabalho progredindo, pois responder a um health check não prova avanço da tarefa.",
+  "boundary_condition": "Reiniciar continuamente um worker que depende de um serviço indisponível pode ampliar a falha. Liveness não deve substituir um diagnóstico de dependência ou de ausência de progresso.",
+  "implementation_contract": {
+    "inputs": "Operação identificada, classificação do erro, deadline, tentativas consumidas, estado de dependências e política de degradação.",
+    "outputs": "Decisão de repetir, aguardar, abrir circuito, trocar rota ou encerrar, com motivo e próximo instante elegível.",
+    "state": "Contadores por operação, estados de circuitos, leases, observações de progresso e orçamento restante.",
+    "invariant": "Retries de qualquer camada consomem o mesmo orçamento lógico; uma falha não pode restaurar o limite inicial."
+  },
+  "tradeoffs": [
+    "Backoff reduz pressão durante falha, mas aumenta o tempo até uma tentativa que poderia funcionar.",
+    "Circuitos evitam insistência inútil, porém precisam de sondagem controlada para detectar recuperação sem tempestade."
+  ],
+  "failure_test": "Proposta: combinar timeout em cliente e retry no worker durante indisponibilidade prolongada; verificar limite global, jitter e recuperação gradual sem pico sincronizado de novas chamadas.",
+  "evaluation_plan": "Comparar política isolada por camada e orçamento compartilhado sob falhas transitórias e permanentes. Medir amplificação de chamadas, tempo de recuperação, tarefas abandonadas e latência de cauda. Registrar o custo da degradação e do fallback.",
+  "comparisons": [
+    {
+      "entry_id": "T138",
+      "relation": "complements",
+      "reason": "Circuit breaker controla acesso a dependências falhas."
+    },
+    {
+      "entry_id": "T227",
+      "relation": "complements",
+      "reason": "Checks distinguem prontidão, vida e sinais específicos de progresso."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Circuit breaker controla falhas de dependências; readiness e liveness têm efeitos operacionais diferentes.",
+    "source_ids": [
+      "C-S005",
+      "V3D-S017"
+    ],
+    "support": "related",
+    "caveat": "A política global proposta precisa ser implementada; a documentação Kubernetes não define progresso semântico da tarefa."
+  },
+  "advanced_qa": [
+    {
+      "question": "O que caracteriza uma tempestade de retries?",
+      "answer": "Tentativas em múltiplas camadas ampliam a carga justamente quando a dependência falha."
+    },
+    {
+      "question": "Reiniciar é sempre recuperação?",
+      "answer": "Não. Sem corrigir a condição ou retomar com estado consistente, o restart pode repetir o mesmo erro."
+    }
+  ],
+  "source_ids": [
+    "C-S005",
+    "V3D-S017"
+  ],
+  "research_note": "Contrato, teste de falha e plano de avaliação são recomendações editoriais; nenhuma implantação ou medição deste mecanismo foi executada neste pacote."
+}

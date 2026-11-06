@@ -1,0 +1,126 @@
+{
+  "id": "T180",
+  "novelty": "A v3 separou regras e parâmetros variáveis. A nova camada trata compressão de instruções como contrato de interface, com testes de seleção de regime, atualização e interação com o template.",
+  "deep_layers": [
+    {
+      "name": "Prompt mínimo explícito",
+      "detail": "Reduzir o prompt não significa eliminar toda instrução. Preserve identificador da tarefa, parâmetros variáveis e formato que ainda precisa ser selecionado. Defina o conjunto mínimo por ablação, removendo blocos separadamente; uma redução grande de tokens pode ocultar regressões em casos raros.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S034",
+        "V3D-S008",
+        "V4B-S012",
+        "V4D-S012"
+      ]
+    },
+    {
+      "name": "Contrato de comportamento",
+      "detail": "O adapter ou checkpoint passa a carregar parte das regras. Versione essa política junto ao endpoint e evite combinar um prompt antigo com pesos novos sem teste. Templates e tokens de sistema podem ativar comportamentos diferentes; a destilação deve ser avaliada no caminho de chat usado pelo produto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S034",
+        "V3D-S008",
+        "V4B-S012",
+        "V4D-S012"
+      ]
+    },
+    {
+      "name": "Economia real",
+      "detail": "Menos tokens de entrada pode reduzir prefill e custo, mas respostas mais longas, retries ou validações adicionais podem consumir a economia. Meça o pedido completo e o custo de atualizar dados. Learning Zone descreve especialização com prompt reduzido e guardrails; isso não equivale a multiplicação geral de inteligência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S034",
+        "V3D-S008",
+        "V4B-S012",
+        "V4D-S012"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Objetos de domínio repetidos",
+      "scenario": "O serviço sempre gera o mesmo tipo de estrutura.",
+      "strategy": "Treine exemplos variados e mantenha schema explícito ou decodificação restrita. Remova instruções apenas depois de verificar formato e conteúdo em casos inéditos.",
+      "small_model_role": "Um 3–7B pode produzir objetos estreitos com baixa carga de prompt.",
+      "acceptance": "Reduzir tokens de entrada sem elevar rejeição ou erro por campo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S034",
+        "V3D-S008",
+        "V4B-S012",
+        "V4D-S012"
+      ]
+    },
+    {
+      "name": "Múltiplas rotinas especializadas",
+      "scenario": "O mesmo aluno executa contratos parecidos.",
+      "strategy": "Use identificadores de tarefa e exemplos que distinguem situações próximas. Se houver conflito persistente, separe adapters ou endpoints em vez de esconder a ambiguidade.",
+      "small_model_role": "Um 8–14B pode compartilhar capacidade entre rotinas relacionadas, com seleção verificável.",
+      "acceptance": "Testar troca de tarefa e resistência a instruções que contradizem o contrato vigente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S034",
+        "V3D-S008",
+        "V4B-S012",
+        "V4D-S012"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Boa hipótese para formatos e procedimentos fixos; fatos por usuário continuam externos.",
+    "8_14b": "Avalie interferência entre tarefas e escolha explícita do comportamento.",
+    "15_30b": "Compare economia de prefill com custo de manutenção de modelos e adapters adicionais.",
+    "training_or_runtime_requirements": "Exige ajuste de pesos/adapters; encurtar manualmente um prompt sem treino é outra intervenção.",
+    "do_not_use_when": "Não remover campos que distinguem respostas corretas apenas porque o dataset usa valores quase constantes."
+  },
+  "connections": [
+    {
+      "target_id": "T182",
+      "relation": "complements",
+      "how": "A especialização por LoRA pode absorver parte das instruções, como no caso Learning Zone.",
+      "interface": "Adapter, prompt reduzido e versão da tarefa.",
+      "condition": "Escopo documentado é especializado e continua sujeito a validação.",
+      "acceptance": "Comparar resposta e rejeição com a versão de prompt completo.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4D-S012"
+      ],
+      "case_ids": [
+        "V4D-C006"
+      ]
+    },
+    {
+      "target_id": "T193",
+      "relation": "complements",
+      "how": "Guardrails verificam restrições que não devem depender da memória do modelo.",
+      "interface": "Saída estruturada e regras externas.",
+      "condition": "Critérios explícitos e atualizados.",
+      "acceptance": "Testar casos adversos que o treino não cobriu.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S034",
+        "V3D-S008",
+        "V4B-S012",
+        "V4D-S012"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Acompanhar tokens de saída e retries para não anunciar economia só de entrada.",
+    "Manter baseline com instruções completas para diagnosticar regressões."
+  ],
+  "frontier_comparison": "Compare a rotina destilada com um modelo de fronteira usando o mesmo contrato de saída. Redução de prompt pode melhorar custo e consistência local, sem comprovar paridade fora da rotina.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q009"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "C-S034",
+    "V3D-S008",
+    "V4B-S012",
+    "V4D-S012"
+  ]
+}

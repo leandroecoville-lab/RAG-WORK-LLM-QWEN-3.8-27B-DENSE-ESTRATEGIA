@@ -1,0 +1,120 @@
+{
+  "id": "T100",
+  "novelty": "A v3 explicou mapeamento entre consultas e grupos. Esta ficha trata GQA na seleção de modelos e no planejamento distribuído, incluindo validação de layouts e separação entre mudança arquitetural, implementação de kernel e qualidade do checkpoint.",
+  "deep_layers": [
+    {
+      "name": "Grupos como restrição de implantação",
+      "detail": "Use números de heads Q/KV para verificar divisibilidade e estratégia de particionamento admitida pelo runtime. Quando grupos não se distribuem uniformemente, o backend pode replicar ou restringir TP. Essa escolha afeta memória e comunicação; valide antes de reservar máquinas com uma divisão que o modelo não suporta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S019",
+        "V4B-S017",
+        "V4B-S020"
+      ]
+    },
+    {
+      "name": "Conversão com orçamento completo",
+      "detail": "O trabalho de GQA investiga adaptação de checkpoints, mas isso não torna conversão gratuita. Planeje dados, treinamento adicional, validação e artefatos de rollback. Para um projeto aplicado, escolher um checkpoint já treinado com GQA pode ser mais simples; compare essa opção antes de investir em modificar arquitetura.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S019",
+        "V4B-S017",
+        "V4B-S020"
+      ]
+    },
+    {
+      "name": "Qualidade versus implementação",
+      "detail": "Teste primeiro se o kernel preserva o mapeamento correto; depois avalie a qualidade do modelo. Um bug de expansão ou shard pode parecer perda inerente de GQA. Use referência que materializa grupos para comparar numericamente, mesmo que seja lenta, e só use o caminho compacto no serving após equivalência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S019",
+        "V4B-S017",
+        "V4B-S020"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Servidor com memória limitada",
+      "scenario": "É necessário escolher entre modelos de porte semelhante.",
+      "strategy": "Compare tarefas reais, tamanho de cache por comprimento e suporte do executor. Dê preferência ao candidato que entrega qualidade dentro do SLO, não ao menor número de grupos isoladamente. Registre tokenizer e treino como fatores de confusão.",
+      "small_model_role": "Um 8–14B GQA pode oferecer equilíbrio útil entre cache e qualidade, sujeito a teste.",
+      "acceptance": "Aprovar por custo por resposta aceita e regressões por categoria.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S019",
+        "V4B-S017",
+        "V4B-S020"
+      ]
+    },
+    {
+      "name": "Portabilidade entre runtimes",
+      "scenario": "O checkpoint muda de biblioteca sem trocar pesos.",
+      "strategy": "Valide ordem de heads, reshape e offsets com entradas curtas e longas. Compare prefill e decode separadamente. Se a nova biblioteca expande KV permanentemente, registre perda de memória mesmo quando as saídas permanecem corretas.",
+      "small_model_role": "Um 3–30B precisa conservar o compartilhamento no layout físico para obter a economia pretendida.",
+      "acceptance": "Exigir erro numérico tolerado e bytes KV compatíveis com o layout documentado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S019",
+        "V4B-S017",
+        "V4B-S020"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, uma arquitetura já treinada com GQA permite experimentar baixo custo sem projeto de conversão.",
+    "8_14b": "Em 8–14B, verificar qualidade por tarefa e eficiência do kernel antes de escolher o número de grupos.",
+    "15_30b": "Em 15–30B, planejar TP pelo layout KV e possíveis réplicas, não só pelo tamanho das matrizes.",
+    "training_or_runtime_requirements": "A escolha de grupos pertence ao checkpoint; implementar compartilhamento é runtime, converter grupos exige adaptação.",
+    "do_not_use_when": "Não comparar modelos diferentes e atribuir toda diferença de desempenho exclusivamente a GQA."
+  },
+  "connections": [
+    {
+      "target_id": "T106",
+      "relation": "feeds",
+      "how": "Fornecer o layout por camada para dimensionar cache e admissão.",
+      "interface": "Heads Q/KV, dimensões, dtype e política de retenção.",
+      "condition": "Configuração corresponde à revisão carregada.",
+      "acceptance": "Conferir estimativa com memória real por sequência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S019",
+        "V4B-S017",
+        "V4B-S020"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T090",
+      "relation": "complements",
+      "how": "Executar atenção agrupada com backend fundido que preserve compartilhamento.",
+      "interface": "Q com múltiplas heads e KV agrupado.",
+      "condition": "Kernel suporta GQA sem expansão persistente desnecessária.",
+      "acceptance": "Comparar com referência expandida e medir temporários.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S019",
+        "V4B-S017",
+        "V4B-S020"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Testar correspondência de grupos após conversão de pesos e sharding.",
+    "Manter referência numérica independente do caminho otimizado."
+  ],
+  "frontier_comparison": "Comparar tarefas específicas contra a fronteira sob orçamento total equivalente. GQA ajuda eficiência arquitetural, mas não permite concluir que um modelo pequeno alcança capacidades gerais de outro maior.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q005",
+      "V4B-Q016"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S019",
+    "V4B-S017",
+    "V4B-S020"
+  ]
+}

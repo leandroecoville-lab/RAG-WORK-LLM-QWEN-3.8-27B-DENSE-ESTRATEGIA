@@ -1,0 +1,6 @@
+flowchart TD
+    T065["T065 Transactional State Manager"]
+    T075["T075 Memory Reconciliation"]
+    T065 -. "complements: proposta" .-> T075
+    T162["T162 Idempotência"]
+    T065 -. "requires: proposta" .-> T162

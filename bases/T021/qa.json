@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Preciso retreinar o modelo para comprimir em tempo real?",
+    "answer": "Não para seleção e síntese textual; métodos latentes específicos podem exigir treinamento."
+  },
+  {
+    "question": "Comprimir a cada turno é ideal?",
+    "answer": "Não. A frequência deve equilibrar custo, volume e risco de perda acumulada."
+  },
+  {
+    "question": "A margem deve ser uma porcentagem fixa?",
+    "answer": "Não necessariamente. Resultados de ferramentas e saídas variam em tamanho; uma reserva baseada nas próximas etapas pode ser mais informativa."
+  },
+  {
+    "question": "O que fazer se a compactação falhar?",
+    "answer": "Preserve a versão anterior e registre a falha. Não avance com um resumo parcial como se tivesse conservado os requisitos indispensáveis."
+  }
+]

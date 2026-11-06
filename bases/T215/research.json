@@ -1,0 +1,52 @@
+{
+  "id": "T215",
+  "technical_details": "Masking preserva a estrutura da trajetória enquanto retira o conteúdo de observações selecionadas. Essa assimetria pode deixar uma ação sem a evidência que a justificou, favorecendo releitura ou repetição. Uma política proposta marca observações protegidas por dependências ainda abertas: resultados que comprovam uma decisão pendente não entram na mesma regra de expiração que logs já consumidos. O marcador deve permitir localizar a observação integral quando necessário.",
+  "boundary_condition": "Observações antigas continuam essenciais quando contêm único recibo, exceção ou detalhe ainda exigido pelo próximo passo.",
+  "implementation_contract": {
+    "inputs": "Trajetória, janela recente, dependências pendentes e referências ao arquivo original.",
+    "outputs": "Histórico mascarado com marcadores estáveis e conteúdo protegido.",
+    "state": "Observações omitidas, motivos e acessos posteriores.",
+    "invariant": "Mascarar contexto não significa apagar a evidência original nem declarar seu conteúdo irrelevante para sempre."
+  },
+  "tradeoffs": [
+    "Regras simples reduzem custo de síntese e podem provocar novas consultas.",
+    "Proteções por dependência preservam informação útil e exigem estado adicional do workflow."
+  ],
+  "failure_test": "Teste proposto: mascarar a única observação que contém um identificador necessário ao passo seguinte; exigir recuperação por referência ou proteção antecipada, sem inventar o identificador.",
+  "evaluation_plan": "Comparar histórico integral, masking e sumarização no mesmo agente e orçamento. Medir conclusão, releituras, repetição de ações e custo total, incluindo a síntese. Evitar extrapolar resultados de uma configuração para outros modelos e tarefas.",
+  "comparisons": [
+    {
+      "entry_id": "T212",
+      "relation": "alternative",
+      "reason": "Auto-compact produz resumo; masking decide quais observações deixar fora da janela."
+    },
+    {
+      "entry_id": "T214",
+      "relation": "complements",
+      "reason": "Poda interna e masking por observação podem ser combinados com responsabilidades distintas."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O estudo da JetBrains compara omissão de observações e sumarização e não encontra superioridade consistente da síntese em todas as configurações avaliadas.",
+    "source_ids": [
+      "V2A-S003"
+    ],
+    "support": "direct",
+    "caveat": "Os resultados pertencem aos agentes e benchmarks estudados; não demonstram que descarte sempre preserve melhor informação."
+  },
+  "advanced_qa": [
+    {
+      "question": "Mascarar significa resumir com menos palavras?",
+      "answer": "Não. O mecanismo pode apenas substituir o conteúdo por um marcador, sem representar semanticamente o que foi retirado."
+    },
+    {
+      "question": "Por que medir releituras na avaliação?",
+      "answer": "Porque a economia inicial pode ser compensada por ferramentas repetidas para recuperar observações removidas cedo demais."
+    }
+  ],
+  "source_ids": [
+    "V2A-S003",
+    "V3C-S031"
+  ],
+  "research_note": "Fontes primárias reabertas nesta pesquisa; contratos, cenários de falha e avaliação são propostas editoriais."
+}

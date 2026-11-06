@@ -1,0 +1,18 @@
+[
+  {
+    "question": "ReAct exige mostrar pensamentos privados?",
+    "answer": "Não. O sistema pode registrar decisões operacionais curtas, ações e observações."
+  },
+  {
+    "question": "Mais ciclos significam mais inteligência?",
+    "answer": "Não. Sem informação nova ou verificação, podem apenas repetir o erro."
+  },
+  {
+    "question": "Reagir a toda observação é sempre mais inteligente?",
+    "answer": "Não. Algumas observações apenas confirmam passos previsíveis; a chamada adicional pode não mudar nenhuma decisão."
+  },
+  {
+    "question": "Como distinguir retry útil de loop?",
+    "answer": "Pela categoria do erro, mudança de condições e evidência de progresso; igualdade de texto sozinha não decide todos os casos."
+  }
+]

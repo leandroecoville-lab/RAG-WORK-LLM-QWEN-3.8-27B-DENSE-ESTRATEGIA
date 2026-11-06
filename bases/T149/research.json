@@ -1,0 +1,52 @@
+{
+  "id": "T149",
+  "technical_details": "Um heap não mantém ordem estável entre itens com a mesma prioridade sem critério adicional. Uma chave composta, como prioridade e sequência de chegada, resolve desempate sem comparar payloads heterogêneos. Alterar diretamente a prioridade de um item já inserido viola a organização do heap; uma estratégia proposta usa nova versão e marca a entrada anterior como obsoleta. Isso exige limpeza para não acumular itens mortos.",
+  "boundary_condition": "A fila pode ordenar trabalho inviável: disponibilidade de recurso e dependências continuam sendo responsabilidades do escalonador.",
+  "implementation_contract": {
+    "inputs": "Item identificado, prioridade, sequência e versão da prioridade.",
+    "outputs": "Próximo item vigente ou indicação de fila vazia.",
+    "state": "Heap, mapa de versões e entradas canceladas ou substituídas.",
+    "invariant": "Cada item lógico é retirado no máximo uma vez para sua versão vigente."
+  },
+  "tradeoffs": [
+    "Atualização por entradas obsoletas simplifica implementação e pode aumentar memória.",
+    "Desempate por chegada oferece estabilidade, mas não resolve justiça entre clientes de volumes diferentes."
+  ],
+  "failure_test": "Teste proposto: inserir prioridades iguais com payloads não comparáveis, repriorizar um item e cancelar outro; verificar ordem definida e descarte das versões antigas.",
+  "evaluation_plan": "Comparar fila FIFO e prioridade com a mesma carga, incluindo mudanças de prioridade. Medir espera por classe, tamanho físico versus itens vivos e custo de inserção/retirada. Escolher política considerando justiça e necessidade de atualização, além da complexidade algorítmica.",
+  "comparisons": [
+    {
+      "entry_id": "T174",
+      "relation": "complements",
+      "reason": "O escalonador determina quando e em qual recurso executar o item retirado."
+    },
+    {
+      "entry_id": "T166",
+      "relation": "complements",
+      "reason": "Aging pode atualizar prioridade, exigindo uma política consistente de manutenção da estrutura."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A PriorityQueue de asyncio retira a menor chave de prioridade primeiro.",
+    "source_ids": [
+      "V3C-S008"
+    ],
+    "support": "direct",
+    "caveat": "Estabilidade, atualização e persistência não são garantidas automaticamente por esse comportamento básico."
+  },
+  "advanced_qa": [
+    {
+      "question": "Duas tarefas com prioridade igual saem em FIFO?",
+      "answer": "Somente se o contrato adicionar um desempate por chegada ou usar uma implementação que o garanta."
+    },
+    {
+      "question": "Por que não mudar a chave dentro do heap?",
+      "answer": "Porque a posição armazenada não é recalculada automaticamente; a estrutura pode deixar de representar a ordenação pretendida."
+    }
+  ],
+  "source_ids": [
+    "V3C-S008",
+    "C-S014"
+  ],
+  "research_note": "Detalhamento e avaliação propostos; a fonte apoia o mecanismo, sem comprovar implementação LAI."
+}

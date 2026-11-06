@@ -1,0 +1,47 @@
+{
+  "id": "T106",
+  "technical_details": "O orçamento KV deve ser calculado por camada e dispositivo, pois arquiteturas híbridas podem ter números de cabeças ou comprimentos retidos diferentes. Uma soma útil é Σcamadas 2·B·Tcamada·Hkv_camada·dcamada·scamada bytes, antes de padding e réplicas. MQA/GQA reduzem Hkv lógico; o runtime precisa manter essa economia no layout físico, evitando materializar cópias persistentes para cada cabeça de consulta.",
+  "boundary_condition": "Replicação por paralelismo, kernels incompatíveis ou camadas de atenção global podem tornar a economia menor que a previsão simplificada.",
+  "implementation_contract": {
+    "inputs": "Configuração por camada, comprimentos retidos, dtype e plano de particionamento.",
+    "outputs": "Estimativa detalhada e medição de bytes KV por dispositivo.",
+    "state": "Grupos lógicos, réplicas físicas, reservas e buffers temporários.",
+    "invariant": "Toda economia declarada distingue valores úteis de memória realmente alocada."
+  },
+  "tradeoffs": [
+    "Mais grupos preservam diversidade com maior custo por token.",
+    "Repartir grupos exige comunicação ou replicação conforme o plano distribuído."
+  ],
+  "failure_test": "Teste proposto: instrumentar alocações ao alternar entre um kernel com broadcast e outro que materializa expansão. Esperar mesma saída, mas detectar explicitamente a diferença de bytes físicos.",
+  "evaluation_plan": "Plano proposto: comparar previsão por camada com medições em vários comprimentos e concorrências. Separar pesos, KV e temporários; investigar divergências antes de estimar capacidade máxima e validar limites sob crescimento real de saídas.",
+  "comparisons": [
+    {
+      "entry_id": "T100",
+      "relation": "complements",
+      "reason": "A arquitetura define grupos; o planejamento operacional verifica sua representação física."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "GQA usa um número de cabeças KV intermediário entre MQA e MHA convencional.",
+    "source_ids": [
+      "B-S019"
+    ],
+    "support": "direct",
+    "caveat": "A contagem arquitetural não inclui automaticamente réplicas, alinhamento ou reservas do servidor."
+  },
+  "advanced_qa": [
+    {
+      "question": "Como considerar camadas locais e globais?",
+      "answer": "Use comprimentos retidos por camada, em vez de multiplicar todas por um único comprimento total."
+    },
+    {
+      "question": "Menos bytes por token garante mais usuários?",
+      "answer": "Apenas se KV for o limitante relevante e outros recursos, prazos e reservas também suportarem a concorrência adicional."
+    }
+  ],
+  "source_ids": [
+    "B-S019",
+    "B-S018"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

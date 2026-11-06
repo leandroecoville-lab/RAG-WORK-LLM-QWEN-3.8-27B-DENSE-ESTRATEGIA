@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Posso substituir instruções por siglas inventadas?",
+    "answer": "Só se o consumidor tiver uma forma confiável de resolver essas siglas; do contrário você retirou informação."
+  },
+  {
+    "question": "É Context Distillation?",
+    "answer": "A reescrita textual não. Destilação paramétrica envolve treinamento para internalizar comportamento."
+  },
+  {
+    "question": "Posso validar somente se a resposta parece adequada?",
+    "answer": "Isso perde violações raras. Transforme cada regra relevante em casos observáveis e examine erros por categoria."
+  },
+  {
+    "question": "Qual conteúdo não convém abreviar agressivamente?",
+    "answer": "Identificadores, condições numéricas, exceções e escopos que mudam decisões precisam de representação inequívoca; a escolha deve seguir o contrato da tarefa."
+  }
+]

@@ -1,0 +1,6 @@
+flowchart TD
+    T153["T153 Output Streaming com interrupção"]
+    T172["T172 Streaming Controller"]
+    T153 -. "feeds: proposta" .-> T172
+    T243["T243 Reconciliação de operações externas"]
+    T153 -. "complements: proposta" .-> T243

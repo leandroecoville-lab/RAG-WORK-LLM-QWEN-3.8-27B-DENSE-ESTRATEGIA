@@ -1,0 +1,31 @@
+{
+  "id": "T093",
+  "name": "PagedAttention",
+  "canonical_name": "PagedAttention",
+  "canonical_id": "T093",
+  "aliases": [
+    "atenção paginada"
+  ],
+  "category": "inferencia",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T081",
+    "T088",
+    "T105",
+    "T116",
+    "R009"
+  ],
+  "source_ids": [
+    "B-S013",
+    "V3B-S009",
+    "V4B-S014",
+    "V4B-S008"
+  ],
+  "namespace": "T093",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T093",
+  "chunk_count": 9
+}

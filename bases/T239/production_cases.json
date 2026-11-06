@@ -1,0 +1,252 @@
+{
+  "coverage": {
+    "entry_id": "T239",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 1,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 4,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 3,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Git Worktrees",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C029",
+      "company": "OpenAI",
+      "system": "Codex no desenvolvimento interno e harness beta",
+      "title": "Adoção interna de Codex com ambiente verificável",
+      "evidence_level": "production_documented",
+      "observed_use": "Uso diário por equipes e beta interno com usuários reais relatados em duas publicações do operador.",
+      "technical_mechanism": "Código e planos no repositório, aplicação e observabilidade por worktree, ferramentas de revisão e restrições estruturais executáveis.",
+      "event_date": "2026-02-11",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S029",
+        "V4C-S030"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R021",
+          "match": "exact",
+          "rationale": "Uso interno de Codex confirmado pelo operador."
+        },
+        {
+          "entry_id": "T239",
+          "match": "exact",
+          "rationale": "Artigo de harness usa uma aplicação e observabilidade isoladas por Git worktree."
+        },
+        {
+          "entry_id": "T213",
+          "match": "exact",
+          "rationale": "Operador relata decompor metas em blocos de design, código, revisão e testes com planos versionados."
+        },
+        {
+          "entry_id": "T155",
+          "match": "exact",
+          "rationale": "Instrução monolítica foi substituída por mapa curto."
+        },
+        {
+          "entry_id": "T233",
+          "match": "exact",
+          "rationale": "Linters e testes estruturais verificam invariantes."
+        },
+        {
+          "entry_id": "T234",
+          "match": "exact",
+          "rationale": "AGENTS.md curto e documentação versionada no repositório oferecem memória persistente do projeto; não é mera configuração CI."
+        },
+        {
+          "entry_id": "T237",
+          "match": "exact",
+          "rationale": "Agentes revisam outros agentes no processo descrito."
+        },
+        {
+          "entry_id": "T217",
+          "match": "family",
+          "rationale": "Há ciclos de implementação e testes, mas não fica provado test-first para todas as alterações."
+        },
+        {
+          "entry_id": "R027",
+          "match": "exact",
+          "rationale": "Git e worktrees sustentam o ambiente."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "Gates verificáveis inspiram o componente editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: reproduzir tarefas pequenas com a mesma infraestrutura de testes e isolamento usando 3–30B; medir custo completo, inclusive supervisão e revisão.",
+      "limits": "Consolidado para evitar somar equipes e artigos como adoções independentes. Beta operacional não é prova de autonomia geral; modelos do relato não são demonstrados como 3–30B.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4C-C029",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T239",
+        "match": "exact",
+        "rationale": "Artigo de harness usa uma aplicação e observabilidade isoladas por Git worktree."
+      }
+    },
+    {
+      "case_id": "V4C-C026",
+      "company": "Anthropic",
+      "system": "Scion",
+      "title": "Source control interno para escala de agentes",
+      "evidence_level": "production_documented",
+      "observed_use": "Monorepo migrado para sistema interno de controle de versões; CI e agentes usam consultas e materialização seletiva.",
+      "technical_mechanism": "Changesets e conteúdo imutáveis, dados derivados, caches hierárquicos e alteração de referência separada da criação de conteúdo.",
+      "event_date": "2026-10-13",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S027"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T238",
+          "match": "family",
+          "rationale": "Scion fornece consulta e materialização seletiva de arquivos sob demanda; não demonstra especificamente a API de faixa de linhas."
+        },
+        {
+          "entry_id": "T236",
+          "match": "family",
+          "rationale": "Changesets versionam alterações mas não são git commit."
+        },
+        {
+          "entry_id": "R027",
+          "match": "analogy",
+          "rationale": "Sistema substituiu Git naquele ambiente; não comprova comportamento Git atual."
+        },
+        {
+          "entry_id": "T239",
+          "match": "analogy",
+          "rationale": "Checkouts esparsos/virtualizados não são Git worktrees."
+        },
+        {
+          "entry_id": "P015",
+          "match": "analogy",
+          "rationale": "Publicação e autoria por versão inspiram o componente editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: armazenar artefatos por conteúdo e ler arquivos necessários; adotar princípios sem recriar Scion ou atribuir seus ganhos à faixa 3–30B.",
+      "limits": "Infraestrutura excepcional, sistema distinto de Git; uma adoção, não um caso para cada cache ou ferramenta.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4C-C026",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T239",
+        "match": "analogy",
+        "rationale": "Checkouts esparsos/virtualizados não são Git worktrees."
+      }
+    },
+    {
+      "case_id": "V4C-C020",
+      "company": "Microsoft",
+      "system": "Windows — Git/GVFS",
+      "title": "Versionamento do Windows com materialização sob demanda",
+      "evidence_level": "production_documented",
+      "observed_use": "A Microsoft relata rollout de Git/GVFS para equipes Windows e uso de commits, branches e builds de validação em sua engenharia.",
+      "technical_mechanism": "Virtualização reduz a necessidade de materializar todo o repositório; proxies e melhorias de operações locais apoiam o fluxo de código versionado.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S020"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R027",
+          "match": "exact",
+          "rationale": "O operador confirma migração e uso de Git."
+        },
+        {
+          "entry_id": "T236",
+          "match": "family",
+          "rationale": "Há commits e validação, mas não uma política de commit por etapa de agente."
+        },
+        {
+          "entry_id": "T238",
+          "match": "analogy",
+          "rationale": "Materialização sob demanda inspira leitura seletiva, mas não é leitura LLM por faixa de linhas."
+        },
+        {
+          "entry_id": "T239",
+          "match": "analogy",
+          "rationale": "Virtualização de checkout não comprova uso de Git worktrees."
+        }
+      ],
+      "small_model_transfer": "Proposta: manter um 3–30B trabalhando sobre arquivos materializados e referências de revisão, solicitando dependências quando necessário; não confundir arquivo ausente localmente com inexistente no repositório.",
+      "limits": "Relato histórico de 2017; não certifica configuração atual do Windows ou vantagem em toda dimensão. Não há LLM nem prova de método de edição autônoma.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C020",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T239",
+        "match": "analogy",
+        "rationale": "Virtualização de checkout não comprova uso de Git worktrees."
+      }
+    },
+    {
+      "case_id": "V4C-C017",
+      "company": "GitHub / Microsoft",
+      "system": "Copilot coding agent",
+      "title": "Execução de tarefa em ambiente isolado e entrega por PR",
+      "evidence_level": "operational_product",
+      "observed_use": "O anúncio documenta recurso que inicia ambiente GitHub Actions, consulta repositório, edita, valida e publica commits em draft PR.",
+      "technical_mechanism": "A tarefa mantém vínculo com issue, sessão, repositório e mudanças; instruções e feedback da revisão alimentam novas alterações.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S016"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T235",
+          "match": "exact",
+          "rationale": "O recurso executa trabalho em background com logs."
+        },
+        {
+          "entry_id": "T236",
+          "match": "exact",
+          "rationale": "O agente publica mudanças como commits em draft PR."
+        },
+        {
+          "entry_id": "T234",
+          "match": "exact",
+          "rationale": "Instruções do repositório são usadas como contexto."
+        },
+        {
+          "entry_id": "T233",
+          "match": "family",
+          "rationale": "Há etapas de validação, sem demonstração integral do protocolo de hash-base da ficha."
+        },
+        {
+          "entry_id": "T239",
+          "match": "analogy",
+          "rationale": "Ambiente isolado não é prova de uso do comando Git worktree."
+        },
+        {
+          "entry_id": "R027",
+          "match": "exact",
+          "rationale": "Clonagem, commits e pull requests compõem o fluxo documentado."
+        }
+      ],
+      "small_model_transfer": "Proposta: reproduzir a separação tarefa→checkout→patch→testes→revisão com um 3–30B, avaliando artefatos e custo em tarefas delimitadas. Implementar controles de publicação na aplicação, não no prompt.",
+      "limits": "Classificado operational_product: a página descreve recurso, não uma implantação identificada de cliente. Configurações e exigências de aprovação mudaram desde o anúncio.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C017",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T239",
+        "match": "analogy",
+        "rationale": "Ambiente isolado não é prova de uso do comando Git worktree."
+      }
+    }
+  ]
+}

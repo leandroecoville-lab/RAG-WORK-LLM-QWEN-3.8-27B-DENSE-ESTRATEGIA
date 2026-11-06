@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Um template serve para todos os modelos de chat?",
+    "answer": "Não. Os marcadores e a organização esperada pertencem ao treinamento e à configuração de cada modelo."
+  },
+  {
+    "question": "A documentação main corresponde ao pacote instalado?",
+    "answer": "Não necessariamente. É preciso comparar a versão consultada com a versão e os recursos efetivamente presentes no ambiente."
+  },
+  {
+    "question": "Por que a mesma lista de mensagens pode gerar outro resultado?",
+    "answer": "Template, tokens especiais e parâmetros podem alterar a sequência efetivamente enviada."
+  },
+  {
+    "question": "Qual estratégia de cache é sempre melhor?",
+    "answer": "Nenhuma. Escolha conforme memória, compilação, arquitetura, comprimento e custo de transferência medidos."
+  }
+]

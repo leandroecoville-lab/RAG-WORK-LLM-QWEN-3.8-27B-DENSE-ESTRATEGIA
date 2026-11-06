@@ -1,0 +1,46 @@
+{
+  "id": "T104",
+  "technical_details": "O escalonamento orientado por afinidade de prefixo busca amortizar a construção do estado ao atender pedidos relacionados próximos no tempo. Isso cria uma tensão com justiça: pedidos sem prefixos populares podem esperar enquanto novas consultas compatíveis continuam chegando. Como proposta de integração, idade e prazo devem limitar essa preferência. O cache compartilhado também compete por memória com sequências ativas e seus tokens futuros.",
+  "boundary_condition": "Uma boa taxa de hits pode coexistir com starvation ou piora da latência de classes pouco frequentes.",
+  "implementation_contract": {
+    "inputs": "Pedidos, afinidade de prefixo, idade, prioridades e capacidade KV disponível.",
+    "outputs": "Ordem de execução com justificativa de afinidade e limites de espera.",
+    "state": "Árvore de estados, referências ativas e fila com tempos originais.",
+    "invariant": "A política de reúso não altera conteúdo do pedido nem perde sua identidade."
+  },
+  "tradeoffs": [
+    "Ordenar por afinidade reduz prefill repetido e pode prejudicar equidade.",
+    "Reter históricos libera trabalho futuro e ocupa capacidade que poderia admitir novas sequências."
+  ],
+  "failure_test": "Teste proposto: alimentar continuamente um prefixo popular enquanto um pedido sem hit aguarda. Esperar execução dentro da regra de envelhecimento proposta, sem exigir que o pedido mude seu prompt.",
+  "evaluation_plan": "Plano proposto: comparar ordem de chegada e afinidade limitada por prazo com a mesma carga. Medir tokens recalculados, TTFT por classe, pior espera e throughput útil; aceitar economia de trabalho somente com equidade previamente definida.",
+  "comparisons": [
+    {
+      "entry_id": "T103",
+      "relation": "complements",
+      "reason": "A radix tree fornece correspondências; a política decide quando usar essa afinidade."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O artigo do SGLang discute escalonamento por maior prefixo compartilhado e reconhece risco de starvation.",
+    "source_ids": [
+      "V3B-S011"
+    ],
+    "support": "direct",
+    "caveat": "A propriedade de reúso descrita para lotes não vira garantia geral de justiça em tráfego online."
+  },
+  "advanced_qa": [
+    {
+      "question": "Pode usar hits como único objetivo?",
+      "answer": "Não. Eles ignoram quem está esperando e o custo de memória imposto às sequências ativas."
+    },
+    {
+      "question": "RadixAttention altera os pesos de atenção?",
+      "answer": "Seu mecanismo de reúso organiza estados já calculados; uma implementação correta preserva a operação do modelo."
+    }
+  ],
+  "source_ids": [
+    "V3B-S011"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

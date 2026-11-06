@@ -1,0 +1,113 @@
+{
+  "id": "T237",
+  "novelty": "A v3 exigia contexto suficiente e evidência no retorno. A expansão escolhe o que terceirizar, limita integração e acompanha trabalhadores para que redução de contexto do supervisor não vire perda de controle sobre a missão.",
+  "deep_layers": [
+    {
+      "name": "Delegar por valor líquido",
+      "detail": "Compare trabalho local com custo de preparar, executar e integrar a delegação. Busca independente e revisão por propriedade costumam ter fronteiras claras; decisões fortemente acopladas podem gerar mais coordenação que ganho. Escolha unidades cuja resposta altere uma decisão do supervisor e que possam terminar sem depender de conversa não fornecida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Retorno escalonado",
+      "detail": "Peça resultado curto com artefatos, evidências e limitações, mantendo detalhes disponíveis sob demanda. O supervisor verifica suficiência antes de integrar e pode solicitar esclarecimento específico. Não retransmita toda a trajetória de cada trabalhador; isso elimina boa parte do benefício de contexto e multiplica ruído de hipóteses já descartadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030"
+      ]
+    },
+    {
+      "name": "Responsabilidade de integração",
+      "detail": "O supervisor continua responsável por conflitos de versão, duplicação de fontes e critérios globais. Um trabalhador não pode declarar missão inteira concluída porque sua parte terminou. Atribua dono de escrita, revisão e critério de aceite, e espere sinal de prontidão antes de consumir arquivos que ainda podem estar mudando.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "C-S030"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Pesquisa paralela verificável",
+      "scenario": "Vários tópicos precisam de fontes e comparação posterior.",
+      "strategy": "Distribua perguntas independentes e IDs exclusivos. Cada trabalhador retorna evidência e limite, com casos identificados para deduplicação. O supervisor revisa alegações que atravessam tópicos e não soma relatos do mesmo deployment como confirmações independentes. Reabra apenas lacunas específicas.",
+      "small_model_role": "8–14B coleta e extrai; 15–30B integra e audita relações.",
+      "acceptance": "Proposta: cobertura integral com menos contexto no supervisor e custo de integração registrado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030"
+      ]
+    },
+    {
+      "name": "Revisores especializados de patch",
+      "scenario": "O candidato precisa respeitar propriedades distintas.",
+      "strategy": "Delegue uma propriedade por revisor e forneça o mesmo artefato imutável. Um revisor devolve evidência de violação ou limite de avaliação. Agregue por requisito obrigatório, sem votação que esconda falha crítica, e rode verificações executáveis em paralelo quando forem independentes.",
+      "small_model_role": "3–7B cobre regras estreitas; 8–14B analisa trechos; 15–30B resolve conflitos de intenção.",
+      "acceptance": "Proposta: detectar violações inseridas sem excesso de falsos bloqueios ou revisões redundantes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Subtarefas pequenas com contrato explícito e poucas dependências ocultas.",
+    "8_14b": "Especialistas por documento, módulo ou propriedade, com evidência recuperável.",
+    "15_30b": "Supervisão e síntese entre trabalhadores; manter o número de agentes compatível com orçamento e integração.",
+    "training_or_runtime_requirements": "Fila de tarefas, IDs, versões, donos de escrita e retorno final validado antes de consolidação.",
+    "do_not_use_when": "Não delegar apenas para aumentar paralelismo quando o resultado precisa de contexto compartilhado indivisível."
+  },
+  "connections": [
+    {
+      "target_id": "T147",
+      "relation": "complements",
+      "how": "Claude Research usa subagentes paralelos e reúne resultados para a resposta do líder.",
+      "interface": "Perguntas, orçamento e artefatos retornados.",
+      "condition": "Trabalhos independentes com junção definida.",
+      "acceptance": "O líder integra resultados aceitos e identifica lacunas.",
+      "basis": "source_documented",
+      "source_ids": [
+        "C-S030"
+      ],
+      "case_ids": [
+        "V4C-C007"
+      ]
+    },
+    {
+      "target_id": "T200",
+      "relation": "complements",
+      "how": "CodeCourt no AutoClean distribui avaliação por propriedades e usa os vereditos como gate do candidato.",
+      "interface": "Patch imutável, propriedade e parecer.",
+      "condition": "Critérios obrigatórios têm tratamento explícito de falha.",
+      "acceptance": "Um veredito negativo não desaparece na média dos demais.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S009"
+      ],
+      "case_ids": [
+        "V4C-C010"
+      ]
+    }
+  ],
+  "failure_controls": [
+    "Contexto isolado não garante arquivos ou efeitos isolados.",
+    "Relato de teste de subagente precisa identificar alvo e revisão para ser aceito como evidência."
+  ],
+  "frontier_comparison": "Compare equipe pequena e agente de fronteira pelo orçamento total, incluindo supervisor e revisores. A especialização ajuda em tarefas verificáveis, mas integrações difíceis podem consumir toda a vantagem.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q006",
+      "V4C-Q010"
+    ],
+    "scope_note": "Claude Research e AutoClean demonstram delegação operacional. Não foi presumido que seus trabalhadores sejam modelos de 3–30B."
+  },
+  "source_ids": [
+    "C-S030",
+    "V4C-S014",
+    "V4C-S030",
+    "V4C-S009"
+  ]
+}

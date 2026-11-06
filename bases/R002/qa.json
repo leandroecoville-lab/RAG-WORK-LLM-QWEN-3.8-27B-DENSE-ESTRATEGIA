@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Letta é um modelo de linguagem?",
+    "answer": "Não. Ele organiza a execução e o estado de agentes que utilizam modelos configurados."
+  },
+  {
+    "question": "Uma nova conversa cria memória independente?",
+    "answer": "Não necessariamente. Na documentação atual, conversas do mesmo agente compartilham sua memória; outro agente pode fornecer identidade separada."
+  },
+  {
+    "question": "Um agente local tem automaticamente backup remoto?",
+    "answer": "Não. A documentação distingue agentes locais sem conta e agentes com backup na nuvem; o contrato deve registrar qual modalidade foi usada."
+  },
+  {
+    "question": "Stateful significa aprendizado nos pesos?",
+    "answer": "Não. Neste contexto significa identidade e estado persistentes. Mudanças de arquivos, histórico ou configuração não são automaticamente treinamento paramétrico."
+  }
+]

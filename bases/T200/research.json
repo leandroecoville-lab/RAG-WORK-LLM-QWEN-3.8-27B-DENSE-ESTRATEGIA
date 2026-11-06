@@ -1,0 +1,47 @@
+{
+  "id": "T200",
+  "technical_details": "Independência possui eixos diferentes: fonte, método, implementação e informação disponível. Um verificador de outra marca pode reutilizar a mesma fonte errada; dois programas podem compartilhar a mesma biblioteca defeituosa. Como proposta, derive casos da especificação, mantenha checagem cega quando possível e use métodos complementares. Divergência precisa de adjudicação por evidência, em vez de ser resolvida automaticamente pela confiança verbal.",
+  "boundary_condition": "Uma checagem independente pode discordar por interpretar outro requisito; alinhar a especificação continua necessário.",
+  "implementation_contract": {
+    "inputs": "Artefato, especificação, evidências de origem e métodos de checagem com dependências registradas.",
+    "outputs": "Veredito limitado aos critérios examinados e divergências documentadas.",
+    "state": "Mapa de fontes e componentes compartilhados entre gerador e verificador.",
+    "invariant": "O verificador não recebe a conclusão esperada como substituto da evidência que deveria examinar."
+  },
+  "tradeoffs": [
+    "Diversidade de métodos reduz alguns erros comuns e aumenta custo.",
+    "Checagem cega reduz ancoragem e pode exigir explicitar melhor o contexto necessário."
+  ],
+  "failure_test": "Teste proposto: fornecer a ambos a mesma fonte adulterada e depois incluir uma fonte independente ou teste derivado da especificação. Esperar identificação de que concordância inicial não demonstrava validade.",
+  "evaluation_plan": "Plano proposto: medir detecção de defeitos conhecidos, falsos alarmes e correlação de erros entre verificadores. Comparar métodos com orçamento declarado; aceitar independência pela redução observada de falhas compartilhadas, não pelo número de agentes.",
+  "comparisons": [
+    {
+      "entry_id": "T191",
+      "relation": "complements",
+      "reason": "Fatorar perguntas reduz contaminação contextual, enquanto diversificar fontes e métodos aborda dependências adicionais."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O estudo de autocorreção intrínseca observou limitações e regressões quando modelos tentavam corrigir raciocínio sem feedback externo.",
+    "source_ids": [
+      "V3B-S019"
+    ],
+    "support": "direct",
+    "caveat": "Esse resultado empírico não prova incapacidade universal; sustenta a necessidade de avaliar dependências e fontes de feedback."
+  },
+  "advanced_qa": [
+    {
+      "question": "Outro agente já é auditor independente?",
+      "answer": "Não necessariamente. Verifique o que ele recebeu, quais fontes usa e como decide."
+    },
+    {
+      "question": "Um verificador formal resolve tudo?",
+      "answer": "Pode provar propriedades de uma formalização sob hipóteses; a correspondência entre essa formalização e a necessidade real ainda precisa ser examinada."
+    }
+  ],
+  "source_ids": [
+    "V3B-S019",
+    "C-S048"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

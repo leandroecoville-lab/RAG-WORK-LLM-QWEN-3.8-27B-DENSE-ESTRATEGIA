@@ -1,0 +1,128 @@
+{
+  "id": "T113",
+  "novelty": "A v3 explicou tiles e acumuladores. Esta camada liga a escolha de tile ao regime de execução, aos limites de compilação e à validação de formas que não aparecem nos casos ideais.",
+  "deep_layers": [
+    {
+      "name": "Tile dependente da fase",
+      "detail": "Prefill oferece muitas consultas; decode frequentemente possui poucas consultas e KV crescente. Um tamanho favorável ao primeiro pode deixar pouca ocupação no segundo. Selecione variantes por forma e dtype, considerando cabeças agrupadas e comprimentos reais, em vez de fixar uma configuração por número de parâmetros do modelo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S027",
+        "V3B-S006",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    },
+    {
+      "name": "Reúso versus recursos locais",
+      "detail": "Aumentar tile pode reduzir leituras repetidas e elevar uso de registradores ou memória compartilhada. Esse consumo pode reduzir blocos residentes e causar spills. O resultado é uma curva de compromisso; a melhor configuração não se deduz somente de quantos bytes deixam de ir para a memória global.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S027",
+        "V3B-S006",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    },
+    {
+      "name": "Compilação e variedade",
+      "detail": "Formas variáveis podem produzir múltiplas especializações e custo de compilação. Defina classes de comprimento e um caminho correto para casos raros. O aquecimento precisa cobrir classes relevantes; uma medida que exclui todo custo de compilação não descreve pedidos ocasionais nem atualização frequente do processo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S027",
+        "V3B-S006",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Serviço com duas fases dominantes",
+      "scenario": "Documentos longos geram respostas curtas.",
+      "strategy": "Escolha variantes para prefill e decode separadamente e acompanhe transição entre elas. Evite otimizar decode quase inexistente enquanto prefill ocupa a maior parte do pedido.",
+      "small_model_role": "Um 8–14B pode oferecer leitura especializada com uma política de kernels adequada às formas.",
+      "acceptance": "Reduzir tempo da fase dominante mantendo logits dentro da tolerância definida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S027",
+        "V3B-S006",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    },
+    {
+      "name": "Auditoria de kernel customizado",
+      "scenario": "Uma implementação promete economia superior ao backend padrão.",
+      "strategy": "Teste comprimentos não múltiplos, masks, strides e grupos KV. Compare com referência simples e depois avalie carga representativa.",
+      "small_model_role": "Um 3–7B facilita exploração, mas os testes devem incluir dimensões reais do checkpoint alvo.",
+      "acceptance": "Nenhum ganho é aceito antes de passar bordas e equivalência numérica.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S027",
+        "V3B-S006",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Overhead de lançamento e compilação pode superar economia em sequências curtas.",
+    "8_14b": "Varie contexto e lote para encontrar pontos de transição entre variantes.",
+    "15_30b": "Considere competição por recursos locais com comunicação e outros kernels, quando presentes.",
+    "training_or_runtime_requirements": "Otimização de runtime, sem treino se a operação for preservada. Backend e GPU precisam suportar a variante.",
+    "do_not_use_when": "Não tratar tiling como sparse attention: todos os pares permitidos podem continuar sendo calculados."
+  },
+  "connections": [
+    {
+      "target_id": "T114",
+      "relation": "requires",
+      "how": "Estatísticas de softmax permitem combinar tiles sem materializar a matriz inteira.",
+      "interface": "Máximos, somas e numeradores parciais.",
+      "condition": "Mesma máscara e escala em todas as parcelas.",
+      "acceptance": "Comparar combinação em ordens diferentes sob tolerância numérica.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S027",
+        "V3B-S006",
+        "V4B-S017",
+        "V4B-S018"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T107",
+      "relation": "complements",
+      "how": "Profiling verifica se maior tile reduz tráfego sem criar spills ou baixa ocupação.",
+      "interface": "Contadores e tempo por forma.",
+      "condition": "Medições do mesmo kernel e dispositivo.",
+      "acceptance": "Demonstrar efeito no tempo do pedido, além do microbenchmark.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S027",
+        "V3B-S006",
+        "V4B-S017",
+        "V4B-S018"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Testar linhas totalmente mascaradas conforme a semântica declarada do backend.",
+    "Fixar versão do compilador e registrar seleção efetiva de kernel."
+  ],
+  "frontier_comparison": "Tiling não muda a capacidade cognitiva do modelo. Na comparação com fronteira, seu efeito aparece no custo e na latência de uma tarefa cuja qualidade já foi medida separadamente.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q020",
+      "V4B-Q005"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S027",
+    "V3B-S006",
+    "V4B-S017",
+    "V4B-S018"
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "id": "T094",
+  "novelty": "A v3 mostrou causalidade entre chunks e compromisso de granularidade. Agora a política considera prazo de primeiro token, regularidade de streaming e estimativa de custo por forma, para decidir quanto prefill admitir sem prejudicar sessões já abertas.",
+  "deep_layers": [
+    {
+      "name": "Dois relógios de serviço",
+      "detail": "O novo pedido espera seu primeiro token, enquanto pedidos antigos esperam o próximo. Reserve orçamento entre esses dois compromissos em vez de priorizar indefinidamente apenas um deles. Uma política que protege todo decode pode deixar prefills longos sem progresso; o inverso gera pausas visíveis nas conversas ativas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S004",
+        "B-S014",
+        "V4B-S002",
+        "V4B-S014"
+      ]
+    },
+    {
+      "name": "Orçamento em custo observado",
+      "detail": "Igual número de tokens novos não garante duração igual quando contextos e arquiteturas diferem. Use observações por faixa de comprimento e forma para limitar tempo aproximado da iteração, mantendo teto conservador. Reavalie a estimativa após quantização, troca de backend ou alteração de batch, pois o gargalo pode mudar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S004",
+        "B-S014",
+        "V4B-S002",
+        "V4B-S014"
+      ]
+    },
+    {
+      "name": "Aquecimento e formas recorrentes",
+      "detail": "Um conjunto pequeno de tamanhos de chunk pode facilitar compilação e reutilização de grafos, se o runtime suportar. Muitos tamanhos adaptativos podem causar aquecimento repetido e consumir memória de grafos. Meça esse efeito antes de adotar uma política aparentemente mais fina; flexibilidade tem custo de engenharia e execução.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S004",
+        "B-S014",
+        "V4B-S002",
+        "V4B-S014"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Documento longo durante chat ativo",
+      "scenario": "Um usuário envia um arquivo extenso enquanto outros recebem streaming.",
+      "strategy": "Processe o arquivo com orçamento por iteração e progresso mínimo garantido. Reduza chunks quando o intervalo de streaming exceder a meta, mas aplique envelhecimento para que o arquivo avance. Registre separadamente tempo em fila e tempo de prefill.",
+      "small_model_role": "Um 8–30B pode compartilhar GPU entre leitura longa e diálogos curtos.",
+      "acceptance": "Aprovar pela combinação de TTFT do arquivo e regularidade do streaming existente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S004",
+        "B-S014",
+        "V4B-S002",
+        "V4B-S014"
+      ]
+    },
+    {
+      "name": "Importação seguida de perguntas",
+      "scenario": "Muitos documentos serão consultados após ingestão.",
+      "strategy": "Prepare prefills oportunisticamente apenas para conteúdos com probabilidade de uso, preservando orçamento de pedidos ativos. Combine com prefix caching quando houver reuso exato. Se a demanda não vier, contabilize prefill antecipado como custo desperdiçado.",
+      "small_model_role": "Um 3–14B pode reduzir espera percebida sem exigir um modelo maior.",
+      "acceptance": "Medir economia nas consultas reais e custo dos prefills nunca consumidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S004",
+        "B-S014",
+        "V4B-S002",
+        "V4B-S014"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, chunks muito pequenos podem ser dominados por lançamentos e controle CPU.",
+    "8_14b": "Em 8–14B, escolher poucas faixas de tamanho por objetivo de latência facilita operação e diagnóstico.",
+    "15_30b": "Em 15–30B, considerar pressão KV e duração das operações distribuídas ao fixar orçamento.",
+    "training_or_runtime_requirements": "É scheduling runtime; preserva contexto lógico e requer suporte correto ao prefill parcial.",
+    "do_not_use_when": "Não tratar chunks como documentos independentes nem usá-los para contornar o limite de contexto do checkpoint."
+  },
+  "connections": [
+    {
+      "target_id": "T088",
+      "relation": "complements",
+      "how": "Reservar trabalho de prefill dentro de cada iteração do lote contínuo.",
+      "interface": "Tokens novos, decodes ativos e prazos de cada pedido.",
+      "condition": "O scheduler mantém estados de prefill parcial.",
+      "acceptance": "Comparar piores intervalos entre tokens e progresso de pedidos longos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S004",
+        "B-S014",
+        "V4B-S002",
+        "V4B-S014"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T102",
+      "relation": "alternative",
+      "how": "Separar fases em pools quando interferência persistir e transferência compensar.",
+      "interface": "Custo de prefill, volume KV e atraso de transporte.",
+      "condition": "Carga e infraestrutura justificam uma segunda camada de coordenação.",
+      "acceptance": "Comparar goodput com todas as transferências e filas incluídas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S004",
+        "B-S014",
+        "V4B-S002",
+        "V4B-S014"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Garantir progresso mínimo para entradas longas.",
+    "Testar variação de chunks com mesma máscara e saída de referência."
+  ],
+  "frontier_comparison": "Comparar experiência de leitura e conversa contra uma fronteira usando os mesmos documentos e perguntas. Melhor escalonamento pode reduzir espera, mas não prova que o modelo pequeno compreende todo o documento.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q004",
+      "V4B-Q014"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S004",
+    "B-S014",
+    "V4B-S002",
+    "V4B-S014"
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "id": "R003",
+  "novelty": "A v3 detalhou memória KV e encoder congelado. Aqui LongMem é analisado como projeto de ciclo de vida de representações, incluindo atualização do consumidor.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Versione encoder, representação armazenada e módulo que a lê como conjunto. Alterar qualquer parte exige teste de compatibilidade; dimensão igual não preserva geometria nem significado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S013",
+        "V3A-S045",
+        "V3A-S047"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Separe renovação factual do texto e renovação representacional. Reindexar com encoder antigo pode atualizar fatos; trocar encoder exige reconstruir memória mesmo quando documentos não mudaram.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S013",
+        "V3A-S045",
+        "V3A-S047"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare memória atualizada, obsoleta e reconstruída após mudança de modelo. Meça recuperação e resposta separadamente, além do custo de treino e armazenamento; não atribuir falha neural a falta de documento. Unidade de avaliação: memória neural por revisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S013",
+        "V3A-S045",
+        "V3A-S047"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Experimento de memória longa",
+      "scenario": "Equipe tem pesos e infraestrutura de treino.",
+      "strategy": "Reproduzir interface em escala controlada, avaliar vantagem sobre RAG textual e ampliar somente se o ganho cobrir manutenção.",
+      "small_model_role": "15–30B consumidor experimental.",
+      "acceptance": "Exigir benefício além do mesmo modelo com evidência textual equivalente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S013",
+        "V3A-S045",
+        "V3A-S047"
+      ]
+    },
+    {
+      "name": "Corpus que muda",
+      "scenario": "Fatos antigos precisam ser substituídos.",
+      "strategy": "Manter mapa texto-representação e reconstruir regiões afetadas; verificar que estados antigos não continuam acessíveis como atuais.",
+      "small_model_role": "8–14B pode servir como baseline textual.",
+      "acceptance": "Consulta deve acompanhar atualização factual sem misturar revisões.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S013",
+        "V3A-S045",
+        "V3A-S047"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Baseline de leitura textual, sem presumir que LongMem se encaixa diretamente.",
+    "8_14b": "Consumidor experimental apenas se arquitetura e treino forem adaptados e avaliados.",
+    "15_30b": "Alvo de pesquisa com acesso a camadas, memória externa e recursos de treinamento.",
+    "training_or_runtime_requirements": "Código e arquitetura compatíveis, dados de treino e instrumentação de estados; não é ferramenta plug-and-play para modelo fechado.",
+    "do_not_use_when": "Não há acesso ao modelo ou custo de reconstruir representações domina benefício de contexto."
+  },
+  "connections": [
+    {
+      "target_id": "T052",
+      "relation": "requires",
+      "how": "Declarar formato e versão da memória neural.",
+      "interface": "Camada, tensor, máscaras, encoder e consumidor.",
+      "condition": "Representações serem semanticamente compatíveis.",
+      "acceptance": "Trocar encoder sem reconstruir e medir degradação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S013",
+        "V3A-S045",
+        "V3A-S047"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T009",
+      "relation": "alternative",
+      "how": "Usar RAG textual como comparação operacional.",
+      "interface": "Mesmas fontes, consulta e orçamento de recursos.",
+      "condition": "Baseline receber evidência equivalente.",
+      "acceptance": "Separar ganho de memória neural de ganho de recuperação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S013",
+        "V3A-S045",
+        "V3A-S047"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não tratar encoder congelado como garantia de fatos atuais.",
+    "Não transportar métricas do artigo para outro porte sem experimento."
+  ],
+  "frontier_comparison": "Comparar contexto longo em tarefa definida; resultados do LongMem não demonstram superioridade geral a modelos de fronteira.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q018",
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S013",
+    "V3A-S045",
+    "V3A-S047"
+  ]
+}

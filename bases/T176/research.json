@@ -1,0 +1,52 @@
+{
+  "id": "T176",
+  "technical_details": "Planejamento sensível a tokens deve modelar crescimento de evidência, não apenas tamanho do prompt inicial. Uma etapa de busca pode expandir candidatos e tornar o passo seguinte inviável; uma etapa de síntese pode reduzir espaço e perder detalhes necessários à verificação. Estimativas por intervalo permitem planejar contingências: extrair por referência, dividir subtarefas ou reservar uma rodada de recuperação, mantendo custo de coordenação no orçamento.",
+  "boundary_condition": "Quando o tamanho das observações é desconhecido, um plano com estimativas pontuais otimistas pode falhar mesmo sem nenhuma resposta excepcional.",
+  "implementation_contract": {
+    "inputs": "DAG de trabalho, intervalos de entrada/saída, janela e orçamento acumulado.",
+    "outputs": "Plano viável, reservas e alternativas para etapas que ultrapassem a estimativa.",
+    "state": "Consumo real por tipo de operação e dependências informacionais.",
+    "invariant": "Uma etapa não elimina informações exigidas por seu próprio critério de validação."
+  },
+  "tradeoffs": [
+    "Dividir o trabalho reduz contexto por chamada e aumenta mensagens de integração.",
+    "Carregar documentos completos evita novas buscas e pode expulsar evidência mais relevante."
+  ],
+  "failure_test": "Teste proposto: uma pesquisa retorna muitos candidatos e a verificação exige trechos originais; exigir seleção rastreável e preservação de referências antes de continuar.",
+  "evaluation_plan": "Comparar plano sem custo, plano por estimativa média e plano com contingências. Controlar tarefas e ferramentas. Medir estouros, replanejamentos, perda de evidência e custo por conclusão; escolher a política pela variabilidade observada.",
+  "comparisons": [
+    {
+      "entry_id": "T152",
+      "relation": "complements",
+      "reason": "Alocação implementa as reservas que o plano estima."
+    },
+    {
+      "entry_id": "T143",
+      "relation": "specializes",
+      "reason": "Acrescenta restrições de contexto e consumo ao planejamento antecipado."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "ReWOO reduz repetição de contexto ao separar planejamento e observações em sua arquitetura.",
+    "source_ids": [
+      "V3C-S012"
+    ],
+    "support": "direct",
+    "caveat": "Previsões por intervalos e contingências desta ficha são propostas; a economia do estudo não é transferida para LAI."
+  },
+  "advanced_qa": [
+    {
+      "question": "Dividir sempre em tarefas menores economiza tokens?",
+      "answer": "Não. Instruções repetidas, resumos e integração podem superar a economia de cada chamada."
+    },
+    {
+      "question": "Como planejar uma saída de ferramenta sem tamanho conhecido?",
+      "answer": "Usar distribuição observada ou intervalo conservador e definir previamente como selecionar, paginar ou referenciar o excedente."
+    }
+  ],
+  "source_ids": [
+    "V3C-S012",
+    "V3C-S022"
+  ],
+  "research_note": "Síntese técnica com contratos e testes propostos; não há alegação de implantação ou medição LAI."
+}

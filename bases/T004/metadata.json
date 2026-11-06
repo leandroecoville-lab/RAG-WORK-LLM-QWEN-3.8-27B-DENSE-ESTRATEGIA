@@ -1,0 +1,34 @@
+{
+  "id": "T004",
+  "name": "Summarization em cadeia",
+  "canonical_name": "Summarization em Cadeia",
+  "canonical_id": "T004",
+  "aliases": [
+    "rolling summary",
+    "resumo acumulado",
+    "Summarization em Cadeia"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T008",
+    "T043",
+    "T059",
+    "T072"
+  ],
+  "source_ids": [
+    "A-S003",
+    "A-S006",
+    "V3A-S005",
+    "V4A-S002",
+    "V4D-S005",
+    "V4D-S007"
+  ],
+  "namespace": "T004",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T004",
+  "chunk_count": 9
+}

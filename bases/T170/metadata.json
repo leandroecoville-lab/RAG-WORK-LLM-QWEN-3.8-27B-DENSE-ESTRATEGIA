@@ -1,0 +1,32 @@
+{
+  "id": "T170",
+  "name": "Tool Schema Versioning",
+  "canonical_name": "Tool Schema Versioning",
+  "canonical_id": "T170",
+  "aliases": [
+    "versionamento de schemas de ferramentas"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T140",
+    "T158",
+    "T159"
+  ],
+  "source_ids": [
+    "C-S007",
+    "C-S049",
+    "V3C-S013",
+    "V3C-S004",
+    "V4C-S013",
+    "V3C-S018",
+    "V4C-S012"
+  ],
+  "namespace": "T170",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T170",
+  "chunk_count": 9
+}

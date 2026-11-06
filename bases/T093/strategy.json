@@ -1,0 +1,120 @@
+{
+  "id": "T093",
+  "novelty": "A v3 tratou fragmentação e cópia na escrita. O aprofundamento concentra-se na escolha do tamanho de bloco, isolamento de falhas e admissão por crescimento futuro, conectando o alocador de KV ao comportamento real do serviço.",
+  "deep_layers": [
+    {
+      "name": "Granularidade como compromisso",
+      "detail": "Blocos menores reduzem sobra no fim de sequências, mas ampliam tabelas, metadados e trabalho de tradução. Blocos maiores simplificam gestão e podem favorecer acesso, ao custo de desperdício. Escolha pelo perfil de comprimentos e ramificações, incluindo overhead do kernel; não maximize eficiência de bytes ignorando o tempo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S009",
+        "V4B-S014",
+        "V4B-S008"
+      ]
+    },
+    {
+      "name": "Reserva para crescimento",
+      "detail": "Uma sequência admitida precisa continuar crescendo até seu limite autorizado. Defina margem ou política explícita de preempção antes de esgotar páginas. Contar apenas o prompt inicial pode admitir pedidos demais e gerar recomputação repetida, aumentando o atraso justamente quando a memória parece estar bem utilizada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S009",
+        "V4B-S014",
+        "V4B-S008"
+      ]
+    },
+    {
+      "name": "Diagnóstico por invariantes",
+      "detail": "Mantenha relação verificável entre blocos lógicos, páginas físicas e referências ativas. Uma página reciclada precisa de identificação que impeça referências antigas de ler novo conteúdo. Teste estados de limite, cancelamento e compartilhamento; falhas no alocador podem produzir texto plausível de outra sequência sem um crash evidente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S009",
+        "V4B-S014",
+        "V4B-S008"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Muitas respostas curtas",
+      "scenario": "Um endpoint recebe grande quantidade de extrações pequenas.",
+      "strategy": "Meça sobra por sequência e custo das tabelas para diferentes granularidades suportadas. Compare capacidade útil mantendo o mesmo limite de saída. Não aumente simultaneamente batch e contexto ao avaliar o tamanho do bloco.",
+      "small_model_role": "Um 3–14B pode ganhar concorrência quando desperdício do cache domina a capacidade.",
+      "acceptance": "Exigir memória útil maior sem piora relevante no tempo de serviço.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S009",
+        "V4B-S014",
+        "V4B-S008"
+      ]
+    },
+    {
+      "name": "Exploração com ramos",
+      "scenario": "Um agente avalia continuações alternativas de um prefixo.",
+      "strategy": "Compartilhe páginas imutáveis, aplique cópia controlada na parte mutável e libere ramos descartados. A contabilidade deve reconhecer compartilhamento e impedir dupla liberação. Teste o ramo sobrevivente após cancelar os demais.",
+      "small_model_role": "Um 15–30B pode explorar alternativas sem replicar todo o prefixo.",
+      "acceptance": "Verificar equivalência com ramos independentes e custo incremental de cada continuação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S009",
+        "V4B-S014",
+        "V4B-S008"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, grande número de sequências curtas pode tornar metadados e fragmentação mais relevantes que pesos.",
+    "8_14b": "Em 8–14B, medir tamanho de bloco junto da distribuição de saída e taxa de cancelamento.",
+    "15_30b": "Em 15–30B, reservar crescimento evita ciclos de preempção que anulam a capacidade obtida.",
+    "training_or_runtime_requirements": "Paginação é runtime e precisa de kernel/alocador compatíveis; não altera o padrão lógico de atenção.",
+    "do_not_use_when": "Não interpretar páginas como chunking semântico nem remover páginas ainda necessárias para manter uma falsa meta de ocupação."
+  },
+  "connections": [
+    {
+      "target_id": "T105",
+      "relation": "complements",
+      "how": "Expulsar apenas blocos ociosos ou preemptar conforme política explícita de reconstrução.",
+      "interface": "Referências, prioridade e custo de recomputação.",
+      "condition": "A validade de páginas ativas é protegida.",
+      "acceptance": "Simular pressão e comprovar ausência de leitura após reciclagem.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S009",
+        "V4B-S014",
+        "V4B-S008"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T118",
+      "relation": "complements",
+      "how": "Alinhar gestão de páginas com shards de KV e conclusão dos ranks.",
+      "interface": "Mapeamentos por rank, comprimentos e confirmação coletiva.",
+      "condition": "Todos os participantes reconhecem a mesma sequência lógica.",
+      "acceptance": "Cancelar um pedido durante comunicação e verificar liberação consistente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S009",
+        "V4B-S014",
+        "V4B-S008"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Testar reutilização agressiva de páginas com conteúdo sentinela.",
+    "Contar memória de tabelas e reservas, não apenas tensores preenchidos."
+  ],
+  "frontier_comparison": "Comparar capacidade de atender tarefas corretas com uma fronteira sob carga equivalente. PagedAttention reduz desperdício de armazenamento; não aumenta o conhecimento ou o alcance lógico da atenção.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q004",
+      "V4B-Q014"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S009",
+    "V4B-S014",
+    "V4B-S008"
+  ]
+}

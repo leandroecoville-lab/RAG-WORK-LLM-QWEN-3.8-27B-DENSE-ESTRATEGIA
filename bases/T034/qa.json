@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Usar um agente para dividir texto torna o RAG melhor?",
+    "answer": "Não automaticamente. O ganho depende de perguntas reais, e a ingestão pode ficar mais cara e menos previsível."
+  },
+  {
+    "question": "Posso indexar fatos reescritos como originais?",
+    "answer": "Não. Marque-os como derivados e mantenha as fontes correspondentes."
+  },
+  {
+    "question": "Toda proposição precisa repetir o nome da entidade?",
+    "answer": "Precisa ser interpretável na recuperação. Uma referência estruturada pode cumprir esse papel sem repetir texto, desde que o leitor a resolva."
+  },
+  {
+    "question": "Como atualizar uma proposição após correção da fonte?",
+    "answer": "Recalcule as derivadas dependentes da revisão alterada. Similaridade de texto não basta para detectar quais relações ficaram inválidas."
+  }
+]

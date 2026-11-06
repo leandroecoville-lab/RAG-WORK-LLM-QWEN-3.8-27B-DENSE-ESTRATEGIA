@@ -1,0 +1,18 @@
+[
+  {
+    "question": "É o mesmo que escolher documentos por RAG?",
+    "answer": "Não. Opera nas conexões internas de atenção, embora ambos selecionem informação."
+  },
+  {
+    "question": "Exige sempre retreinar?",
+    "answer": "Depende da variante; modelos com roteador aprendido e métodos de poda em inferência têm requisitos distintos."
+  },
+  {
+    "question": "Top-k após scores densos elimina O(n²)?",
+    "answer": "Não o custo de produzir esses scores; é necessário examinar onde a seleção realmente acontece."
+  },
+  {
+    "question": "Mais confiança do roteador prova relevância?",
+    "answer": "Não. Compare candidatos selecionados com evidência necessária e avalie falhas por mudança de domínio."
+  }
+]

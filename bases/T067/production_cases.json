@@ -1,0 +1,110 @@
+{
+  "coverage": {
+    "entry_id": "T067",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 1,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 0,
+    "research_cases": 1,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Active Memory Retrieval",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C002",
+      "company": "Anthropic",
+      "system": "Research multi-agent system",
+      "title": "Research multi-agent system — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "A equipe descreve passagem do protótipo à produção do recurso Research.",
+      "technical_mechanism": "Agente líder salva plano, delega pesquisa paralela, recebe sínteses e decide novas buscas.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "C-S030"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T001",
+          "match": "family",
+          "rationale": "Distribuição e agregação de pesquisa, sem garantia de semântica MapReduce."
+        },
+        {
+          "entry_id": "T024",
+          "match": "family",
+          "rationale": "Coordena aquisição e síntese de contexto; não usa o nome editorial como produto."
+        },
+        {
+          "entry_id": "T067",
+          "match": "exact",
+          "rationale": "Novas buscas dependem das descobertas intermediárias."
+        },
+        {
+          "entry_id": "P001",
+          "match": "analogy",
+          "rationale": "Inspira montagem de contexto; não comprova Context Engine LAI."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Atribuir pesquisas delimitadas a 3–14B e reservar integração difícil a 15–30B ou escalonamento.",
+      "limits": "Relato usa Claude Opus/Sonnet; custo, qualidade e métricas publicados não se transferem aos portes propostos. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4C-C007",
+      "deployment_domain": "llm_application",
+      "deduplication_note": "Consolidado com V4C-C007 para contagem. Mapeamentos e versões das fontes permanecem separados; não se presume simultaneidade de todos os mecanismos.",
+      "mapping": {
+        "entry_id": "T067",
+        "match": "exact",
+        "rationale": "Novas buscas dependem das descobertas intermediárias."
+      }
+    },
+    {
+      "case_id": "V4A-C021",
+      "company": "Google DeepMind",
+      "system": "DataGemma RIG/RAG",
+      "title": "DataGemma RIG/RAG — evidência delimitada",
+      "evidence_level": "research_only",
+      "observed_use": "Projeto publica variantes para fundamentar geração em Data Commons.",
+      "technical_mechanism": "RIG troca números por dados; RAG usa modelo Gemma para preparar contexto de Gemini 1.5 Pro.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S014"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T009",
+          "match": "exact",
+          "rationale": "Recuperação contextual é objetivo explícito."
+        },
+        {
+          "entry_id": "T067",
+          "match": "exact",
+          "rationale": "RIG reconhece necessidade de consultar para corrigir número."
+        },
+        {
+          "entry_id": "T068",
+          "match": "exact",
+          "rationale": "Geração é aumentada por dados externos."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Testar roteador pequeno para consulta estatística, mantendo unidade, período e população.",
+      "limits": "RAG citado não é pipeline integral 3–30B; não há implantação de usuário comprovada. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C021",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "T067",
+        "match": "exact",
+        "rationale": "RIG reconhece necessidade de consultar para corrigir número."
+      }
+    }
+  ]
+}

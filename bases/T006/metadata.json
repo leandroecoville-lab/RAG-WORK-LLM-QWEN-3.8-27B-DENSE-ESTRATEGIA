@@ -1,0 +1,39 @@
+{
+  "id": "T006",
+  "name": "Context Compression",
+  "canonical_name": "Context Compression",
+  "canonical_id": "T006",
+  "aliases": [
+    "compressão de contexto"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T018",
+    "T020",
+    "T021",
+    "T043",
+    "T052"
+  ],
+  "source_ids": [
+    "A-S015",
+    "A-S016",
+    "V3A-S003",
+    "V3A-S001",
+    "V3A-S004",
+    "V4A-S027",
+    "V4A-S028",
+    "V4D-S003",
+    "V4D-S004",
+    "V4D-S005",
+    "V4D-S007",
+    "V4D-S009"
+  ],
+  "namespace": "T006",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T006",
+  "chunk_count": 9
+}

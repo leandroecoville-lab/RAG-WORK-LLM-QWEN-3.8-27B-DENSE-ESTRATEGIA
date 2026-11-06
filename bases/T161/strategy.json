@@ -1,0 +1,116 @@
+{
+  "id": "T161",
+  "novelty": "A v3 fornecia limites inferiores e folgas. A camada nova usa caminho crítico como instrumento de decisão sob caudas, dependências informacionais e custo de transferência, distinguindo previsão de experimento causal.",
+  "deep_layers": [
+    {
+      "name": "Caminho por fase e percentil",
+      "detail": "Instrumente fila, execução, transferência e validação separadamente. O maior caminho das médias não descreve necessariamente a cauda da missão; uma ferramenta rara e lenta pode dominar o percentil alto. Reconstitua caminhos de traces reais e compare a frequência com que cada etapa impede o término, sem somar percentis como se fossem aditivos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S025",
+        "V4C-S004"
+      ]
+    },
+    {
+      "name": "Valor de antecipar evidência",
+      "detail": "Algumas tarefas não estão no maior caminho de duração, mas revelam cedo uma condição que invalida o plano inteiro. Um teste barato de compatibilidade pode merecer execução antes de uma etapa longa. Acrescente ao planejamento o valor de evitar trabalho inútil, mantendo essa heurística separada do cálculo clássico de caminho crítico.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S017",
+        "V4C-S009"
+      ]
+    },
+    {
+      "name": "Experimento de aceleração",
+      "detail": "Antes de contratar um modelo maior para uma etapa, estime quanto sua duração pode cair e qual etapa passará a dominar. Faça teste com limite de recursos constante; se a aceleração aumenta fila de outro consumidor, o ganho local pode desaparecer. Registre também o custo da qualidade perdida quando troca por um modelo menor.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S004",
+        "V4C-S023"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Campanha de alterações",
+      "scenario": "Milhares de pequenos patches precisam de validação compartilhada.",
+      "strategy": "Meça se o gargalo está na geração, na compilação ou na revisão. Se CI domina, mais agentes só aumentam a fila; agrupe validações compatíveis ou reduza candidatos inválidos antes de enviá-los. Recalcule o caminho depois da mudança porque o gargalo pode migrar.",
+      "small_model_role": "3–7B filtra erros locais; 15–30B atua somente nas etapas cognitivas dominantes.",
+      "acceptance": "Proposta: menor duração total e custo por mudança aceita, mantendo a mesma cobertura de testes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009",
+        "V4C-S017"
+      ]
+    },
+    {
+      "name": "Pesquisa com fontes lentas",
+      "scenario": "Várias consultas convergem em uma síntese única.",
+      "strategy": "Inicie cedo as fontes de maior latência previsível e faça extração independente enquanto chegam outras respostas. Não comece conclusão que dependa da fonte ausente. Se o deadline vencer, produza estado de cobertura incompleta, sem fingir que otimização de agenda eliminou a lacuna.",
+      "small_model_role": "8–14B extrai por fonte; integrador recebe resultados progressivamente identificados.",
+      "acceptance": "Proposta: tempo até cobertura suficiente e impacto das fontes tardias na resposta final.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Executar pré-checagens baratas e reduzir a entrada de etapas caras.",
+    "8_14b": "Estimar classes de duração a partir de tarefas históricas sem decidir sozinho o SLA.",
+    "15_30b": "Decompor planos e identificar dependências informacionais que a telemetria não explica.",
+    "training_or_runtime_requirements": "Tracing com causalidade, relógios adequados e distinção entre tempo de serviço e espera; modelos estimativos calibrados.",
+    "do_not_use_when": "Não otimizar pela duração média de um nó quando a missão é governada por cauda ou requisito de evidência."
+  },
+  "connections": [
+    {
+      "target_id": "T174",
+      "relation": "feeds",
+      "how": "Entregar folga e etapa bloqueadora ao escalonador, sem permitir que prioridade viole dependência.",
+      "interface": "Grafo, estimativas e classes de recurso.",
+      "condition": "Tarefas prontas competem pelo mesmo recurso.",
+      "acceptance": "Reduzir término da missão sem inanição das demais classes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S025",
+        "V3C-S016"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T147",
+      "relation": "complements",
+      "how": "Limitar fan-out ao paralelismo que encurta o caminho e não apenas cria mais candidatos aguardando junção.",
+      "interface": "Duração por ramo, fila e critério de junção.",
+      "condition": "Ramos independentes e capacidade disponível.",
+      "acceptance": "Comparar largura e custo sob o mesmo conjunto de tarefas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4C-S004"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Uma etapa acelerada com folga pode não reduzir o término.",
+    "Não atribuir ao modelo um ganho produzido por ampliar hardware ou relaxar critério de conclusão."
+  ],
+  "frontier_comparison": "Compare configurações por prazo até resultado aceito. Um modelo pequeno pode vencer uma etapa curta; a competência para formular o grafo permanece variável independente.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q003",
+      "V4C-Q018"
+    ],
+    "scope_note": "Borg e Conductor apoiam análise de recursos e coordenação; não foi encontrado caso operacional que valide esta heurística cognitiva exata."
+  },
+  "source_ids": [
+    "C-S025",
+    "V4C-S004",
+    "V4C-S017",
+    "V4C-S009",
+    "V4C-S023",
+    "C-S030",
+    "V3C-S016"
+  ]
+}

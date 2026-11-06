@@ -1,0 +1,2026 @@
+{
+  "method": "Comparação textual de sequências de 12 palavras por base e repetição exata de frases longas entre fichas. Não comprova novidade científica, correção factual ou ausência de paráfrase repetitiva.",
+  "entries": [
+    {
+      "entry_id": "T001",
+      "new_strategy_words": 446,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T002",
+      "new_strategy_words": 430,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T003",
+      "new_strategy_words": 400,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T004",
+      "new_strategy_words": 390,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T005",
+      "new_strategy_words": 409,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T006",
+      "new_strategy_words": 390,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T007",
+      "new_strategy_words": 365,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T008",
+      "new_strategy_words": 365,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T009",
+      "new_strategy_words": 391,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T010",
+      "new_strategy_words": 362,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T011",
+      "new_strategy_words": 376,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T012",
+      "new_strategy_words": 364,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T013",
+      "new_strategy_words": 405,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T014",
+      "new_strategy_words": 370,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T015",
+      "new_strategy_words": 379,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T016",
+      "new_strategy_words": 378,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T017",
+      "new_strategy_words": 375,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T018",
+      "new_strategy_words": 389,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T019",
+      "new_strategy_words": 368,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T020",
+      "new_strategy_words": 394,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T021",
+      "new_strategy_words": 374,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T022",
+      "new_strategy_words": 382,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T023",
+      "new_strategy_words": 390,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T024",
+      "new_strategy_words": 375,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T025",
+      "new_strategy_words": 380,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T026",
+      "new_strategy_words": 352,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T027",
+      "new_strategy_words": 346,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T028",
+      "new_strategy_words": 365,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T029",
+      "new_strategy_words": 333,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T030",
+      "new_strategy_words": 354,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T031",
+      "new_strategy_words": 357,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T032",
+      "new_strategy_words": 351,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T033",
+      "new_strategy_words": 342,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T034",
+      "new_strategy_words": 349,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T035",
+      "new_strategy_words": 342,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T036",
+      "new_strategy_words": 319,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T037",
+      "new_strategy_words": 345,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T038",
+      "new_strategy_words": 343,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T039",
+      "new_strategy_words": 347,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T040",
+      "new_strategy_words": 349,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T041",
+      "new_strategy_words": 367,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T042",
+      "new_strategy_words": 358,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T043",
+      "new_strategy_words": 366,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T044",
+      "new_strategy_words": 345,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T045",
+      "new_strategy_words": 339,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T046",
+      "new_strategy_words": 343,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T047",
+      "new_strategy_words": 352,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T048",
+      "new_strategy_words": 343,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T049",
+      "new_strategy_words": 335,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T050",
+      "new_strategy_words": 354,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T051",
+      "new_strategy_words": 329,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T052",
+      "new_strategy_words": 362,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T053",
+      "new_strategy_words": 345,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T054",
+      "new_strategy_words": 328,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T055",
+      "new_strategy_words": 341,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T056",
+      "new_strategy_words": 361,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T057",
+      "new_strategy_words": 351,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T058",
+      "new_strategy_words": 338,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T059",
+      "new_strategy_words": 345,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T060",
+      "new_strategy_words": 352,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T061",
+      "new_strategy_words": 346,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T062",
+      "new_strategy_words": 358,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T063",
+      "new_strategy_words": 354,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T064",
+      "new_strategy_words": 340,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T065",
+      "new_strategy_words": 357,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T066",
+      "new_strategy_words": 339,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T067",
+      "new_strategy_words": 353,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T068",
+      "new_strategy_words": 359,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T069",
+      "new_strategy_words": 361,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T070",
+      "new_strategy_words": 342,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T071",
+      "new_strategy_words": 345,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T072",
+      "new_strategy_words": 342,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T073",
+      "new_strategy_words": 352,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T074",
+      "new_strategy_words": 357,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T075",
+      "new_strategy_words": 334,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T076",
+      "new_strategy_words": 341,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T077",
+      "new_strategy_words": 342,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T078",
+      "new_strategy_words": 353,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T079",
+      "new_strategy_words": 576,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T080",
+      "new_strategy_words": 568,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T081",
+      "new_strategy_words": 542,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T082",
+      "new_strategy_words": 564,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T083",
+      "new_strategy_words": 570,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T084",
+      "new_strategy_words": 565,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T085",
+      "new_strategy_words": 583,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T086",
+      "new_strategy_words": 577,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T087",
+      "new_strategy_words": 571,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T088",
+      "new_strategy_words": 566,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T089",
+      "new_strategy_words": 559,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T090",
+      "new_strategy_words": 543,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T091",
+      "new_strategy_words": 559,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T092",
+      "new_strategy_words": 551,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T093",
+      "new_strategy_words": 537,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T094",
+      "new_strategy_words": 560,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T095",
+      "new_strategy_words": 568,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T096",
+      "new_strategy_words": 573,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T097",
+      "new_strategy_words": 543,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T098",
+      "new_strategy_words": 558,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T099",
+      "new_strategy_words": 571,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T100",
+      "new_strategy_words": 552,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T101",
+      "new_strategy_words": 554,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T102",
+      "new_strategy_words": 554,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T103",
+      "new_strategy_words": 534,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T104",
+      "new_strategy_words": 519,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T105",
+      "new_strategy_words": 531,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T106",
+      "new_strategy_words": 542,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T107",
+      "new_strategy_words": 519,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T108",
+      "new_strategy_words": 524,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T109",
+      "new_strategy_words": 505,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T110",
+      "new_strategy_words": 502,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T111",
+      "new_strategy_words": 510,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T112",
+      "new_strategy_words": 526,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T113",
+      "new_strategy_words": 505,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T114",
+      "new_strategy_words": 488,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T115",
+      "new_strategy_words": 498,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T116",
+      "new_strategy_words": 502,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T117",
+      "new_strategy_words": 513,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T118",
+      "new_strategy_words": 501,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T119",
+      "new_strategy_words": 498,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T120",
+      "new_strategy_words": 496,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T121",
+      "new_strategy_words": 501,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T122",
+      "new_strategy_words": 506,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T123",
+      "new_strategy_words": 504,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T124",
+      "new_strategy_words": 503,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T125",
+      "new_strategy_words": 502,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T126",
+      "new_strategy_words": 505,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T127",
+      "new_strategy_words": 496,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T128",
+      "new_strategy_words": 512,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T129",
+      "new_strategy_words": 506,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T130",
+      "new_strategy_words": 512,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T131",
+      "new_strategy_words": 495,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T132",
+      "new_strategy_words": 508,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T133",
+      "new_strategy_words": 556,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T134",
+      "new_strategy_words": 532,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T135",
+      "new_strategy_words": 539,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T136",
+      "new_strategy_words": 542,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T137",
+      "new_strategy_words": 531,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T138",
+      "new_strategy_words": 527,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T139",
+      "new_strategy_words": 555,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T140",
+      "new_strategy_words": 584,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T141",
+      "new_strategy_words": 547,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T142",
+      "new_strategy_words": 542,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T143",
+      "new_strategy_words": 532,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T144",
+      "new_strategy_words": 539,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T145",
+      "new_strategy_words": 548,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T146",
+      "new_strategy_words": 541,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T147",
+      "new_strategy_words": 514,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T148",
+      "new_strategy_words": 524,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T149",
+      "new_strategy_words": 525,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T150",
+      "new_strategy_words": 541,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T151",
+      "new_strategy_words": 551,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T152",
+      "new_strategy_words": 534,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T153",
+      "new_strategy_words": 532,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T154",
+      "new_strategy_words": 549,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T155",
+      "new_strategy_words": 535,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T156",
+      "new_strategy_words": 524,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T157",
+      "new_strategy_words": 543,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T158",
+      "new_strategy_words": 529,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T159",
+      "new_strategy_words": 546,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T160",
+      "new_strategy_words": 536,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T161",
+      "new_strategy_words": 571,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T162",
+      "new_strategy_words": 564,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T163",
+      "new_strategy_words": 540,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T164",
+      "new_strategy_words": 549,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T165",
+      "new_strategy_words": 525,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T166",
+      "new_strategy_words": 536,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T167",
+      "new_strategy_words": 552,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T168",
+      "new_strategy_words": 567,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T169",
+      "new_strategy_words": 540,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T170",
+      "new_strategy_words": 527,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T171",
+      "new_strategy_words": 541,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T172",
+      "new_strategy_words": 556,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T173",
+      "new_strategy_words": 525,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T174",
+      "new_strategy_words": 533,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T175",
+      "new_strategy_words": 538,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T176",
+      "new_strategy_words": 561,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T177",
+      "new_strategy_words": 509,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T178",
+      "new_strategy_words": 531,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T179",
+      "new_strategy_words": 524,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T180",
+      "new_strategy_words": 501,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T181",
+      "new_strategy_words": 506,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T182",
+      "new_strategy_words": 468,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T183",
+      "new_strategy_words": 501,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T184",
+      "new_strategy_words": 505,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T185",
+      "new_strategy_words": 504,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T186",
+      "new_strategy_words": 484,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T187",
+      "new_strategy_words": 494,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T188",
+      "new_strategy_words": 493,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T189",
+      "new_strategy_words": 496,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T190",
+      "new_strategy_words": 491,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T191",
+      "new_strategy_words": 475,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T192",
+      "new_strategy_words": 462,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T193",
+      "new_strategy_words": 486,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T194",
+      "new_strategy_words": 507,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T195",
+      "new_strategy_words": 485,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T196",
+      "new_strategy_words": 489,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T197",
+      "new_strategy_words": 490,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T198",
+      "new_strategy_words": 493,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T199",
+      "new_strategy_words": 490,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T200",
+      "new_strategy_words": 495,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T201",
+      "new_strategy_words": 482,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T202",
+      "new_strategy_words": 480,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T203",
+      "new_strategy_words": 497,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T204",
+      "new_strategy_words": 483,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T205",
+      "new_strategy_words": 450,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T206",
+      "new_strategy_words": 496,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T207",
+      "new_strategy_words": 563,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T208",
+      "new_strategy_words": 541,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T209",
+      "new_strategy_words": 560,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T210",
+      "new_strategy_words": 524,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T211",
+      "new_strategy_words": 534,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T212",
+      "new_strategy_words": 581,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T213",
+      "new_strategy_words": 532,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T214",
+      "new_strategy_words": 544,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T215",
+      "new_strategy_words": 543,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T216",
+      "new_strategy_words": 559,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T217",
+      "new_strategy_words": 558,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T218",
+      "new_strategy_words": 568,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T219",
+      "new_strategy_words": 583,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T220",
+      "new_strategy_words": 557,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T221",
+      "new_strategy_words": 571,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T222",
+      "new_strategy_words": 554,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T223",
+      "new_strategy_words": 561,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T224",
+      "new_strategy_words": 565,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T225",
+      "new_strategy_words": 545,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T226",
+      "new_strategy_words": 526,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T227",
+      "new_strategy_words": 534,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T228",
+      "new_strategy_words": 545,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T229",
+      "new_strategy_words": 558,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T230",
+      "new_strategy_words": 593,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T231",
+      "new_strategy_words": 552,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T232",
+      "new_strategy_words": 553,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T233",
+      "new_strategy_words": 565,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T234",
+      "new_strategy_words": 552,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T235",
+      "new_strategy_words": 551,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T236",
+      "new_strategy_words": 555,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T237",
+      "new_strategy_words": 539,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T238",
+      "new_strategy_words": 576,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T239",
+      "new_strategy_words": 536,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T240",
+      "new_strategy_words": 523,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T241",
+      "new_strategy_words": 524,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T242",
+      "new_strategy_words": 550,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "T243",
+      "new_strategy_words": 552,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R001",
+      "new_strategy_words": 374,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R002",
+      "new_strategy_words": 363,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R003",
+      "new_strategy_words": 378,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R004",
+      "new_strategy_words": 355,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R005",
+      "new_strategy_words": 369,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R006",
+      "new_strategy_words": 372,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R007",
+      "new_strategy_words": 376,
+      "twelve_word_sequences_seen_in_v3": 1,
+      "sequence_overlap_fraction": 0.0027397260273972603,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R008",
+      "new_strategy_words": 458,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R009",
+      "new_strategy_words": 473,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R010",
+      "new_strategy_words": 502,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R011",
+      "new_strategy_words": 481,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R012",
+      "new_strategy_words": 516,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R013",
+      "new_strategy_words": 356,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R014",
+      "new_strategy_words": 375,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R015",
+      "new_strategy_words": 377,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R016",
+      "new_strategy_words": 376,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R017",
+      "new_strategy_words": 436,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R018",
+      "new_strategy_words": 446,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R019",
+      "new_strategy_words": 449,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R020",
+      "new_strategy_words": 472,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R021",
+      "new_strategy_words": 464,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R022",
+      "new_strategy_words": 501,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R023",
+      "new_strategy_words": 473,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R024",
+      "new_strategy_words": 481,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R025",
+      "new_strategy_words": 470,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R026",
+      "new_strategy_words": 499,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "R027",
+      "new_strategy_words": 441,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "P001",
+      "new_strategy_words": 402,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "P002",
+      "new_strategy_words": 391,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "P003",
+      "new_strategy_words": 374,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "P004",
+      "new_strategy_words": 385,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "P005",
+      "new_strategy_words": 385,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "P006",
+      "new_strategy_words": 368,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "P007",
+      "new_strategy_words": 376,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "P008",
+      "new_strategy_words": 419,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "P009",
+      "new_strategy_words": 502,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "P010",
+      "new_strategy_words": 434,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "P011",
+      "new_strategy_words": 411,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "P012",
+      "new_strategy_words": 558,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "P013",
+      "new_strategy_words": 449,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "P014",
+      "new_strategy_words": 451,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "P015",
+      "new_strategy_words": 603,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "P016",
+      "new_strategy_words": 519,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    },
+    {
+      "entry_id": "P017",
+      "new_strategy_words": 541,
+      "twelve_word_sequences_seen_in_v3": 0,
+      "sequence_overlap_fraction": 0.0,
+      "flag_for_editorial_review": false
+    }
+  ],
+  "strategy_words_total": 135015,
+  "entries_flagged": 0,
+  "repeated_long_sentences": [
+    {
+      "entries": 90,
+      "sentence": "Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+    },
+    {
+      "entries": 10,
+      "sentence": "Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+    }
+  ]
+}

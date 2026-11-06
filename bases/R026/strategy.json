@@ -1,0 +1,119 @@
+{
+  "id": "R026",
+  "novelty": "A v3 tratou diferenças de backend e captura parcial. A nova camada explica token healing, composição de trechos e validação de programas que intercalam texto fixo com geração.",
+  "deep_layers": [
+    {
+      "name": "Fronteira de tokens",
+      "detail": "Token healing recua na fronteira de tokenização para permitir continuações compatíveis com o prefixo textual. Isso trata um efeito de segmentação, não autoriza alterar significado do texto fornecido. O mecanismo depende de controle do backend; não presuma que qualquer endpoint remoto permite a mesma operação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S014",
+        "V3D-S015",
+        "V4B-S030"
+      ]
+    },
+    {
+      "name": "Fluxo programático",
+      "detail": "Um programa Guidance mistura texto fixo, escolhas e capturas. Defina quais partes são dados e quais controlam o fluxo, mantendo valores externos sem reinterpretá-los como instruções do programa. A execução deve registrar capturas concluídas e interrupções para que um consumidor não use um objeto incompleto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S014",
+        "V3D-S015",
+        "V4B-S030"
+      ]
+    },
+    {
+      "name": "Portabilidade por capacidade",
+      "detail": "Backends locais e remotos oferecem graus diferentes de controle. Crie uma matriz das operações realmente suportadas, incluindo restrições JSON e geração por partes. Se um recurso não existe, escolha uma alternativa explícita e reavalie o contrato; não simule sucesso com prompting que apenas pede o formato.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S014",
+        "V3D-S015",
+        "V4B-S030"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Formulário com campos controlados",
+      "scenario": "A aplicação alterna valores fixos e texto gerado.",
+      "strategy": "Use capturas nomeadas, escolhas fechadas quando adequadas e validação final. Teste fronteiras de tokens e encerramento por orçamento, preservando campos já determinados.",
+      "small_model_role": "Um 3–7B pode completar estruturas estreitas com controle programático.",
+      "acceptance": "Objeto completo, campos corretos e ausência de alterações indevidas em texto fixo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S014",
+        "V3D-S015",
+        "V4B-S030"
+      ]
+    },
+    {
+      "name": "Prototipar geração composta",
+      "scenario": "Há dúvida entre programa segmentado e resposta única.",
+      "strategy": "Implemente ambas as alternativas no mesmo backend e compare custo, qualidade e clareza do contrato. Inclua o custo de chamadas adicionais e de prefixos repetidos.",
+      "small_model_role": "Um 8–14B pode resolver tarefas compostas, se a segmentação não remover dependências necessárias.",
+      "acceptance": "Medir sucesso da tarefa e manutenção do programa, não só JSON válido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S014",
+        "V3D-S015",
+        "V4B-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Programas curtos e escolhas explícitas podem reduzir exigência de geração livre.",
+    "8_14b": "Segmentação ajuda controle, mas deve preservar contexto relevante entre partes.",
+    "15_30b": "Em 15–30B, chamadas adicionais podem dominar custo; compare com geração única restrita.",
+    "training_or_runtime_requirements": "Biblioteca de controle em Python; capacidades dependem do backend e da versão, sem promessa universal de token healing remoto.",
+    "do_not_use_when": "Não confundir controle de fluxo com verificação de fatos ou com atualização dos pesos."
+  },
+  "connections": [
+    {
+      "target_id": "T196",
+      "relation": "complements",
+      "how": "Restrições de geração podem ser usadas onde o backend oferece controle suficiente.",
+      "interface": "Prefixo, captura e restrição suportada.",
+      "condition": "Contrato não depende de recurso indisponível.",
+      "acceptance": "Testar saídas impossíveis, término e fronteiras de tokens.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S014",
+        "V3D-S015",
+        "V4B-S030"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T197",
+      "relation": "requires",
+      "how": "Objeto gerado precisa de validação completa após a captura.",
+      "interface": "JSON concluído e schema do consumidor.",
+      "condition": "Dialeto e recursos conhecidos.",
+      "acceptance": "Distinguir erro de estrutura, regra de negócio e falta de conclusão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S014",
+        "V3D-S015",
+        "V4B-S030"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não promover uma captura parcial a resultado válido.",
+    "Verificar que texto fixo permanece exatamente conforme o contrato após token healing."
+  ],
+  "frontier_comparison": "Guidance pode organizar uma aplicação pequena e reduzir erros de interface. A comparação com fronteira deve avaliar a tarefa e o custo do programa completo, sem inferir inteligência do grau de controle.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q021"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3D-S014",
+    "V3D-S015",
+    "V4B-S030"
+  ]
+}

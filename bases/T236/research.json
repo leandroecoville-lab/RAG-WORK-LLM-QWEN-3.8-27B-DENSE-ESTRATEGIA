@@ -1,0 +1,52 @@
+{
+  "id": "T236",
+  "technical_details": "O commit usual registra o índice, que pode diferir da árvore de trabalho onde os testes foram executados. Com staging parcial, um teste verde pode depender de alteração não incluída no commit. A proposta verifica o delta preparado e identifica a árvore efetivamente aceita. Uma etapa incompleta ainda pode ser salva como checkpoint, mas seu status deve permanecer distinto de entrega aprovada; mensagens de commit não substituem evidência de execução.",
+  "boundary_condition": "Um commit coerente de código não captura automaticamente migração aplicada, dados externos ou configuração não versionada.",
+  "implementation_contract": {
+    "inputs": "Alterações da etapa, índice preparado, objetivo e evidências de verificação.",
+    "outputs": "Commit identificado, descrição do comportamento e status de aceitação.",
+    "state": "Revisão-base, árvore do commit e arquivos fora do escopo.",
+    "invariant": "A evidência de teste corresponde à árvore que o commit efetivamente registra."
+  },
+  "tradeoffs": [
+    "Commits pequenos facilitam revisão e podem dividir uma mudança que só funciona integrada.",
+    "Commits amplos preservam uma entrega conjunta e dificultam localizar causa de regressão."
+  ],
+  "failure_test": "Teste proposto: deixar no working tree uma correção necessária, mas fora do índice; exigir detecção de que o commit preparado não corresponde ao estado testado.",
+  "evaluation_plan": "Comparar etapas por arquivo e por mudança funcional em revisões independentes. Medir capacidade de reverter, reproduzir testes e localizar regressões. Definir tamanho pela coerência do comportamento, sem impor um número universal de linhas ou arquivos.",
+  "comparisons": [
+    {
+      "entry_id": "T233",
+      "relation": "complements",
+      "reason": "Validação deve ligar resultado testado à revisão publicada."
+    },
+    {
+      "entry_id": "T240",
+      "relation": "distinct_from",
+      "reason": "Commit captura uma árvore Git e metadados; snapshot operacional pode precisar de outros estados."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação Git informa que o commit padrão contém o estado atual do índice.",
+    "source_ids": [
+      "V3C-S036"
+    ],
+    "support": "direct",
+    "caveat": "Outras opções alteram seleção de conteúdo; o contrato precisa registrar o modo efetivamente utilizado."
+  },
+  "advanced_qa": [
+    {
+      "question": "Testar antes de git commit basta?",
+      "answer": "Somente se o estado testado corresponder ao índice/árvore que será registrado; staging parcial pode quebrar essa equivalência."
+    },
+    {
+      "question": "Um commit de checkpoint deve ser apresentado como pronto?",
+      "answer": "Não. Pode preservar progresso incompleto, desde que esse estado e as pendências sejam explícitos."
+    }
+  ],
+  "source_ids": [
+    "V3C-S036",
+    "V3C-S034"
+  ],
+  "research_note": "Contratos, cenários de falha e planos de avaliação são propostas editoriais fundamentadas nas fontes indicadas."
+}

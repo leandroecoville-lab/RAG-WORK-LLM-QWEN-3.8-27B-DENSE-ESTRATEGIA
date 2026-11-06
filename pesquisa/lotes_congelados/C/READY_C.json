@@ -1,0 +1,49 @@
+{
+  "group": "C",
+  "checked_on": "2026-11-05",
+  "files": {
+    "strategy_C.jsonl": {
+      "count": 95,
+      "sha256": "de087ca4574e88653d1483a3a5a690f8d4f3870337ed96ebf3c3dc8aa5796777"
+    },
+    "cases_C.jsonl": {
+      "count": 30,
+      "sha256": "1db7ad772bf650c8c3ed034941217bc2a99fd3d68bc2c341ef8a81be5c37a219"
+    },
+    "sources_C.jsonl": {
+      "count": 31,
+      "sha256": "5cc007c7d2065f747f852a20d5ca452f71873ab672833e937f027d744a2016ab"
+    },
+    "searches_C.jsonl": {
+      "count": 29,
+      "sha256": "158d02ea082e2b198fbf561e5729f0ce2464519404f4fd5e62b3f59e911b289e"
+    }
+  },
+  "validation": {
+    "assignment_ids_complete": true,
+    "schema_and_references_errors": 0,
+    "strategies": 95,
+    "connections": 190,
+    "documented_connections_checked": 39,
+    "engineering_proposal_connections": 151,
+    "content_words": 49774,
+    "content_words_range": [
+      404,
+      572
+    ],
+    "case_classes": {
+      "production_documented": 23,
+      "operational_product": 6,
+      "research_only": 1
+    },
+    "notes": [
+      "81 fichas T autoradas pelo grupo C e 14 fichas R/P do tail da raiz incorporadas após amostragem e validação.",
+      "Conexões source_documented possuem caso operacional com origem e alvo exact e fonte em comum; P mantém somente proposta e casos analogy.",
+      "Auditoria cruzada A revisou casos/fontes; cinco achados e três reclassificações conservadoras adicionais resolvidos antes do congelamento.",
+      "A meta de dez casos por base não foi preenchida artificialmente; pesquisa, recurso documentado e implantação permanecem separados.",
+      "Nenhuma consulta reservada lida nem execução de modelo ou ganho local alegados.",
+      "Fonte Coinbase com divergência entre busca e abertura não foi registrada como caso confirmado."
+    ]
+  },
+  "frozen": true
+}

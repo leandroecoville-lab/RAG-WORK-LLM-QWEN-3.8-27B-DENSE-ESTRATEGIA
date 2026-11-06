@@ -1,0 +1,51 @@
+{
+  "id": "R006",
+  "technical_details": "O diagnóstico de PRISM compara comportamento com instruções e com exemplos para escolher o componente a internalizar. Essa ablação é informativa, mas interação entre componentes pode impedir interpretação puramente aditiva: exemplos podem ensinar formato somente quando uma instrução explica a exceção. A supervisão silver vem do modelo com prompt completo; portanto, erros sistemáticos desse professor podem ser transferidos ao adaptador, mesmo que a compressão preserve seu comportamento.",
+  "boundary_condition": "O ganho diminui quando a tarefa muda frequentemente, há pouca reutilização para amortizar treinamento ou os exemplos não representam as exceções operacionais importantes.",
+  "implementation_contract": {
+    "inputs": "Tarefa, prompt decomposto, modelo base, entradas de treinamento e dados independentes de avaliação.",
+    "outputs": "Adaptador identificado e prompt residual, acompanhados do diagnóstico de componentes e resultados verificáveis.",
+    "state": "Versão do backbone, prompt professor, dados silver, configuração de treinamento e escopo da tarefa.",
+    "invariant": "Um adaptador não é apresentado como equivalente ao prompt completo fora das condições em que essa equivalência foi avaliada."
+  },
+  "tradeoffs": [
+    "Internalização reduz contexto repetido e torna correções dependentes de um ciclo de treinamento e validação.",
+    "Dados silver reduzem anotação humana e herdam limitações do professor e da distribuição de entradas."
+  ],
+  "failure_test": "Teste proposto: inserir exceções dependentes da interação entre instrução e exemplo, depois comprimir o componente selecionado. A avaliação deve detectar perda das exceções, ainda que a média das tarefas comuns pareça boa.",
+  "evaluation_plan": "Avaliação proposta: comparar prompt completo, componentes isolados, prompt reduzido sem adaptador e PRISM na mesma divisão independente. Medir qualidade por caso, obediência a novas instruções, tokens e custo amortizado de treinamento; não escolher o diagnóstico usando o teste final.",
+  "comparisons": [
+    {
+      "entry_id": "R007",
+      "relation": "distinct_from",
+      "reason": "PRISM seleciona comportamento de componentes do prompt; SADA enfatiza interface interna e alinhamento de estados para adaptadores."
+    },
+    {
+      "entry_id": "T069",
+      "relation": "distinct_from",
+      "reason": "Resumo externo continua sendo lido como dados; PRISM modifica comportamento por pesos adicionais treinados."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "PRISM usa diagnóstico entre instruções e exemplos e autodestilação de saídas do prompt completo para treinar adaptadores LoRA.",
+    "source_ids": [
+      "A-S011"
+    ],
+    "support": "direct",
+    "caveat": "A sigla é ambígua fora deste catálogo; esta ficha corresponde exclusivamente ao trabalho de Jha, Wang, Barbu e Aggarwal na EMNLP 2026."
+  },
+  "advanced_qa": [
+    {
+      "question": "O diagnóstico garante que treinar compensa?",
+      "answer": "Não. É um sinal sobre a contribuição do prompt. Custo, reutilização, generalização e preservação de exceções ainda precisam ser medidos."
+    },
+    {
+      "question": "Posso remover toda instrução após o treinamento?",
+      "answer": "Somente se o desenho e a avaliação sustentarem isso. Regras variáveis e condições novas podem continuar exigindo contexto explícito."
+    }
+  ],
+  "source_ids": [
+    "A-S011"
+  ],
+  "research_note": "Identificação reconferida em 2026-11-05: PRISM: Prompt Representation Internalization via Selective Compression into LoRA Weights, Eshita Jha, Mingxian Wang, Andrei Barbu e Chetan Aggarwal, https://aclanthology.org/2026.emnlp-main.2431/. Escopo coincide com a v2; não foram associados trabalhos homônimos. Contratos e testes são propostas editoriais, sem treinamento ou reprodução de resultados."
+}

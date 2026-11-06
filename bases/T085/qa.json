@@ -1,0 +1,18 @@
+[
+  {
+    "question": "INT4 sempre é quatro vezes mais rápido que FP16?",
+    "answer": "Não. A relação de bits dos pesos não determina a velocidade de todo o sistema."
+  },
+  {
+    "question": "Quantizar é treinar novas habilidades?",
+    "answer": "Não. Em geral é reduzir a precisão de uma habilidade já aprendida, com possível perda."
+  },
+  {
+    "question": "Menos bits significam menos latência?",
+    "answer": "Somente quando o caminho de execução explora a representação e a economia supera conversões e outros gargalos."
+  },
+  {
+    "question": "Uma escala serve para todos os contextos?",
+    "answer": "Pode servir ao contrato escolhido, mas sua adequação deve ser testada também em distribuições diferentes da calibração."
+  }
+]

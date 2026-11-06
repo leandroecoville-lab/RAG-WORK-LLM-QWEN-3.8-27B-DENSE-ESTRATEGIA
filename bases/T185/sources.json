@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "C-S039",
+    "title": "Constitutional AI: Harmlessness from AI Feedback",
+    "url": "https://arxiv.org/abs/2212.08073",
+    "publisher": "Bai e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Treinamento usa princípios para crítica/revisão e feedback de IA em fases supervisionada e por reforço.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn16view4"
+  },
+  {
+    "source_id": "V4B-S021",
+    "title": "Claude's new constitution",
+    "url": "https://www.anthropic.com/news/claude-new-constitution",
+    "publisher": "Anthropic",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-01-22",
+    "supports": "Constituição usada em treinamento e síntese de exemplos/rankings; método evoluiu desde Constitutional AI.",
+    "limitations": "Texto de princípios e treinamento não garantem aderência de toda saída; parâmetros do modelo não são publicados nesta fonte.",
+    "web_ref": "turn227view4"
+  },
+  {
+    "source_id": "V3B-S018",
+    "title": "Scaling Laws for Reward Model Overoptimization",
+    "url": "https://arxiv.org/abs/2210.10760",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2022-10-19",
+    "supports": "Risco de otimizar reward proxy e estudo de best-of-N em ambiente sintético.",
+    "limitations": "O padrão observado em reward models não fornece uma lei universal de correção factual nem prova resultados de qualquer verificador.",
+    "web_ref": "turn177view3"
+  }
+]

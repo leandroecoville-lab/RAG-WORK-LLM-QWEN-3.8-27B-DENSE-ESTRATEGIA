@@ -1,0 +1,53 @@
+{
+  "id": "T027",
+  "technical_details": "A fusão começa antes da soma: ambos os canais precisam usar identidades e filtros compatíveis. Na normalização por conjunto retornado, mudar a quantidade de candidatos altera a escala dos escores, mesmo para um documento cujo score bruto ficou igual. RRF reduz dependência das escalas, mas troca intensidade de relevância por posições e continua sensível à cobertura de cada lista.",
+  "boundary_condition": "Combinar dois rankings que falham nos mesmos documentos pode acrescentar custo sem recall; somar escores não calibrados pode deixar um canal dominar arbitrariamente.",
+  "implementation_contract": {
+    "inputs": "Consulta, índices alinhados, filtros comuns e política de fusão.",
+    "outputs": "Ranking deduplicado com posição e contribuição de cada canal.",
+    "state": "Versões dos índices, embeddings, pesos ou parâmetros de fusão.",
+    "invariant": "Um documento inelegível não reaparece pela união de um canal com filtros menos restritivos."
+  },
+  "tradeoffs": [
+    "Normalização preserva diferenças de score e depende da distribuição de candidatos.",
+    "Fusão por ranking evita comparar escalas diretamente, mas perde informação sobre distância entre posições."
+  ],
+  "failure_test": "Teste proposto: produzir um outlier lexical e variar o tamanho das listas. Conferir se a fusão muda como previsto e se o resultado continua respeitando os filtros em ambos os canais.",
+  "evaluation_plan": "Avaliação proposta: comparar BM25, vetores, RRF e normalização sobre o mesmo corpus. Controlar candidatos e orçamento final; medir recall complementar, qualidade do topo, latência e desempenho por consultas com identificadores e paráfrases.",
+  "comparisons": [
+    {
+      "entry_id": "T028",
+      "relation": "complements",
+      "reason": "Reranking pode avaliar a união de candidatos depois da fusão."
+    },
+    {
+      "entry_id": "T009",
+      "relation": "complements",
+      "reason": "A busca híbrida implementa a etapa de recuperação, sem resolver sozinha o uso da evidência pelo gerador."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "OpenSearch calcula estatísticas de normalização a partir dos resultados retornados por cada cláusula.",
+    "source_ids": [
+      "V3A-S022"
+    ],
+    "support": "direct",
+    "caveat": "A consequência depende da técnica de normalização; não deve ser generalizada a toda fusão híbrida."
+  },
+  "advanced_qa": [
+    {
+      "question": "Peso igual significa contribuição igual?",
+      "answer": "Não. Escalas, cobertura e distribuição dos scores importam. Mesmo após normalização, pesos iguais não garantem influência semântica equivalente."
+    },
+    {
+      "question": "Qual canal devo remover se quiser reduzir custo?",
+      "answer": "Meça a evidência exclusiva que cada um recupera nas consultas relevantes. A decisão por média agregada pode prejudicar códigos raros ou linguagem do domínio."
+    }
+  ],
+  "source_ids": [
+    "V3A-S022",
+    "A-S021",
+    "V3A-S026"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

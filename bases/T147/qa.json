@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Fan-out é sinônimo de multiagente?",
+    "answer": "Não. Os ramos podem ser funções comuns sem LLM."
+  },
+  {
+    "question": "O consolidado pode assumir que todos responderam?",
+    "answer": "Não. Deve comparar os resultados recebidos com o manifest esperado."
+  },
+  {
+    "question": "Quando todos os ramos existentes terminaram, o fan-out acabou?",
+    "answer": "Somente se a fase que pode criar novos ramos também estiver encerrada."
+  },
+  {
+    "question": "Uma lista de resultados em ordem de chegada é reproduzível?",
+    "answer": "Não necessariamente; preservar IDs e aplicar ordenação estável quando o consumidor depende da sequência."
+  }
+]

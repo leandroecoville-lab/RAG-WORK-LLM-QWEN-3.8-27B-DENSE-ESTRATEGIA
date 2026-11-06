@@ -1,0 +1,115 @@
+{
+  "id": "T146",
+  "novelty": "A v3 apresentou o vetor de recursos e custo marginal. A camada nova define portfólios de ações concorrentes, diversidade útil e decisão de reduzir trabalho sob restrições de fila e verificação.",
+  "deep_layers": [
+    {
+      "name": "Portfólio de ações, não só amostras",
+      "detail": "Distribua orçamento entre buscar evidência, gerar alternativa e verificar um candidato. Muitas amostras do mesmo prompt podem repetir a mesma suposição errada. Prefira diversidade que altere informação ou método, como um cálculo executável e uma consulta documental, quando ambos respondem à mesma questão de forma comparável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S003",
+        "V4C-S009"
+      ]
+    },
+    {
+      "name": "Custo de integração",
+      "detail": "Toda alternativa criada exige comparação e eventual reconciliação. O planejador precisa reservar esse trabalho, especialmente quando usa workers pequenos com saídas heterogêneas. Se o custo de integrar cresce mais rápido que o benefício de novos ramos, reduzir largura pode melhorar tempo até uma resposta realmente aceita.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Adaptação condicionada à capacidade",
+      "detail": "Escolher mais paralelismo só reduz latência quando existe capacidade de execução. Sob fila saturada, ações adicionais competem com as já iniciadas. Use sinais de espera e utilização para preferir trabalho que destrava dependências, preservando verificações obrigatórias mesmo quando o contexto exploratório for reduzido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S003",
+        "V3C-S009"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Escolha entre candidatos de código",
+      "scenario": "Há várias correções plausíveis para um defeito delimitado.",
+      "strategy": "Gere poucos candidatos com hipóteses distintas e rode testes relevantes em ambiente separado. Amplie o conjunto apenas se nenhuma alternativa passou e houver uma nova hipótese. Evite decidir por eloquência ou pelo número de agentes concordando.",
+      "small_model_role": "8–14B gera correções locais; 15–30B compara evidências de integração.",
+      "acceptance": "Proposta: medir aceitação, regressões e custo total dos candidatos descartados contra um único candidato de fronteira.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S007",
+        "V4C-S009"
+      ]
+    },
+    {
+      "name": "Pesquisa com orçamento variável",
+      "scenario": "Uma consulta exige mais cobertura quando há fontes conflitantes.",
+      "strategy": "Faça uma busca inicial curta, estime lacunas por critério e distribua workers apenas para aspectos ainda descobertos. Reuse evidências já coletadas por identidade de documento; se a latência estiver comprometida, entregue cobertura parcial explicitamente permitida.",
+      "small_model_role": "3–7B extrai por fonte; 15–30B prioriza quais lacunas ainda podem mudar a conclusão.",
+      "acceptance": "Proposta: comparar cobertura, sustentação e custo por resposta aceita, preservando casos abandonados nas métricas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: especialistas baratos em tarefas fechadas, com poucas alternativas por chamada.",
+    "8_14b": "Proposta: explorar hipóteses locais diferentes e produzir artefatos diretamente verificáveis.",
+    "15_30b": "Proposta: alocar e integrar esforço em problemas delimitados, sem assumir orçamento ilimitado.",
+    "training_or_runtime_requirements": "Medir custo de verificação e integração, filas e memória; parâmetros não substituem profiling do hardware e do servidor.",
+    "do_not_use_when": "Não escalar quantidade de amostras quando faltam diversidade ou um verificador capaz de distingui-las."
+  },
+  "connections": [
+    {
+      "target_id": "T147",
+      "relation": "complements",
+      "how": "Fan-out materializa apenas os ramos cujo benefício esperado justifica integração.",
+      "interface": "Lista de hipóteses, orçamento por ramo e condição de junção.",
+      "condition": "As saídas podem ser comparadas no mesmo critério.",
+      "acceptance": "Medir duplicação semântica e utilidade marginal dos ramos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T174",
+      "relation": "complements",
+      "how": "Prioridade favorece ações que liberam caminho crítico sem bloquear tarefas antigas indefinidamente.",
+      "interface": "Custo estimado, dependências e deadline.",
+      "condition": "Há recursos disponíveis ou política de preempção definida.",
+      "acceptance": "Reproduzir carga mista e medir espera por classe e conclusão correta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S003"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Evitar que geração de candidatos consuma a reserva destinada à verificação.",
+    "Não transferir uma vitória em benchmark sintético para todo tipo de tarefa sem estratificação."
+  ],
+  "frontier_comparison": "Compare fronteiras de qualidade, custo e latência em cargas equivalentes. Combinações de modelos pequenos podem vencer em nichos verificáveis, mantendo limites em conhecimento e planejamento aberto.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q004",
+      "V4C-Q014",
+      "V4C-Q009"
+    ],
+    "scope_note": "Fontes cobrem budgets e coordenação; a política de portfólio é proposta, não uma implantação demonstrada com todas as bandas."
+  },
+  "source_ids": [
+    "V3C-S003",
+    "V4C-S009",
+    "C-S030",
+    "V4C-S014",
+    "V4C-S003",
+    "V3C-S009",
+    "V4C-S007"
+  ]
+}

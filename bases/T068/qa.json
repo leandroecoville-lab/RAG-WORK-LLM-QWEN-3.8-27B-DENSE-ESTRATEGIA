@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Memory-Augmented Generation é sempre RAG?",
+    "answer": "Há sobreposição, mas arquiteturas com memória integrada podem operar de forma diferente de um pipeline textual de RAG."
+  },
+  {
+    "question": "Sempre exige treinamento?",
+    "answer": "Não. Memória via ferramentas pode ser engenharia de runtime; arquiteturas especializadas podem exigir adaptação do modelo."
+  },
+  {
+    "question": "Uma resposta melhor prova que a memória foi usada?",
+    "answer": "Não. Faça ablações com memória removida, trocada ou corrigida e observe o comportamento. Acerto isolado pode vir do conhecimento paramétrico."
+  },
+  {
+    "question": "Como evitar que o gerador ignore correções recuperadas?",
+    "answer": "Inclua status e versões, teste conflitos entre conhecimento anterior e evidência atual e avalie se a resposta respeita o escopo atualizado."
+  }
+]

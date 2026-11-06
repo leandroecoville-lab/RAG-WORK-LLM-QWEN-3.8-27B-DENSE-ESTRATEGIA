@@ -1,0 +1,40 @@
+{
+  "entry_id": "T104",
+  "edges": [
+    {
+      "edge_id": "E-T104-01",
+      "from": "T104",
+      "to": "T083",
+      "relation": "complements",
+      "how": "A política consulta a hierarquia para escolher o melhor prefixo realmente materializável.",
+      "interface": "Residência, previsão de transferência e orçamento de banda.",
+      "condition": "Estimativas atualizadas e limite para restauração.",
+      "acceptance": "Induzir saturação da camada inferior e observar mudança para recomputação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T104-02",
+      "from": "T104",
+      "to": "T121",
+      "relation": "requires",
+      "how": "O agendamento deve considerar custo e justiça além do tamanho do prefixo.",
+      "interface": "Idade original, deadline e afinidade.",
+      "condition": "Prioridade não reiniciada após reencaminhamento.",
+      "acceptance": "Verificar ausência de starvation em mistura de prompts.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S011",
+        "V4B-S031"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

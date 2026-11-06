@@ -1,0 +1,120 @@
+{
+  "id": "T087",
+  "novelty": "A v3 explicou espera de lote e desperdício de padding. A expansão concentra-se em controle de admissão, mistura de prioridades e medição sob chegadas realistas, para que throughput alto não esconda filas crescentes ou resultados entregues fora de prazo.",
+  "deep_layers": [
+    {
+      "name": "Tráfego aberto versus fechado",
+      "detail": "Um ensaio que envia a próxima requisição somente após receber a anterior limita artificialmente a fila. Para avaliar serviço, reproduza chegadas independentes, rajadas e períodos esparsos. Mantenha também um teste fechado para capacidade individual, mas não use sua latência como promessa de comportamento sob demanda externa crescente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S047",
+        "V4B-S008",
+        "V4B-S014"
+      ]
+    },
+    {
+      "name": "Lotes por compatibilidade real",
+      "detail": "Agrupe por modelo, formato de entrada e restrições do backend, preservando identificadores individuais. Separar comprimentos pode reduzir desperdício, mas criar filas demais deixa lotes pequenos esperando. Escolha poucas classes justificadas por distribuição observada e imponha prazo máximo de espera mesmo quando o lote ideal não se completa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S047",
+        "V4B-S008",
+        "V4B-S014"
+      ]
+    },
+    {
+      "name": "Contabilidade de entrega",
+      "detail": "Meça itens concluídos corretamente por unidade de tempo, com contagem de rejeições, expirados e cancelados. O throughput do acelerador pode crescer enquanto a taxa de resultados úteis cai. Para jobs offline, registre progresso durável por item; repetir um lote após falha não deve duplicar gravações já confirmadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S047",
+        "V4B-S008",
+        "V4B-S014"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Enriquecimento de catálogo",
+      "scenario": "Milhões de registros independentes precisam de classificação ou extração.",
+      "strategy": "Use lotes estáticos para partições conhecidas, ordene por comprimento quando permitido e grave saída vinculada ao ID original. Faça retries apenas dos itens sem conclusão verificável. Preserve uma amostra temporal fora da otimização.",
+      "small_model_role": "Um 3–14B especializado pode executar grande volume com validação determinística de campos.",
+      "acceptance": "Aprovar por custo por registro válido e prazo do job, incluindo retrabalho e persistência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S047",
+        "V4B-S008",
+        "V4B-S014"
+      ]
+    },
+    {
+      "name": "Endpoint com demanda irregular",
+      "scenario": "Chamadas interativas chegam em picos curtos.",
+      "strategy": "Use agregação dinâmica com janela limitada por prazo. Se a fila crescer, rejeite ou encaminhe antes de acumular atraso irrecuperável. Separe pedidos urgentes de processamento adiado somente quando houver capacidade garantida para ambos.",
+      "small_model_role": "Um 15–30B pode amortizar pesos com lotes, mas não deve atrasar indefinidamente requisições pequenas.",
+      "acceptance": "Comparar distribuição de espera e serviço por classe, com carga aberta e cancelamentos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S047",
+        "V4B-S008",
+        "V4B-S014"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, overhead de rede e tokenização pode dominar; medir lotes pequenos antes de buscar máxima ocupação.",
+    "8_14b": "Em 8–14B, poucas faixas de comprimento ajudam a explorar eficiência sem fragmentar excessivamente a demanda.",
+    "15_30b": "Em 15–30B, aumentar lote exige reservar KV e buffers, além de caberem os pesos.",
+    "training_or_runtime_requirements": "Batching é runtime; embeddings, classificação e geração têm perfis diferentes e não compartilham automaticamente o mesmo scheduler.",
+    "do_not_use_when": "Não usar lote fixo para tarefas com prazos incompatíveis nem comparar throughput offline com latência interativa."
+  },
+  "connections": [
+    {
+      "target_id": "T088",
+      "relation": "alternative",
+      "how": "Trocar o lote fechado por composição por iteração quando comprimentos de geração variam muito.",
+      "interface": "Fila de requisições e estados independentes.",
+      "condition": "O runtime suporta entrada e saída de sequências ativas.",
+      "acceptance": "Comparar utilidade entregue com a mesma chegada e orçamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S047",
+        "V4B-S008",
+        "V4B-S014"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T162",
+      "relation": "complements",
+      "how": "Confirmar cada resultado por chave idempotente antes de marcar o lote concluído.",
+      "interface": "ID do item, revisão da entrada e hash da saída.",
+      "condition": "Há armazenamento com deduplicação de commits.",
+      "acceptance": "Falhar após gravação parcial e verificar que nenhum efeito é repetido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S047",
+        "V4B-S008",
+        "V4B-S014"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não excluir timeouts da estatística principal de latência.",
+    "Preservar correspondência entre item e saída após reordenação por comprimento."
+  ],
+  "frontier_comparison": "Comparar classificação ou extração em lote com uma fronteira usando o mesmo conjunto e orçamento de erro. Batching permite economia operacional do pequeno modelo; não corrige categorias que ele não aprende.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q004",
+      "V4B-Q014"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S047",
+    "V4B-S008",
+    "V4B-S014"
+  ]
+}

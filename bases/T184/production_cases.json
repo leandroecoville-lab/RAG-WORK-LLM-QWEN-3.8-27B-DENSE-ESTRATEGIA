@@ -1,0 +1,171 @@
+{
+  "coverage": {
+    "entry_id": "T184",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 1,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 3,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Mixture of Experts — MoE",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4D-C007",
+      "company": "DeepSeek-AI",
+      "system": "DeepSeek-V3/R1 — infraestrutura de inferência online",
+      "title": "DeepSeek-V3/R1 — infraestrutura de inferência online",
+      "evidence_level": "production_documented",
+      "observed_use": "Autores descrevem a implantação do serviço e publicam perfis associados a configurações de prefill e decode.",
+      "technical_mechanism": "Separação das fases, paralelismo tensorial/especialistas e sobreposição de comunicação com computação.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4D-S014",
+        "V4D-S015"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T102",
+          "match": "exact",
+          "rationale": "A seção de deployment separa explicitamente prefill e decoding."
+        },
+        {
+          "entry_id": "T118",
+          "match": "exact",
+          "rationale": "Atenção usa tensor parallelism no deployment descrito."
+        },
+        {
+          "entry_id": "T122",
+          "match": "exact",
+          "rationale": "Perfil do runtime descreve comunicação RDMA no decode, distinguindo o perfil simplificado da carga completa."
+        },
+        {
+          "entry_id": "T184",
+          "match": "exact",
+          "rationale": "O deployment distribui especialistas e ajusta redundância com estatísticas online."
+        },
+        {
+          "entry_id": "T129",
+          "match": "family",
+          "rationale": "MTP faz parte da pesquisa/treino do modelo; a fonte não comprova que a especulação MTP esteja ativa em toda implantação online."
+        }
+      ],
+      "small_model_transfer": "Proposta: medir sobreposição de comunicação e decisão de particionamento só quando o modelo/carga exigir múltiplos dispositivos; alunos que cabem em uma GPU devem ter esse caminho simples como baseline.",
+      "limits": "671B totais, fora da faixa solicitada. Configurações do artigo e do perfil não são idênticas. Trace simula balanceamento perfeito e não demonstra ganho em 3–30B.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4D-C007",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "T184",
+        "match": "exact",
+        "rationale": "O deployment distribui especialistas e ajusta redundância com estatísticas online."
+      }
+    },
+    {
+      "case_id": "V4B-C003",
+      "company": "Meta",
+      "organization_class": "bigtech",
+      "system": "Infraestrutura de inferência Meta AI",
+      "title": "Paralelismo de tensores e contexto no serving Meta",
+      "evidence_level": "production_documented",
+      "observed_use": "Meta relata técnicas implementadas para sistemas de inferência que sustentam aplicações como Meta AI, com metas distintas de prefill e geração.",
+      "technical_mechanism": "Algoritmos de comunicação para TP e variantes Pass-KV/Pass-Q para contexto; resultados de escala são apresentados separadamente das direções futuras.",
+      "event_date": "2025-10-17",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S003"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T118",
+          "match": "exact",
+          "rationale": "O operador descreve implementação e otimização de tensor parallelism."
+        },
+        {
+          "entry_id": "T117",
+          "match": "exact",
+          "rationale": "Particionamento de contexto é explicitamente implementado."
+        },
+        {
+          "entry_id": "T101",
+          "match": "family",
+          "rationale": "Pass-KV/Pass-Q são descritos como variantes frequentemente chamadas ring attention, sem identificar toda implementação com o paper específico."
+        },
+        {
+          "entry_id": "T184",
+          "match": "family",
+          "rationale": "Expert parallelism é discutido para modelos MoE, sem demonstrar cada arquitetura do inventário."
+        },
+        {
+          "entry_id": "P009",
+          "match": "analogy",
+          "rationale": "Ajuda a definir telemetria e capacidades distribuídas do componente editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: usar topologia e formas reais para decidir CP/TP em 3–30B, preservando uma execução local como comparação quando possível.",
+      "limits": "Modelos e clusters citados excedem muitos ambientes 3–30B. Disaggregated inference aparece como direção futura nesse texto e não é contado como implantação exata a partir dele.",
+      "canonical_case_id": "V4B-C003",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "T184",
+        "match": "family",
+        "rationale": "Expert parallelism é discutido para modelos MoE, sem demonstrar cada arquitetura do inventário."
+      }
+    },
+    {
+      "case_id": "V4B-C016",
+      "company": "Alibaba / Qwen Team",
+      "organization_class": "bigtech",
+      "system": "Qwen3 — modelos publicados",
+      "title": "Família densa e MoE com heads agrupadas e modos de raciocínio",
+      "evidence_level": "operational_product",
+      "observed_use": "O Qwen Team publicou checkpoints densos e MoE, com configurações de heads Q/KV e distinção entre parâmetros totais e ativos.",
+      "technical_mechanism": "Modelos como Qwen3-30B-A3B têm dimensão total distinta da quantidade ativada por token; os checkpoints densos listados usam configurações próprias de heads.",
+      "event_date": "2025-04-29",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S020"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R022",
+          "match": "exact",
+          "rationale": "Fonte oficial identifica a família e seus checkpoints."
+        },
+        {
+          "entry_id": "T184",
+          "match": "exact",
+          "rationale": "Variantes MoE são explicitamente publicadas."
+        },
+        {
+          "entry_id": "T100",
+          "match": "exact",
+          "rationale": "Tabela Q/KV documenta agrupamento nas variantes pertinentes."
+        },
+        {
+          "entry_id": "T106",
+          "match": "family",
+          "rationale": "Configuração permite dimensionar KV, mas economia física depende do executor."
+        }
+      ],
+      "small_model_transfer": "Proposta: selecionar revisões específicas dentro de 3–30B por tarefa e memória total, comparando denso e MoE sem tratar parâmetros ativos como memória de pesos.",
+      "limits": "Lançamento e benchmarks não comprovam implantação cliente nem checkpoint atual do usuário. Qwen3-32B fica fora da faixa 15–30B estrita e não é usado como exemplo dentro dela.",
+      "canonical_case_id": "V4B-C016",
+      "deployment_domain": "llm_training",
+      "mapping": {
+        "entry_id": "T184",
+        "match": "exact",
+        "rationale": "Variantes MoE são explicitamente publicadas."
+      }
+    }
+  ]
+}

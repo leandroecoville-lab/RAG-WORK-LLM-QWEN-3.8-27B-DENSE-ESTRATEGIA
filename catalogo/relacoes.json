@@ -1,0 +1,6995 @@
+{
+  "nodes": [
+    {
+      "id": "T001",
+      "name": "Map-Reduce"
+    },
+    {
+      "id": "T002",
+      "name": "Prompt Caching"
+    },
+    {
+      "id": "T003",
+      "name": "Sliding Window de contexto — incluindo descarte FIFO"
+    },
+    {
+      "id": "T004",
+      "name": "Summarization em cadeia"
+    },
+    {
+      "id": "T005",
+      "name": "Semantic Caching"
+    },
+    {
+      "id": "T006",
+      "name": "Context Compression"
+    },
+    {
+      "id": "T007",
+      "name": "Response Caching por Hash"
+    },
+    {
+      "id": "T008",
+      "name": "Hierarchical Summarization"
+    },
+    {
+      "id": "T009",
+      "name": "RAG — Retrieval-Augmented Generation; incluindo RAG temporal"
+    },
+    {
+      "id": "T010",
+      "name": "Fixed-Size Chunking"
+    },
+    {
+      "id": "T011",
+      "name": "Semantic Chunking"
+    },
+    {
+      "id": "T012",
+      "name": "Recursive Chunking"
+    },
+    {
+      "id": "T013",
+      "name": "Long-Context Models"
+    },
+    {
+      "id": "T014",
+      "name": "Progressive Disclosure"
+    },
+    {
+      "id": "T015",
+      "name": "Reference Passing"
+    },
+    {
+      "id": "T016",
+      "name": "Tool Result Truncation"
+    },
+    {
+      "id": "T017",
+      "name": "Context Folding"
+    },
+    {
+      "id": "T018",
+      "name": "Context Pruning"
+    },
+    {
+      "id": "T019",
+      "name": "Few-Shot Pruning"
+    },
+    {
+      "id": "T020",
+      "name": "Learned Prompt Compression"
+    },
+    {
+      "id": "T021",
+      "name": "Context Compression On-the-Fly"
+    },
+    {
+      "id": "T022",
+      "name": "Instruction Compression"
+    },
+    {
+      "id": "T023",
+      "name": "Recursive Summarization Tree"
+    },
+    {
+      "id": "T024",
+      "name": "Context Broker e Context Builder"
+    },
+    {
+      "id": "T025",
+      "name": "Adaptive RAG"
+    },
+    {
+      "id": "T026",
+      "name": "Hierarchical Retrieval"
+    },
+    {
+      "id": "T027",
+      "name": "Hybrid Retrieval — BM25 + vetores"
+    },
+    {
+      "id": "T028",
+      "name": "Reranking"
+    },
+    {
+      "id": "T029",
+      "name": "GraphRAG"
+    },
+    {
+      "id": "T030",
+      "name": "RAPTOR"
+    },
+    {
+      "id": "T031",
+      "name": "Semantic Cache Invalidation"
+    },
+    {
+      "id": "T032",
+      "name": "Parent-Child Retrieval / Parent-Child Chunking"
+    },
+    {
+      "id": "T033",
+      "name": "Structure-Aware Chunking"
+    },
+    {
+      "id": "T034",
+      "name": "Agentic Chunking"
+    },
+    {
+      "id": "T035",
+      "name": "Contextual Chunking"
+    },
+    {
+      "id": "T036",
+      "name": "Query-Aware RAG"
+    },
+    {
+      "id": "T037",
+      "name": "Query-Aware Compression"
+    },
+    {
+      "id": "T038",
+      "name": "Selective Context Pruning"
+    },
+    {
+      "id": "T039",
+      "name": "Importance-Aware Window"
+    },
+    {
+      "id": "T040",
+      "name": "State-Aware Window"
+    },
+    {
+      "id": "T041",
+      "name": "Last-N Messages Window"
+    },
+    {
+      "id": "T042",
+      "name": "Token-Based Window"
+    },
+    {
+      "id": "T043",
+      "name": "Context Compaction"
+    },
+    {
+      "id": "T044",
+      "name": "Progressive Context Expansion"
+    },
+    {
+      "id": "T045",
+      "name": "Tool Retrieval"
+    },
+    {
+      "id": "T046",
+      "name": "Dynamic Few-Shot Selection"
+    },
+    {
+      "id": "T047",
+      "name": "Long-Term Memory — memória de longo prazo"
+    },
+    {
+      "id": "T048",
+      "name": "Memory Management"
+    },
+    {
+      "id": "T049",
+      "name": "Episodic Memory"
+    },
+    {
+      "id": "T050",
+      "name": "Working Memory Window"
+    },
+    {
+      "id": "T051",
+      "name": "Graph-Based Memory"
+    },
+    {
+      "id": "T052",
+      "name": "Latent Context"
+    },
+    {
+      "id": "T053",
+      "name": "Scratchpad em arquivo"
+    },
+    {
+      "id": "T054",
+      "name": "Semantic Memory"
+    },
+    {
+      "id": "T055",
+      "name": "Procedural Memory"
+    },
+    {
+      "id": "T056",
+      "name": "Bitemporal Memory"
+    },
+    {
+      "id": "T057",
+      "name": "Causal Memory"
+    },
+    {
+      "id": "T058",
+      "name": "Memory Consolidation"
+    },
+    {
+      "id": "T059",
+      "name": "Event Sourcing"
+    },
+    {
+      "id": "T060",
+      "name": "Agent Checkpointing / Checkpoint & Resume — incluindo checkpoints transacionais"
+    },
+    {
+      "id": "T061",
+      "name": "Content-Addressable Storage"
+    },
+    {
+      "id": "T062",
+      "name": "Hierarchical Memory"
+    },
+    {
+      "id": "T063",
+      "name": "Virtual Context Management — memória virtual de contexto, estilo MemGPT"
+    },
+    {
+      "id": "T064",
+      "name": "Persistent Agent State"
+    },
+    {
+      "id": "T065",
+      "name": "Transactional State Manager"
+    },
+    {
+      "id": "T066",
+      "name": "Memory Resolver / Reference Resolver"
+    },
+    {
+      "id": "T067",
+      "name": "Active Memory Retrieval"
+    },
+    {
+      "id": "T068",
+      "name": "Memory-Augmented Generation"
+    },
+    {
+      "id": "T069",
+      "name": "Consolidação por resumos — anteriormente chamada de “Context Distillation”"
+    },
+    {
+      "id": "T070",
+      "name": "Episodic Store"
+    },
+    {
+      "id": "T071",
+      "name": "Memory Promotion"
+    },
+    {
+      "id": "T072",
+      "name": "Versioned Memory"
+    },
+    {
+      "id": "T073",
+      "name": "Immutable Evidence Store"
+    },
+    {
+      "id": "T074",
+      "name": "Memory Eviction"
+    },
+    {
+      "id": "T075",
+      "name": "Memory Reconciliation"
+    },
+    {
+      "id": "T076",
+      "name": "Git-Backed Memory"
+    },
+    {
+      "id": "T077",
+      "name": "Temporal Knowledge Graphs"
+    },
+    {
+      "id": "T078",
+      "name": "Semantic Page Fault"
+    },
+    {
+      "id": "T079",
+      "name": "Speculative Decoding"
+    },
+    {
+      "id": "T080",
+      "name": "Adaptive Speculative Decoding"
+    },
+    {
+      "id": "T081",
+      "name": "KV Cache Reuse"
+    },
+    {
+      "id": "T082",
+      "name": "Prefix Caching"
+    },
+    {
+      "id": "T083",
+      "name": "Advanced Prefix Caching"
+    },
+    {
+      "id": "T084",
+      "name": "Session-Based Caching"
+    },
+    {
+      "id": "T085",
+      "name": "Quantization"
+    },
+    {
+      "id": "T086",
+      "name": "Quantized KV Cache"
+    },
+    {
+      "id": "T087",
+      "name": "Batching — Static Batching e Dynamic Batching"
+    },
+    {
+      "id": "T088",
+      "name": "Continuous Batching"
+    },
+    {
+      "id": "T089",
+      "name": "Early Stopping — EOS, stop sequences, limites e parada semântica"
+    },
+    {
+      "id": "T090",
+      "name": "FlashAttention"
+    },
+    {
+      "id": "T091",
+      "name": "FlashAttention-2"
+    },
+    {
+      "id": "T092",
+      "name": "FlashAttention-3"
+    },
+    {
+      "id": "T093",
+      "name": "PagedAttention"
+    },
+    {
+      "id": "T094",
+      "name": "Chunked Prefill"
+    },
+    {
+      "id": "T095",
+      "name": "Sliding Window Attention"
+    },
+    {
+      "id": "T096",
+      "name": "Sparse Attention"
+    },
+    {
+      "id": "T097",
+      "name": "Block-Sparse Attention"
+    },
+    {
+      "id": "T098",
+      "name": "Memory-Efficient Attention"
+    },
+    {
+      "id": "T099",
+      "name": "Multi-Query Attention — MQA"
+    },
+    {
+      "id": "T100",
+      "name": "Grouped-Query Attention — GQA"
+    },
+    {
+      "id": "T101",
+      "name": "Ring Attention"
+    },
+    {
+      "id": "T102",
+      "name": "Disaggregated Inference / Disaggregated Prefill-Decode"
+    },
+    {
+      "id": "T103",
+      "name": "Prefix Tree / Trie de prefixos"
+    },
+    {
+      "id": "T104",
+      "name": "Radix Attention"
+    },
+    {
+      "id": "T105",
+      "name": "KV Cache Eviction"
+    },
+    {
+      "id": "T106",
+      "name": "Otimização de KV com MQA/GQA"
+    },
+    {
+      "id": "T107",
+      "name": "Roofline Analysis"
+    },
+    {
+      "id": "T108",
+      "name": "Multi-Head Attention — MHA"
+    },
+    {
+      "id": "T109",
+      "name": "Local / Window Attention"
+    },
+    {
+      "id": "T110",
+      "name": "Global Token Attention"
+    },
+    {
+      "id": "T111",
+      "name": "Dynamic Sparse Attention"
+    },
+    {
+      "id": "T112",
+      "name": "Retrieval-Based Attention"
+    },
+    {
+      "id": "T113",
+      "name": "FlashAttention Tiling"
+    },
+    {
+      "id": "T114",
+      "name": "Online Softmax"
+    },
+    {
+      "id": "T115",
+      "name": "Activation Checkpointing"
+    },
+    {
+      "id": "T116",
+      "name": "KV Cache Recomputation"
+    },
+    {
+      "id": "T117",
+      "name": "Context Parallelism"
+    },
+    {
+      "id": "T118",
+      "name": "Tensor Parallelism"
+    },
+    {
+      "id": "T119",
+      "name": "Pipeline Parallelism"
+    },
+    {
+      "id": "T120",
+      "name": "KV Cache Routing"
+    },
+    {
+      "id": "T121",
+      "name": "GPU Scheduling"
+    },
+    {
+      "id": "T122",
+      "name": "RDMA para inferência distribuída"
+    },
+    {
+      "id": "T123",
+      "name": "FP8 Quantization"
+    },
+    {
+      "id": "T124",
+      "name": "INT4 / W4A16 Quantization"
+    },
+    {
+      "id": "T125",
+      "name": "GPTQ"
+    },
+    {
+      "id": "T126",
+      "name": "AWQ"
+    },
+    {
+      "id": "T127",
+      "name": "GGUF — formato de modelos, não método único de quantização"
+    },
+    {
+      "id": "T128",
+      "name": "EAGLE / EAGLE-3"
+    },
+    {
+      "id": "T129",
+      "name": "MTP — Multi-Token Prediction"
+    },
+    {
+      "id": "T130",
+      "name": "N-Gram Speculative Decoding"
+    },
+    {
+      "id": "T131",
+      "name": "Suffix Decoding"
+    },
+    {
+      "id": "T132",
+      "name": "Draft-Model Speculation"
+    },
+    {
+      "id": "T133",
+      "name": "Model Routing"
+    },
+    {
+      "id": "T134",
+      "name": "Semantic Routing"
+    },
+    {
+      "id": "T135",
+      "name": "Model Cascade"
+    },
+    {
+      "id": "T136",
+      "name": "Fallback Chains"
+    },
+    {
+      "id": "T137",
+      "name": "Rate Limiting"
+    },
+    {
+      "id": "T138",
+      "name": "Circuit Breaker"
+    },
+    {
+      "id": "T139",
+      "name": "Parallel Tool Calls"
+    },
+    {
+      "id": "T140",
+      "name": "Tool Use / Function Calling"
+    },
+    {
+      "id": "T141",
+      "name": "Structured Outputs"
+    },
+    {
+      "id": "T142",
+      "name": "Agent Frameworks com Planning"
+    },
+    {
+      "id": "T143",
+      "name": "Plan-Then-Act"
+    },
+    {
+      "id": "T144",
+      "name": "ReAct Pattern"
+    },
+    {
+      "id": "T145",
+      "name": "Adaptive Depth"
+    },
+    {
+      "id": "T146",
+      "name": "Adaptive Compute"
+    },
+    {
+      "id": "T147",
+      "name": "Parallel Fan-Out"
+    },
+    {
+      "id": "T148",
+      "name": "Conditional Branching"
+    },
+    {
+      "id": "T149",
+      "name": "Priority Queue"
+    },
+    {
+      "id": "T150",
+      "name": "Request Coalescing / Singleflight"
+    },
+    {
+      "id": "T151",
+      "name": "Lazy Loading de ferramentas"
+    },
+    {
+      "id": "T152",
+      "name": "Token Budget Allocation"
+    },
+    {
+      "id": "T153",
+      "name": "Output Streaming com interrupção"
+    },
+    {
+      "id": "T154",
+      "name": "Multi-Turn Conversation Management"
+    },
+    {
+      "id": "T155",
+      "name": "System Prompt Optimization / prompt de sistema enxuto"
+    },
+    {
+      "id": "T156",
+      "name": "Temperature Tuning"
+    },
+    {
+      "id": "T157",
+      "name": "Prefix Hashing"
+    },
+    {
+      "id": "T158",
+      "name": "Tool Registry"
+    },
+    {
+      "id": "T159",
+      "name": "Durable Execution"
+    },
+    {
+      "id": "T160",
+      "name": "DAG Scheduling"
+    },
+    {
+      "id": "T161",
+      "name": "Critical Path Analysis"
+    },
+    {
+      "id": "T162",
+      "name": "Idempotência"
+    },
+    {
+      "id": "T163",
+      "name": "Backoff exponencial com jitter"
+    },
+    {
+      "id": "T164",
+      "name": "Retry-After"
+    },
+    {
+      "id": "T165",
+      "name": "Half-open — estado do Circuit Breaker"
+    },
+    {
+      "id": "T166",
+      "name": "Queue Fairness / Aging"
+    },
+    {
+      "id": "T167",
+      "name": "Token Bucket"
+    },
+    {
+      "id": "T168",
+      "name": "Soft Limit / Hard Limit de tokens"
+    },
+    {
+      "id": "T169",
+      "name": "Multi-Agent com contextos isolados"
+    },
+    {
+      "id": "T170",
+      "name": "Tool Schema Versioning"
+    },
+    {
+      "id": "T171",
+      "name": "Cache-Aware Orchestration"
+    },
+    {
+      "id": "T172",
+      "name": "Streaming Controller"
+    },
+    {
+      "id": "T173",
+      "name": "Model Fallback Controlado"
+    },
+    {
+      "id": "T174",
+      "name": "Priority-Based Scheduling"
+    },
+    {
+      "id": "T175",
+      "name": "Rate Limiting com Fallback"
+    },
+    {
+      "id": "T176",
+      "name": "Token-Aware Planning"
+    },
+    {
+      "id": "T177",
+      "name": "Fine-Tuning"
+    },
+    {
+      "id": "T178",
+      "name": "Knowledge Distillation"
+    },
+    {
+      "id": "T179",
+      "name": "Context Distillation Paramétrica"
+    },
+    {
+      "id": "T180",
+      "name": "Prompt Distillation"
+    },
+    {
+      "id": "T181",
+      "name": "Agent Memory Distillation"
+    },
+    {
+      "id": "T182",
+      "name": "LoRA"
+    },
+    {
+      "id": "T183",
+      "name": "QLoRA"
+    },
+    {
+      "id": "T184",
+      "name": "Mixture of Experts — MoE"
+    },
+    {
+      "id": "T185",
+      "name": "Constitutional AI"
+    },
+    {
+      "id": "T186",
+      "name": "Debate entre agentes"
+    },
+    {
+      "id": "T187",
+      "name": "Ensemble Voting"
+    },
+    {
+      "id": "T188",
+      "name": "Self-Consistency"
+    },
+    {
+      "id": "T189",
+      "name": "Best-of-N Verification"
+    },
+    {
+      "id": "T190",
+      "name": "Verifier Loop"
+    },
+    {
+      "id": "T191",
+      "name": "Chain-of-Verification"
+    },
+    {
+      "id": "T192",
+      "name": "Self-Refine"
+    },
+    {
+      "id": "T193",
+      "name": "Guardrails"
+    },
+    {
+      "id": "T194",
+      "name": "Process Supervision"
+    },
+    {
+      "id": "T195",
+      "name": "Verificação baseada em execução"
+    },
+    {
+      "id": "T196",
+      "name": "Constrained Decoding / Grammar-Constrained Decoding"
+    },
+    {
+      "id": "T197",
+      "name": "JSON Schema Validation"
+    },
+    {
+      "id": "T198",
+      "name": "Calibrated Confidence"
+    },
+    {
+      "id": "T199",
+      "name": "Aprendizagem por avaliação"
+    },
+    {
+      "id": "T200",
+      "name": "Independent Verification"
+    },
+    {
+      "id": "T201",
+      "name": "Agent Test-Time Scaling"
+    },
+    {
+      "id": "T202",
+      "name": "Uncertainty-Aware Planning"
+    },
+    {
+      "id": "T203",
+      "name": "Correctness-Based Routing"
+    },
+    {
+      "id": "T204",
+      "name": "Skills / Procedural Learning"
+    },
+    {
+      "id": "T205",
+      "name": "Semantic Equivalence Testing"
+    },
+    {
+      "id": "T206",
+      "name": "Process Verification"
+    },
+    {
+      "id": "T207",
+      "name": "Memory Stream"
+    },
+    {
+      "id": "T208",
+      "name": "Planner–Executor / Plan-and-Execute"
+    },
+    {
+      "id": "T209",
+      "name": "Reflexion"
+    },
+    {
+      "id": "T210",
+      "name": "Session Rotation"
+    },
+    {
+      "id": "T211",
+      "name": "Handoff File"
+    },
+    {
+      "id": "T212",
+      "name": "Auto-Compact por gatilho"
+    },
+    {
+      "id": "T213",
+      "name": "Task Decomposition em micro-missões"
+    },
+    {
+      "id": "T214",
+      "name": "Tool Output Pruning"
+    },
+    {
+      "id": "T215",
+      "name": "Observation Masking"
+    },
+    {
+      "id": "T216",
+      "name": "Repo Map / mapa do repositório"
+    },
+    {
+      "id": "T217",
+      "name": "Test-Driven Loop"
+    },
+    {
+      "id": "T218",
+      "name": "Loop Detection / detecção de estagnação e ciclos"
+    },
+    {
+      "id": "T219",
+      "name": "Limite de recursão / profundidade de execução"
+    },
+    {
+      "id": "T220",
+      "name": "Tool Call Repair"
+    },
+    {
+      "id": "T221",
+      "name": "Goal Reminder Injection"
+    },
+    {
+      "id": "T222",
+      "name": "Context Budget Monitor"
+    },
+    {
+      "id": "T223",
+      "name": "Constitutional Self-Check"
+    },
+    {
+      "id": "T224",
+      "name": "Spec-Driven Loop"
+    },
+    {
+      "id": "T225",
+      "name": "Watchdog com Auto-Restart"
+    },
+    {
+      "id": "T226",
+      "name": "Heartbeat de progresso"
+    },
+    {
+      "id": "T227",
+      "name": "Health Checks — liveness, readiness e progresso"
+    },
+    {
+      "id": "T228",
+      "name": "Fila de retries com backoff exponencial"
+    },
+    {
+      "id": "T229",
+      "name": "Diff-Only Editing / Patch-Based Coding"
+    },
+    {
+      "id": "T230",
+      "name": "Unified Diff"
+    },
+    {
+      "id": "T231",
+      "name": "Search/Replace Editing"
+    },
+    {
+      "id": "T232",
+      "name": "AST Editing"
+    },
+    {
+      "id": "T233",
+      "name": "Patch Validation — incluindo verificação de hash-base"
+    },
+    {
+      "id": "T234",
+      "name": "Persistent Project Memory File — incluindo memória por módulo"
+    },
+    {
+      "id": "T235",
+      "name": "Headless Mode em loop / Headless Controller"
+    },
+    {
+      "id": "T236",
+      "name": "Git Commit por etapa"
+    },
+    {
+      "id": "T237",
+      "name": "Subagent Offloading"
+    },
+    {
+      "id": "T238",
+      "name": "Read On Demand com faixa de linhas"
+    },
+    {
+      "id": "T239",
+      "name": "Git Worktrees"
+    },
+    {
+      "id": "T240",
+      "name": "Snapshot de estado"
+    },
+    {
+      "id": "T241",
+      "name": "Event Replay"
+    },
+    {
+      "id": "T242",
+      "name": "Recuperação híbrida por Snapshot + Event Sourcing"
+    },
+    {
+      "id": "T243",
+      "name": "Reconciliação de operações externas"
+    },
+    {
+      "id": "R001",
+      "name": "MemGPT"
+    },
+    {
+      "id": "R002",
+      "name": "Letta"
+    },
+    {
+      "id": "R003",
+      "name": "LongMem"
+    },
+    {
+      "id": "R004",
+      "name": "Generative Agents"
+    },
+    {
+      "id": "R005",
+      "name": "LLMLingua"
+    },
+    {
+      "id": "R006",
+      "name": "PRISM"
+    },
+    {
+      "id": "R007",
+      "name": "SADA"
+    },
+    {
+      "id": "R008",
+      "name": "LangGraph"
+    },
+    {
+      "id": "R009",
+      "name": "vLLM"
+    },
+    {
+      "id": "R010",
+      "name": "Hugging Face TGI"
+    },
+    {
+      "id": "R011",
+      "name": "NVIDIA TensorRT-LLM"
+    },
+    {
+      "id": "R012",
+      "name": "Tinker — Prompt Distillation"
+    },
+    {
+      "id": "R013",
+      "name": "Letta MemFS"
+    },
+    {
+      "id": "R014",
+      "name": "Letta Context Repositories"
+    },
+    {
+      "id": "R015",
+      "name": "Learning by Distilling Context"
+    },
+    {
+      "id": "R016",
+      "name": "Lost in the Middle"
+    },
+    {
+      "id": "R017",
+      "name": "LangChain"
+    },
+    {
+      "id": "R018",
+      "name": "Temporal"
+    },
+    {
+      "id": "R019",
+      "name": "Aider"
+    },
+    {
+      "id": "R020",
+      "name": "Claude Code"
+    },
+    {
+      "id": "R021",
+      "name": "OpenAI Codex"
+    },
+    {
+      "id": "R022",
+      "name": "Qwen"
+    },
+    {
+      "id": "R023",
+      "name": "Hugging Face Transformers"
+    },
+    {
+      "id": "R024",
+      "name": "llama.cpp"
+    },
+    {
+      "id": "R025",
+      "name": "XGrammar"
+    },
+    {
+      "id": "R026",
+      "name": "Guidance"
+    },
+    {
+      "id": "R027",
+      "name": "Git"
+    },
+    {
+      "id": "P001",
+      "name": "Context Engine"
+    },
+    {
+      "id": "P002",
+      "name": "Context Manager"
+    },
+    {
+      "id": "P003",
+      "name": "Virtual Context Manager"
+    },
+    {
+      "id": "P004",
+      "name": "LAI Memory Runtime"
+    },
+    {
+      "id": "P005",
+      "name": "Context & Memory Controller"
+    },
+    {
+      "id": "P006",
+      "name": "Progressive Loader"
+    },
+    {
+      "id": "P007",
+      "name": "Memory Retriever"
+    },
+    {
+      "id": "P008",
+      "name": "Event Store / Event Log"
+    },
+    {
+      "id": "P009",
+      "name": "Inference Engine"
+    },
+    {
+      "id": "P010",
+      "name": "Routing Engine"
+    },
+    {
+      "id": "P011",
+      "name": "Execution Engine / Execution Controller"
+    },
+    {
+      "id": "P012",
+      "name": "Verification Engine / Verification Controller"
+    },
+    {
+      "id": "P013",
+      "name": "Resilience Engine / Reliability Controller"
+    },
+    {
+      "id": "P014",
+      "name": "Execution Resilience"
+    },
+    {
+      "id": "P015",
+      "name": "Execution Integrity Controller"
+    },
+    {
+      "id": "P016",
+      "name": "Evaluation Engine"
+    },
+    {
+      "id": "P017",
+      "name": "Distillation Pipeline"
+    }
+  ],
+  "edges": [
+    {
+      "from": "T001",
+      "to": "T008",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T001",
+      "to": "T147",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T001",
+      "to": "T169",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T002",
+      "to": "T005",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T002",
+      "to": "T081",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T002",
+      "to": "T082",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T002",
+      "to": "T171",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T003",
+      "to": "T050",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T003",
+      "to": "T063",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T003",
+      "to": "T069",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T003",
+      "to": "P002",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T004",
+      "to": "T008",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T004",
+      "to": "T043",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T004",
+      "to": "T059",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T004",
+      "to": "T072",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T005",
+      "to": "T007",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T005",
+      "to": "T031",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T005",
+      "to": "T205",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T006",
+      "to": "T018",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T006",
+      "to": "T020",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T006",
+      "to": "T021",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T006",
+      "to": "T043",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T006",
+      "to": "T052",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T007",
+      "to": "T005",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T007",
+      "to": "T031",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T007",
+      "to": "T061",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T007",
+      "to": "T157",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T008",
+      "to": "T023",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T008",
+      "to": "T026",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T008",
+      "to": "T030",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T008",
+      "to": "T062",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T009",
+      "to": "T027",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T009",
+      "to": "T056",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T009",
+      "to": "T072",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T009",
+      "to": "P007",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T010",
+      "to": "T011",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T010",
+      "to": "T012",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T010",
+      "to": "T033",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T011",
+      "to": "T010",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T011",
+      "to": "T012",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T011",
+      "to": "T034",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T012",
+      "to": "T010",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T012",
+      "to": "T011",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T012",
+      "to": "T033",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T013",
+      "to": "T003",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T013",
+      "to": "T009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T013",
+      "to": "T042",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T013",
+      "to": "T062",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T014",
+      "to": "T015",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T014",
+      "to": "T044",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T014",
+      "to": "T045",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T014",
+      "to": "T151",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T015",
+      "to": "T053",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T015",
+      "to": "T061",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T015",
+      "to": "T066",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T016",
+      "to": "T015",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T016",
+      "to": "T043",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T016",
+      "to": "T066",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T017",
+      "to": "T004",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T017",
+      "to": "T043",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T017",
+      "to": "T169",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T018",
+      "to": "T006",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T018",
+      "to": "T038",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T018",
+      "to": "T039",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T019",
+      "to": "T046",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T019",
+      "to": "T155",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T020",
+      "to": "T006",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T020",
+      "to": "T022",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T020",
+      "to": "T052",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T020",
+      "to": "R005",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T021",
+      "to": "T006",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T021",
+      "to": "T043",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T021",
+      "to": "T168",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T022",
+      "to": "T020",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T022",
+      "to": "T155",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T022",
+      "to": "T179",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T023",
+      "to": "T004",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T023",
+      "to": "T008",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T023",
+      "to": "T026",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T023",
+      "to": "T030",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T024",
+      "to": "T014",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T024",
+      "to": "T042",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T024",
+      "to": "T067",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T024",
+      "to": "T152",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T025",
+      "to": "T009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T025",
+      "to": "T036",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T025",
+      "to": "T133",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T025",
+      "to": "T202",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T026",
+      "to": "T008",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T026",
+      "to": "T023",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T026",
+      "to": "T030",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T026",
+      "to": "T032",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T027",
+      "to": "T009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T027",
+      "to": "T028",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T027",
+      "to": "T036",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T028",
+      "to": "T027",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T028",
+      "to": "T036",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T028",
+      "to": "T198",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T029",
+      "to": "T009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T029",
+      "to": "T051",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T029",
+      "to": "T077",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T030",
+      "to": "T008",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T030",
+      "to": "T023",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T030",
+      "to": "T026",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T031",
+      "to": "T005",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T031",
+      "to": "T007",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T031",
+      "to": "T072",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T032",
+      "to": "T009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T032",
+      "to": "T026",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T032",
+      "to": "T035",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T032",
+      "to": "P007",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T033",
+      "to": "T010",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T033",
+      "to": "T012",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T033",
+      "to": "T032",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T033",
+      "to": "T035",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T034",
+      "to": "T011",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T034",
+      "to": "T033",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T034",
+      "to": "T195",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T035",
+      "to": "T033",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T035",
+      "to": "T036",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T035",
+      "to": "T027",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T036",
+      "to": "T025",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T036",
+      "to": "T027",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T036",
+      "to": "T028",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T036",
+      "to": "T037",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T037",
+      "to": "T006",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T037",
+      "to": "T018",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T037",
+      "to": "T036",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T038",
+      "to": "T006",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T038",
+      "to": "T018",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T038",
+      "to": "T039",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T039",
+      "to": "T018",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T039",
+      "to": "T040",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T039",
+      "to": "T048",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T040",
+      "to": "T024",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T040",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T040",
+      "to": "T064",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T040",
+      "to": "T065",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T041",
+      "to": "T003",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T041",
+      "to": "T042",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T041",
+      "to": "T050",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T042",
+      "to": "T003",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T042",
+      "to": "T024",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T042",
+      "to": "T152",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T042",
+      "to": "T168",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T043",
+      "to": "T004",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T043",
+      "to": "T006",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T043",
+      "to": "T021",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T043",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T044",
+      "to": "T014",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T044",
+      "to": "T026",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T044",
+      "to": "T067",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T044",
+      "to": "T078",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T045",
+      "to": "T014",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T045",
+      "to": "T151",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T045",
+      "to": "T158",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T045",
+      "to": "T170",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T046",
+      "to": "T019",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T046",
+      "to": "T155",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T046",
+      "to": "T204",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T047",
+      "to": "T049",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T047",
+      "to": "T054",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T047",
+      "to": "T055",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T047",
+      "to": "T062",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T048",
+      "to": "T047",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T048",
+      "to": "T058",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T048",
+      "to": "T071",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T048",
+      "to": "T074",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T048",
+      "to": "T075",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T049",
+      "to": "T058",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T049",
+      "to": "T070",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T049",
+      "to": "T071",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T049",
+      "to": "T181",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T050",
+      "to": "T003",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T050",
+      "to": "T039",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T050",
+      "to": "T040",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T050",
+      "to": "T053",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T051",
+      "to": "T029",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T051",
+      "to": "T057",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T051",
+      "to": "T077",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T052",
+      "to": "T020",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T052",
+      "to": "T068",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T052",
+      "to": "R003",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T053",
+      "to": "T015",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T053",
+      "to": "T050",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T053",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T053",
+      "to": "T064",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T054",
+      "to": "T049",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T054",
+      "to": "T055",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T054",
+      "to": "T056",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T054",
+      "to": "T075",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T055",
+      "to": "T049",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T055",
+      "to": "T071",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T055",
+      "to": "T204",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T056",
+      "to": "T054",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T056",
+      "to": "T072",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T056",
+      "to": "T077",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T057",
+      "to": "T049",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T057",
+      "to": "T051",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T057",
+      "to": "T056",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T058",
+      "to": "T049",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T058",
+      "to": "T054",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T058",
+      "to": "T071",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T058",
+      "to": "T075",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T059",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T059",
+      "to": "T064",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T059",
+      "to": "T162",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T060",
+      "to": "T059",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T060",
+      "to": "T162",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T060",
+      "to": "T240",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T060",
+      "to": "T242",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T060",
+      "to": "P011",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T060",
+      "to": "P015",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T061",
+      "to": "T007",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T061",
+      "to": "T015",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T061",
+      "to": "T073",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T062",
+      "to": "T047",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T062",
+      "to": "T048",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T062",
+      "to": "T050",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T062",
+      "to": "T063",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T062",
+      "to": "T071",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T063",
+      "to": "T062",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T063",
+      "to": "T067",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T063",
+      "to": "T078",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T063",
+      "to": "R001",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T064",
+      "to": "T040",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T064",
+      "to": "T053",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T064",
+      "to": "T059",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T064",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T064",
+      "to": "T065",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T065",
+      "to": "T059",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T065",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T065",
+      "to": "T064",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T065",
+      "to": "T162",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T066",
+      "to": "T015",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T066",
+      "to": "T053",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T066",
+      "to": "T061",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T066",
+      "to": "T067",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T067",
+      "to": "T036",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T067",
+      "to": "T044",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T067",
+      "to": "T066",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T067",
+      "to": "T078",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T068",
+      "to": "T009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T068",
+      "to": "T047",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T068",
+      "to": "T052",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T068",
+      "to": "T062",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T068",
+      "to": "R003",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T069",
+      "to": "T043",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T069",
+      "to": "T058",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T069",
+      "to": "T072",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T069",
+      "to": "T179",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T069",
+      "to": "P004",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T070",
+      "to": "T049",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T070",
+      "to": "T059",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T070",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T070",
+      "to": "T066",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T071",
+      "to": "T048",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T071",
+      "to": "T055",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T071",
+      "to": "T058",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T071",
+      "to": "T204",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T072",
+      "to": "T056",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T072",
+      "to": "T065",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T072",
+      "to": "T073",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T072",
+      "to": "T076",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T073",
+      "to": "T059",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T073",
+      "to": "T061",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T073",
+      "to": "T072",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T074",
+      "to": "T003",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T074",
+      "to": "T048",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T074",
+      "to": "T062",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T074",
+      "to": "T105",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T075",
+      "to": "T054",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T075",
+      "to": "T056",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T075",
+      "to": "T058",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T075",
+      "to": "T072",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T076",
+      "to": "T053",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T076",
+      "to": "T055",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T076",
+      "to": "T072",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T076",
+      "to": "R002",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T077",
+      "to": "T029",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T077",
+      "to": "T051",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T077",
+      "to": "T056",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T077",
+      "to": "T072",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T078",
+      "to": "T044",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T078",
+      "to": "T062",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T078",
+      "to": "T063",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T078",
+      "to": "T067",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T079",
+      "to": "T080",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T079",
+      "to": "T128",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T079",
+      "to": "T130",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T079",
+      "to": "T131",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T079",
+      "to": "T132",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T080",
+      "to": "T079",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T080",
+      "to": "T145",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T080",
+      "to": "T146",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T081",
+      "to": "T082",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T081",
+      "to": "T084",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T081",
+      "to": "T086",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T081",
+      "to": "T105",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T081",
+      "to": "T116",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T082",
+      "to": "T002",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T082",
+      "to": "T007",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T082",
+      "to": "T081",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T082",
+      "to": "T083",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T082",
+      "to": "T103",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T082",
+      "to": "T171",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T083",
+      "to": "T082",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T083",
+      "to": "T103",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T083",
+      "to": "T104",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T083",
+      "to": "T105",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T083",
+      "to": "T120",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T084",
+      "to": "T081",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T084",
+      "to": "T082",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T084",
+      "to": "T154",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T084",
+      "to": "T064",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T085",
+      "to": "T086",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T085",
+      "to": "T123",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T085",
+      "to": "T124",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T085",
+      "to": "T125",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T085",
+      "to": "T126",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T085",
+      "to": "T127",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T086",
+      "to": "T081",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T086",
+      "to": "T085",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T086",
+      "to": "T123",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T086",
+      "to": "T100",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T087",
+      "to": "T088",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T087",
+      "to": "T137",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T087",
+      "to": "P009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T088",
+      "to": "T087",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T088",
+      "to": "T093",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T088",
+      "to": "T094",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T088",
+      "to": "T121",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T089",
+      "to": "T153",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T089",
+      "to": "T195",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T089",
+      "to": "T196",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T089",
+      "to": "P012",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T090",
+      "to": "T091",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T090",
+      "to": "T092",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T090",
+      "to": "T097",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T090",
+      "to": "T098",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T090",
+      "to": "T113",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T090",
+      "to": "T114",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T091",
+      "to": "T090",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T091",
+      "to": "T092",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T091",
+      "to": "T098",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T091",
+      "to": "T113",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T092",
+      "to": "T090",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T092",
+      "to": "T091",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T092",
+      "to": "T123",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T092",
+      "to": "T086",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T093",
+      "to": "T081",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T093",
+      "to": "T088",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T093",
+      "to": "T105",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T093",
+      "to": "T116",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T093",
+      "to": "R009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T094",
+      "to": "T088",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T094",
+      "to": "T102",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T094",
+      "to": "T121",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T095",
+      "to": "T003",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T095",
+      "to": "T096",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T095",
+      "to": "T109",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T095",
+      "to": "T110",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T096",
+      "to": "T095",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T096",
+      "to": "T097",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T096",
+      "to": "T111",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T096",
+      "to": "T112",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T097",
+      "to": "T093",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T097",
+      "to": "T096",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T097",
+      "to": "T113",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T098",
+      "to": "T090",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T098",
+      "to": "T091",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T098",
+      "to": "T093",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T098",
+      "to": "T113",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T099",
+      "to": "T100",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T099",
+      "to": "T106",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T099",
+      "to": "T108",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T100",
+      "to": "T099",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T100",
+      "to": "T106",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T100",
+      "to": "T108",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T101",
+      "to": "T117",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T101",
+      "to": "T118",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T101",
+      "to": "T122",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T102",
+      "to": "T088",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T102",
+      "to": "T094",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T102",
+      "to": "T120",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T102",
+      "to": "P009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T103",
+      "to": "T082",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T103",
+      "to": "T104",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T103",
+      "to": "T120",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T104",
+      "to": "T082",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T104",
+      "to": "T103",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T104",
+      "to": "T105",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T104",
+      "to": "T171",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T105",
+      "to": "T081",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T105",
+      "to": "T093",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T105",
+      "to": "T104",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T105",
+      "to": "T116",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T106",
+      "to": "T099",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T106",
+      "to": "T100",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T106",
+      "to": "T081",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T106",
+      "to": "P009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T107",
+      "to": "T085",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T107",
+      "to": "T087",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T107",
+      "to": "T090",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T107",
+      "to": "T118",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T107",
+      "to": "T121",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T108",
+      "to": "T099",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T108",
+      "to": "T100",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T108",
+      "to": "T106",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T108",
+      "to": "T090",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T109",
+      "to": "T095",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T109",
+      "to": "T096",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T109",
+      "to": "T110",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T110",
+      "to": "T095",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T110",
+      "to": "T109",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T110",
+      "to": "T096",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T111",
+      "to": "T096",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T111",
+      "to": "T097",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T111",
+      "to": "T112",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T112",
+      "to": "T009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T112",
+      "to": "T067",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T112",
+      "to": "T096",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T112",
+      "to": "T111",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T113",
+      "to": "T090",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T113",
+      "to": "T091",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T113",
+      "to": "T114",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T113",
+      "to": "T097",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T114",
+      "to": "T090",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T114",
+      "to": "T113",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T115",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T115",
+      "to": "T116",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T115",
+      "to": "T183",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T116",
+      "to": "T081",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T116",
+      "to": "T105",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T116",
+      "to": "T115",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T116",
+      "to": "T121",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T117",
+      "to": "T101",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T117",
+      "to": "T118",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T117",
+      "to": "T119",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T117",
+      "to": "T169",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T118",
+      "to": "T117",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T118",
+      "to": "T119",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T118",
+      "to": "T122",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T118",
+      "to": "T107",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T119",
+      "to": "T118",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T119",
+      "to": "T117",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T119",
+      "to": "T102",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T120",
+      "to": "T082",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T120",
+      "to": "T102",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T120",
+      "to": "T103",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T120",
+      "to": "T133",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T120",
+      "to": "T171",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T121",
+      "to": "T088",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T121",
+      "to": "T094",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T121",
+      "to": "T149",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T121",
+      "to": "T166",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T121",
+      "to": "T174",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T122",
+      "to": "T102",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T122",
+      "to": "T118",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T122",
+      "to": "T120",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T123",
+      "to": "T085",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T123",
+      "to": "T086",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T123",
+      "to": "T092",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T124",
+      "to": "T085",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T124",
+      "to": "T125",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T124",
+      "to": "T126",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T124",
+      "to": "T127",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T125",
+      "to": "T085",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T125",
+      "to": "T124",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T125",
+      "to": "T126",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T126",
+      "to": "T085",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T126",
+      "to": "T124",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T126",
+      "to": "T125",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T127",
+      "to": "T124",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T127",
+      "to": "T125",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T127",
+      "to": "P009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T128",
+      "to": "T079",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T128",
+      "to": "T080",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T128",
+      "to": "T132",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T129",
+      "to": "T079",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T129",
+      "to": "T128",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T129",
+      "to": "T132",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T130",
+      "to": "T079",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T130",
+      "to": "T131",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T130",
+      "to": "T132",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T131",
+      "to": "T079",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T131",
+      "to": "T130",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T131",
+      "to": "T103",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T132",
+      "to": "T079",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T132",
+      "to": "T080",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T132",
+      "to": "T128",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T132",
+      "to": "T130",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T133",
+      "to": "T134",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T133",
+      "to": "T135",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T133",
+      "to": "T173",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T133",
+      "to": "T203",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T134",
+      "to": "T133",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T134",
+      "to": "T148",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T135",
+      "to": "T133",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T135",
+      "to": "T136",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T135",
+      "to": "T190",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T136",
+      "to": "T135",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T136",
+      "to": "T138",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T136",
+      "to": "T162",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T136",
+      "to": "T173",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T136",
+      "to": "T175",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T137",
+      "to": "T163",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T137",
+      "to": "T164",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T137",
+      "to": "T167",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T137",
+      "to": "T175",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T138",
+      "to": "T136",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T138",
+      "to": "T163",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T138",
+      "to": "T165",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T139",
+      "to": "T147",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T139",
+      "to": "T160",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T139",
+      "to": "T162",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T140",
+      "to": "T141",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T140",
+      "to": "T158",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T140",
+      "to": "T170",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T140",
+      "to": "T197",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T141",
+      "to": "T140",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T141",
+      "to": "T196",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T141",
+      "to": "T197",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T142",
+      "to": "T143",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T142",
+      "to": "T159",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T142",
+      "to": "T160",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T142",
+      "to": "R008",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T143",
+      "to": "T142",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T143",
+      "to": "T144",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T143",
+      "to": "T160",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T144",
+      "to": "T143",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T144",
+      "to": "T190",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T144",
+      "to": "T199",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T145",
+      "to": "T146",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T145",
+      "to": "T190",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T145",
+      "to": "T201",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T146",
+      "to": "T133",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T146",
+      "to": "T145",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T146",
+      "to": "T184",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T146",
+      "to": "T201",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T147",
+      "to": "T001",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T147",
+      "to": "T139",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T147",
+      "to": "T169",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T148",
+      "to": "T134",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T148",
+      "to": "T143",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T148",
+      "to": "T160",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T149",
+      "to": "T166",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T149",
+      "to": "T174",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T150",
+      "to": "T005",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T150",
+      "to": "T007",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T150",
+      "to": "T162",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T151",
+      "to": "T014",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T151",
+      "to": "T045",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T151",
+      "to": "T158",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T151",
+      "to": "T170",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T152",
+      "to": "T024",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T152",
+      "to": "T168",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T152",
+      "to": "T176",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T153",
+      "to": "T089",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T153",
+      "to": "T172",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T154",
+      "to": "T043",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T154",
+      "to": "T049",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T154",
+      "to": "T064",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T154",
+      "to": "T075",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T155",
+      "to": "T151",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T155",
+      "to": "T176",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T155",
+      "to": "P001",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T155",
+      "to": "P016",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T156",
+      "to": "T188",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T156",
+      "to": "T198",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T157",
+      "to": "T082",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T157",
+      "to": "T103",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T157",
+      "to": "T171",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T158",
+      "to": "T045",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T158",
+      "to": "T151",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T158",
+      "to": "T170",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T159",
+      "to": "T059",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T159",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T159",
+      "to": "T162",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T159",
+      "to": "R008",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T160",
+      "to": "T143",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T160",
+      "to": "T147",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T160",
+      "to": "T161",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T161",
+      "to": "T147",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T161",
+      "to": "T160",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T161",
+      "to": "T174",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T162",
+      "to": "T136",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T162",
+      "to": "T150",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T162",
+      "to": "T159",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T163",
+      "to": "T162",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T163",
+      "to": "T164",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T163",
+      "to": "T228",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T163",
+      "to": "P013",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T164",
+      "to": "T137",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T164",
+      "to": "T162",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T164",
+      "to": "T163",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T164",
+      "to": "T175",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T165",
+      "to": "T138",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T165",
+      "to": "T163",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T165",
+      "to": "T227",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T165",
+      "to": "P013",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T166",
+      "to": "T149",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T166",
+      "to": "T174",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T167",
+      "to": "T137",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T167",
+      "to": "T175",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T168",
+      "to": "T043",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T168",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T168",
+      "to": "T152",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T168",
+      "to": "T176",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T169",
+      "to": "T139",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T169",
+      "to": "T147",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T169",
+      "to": "T186",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T169",
+      "to": "T200",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T170",
+      "to": "T140",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T170",
+      "to": "T158",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T170",
+      "to": "T159",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T171",
+      "to": "T002",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T171",
+      "to": "T082",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T171",
+      "to": "T157",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T172",
+      "to": "T153",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T172",
+      "to": "T159",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T173",
+      "to": "T133",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T173",
+      "to": "T136",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T173",
+      "to": "T140",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T174",
+      "to": "T149",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T174",
+      "to": "T160",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T174",
+      "to": "T166",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T175",
+      "to": "T136",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T175",
+      "to": "T137",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T175",
+      "to": "T164",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T175",
+      "to": "T173",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T176",
+      "to": "T143",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T176",
+      "to": "T152",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T176",
+      "to": "T168",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T177",
+      "to": "T178",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T177",
+      "to": "T179",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T177",
+      "to": "T182",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T177",
+      "to": "T183",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T178",
+      "to": "T177",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T178",
+      "to": "T179",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T178",
+      "to": "T180",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T178",
+      "to": "T181",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T179",
+      "to": "T069",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T179",
+      "to": "T177",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T179",
+      "to": "T178",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T179",
+      "to": "T180",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T180",
+      "to": "T155",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T180",
+      "to": "T179",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T180",
+      "to": "R012",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T181",
+      "to": "T055",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T181",
+      "to": "T062",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T181",
+      "to": "T178",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T181",
+      "to": "T204",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T182",
+      "to": "T177",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T182",
+      "to": "T179",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T182",
+      "to": "T183",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T183",
+      "to": "T085",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T183",
+      "to": "T124",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T183",
+      "to": "T177",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T183",
+      "to": "T182",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T184",
+      "to": "T133",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T184",
+      "to": "T146",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T184",
+      "to": "T169",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T185",
+      "to": "T177",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T185",
+      "to": "T193",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T185",
+      "to": "T194",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T186",
+      "to": "T169",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T186",
+      "to": "T187",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T186",
+      "to": "T188",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T186",
+      "to": "T200",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T187",
+      "to": "T186",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T187",
+      "to": "T188",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T187",
+      "to": "T198",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T187",
+      "to": "T205",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T188",
+      "to": "T156",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T188",
+      "to": "T187",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T188",
+      "to": "T189",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T188",
+      "to": "T205",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T189",
+      "to": "T188",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T189",
+      "to": "T190",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T189",
+      "to": "T195",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T190",
+      "to": "T189",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T190",
+      "to": "T192",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T190",
+      "to": "T195",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T190",
+      "to": "T200",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T191",
+      "to": "T190",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T191",
+      "to": "T200",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T191",
+      "to": "T206",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T192",
+      "to": "T190",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T192",
+      "to": "T199",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T192",
+      "to": "T200",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T193",
+      "to": "T140",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T193",
+      "to": "T185",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T193",
+      "to": "T197",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T194",
+      "to": "T177",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T194",
+      "to": "T190",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T194",
+      "to": "T206",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T195",
+      "to": "T189",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T195",
+      "to": "T190",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T195",
+      "to": "T200",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T195",
+      "to": "T205",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T196",
+      "to": "T197",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T196",
+      "to": "T195",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T196",
+      "to": "P012",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T196",
+      "to": "P015",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T197",
+      "to": "T140",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T197",
+      "to": "T141",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T197",
+      "to": "T170",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T197",
+      "to": "T196",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T198",
+      "to": "T156",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T198",
+      "to": "T187",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T198",
+      "to": "T202",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T198",
+      "to": "T203",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T199",
+      "to": "T049",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T199",
+      "to": "T071",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T199",
+      "to": "T177",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T199",
+      "to": "T190",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T200",
+      "to": "T169",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T200",
+      "to": "T186",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T200",
+      "to": "T190",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T200",
+      "to": "T195",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T201",
+      "to": "T145",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T201",
+      "to": "T146",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T201",
+      "to": "T169",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T201",
+      "to": "T189",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T202",
+      "to": "T143",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T202",
+      "to": "T198",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T202",
+      "to": "T203",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T203",
+      "to": "T133",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T203",
+      "to": "T135",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T203",
+      "to": "T190",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T203",
+      "to": "T198",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T204",
+      "to": "T014",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T204",
+      "to": "T055",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T204",
+      "to": "T071",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T204",
+      "to": "T181",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T205",
+      "to": "T019",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T205",
+      "to": "T043",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T205",
+      "to": "T188",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T205",
+      "to": "T195",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T206",
+      "to": "T059",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T206",
+      "to": "T159",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T206",
+      "to": "T194",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T206",
+      "to": "T200",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T207",
+      "to": "R004",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T207",
+      "to": "T059",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T207",
+      "to": "T241",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T208",
+      "to": "T142",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T208",
+      "to": "T213",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T208",
+      "to": "T237",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T209",
+      "to": "T192",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T209",
+      "to": "T207",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T209",
+      "to": "T217",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T210",
+      "to": "T211",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T210",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T210",
+      "to": "T243",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T211",
+      "to": "T210",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T211",
+      "to": "T234",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T211",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T212",
+      "to": "T222",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T212",
+      "to": "T004",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T212",
+      "to": "T210",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T213",
+      "to": "T208",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T213",
+      "to": "T237",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T213",
+      "to": "T218",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T214",
+      "to": "T215",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T214",
+      "to": "T238",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T214",
+      "to": "T222",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T215",
+      "to": "T214",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T215",
+      "to": "T041",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T215",
+      "to": "T004",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T216",
+      "to": "T238",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T216",
+      "to": "T222",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T216",
+      "to": "T213",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T217",
+      "to": "T224",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T217",
+      "to": "T213",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T217",
+      "to": "T233",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T218",
+      "to": "T219",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T218",
+      "to": "T226",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T218",
+      "to": "T208",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T219",
+      "to": "T218",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T219",
+      "to": "T237",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T219",
+      "to": "T243",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T220",
+      "to": "T243",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T220",
+      "to": "T228",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T220",
+      "to": "T218",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T221",
+      "to": "T211",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T221",
+      "to": "T212",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T221",
+      "to": "T224",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T222",
+      "to": "T152",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T222",
+      "to": "T212",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T222",
+      "to": "T214",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T222",
+      "to": "T238",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T223",
+      "to": "T185",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T223",
+      "to": "T224",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T223",
+      "to": "T217",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T224",
+      "to": "T208",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T224",
+      "to": "T213",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T224",
+      "to": "T217",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T224",
+      "to": "T221",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T225",
+      "to": "T226",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T225",
+      "to": "T227",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T225",
+      "to": "T243",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T225",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T226",
+      "to": "T225",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T226",
+      "to": "T218",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T226",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T226",
+      "to": "T243",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T227",
+      "to": "T225",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T227",
+      "to": "T226",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T227",
+      "to": "T218",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T228",
+      "to": "T243",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T228",
+      "to": "T220",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T228",
+      "to": "T225",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T229",
+      "to": "T230",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T229",
+      "to": "T231",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T229",
+      "to": "T233",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T229",
+      "to": "T239",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T230",
+      "to": "T229",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T230",
+      "to": "T233",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T231",
+      "to": "T229",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T231",
+      "to": "T232",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T231",
+      "to": "T233",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T232",
+      "to": "T231",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T232",
+      "to": "T229",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T232",
+      "to": "T217",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T233",
+      "to": "T229",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T233",
+      "to": "T230",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T233",
+      "to": "T236",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T233",
+      "to": "T239",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T234",
+      "to": "T211",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T234",
+      "to": "T064",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T234",
+      "to": "T238",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T235",
+      "to": "T225",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T235",
+      "to": "T228",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T235",
+      "to": "T218",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T235",
+      "to": "T243",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T236",
+      "to": "T211",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T236",
+      "to": "T233",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T236",
+      "to": "T239",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T236",
+      "to": "T240",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T237",
+      "to": "T169",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T237",
+      "to": "T213",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T237",
+      "to": "T239",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T237",
+      "to": "T208",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T238",
+      "to": "T216",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T238",
+      "to": "T222",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T238",
+      "to": "T214",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T238",
+      "to": "T233",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T239",
+      "to": "T237",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T239",
+      "to": "T236",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T239",
+      "to": "T233",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T240",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T240",
+      "to": "T064",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T240",
+      "to": "T242",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T240",
+      "to": "T243",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T241",
+      "to": "T059",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T241",
+      "to": "T240",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T241",
+      "to": "T242",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T241",
+      "to": "T243",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T242",
+      "to": "T059",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T242",
+      "to": "T240",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T242",
+      "to": "T241",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T242",
+      "to": "T243",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T243",
+      "to": "T228",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T243",
+      "to": "T220",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T243",
+      "to": "T225",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T243",
+      "to": "T241",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T243",
+      "to": "T240",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R001",
+      "to": "T062",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R001",
+      "to": "T063",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R001",
+      "to": "T067",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R001",
+      "to": "R002",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R002",
+      "to": "R001",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R002",
+      "to": "R013",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R002",
+      "to": "R014",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R002",
+      "to": "T047",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R002",
+      "to": "T064",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R002",
+      "to": "T072",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R003",
+      "to": "T052",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R003",
+      "to": "T068",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R003",
+      "to": "T062",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R004",
+      "to": "T049",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R004",
+      "to": "T054",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R004",
+      "to": "T058",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R004",
+      "to": "T071",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R005",
+      "to": "T006",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R005",
+      "to": "T020",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R005",
+      "to": "T037",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R005",
+      "to": "T018",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R006",
+      "to": "T179",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R006",
+      "to": "T180",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R006",
+      "to": "T182",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R006",
+      "to": "R007",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R007",
+      "to": "T052",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R007",
+      "to": "T179",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R007",
+      "to": "T182",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R007",
+      "to": "R006",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R008",
+      "to": "T142",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R008",
+      "to": "T154",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R008",
+      "to": "T159",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R008",
+      "to": "T160",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R009",
+      "to": "T081",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R009",
+      "to": "T088",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R009",
+      "to": "T093",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R009",
+      "to": "T094",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R009",
+      "to": "T102",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R010",
+      "to": "R009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R010",
+      "to": "R011",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R010",
+      "to": "T088",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R010",
+      "to": "T141",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R011",
+      "to": "R009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R011",
+      "to": "R010",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R011",
+      "to": "T088",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R011",
+      "to": "T102",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R011",
+      "to": "T118",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R011",
+      "to": "T123",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R012",
+      "to": "T179",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R012",
+      "to": "T180",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R012",
+      "to": "T182",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R013",
+      "to": "R002",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R013",
+      "to": "R014",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R013",
+      "to": "R027",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R013",
+      "to": "T014",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R013",
+      "to": "T053",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R013",
+      "to": "T072",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R013",
+      "to": "T076",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R014",
+      "to": "R002",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R014",
+      "to": "R013",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R014",
+      "to": "R027",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R014",
+      "to": "T075",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R014",
+      "to": "T076",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R014",
+      "to": "T237",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R014",
+      "to": "T239",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R015",
+      "to": "R012",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R015",
+      "to": "T069",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R015",
+      "to": "T177",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R015",
+      "to": "T178",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R015",
+      "to": "T179",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R015",
+      "to": "T180",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R015",
+      "to": "P017",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R016",
+      "to": "T009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R016",
+      "to": "T013",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R016",
+      "to": "T018",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R016",
+      "to": "T028",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R016",
+      "to": "T037",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R016",
+      "to": "T039",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R016",
+      "to": "T222",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R017",
+      "to": "R008",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R017",
+      "to": "T009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R017",
+      "to": "T024",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R017",
+      "to": "T027",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R017",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R017",
+      "to": "T140",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R017",
+      "to": "T154",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R017",
+      "to": "T219",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R018",
+      "to": "T059",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R018",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R018",
+      "to": "T159",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R018",
+      "to": "T160",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R018",
+      "to": "T162",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R018",
+      "to": "T241",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R018",
+      "to": "T243",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R019",
+      "to": "T216",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R019",
+      "to": "T217",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R019",
+      "to": "T229",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R019",
+      "to": "T230",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R019",
+      "to": "T231",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R019",
+      "to": "T236",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R019",
+      "to": "T239",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R019",
+      "to": "R027",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R020",
+      "to": "T211",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R020",
+      "to": "T217",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R020",
+      "to": "T218",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R020",
+      "to": "T234",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R020",
+      "to": "T235",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R020",
+      "to": "T237",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R020",
+      "to": "T239",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R020",
+      "to": "R027",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R021",
+      "to": "T211",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R021",
+      "to": "T217",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R021",
+      "to": "T218",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R021",
+      "to": "T234",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R021",
+      "to": "T235",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R021",
+      "to": "T236",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R021",
+      "to": "T239",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R021",
+      "to": "R027",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R022",
+      "to": "R009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R022",
+      "to": "R011",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R022",
+      "to": "R023",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R022",
+      "to": "R024",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R022",
+      "to": "T085",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R022",
+      "to": "T086",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R022",
+      "to": "T133",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R022",
+      "to": "T184",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R023",
+      "to": "R022",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R023",
+      "to": "R009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R023",
+      "to": "R024",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R023",
+      "to": "T081",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R023",
+      "to": "T085",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R023",
+      "to": "T089",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R023",
+      "to": "T177",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R024",
+      "to": "T085",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R024",
+      "to": "T086",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R024",
+      "to": "T088",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R024",
+      "to": "T121",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R024",
+      "to": "T127",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R024",
+      "to": "R009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R024",
+      "to": "R022",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R024",
+      "to": "R023",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R025",
+      "to": "T140",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R025",
+      "to": "T141",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R025",
+      "to": "T196",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R025",
+      "to": "T197",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R025",
+      "to": "R009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R025",
+      "to": "R011",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R025",
+      "to": "R023",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R025",
+      "to": "R026",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R026",
+      "to": "T134",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R026",
+      "to": "T140",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R026",
+      "to": "T141",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R026",
+      "to": "T196",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R026",
+      "to": "T197",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R026",
+      "to": "R023",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R026",
+      "to": "R024",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R026",
+      "to": "R025",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R027",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R027",
+      "to": "T061",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R027",
+      "to": "T072",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R027",
+      "to": "T076",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R027",
+      "to": "T229",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R027",
+      "to": "T233",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R027",
+      "to": "T236",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R027",
+      "to": "T239",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "R027",
+      "to": "R013",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P001",
+      "to": "T024",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P001",
+      "to": "T009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P001",
+      "to": "T032",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P001",
+      "to": "P002",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P001",
+      "to": "P007",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P001",
+      "to": "P009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P002",
+      "to": "T003",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P002",
+      "to": "T043",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P002",
+      "to": "T050",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P002",
+      "to": "T210",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P002",
+      "to": "T222",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P002",
+      "to": "P001",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P002",
+      "to": "P005",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P003",
+      "to": "T063",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P003",
+      "to": "T066",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P003",
+      "to": "T074",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P003",
+      "to": "P002",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P003",
+      "to": "P004",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P003",
+      "to": "P006",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P004",
+      "to": "T047",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P004",
+      "to": "T056",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P004",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P004",
+      "to": "T072",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P004",
+      "to": "T075",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P004",
+      "to": "P003",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P004",
+      "to": "P005",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P005",
+      "to": "T058",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P005",
+      "to": "T069",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P005",
+      "to": "T071",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P005",
+      "to": "T075",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P005",
+      "to": "P001",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P005",
+      "to": "P002",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P005",
+      "to": "P004",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P005",
+      "to": "P007",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P006",
+      "to": "T044",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P006",
+      "to": "T045",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P006",
+      "to": "T151",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P006",
+      "to": "T204",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P006",
+      "to": "P001",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P006",
+      "to": "P003",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P007",
+      "to": "T009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P007",
+      "to": "T027",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P007",
+      "to": "T032",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P007",
+      "to": "T056",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P007",
+      "to": "T067",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P007",
+      "to": "P001",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P007",
+      "to": "P004",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P008",
+      "to": "T059",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P008",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P008",
+      "to": "T162",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P008",
+      "to": "T240",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P008",
+      "to": "T241",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P008",
+      "to": "T242",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P008",
+      "to": "P011",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P009",
+      "to": "T087",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P009",
+      "to": "T088",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P009",
+      "to": "T089",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P009",
+      "to": "T102",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P009",
+      "to": "T196",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P009",
+      "to": "P001",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P009",
+      "to": "P010",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P010",
+      "to": "T133",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P010",
+      "to": "T136",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P010",
+      "to": "T198",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P010",
+      "to": "T203",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P010",
+      "to": "P009",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P010",
+      "to": "P012",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P010",
+      "to": "P016",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P011",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P011",
+      "to": "T159",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P011",
+      "to": "T160",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P011",
+      "to": "T162",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P011",
+      "to": "P008",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P011",
+      "to": "P013",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P011",
+      "to": "P015",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P012",
+      "to": "T195",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P012",
+      "to": "T197",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P012",
+      "to": "T200",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P012",
+      "to": "T205",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P012",
+      "to": "T206",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P012",
+      "to": "P010",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P012",
+      "to": "P011",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P012",
+      "to": "P016",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P013",
+      "to": "T137",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P013",
+      "to": "T138",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P013",
+      "to": "T162",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P013",
+      "to": "T163",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P013",
+      "to": "T164",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P013",
+      "to": "T165",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P013",
+      "to": "T228",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P013",
+      "to": "P011",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P013",
+      "to": "P015",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P014",
+      "to": "T060",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P014",
+      "to": "T159",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P014",
+      "to": "T227",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P014",
+      "to": "T240",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P014",
+      "to": "T241",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P014",
+      "to": "T242",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P014",
+      "to": "P008",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P014",
+      "to": "P011",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P014",
+      "to": "P013",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P014",
+      "to": "P015",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P015",
+      "to": "T072",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P015",
+      "to": "T162",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P015",
+      "to": "T200",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P015",
+      "to": "T233",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P015",
+      "to": "P011",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P015",
+      "to": "P012",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P015",
+      "to": "P013",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P016",
+      "to": "T195",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P016",
+      "to": "T198",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P016",
+      "to": "T200",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P016",
+      "to": "T205",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P016",
+      "to": "P007",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P016",
+      "to": "P010",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P016",
+      "to": "P012",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P016",
+      "to": "P017",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P017",
+      "to": "T069",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P017",
+      "to": "T178",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P017",
+      "to": "T179",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P017",
+      "to": "T180",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P017",
+      "to": "T181",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P017",
+      "to": "R012",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P017",
+      "to": "R015",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "P017",
+      "to": "P016",
+      "relation": "related_editorially"
+    },
+    {
+      "from": "T021",
+      "to": "T006",
+      "relation": "canonical_alias"
+    },
+    {
+      "from": "T023",
+      "to": "T008",
+      "relation": "canonical_alias"
+    },
+    {
+      "from": "T038",
+      "to": "T018",
+      "relation": "canonical_alias"
+    },
+    {
+      "from": "T083",
+      "to": "T082",
+      "relation": "canonical_alias"
+    },
+    {
+      "from": "T109",
+      "to": "T095",
+      "relation": "canonical_alias"
+    },
+    {
+      "from": "T173",
+      "to": "T136",
+      "relation": "canonical_alias"
+    },
+    {
+      "from": "T180",
+      "to": "T179",
+      "relation": "canonical_alias"
+    },
+    {
+      "from": "R014",
+      "to": "R013",
+      "relation": "canonical_alias"
+    }
+  ],
+  "note": "Associações editoriais; não constituem grafo causal nem dependências obrigatórias."
+}

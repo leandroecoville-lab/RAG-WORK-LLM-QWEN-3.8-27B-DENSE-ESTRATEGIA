@@ -1,0 +1,127 @@
+{
+  "id": "T096",
+  "novelty": "A v3 distinguiu conexões ausentes de pesos pequenos. O novo desenho exige escolher um grafo de comunicação adequado à tarefa, contabilizar o seletor e avaliar adaptação dos pesos, tornando explícito quando esparsidade é arquitetura e quando é aproximação experimental.",
+  "deep_layers": [
+    {
+      "name": "Cobertura do grafo",
+      "detail": "Analise se o padrão permite que dependências relevantes se encontrem ao longo das camadas. Um grafo conectado teoricamente pode ainda exigir muitos passos ou comprimir informação em poucos intermediários. Crie testes de ponte entre seções e compare padrões com o mesmo número aproximado de conexões, evitando avaliar somente tamanho de contexto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "B-S016",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    },
+    {
+      "name": "Custo antes da atenção",
+      "detail": "Inclua construção de índices, seleção, ordenação e movimentação de dados na medição. Um padrão barato no papel pode produzir acessos irregulares ou gastar muito para decidir o que ignorar. Registre economia efetiva de operações e bytes separadamente, usando o mesmo kernel denso como referência sem alterar outras otimizações.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "B-S016",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    },
+    {
+      "name": "Adaptação e regressão",
+      "detail": "Se a máscara não faz parte do treinamento original, trate a mudança como nova variante do modelo. Compare sem adaptação e com treino adicional quando houver recursos e dados autorizados. Preserve um conjunto de tarefas com dependências raras para impedir que a redução média de custo esconda perda sistemática de informação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "B-S016",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Documentos com estrutura previsível",
+      "scenario": "Seções possuem vínculos locais e algumas referências globais conhecidas.",
+      "strategy": "Desenhe uma máscara por blocos/seções, preserve conexões de referência e verifique ausência de acesso futuro. Use um protótipo para medir viabilidade antes de treinar. Se precisar construir matriz densa para escolher conexões, contabilize esse custo integral.",
+      "small_model_role": "Um 3–14B pode ser adaptado ao domínio, mas não recebe a capacidade apenas por trocar uma flag.",
+      "acceptance": "Aceitar por qualidade em dependências cruzadas e redução end-to-end, incluindo construção da máscara.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "B-S016",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    },
+    {
+      "name": "Pesquisa de contexto extenso",
+      "scenario": "O objetivo é explorar arquitetura dentro de orçamento limitado.",
+      "strategy": "Compare padrões local, global e conteúdo-dependente com dados e compute controlados. Registre custo de treino e inferência. Não apresentar um único checkpoint melhor em um benchmark como superioridade causal de toda a família esparsa.",
+      "small_model_role": "Um 15–30B pode ser candidato experimental se treino e kernels forem viáveis.",
+      "acceptance": "Exigir avaliações fora do domínio de ajuste e relatório das relações que deixaram de ser recuperadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "B-S016",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, a capacidade representacional menor recomenda padrões simples e tarefas delimitadas antes de seleção complexa.",
+    "8_14b": "Em 8–14B, investigar padrões estruturados com kernels regulares e avaliação de longo alcance.",
+    "15_30b": "Em 15–30B, incluir custo de treinamento/adaptação e integração distribuída no orçamento de projeto.",
+    "training_or_runtime_requirements": "Arquitetura esparsa normalmente exige pesos compatíveis; esparsificação pós-treino é aproximação a validar.",
+    "do_not_use_when": "Não zerar scores após cálculo denso e apresentar isso como economia aritmética de sparse attention."
+  },
+  "connections": [
+    {
+      "target_id": "T097",
+      "relation": "complements",
+      "how": "Organizar conectividade em blocos para que o executor possa pular regiões inteiras.",
+      "interface": "Máscara lógica e índices de blocos presentes.",
+      "condition": "Padrão mantém esparsidade também na granularidade física.",
+      "acceptance": "Comparar conexões úteis, blocos processados e tempo total.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "B-S016",
+        "V4B-S017",
+        "V4B-S018"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T110",
+      "relation": "complements",
+      "how": "Adicionar canais globais limitados para dependências que a vizinhança não cobre.",
+      "interface": "Posições globais e regra de seleção.",
+      "condition": "Causalidade e treinamento autorizam essas conexões.",
+      "acceptance": "Testar relações distantes e crescimento do custo ao aumentar globais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S015",
+        "B-S016",
+        "V4B-S017",
+        "V4B-S018"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Relatar custo do seletor e casos sem ganho real.",
+    "Não confundir conectividade teórica com recuperação fiel de detalhes."
+  ],
+  "frontier_comparison": "A comparação com fronteira deve abranger tarefas locais e globais, mantendo transparência sobre treino adicional. Esparsidade pode ampliar contexto viável; não garante compreensão equivalente do conteúdo removido.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q005"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S015",
+    "B-S016",
+    "V4B-S017",
+    "V4B-S018"
+  ]
+}

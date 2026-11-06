@@ -1,0 +1,122 @@
+{
+  "id": "T077",
+  "novelty": "A v3 distinguiu intervalos e jornadas temporais. Aqui grafos temporais modelam incerteza de datas e respostas condicionadas à resolução disponível.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Represente datas aproximadas como intervalos ou limites, sem inventar dia exato. Relação que vale em algum ponto do mês não prova simultaneidade com outra relação de data desconhecida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S035",
+        "V3A-S043",
+        "A-S032"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Separe tempo do evento, validade da relação e momento de conhecimento. Caminhos precisam declarar se buscam coexistência, sequência possível ou sequência comprovada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S035",
+        "V3A-S043",
+        "A-S032"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare datas pontuais imputadas e intervalos explícitos. Meça relações temporais falsas, respostas inconclusivas corretas e vazamento de conhecimento futuro; ordem temporal não implica causalidade. Unidade de avaliação: caminho temporal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S035",
+        "V3A-S043",
+        "A-S032"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Histórico de responsabilidades",
+      "scenario": "Documentos informam mudanças com datas incompletas.",
+      "strategy": "Construir relações com intervalos sustentados e responder quem podia ser responsável, distinguindo certeza de possibilidade.",
+      "small_model_role": "3–7B extrai datas; banco calcula.",
+      "acceptance": "Não afirmar responsável único quando intervalos permitem alternativas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S035",
+        "V3A-S043",
+        "A-S032"
+      ]
+    },
+    {
+      "name": "Rastreio de dependências",
+      "scenario": "É preciso explicar cadeia de mudanças.",
+      "strategy": "Consultar sequência de eventos com ordenação confirmada e marcar trechos cuja ordem não é decidível.",
+      "small_model_role": "8–14B explica caminho.",
+      "acceptance": "Cada salto temporal deve respeitar relações de ordem observadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S035",
+        "V3A-S043",
+        "A-S032"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extrator de expressões temporais com indicação de precisão.",
+    "8_14b": "Leitor de caminhos já filtrados por lógica temporal.",
+    "15_30b": "Analista de alternativas quando intervalos e perspectivas produzem múltiplas histórias possíveis.",
+    "training_or_runtime_requirements": "Álgebra temporal, campos de precisão e identidade de relações; LLM não deve decidir sozinho interseções de intervalos.",
+    "do_not_use_when": "A aplicação exige cronologia exata a partir de fontes que só fornecem datas aproximadas."
+  },
+  "connections": [
+    {
+      "target_id": "T056",
+      "relation": "requires",
+      "how": "Aplicar perspectiva de conhecimento ao grafo.",
+      "interface": "Validade, registro e instante da pergunta.",
+      "condition": "Consulta declarar os dois tempos.",
+      "acceptance": "Adicionar descoberta posterior e impedir alteração da história conhecida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S035",
+        "V3A-S043",
+        "A-S032"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T057",
+      "relation": "conflicts",
+      "how": "Evitar converter sequência em causa.",
+      "interface": "Caminho temporal e hipótese causal separada.",
+      "condition": "Causalidade exigir identificação adicional.",
+      "acceptance": "Apresentar eventos ordenados sem mecanismo e exigir ressalva causal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S035",
+        "V3A-S043",
+        "A-S032"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não preencher data desconhecida com data de ingestão.",
+    "Não confundir plano futuro com evento ocorrido."
+  ],
+  "frontier_comparison": "Comparar raciocínio temporal sobre intervalos; modelos maiores também podem inventar precisão se schema não preservar incerteza.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q005",
+      "V4A-Q008",
+      "V4A-Q015",
+      "V4A-Q025"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S035",
+    "V3A-S043",
+    "A-S032"
+  ]
+}

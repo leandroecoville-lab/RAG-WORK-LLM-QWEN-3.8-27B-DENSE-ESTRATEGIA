@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Recursivo é igual a hierárquico?",
+    "answer": "Não necessariamente. Um splitter recursivo pode produzir somente uma lista plana de trechos."
+  },
+  {
+    "question": "A ordem dos separadores importa?",
+    "answer": "Sim. Ela define quais unidades o algoritmo tenta preservar antes de usar cortes mais finos."
+  },
+  {
+    "question": "A sobreposição configurada sempre aparece exatamente?",
+    "answer": "Não se deve presumir. A preservação de unidades e a estratégia de junção podem alterar a sobreposição efetiva; inspecione offsets resultantes."
+  },
+  {
+    "question": "Quando usar parser em vez de separadores?",
+    "answer": "Quando a semântica estrutural importa, como funções e tabelas. Um parser fornece relações que uma lista de caracteres não reconhece."
+  }
+]

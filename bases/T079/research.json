@@ -1,0 +1,47 @@
+{
+  "id": "T079",
+  "technical_details": "A correção estatística exige usar distribuições efetivas depois dos filtros de amostragem: para proposta x de q, aceitar com min(1,p(x)/q(x)); uma rejeição exige a distribuição residual proporcional a max(p−q,0). Reamostrar diretamente de p nessa rejeição altera a marginal. O alvo verifica vários candidatos, porém somente o prefixo aceito pode atualizar o histórico confirmado; estados dos candidatos posteriores precisam ser descartados.",
+  "boundary_condition": "A equivalência pressupõe condicionamentos idênticos, normalização consistente e implementação correta; aproximações numéricas e filtros divergentes precisam de análise própria.",
+  "implementation_contract": {
+    "inputs": "Prefixo tokenizado e distribuições alvo e rascunho com configuração de amostragem registrada.",
+    "outputs": "Tokens confirmados, ponto de rejeição e custos separados de proposta e verificação.",
+    "state": "Caches separados, gerador aleatório e extensão ainda provisória.",
+    "invariant": "Nenhum candidato rejeitado influencia a próxima distribuição condicional."
+  },
+  "tradeoffs": [
+    "Mais propostas podem aumentar trabalho desperdiçado e memória temporária.",
+    "Preservar distribuição não significa reproduzir a sequência da mesma seed."
+  ],
+  "failure_test": "Teste proposto: usar vocabulário de três símbolos com probabilidades conhecidas, injetar reamostragem incorreta após rejeição e comparar as marginais enumeradas. A versão defeituosa deve ser detectada.",
+  "evaluation_plan": "Plano proposto: comparar com geração exclusiva pelo alvo, controlando prompts, distribuição e comprimentos. Medir tempo por token confirmado, custo do rascunho e taxa de aceitação; aprovar somente com equivalência verificada e ganho no cenário pretendido.",
+  "comparisons": [
+    {
+      "entry_id": "T132",
+      "relation": "complements",
+      "reason": "Um draft externo fornece propostas; a regra de aceitação continua sendo o mecanismo de correção."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O algoritmo publicado combina aceitação por razão de probabilidades e correção residual para preservar a distribuição do alvo.",
+    "source_ids": [
+      "B-S048"
+    ],
+    "support": "direct",
+    "caveat": "A prova idealizada não certifica kernels, filtros ou caches de qualquer servidor."
+  },
+  "advanced_qa": [
+    {
+      "question": "Aceitação alta garante aceleração?",
+      "answer": "Não. O custo de produzir e verificar candidatos pode exceder o trabalho economizado, sobretudo em lotes grandes."
+    },
+    {
+      "question": "Por que descartar o sufixo rejeitado?",
+      "answer": "Sua distribuição foi condicionada a uma continuação que deixou de existir; reutilizá-lo corrompe o estado autoregressivo."
+    }
+  ],
+  "source_ids": [
+    "B-S048",
+    "V3B-S001"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

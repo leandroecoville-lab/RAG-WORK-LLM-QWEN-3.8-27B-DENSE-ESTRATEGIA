@@ -1,0 +1,119 @@
+{
+  "id": "T115",
+  "novelty": "A v3 abordou equivalência da recomputação. Esta camada introduz seleção de ativações pelo custo, interação com adapters e avaliação do verdadeiro limitante de memória no treinamento.",
+  "deep_layers": [
+    {
+      "name": "Memória que permanece",
+      "detail": "Checkpointing reduz ativações salvas, mas não remove pesos, estados do otimizador, gradientes ou buffers de comunicação. Faça uma decomposição do pico antes de habilitá-lo. Em um treino com poucos parâmetros ajustáveis, as ativações ainda podem dominar com contextos longos; em outro, a economia pode ser pequena.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S029",
+        "V4B-S028",
+        "V4B-S006"
+      ]
+    },
+    {
+      "name": "Política seletiva",
+      "detail": "As opções descritas pelo PyTorch permitem escolher quais operações recomputar e quais resultados preservar. Uma política proposta evita repetir operações muito caras quando uma ativação relativamente pequena basta. A decisão depende da forma e do hardware, e recursos de compilação ou orçamento de memória devem ser verificados na versão instalada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S029",
+        "V4B-S028",
+        "V4B-S006"
+      ]
+    },
+    {
+      "name": "Throughput útil do treinamento",
+      "detail": "Liberar memória pode permitir lote ou contexto maior, mas recomputação acrescenta trabalho por passo. Compare tokens úteis processados até atingir um critério de validação, não somente número de passos por segundo. Aumentar lote pode mudar a dinâmica da otimização e demandar ajuste de hiperparâmetros.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S029",
+        "V4B-S028",
+        "V4B-S006"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "LoRA em contexto longo",
+      "scenario": "O checkpoint cabe, mas ativações estouram o orçamento.",
+      "strategy": "Meça picos por segmento, ative checkpointing onde há melhor relação entre bytes e recomputação e valide gradientes. Preserve estado aleatório necessário.",
+      "small_model_role": "Um 8–14B pode adaptar comportamento em contexto longo sem ajustar todos os pesos.",
+      "acceptance": "Completar passos estáveis e atingir validação equivalente dentro do orçamento total.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S029",
+        "V4B-S028",
+        "V4B-S006"
+      ]
+    },
+    {
+      "name": "Comparar redução de memória",
+      "scenario": "Há opções de offload, checkpointing e quantização do modelo base.",
+      "strategy": "Teste uma variável por vez, depois composições justificadas. Inclua tráfego de CPU, recomputação e precisão dos parâmetros treináveis.",
+      "small_model_role": "Um 15–30B exige contabilizar estados além dos pesos antes de escolher a combinação.",
+      "acceptance": "Relatar pico real e tempo até qualidade-alvo, sem inferir capacidade a partir de memória nominal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S029",
+        "V4B-S028",
+        "V4B-S006"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Otimização pode ser dispensável em sequências curtas; manter caminho simples facilita depuração.",
+    "8_14b": "Boa hipótese quando comprimento e lote tornam ativações relevantes, sujeita à medição.",
+    "15_30b": "Combine com particionamento ou quantização somente depois de identificar o componente dominante do pico.",
+    "training_or_runtime_requirements": "É técnica de treinamento/backward. Não equivale a recomputar KV de uma conversa em inferência.",
+    "do_not_use_when": "Não aplicar a segmentos com efeitos colaterais ou aleatoriedade não preservada sem uma política correta."
+  },
+  "connections": [
+    {
+      "target_id": "T182",
+      "relation": "complements",
+      "how": "Adapters reduzem parâmetros treináveis, enquanto checkpointing atua sobre ativações.",
+      "interface": "Módulos treináveis e fronteiras de recomputação.",
+      "condition": "Autograd mantém caminhos necessários aos adapters.",
+      "acceptance": "Comparar gradientes e convergência com referência pequena sem checkpoint.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S029",
+        "V4B-S028",
+        "V4B-S006"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T183",
+      "relation": "complements",
+      "how": "QLoRA e checkpointing atacam componentes diferentes da memória.",
+      "interface": "Base quantizada, ativações e configuração do otimizador.",
+      "condition": "Backend suporta a combinação específica.",
+      "acceptance": "Medir pico e estabilidade sem atribuir toda economia a uma técnica.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S029",
+        "V4B-S028",
+        "V4B-S006"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Testar dropout e buffers mutáveis durante recomputação.",
+    "Registrar precisão, acumulação de gradientes e lote efetivo ao comparar configurações."
+  ],
+  "frontier_comparison": "Avalie o modelo ajustado numa tarefa especializada e o custo para treiná-lo. Economizar memória de treinamento não demonstra que o modelo alcançou capacidade geral de fronteira.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q017"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S029",
+    "V4B-S028",
+    "V4B-S006"
+  ]
+}

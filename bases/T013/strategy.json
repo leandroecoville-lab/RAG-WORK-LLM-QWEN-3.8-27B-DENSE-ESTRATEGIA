@@ -1,0 +1,120 @@
+{
+  "id": "T013",
+  "novelty": "A v3 distinguiu janela nominal e efetiva. Aqui a proposta compara alocação local de contexto com delegação sob limites reais de memória e latência.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Divida o custo em prefill, geração e armazenamento de estados. Um modelo 30B com contexto enorme pode perder viabilidade mesmo quando seus pesos cabem quantizados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S015",
+        "A-S019",
+        "V4A-S021"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Escolha entre leitura integral e pacotes seletivos pelo tipo de dependência. Comparação global pode exigir visão ampla; extração de poucos campos favorece recortes verificáveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S015",
+        "A-S019",
+        "V4A-S021"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Varie comprimento com evidência constante e distrações controladas. Avalie falhas por posição, dependência e orçamento, sem aproveitar perguntas de benchmark público. Unidade de avaliação: tarefa longa. Faça comparação com carga concorrente, pois contexto longo pode reduzir quantidade de sessões viáveis. Registre memória de pico e latência de prefill para cada comprimento, junto do acerto em evidências distantes. Um modelo que vence isoladamente e viola prazo sob concorrência pode ser inadequado ao serviço, sem que isso invalide sua capacidade na tarefa individual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S015",
+        "A-S019",
+        "V4A-S021"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Revisão cruzada de especificações",
+      "scenario": "Contradições surgem em seções distantes.",
+      "strategy": "Carregar mapa global, identificar pares candidatos e abrir conteúdo completo dos pares antes de concluir.",
+      "small_model_role": "15–30B integra pares; 3–7B localiza termos.",
+      "acceptance": "Toda contradição precisa de duas evidências compatíveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S015",
+        "A-S019",
+        "V4A-S021"
+      ]
+    },
+    {
+      "name": "Leitura de corpus homogêneo",
+      "scenario": "Muitas perguntas repetem o mesmo material.",
+      "strategy": "Comparar contexto integral cacheado com recuperação seletiva, incluindo amortização do prefixo e custo de cada resposta.",
+      "small_model_role": "8–14B responde consultas bem delimitadas.",
+      "acceptance": "Aceitar opção com qualidade mínima e custo total menor.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S015",
+        "A-S019",
+        "V4A-S021"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Localizador de evidência em fatias pequenas; evitar depender da janela máxima anunciada.",
+    "8_14b": "Leitor de pacote moderado com teste explícito de posição e ruído.",
+    "15_30b": "Leitor global quando hardware, qualidade e benefício justificarem contexto extenso.",
+    "training_or_runtime_requirements": "Medição no servidor e tokenizer reais; contabilizar KV e concorrência além dos pesos.",
+    "do_not_use_when": "A memória ou latência de contexto extenso inviabiliza o serviço, mesmo sem erro de limite."
+  },
+  "connections": [
+    {
+      "target_id": "T009",
+      "relation": "alternative",
+      "how": "Usar recuperação quando poucas regiões bastarem.",
+      "interface": "Consulta, referências e orçamento de leitura.",
+      "condition": "Corpus indexável e evidência localizável.",
+      "acceptance": "Comparar qualidade com leitura integral no mesmo conjunto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S015",
+        "A-S019",
+        "V4A-S021"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T152",
+      "relation": "requires",
+      "how": "Reservar recursos para contexto e saída.",
+      "interface": "Tokens, duração prevista e memória por sessão.",
+      "condition": "Estimativa validada no hardware alvo.",
+      "acceptance": "Medir picos com múltiplas sessões concorrentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S015",
+        "A-S019",
+        "V4A-S021"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir 30B-A3B com modelo de apenas 3B residentes.",
+    "Não transferir capacidade de uma família a outra pelo mesmo tamanho."
+  ],
+  "frontier_comparison": "Comparar dependências longas específicas; janela extensa não implica raciocínio de fronteira.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q018"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S015",
+    "A-S019",
+    "V4A-S021"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "T052",
+  "name": "Latent Context",
+  "canonical_name": "Latent Context",
+  "canonical_id": "T052",
+  "aliases": [
+    "contexto latente"
+  ],
+  "category": "memoria",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T020",
+    "T068",
+    "R003"
+  ],
+  "source_ids": [
+    "A-S033",
+    "A-S013",
+    "V3A-S004",
+    "V3A-S047",
+    "A-S012"
+  ],
+  "namespace": "T052",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T052",
+  "chunk_count": 9
+}

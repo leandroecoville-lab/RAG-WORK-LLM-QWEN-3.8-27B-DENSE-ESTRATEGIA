@@ -1,0 +1,52 @@
+{
+  "id": "T060",
+  "technical_details": "É útil distinguir snapshot de dados, checkpoint de execução e gravações parciais de tarefas concluídas. Um snapshot mostra valores; a retomada também precisa saber o que executar depois. No LangGraph, checkpoints completos ficam em fronteiras de super-step, enquanto pending writes preservam resultados de nós concluídos quando outro nó falha. Essas gravações intermediárias não são, por si, checkpoints completos para qualquer ponto de retorno.",
+  "boundary_condition": "Um ponto persistido não restaura arquivos temporários, credenciais expiradas ou serviços externos ao mesmo instante; a execução precisa verificar suas dependências ao retomar.",
+  "implementation_contract": {
+    "inputs": "Estado, agenda de execução, resultados duráveis de tarefas e referências a artefatos necessários.",
+    "outputs": "Checkpoint validado com ponto de retomada e operações externas cujo resultado ainda é incerto.",
+    "state": "Identidade da thread, revisão de schema, tarefas pendentes e mecanismo de durabilidade.",
+    "invariant": "Retomar trabalho computacional nunca implica que efeitos externos ocorridos depois do checkpoint foram desfeitos."
+  },
+  "tradeoffs": [
+    "Salvar mais frequentemente reduz recomputação e aumenta escrita e sincronização.",
+    "Persistir resultados por tarefa evita repetir trabalho concluído e exige distinguir recuperação parcial de retorno a um snapshot integral."
+  ],
+  "failure_test": "Teste proposto: executar dois nós paralelos, concluir um e falhar no outro. A retomada deve reutilizar o resultado persistido do primeiro conforme o contrato; uma chamada externa sem recibo deve permanecer desconhecida.",
+  "evaluation_plan": "Avaliação proposta: comparar reinício integral e recuperação por checkpoint em falhas entre fronteiras. Medir trabalho repetido, perda de resultados, validade da agenda e efeitos duplicados; testar queda do processo, não apenas exceção capturada.",
+  "comparisons": [
+    {
+      "entry_id": "T059",
+      "relation": "distinct_from",
+      "reason": "Snapshot de projeção acelera reconstrução de domínio; checkpoint inclui informações para continuar a execução."
+    },
+    {
+      "entry_id": "T075",
+      "relation": "complements",
+      "reason": "Reconciliação determina efeitos externos incertos que o checkpoint local não consegue comprovar."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "LangGraph distingue checkpoints por super-step e pending writes de tarefas concluídas para recuperação após falhas parciais.",
+    "source_ids": [
+      "V3A-S031"
+    ],
+    "support": "direct",
+    "caveat": "Durabilidade depende do saver e configuração; referências no estado não tornam seus recursos externos duráveis automaticamente."
+  },
+  "advanced_qa": [
+    {
+      "question": "Salvar todas as variáveis garante retomada?",
+      "answer": "Não. Também são necessários fluxo de controle, identidade de operações, compatibilidade do código e acesso aos artefatos referenciados."
+    },
+    {
+      "question": "Retornar a um checkpoint desfaz uma publicação externa?",
+      "answer": "Não. Isso altera a execução local. É necessário observar o serviço externo e, se apropriado, executar uma compensação explicitamente autorizada."
+    }
+  ],
+  "source_ids": [
+    "V3A-S031",
+    "V3A-S030"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

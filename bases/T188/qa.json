@@ -1,0 +1,18 @@
+[
+  {
+    "question": "É o mesmo que pedir para o modelo revisar uma vez?",
+    "answer": "Não. Há amostragem de caminhos e agregação de respostas."
+  },
+  {
+    "question": "Exige guardar pensamentos internos completos?",
+    "answer": "Não. A aplicação pode operar com soluções e resultados observáveis."
+  },
+  {
+    "question": "Usar a mesma seed em todas as chamadas ajuda?",
+    "answer": "Pode eliminar diversidade útil; registre como a amostragem realmente varia e verifique duplicatas."
+  },
+  {
+    "question": "Pode parar quando uma resposta lidera?",
+    "answer": "É uma política possível, mas precisa considerar incerteza da contagem e risco de viés introduzido pela parada adaptativa."
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "id": "T013",
+  "name": "Long-Context Models",
+  "canonical_name": "Long-Context Models",
+  "canonical_id": "T013",
+  "aliases": [
+    "modelos de contexto longo"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T003",
+    "T009",
+    "T042",
+    "T062"
+  ],
+  "source_ids": [
+    "A-S019",
+    "V3A-S015",
+    "V4A-S021"
+  ],
+  "namespace": "T013",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T013",
+  "chunk_count": 9
+}

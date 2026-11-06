@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Qualquer banco de grafos é GraphRAG?",
+    "answer": "Não. É necessário um processo de recuperação que use o grafo para fundamentar a geração."
+  },
+  {
+    "question": "GraphRAG substitui busca lexical?",
+    "answer": "Não obrigatoriamente. Muitas arquiteturas combinam os mecanismos conforme a pergunta."
+  },
+  {
+    "question": "Mais arestas significam mais conhecimento confiável?",
+    "answer": "Não. Também podem significar mais duplicatas e associações erradas. A qualidade precisa considerar identidade, proveniência e precisão das relações."
+  },
+  {
+    "question": "Como atualizar um documento alterado?",
+    "answer": "Identifique suas contribuições e regenere estruturas dependentes conforme o pipeline. Manter relatórios antigos com fatos novos exige marcação explícita ou reconstrução consistente."
+  }
+]

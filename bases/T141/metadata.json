@@ -1,0 +1,35 @@
+{
+  "id": "T141",
+  "name": "Structured Outputs",
+  "canonical_name": "Structured Outputs",
+  "canonical_id": "T141",
+  "aliases": [
+    "saídas estruturadas"
+  ],
+  "category": "orquestracao",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T140",
+    "T196",
+    "T197"
+  ],
+  "source_ids": [
+    "C-S008",
+    "C-S049",
+    "V3C-S013",
+    "V3C-S004",
+    "V4C-S013",
+    "V4C-S010",
+    "V4C-S004",
+    "V4D-S002",
+    "V4D-S006",
+    "V4D-S011"
+  ],
+  "namespace": "T141",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T141",
+  "chunk_count": 9
+}

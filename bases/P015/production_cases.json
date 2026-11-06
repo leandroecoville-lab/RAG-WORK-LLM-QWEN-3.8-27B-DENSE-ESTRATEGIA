@@ -1,0 +1,236 @@
+{
+  "coverage": {
+    "entry_id": "P015",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 4,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 4,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Execution Integrity Controller",
+    "scope": "proposta"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C001",
+      "company": "Amazon Web Services",
+      "system": "EC2 RunInstances",
+      "title": "Intenção idempotente no provisionamento EC2",
+      "evidence_level": "production_documented",
+      "observed_use": "A AWS descreve uso de identificadores fornecidos pelo cliente na criação de instâncias e reutilização pelos SDKs/CLI em tentativas repetidas.",
+      "technical_mechanism": "O identificador conserva a intenção; parâmetros divergentes são rejeitados e respostas semanticamente equivalentes permitem recuperar confirmação perdida.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "C-S026"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T162",
+          "match": "exact",
+          "rationale": "O contrato documentado controla repetição da mesma intenção no RunInstances."
+        },
+        {
+          "entry_id": "T243",
+          "match": "family",
+          "rationale": "O relato discute a ambiguidade de recursos existentes e a necessidade de identificar a operação que os criou."
+        },
+        {
+          "entry_id": "P015",
+          "match": "analogy",
+          "rationale": "Identidade, parâmetros e resposta exemplificam princípios do controlador editorial, sem existência do componente LAI."
+        }
+      ],
+      "small_model_transfer": "Proposta: um modelo 3–30B produz argumentos; código determinístico atribui a intenção e impede que reparo textual gere uma segunda operação. Validar timeout depois do efeito e parâmetros divergentes.",
+      "limits": "Caso de API de infraestrutura, sem LLM. Retenção e identidade são específicas do serviço; não prova exactly-once universal nem ganho de qualidade de modelos.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C001",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "P015",
+        "match": "analogy",
+        "rationale": "Identidade, parâmetros e resposta exemplificam princípios do controlador editorial, sem existência do componente LAI."
+      }
+    },
+    {
+      "case_id": "V4C-C026",
+      "company": "Anthropic",
+      "system": "Scion",
+      "title": "Source control interno para escala de agentes",
+      "evidence_level": "production_documented",
+      "observed_use": "Monorepo migrado para sistema interno de controle de versões; CI e agentes usam consultas e materialização seletiva.",
+      "technical_mechanism": "Changesets e conteúdo imutáveis, dados derivados, caches hierárquicos e alteração de referência separada da criação de conteúdo.",
+      "event_date": "2026-10-13",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S027"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T238",
+          "match": "family",
+          "rationale": "Scion fornece consulta e materialização seletiva de arquivos sob demanda; não demonstra especificamente a API de faixa de linhas."
+        },
+        {
+          "entry_id": "T236",
+          "match": "family",
+          "rationale": "Changesets versionam alterações mas não são git commit."
+        },
+        {
+          "entry_id": "R027",
+          "match": "analogy",
+          "rationale": "Sistema substituiu Git naquele ambiente; não comprova comportamento Git atual."
+        },
+        {
+          "entry_id": "T239",
+          "match": "analogy",
+          "rationale": "Checkouts esparsos/virtualizados não são Git worktrees."
+        },
+        {
+          "entry_id": "P015",
+          "match": "analogy",
+          "rationale": "Publicação e autoria por versão inspiram o componente editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: armazenar artefatos por conteúdo e ler arquivos necessários; adotar princípios sem recriar Scion ou atribuir seus ganhos à faixa 3–30B.",
+      "limits": "Infraestrutura excepcional, sistema distinto de Git; uma adoção, não um caso para cada cache ou ferramenta.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4C-C026",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "P015",
+        "match": "analogy",
+        "rationale": "Publicação e autoria por versão inspiram o componente editorial."
+      }
+    },
+    {
+      "case_id": "V4C-C004",
+      "company": "Uber",
+      "system": "Up CD",
+      "title": "Deploy por etapas com gates e histórico por commit",
+      "evidence_level": "production_documented",
+      "observed_use": "O relato de Up CD descreve adoção interna de deployment automatizado, gates implementados em Cadence e incorporação de ações manuais na visão do serviço.",
+      "technical_mechanism": "Eventos de commits identificam serviços afetados; workflows de gates liberam estágios conforme condições e mantêm vínculo entre revisão e estado implantado.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S002"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T148",
+          "match": "exact",
+          "rationale": "Gates condicionam a transição entre estágios de deployment."
+        },
+        {
+          "entry_id": "T160",
+          "match": "exact",
+          "rationale": "Etapas e gates coordenam dependências da implantação."
+        },
+        {
+          "entry_id": "T236",
+          "match": "family",
+          "rationale": "O sistema acompanha commits, mas não demonstra um agente criando commit por micro-missão."
+        },
+        {
+          "entry_id": "T243",
+          "match": "exact",
+          "rationale": "Ações manuais são incorporadas à representação do estado efetivo."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "Critérios de gate ilustram um verificador editorial."
+        },
+        {
+          "entry_id": "P015",
+          "match": "analogy",
+          "rationale": "Vínculo entre revisão e implantação ilustra integridade de execução."
+        }
+      ],
+      "small_model_transfer": "Proposta: modelo pequeno prepara mudança e diagnóstico; código verifica commit, resultados e condições antes de promover uma etapa. Retorno do modelo nunca substitui o gate determinístico.",
+      "limits": "Caso de CD de software, não benchmark de agente de programação. Gates relevantes ao usuário precisam ser definidos e medidos localmente.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C004",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "P015",
+        "match": "analogy",
+        "rationale": "Vínculo entre revisão e implantação ilustra integridade de execução."
+      }
+    },
+    {
+      "case_id": "V4C-C014",
+      "company": "Uber",
+      "system": "MCP Gateway e Omni MCP",
+      "title": "Descoberta gradual, registro e projeção de ferramentas",
+      "evidence_level": "production_documented",
+      "observed_use": "A Uber descreve seu gateway central de interações MCP, com registro de ferramentas e descoberta incremental por intenção.",
+      "technical_mechanism": "Omni MCP separa descobrir servidor, listar ferramentas, obter schema e invocar; o gateway projeta campos de resposta e propaga configurações revisadas ao plano de execução.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S013"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T134",
+          "match": "exact",
+          "rationale": "Descoberta de servidor utiliza intenção da consulta."
+        },
+        {
+          "entry_id": "T140",
+          "match": "exact",
+          "rationale": "O gateway traduz e executa chamadas MCP para serviços."
+        },
+        {
+          "entry_id": "T151",
+          "match": "exact",
+          "rationale": "Schemas são obtidos progressivamente em vez de carregar o catálogo inteiro."
+        },
+        {
+          "entry_id": "T158",
+          "match": "exact",
+          "rationale": "MCP Registry mantém ferramentas, schemas, propriedade e habilitação."
+        },
+        {
+          "entry_id": "T170",
+          "match": "family",
+          "rationale": "O gateway documenta diffs, revisão e rollback de configuração/descritores; isso não prova uma política completa de versionamento e compatibilidade semântica de entrada e saída."
+        },
+        {
+          "entry_id": "T214",
+          "match": "exact",
+          "rationale": "Response Projection reduz respostas aos campos selecionados."
+        },
+        {
+          "entry_id": "T226",
+          "match": "family",
+          "rationale": "Heartbeat descobre presença de servidores, sem comprovar progresso semântico de tarefa."
+        },
+        {
+          "entry_id": "P015",
+          "match": "analogy",
+          "rationale": "Revisões e controle de exposição apoiam integridade editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: oferecer a 3–7B busca curta de ferramentas e schema apenas do candidato escolhido; 8–30B podem compor chamadas delimitadas, mantendo habilitação e projeção verificadas fora da LLM.",
+      "limits": "Um caso de gateway, sem contar cada servidor interno. Projeção reduz informação e precisa preservar campos indispensáveis; heartbeat de descoberta não é conclusão de trabalho.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C014",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "P015",
+        "match": "analogy",
+        "rationale": "Revisões e controle de exposição apoiam integridade editorial."
+      }
+    }
+  ]
+}

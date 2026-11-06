@@ -1,0 +1,111 @@
+{
+  "id": "T108",
+  "novelty": "A v3 explicou escala e correspondência das cabeças. A nova camada considera interoperabilidade de pesos, contribuições funcionais e alternativas de adaptação sem confundir inspeção visual com causalidade.",
+  "deep_layers": [
+    {
+      "name": "Convenções de carregamento",
+      "detail": "QKV pode estar fundido, intercalado por cabeça ou separado; a projeção final também possui ordem específica. Ao converter pesos, documente reshape, transposição, posição e dtype. Teste entradas curtas e longas, pois um erro de posição pode passar em exemplos mínimos mesmo quando as dimensões são válidas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S024",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Cabeças como componentes",
+      "detail": "Mapas de atenção revelam pesos de mistura, não uma explicação completa da decisão. Para investigar uma cabeça, use ablação controlada e observe efeito na tarefa e em exemplos próximos. A projeção de saída, resíduos e demais camadas podem compensar alterações; uma visualização chamativa não prova especialização universal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S024",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Ajustar sem redesenhar",
+      "detail": "Quando o objetivo é domínio novo, adapters nas projeções podem ser uma intervenção mais controlada que remover cabeças. Identifique se o problema exige novas associações, formato ou evidência externa antes de alterar arquitetura. Reduzir cabeças modifica capacidade e demanda treinamento e avaliação, não apenas um parâmetro de serving.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S024",
+        "V4B-S017"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Migração de formato",
+      "scenario": "Pesos precisam passar entre ferramentas de treinamento e inferência.",
+      "strategy": "Crie uma comparação progressiva de projeções e saídas por camada. Investigue o primeiro ponto divergente em vez de confiar somente numa resposta textual final aparentemente correta.",
+      "small_model_role": "Um 3–7B permite validar a cadeia de conversão com custo menor antes de modelos maiores.",
+      "acceptance": "Logits devem obedecer tolerâncias declaradas e a máscara causal deve permanecer correta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S024",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Diagnóstico de informação ignorada",
+      "scenario": "Um modelo recebe fatos no contexto mas não os usa.",
+      "strategy": "Varie distância, distratores e posição da evidência; depois teste ablações ou adaptações pequenas. Use recuperação e organização do contexto como alternativas mensuráveis.",
+      "small_model_role": "Um 8–14B pode melhorar num domínio restrito sem acrescentar capacidade arbitrária de memória.",
+      "acceptance": "A melhora deve sobreviver à troca de entidades e à inserção de informações contraditórias.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S024",
+        "V4B-S017"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Prefira preservar arquitetura conhecida e investir em contexto ou adaptação antes de redesenhar cabeças.",
+    "8_14b": "Use adapters para hipóteses específicas; não atribua toda melhora à atenção se o treino modifica outros módulos.",
+    "15_30b": "Conversões maiores ampliam custo de validar tensores e checkpoints; mantenha testes em amostras representativas.",
+    "training_or_runtime_requirements": "MHA é arquitetura treinada; kernels podem mudar sem mudar seu grafo matemático, dentro das tolerâncias numéricas.",
+    "do_not_use_when": "Não usar pesos de atenção como prova direta da fonte factual de uma resposta."
+  },
+  "connections": [
+    {
+      "target_id": "T098",
+      "relation": "complements",
+      "how": "Uma interface de atenção eficiente executa a operação com máscaras e layouts explícitos.",
+      "interface": "QKV, escala, máscara e convenção de eixos.",
+      "condition": "Backend suporta forma e dtype usados.",
+      "acceptance": "Comparar forward e, se houver treino, gradientes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S024",
+        "V4B-S017"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T182",
+      "relation": "complements",
+      "how": "Adapters nas projeções permitem testar uma adaptação limitada.",
+      "interface": "Lista de módulos, posto e checkpoint base.",
+      "condition": "Pesos e nomes dos módulos correspondem ao modelo real.",
+      "acceptance": "Ablacionar módulos-alvo e validar retenção de capacidades.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S024",
+        "V4B-S017"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não aceitar conversão só porque tensores têm dimensões compatíveis.",
+    "Tratar explicações produzidas por visualização como hipóteses a serem testadas."
+  ],
+  "frontier_comparison": "Atenção com várias cabeças não é uma medida de inteligência. Compare a solução especializada com fronteira em localização e uso de evidência, incluindo casos em que a informação é insuficiente.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q005"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S024",
+    "V4B-S017"
+  ]
+}

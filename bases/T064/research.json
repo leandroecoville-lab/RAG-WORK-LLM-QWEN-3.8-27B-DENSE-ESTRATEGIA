@@ -1,0 +1,53 @@
+{
+  "id": "T064",
+  "technical_details": "Persistir estado exige distinguir valores reconstruíveis de recursos efêmeros: um caminho, socket ou objeto cliente não equivale ao recurso que representa. O estado também precisa identificar código e schema capazes de interpretá-lo após atualização. Uma retomada pode restaurar dados perfeitamente e ainda executar uma transição diferente porque o programa mudou. Migrações e verificação de dependências pertencem ao contrato de persistência, além da serialização.",
+  "boundary_condition": "O estado deixa de ser retomável quando contém referências sem duração compatível, segredos expirados ou versões que o novo runtime não sabe interpretar.",
+  "implementation_contract": {
+    "inputs": "Campos serializáveis, referências duráveis, identidade de execução e versão de schema ou workflow.",
+    "outputs": "Estado confirmado e carregável com dependências verificadas ou bloqueios de migração explícitos.",
+    "state": "Histórico de revisões, migrações aplicadas, agenda e operações externas pendentes.",
+    "invariant": "Carregar bytes válidos não é declarado como retomada bem-sucedida antes de verificar compatibilidade e dependências."
+  },
+  "tradeoffs": [
+    "Persistir informação mínima reduz custo e pode aumentar reconstrução após falha.",
+    "Persistir intermediários acelera retomada e torna migração mais difícil quando mudam tipos e contratos de ferramentas."
+  ],
+  "failure_test": "Teste proposto: reiniciar com nova versão do workflow e remover um artefato referenciado. O carregamento deve detectar ambos os problemas e não marcar a missão como pronta apenas porque o JSON foi lido.",
+  "evaluation_plan": "Avaliação proposta: comparar retomada na mesma versão e após migração com falhas de dependência. Medir estados recuperáveis, tempo de reconstrução, transições inválidas e perdas de artefatos; testar também separação entre threads de um mesmo usuário.",
+  "comparisons": [
+    {
+      "entry_id": "T047",
+      "relation": "distinct_from",
+      "reason": "Memória longa conserva conhecimento reutilizável; estado persistente determina continuidade de uma execução identificada."
+    },
+    {
+      "entry_id": "T060",
+      "relation": "complements",
+      "reason": "Checkpoint publica um ponto específico do estado com semântica de retomada."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "LangGraph separa estado de thread preservado por checkpointers de dados compartilháveis mantidos em stores.",
+    "source_ids": [
+      "V3A-S031",
+      "V3A-S032"
+    ],
+    "support": "direct",
+    "caveat": "Essa separação não fornece automaticamente migração de qualquer schema customizado ou durabilidade de arquivos externos."
+  },
+  "advanced_qa": [
+    {
+      "question": "O estado deve guardar credenciais diretamente?",
+      "answer": "Prefira referências a mecanismos apropriados de resolução. A persistência precisa permitir renovar acesso sem transformar um segredo expirado em dependência irrecuperável."
+    },
+    {
+      "question": "Posso identificar execução apenas pelo usuário?",
+      "answer": "Não quando há missões ou tentativas simultâneas. Identifique proprietário, missão, thread e tentativa conforme as unidades reais de concorrência."
+    }
+  ],
+  "source_ids": [
+    "V3A-S031",
+    "V3A-S032"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

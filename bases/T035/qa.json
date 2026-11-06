@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Contextual Retrieval muda necessariamente as fronteiras?",
+    "answer": "Não. Pode manter os mesmos chunks e acrescentar informação que os situa no documento."
+  },
+  {
+    "question": "A descrição adicionada pode ser citada como fonte primária?",
+    "answer": "Não por si só. A citação deve apontar para o trecho original que a sustenta."
+  },
+  {
+    "question": "Late Chunking produz uma explicação textual adicional?",
+    "answer": "Não necessariamente. A informação contextual entra nas representações dos tokens antes do agrupamento que forma o embedding do trecho."
+  },
+  {
+    "question": "O prefixo precisa conter um resumo completo?",
+    "answer": "Não. O objetivo é resolver o que torna aquele trecho ambíguo. Resumo amplo pode ocupar espaço e reduzir sua especificidade."
+  }
+]

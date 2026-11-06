@@ -1,0 +1,51 @@
+{
+  "id": "R010",
+  "technical_details": "A documentação oficial de TGI consultada em 2026-11-05 informa manutenção limitada a correções menores, documentação e tarefas leves. Isso altera a decisão de adoção, mas não invalida automaticamente uma instalação existente. Uma migração deve comparar a semântica do endpoint: serialização de chat, tokens especiais, campos de uso, término, streaming, limites e erros. Compatibilidade aparente da rota HTTP não garante comportamento equivalente em casos extremos.",
+  "boundary_condition": "O status do projeto não informa sozinho se um modelo específico funciona na versão local; suporte de kernels e variantes de hardware precisa ser verificado no ambiente alvo.",
+  "implementation_contract": {
+    "inputs": "Imagem ou versão fixada, checkpoint, tokenizer, configuração de batching e conjunto representativo de chamadas do aplicativo.",
+    "outputs": "Respostas completas e em fluxo, erros classificados, métricas de serviço e relatório de diferenças entre servidores.",
+    "state": "Configuração de implantação, filas, shards e registro de versões usado durante toda a comparação.",
+    "invariant": "Uma substituição de servidor só é considerada compatível quando preserva os contratos que o consumidor efetivamente utiliza."
+  },
+  "tradeoffs": [
+    "Manter uma implantação estável evita migração imediata, mas exige acompanhar suporte e necessidades futuras.",
+    "Migrar pode ampliar opções de execução, porém templates e parâmetros diferentes podem mudar a resposta mesmo com pesos iguais."
+  ],
+  "failure_test": "Proposta: interromper um stream, testar sequência de parada, entrada longa e parâmetro inválido em ambos os servidores; registrar diferenças de término e liberação de recursos.",
+  "evaluation_plan": "Executar comparação controlada com o mesmo conjunto de tarefas, hardware e orçamento. Medir erros, latência p50/p95, custo por resposta aceita e equivalência funcional. Definir rollback antes de qualquer mudança real de tráfego.",
+  "comparisons": [
+    {
+      "entry_id": "R009",
+      "relation": "alternative",
+      "reason": "Outro servidor pode atender ao mesmo contrato após validação."
+    },
+    {
+      "entry_id": "P009",
+      "relation": "complements",
+      "reason": "O componente proposto deve encapsular diferenças de provedor."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "TGI encontra-se em modo de manutenção segundo a documentação oficial consultada em 2026-11-05.",
+    "source_ids": [
+      "V3D-S006"
+    ],
+    "support": "direct",
+    "caveat": "Estado documental datado; não representa desativação imediata de instalações existentes."
+  },
+  "advanced_qa": [
+    {
+      "question": "Manutenção significa que o serviço parou?",
+      "answer": "Não. É uma mudança no escopo de evolução do projeto; operação depende da instalação."
+    },
+    {
+      "question": "Basta trocar a URL por outro servidor?",
+      "answer": "Não. Compare template, streaming, erros, término e qualidade nas tarefas reais antes da troca."
+    }
+  ],
+  "source_ids": [
+    "V3D-S006"
+  ],
+  "research_note": "Contrato, teste de falha e plano de avaliação são recomendações editoriais; nenhuma implantação ou medição deste mecanismo foi executada neste pacote."
+}

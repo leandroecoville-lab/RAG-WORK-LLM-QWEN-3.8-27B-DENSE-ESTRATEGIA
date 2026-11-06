@@ -1,0 +1,93 @@
+[
+  {
+    "source_id": "V2A-S001",
+    "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+    "url": "https://arxiv.org/abs/2303.11366",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-03-20",
+    "supports": "Feedback linguístico, memória episódica reflexiva e revisão de tentativas sem atualizar pesos.",
+    "limitations": "Consulta documental primária. Não houve reprodução de experimentos, instalação do produto nem validação de disponibilidade na infraestrutura LAI. Receitas e testes das entradas são propostas editoriais.",
+    "web_ref": "turn49view0"
+  },
+  {
+    "source_id": "V2A-S002",
+    "title": "Self-Refine: Iterative Refinement with Self-Feedback",
+    "url": "https://arxiv.org/abs/2303.17651",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-03-30",
+    "supports": "Geração, feedback e refinamento iterativo pelo mesmo modelo; distinção de Reflexion.",
+    "limitations": "Consulta documental primária. Não houve reprodução de experimentos, instalação do produto nem validação de disponibilidade na infraestrutura LAI. Receitas e testes das entradas são propostas editoriais.",
+    "web_ref": "turn50view3"
+  },
+  {
+    "source_id": "V3C-S029",
+    "title": "Reflexion — authors implementation and experiments",
+    "url": "https://github.com/noahshinn/reflexion",
+    "publisher": "Shinn e colaboradores",
+    "source_type": "official_source_code",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Implementações, notebooks e estratégias de reflexão associadas a tipos de agente e ambientes experimentais.",
+    "limitations": "Repositório de pesquisa em branch mutável; resultados publicados não foram reproduzidos nem usados como avaliação deste corpus.",
+    "web_ref": "turn130view1"
+  },
+  {
+    "source_id": "V3C-S032",
+    "title": "Hypothesis — Stateful tests",
+    "url": "https://hypothesis.readthedocs.io/en/latest/stateful.html",
+    "publisher": "Hypothesis project",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Máquinas de estado e regras geram sequências de ações; modelos de referência permitem comparar comportamento acumulado.",
+    "limitations": "Testes dependem de regras e invariantes corretos; não demonstram exaustividade de estados ou ausência total de defeitos.",
+    "web_ref": "turn140view3"
+  },
+  {
+    "source_id": "V4C-S030",
+    "title": "Harness engineering: leveraging Codex in an agent-first world",
+    "url": "https://openai.com/index/harness-engineering/",
+    "publisher": "OpenAI",
+    "source_type": "engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-02-11",
+    "supports": "Beta com usuários internos reais: aplicações por worktree, observabilidade isolada, planos versionados, instruções curtas e verificações mecânicas de arquitetura.",
+    "limitations": "Experimento operacional de um time; não equivale a produto geral sem supervisão nem demonstra substituição por modelos pequenos. Ganhos autoestimados não transferidos.",
+    "web_ref": "turn308view0"
+  },
+  {
+    "source_id": "C-S026",
+    "title": "Making retries safe with idempotent APIs",
+    "url": "https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/",
+    "publisher": "Amazon Web Services",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Identificador de intenção do cliente permite repetir uma solicitação sem repetir seu efeito lógico.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn34view2"
+  },
+  {
+    "source_id": "V4C-S009",
+    "title": "Using AI to Delete Code: Agentic Tech Debt Cleanup at Uber",
+    "url": "https://www.uber.com/us/en/blog/ai-code-cleanup/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "AutoClean operacional combina agentes, PolyglotPiranha via MCP, CI, fixers delimitados, verificações estáticas e CodeCourt por propriedades.",
+    "limitations": "Fonte primária aberta. Desempenho relatado pertence ao sistema e ao período descritos; não foi reproduzido e não comprova transferência para modelos 3–30B.",
+    "web_ref": "turn238view0"
+  }
+]

@@ -1,0 +1,46 @@
+{
+  "id": "T178",
+  "technical_details": "Soft targets preservam relações entre alternativas que desaparecem quando se guarda apenas a classe ou token vencedor. A temperatura suaviza essas distribuições, mas também muda a escala do gradiente. O trabalho clássico discute compensação por T² ao combinar objetivos suaves e rótulos, sob sua análise. Em LLMs, acesso somente ao texto gerado permite destilação de sequências, mas não reconstrói integralmente a distribuição do professor.",
+  "boundary_condition": "Um professor incorreto ou descalibrado transmite seus erros; concordância com ele não é um critério independente de verdade.",
+  "implementation_contract": {
+    "inputs": "Entradas de transferência, respostas ou logits do professor e alvos corretos quando disponíveis.",
+    "outputs": "Aluno ajustado e avaliação independente de qualidade e custo.",
+    "state": "Configuração do professor, temperatura, filtros e mistura de objetivos.",
+    "invariant": "O sinal de supervisão mantém registro de como foi produzido e do que realmente contém."
+  },
+  "tradeoffs": [
+    "Logits fornecem informação adicional e custam armazenamento e compatibilidade de vocabulário.",
+    "Textos são mais portáveis e descartam probabilidades das alternativas não amostradas."
+  ],
+  "failure_test": "Teste proposto: inserir exemplos em que o professor erra com alta confiança e variar temperatura mantendo a mistura controlada. Esperar que avaliação externa revele erros herdados, mesmo com boa imitação.",
+  "evaluation_plan": "Plano proposto: comparar aluno base, treino com rótulos e destilação usando o mesmo orçamento. Medir qualidade contra referência, divergência do professor quando observável e latência; aprovar por competência e custo, sem confundir similaridade com correção.",
+  "comparisons": [
+    {
+      "entry_id": "T179",
+      "relation": "complements",
+      "reason": "Destilação de contexto é uma aplicação da transferência com informação privilegiada restrita ao professor."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O método clássico usa distribuições suavizadas e combina sua supervisão com rótulos conhecidos quando disponíveis.",
+    "source_ids": [
+      "V3B-S017"
+    ],
+    "support": "direct",
+    "caveat": "O comportamento em classificação não garante transferência completa das capacidades de um LLM."
+  },
+  "advanced_qa": [
+    {
+      "question": "Temperatura alta sempre melhora?",
+      "answer": "Não. Pode dar mais peso a alternativas pouco informativas; é um hiperparâmetro para validação."
+    },
+    {
+      "question": "Professor e aluno precisam ter tamanhos diferentes?",
+      "answer": "Não. A distinção é o papel de supervisão; podem até compartilhar arquitetura e checkpoint inicial."
+    }
+  ],
+  "source_ids": [
+    "V3B-S017"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

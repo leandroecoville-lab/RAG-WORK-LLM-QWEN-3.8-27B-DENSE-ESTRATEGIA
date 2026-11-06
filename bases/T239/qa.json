@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Worktree é uma cópia independente do repositório inteiro?",
+    "answer": "Não. Ele compartilha objetos e estruturas do repositório, embora ofereça uma árvore de arquivos e checkout separados."
+  },
+  {
+    "question": "Posso considerar toda integração segura se Git não apontar conflito?",
+    "answer": "Não. Git detecta determinados conflitos de conteúdo; mudanças podem conflitar em APIs, comportamento ou dados sem conflito textual."
+  },
+  {
+    "question": "worktree lock impede outro agente de editar arquivos?",
+    "answer": "Não. Seu propósito documentado é proteger a árvore administrativa contra certas operações de limpeza, movimento ou remoção."
+  },
+  {
+    "question": "Um teste em outro worktree pode alterar meu ambiente?",
+    "answer": "Sim, se usar recursos compartilhados fora do checkout, como banco, porta, cache ou diretório de build."
+  }
+]

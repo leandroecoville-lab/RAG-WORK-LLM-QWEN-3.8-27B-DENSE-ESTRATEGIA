@@ -1,0 +1,30 @@
+{
+  "id": "T096",
+  "name": "Sparse Attention",
+  "canonical_name": "Sparse Attention",
+  "canonical_id": "T096",
+  "aliases": [
+    "atenção esparsa"
+  ],
+  "category": "inferencia",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T095",
+    "T097",
+    "T111",
+    "T112"
+  ],
+  "source_ids": [
+    "B-S016",
+    "B-S015",
+    "V4B-S017",
+    "V4B-S018"
+  ],
+  "namespace": "T096",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T096",
+  "chunk_count": 9
+}

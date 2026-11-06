@@ -1,0 +1,111 @@
+{
+  "id": "T215",
+  "novelty": "A v3 protegia observações com dependências abertas. A expansão mede efeitos de masking na tomada de decisão, define recuperação de detalhes e distingue ocultação no prompt de remoção do histórico persistente.",
+  "deep_layers": [
+    {
+      "name": "Marcador informativo",
+      "detail": "Substitua observação ocultada por marcador com ferramenta, status, identificador e referência, conforme necessidade. Um marcador vazio informa que algo ocorreu, mas não ajuda a distinguir sucesso, erro ou efeito incerto. Preserve estrutura exigida pelo protocolo de mensagens para não deixar chamada sem resposta correspondente no histórico apresentado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S031",
+        "V3C-S031"
+      ]
+    },
+    {
+      "name": "Proteção por dependência",
+      "detail": "Mantenha observações que sustentam a próxima ação ou o critério de conclusão, mesmo se antigas. Uma janela temporal simples pode funcionar em carga homogênea e falhar em missões com longa espera entre decisão e uso da evidência. Expire a proteção quando a dependência fecha, registrando por que a observação se tornou dispensável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S031",
+        "C-S026"
+      ]
+    },
+    {
+      "name": "Teste de recuperação",
+      "detail": "O agente deve reconhecer quando o marcador não basta e recuperar o original. Meça releituras e repetições de ferramentas causadas por masking; ocultar uma resposta e depois executar a mesma ação novamente pode ser mais caro ou perigoso que manter alguns campos. A política deve favorecer consulta do artefato antes de refazer efeito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S031",
+        "C-S026"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Pesquisa com muitas páginas",
+      "scenario": "Observações antigas ocupam a janela depois da extração.",
+      "strategy": "Guarde os documentos, preserve tabela de alegações e oculte corpos já consumidos. Quando surgir contradição, recupere o trecho original por identidade. Compare masking com sumarização mantendo o mesmo número de documentos acessíveis e o mesmo critério de evidência.",
+      "small_model_role": "3–7B trabalha em extração local; 15–30B integra apenas registros necessários.",
+      "acceptance": "Proposta: cobertura e fidelidade de citações com custo total, incluindo recuperações.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S031"
+      ]
+    },
+    {
+      "name": "Sessão longa de programação",
+      "scenario": "Muitos logs antigos repetem resultados já resolvidos.",
+      "strategy": "Oculte logs encerrados, mantenha último erro completo e recibos de alterações externas. Preserve vínculo entre comando e versão do código testado. Se um defeito reaparecer, recuperar o log antigo permite comparar condições sem supor que a mesma mensagem tem a mesma causa.",
+      "small_model_role": "8–14B diagnostica localmente; runtime protege evidência de validação ainda vigente.",
+      "acceptance": "Proposta: menor contexto sem aumento de repetição ou perda de estado confirmado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S031",
+        "V4C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Benefício potencial em trajetórias ruidosas; precisa de marcadores simples e recuperáveis.",
+    "8_14b": "Classificação de observações consumidas e seleção de detalhes a reabrir.",
+    "15_30b": "Integração de evidências preservadas, com acesso sob demanda a exceções antigas.",
+    "training_or_runtime_requirements": "Histórico persistente separado do prompt, referências estáveis e teste de compatibilidade com mensagens de ferramentas.",
+    "do_not_use_when": "Não ocultar único recibo de efeito ou evidência de requisito ainda em aberto."
+  },
+  "connections": [
+    {
+      "target_id": "T212",
+      "relation": "alternative",
+      "how": "Comparar masking e resumo no mesmo scaffold, tratando diferenças de informação como variável explícita.",
+      "interface": "Trajetória, política e observações protegidas.",
+      "condition": "Mesmo conjunto de tarefas e orçamento total.",
+      "acceptance": "Medir resolução, duração, custo e reconsultas sem declarar vencedor universal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S031"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T238",
+      "relation": "complements",
+      "how": "Reabrir observação por referência quando o marcador deixa de bastar.",
+      "interface": "Identidade, versão e trecho solicitado.",
+      "condition": "Original acessível e não substituído silenciosamente.",
+      "acceptance": "Não repetir ferramenta com efeito só para recuperar uma informação já registrada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S031",
+        "C-S026"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Ocultar no prompt não equivale a apagar dados persistidos.",
+    "Ausência da observação pode induzir repetição; o estado de conclusão deve permanecer explícito."
+  ],
+  "frontier_comparison": "Use a comparação publicada como motivação para baseline, não como garantia para 3–30B. Os modelos locais avaliados no artigo incluem 32B e 480B, fora da faixa exata solicitada.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q028"
+    ],
+    "scope_note": "Há estudo primário específico, classificado research_only. Não foi identificado nesta pesquisa um deployment de bigtech que documente esta mesma política como mecanismo comprovado."
+  },
+  "source_ids": [
+    "V4C-S031",
+    "V3C-S031",
+    "C-S026",
+    "V4C-S030"
+  ]
+}

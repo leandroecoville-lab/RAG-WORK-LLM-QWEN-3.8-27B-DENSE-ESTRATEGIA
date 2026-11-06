@@ -1,0 +1,46 @@
+{
+  "id": "T112",
+  "technical_details": "Recuperar conteúdo para uma camada de atenção requer compatibilidade entre índice, codificador e mecanismo que consome seus estados. Atualizar somente os documentos pode mudar distribuição e latência; atualizar embeddings sem reconstruir o índice pode quebrar a correspondência geométrica. No RETRO, recuperação externa participa de uma arquitetura com codificação e cross-attention por trechos, portanto não equivale a anexar texto a um modelo convencional.",
+  "boundary_condition": "A recuperação pode falhar mesmo quando a cross-attention é correta; o modelo não consegue atender a candidatos que o índice deixou de fornecer.",
+  "implementation_contract": {
+    "inputs": "Consulta de recuperação, índice versionado, candidatos e codificador compatível.",
+    "outputs": "Representações externas e sua integração nos pontos previstos da arquitetura.",
+    "state": "Versões de corpus, embeddings, índice e política de atualização.",
+    "invariant": "Cada candidato mantém proveniência e correspondência com a versão usada para codificá-lo."
+  },
+  "tradeoffs": [
+    "Memória externa amplia conteúdo acessível e adiciona consulta, codificação e transporte.",
+    "Mais candidatos aumentam cobertura e custo, podendo introduzir material irrelevante."
+  ],
+  "failure_test": "Teste proposto: trocar o codificador das consultas mantendo o índice antigo e inserir documentos duplicados. Esperar detecção de incompatibilidade e avaliação explícita da perda de cobertura.",
+  "evaluation_plan": "Plano proposto: separar qualidade de recuperação da utilização pelo modelo. Controlar corpus e versões; medir recall de evidência, latência por etapa e qualidade final com candidatos corretos e incorretos; aprovar pelo benefício total com proveniência preservada.",
+  "comparisons": [
+    {
+      "entry_id": "T111",
+      "relation": "distinct_from",
+      "reason": "Selecionar estados internos e recuperar trechos externos têm diferentes identidades, custos e atualizações."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "RETRO combina recuperador congelado, codificador diferenciável e cross-attention por trechos.",
+    "source_ids": [
+      "B-S026"
+    ],
+    "support": "direct",
+    "caveat": "O artigo apresenta uma arquitetura treinada para essa integração, não uma função universal disponível em qualquer checkpoint."
+  },
+  "advanced_qa": [
+    {
+      "question": "Mudar o banco atualiza os pesos?",
+      "answer": "Não. Atualiza memória externa; o modelo ainda depende de suas capacidades treinadas de utilizar o material recuperado."
+    },
+    {
+      "question": "Boa recuperação garante resposta correta?",
+      "answer": "Não. O conteúdo pode ser mal interpretado, e o índice também pode conter evidência conflitante ou desatualizada."
+    }
+  ],
+  "source_ids": [
+    "B-S026"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

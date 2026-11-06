@@ -1,0 +1,52 @@
+{
+  "id": "T217",
+  "technical_details": "O ciclo orientado por teste precisa distinguir regressão do produto e falha da infraestrutura de teste. Uma execução verde pode significar que nenhum caso foi descoberto, e uma vermelha pode decorrer de dependência indisponível. Além de exemplos, invariantes e sequências de ações ajudam revelar defeitos de estado que não aparecem em uma chamada isolada. O teste escolhido deve falhar pelo comportamento ausente, não por um detalhe incidental da implementação.",
+  "boundary_condition": "Se produtor e verificador compartilham a mesma interpretação incorreta do requisito, o ciclo pode convergir para uma implementação errada com testes verdes.",
+  "implementation_contract": {
+    "inputs": "Requisito, caso que o exercita, ambiente identificado e alteração candidata.",
+    "outputs": "Resultado por teste, motivo da falha e evidência de cobertura do comportamento.",
+    "state": "Versão dos testes, casos executados e baseline anterior.",
+    "invariant": "Ausência de testes executados não é registrada como comprovação de correção."
+  },
+  "tradeoffs": [
+    "Exemplos específicos são fáceis de explicar e podem cobrir pouco espaço de estados.",
+    "Testes gerativos exploram mais sequências e exigem invariantes e modelos de referência corretos."
+  ],
+  "failure_test": "Teste proposto: mudar a descoberta para executar zero casos e introduzir uma falha de estado após duas operações; exigir detecção da ausência e cobertura da sequência.",
+  "evaluation_plan": "Comparar exemplos isolados e testes baseados em propriedades com defeitos introduzidos independentemente. Controlar orçamento de execução. Medir defeitos detectados, falsos alarmes e tempo de diagnóstico, sem usar apenas porcentagem de testes aprovados.",
+  "comparisons": [
+    {
+      "entry_id": "T195",
+      "relation": "complements",
+      "reason": "Verificação por execução é o mecanismo de evidência usado pelo ciclo."
+    },
+    {
+      "entry_id": "T224",
+      "relation": "complements",
+      "reason": "A especificação fornece o comportamento que os testes devem representar."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Hypothesis pode gerar sequências de ações em máquinas de estado e compará-las com um modelo de referência.",
+    "source_ids": [
+      "V3C-S032"
+    ],
+    "support": "direct",
+    "caveat": "A ferramenta explora o modelo fornecido; não valida automaticamente se o oráculo corresponde ao requisito real."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um teste verde recém-criado prova que corrigi o defeito?",
+      "answer": "Não sozinho. É útil demonstrar falha na versão anterior pelo motivo esperado e sucesso após a alteração, com execução real do caso."
+    },
+    {
+      "question": "Por que testar sequências?",
+      "answer": "Porque criação, atualização e remoção podem interagir; cada operação isolada pode funcionar enquanto a sequência viola um invariante."
+    }
+  ],
+  "source_ids": [
+    "V3C-S032",
+    "C-S048"
+  ],
+  "research_note": "Fontes primárias reabertas nesta pesquisa; contratos, cenários de falha e avaliação são propostas editoriais."
+}

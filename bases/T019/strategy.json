@@ -1,0 +1,120 @@
+{
+  "id": "T019",
+  "novelty": "A v3 tratou ordem e classes. Aqui a poda de demonstrações considera cobertura de confusões específicas e incompatibilidade entre exemplos.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Construa matriz de confusões do modelo e selecione exemplos que distingam classes confundidas. Exemplos fáceis redundantes consomem janela sem alterar decisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S016",
+        "V3A-S017",
+        "V4A-S019"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Remova demonstração apenas após testar fronteiras que ela representa. Preserve exemplos de abstenção e exceção, evitando selecionar somente respostas positivas frequentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S016",
+        "V3A-S017",
+        "V4A-S019"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare seleção por similaridade, diversidade e erro corrigido. Faça validação com novos documentos para não medir memorização de exemplos quase iguais. Unidade de avaliação: família de exemplos. Teste exemplos que corrigem uma confusão específica e exemplos apenas semelhantes no vocabulário. O ganho esperado deve aparecer nos casos de fronteira, sem aumentar cópia de entidades ou valores. Uma análise leave-one-out pode identificar demonstração indispensável, mas a escolha final precisa ser confirmada em documentos diferentes dos usados nessa análise.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S016",
+        "V3A-S017",
+        "V4A-S019"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Extração de requisitos",
+      "scenario": "Permissão e obrigação são confundidas.",
+      "strategy": "Manter pares contrastivos de modalidade e eliminar exemplos que apenas repetem formato. Testar frases novas com negação.",
+      "small_model_role": "3–7B extrai modalidade em esquema fechado.",
+      "acceptance": "Não transformar recomendação em obrigação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S016",
+        "V3A-S017",
+        "V4A-S019"
+      ]
+    },
+    {
+      "name": "Classificação de atendimento",
+      "scenario": "Categorias raras são comercialmente relevantes.",
+      "strategy": "Escolher exemplos por fronteira entre categorias, reservando demonstração de informação insuficiente.",
+      "small_model_role": "8–14B classifica e explica evidência.",
+      "acceptance": "Recall das classes raras deve satisfazer critério acordado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S016",
+        "V3A-S017",
+        "V4A-S019"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Poucos pares contrastivos com rótulos estáveis e esquema simples.",
+    "8_14b": "Conjunto variado por tipo de ambiguidade, não apenas proximidade lexical.",
+    "15_30b": "Exemplos de decisões compostas e justificativas verificáveis.",
+    "training_or_runtime_requirements": "Banco de demonstrações rotulado, separado da avaliação; mudanças de modelo exigem nova análise de confusão.",
+    "do_not_use_when": "Exemplos contradizem instrução atual ou revelam dados fora do escopo."
+  },
+  "connections": [
+    {
+      "target_id": "T046",
+      "relation": "complements",
+      "how": "Selecionar subconjunto por confusão prevista.",
+      "interface": "Intenção, classes candidatas e exemplos elegíveis.",
+      "condition": "Selector não consultar resposta esperada.",
+      "acceptance": "Testar exemplos irrelevantes com formato semelhante.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S016",
+        "V3A-S017",
+        "V4A-S019"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T198",
+      "relation": "feeds",
+      "how": "Calibrar abstenção com exemplos difíceis.",
+      "interface": "Classe, evidência e sinal mensurável de incerteza.",
+      "condition": "Calibração independente dos exemplos exibidos.",
+      "acceptance": "Comparar erros confiantes antes e depois da poda.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S016",
+        "V3A-S017",
+        "V4A-S019"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não escolher ordem usando o conjunto final de teste.",
+    "Evitar duplicatas da mesma origem como diversidade."
+  ],
+  "frontier_comparison": "Comparar acerto nas fronteiras difíceis; redução do prompt pode expor limitações do modelo pequeno.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q016",
+      "V4A-Q024"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S016",
+    "V3A-S017",
+    "V4A-S019"
+  ]
+}

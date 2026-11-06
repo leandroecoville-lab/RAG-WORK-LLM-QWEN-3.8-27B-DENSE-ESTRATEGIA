@@ -1,0 +1,46 @@
+{
+  "id": "T115",
+  "technical_details": "Reexecutar um segmento no backward pressupõe que ele represente a mesma função do forward original. Aleatoriedade, buffers mutáveis e efeitos colaterais podem violar essa hipótese: avançar um contador ou consumir outra máscara de dropout altera a recomputação. O mecanismo precisa administrar estados aleatórios suportados e distinguir variantes de autograd; economizar ativações não é equivalente a comprimir pesos ou cache de inferência.",
+  "boundary_condition": "Funções com dependência de estado externo ou transferência para dispositivos não contemplados podem produzir gradientes diferentes silenciosamente.",
+  "implementation_contract": {
+    "inputs": "Segmento diferenciável, entradas, política de preservação aleatória e variante de checkpoint.",
+    "outputs": "Saída forward e gradientes consistentes com o cálculo sem checkpoint.",
+    "state": "Entradas preservadas, estado RNG necessário e metadados do autograd.",
+    "invariant": "A recomputação mantém a função e os efeitos numéricos exigidos pelo treinamento."
+  },
+  "tradeoffs": [
+    "Menos ativações residentes exige mais computação no backward.",
+    "Preservar RNG custa trabalho, mas evita diferenças causadas por amostragem repetida."
+  ],
+  "failure_test": "Teste proposto: introduzir dropout e um contador mutável no segmento. Comparar gradientes com execução sem checkpoint; o efeito colateral deve ser removido ou explicitamente controlado antes da aprovação.",
+  "evaluation_plan": "Plano proposto: controlar lote, seed, pesos e dtype, medindo pico de memória, duração da etapa e erro de gradientes. Avaliar vários segmentos; aceitar economia somente quando a trajetória de treinamento respeita o requisito de equivalência definido.",
+  "comparisons": [
+    {
+      "entry_id": "T116",
+      "relation": "distinct_from",
+      "reason": "Recomposição de KV ocorre na inferência; activation checkpointing economiza intermediários exigidos pelo backward."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação PyTorch descreve preservação de RNG e limitações quando dispositivos ou aleatoriedade não estão cobertos.",
+    "source_ids": [
+      "B-S029"
+    ],
+    "support": "direct",
+    "caveat": "O mecanismo não torna qualquer função com efeitos colaterais segura para recomputação."
+  },
+  "advanced_qa": [
+    {
+      "question": "Checkpointing reduz diretamente a latência de geração?",
+      "answer": "Não é esse seu objetivo; atua no armazenamento de ativações durante treinamento com retropropagação."
+    },
+    {
+      "question": "Igualdade de loss em uma etapa basta?",
+      "answer": "Não. Gradientes podem divergir apesar de uma saída forward semelhante; compare também o caminho de atualização dos parâmetros."
+    }
+  ],
+  "source_ids": [
+    "B-S029"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

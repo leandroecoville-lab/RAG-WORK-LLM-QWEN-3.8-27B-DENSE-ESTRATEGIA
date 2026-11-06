@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Utilização máxima é sempre o objetivo?",
+    "answer": "Não. O objetivo útil é concluir trabalho correto dentro dos prazos e do orçamento."
+  },
+  {
+    "question": "Scheduler de GPU é só uma fila FIFO?",
+    "answer": "Pode usar FIFO, mas LLMs também exigem considerar memória, fases e duração variável."
+  },
+  {
+    "question": "Token é uma unidade uniforme de custo?",
+    "answer": "Não. Seu custo depende da fase, contexto, modelo e lote; estimativas precisam ser calibradas na carga."
+  },
+  {
+    "question": "Pode prometer prazo pelo tamanho do prompt?",
+    "answer": "Não sozinho. Saída, fila, cache e comunicação também influenciam a conclusão."
+  }
+]

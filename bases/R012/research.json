@@ -1,0 +1,51 @@
+{
+  "id": "R012",
+  "technical_details": "A receita de prompt distillation do Tinker descreve um professor que recebe instrução p e consulta q, produzindo resposta r. O estudante aprende a prever r a partir de q sem receber p. O efeito desejado é incorporar comportamento recorrente nos parâmetros. Para preparar uma experiência útil, a curadoria precisa separar exemplos de treino e avaliação por famílias de entrada; repetir as mesmas perguntas com pequenas alterações pode criar uma impressão enganosa de generalização.",
+  "boundary_condition": "Um comportamento treinado pode envelhecer quando a política muda. Dados factuais voláteis e evidências que precisam de citação continuam exigindo mecanismos de atualização e recuperação.",
+  "implementation_contract": {
+    "inputs": "Prompt professor versionado, consultas representativas, respostas verificadas, checkpoint estudante e orçamento de treino.",
+    "outputs": "Checkpoint ou adaptador, manifesto dos dados e relatório de tarefas com e sem a instrução original.",
+    "state": "Proveniência de exemplos, partições imutáveis, hiperparâmetros e associação entre versão do prompt e pesos.",
+    "invariant": "A avaliação reservada não participa da seleção de exemplos, ajuste do prompt professor ou escolha de checkpoint."
+  },
+  "tradeoffs": [
+    "Remover instruções repetidas pode reduzir tokens de entrada, mas transfere custo para coleta, treino e validação.",
+    "Um estudante pode reproduzir regularidades e também erros do professor; aceitação depende de avaliação independente."
+  ],
+  "failure_test": "Proposta: alterar uma regra após o treinamento e confrontar casos antigos e novos; verificar se a versão do comportamento fica identificável e se o fallback preserva a política vigente.",
+  "evaluation_plan": "Comparar modelo base com prompt, base sem prompt e estudante sem prompt em partição reservada. Medir acerto, violações de regra, tokens e custo total amortizado. Definir o volume de chamadas necessário para compensar o treinamento.",
+  "comparisons": [
+    {
+      "entry_id": "T180",
+      "relation": "specializes",
+      "reason": "A receita é uma implementação do objetivo de destilar instruções."
+    },
+    {
+      "entry_id": "T069",
+      "relation": "distinct_from",
+      "reason": "Um resumo externo não altera os parâmetros do estudante."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A receita treina o estudante sem o prompt usado pelo professor para produzir os exemplos.",
+    "source_ids": [
+      "V3D-S008"
+    ],
+    "support": "direct",
+    "caveat": "O tutorial demonstra um procedimento; não garante desempenho em novos domínios ou checkpoints."
+  },
+  "advanced_qa": [
+    {
+      "question": "Distilar este inventário substitui RAG com fontes?",
+      "answer": "Não automaticamente. Treinar comportamento e recuperar evidência verificável resolvem necessidades diferentes."
+    },
+    {
+      "question": "Quando o investimento compensa?",
+      "answer": "Quando a economia por chamada e a qualidade sustentada superam custo de dados, treino, atualização e avaliação."
+    }
+  ],
+  "source_ids": [
+    "V3D-S008"
+  ],
+  "research_note": "Contrato, teste de falha e plano de avaliação são recomendações editoriais; nenhuma implantação ou medição deste mecanismo foi executada neste pacote."
+}

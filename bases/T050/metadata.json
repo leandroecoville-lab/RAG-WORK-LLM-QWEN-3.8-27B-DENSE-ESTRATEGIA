@@ -1,0 +1,29 @@
+{
+  "id": "T050",
+  "name": "Working Memory Window",
+  "canonical_name": "Working Memory Window",
+  "canonical_id": "T050",
+  "aliases": [
+    "janela de memória de trabalho"
+  ],
+  "category": "memoria",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T003",
+    "T039",
+    "T040",
+    "T053"
+  ],
+  "source_ids": [
+    "A-S003",
+    "A-S009",
+    "A-S006"
+  ],
+  "namespace": "T050",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T050",
+  "chunk_count": 9
+}

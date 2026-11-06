@@ -1,0 +1,122 @@
+{
+  "id": "T025",
+  "novelty": "A v3 separou complexidade e necessidade de atualização. Aqui o roteamento adapta o esforço à perda esperada de cada tipo de erro.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Crie rotas distintas para extração exata, comparação e investigação. A decisão inicial usa sinais verificáveis: presença de identificador, necessidade temporal, número de entidades e disponibilidade de fontes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S017",
+        "V4A-S014",
+        "V4A-S019"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Faça uma recuperação barata antes de escolher profundidade quando a consulta for ambígua. Um conjunto vazio ou contraditório altera a rota; confiança verbal do gerador não substitui esses sinais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S017",
+        "V4A-S014",
+        "V4A-S019"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare política fixa e adaptativa usando custo por resposta aceita. Separe erro de encaminhamento, falha de busca e erro de leitura; uma rota barata que encaminha casos difíceis para abstenção excessiva não demonstra eficiência. Unidade de avaliação: classe de decisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S017",
+        "V4A-S014",
+        "V4A-S019"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Perguntas técnicas de catálogo",
+      "scenario": "Algumas pedem campo exato; outras comparação.",
+      "strategy": "Identificar atributo e versão, consultar registro estruturado e recorrer a documentos somente para exceções ou explicações.",
+      "small_model_role": "3–7B escolhe rota simples; 8–14B lê exceções.",
+      "acceptance": "Medir falsa escolha da rota direta em consultas com exceção documentada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S017",
+        "V4A-S014",
+        "V4A-S019"
+      ]
+    },
+    {
+      "name": "Investigação com fontes incompletas",
+      "scenario": "O acervo pode não responder.",
+      "strategy": "Tentar busca inicial, classificar lacuna e expandir apenas se existir canal plausível. Encerrar com insuficiência após limite de rotas.",
+      "small_model_role": "15–30B integra evidências quando necessário.",
+      "acceptance": "Contabilizar buscas adicionais sem evidência nova e respostas indevidamente completas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S017",
+        "V4A-S014",
+        "V4A-S019"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Roteador de poucas classes com regras para atualização e identidade.",
+    "8_14b": "Leitor especializado que avalia suficiência de um pacote pequeno.",
+    "15_30b": "Planejador de investigação em rotas interdependentes, com teto de orçamento.",
+    "training_or_runtime_requirements": "Custos por rota, sinais de cobertura e validação por família; calibrar após mudança de corpus ou leitor.",
+    "do_not_use_when": "Roteador custa quase tanto quanto resolver ou seus erros não podem ser detectados antes de efeitos."
+  },
+  "connections": [
+    {
+      "target_id": "T036",
+      "relation": "feeds",
+      "how": "Escolher reformulação conforme a lacuna.",
+      "interface": "Intenção, entidades preservadas e tipo de evidência.",
+      "condition": "Rota selecionada exigir busca adicional.",
+      "acceptance": "Verificar que reformulação mantém entidade e tempo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S017",
+        "V4A-S014",
+        "V4A-S019"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T203",
+      "relation": "complements",
+      "how": "Escalonar quando teste de correção falhar.",
+      "interface": "Resultado, falha identificada e evidência disponível.",
+      "condition": "Existir verificação independente da confiança declarada.",
+      "acceptance": "Medir escalonamentos evitáveis e erros que escapam.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S017",
+        "V4A-S014",
+        "V4A-S019"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir consulta simples com informação estável.",
+    "Registrar rota recusada e motivo para investigar viés."
+  ],
+  "frontier_comparison": "Comparar tarefas por rota com fronteira usando as mesmas fontes; reportar ganhos de custo sem esconder abstenções.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q010",
+      "V4A-Q016",
+      "V4A-Q017",
+      "V4A-Q020"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S017",
+    "V4A-S014",
+    "V4A-S019"
+  ]
+}

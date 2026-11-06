@@ -1,0 +1,52 @@
+{
+  "id": "T238",
+  "technical_details": "Uma faixa de linhas é endereço relativo a uma versão do arquivo. Inserções anteriores deslocam posições sem mudar o símbolo procurado; renomes e geração de código podem invalidar ainda mais a referência. Uma proposta combina caminho, revisão, intervalo e âncora sintática ou hash do trecho. Expandir a faixa deve responder a uma necessidade concreta, como obter definição de variável, condição envolvente ou contrato chamado.",
+  "boundary_condition": "Um trecho pode parecer suficiente e omitir um guard, decorator, import ou tratamento de erro que muda seu significado.",
+  "implementation_contract": {
+    "inputs": "Arquivo e revisão, intervalo solicitado, símbolo e objetivo da leitura.",
+    "outputs": "Trecho com limites claros, proveniência e indicação de contexto adicional necessário.",
+    "state": "Âncoras, hashes e faixas já lidas na mesma revisão.",
+    "invariant": "Linha antiga não é reutilizada como localização exata após mudança de base sem verificação."
+  },
+  "tradeoffs": [
+    "Faixas pequenas economizam contexto e aumentam chamadas de expansão.",
+    "Faixas grandes preservam relações e podem introduzir material irrelevante."
+  ],
+  "failure_test": "Teste proposto: inserir linhas antes da função e alterar uma condição externa ao trecho original; exigir resolução da revisão e expansão suficiente para perceber a condição.",
+  "evaluation_plan": "Comparar leitura integral, faixa fixa e expansão por símbolo em tarefas de diagnóstico. Medir tokens, rodadas, localização correta e decisões que ignoraram contexto externo. Escolher a janela pela unidade semântica necessária, não apenas por tamanho.",
+  "comparisons": [
+    {
+      "entry_id": "T216",
+      "relation": "complements",
+      "reason": "Repo map ajuda a escolher arquivo e símbolo, mas a leitura precisa confirmar a revisão."
+    },
+    {
+      "entry_id": "T232",
+      "relation": "complements",
+      "reason": "Metadados de posição e escopo podem ligar trechos à estrutura sintática."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "LibCST oferece metadados de posição e escopo associados a nós de uma árvore específica.",
+    "source_ids": [
+      "V3C-S033"
+    ],
+    "support": "related",
+    "caveat": "Leitura sob demanda por linha é uma política editorial; metadados antigos não acompanham automaticamente edições posteriores."
+  },
+  "advanced_qa": [
+    {
+      "question": "O número da linha identifica uma função permanentemente?",
+      "answer": "Não. Ele depende da revisão; símbolo, caminho e conteúdo ajudam a reidentificar o alvo após mudanças."
+    },
+    {
+      "question": "Quando ampliar a leitura?",
+      "answer": "Quando faltarem definições, condições, chamadas ou erros necessários para interpretar o trecho e decidir a alteração."
+    }
+  ],
+  "source_ids": [
+    "V3C-S033",
+    "V2A-S007"
+  ],
+  "research_note": "Contratos, cenários de falha e planos de avaliação são propostas editoriais fundamentadas nas fontes indicadas."
+}

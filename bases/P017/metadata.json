@@ -1,0 +1,42 @@
+{
+  "id": "P017",
+  "name": "Distillation Pipeline",
+  "canonical_name": "Distillation Pipeline",
+  "canonical_id": "P017",
+  "aliases": [
+    "pipeline proposto de destilação"
+  ],
+  "category": "componentes_propostos",
+  "kind": "component",
+  "scope": "proposta",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T069",
+    "T178",
+    "T179",
+    "T180",
+    "T181",
+    "R012",
+    "R015",
+    "P016"
+  ],
+  "source_ids": [
+    "C-S032",
+    "C-S033",
+    "C-S034",
+    "C-S035",
+    "V3D-S008",
+    "V4B-S012",
+    "V4B-S013",
+    "V4B-S005",
+    "V4B-S032",
+    "V4B-S009",
+    "V4B-S010",
+    "V4B-S021"
+  ],
+  "namespace": "P017",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/P017",
+  "chunk_count": 9
+}

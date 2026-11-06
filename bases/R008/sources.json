@@ -1,0 +1,93 @@
+[
+  {
+    "source_id": "C-S009",
+    "title": "LangGraph overview",
+    "url": "https://docs.langchain.com/oss/python/langgraph/overview",
+    "publisher": "LangChain",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Runtime de grafos com estado, controle de fluxo e integração de operações determinísticas e de LLM.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn34view5"
+  },
+  {
+    "source_id": "C-S019",
+    "title": "Persistence — LangGraph",
+    "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+    "publisher": "LangChain",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Checkpointers mantêm estado de threads; stores preservam informação definida pela aplicação entre threads.",
+    "limitations": "A URL durable-execution redirecionou para persistence na consulta; exemplos InMemory não demonstram durabilidade após queda de processo.",
+    "web_ref": "turn8view0"
+  },
+  {
+    "source_id": "C-S023",
+    "title": "Temporal Workflow Execution overview",
+    "url": "https://docs.temporal.io/workflow-execution",
+    "publisher": "Temporal",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Execução durável recupera estado por histórico de eventos e replay sujeito a determinismo.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn34view7"
+  },
+  {
+    "source_id": "V3C-S006",
+    "title": "LangGraph — Graph API overview",
+    "url": "https://docs.langchain.com/oss/python/langgraph/graph-api",
+    "publisher": "LangChain",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Supersteps, reducers de estado, Send, Command, migrações e reexecução de nós.",
+    "limitations": "Documentação dinâmica consultada em 2026-11-05; compatibilidade exige fixar a versão efetivamente instalada.",
+    "web_ref": "turn89view1"
+  },
+  {
+    "source_id": "A-S022",
+    "title": "Persistence",
+    "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+    "publisher": "LangChain",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Checkpointers para estado por thread; stores para dados duráveis entre threads.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn11view3"
+  },
+  {
+    "source_id": "V3D-S016",
+    "title": "LangGraph — Persistence: checkpointers and stores",
+    "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+    "publisher": "LangChain",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Checkpointers persistem estado de thread; stores mantêm dados entre threads.",
+    "limitations": "A antiga rota durable-execution redireciona para esta página; não usada como prova de replay determinístico.",
+    "web_ref": "turn151view0"
+  },
+  {
+    "source_id": "V4C-S028",
+    "title": "How Klarna's AI assistant redefined customer support at scale",
+    "url": "https://www.langchain.com/blog/customers-klarna",
+    "publisher": "LangChain",
+    "source_type": "vendor_customer_story",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-02-12",
+    "supports": "Fornecedor relata assistência de Klarna com LangGraph, roteamento de tarefas, prompts adaptados e avaliações LangSmith.",
+    "limitations": "Abertura confirmou relato do fornecedor e citação de executivo; detalhes do runtime não foram confirmados em publicação técnica do operador nesta busca. Registro conservador como recurso/caso documentado sem entrar na meta estrita de produção.",
+    "web_ref": "turn299view0"
+  }
+]

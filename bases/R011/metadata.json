@@ -1,0 +1,33 @@
+{
+  "id": "R011",
+  "name": "NVIDIA TensorRT-LLM",
+  "canonical_name": "NVIDIA TensorRT-LLM",
+  "canonical_id": "R011",
+  "aliases": [
+    "TensorRT LLM",
+    "TRT-LLM"
+  ],
+  "category": "referencias",
+  "kind": "project",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "R009",
+    "R010",
+    "T088",
+    "T102",
+    "T118",
+    "T123"
+  ],
+  "source_ids": [
+    "B-S043",
+    "V3D-S007",
+    "V4B-S011",
+    "B-S034"
+  ],
+  "namespace": "R011",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R011",
+  "chunk_count": 9
+}

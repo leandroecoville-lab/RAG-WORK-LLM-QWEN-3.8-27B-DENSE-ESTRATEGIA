@@ -1,0 +1,112 @@
+{
+  "id": "T155",
+  "novelty": "A v3 separava busca de prompts e avaliação reservada. Esta camada propõe compilar instruções por fase, localizar conflitos e avaliar o custo de manutenção do prompt, além do seu tamanho.",
+  "deep_layers": [
+    {
+      "name": "Núcleo e módulos ativados",
+      "detail": "Separe obrigações permanentes, contrato da tarefa e orientações de ferramenta. O núcleo declara precedência; módulos entram apenas quando o estado exige. A redução útil evita carregar instruções mutuamente irrelevantes. Guardar tudo em arquivos só funciona se existir mecanismo verificável de descoberta e leitura antes da decisão correspondente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030"
+      ]
+    },
+    {
+      "name": "Diagnóstico por requisito",
+      "detail": "Associe cada instrução a uma falha observável que pretende evitar. Remova uma regra candidata e repita casos que exercitem essa obrigação; mantenha interações entre regras na avaliação. Se duas instruções se contradizem, encurtá-las pode esconder o problema. Resolva autoridade, exceção e condição de aplicação antes de otimizar tokens.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S014",
+        "V4C-S030"
+      ]
+    },
+    {
+      "name": "Custo de estabilidade",
+      "detail": "Fixe o início compartilhável do prompt e acrescente contexto variável depois, quando o backend puder reaproveitar prefixos. Uma economia textual pode piorar o cache ou aumentar rodadas de esclarecimento. Compare custo por tarefa aceita, incluindo manutenção dos módulos e buscas adicionais, com a distribuição real de tarefas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014",
+        "V3C-S015"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Editor especializado",
+      "scenario": "Um agente pequeno recebe muitas correções locais semelhantes.",
+      "strategy": "Mantenha no núcleo as regras de edição e carregue convenções da linguagem somente após localizar o arquivo. Em mudanças entre linguagens, reavalie os módulos ativos; não reutilize instruções Python em uma etapa SQL por continuidade textual.",
+      "small_model_role": "3–7B segue contrato curto e formato fixo; o controlador seleciona módulos.",
+      "acceptance": "Proposta: zero perda das obrigações críticas e menos tokens totais por edição aceita.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030"
+      ]
+    },
+    {
+      "name": "Pesquisa com papéis diferentes",
+      "scenario": "Coleta e síntese precisam de critérios diferentes de evidência.",
+      "strategy": "O coletor recebe regras de proveniência e extração; o sintetizador recebe matriz de alegações e lacunas. Faça teste cruzado para detectar uma regra de coleta que desapareceu na passagem. Só compartilhe o núcleo que os dois papéis realmente exigem.",
+      "small_model_role": "8–14B extrai; 15–30B integra conflitos sob contrato explícito.",
+      "acceptance": "Proposta: medir cobertura de fontes, contradições e custo com prompts gerais e modulares.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Aplicar instruções curtas para operações repetitivas, com poucos exemplos representativos.",
+    "8_14b": "Selecionar módulos por classificação de tarefa e explicar conflitos de requisitos.",
+    "15_30b": "Propor revisões do prompt com justificativa por requisito e avaliar interações mais amplas.",
+    "training_or_runtime_requirements": "Versionar prompt, módulos, tokenizer e conjunto de seleção; separar exemplos de avaliação final.",
+    "do_not_use_when": "Não remover instruções cujo comportamento necessário não esteja coberto por casos de avaliação."
+  },
+  "connections": [
+    {
+      "target_id": "T234",
+      "relation": "complements",
+      "how": "Usar o arquivo de instruções como mapa para fontes específicas, estratégia documentada no harness interno Codex.",
+      "interface": "Versão do mapa, caminhos e revisão do repositório.",
+      "condition": "Arquivos devem estar acessíveis e atualizados.",
+      "acceptance": "Verificar se a orientação necessária foi lida antes da edição.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S030"
+      ],
+      "case_ids": [
+        "V4C-C029"
+      ]
+    },
+    {
+      "target_id": "T157",
+      "relation": "complements",
+      "how": "Ordenar módulos estáveis antes dos dados mutáveis para preservar prefixos reutilizáveis.",
+      "interface": "Tokens efetivos e identidade da configuração.",
+      "condition": "Backend com cache compatível e isolamento definido.",
+      "acceptance": "Comparar acertos, prefill e correção após mudanças de módulo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S015"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Uma regra ausente pode parecer otimização se o avaliador nunca exigir seu comportamento.",
+    "Tratar documentos recuperados como dados; sua presença não altera a precedência das instruções."
+  ],
+  "frontier_comparison": "Compare agente pequeno com prompt modular e modelo de fronteira com as mesmas ferramentas. Ganho em edição rotineira não demonstra compreensão equivalente de requisitos inéditos.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q024",
+      "V4C-Q027"
+    ],
+    "scope_note": "OpenAI descreve mapa curto de instruções; Anthropic relata especialização de prompts. O desenho modular para 3–30B é proposta, não resultado medido."
+  },
+  "source_ids": [
+    "V4C-S030",
+    "V3C-S014",
+    "V4C-S014",
+    "V3C-S015",
+    "C-S030"
+  ]
+}

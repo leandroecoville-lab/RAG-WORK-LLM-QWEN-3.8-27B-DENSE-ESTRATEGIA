@@ -1,0 +1,42 @@
+{
+  "entry_id": "T107",
+  "edges": [
+    {
+      "edge_id": "E-T107-01",
+      "from": "T107",
+      "to": "T085",
+      "relation": "feeds",
+      "how": "O perfil identifica se quantização de pesos ataca tráfego relevante.",
+      "interface": "Contadores por operador e caminho de desquantização.",
+      "condition": "Formato possui kernel executável no ambiente.",
+      "acceptance": "Comparar perfil antes e depois, além da qualidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S023",
+        "V3B-S012",
+        "V4B-S003"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T107-02",
+      "from": "T107",
+      "to": "T113",
+      "relation": "feeds",
+      "how": "Fusão é priorizada quando materializações ou lançamentos estão no caminho crítico.",
+      "interface": "Sequência de operadores, temporários e dependências.",
+      "condition": "Fusão mantém semântica e não eleva pressão excessiva de registradores.",
+      "acceptance": "Medir pedido completo e operador isolado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S023",
+        "V3B-S012",
+        "V4B-S003"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

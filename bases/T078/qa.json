@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Semantic page fault é um recurso nativo da LLM?",
+    "answer": "Não como propriedade universal. É uma analogia que precisa de detecção e recuperação implementadas no sistema."
+  },
+  {
+    "question": "Por que a analogia com sistema operacional é limitada?",
+    "answer": "O endereço de uma página faltante é explícito; a informação semântica necessária pode depender de interpretação e ser desconhecida do agente."
+  },
+  {
+    "question": "A falta pode ser resolvida por um resumo?",
+    "answer": "Sim, se o resumo contém suporte suficiente e verificável para a dependência. Quando exige detalhe exato, é necessário abrir a fonte correspondente."
+  },
+  {
+    "question": "O que fazer quando nenhuma busca resolve?",
+    "answer": "Preserve o estado desconhecido, registre tentativas e encerre a etapa conforme sua política. Não transforme esgotamento de orçamento em evidência de ausência."
+  }
+]

@@ -1,0 +1,502 @@
+{
+  "auditor": "/root/rag_inferencia",
+  "checked_on": "2026-11-05",
+  "review_status": "completed",
+  "scope": {
+    "requested_cases": 33,
+    "reviewed_cases": 33,
+    "reviewed_fields": [
+      "evidence_level",
+      "observed_use",
+      "technical_mechanism",
+      "mappings",
+      "limits"
+    ],
+    "method": "Leitura dos 33 registros completos e dos nomes/definições das entradas mapeadas; reabertura de ao menos uma fonte primária por caso; inspeção de trechos centrais sobre mecanismo, uso/implantação e identidade. Consultadas páginas técnicas vinculadas quando a landing page era insuficiente.",
+    "limits": [
+      "Não é revisão palavra por palavra de todo corpus nem leitura integral de todos os papers, cookbooks ou repositórios.",
+      "Nem toda fonte secundária no registro foi reaberta; cada caso lista as fontes efetivamente usadas na auditoria.",
+      "Não foram executados produtos, modelos, ferramentas de inferência ou testes de hardware.",
+      "Consultas/gabaritos reservados e benchmarks locais não foram lidos.",
+      "Casos de infraestrutura geral e NLP histórico não constituem evidência de implantação de agentes LLM 3–30B; o domínio observado deve permanecer explícito.",
+      "organization_class é opcional no staging A e deve ser normalizado na consolidação, excluindo ai_lab da contagem estrita bigtech."
+    ],
+    "staging_mutated": false
+  },
+  "conclusion": "Não encontrados falsos positivos materiais de production_documented ou mapeamentos exact incompatíveis nas alegações centrais examinadas. Há duplicatas globais que precisam permanecer unificadas na contagem; root informou que os ajustes de consolidação já as cobrem.",
+  "findings": [
+    {
+      "id": "BA-001",
+      "severity": "medium",
+      "type": "cross_group_duplicate",
+      "cases": [
+        "V4A-C002",
+        "V4C-C007"
+      ],
+      "status": "acknowledged_by_root_for_consolidation",
+      "evidence": "Ambos descrevem Claude Research e citam C-S030; o operador apresenta um mesmo sistema multiagente Research.",
+      "source_urls": [
+        "https://www.anthropic.com/research/multi-agent-research-system"
+      ],
+      "web_refs": [
+        "turn362view10",
+        "turn364view7"
+      ],
+      "recommendation": "Manter uma chave de sistema/implantação para contagem, preservando os mapeamentos e a proveniência dos dois registros."
+    },
+    {
+      "id": "BA-002",
+      "severity": "medium",
+      "type": "cross_group_duplicate",
+      "cases": [
+        "V4A-C012",
+        "V4B-C008"
+      ],
+      "status": "acknowledged_by_root_for_consolidation",
+      "evidence": "Ambos são Amazon Rufus. A fonte A trata recuperação e fontes; B trata serving. Camadas distintas não criam duas implantações.",
+      "source_urls": [
+        "https://www.amazon.science/blog/the-technology-behind-amazons-genai-powered-shopping-assistant-rufus",
+        "https://aws.amazon.com/blogs/machine-learning/how-amazon-scaled-rufus-by-building-multi-node-inference-using-aws-trainium-chips-and-vllm/"
+      ],
+      "web_refs": [
+        "turn358view1",
+        "turn218view0"
+      ],
+      "recommendation": "Unificar a identidade do sistema, sem inferir que toda configuração de uma data estava ativa na outra."
+    },
+    {
+      "id": "BA-003",
+      "severity": "medium",
+      "type": "cross_group_duplicate",
+      "cases": [
+        "V4A-C008",
+        "V4B-C009"
+      ],
+      "status": "acknowledged_by_root_for_consolidation",
+      "evidence": "O post Microsoft de janeiro de 2020 remete explicitamente ao anúncio Bing de novembro de 2019 e à mesma otimização do BERT de três camadas em produção.",
+      "source_urls": [
+        "https://azure.microsoft.com/en-us/blog/bing-delivers-its-largest-improvement-in-search-experience-using-azure-gpus/",
+        "https://opensource.microsoft.com/blog/2020/01/21/microsoft-onnx-open-source-optimizations-transformer-inference-gpu-cpu/"
+      ],
+      "web_refs": [
+        "turn365view2",
+        "turn365view3"
+      ],
+      "recommendation": "Contar a implantação histórica Bing uma vez; preservar diferenças entre pesquisa, serving interno e disponibilização ONNX."
+    },
+    {
+      "id": "BA-004",
+      "severity": "low",
+      "type": "citation_granularity",
+      "cases": [
+        "V4A-C024"
+      ],
+      "status": "optional_source_precision",
+      "evidence": "A landing page do projeto dá visão geral. O artigo técnico nela vinculado explicita clustering bottom-up e organização hierárquica com resumos, apoiando T008 de modo mais direto.",
+      "source_urls": [
+        "https://www.microsoft.com/en-us/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data/"
+      ],
+      "web_refs": [
+        "turn366view0"
+      ],
+      "recommendation": "Se conveniente, adicionar a URL técnica ao registro consolidado de fontes do caso, mantendo research_only."
+    }
+  ],
+  "case_reviews": [
+    {
+      "case_id": "V4A-C001",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "A-S001"
+      ],
+      "web_refs": [
+        "turn362view12"
+      ],
+      "assessment": "Produção histórica explicitada pelos operadores; match MapReduce exato no mecanismo. A aplicação a agentes/LLMs permanece transferência proposta."
+    },
+    {
+      "case_id": "V4A-C002",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "C-S030"
+      ],
+      "web_refs": [
+        "turn362view10",
+        "turn364view7"
+      ],
+      "assessment": "Produto Research em produção, delegação iterativa e recuperação de contexto salvo explicitados. Família MapReduce e analogia P001 estão conservadoras. Duplicata global de C007."
+    },
+    {
+      "case_id": "V4A-C003",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S002"
+      ],
+      "web_refs": [
+        "turn359view6",
+        "turn359view7"
+      ],
+      "assessment": "Cookbook declara explicitamente compaction e duas memórias entre sessões em produção no Claude Code. Não foi inferida a receita interna completa."
+    },
+    {
+      "case_id": "V4A-C004",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S003"
+      ],
+      "web_refs": [
+        "turn360view4"
+      ],
+      "assessment": "Artigo declara Percolator implantado no índice web. Transações exatas; consolidação semântica apenas analogia."
+    },
+    {
+      "case_id": "V4A-C005",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S004"
+      ],
+      "web_refs": [
+        "turn360view5"
+      ],
+      "assessment": "Abstract descreve serviços de produção e ACID serializável dentro de partições. Limite de atomicidade foi preservado."
+    },
+    {
+      "case_id": "V4A-C006",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S007"
+      ],
+      "web_refs": [
+        "turn360view6"
+      ],
+      "assessment": "Relato do operador confirma migração dos metadados Cloud Storage para Spanner e listagem consistente. Não demonstra episodic store de agente."
+    },
+    {
+      "case_id": "V4A-C007",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S006"
+      ],
+      "web_refs": [
+        "turn362view11"
+      ],
+      "assessment": "Artigo afirma uso por serviços centrais Amazon, versionamento e resolução de conflitos. Family em memória versionada/reconciliação evita equivalência indevida."
+    },
+    {
+      "case_id": "V4A-C008",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S008"
+      ],
+      "web_refs": [
+        "turn365view2",
+        "turn365view3"
+      ],
+      "assessment": "Produção global Bing explicitada. Relato de janeiro de 2020 referencia diretamente o anúncio de novembro de 2019; mesma implantação histórica que B009."
+    },
+    {
+      "case_id": "V4A-C009",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S010"
+      ],
+      "web_refs": [
+        "turn364view1"
+      ],
+      "assessment": "Autores afirmam primeira implantação em 2017 e uso em serviços. Mapeamentos family/analogy não transformam cache convencional em memória semântica."
+    },
+    {
+      "case_id": "V4A-C010",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S011"
+      ],
+      "web_refs": [
+        "turn360view0"
+      ],
+      "assessment": "Meta confirma operação de TAO/Memcache e monitoramento de inconsistências. Limites afastam cache semântico e garantias RAG."
+    },
+    {
+      "case_id": "V4A-C011",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S012"
+      ],
+      "web_refs": [
+        "turn359view4"
+      ],
+      "assessment": "Abstract confirma framework amplamente usado e detector contínuo em uso. Estado e tolerância a falhas estão corretamente relacionados por family."
+    },
+    {
+      "case_id": "V4A-C012",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S022"
+      ],
+      "web_refs": [
+        "turn358view1"
+      ],
+      "assessment": "Rufus em uso e RAG com seleção de fontes por pergunta são explícitos. Mesma implantação que B008; fontes descrevem camadas diferentes."
+    },
+    {
+      "case_id": "V4A-C013",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S018"
+      ],
+      "web_refs": [
+        "turn363view12"
+      ],
+      "assessment": "Anúncio explicita rollout do Knowledge Graph. Family para memória/entidades evita atribuir arquitetura de agente LLM."
+    },
+    {
+      "case_id": "V4A-C014",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S009"
+      ],
+      "web_refs": [
+        "turn361view10"
+      ],
+      "assessment": "Documentação oferece reranking sobre BM25/RRF e consultas híbridas. operational_product é adequado; não comprova cliente implantado."
+    },
+    {
+      "case_id": "V4A-C015",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S013"
+      ],
+      "web_refs": [
+        "turn361view11",
+        "turn365view0"
+      ],
+      "assessment": "Manual confirma tamanho fixo, fronteiras semânticas e substituição de filhos por pais. Modos alternativos não foram tratados como ativação simultânea."
+    },
+    {
+      "case_id": "V4A-C016",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S015"
+      ],
+      "web_refs": [
+        "turn361view5"
+      ],
+      "assessment": "Documento confirma prefix caching implícito/explicito e recursos referenciáveis. Classificação de disponibilidade preserva limites comerciais e de implantação."
+    },
+    {
+      "case_id": "V4A-C017",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S016"
+      ],
+      "web_refs": [
+        "turn361view6"
+      ],
+      "assessment": "Política documenta busca de respostas por proximidade vetorial em cache externo. Invalidação completa permanece family e proposta."
+    },
+    {
+      "case_id": "V4A-C018",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S017"
+      ],
+      "web_refs": [
+        "turn361view7"
+      ],
+      "assessment": "Ajuda oficial confirma memória e personalização entre conversas com variações por conta. Não revela algoritmo interno; operational_product conservador."
+    },
+    {
+      "case_id": "V4A-C019",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S023"
+      ],
+      "web_refs": [
+        "turn361view9",
+        "turn366view2"
+      ],
+      "assessment": "Documentação confirma índice semântico usado para contexto de Chat/cloud agent. Não confirma chunking AST ou memória Git; esses limites estão presentes."
+    },
+    {
+      "case_id": "V4A-C020",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S025"
+      ],
+      "web_refs": [
+        "turn363view11"
+      ],
+      "assessment": "Anúncio confirma fontes de áudio/YouTube e citações ligadas à transcrição. Pipeline interno continua family; parser específico apenas analogia."
+    },
+    {
+      "case_id": "V4A-C021",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S014"
+      ],
+      "web_refs": [
+        "turn358view3"
+      ],
+      "assessment": "Página distingue RIG e RAG e explicita uso de Gemini 1.5 Pro no segundo. research_only evita confundir disponibilidade experimental e implantação."
+    },
+    {
+      "case_id": "V4A-C022",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S019"
+      ],
+      "web_refs": [
+        "turn362view0"
+      ],
+      "assessment": "Fonte confirma SFR-RAG de 9B e habilidades de fidelidade contextual. Resultados de pesquisa não foram promovidos a produção."
+    },
+    {
+      "case_id": "V4A-C023",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S020"
+      ],
+      "web_refs": [
+        "turn358view2"
+      ],
+      "assessment": "IBM separa modelos disponíveis e RAG LoRAs no Granite Experiments; Query Rewrite é subtarefa explícita. Classificação experimental é conservadora."
+    },
+    {
+      "case_id": "V4A-C024",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S024",
+        "A-S024"
+      ],
+      "web_refs": [
+        "turn362view1",
+        "turn366view0"
+      ],
+      "assessment": "Projeto e artigo técnico vinculado confirmam grafo e organização hierárquica com resumos. research_only evita alegação de adoção; recomendar URL técnica direta para granularidade da fonte."
+    },
+    {
+      "case_id": "V4A-C025",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S027"
+      ],
+      "web_refs": [
+        "turn362view3",
+        "turn365view6"
+      ],
+      "assessment": "Manual oferece ferramenta LLMLingua no Prompt flow com entrada de prompt e conexão para log-probabilidade. Disponibilidade não foi contada como implantação."
+    },
+    {
+      "case_id": "V4A-C026",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "A-S009"
+      ],
+      "web_refs": [
+        "turn363view0",
+        "turn366view3"
+      ],
+      "assessment": "Paper confirma virtual context management e níveis de memória. research_only e analogy em Semantic Page Fault estão adequados."
+    },
+    {
+      "case_id": "V4A-C027",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V4A-S026",
+        "V2B-S002"
+      ],
+      "web_refs": [
+        "turn362view4",
+        "turn365view1"
+      ],
+      "assessment": "Fornecedor distingue MemGPT/Letta e docs confirmam identidade persistente, estado e memória. Disponibilidade não foi convertida em cliente de produção."
+    },
+    {
+      "case_id": "V4A-C028",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "A-S010",
+        "V2B-S003"
+      ],
+      "web_refs": [
+        "turn362view5",
+        "turn362view6"
+      ],
+      "assessment": "MemFS é explicitamente também context repository e usa Git. R013/R014 no mesmo caso evita dupla contagem de alias."
+    },
+    {
+      "case_id": "V4A-C029",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "A-S013"
+      ],
+      "web_refs": [
+        "turn363view2"
+      ],
+      "assessment": "Paper descreve backbone congelado, side-network adaptativa e memória neural. Requer treino; não há produção alegada."
+    },
+    {
+      "case_id": "V4A-C030",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "A-S008"
+      ],
+      "web_refs": [
+        "turn365view7"
+      ],
+      "assessment": "Paper descreve experiências, reflexões e recuperação em simulação. Episódio/consolidação exatos no escopo experimental; não produção."
+    },
+    {
+      "case_id": "V4A-C031",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "V3A-S001",
+        "V4A-S028"
+      ],
+      "web_refs": [
+        "turn363view8",
+        "turn363view5"
+      ],
+      "assessment": "Paper descreve destilação e classificação de tokens. Variante LLMLingua-2 não foi confundida com implantação nem com método original idêntico."
+    },
+    {
+      "case_id": "V4A-C032",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "A-S011"
+      ],
+      "web_refs": [
+        "turn363view6",
+        "turn364view5"
+      ],
+      "assessment": "Título, autores e mecanismo de diagnóstico/self-distillation com LoRA conferem na ACL Anthology. research_only preservado."
+    },
+    {
+      "case_id": "V4A-C033",
+      "review_result": "supported_with_stated_limits",
+      "source_ids_consulted": [
+        "A-S012"
+      ],
+      "web_refs": [
+        "turn363view7",
+        "turn364view6"
+      ],
+      "assessment": "Título, autores e interface de saída de blocos de atenção com alinhamento de estados conferem. Nenhuma implantação alegada."
+    }
+  ],
+  "input_hashes": {
+    "rag_research_v4/staging/cases_A.jsonl": "d319201a96798293c146633ce9c65cdab25adb4967e34ee8e9bdb0dc180a4e87",
+    "rag_research_v4/staging/sources_A.jsonl": "316cc6f04254900142a1cbc63676db230461dbf8542a3fbb8fd66c442e35f9ec",
+    "LAI_RAG_243_v3/corpus/entries.jsonl": "ae94ba51f981055b5eafa3654be755eb538451414159e3e7338e614c9a52c50f",
+    "LAI_RAG_243_v3/fontes/sources.jsonl": "979de5fa4de15e4a5571af78da884ed3c2f7855fccbe9ba2161efc19643d7ef0",
+    "rag_research_v4/staging/cases_B.jsonl": "afedb5f487b86bfb4d4f8ca8b69e33dc359c9bef27c31e4ba3111fa43d707690",
+    "rag_research_v4/staging/cases_C.jsonl": "1db7ad772bf650c8c3ed034941217bc2a99fd3d68bc2c341ef8a81be5c37a219"
+  },
+  "classification_counts": {
+    "production_documented": 13,
+    "operational_product": 10,
+    "research_only": 10
+  },
+  "mappings_inspected": 92,
+  "dedup_auxiliary_scope": "Arquivos B/C consultados somente para identidade dos sistemas citados nos achados, não auditados integralmente nesta revisão."
+}

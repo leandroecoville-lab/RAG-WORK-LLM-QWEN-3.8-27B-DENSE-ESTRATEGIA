@@ -1,0 +1,42 @@
+{
+  "entry_id": "R008",
+  "edges": [
+    {
+      "edge_id": "E-R008-01",
+      "from": "R008",
+      "to": "T060",
+      "relation": "complements",
+      "how": "Vincular retomada à versão do grafo e à revisão da intenção.",
+      "interface": "Checkpoint, graph_version, intent_revision e próximo nó.",
+      "condition": "Sessões atravessam deploys ou falhas.",
+      "acceptance": "Um checkpoint incompatível é recusado ou migrado por regra registrada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S006",
+        "V3D-S016",
+        "V4C-S028"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-R008-02",
+      "from": "R008",
+      "to": "T148",
+      "relation": "complements",
+      "how": "Resolver elegibilidade do ramo antes de publicar seu resultado.",
+      "interface": "Predicado tipado e revisão do estado de origem.",
+      "condition": "Existem ramos paralelos ou decisões atrasadas.",
+      "acceptance": "Resultado de ramo obsoleto não altera o estado vigente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S006",
+        "V3D-S016",
+        "V4C-S028"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

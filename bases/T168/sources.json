@@ -1,0 +1,80 @@
+[
+  {
+    "source_id": "C-S017",
+    "title": "Tokenizer — Transformers",
+    "url": "https://huggingface.co/docs/transformers/main_classes/tokenizer",
+    "publisher": "Hugging Face",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Tokenização e limites de comprimento oferecem mecanismos para contabilização; política de orçamento proposta é editorial.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn22view5"
+  },
+  {
+    "source_id": "V3C-S022",
+    "title": "Claude Platform — Token counting",
+    "url": "https://platform.claude.com/docs/en/build-with-claude/token-counting",
+    "publisher": "Anthropic",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Contagem considera mensagens estruturadas, system prompt, ferramentas e entradas multimodais; contagem antecipada é estimativa.",
+    "limitations": "Endpoint específico do fornecedor; reserva de saída e orçamento global da missão exigem política da aplicação.",
+    "web_ref": "turn107view3"
+  },
+  {
+    "source_id": "V4C-S018",
+    "title": "NVIDIA-Nemotron-Nano-9B-v2 — model card",
+    "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2",
+    "publisher": "NVIDIA",
+    "source_type": "model_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Controle de raciocínio, orçamento com margem de término, template, amostragem e parser de ferramentas específicos do modelo.",
+    "limitations": "Conteúdo primário consultado. Model cards e blueprints documentam recursos e experimentos, não uma implantação identificada; relatos históricos não estabelecem estado atual nem ganhos em LAI.",
+    "web_ref": "turn274view0"
+  },
+  {
+    "source_id": "V4C-S013",
+    "title": "Designing MCP Gateway Uber's MCP Management Platform",
+    "url": "https://www.uber.com/us/en/blog/designing-mcp-gateway/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Registro, descoberta gradual, schemas, proxy de execução, revisão de configurações e projeção de respostas em uso interno.",
+    "limitations": "Relato primário delimitado à data e sistema; não houve reprodução. Números e escolhas do operador não definem ganhos, preços ou limites para a LAI ou modelos 3–30B.",
+    "web_ref": "turn261view0"
+  },
+  {
+    "source_id": "V4C-S019",
+    "title": "Enable Reasoning for NVIDIA RAG Blueprint",
+    "url": "https://docs.nvidia.com/rag/latest/enable-nemotron-thinking.html",
+    "publisher": "NVIDIA",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Controles de reasoning diferentes por família e integração de limites de esforço no blueprint.",
+    "limitations": "Conteúdo primário consultado. Model cards e blueprints documentam recursos e experimentos, não uma implantação identificada; relatos históricos não estabelecem estado atual nem ganhos em LAI.",
+    "web_ref": "turn277view2"
+  },
+  {
+    "source_id": "V4C-S030",
+    "title": "Harness engineering: leveraging Codex in an agent-first world",
+    "url": "https://openai.com/index/harness-engineering/",
+    "publisher": "OpenAI",
+    "source_type": "engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-02-11",
+    "supports": "Beta com usuários internos reais: aplicações por worktree, observabilidade isolada, planos versionados, instruções curtas e verificações mecânicas de arquitetura.",
+    "limitations": "Experimento operacional de um time; não equivale a produto geral sem supervisão nem demonstra substituição por modelos pequenos. Ganhos autoestimados não transferidos.",
+    "web_ref": "turn308view0"
+  }
+]

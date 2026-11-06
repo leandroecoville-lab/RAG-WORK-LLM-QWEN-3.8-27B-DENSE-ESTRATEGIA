@@ -1,0 +1,18 @@
+[
+  {
+    "question": "É igual ao RAPTOR?",
+    "answer": "RAPTOR é uma arquitetura específica que combina agrupamento, embeddings e resumos recursivos. A sumarização hierárquica é mais geral."
+  },
+  {
+    "question": "Todos os resumos precisam caber na chamada?",
+    "answer": "Não. A hierarquia existe justamente para selecionar níveis e ramos conforme a pergunta."
+  },
+  {
+    "question": "Uma árvore de resumos garante rastreabilidade?",
+    "answer": "Somente se a implementação preservar referências e versões. Uma árvore contendo apenas prosa pode perder a ligação verificável com as fontes."
+  },
+  {
+    "question": "Devo sempre recuperar a raiz?",
+    "answer": "Não. A raiz pode ser genérica demais. Selecione o nível conforme a pergunta e expanda até evidência suficiente, respeitando o orçamento."
+  }
+]

@@ -1,0 +1,46 @@
+{
+  "id": "T123",
+  "technical_details": "FP8 reúne formatos com compromissos diferentes entre amplitude e precisão: mais bits de expoente ampliam alcance e deixam menos bits para distinguir valores próximos. A escala conecta unidades reais aos códigos armazenados. Em delayed scaling, estatísticas anteriores orientam a próxima escala, criando dependência temporal; uma mudança brusca de amplitude pode invalidar a previsão. Essa política difere de escalas atuais ou por blocos.",
+  "boundary_condition": "Reduzir armazenamento não garante que toda operação acumule em FP8; acumulação e conversões precisam ser identificadas separadamente.",
+  "implementation_contract": {
+    "inputs": "Tensor, formato, granularidade, regra de escala e precisão de acumulação.",
+    "outputs": "Representação reduzida, escalas e indicadores de saturação ou valores não finitos.",
+    "state": "Histórico de máximos quando usado e identidade de cada escala.",
+    "invariant": "Escala aplicada na leitura corresponde exatamente à usada para codificar o tensor."
+  },
+  "tradeoffs": [
+    "Maior alcance reduz resolução numérica em um formato de oito bits.",
+    "Escalas locais adaptam amplitude e acrescentam metadados e operações."
+  ],
+  "failure_test": "Teste proposto: alternar distribuições com amplitudes muito diferentes e congelar indevidamente o histórico. Esperar detecção de saturação e degradação comparada à referência, além de recuperação com a política correta.",
+  "evaluation_plan": "Plano proposto: controlar pesos e entradas, separando mudanças de formato e escala. Medir erro, saturação, memória total e tempo de conversão; avaliar treinamento e inferência em protocolos distintos, pois suas distribuições e estados diferem.",
+  "comparisons": [
+    {
+      "entry_id": "T086",
+      "relation": "distinct_from",
+      "reason": "Aplicar FP8 a KV é uma decisão sobre cache; FP8 também pode representar outros tensores."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Transformer Engine documenta formatos E4M3/E5M2 e estratégias de escala que usam máximos atuais ou históricos.",
+    "source_ids": [
+      "B-S034"
+    ],
+    "support": "direct",
+    "caveat": "A disponibilidade de receitas na documentação não comprova suporte da instalação nem compatibilidade de todos os operadores."
+  },
+  "advanced_qa": [
+    {
+      "question": "E4M3 e E5M2 são intercambiáveis?",
+      "answer": "Não sem considerar escala, alcance e erro; os mesmos bits representam valores de forma diferente."
+    },
+    {
+      "question": "Escala global basta sempre?",
+      "answer": "Não. Distribuições muito heterogêneas podem exigir outra granularidade, avaliada junto do custo de metadados."
+    }
+  ],
+  "source_ids": [
+    "B-S034"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Working memory é um arquivo ou um prompt?",
+    "answer": "É um papel funcional. Pode usar arquivos, estado e prompt, desde que o necessário seja carregado para a decisão."
+  },
+  {
+    "question": "Ela deve guardar todas as tentativas anteriores?",
+    "answer": "Não necessariamente. Tentativas podem ficar no registro episódico e ser recuperadas quando úteis."
+  },
+  {
+    "question": "O scratchpad inteiro deve ficar ativo?",
+    "answer": "Não necessariamente. Mantenha os campos que condicionam a próxima decisão e referências para detalhes, verificando se as relações necessárias continuam disponíveis."
+  },
+  {
+    "question": "Uma referência ocupa menos tokens que seu conteúdo; por que não usar só referências?",
+    "answer": "Porque o modelo precisa ler a informação relevante para decidir. Ponteiros economizam espaço apenas quando podem ser resolvidos a tempo."
+  }
+]

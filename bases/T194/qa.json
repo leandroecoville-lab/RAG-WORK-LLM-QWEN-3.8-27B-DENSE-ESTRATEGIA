@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Process supervision é só revisar uma resposta?",
+    "answer": "Não. Refere-se ao sinal de treinamento sobre etapas; revisão em inferência é outro uso."
+  },
+  {
+    "question": "Exige acesso a pensamentos privados?",
+    "answer": "Não. Pode supervisionar ações, resultados e passos explicitamente observáveis."
+  },
+  {
+    "question": "Resposta final correta basta como rótulo de todas as etapas?",
+    "answer": "Não. Ela pode resultar de cancelamento de erros ou acerto casual."
+  },
+  {
+    "question": "Como evitar premiar enrolação?",
+    "answer": "Avalie progresso e requisitos por etapa, distinguindo passos válidos úteis de repetições neutras sem avanço."
+  }
+]

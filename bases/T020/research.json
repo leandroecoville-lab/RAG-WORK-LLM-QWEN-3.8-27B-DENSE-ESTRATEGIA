@@ -1,0 +1,53 @@
+{
+  "id": "T020",
+  "technical_details": "Aprender um compressor pode significar treinar seleção textual ou aprender um canal latente específico. No primeiro caso, a saída ainda pode circular entre consumidores de texto; no segundo, representação, máscara de atenção e modelo consumidor precisam ser compatíveis. O custo de treinamento e preparação deve ser amortizado pela quantidade de contextos ou chamadas em que o compressor será reutilizado.",
+  "boundary_condition": "Mudanças de domínio, idioma, tokenizer ou consumidor podem invalidar a qualidade medida, mesmo quando o formato da saída continua aceito.",
+  "implementation_contract": {
+    "inputs": "Dados de treino separados da avaliação, objetivo de compressão e consumidor alvo.",
+    "outputs": "Compressor versionado e representação com tipo e formato documentados.",
+    "state": "Pesos, tokenizer, configuração e relação entre entrada original e saída.",
+    "invariant": "A avaliação mede a tarefa final em dados não usados para treinar ou escolher o compressor."
+  },
+  "tradeoffs": [
+    "Seleção textual facilita inspeção, mas tem limites de compressão e pode quebrar relações.",
+    "Slots latentes compactam mais agressivamente, porém diminuem portabilidade e auditabilidade direta."
+  ],
+  "failure_test": "Teste proposto: aplicar o compressor a exemplos de outro domínio contendo unidades e identificadores raros. Verificar preservação dos elementos necessários e reconhecer degradação em vez de extrapolar a validação original.",
+  "evaluation_plan": "Avaliação proposta: comparar método aprendido, seleção simples e texto integral, incluindo treinamento amortizado e custo por chamada. Controlar consumidor e orçamento; medir qualidade final, fidelidade e desempenho fora de distribuição.",
+  "comparisons": [
+    {
+      "entry_id": "T052",
+      "relation": "complements",
+      "reason": "Latent Context especifica uma possível representação, não a totalidade dos métodos aprendidos."
+    },
+    {
+      "entry_id": "T179",
+      "relation": "distinct_from",
+      "reason": "Treinar um compressor não equivale necessariamente a internalizar a tarefa no modelo que responde."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "LLMLingua-2 formula compressão como classificação de tokens; ICAE aprende slots de memória consumidos por uma LLM compatível.",
+    "source_ids": [
+      "V3A-S001",
+      "V3A-S004"
+    ],
+    "support": "direct",
+    "caveat": "Resultados dependem dos modelos e objetivos de treinamento utilizados nas respectivas pesquisas."
+  },
+  "advanced_qa": [
+    {
+      "question": "Compressor treinado dispensa validação de fidelidade?",
+      "answer": "Não. O objetivo pode aproximar utilidade média sem preservar todos os detalhes críticos de uma aplicação específica."
+    },
+    {
+      "question": "Como versionar uma representação latente persistida?",
+      "answer": "Vincule-a ao encoder, consumidor, tokenizer e configuração necessários. Se houver incompatibilidade, regenere a partir do original em vez de reinterpretar bytes silenciosamente."
+    }
+  ],
+  "source_ids": [
+    "V3A-S001",
+    "V3A-S004"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

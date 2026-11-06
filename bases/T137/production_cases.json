@@ -1,0 +1,112 @@
+{
+  "coverage": {
+    "entry_id": "T137",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 1,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 9,
+    "target_met": false,
+    "strict_case_ids": [
+      "V4C-C002"
+    ],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Rate Limiting",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C002",
+      "company": "Amazon Web Services",
+      "system": "AWS SDK — retry throttling",
+      "title": "Retries com orçamento local e jitter em clientes AWS",
+      "evidence_level": "production_documented",
+      "observed_use": "A AWS relata introdução de token bucket de retries nos SDKs e uso operacional de backoff com jitter para evitar amplificação.",
+      "technical_mechanism": "Uma camada controla tentativas, consome quota de repetição e espaça chamadas; falhas em camadas aninhadas podem multiplicar carga.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V2A-S012",
+        "V3C-S010"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T163",
+          "match": "exact",
+          "rationale": "Backoff e jitter são descritos como mecanismos utilizados nos clientes."
+        },
+        {
+          "entry_id": "T167",
+          "match": "exact",
+          "rationale": "O texto identifica token bucket para limitar retries dos SDKs."
+        },
+        {
+          "entry_id": "T137",
+          "match": "exact",
+          "rationale": "Quota de repetição limita tráfego de recuperação, distinta da chamada inicial."
+        },
+        {
+          "entry_id": "P013",
+          "match": "analogy",
+          "rationale": "A coordenação proposta de resiliência pode reproduzir o princípio de um orçamento explícito."
+        }
+      ],
+      "small_model_transfer": "Proposta: usar o SDK como único dono do retry de transporte; o controlador de agente reserva um orçamento de tarefa acima dele e contabiliza tentativas reais antes de escalar o modelo.",
+      "limits": "A documentação não prova uso de LLMs pequenas nem autoriza aplicar o mesmo número de retries a qualquer API. Quota de retries não é quota global de negócio.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C002",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T137",
+        "match": "exact",
+        "rationale": "Quota de repetição limita tráfego de recuperação, distinta da chamada inicial."
+      }
+    },
+    {
+      "case_id": "V4C-C023",
+      "company": "Google",
+      "system": "Borg",
+      "title": "Admissão e isolamento de cargas em clusters Google",
+      "evidence_level": "production_documented",
+      "observed_use": "O artigo dos operadores descreve Borg executando aplicações e jobs nos clusters do Google ao longo de experiência operacional.",
+      "technical_mechanism": "O resumo aberto combina admissão, empacotamento, compartilhamento de máquinas, isolamento e recuperação de falhas.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S023"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T174",
+          "match": "family",
+          "rationale": "Há políticas de scheduling operacionais, mas o abstract não detalha todos os algoritmos de prioridade."
+        },
+        {
+          "entry_id": "T137",
+          "match": "family",
+          "rationale": "Admissão de cargas é relacionada a controle de capacidade, sem especificar o rate limiter da ficha."
+        },
+        {
+          "entry_id": "P014",
+          "match": "analogy",
+          "rationale": "Isolamento e recuperação fornecem princípios de resiliência para a proposta."
+        }
+      ],
+      "small_model_transfer": "Proposta: separar classes interativas e batch para 3–30B e medir memória e concorrência reais, conservando isolamento e uma política explícita para falta de capacidade.",
+      "limits": "O PDF completo ficou inacessível nesta consulta; detalhes finos de prioridade, fairness ou preempção não são atribuídos ao abstract. Nenhum ganho de inferência foi medido.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C023",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T137",
+        "match": "family",
+        "rationale": "Admissão de cargas é relacionada a controle de capacidade, sem especificar o rate limiter da ficha."
+      }
+    }
+  ]
+}

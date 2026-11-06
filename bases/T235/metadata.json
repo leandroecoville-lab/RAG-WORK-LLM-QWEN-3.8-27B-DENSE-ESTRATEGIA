@@ -1,0 +1,36 @@
+{
+  "id": "T235",
+  "name": "Headless Mode em loop / Headless Controller",
+  "canonical_name": "Headless Mode em loop / Headless Controller",
+  "canonical_id": "T235",
+  "aliases": [
+    "headless controller",
+    "execução programática de agente"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T225",
+    "T228",
+    "T218",
+    "T243"
+  ],
+  "source_ids": [
+    "V2A-S005",
+    "V2A-S006",
+    "V3C-S039",
+    "V4C-S016",
+    "V4C-S030",
+    "C-S026",
+    "C-S030",
+    "V3C-S040",
+    "V4C-S009"
+  ],
+  "namespace": "T235",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T235",
+  "chunk_count": 9
+}

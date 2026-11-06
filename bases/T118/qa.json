@@ -1,0 +1,18 @@
+[
+  {
+    "question": "TP é igual a usar dois modelos diferentes?",
+    "answer": "Não. Dispositivos cooperam no mesmo modelo e na mesma passagem."
+  },
+  {
+    "question": "Posso somar a VRAM e ignorar rede?",
+    "answer": "Não. Pesos e estados podem ser divididos, mas a comunicação e buffers fazem parte do custo."
+  },
+  {
+    "question": "Dividir por duas GPUs divide a latência por dois?",
+    "answer": "Não. Comunicação, partes não paralelizáveis e formas menores alteram o custo."
+  },
+  {
+    "question": "Como validar um checkpoint repartido?",
+    "answer": "Reconstrua ou compare a função global em exemplos controlados, conferindo offsets e orientação das matrizes, não apenas seus tamanhos."
+  }
+]

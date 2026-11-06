@@ -1,0 +1,68 @@
+{
+  "coverage": {
+    "entry_id": "T032",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Parent-Child Retrieval / Parent-Child Chunking",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C015",
+      "company": "Amazon Web Services",
+      "system": "Bedrock Knowledge Bases chunking",
+      "title": "Bedrock Knowledge Bases chunking — evidência delimitada",
+      "evidence_level": "operational_product",
+      "observed_use": "Manual lista modos de ingestão e recuperação disponíveis.",
+      "technical_mechanism": "Chunks fixos, semânticos e hierarquia de filhos substituídos por pais.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S013"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T010",
+          "match": "exact",
+          "rationale": "Tamanho fixo configurável."
+        },
+        {
+          "entry_id": "T011",
+          "match": "exact",
+          "rationale": "Fronteiras por distância semântica."
+        },
+        {
+          "entry_id": "T032",
+          "match": "exact",
+          "rationale": "Recuperação de filhos seguida da substituição por pais."
+        },
+        {
+          "entry_id": "T033",
+          "match": "family",
+          "rationale": "Respeita limites lógicos em conteúdo analisado, sem todos os parsers desta ficha."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Escolher splitter por família documental, testando contexto consumido por 3–30B.",
+      "limits": "Não prova implantação particular; modos alternativos não são todos ativados no mesmo documento. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C015",
+      "deployment_domain": "llm_framework",
+      "mapping": {
+        "entry_id": "T032",
+        "match": "exact",
+        "rationale": "Recuperação de filhos seguida da substituição por pais."
+      }
+    }
+  ]
+}

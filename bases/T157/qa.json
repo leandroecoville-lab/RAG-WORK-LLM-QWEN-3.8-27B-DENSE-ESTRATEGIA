@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Hash semelhante indica prefixo parecido?",
+    "answer": "Não em hash criptográfico comum; ele identifica igualdade do conteúdo representado."
+  },
+  {
+    "question": "Prefix hashing é semantic caching?",
+    "answer": "Não. Reutilização exata de estado difere de aproximar perguntas pelo significado."
+  },
+  {
+    "question": "Texto igual garante KV igual?",
+    "answer": "Não. Modelo, tokenização, adaptador e entradas multimodais podem alterar o cálculo apesar da aparência textual."
+  },
+  {
+    "question": "Por que incluir a identidade do bloco anterior?",
+    "answer": "Porque a representação de um token depende do prefixo causal; igualar somente o bloco local ignora esse contexto."
+  }
+]

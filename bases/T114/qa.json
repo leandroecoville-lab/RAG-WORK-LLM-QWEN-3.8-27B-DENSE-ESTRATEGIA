@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Online Softmax elimina a normalização?",
+    "answer": "Não. Computa o normalizador de maneira incremental com reescalonamento."
+  },
+  {
+    "question": "A saída é bit a bit igual?",
+    "answer": "Não é garantia geral em ponto flutuante; o algoritmo é matematicamente equivalente sob suas condições."
+  },
+  {
+    "question": "Pode normalizar cada tile e somar?",
+    "answer": "Somente se conservar e aplicar as massas relativas corretas; somar distribuições locais sem pesos produz outra distribuição."
+  },
+  {
+    "question": "Por que guardar o máximo?",
+    "answer": "Subtrair uma referência evita exponenciais excessivas e permite reescalar blocos quando surge um score maior."
+  }
+]

@@ -1,0 +1,288 @@
+﻿entry_id,name,scope,requested_bigtech_production_examples,verified_bigtech_production_exact,verified_bigtech_llm_production_exact,verified_ai_lab_production_exact,verified_other_operator_production_exact,missing_to_target,unique_cases_associated,operational_product_cases,research_cases,family_or_analogy_cases,target_met
+T001,Map-Reduce,inventario,10,1,0,0,0,9,2,0,0,1,False
+T002,Prompt Caching,inventario,10,0,0,0,0,10,1,1,0,0,False
+T003,Sliding Window de contexto — incluindo descarte FIFO,inventario,10,0,0,0,0,10,0,0,0,0,False
+T004,Summarization em cadeia,inventario,10,0,0,0,0,10,2,1,0,2,False
+T005,Semantic Caching,inventario,10,0,0,0,0,10,1,1,0,0,False
+T006,Context Compression,inventario,10,0,0,0,0,10,4,2,0,3,False
+T007,Response Caching por Hash,inventario,10,0,0,0,0,10,0,0,0,0,False
+T008,Hierarchical Summarization,inventario,10,0,0,0,0,10,1,0,1,0,False
+T009,RAG — Retrieval-Augmented Generation; incluindo RAG temporal,inventario,10,1,1,0,0,9,6,2,3,2,False
+T010,Fixed-Size Chunking,inventario,10,0,0,0,0,10,1,1,0,0,False
+T011,Semantic Chunking,inventario,10,0,0,0,0,10,1,1,0,0,False
+T012,Recursive Chunking,inventario,10,0,0,0,0,10,0,0,0,0,False
+T013,Long-Context Models,inventario,10,0,0,0,0,10,0,0,0,0,False
+T014,Progressive Disclosure,inventario,10,0,0,0,0,10,0,0,0,0,False
+T015,Reference Passing,inventario,10,0,0,0,0,10,2,2,0,2,False
+T016,Tool Result Truncation,inventario,10,0,0,0,0,10,0,0,0,0,False
+T017,Context Folding,inventario,10,0,0,0,0,10,0,0,0,0,False
+T018,Context Pruning,inventario,10,0,0,0,0,10,1,0,1,1,False
+T019,Few-Shot Pruning,inventario,10,0,0,0,0,10,0,0,0,0,False
+T020,Learned Prompt Compression,inventario,10,0,0,0,0,10,2,0,2,1,False
+T021,Context Compression On-the-Fly,inventario,10,0,0,0,0,10,0,0,0,0,False
+T022,Instruction Compression,inventario,10,0,0,0,0,10,1,0,1,1,False
+T023,Recursive Summarization Tree,inventario,10,0,0,0,0,10,0,0,0,0,False
+T024,Context Broker e Context Builder,inventario,10,0,0,0,0,10,2,0,0,2,False
+T025,Adaptive RAG,inventario,10,0,0,0,0,10,0,0,0,0,False
+T026,Hierarchical Retrieval,inventario,10,0,0,0,0,10,0,0,0,0,False
+T027,Hybrid Retrieval — BM25 + vetores,inventario,10,0,0,0,0,10,1,1,0,0,False
+T028,Reranking,inventario,10,0,0,0,0,10,2,1,0,1,False
+T029,GraphRAG,inventario,10,0,0,0,0,10,1,0,1,0,False
+T030,RAPTOR,inventario,10,0,0,0,0,10,0,0,0,0,False
+T031,Semantic Cache Invalidation,inventario,10,0,0,0,0,10,2,1,0,2,False
+T032,Parent-Child Retrieval / Parent-Child Chunking,inventario,10,0,0,0,0,10,1,1,0,0,False
+T033,Structure-Aware Chunking,inventario,10,0,0,0,0,10,2,2,0,2,False
+T034,Agentic Chunking,inventario,10,0,0,0,0,10,0,0,0,0,False
+T035,Contextual Chunking,inventario,10,0,0,0,0,10,0,0,0,0,False
+T036,Query-Aware RAG,inventario,10,1,1,0,0,9,3,0,1,1,False
+T037,Query-Aware Compression,inventario,10,0,0,0,0,10,1,1,0,1,False
+T038,Selective Context Pruning,inventario,10,0,0,0,0,10,1,1,0,1,False
+T039,Importance-Aware Window,inventario,10,0,0,0,0,10,0,0,0,0,False
+T040,State-Aware Window,inventario,10,0,0,0,0,10,0,0,0,0,False
+T041,Last-N Messages Window,inventario,10,0,0,0,0,10,0,0,0,0,False
+T042,Token-Based Window,inventario,10,0,0,0,0,10,0,0,0,0,False
+T043,Context Compaction,inventario,10,0,0,1,0,10,1,0,0,0,False
+T044,Progressive Context Expansion,inventario,10,0,0,0,0,10,1,1,0,1,False
+T045,Tool Retrieval,inventario,10,0,0,0,0,10,0,0,0,0,False
+T046,Dynamic Few-Shot Selection,inventario,10,0,0,0,0,10,0,0,0,0,False
+T047,Long-Term Memory — memória de longo prazo,inventario,10,0,0,1,0,10,2,1,0,0,False
+T048,Memory Management,inventario,10,0,0,0,0,10,1,0,0,1,False
+T049,Episodic Memory,inventario,10,0,0,0,0,10,1,0,1,0,False
+T050,Working Memory Window,inventario,10,0,0,0,0,10,0,0,0,0,False
+T051,Graph-Based Memory,inventario,10,0,0,0,0,10,3,0,1,3,False
+T052,Latent Context,inventario,10,0,0,0,0,10,2,0,2,1,False
+T053,Scratchpad em arquivo,inventario,10,0,0,0,0,10,1,0,0,1,False
+T054,Semantic Memory,inventario,10,0,0,0,0,10,3,1,1,3,False
+T055,Procedural Memory,inventario,10,0,0,0,0,10,0,0,0,0,False
+T056,Bitemporal Memory,inventario,10,0,0,0,0,10,0,0,0,0,False
+T057,Causal Memory,inventario,10,0,0,0,0,10,0,0,0,0,False
+T058,Memory Consolidation,inventario,10,0,0,0,0,10,2,0,1,1,False
+T059,Event Sourcing,inventario,10,0,0,0,0,10,0,0,0,0,False
+T060,Agent Checkpointing / Checkpoint & Resume — incluindo checkpoints transacionais,inventario,10,1,0,1,0,9,3,0,0,1,False
+T061,Content-Addressable Storage,inventario,10,0,0,0,0,10,0,0,0,0,False
+T062,Hierarchical Memory,inventario,10,0,0,0,0,10,1,1,0,1,False
+T063,"Virtual Context Management — memória virtual de contexto, estilo MemGPT",inventario,10,0,0,0,0,10,1,0,1,0,False
+T064,Persistent Agent State,inventario,10,0,0,0,0,10,3,1,0,2,False
+T065,Transactional State Manager,inventario,10,3,0,0,0,7,3,0,0,0,False
+T066,Memory Resolver / Reference Resolver,inventario,10,0,0,0,0,10,1,0,0,1,False
+T067,Active Memory Retrieval,inventario,10,0,0,1,0,10,2,0,1,0,False
+T068,Memory-Augmented Generation,inventario,10,0,0,0,0,10,3,0,3,1,False
+T069,Consolidação por resumos — anteriormente chamada de “Context Distillation”,inventario,10,0,0,0,0,10,1,0,0,1,False
+T070,Episodic Store,inventario,10,0,0,0,0,10,1,0,0,1,False
+T071,Memory Promotion,inventario,10,0,0,0,0,10,1,1,0,1,False
+T072,Versioned Memory,inventario,10,0,0,0,0,10,1,0,0,1,False
+T073,Immutable Evidence Store,inventario,10,0,0,0,0,10,0,0,0,0,False
+T074,Memory Eviction,inventario,10,0,0,0,0,10,1,0,0,1,False
+T075,Memory Reconciliation,inventario,10,0,0,0,0,10,2,0,0,2,False
+T076,Git-Backed Memory,inventario,10,0,0,0,0,10,1,1,0,0,False
+T077,Temporal Knowledge Graphs,inventario,10,0,0,0,0,10,1,0,0,1,False
+T078,Semantic Page Fault,inventario,10,0,0,0,0,10,1,0,1,1,False
+T079,Speculative Decoding,inventario,10,2,2,0,0,8,5,1,2,0,False
+T080,Adaptive Speculative Decoding,inventario,10,0,0,0,0,10,0,0,0,0,False
+T081,KV Cache Reuse,inventario,10,0,0,1,0,10,4,2,0,2,False
+T082,Prefix Caching,inventario,10,1,1,1,1,9,5,2,0,0,False
+T083,Advanced Prefix Caching,inventario,10,0,0,0,0,10,1,1,0,0,False
+T084,Session-Based Caching,inventario,10,0,0,0,0,10,1,0,0,1,False
+T085,Quantization,inventario,10,1,1,0,0,9,2,1,0,0,False
+T086,Quantized KV Cache,inventario,10,0,0,0,0,10,1,1,0,0,False
+T087,Batching — Static Batching e Dynamic Batching,inventario,10,1,1,0,0,9,1,0,0,0,False
+T088,Continuous Batching,inventario,10,2,2,1,0,8,5,1,0,1,False
+T089,"Early Stopping — EOS, stop sequences, limites e parada semântica",inventario,10,0,0,0,0,10,1,1,0,1,False
+T090,FlashAttention,inventario,10,0,0,0,0,10,1,1,0,1,False
+T091,FlashAttention-2,inventario,10,0,0,0,0,10,0,0,0,0,False
+T092,FlashAttention-3,inventario,10,0,0,0,0,10,0,0,0,0,False
+T093,PagedAttention,inventario,10,0,0,0,0,10,1,1,0,0,False
+T094,Chunked Prefill,inventario,10,1,1,1,0,9,2,0,0,0,False
+T095,Sliding Window Attention,inventario,10,0,0,0,0,10,0,0,0,0,False
+T096,Sparse Attention,inventario,10,0,0,0,0,10,0,0,0,0,False
+T097,Block-Sparse Attention,inventario,10,0,0,0,0,10,1,1,0,0,False
+T098,Memory-Efficient Attention,inventario,10,0,0,0,0,10,1,1,0,0,False
+T099,Multi-Query Attention — MQA,inventario,10,0,0,0,0,10,0,0,0,0,False
+T100,Grouped-Query Attention — GQA,inventario,10,0,0,0,0,10,1,1,0,0,False
+T101,Ring Attention,inventario,10,0,0,0,0,10,1,0,0,1,False
+T102,Disaggregated Inference / Disaggregated Prefill-Decode,inventario,10,0,0,2,1,10,3,0,0,0,False
+T103,Prefix Tree / Trie de prefixos,inventario,10,0,0,0,0,10,1,1,0,0,False
+T104,Radix Attention,inventario,10,0,0,0,0,10,1,1,0,0,False
+T105,KV Cache Eviction,inventario,10,0,0,0,0,10,0,0,0,0,False
+T106,Otimização de KV com MQA/GQA,inventario,10,0,0,0,0,10,1,1,0,1,False
+T107,Roofline Analysis,inventario,10,0,0,0,0,10,0,0,0,0,False
+T108,Multi-Head Attention — MHA,inventario,10,0,0,0,0,10,0,0,0,0,False
+T109,Local / Window Attention,inventario,10,0,0,0,0,10,0,0,0,0,False
+T110,Global Token Attention,inventario,10,0,0,0,0,10,0,0,0,0,False
+T111,Dynamic Sparse Attention,inventario,10,0,0,0,0,10,0,0,0,0,False
+T112,Retrieval-Based Attention,inventario,10,0,0,0,0,10,1,0,1,0,False
+T113,FlashAttention Tiling,inventario,10,0,0,0,0,10,0,0,0,0,False
+T114,Online Softmax,inventario,10,0,0,0,0,10,0,0,0,0,False
+T115,Activation Checkpointing,inventario,10,0,0,0,0,10,0,0,0,0,False
+T116,KV Cache Recomputation,inventario,10,0,0,0,0,10,0,0,0,0,False
+T117,Context Parallelism,inventario,10,2,2,0,0,8,2,0,0,0,False
+T118,Tensor Parallelism,inventario,10,2,2,1,0,8,3,0,0,0,False
+T119,Pipeline Parallelism,inventario,10,0,0,0,0,10,0,0,0,0,False
+T120,KV Cache Routing,inventario,10,0,0,1,0,10,2,0,0,1,False
+T121,GPU Scheduling,inventario,10,0,0,1,0,10,2,0,0,1,False
+T122,RDMA para inferência distribuída,inventario,10,1,1,2,1,9,5,1,0,0,False
+T123,FP8 Quantization,inventario,10,0,0,0,0,10,1,1,0,0,False
+T124,INT4 / W4A16 Quantization,inventario,10,0,0,0,0,10,1,1,0,0,False
+T125,GPTQ,inventario,10,1,1,0,0,9,1,0,0,0,False
+T126,AWQ,inventario,10,0,0,0,0,10,0,0,0,0,False
+T127,"GGUF — formato de modelos, não método único de quantização",inventario,10,0,0,0,0,10,1,1,0,0,False
+T128,EAGLE / EAGLE-3,inventario,10,0,0,0,0,10,2,1,1,0,False
+T129,MTP — Multi-Token Prediction,inventario,10,0,0,0,0,10,2,1,0,1,False
+T130,N-Gram Speculative Decoding,inventario,10,1,1,0,0,9,1,0,0,0,False
+T131,Suffix Decoding,inventario,10,0,0,0,0,10,1,0,1,0,False
+T132,Draft-Model Speculation,inventario,10,1,1,0,0,9,2,0,1,1,False
+T133,Model Routing,inventario,10,0,0,0,0,10,3,1,0,2,False
+T134,Semantic Routing,inventario,10,0,0,0,1,10,2,1,0,1,False
+T135,Model Cascade,inventario,10,0,0,0,0,10,0,0,0,0,False
+T136,Fallback Chains,inventario,10,0,0,0,0,10,1,0,0,1,False
+T137,Rate Limiting,inventario,10,1,0,0,0,9,2,0,0,1,False
+T138,Circuit Breaker,inventario,10,0,0,0,0,10,0,0,0,0,False
+T139,Parallel Tool Calls,inventario,10,0,0,1,0,10,1,0,0,0,False
+T140,Tool Use / Function Calling,inventario,10,0,0,0,2,10,5,3,0,1,False
+T141,Structured Outputs,inventario,10,0,0,0,0,10,1,1,0,0,False
+T142,Agent Frameworks com Planning,inventario,10,0,0,0,0,10,0,0,0,0,False
+T143,Plan-Then-Act,inventario,10,2,2,0,0,8,3,1,0,1,False
+T144,ReAct Pattern,inventario,10,1,1,0,0,9,1,0,0,0,False
+T145,Adaptive Depth,inventario,10,0,0,0,0,10,1,1,0,1,False
+T146,Adaptive Compute,inventario,10,0,0,0,0,10,2,1,0,2,False
+T147,Parallel Fan-Out,inventario,10,0,0,1,2,10,4,0,0,1,False
+T148,Conditional Branching,inventario,10,0,0,0,2,10,2,0,0,0,False
+T149,Priority Queue,inventario,10,0,0,0,1,10,1,0,0,0,False
+T150,Request Coalescing / Singleflight,inventario,10,0,0,0,0,10,1,1,0,0,False
+T151,Lazy Loading de ferramentas,inventario,10,0,0,0,1,10,1,0,0,0,False
+T152,Token Budget Allocation,inventario,10,0,0,0,0,10,0,0,0,0,False
+T153,Output Streaming com interrupção,inventario,10,0,0,0,0,10,2,1,0,2,False
+T154,Multi-Turn Conversation Management,inventario,10,1,1,0,0,9,1,0,0,0,False
+T155,System Prompt Optimization / prompt de sistema enxuto,inventario,10,0,0,2,0,10,4,2,0,0,False
+T156,Temperature Tuning,inventario,10,0,0,0,0,10,1,1,0,0,False
+T157,Prefix Hashing,inventario,10,0,0,1,0,10,1,0,0,0,False
+T158,Tool Registry,inventario,10,0,0,0,1,10,1,0,0,0,False
+T159,Durable Execution,inventario,10,0,0,0,2,10,2,0,0,0,False
+T160,DAG Scheduling,inventario,10,0,0,0,2,10,3,0,0,1,False
+T161,Critical Path Analysis,inventario,10,0,0,0,0,10,0,0,0,0,False
+T162,Idempotência,inventario,10,1,0,0,0,9,1,0,0,0,False
+T163,Backoff exponencial com jitter,inventario,10,1,0,0,0,9,1,0,0,0,False
+T164,Retry-After,inventario,10,0,0,0,0,10,0,0,0,0,False
+T165,Half-open — estado do Circuit Breaker,inventario,10,0,0,0,0,10,0,0,0,0,False
+T166,Queue Fairness / Aging,inventario,10,0,0,0,0,10,0,0,0,0,False
+T167,Token Bucket,inventario,10,1,0,0,0,9,1,0,0,0,False
+T168,Soft Limit / Hard Limit de tokens,inventario,10,0,0,0,0,10,1,1,0,0,False
+T169,Multi-Agent com contextos isolados,inventario,10,0,0,1,1,10,3,1,0,1,False
+T170,Tool Schema Versioning,inventario,10,0,0,0,0,10,2,0,0,2,False
+T171,Cache-Aware Orchestration,inventario,10,0,0,0,1,10,1,0,0,0,False
+T172,Streaming Controller,inventario,10,0,0,0,0,10,3,2,0,3,False
+T173,Model Fallback Controlado,inventario,10,0,0,0,0,10,1,1,0,1,False
+T174,Priority-Based Scheduling,inventario,10,0,0,0,1,10,3,0,0,2,False
+T175,Rate Limiting com Fallback,inventario,10,0,0,0,0,10,1,0,0,1,False
+T176,Token-Aware Planning,inventario,10,0,0,0,0,10,0,0,0,0,False
+T177,Fine-Tuning,inventario,10,2,1,0,1,8,6,1,1,1,False
+T178,Knowledge Distillation,inventario,10,2,1,0,0,8,5,1,2,0,False
+T179,Context Distillation Paramétrica,inventario,10,0,0,0,0,10,1,0,1,0,False
+T180,Prompt Distillation,inventario,10,0,0,0,0,10,2,1,1,0,False
+T181,Agent Memory Distillation,inventario,10,0,0,0,0,10,1,0,1,0,False
+T182,LoRA,inventario,10,0,0,0,0,10,3,2,0,2,False
+T183,QLoRA,inventario,10,0,0,0,0,10,2,1,0,2,False
+T184,Mixture of Experts — MoE,inventario,10,0,0,1,0,10,3,1,0,1,False
+T185,Constitutional AI,inventario,10,0,0,1,0,10,1,0,0,0,False
+T186,Debate entre agentes,inventario,10,0,0,0,0,10,1,1,0,0,False
+T187,Ensemble Voting,inventario,10,0,0,0,0,10,0,0,0,0,False
+T188,Self-Consistency,inventario,10,0,0,0,0,10,0,0,0,0,False
+T189,Best-of-N Verification,inventario,10,0,0,0,0,10,0,0,0,0,False
+T190,Verifier Loop,inventario,10,1,1,0,1,9,3,0,0,1,False
+T191,Chain-of-Verification,inventario,10,0,0,0,0,10,0,0,0,0,False
+T192,Self-Refine,inventario,10,0,0,0,0,10,0,0,0,0,False
+T193,Guardrails,inventario,10,0,0,0,0,10,2,2,0,0,False
+T194,Process Supervision,inventario,10,0,0,0,0,10,0,0,0,0,False
+T195,Verificação baseada em execução,inventario,10,3,3,0,1,7,4,0,0,0,False
+T196,Constrained Decoding / Grammar-Constrained Decoding,inventario,10,0,0,0,0,10,3,3,0,0,False
+T197,JSON Schema Validation,inventario,10,0,0,0,0,10,1,1,0,1,False
+T198,Calibrated Confidence,inventario,10,0,0,0,0,10,0,0,0,0,False
+T199,Aprendizagem por avaliação,inventario,10,0,0,0,0,10,3,0,0,3,False
+T200,Independent Verification,inventario,10,0,0,0,1,10,5,2,0,3,False
+T201,Agent Test-Time Scaling,inventario,10,0,0,0,0,10,2,0,1,2,False
+T202,Uncertainty-Aware Planning,inventario,10,0,0,0,0,10,0,0,0,0,False
+T203,Correctness-Based Routing,inventario,10,0,0,0,0,10,0,0,0,0,False
+T204,Skills / Procedural Learning,inventario,10,0,0,0,0,10,1,0,1,1,False
+T205,Semantic Equivalence Testing,inventario,10,0,0,0,0,10,1,0,0,1,False
+T206,Process Verification,inventario,10,0,0,0,0,10,1,0,0,1,False
+T207,Memory Stream,inventario,10,0,0,0,0,10,2,0,0,2,False
+T208,Planner–Executor / Plan-and-Execute,inventario,10,1,1,1,0,9,2,0,0,0,False
+T209,Reflexion,inventario,10,0,0,0,0,10,0,0,0,0,False
+T210,Session Rotation,inventario,10,0,0,0,0,10,0,0,0,0,False
+T211,Handoff File,inventario,10,0,0,0,0,10,1,0,0,1,False
+T212,Auto-Compact por gatilho,inventario,10,0,0,0,1,10,2,0,1,1,False
+T213,Task Decomposition em micro-missões,inventario,10,1,1,1,0,9,3,0,0,1,False
+T214,Tool Output Pruning,inventario,10,0,0,0,2,10,2,0,0,0,False
+T215,Observation Masking,inventario,10,0,0,0,0,10,1,0,1,0,False
+T216,Repo Map / mapa do repositório,inventario,10,0,0,0,0,10,0,0,0,0,False
+T217,Test-Driven Loop,inventario,10,1,0,0,1,9,8,0,0,6,False
+T218,Loop Detection / detecção de estagnação e ciclos,inventario,10,0,0,0,0,10,0,0,0,0,False
+T219,Limite de recursão / profundidade de execução,inventario,10,0,0,0,0,10,0,0,0,0,False
+T220,Tool Call Repair,inventario,10,0,0,0,0,10,0,0,0,0,False
+T221,Goal Reminder Injection,inventario,10,0,0,0,0,10,0,0,0,0,False
+T222,Context Budget Monitor,inventario,10,0,0,0,1,10,1,0,0,0,False
+T223,Constitutional Self-Check,inventario,10,0,0,0,0,10,0,0,0,0,False
+T224,Spec-Driven Loop,inventario,10,0,0,0,0,10,1,0,0,1,False
+T225,Watchdog com Auto-Restart,inventario,10,0,0,0,0,10,0,0,0,0,False
+T226,Heartbeat de progresso,inventario,10,0,0,0,0,10,1,0,0,1,False
+T227,"Health Checks — liveness, readiness e progresso",inventario,10,0,0,0,0,10,0,0,0,0,False
+T228,Fila de retries com backoff exponencial,inventario,10,0,0,0,0,10,1,0,0,1,False
+T229,Diff-Only Editing / Patch-Based Coding,inventario,10,0,0,0,0,10,2,0,0,2,False
+T230,Unified Diff,inventario,10,0,0,0,0,10,1,1,0,1,False
+T231,Search/Replace Editing,inventario,10,0,0,0,0,10,1,1,0,0,False
+T232,AST Editing,inventario,10,1,0,0,1,9,2,0,0,0,False
+T233,Patch Validation — incluindo verificação de hash-base,inventario,10,2,0,1,0,8,5,1,0,2,False
+T234,Persistent Project Memory File — incluindo memória por módulo,inventario,10,0,0,2,0,10,3,1,0,0,False
+T235,Headless Mode em loop / Headless Controller,inventario,10,0,0,0,0,10,1,1,0,0,False
+T236,Git Commit por etapa,inventario,10,0,0,0,0,10,5,1,0,4,False
+T237,Subagent Offloading,inventario,10,1,1,2,1,9,4,0,0,0,False
+T238,Read On Demand com faixa de linhas,inventario,10,0,0,0,0,10,3,0,0,3,False
+T239,Git Worktrees,inventario,10,0,0,1,0,10,4,1,0,3,False
+T240,Snapshot de estado,inventario,10,0,0,0,0,10,1,0,0,1,False
+T241,Event Replay,inventario,10,0,0,0,1,10,2,0,0,1,False
+T242,Recuperação híbrida por Snapshot + Event Sourcing,inventario,10,0,0,0,0,10,0,0,0,0,False
+T243,Reconciliação de operações externas,inventario,10,0,0,0,1,10,2,0,0,1,False
+R001,MemGPT,referencia,10,0,0,0,0,10,1,0,1,0,False
+R002,Letta,referencia,10,0,0,0,0,10,1,1,0,0,False
+R003,LongMem,referencia,10,0,0,0,0,10,1,0,1,0,False
+R004,Generative Agents,referencia,10,0,0,0,0,10,1,0,1,0,False
+R005,LLMLingua,referencia,10,0,0,0,0,10,2,1,1,1,False
+R006,PRISM,referencia,10,0,0,0,0,10,1,0,1,0,False
+R007,SADA,referencia,10,0,0,0,0,10,1,0,1,0,False
+R008,LangGraph,referencia,10,0,0,0,0,10,1,1,0,0,False
+R009,vLLM,referencia,10,3,3,0,1,7,5,0,1,1,False
+R010,Hugging Face TGI,referencia,10,0,0,0,1,10,1,0,0,0,False
+R011,NVIDIA TensorRT-LLM,referencia,10,0,0,0,0,10,1,1,0,0,False
+R012,Tinker — Prompt Distillation,referencia,10,0,0,0,0,10,1,0,1,0,False
+R013,Letta MemFS,referencia,10,0,0,0,0,10,1,1,0,0,False
+R014,Letta Context Repositories,referencia,10,0,0,0,0,10,1,1,0,0,False
+R015,Learning by Distilling Context,referencia,10,0,0,0,0,10,0,0,0,0,False
+R016,Lost in the Middle,referencia,10,0,0,0,0,10,0,0,0,0,False
+R017,LangChain,referencia,10,0,0,0,0,10,0,0,0,0,False
+R018,Temporal,referencia,10,0,0,0,0,10,0,0,0,0,False
+R019,Aider,referencia,10,0,0,0,0,10,1,1,0,0,False
+R020,Claude Code,referencia,10,0,0,1,0,10,2,0,0,1,False
+R021,OpenAI Codex,referencia,10,0,0,1,0,10,1,0,0,0,False
+R022,Qwen,referencia,10,0,0,0,0,10,1,1,0,0,False
+R023,Hugging Face Transformers,referencia,10,0,0,0,1,10,2,1,0,0,False
+R024,llama.cpp,referencia,10,0,0,0,0,10,1,1,0,0,False
+R025,XGrammar,referencia,10,0,0,0,0,10,1,1,0,0,False
+R026,Guidance,referencia,10,0,0,0,0,10,1,1,0,0,False
+R027,Git,referencia,10,1,0,1,0,9,5,1,0,2,False
+P001,Context Engine,proposta,10,0,0,0,0,10,1,0,0,1,False
+P002,Context Manager,proposta,10,0,0,0,0,10,1,0,0,1,False
+P003,Virtual Context Manager,proposta,10,0,0,0,0,10,1,1,0,1,False
+P004,LAI Memory Runtime,proposta,10,0,0,0,0,10,2,1,0,2,False
+P005,Context & Memory Controller,proposta,10,0,0,0,0,10,0,0,0,0,False
+P006,Progressive Loader,proposta,10,0,0,0,0,10,0,0,0,0,False
+P007,Memory Retriever,proposta,10,0,0,0,0,10,2,1,0,2,False
+P008,Event Store / Event Log,proposta,10,0,0,0,0,10,1,0,0,1,False
+P009,Inference Engine,proposta,10,0,0,0,0,10,7,2,0,7,False
+P010,Routing Engine,proposta,10,0,0,0,0,10,3,1,0,3,False
+P011,Execution Engine / Execution Controller,proposta,10,0,0,0,0,10,5,0,0,5,False
+P012,Verification Engine / Verification Controller,proposta,10,0,0,0,0,10,7,0,0,7,False
+P013,Resilience Engine / Reliability Controller,proposta,10,0,0,0,0,10,2,0,0,2,False
+P014,Execution Resilience,proposta,10,0,0,0,0,10,4,0,0,4,False
+P015,Execution Integrity Controller,proposta,10,0,0,0,0,10,4,0,0,4,False
+P016,Evaluation Engine,proposta,10,0,0,0,0,10,2,0,0,2,False
+P017,Distillation Pipeline,proposta,10,0,0,0,0,10,5,0,2,5,False

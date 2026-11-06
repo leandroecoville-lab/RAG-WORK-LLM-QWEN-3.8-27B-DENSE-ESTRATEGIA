@@ -1,0 +1,121 @@
+{
+  "id": "T076",
+  "novelty": "A v3 explicou compare-and-set e worktrees. Aqui Git organiza propostas de memória em commits com semântica revisável e escopo limitado.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Cada commit deve representar mudança compreensível: fato corrigido, procedimento validado ou índice atualizado. Misturar grandes reorganizações com mudança de significado dificulta auditoria e rollback.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S040",
+        "A-S028",
+        "A-S010"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Use revisão-base na proposta e validação semântica após merge. Git resolve texto; relações entre arquivos podem permanecer inconsistentes mesmo quando nenhum conflito textual aparece.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S040",
+        "A-S028",
+        "A-S010"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare commits por etapa e grandes snapshots periódicos. Meça localização de regressões, reversões seguras e perda de proveniência; histórico extenso não garante que cada conclusão tenha suporte. Unidade de avaliação: commit de memória.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S040",
+        "A-S028",
+        "A-S010"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Memória colaborativa",
+      "scenario": "Agentes editam módulos distintos.",
+      "strategy": "Trabalhar em branches separados, validar links cruzados e integrar por manifesto que fixa versões dos módulos.",
+      "small_model_role": "8–14B revisa diffs.",
+      "acceptance": "Merge deve detectar decisões incompatíveis em arquivos diferentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S040",
+        "A-S028",
+        "A-S010"
+      ]
+    },
+    {
+      "name": "Experimento de consolidação",
+      "scenario": "Nova síntese pode perder informação.",
+      "strategy": "Criar branch candidato, comparar consultas e revisar diff de afirmações antes de atualizar referência ativa.",
+      "small_model_role": "15–30B integra; 3–7B extrai diferenças.",
+      "acceptance": "Reversão deve restaurar memória e índices coerentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S040",
+        "A-S028",
+        "A-S010"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extrator de mudanças em diffs curtos por seção.",
+    "8_14b": "Revisor de alterações locais e referências quebradas.",
+    "15_30b": "Integrador de conflitos semânticos entre vários arquivos.",
+    "training_or_runtime_requirements": "Repositório, manifesto e política de commits; Git não fornece sozinho autorização, busca semântica ou verdade.",
+    "do_not_use_when": "Histórico contém dados que não deveriam ser persistidos ou merge é tratado como confirmação factual."
+  },
+  "connections": [
+    {
+      "target_id": "T072",
+      "relation": "feeds",
+      "how": "Publicar revisão de memória com manifesto completo.",
+      "interface": "Commit, árvore e versões de índices.",
+      "condition": "Leitor pinado à revisão adequada.",
+      "acceptance": "Consultar durante troca de branch e impedir mistura.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S040",
+        "A-S028",
+        "A-S010"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T075",
+      "relation": "requires",
+      "how": "Reconciliar conflito de significado após merge.",
+      "interface": "Diffs, fontes e invariantes entre arquivos.",
+      "condition": "Revisão examinar relações, não só linhas conflitantes.",
+      "acceptance": "Criar duas regras contraditórias em arquivos separados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S040",
+        "A-S028",
+        "A-S010"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não usar commit como prova de execução de tarefa.",
+    "Não presumir que apagar arquivo remove suas versões históricas."
+  ],
+  "frontier_comparison": "Comparar rastreabilidade e custo de revisão; Git melhora colaboração, não capacidade de julgamento do modelo.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q019",
+      "V4A-Q023",
+      "V4A-Q026"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S040",
+    "A-S028",
+    "A-S010"
+  ]
+}

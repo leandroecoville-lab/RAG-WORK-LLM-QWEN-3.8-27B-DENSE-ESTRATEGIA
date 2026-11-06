@@ -1,0 +1,120 @@
+{
+  "id": "T130",
+  "novelty": "A v3 explicou comprimentos de chave e continuação. Esta camada usa o caso de produção do Hiring Assistant para delimitar padrões favoráveis e propõe controles de proveniência e de custo do índice.",
+  "deep_layers": [
+    {
+      "name": "Repetição que interessa",
+      "detail": "N-gramas são particularmente plausíveis quando a saída reaproveita sequências do prompt ou do histórico permitido. O relato do LinkedIn descreve esse perfil em saídas estruturadas do Hiring Assistant. Isso não autoriza extrapolar para raciocínio aberto, tradução livre ou textos com pouca repetição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S041",
+        "V4B-S001",
+        "V4B-S029"
+      ]
+    },
+    {
+      "name": "Origem e escopo",
+      "detail": "Defina de onde propostas podem vir: prompt atual, tokens confirmados ou memória compartilhada autorizada. Índices entre usuários exigem isolamento e regras de retenção. Mesmo com verificação pelo alvo, consultar um índice privado pode expor padrões ou ampliar canais de informação; a arquitetura deve limitar acesso desde a busca.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S041",
+        "V4B-S001",
+        "V4B-S029"
+      ]
+    },
+    {
+      "name": "Custo de busca",
+      "detail": "Um proponente sem rede neural ainda consome CPU, memória e sincronização. Meça tempo por consulta e atualização, especialmente com contextos grandes e concorrência. Uma chave curta pode produzir muitas ocorrências; a política para escolher continuação precisa ser determinística ou explicitamente amostrada e reprodutível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S041",
+        "V4B-S001",
+        "V4B-S029"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Extração estruturada com cópia",
+      "scenario": "A resposta reutiliza nomes e trechos da entrada.",
+      "strategy": "Teste n-gramas no prompt atual, mantendo o verificador do alvo e a gramática quando suportada. Compare diferentes comprimentos sem ajustar ao conjunto final de avaliação.",
+      "small_model_role": "Um 8–14B pode executar extração especializada com pouco custo adicional de proponente.",
+      "acceptance": "Medir aceitação, CPU, latência e validade semântica da extração.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S041",
+        "V4B-S001",
+        "V4B-S029"
+      ]
+    },
+    {
+      "name": "Reescrita com baixa alteração",
+      "scenario": "O usuário pede correções pontuais em um texto.",
+      "strategy": "Use a entrada como fonte de candidatos e teste casos em que a continuação mais frequente precisa ser alterada. A verificação deve rejeitar a cópia incorreta.",
+      "small_model_role": "Um 3–7B pode ser adequado a tarefas locais estreitas, sujeito à qualidade-base.",
+      "acceptance": "Confirmar alterações obrigatórias e ausência de cópia indevida apesar de alta repetição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S041",
+        "V4B-S001",
+        "V4B-S029"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Custo de busca pode ser relevante frente a um alvo barato; manter índice restrito ao pedido simplifica.",
+    "8_14b": "Boa hipótese para formatos repetitivos e respostas longas, sem ganho presumido.",
+    "15_30b": "Em alvos maiores, verificação pode amortizar mais trabalho, mas concorrência continua determinante.",
+    "training_or_runtime_requirements": "Runtime de especulação com proponente de tokens; não requer treinar um draft neural.",
+    "do_not_use_when": "Não descrever preservação da distribuição como garantia de texto idêntico em todas as sementes e implementações."
+  },
+  "connections": [
+    {
+      "target_id": "T079",
+      "relation": "feeds",
+      "how": "O LinkedIn usa propostas n-gram verificadas pelo alvo no Hiring Assistant.",
+      "interface": "Sequência candidata e estado do alvo.",
+      "condition": "Regra correta de aceitação e configuração compatível.",
+      "acceptance": "Comparar execução especulativa com o alvo sem proponente.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4B-S001"
+      ],
+      "case_ids": [
+        "V4B-C001"
+      ]
+    },
+    {
+      "target_id": "T196",
+      "relation": "complements",
+      "how": "Restrições estruturais precisam ser consideradas no caminho de verificação.",
+      "interface": "Estado de gramática e prefixo confirmado.",
+      "condition": "Implementação suporta a combinação sem aceitar tokens proibidos.",
+      "acceptance": "Testar fronteiras de strings, delimitadores e rejeição de candidatos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S041",
+        "V4B-S001",
+        "V4B-S029"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não usar índice compartilhado sem domínio de acesso explícito.",
+    "Relatar taxa de aceitação com denominador correto e custo do proponente."
+  ],
+  "frontier_comparison": "Especulação n-gram pode acelerar uma tarefa em que o modelo já é competente. A repetição da entrada facilita proposta, mas não garante que o conteúdo copiado seja a resposta certa.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q001",
+      "V4B-Q018"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S041",
+    "V4B-S001",
+    "V4B-S029"
+  ]
+}

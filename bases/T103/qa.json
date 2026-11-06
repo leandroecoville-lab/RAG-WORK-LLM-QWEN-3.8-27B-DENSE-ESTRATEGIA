@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Trie é igual a árvore de resumos?",
+    "answer": "Não. Organiza prefixos de sequências exatas, não níveis de abstração semântica."
+  },
+  {
+    "question": "Radix tree é outra família de cache?",
+    "answer": "É uma variação compactada da estrutura de prefixos, usada por algumas implementações de cache."
+  },
+  {
+    "question": "Pode indexar pelo texto decodificado?",
+    "answer": "Somente com um contrato que preserve identidade de tokenização; textos aparentes iguais não garantem os mesmos IDs."
+  },
+  {
+    "question": "Dividir uma aresta exige copiar todo o KV?",
+    "answer": "Não necessariamente. A divisão lógica pode alterar referências para segmentos existentes quando o armazenamento permite compartilhamento."
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "id": "T118",
+  "name": "Tensor Parallelism",
+  "canonical_name": "Tensor Parallelism",
+  "canonical_id": "T118",
+  "aliases": [
+    "paralelismo tensorial"
+  ],
+  "category": "inferencia",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T117",
+    "T119",
+    "T122",
+    "T107"
+  ],
+  "source_ids": [
+    "B-S030",
+    "B-S045",
+    "V4B-S003",
+    "V4B-S008",
+    "V4D-S014",
+    "V4D-S015"
+  ],
+  "namespace": "T118",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T118",
+  "chunk_count": 9
+}

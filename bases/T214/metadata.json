@@ -1,0 +1,32 @@
+{
+  "id": "T214",
+  "name": "Tool Output Pruning",
+  "canonical_name": "Tool Output Pruning",
+  "canonical_id": "T214",
+  "aliases": [
+    "poda de saída de ferramentas"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T215",
+    "T238",
+    "T222"
+  ],
+  "source_ids": [
+    "A-S006",
+    "V2A-S003",
+    "V3C-S031",
+    "V4C-S013",
+    "V4C-S014",
+    "V4C-S009",
+    "V4C-S027"
+  ],
+  "namespace": "T214",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T214",
+  "chunk_count": 9
+}

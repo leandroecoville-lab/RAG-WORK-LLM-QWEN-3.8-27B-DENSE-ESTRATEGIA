@@ -1,0 +1,42 @@
+{
+  "entry_id": "T060",
+  "edges": [
+    {
+      "edge_id": "E-T060-01",
+      "from": "T060",
+      "to": "T243",
+      "relation": "requires",
+      "how": "Reconciliar efeitos sem confirmação antes de retomar.",
+      "interface": "operation_id, intenção, tentativa e recibo observado.",
+      "condition": "Serviço permitir consulta ou resolução explícita.",
+      "acceptance": "Simular sucesso externo com ACK perdido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S030",
+        "V3A-S031",
+        "A-S022"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T060-02",
+      "from": "T060",
+      "to": "T064",
+      "relation": "complements",
+      "how": "Serializar estado portátil e dependências.",
+      "interface": "Checkpoint, schema, código e referências duráveis.",
+      "condition": "Objetos não dependerem de handles efêmeros.",
+      "acceptance": "Restaurar em processo novo sem sessão original.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S030",
+        "V3A-S031",
+        "A-S022"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

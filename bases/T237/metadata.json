@@ -1,0 +1,38 @@
+{
+  "id": "T237",
+  "name": "Subagent Offloading",
+  "canonical_name": "Subagent Offloading",
+  "canonical_id": "T237",
+  "aliases": [
+    "subagent delegation",
+    "delegação de contexto"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T169",
+    "T213",
+    "T239",
+    "T208"
+  ],
+  "source_ids": [
+    "V2A-S018",
+    "A-S006",
+    "V3C-S006",
+    "V3C-S027",
+    "C-S030",
+    "V4C-S014",
+    "V4C-S030",
+    "V4C-S009",
+    "V4C-S008",
+    "V4C-S015",
+    "V4C-S029"
+  ],
+  "namespace": "T237",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T237",
+  "chunk_count": 9
+}

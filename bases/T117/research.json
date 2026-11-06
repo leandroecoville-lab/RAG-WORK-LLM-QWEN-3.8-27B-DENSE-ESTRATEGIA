@@ -1,0 +1,46 @@
+{
+  "id": "T117",
+  "technical_details": "Particionar o eixo de contexto muda a localização de ativações e dependências de atenção, mas posições continuam pertencendo a uma sequência global. Uma partição causal ingênua pode deixar os primeiros segmentos com menos trabalho que os últimos, pois há menos passado permitido. Balanceamento precisa considerar conexões efetivamente calculadas, além de distribuir quantidades iguais de tokens. Comunicação torna acessíveis estados que residem em outras partições.",
+  "boundary_condition": "Dividir contexto entre dispositivos não significa que cada trecho possa ser executado independentemente sem combinar dependências.",
+  "implementation_contract": {
+    "inputs": "Sequência, partição por posições, plano de comunicação e máscara global.",
+    "outputs": "Representações locais equivalentes ao modelo não particionado.",
+    "state": "Mapas de posições, ativações por camada e buffers de troca.",
+    "invariant": "Cada consulta recebe exatamente as chaves permitidas na sequência global."
+  },
+  "tradeoffs": [
+    "Mais dispositivos reduzem memória local e introduzem transferências e sincronizações.",
+    "Balancear tokens pode não balancear cálculo sob máscaras causais."
+  ],
+  "failure_test": "Teste proposto: repartir sequência causal em segmentos desiguais e verificar tokens nas fronteiras. Comparar com referência única e registrar o trabalho por dispositivo para detectar desequilíbrio.",
+  "evaluation_plan": "Plano proposto: controlar pesos, comprimento, dtype e máscara, medindo memória por dispositivo, comunicação exposta e duração. Comparar capacidade e velocidade separadamente; aprovar somente quando a divisão atende ao objetivo sem alterar os resultados.",
+  "comparisons": [
+    {
+      "entry_id": "T101",
+      "relation": "complements",
+      "reason": "Ring Attention pode realizar a troca de blocos em uma implementação de contexto distribuído."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O guia Megatron distingue context parallelism, aplicado às ativações de todas as camadas, de sequence parallelism em camadas específicas.",
+    "source_ids": [
+      "B-S045"
+    ],
+    "support": "direct",
+    "caveat": "A terminologia depende do framework; suporte de treinamento não implica caminho idêntico no servidor de inferência."
+  },
+  "advanced_qa": [
+    {
+      "question": "CP é igual a TP?",
+      "answer": "Não. CP divide posições do contexto; TP divide operações ou parâmetros dentro das camadas, podendo coexistir."
+    },
+    {
+      "question": "Mais contexto distribuído prova melhor compreensão?",
+      "answer": "Não. A capacidade de executar a sequência e a capacidade do modelo de utilizar informação distante precisam ser avaliadas separadamente."
+    }
+  ],
+  "source_ids": [
+    "B-S045"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

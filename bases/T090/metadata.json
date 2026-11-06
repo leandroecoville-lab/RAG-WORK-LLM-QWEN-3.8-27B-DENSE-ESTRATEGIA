@@ -1,0 +1,31 @@
+{
+  "id": "T090",
+  "name": "FlashAttention",
+  "canonical_name": "FlashAttention",
+  "canonical_id": "T090",
+  "aliases": [
+    "atenção com otimização de IO"
+  ],
+  "category": "inferencia",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T091",
+    "T092",
+    "T097",
+    "T098",
+    "T113",
+    "T114"
+  ],
+  "source_ids": [
+    "B-S010",
+    "V4B-S017",
+    "V4B-S018"
+  ],
+  "namespace": "T090",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T090",
+  "chunk_count": 9
+}

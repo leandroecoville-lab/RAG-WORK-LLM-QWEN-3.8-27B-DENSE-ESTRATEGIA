@@ -1,0 +1,33 @@
+{
+  "id": "T152",
+  "name": "Token Budget Allocation",
+  "canonical_name": "Token Budget Allocation",
+  "canonical_id": "T152",
+  "aliases": [
+    "alocação de orçamento de tokens"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T024",
+    "T168",
+    "T176"
+  ],
+  "source_ids": [
+    "C-S017",
+    "V3C-S022",
+    "V3C-S015",
+    "V4C-S014",
+    "V4C-S013",
+    "V4C-S018",
+    "V2A-S007",
+    "C-S030"
+  ],
+  "namespace": "T152",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T152",
+  "chunk_count": 9
+}

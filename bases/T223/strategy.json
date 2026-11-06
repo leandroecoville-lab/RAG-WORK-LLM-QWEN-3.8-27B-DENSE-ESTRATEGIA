@@ -1,0 +1,114 @@
+{
+  "id": "T223",
+  "novelty": "A v3 vinculava princípios a evidências e estados de avaliação. A expansão trata a autochecagem como revisão limitada, define resposta a conflito e impede confundir crítica em inferência com treinamento constitucional.",
+  "deep_layers": [
+    {
+      "name": "Princípio operacionalizável",
+      "detail": "Traduza cada regra aplicável em uma pergunta verificável sobre o candidato. Exigir preservar a API pode gerar comparação de assinatura e testes; exigir clareza pode precisar de revisão humana ou critérios mais subjetivos. Não atribua a mesma força probatória aos dois tipos. Registre desconhecido quando falta evidência, em vez de aprovação por ausência de objeção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S032",
+        "V2A-S020"
+      ]
+    },
+    {
+      "name": "Conflito e precedência",
+      "detail": "Princípios podem entrar em tensão: brevidade versus cobertura, velocidade versus validação. Defina quais são restrições e quais são objetivos de otimização. O revisor não deve inventar precedência para aprovar a própria proposta; conflito material volta ao controlador com alternativas e consequências. Uma constituição longa e contraditória piora a verificabilidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S020",
+        "V4C-S030"
+      ]
+    },
+    {
+      "name": "Crítica muda a evidência",
+      "detail": "Se a autochecagem altera o artefato, verificações anteriores podem deixar de valer. Vincule o parecer à versão candidata e rerode critérios afetados. Separar gerador e crítico pode reduzir alguns vieses, mas modelos semelhantes ainda podem concordar no mesmo erro; use verificadores externos sempre que houver propriedade executável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009",
+        "V3C-S032"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Resposta técnica com fontes",
+      "scenario": "O agente precisa respeitar escopo, evidência e incerteza.",
+      "strategy": "Revise alegações individuais: existe fonte, ela sustenta o detalhe e a limitação foi preservada? Marque inferência separadamente e remova certeza indevida. Não aceitar citação apenas porque o domínio parece confiável; conferir conteúdo quando a alegação importa.",
+      "small_model_role": "3–7B faz checklist estreito; 8–14B relaciona alegação e trecho; 15–30B examina conflitos.",
+      "acceptance": "Proposta: detectar alegações sem suporte e preservar lacunas sem bloquear conclusões sustentadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V3C-S032"
+      ]
+    },
+    {
+      "name": "Patch com invariantes",
+      "scenario": "Uma mudança deve manter semântica e evitar adições fora do escopo.",
+      "strategy": "Use revisões por propriedade e combine-as com compilação e testes. Uma violação obrigatória bloqueia o candidato mesmo que a maioria das avaliações seja positiva. Se a propriedade não puder ser provada pelo método, registrar limite e pedir verificação adequada.",
+      "small_model_role": "8–14B revisa propriedades locais; 15–30B analisa intenção e efeitos transversais.",
+      "acceptance": "Proposta: rejeitar violações inseridas e medir falsos negativos de cada critério.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Regras poucas, concretas e ligadas a trechos ou campos explícitos.",
+    "8_14b": "Revisão de aderência com evidência recuperável e estado desconhecido permitido.",
+    "15_30b": "Análise de conflitos e síntese de pareceres, mantendo validação externa independente.",
+    "training_or_runtime_requirements": "Versão das regras, versão do artefato e testes ligados a requisitos; critérios subjetivos precisam de calibração.",
+    "do_not_use_when": "Não tratar autoconcordância como prova formal nem chamar o procedimento de fine-tuning constitucional."
+  },
+  "connections": [
+    {
+      "target_id": "T200",
+      "relation": "complements",
+      "how": "Encaminhar propriedades objetivas a verificador externo e conservar o parecer textual como evidência de natureza diferente.",
+      "interface": "Critério, artefato e resultado observável.",
+      "condition": "Verificador não depende apenas da opinião do gerador.",
+      "acceptance": "Candidato elogiado mas reprovado em requisito objetivo é rejeitado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T221",
+      "relation": "complements",
+      "how": "Usar a versão vigente do objetivo para selecionar princípios aplicáveis à revisão.",
+      "interface": "Meta, restrições e critérios de aceite.",
+      "condition": "Mudança autorizada atualiza a base da checagem.",
+      "acceptance": "Não reprovar ou aprovar por regra obsoleta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S032"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Checklist preenchido não comprova que os itens foram verificados.",
+    "Parecer sobre versão anterior não acompanha automaticamente a versão corrigida."
+  ],
+  "frontier_comparison": "Compare ganho incremental da autochecagem frente a verificação externa e frente a modelo de fronteira. O procedimento pode melhorar aderência, mas continua limitado por capacidade e vieses do crítico.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q006",
+      "V4C-Q027",
+      "V4D-Q023"
+    ],
+    "scope_note": "AutoClean documenta revisão por propriedades, não adoção do rótulo Constitucional Self-Check. O componente desta ficha é composição editorial em inferência. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+  },
+  "source_ids": [
+    "V3C-S032",
+    "V2A-S020",
+    "V4C-S030",
+    "V4C-S009",
+    "C-S030"
+  ]
+}

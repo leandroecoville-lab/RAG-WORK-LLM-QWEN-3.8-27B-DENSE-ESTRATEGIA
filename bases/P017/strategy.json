@@ -1,0 +1,154 @@
+{
+  "id": "P017",
+  "novelty": "A v3 definiu proveniência e partições. Esta proposta acrescenta seleção da via de transferência, controle de qualidade dos professores e critérios de promoção que distinguem memória externa de atualização paramétrica.",
+  "deep_layers": [
+    {
+      "name": "Escolher o destino",
+      "detail": "Procedimentos estáveis podem virar exemplos de treinamento; fatos mutáveis e trajetórias condicionais podem permanecer em memória externa. Declare qual artefato muda: pesos, adapter, prompt ou acervo. AMD e destilação paramétrica são referências diferentes; agrupá-las no pipeline não torna seus mecanismos equivalentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S008",
+        "V4B-S012",
+        "V4B-S013",
+        "V4B-S005",
+        "V4B-S032"
+      ]
+    },
+    {
+      "name": "Professor falível",
+      "detail": "Registre versão, contexto e configuração do professor, mas também como sua resposta foi verificada. Consenso de professores não substitui referência quando compartilham erro. Dados multi-teacher podem ter objetivos distintos, como no ranking do LinkedIn; a combinação precisa de critérios e não apenas concatenação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S008",
+        "V4B-S012",
+        "V4B-S013",
+        "V4B-S005",
+        "V4B-S032"
+      ]
+    },
+    {
+      "name": "Promoção e manutenção",
+      "detail": "Compare aluno, base e professor na tarefa real, incluindo contexto retirado, ferramentas e quantização final. Rejeite versões com regressões relevantes e mantenha rollback. Quando o comportamento muda, atualize a relação entre dados, política e artefato, sem presumir que editar uma fonte atualiza pesos já treinados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S008",
+        "V4B-S012",
+        "V4B-S013",
+        "V4B-S005",
+        "V4B-S032"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Especializar aluno de domínio",
+      "scenario": "Chamadas caras ao professor podem ocorrer offline.",
+      "strategy": "Gere exemplos estratificados, filtre por verificadores e ajuste o aluno. Separe dados por origem e mantenha teste final intocado, incluindo casos em que o professor errou.",
+      "small_model_role": "Um 3–7B pode assumir formato e procedimento estreitos com evidência externa.",
+      "acceptance": "Generalização, cobertura e custo amortizado por resultado aceito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S008",
+        "V4B-S012",
+        "V4B-S013",
+        "V4B-S005",
+        "V4B-S032"
+      ]
+    },
+    {
+      "name": "Transferir experiência de agente",
+      "scenario": "Trajetórias de sucesso contêm convenções de ferramentas.",
+      "strategy": "Extraia memórias com pré-condições e versões; teste em novas situações antes de publicar. Só treine pesos se houver hipótese clara sobre comportamento estável.",
+      "small_model_role": "Um 8–14B pode usar memória procedural sem depender de memorizar todos os detalhes.",
+      "acceptance": "Sucesso executável e rejeição de procedimentos incompatíveis com o ambiente atual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S008",
+        "V4B-S012",
+        "V4B-S013",
+        "V4B-S005",
+        "V4B-S032"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Foco em habilidades delimitadas e dados verificados; volume sintético não substitui qualidade.",
+    "8_14b": "Avalie on-policy quando falhas surgem nos estados visitados pelo aluno.",
+    "15_30b": "Para 15–30B, compare benefício marginal com custo de professor, treino, exportação e manutenção.",
+    "training_or_runtime_requirements": "Proposta de pipeline: exige implementação e execução próprias. Caminho paramétrico requer treinamento; memória externa requer curadoria e recuperação.",
+    "do_not_use_when": "Não prometer transferir toda capacidade do professor nem afirmar que um aluno LAI foi treinado por esta entrega."
+  },
+  "connections": [
+    {
+      "target_id": "T178",
+      "relation": "feeds",
+      "how": "O caminho paramétrico organiza sinais de conhecimento ou comportamento do professor.",
+      "interface": "Dados, logits ou respostas e critérios de filtro.",
+      "condition": "Sinal disponível e objetivos explícitos.",
+      "acceptance": "Comparar aluno com referência independente em casos novos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S008",
+        "V4B-S012",
+        "V4B-S013",
+        "V4B-S005",
+        "V4B-S032"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T181",
+      "relation": "alternative",
+      "how": "O caminho de memória preserva procedimentos externos em vez de atualizar necessariamente pesos.",
+      "interface": "Trajetórias, pré-condições e versões.",
+      "condition": "Memórias são recuperáveis e executáveis no ambiente.",
+      "acceptance": "Testar deriva de ferramenta e erros sem falha sintática.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S008",
+        "V4B-S012",
+        "V4B-S013",
+        "V4B-S005",
+        "V4B-S032"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "P016",
+      "relation": "requires",
+      "how": "Avaliação proposta decide promoção do artefato sob contrato de implantação.",
+      "interface": "Manifesto, métricas e casos reservados.",
+      "condition": "Sem vazamento de dados para geração ou seleção.",
+      "acceptance": "Rejeitar melhora apenas aparente por contaminação ou mudança de teste.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S008",
+        "V4B-S012",
+        "V4B-S013",
+        "V4B-S005",
+        "V4B-S032"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Manter dados de avaliação fora da seleção do professor e das memórias.",
+    "Não chamar filtragem de respostas de treinamento quando nenhum estado persistente foi atualizado."
+  ],
+  "frontier_comparison": "A proposta busca competência especializada com custo menor. A comparação com fronteira deve igualar tarefa e informação disponível e incluir limites do aluno; não há promessa de inteligência geral transferida.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q008",
+      "V4B-Q009",
+      "V4B-Q023"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3D-S008",
+    "V4B-S012",
+    "V4B-S013",
+    "V4B-S005",
+    "V4B-S032"
+  ]
+}

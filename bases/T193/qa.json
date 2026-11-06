@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Guardrail é igual a censura textual?",
+    "answer": "Não. Inclui regras operacionais como autorização, limite de custo e validação de argumentos."
+  },
+  {
+    "question": "Um framework de guardrails garante segurança total?",
+    "answer": "Não. A cobertura e os caminhos de execução precisam ser verificados."
+  },
+  {
+    "question": "Prompt com regras é um guardrail completo?",
+    "answer": "Não. Pode orientar o modelo, mas efeitos operacionais exigem controles no caminho que realmente os executa."
+  },
+  {
+    "question": "Falha do verificador significa saída inválida?",
+    "answer": "Significa que a checagem não concluiu; a política deve decidir como proceder sem rotular desconhecimento como sucesso."
+  }
+]

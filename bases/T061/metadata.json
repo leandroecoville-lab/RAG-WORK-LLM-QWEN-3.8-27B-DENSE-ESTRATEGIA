@@ -1,0 +1,28 @@
+{
+  "id": "T061",
+  "name": "Content-Addressable Storage",
+  "canonical_name": "Content-Addressable Storage",
+  "canonical_id": "T061",
+  "aliases": [
+    "armazenamento endereçado por conteúdo",
+    "CAS"
+  ],
+  "category": "memoria",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T007",
+    "T015",
+    "T073"
+  ],
+  "source_ids": [
+    "A-S028",
+    "V3A-S038"
+  ],
+  "namespace": "T061",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T061",
+  "chunk_count": 9
+}

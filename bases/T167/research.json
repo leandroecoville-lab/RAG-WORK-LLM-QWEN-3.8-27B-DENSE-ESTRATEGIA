@@ -1,0 +1,52 @@
+{
+  "id": "T167",
+  "technical_details": "Para um bucket simples de capacidade B e reposição r, o saldo após intervalo Δt sem consumo é min(B, saldo+r·Δt). Se uma operação custa q e q>B, ela nunca cabe em uma reserva integral: esperar indefinidamente não resolve. Outra distinção é marcar, atrasar e rejeitar tráfego; token bucket pode apoiar as três políticas, mas elas produzem comportamentos diferentes para o consumidor.",
+  "boundary_condition": "O limite de rajada permite consumo imediato acima da taxa instantânea r; ele não promete espaçamento uniforme entre chamadas.",
+  "implementation_contract": {
+    "inputs": "Custo da operação, saldo, capacidade, taxa e instante de referência.",
+    "outputs": "Admissão, tempo de espera calculado ou rejeição por custo incompatível.",
+    "state": "Saldo, última reposição e reservas futuras eventualmente emitidas.",
+    "invariant": "O saldo não excede B e reservas concorrentes não gastam o mesmo crédito."
+  },
+  "tradeoffs": [
+    "Bucket grande absorve rajadas e pode sobrecarregar uma dependência sensível a simultaneidade.",
+    "Granularidade fina representa custo melhor e amplia contabilidade e sincronização."
+  ],
+  "failure_test": "Teste proposto: acumular saldo até o teto, lançar rajada concorrente e pedir uma operação maior que B; verificar teto, exclusão de dupla reserva e rejeição explícita do pedido impossível.",
+  "evaluation_plan": "Comparar bucket, janela fixa e espaçamento uniforme com a mesma taxa média. Medir rajada admitida, atraso e saturação da dependência. Dimensionar B pela tolerância real a rajadas, sem confundi-lo com quantidade máxima de tarefas simultâneas.",
+  "comparisons": [
+    {
+      "entry_id": "T137",
+      "relation": "complements",
+      "reason": "Rate limiting define política e escopo; o bucket é um mecanismo possível."
+    },
+    {
+      "entry_id": "T166",
+      "relation": "distinct_from",
+      "reason": "Um bucket compartilhado limita volume, mas não distribui automaticamente parcela justa entre clientes."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "RFC 2697 especifica buckets limitados com taxa de reposição e tamanhos de rajada para marcação de tráfego.",
+    "source_ids": [
+      "V3C-S021"
+    ],
+    "support": "related",
+    "caveat": "O RFC usa dois buckets; o contrato de bucket simples para chamadas é uma adaptação editorial."
+  },
+  "advanced_qa": [
+    {
+      "question": "Por que um pedido grande pode esperar para sempre?",
+      "answer": "Se seu custo excede a capacidade máxima e a reserva exige o custo integral, nenhuma reposição produzirá saldo suficiente."
+    },
+    {
+      "question": "A taxa r limita concorrência?",
+      "answer": "Não. Ela limita reposição de crédito; duração das operações determina quantas podem permanecer ativas."
+    }
+  ],
+  "source_ids": [
+    "V3C-S021",
+    "C-S004"
+  ],
+  "research_note": "Síntese técnica com contratos e testes propostos; não há alegação de implantação ou medição LAI."
+}

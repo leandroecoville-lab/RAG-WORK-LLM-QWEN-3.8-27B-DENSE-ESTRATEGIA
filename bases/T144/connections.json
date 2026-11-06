@@ -1,0 +1,40 @@
+{
+  "entry_id": "T144",
+  "edges": [
+    {
+      "edge_id": "E-T144-01",
+      "from": "T144",
+      "to": "T218",
+      "relation": "feeds",
+      "how": "Mudanças de hipótese e observações fornecem sinais para detectar estagnação.",
+      "interface": "Estado semântico, evidências novas e ação realizada.",
+      "condition": "O detector distingue repetição legítima após mudança de entrada.",
+      "acceptance": "Injetar respostas idênticas de ferramentas e exigir parada ou mudança fundamentada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S032"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T144-02",
+      "from": "T144",
+      "to": "T208",
+      "relation": "complements",
+      "how": "O supervisor delega exploração local e recebe resultado ou impedimento.",
+      "interface": "Missão, fatos confirmados e próximo requisito não satisfeito.",
+      "condition": "Escopo e término são definidos antes da delegação.",
+      "acceptance": "Comparar retorno do executor com o plano vigente, detectando desvio de objetivo.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S015"
+      ],
+      "case_ids": [
+        "V4C-C016"
+      ],
+      "evidence_stage": "production_documented"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

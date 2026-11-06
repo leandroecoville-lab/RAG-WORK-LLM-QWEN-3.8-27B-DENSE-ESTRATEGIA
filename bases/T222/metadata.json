@@ -1,0 +1,35 @@
+{
+  "id": "T222",
+  "name": "Context Budget Monitor",
+  "canonical_name": "Context Budget Monitor",
+  "canonical_id": "T222",
+  "aliases": [
+    "context budget monitoring",
+    "monitor de tokens"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T152",
+    "T212",
+    "T214",
+    "T238"
+  ],
+  "source_ids": [
+    "A-S006",
+    "A-S002",
+    "V2A-S025",
+    "V3C-S022",
+    "V3C-S031",
+    "V4C-S013",
+    "V4C-S014",
+    "V4C-S031"
+  ],
+  "namespace": "T222",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T222",
+  "chunk_count": 9
+}

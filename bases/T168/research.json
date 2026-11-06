@@ -1,0 +1,51 @@
+{
+  "id": "T168",
+  "technical_details": "Um limite suave precisa deixar margem para a ação corretiva que aciona. Compactar, gerar um handoff ou receber uma ferramenta em andamento também consome contexto; disparar a recuperação no último token disponível pode torná-la impossível. A margem pode considerar distribuição de crescimento por etapa e diferença entre contagem estimada e observada. O limite rígido continua sendo uma fronteira de rejeição, não uma rotina de recuperação.",
+  "boundary_condition": "Se a próxima unidade obrigatória já excede a capacidade restante, apenas elevar o limiar suave não torna a chamada viável.",
+  "implementation_contract": {
+    "inputs": "Ocupação estimada, crescimento pendente, capacidade e custo da recuperação.",
+    "outputs": "Continuar, compactar, dividir ou interromper com estado preservado.",
+    "state": "Margem reservada, picos observados e gatilhos já acionados.",
+    "invariant": "A ação de recuperação deve caber antes do limite rígido ou usar procedimento externo compatível."
+  },
+  "tradeoffs": [
+    "Margem ampla reduz emergências e diminui espaço útil para evidência.",
+    "Gatilhos adaptativos acompanham variabilidade e podem oscilar sem histerese ou controle de reentrada."
+  ],
+  "failure_test": "Teste proposto: entregar resultado grande enquanto uma compactação é planejada; verificar que a reserva inclui o material pendente e evita repetidas compactações sem ganho.",
+  "evaluation_plan": "Comparar limiares fixos e margens baseadas em tamanhos observados. Controlar ferramentas e modelos. Medir estouros, recuperação concluída, informação preservada e compactações redundantes. Definir fronteiras por carga e custo de continuidade.",
+  "comparisons": [
+    {
+      "entry_id": "T152",
+      "relation": "complements",
+      "reason": "A alocação distribui cotas; os limites determinam quando mudar de estratégia."
+    },
+    {
+      "entry_id": "T212",
+      "relation": "complements",
+      "reason": "Auto-compact é uma resposta possível ao gatilho suave, não sua definição completa."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A contagem antecipada pode considerar mensagens e ferramentas estruturadas para orientar tamanho de entrada.",
+    "source_ids": [
+      "V3C-S022"
+    ],
+    "support": "related",
+    "caveat": "As fronteiras suave/rígida e a reserva de recuperação são desenho editorial, não comportamento universal do endpoint."
+  },
+  "advanced_qa": [
+    {
+      "question": "Por que não compactar somente ao atingir o máximo?",
+      "answer": "Porque a própria operação ou resultados ainda em voo podem precisar de espaço que já não existe."
+    },
+    {
+      "question": "Limite suave deve ser um percentual fixo?",
+      "answer": "Não necessariamente. O tamanho da próxima etapa e o custo de recuperação podem ser mais informativos que uma fração constante."
+    }
+  ],
+  "source_ids": [
+    "V3C-S022"
+  ],
+  "research_note": "Síntese técnica com contratos e testes propostos; não há alegação de implantação ou medição LAI."
+}

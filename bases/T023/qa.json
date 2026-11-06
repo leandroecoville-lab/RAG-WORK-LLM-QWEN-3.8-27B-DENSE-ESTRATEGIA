@@ -1,0 +1,18 @@
+[
+  {
+    "question": "A árvore precisa ser binária?",
+    "answer": "Não. A ramificação deve refletir orçamento, estrutura e qualidade de agregação."
+  },
+  {
+    "question": "Qual diferença para sumarização em cadeia?",
+    "answer": "Na cadeia, cada versão acumula a anterior; na árvore, ramos podem ser sintetizados e atualizados separadamente."
+  },
+  {
+    "question": "Como manter uma citação precisa no resumo superior?",
+    "answer": "Preserve o caminho até a folha e cite a evidência original quando ela sustentar a afirmação. Citar apenas outro resumo pode esconder erro intermediário."
+  },
+  {
+    "question": "A raiz pode ser recalculada sem todas as folhas?",
+    "answer": "Pode usar filhos já válidos. Depois de mudanças, é necessário reconstruir os dependentes afetados, mantendo uma revisão consistente da árvore."
+  }
+]

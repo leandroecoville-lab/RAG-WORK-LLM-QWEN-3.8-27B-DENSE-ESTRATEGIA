@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Streaming controller é uma técnica de LLM?",
+    "answer": "É um componente de aplicação que coordena dados incrementais."
+  },
+  {
+    "question": "Um evento de fim significa que a tarefa inteira terminou?",
+    "answer": "Apenas se o contrato definir e verificar essa conclusão."
+  },
+  {
+    "question": "Dez chunks garantem pouca memória?",
+    "answer": "Não. Um chunk pode ser muito grande; a estratégia deve considerar tamanho quando memória for a restrição."
+  },
+  {
+    "question": "Fila vazia significa término?",
+    "answer": "Não. Pode significar que o produtor está temporariamente sem dados; término requer evento ou estado explícito."
+  }
+]

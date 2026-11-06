@@ -1,0 +1,120 @@
+{
+  "id": "R016",
+  "novelty": "A v3 discutiu posição da evidência. Aqui a avaliação distingue efeito de posição, competição entre evidências e organização estrutural do contexto.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Mover evidência sem alterar conteúdo permite investigar posição; adicionar distrações investiga competição. Misturar as duas intervenções impede saber por que a resposta mudou.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S019",
+        "V3A-S015",
+        "V4A-S019"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Compare agrupamento por fonte e por afirmação mantendo citações e condições. Evidência no começo pode parecer forte apenas porque recebe rótulo mais claro ou é repetida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S019",
+        "V3A-S015",
+        "V4A-S019"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Construa avaliações próprias por modelo e quantização, sem importar perguntas de benchmark. Meça acerto por posição absoluta, posição relativa e comprimento, além de sensibilidade a múltiplas evidências necessárias. Unidade de avaliação: pacote de contexto controlado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S019",
+        "V3A-S015",
+        "V4A-S019"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Montagem de contexto RAG",
+      "scenario": "Informação decisiva pode ficar enterrada.",
+      "strategy": "Ordenar por requisitos e inserir índice curto, mantendo detalhes originais; comparar com ordem aleatória sem duplicar evidência.",
+      "small_model_role": "3–7B lê pacotes curtos.",
+      "acceptance": "Ganho deve persistir quando posição e quantidade de tokens são controladas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S019",
+        "V3A-S015",
+        "V4A-S019"
+      ]
+    },
+    {
+      "name": "Tarefa de múltiplos saltos",
+      "scenario": "Resposta depende de dois trechos distantes.",
+      "strategy": "Agrupar trechos relacionados por ID de requisito e testar se leitor combina ambos; não assumir que colocar um no fim resolve integração.",
+      "small_model_role": "8–14B integra; 15–30B compara baseline.",
+      "acceptance": "Nenhuma conclusão pode depender de apenas um dos elos necessários.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S019",
+        "V3A-S015",
+        "V4A-S019"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Leitor com evidência compacta e organização explícita por campo.",
+    "8_14b": "Leitor de pacotes moderados testado em diferentes posições.",
+    "15_30b": "Leitor de contexto amplo após medir robustez a distração e relações distantes.",
+    "training_or_runtime_requirements": "Controle experimental de posição, comprimento e repetição; resultados dependem de modelo, tarefa e configuração.",
+    "do_not_use_when": "O sistema toma Lost in the Middle como lei universal ou presume que todos os modelos atuais reproduzem o mesmo perfil."
+  },
+  "connections": [
+    {
+      "target_id": "T024",
+      "relation": "complements",
+      "how": "Empacotar evidências por requisito com ordem testável.",
+      "interface": "Afirmação, trechos, posição e referências.",
+      "condition": "Builder registrar ordem efetivamente enviada.",
+      "acceptance": "Reordenar sem mudar conteúdo e medir decisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S019",
+        "V3A-S015",
+        "V4A-S019"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T013",
+      "relation": "requires",
+      "how": "Avaliar janela efetiva no consumidor concreto.",
+      "interface": "Modelo, tokenizer, comprimento e distribuição de evidências.",
+      "condition": "Teste cobrir carga relevante do produto.",
+      "acceptance": "Comparar posições sob o mesmo orçamento total.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S019",
+        "V3A-S015",
+        "V4A-S019"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não repetir a evidência para fabricar ganho de posição.",
+    "Não extrapolar um resultado histórico para todos os modelos 3–30B."
+  ],
+  "frontier_comparison": "Comparar robustez a posição com dados idênticos; vantagem numa configuração não prova capacidade geral de longo contexto.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q018",
+      "V4A-Q024"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S019",
+    "V3A-S015",
+    "V4A-S019"
+  ]
+}

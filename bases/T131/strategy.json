@@ -1,0 +1,120 @@
+{
+  "id": "T131",
+  "novelty": "A v3 tratou atualização de árvores e gargalo de CPU. A nova camada considera envelhecimento de padrões, compartilhamento controlado e avaliação da adaptação a mudanças de domínio.",
+  "deep_layers": [
+    {
+      "name": "Memória de padrões",
+      "detail": "Frequências antigas podem favorecer continuações que deixaram de ser comuns. Uma política proposta limita retenção por idade ou quantidade de tokens e compara seu efeito com índice só da requisição. O objetivo é evitar que histórico volumoso aumente custo e reduza relevância sem melhorar aceitação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S040",
+        "V3B-S001",
+        "V4B-S029"
+      ]
+    },
+    {
+      "name": "Compartilhamento e isolamento",
+      "detail": "Árvores locais e compartilhadas têm propriedades diferentes. Um índice compartilhado pode aproveitar repetição entre pedidos, mas exige separar domínios de acesso e versões de tokenização. O verificador do alvo não substitui a política de quais dados podem participar da proposta; metadados de origem precisam acompanhar o índice.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S040",
+        "V3B-S001",
+        "V4B-S029"
+      ]
+    },
+    {
+      "name": "Medição da contribuição",
+      "detail": "Compare contra n-gram simples e contra nenhum proponente. Separe custo de construção, atualização, consulta e verificação, incluindo aquecimento do índice. Se a avaliação começa com um índice preenchido por exemplos do teste, o resultado não representa uma implantação sem esse conhecimento prévio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S040",
+        "V3B-S001",
+        "V4B-S029"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Geração de código repetitiva",
+      "scenario": "Muitos pedidos seguem APIs e padrões semelhantes.",
+      "strategy": "Use histórico autorizado e versionado, limite retenção e avalie mudanças de biblioteca. O alvo verifica propostas, e compilação ou testes avaliam a tarefa depois.",
+      "small_model_role": "Um 8–14B pode produzir alterações locais com repertório repetitivo.",
+      "acceptance": "Medir latência e correção executável, incluindo APIs raras e mudanças de versão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S040",
+        "V3B-S001",
+        "V4B-S029"
+      ]
+    },
+    {
+      "name": "Lotes com documentos padronizados",
+      "scenario": "Saídas compartilham trechos e estruturas.",
+      "strategy": "Construa um índice a partir de dados permitidos, mantenha um controle frio e teste deriva no padrão. Evite transformar o índice em repositório invisível de informações sensíveis.",
+      "small_model_role": "Um 15–30B pode aproveitar repetição quando o custo de verificação justifica a estrutura.",
+      "acceptance": "Comparar ganho líquido depois de incluir manutenção de CPU e memória.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S040",
+        "V3B-S001",
+        "V4B-S029"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Uma árvore sofisticada pode ser desnecessária para poucos pedidos e alvos baratos.",
+    "8_14b": "Repetição entre tarefas pode justificar estudo, com limites claros de retenção.",
+    "15_30b": "Em alta concorrência, CPU e sincronização podem limitar o sistema antes da GPU.",
+    "training_or_runtime_requirements": "Runtime e algoritmo de confirmação corretos; não exige atualização dos pesos do alvo.",
+    "do_not_use_when": "Não tratar benchmark de Suffix Decoding como prova de implantação nem assumir que frequência equivale a correção."
+  },
+  "connections": [
+    {
+      "target_id": "T130",
+      "relation": "alternative",
+      "how": "N-gram simples é um baseline que ajuda a justificar a árvore de sufixos.",
+      "interface": "Mesmo histórico permitido e política de verificação.",
+      "condition": "Orçamentos de memória e CPU comparáveis.",
+      "acceptance": "Comparar ganho líquido e sensibilidade à mudança de domínio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S040",
+        "V3B-S001",
+        "V4B-S029"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T080",
+      "relation": "complements",
+      "how": "O horizonte pode reagir à aceitação e ao custo de consulta.",
+      "interface": "Propostas por posição e duração da rodada.",
+      "condition": "Ajuste não usa dados futuros nem altera a distribuição-alvo.",
+      "acceptance": "Medir adaptação após mudança controlada na repetição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S040",
+        "V3B-S001",
+        "V4B-S029"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Eliminar referências a sequências removidas e corrigir contagens relacionadas.",
+    "Separar aquecimento legítimo de vazamento do conjunto de avaliação."
+  ],
+  "frontier_comparison": "A comparação com fronteira deve avaliar o gerador completo na tarefa. A árvore melhora proposta de continuações; não adiciona compreensão geral nem transforma cópia provável em verdade.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q001",
+      "V4B-Q018"
+    ],
+    "scope_note": "Fonte primária de Suffix Decoding e métricas de runtime consultadas. O caso selecionado é pesquisa; implantação específica de bigtech não foi confirmada neste recorte."
+  },
+  "source_ids": [
+    "B-S040",
+    "V3B-S001",
+    "V4B-S029"
+  ]
+}

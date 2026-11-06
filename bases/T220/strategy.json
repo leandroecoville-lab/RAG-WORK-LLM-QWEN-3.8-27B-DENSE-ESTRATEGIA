@@ -1,0 +1,115 @@
+{
+  "id": "T220",
+  "novelty": "A v3 separava tipos de erro e efeito incerto. A camada nova usa reparo mínimo, validação de intenção e escalonamento por diagnóstico para evitar que um argumento válido faça a operação errada.",
+  "deep_layers": [
+    {
+      "name": "Reparo mínimo explicável",
+      "detail": "Produza uma diferença entre chamada original e corrigida, indicando qual erro cada mudança resolve. Corrigir nome de campo não autoriza mudar recurso ou ampliar seleção. Se o reparo exige adivinhar informação ausente, devolva necessidade de contexto em vez de preencher um valor plausível apenas para satisfazer o schema.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S004",
+        "V3C-S038"
+      ]
+    },
+    {
+      "name": "Fronteira de não execução",
+      "detail": "Reparo automático simples é apropriado quando há evidência de rejeição antes do efeito. Depois de timeout ou erro interno genérico, consulte a operação original antes de reenviar. Um parser local pode rejeitar antes da rede; um erro retornado pelo serviço precisa ser interpretado conforme seu contrato, não pela aparência do texto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026",
+        "V2A-S012"
+      ]
+    },
+    {
+      "name": "Diagnóstico hierárquico",
+      "detail": "Tente primeiro transformações determinísticas autorizadas, como normalização de enum conhecida. Use LLM quando o erro exige relação entre objetivo, ferramenta e schema. Trocar ferramenta ou recurso é decisão de plano e deve passar por validação mais forte que um ajuste de formato. Cada reparo mantém a identidade da intenção quando ela permanece a mesma.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013",
+        "V3C-S038"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Ferramenta exige schema estrito",
+      "scenario": "Um pequeno modelo emite argumento com tipo ou nome errado.",
+      "strategy": "Retorne erro estruturado e schema relevante, peça somente a correção mínima e valide novamente antes de executar. Preserve zeros à esquerda e unidades de identificadores; uma conversão aparentemente óbvia pode alterar o alvo. Limite ciclos e registre a classe que não foi resolvida.",
+      "small_model_role": "3–7B pode reparar formato curto; 8–14B relaciona campo e significado.",
+      "acceptance": "Proposta: corrigir sintaxe sem mudar recurso, quantidade ou efeito pretendido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S004",
+        "V3C-S013"
+      ]
+    },
+    {
+      "name": "Catálogo mudou durante a missão",
+      "scenario": "A ferramenta selecionada teve revisão incompatível.",
+      "strategy": "Resolva contrato vigente e compare com a intenção registrada. Se existir tradução sem perda, aplique adaptador testado; se a mudança exigir novo dado ou alterar efeito, volte ao planejador. Não usar tentativa e erro em produção como mecanismo de descoberta de schema.",
+      "small_model_role": "15–30B analisa incompatibilidade; runtime faz tradução validada e controle de efeitos.",
+      "acceptance": "Proposta: nenhuma chamada executada com parâmetros inventados para satisfazer versão nova.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013",
+        "C-S026"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Correções de formato e enum em chamadas pequenas, com validação determinística.",
+    "8_14b": "Reparo semântico local quando objetivo e dados necessários estão explícitos.",
+    "15_30b": "Replanejar escolha de ferramenta diante de mudança de capacidade, sem ocultar a mudança de intenção.",
+    "training_or_runtime_requirements": "Erros estruturados, schema versionado, prova de não execução ou reconciliação e limite de tentativas.",
+    "do_not_use_when": "Não reenviar efeito desconhecido nem preencher identificadores por similaridade sem fonte."
+  },
+  "connections": [
+    {
+      "target_id": "T141",
+      "relation": "complements",
+      "how": "Validar estrutura antes e depois do reparo, preservando separadamente os invariantes de intenção.",
+      "interface": "Chamada original, diff de argumentos e resultado de validação.",
+      "condition": "Schema corresponde à versão executável.",
+      "acceptance": "Reparo passa parser e conserva alvo e unidade corretos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S013"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T243",
+      "relation": "complements",
+      "how": "Resolver desfecho incerto antes de permitir nova chamada corrigida.",
+      "interface": "Identificador da operação e estado observado no destino.",
+      "condition": "Timeout não foi tratado automaticamente como ausência de efeito.",
+      "acceptance": "Nenhuma duplicação após erro retornado tarde.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Limitar reparos evita transformar uma chamada inválida em busca ilimitada de combinações.",
+    "Um argumento aceito pelo schema pode continuar violando o requisito de negócio."
+  ],
+  "frontier_comparison": "Compare taxa de chamadas corretas e efeitos errados entre modelos com o mesmo verificador. Reparo de formato pode favorecer 3–30B, mas não supre informação ausente ou escolha equivocada de ferramenta.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q009",
+      "V4C-Q013",
+      "V4C-Q023"
+    ],
+    "scope_note": "Gateway e middleware fornecem contratos; a política de reparo mínimo é proposta. Não confundir reparadores de código AutoClean com reparo de argumentos de ferramenta."
+  },
+  "source_ids": [
+    "V3C-S004",
+    "V3C-S038",
+    "C-S026",
+    "V2A-S012",
+    "V4C-S013",
+    "V3C-S013"
+  ]
+}

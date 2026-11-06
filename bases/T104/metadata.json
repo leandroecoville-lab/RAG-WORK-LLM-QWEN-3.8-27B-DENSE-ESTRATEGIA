@@ -1,0 +1,32 @@
+{
+  "id": "T104",
+  "name": "Radix Attention",
+  "canonical_name": "RadixAttention",
+  "canonical_id": "T104",
+  "aliases": [
+    "RadixAttention"
+  ],
+  "category": "inferencia",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T082",
+    "T103",
+    "T105",
+    "T171"
+  ],
+  "source_ids": [
+    "B-S022",
+    "V3B-S011",
+    "V4B-S031",
+    "V4D-S017",
+    "V4D-S018",
+    "V4D-S019"
+  ],
+  "namespace": "T104",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T104",
+  "chunk_count": 9
+}

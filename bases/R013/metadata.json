@@ -1,0 +1,33 @@
+{
+  "id": "R013",
+  "name": "Letta MemFS",
+  "canonical_name": "Letta MemFS — memória versionada em arquivos",
+  "canonical_id": "R013",
+  "aliases": [
+    "MemFS",
+    "Letta / Letta MemFS"
+  ],
+  "category": "referencias",
+  "kind": "project",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "R002",
+    "R014",
+    "R027",
+    "T014",
+    "T053",
+    "T072",
+    "T076"
+  ],
+  "source_ids": [
+    "A-S010",
+    "V2B-S003",
+    "V3A-S046"
+  ],
+  "namespace": "R013",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R013",
+  "chunk_count": 9
+}

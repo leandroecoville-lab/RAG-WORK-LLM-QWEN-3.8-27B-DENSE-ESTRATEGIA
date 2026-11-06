@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "C-S045",
+    "title": "Self-Refine: Iterative Refinement with Self-Feedback",
+    "url": "https://arxiv.org/abs/2303.17651",
+    "publisher": "Madaan e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "O próprio modelo gera, critica e revisa sem treino adicional no procedimento descrito.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn16view9"
+  },
+  {
+    "source_id": "V3B-S019",
+    "title": "Large Language Models Cannot Self-Correct Reasoning Yet",
+    "url": "https://arxiv.org/abs/2310.01798",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-10-03",
+    "supports": "Limites empíricos da autocorreção intrínseca sem feedback externo.",
+    "limitations": "Estudo de modelos e tarefas específicos; não é impossibilidade universal ou avaliação de modelos atuais do usuário.",
+    "web_ref": "turn180view5"
+  },
+  {
+    "source_id": "V4C-S009",
+    "title": "Using AI to Delete Code: Agentic Tech Debt Cleanup at Uber",
+    "url": "https://www.uber.com/us/en/blog/ai-code-cleanup/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "AutoClean operacional combina agentes, PolyglotPiranha via MCP, CI, fixers delimitados, verificações estáticas e CodeCourt por propriedades.",
+    "limitations": "Fonte primária aberta. Desempenho relatado pertence ao sistema e ao período descritos; não foi reproduzido e não comprova transferência para modelos 3–30B.",
+    "web_ref": "turn238view0"
+  }
+]

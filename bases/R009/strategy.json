@@ -1,0 +1,132 @@
+{
+  "id": "R009",
+  "novelty": "A v3 priorizou identidade do cache e isolamento. Esta camada transforma vLLM em uma opção de serviço a qualificar por workload, observabilidade e contrato do cliente, usando casos reais sem transferir suas configurações.",
+  "deep_layers": [
+    {
+      "name": "Escolha por workload",
+      "detail": "Prefill longo, decode longo e alta concorrência pressionam partes diferentes do runtime. Comece com uma configuração simples e meça fila, TTFT, intervalo entre tokens e respostas completas. Ativar todas as otimizações juntas impede identificar a causa de uma melhora ou regressão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S004",
+        "V3D-S005",
+        "V4B-S010",
+        "V4B-S008",
+        "V4B-S029"
+      ]
+    },
+    {
+      "name": "Recursos com maturidade distinta",
+      "detail": "A documentação atual inclui métricas experimentais de aceitação especulativa com restrições próprias. Trate disponibilidade e estabilidade por recurso e versão, não pelo nome vLLM. API de uso, motivo de término e métricas precisam ser validadas no cliente, inclusive em streaming e cancelamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S004",
+        "V3D-S005",
+        "V4B-S010",
+        "V4B-S008",
+        "V4B-S029"
+      ]
+    },
+    {
+      "name": "Casos que orientam hipóteses",
+      "detail": "LinkedIn descreve vLLM em Hiring Assistant e busca de vagas; Amazon relata Rufus com integração Neuron e execução multinó. Esses exemplos demonstram adoção em ambientes específicos. Não fixam hardware, versão, modelo ou melhor política para uma implantação 3–30B local.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S004",
+        "V3D-S005",
+        "V4B-S010",
+        "V4B-S008",
+        "V4B-S029"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Servidor especializado compartilhado",
+      "scenario": "Vários clientes usam modelos ou adapters relacionados.",
+      "strategy": "Defina domínios de confiança, limites e identidade completa antes de otimizar prefixos. Teste batching e cache com carga representativa, monitorando justiça e cancelamento.",
+      "small_model_role": "Um 8–14B pode atender tarefas de domínio com capacidade ajustada ao contexto real.",
+      "acceptance": "Qualidade-base preservada e prazos atendidos por cliente, sem mistura de estado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S004",
+        "V3D-S005",
+        "V4B-S010",
+        "V4B-S008",
+        "V4B-S029"
+      ]
+    },
+    {
+      "name": "Avaliar especulação",
+      "scenario": "Respostas longas apresentam padrões repetitivos.",
+      "strategy": "Escolha proponente compatível, confira métricas por pedido quando disponíveis e compare com alvo sozinho. Registre CPU, memória e capacidade, além da aceitação.",
+      "small_model_role": "Um 15–30B pode ser alvo; 3–7B também é possível se o custo adicional compensar.",
+      "acceptance": "Ganho líquido no serviço e correção do algoritmo sob configurações reais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S004",
+        "V3D-S005",
+        "V4B-S010",
+        "V4B-S008",
+        "V4B-S029"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Uma réplica simples pode bastar; complexidade de orquestração deve responder a carga medida.",
+    "8_14b": "Explore cache e batching antes de distribuir o modelo sem necessidade.",
+    "15_30b": "Reserve KV e temporários, verificando topologia quando houver paralelismo.",
+    "training_or_runtime_requirements": "Runtime precisa suportar arquitetura, dtype, quantização e recursos escolhidos na versão fixada.",
+    "do_not_use_when": "Não presumir que endpoint semelhante a outra API oferece semântica idêntica ou isolamento completo entre locatários."
+  },
+  "connections": [
+    {
+      "target_id": "T082",
+      "relation": "complements",
+      "how": "O Hiring Assistant usa prefix caching no serving descrito pelo LinkedIn.",
+      "interface": "Prefixo compatível e configuração de serviço.",
+      "condition": "Escopo do caso documentado.",
+      "acceptance": "Medir tokens realmente reutilizados e latência.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4B-S010"
+      ],
+      "case_ids": [
+        "V4B-C001"
+      ]
+    },
+    {
+      "target_id": "T088",
+      "relation": "complements",
+      "how": "O mesmo caso descreve continuous batching junto ao serving vLLM.",
+      "interface": "Sequências ativas e política de lote.",
+      "condition": "Configuração e modelo compatíveis.",
+      "acceptance": "Avaliar carga aberta e prazos por requisição.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4B-S010"
+      ],
+      "case_ids": [
+        "V4B-C001"
+      ]
+    }
+  ],
+  "failure_controls": [
+    "Fixar versões de modelo, tokenizer, runtime e parâmetros no manifest.",
+    "Não promover resposta truncada a sucesso só porque o HTTP terminou normalmente."
+  ],
+  "frontier_comparison": "vLLM é infraestrutura, não fonte de capacidade cognitiva. Compare o serviço completo de um modelo pequeno com fronteira em qualidade, custo e prazo sob condições explícitas.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q004",
+      "V4B-Q018"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3D-S004",
+    "V3D-S005",
+    "V4B-S010",
+    "V4B-S008",
+    "V4B-S029"
+  ]
+}

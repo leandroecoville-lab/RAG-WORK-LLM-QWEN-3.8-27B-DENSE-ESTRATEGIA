@@ -1,0 +1,35 @@
+{
+  "id": "T226",
+  "name": "Heartbeat de progresso",
+  "canonical_name": "Heartbeat de progresso",
+  "canonical_id": "T226",
+  "aliases": [
+    "progress heartbeat",
+    "batimento de progresso"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "protocol",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T225",
+    "T218",
+    "T060",
+    "T243"
+  ],
+  "source_ids": [
+    "V2A-S010",
+    "V3C-S040",
+    "V4C-S001",
+    "V2A-S011",
+    "C-S026",
+    "C-S030",
+    "V4C-S013",
+    "V3C-S028"
+  ],
+  "namespace": "T226",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T226",
+  "chunk_count": 9
+}

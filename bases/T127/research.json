@@ -1,0 +1,46 @@
+{
+  "id": "T127",
+  "technical_details": "O contêiner precisa preservar mais que valores numéricos: nomes, dimensões, tipos, offsets e metadados da arquitetura determinam como os bytes viram operações. Na especificação GGUF, offsets de tensores são relativos à região de dados e obedecem ao alinhamento declarado. Interpretar o offset como relativo ao começo do arquivo é um erro de leitura, mesmo quando o cabeçalho parece válido.",
+  "boundary_condition": "Um arquivo estruturalmente válido pode representar arquitetura, tokenizer ou tipo de tensor que o executor não suporta.",
+  "implementation_contract": {
+    "inputs": "Arquivo, versão de estrutura reconhecida, descritores de tensor e capacidades do leitor.",
+    "outputs": "Inventário validado e modelo carregado com interpretação explícita dos metadados.",
+    "state": "Mapa de regiões, alinhamento, tokenizer e tipos por tensor.",
+    "invariant": "Nenhuma dimensão, offset ou tamanho leva a leitura fora da região válida."
+  },
+  "tradeoffs": [
+    "Metadados autocontidos facilitam transporte e exigem compatibilidade semântica do leitor.",
+    "Tipos mistos podem melhorar qualidade e tornam inadequada uma única estimativa de bits por parâmetro."
+  ],
+  "failure_test": "Teste proposto: alterar alinhamento, truncar dados e deslocar um offset mantendo o cabeçalho legível. Esperar rejeição estrutural antes da inferência; testar tokenizer incompatível em etapa separada.",
+  "evaluation_plan": "Plano proposto: validar integridade e formas, depois comparar tokenização e logits com o artefato de origem sob transformação documentada. Medir tamanho por tipo de tensor e desempenho no executor real; distinguir erro de conversão de erro de quantização.",
+  "comparisons": [
+    {
+      "entry_id": "T124",
+      "relation": "distinct_from",
+      "reason": "W4A16 descreve uma escolha numérica; GGUF organiza dados e metadados de diversas representações."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A especificação GGUF define alinhamento global e offsets relativos ao início da região de dados dos tensores.",
+    "source_ids": [
+      "B-S037"
+    ],
+    "support": "direct",
+    "caveat": "O formato não certifica qualidade, compatibilidade universal ou um método único de quantização."
+  },
+  "advanced_qa": [
+    {
+      "question": "Extensão .gguf prova que foi quantizado?",
+      "answer": "Não. É necessário inspecionar os tipos dos tensores e o histórico de conversão."
+    },
+    {
+      "question": "Um hash correto prova conversão correta?",
+      "answer": "Prova integridade do arquivo identificado, não que pesos, tokenizer e metadados correspondam semanticamente ao modelo pretendido."
+    }
+  ],
+  "source_ids": [
+    "B-S037"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

@@ -1,0 +1,30 @@
+{
+  "id": "T171",
+  "name": "Cache-Aware Orchestration",
+  "canonical_name": "Cache-Aware Orchestration",
+  "canonical_id": "T171",
+  "aliases": [
+    "orquestração orientada a cache"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T002",
+    "T082",
+    "T157"
+  ],
+  "source_ids": [
+    "C-S022",
+    "C-S054",
+    "V3C-S015",
+    "B-S032",
+    "V4C-S014"
+  ],
+  "namespace": "T171",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T171",
+  "chunk_count": 9
+}

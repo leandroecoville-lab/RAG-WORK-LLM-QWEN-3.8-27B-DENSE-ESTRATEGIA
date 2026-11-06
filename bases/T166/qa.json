@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Aging garante estabilidade sob sobrecarga infinita?",
+    "answer": "Não. É necessário controlar admissão ou aumentar capacidade."
+  },
+  {
+    "question": "Justiça significa atendimento idêntico?",
+    "answer": "Não necessariamente; pesos diferentes podem ser justos se forem explícitos."
+  },
+  {
+    "question": "Rodízio de requisições garante equidade de custo?",
+    "answer": "Não quando requisições têm tamanhos diferentes; a unidade distribuída precisa representar o recurso escasso."
+  },
+  {
+    "question": "Aging resolve sobrecarga ilimitada?",
+    "answer": "Não. Ele reorganiza espera; capacidade insuficiente exige reduzir admissão, reagendar ou rejeitar trabalho."
+  }
+]

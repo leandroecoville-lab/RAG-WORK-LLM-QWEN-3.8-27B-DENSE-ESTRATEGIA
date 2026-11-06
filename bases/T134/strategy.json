@@ -1,0 +1,109 @@
+{
+  "id": "T134",
+  "novelty": "A v3 distinguiu margem, distância e elegibilidade. O aprofundamento adiciona roteamento hierárquico com resolução de entidade, múltiplas intenções e revisão do catálogo durante a execução.",
+  "deep_layers": [
+    {
+      "name": "Intenção não é endereço",
+      "detail": "Separe o rótulo semântico da identidade do recurso. Classificar uma mensagem como consulta financeira não determina conta, período ou ferramenta autorizada. Uma segunda etapa resolve esses parâmetros em dados confiáveis, evitando que semelhança de nomes seja tratada como autorização para operar sobre um objeto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ]
+    },
+    {
+      "name": "Hierarquia com custo de descoberta",
+      "detail": "Para catálogos extensos, selecione domínio, servidor e ferramenta em etapas, carregando descrições progressivamente. Cada descida consome contexto e pode propagar erro; retenha alternativas plausíveis até validar o schema e as pré-condições. Não force uma rota completa se o primeiro nível continua ambíguo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ]
+    },
+    {
+      "name": "Mudança de significado controlada",
+      "detail": "Versione exemplos, rótulos e ferramentas que os implementam. Ao dividir uma categoria antiga em duas, reavalie consultas fronteiriças e preserve a rota usada por missões em andamento. Uma alteração editorial na descrição pode mudar a seleção mesmo quando o código da ferramenta permanece idêntico.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013",
+        "V3C-S004"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Descoberta em catálogo corporativo",
+      "scenario": "Um assistente precisa escolher entre ferramentas de equipes distintas.",
+      "strategy": "Recupere poucos servidores por intenção; peça schema somente dos candidatos relevantes; confirme campos essenciais por catálogo ou pergunta. Se o domínio não oferece a operação, pare a descoberta com motivo, sem percorrer todo o catálogo indefinidamente.",
+      "small_model_role": "3–7B classifica domínios; 8–14B resolve composição curta de argumentos.",
+      "acceptance": "Proposta: medir ferramenta correta, etapas de descoberta e chamadas a destinos incompatíveis, usando intenções novas e ambíguas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ]
+    },
+    {
+      "name": "Pedido com ações independentes",
+      "scenario": "Uma mensagem pede consultar estoque e preparar uma descrição comercial.",
+      "strategy": "Decomponha intenções com saídas separadas; confirme dependências antes de permitir paralelismo. A consulta fornece fatos versionados à redação quando necessário. Não permita que uma rota textual execute implicitamente a mutação descrita no pedido.",
+      "small_model_role": "15–30B pode decompor solicitações compostas, com validação determinística das rotas.",
+      "acceptance": "Proposta: aceitar apenas quando todas as intenções obrigatórias têm resultado ou impedimento identificado e nenhum efeito excede o escopo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S015"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: reconhecer poucas classes estáveis e devolver desconhecido quando faltam entidades.",
+    "8_14b": "Proposta: selecionar ferramentas de um domínio e explicar ambiguidades entre contratos semelhantes.",
+    "15_30b": "Proposta: decompor pedidos com várias intenções e produzir dependências explicitamente verificáveis.",
+    "training_or_runtime_requirements": "Usar negativos difíceis, rótulos versionados e catálogo carregado por revisão; não basta ajustar embeddings.",
+    "do_not_use_when": "Evitar quando o destino correto depende de fatos ausentes que a linguagem da consulta não fornece."
+  },
+  "connections": [
+    {
+      "target_id": "T151",
+      "relation": "feeds",
+      "how": "A classificação reduz o conjunto cujos schemas serão carregados.",
+      "interface": "Domínio candidato, IDs de ferramentas e versão do catálogo.",
+      "condition": "A descoberta mantém opção de retornar ao nível anterior.",
+      "acceptance": "Testar categoria errada e exigir recuperação ou abstenção, sem execução indevida.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S013"
+      ],
+      "case_ids": [
+        "V4C-C014"
+      ]
+    },
+    {
+      "target_id": "T148",
+      "relation": "feeds",
+      "how": "O rótulo validado vira guarda, sem entregar o controle inteiro ao classificador.",
+      "interface": "Enum de rota, entidades resolvidas e estado desconhecido.",
+      "condition": "Pré-condições são verificadas novamente antes da ação.",
+      "acceptance": "Pedidos ambíguos devem seguir uma saída de esclarecimento ou investigação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S015"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não reutilizar rótulo de intenção após mudança material do pedido.",
+    "Registrar catálogos vazios e contratos ausentes como limites, sem inventar ferramenta equivalente."
+  ],
+  "frontier_comparison": "Compare com fronteira na seleção de ferramentas sob catálogo idêntico. O teste mede roteamento e cobertura de intenções, não capacidade geral de resolver cada domínio.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q009",
+      "V4C-Q010"
+    ],
+    "scope_note": "Omni MCP documenta descoberta por intenção. A arquitetura hierárquica proposta deve ser validada no catálogo local, sem alegar adoção das bandas pequenas."
+  },
+  "source_ids": [
+    "V4C-S013",
+    "V3C-S004",
+    "V4C-S015"
+  ]
+}

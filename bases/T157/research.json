@@ -1,0 +1,51 @@
+{
+  "id": "T157",
+  "technical_details": "No desenho de prefix caching do vLLM, a identidade de um bloco depende do hash do bloco anterior, dos tokens do bloco e de extras relevantes. Encadear o pai impede tratar o mesmo fragmento como equivalente após históricos diferentes. Conteúdo multimodal merece atenção: placeholders textuais iguais podem corresponder a imagens distintas, exigindo identidade adicional. Adaptadores e grupos de compartilhamento também podem afetar a chave.",
+  "boundary_condition": "Uma chave incompleta permite reutilização indevida; uma chave excessivamente específica destrói acertos sem necessidade.",
+  "implementation_contract": {
+    "inputs": "Tokens efetivos, ancestralidade do bloco, modelo e metadados de execução relevantes.",
+    "outputs": "Chave de bloco e resolução para KV compatível ou cache miss.",
+    "state": "Mapa de blocos, contagens de referência e política de expiração.",
+    "invariant": "Só blocos semanticamente equivalentes para o cálculo de atenção compartilham identidade."
+  },
+  "tradeoffs": [
+    "Isolar grupos de cache reduz compartilhamento e evita mistura de domínios que devem permanecer separados.",
+    "Blocos maiores reduzem metadados e podem perder reaproveitamento de prefixos parcialmente iguais."
+  ],
+  "failure_test": "Teste proposto: manter tokens de placeholder e trocar a imagem ou o adaptador; exigir cache miss quando a representação computada mudar.",
+  "evaluation_plan": "Comparar reutilização com cache desabilitado, controlando modelo, tokenizer e entradas. Medir acerto de blocos, tempo de prefill, memória e igualdade esperada dos resultados numéricos. Considerar também mudanças de prefixo e cache frio.",
+  "comparisons": [
+    {
+      "entry_id": "T171",
+      "relation": "complements",
+      "reason": "Orquestração usa identidade de prefixo para estimar onde existe trabalho reutilizável."
+    },
+    {
+      "entry_id": "T150",
+      "relation": "distinct_from",
+      "reason": "Singleflight compartilha uma execução em curso; hashing endereça estado computacional armazenado."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O design vLLM inclui hash do pai, tokens e extras como LoRA, hashes multimodais e salt.",
+    "source_ids": [
+      "V3C-S015"
+    ],
+    "support": "direct",
+    "caveat": "A documentação descreve aquela implementação; não se deve presumir a mesma composição em outros backends."
+  },
+  "advanced_qa": [
+    {
+      "question": "Texto igual garante KV igual?",
+      "answer": "Não. Modelo, tokenização, adaptador e entradas multimodais podem alterar o cálculo apesar da aparência textual."
+    },
+    {
+      "question": "Por que incluir a identidade do bloco anterior?",
+      "answer": "Porque a representação de um token depende do prefixo causal; igualar somente o bloco local ignora esse contexto."
+    }
+  ],
+  "source_ids": [
+    "V3C-S015"
+  ],
+  "research_note": "Contratos e ensaios são propostas; os resultados citados pertencem às fontes, sem reprodução local."
+}

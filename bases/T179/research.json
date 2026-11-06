@@ -1,0 +1,46 @@
+{
+  "id": "T179",
+  "technical_details": "O professor recebe informação privilegiada C e entrada X, enquanto o aluno opera somente com X. Se a resposta depende de uma variável de C que muda entre consultas e não pode ser inferida de X, não há como garantir reprodução exata em todos os casos. A destilação pode internalizar regularidades e procedimentos, mas não cria um canal para fatos futuros ou mudanças que nunca chegaram aos pesos.",
+  "boundary_condition": "Contexto variável indispensável precisa continuar disponível por entrada, ferramenta ou recuperação; removê-lo pode tornar a tarefa subdeterminada.",
+  "implementation_contract": {
+    "inputs": "Pares de entrada reduzida e contexto privilegiado, saídas revisadas e distribuição de implantação.",
+    "outputs": "Aluno capaz de executar o comportamento aprendido com o contexto reduzido declarado.",
+    "state": "Versões de contexto, pesos e exemplos usados na transferência.",
+    "invariant": "A avaliação retira do aluno exatamente a informação que será ausente na implantação."
+  },
+  "tradeoffs": [
+    "Contexto menor reduz custo por consulta e aumenta dependência da atualização dos pesos.",
+    "Comprimir comportamento dificulta localizar ou remover uma regra específica posteriormente."
+  ],
+  "failure_test": "Teste proposto: manter X igual e variar em C um fato decisivo, produzindo respostas corretas diferentes. Esperar identificação da ambiguidade, em vez de prometer que o aluno sem C reproduzirá ambas.",
+  "evaluation_plan": "Plano proposto: comparar professor com contexto, aluno base sem contexto e aluno destilado. Separar tarefas de procedimento estável e fatos variáveis; medir generalização e custo, aceitando apenas capacidades demonstradas sem vazamento do contexto privilegiado.",
+  "comparisons": [
+    {
+      "entry_id": "T181",
+      "relation": "distinct_from",
+      "reason": "AMD fornece memórias externas ao aluno; esta variante modifica parâmetros para reduzir contexto explícito."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Learning by Distilling Context treina o aluno com entrada da tarefa sem as instruções ou scratchpad usados para produzir a supervisão.",
+    "source_ids": [
+      "C-S033"
+    ],
+    "support": "direct",
+    "caveat": "O estudo demonstra tarefas específicas; não prova compressão sem perda de informação arbitrária."
+  },
+  "advanced_qa": [
+    {
+      "question": "Destilar é guardar uma cópia recuperável do contexto?",
+      "answer": "Não. O efeito fica distribuído nos parâmetros e não oferece consulta literal ou proveniência automática."
+    },
+    {
+      "question": "Quando manter RAG junto?",
+      "answer": "Quando fatos precisam de atualização, auditoria ou acesso condicionado à consulta, além do comportamento estável aprendido."
+    }
+  ],
+  "source_ids": [
+    "C-S033"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

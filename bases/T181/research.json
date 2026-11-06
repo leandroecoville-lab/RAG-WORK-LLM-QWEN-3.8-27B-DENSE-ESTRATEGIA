@@ -1,0 +1,46 @@
+{
+  "id": "T181",
+  "technical_details": "A separação entre memórias proativas e reativas cria pontos diferentes de falha. Estratégias e exemplos introduzidos no início podem enviesar todo o plano; convenções de função recuperadas apenas após erro ajudam a corrigir chamadas, mas podem não aparecer quando a ferramenta retorna sucesso estrutural com conteúdo semanticamente errado. A utilidade da trajetória do professor depende de o aluno conseguir executar o procedimento no ambiente atual.",
+  "boundary_condition": "Uma memória extraída de sucesso antigo pode ficar inválida após mudanças na API, permissões ou semântica da ferramenta.",
+  "implementation_contract": {
+    "inputs": "Trajetórias bem-sucedidas com evidências, contratos de ferramentas e tarefa do aluno.",
+    "outputs": "Memórias hierárquicas com origem e sugestões aplicáveis à execução atual.",
+    "state": "Versões de workflow, subtarefa, função e eventos que acionam recuperação.",
+    "invariant": "A memória preserva condições de validade e não transforma uma trajetória em regra universal."
+  },
+  "tradeoffs": [
+    "Memórias detalhadas aumentam orientação e consumo de contexto.",
+    "Recuperação somente após falha poupa tokens e pode perder erros sem exceção explícita."
+  ],
+  "failure_test": "Teste proposto: mudar um parâmetro da ferramenta e fazer outra chamada retornar sucesso com efeito errado. Esperar detecção por contrato externo; observar se a memória reativa cobre apenas o primeiro caso.",
+  "evaluation_plan": "Plano proposto: comparar aluno sem memória, memórias próprias e hierarquia do professor em tarefas novas. Medir sucesso verificado, chamadas, recuperação e tokens; realizar ablações por nível e validar atualização após mudança do ambiente.",
+  "comparisons": [
+    {
+      "entry_id": "T179",
+      "relation": "distinct_from",
+      "reason": "No AMD identificado, transferência ocorre por memória externa, sem atualização de pesos."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O paper AMD descreve workflow e subtarefa proativos, com memória de função recuperada reativamente após erros de chamada.",
+    "source_ids": [
+      "C-S035"
+    ],
+    "support": "direct",
+    "caveat": "O trabalho consultado consta como sob revisão; seus resultados não certificam generalização para ferramentas do usuário."
+  },
+  "advanced_qa": [
+    {
+      "question": "Por que sucesso do professor não basta?",
+      "answer": "Pode depender de ferramentas, contexto ou habilidades que o aluno não possui; condições de execução precisam acompanhar a memória."
+    },
+    {
+      "question": "AMD é necessariamente fine-tuning?",
+      "answer": "Não no método identificado por esta ficha: trata-se de framework training-free que fornece memórias ao aluno."
+    }
+  ],
+  "source_ids": [
+    "C-S035"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

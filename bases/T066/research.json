@@ -1,0 +1,53 @@
+{
+  "id": "T066",
+  "technical_details": "Resolver uma memória envolve transformar um nome lógico em uma versão concreta e depois obter seus bytes. Essas etapas podem observar estados diferentes se o alias mudar entre consultas. Uma resolução reproduzível devolve a versão efetiva junto do conteúdo e mantém leituras parciais ancoradas nela. Busca semântica pode sugerir outro registro quando a referência falha, mas não deve substituir silenciosamente a identidade originalmente solicitada.",
+  "boundary_condition": "O resolvedor não consegue garantir disponibilidade de objetos apagados ou comprovar autoria apenas por encontrar bytes cujo hash corresponde ao identificador.",
+  "implementation_contract": {
+    "inputs": "Referência, versão ou política de alias, escopo de acesso e faixa de leitura desejada.",
+    "outputs": "Conteúdo identificado, versão efetiva, integridade verificável e status explícito de completude.",
+    "state": "Mapeamento de aliases, revisões de acesso, referências já resolvidas e cursores vinculados à versão.",
+    "invariant": "Todas as partes de uma leitura compõem a mesma revisão, salvo solicitação explícita de atualização."
+  },
+  "tradeoffs": [
+    "Fixar versão favorece reprodução e pode impedir acesso à informação mais recente.",
+    "Resolver aliases automaticamente simplifica uso e exige tornar visível a revisão realmente consultada."
+  ],
+  "failure_test": "Teste proposto: alterar latest entre duas páginas de leitura. O resolvedor deve manter o objeto original ou invalidar o cursor, evitando entregar um documento composto de versões diferentes.",
+  "evaluation_plan": "Avaliação proposta: comparar referências versionadas e aliases mutáveis sob atualizações concorrentes. Medir leituras mistas, erros corretamente classificados, latência e recuperação de conteúdo; testar ausência, acesso negado e corrupção como estados distintos.",
+  "comparisons": [
+    {
+      "entry_id": "T015",
+      "relation": "complements",
+      "reason": "O uso de referências depende de um componente que consiga materializar conteúdo com identidade e escopo conhecidos."
+    },
+    {
+      "entry_id": "T061",
+      "relation": "complements",
+      "reason": "Endereçamento por conteúdo oferece verificação de identidade para objetos resolvidos, sem garantir disponibilidade."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "MCP Resources define recursos identificados por URI e operações de leitura; IPFS distingue identificação por conteúdo de localização.",
+    "source_ids": [
+      "V3A-S019",
+      "V3A-S038"
+    ],
+    "support": "related",
+    "caveat": "Imutabilidade de versão, autorização e cursores consistentes são contratos adicionais da implementação proposta."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um recurso encontrado já foi lido?",
+      "answer": "Não. Descoberta fornece metadados ou referência. A resposta deve distinguir recurso listado, conteúdo aberto e conteúdo parcialmente consumido."
+    },
+    {
+      "question": "Posso recuperar por similaridade após not_found?",
+      "answer": "Pode iniciar outra busca, mas devolva candidatos como alternativas. Não finja que um registro parecido é a versão exata que estava referenciada."
+    }
+  ],
+  "source_ids": [
+    "V3A-S019",
+    "V3A-S038"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

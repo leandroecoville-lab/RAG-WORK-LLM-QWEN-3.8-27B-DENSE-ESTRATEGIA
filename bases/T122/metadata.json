@@ -1,0 +1,36 @@
+{
+  "id": "T122",
+  "name": "RDMA para inferência distribuída",
+  "canonical_name": "RDMA para inferência distribuída",
+  "canonical_id": "T122",
+  "aliases": [
+    "Remote Direct Memory Access",
+    "GPUDirect RDMA"
+  ],
+  "category": "inferencia",
+  "kind": "protocol",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T102",
+    "T118",
+    "T120"
+  ],
+  "source_ids": [
+    "B-S033",
+    "V4B-S002",
+    "V4B-S008",
+    "V4D-S014",
+    "V4D-S015",
+    "V4D-S016",
+    "V4D-S017",
+    "V4D-S018",
+    "V4D-S019",
+    "V4D-S020"
+  ],
+  "namespace": "T122",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T122",
+  "chunk_count": 9
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "A-S033",
+    "title": "Learning to Compress Prompts with Gist Tokens",
+    "url": "https://arxiv.org/abs/2304.08467",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-04-17",
+    "supports": "Representações compactas de prompt treinadas com alterações de máscara de atenção.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn23view4"
+  },
+  {
+    "source_id": "A-S040",
+    "title": "Learning by Distilling Context",
+    "url": "https://arxiv.org/abs/2209.15189",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2022-09-30",
+    "supports": "Fine-tuning para internalizar benefícios de instruções e exemplos antes fornecidos no contexto.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn20view3"
+  },
+  {
+    "source_id": "V3A-S001",
+    "title": "LLMLingua-2: Data Distillation for Efficient and Faithful Task-Agnostic Prompt Compression",
+    "url": "https://aclanthology.org/2024.findings-acl.57/",
+    "publisher": "Autores / ACL Anthology",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Compressão extrativa treinada como classificação de tokens, com contexto bidirecional e distilação de dados.",
+    "limitations": "Consulta de fonte primária; não houve reprodução experimental. Resultados e APIs são limitados ao trabalho ou documentação citados, consultados em 2026-11-05.",
+    "web_ref": "turn81view0"
+  },
+  {
+    "source_id": "V4A-S028",
+    "title": "LLMLingua Series",
+    "url": "https://www.microsoft.com/en-us/research/project/llmlingua/",
+    "publisher": "Microsoft Research",
+    "source_type": "research_project",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Diferencia LLMLingua, LongLLMLingua e LLMLingua-2; página declara finalidade de demonstração de pesquisa.",
+    "limitations": "Não demonstra dez implantações bigtech nem desempenho de um pipeline local 3–30B.",
+    "web_ref": "turn264view2"
+  },
+  {
+    "source_id": "A-S011",
+    "title": "PRISM: Prompt Representation Internalization via Selective Compression into LoRA Weights",
+    "url": "https://aclanthology.org/2026.emnlp-main.2431/",
+    "publisher": "ACL Anthology / autores",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Diagnóstico de componentes do prompt e autodestilação seletiva em adaptadores LoRA.",
+    "limitations": "Identificação pelo título completo; há projetos homônimos. Resultados publicados não foram reproduzidos nesta entrega.",
+    "web_ref": "turn1view0"
+  }
+]

@@ -1,0 +1,53 @@
+{
+  "id": "T067",
+  "technical_details": "Recuperação ativa inclui duas decisões: quando consultar e o que formular como consulta. FLARE usa uma continuação antecipada para orientar busca quando tokens têm baixa confiança; Self-RAG aprende tokens de reflexão para decidir e avaliar recuperação. São mecanismos diferentes. Uma implementação que apenas pede ao modelo para dizer se está confiante não reproduz automaticamente o treinamento nem os sinais internos desses trabalhos.",
+  "boundary_condition": "Baixa confiança pode refletir estilo ou token raro, e alta confiança pode coexistir com erro factual; um gatilho isolado não cobre todas as lacunas.",
+  "implementation_contract": {
+    "inputs": "Geração em andamento, dependências conhecidas, sinais disponíveis e memória elegível.",
+    "outputs": "Busca motivada, evidências recuperadas e continuação revisada ou lacuna mantida.",
+    "state": "Consultas anteriores, origem dos gatilhos, orçamento e vínculos entre trechos gerados e suporte.",
+    "invariant": "Recuperar informação nova não converte o texto provisório que motivou a busca em evidência."
+  },
+  "tradeoffs": [
+    "Consultar durante a geração adapta a evidência ao que surge e aumenta latência sequencial.",
+    "Gatilhos aprendidos podem melhorar seleção e dependem do modelo treinado; regras explícitas são menos flexíveis e mais observáveis."
+  ],
+  "failure_test": "Teste proposto: gerar uma afirmação errada com alta confiança e outra correta com termo raro. A avaliação deve mostrar os falsos negativos e positivos do gatilho, mantendo verificações obrigatórias de dependência.",
+  "evaluation_plan": "Avaliação proposta: comparar recuperação inicial, periódica e ativa com limites iguais de chamadas. Medir cobertura de suporte, buscas desnecessárias, correções após busca e custo total; avaliar acionamento e qualidade da consulta separadamente.",
+  "comparisons": [
+    {
+      "entry_id": "T044",
+      "relation": "complements",
+      "reason": "Expansão é a política de ampliar contexto; recuperação ativa fornece mecanismos de acionamento durante a execução."
+    },
+    {
+      "entry_id": "T036",
+      "relation": "complements",
+      "reason": "Adaptação da consulta pode melhorar o conteúdo recuperado depois que o gatilho decide buscar."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "FLARE e Self-RAG propõem mecanismos distintos de recuperação adaptativa durante a produção de respostas.",
+    "source_ids": [
+      "V3A-S010",
+      "V3A-S009"
+    ],
+    "support": "direct",
+    "caveat": "A fonte não valida qualquer heurística verbal de autoconfiança como equivalente aos mecanismos treinados ou probabilísticos apresentados."
+  },
+  "advanced_qa": [
+    {
+      "question": "Preciso ter acesso a probabilidades de tokens?",
+      "answer": "Para reproduzir um gatilho baseado nelas, sim. Se a API não fornece o sinal, documente outra política em vez de alegar equivalência."
+    },
+    {
+      "question": "A busca deve substituir toda a resposta provisória?",
+      "answer": "Não necessariamente. Reavalie os trechos dependentes da nova evidência e preserve rastreabilidade; mudanças locais também podem alterar conclusões posteriores."
+    }
+  ],
+  "source_ids": [
+    "V3A-S010",
+    "V3A-S009"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Qual a diferença operacional entre T069 e T179?",
+    "answer": "T069 escreve e relê memória externa. T179 destila comportamento de contexto para parâmetros por treinamento; os artefatos e a avaliação são diferentes."
+  },
+  {
+    "question": "O resumo pode substituir definitivamente o histórico?",
+    "answer": "Não como regra geral. A proposta conserva evidência original para auditoria, correção e recuperação de detalhes que a síntese perdeu."
+  },
+  {
+    "question": "Posso desfazer uma consolidação?",
+    "answer": "Se mantiver originais e versões, pode substituir a síntese e reindexar derivados. Isso não desfaz respostas ou efeitos externos já produzidos."
+  },
+  {
+    "question": "O resumo precisa ser incluído em toda chamada?",
+    "answer": "Somente quando relevante. Armazená-lo não altera o modelo; sua influência depende de leitura, recuperação ou outro caminho explícito de condicionamento."
+  }
+]

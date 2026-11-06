@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Consolidação pode apagar os originais?",
+    "answer": "O desenho recomendado conserva evidências conforme a retenção e guarda a síntese como derivação."
+  },
+  {
+    "question": "É fine-tuning automático?",
+    "answer": "Não. Consolidar registros externos não modifica os pesos; isso exige outra etapa de treinamento."
+  },
+  {
+    "question": "Toda consolidação deve apagar os registros originais?",
+    "answer": "Não. Apagar impede auditoria e reprocessamento; retenção dos originais é uma decisão separada, com custo e finalidade próprios."
+  },
+  {
+    "question": "Como lidar com duas fontes incompatíveis?",
+    "answer": "Conserve as versões e o conflito, delimitando tempo, identidade e autoridade. A síntese deve comunicar a divergência quando não há base para resolvê-la."
+  }
+]

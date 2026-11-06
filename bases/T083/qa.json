@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Existe um algoritmo único chamado Advanced Prefix Caching?",
+    "answer": "Não foi identificado como denominação única; o registro organiza extensões operacionais do cache de prefixos."
+  },
+  {
+    "question": "Salt resolve autorização inteira?",
+    "answer": "Não. Restringe reutilização no cache compatível; autenticação e autorização continuam necessárias no serviço."
+  },
+  {
+    "question": "Hash forte elimina todos os erros?",
+    "answer": "Não. Omissão de campos da identidade e referências expiradas são defeitos lógicos independentes de colisões criptográficas."
+  },
+  {
+    "question": "Uma colisão simulada deve ser ignorada?",
+    "answer": "Não. Ela testa a política de conflito ou a validação secundária, explicitando o comportamento seguro previsto pelo contrato."
+  }
+]

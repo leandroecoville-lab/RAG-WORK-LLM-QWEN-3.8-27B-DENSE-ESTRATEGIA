@@ -1,0 +1,35 @@
+{
+  "id": "T148",
+  "name": "Conditional Branching",
+  "canonical_name": "Conditional Branching",
+  "canonical_id": "T148",
+  "aliases": [
+    "ramificação condicional"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T134",
+    "T143",
+    "T160"
+  ],
+  "source_ids": [
+    "C-S013",
+    "V3C-S006",
+    "V4C-S004",
+    "V3C-S032",
+    "V3C-S028",
+    "V4C-S002",
+    "V4C-S015",
+    "V3C-S013",
+    "V3C-S018",
+    "V4C-S003"
+  ],
+  "namespace": "T148",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T148",
+  "chunk_count": 9
+}

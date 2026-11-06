@@ -1,0 +1,40 @@
+{
+  "entry_id": "T111",
+  "edges": [
+    {
+      "edge_id": "E-T111-01",
+      "from": "T111",
+      "to": "T097",
+      "relation": "feeds",
+      "how": "Conexões selecionadas são convertidas em blocos processáveis.",
+      "interface": "Índices, ocupação e máscaras de borda.",
+      "condition": "A conversão não amplia indevidamente o campo visível.",
+      "acceptance": "Comparar lista lógica e máscara realmente executada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S025",
+        "V4B-S017"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T111-02",
+      "from": "T111",
+      "to": "T107",
+      "relation": "complements",
+      "how": "Profiling mede seleção, movimentação e computação conjuntamente.",
+      "interface": "Tempo por fase e bytes transportados.",
+      "condition": "Mesmo conjunto de consultas e contexto.",
+      "acceptance": "Confirmar redução no caminho crítico, não apenas em FLOPs estimados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S025",
+        "V4B-S017"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

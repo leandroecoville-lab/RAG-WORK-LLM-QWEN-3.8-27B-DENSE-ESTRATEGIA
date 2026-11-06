@@ -1,0 +1,157 @@
+{
+  "coverage": {
+    "entry_id": "T208",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 1,
+    "verified_bigtech_llm_production_exact": 1,
+    "verified_ai_lab_production_exact": 1,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 9,
+    "target_met": false,
+    "strict_case_ids": [
+      "V4C-C016"
+    ],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Planner–Executor / Plan-and-Execute",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C007",
+      "company": "Anthropic",
+      "system": "Claude Research — sistema multiagente",
+      "title": "Pesquisa com líder, subagentes e recuperação operacional",
+      "evidence_level": "production_documented",
+      "observed_use": "A Anthropic relata a passagem de seu sistema Research a produção, com líder, subagentes paralelos, ferramentas e checkpoints.",
+      "technical_mechanism": "O líder decompõe perguntas, delega objetivos e formatos, agrega resultados e preserva estado; ferramentas podem executar em paralelo e falhas são tratadas com adaptação e proteções determinísticas.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "C-S030"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T169",
+          "match": "exact",
+          "rationale": "Subagentes possuem contextos próprios no sistema relatado."
+        },
+        {
+          "entry_id": "T237",
+          "match": "exact",
+          "rationale": "O líder delega pesquisa e recebe resultados condensados."
+        },
+        {
+          "entry_id": "T139",
+          "match": "exact",
+          "rationale": "O relato identifica chamadas paralelas de ferramentas."
+        },
+        {
+          "entry_id": "T147",
+          "match": "exact",
+          "rationale": "O líder cria subagentes em paralelo e agrega suas saídas."
+        },
+        {
+          "entry_id": "T208",
+          "match": "exact",
+          "rationale": "Responsabilidades de líder planejador e trabalhadores são explícitas."
+        },
+        {
+          "entry_id": "T155",
+          "match": "exact",
+          "rationale": "Prompt engineering e simulações foram usados para corrigir falhas de delegação."
+        },
+        {
+          "entry_id": "T060",
+          "match": "exact",
+          "rationale": "O sistema utiliza checkpoints regulares e retomada após erros."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "Rubricas de avaliação ilustram verificações propostas, não o produto editorial LAI."
+        }
+      ],
+      "small_model_transfer": "Proposta: reservar agentes 3–30B a buscas delimitadas e extração com fontes, escalando síntese difícil conforme verificação. Medir custo total e cobertura, pois paralelismo aumenta consumo.",
+      "limits": "A implantação usa modelos Claude citados pelo operador; não demonstra que 3–30B reproduzam seus resultados. Ganhos do estudo interno não são transferidos; execução assíncrona plena aparece como direção futura.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4C-C007",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T208",
+        "match": "exact",
+        "rationale": "Responsabilidades de líder planejador e trabalhadores são explícitas."
+      }
+    },
+    {
+      "case_id": "V4C-C016",
+      "company": "LinkedIn / Microsoft",
+      "system": "Hiring Assistant",
+      "title": "Planner–executor com mailbox e tarefas assíncronas",
+      "evidence_level": "production_documented",
+      "observed_use": "A engenharia do LinkedIn descreve o produto levado à disponibilidade global, com instâncias por recrutador, identidade, mailbox e supervisão.",
+      "technical_mechanism": "Um planejador produz plano estruturado; o executor usa ciclo ReAct local. Subagentes são ferramentas, e mensagens/eventos conectam conversa, trabalho em background e atualizações da interface.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S015"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T143",
+          "match": "exact",
+          "rationale": "Planejamento estruturado antecede execução de tarefas."
+        },
+        {
+          "entry_id": "T144",
+          "match": "exact",
+          "rationale": "O executor utiliza ReAct dentro do plano."
+        },
+        {
+          "entry_id": "T208",
+          "match": "exact",
+          "rationale": "Planner e executor têm responsabilidades explícitas."
+        },
+        {
+          "entry_id": "T237",
+          "match": "exact",
+          "rationale": "Subagentes são modelados como ferramentas especializadas."
+        },
+        {
+          "entry_id": "T154",
+          "match": "exact",
+          "rationale": "Instância e mailbox conservam continuidade da interação."
+        },
+        {
+          "entry_id": "T172",
+          "match": "family",
+          "rationale": "Canal por sessão e transmissão parcial são documentados, mas não todo o contrato de controle de fluxo, backpressure e cancelamento desta ficha."
+        },
+        {
+          "entry_id": "T207",
+          "match": "family",
+          "rationale": "Memória cognitiva conserva contexto, sem comprovar o mesmo algoritmo do Memory Stream."
+        },
+        {
+          "entry_id": "P011",
+          "match": "analogy",
+          "rationale": "Ciclo de vida e mailbox inspiram responsabilidades do executor proposto."
+        }
+      ],
+      "small_model_transfer": "Proposta: usar 3–30B em classificação de tarefas, execução de buscas e extração de critérios dentro de escopos fechados; manter estado, aprovação e integração de eventos fora da LLM.",
+      "limits": "Fonte de arquitetura de produto, não autorização para automatizar decisões de contratação. Não estabelece paridade de modelos pequenos nem confirma LangGraph ou LangChain apenas por usar agentes.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4B-C001",
+      "deployment_domain": "llm_application",
+      "deduplication_note": "Consolidado com V4B-C001 para contagem. Mapeamentos e versões das fontes permanecem separados; não se presume simultaneidade de todos os mecanismos.",
+      "mapping": {
+        "entry_id": "T208",
+        "match": "exact",
+        "rationale": "Planner e executor têm responsabilidades explícitas."
+      }
+    }
+  ]
+}

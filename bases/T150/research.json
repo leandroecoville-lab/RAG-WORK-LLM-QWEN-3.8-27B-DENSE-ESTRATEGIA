@@ -1,0 +1,51 @@
+{
+  "id": "T150",
+  "technical_details": "A equivalência de solicitações precisa incluir mais que o texto visível: versão do recurso, parâmetros efetivos, identidade de escopo e nível de consistência podem mudar o resultado. Singleflight distribui inclusive o mesmo erro aos aguardantes; se todos repetirem imediatamente, forma-se uma nova rajada. No código Go consultado, Forget libera futuras chamadas da espera pela execução anterior, sem cancelá-la; isso permite coexistência de trabalhos para a mesma chave.",
+  "boundary_condition": "Coalescer operações com efeitos diferentes ou dados de escopos distintos viola a semântica, mesmo quando os argumentos aparentam igualdade.",
+  "implementation_contract": {
+    "inputs": "Chave de equivalência completa, função de leitura e deadline de cada interessado.",
+    "outputs": "Resultado compartilhado, erro e indicação de participação na execução comum.",
+    "state": "Execução líder, aguardantes e ciclo de vida da chave.",
+    "invariant": "Cancelar um aguardante não cancela implicitamente trabalho ainda necessário aos demais."
+  },
+  "tradeoffs": [
+    "Compartilhar reduz trabalho repetido e acopla a latência dos aguardantes ao líder.",
+    "Esquecer uma chave destrava novas tentativas e pode duplicar carga enquanto a chamada anterior termina."
+  ],
+  "failure_test": "Teste proposto: cancelar um aguardante, manter outro e chamar Forget enquanto a operação está ativa; verificar separadamente resultado compartilhado e possibilidade de nova execução.",
+  "evaluation_plan": "Comparar sem coalescência e com coalescência sob rajadas de chaves populares e falhas. Medir execuções físicas por intenção de leitura, espera, erros compartilhados e memória retida. Separar efeitos de cache posterior e compartilhamento apenas em andamento.",
+  "comparisons": [
+    {
+      "entry_id": "T157",
+      "relation": "distinct_from",
+      "reason": "Hash de prefixo localiza estado de inferência; singleflight coordena uma execução ativa por chave."
+    },
+    {
+      "entry_id": "T162",
+      "relation": "distinct_from",
+      "reason": "Idempotência limita efeito lógico; coalescência não a garante entre processos ou após término."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A implementação Go documenta que Forget permite novas chamadas sem esperar pela chamada anterior.",
+    "source_ids": [
+      "V3C-S011"
+    ],
+    "support": "direct",
+    "caveat": "Essa semântica é da implementação inspecionada, não uma propriedade universal de todos os coalescedores."
+  },
+  "advanced_qa": [
+    {
+      "question": "Coalescer erros equivale a cache negativo?",
+      "answer": "Não. O erro é compartilhado entre aguardantes da chamada ativa; guardá-lo depois exige política adicional de expiração."
+    },
+    {
+      "question": "A chave pode ser só o nome do documento?",
+      "answer": "Não se revisão, escopo ou parâmetros alterarem a leitura; a chave deve representar equivalência real do resultado."
+    }
+  ],
+  "source_ids": [
+    "V3C-S011"
+  ],
+  "research_note": "Detalhamento e avaliação propostos; a fonte apoia o mecanismo, sem comprovar implementação LAI."
+}

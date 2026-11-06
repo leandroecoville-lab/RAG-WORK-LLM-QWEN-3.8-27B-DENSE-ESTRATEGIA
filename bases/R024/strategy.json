@@ -1,0 +1,119 @@
+{
+  "id": "R024",
+  "novelty": "A v3 definiu manifesto de build e slots. Esta camada trata distribuição CPU/GPU, concorrência local e seleção de quantização como decisões conjuntas, sem transformar portabilidade em desempenho presumido.",
+  "deep_layers": [
+    {
+      "name": "Execução híbrida real",
+      "detail": "Offload de camadas ou operações muda onde pesos e temporários residem e pode introduzir transferências. Meça CPU, GPU e memória de sistema, incluindo prefill e decode. Um arquivo que cabe em RAM não garante prazo aceitável, e maior uso da GPU não implica automaticamente melhor tempo completo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S012",
+        "V2B-S020",
+        "B-S037"
+      ]
+    },
+    {
+      "name": "Slots e concorrência",
+      "detail": "Slots representam recursos de geração e estado; aumentar quantidade pode elevar throughput ou dividir recursos demais. Teste mistura de contextos e cancelamentos, garantindo limpeza de estado entre pedidos incompatíveis. A configuração deve preservar limites por usuário e não apenas maximizar ocupação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S012",
+        "V2B-S020",
+        "B-S037"
+      ]
+    },
+    {
+      "name": "Build como artefato",
+      "detail": "Backends e otimizações dependem do build e do dispositivo. Guarde commit, flags relevantes, bibliotecas e hash do GGUF. Ao atualizar, compare tokenização, templates e resultados antes de medir velocidade, porque uma mudança funcional pode parecer melhoria de desempenho por gerar saídas diferentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S012",
+        "V2B-S020",
+        "B-S037"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Aplicação local offline",
+      "scenario": "O domínio permite um modelo pequeno com dados locais.",
+      "strategy": "Escolha GGUF suportado, valide template e configure recursos segundo o dispositivo. Use ferramentas determinísticas para operações críticas e mantenha limites de contexto claros.",
+      "small_model_role": "Um 3–7B pode atender extração ou reescrita estreita sem pressupor conexão externa.",
+      "acceptance": "Qualidade e tempo medidos no dispositivo, com memória e energia quando relevantes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S012",
+        "V2B-S020",
+        "B-S037"
+      ]
+    },
+    {
+      "name": "Servidor de equipe pequena",
+      "scenario": "Poucos usuários compartilham um host.",
+      "strategy": "Teste slots, batching e offload com chegadas realistas. Inclua pedidos longos que pressionam KV e observe justiça, não apenas throughput médio.",
+      "small_model_role": "Um 8–14B pode ser adequado se a memória física e o prazo forem suficientes.",
+      "acceptance": "Respostas completas sem vazamento de estado ou falhas sob concorrência prevista.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S012",
+        "V2B-S020",
+        "B-S037"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Portabilidade e implantação simples podem ser úteis, mas qualidade do checkpoint continua central.",
+    "8_14b": "Compare quantizações e offload mantendo template e geração fixos.",
+    "15_30b": "15–30B pode exigir memória de sistema e transferências que dominam latência; medir antes de escolher.",
+    "training_or_runtime_requirements": "Runtime C/C++ com modelos e backends suportados. GGUF não garante arquitetura reconhecida pelo build.",
+    "do_not_use_when": "Não apresentar README como prova de uso em bigtech nem compatibilidade de todo modelo ou GPU."
+  },
+  "connections": [
+    {
+      "target_id": "T127",
+      "relation": "requires",
+      "how": "GGUF fornece tensores e metadados usados pelo runtime.",
+      "interface": "Arquivo identificado e capacidades do leitor.",
+      "condition": "Arquitetura e tipos de tensor suportados.",
+      "acceptance": "Inspecionar metadados e comparar tokenização.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S012",
+        "V2B-S020",
+        "B-S037"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T087",
+      "relation": "complements",
+      "how": "Batching e slots devem ser avaliados como política de concorrência do servidor.",
+      "interface": "Pedidos ativos e orçamento de contexto.",
+      "condition": "Configuração suporta a carga pretendida.",
+      "acceptance": "Medir fila, memória e cancelamento efetivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S012",
+        "V2B-S020",
+        "B-S037"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Verificar se a atualização mudou defaults ou template.",
+    "Não confundir tamanho do arquivo com consumo total durante geração."
+  ],
+  "frontier_comparison": "Compare a solução local com fronteira em tarefas delimitadas e incluindo custo operacional. llama.cpp amplia opções de execução; não assegura paridade cognitiva ou latência por si só.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q026"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3D-S012",
+    "V2B-S020",
+    "B-S037"
+  ]
+}

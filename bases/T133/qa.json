@@ -1,0 +1,18 @@
+[
+  {
+    "question": "O roteador sabe qual modelo acertará?",
+    "answer": "Ele estima a adequação; a estimativa pode estar errada e precisa de avaliação."
+  },
+  {
+    "question": "Roteamento exige treinar uma rede?",
+    "answer": "Não. Regras explícitas são um baseline útil antes de um classificador aprendido."
+  },
+  {
+    "question": "É correto interpretar escore 0,8 como 80% de acerto?",
+    "answer": "Somente se o escore tiver essa semântica e calibração demonstrada; um limiar de roteamento pode representar outra quantidade."
+  },
+  {
+    "question": "Como evitar aprender apenas com rotas já escolhidas?",
+    "answer": "Usar avaliação emparelhada separada, com resultados das alternativas e custo registrado, antes de alterar a política."
+  }
+]

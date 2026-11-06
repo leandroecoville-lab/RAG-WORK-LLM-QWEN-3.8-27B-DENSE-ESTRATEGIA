@@ -1,0 +1,46 @@
+{
+  "id": "T087",
+  "technical_details": "A latência observada combina espera na fila e serviço do lote. Aumentar a janela de agregação pode melhorar utilização e simultaneamente piorar respostas em tráfego esparso. Em um lote retangular com padding, sum(comprimentos)/(número_de_sequências·maior_comprimento) estima a fração de posições úteis; essa conta descreve desperdício estrutural, não prevê diretamente o tempo de um kernel com caminhos especializados.",
+  "boundary_condition": "Agregação dinâmica de requisições independentes não resolve automaticamente o estado autoregressivo nem substitui escalonamento por iteração.",
+  "implementation_contract": {
+    "inputs": "Requisições com identidade, forma, prazo e instante de chegada.",
+    "outputs": "Lotes compatíveis e respostas associadas aos solicitantes corretos.",
+    "state": "Fila, deadline original, limites de tamanho e cancelamentos.",
+    "invariant": "Novas chegadas não reiniciam indefinidamente o prazo da requisição mais antiga."
+  },
+  "tradeoffs": [
+    "Esperar mais aumenta oportunidades de agregação e custo de fila.",
+    "Agrupar por comprimento reduz padding, mas pode postergar classes pouco frequentes."
+  ],
+  "failure_test": "Teste proposto: alternar rajadas e longos intervalos, incluindo uma requisição extensa e cancelamentos. Esperar cumprimento do limite de espera e ausência de troca de respostas após reordenação.",
+  "evaluation_plan": "Plano proposto: comparar execução individual, lotes fixos e agregação dinâmica com mesma chegada e hardware. Medir espera, serviço, throughput útil, padding e latências de cauda; aceitar configuração apenas dentro do objetivo de serviço de cada classe.",
+  "comparisons": [
+    {
+      "entry_id": "T088",
+      "relation": "distinct_from",
+      "reason": "Continuous batching altera participantes entre iterações, além de formar lotes na entrada."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O Triton permite limitar o atraso para juntar requisições e envia o lote disponível quando o prazo termina.",
+    "source_ids": [
+      "B-S047"
+    ],
+    "support": "direct",
+    "caveat": "A documentação recomenda esse batcher para modelos sem estado; integração autoregressiva exige cuidados adicionais."
+  },
+  "advanced_qa": [
+    {
+      "question": "Lote maior é sempre mais eficiente?",
+      "answer": "Não. Memória, formas, preenchimento e custo das operações podem mudar a região eficiente."
+    },
+    {
+      "question": "Qual throughput contabilizar?",
+      "answer": "Trabalho útil concluído, acompanhado de erros e tempo de espera; posições de padding não representam serviço entregue."
+    }
+  ],
+  "source_ids": [
+    "B-S047"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

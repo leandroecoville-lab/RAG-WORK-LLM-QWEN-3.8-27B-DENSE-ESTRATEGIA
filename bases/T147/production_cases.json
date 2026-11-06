@@ -1,0 +1,273 @@
+{
+  "coverage": {
+    "entry_id": "T147",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 1,
+    "verified_other_operator_production_exact": 2,
+    "unique_cases_associated": 4,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Parallel Fan-Out",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C007",
+      "company": "Anthropic",
+      "system": "Claude Research — sistema multiagente",
+      "title": "Pesquisa com líder, subagentes e recuperação operacional",
+      "evidence_level": "production_documented",
+      "observed_use": "A Anthropic relata a passagem de seu sistema Research a produção, com líder, subagentes paralelos, ferramentas e checkpoints.",
+      "technical_mechanism": "O líder decompõe perguntas, delega objetivos e formatos, agrega resultados e preserva estado; ferramentas podem executar em paralelo e falhas são tratadas com adaptação e proteções determinísticas.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "C-S030"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T169",
+          "match": "exact",
+          "rationale": "Subagentes possuem contextos próprios no sistema relatado."
+        },
+        {
+          "entry_id": "T237",
+          "match": "exact",
+          "rationale": "O líder delega pesquisa e recebe resultados condensados."
+        },
+        {
+          "entry_id": "T139",
+          "match": "exact",
+          "rationale": "O relato identifica chamadas paralelas de ferramentas."
+        },
+        {
+          "entry_id": "T147",
+          "match": "exact",
+          "rationale": "O líder cria subagentes em paralelo e agrega suas saídas."
+        },
+        {
+          "entry_id": "T208",
+          "match": "exact",
+          "rationale": "Responsabilidades de líder planejador e trabalhadores são explícitas."
+        },
+        {
+          "entry_id": "T155",
+          "match": "exact",
+          "rationale": "Prompt engineering e simulações foram usados para corrigir falhas de delegação."
+        },
+        {
+          "entry_id": "T060",
+          "match": "exact",
+          "rationale": "O sistema utiliza checkpoints regulares e retomada após erros."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "Rubricas de avaliação ilustram verificações propostas, não o produto editorial LAI."
+        }
+      ],
+      "small_model_transfer": "Proposta: reservar agentes 3–30B a buscas delimitadas e extração com fontes, escalando síntese difícil conforme verificação. Medir custo total e cobertura, pois paralelismo aumenta consumo.",
+      "limits": "A implantação usa modelos Claude citados pelo operador; não demonstra que 3–30B reproduzam seus resultados. Ganhos do estudo interno não são transferidos; execução assíncrona plena aparece como direção futura.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4C-C007",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T147",
+        "match": "exact",
+        "rationale": "O líder cria subagentes em paralelo e agrega suas saídas."
+      }
+    },
+    {
+      "case_id": "V4C-C006",
+      "company": "Netflix",
+      "system": "Conductor — plataforma interna atualizada",
+      "title": "Avaliação assíncrona e coordenação durável de workflows",
+      "evidence_level": "production_documented",
+      "observed_use": "A Netflix descreve Conductor em pipelines de mídia e anúncios, com Timestone, persistência de tarefas e mecanismos de reparação operacional.",
+      "technical_mechanism": "O motor avalia um blueprint e carrega dados específicos; a fila assíncrona e regras de estado reduzem disputas, enquanto estratégias sequenciais serializam execuções por chave.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S004",
+        "V4C-S003"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T159",
+          "match": "exact",
+          "rationale": "O relato inclui recuperação de processos distribuídos longos."
+        },
+        {
+          "entry_id": "T147",
+          "match": "exact",
+          "rationale": "Workflows incluem forks paralelos e junções."
+        },
+        {
+          "entry_id": "T148",
+          "match": "exact",
+          "rationale": "O DSL representa condicionais e outras transições."
+        },
+        {
+          "entry_id": "T160",
+          "match": "exact",
+          "rationale": "Blueprint e avaliação coordenam dependências e tarefas elegíveis."
+        },
+        {
+          "entry_id": "T228",
+          "match": "family",
+          "rationale": "Filas atrasadas e reparação apoiam retomada, sem provar uma política única de backoff exponencial."
+        },
+        {
+          "entry_id": "P011",
+          "match": "analogy",
+          "rationale": "O motor inspira responsabilidades do executor editorial."
+        },
+        {
+          "entry_id": "P014",
+          "match": "analogy",
+          "rationale": "Recuperação de workflows é analogia da capacidade proposta."
+        }
+      ],
+      "small_model_transfer": "Proposta: orquestrar chamadas pequenas com payloads externos por referência, lendo apenas resultados necessários à decisão; manter transições e concorrência fora do modelo.",
+      "limits": "Um único caso de plataforma, sem contar cada pipeline como caso adicional. Recursos explicitamente descritos como roadmap não são tratados como já implantados.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C006",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T147",
+        "match": "exact",
+        "rationale": "Workflows incluem forks paralelos e junções."
+      }
+    },
+    {
+      "case_id": "V4C-C010",
+      "company": "Uber",
+      "system": "AutoClean com PolyglotPiranha — evolução do cleanup",
+      "title": "Agentes delimitados e transformações determinísticas em cleanup contínuo",
+      "evidence_level": "production_documented",
+      "observed_use": "A Uber descreve AutoClean executando continuamente nos monorepos, produzindo diffs de remoção de flags com CI e validação antes da revisão humana.",
+      "technical_mechanism": "Agente chama transformação determinística por MCP; falhas de CI passam primeiro por fixers mecânicos; verificadores CodeCourt por propriedade executam em paralelo e agregam decisão.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S008",
+        "V4C-S009"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T140",
+          "match": "exact",
+          "rationale": "PolyglotPiranha é exposto ao agente por MCP."
+        },
+        {
+          "entry_id": "T232",
+          "match": "exact",
+          "rationale": "Transformações determinísticas de código ficam no PolyglotPiranha."
+        },
+        {
+          "entry_id": "T217",
+          "match": "exact",
+          "rationale": "Atualizações do diff são reavaliadas por CI até sucesso ou limite de tentativas."
+        },
+        {
+          "entry_id": "T237",
+          "match": "exact",
+          "rationale": "Fixers e verificadores recebem papéis e escopos específicos."
+        },
+        {
+          "entry_id": "T190",
+          "match": "exact",
+          "rationale": "Verificadores avaliam propriedades após geração e CI."
+        },
+        {
+          "entry_id": "T195",
+          "match": "exact",
+          "rationale": "Compilação e testes contribuem para validação do resultado."
+        },
+        {
+          "entry_id": "T200",
+          "match": "exact",
+          "rationale": "CodeCourt separa propriedades de aceitação do agente que fez a limpeza."
+        },
+        {
+          "entry_id": "T206",
+          "match": "family",
+          "rationale": "Propriedades como ausência de desvio de intenção verificam requisitos do processo, sem prova formal."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "O gate de propriedades inspira o componente proposto, sem demonstrar um produto LAI."
+        },
+        {
+          "entry_id": "T147",
+          "match": "exact",
+          "rationale": "CodeCourt executa revisores por propriedade em paralelo e agrega todos os resultados antes de encaminhar o diff."
+        }
+      ],
+      "small_model_transfer": "Proposta: 3–7B classifica falhas mecânicas; 8–14B propõe alteração localizada; 15–30B avalia propagação de mudanças. Transformações booleanas e gates permanecem determinísticos; cada banda precisa de avaliação própria.",
+      "limits": "O operador não informa que as faixas propostas de modelos reproduzam o sistema. CI verde não prova semântica, e vereditos de agentes continuam sujeitos a erro. Pipeline e sua evolução histórica contam uma vez.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C010",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T147",
+        "match": "exact",
+        "rationale": "CodeCourt executa revisores por propriedade em paralelo e agrega todos os resultados antes de encaminhar o diff."
+      }
+    },
+    {
+      "case_id": "V4C-C005",
+      "company": "Netflix",
+      "system": "Timestone",
+      "title": "Prioridade por deadline e exclusão de trabalho concorrente",
+      "evidence_level": "production_documented",
+      "observed_use": "A Netflix relata Timestone como fila operacional de Cosmos, Conductor e pipelines internos.",
+      "technical_mechanism": "Mensagens recebem deadlines para seleção EDF; filas exclusivas impedem processamento simultâneo do trabalho identificado como não paralelizável.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S003"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T149",
+          "match": "exact",
+          "rationale": "Fila de prioridade seleciona mensagens por deadlines."
+        },
+        {
+          "entry_id": "T174",
+          "match": "exact",
+          "rationale": "Seleção de trabalho respeita prioridade e restrições de concorrência."
+        },
+        {
+          "entry_id": "T147",
+          "match": "family",
+          "rationale": "O sistema limita paralelismo onde ele violaria estado; não é fan-out de ferramentas LLM."
+        },
+        {
+          "entry_id": "P011",
+          "match": "analogy",
+          "rationale": "Admissão e exclusão por chave apoiam o desenho proposto do executor."
+        }
+      ],
+      "small_model_transfer": "Proposta: pedidos 3–30B de leitura podem concorrer; edições na mesma base usam uma chave exclusiva. Comparar vazão útil e conflitos sem presumir que prioridade elimina starvation.",
+      "limits": "EDF não demonstra aging nem justiça por tenant. Uma fila consistente não garante exatamente uma vez dos efeitos feitos pelo worker.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C005",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T147",
+        "match": "family",
+        "rationale": "O sistema limita paralelismo onde ele violaria estado; não é fan-out de ferramentas LLM."
+      }
+    }
+  ]
+}

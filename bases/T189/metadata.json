@@ -1,0 +1,28 @@
+{
+  "id": "T189",
+  "name": "Best-of-N Verification",
+  "canonical_name": "Best-of-N Verification",
+  "canonical_id": "T189",
+  "aliases": [
+    "seleção do melhor de N"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T188",
+    "T190",
+    "T195"
+  ],
+  "source_ids": [
+    "C-S043",
+    "V3B-S018",
+    "V4B-S022"
+  ],
+  "namespace": "T189",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T189",
+  "chunk_count": 9
+}

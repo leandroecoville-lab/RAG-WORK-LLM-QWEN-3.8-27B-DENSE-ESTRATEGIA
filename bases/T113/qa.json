@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Tiling é chunking de documento?",
+    "answer": "Não. Divide operações numéricas dentro do kernel; o conteúdo lógico do prompt permanece igual."
+  },
+  {
+    "question": "Posso somar o ganho ao de FlashAttention?",
+    "answer": "Não automaticamente. Tiling é parte do mecanismo que já produz aquele ganho."
+  },
+  {
+    "question": "Tiling torna a atenção esparsa?",
+    "answer": "Não por si só. Todos os blocos permitidos ainda podem ser visitados; sparsity exige excluir conexões."
+  },
+  {
+    "question": "Por que testar strides não contíguos?",
+    "answer": "Um kernel que pressupõe layout incorreto pode ler endereços errados mesmo com shapes aparentemente compatíveis."
+  }
+]

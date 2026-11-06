@@ -1,0 +1,30 @@
+{
+  "id": "T127",
+  "name": "GGUF — formato de modelos, não método único de quantização",
+  "canonical_name": "GGUF — contêiner binário de modelos",
+  "canonical_id": "T127",
+  "aliases": [
+    "GGUF / formatos de quantização",
+    "GGUF",
+    "formato GGUF",
+    "GGUF não é algoritmo de quantização"
+  ],
+  "category": "inferencia",
+  "kind": "format",
+  "scope": "inventario",
+  "evidence_status": "terminology_correction",
+  "relationships": [
+    "T124",
+    "T125",
+    "P009"
+  ],
+  "source_ids": [
+    "B-S037",
+    "V3D-S012"
+  ],
+  "namespace": "T127",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T127",
+  "chunk_count": 9
+}

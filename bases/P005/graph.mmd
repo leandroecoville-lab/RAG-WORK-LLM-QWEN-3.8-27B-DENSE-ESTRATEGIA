@@ -1,0 +1,8 @@
+flowchart TD
+    P005["P005 Context & Memory Controller"]
+    T071["T071 Memory Promotion"]
+    P005 -. "requires: proposta" .-> T071
+    P004["P004 LAI Memory Runtime"]
+    P005 -. "feeds: proposta" .-> P004
+    P001["P001 Context Engine"]
+    P005 -. "feeds: proposta" .-> P001

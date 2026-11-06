@@ -1,0 +1,51 @@
+{
+  "id": "T148",
+  "technical_details": "Condições de fluxo devem diferenciar falso, desconhecido e erro de avaliação. Tratar ausência de evidência como falso pode enviar o workflow para uma ação prematura. Quando a condição vem de uma LLM, o valor precisa ser validado contra um conjunto fechado de rotas, e o estado utilizado na decisão deve ser registrado. Atualizações concorrentes podem tornar a decisão obsoleta entre avaliação e execução.",
+  "boundary_condition": "Uma guarda baseada em estado mutável precisa de revalidação ou vínculo de versão antes de efeitos dependentes daquela condição.",
+  "implementation_contract": {
+    "inputs": "Estado versionado, expressão da guarda ou classificação validada e mapa de destinos.",
+    "outputs": "Destino permitido ou estado de decisão inconclusiva.",
+    "state": "Valor observado, regra aplicada e revisão do estado.",
+    "invariant": "Toda saída da guarda pertence ao mapa de rotas e possui caminho de término."
+  },
+  "tradeoffs": [
+    "Condições determinísticas são auditáveis, mas exigem dados formalizados.",
+    "Classificação por modelo lida com linguagem ambígua e introduz variabilidade e custo de validação."
+  ],
+  "failure_test": "Teste proposto: remover um campo necessário à guarda e alterar o estado após sua avaliação; exigir inconclusão no primeiro caso e rejeição ou reavaliação da decisão obsoleta no segundo.",
+  "evaluation_plan": "Comparar regras, classificador e combinação dos dois usando estados com rótulos conhecidos. Medir rotas indevidas, ambiguidades corretamente preservadas e ciclos introduzidos. Escolher por erro de encaminhamento e custo, não apenas por acerto médio.",
+  "comparisons": [
+    {
+      "entry_id": "T134",
+      "relation": "complements",
+      "reason": "Roteamento semântico pode produzir um sinal, mas o grafo deve validar a transição."
+    },
+    {
+      "entry_id": "T142",
+      "relation": "complements",
+      "reason": "O framework fornece transições e estado; a guarda pertence ao contrato da tarefa."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "LangGraph permite transições condicionais e atualização de estado associada ao encaminhamento por Command.",
+    "source_ids": [
+      "V3C-S006"
+    ],
+    "support": "direct",
+    "caveat": "Um destino válido estruturalmente não demonstra que a condição semântica foi bem avaliada."
+  },
+  "advanced_qa": [
+    {
+      "question": "Desconhecido deve virar false automaticamente?",
+      "answer": "Não. A política precisa decidir se busca dados, espera ou termina inconclusiva; ausência e negação têm significados distintos."
+    },
+    {
+      "question": "Como tornar uma decisão reproduzível?",
+      "answer": "Persistir versão do estado, versão da regra e valor observado, em vez de recalcular a partir de um estado posterior."
+    }
+  ],
+  "source_ids": [
+    "V3C-S006"
+  ],
+  "research_note": "Detalhamento e avaliação propostos; a fonte apoia o mecanismo, sem comprovar implementação LAI."
+}

@@ -1,0 +1,130 @@
+{
+  "id": "P012",
+  "novelty": "Avança além de cobertura, hashes e independência já tratados na v3: propõe cascatas de verificação por risco, auditoria amostral das respostas aceitas e testes contra exploração do próprio verificador.",
+  "source_ids": [
+    "C-S048",
+    "C-S050",
+    "V4C-S009",
+    "C-S049"
+  ],
+  "deep_layers": [
+    {
+      "name": "Cascata com abstenção calibrada",
+      "detail": "Proposta: ordenar verificadores por custo e poder discriminativo medidos no domínio. Um teste barato pode reprovar cedo; sua aprovação não encerra automaticamente casos de alto risco. Calibrar limiares numa divisão de desenvolvimento e congelá-los antes da avaliação final. Medir curva de cobertura versus erro entre aceitos, incluindo o custo dos verificadores adicionais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S048",
+        "C-S050",
+        "V4C-S009",
+        "C-S049"
+      ]
+    },
+    {
+      "name": "Auditoria depois do aceite",
+      "detail": "Revisar uma amostra dos itens que passaram, incluindo respostas de alta confiança. Amostrar apenas rejeições deixa os falsos aceites invisíveis. Se erros raros forem superamostrados, guardar probabilidades de inclusão e reportar estratos separadamente ou ponderar a estimativa; não apresentar a amostra enriquecida como frequência natural do tráfego.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S048",
+        "C-S050",
+        "V4C-S009",
+        "C-S049"
+      ]
+    },
+    {
+      "name": "Exploração do juiz e testes discriminativos",
+      "detail": "Um gerador ajustado repetidamente ao mesmo juiz pode melhorar a pontuação sem melhorar o requisito. Manter testes finais fora do loop de ajuste e introduzir negativos conhecidos e transformações metamórficas cuja invariância seja justificada pelo domínio. Mutantes equivalentes ou transformações inválidas devem ser excluídos antes de julgar a qualidade do verificador.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S048",
+        "C-S050",
+        "V4C-S009",
+        "C-S049"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Leitor pequeno com escalada seletiva",
+      "scenario": "Grande volume de respostas factuais permite auditoria humana limitada.",
+      "strategy": "Executar checagem barata, escalar classes difíceis e auditar aleatoriamente parte dos aceitos; revisar política apenas fora da avaliação congelada.",
+      "small_model_role": "3–14B gera ou classifica alegações; aceitação depende da política calibrada, não de autoconfiança verbal.",
+      "acceptance": "Estimar falsos aceites por classe e custo por resultado correto; publicar cobertura e quantidade enviada à revisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S048",
+        "C-S050",
+        "V4C-S009",
+        "C-S049"
+      ]
+    },
+    {
+      "name": "Código que aprende a passar no juiz",
+      "scenario": "Repetidos reparos usam retorno de testes conhecidos e podem explorar lacunas.",
+      "strategy": "Separar feedback de desenvolvimento e testes finais; usar entradas metamórficas válidas e defeitos semânticos rotulados para medir discriminação.",
+      "small_model_role": "Modelo pequeno propõe candidatos; um executor compara propriedades independentes da pontuação narrativa.",
+      "acceptance": "Detectar defeitos inseridos sem reprovar transformações equivalentes; congelar avaliação após escolhas de hiperparâmetros.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S048",
+        "C-S050",
+        "V4C-S009",
+        "C-S049"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "3–7B: primeiro estágio barato quando sua taxa de falsos aceites estiver medida; abstenção deve ser permitida.",
+    "8_14b": "8–14B: juiz especializado de evidência em domínio estreito, sujeito a auditoria de exemplos aceitos.",
+    "15_30b": "15–30B: estágio adicional para classes difíceis apenas se o ganho discriminativo compensar custo e correlação.",
+    "training_or_runtime_requirements": "Exige rótulos independentes, política versionada, amostragem conhecida e avaliação separada do ajuste.",
+    "do_not_use_when": "Não otimizar indefinidamente no mesmo juiz ou tratar taxa de aprovação como qualidade verdadeira."
+  },
+  "connections": [
+    {
+      "target_id": "T198",
+      "relation": "complements",
+      "how": "Usar calibração empírica para definir quando aceitar, verificar novamente ou abster-se.",
+      "interface": "Score, classe da tarefa, versão da calibração e rótulos externos.",
+      "condition": "Há dados representativos suficientes para avaliar erro entre aceitos.",
+      "acceptance": "Curvas por classe mostram cobertura e erro; limiares não são escolhidos no conjunto final.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S048",
+        "C-S050",
+        "V4C-S009",
+        "C-S049"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T205",
+      "relation": "complements",
+      "how": "Aplicar equivalências justificadas como testes metamórficos do candidato e do juiz.",
+      "interface": "Transformação, precondições e propriedade que deve permanecer.",
+      "condition": "O domínio oferece relações semânticas conhecidas.",
+      "acceptance": "O sistema distingue violações reais de mudanças equivalentes sem depender de igualdade textual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S048",
+        "C-S050",
+        "V4C-S009",
+        "C-S049"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não interpretar ausência de erro numa amostra pequena como risco zero.",
+    "Não somar votos correlacionados como se fossem ensaios independentes.",
+    "Não esconder timeouts e abstinências ao calcular custo e cobertura."
+  ],
+  "frontier_comparison": "Comparar candidato 3–30B e baseline na mesma política, depois ablar a cascata. Auditar falsos aceites também na rota de fronteira; medir qualidade observada e incerteza sem chamar maior aprovação de maior inteligência.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q005",
+      "V4C-Q007",
+      "V4C-Q011"
+    ],
+    "scope_note": "P012 é proposta. AutoClean, Tricorder e reparadores industriais mostram mecanismos delimitados; não confirmam um verificador universal ou produto LAI."
+  }
+}

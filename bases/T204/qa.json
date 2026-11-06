@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Criar skill significa treinar GPT?",
+    "answer": "Não no sentido de atualizar pesos; fornece instruções e ferramentas reutilizáveis."
+  },
+  {
+    "question": "Skill substitui RAG?",
+    "answer": "Pode usar RAG para recuperar referências e exemplos necessários ao procedimento."
+  },
+  {
+    "question": "Uma skill é memória paramétrica?",
+    "answer": "Não. É um artefato externo consumido durante execução; aprendizado de pesos seria outro mecanismo."
+  },
+  {
+    "question": "Como evitar regras frágeis?",
+    "answer": "Documente pré-condições e parâmetros, teste variantes relevantes e preserve evidência dos limites encontrados em vez de transformar um exemplo em regra universal."
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Structure-aware é sempre semântico?",
+    "answer": "Ele reconhece estrutura formal; significado profundo ainda depende da interpretação e da pergunta."
+  },
+  {
+    "question": "Preciso guardar o texto integral?",
+    "answer": "Sim, para reconstrução, verificação e nova segmentação se o parser estiver errado."
+  },
+  {
+    "question": "A versão do splitter basta para reproduzir os chunks?",
+    "answer": "Não. Também registre o particionador e seus parâmetros. Alterar reconhecimento de títulos ou tabelas modifica a estrutura antes da divisão."
+  },
+  {
+    "question": "Uma tabela deve sempre permanecer inteira?",
+    "answer": "Somente se couber e for utilizável. A subdivisão precisa conservar identificação das colunas, unidades e vínculo com a tabela original."
+  }
+]

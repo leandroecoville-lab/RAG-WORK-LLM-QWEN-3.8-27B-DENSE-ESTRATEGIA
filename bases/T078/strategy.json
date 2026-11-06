@@ -1,0 +1,112 @@
+{
+  "id": "T078",
+  "novelty": "A v3 definiu Semantic Page Fault como analogia. Aqui o evento recebe critérios de detecção e resolução específicos por contrato de tarefa.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Detecte falta por requisito explícito: referência não aberta, campo obrigatório ausente ou conflito não resolvido. Não existe detector universal que saiba toda informação que o modelo deveria ter.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Uma carga resolve a falta apenas se satisfizer o requisito registrado. Conteúdo parecido pode aumentar tokens sem remover o bloqueio; manter estado aberto evita falso progresso.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare detecção por autoconfiança e por contrato. Meça faltas reais detectadas, alarmes indevidos e conclusões emitidas antes da resolução; incluir perguntas sem fonte disponível. Unidade de avaliação: lacuna semântica registrada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Resposta com citação",
+      "scenario": "Modelo possui título mas não conteúdo.",
+      "strategy": "Gerar falta de evidência, resolver referência e ler trecho antes de redigir afirmação factual. Se indisponível, declarar lacuna.",
+      "small_model_role": "3–7B verifica campos.",
+      "acceptance": "Nenhuma citação pode ser validada só pelo nome do arquivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010"
+      ]
+    },
+    {
+      "name": "Execução de procedimento",
+      "scenario": "Falta pré-condição para próxima ação.",
+      "strategy": "Suspender etapa, buscar dado específico e testar condição; se fonte retornar algo inconclusivo, manter bloqueio.",
+      "small_model_role": "8–14B identifica necessidade.",
+      "acceptance": "Ação só avança quando a pré-condição observável estiver satisfeita.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Detector de campos obrigatórios ausentes em schema fechado.",
+    "8_14b": "Detector de contradição ou referência insuficiente em pacote curto.",
+    "15_30b": "Planejador de como resolver lacunas interdependentes, com orçamento e parada.",
+    "training_or_runtime_requirements": "Contrato de tarefa, estados aberto/resolvido/indisponível e ferramenta de resolução; nomenclatura é editorial.",
+    "do_not_use_when": "A aplicação trata confiança subjetiva como prova de completude ou não possui fonte capaz de resolver a falta."
+  },
+  "connections": [
+    {
+      "target_id": "T066",
+      "relation": "requires",
+      "how": "Resolver identidade e abrir conteúdo faltante.",
+      "interface": "Requisito, referência, versão e seletor.",
+      "condition": "Abertura verificar o conteúdo esperado.",
+      "acceptance": "Retornar recurso homônimo e manter falta aberta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T044",
+      "relation": "feeds",
+      "how": "Expandir contexto com objetivo de resolver lacuna.",
+      "interface": "Lacuna, candidatos e orçamento restante.",
+      "condition": "Expansão vinculada à decisão bloqueada.",
+      "acceptance": "Carregar trecho irrelevante e impedir marcação como resolvido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "A-S010"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não apresentar analogia como padrão universal de memória virtual.",
+    "Não chamar toda baixa confiança de page fault."
+  ],
+  "frontier_comparison": "Comparar completude verificável por contrato; esse mecanismo organiza necessidades, não descobre automaticamente todos os desconhecidos.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S009",
+    "A-S010"
+  ]
+}

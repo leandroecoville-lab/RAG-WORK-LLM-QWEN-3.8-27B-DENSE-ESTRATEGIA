@@ -1,0 +1,6 @@
+flowchart TD
+    T137["T137 Rate Limiting"]
+    T167["T167 Token Bucket"]
+    T137 -->|"complements: produção documentada"| T167
+    T150["T150 Request Coalescing / Singleflight"]
+    T137 -. "complements: proposta" .-> T150

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "RRF mistura os valores de BM25 e cosine?",
+    "answer": "Ele usa posições nos rankings, evitando assumir que os escores têm a mesma escala."
+  },
+  {
+    "question": "Busca híbrida sempre vence?",
+    "answer": "Não. Qualidade de índices, filtros e fusão deve ser medida no conjunto de perguntas do domínio."
+  },
+  {
+    "question": "Peso igual significa contribuição igual?",
+    "answer": "Não. Escalas, cobertura e distribuição dos scores importam. Mesmo após normalização, pesos iguais não garantem influência semântica equivalente."
+  },
+  {
+    "question": "Qual canal devo remover se quiser reduzir custo?",
+    "answer": "Meça a evidência exclusiva que cada um recupera nas consultas relevantes. A decisão por média agregada pode prejudicar códigos raros ou linguagem do domínio."
+  }
+]

@@ -1,0 +1,52 @@
+{
+  "id": "T226",
+  "technical_details": "Heartbeat local e heartbeat persistido não são o mesmo evento. Temporal pode limitar a frequência de envio e manter apenas o detalhe mais recente antes da transmissão. Um crash nesse intervalo pode perder o avanço ainda não entregue. O cursor recuperável deve indicar uma fronteira cuja reexecução seja segura: registrar progresso antes do efeito pode pular trabalho; registrar depois pode exigir repetir uma operação já realizada.",
+  "boundary_condition": "O heartbeat comprova comunicação, mas somente um marcador ligado a trabalho confirmado sustenta retomada correta.",
+  "implementation_contract": {
+    "inputs": "Identidade da atividade, cursor confirmado, heartbeat timeout e detalhes de progresso.",
+    "outputs": "Sinal enviado, estado conhecido pelo serviço e informação para próxima tentativa.",
+    "state": "Último cursor local, último persistido conhecido e efeitos associados.",
+    "invariant": "O cursor não avança além do trabalho durável que pode ser reconstruído ou repetido com segurança."
+  },
+  "tradeoffs": [
+    "Heartbeats frequentes reduzem atraso de detecção e aumentam tráfego, sujeito a throttling.",
+    "Lotes maiores economizam comunicação e ampliam a quantidade de trabalho potencialmente repetido."
+  ],
+  "failure_test": "Teste proposto: concluir um lote e derrubar o worker antes de o heartbeat chegar ao serviço; exigir retomada sem pular itens e sem duplicar efeitos lógicos.",
+  "evaluation_plan": "Comparar periodicidade por tempo e por lote, controlando custo e idempotência. Medir atraso de falha, perda de cursor recente, repetição e latência de cancelamento. Escolher fronteira de progresso pela semântica do trabalho.",
+  "comparisons": [
+    {
+      "entry_id": "T060",
+      "relation": "complements",
+      "reason": "Detalhes de heartbeat podem funcionar como pequeno checkpoint de atividade, dentro do contrato do runtime."
+    },
+    {
+      "entry_id": "T162",
+      "relation": "complements",
+      "reason": "Idempotência protege itens cuja confirmação e progresso podem divergir durante falha."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Temporal documenta throttling de heartbeats e entrega de cancelamento associada a eles.",
+    "source_ids": [
+      "V2A-S010"
+    ],
+    "support": "direct",
+    "caveat": "O progresso só sobrevive se for entregue ao serviço; chamadas locais não confirmam persistência imediata."
+  },
+  "advanced_qa": [
+    {
+      "question": "Heartbeatar a cada item elimina perda de progresso?",
+      "answer": "Não necessariamente, porque o SDK pode agrupar envios e o processo pode cair antes da transmissão."
+    },
+    {
+      "question": "Por que cancelamento pode demorar?",
+      "answer": "Porque a atividade pode receber o sinal por heartbeat, cuja frequência e throttling influenciam a entrega."
+    }
+  ],
+  "source_ids": [
+    "V2A-S010",
+    "V3C-S040"
+  ],
+  "research_note": "Mecanismos referenciados em fontes primárias; contratos e verificação descritos são propostas, não ensaios executados."
+}

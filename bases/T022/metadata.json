@@ -1,0 +1,30 @@
+{
+  "id": "T022",
+  "name": "Instruction Compression",
+  "canonical_name": "Instruction Compression",
+  "canonical_id": "T022",
+  "aliases": [
+    "compressão de instruções"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T020",
+    "T155",
+    "T179"
+  ],
+  "source_ids": [
+    "A-S033",
+    "A-S040",
+    "V3A-S001",
+    "V4A-S028",
+    "A-S011"
+  ],
+  "namespace": "T022",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T022",
+  "chunk_count": 9
+}

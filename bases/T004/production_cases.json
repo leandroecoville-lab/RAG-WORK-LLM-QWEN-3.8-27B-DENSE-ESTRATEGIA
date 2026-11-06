@@ -1,0 +1,104 @@
+{
+  "coverage": {
+    "entry_id": "T004",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 2,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Summarization em cadeia",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4D-C003",
+      "company": "Google",
+      "system": "Pixel 8 Pro Recorder / Gemini Nano",
+      "title": "Resumo offline de gravações no Pixel",
+      "evidence_level": "production_documented",
+      "observed_use": "O lançamento de dezembro de 2023 disponibilizou resumo no Recorder processado no aparelho.",
+      "technical_mechanism": "Aplicação específica de um modelo local para condensar transcrições.",
+      "event_date": "2023-12-06",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4D-S005"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T006",
+          "match": "family",
+          "rationale": "Resumo é redução de conteúdo, mas não comprova algoritmo específico de compressão contextual."
+        },
+        {
+          "entry_id": "T004",
+          "match": "family",
+          "rationale": "Há sumarização; não está documentada uma cadeia de resumos."
+        },
+        {
+          "entry_id": "T069",
+          "match": "analogy",
+          "rationale": "Resumo de gravação é analogia de artefato externo, sem prova de consolidação de memória de agente."
+        }
+      ],
+      "small_model_transfer": "Proposta: reproduzir a fronteira da tarefa com transcrições delimitadas e verificar entidades, negações e compromissos contra o original antes de promover o resumo a memória.",
+      "limits": "Fonte não identifica checkpoint/contagem de parâmetros; não o certificar como 3–30B. Não prova mecanismo de memória durável, chunking hierárquico ou raciocínio geral.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4D-C003",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T004",
+        "match": "family",
+        "rationale": "Há sumarização; não está documentada uma cadeia de resumos."
+      }
+    },
+    {
+      "case_id": "V4D-C004",
+      "company": "Google",
+      "system": "Chrome built-in AI / Summarizer API",
+      "title": "API local de sumarização no navegador",
+      "evidence_level": "operational_product",
+      "observed_use": "A documentação lista a Summarizer API no Chrome estável desde a versão 138.",
+      "technical_mechanism": "Interface local de geração com modelo gerenciado pelo navegador e requisitos de disponibilidade.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4D-S007"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T006",
+          "match": "family",
+          "rationale": "Sumarização acessível via API; não demonstra técnica particular de poda/compressão."
+        },
+        {
+          "entry_id": "T004",
+          "match": "family",
+          "rationale": "Não documenta cadeia de sumarização por trás da API."
+        },
+        {
+          "entry_id": "T140",
+          "match": "analogy",
+          "rationale": "API de aplicação não equivale a function calling aprendido pelo modelo."
+        }
+      ],
+      "small_model_transfer": "Proposta: detectar disponibilidade local e limitar a tarefa a texto fornecido; manter o contrato de saída igual quando um backend alternativo for necessário.",
+      "limits": "Disponibilidade não constitui prova de implantação em cliente, volume de tráfego ou porte exato do modelo. As etapas de preview e estável precisam ser verificadas por API.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4D-C004",
+      "deployment_domain": "llm_framework",
+      "mapping": {
+        "entry_id": "T004",
+        "match": "family",
+        "rationale": "Não documenta cadeia de sumarização por trás da API."
+      }
+    }
+  ]
+}

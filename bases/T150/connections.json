@@ -1,0 +1,39 @@
+{
+  "entry_id": "T150",
+  "edges": [
+    {
+      "edge_id": "E-T150-01",
+      "from": "T150",
+      "to": "T137",
+      "relation": "complements",
+      "how": "Uma execução compartilhada consome uma reserva de produtor, conservando custos de entrega aos consumidores.",
+      "interface": "Chave, participantes e reserva de execução.",
+      "condition": "Cancelar um consumidor não liquida a reserva de todos.",
+      "acceptance": "Testar entradas e saídas concorrentes sem saldo duplicado ou perdido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S011"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T150-02",
+      "from": "T150",
+      "to": "T171",
+      "relation": "complements",
+      "how": "Coalescência protege misses enquanto cache reaproveita resultados ou cálculo já armazenado.",
+      "interface": "Estado ativo, resultado publicado e versão de cache.",
+      "condition": "As políticas de expiração são separadas.",
+      "acceptance": "Alterar recurso durante a chamada e impedir publicação na revisão errada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S022",
+        "V3C-S015"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

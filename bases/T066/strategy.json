@@ -1,0 +1,112 @@
+{
+  "id": "T066",
+  "novelty": "A v3 exigiu resolução pinada. Aqui referências são resolvidas em duas fases para distinguir identidade, disponibilidade e conteúdo efetivamente lido.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Primeiro resolver identidade e versão; depois abrir o recorte e verificar integridade. Um recurso encontrado pode estar indisponível, parcial ou exigir conversão que altera offsets.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S019",
+        "V3A-S038"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Use alias apenas para descoberta. Ao iniciar tarefa dependente, fixe revisão e registre atualização detectada; seguir alias latest silenciosamente pode misturar evidências de momentos diferentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S019",
+        "V3A-S038"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare resolução direta e fallback semântico em referências quebradas. Meça substituições indevidas, falsos sucessos e tempo de recuperação; fallback deve retornar candidato, não fingir identidade exata. Unidade de avaliação: resolução de referência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S019",
+        "V3A-S038"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Handoff entre agentes",
+      "scenario": "Referências viajam sem conteúdo integral.",
+      "strategy": "Resolver cada artefato, verificar recortes e construir lista de faltas antes de aceitar tarefa. Pedir substituição explícita quando origem sumiu.",
+      "small_model_role": "3–7B interpreta manifesto.",
+      "acceptance": "Nenhuma referência ausente pode aparecer como evidência lida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S019",
+        "V3A-S038"
+      ]
+    },
+    {
+      "name": "Documentação renomeada",
+      "scenario": "Caminhos mudam entre versões.",
+      "strategy": "Usar mapa de renomeação e digest para confirmar continuidade; se conteúdo divergir, tratar como nova versão e reavaliar conclusão.",
+      "small_model_role": "8–14B compara significado.",
+      "acceptance": "Alias novo não pode ocultar alteração material.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S019",
+        "V3A-S038"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Consumidor de referências estruturadas com erro tipado.",
+    "8_14b": "Revisor de candidatos de substituição e diferenças locais.",
+    "15_30b": "Integrador de evidências quando múltiplas resoluções produzem versões incompatíveis.",
+    "training_or_runtime_requirements": "Registry de aliases, versões e estados de abertura; integridade e autorização são verificações distintas.",
+    "do_not_use_when": "Identidade só pode ser aproximada e a tarefa exige documento exato."
+  },
+  "connections": [
+    {
+      "target_id": "T015",
+      "relation": "requires",
+      "how": "Receber referência com seletor e revisão.",
+      "interface": "URI, versão, intervalo e tipo esperado.",
+      "condition": "Produtor declarar se conteúdo foi realmente aberto.",
+      "acceptance": "Testar referência correta com seletor inválido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S019",
+        "V3A-S038"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T072",
+      "relation": "feeds",
+      "how": "Fixar conjunto resolvido numa revisão de trabalho.",
+      "interface": "Manifesto de recursos e revisões observadas.",
+      "condition": "Tarefa não misturar latest de momentos diferentes.",
+      "acceptance": "Atualizar alias durante carga e detectar incompatibilidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S019",
+        "V3A-S038"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir nome parecido com mesmo objeto.",
+    "Não apresentar resultado parcial como abertura integral."
+  ],
+  "frontier_comparison": "Comparar integridade de citações e custo de resolução; modelo maior não torna alias ambíguo uma identidade comprovada.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q015",
+      "V4A-Q019"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S019",
+    "V3A-S038"
+  ]
+}

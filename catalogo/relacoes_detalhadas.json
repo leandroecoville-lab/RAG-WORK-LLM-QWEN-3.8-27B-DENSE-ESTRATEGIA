@@ -1,0 +1,4711 @@
+{
+  "edges": [
+    {
+      "from": "T001",
+      "to": "T008",
+      "relation": "complements",
+      "reason": "Uma hierarquia pode organizar a redução, mas ainda exige identidade das evidências e controle das perdas.",
+      "source_ids": [
+        "A-S001"
+      ]
+    },
+    {
+      "from": "T002",
+      "to": "T007",
+      "relation": "distinct_from",
+      "reason": "Cache de resposta evita uma geração; prompt caching reutiliza processamento de entrada e ainda gera a resposta.",
+      "source_ids": [
+        "A-S002",
+        "V3A-S008"
+      ]
+    },
+    {
+      "from": "T002",
+      "to": "T043",
+      "relation": "complements",
+      "reason": "Compactação e caching precisam ser avaliados juntos porque editar o prefixo muda a reutilização.",
+      "source_ids": [
+        "A-S002",
+        "V3A-S008"
+      ]
+    },
+    {
+      "from": "T003",
+      "to": "T041",
+      "relation": "complements",
+      "reason": "Last-N escolhe tamanho por quantidade de mensagens; a janela genérica pode usar outras unidades.",
+      "source_ids": [
+        "V3A-S008"
+      ]
+    },
+    {
+      "from": "T003",
+      "to": "T039",
+      "relation": "alternative",
+      "reason": "Seleção por importância pode preservar um fato antigo que FIFO retiraria.",
+      "source_ids": [
+        "V3A-S008"
+      ]
+    },
+    {
+      "from": "T004",
+      "to": "T008",
+      "relation": "alternative",
+      "reason": "A hierarquia preserva caminhos locais para revisar perdas sem reprocessar toda a cadeia.",
+      "source_ids": [
+        "V3A-S005"
+      ]
+    },
+    {
+      "from": "T004",
+      "to": "T069",
+      "relation": "complements",
+      "reason": "O resultado textual pode alimentar consolidação persistente sem alterar parâmetros do modelo.",
+      "source_ids": [
+        "V3A-S005"
+      ]
+    },
+    {
+      "from": "T005",
+      "to": "T031",
+      "relation": "complements",
+      "reason": "Respostas reutilizáveis precisam de uma regra explícita de validade e invalidação.",
+      "source_ids": [
+        "V3A-S007"
+      ]
+    },
+    {
+      "from": "T005",
+      "to": "T007",
+      "relation": "alternative",
+      "reason": "Identidade exata evita a decisão de equivalência semântica, mas perde paráfrases.",
+      "source_ids": [
+        "V3A-S007"
+      ]
+    },
+    {
+      "from": "T006",
+      "to": "T020",
+      "relation": "complements",
+      "reason": "Compressão aprendida é uma família particular que exige treinamento ou modelo especializado.",
+      "source_ids": [
+        "V3A-S003",
+        "V3A-S001",
+        "V3A-S004"
+      ]
+    },
+    {
+      "from": "T006",
+      "to": "T037",
+      "relation": "complements",
+      "reason": "Condicionar à pergunta muda quais perdas são aceitáveis para a resposta atual.",
+      "source_ids": [
+        "V3A-S003",
+        "V3A-S001",
+        "V3A-S004"
+      ]
+    },
+    {
+      "from": "T007",
+      "to": "T005",
+      "relation": "alternative",
+      "reason": "Cache semântico busca equivalência aproximada; o hash depende de equivalência explicitamente definida.",
+      "source_ids": [
+        "V3A-S006"
+      ]
+    },
+    {
+      "from": "T007",
+      "to": "T061",
+      "relation": "complements",
+      "reason": "Endereçamento por conteúdo pode armazenar os artefatos associados à resposta.",
+      "source_ids": [
+        "V3A-S006"
+      ]
+    },
+    {
+      "from": "T008",
+      "to": "T023",
+      "relation": "complements",
+      "reason": "A árvore recursiva explicita uma organização possível da sumarização hierárquica.",
+      "source_ids": [
+        "V3A-S011",
+        "A-S014"
+      ]
+    },
+    {
+      "from": "T008",
+      "to": "T030",
+      "relation": "complements",
+      "reason": "RAPTOR combina hierarquia com embeddings, agrupamento e recuperação em seus níveis.",
+      "source_ids": [
+        "V3A-S011",
+        "A-S014"
+      ]
+    },
+    {
+      "from": "T009",
+      "to": "T056",
+      "relation": "complements",
+      "reason": "Bitemporalidade explicita os dois cortes necessários a consultas históricas mais rigorosas.",
+      "source_ids": [
+        "V3A-S002",
+        "A-S007",
+        "A-S032",
+        "V3A-S009"
+      ]
+    },
+    {
+      "from": "T009",
+      "to": "T025",
+      "relation": "complements",
+      "reason": "Adaptive RAG decide estratégias adicionais de recuperação conforme a necessidade observada.",
+      "source_ids": [
+        "V3A-S002",
+        "A-S007",
+        "A-S032",
+        "V3A-S009"
+      ]
+    },
+    {
+      "from": "T010",
+      "to": "T011",
+      "relation": "alternative",
+      "reason": "Fronteiras semânticas acrescentam cálculo; precisam demonstrar ganho sobre esta linha de base.",
+      "source_ids": [
+        "V3A-S013"
+      ]
+    },
+    {
+      "from": "T010",
+      "to": "T032",
+      "relation": "complements",
+      "reason": "Trechos pequenos podem localizar um pai maior que fornece contexto após a recuperação.",
+      "source_ids": [
+        "V3A-S013"
+      ]
+    },
+    {
+      "from": "T011",
+      "to": "T010",
+      "relation": "alternative",
+      "reason": "Tamanho fixo fornece baseline de custo e permite identificar ganhos atribuíveis às fronteiras.",
+      "source_ids": [
+        "V3A-S013",
+        "A-S041"
+      ]
+    },
+    {
+      "from": "T011",
+      "to": "T033",
+      "relation": "alternative",
+      "reason": "Estrutura editorial pode oferecer fronteiras úteis sem inferir mudança de assunto por vetor.",
+      "source_ids": [
+        "V3A-S013",
+        "A-S041"
+      ]
+    },
+    {
+      "from": "T012",
+      "to": "T010",
+      "relation": "complements",
+      "reason": "O limite de tamanho continua útil como restrição, embora os cortes tentem preservar unidades maiores.",
+      "source_ids": [
+        "A-S004",
+        "V3A-S013"
+      ]
+    },
+    {
+      "from": "T012",
+      "to": "T033",
+      "relation": "distinct_from",
+      "reason": "Recursão por delimitadores não equivale a interpretar uma árvore estrutural do documento.",
+      "source_ids": [
+        "A-S004",
+        "V3A-S013"
+      ]
+    },
+    {
+      "from": "T013",
+      "to": "T009",
+      "relation": "alternative",
+      "reason": "RAG seleciona evidência antes da leitura; contexto longo permite mais conteúdo, mas ainda precisa utilizá-lo.",
+      "source_ids": [
+        "V3A-S015",
+        "A-S019"
+      ]
+    },
+    {
+      "from": "T013",
+      "to": "R016",
+      "relation": "complements",
+      "reason": "Lost in the Middle fornece uma dimensão de teste relacionada à posição da evidência.",
+      "source_ids": [
+        "V3A-S015",
+        "A-S019"
+      ]
+    },
+    {
+      "from": "T014",
+      "to": "T015",
+      "relation": "complements",
+      "reason": "Referências tornam possível adiar a transferência do conteúdo completo.",
+      "source_ids": [
+        "V3A-S018"
+      ]
+    },
+    {
+      "from": "T014",
+      "to": "T044",
+      "relation": "complements",
+      "reason": "Expansão progressiva é a política que decide quando abrir a próxima camada.",
+      "source_ids": [
+        "V3A-S018"
+      ]
+    },
+    {
+      "from": "T015",
+      "to": "T066",
+      "relation": "complements",
+      "reason": "O resolvedor aplica o contrato de leitura e versão usado na passagem.",
+      "source_ids": [
+        "V3A-S019"
+      ]
+    },
+    {
+      "from": "T015",
+      "to": "T061",
+      "relation": "complements",
+      "reason": "Um hash de conteúdo pode identificar uma versão, mantendo localização e acesso como problemas separados.",
+      "source_ids": [
+        "V3A-S019"
+      ]
+    },
+    {
+      "from": "T016",
+      "to": "T214",
+      "relation": "distinct_from",
+      "reason": "Pruning pode selecionar campos ou regiões por relevância; truncamento aplica um limite de apresentação.",
+      "source_ids": [
+        "V3A-S019",
+        "V3A-S008"
+      ]
+    },
+    {
+      "from": "T016",
+      "to": "T215",
+      "relation": "distinct_from",
+      "reason": "Masking substitui observações antigas por marcadores; truncamento também pode ocorrer no primeiro recebimento.",
+      "source_ids": [
+        "V3A-S019",
+        "V3A-S008"
+      ]
+    },
+    {
+      "from": "T017",
+      "to": "T237",
+      "relation": "complements",
+      "reason": "Subagentes podem materializar subtarefas, mas folding não exige equivalência entre agente e trajetória.",
+      "source_ids": [
+        "V3A-S020"
+      ]
+    },
+    {
+      "from": "T017",
+      "to": "T043",
+      "relation": "distinct_from",
+      "reason": "Compactação geral reduz histórico; folding usa fronteiras explícitas de subtarefa e retorno.",
+      "source_ids": [
+        "V3A-S020"
+      ]
+    },
+    {
+      "from": "T018",
+      "to": "T038",
+      "relation": "complements",
+      "reason": "Selective Context acrescenta critérios específicos de seleção à família de poda.",
+      "source_ids": [
+        "A-S016",
+        "V3A-S001"
+      ]
+    },
+    {
+      "from": "T018",
+      "to": "T006",
+      "relation": "specializes",
+      "reason": "Poda é compressão por remoção; não sintetiza necessariamente um texto novo.",
+      "source_ids": [
+        "A-S016",
+        "V3A-S001"
+      ]
+    },
+    {
+      "from": "T019",
+      "to": "T046",
+      "relation": "complements",
+      "reason": "Seleção dinâmica escolhe exemplos por consulta; poda pode reduzir previamente o pool ou o conjunto final.",
+      "source_ids": [
+        "V3A-S017",
+        "V3A-S016"
+      ]
+    },
+    {
+      "from": "T020",
+      "to": "T052",
+      "relation": "complements",
+      "reason": "Latent Context especifica uma possível representação, não a totalidade dos métodos aprendidos.",
+      "source_ids": [
+        "V3A-S001",
+        "V3A-S004"
+      ]
+    },
+    {
+      "from": "T020",
+      "to": "T179",
+      "relation": "distinct_from",
+      "reason": "Treinar um compressor não equivale necessariamente a internalizar a tarefa no modelo que responde.",
+      "source_ids": [
+        "V3A-S001",
+        "V3A-S004"
+      ]
+    },
+    {
+      "from": "T021",
+      "to": "T006",
+      "relation": "specializes",
+      "reason": "É uma política de aplicação temporal dos mecanismos de compressão.",
+      "source_ids": [
+        "V3A-S008"
+      ]
+    },
+    {
+      "from": "T021",
+      "to": "T212",
+      "relation": "complements",
+      "reason": "Auto-Compact por gatilho pode implementar parte desta política, com comportamento próprio do executor.",
+      "source_ids": [
+        "V3A-S008"
+      ]
+    },
+    {
+      "from": "T022",
+      "to": "T020",
+      "relation": "complements",
+      "reason": "Métodos aprendidos podem comprimir instruções, mas também outros tipos de contexto.",
+      "source_ids": [
+        "A-S033",
+        "V3A-S001"
+      ]
+    },
+    {
+      "from": "T022",
+      "to": "T179",
+      "relation": "distinct_from",
+      "reason": "Destilação paramétrica pode eliminar a necessidade do contexto de tarefa; compressão textual ainda precisa ser fornecida.",
+      "source_ids": [
+        "A-S033",
+        "V3A-S001"
+      ]
+    },
+    {
+      "from": "T023",
+      "to": "T008",
+      "relation": "specializes",
+      "reason": "A árvore explicita uma implementação estrutural da sumarização hierárquica.",
+      "source_ids": [
+        "V3A-S021"
+      ]
+    },
+    {
+      "from": "T023",
+      "to": "T030",
+      "relation": "distinct_from",
+      "reason": "RAPTOR acrescenta procedimentos de embeddings, agrupamento e busca; uma árvore de resumos isolada não o reproduz.",
+      "source_ids": [
+        "V3A-S021"
+      ]
+    },
+    {
+      "from": "T024",
+      "to": "T222",
+      "relation": "complements",
+      "reason": "O monitor fornece orçamento; o builder decide como distribui-lo entre conteúdos.",
+      "source_ids": [
+        "V3A-S019",
+        "V3A-S018"
+      ]
+    },
+    {
+      "from": "T024",
+      "to": "T066",
+      "relation": "complements",
+      "reason": "O resolvedor entrega versões e conteúdos que o builder pode incorporar.",
+      "source_ids": [
+        "V3A-S019",
+        "V3A-S018"
+      ]
+    },
+    {
+      "from": "T025",
+      "to": "T009",
+      "relation": "specializes",
+      "reason": "A adaptação escolhe quando e como aplicar etapas de RAG.",
+      "source_ids": [
+        "A-S017",
+        "V3A-S009"
+      ]
+    },
+    {
+      "from": "T025",
+      "to": "T067",
+      "relation": "complements",
+      "reason": "Recuperação ativa pode reavaliar a necessidade de memória depois da decisão inicial.",
+      "source_ids": [
+        "A-S017",
+        "V3A-S009"
+      ]
+    },
+    {
+      "from": "T026",
+      "to": "T032",
+      "relation": "complements",
+      "reason": "Parent-child expande o entorno após localizar um filho; a hierarquia também pode orientar a localização inicial.",
+      "source_ids": [
+        "A-S014",
+        "V3A-S011"
+      ]
+    },
+    {
+      "from": "T026",
+      "to": "T030",
+      "relation": "complements",
+      "reason": "RAPTOR oferece uma estrutura concreta de recuperação em níveis de abstração.",
+      "source_ids": [
+        "A-S014",
+        "V3A-S011"
+      ]
+    },
+    {
+      "from": "T027",
+      "to": "T028",
+      "relation": "complements",
+      "reason": "Reranking pode avaliar a união de candidatos depois da fusão.",
+      "source_ids": [
+        "V3A-S022",
+        "A-S021",
+        "V3A-S026"
+      ]
+    },
+    {
+      "from": "T027",
+      "to": "T009",
+      "relation": "complements",
+      "reason": "A busca híbrida implementa a etapa de recuperação, sem resolver sozinha o uso da evidência pelo gerador.",
+      "source_ids": [
+        "V3A-S022",
+        "A-S021",
+        "V3A-S026"
+      ]
+    },
+    {
+      "from": "T028",
+      "to": "T027",
+      "relation": "complements",
+      "reason": "A união híbrida pode aumentar a diversidade de candidatos oferecida ao reranker.",
+      "source_ids": [
+        "V3A-S025",
+        "V3A-S026",
+        "A-S020"
+      ]
+    },
+    {
+      "from": "T028",
+      "to": "T037",
+      "relation": "distinct_from",
+      "reason": "Reranking ordena unidades; compressão condicionada à pergunta modifica a representação enviada.",
+      "source_ids": [
+        "V3A-S025",
+        "V3A-S026",
+        "A-S020"
+      ]
+    },
+    {
+      "from": "T029",
+      "to": "T051",
+      "relation": "complements",
+      "reason": "Memória em grafo pode compartilhar entidades, mas GraphRAG acrescenta um pipeline de recuperação e geração.",
+      "source_ids": [
+        "V3A-S023",
+        "V3A-S024"
+      ]
+    },
+    {
+      "from": "T029",
+      "to": "T057",
+      "relation": "distinct_from",
+      "reason": "Relações do grafo não identificam causalidade sem hipóteses e evidências causais adicionais.",
+      "source_ids": [
+        "V3A-S023",
+        "V3A-S024"
+      ]
+    },
+    {
+      "from": "T030",
+      "to": "T023",
+      "relation": "specializes",
+      "reason": "RAPTOR implementa uma hierarquia recursiva com escolha específica de agrupamento e recuperação.",
+      "source_ids": [
+        "V3A-S029",
+        "V3A-S011",
+        "A-S014"
+      ]
+    },
+    {
+      "from": "T030",
+      "to": "T029",
+      "relation": "alternative",
+      "reason": "GraphRAG organiza entidades e comunidades; RAPTOR agrupa representações de texto para produzir resumos.",
+      "source_ids": [
+        "V3A-S029",
+        "V3A-S011",
+        "A-S014"
+      ]
+    },
+    {
+      "from": "T031",
+      "to": "T005",
+      "relation": "complements",
+      "reason": "A invalidação decide elegibilidade; a similaridade só localiza uma resposta candidata.",
+      "source_ids": [
+        "V3A-S007"
+      ]
+    },
+    {
+      "from": "T031",
+      "to": "T072",
+      "relation": "complements",
+      "reason": "Versões de memória e fonte permitem detectar dependências incompatíveis.",
+      "source_ids": [
+        "V3A-S007"
+      ]
+    },
+    {
+      "from": "T032",
+      "to": "T026",
+      "relation": "complements",
+      "reason": "A hierarquia pode orientar busca; parent-child separa unidade de indexação da unidade entregue.",
+      "source_ids": [
+        "V2C-S003"
+      ]
+    },
+    {
+      "from": "T032",
+      "to": "T010",
+      "relation": "complements",
+      "reason": "Um divisor simples pode gerar filhos, desde que os vínculos e versões sejam preservados.",
+      "source_ids": [
+        "V2C-S003"
+      ]
+    },
+    {
+      "from": "T033",
+      "to": "T012",
+      "relation": "alternative",
+      "reason": "A divisão recursiva usa separadores textuais; elementos estruturados carregam tipos e relações produzidos antes do agrupamento.",
+      "source_ids": [
+        "V3A-S027"
+      ]
+    },
+    {
+      "from": "T033",
+      "to": "T032",
+      "relation": "complements",
+      "reason": "A expansão parental pode recuperar contexto que uma unidade estrutural pequena não contém.",
+      "source_ids": [
+        "V3A-S027"
+      ]
+    },
+    {
+      "from": "T034",
+      "to": "T033",
+      "relation": "alternative",
+      "reason": "Estrutura formal fornece fronteiras sem exigir que um modelo reconstrua cada afirmação.",
+      "source_ids": [
+        "V3A-S012"
+      ]
+    },
+    {
+      "from": "T034",
+      "to": "T054",
+      "relation": "complements",
+      "reason": "Proposições validadas podem alimentar memória semântica, mantendo proveniência e grau de confirmação.",
+      "source_ids": [
+        "V3A-S012"
+      ]
+    },
+    {
+      "from": "T035",
+      "to": "T011",
+      "relation": "distinct_from",
+      "reason": "Mudar fronteiras por similaridade não equivale a contextualizar a representação de um chunk existente.",
+      "source_ids": [
+        "A-S025",
+        "V3A-S014"
+      ]
+    },
+    {
+      "from": "T035",
+      "to": "T027",
+      "relation": "complements",
+      "reason": "Contextualização pode beneficiar busca lexical e vetorial; a fusão ainda precisa ser avaliada com candidatos equivalentes.",
+      "source_ids": [
+        "A-S025",
+        "V3A-S014"
+      ]
+    },
+    {
+      "from": "T036",
+      "to": "T037",
+      "relation": "distinct_from",
+      "reason": "Adaptar a busca muda candidatos; comprimir para a pergunta seleciona informação depois da recuperação.",
+      "source_ids": [
+        "V3A-S028"
+      ]
+    },
+    {
+      "from": "T036",
+      "to": "T025",
+      "relation": "complements",
+      "reason": "Um roteador pode decidir quando a expansão compensa, sem alterar filtros obrigatórios.",
+      "source_ids": [
+        "V3A-S028"
+      ]
+    },
+    {
+      "from": "T037",
+      "to": "T036",
+      "relation": "complements",
+      "reason": "A consulta pode ser adaptada antes da busca, mas a compressão precisa respeitar a intenção original.",
+      "source_ids": [
+        "V3A-S003",
+        "A-S018"
+      ]
+    },
+    {
+      "from": "T037",
+      "to": "T020",
+      "relation": "complements",
+      "reason": "Um compressor aprendido pode ser condicionado à consulta; aprendizado e condicionamento são dimensões diferentes.",
+      "source_ids": [
+        "V3A-S003",
+        "A-S018"
+      ]
+    },
+    {
+      "from": "T038",
+      "to": "T018",
+      "relation": "specializes",
+      "reason": "O registro preserva a associação ao conceito geral de poda, detalhando um critério informacional específico.",
+      "source_ids": [
+        "A-S016",
+        "V3A-S001"
+      ]
+    },
+    {
+      "from": "T038",
+      "to": "T020",
+      "relation": "distinct_from",
+      "reason": "Um seletor treinado com rótulos de retenção aprende outra função; surpresa não equivale a probabilidade de relevância.",
+      "source_ids": [
+        "A-S016",
+        "V3A-S001"
+      ]
+    },
+    {
+      "from": "T039",
+      "to": "T018",
+      "relation": "complements",
+      "reason": "A poda executa a exclusão; importância fornece um dos critérios para decidir quais unidades podem sair.",
+      "source_ids": [
+        "A-S008"
+      ]
+    },
+    {
+      "from": "T039",
+      "to": "T040",
+      "relation": "complements",
+      "reason": "O estado da tarefa fornece dependências obrigatórias que um ranking de importância sozinho pode desconhecer.",
+      "source_ids": [
+        "A-S008"
+      ]
+    },
+    {
+      "from": "T040",
+      "to": "T065",
+      "relation": "complements",
+      "reason": "Controle transacional pode proteger aplicação de propostas calculadas com uma versão conhecida.",
+      "source_ids": [
+        "V3A-S031"
+      ]
+    },
+    {
+      "from": "T040",
+      "to": "T060",
+      "relation": "complements",
+      "reason": "Checkpoint fornece estado e agenda de retomada, mas não valida sozinho efeitos externos.",
+      "source_ids": [
+        "V3A-S031"
+      ]
+    },
+    {
+      "from": "T041",
+      "to": "T003",
+      "relation": "specializes",
+      "reason": "FIFO define a política de saída dos antigos; Last-N especifica uma medida particular da capacidade.",
+      "source_ids": [
+        "A-S003"
+      ]
+    },
+    {
+      "from": "T041",
+      "to": "T042",
+      "relation": "complements",
+      "reason": "O limite em tokens pode impedir que um sufixo válido exceda a capacidade efetiva.",
+      "source_ids": [
+        "A-S003"
+      ]
+    },
+    {
+      "from": "T042",
+      "to": "T041",
+      "relation": "alternative",
+      "reason": "Um orçamento em tokens controla tamanho real de forma mais direta que quantidade de mensagens.",
+      "source_ids": [
+        "A-S003",
+        "A-S038"
+      ]
+    },
+    {
+      "from": "T042",
+      "to": "T045",
+      "relation": "complements",
+      "reason": "Adiar definições de ferramentas pode reduzir tokens ativos, sem eliminar o catálogo necessário ao serviço.",
+      "source_ids": [
+        "A-S003",
+        "A-S038"
+      ]
+    },
+    {
+      "from": "T043",
+      "to": "T004",
+      "relation": "complements",
+      "reason": "Resumos encadeados podem compor compactação, mas exigem controle de cobertura e propagação de erros.",
+      "source_ids": [
+        "A-S006",
+        "V3A-S008"
+      ]
+    },
+    {
+      "from": "T043",
+      "to": "T016",
+      "relation": "distinct_from",
+      "reason": "Truncar ou limpar um resultado remove conteúdo; não produz necessariamente uma representação resumida dele.",
+      "source_ids": [
+        "A-S006",
+        "V3A-S008"
+      ]
+    },
+    {
+      "from": "T044",
+      "to": "T014",
+      "relation": "complements",
+      "reason": "Carregamento progressivo define níveis disponíveis; expansão escolhe quando percorrê-los por necessidade concreta.",
+      "source_ids": [
+        "V3A-S010"
+      ]
+    },
+    {
+      "from": "T044",
+      "to": "T067",
+      "relation": "complements",
+      "reason": "Recuperação ativa oferece gatilhos e consultas durante a geração, compondo uma política de expansão.",
+      "source_ids": [
+        "V3A-S010"
+      ]
+    },
+    {
+      "from": "T045",
+      "to": "T014",
+      "relation": "specializes",
+      "reason": "A ferramenta é uma unidade específica de carregamento progressivo com schema executável.",
+      "source_ids": [
+        "A-S038"
+      ]
+    },
+    {
+      "from": "T045",
+      "to": "T015",
+      "relation": "complements",
+      "reason": "Referências economizam representação somente quando o resolvedor pode obter a definição correspondente.",
+      "source_ids": [
+        "A-S038"
+      ]
+    },
+    {
+      "from": "T046",
+      "to": "T019",
+      "relation": "complements",
+      "reason": "Poda reduz o conjunto de demonstrações; seleção dinâmica determina quais são úteis para a consulta atual.",
+      "source_ids": [
+        "V3A-S016",
+        "V3A-S017"
+      ]
+    },
+    {
+      "from": "T046",
+      "to": "T005",
+      "relation": "distinct_from",
+      "reason": "Uma demonstração orienta comportamento, enquanto uma resposta em cache tenta reutilizar um resultado já produzido.",
+      "source_ids": [
+        "V3A-S016",
+        "V3A-S017"
+      ]
+    },
+    {
+      "from": "T047",
+      "to": "T064",
+      "relation": "distinct_from",
+      "reason": "Estado persistente conserva execução; memória longa conserva conhecimento reutilizável que pode atravessar várias execuções.",
+      "source_ids": [
+        "V3A-S033",
+        "V3A-S002",
+        "V3A-S032"
+      ]
+    },
+    {
+      "from": "T047",
+      "to": "T068",
+      "relation": "complements",
+      "reason": "A geração aumentada por memória é uma forma de consumir registros duráveis selecionados.",
+      "source_ids": [
+        "V3A-S033",
+        "V3A-S002",
+        "V3A-S032"
+      ]
+    },
+    {
+      "from": "T048",
+      "to": "T074",
+      "relation": "complements",
+      "reason": "Eviction é uma operação de capacidade dentro de um ciclo de vida mais amplo.",
+      "source_ids": [
+        "V3A-S036",
+        "V3A-S034"
+      ]
+    },
+    {
+      "from": "T048",
+      "to": "T058",
+      "relation": "complements",
+      "reason": "Consolidação reorganiza conteúdo; a gestão decide quando e sob quais invariantes executar essa transformação.",
+      "source_ids": [
+        "V3A-S036",
+        "V3A-S034"
+      ]
+    },
+    {
+      "from": "T049",
+      "to": "T070",
+      "relation": "complements",
+      "reason": "O episodic store fornece armazenamento e índices; memória episódica define a unidade de experiência e sua interpretação.",
+      "source_ids": [
+        "A-S008",
+        "V3A-S037"
+      ]
+    },
+    {
+      "from": "T049",
+      "to": "T057",
+      "relation": "distinct_from",
+      "reason": "Uma sequência lembrada pode sugerir hipótese, mas não identifica por si só o efeito de uma intervenção.",
+      "source_ids": [
+        "A-S008",
+        "V3A-S037"
+      ]
+    },
+    {
+      "from": "T050",
+      "to": "T063",
+      "relation": "complements",
+      "reason": "Memória virtual move conteúdo entre níveis; a janela de trabalho especifica o conjunto ativo para a etapa.",
+      "source_ids": [
+        "A-S009"
+      ]
+    },
+    {
+      "from": "T050",
+      "to": "T043",
+      "relation": "complements",
+      "reason": "Compactação pode reconstruir a visão, mas não é necessária a cada atualização pequena.",
+      "source_ids": [
+        "A-S009"
+      ]
+    },
+    {
+      "from": "T051",
+      "to": "T029",
+      "relation": "complements",
+      "reason": "GraphRAG usa estrutura para recuperação; memória por grafo também exige políticas de escrita e evolução ao longo do tempo.",
+      "source_ids": [
+        "V3A-S034",
+        "A-S035",
+        "V3A-S035"
+      ]
+    },
+    {
+      "from": "T051",
+      "to": "T077",
+      "relation": "complements",
+      "reason": "Adicionar validade temporal às relações é uma especialização que permite consultar diferentes estados históricos.",
+      "source_ids": [
+        "V3A-S034",
+        "A-S035",
+        "V3A-S035"
+      ]
+    },
+    {
+      "from": "T052",
+      "to": "T006",
+      "relation": "complements",
+      "reason": "Representações latentes podem implementar compressão, mas nem todo vetor constitui uma versão comprimida consumível pelo gerador.",
+      "source_ids": [
+        "V3A-S004"
+      ]
+    },
+    {
+      "from": "T052",
+      "to": "R003",
+      "relation": "complements",
+      "reason": "LongMem usa uma interface neural de memória específica, distinta de armazenar embeddings para busca textual.",
+      "source_ids": [
+        "V3A-S004"
+      ]
+    },
+    {
+      "from": "T053",
+      "to": "T064",
+      "relation": "complements",
+      "reason": "O arquivo pode representar parte do estado persistente, desde que tenha identidade e semântica de retomada.",
+      "source_ids": [
+        "A-S010"
+      ]
+    },
+    {
+      "from": "T053",
+      "to": "T076",
+      "relation": "complements",
+      "reason": "Git acrescenta histórico de versões; não transforma automaticamente cada arquivo em estado transacional do agente.",
+      "source_ids": [
+        "A-S010"
+      ]
+    },
+    {
+      "from": "T054",
+      "to": "T049",
+      "relation": "distinct_from",
+      "reason": "Episódio conserva uma experiência situada; memória semântica abstrai uma proposição sem eliminar seu escopo.",
+      "source_ids": [
+        "V3A-S037"
+      ]
+    },
+    {
+      "from": "T054",
+      "to": "T058",
+      "relation": "complements",
+      "reason": "Consolidação pode produzir proposições candidatas, que ainda precisam de verificação e controle de versões.",
+      "source_ids": [
+        "V3A-S037"
+      ]
+    },
+    {
+      "from": "T055",
+      "to": "T046",
+      "relation": "complements",
+      "reason": "Demonstrações mostram casos; procedimentos explicitam condições e sequência reutilizável que os casos podem ilustrar.",
+      "source_ids": [
+        "V3A-S018"
+      ]
+    },
+    {
+      "from": "T055",
+      "to": "T071",
+      "relation": "complements",
+      "reason": "Promoção decide quando um aprendizado candidato pode tornar-se procedimento recomendado.",
+      "source_ids": [
+        "V3A-S018"
+      ]
+    },
+    {
+      "from": "T056",
+      "to": "T009",
+      "relation": "complements",
+      "reason": "RAG temporal precisa recuperar fatos segundo a perspectiva temporal correta antes de gerar texto.",
+      "source_ids": [
+        "A-S032",
+        "V3A-S042"
+      ]
+    },
+    {
+      "from": "T056",
+      "to": "T077",
+      "relation": "complements",
+      "reason": "Relações de um grafo podem carregar os dois eixos para reconstrução histórica consistente.",
+      "source_ids": [
+        "A-S032",
+        "V3A-S042"
+      ]
+    },
+    {
+      "from": "T057",
+      "to": "T051",
+      "relation": "distinct_from",
+      "reason": "Um grafo de memória organiza relações; um grafo causal exige interpretação e hipóteses adicionais.",
+      "source_ids": [
+        "V3A-S041"
+      ]
+    },
+    {
+      "from": "T057",
+      "to": "T049",
+      "relation": "complements",
+      "reason": "Episódios podem fornecer observações e hipóteses, mas precisam de desenho apropriado para estimar efeitos.",
+      "source_ids": [
+        "V3A-S041"
+      ]
+    },
+    {
+      "from": "T058",
+      "to": "T069",
+      "relation": "complements",
+      "reason": "Resumo externo é uma forma específica de consolidação; consolidar também pode produzir relações e fatos candidatos.",
+      "source_ids": [
+        "V3A-S034",
+        "V3A-S037"
+      ]
+    },
+    {
+      "from": "T058",
+      "to": "T072",
+      "relation": "complements",
+      "reason": "Versionamento identifica quais fontes e derivados pertencem à mesma revisão publicável.",
+      "source_ids": [
+        "V3A-S034",
+        "V3A-S037"
+      ]
+    },
+    {
+      "from": "T059",
+      "to": "T060",
+      "relation": "complements",
+      "reason": "Um checkpoint pode registrar posição e estado do consumidor; event sourcing define o histórico autoritativo do domínio.",
+      "source_ids": [
+        "A-S027"
+      ]
+    },
+    {
+      "from": "T059",
+      "to": "T072",
+      "relation": "complements",
+      "reason": "Versionar projetores e schemas permite explicar por que a mesma sequência produz representações diferentes.",
+      "source_ids": [
+        "A-S027"
+      ]
+    },
+    {
+      "from": "T060",
+      "to": "T059",
+      "relation": "distinct_from",
+      "reason": "Snapshot de projeção acelera reconstrução de domínio; checkpoint inclui informações para continuar a execução.",
+      "source_ids": [
+        "V3A-S031",
+        "V3A-S030"
+      ]
+    },
+    {
+      "from": "T060",
+      "to": "T075",
+      "relation": "complements",
+      "reason": "Reconciliação determina efeitos externos incertos que o checkpoint local não consegue comprovar.",
+      "source_ids": [
+        "V3A-S031",
+        "V3A-S030"
+      ]
+    },
+    {
+      "from": "T061",
+      "to": "T007",
+      "relation": "complements",
+      "reason": "Canonicalização define quais bytes representam uma requisição; CAS endereça o objeto resultante pelo conteúdo.",
+      "source_ids": [
+        "V3A-S038"
+      ]
+    },
+    {
+      "from": "T061",
+      "to": "T073",
+      "relation": "distinct_from",
+      "reason": "Endereço verificável detecta alteração; retenção imutável controla possibilidade de sobrescrever ou excluir versões.",
+      "source_ids": [
+        "V3A-S038"
+      ]
+    },
+    {
+      "from": "T062",
+      "to": "T008",
+      "relation": "complements",
+      "reason": "Resumos hierárquicos organizam abstração; memória hierárquica também pode organizar custo e persistência.",
+      "source_ids": [
+        "A-S009"
+      ]
+    },
+    {
+      "from": "T062",
+      "to": "T063",
+      "relation": "complements",
+      "reason": "Gerência virtual de contexto é uma aplicação de níveis de memória orientada à janela ativa limitada.",
+      "source_ids": [
+        "A-S009"
+      ]
+    },
+    {
+      "from": "T063",
+      "to": "R001",
+      "relation": "complements",
+      "reason": "MemGPT é a proposta concreta que introduz e demonstra esse desenho de gerência virtual de contexto.",
+      "source_ids": [
+        "A-S009"
+      ]
+    },
+    {
+      "from": "T063",
+      "to": "T078",
+      "relation": "complements",
+      "reason": "Semantic Page Fault nomeia uma analogia para dependência ausente, cuja detecção não é garantida pelo modelo.",
+      "source_ids": [
+        "A-S009"
+      ]
+    },
+    {
+      "from": "T064",
+      "to": "T047",
+      "relation": "distinct_from",
+      "reason": "Memória longa conserva conhecimento reutilizável; estado persistente determina continuidade de uma execução identificada.",
+      "source_ids": [
+        "V3A-S031",
+        "V3A-S032"
+      ]
+    },
+    {
+      "from": "T064",
+      "to": "T060",
+      "relation": "complements",
+      "reason": "Checkpoint publica um ponto específico do estado com semântica de retomada.",
+      "source_ids": [
+        "V3A-S031",
+        "V3A-S032"
+      ]
+    },
+    {
+      "from": "T065",
+      "to": "T060",
+      "relation": "complements",
+      "reason": "Um checkpoint transacional pode usar o gerenciador para publicar estado e posição de execução de forma coerente.",
+      "source_ids": [
+        "A-S029",
+        "V2C-S001"
+      ]
+    },
+    {
+      "from": "T065",
+      "to": "T075",
+      "relation": "complements",
+      "reason": "Reconciliação trata divergências e confirmações externas que continuam fora da atomicidade local.",
+      "source_ids": [
+        "A-S029",
+        "V2C-S001"
+      ]
+    },
+    {
+      "from": "T066",
+      "to": "T015",
+      "relation": "complements",
+      "reason": "O uso de referências depende de um componente que consiga materializar conteúdo com identidade e escopo conhecidos.",
+      "source_ids": [
+        "V3A-S019",
+        "V3A-S038"
+      ]
+    },
+    {
+      "from": "T066",
+      "to": "T061",
+      "relation": "complements",
+      "reason": "Endereçamento por conteúdo oferece verificação de identidade para objetos resolvidos, sem garantir disponibilidade.",
+      "source_ids": [
+        "V3A-S019",
+        "V3A-S038"
+      ]
+    },
+    {
+      "from": "T067",
+      "to": "T044",
+      "relation": "complements",
+      "reason": "Expansão é a política de ampliar contexto; recuperação ativa fornece mecanismos de acionamento durante a execução.",
+      "source_ids": [
+        "V3A-S010",
+        "V3A-S009"
+      ]
+    },
+    {
+      "from": "T067",
+      "to": "T036",
+      "relation": "complements",
+      "reason": "Adaptação da consulta pode melhorar o conteúdo recuperado depois que o gatilho decide buscar.",
+      "source_ids": [
+        "V3A-S010",
+        "V3A-S009"
+      ]
+    },
+    {
+      "from": "T068",
+      "to": "T047",
+      "relation": "complements",
+      "reason": "Memória longa define persistência e escopo; geração aumentada especifica como essa informação influencia a saída.",
+      "source_ids": [
+        "A-S013"
+      ]
+    },
+    {
+      "from": "T068",
+      "to": "T052",
+      "relation": "complements",
+      "reason": "Interfaces latentes são uma forma de representação possível, cuja interpretação precisa de consumidor compatível.",
+      "source_ids": [
+        "A-S013"
+      ]
+    },
+    {
+      "from": "T069",
+      "to": "T179",
+      "relation": "distinct_from",
+      "reason": "Destilação paramétrica altera pesos; este registro continua síntese textual externa lida em chamadas futuras.",
+      "source_ids": [
+        "V3A-S005",
+        "A-S040"
+      ]
+    },
+    {
+      "from": "T069",
+      "to": "T058",
+      "relation": "specializes",
+      "reason": "Resumir é uma forma de consolidação, enquanto consolidação também pode produzir relações ou procedimentos.",
+      "source_ids": [
+        "V3A-S005",
+        "A-S040"
+      ]
+    },
+    {
+      "from": "T070",
+      "to": "T049",
+      "relation": "complements",
+      "reason": "A memória episódica define o conteúdo de uma experiência; o store oferece persistência e operações de acesso.",
+      "source_ids": [
+        "V3A-S032"
+      ]
+    },
+    {
+      "from": "T070",
+      "to": "T059",
+      "relation": "complements",
+      "reason": "Eventos podem constituir a origem reconstruível dos episódios, enquanto resumos são projeções para busca.",
+      "source_ids": [
+        "V3A-S032"
+      ]
+    },
+    {
+      "from": "T071",
+      "to": "T058",
+      "relation": "distinct_from",
+      "reason": "Consolidação produz uma representação; promoção decide quais usos e grau de confiança ela pode receber.",
+      "source_ids": [
+        "V3A-S037"
+      ]
+    },
+    {
+      "from": "T071",
+      "to": "T055",
+      "relation": "complements",
+      "reason": "Procedimentos podem ser promovidos para reutilização sob pré-condições verificadas e versões compatíveis.",
+      "source_ids": [
+        "V3A-S037"
+      ]
+    },
+    {
+      "from": "T072",
+      "to": "T056",
+      "relation": "distinct_from",
+      "reason": "Revisão registra evolução do artefato; bitemporalidade define validade no domínio e perspectiva de conhecimento.",
+      "source_ids": [
+        "A-S028"
+      ]
+    },
+    {
+      "from": "T072",
+      "to": "T061",
+      "relation": "complements",
+      "reason": "Identificadores por conteúdo podem fixar precisamente os objetos incluídos em um manifesto.",
+      "source_ids": [
+        "A-S028"
+      ]
+    },
+    {
+      "from": "T073",
+      "to": "T061",
+      "relation": "complements",
+      "reason": "Hash verifica identidade de conteúdo; retenção protege a existência e impossibilidade de alteração sob uma política.",
+      "source_ids": [
+        "A-S034"
+      ]
+    },
+    {
+      "from": "T073",
+      "to": "T072",
+      "relation": "complements",
+      "reason": "Histórico versionado permite corrigir interpretação sem reescrever a evidência originalmente registrada.",
+      "source_ids": [
+        "A-S034"
+      ]
+    },
+    {
+      "from": "T074",
+      "to": "T031",
+      "relation": "distinct_from",
+      "reason": "Invalidação remove elegibilidade por mudança de estado; eviction libera capacidade mesmo para conteúdo ainda válido.",
+      "source_ids": [
+        "V3A-S039"
+      ]
+    },
+    {
+      "from": "T074",
+      "to": "T048",
+      "relation": "complements",
+      "reason": "Gestão de memória decide quais classes podem ser descartadas e sob quais condições.",
+      "source_ids": [
+        "V3A-S039"
+      ]
+    },
+    {
+      "from": "T075",
+      "to": "T065",
+      "relation": "complements",
+      "reason": "Transações protegem estado local; reconciliação observa o que ocorreu fora dessa fronteira.",
+      "source_ids": [
+        "V3A-S030"
+      ]
+    },
+    {
+      "from": "T075",
+      "to": "T058",
+      "relation": "complements",
+      "reason": "Consolidações dependentes devem ser reavaliadas quando a reconciliação muda o conhecimento vigente.",
+      "source_ids": [
+        "V3A-S030"
+      ]
+    },
+    {
+      "from": "T076",
+      "to": "T053",
+      "relation": "complements",
+      "reason": "Notas em arquivo ganham histórico e integração; ainda precisam de contrato de estado e interpretação.",
+      "source_ids": [
+        "V3A-S040"
+      ]
+    },
+    {
+      "from": "T076",
+      "to": "R013",
+      "relation": "complements",
+      "reason": "MemFS aplica Git à memória de agentes com organização e carregamento próprios.",
+      "source_ids": [
+        "V3A-S040"
+      ]
+    },
+    {
+      "from": "T077",
+      "to": "T056",
+      "relation": "complements",
+      "reason": "Bitemporalidade acrescenta a perspectiva do que era conhecido às relações válidas no domínio.",
+      "source_ids": [
+        "V3A-S043"
+      ]
+    },
+    {
+      "from": "T077",
+      "to": "T051",
+      "relation": "specializes",
+      "reason": "O grafo temporal especializa a representação relacional com regras explícitas de validade e evolução.",
+      "source_ids": [
+        "V3A-S043"
+      ]
+    },
+    {
+      "from": "T078",
+      "to": "T063",
+      "relation": "complements",
+      "reason": "Gerência virtual fornece operações para trazer conteúdo; a analogia trata a decisão de perceber e resolver sua ausência.",
+      "source_ids": [
+        "A-S009"
+      ]
+    },
+    {
+      "from": "T078",
+      "to": "T044",
+      "relation": "complements",
+      "reason": "Expansão progressiva pode executar a busca motivada por uma lacuna identificada.",
+      "source_ids": [
+        "A-S009"
+      ]
+    },
+    {
+      "from": "T079",
+      "to": "T132",
+      "relation": "complements",
+      "reason": "Um draft externo fornece propostas; a regra de aceitação continua sendo o mecanismo de correção.",
+      "source_ids": [
+        "B-S048",
+        "V3B-S001"
+      ]
+    },
+    {
+      "from": "T080",
+      "to": "T079",
+      "relation": "complements",
+      "reason": "A política escolhe esforço; o algoritmo de aceitação continua responsável pela exatidão.",
+      "source_ids": [
+        "B-S002",
+        "V3B-S001"
+      ]
+    },
+    {
+      "from": "T081",
+      "to": "T116",
+      "relation": "alternative",
+      "reason": "Recomputação recupera estados ausentes ao custo de trabalho adicional de inferência.",
+      "source_ids": [
+        "V3B-S005",
+        "B-S003"
+      ]
+    },
+    {
+      "from": "T082",
+      "to": "T088",
+      "relation": "complements",
+      "reason": "O escalonador pode aproveitar menos trabalho de prefill sem eliminar contenção entre requisições.",
+      "source_ids": [
+        "B-S005",
+        "B-S004"
+      ]
+    },
+    {
+      "from": "T083",
+      "to": "T082",
+      "relation": "specializes",
+      "reason": "Acrescenta identidade e ciclo de vida ao reúso básico de prefixos.",
+      "source_ids": [
+        "B-S005"
+      ]
+    },
+    {
+      "from": "T084",
+      "to": "T081",
+      "relation": "complements",
+      "reason": "A consistência de sessão controla quando o estado incremental pode ser reutilizado.",
+      "source_ids": [
+        "V3B-S005"
+      ]
+    },
+    {
+      "from": "T085",
+      "to": "T086",
+      "relation": "distinct_from",
+      "reason": "Quantizar pesos e quantizar cache modificam tensores e erros diferentes.",
+      "source_ids": [
+        "V3B-S003",
+        "B-S006"
+      ]
+    },
+    {
+      "from": "T086",
+      "to": "T085",
+      "relation": "complements",
+      "reason": "A quantização de pesos pode coexistir, mas seus ganhos não devem ser multiplicados sem medição.",
+      "source_ids": [
+        "V3B-S002",
+        "B-S007"
+      ]
+    },
+    {
+      "from": "T087",
+      "to": "T088",
+      "relation": "distinct_from",
+      "reason": "Continuous batching altera participantes entre iterações, além de formar lotes na entrada.",
+      "source_ids": [
+        "B-S047"
+      ]
+    },
+    {
+      "from": "T088",
+      "to": "T094",
+      "relation": "complements",
+      "reason": "Dividir prefills limita o trabalho que uma admissão longa introduz em cada rodada.",
+      "source_ids": [
+        "B-S008",
+        "V3B-S004"
+      ]
+    },
+    {
+      "from": "T089",
+      "to": "T197",
+      "relation": "complements",
+      "reason": "Um validador pode rejeitar uma estrutura interrompida, mesmo quando a geração terminou normalmente no transporte.",
+      "source_ids": [
+        "B-S009"
+      ]
+    },
+    {
+      "from": "T090",
+      "to": "T096",
+      "relation": "distinct_from",
+      "reason": "Sparsity muda quais interações existem; FlashAttention pode executar a atenção densa original.",
+      "source_ids": [
+        "B-S010"
+      ]
+    },
+    {
+      "from": "T091",
+      "to": "T090",
+      "relation": "specializes",
+      "reason": "Mantém a atenção e melhora sua distribuição de trabalho entre recursos da GPU.",
+      "source_ids": [
+        "V3B-S006"
+      ]
+    },
+    {
+      "from": "T092",
+      "to": "T123",
+      "relation": "complements",
+      "reason": "FP8 pode participar da implementação, mas precisão e assincronia são decisões independentes.",
+      "source_ids": [
+        "B-S012"
+      ]
+    },
+    {
+      "from": "T093",
+      "to": "T082",
+      "relation": "complements",
+      "reason": "Compartilhamento físico pode sustentar reúso de prefixos, mas identidade do conteúdo continua necessária.",
+      "source_ids": [
+        "V3B-S009"
+      ]
+    },
+    {
+      "from": "T094",
+      "to": "T095",
+      "relation": "distinct_from",
+      "reason": "Chunking organiza execução; uma janela altera a conectividade permitida pela atenção.",
+      "source_ids": [
+        "V3B-S004",
+        "V3B-S007"
+      ]
+    },
+    {
+      "from": "T095",
+      "to": "T109",
+      "relation": "specializes",
+      "reason": "A janela deslizante especifica como a vizinhança avança com a posição.",
+      "source_ids": [
+        "V3B-S007"
+      ]
+    },
+    {
+      "from": "T096",
+      "to": "T090",
+      "relation": "distinct_from",
+      "reason": "Atenção exata eficiente em IO pode preservar todas as conexões; sparsity seleciona quais permanecem.",
+      "source_ids": [
+        "B-S015"
+      ]
+    },
+    {
+      "from": "T097",
+      "to": "T096",
+      "relation": "specializes",
+      "reason": "Organiza as conexões esparsas em unidades adequadas aos kernels.",
+      "source_ids": [
+        "V3B-S008"
+      ]
+    },
+    {
+      "from": "T098",
+      "to": "T090",
+      "relation": "complements",
+      "reason": "FlashAttention pode ser um backend eficiente, mas o rótulo amplo não especifica qual algoritmo foi executado.",
+      "source_ids": [
+        "B-S017"
+      ]
+    },
+    {
+      "from": "T099",
+      "to": "T100",
+      "relation": "alternative",
+      "reason": "GQA mantém mais de um grupo KV e oferece outra troca entre compartilhamento e capacidade.",
+      "source_ids": [
+        "B-S018"
+      ]
+    },
+    {
+      "from": "T100",
+      "to": "T099",
+      "relation": "alternative",
+      "reason": "MQA é o extremo com um grupo KV; GQA preserva múltiplos grupos.",
+      "source_ids": [
+        "B-S019"
+      ]
+    },
+    {
+      "from": "T101",
+      "to": "T117",
+      "relation": "specializes",
+      "reason": "É uma organização específica da comunicação para distribuir o contexto entre dispositivos.",
+      "source_ids": [
+        "B-S020"
+      ]
+    },
+    {
+      "from": "T102",
+      "to": "T122",
+      "relation": "complements",
+      "reason": "RDMA pode reduzir custos de transferência, mas não substitui o contrato de consistência.",
+      "source_ids": [
+        "V3B-S010"
+      ]
+    },
+    {
+      "from": "T103",
+      "to": "T104",
+      "relation": "complements",
+      "reason": "RadixAttention usa a estrutura para organizar estados; a árvore sozinha não executa atenção.",
+      "source_ids": [
+        "V3B-S011"
+      ]
+    },
+    {
+      "from": "T104",
+      "to": "T103",
+      "relation": "complements",
+      "reason": "A radix tree fornece correspondências; a política decide quando usar essa afinidade.",
+      "source_ids": [
+        "V3B-S011"
+      ]
+    },
+    {
+      "from": "T105",
+      "to": "T116",
+      "relation": "complements",
+      "reason": "Recomputação pode restaurar estado removido quando o histórico necessário permanece disponível.",
+      "source_ids": [
+        "V3B-S011"
+      ]
+    },
+    {
+      "from": "T106",
+      "to": "T100",
+      "relation": "complements",
+      "reason": "A arquitetura define grupos; o planejamento operacional verifica sua representação física.",
+      "source_ids": [
+        "B-S019",
+        "B-S018"
+      ]
+    },
+    {
+      "from": "T107",
+      "to": "T090",
+      "relation": "complements",
+      "reason": "Reduzir tráfego intermediário pode mudar a posição do kernel no roofline.",
+      "source_ids": [
+        "V3B-S012"
+      ]
+    },
+    {
+      "from": "T108",
+      "to": "T099",
+      "relation": "distinct_from",
+      "reason": "MQA compartilha K e V; isso muda a parametrização, não apenas a concatenação final.",
+      "source_ids": [
+        "B-S024"
+      ]
+    },
+    {
+      "from": "T109",
+      "to": "T095",
+      "relation": "complements",
+      "reason": "As fichas se sobrepõem na janela contígua; orientação e fronteiras precisam ser declaradas para comparar implementações.",
+      "source_ids": [
+        "B-S015"
+      ]
+    },
+    {
+      "from": "T110",
+      "to": "T109",
+      "relation": "complements",
+      "reason": "Conexões globais acrescentam rotas longas a uma base local.",
+      "source_ids": [
+        "B-S015"
+      ]
+    },
+    {
+      "from": "T111",
+      "to": "T097",
+      "relation": "complements",
+      "reason": "Seleção dinâmica pode produzir blocos, mas o custo de construir seus metadados precisa ser contabilizado.",
+      "source_ids": [
+        "B-S025"
+      ]
+    },
+    {
+      "from": "T112",
+      "to": "T111",
+      "relation": "distinct_from",
+      "reason": "Selecionar estados internos e recuperar trechos externos têm diferentes identidades, custos e atualizações.",
+      "source_ids": [
+        "B-S026"
+      ]
+    },
+    {
+      "from": "T113",
+      "to": "T114",
+      "relation": "complements",
+      "reason": "A normalização incremental permite combinar contribuições dos tiles sem armazenar todos os scores.",
+      "source_ids": [
+        "B-S027"
+      ]
+    },
+    {
+      "from": "T114",
+      "to": "T101",
+      "relation": "complements",
+      "reason": "Estados de normalização podem combinar contribuições recebidas de diferentes partições do contexto.",
+      "source_ids": [
+        "B-S028",
+        "B-S027"
+      ]
+    },
+    {
+      "from": "T115",
+      "to": "T116",
+      "relation": "distinct_from",
+      "reason": "Recomposição de KV ocorre na inferência; activation checkpointing economiza intermediários exigidos pelo backward.",
+      "source_ids": [
+        "B-S029"
+      ]
+    },
+    {
+      "from": "T116",
+      "to": "T105",
+      "relation": "complements",
+      "reason": "A política de remoção precisa preservar dados suficientes para reconstruir os estados necessários.",
+      "source_ids": [
+        "B-S014",
+        "V3B-S005"
+      ]
+    },
+    {
+      "from": "T117",
+      "to": "T101",
+      "relation": "complements",
+      "reason": "Ring Attention pode realizar a troca de blocos em uma implementação de contexto distribuído.",
+      "source_ids": [
+        "B-S045"
+      ]
+    },
+    {
+      "from": "T118",
+      "to": "T119",
+      "relation": "complements",
+      "reason": "Particionar dentro da camada pode coexistir com distribuição de conjuntos de camadas em estágios.",
+      "source_ids": [
+        "B-S030",
+        "B-S045"
+      ]
+    },
+    {
+      "from": "T119",
+      "to": "T118",
+      "relation": "complements",
+      "reason": "Tensor parallelism pode reduzir o custo de um estágio sem eliminar dependências entre estágios.",
+      "source_ids": [
+        "B-S031"
+      ]
+    },
+    {
+      "from": "T120",
+      "to": "T102",
+      "relation": "complements",
+      "reason": "Em fases separadas, escolher workers e transferir estado são responsabilidades distintas.",
+      "source_ids": [
+        "B-S032"
+      ]
+    },
+    {
+      "from": "T121",
+      "to": "T088",
+      "relation": "complements",
+      "reason": "Continuous batching oferece pontos de decisão; a política define quais sequências participam.",
+      "source_ids": [
+        "V3B-S004"
+      ]
+    },
+    {
+      "from": "T122",
+      "to": "T102",
+      "relation": "complements",
+      "reason": "Transferência KV entre fases exige esse cuidado quando usa comunicação direta com memória de GPU.",
+      "source_ids": [
+        "B-S033"
+      ]
+    },
+    {
+      "from": "T123",
+      "to": "T086",
+      "relation": "distinct_from",
+      "reason": "Aplicar FP8 a KV é uma decisão sobre cache; FP8 também pode representar outros tensores.",
+      "source_ids": [
+        "B-S034"
+      ]
+    },
+    {
+      "from": "T124",
+      "to": "T125",
+      "relation": "distinct_from",
+      "reason": "GPTQ é um algoritmo de quantização de pesos; W4A16 especifica precisões, não o procedimento de obtenção.",
+      "source_ids": [
+        "V3B-S014"
+      ]
+    },
+    {
+      "from": "T125",
+      "to": "T126",
+      "relation": "alternative",
+      "reason": "AWQ orienta reescala por ativações; GPTQ usa compensações ligadas à reconstrução de camada.",
+      "source_ids": [
+        "V3B-S013"
+      ]
+    },
+    {
+      "from": "T126",
+      "to": "T125",
+      "relation": "alternative",
+      "reason": "A escolha entre AWQ e GPTQ envolve diferentes objetivos de calibração e caminhos de execução.",
+      "source_ids": [
+        "V3B-S014"
+      ]
+    },
+    {
+      "from": "T127",
+      "to": "T124",
+      "relation": "distinct_from",
+      "reason": "W4A16 descreve uma escolha numérica; GGUF organiza dados e metadados de diversas representações.",
+      "source_ids": [
+        "B-S037"
+      ]
+    },
+    {
+      "from": "T128",
+      "to": "T132",
+      "relation": "alternative",
+      "reason": "O proponente integrado usa características do alvo, enquanto um draft externo pode produzir propostas independentemente.",
+      "source_ids": [
+        "B-S038",
+        "V3B-S001"
+      ]
+    },
+    {
+      "from": "T129",
+      "to": "T079",
+      "relation": "complements",
+      "reason": "Cabeças futuras podem fornecer candidatos, mas a regra especulativa determina sua confirmação exata.",
+      "source_ids": [
+        "B-S039"
+      ]
+    },
+    {
+      "from": "T130",
+      "to": "T131",
+      "relation": "alternative",
+      "reason": "Estruturas de sufixos suportam padrões variáveis e outra organização das continuações históricas.",
+      "source_ids": [
+        "B-S041"
+      ]
+    },
+    {
+      "from": "T131",
+      "to": "T103",
+      "relation": "distinct_from",
+      "reason": "Uma trie de prefixos indexa ancestralidade KV; a estrutura de sufixos encontra padrões para propor novos tokens.",
+      "source_ids": [
+        "B-S040"
+      ]
+    },
+    {
+      "from": "T132",
+      "to": "T080",
+      "relation": "complements",
+      "reason": "Adaptar o horizonte responde ao custo e à concordância observados do par.",
+      "source_ids": [
+        "V3B-S001"
+      ]
+    },
+    {
+      "from": "T133",
+      "to": "T135",
+      "relation": "distinct_from",
+      "reason": "Roteamento inicial escolhe antes da resposta; cascata pode observar a primeira tentativa.",
+      "source_ids": [
+        "V3C-S001",
+        "C-S001"
+      ]
+    },
+    {
+      "from": "T134",
+      "to": "T133",
+      "relation": "distinct_from",
+      "reason": "Escolher domínio ou workflow por significado não estima automaticamente qual modelo resolverá melhor.",
+      "source_ids": [
+        "V3C-S001",
+        "V3C-S006"
+      ]
+    },
+    {
+      "from": "T134",
+      "to": "T148",
+      "relation": "complements",
+      "reason": "O rótulo validado pode alimentar uma condição do grafo.",
+      "source_ids": [
+        "V3C-S001",
+        "V3C-S006"
+      ]
+    },
+    {
+      "from": "T135",
+      "to": "T133",
+      "relation": "alternative",
+      "reason": "Um roteador pode evitar pagar pela etapa inicial nas tarefas já reconhecidas como difíceis.",
+      "source_ids": [
+        "C-S002",
+        "V3C-S001"
+      ]
+    },
+    {
+      "from": "T136",
+      "to": "T173",
+      "relation": "complements",
+      "reason": "Model Fallback Controlado detalha o caso específico de troca de modelo dentro de uma cadeia geral de alternativas.",
+      "source_ids": [
+        "V3C-S009",
+        "C-S003"
+      ]
+    },
+    {
+      "from": "T136",
+      "to": "T243",
+      "relation": "complements",
+      "reason": "Desfechos remotos incertos exigem reconciliação antes de uma repetição equivalente.",
+      "source_ids": [
+        "V3C-S009",
+        "C-S003"
+      ]
+    },
+    {
+      "from": "T137",
+      "to": "T167",
+      "relation": "complements",
+      "reason": "Token bucket fornece um mecanismo de saldo; a política decide unidade, escopo e reserva.",
+      "source_ids": [
+        "V3C-S010",
+        "V3C-S009"
+      ]
+    },
+    {
+      "from": "T137",
+      "to": "T175",
+      "relation": "complements",
+      "reason": "Uma rejeição pode acionar alternativa somente dentro das quotas elegíveis.",
+      "source_ids": [
+        "V3C-S010",
+        "V3C-S009"
+      ]
+    },
+    {
+      "from": "T138",
+      "to": "T165",
+      "relation": "complements",
+      "reason": "Half-open detalha a fase de sondagem e retorno do circuito, enquanto o circuit breaker inclui todos os estados.",
+      "source_ids": [
+        "C-S005",
+        "V3C-S010"
+      ]
+    },
+    {
+      "from": "T138",
+      "to": "T163",
+      "relation": "complements",
+      "reason": "Backoff pode espaçar tentativas permitidas, mas não substitui a decisão de abrir o circuito.",
+      "source_ids": [
+        "C-S005",
+        "V3C-S010"
+      ]
+    },
+    {
+      "from": "T139",
+      "to": "T147",
+      "relation": "complements",
+      "reason": "Fan-out define distribuição e junção; chamadas paralelas concretizam o trabalho dos ramos.",
+      "source_ids": [
+        "V3C-S007",
+        "V3C-S005"
+      ]
+    },
+    {
+      "from": "T140",
+      "to": "T141",
+      "relation": "complements",
+      "reason": "Uma saída estruturada descreve o resultado, mas não executa a ferramenta.",
+      "source_ids": [
+        "V3C-S004",
+        "V3C-S005"
+      ]
+    },
+    {
+      "from": "T140",
+      "to": "T243",
+      "relation": "complements",
+      "reason": "Reconciliação resolve efeitos incertos após falhas de comunicação.",
+      "source_ids": [
+        "V3C-S004",
+        "V3C-S005"
+      ]
+    },
+    {
+      "from": "T141",
+      "to": "T196",
+      "relation": "complements",
+      "reason": "Decodificação restrita pode evitar algumas violações durante a geração.",
+      "source_ids": [
+        "V3C-S013",
+        "V3C-S004"
+      ]
+    },
+    {
+      "from": "T141",
+      "to": "T197",
+      "relation": "complements",
+      "reason": "Validação completa do documento ocorre com um validador do dialeto definido.",
+      "source_ids": [
+        "V3C-S013",
+        "V3C-S004"
+      ]
+    },
+    {
+      "from": "T142",
+      "to": "R008",
+      "relation": "distinct_from",
+      "reason": "LangGraph é um runtime concreto; a família de frameworks com planejamento inclui decisões que o aplicativo ainda precisa definir.",
+      "source_ids": [
+        "V3C-S006",
+        "V3C-S002"
+      ]
+    },
+    {
+      "from": "T142",
+      "to": "T208",
+      "relation": "complements",
+      "reason": "Planner–Executor define responsabilidades que podem ser representadas em nós separados.",
+      "source_ids": [
+        "V3C-S006",
+        "V3C-S002"
+      ]
+    },
+    {
+      "from": "T143",
+      "to": "T144",
+      "relation": "alternative",
+      "reason": "ReAct incorpora observações a cada ciclo, enquanto o planejamento antecipado tenta reutilizar estrutura prevista.",
+      "source_ids": [
+        "V3C-S012",
+        "V3C-S002"
+      ]
+    },
+    {
+      "from": "T143",
+      "to": "T208",
+      "relation": "complements",
+      "reason": "Separar planejador e executor oferece um lugar explícito para validar o plano.",
+      "source_ids": [
+        "V3C-S012",
+        "V3C-S002"
+      ]
+    },
+    {
+      "from": "T144",
+      "to": "T143",
+      "relation": "alternative",
+      "reason": "O plano antecipado evita algumas rodadas, mas depende mais de premissas estáveis.",
+      "source_ids": [
+        "V3C-S002",
+        "V3C-S012",
+        "C-S011"
+      ]
+    },
+    {
+      "from": "T144",
+      "to": "T218",
+      "relation": "complements",
+      "reason": "Um detector de repetição pode limitar ciclos sem informação adicional.",
+      "source_ids": [
+        "V3C-S002",
+        "V3C-S012",
+        "C-S011"
+      ]
+    },
+    {
+      "from": "T145",
+      "to": "T146",
+      "relation": "specializes",
+      "reason": "Profundidade controla número de etapas; adaptive compute também distribui largura, modelos e verificadores.",
+      "source_ids": [
+        "V3C-S003"
+      ]
+    },
+    {
+      "from": "T145",
+      "to": "T219",
+      "relation": "complements",
+      "reason": "O limite global de passos encerra a execução; profundidade adaptativa decide como distribuir esforço dentro desse limite.",
+      "source_ids": [
+        "V3C-S003"
+      ]
+    },
+    {
+      "from": "T146",
+      "to": "T145",
+      "relation": "complements",
+      "reason": "A profundidade é uma dimensão possível, não o orçamento completo.",
+      "source_ids": [
+        "V3C-S003",
+        "V3C-S002"
+      ]
+    },
+    {
+      "from": "T146",
+      "to": "T176",
+      "relation": "complements",
+      "reason": "Planejamento informa antecipadamente onde o recurso pode destravar dependências.",
+      "source_ids": [
+        "V3C-S003",
+        "V3C-S002"
+      ]
+    },
+    {
+      "from": "T147",
+      "to": "T139",
+      "relation": "complements",
+      "reason": "Concorrência de chamadas é um mecanismo de execução dos ramos.",
+      "source_ids": [
+        "V3C-S006",
+        "V3C-S007"
+      ]
+    },
+    {
+      "from": "T147",
+      "to": "T160",
+      "relation": "complements",
+      "reason": "Um DAG representa dependências e a condição de prontidão da junção.",
+      "source_ids": [
+        "V3C-S006",
+        "V3C-S007"
+      ]
+    },
+    {
+      "from": "T148",
+      "to": "T134",
+      "relation": "complements",
+      "reason": "Roteamento semântico pode produzir um sinal, mas o grafo deve validar a transição.",
+      "source_ids": [
+        "V3C-S006"
+      ]
+    },
+    {
+      "from": "T148",
+      "to": "T142",
+      "relation": "complements",
+      "reason": "O framework fornece transições e estado; a guarda pertence ao contrato da tarefa.",
+      "source_ids": [
+        "V3C-S006"
+      ]
+    },
+    {
+      "from": "T149",
+      "to": "T174",
+      "relation": "complements",
+      "reason": "O escalonador determina quando e em qual recurso executar o item retirado.",
+      "source_ids": [
+        "V3C-S008",
+        "C-S014"
+      ]
+    },
+    {
+      "from": "T149",
+      "to": "T166",
+      "relation": "complements",
+      "reason": "Aging pode atualizar prioridade, exigindo uma política consistente de manutenção da estrutura.",
+      "source_ids": [
+        "V3C-S008",
+        "C-S014"
+      ]
+    },
+    {
+      "from": "T150",
+      "to": "T157",
+      "relation": "distinct_from",
+      "reason": "Hash de prefixo localiza estado de inferência; singleflight coordena uma execução ativa por chave.",
+      "source_ids": [
+        "V3C-S011"
+      ]
+    },
+    {
+      "from": "T150",
+      "to": "T162",
+      "relation": "distinct_from",
+      "reason": "Idempotência limita efeito lógico; coalescência não a garante entre processos ou após término.",
+      "source_ids": [
+        "V3C-S011"
+      ]
+    },
+    {
+      "from": "T151",
+      "to": "T158",
+      "relation": "complements",
+      "reason": "O registro fornece identidade, metadados e sinal de alteração do catálogo.",
+      "source_ids": [
+        "V3C-S004",
+        "C-S016"
+      ]
+    },
+    {
+      "from": "T151",
+      "to": "T045",
+      "relation": "distinct_from",
+      "reason": "Recuperação escolhe candidatos; carregamento disponibiliza o contrato necessário para utilizá-los.",
+      "source_ids": [
+        "V3C-S004",
+        "C-S016"
+      ]
+    },
+    {
+      "from": "T152",
+      "to": "T168",
+      "relation": "complements",
+      "reason": "Limites suave e rígido definem ações quando o orçamento se aproxima das fronteiras.",
+      "source_ids": [
+        "V3C-S022",
+        "V3C-S015"
+      ]
+    },
+    {
+      "from": "T152",
+      "to": "T176",
+      "relation": "complements",
+      "reason": "O plano estima demandas futuras que precisam de reserva.",
+      "source_ids": [
+        "V3C-S022",
+        "V3C-S015"
+      ]
+    },
+    {
+      "from": "T153",
+      "to": "T172",
+      "relation": "complements",
+      "reason": "O controlador administra buffers, framing e estados do stream.",
+      "source_ids": [
+        "V3C-S005",
+        "V3C-S019"
+      ]
+    },
+    {
+      "from": "T153",
+      "to": "T089",
+      "relation": "distinct_from",
+      "reason": "Término por EOS ou limite é decisão de geração; interrupção do consumidor é outro evento.",
+      "source_ids": [
+        "V3C-S005",
+        "V3C-S019"
+      ]
+    },
+    {
+      "from": "T154",
+      "to": "T060",
+      "relation": "complements",
+      "reason": "Checkpoints persistem o estado por sessão, mas não definem sozinhos como aceitar turnos simultâneos.",
+      "source_ids": [
+        "A-S022",
+        "V3C-S006"
+      ]
+    },
+    {
+      "from": "T154",
+      "to": "T207",
+      "relation": "complements",
+      "reason": "Um fluxo de eventos pode registrar mensagens e revisões sem apagar o passado.",
+      "source_ids": [
+        "A-S022",
+        "V3C-S006"
+      ]
+    },
+    {
+      "from": "T155",
+      "to": "T179",
+      "relation": "distinct_from",
+      "reason": "Destilação paramétrica altera o modelo; busca de instruções altera a entrada utilizada em inferência.",
+      "source_ids": [
+        "V3C-S014",
+        "V2C-S004"
+      ]
+    },
+    {
+      "from": "T155",
+      "to": "T152",
+      "relation": "complements",
+      "reason": "Orçamento identifica custo de contexto, mas não escolhe automaticamente a melhor instrução.",
+      "source_ids": [
+        "V3C-S014",
+        "V2C-S004"
+      ]
+    },
+    {
+      "from": "T156",
+      "to": "T146",
+      "relation": "complements",
+      "reason": "Diversidade de amostragem pode compor a largura da busca sob orçamento.",
+      "source_ids": [
+        "V3C-S017"
+      ]
+    },
+    {
+      "from": "T156",
+      "to": "T198",
+      "relation": "distinct_from",
+      "reason": "Concentração dos logits não equivale à calibração de confiança factual.",
+      "source_ids": [
+        "V3C-S017"
+      ]
+    },
+    {
+      "from": "T157",
+      "to": "T171",
+      "relation": "complements",
+      "reason": "Orquestração usa identidade de prefixo para estimar onde existe trabalho reutilizável.",
+      "source_ids": [
+        "V3C-S015"
+      ]
+    },
+    {
+      "from": "T157",
+      "to": "T150",
+      "relation": "distinct_from",
+      "reason": "Singleflight compartilha uma execução em curso; hashing endereça estado computacional armazenado.",
+      "source_ids": [
+        "V3C-S015"
+      ]
+    },
+    {
+      "from": "T158",
+      "to": "T151",
+      "relation": "complements",
+      "reason": "O registro abastece a descoberta usada pelo carregamento tardio.",
+      "source_ids": [
+        "V3C-S004"
+      ]
+    },
+    {
+      "from": "T158",
+      "to": "T170",
+      "relation": "complements",
+      "reason": "Versionamento define como interpretar revisões dos contratos catalogados.",
+      "source_ids": [
+        "V3C-S004"
+      ]
+    },
+    {
+      "from": "T159",
+      "to": "T241",
+      "relation": "complements",
+      "reason": "Replay é um mecanismo de reconstrução usado por runtimes duráveis.",
+      "source_ids": [
+        "V3C-S018",
+        "V3C-S024"
+      ]
+    },
+    {
+      "from": "T159",
+      "to": "T162",
+      "relation": "complements",
+      "reason": "Efeitos de Activities continuam precisando de identidade e repetição segura.",
+      "source_ids": [
+        "V3C-S018",
+        "V3C-S024"
+      ]
+    },
+    {
+      "from": "T160",
+      "to": "T161",
+      "relation": "complements",
+      "reason": "Caminho crítico ajuda a priorizar entre tarefas prontas, mas não muda dependências.",
+      "source_ids": [
+        "C-S024",
+        "V3C-S002"
+      ]
+    },
+    {
+      "from": "T160",
+      "to": "T147",
+      "relation": "complements",
+      "reason": "Fan-out e junção podem ser subgrafos com critérios explícitos de completude.",
+      "source_ids": [
+        "C-S024",
+        "V3C-S002"
+      ]
+    },
+    {
+      "from": "T161",
+      "to": "T160",
+      "relation": "complements",
+      "reason": "O escalonador respeita dependências e pode usar folga ou caminho remanescente como critério.",
+      "source_ids": [
+        "V3C-S002",
+        "C-S024"
+      ]
+    },
+    {
+      "from": "T161",
+      "to": "T174",
+      "relation": "complements",
+      "reason": "Prioridade pode incorporar caminho crítico sem ignorar justiça e restrições.",
+      "source_ids": [
+        "V3C-S002",
+        "C-S024"
+      ]
+    },
+    {
+      "from": "T162",
+      "to": "T243",
+      "relation": "complements",
+      "reason": "Reconciliação consulta o efeito quando a camada idempotente não fornece conclusão suficiente.",
+      "source_ids": [
+        "V3C-S025",
+        "C-S026"
+      ]
+    },
+    {
+      "from": "T162",
+      "to": "T150",
+      "relation": "distinct_from",
+      "reason": "Compartilhar uma chamada ativa não conserva necessariamente a intenção após seu término.",
+      "source_ids": [
+        "V3C-S025",
+        "C-S026"
+      ]
+    },
+    {
+      "from": "T163",
+      "to": "T164",
+      "relation": "complements",
+      "reason": "Retry-After adiciona uma orientação temporal do servidor.",
+      "source_ids": [
+        "V3C-S010",
+        "V3C-S023"
+      ]
+    },
+    {
+      "from": "T163",
+      "to": "T228",
+      "relation": "complements",
+      "reason": "Uma fila durável persiste elegibilidade e orçamento entre reinícios.",
+      "source_ids": [
+        "V3C-S010",
+        "V3C-S023"
+      ]
+    },
+    {
+      "from": "T164",
+      "to": "T163",
+      "relation": "complements",
+      "reason": "Backoff local e orientação do servidor devem formar uma única próxima elegibilidade.",
+      "source_ids": [
+        "C-S028",
+        "V3C-S010"
+      ]
+    },
+    {
+      "from": "T164",
+      "to": "T162",
+      "relation": "complements",
+      "reason": "Identidade da intenção permanece necessária nas operações repetidas.",
+      "source_ids": [
+        "C-S028",
+        "V3C-S010"
+      ]
+    },
+    {
+      "from": "T165",
+      "to": "T138",
+      "relation": "specializes",
+      "reason": "Half-open detalha a fase de recuperação da máquina de estados completa.",
+      "source_ids": [
+        "V3C-S026",
+        "C-S005"
+      ]
+    },
+    {
+      "from": "T165",
+      "to": "T227",
+      "relation": "distinct_from",
+      "reason": "Probe de readiness do processo não substitui sonda da operação protegida.",
+      "source_ids": [
+        "V3C-S026",
+        "C-S005"
+      ]
+    },
+    {
+      "from": "T166",
+      "to": "T149",
+      "relation": "complements",
+      "reason": "A fila implementa ordenação; a política define como a prioridade muda.",
+      "source_ids": [
+        "V3C-S020",
+        "V3C-S009"
+      ]
+    },
+    {
+      "from": "T166",
+      "to": "T174",
+      "relation": "complements",
+      "reason": "Escalonamento precisa combinar justiça, capacidade e urgência.",
+      "source_ids": [
+        "V3C-S020",
+        "V3C-S009"
+      ]
+    },
+    {
+      "from": "T167",
+      "to": "T137",
+      "relation": "complements",
+      "reason": "Rate limiting define política e escopo; o bucket é um mecanismo possível.",
+      "source_ids": [
+        "V3C-S021",
+        "C-S004"
+      ]
+    },
+    {
+      "from": "T167",
+      "to": "T166",
+      "relation": "distinct_from",
+      "reason": "Um bucket compartilhado limita volume, mas não distribui automaticamente parcela justa entre clientes.",
+      "source_ids": [
+        "V3C-S021",
+        "C-S004"
+      ]
+    },
+    {
+      "from": "T168",
+      "to": "T152",
+      "relation": "complements",
+      "reason": "A alocação distribui cotas; os limites determinam quando mudar de estratégia.",
+      "source_ids": [
+        "V3C-S022"
+      ]
+    },
+    {
+      "from": "T168",
+      "to": "T212",
+      "relation": "complements",
+      "reason": "Auto-compact é uma resposta possível ao gatilho suave, não sua definição completa.",
+      "source_ids": [
+        "V3C-S022"
+      ]
+    },
+    {
+      "from": "T169",
+      "to": "T237",
+      "relation": "complements",
+      "reason": "Offloading define a unidade delegada; isolamento de contexto define parte da fronteira de execução.",
+      "source_ids": [
+        "V2A-S018",
+        "V3C-S028"
+      ]
+    },
+    {
+      "from": "T169",
+      "to": "T239",
+      "relation": "complements",
+      "reason": "Worktrees podem separar árvores de edição, sem substituir contratos de integração.",
+      "source_ids": [
+        "V2A-S018",
+        "V3C-S028"
+      ]
+    },
+    {
+      "from": "T170",
+      "to": "T158",
+      "relation": "complements",
+      "reason": "O registro precisa anunciar e conservar as revisões dos contratos.",
+      "source_ids": [
+        "V3C-S013",
+        "V3C-S004"
+      ]
+    },
+    {
+      "from": "T170",
+      "to": "T141",
+      "relation": "complements",
+      "reason": "Schema delimita estrutura, mas a migração também precisa de testes de significado.",
+      "source_ids": [
+        "V3C-S013",
+        "V3C-S004"
+      ]
+    },
+    {
+      "from": "T171",
+      "to": "T157",
+      "relation": "complements",
+      "reason": "Identidade de prefixo permite verificar qual estado pode ser reutilizado.",
+      "source_ids": [
+        "V3C-S015",
+        "B-S032"
+      ]
+    },
+    {
+      "from": "T171",
+      "to": "T120",
+      "relation": "complements",
+      "reason": "Roteamento de KV é uma aplicação específica dessa consideração de residência e custo.",
+      "source_ids": [
+        "V3C-S015",
+        "B-S032"
+      ]
+    },
+    {
+      "from": "T172",
+      "to": "T153",
+      "relation": "complements",
+      "reason": "Interrupção do usuário precisa propagar pelo controlador até a origem.",
+      "source_ids": [
+        "V3C-S019"
+      ]
+    },
+    {
+      "from": "T172",
+      "to": "T137",
+      "relation": "distinct_from",
+      "reason": "Controle de fluxo entre produtor e consumidor não é a mesma política de admissão de requisições.",
+      "source_ids": [
+        "V3C-S019"
+      ]
+    },
+    {
+      "from": "T173",
+      "to": "T136",
+      "relation": "specializes",
+      "reason": "É a cadeia geral aplicada a capacidades e contexto de modelos.",
+      "source_ids": [
+        "V3C-S004",
+        "V3C-S013",
+        "V3C-S001"
+      ]
+    },
+    {
+      "from": "T173",
+      "to": "T133",
+      "relation": "complements",
+      "reason": "O roteador fornece candidatos, mas a política de falha decide quando mudar.",
+      "source_ids": [
+        "V3C-S004",
+        "V3C-S013",
+        "V3C-S001"
+      ]
+    },
+    {
+      "from": "T174",
+      "to": "T149",
+      "relation": "complements",
+      "reason": "A fila fornece ordem; o escalonador decide uso de recursos e interrupção.",
+      "source_ids": [
+        "V3C-S016",
+        "V3C-S020"
+      ]
+    },
+    {
+      "from": "T174",
+      "to": "T161",
+      "relation": "complements",
+      "reason": "Caminho crítico informa dependências que podem dominar a prioridade nominal.",
+      "source_ids": [
+        "V3C-S016",
+        "V3C-S020"
+      ]
+    },
+    {
+      "from": "T175",
+      "to": "T137",
+      "relation": "complements",
+      "reason": "O limitador fornece motivo e escopo da rejeição.",
+      "source_ids": [
+        "V3C-S009",
+        "V3C-S010"
+      ]
+    },
+    {
+      "from": "T175",
+      "to": "T173",
+      "relation": "complements",
+      "reason": "Fallback de modelos precisa manter capacidades além de encontrar quota disponível.",
+      "source_ids": [
+        "V3C-S009",
+        "V3C-S010"
+      ]
+    },
+    {
+      "from": "T176",
+      "to": "T152",
+      "relation": "complements",
+      "reason": "Alocação implementa as reservas que o plano estima.",
+      "source_ids": [
+        "V3C-S012",
+        "V3C-S022"
+      ]
+    },
+    {
+      "from": "T176",
+      "to": "T143",
+      "relation": "specializes",
+      "reason": "Acrescenta restrições de contexto e consumo ao planejamento antecipado.",
+      "source_ids": [
+        "V3C-S012",
+        "V3C-S022"
+      ]
+    },
+    {
+      "from": "T177",
+      "to": "T182",
+      "relation": "complements",
+      "reason": "LoRA restringe os parâmetros treináveis; definição dos alvos e avaliação continuam necessárias ao ajuste.",
+      "source_ids": [
+        "V3B-S015"
+      ]
+    },
+    {
+      "from": "T178",
+      "to": "T179",
+      "relation": "complements",
+      "reason": "Destilação de contexto é uma aplicação da transferência com informação privilegiada restrita ao professor.",
+      "source_ids": [
+        "V3B-S017"
+      ]
+    },
+    {
+      "from": "T179",
+      "to": "T181",
+      "relation": "distinct_from",
+      "reason": "AMD fornece memórias externas ao aluno; esta variante modifica parâmetros para reduzir contexto explícito.",
+      "source_ids": [
+        "C-S033"
+      ]
+    },
+    {
+      "from": "T180",
+      "to": "T179",
+      "relation": "specializes",
+      "reason": "Foca transferência de instruções recorrentes, mantendo explícita a informação variável indispensável.",
+      "source_ids": [
+        "C-S034"
+      ]
+    },
+    {
+      "from": "T181",
+      "to": "T179",
+      "relation": "distinct_from",
+      "reason": "No AMD identificado, transferência ocorre por memória externa, sem atualização de pesos.",
+      "source_ids": [
+        "C-S035"
+      ]
+    },
+    {
+      "from": "T182",
+      "to": "T183",
+      "relation": "complements",
+      "reason": "QLoRA mantém base quantizada durante o treinamento dos fatores, acrescentando outra fonte de erro e economia.",
+      "source_ids": [
+        "C-S036"
+      ]
+    },
+    {
+      "from": "T183",
+      "to": "T093",
+      "relation": "distinct_from",
+      "reason": "Paged optimizers gerenciam memória de treinamento; PagedAttention organiza KV de inferência.",
+      "source_ids": [
+        "C-S037"
+      ]
+    },
+    {
+      "from": "T184",
+      "to": "T203",
+      "relation": "distinct_from",
+      "reason": "Roteamento entre modelos externos decide qual sistema responderá; MoE roteia representações dentro de uma arquitetura treinada.",
+      "source_ids": [
+        "V3B-S016"
+      ]
+    },
+    {
+      "from": "T185",
+      "to": "T192",
+      "relation": "distinct_from",
+      "reason": "Autorrevisão em tempo de execução não reproduz, sozinha, as etapas de treinamento de Constitutional AI.",
+      "source_ids": [
+        "C-S039"
+      ]
+    },
+    {
+      "from": "T186",
+      "to": "T187",
+      "relation": "alternative",
+      "reason": "Votação agrega propostas; debate permite que participantes revisem suas próprias respostas após interação.",
+      "source_ids": [
+        "C-S040"
+      ]
+    },
+    {
+      "from": "T187",
+      "to": "T188",
+      "relation": "alternative",
+      "reason": "Self-consistency agrega amostras de soluções, frequentemente do mesmo modelo, em vez de pressupor classificadores distintos.",
+      "source_ids": [
+        "C-S041"
+      ]
+    },
+    {
+      "from": "T188",
+      "to": "T189",
+      "relation": "alternative",
+      "reason": "Best-of-N usa uma nota de qualidade; self-consistency seleciona pela massa de respostas equivalentes.",
+      "source_ids": [
+        "C-S042"
+      ]
+    },
+    {
+      "from": "T189",
+      "to": "T188",
+      "relation": "alternative",
+      "reason": "A seleção por nota não depende de uma resposta formar maioria entre amostras.",
+      "source_ids": [
+        "V3B-S018",
+        "C-S043"
+      ]
+    },
+    {
+      "from": "T190",
+      "to": "T195",
+      "relation": "complements",
+      "reason": "Execução pode fornecer evidência objetiva para alguns critérios do loop, sem cobrir toda a especificação.",
+      "source_ids": [
+        "C-S043"
+      ]
+    },
+    {
+      "from": "T191",
+      "to": "T200",
+      "relation": "complements",
+      "reason": "Independência de contexto ajuda a reduzir contaminação, mas verificação externa acrescenta outra dimensão de independência.",
+      "source_ids": [
+        "C-S044"
+      ]
+    },
+    {
+      "from": "T192",
+      "to": "T190",
+      "relation": "alternative",
+      "reason": "Verifier loop exige critério de aceitação explícito; Self-Refine pode operar somente com feedback do mesmo modelo.",
+      "source_ids": [
+        "C-S045"
+      ]
+    },
+    {
+      "from": "T193",
+      "to": "T197",
+      "relation": "complements",
+      "reason": "Schema valida forma dos argumentos, enquanto regras adicionais avaliam autorização e significado operacional.",
+      "source_ids": [
+        "C-S046"
+      ]
+    },
+    {
+      "from": "T194",
+      "to": "T206",
+      "relation": "distinct_from",
+      "reason": "Supervisão de processo treina com sinais intermediários; verificação de processo pode apenas inspecionar uma execução.",
+      "source_ids": [
+        "C-S047"
+      ]
+    },
+    {
+      "from": "T195",
+      "to": "T205",
+      "relation": "complements",
+      "reason": "Comparação diferencial executa duas versões para investigar se preservam o comportamento especificado.",
+      "source_ids": [
+        "C-S048"
+      ]
+    },
+    {
+      "from": "T196",
+      "to": "T197",
+      "relation": "complements",
+      "reason": "Schema validation examina o objeto produzido; constrained decoding restringe o caminho enquanto ele é produzido.",
+      "source_ids": [
+        "V3B-S025",
+        "C-S008"
+      ]
+    },
+    {
+      "from": "T197",
+      "to": "T196",
+      "relation": "complements",
+      "reason": "Uma gramática de geração pode impor parte do schema, mas o objeto final ainda precisa ser validado.",
+      "source_ids": [
+        "V3B-S024",
+        "C-S049"
+      ]
+    },
+    {
+      "from": "T198",
+      "to": "T203",
+      "relation": "complements",
+      "reason": "Estimativas calibradas podem orientar quando encaminhar uma tarefa a outro executor.",
+      "source_ids": [
+        "C-S050"
+      ]
+    },
+    {
+      "from": "T199",
+      "to": "T177",
+      "relation": "distinct_from",
+      "reason": "A melhoria pode otimizar prompts ou exemplos sem atualizar pesos; fine-tuning é somente um mecanismo possível.",
+      "source_ids": [
+        "C-S020"
+      ]
+    },
+    {
+      "from": "T200",
+      "to": "T191",
+      "relation": "complements",
+      "reason": "Fatorar perguntas reduz contaminação contextual, enquanto diversificar fontes e métodos aborda dependências adicionais.",
+      "source_ids": [
+        "V3B-S019",
+        "C-S048"
+      ]
+    },
+    {
+      "from": "T201",
+      "to": "T189",
+      "relation": "complements",
+      "reason": "Best-of-N é uma alocação possível do orçamento adicional, dependente da qualidade do seletor.",
+      "source_ids": [
+        "V3B-S020"
+      ]
+    },
+    {
+      "from": "T202",
+      "to": "T198",
+      "relation": "complements",
+      "reason": "Calibração ajuda quando existe evento de sucesso bem definido, mas não substitui representar estados desconhecidos.",
+      "source_ids": [
+        "C-S053"
+      ]
+    },
+    {
+      "from": "T203",
+      "to": "T184",
+      "relation": "distinct_from",
+      "reason": "Seleciona executores de tarefas; MoE seleciona especialistas internos de uma rede.",
+      "source_ids": [
+        "C-S001",
+        "C-S050"
+      ]
+    },
+    {
+      "from": "T204",
+      "to": "T199",
+      "relation": "complements",
+      "reason": "Avaliações podem justificar atualização da skill, mas o pacote precisa mudar de fato para alterar comportamento futuro.",
+      "source_ids": [
+        "V3B-S021"
+      ]
+    },
+    {
+      "from": "T205",
+      "to": "T195",
+      "relation": "complements",
+      "reason": "Execução fornece observações para comparar comportamento entre versões, dentro do domínio declarado.",
+      "source_ids": [
+        "V3B-S022"
+      ]
+    },
+    {
+      "from": "T206",
+      "to": "T194",
+      "relation": "distinct_from",
+      "reason": "Verificação inspeciona execução; process supervision usa sinais de etapas para treinamento.",
+      "source_ids": [
+        "V3B-S023",
+        "C-S047"
+      ]
+    },
+    {
+      "from": "T207",
+      "to": "T056",
+      "relation": "complements",
+      "reason": "Bitemporalidade acrescenta validade e registro, dimensões diferentes do acesso recente.",
+      "source_ids": [
+        "A-S008",
+        "V3C-S028"
+      ]
+    },
+    {
+      "from": "T207",
+      "to": "T209",
+      "relation": "distinct_from",
+      "reason": "Reflexion usa feedback de tentativas; stream registra experiências que podem alimentar diferentes mecanismos.",
+      "source_ids": [
+        "A-S008",
+        "V3C-S028"
+      ]
+    },
+    {
+      "from": "T208",
+      "to": "T143",
+      "relation": "complements",
+      "reason": "Plan-Then-Act descreve a ordem lógica; Planner–Executor explicita responsabilidades e contrato de retorno.",
+      "source_ids": [
+        "V3C-S002",
+        "V3C-S012"
+      ]
+    },
+    {
+      "from": "T208",
+      "to": "T144",
+      "relation": "alternative",
+      "reason": "Um agente reativo pode escolher a próxima ação sem manter dois papéis separados.",
+      "source_ids": [
+        "V3C-S002",
+        "V3C-S012"
+      ]
+    },
+    {
+      "from": "T209",
+      "to": "T192",
+      "relation": "distinct_from",
+      "reason": "Self-Refine revisa um candidato; Reflexion conserva feedback para orientar tentativas futuras.",
+      "source_ids": [
+        "V3C-S029",
+        "V3C-S032"
+      ]
+    },
+    {
+      "from": "T209",
+      "to": "T204",
+      "relation": "complements",
+      "reason": "Lições verificadas podem alimentar procedimentos, com critérios de promoção separados.",
+      "source_ids": [
+        "V3C-S029",
+        "V3C-S032"
+      ]
+    },
+    {
+      "from": "T210",
+      "to": "T211",
+      "relation": "complements",
+      "reason": "Handoff carrega o manifesto e os pontos necessários à transferência.",
+      "source_ids": [
+        "V3C-S028",
+        "V2A-S004"
+      ]
+    },
+    {
+      "from": "T210",
+      "to": "T243",
+      "relation": "complements",
+      "reason": "Operações pendentes precisam de reconciliação após a troca de sessão.",
+      "source_ids": [
+        "V3C-S028",
+        "V2A-S004"
+      ]
+    },
+    {
+      "from": "T211",
+      "to": "T210",
+      "relation": "complements",
+      "reason": "Rotação define a transferência; handoff fornece seu pacote verificável.",
+      "source_ids": [
+        "V2A-S004",
+        "V3C-S027",
+        "V3C-S028"
+      ]
+    },
+    {
+      "from": "T211",
+      "to": "T240",
+      "relation": "distinct_from",
+      "reason": "Snapshot captura estado; handoff também orienta o próximo responsável e explica pendências.",
+      "source_ids": [
+        "V2A-S004",
+        "V3C-S027",
+        "V3C-S028"
+      ]
+    },
+    {
+      "from": "T212",
+      "to": "T168",
+      "relation": "complements",
+      "reason": "O limiar suave precisa reservar espaço para executar a compactação.",
+      "source_ids": [
+        "V3C-S031"
+      ]
+    },
+    {
+      "from": "T212",
+      "to": "T215",
+      "relation": "alternative",
+      "reason": "Masking remove observações antigas sem produzir uma síntese semântica delas.",
+      "source_ids": [
+        "V3C-S031"
+      ]
+    },
+    {
+      "from": "T213",
+      "to": "T147",
+      "relation": "complements",
+      "reason": "Fan-out explora independência das unidades já bem delimitadas.",
+      "source_ids": [
+        "V3C-S002",
+        "V2A-S004"
+      ]
+    },
+    {
+      "from": "T213",
+      "to": "T208",
+      "relation": "complements",
+      "reason": "Planner–Executor distribui e acompanha unidades com critérios explícitos.",
+      "source_ids": [
+        "V3C-S002",
+        "V2A-S004"
+      ]
+    },
+    {
+      "from": "T214",
+      "to": "T215",
+      "relation": "distinct_from",
+      "reason": "Masking substitui observações antigas; pruning pode selecionar dentro de uma observação atual.",
+      "source_ids": [
+        "V2A-S003",
+        "V3C-S031"
+      ]
+    },
+    {
+      "from": "T214",
+      "to": "T238",
+      "relation": "complements",
+      "reason": "Referências por faixa permitem recuperar detalhes omitidos quando necessário.",
+      "source_ids": [
+        "V2A-S003",
+        "V3C-S031"
+      ]
+    },
+    {
+      "from": "T215",
+      "to": "T212",
+      "relation": "alternative",
+      "reason": "Auto-compact produz resumo; masking decide quais observações deixar fora da janela.",
+      "source_ids": [
+        "V2A-S003",
+        "V3C-S031"
+      ]
+    },
+    {
+      "from": "T215",
+      "to": "T214",
+      "relation": "complements",
+      "reason": "Poda interna e masking por observação podem ser combinados com responsabilidades distintas.",
+      "source_ids": [
+        "V2A-S003",
+        "V3C-S031"
+      ]
+    },
+    {
+      "from": "T216",
+      "to": "T238",
+      "relation": "complements",
+      "reason": "O mapa indica onde ler; faixas de linhas fornecem o conteúdo necessário à decisão.",
+      "source_ids": [
+        "V2A-S007",
+        "V3C-S033",
+        "V3C-S027"
+      ]
+    },
+    {
+      "from": "T216",
+      "to": "T232",
+      "relation": "complements",
+      "reason": "Metadados sintáticos podem enriquecer referências sem provar comportamento dinâmico.",
+      "source_ids": [
+        "V2A-S007",
+        "V3C-S033",
+        "V3C-S027"
+      ]
+    },
+    {
+      "from": "T217",
+      "to": "T195",
+      "relation": "complements",
+      "reason": "Verificação por execução é o mecanismo de evidência usado pelo ciclo.",
+      "source_ids": [
+        "V3C-S032",
+        "C-S048"
+      ]
+    },
+    {
+      "from": "T217",
+      "to": "T224",
+      "relation": "complements",
+      "reason": "A especificação fornece o comportamento que os testes devem representar.",
+      "source_ids": [
+        "V3C-S032",
+        "C-S048"
+      ]
+    },
+    {
+      "from": "T218",
+      "to": "T219",
+      "relation": "distinct_from",
+      "reason": "Limite de execução estabelece uma fronteira de orçamento; detecção de loop interpreta comportamento.",
+      "source_ids": [
+        "V2A-S009",
+        "V3C-S006"
+      ]
+    },
+    {
+      "from": "T218",
+      "to": "T145",
+      "relation": "complements",
+      "reason": "Profundidade adaptativa pode consumir o sinal de progresso para decidir continuidade.",
+      "source_ids": [
+        "V2A-S009",
+        "V3C-S006"
+      ]
+    },
+    {
+      "from": "T219",
+      "to": "T218",
+      "relation": "distinct_from",
+      "reason": "Detecção de estagnação interpreta progresso; limite de execução apenas impõe um teto.",
+      "source_ids": [
+        "V3C-S006",
+        "V2A-S009"
+      ]
+    },
+    {
+      "from": "T219",
+      "to": "T147",
+      "relation": "complements",
+      "reason": "Fan-out pode aumentar trabalho total sem ampliar muito a profundidade.",
+      "source_ids": [
+        "V3C-S006",
+        "V2A-S009"
+      ]
+    },
+    {
+      "from": "T220",
+      "to": "T170",
+      "relation": "complements",
+      "reason": "A revisão do schema define se o erro decorre de contrato obsoleto.",
+      "source_ids": [
+        "V3C-S038",
+        "V3C-S004"
+      ]
+    },
+    {
+      "from": "T220",
+      "to": "T243",
+      "relation": "distinct_from",
+      "reason": "Reconciliação investiga efeito incerto; não é simples correção dos argumentos.",
+      "source_ids": [
+        "V3C-S038",
+        "V3C-S004"
+      ]
+    },
+    {
+      "from": "T221",
+      "to": "T211",
+      "relation": "complements",
+      "reason": "Handoff transporta objetivo e decisões para a próxima sessão.",
+      "source_ids": [
+        "V2A-S004",
+        "V3C-S031"
+      ]
+    },
+    {
+      "from": "T221",
+      "to": "T212",
+      "relation": "complements",
+      "reason": "Após compactação, o lembrete pode reintroduzir critérios vigentes sem reconstruir todo o histórico.",
+      "source_ids": [
+        "V2A-S004",
+        "V3C-S031"
+      ]
+    },
+    {
+      "from": "T222",
+      "to": "T152",
+      "relation": "complements",
+      "reason": "A alocação consome os sinais do monitor para redistribuir espaço.",
+      "source_ids": [
+        "V3C-S022",
+        "V3C-S031"
+      ]
+    },
+    {
+      "from": "T222",
+      "to": "T168",
+      "relation": "complements",
+      "reason": "Fronteiras suave e rígida convertem observação de orçamento em ação.",
+      "source_ids": [
+        "V3C-S022",
+        "V3C-S031"
+      ]
+    },
+    {
+      "from": "T223",
+      "to": "T200",
+      "relation": "complements",
+      "reason": "Verificação independente testa dimensões que a autochecagem pode interpretar incorretamente.",
+      "source_ids": [
+        "V2A-S020",
+        "V3C-S032"
+      ]
+    },
+    {
+      "from": "T223",
+      "to": "T206",
+      "relation": "complements",
+      "reason": "Verificação de processo acompanha se a sequência respeitou critérios definidos.",
+      "source_ids": [
+        "V2A-S020",
+        "V3C-S032"
+      ]
+    },
+    {
+      "from": "T224",
+      "to": "T217",
+      "relation": "complements",
+      "reason": "Testes materializam parte dos critérios de aceitação da especificação.",
+      "source_ids": [
+        "V2A-S023",
+        "V3C-S034"
+      ]
+    },
+    {
+      "from": "T224",
+      "to": "T213",
+      "relation": "complements",
+      "reason": "Micro-missões precisam de vínculo com resultados exigidos, evitando fragmentação sem finalidade.",
+      "source_ids": [
+        "V2A-S023",
+        "V3C-S034"
+      ]
+    },
+    {
+      "from": "T225",
+      "to": "T227",
+      "relation": "complements",
+      "reason": "Sinais de saúde precisam separar quem deve reiniciar de quem deve parar de receber tráfego.",
+      "source_ids": [
+        "V2A-S011",
+        "V3C-S028",
+        "V3C-S040"
+      ]
+    },
+    {
+      "from": "T225",
+      "to": "T243",
+      "relation": "complements",
+      "reason": "Reconciliação identifica o que a execução anterior efetivamente realizou.",
+      "source_ids": [
+        "V2A-S011",
+        "V3C-S028",
+        "V3C-S040"
+      ]
+    },
+    {
+      "from": "T226",
+      "to": "T060",
+      "relation": "complements",
+      "reason": "Detalhes de heartbeat podem funcionar como pequeno checkpoint de atividade, dentro do contrato do runtime.",
+      "source_ids": [
+        "V2A-S010",
+        "V3C-S040"
+      ]
+    },
+    {
+      "from": "T226",
+      "to": "T162",
+      "relation": "complements",
+      "reason": "Idempotência protege itens cuja confirmação e progresso podem divergir durante falha.",
+      "source_ids": [
+        "V2A-S010",
+        "V3C-S040"
+      ]
+    },
+    {
+      "from": "T227",
+      "to": "T225",
+      "relation": "complements",
+      "reason": "O supervisor utiliza sinais de saúde para escolher se reinicia ou espera.",
+      "source_ids": [
+        "V2A-S011",
+        "V3C-S040"
+      ]
+    },
+    {
+      "from": "T227",
+      "to": "T226",
+      "relation": "complements",
+      "reason": "Heartbeat com cursor pode fornecer evidência de progresso de uma atividade.",
+      "source_ids": [
+        "V2A-S011",
+        "V3C-S040"
+      ]
+    },
+    {
+      "from": "T228",
+      "to": "T163",
+      "relation": "complements",
+      "reason": "Backoff calcula atraso; a fila conserva o calendário e o estado entre processos.",
+      "source_ids": [
+        "V3C-S023",
+        "V3C-S028"
+      ]
+    },
+    {
+      "from": "T228",
+      "to": "T243",
+      "relation": "complements",
+      "reason": "Reentrega de efeito incerto exige reconciliação antes de tratar o item como novo.",
+      "source_ids": [
+        "V3C-S023",
+        "V3C-S028"
+      ]
+    },
+    {
+      "from": "T229",
+      "to": "T230",
+      "relation": "complements",
+      "reason": "Unified Diff é um formato possível para representar mudanças localizadas; edição por patches também admite outras convenções.",
+      "source_ids": [
+        "V2A-S014",
+        "V3C-S034",
+        "V2A-S008"
+      ]
+    },
+    {
+      "from": "T229",
+      "to": "T233",
+      "relation": "complements",
+      "reason": "Validação verifica base, escopo e comportamento antes de considerar a edição concluída.",
+      "source_ids": [
+        "V2A-S014",
+        "V3C-S034",
+        "V2A-S008"
+      ]
+    },
+    {
+      "from": "T230",
+      "to": "T229",
+      "relation": "complements",
+      "reason": "Patch-based coding escolhe a estratégia de edição; Unified Diff fornece uma representação específica.",
+      "source_ids": [
+        "V2A-S013",
+        "V3C-S034"
+      ]
+    },
+    {
+      "from": "T230",
+      "to": "T231",
+      "relation": "distinct_from",
+      "reason": "Search/replace identifica texto literal e usa outro contrato de localização.",
+      "source_ids": [
+        "V2A-S013",
+        "V3C-S034"
+      ]
+    },
+    {
+      "from": "T231",
+      "to": "T230",
+      "relation": "distinct_from",
+      "reason": "Unified Diff inclui hunks e intervalos; blocos search/replace localizam conteúdo literal.",
+      "source_ids": [
+        "V2A-S008",
+        "V3C-S033"
+      ]
+    },
+    {
+      "from": "T231",
+      "to": "T232",
+      "relation": "alternative",
+      "reason": "Edição sintática pode distinguir símbolos iguais em escopos diferentes.",
+      "source_ids": [
+        "V2A-S008",
+        "V3C-S033"
+      ]
+    },
+    {
+      "from": "T232",
+      "to": "T231",
+      "relation": "alternative",
+      "reason": "Busca literal é mais simples quando o alvo é inequívoco; estrutura ajuda quando texto igual possui significados diferentes.",
+      "source_ids": [
+        "V3C-S033",
+        "V3C-S035"
+      ]
+    },
+    {
+      "from": "T232",
+      "to": "T216",
+      "relation": "complements",
+      "reason": "O mapa do repositório orienta descoberta de símbolos, mas não substitui metadados do trecho editado.",
+      "source_ids": [
+        "V3C-S033",
+        "V3C-S035"
+      ]
+    },
+    {
+      "from": "T233",
+      "to": "T229",
+      "relation": "complements",
+      "reason": "A estratégia de patch precisa dessa ligação entre base, delta e resultado.",
+      "source_ids": [
+        "V3C-S037",
+        "V2A-S014",
+        "V3C-S034"
+      ]
+    },
+    {
+      "from": "T233",
+      "to": "T236",
+      "relation": "complements",
+      "reason": "Commits podem identificar o artefato validado e seu ponto de integração.",
+      "source_ids": [
+        "V3C-S037",
+        "V2A-S014",
+        "V3C-S034"
+      ]
+    },
+    {
+      "from": "T234",
+      "to": "T211",
+      "relation": "distinct_from",
+      "reason": "Handoff descreve uma transferência de trabalho; memória de projeto conserva conhecimento reutilizável.",
+      "source_ids": [
+        "V2A-S017",
+        "V3C-S039"
+      ]
+    },
+    {
+      "from": "T234",
+      "to": "T155",
+      "relation": "complements",
+      "reason": "Instruções enxutas podem apontar para detalhes de módulo carregados quando necessários.",
+      "source_ids": [
+        "V2A-S017",
+        "V3C-S039"
+      ]
+    },
+    {
+      "from": "T235",
+      "to": "T210",
+      "relation": "complements",
+      "reason": "Rotação e retomada precisam preservar o estado da missão entre processos.",
+      "source_ids": [
+        "V3C-S039",
+        "V2A-S005"
+      ]
+    },
+    {
+      "from": "T235",
+      "to": "T225",
+      "relation": "distinct_from",
+      "reason": "Watchdog restaura capacidade; controlador headless interpreta eventos e decide o próximo trabalho.",
+      "source_ids": [
+        "V3C-S039",
+        "V2A-S005"
+      ]
+    },
+    {
+      "from": "T236",
+      "to": "T233",
+      "relation": "complements",
+      "reason": "Validação deve ligar resultado testado à revisão publicada.",
+      "source_ids": [
+        "V3C-S036",
+        "V3C-S034"
+      ]
+    },
+    {
+      "from": "T236",
+      "to": "T240",
+      "relation": "distinct_from",
+      "reason": "Commit captura uma árvore Git e metadados; snapshot operacional pode precisar de outros estados.",
+      "source_ids": [
+        "V3C-S036",
+        "V3C-S034"
+      ]
+    },
+    {
+      "from": "T237",
+      "to": "T169",
+      "relation": "complements",
+      "reason": "Contextos isolados são uma forma de executar a delegação, mas não seu critério de sucesso.",
+      "source_ids": [
+        "V2A-S018",
+        "V3C-S006",
+        "V3C-S027"
+      ]
+    },
+    {
+      "from": "T237",
+      "to": "T211",
+      "relation": "complements",
+      "reason": "O formato de handoff pode organizar entradas e devolução do subagente.",
+      "source_ids": [
+        "V2A-S018",
+        "V3C-S006",
+        "V3C-S027"
+      ]
+    },
+    {
+      "from": "T238",
+      "to": "T216",
+      "relation": "complements",
+      "reason": "Repo map ajuda a escolher arquivo e símbolo, mas a leitura precisa confirmar a revisão.",
+      "source_ids": [
+        "V3C-S033",
+        "V2A-S007"
+      ]
+    },
+    {
+      "from": "T238",
+      "to": "T232",
+      "relation": "complements",
+      "reason": "Metadados de posição e escopo podem ligar trechos à estrutura sintática.",
+      "source_ids": [
+        "V3C-S033",
+        "V2A-S007"
+      ]
+    },
+    {
+      "from": "T239",
+      "to": "T169",
+      "relation": "complements",
+      "reason": "Agentes com contextos separados podem usar worktrees para também separar árvores de edição.",
+      "source_ids": [
+        "V2A-S019",
+        "V3C-S037"
+      ]
+    },
+    {
+      "from": "T239",
+      "to": "T236",
+      "relation": "complements",
+      "reason": "Commits identificam entregas que depois precisam ser integradas explicitamente.",
+      "source_ids": [
+        "V2A-S019",
+        "V3C-S037"
+      ]
+    },
+    {
+      "from": "T240",
+      "to": "T242",
+      "relation": "complements",
+      "reason": "Recuperação híbrida depende de uma posição de snapshot coerente com os eventos restantes.",
+      "source_ids": [
+        "A-S029",
+        "V3C-S028"
+      ]
+    },
+    {
+      "from": "T240",
+      "to": "T060",
+      "relation": "distinct_from",
+      "reason": "Checkpoint acrescenta semântica de retomada do runtime ao estado capturado.",
+      "source_ids": [
+        "A-S029",
+        "V3C-S028"
+      ]
+    },
+    {
+      "from": "T241",
+      "to": "T170",
+      "relation": "complements",
+      "reason": "Evolução de schema também precisa de compatibilidade entre versões de eventos.",
+      "source_ids": [
+        "V3C-S041",
+        "A-S027"
+      ]
+    },
+    {
+      "from": "T241",
+      "to": "T242",
+      "relation": "complements",
+      "reason": "Replay a partir de snapshot aplica somente o sufixo ainda não incorporado.",
+      "source_ids": [
+        "V3C-S041",
+        "A-S027"
+      ]
+    },
+    {
+      "from": "T242",
+      "to": "T240",
+      "relation": "requires",
+      "reason": "O mecanismo híbrido pressupõe uma base de snapshot válida ou retorna ao replay integral.",
+      "source_ids": [
+        "A-S027",
+        "V3C-S041"
+      ]
+    },
+    {
+      "from": "T242",
+      "to": "T241",
+      "relation": "requires",
+      "reason": "Aplicar os eventos posteriores é parte constitutiva da recuperação híbrida.",
+      "source_ids": [
+        "A-S027",
+        "V3C-S041"
+      ]
+    },
+    {
+      "from": "T243",
+      "to": "T162",
+      "relation": "complements",
+      "reason": "A chave idempotente ajuda reconhecer uma intenção, dentro de seu escopo e prazo.",
+      "source_ids": [
+        "V2A-S024",
+        "V3C-S025",
+        "V3C-S028"
+      ]
+    },
+    {
+      "from": "T243",
+      "to": "T228",
+      "relation": "complements",
+      "reason": "A fila deve conservar estado incerto para não converter reconciliação em nova execução cega.",
+      "source_ids": [
+        "V2A-S024",
+        "V3C-S025",
+        "V3C-S028"
+      ]
+    },
+    {
+      "from": "R001",
+      "to": "T063",
+      "relation": "specializes",
+      "reason": "MemGPT é uma implementação de pesquisa concreta do padrão de gerência virtual de contexto.",
+      "source_ids": [
+        "A-S009"
+      ]
+    },
+    {
+      "from": "R001",
+      "to": "R013",
+      "relation": "distinct_from",
+      "reason": "MemFS projeta memória em checkout Git; não é simplesmente o nome atual de cada mecanismo do artigo original.",
+      "source_ids": [
+        "A-S009"
+      ]
+    },
+    {
+      "from": "R002",
+      "to": "R013",
+      "relation": "complements",
+      "reason": "MemFS é o mecanismo de memória em arquivos dentro do escopo mais amplo da plataforma.",
+      "source_ids": [
+        "V2B-S002",
+        "V3A-S046"
+      ]
+    },
+    {
+      "from": "R002",
+      "to": "T064",
+      "relation": "complements",
+      "reason": "Estado persistente descreve uma responsabilidade necessária à continuidade, mas não especifica todo o produto Letta.",
+      "source_ids": [
+        "V2B-S002",
+        "V3A-S046"
+      ]
+    },
+    {
+      "from": "R003",
+      "to": "T052",
+      "relation": "specializes",
+      "reason": "LongMem usa uma interface neural específica para contexto passado, dentro da família ampla de representações latentes.",
+      "source_ids": [
+        "A-S013",
+        "V3A-S045",
+        "V3A-S047"
+      ]
+    },
+    {
+      "from": "R003",
+      "to": "R001",
+      "relation": "distinct_from",
+      "reason": "MemGPT controla texto e funções externamente; LongMem modifica a arquitetura de leitura e requer adaptação treinada.",
+      "source_ids": [
+        "A-S013",
+        "V3A-S045",
+        "V3A-S047"
+      ]
+    },
+    {
+      "from": "R004",
+      "to": "T049",
+      "relation": "complements",
+      "reason": "O fluxo registra experiências situadas que podem ser recuperadas para orientar comportamento.",
+      "source_ids": [
+        "A-S008"
+      ]
+    },
+    {
+      "from": "R004",
+      "to": "T058",
+      "relation": "complements",
+      "reason": "Reflexões sintetizam memórias em abstrações, exigindo rastreabilidade das derivações.",
+      "source_ids": [
+        "A-S008"
+      ]
+    },
+    {
+      "from": "R005",
+      "to": "T037",
+      "relation": "complements",
+      "reason": "Condicionamento à pergunta é relevante em variantes apropriadas, mas não define todos os métodos do pacote.",
+      "source_ids": [
+        "A-S015",
+        "A-S018",
+        "V3A-S001",
+        "V3A-S044"
+      ]
+    },
+    {
+      "from": "R005",
+      "to": "R006",
+      "relation": "distinct_from",
+      "reason": "LLMLingua entrega contexto reduzido ao gerador; PRISM transfere comportamento para adaptadores treinados.",
+      "source_ids": [
+        "A-S015",
+        "A-S018",
+        "V3A-S001",
+        "V3A-S044"
+      ]
+    },
+    {
+      "from": "R006",
+      "to": "R007",
+      "relation": "distinct_from",
+      "reason": "PRISM seleciona comportamento de componentes do prompt; SADA enfatiza interface interna e alinhamento de estados para adaptadores.",
+      "source_ids": [
+        "A-S011"
+      ]
+    },
+    {
+      "from": "R006",
+      "to": "T069",
+      "relation": "distinct_from",
+      "reason": "Resumo externo continua sendo lido como dados; PRISM modifica comportamento por pesos adicionais treinados.",
+      "source_ids": [
+        "A-S011"
+      ]
+    },
+    {
+      "from": "R007",
+      "to": "R006",
+      "relation": "distinct_from",
+      "reason": "PRISM diagnostica componentes dominantes; SADA trata seleção de interface e supervisão de estados na parametrização do contexto.",
+      "source_ids": [
+        "A-S012"
+      ]
+    },
+    {
+      "from": "R007",
+      "to": "T052",
+      "relation": "complements",
+      "reason": "O método depende de representações internas compatíveis, dentro da família ampla de contexto latente.",
+      "source_ids": [
+        "A-S012"
+      ]
+    },
+    {
+      "from": "R008",
+      "to": "R017",
+      "relation": "distinct_from",
+      "reason": "LangChain compõe agentes em nível mais alto; LangGraph expõe diretamente estado, transições e fusão de atualizações.",
+      "source_ids": [
+        "V3C-S006",
+        "A-S022"
+      ]
+    },
+    {
+      "from": "R008",
+      "to": "T142",
+      "relation": "distinct_from",
+      "reason": "Framework com planejamento é uma família; configurar LangGraph não acrescenta um planejador automaticamente.",
+      "source_ids": [
+        "V3C-S006",
+        "A-S022"
+      ]
+    },
+    {
+      "from": "R009",
+      "to": "T082",
+      "relation": "complements",
+      "reason": "O servidor materializa cache de prefixos e outros mecanismos.",
+      "source_ids": [
+        "V3D-S004",
+        "V3D-S005"
+      ]
+    },
+    {
+      "from": "R009",
+      "to": "T093",
+      "relation": "complements",
+      "reason": "A gestão paginada de KV participa do uso eficiente de memória.",
+      "source_ids": [
+        "V3D-S004",
+        "V3D-S005"
+      ]
+    },
+    {
+      "from": "R010",
+      "to": "R009",
+      "relation": "alternative",
+      "reason": "Outro servidor pode atender ao mesmo contrato após validação.",
+      "source_ids": [
+        "V3D-S006"
+      ]
+    },
+    {
+      "from": "R010",
+      "to": "P009",
+      "relation": "complements",
+      "reason": "O componente proposto deve encapsular diferenças de provedor.",
+      "source_ids": [
+        "V3D-S006"
+      ]
+    },
+    {
+      "from": "R011",
+      "to": "R009",
+      "relation": "alternative",
+      "reason": "São opções de serving a comparar no hardware alvo.",
+      "source_ids": [
+        "V3D-S007"
+      ]
+    },
+    {
+      "from": "R011",
+      "to": "T121",
+      "relation": "complements",
+      "reason": "O scheduler materializa decisões de ocupação e prioridade.",
+      "source_ids": [
+        "V3D-S007"
+      ]
+    },
+    {
+      "from": "R012",
+      "to": "T180",
+      "relation": "specializes",
+      "reason": "A receita é uma implementação do objetivo de destilar instruções.",
+      "source_ids": [
+        "V3D-S008"
+      ]
+    },
+    {
+      "from": "R012",
+      "to": "T069",
+      "relation": "distinct_from",
+      "reason": "Um resumo externo não altera os parâmetros do estudante.",
+      "source_ids": [
+        "V3D-S008"
+      ]
+    },
+    {
+      "from": "R013",
+      "to": "R014",
+      "relation": "complements",
+      "reason": "R014 é um alias desta mesma referência, preservado para discutir colaboração; não representa outro mecanismo independente.",
+      "source_ids": [
+        "A-S010"
+      ]
+    },
+    {
+      "from": "R013",
+      "to": "T014",
+      "relation": "specializes",
+      "reason": "MemFS concretiza carregamento progressivo por organização de arquivos e índices.",
+      "source_ids": [
+        "A-S010"
+      ]
+    },
+    {
+      "from": "R014",
+      "to": "R013",
+      "relation": "complements",
+      "reason": "É a mesma referência canônica; esta ficha acrescenta o recorte de colaboração e publicação.",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ]
+    },
+    {
+      "from": "R014",
+      "to": "T076",
+      "relation": "specializes",
+      "reason": "O uso de Git para memória concretiza versionamento e sincronização, mantendo necessidade de revisão factual.",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ]
+    },
+    {
+      "from": "R015",
+      "to": "T179",
+      "relation": "specializes",
+      "reason": "O trabalho é uma referência concreta para destilação paramétrica de benefícios do contexto.",
+      "source_ids": [
+        "A-S040"
+      ]
+    },
+    {
+      "from": "R015",
+      "to": "T069",
+      "relation": "distinct_from",
+      "reason": "Consolidação por resumos preserva informação em texto externo; aqui o aprendizado altera os parâmetros do modelo.",
+      "source_ids": [
+        "A-S040"
+      ]
+    },
+    {
+      "from": "R016",
+      "to": "T013",
+      "relation": "complements",
+      "reason": "Capacidade efetiva de contexto exige medir uso da informação, além do limite nominal do modelo.",
+      "source_ids": [
+        "A-S019",
+        "V3A-S015"
+      ]
+    },
+    {
+      "from": "R016",
+      "to": "T028",
+      "relation": "complements",
+      "reason": "Reranking e montagem podem alterar posição da evidência, mas precisam ser avaliados sem ocultar condições relevantes.",
+      "source_ids": [
+        "A-S019",
+        "V3A-S015"
+      ]
+    },
+    {
+      "from": "R017",
+      "to": "R008",
+      "relation": "complements",
+      "reason": "LangGraph fornece mecanismos de execução e estado; o middleware modifica pontos específicos do ciclo do agente.",
+      "source_ids": [
+        "V3C-S038",
+        "V2B-S004"
+      ]
+    },
+    {
+      "from": "R017",
+      "to": "T136",
+      "relation": "complements",
+      "reason": "Fallback seleciona alternativa, enquanto middleware define como falhas e limites atravessam o ciclo.",
+      "source_ids": [
+        "V3C-S038",
+        "V2B-S004"
+      ]
+    },
+    {
+      "from": "R018",
+      "to": "T159",
+      "relation": "specializes",
+      "reason": "Temporal oferece implementação concreta de execução durável, com regras próprias de histórico e workers.",
+      "source_ids": [
+        "V2A-S010",
+        "V3C-S018",
+        "V3C-S023",
+        "V3C-S024",
+        "V3C-S040"
+      ]
+    },
+    {
+      "from": "R018",
+      "to": "T162",
+      "relation": "complements",
+      "reason": "Idempotência protege efeitos de Activities que podem repetir, fora da reconstrução determinística do workflow.",
+      "source_ids": [
+        "V2A-S010",
+        "V3C-S018",
+        "V3C-S023",
+        "V3C-S024",
+        "V3C-S040"
+      ]
+    },
+    {
+      "from": "R019",
+      "to": "T229",
+      "relation": "complements",
+      "reason": "Aider pode concretizar edição por patches, mas também oferece formatos de arquivo completo; o contrato depende da configuração.",
+      "source_ids": [
+        "V3C-S042",
+        "V2A-S008",
+        "V2B-S009",
+        "V2A-S007"
+      ]
+    },
+    {
+      "from": "R019",
+      "to": "R027",
+      "relation": "complements",
+      "reason": "Git fixa a base e permite comparar o resultado entre as etapas de planejamento e edição.",
+      "source_ids": [
+        "V3C-S042",
+        "V2A-S008",
+        "V2B-S009",
+        "V2A-S007"
+      ]
+    },
+    {
+      "from": "R020",
+      "to": "T240",
+      "relation": "distinct_from",
+      "reason": "Snapshot genérico precisa definir cobertura; o checkpoint do produto cobre apenas o estado documentado da sessão.",
+      "source_ids": [
+        "V3C-S030",
+        "V2A-S018",
+        "V2A-S025"
+      ]
+    },
+    {
+      "from": "R020",
+      "to": "R027",
+      "relation": "complements",
+      "reason": "Git mantém histórico versionado de código independente da retenção dos checkpoints da conversa.",
+      "source_ids": [
+        "V3C-S030",
+        "V2A-S018",
+        "V2A-S025"
+      ]
+    },
+    {
+      "from": "R021",
+      "to": "T235",
+      "relation": "complements",
+      "reason": "O controlador headless transforma eventos e artefatos do executor em estado persistente da missão.",
+      "source_ids": [
+        "V3C-S039",
+        "V2A-S005",
+        "V2A-S017"
+      ]
+    },
+    {
+      "from": "R021",
+      "to": "R027",
+      "relation": "complements",
+      "reason": "A revisão Git identifica o conteúdo; a sessão identifica a conversa e não substitui esse vínculo.",
+      "source_ids": [
+        "V3C-S039",
+        "V2A-S005",
+        "V2A-S017"
+      ]
+    },
+    {
+      "from": "R022",
+      "to": "T184",
+      "relation": "complements",
+      "reason": "Alguns checkpoints empregam MoE; a família não é sinônimo dessa arquitetura.",
+      "source_ids": [
+        "V3D-S009"
+      ]
+    },
+    {
+      "from": "R022",
+      "to": "R023",
+      "relation": "complements",
+      "reason": "Transformers pode carregar checkpoints compatíveis e seus templates.",
+      "source_ids": [
+        "V3D-S009"
+      ]
+    },
+    {
+      "from": "R023",
+      "to": "T081",
+      "relation": "complements",
+      "reason": "A biblioteca oferece mecanismos para armazenar e reutilizar estado KV.",
+      "source_ids": [
+        "V3D-S010",
+        "V3D-S011"
+      ]
+    },
+    {
+      "from": "R023",
+      "to": "T140",
+      "relation": "complements",
+      "reason": "Chamadas de ferramenta dependem de uma representação adequada ao modelo.",
+      "source_ids": [
+        "V3D-S010",
+        "V3D-S011"
+      ]
+    },
+    {
+      "from": "R024",
+      "to": "T127",
+      "relation": "complements",
+      "reason": "GGUF é um formato usado pelo ecossistema, não uma técnica única.",
+      "source_ids": [
+        "V3D-S012"
+      ]
+    },
+    {
+      "from": "R024",
+      "to": "R009",
+      "relation": "alternative",
+      "reason": "O papel de servidor pode ser atendido por runtimes com características diferentes.",
+      "source_ids": [
+        "V3D-S012"
+      ]
+    },
+    {
+      "from": "R025",
+      "to": "T196",
+      "relation": "specializes",
+      "reason": "Implementa restrição gramatical durante a decodificação.",
+      "source_ids": [
+        "V3D-S013"
+      ]
+    },
+    {
+      "from": "R025",
+      "to": "T197",
+      "relation": "complements",
+      "reason": "Validação posterior continua verificando o objeto completo e regras adicionais.",
+      "source_ids": [
+        "V3D-S013"
+      ]
+    },
+    {
+      "from": "R026",
+      "to": "T196",
+      "relation": "complements",
+      "reason": "Pode utilizar restrições de geração conforme o backend.",
+      "source_ids": [
+        "V3D-S014",
+        "V3D-S015"
+      ]
+    },
+    {
+      "from": "R026",
+      "to": "R025",
+      "relation": "alternative",
+      "reason": "São ferramentas distintas; comparar capacidade concreta, não apenas o objetivo de estruturação.",
+      "source_ids": [
+        "V3D-S014",
+        "V3D-S015"
+      ]
+    },
+    {
+      "from": "R027",
+      "to": "T236",
+      "relation": "complements",
+      "reason": "Commit por etapa precisa garantir que o índice representa a etapa testada, além de registrar mensagem.",
+      "source_ids": [
+        "V3C-S037",
+        "V3C-S036",
+        "A-S028",
+        "V2A-S019"
+      ]
+    },
+    {
+      "from": "R027",
+      "to": "T239",
+      "relation": "complements",
+      "reason": "Worktrees separam índices e diretórios, mas compartilham objetos e várias referências do repositório.",
+      "source_ids": [
+        "V3C-S037",
+        "V3C-S036",
+        "A-S028",
+        "V2A-S019"
+      ]
+    },
+    {
+      "from": "P001",
+      "to": "T024",
+      "relation": "complements",
+      "reason": "Context Broker e Builder podem realizar aquisição e composição.",
+      "source_ids": [
+        "V3D-S021"
+      ]
+    },
+    {
+      "from": "P001",
+      "to": "T152",
+      "relation": "complements",
+      "reason": "A alocação de tokens fornece o limite de montagem.",
+      "source_ids": [
+        "V3D-S021"
+      ]
+    },
+    {
+      "from": "P002",
+      "to": "T043",
+      "relation": "complements",
+      "reason": "Compactação é uma operação do ciclo de vida.",
+      "source_ids": [
+        "V3D-S016"
+      ]
+    },
+    {
+      "from": "P002",
+      "to": "T154",
+      "relation": "complements",
+      "reason": "Gestão de múltiplos turnos fornece eventos e estado da conversa.",
+      "source_ids": [
+        "V3D-S016"
+      ]
+    },
+    {
+      "from": "P003",
+      "to": "T063",
+      "relation": "specializes",
+      "reason": "É um componente proposto para gerenciar contexto virtual.",
+      "source_ids": [
+        "A-S009"
+      ]
+    },
+    {
+      "from": "P003",
+      "to": "T078",
+      "relation": "complements",
+      "reason": "Semantic Page Fault descreve o evento de falta a resolver.",
+      "source_ids": [
+        "A-S009"
+      ]
+    },
+    {
+      "from": "P004",
+      "to": "T056",
+      "relation": "complements",
+      "reason": "Bitemporalidade separa validade do fato e registro.",
+      "source_ids": [
+        "V3D-S020",
+        "A-S032"
+      ]
+    },
+    {
+      "from": "P004",
+      "to": "T065",
+      "relation": "complements",
+      "reason": "Transações delimitam confirmações locais.",
+      "source_ids": [
+        "V3D-S020",
+        "A-S032"
+      ]
+    },
+    {
+      "from": "P005",
+      "to": "P001",
+      "relation": "complements",
+      "reason": "A montagem de contexto consome decisões de admissão.",
+      "source_ids": [
+        "V3D-S016"
+      ]
+    },
+    {
+      "from": "P005",
+      "to": "P004",
+      "relation": "complements",
+      "reason": "O runtime de memória recebe gravações e consultas autorizadas.",
+      "source_ids": [
+        "V3D-S016"
+      ]
+    },
+    {
+      "from": "P006",
+      "to": "T014",
+      "relation": "specializes",
+      "reason": "Materializa divulgação progressiva de informação.",
+      "source_ids": [
+        "C-S052"
+      ]
+    },
+    {
+      "from": "P006",
+      "to": "T151",
+      "relation": "complements",
+      "reason": "Pode carregar schemas de ferramentas somente quando necessários.",
+      "source_ids": [
+        "C-S052"
+      ]
+    },
+    {
+      "from": "P007",
+      "to": "T027",
+      "relation": "complements",
+      "reason": "Busca híbrida combina canais de candidatos.",
+      "source_ids": [
+        "A-S021",
+        "A-S032"
+      ]
+    },
+    {
+      "from": "P007",
+      "to": "T032",
+      "relation": "complements",
+      "reason": "Expansão parent-child exige manter escopo e proveniência.",
+      "source_ids": [
+        "A-S021",
+        "A-S032"
+      ]
+    },
+    {
+      "from": "P008",
+      "to": "T059",
+      "relation": "complements",
+      "reason": "Event Sourcing utiliza eventos como fonte de reconstrução.",
+      "source_ids": [
+        "V3D-S018"
+      ]
+    },
+    {
+      "from": "P008",
+      "to": "T241",
+      "relation": "complements",
+      "reason": "Replay consome o histórico com regras determinísticas e versionadas.",
+      "source_ids": [
+        "V3D-S018"
+      ]
+    },
+    {
+      "from": "P009",
+      "to": "T153",
+      "relation": "complements",
+      "reason": "Streaming com interrupção exige estados explícitos.",
+      "source_ids": [
+        "V3D-S007",
+        "V3D-S012"
+      ]
+    },
+    {
+      "from": "P009",
+      "to": "R009",
+      "relation": "complements",
+      "reason": "vLLM é uma implementação possível de serving, não o próprio contrato proposto.",
+      "source_ids": [
+        "V3D-S007",
+        "V3D-S012"
+      ]
+    },
+    {
+      "from": "P010",
+      "to": "T133",
+      "relation": "specializes",
+      "reason": "É um componente proposto para escolher modelos.",
+      "source_ids": [
+        "C-S001",
+        "C-S002",
+        "C-S050"
+      ]
+    },
+    {
+      "from": "P010",
+      "to": "T203",
+      "relation": "complements",
+      "reason": "Roteamento por correção pode fornecer sinal de aceitação ou escalonamento.",
+      "source_ids": [
+        "C-S001",
+        "C-S002",
+        "C-S050"
+      ]
+    },
+    {
+      "from": "P011",
+      "to": "T159",
+      "relation": "complements",
+      "reason": "Execução durável fornece persistência e retomada.",
+      "source_ids": [
+        "V3D-S019"
+      ]
+    },
+    {
+      "from": "P011",
+      "to": "T243",
+      "relation": "complements",
+      "reason": "Reconciliação resolve a fronteira entre intenção local e efeito externo.",
+      "source_ids": [
+        "V3D-S019"
+      ]
+    },
+    {
+      "from": "P012",
+      "to": "T197",
+      "relation": "complements",
+      "reason": "JSON Schema cobre uma parte estrutural do contrato.",
+      "source_ids": [
+        "C-S049",
+        "C-S048"
+      ]
+    },
+    {
+      "from": "P012",
+      "to": "T200",
+      "relation": "complements",
+      "reason": "Verificação independente pode reduzir erros compartilhados quando usa evidência distinta.",
+      "source_ids": [
+        "C-S049",
+        "C-S048"
+      ]
+    },
+    {
+      "from": "P013",
+      "to": "T138",
+      "relation": "complements",
+      "reason": "Circuit breaker controla acesso a dependências falhas.",
+      "source_ids": [
+        "C-S005",
+        "V3D-S017"
+      ]
+    },
+    {
+      "from": "P013",
+      "to": "T227",
+      "relation": "complements",
+      "reason": "Checks distinguem prontidão, vida e sinais específicos de progresso.",
+      "source_ids": [
+        "C-S005",
+        "V3D-S017"
+      ]
+    },
+    {
+      "from": "P014",
+      "to": "P013",
+      "relation": "complements",
+      "reason": "O controlador fornece políticas de reação.",
+      "source_ids": [
+        "V3D-S016",
+        "C-S026"
+      ]
+    },
+    {
+      "from": "P014",
+      "to": "T242",
+      "relation": "complements",
+      "reason": "Snapshot mais eventos é um mecanismo possível de reconstrução.",
+      "source_ids": [
+        "V3D-S016",
+        "C-S026"
+      ]
+    },
+    {
+      "from": "P015",
+      "to": "T233",
+      "relation": "complements",
+      "reason": "Validação de patch verifica precondições e aplicabilidade.",
+      "source_ids": [
+        "C-S026",
+        "V3D-S018"
+      ]
+    },
+    {
+      "from": "P015",
+      "to": "T162",
+      "relation": "complements",
+      "reason": "Idempotência controla repetição de uma intenção.",
+      "source_ids": [
+        "C-S026",
+        "V3D-S018"
+      ]
+    },
+    {
+      "from": "P016",
+      "to": "T199",
+      "relation": "complements",
+      "reason": "Aprendizagem por avaliação usa resultados sem contaminar a reserva.",
+      "source_ids": [
+        "V3D-S002"
+      ]
+    },
+    {
+      "from": "P016",
+      "to": "T205",
+      "relation": "complements",
+      "reason": "Equivalência semântica pode ser uma dimensão específica do protocolo.",
+      "source_ids": [
+        "V3D-S002"
+      ]
+    },
+    {
+      "from": "P017",
+      "to": "T178",
+      "relation": "complements",
+      "reason": "Distilação de conhecimento define a transferência de comportamento.",
+      "source_ids": [
+        "V3D-S008"
+      ]
+    },
+    {
+      "from": "P017",
+      "to": "T179",
+      "relation": "complements",
+      "reason": "Context distillation paramétrica especifica o objetivo de internalização.",
+      "source_ids": [
+        "V3D-S008"
+      ]
+    }
+  ],
+  "note": "Relações editoriais tipadas. requires expressa dependência proposta no escopo descrito; nenhuma aresta comprova implantação."
+}

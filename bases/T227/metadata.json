@@ -1,0 +1,34 @@
+{
+  "id": "T227",
+  "name": "Health Checks — liveness, readiness e progresso",
+  "canonical_name": "Health Checks — liveness, readiness e progresso",
+  "canonical_id": "T227",
+  "aliases": [
+    "liveness readiness progress",
+    "verificações de saúde"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T225",
+    "T226",
+    "T218"
+  ],
+  "source_ids": [
+    "V2A-S011",
+    "V2A-S024",
+    "V3C-S040",
+    "V4C-S018",
+    "V2A-S012",
+    "V3C-S009",
+    "V4C-S013",
+    "V3C-S026"
+  ],
+  "namespace": "T227",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T227",
+  "chunk_count": 9
+}

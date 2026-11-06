@@ -1,0 +1,135 @@
+{
+  "id": "P001",
+  "novelty": "A v3 definiu montagem e manifesto. Aqui Context Engine é proposto como compilador de necessidades de evidência em pacotes próprios para cada consumidor.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Receber tarefa e decompor saída em afirmações ou ações com requisitos. Cada requisito recebe tipo de suporte, prioridade e condição de insuficiência; o contexto deixa de ser simples concatenação de documentos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S022",
+        "A-S006"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Montar uma representação conforme o leitor: campos explícitos para extrator pequeno, pares de evidência para comparador e panorama com referências para integrador. A transformação deve preservar identidade dos fatos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S022",
+        "A-S006"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Comparar pacote único e compilação por papel com mesmas fontes. Medir suporte por afirmação, tokens inúteis e diferenças introduzidas pela representação; organização não autoriza adicionar conhecimento. Unidade de avaliação: pacote de contexto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S022",
+        "A-S006"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Pipeline local de análise",
+      "scenario": "Extração e síntese usam modelos diferentes.",
+      "strategy": "Compilar campos para 3–7B, consolidar resultados em código e fornecer ao integrador somente evidências e conflitos. Reabrir fonte quando campo não tiver suporte.",
+      "small_model_role": "3–7B extrai; 15–30B integra.",
+      "acceptance": "Nenhuma afirmação final pode perder vínculo com evidência original.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S022",
+        "A-S006"
+      ]
+    },
+    {
+      "name": "Resposta sob prazo",
+      "scenario": "Nem todas as fontes chegam a tempo.",
+      "strategy": "Priorizar requisitos essenciais, produzir pacote parcial explícito e bloquear conclusões que dependam de fonte pendente.",
+      "small_model_role": "8–14B responde escopo coberto.",
+      "acceptance": "Completude declarada deve coincidir com requisitos efetivamente sustentados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S022",
+        "A-S006"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Consumidor de pacotes tipados por campo, com pouca ambiguidade.",
+    "8_14b": "Leitor de pacotes comparativos e exceções locais.",
+    "15_30b": "Integrador de afirmações interdependentes com expansão dirigida.",
+    "training_or_runtime_requirements": "Modelo de requisitos, manifesto de transformações e perfis de consumidor; componente LAI é proposta editorial, não software verificado.",
+    "do_not_use_when": "A tarefa não pode ser decomposta sem perder significado e o pacote omite dependências essenciais."
+  },
+  "connections": [
+    {
+      "target_id": "P007",
+      "relation": "requires",
+      "how": "Solicitar evidência por requisito e escopo.",
+      "interface": "requirement_id, consulta, filtros e tipo de suporte.",
+      "condition": "Retriever devolver proveniência e lacunas.",
+      "acceptance": "Recuperar documento correto que não sustenta o requisito e exigir rejeição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S022",
+        "A-S006"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "P002",
+      "relation": "requires",
+      "how": "Negociar limite de contexto antes de compilar.",
+      "interface": "Perfil do modelo, reserva e cotas por requisito.",
+      "condition": "Conjunto obrigatório caber ou gerar insuficiência.",
+      "acceptance": "Trocar para modelo menor e recalcular pacote.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S022",
+        "A-S006"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T200",
+      "relation": "feeds",
+      "how": "Entregar manifesto à verificação da resposta.",
+      "interface": "Afirmações, fontes e transformações aplicadas.",
+      "condition": "Verificador acessar originais quando necessário.",
+      "acceptance": "Detectar citação que aponta fonte verdadeira mas não suporta a frase.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4A-S022",
+        "A-S006"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir contexto bem organizado com evidência completa.",
+    "Não promover texto recuperado a instrução da aplicação."
+  ],
+  "frontier_comparison": "Comparar leitor pequeno com pacote compilado e fronteira com fontes equivalentes; não prometer paridade geral.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q020"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "C-S030",
+    "V4A-S022",
+    "A-S006"
+  ]
+}

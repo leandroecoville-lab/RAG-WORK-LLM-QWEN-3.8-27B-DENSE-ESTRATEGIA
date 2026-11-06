@@ -1,0 +1,113 @@
+{
+  "id": "T145",
+  "novelty": "A v3 usou progresso verificável como sinal de continuidade. O aprofundamento separa limite de raciocínio do modelo, número de ações e profundidade do workflow, com orçamento reservado para concluir e verificar.",
+  "deep_layers": [
+    {
+      "name": "Três profundidades distintas",
+      "detail": "Tokens internos de reasoning, rodadas de ferramenta e caminhos no grafo não são intercambiáveis. Um modelo pode raciocinar muito sem obter informação nova; outro pode realizar várias leituras úteis com pouca geração. A política deve definir qual dimensão está controlando e medir o efeito de cada uma separadamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S018",
+        "V4C-S019"
+      ]
+    },
+    {
+      "name": "Parada compatível com o servidor",
+      "detail": "Um limiar de thinking pode ser aproximado e depender de delimitadores ou mecanismos específicos. Reserve espaço para a resposta final e trate corte prematuro como resultado incompleto. Não suponha que um parâmetro com nome semelhante tenha o mesmo comportamento em outro modelo, template ou backend.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S018"
+      ]
+    },
+    {
+      "name": "Próxima etapa com valor esperado",
+      "detail": "Antes de ampliar esforço, identifique uma ação que possa mudar a decisão e seu custo provável. Se faltam fontes, mais reasoning sobre os mesmos dados não cria evidência. Se há candidatos verificáveis, uma rodada adicional pode valer mais que aumentar o tamanho da resposta final.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014",
+        "V3C-S003"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Resposta técnica com recuperação",
+      "scenario": "Perguntas variam entre busca factual e integração de condições.",
+      "strategy": "Use esforço curto para localizar fatos; amplie somente quando existirem conflitos ou etapas dedutivas verificáveis. Se a fonte não responder, finalize insuficiência. Execute o verificador antes de consumir a reserva da resposta final.",
+      "small_model_role": "3–7B extrai; 8–14B integra poucas condições; 15–30B analisa exceções delimitadas.",
+      "acceptance": "Proposta: comparar matriz de orçamentos em perguntas reservadas, incluindo cortes de saída e afirmações sem fonte.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S018",
+        "V4C-S019"
+      ]
+    },
+    {
+      "name": "Reparo com tentativas progressivas",
+      "scenario": "Um patch falha em testes e o erro se mantém.",
+      "strategy": "Diferencie erro de formato, falha conhecida e ausência de progresso. Permita nova tentativa somente com diagnóstico diferente ou mudança concreta de estratégia; a tentativa seguinte recebe o orçamento restante, não o orçamento inicial.",
+      "small_model_role": "8–30B prepara candidatos de reparo enquanto ferramentas verificam comportamento.",
+      "acceptance": "Proposta: medir reparos aceitos por rodada e encerrar quando a política definida antes do teste não justificar continuação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: poucas decisões locais com saída curta; profundidade adicional só após sinal externo de necessidade.",
+    "8_14b": "Proposta: orçamento de reasoning específico do checkpoint e loops limitados por teste.",
+    "15_30b": "Proposta: revisão de casos mais complexos mantendo reserva explícita de verificação e síntese.",
+    "training_or_runtime_requirements": "Confirmar suporte e semântica do parâmetro; a banda de tamanho não define o orçamento adequado.",
+    "do_not_use_when": "Não ampliar profundidade quando falta informação externa ou quando o modelo repete a mesma conclusão sem nova evidência."
+  },
+  "connections": [
+    {
+      "target_id": "T168",
+      "relation": "complements",
+      "how": "O limite suave dispara encerramento planejado antes do teto que pode truncar o resultado.",
+      "interface": "Consumo atual, reserva de saída e semântica do servidor.",
+      "condition": "O orçamento é medido na unidade correta.",
+      "acceptance": "Forçar limite próximo e exigir estado de conclusão coerente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S018"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T218",
+      "relation": "feeds",
+      "how": "A política recebe sinais de estagnação para decidir se outra etapa é útil.",
+      "interface": "Mudança de artefato, teste e hipótese entre rodadas.",
+      "condition": "A tarefa admite medir progresso observável.",
+      "acceptance": "Comparar parada por teto com parada por falta de progresso em falhas conhecidas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S032",
+        "V4C-S009"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não contar resposta truncada como tentativa semanticamente avaliada.",
+    "Registrar esforço solicitado e efetivamente observado, incluindo excesso permitido pelo backend."
+  ],
+  "frontier_comparison": "Compare curvas qualidade–custo por tarefa com um modelo de fronteira. Um ponto favorável em orçamento controlado não demonstra que mais tokens eliminem a diferença de capacidade.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q014",
+      "V4C-Q009"
+    ],
+    "scope_note": "Nemotron 9B documenta mecanismo de orçamento; a documentação não comprova dez implantações de profundidade adaptativa nem ganhos gerais."
+  },
+  "source_ids": [
+    "V4C-S018",
+    "V4C-S019",
+    "V4C-S014",
+    "V3C-S003",
+    "V4C-S009",
+    "V3C-S032"
+  ]
+}

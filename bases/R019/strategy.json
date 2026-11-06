@@ -1,0 +1,119 @@
+{
+  "id": "R019",
+  "novelty": "Aprofunda architect/editor com contrato semântico de tradução, classificação de erros e política de encaminhamento baseada no tipo de edição.",
+  "source_ids": [
+    "V3C-S042",
+    "V2B-S009",
+    "V2B-S007"
+  ],
+  "deep_layers": [
+    {
+      "name": "Plano testável para editor menor",
+      "detail": "Proposta: o planejador entrega arquivos elegíveis, comportamento esperado e condições que devem permanecer verdadeiras. O editor traduz essas condições para uma alteração limitada. Um plano em prosa sem critérios deixa a segunda etapa reconstruir a intenção, anulando a separação de responsabilidades.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S042",
+        "V2B-S009",
+        "V2B-S007"
+      ]
+    },
+    {
+      "name": "Diagnóstico de falha",
+      "detail": "Distinguir localização incorreta, formato inválido, conflito de base e regressão semântica. Repetir a mesma chamada com mais tokens não é tratamento universal. Uma falha de formato pode voltar ao editor; uma mudança de requisito precisa voltar ao planejador.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S042",
+        "V2B-S009",
+        "V2B-S007"
+      ]
+    },
+    {
+      "name": "Roteamento por superfície",
+      "detail": "Separar edições mecânicas, mudanças locais e refatorações atravessando módulos. Modelos menores podem ser úteis nos dois primeiros grupos se houver ferramentas e testes adequados. O roteador deve aprender com resultados aceitos por classe, incluindo tentativas que não produziram patch.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S042",
+        "V2B-S009",
+        "V2B-S007"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Atualização mecânica em muitos arquivos",
+      "scenario": "Mudança repetitiva tem regra e exceções identificáveis.",
+      "strategy": "Produzir candidatos por AST/busca, deixar o editor resolver somente ambiguidades delimitadas e validar o conjunto.",
+      "small_model_role": "3–7B pode traduzir planos pequenos; transformação determinística executa casos inequívocos.",
+      "acceptance": "Comparar cobertura e falsos positivos com script simples, contabilizando revisão humana.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S042",
+        "V2B-S009",
+        "V2B-S007"
+      ]
+    },
+    {
+      "name": "Correção localizada",
+      "scenario": "Bug tem reprodução e poucos arquivos candidatos.",
+      "strategy": "Congelar teste e base, produzir patch numa cópia isolada e devolver evidência ao planejador.",
+      "small_model_role": "8–14B edita; modelo maior só entra se falha semântica justificar.",
+      "acceptance": "Patch aplica na base declarada, resolve reprodução e não quebra testes relevantes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S042",
+        "V2B-S009",
+        "V2B-S007"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "3–7B: edição estreita com arquivo atual e invariantes explícitos, quando o backend e modelo forem compatíveis.",
+    "8_14b": "8–14B: correções locais com teste executável e contexto seletivo.",
+    "15_30b": "15–30B: planejamento multiarquivo sujeito a orçamento e comparação com decomposição menor.",
+    "training_or_runtime_requirements": "Validar suporte do provedor, formato de edição e comandos locais na versão utilizada.",
+    "do_not_use_when": "Não escolher dois modelos por prestígio; a tradução adicional pode elevar erro e custo."
+  },
+  "connections": [
+    {
+      "target_id": "T208",
+      "relation": "complements",
+      "how": "Entregar ao executor uma intenção verificável em vez de apenas prosa livre.",
+      "interface": "Arquivos elegíveis, condição inicial, mudança e invariantes.",
+      "condition": "Há benefício medido em separar planejamento e edição.",
+      "acceptance": "O executor não precisa adivinhar requisito ausente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S042",
+        "V2B-S009",
+        "V2B-S007"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T233",
+      "relation": "feeds",
+      "how": "Submeter patch e base ao validador antes de integrar.",
+      "interface": "Patch, hash-base e comandos de verificação.",
+      "condition": "Toda alteração produz artefato revisável.",
+      "acceptance": "Conflito ou teste falho bloqueia a promoção do patch.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S042",
+        "V2B-S009",
+        "V2B-S007"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não tratar a opção diff como sinônimo universal de unified diff.",
+    "Não avaliar apenas patches que aplicaram; tentativas inválidas também custam."
+  ],
+  "frontier_comparison": "Comparar arquiteturas de uma e duas chamadas no mesmo conjunto de bugs, com custo por correção aceita. Reportar editor pequeno e planejador maior como sistema híbrido, não capacidade isolada do editor.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q023"
+    ],
+    "scope_note": "Documentação do próprio Aider sustenta recursos disponíveis. Não foram confirmadas dez implantações Big Tech do produto; arquiteturas parecidas não foram renomeadas Aider."
+  }
+}

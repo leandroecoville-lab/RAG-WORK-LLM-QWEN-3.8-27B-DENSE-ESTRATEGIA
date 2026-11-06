@@ -1,0 +1,112 @@
+{
+  "id": "T021",
+  "novelty": "A v3 usou histerese. Aqui a decisão de comprimir considera previsão de crescimento e custo de interromper a execução.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Estime tamanho dos próximos resultados antes da chamada. Compressão preventiva pode evitar estouro, mas previsão pessimista demais desperdiça chamadas e destrói detalhes cedo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "V3A-S008"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Escolha momento de compactar em fronteira estável: após confirmar resultado e antes de abrir nova fase. Se chegam eventos concorrentes, preservar fila posterior à revisão usada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "V3A-S008"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare gatilho somente por ocupação e gatilho por crescimento previsto. Meça estouros, compressões inúteis e tempo parado. Unidade de avaliação: trajetória com crescimento. Teste dois resultados de ferramenta com tamanhos medianos iguais e caudas diferentes. A previsão deve distinguir risco de estouro, não apenas média histórica. Registre compactações acionadas sem necessidade e compactações tardias que interrompem a tarefa; ambos os erros precisam entrar na escolha do gatilho e da margem de reserva.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "V3A-S008"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Agente de investigação",
+      "scenario": "Uma próxima busca pode retornar material enorme.",
+      "strategy": "Projetar tamanho por ferramenta, reservar margem e reduzir apenas blocos recuperáveis; ajustar previsão com uso observado.",
+      "small_model_role": "3–7B estima categoria; código contabiliza tokens.",
+      "acceptance": "Não exceder limite em cenários de cauda.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "V3A-S008"
+      ]
+    },
+    {
+      "name": "Sessão interativa",
+      "scenario": "Usuário precisa resposta com baixa demora.",
+      "strategy": "Agendar compressão entre etapas, mantendo um pacote mínimo pronto para interrupções e novas instruções.",
+      "small_model_role": "8–14B produz estado resumido.",
+      "acceptance": "Nova instrução deve ser preservada sem aguardar resumo obsoleto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "V3A-S008"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Classificador de crescimento provável com contabilidade determinística externa.",
+    "8_14b": "Resumidor preventivo de blocos encerrados.",
+    "15_30b": "Controlador de alternativas entre resumir, expandir janela e decompor tarefa.",
+    "training_or_runtime_requirements": "Telemetria por ferramenta e política de revisão; medir custos no hardware e protocolo reais.",
+    "do_not_use_when": "Não há conteúdo dispensável e a próxima operação exige mais contexto que o limite útil."
+  },
+  "connections": [
+    {
+      "target_id": "T222",
+      "relation": "requires",
+      "how": "Observar consumo e previsão por operação.",
+      "interface": "Ocupação, margem, tipo de ferramenta e quantis de resultado.",
+      "condition": "Previsão recalibrada com tráfego real.",
+      "acceptance": "Testar resultados maiores que o esperado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "V3A-S008"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T210",
+      "relation": "alternative",
+      "how": "Rotacionar sessão quando compactação não preservar requisitos.",
+      "interface": "Handoff, revisão e pendências.",
+      "condition": "Novo contexto receber contrato completo.",
+      "acceptance": "Comparar continuidade e custo da rotação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "V3A-S008"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não comprimir repetidamente o mesmo texto sem ganho.",
+    "Registrar divergência entre previsão e tamanho real."
+  ],
+  "frontier_comparison": "Comparar execução contínua sob pressão de contexto; evitar confundir menos estouros com respostas melhores.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q024"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S002",
+    "V3A-S008"
+  ]
+}

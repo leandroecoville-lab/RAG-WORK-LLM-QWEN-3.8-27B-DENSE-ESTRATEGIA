@@ -1,0 +1,52 @@
+{
+  "id": "T154",
+  "technical_details": "Uma conversa com turnos concorrentes precisa definir qual revisão de estado cada turno leu. Sem essa relação, duas respostas podem atualizar objetivos e histórico em ordens incompatíveis. Um modelo de append com IDs de mensagem preserva eventos, mas decisões vigentes podem exigir controle de versão separado. Editar ou refazer um turno também cria uma ramificação lógica: não se deve misturar automaticamente respostas produzidas a partir de passados diferentes.",
+  "boundary_condition": "Um identificador de sessão isolado não resolve concorrência, duplicatas de transporte ou regenerações de mensagens.",
+  "implementation_contract": {
+    "inputs": "Sessão, ID do turno, revisão de origem e novas observações.",
+    "outputs": "Resposta vinculada à revisão e atualização confirmada ou conflito explícito.",
+    "state": "Histórico de eventos, versão ativa, chamadas pendentes e ramificações.",
+    "invariant": "Uma resposta mantém vínculo com o estado usado para produzi-la."
+  },
+  "tradeoffs": [
+    "Serializar turnos simplifica consistência e acrescenta espera.",
+    "Permitir concorrência reduz latência e exige merge ou rejeição de atualizações incompatíveis."
+  ],
+  "failure_test": "Teste proposto: iniciar dois turnos sobre a mesma versão e fazer o segundo concluir primeiro; verificar ordem de aplicação ou conflito conforme a política, preservando ambos os eventos.",
+  "evaluation_plan": "Comparar fila por sessão e concorrência com controle otimista em conversas com mudanças de objetivo. Medir conflitos, atualizações perdidas, latência e reconstrução histórica. Definir o contrato antes de otimizar paralelismo.",
+  "comparisons": [
+    {
+      "entry_id": "T060",
+      "relation": "complements",
+      "reason": "Checkpoints persistem o estado por sessão, mas não definem sozinhos como aceitar turnos simultâneos."
+    },
+    {
+      "entry_id": "T207",
+      "relation": "complements",
+      "reason": "Um fluxo de eventos pode registrar mensagens e revisões sem apagar o passado."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "LangGraph persiste estado por thread por meio de checkpointers e diferencia esse escopo dos stores compartilhados.",
+    "source_ids": [
+      "A-S022"
+    ],
+    "support": "direct",
+    "caveat": "Políticas de edição, concorrência e ramificação da conversa são propostas do aplicativo."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma nova tentativa deve criar nova mensagem lógica?",
+      "answer": "Depende do contrato. Duplicata de entrega deve manter identidade; regeneração intencional pode criar versão ou ramo distinto."
+    },
+    {
+      "question": "Como explicar uma resposta baseada em decisão antiga?",
+      "answer": "Registrar a revisão de entrada permite identificar desatualização e decidir se a resposta precisa ser refeita."
+    }
+  ],
+  "source_ids": [
+    "A-S022",
+    "V3C-S006"
+  ],
+  "research_note": "Detalhamento e avaliação propostos; a fonte apoia o mecanismo, sem comprovar implementação LAI."
+}

@@ -1,0 +1,52 @@
+{
+  "id": "T174",
+  "technical_details": "Prioridade de espera e preempção de trabalho ativo são decisões distintas. Kubernetes permite uma classe prioritária que não remove Pods em execução. Em agentes, uma ação pode ser não preemptível depois de enviar um efeito; interrompê-la libera o cliente, mas não necessariamente a capacidade remota. Um escalonador precisa considerar custo de retomada, reservas e possibilidade de inversão de prioridade quando uma tarefa urgente depende de outra menos prioritária.",
+  "boundary_condition": "Prioridade alta não cria recurso compatível nem reduz uma dependência que continua bloqueada.",
+  "implementation_contract": {
+    "inputs": "Trabalhos prontos, prioridades, recursos, dependências e pontos de interrupção válidos.",
+    "outputs": "Admissão, espera, reserva ou preempção explicitamente suportada.",
+    "state": "Ocupação, recursos retidos, custo de retomada e prioridade herdada quando prevista.",
+    "invariant": "Uma tarefa não é interrompida como se pudesse ser retomada sem contrato para isso."
+  },
+  "tradeoffs": [
+    "Preempção melhora resposta urgente e pode desperdiçar progresso do trabalho interrompido.",
+    "Não preemptir conserva trabalho e pode elevar muito a espera de uma tarefa importante."
+  ],
+  "failure_test": "Teste proposto: uma tarefa urgente depende de recurso retido por tarefa menos prioritária; verificar se a política detecta o bloqueio em vez de apenas ordenar a fila.",
+  "evaluation_plan": "Comparar prioridade não preemptiva, reservas e preempção em pontos seguros. Medir tempo por classe, trabalho perdido e inanição. Definir urgência e justiça separadamente, sem assumir que o mesmo número resolve ambos.",
+  "comparisons": [
+    {
+      "entry_id": "T149",
+      "relation": "complements",
+      "reason": "A fila fornece ordem; o escalonador decide uso de recursos e interrupção."
+    },
+    {
+      "entry_id": "T161",
+      "relation": "complements",
+      "reason": "Caminho crítico informa dependências que podem dominar a prioridade nominal."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Kubernetes documenta prioridade sem preempção por meio de preemptionPolicy Never.",
+    "source_ids": [
+      "V3C-S016"
+    ],
+    "support": "direct",
+    "caveat": "Essa semântica ilustra a distinção; não é uma API de controle de ferramentas do agente."
+  },
+  "advanced_qa": [
+    {
+      "question": "Alta prioridade implica parar o que já está rodando?",
+      "answer": "Não. Pode significar apenas preferência na próxima admissão; preempção é uma política adicional."
+    },
+    {
+      "question": "Por que uma tarefa urgente pode continuar parada?",
+      "answer": "Porque falta recurso compatível ou uma dependência está bloqueada; reordenar a fila não remove essa condição."
+    }
+  ],
+  "source_ids": [
+    "V3C-S016",
+    "V3C-S020"
+  ],
+  "research_note": "Síntese técnica com contratos e testes propostos; não há alegação de implantação ou medição LAI."
+}

@@ -1,0 +1,46 @@
+{
+  "id": "T194",
+  "technical_details": "A unidade de supervisão precisa ser definida: uma linha textual pode conter várias inferências, e uma inferência pode atravessar linhas. Rótulos de etapas ajudam a localizar erro, mas dependem da informação anterior e de critérios sobre progresso. Uma conclusão correta por coincidência não torna cada transição válida; inversamente, etapas neutras podem ser corretas sem avançar a solução. O dataset deve representar essas distinções.",
+  "boundary_condition": "Rótulos inconsistentes ou segmentação inadequada podem ensinar o avaliador a preferir estilo e comprimento em vez de validade.",
+  "implementation_contract": {
+    "inputs": "Trajetórias segmentadas, contexto por etapa, critérios de rótulo e anotadores ou verificadores.",
+    "outputs": "Modelo avaliador ou sinal de treinamento com feedback localizado.",
+    "state": "Proveniência dos rótulos, discordâncias e separação por problema de origem.",
+    "invariant": "Etapas do mesmo problema não vazam entre treino e avaliação final sem controle explícito."
+  },
+  "tradeoffs": [
+    "Feedback fino melhora atribuição de erro e custa anotação.",
+    "Selecionar erros convincentes pode ser informativo e alterar a distribuição dos exemplos."
+  ],
+  "failure_test": "Teste proposto: inserir solução com resposta final correta e etapa intermediária inválida, além de sequência longa de passos neutros. Esperar avaliação diferenciada de validade e progresso.",
+  "evaluation_plan": "Plano proposto: comparar supervisão de resultado e de processo com orçamento de anotação declarado. Medir localização de erros, qualidade final, consistência entre anotadores e custo; usar problemas inéditos, não somente novas trajetórias dos mesmos enunciados.",
+  "comparisons": [
+    {
+      "entry_id": "T206",
+      "relation": "distinct_from",
+      "reason": "Supervisão de processo treina com sinais intermediários; verificação de processo pode apenas inspecionar uma execução."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Let’s Verify Step by Step utiliza rótulos positivos, negativos e neutros para etapas intermediárias de soluções.",
+    "source_ids": [
+      "C-S047"
+    ],
+    "support": "direct",
+    "caveat": "A evidência estudada é principalmente matemática; não certifica que toda narrativa textual represente o processo interno real."
+  },
+  "advanced_qa": [
+    {
+      "question": "Resposta final correta basta como rótulo de todas as etapas?",
+      "answer": "Não. Ela pode resultar de cancelamento de erros ou acerto casual."
+    },
+    {
+      "question": "Como evitar premiar enrolação?",
+      "answer": "Avalie progresso e requisitos por etapa, distinguindo passos válidos úteis de repetições neutras sem avanço."
+    }
+  ],
+  "source_ids": [
+    "C-S047"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

@@ -1,0 +1,33 @@
+{
+  "id": "T169",
+  "name": "Multi-Agent com contextos isolados",
+  "canonical_name": "Multi-Agent com Contextos Isolados",
+  "canonical_id": "T169",
+  "aliases": [
+    "subagentes com contexto separado",
+    "Multi-Agent com Contextos Isolados"
+  ],
+  "category": "orquestracao",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T139",
+    "T147",
+    "T186",
+    "T200"
+  ],
+  "source_ids": [
+    "C-S030",
+    "V2A-S018",
+    "V3C-S028",
+    "V4C-S014",
+    "V4C-S009",
+    "V4C-S028"
+  ],
+  "namespace": "T169",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T169",
+  "chunk_count": 9
+}

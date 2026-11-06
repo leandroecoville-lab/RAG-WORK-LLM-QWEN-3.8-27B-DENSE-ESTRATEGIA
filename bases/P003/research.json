@@ -1,0 +1,51 @@
+{
+  "id": "P003",
+  "technical_details": "Virtual Context Manager propõe separar referências residentes e conteúdo externo carregável. Uma falta de informação deve gerar resolução de referência, carregamento e eventual substituição de conteúdo menos útil. Elementos indispensáveis à operação atual podem ser fixados temporariamente, evitando que a própria política de descarte remova um contrato ainda em uso. Ao contrário de paginação convencional de bytes, uma seleção semântica pode errar a relevância; essa incerteza precisa aparecer como falha recuperável.",
+  "boundary_condition": "Referências podem expirar, mudar de versão ou perder autorização. Encontrar um identificador no contexto não garante que seu conteúdo permaneça disponível ou permitido.",
+  "implementation_contract": {
+    "inputs": "Tarefa, referências versionadas, orçamento ativo, política de fixação e identidade da sessão.",
+    "outputs": "Trechos carregados, manifesto de residentes, faltas não resolvidas e decisões de substituição.",
+    "state": "Mapa entre referência, hash, versão, origem, custo estimado e estado de residência na janela.",
+    "invariant": "Conteúdo fixado por uma operação ativa não pode ser removido sem encerrar ou replanejar essa operação."
+  },
+  "tradeoffs": [
+    "Carregamento sob demanda economiza janela, mas acrescenta latência e risco de referência ausente.",
+    "Fixar conteúdo evita descarte indevido, porém reduz espaço para novas evidências e pode exigir pausa explícita."
+  ],
+  "failure_test": "Proposta: remover o documento externo após emitir a referência e depois exigir seu conteúdo; o controlador deve informar indisponibilidade e impedir que um resumo antigo seja tratado como original recuperado.",
+  "evaluation_plan": "Comparar janela fixa e política virtual em tarefas longas com reuso, documentos modificados e limites apertados. Medir faltas resolvidas, leituras redundantes, perda de condições e custo total, incluindo chamadas adicionais de recuperação.",
+  "comparisons": [
+    {
+      "entry_id": "T063",
+      "relation": "specializes",
+      "reason": "É um componente proposto para gerenciar contexto virtual."
+    },
+    {
+      "entry_id": "T078",
+      "relation": "complements",
+      "reason": "Semantic Page Fault descreve o evento de falta a resolver."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "MemGPT estuda gestão em camadas para ampliar o acesso à informação além da janela imediata.",
+    "source_ids": [
+      "A-S009"
+    ],
+    "support": "related",
+    "caveat": "Analogia arquitetural; esta ficha não afirma compatibilidade ou implementação do sistema MemGPT."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma referência ocupa o lugar do documento sem custo?",
+      "answer": "Ela reduz tokens residentes, mas exige armazenamento acessível, resolução e nova leitura quando necessário."
+    },
+    {
+      "question": "Qual erro é específico deste componente?",
+      "answer": "Resolver a referência para versão errada ou descartar evidência ainda necessária a uma operação ativa."
+    }
+  ],
+  "source_ids": [
+    "A-S009"
+  ],
+  "research_note": "Contrato, teste de falha e plano de avaliação são recomendações editoriais; nenhuma implantação ou medição deste mecanismo foi executada neste pacote."
+}

@@ -1,0 +1,37 @@
+{
+  "id": "T069",
+  "name": "Consolidação por resumos — anteriormente chamada de “Context Distillation”",
+  "canonical_name": "Consolidação por resumos",
+  "canonical_id": "T069",
+  "aliases": [
+    "Context Distillation como memória resumida",
+    "correção de context distillation",
+    "destilação não é resumo",
+    "memória resumida externa",
+    "consolidação textual sem treino"
+  ],
+  "category": "memoria",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T043",
+    "T058",
+    "T072",
+    "T179",
+    "P004"
+  ],
+  "source_ids": [
+    "A-S003",
+    "A-S023",
+    "A-S040",
+    "V3A-S005",
+    "V4A-S002",
+    "V4D-S005"
+  ],
+  "namespace": "T069",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T069",
+  "chunk_count": 9
+}

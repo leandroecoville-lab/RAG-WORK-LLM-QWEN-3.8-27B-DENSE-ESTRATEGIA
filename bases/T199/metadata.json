@@ -1,0 +1,34 @@
+{
+  "id": "T199",
+  "name": "Aprendizagem por avaliação",
+  "canonical_name": "Aprendizagem por Avaliação",
+  "canonical_id": "T199",
+  "aliases": [
+    "evaluation-driven improvement",
+    "Aprendizagem por Avaliação"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T049",
+    "T071",
+    "T177",
+    "T190"
+  ],
+  "source_ids": [
+    "C-S051",
+    "C-S020",
+    "V4B-S022",
+    "V4B-S023",
+    "V4B-S025",
+    "V4B-S024",
+    "V4B-S026"
+  ],
+  "namespace": "T199",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T199",
+  "chunk_count": 9
+}

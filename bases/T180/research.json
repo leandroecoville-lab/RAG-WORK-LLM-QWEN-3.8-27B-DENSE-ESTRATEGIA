@@ -1,0 +1,46 @@
+{
+  "id": "T180",
+  "technical_details": "Um prompt extenso costuma misturar regras estáveis, exemplos e parâmetros variáveis. Antes de destilar, é útil separar o que deverá virar comportamento dos valores que ainda precisam chegar a cada consulta. Instruções incompatíveis podem exigir identificador explícito de tarefa; treinar as mesmas entradas com saídas contraditórias não ensina ao aluno qual regime escolher. O contrato de saída também deve ser validado fora da própria geração do professor.",
+  "boundary_condition": "Quando a política muda frequentemente, o custo de gerar dados, treinar e revalidar pode superar a economia de tokens.",
+  "implementation_contract": {
+    "inputs": "Prompt versionado, consultas representativas, parâmetros variáveis e respostas verificadas.",
+    "outputs": "Modelo ajustado e instrução mínima necessária para selecionar o comportamento.",
+    "state": "Versão do comportamento, conjunto sintético e critérios de validação.",
+    "invariant": "Parâmetros que variam por consulta não desaparecem sem outra forma de identificá-los."
+  },
+  "tradeoffs": [
+    "Menos instruções repetidas reduzem contexto e aumentam custo de manutenção do modelo.",
+    "Exemplos sintéticos amplificam cobertura e podem repetir erros sistemáticos do professor."
+  ],
+  "failure_test": "Teste proposto: criar duas políticas que produzem rótulos diferentes para a mesma entrada, sem identificador de regime. Esperar falha diagnosticada; depois acrescentar a variável necessária e reavaliar.",
+  "evaluation_plan": "Plano proposto: comparar prompt integral, prompt reduzido sem treino e aluno destilado. Medir cumprimento de regras, casos limítrofes, custo total de manutenção e inferência; aprovar economia somente quando o comportamento necessário permanece demonstrável.",
+  "comparisons": [
+    {
+      "entry_id": "T179",
+      "relation": "specializes",
+      "reason": "Foca transferência de instruções recorrentes, mantendo explícita a informação variável indispensável."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A receita Tinker gera respostas com um prompt no professor e treina o aluno para prevê-las sem receber esse prompt.",
+    "source_ids": [
+      "C-S034"
+    ],
+    "support": "direct",
+    "caveat": "A receita ilustrativa não garante internalização completa de regras extensas ou contraditórias."
+  },
+  "advanced_qa": [
+    {
+      "question": "Pode apagar o prompt original depois?",
+      "answer": "Preserve-o como especificação versionada; ele ajuda a auditar e reconstruir o comportamento pretendido."
+    },
+    {
+      "question": "Um rótulo válido basta para avaliar?",
+      "answer": "Não. Valide também sua correspondência com a entrada e as regras, especialmente exceções raras não cobertas pela geração sintética."
+    }
+  ],
+  "source_ids": [
+    "C-S034"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

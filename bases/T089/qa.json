@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Atingir max_new_tokens conta como sucesso?",
+    "answer": "Não por si só. É um limite operacional; o consumidor precisa verificar se a saída e a tarefa ficaram completas."
+  },
+  {
+    "question": "Como tornar parada semântica verificável?",
+    "answer": "Defina antes um predicado externo, como schema válido mais campos obrigatórios conferidos, e teste seus falsos positivos."
+  },
+  {
+    "question": "EOS prova que a tarefa acabou?",
+    "answer": "Apenas indica o término escolhido pelo modelo; a aplicação ainda precisa verificar seu contrato de resultado."
+  },
+  {
+    "question": "early_stopping tem uma única semântica?",
+    "answer": "Não. Em APIs de geração, esse nome pode se referir especificamente à conclusão da busca com beams."
+  }
+]

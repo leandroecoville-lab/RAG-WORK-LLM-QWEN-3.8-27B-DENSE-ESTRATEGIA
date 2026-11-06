@@ -1,0 +1,53 @@
+{
+  "id": "T029",
+  "technical_details": "Na implementação Microsoft, busca global e local usam materiais diferentes: relatórios de comunidades favorecem síntese do corpus; entidades, relações e trechos originais favorecem investigação localizada. A escolha do modo é parte da consulta. Erros de resolução de entidades, como unir homônimos, propagam-se para relações e relatórios, multiplicando a aparência de suporte de um fato incorreto.",
+  "boundary_condition": "Grafos pouco conectados, extração imprecisa ou perguntas predominantemente literais podem não justificar o custo de construir e atualizar comunidades e resumos.",
+  "implementation_contract": {
+    "inputs": "Documentos versionados, esquema de entidades e modo de consulta definido.",
+    "outputs": "Resposta com referências às fontes e distinção entre extração e síntese.",
+    "state": "Grafo, relatórios, mapeamento para trechos e versão da ingestão.",
+    "invariant": "Uma relação extraída não ganha confirmação independente por aparecer também num relatório gerado dela."
+  },
+  "tradeoffs": [
+    "Relatórios globais ampliam cobertura temática, mas acumulam decisões de síntese.",
+    "Expansão local preserva detalhe e pode perder relações distantes que não entraram no subgrafo."
+  ],
+  "failure_test": "Teste proposto: introduzir duas entidades homônimas com relações incompatíveis. Verificar se a resolução evita fusão ou mantém ambiguidade, sem produzir um perfil híbrido inexistente.",
+  "evaluation_plan": "Avaliação proposta: comparar busca textual, modo local e global em tarefas correspondentes. Controlar corpus e orçamento; medir suporte das relações, cobertura temática, custo de ingestão e atualização, além da qualidade final.",
+  "comparisons": [
+    {
+      "entry_id": "T051",
+      "relation": "complements",
+      "reason": "Memória em grafo pode compartilhar entidades, mas GraphRAG acrescenta um pipeline de recuperação e geração."
+    },
+    {
+      "entry_id": "T057",
+      "relation": "distinct_from",
+      "reason": "Relações do grafo não identificam causalidade sem hipóteses e evidências causais adicionais."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "GraphRAG documenta busca global com relatórios de comunidades e busca local combinando grafo e texto original.",
+    "source_ids": [
+      "V3A-S023",
+      "V3A-S024"
+    ],
+    "support": "direct",
+    "caveat": "As capacidades descritas não garantem correção das extrações nem ganho em toda classe de pergunta."
+  },
+  "advanced_qa": [
+    {
+      "question": "Mais arestas significam mais conhecimento confiável?",
+      "answer": "Não. Também podem significar mais duplicatas e associações erradas. A qualidade precisa considerar identidade, proveniência e precisão das relações."
+    },
+    {
+      "question": "Como atualizar um documento alterado?",
+      "answer": "Identifique suas contribuições e regenere estruturas dependentes conforme o pipeline. Manter relatórios antigos com fatos novos exige marcação explícita ou reconstrução consistente."
+    }
+  ],
+  "source_ids": [
+    "V3A-S023",
+    "V3A-S024"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

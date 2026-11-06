@@ -1,0 +1,18 @@
+[
+  {
+    "question": "O diff do Aider é sempre um unified diff?",
+    "answer": "Não. O formato denominado diff usa busca e substituição; udiff é outro formato documentado."
+  },
+  {
+    "question": "Um patch aplicado e sem erro encerra a tarefa?",
+    "answer": "Não. Ainda é necessário verificar comportamento, requisitos e possíveis regressões no código afetado."
+  },
+  {
+    "question": "Editor correto no formato significa plano implementado?",
+    "answer": "Não. Compare as diferenças com requisitos e testes comportamentais específicos."
+  },
+  {
+    "question": "Por que um formatador pode confundir a correção automática?",
+    "answer": "Se retornar código não zero por ter formatado código, o executor pode interpretar sucesso de formatação como falha de lint."
+  }
+]

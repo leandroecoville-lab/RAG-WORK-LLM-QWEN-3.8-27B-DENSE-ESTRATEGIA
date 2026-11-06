@@ -1,0 +1,52 @@
+{
+  "id": "T235",
+  "technical_details": "Um controlador headless precisa distinguir eventos intermediários e resultado final. Em Codex, JSONL fornece eventos da execução, enquanto output-schema restringe a resposta final; são contratos diferentes. Um processo que termina tecnicamente pode ainda entregar tarefa inconclusiva. A retomada deve usar identidade da sessão e do objetivo, evitando iniciar nova missão somente porque um processo anterior caiu. O controlador também precisa de regra explícita para parar de agendar novas iterações.",
+  "boundary_condition": "Modo não interativo não define por si critérios de sucesso, limite de custo ou repetição segura de efeitos.",
+  "implementation_contract": {
+    "inputs": "Objetivo identificado, sessão, eventos estruturados e orçamento de execução.",
+    "outputs": "Estado final da missão, artefatos e decisão de retomar ou encerrar.",
+    "state": "Cursor do stream, sessão corrente, tentativas e evidências de conclusão.",
+    "invariant": "Fim do processo não é convertido automaticamente em aceitação do objetivo."
+  },
+  "tradeoffs": [
+    "Eventos detalhados permitem diagnóstico e exigem parser versionado e armazenamento.",
+    "Resposta final estruturada simplifica integração e não contém necessariamente todo o histórico de ações."
+  ],
+  "failure_test": "Teste proposto: interromper o processo após uma edição e antes da mensagem final; exigir recuperação dos artefatos e estado, sem assumir fracasso total ou repetir a missão do início.",
+  "evaluation_plan": "Comparar execução única e controlador com retomada em interrupções controladas. Medir duplicação, tempo de reorientação, custo e conclusão verificada. Testar ausência de evento final, evento de falha e final estruturalmente válido, mas inconclusivo.",
+  "comparisons": [
+    {
+      "entry_id": "T210",
+      "relation": "complements",
+      "reason": "Rotação e retomada precisam preservar o estado da missão entre processos."
+    },
+    {
+      "entry_id": "T225",
+      "relation": "distinct_from",
+      "reason": "Watchdog restaura capacidade; controlador headless interpreta eventos e decide o próximo trabalho."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Codex documenta JSONL para eventos e JSON Schema para a resposta final em execução não interativa.",
+    "source_ids": [
+      "V3C-S039"
+    ],
+    "support": "direct",
+    "caveat": "As opções foram verificadas na documentação; a CLI não foi executada nem encontrada no PATH local."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma resposta final válida em JSON confirma os testes?",
+      "answer": "Não. Ela é uma declaração estruturada; testes e artefatos exigem recibos ou resultados verificáveis."
+    },
+    {
+      "question": "O que impede um loop headless infinito?",
+      "answer": "Critérios de término, orçamento global e análise de progresso implementados no controlador, não a ausência de interface gráfica."
+    }
+  ],
+  "source_ids": [
+    "V3C-S039",
+    "V2A-S005"
+  ],
+  "research_note": "Contratos, cenários de falha e planos de avaliação são propostas editoriais fundamentadas nas fontes indicadas."
+}

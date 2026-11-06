@@ -1,0 +1,111 @@
+{
+  "id": "T030",
+  "novelty": "A v3 detalhou clustering do RAPTOR. Aqui o foco é atualização de árvores e controle do custo de sobreposição entre clusters.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "A participação de uma folha em vários clusters melhora rotas possíveis, mas também multiplica sínteses e dependências de atualização. Registre grau de participação por documento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S014",
+        "V3A-S029"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Após alteração de folha, escolha entre atualização local e reconstrução segundo mudança de vizinhança. Reusar resumos quando a composição do cluster mudou pode conservar uma interpretação inválida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S014",
+        "V3A-S029"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare índice original, atualização local e reconstrução completa em corpus editado. Meça cobertura, custo de regeneração e duplicação de evidência no contexto final, mantendo consultas reservadas. Unidade de avaliação: coleção resumida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S014",
+        "V3A-S029"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Base técnica em evolução",
+      "scenario": "Poucos documentos mudam por semana.",
+      "strategy": "Marcar resumos dependentes, recalcular clusters afetados e publicar revisão completa somente após validar ligações às folhas.",
+      "small_model_role": "3–7B extrai mudanças; 8–14B resume clusters.",
+      "acceptance": "Consulta não pode misturar resumo antigo e folha nova sem indicação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S014",
+        "V3A-S029"
+      ]
+    },
+    {
+      "name": "Perguntas de síntese",
+      "scenario": "Resposta exige vários níveis de abstração.",
+      "strategy": "Recuperar resumos para orientação e folhas para afirmações precisas; deduplicar folhas alcançadas por caminhos diferentes.",
+      "small_model_role": "15–30B integra níveis.",
+      "acceptance": "Cada detalhe factual deve apontar à folha original.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S014",
+        "V3A-S029"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extrator de atributos e verificador de cobertura das folhas.",
+    "8_14b": "Resumidor de grupos pequenos, com limites de tamanho e conteúdo.",
+    "15_30b": "Integrador de múltiplos níveis quando síntese realmente exigir abstração.",
+    "training_or_runtime_requirements": "Implementação RAPTOR compatível, vínculos muitos-para-muitos e versionamento de clusters; não substituir por árvore genérica.",
+    "do_not_use_when": "Atualizações frequentes fazem reconstrução dominar custo ou resumos não melhoram tarefas do acervo."
+  },
+  "connections": [
+    {
+      "target_id": "T072",
+      "relation": "requires",
+      "how": "Publicar uma revisão coerente de folhas e resumos.",
+      "interface": "Manifesto de clusters, versões e dependências.",
+      "condition": "Consulta pinada a revisão consistente.",
+      "acceptance": "Testar leitura durante troca de índice.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S014",
+        "V3A-S029"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T032",
+      "relation": "alternative",
+      "how": "Preferir pais documentais quando hierarquia natural basta.",
+      "interface": "Documento, filho e pai estrutural.",
+      "condition": "Estrutura documental conservar contexto necessário.",
+      "acceptance": "Comparar custo e qualidade com agrupamento aprendido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S014",
+        "V3A-S029"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não contar mesma folha várias vezes como evidência adicional.",
+    "Não chamar configuração diferente de clustering de reprodução exata."
+  ],
+  "frontier_comparison": "Comparar questões de abstração e detalhe separadamente; ganhos relatados do RAPTOR não garantem ganhos com leitores pequenos.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q021"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S014",
+    "V3A-S029"
+  ]
+}

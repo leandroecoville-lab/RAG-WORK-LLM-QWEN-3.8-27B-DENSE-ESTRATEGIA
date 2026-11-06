@@ -1,0 +1,6 @@
+flowchart TD
+    T060["T060 Agent Checkpointing / Checkpoint & Resume — incluindo checkpoints transacionais"]
+    T243["T243 Reconciliação de operações externas"]
+    T060 -. "requires: proposta" .-> T243
+    T064["T064 Persistent Agent State"]
+    T060 -. "complements: proposta" .-> T064

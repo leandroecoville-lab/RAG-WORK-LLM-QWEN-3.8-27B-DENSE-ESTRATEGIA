@@ -1,0 +1,32 @@
+{
+  "id": "T134",
+  "name": "Semantic Routing",
+  "canonical_name": "Semantic Routing",
+  "canonical_id": "T134",
+  "aliases": [
+    "roteamento semântico"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T133",
+    "T148"
+  ],
+  "source_ids": [
+    "C-S001",
+    "C-S013",
+    "V3C-S001",
+    "V3C-S006",
+    "V4C-S013",
+    "V3C-S004",
+    "V4C-S015",
+    "V4C-S028"
+  ],
+  "namespace": "T134",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T134",
+  "chunk_count": 9
+}

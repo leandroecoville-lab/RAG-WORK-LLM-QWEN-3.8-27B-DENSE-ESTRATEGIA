@@ -1,0 +1,58 @@
+{
+  "coverage": {
+    "entry_id": "T072",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Versioned Memory",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C007",
+      "company": "Amazon",
+      "system": "Dynamo em serviços Amazon",
+      "title": "Dynamo em serviços Amazon — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "Autores descrevem adoção de Dynamo por serviços centrais da Amazon.",
+      "technical_mechanism": "Versionamento de objetos e resolução de conflitos assistida pela aplicação.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S006"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T072",
+          "match": "family",
+          "rationale": "Versões de dados são precursor de memória versionada, sem semântica do agente."
+        },
+        {
+          "entry_id": "T075",
+          "match": "family",
+          "rationale": "Conflitos de objetos são resolvidos pela aplicação; não confirma reconciliação de efeitos LLM."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Apresentar versões concorrentes ao reconciliador pequeno sem permitir que ele descarte evidência sozinho.",
+      "limits": "Dynamo histórico não equivale a todos os produtos DynamoDB; particionamento por hash não é CAS. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C007",
+      "deployment_domain": "distributed_data_system",
+      "mapping": {
+        "entry_id": "T072",
+        "match": "family",
+        "rationale": "Versões de dados são precursor de memória versionada, sem semântica do agente."
+      }
+    }
+  ]
+}

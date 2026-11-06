@@ -1,0 +1,34 @@
+{
+  "id": "T239",
+  "name": "Git Worktrees",
+  "canonical_name": "Git Worktrees",
+  "canonical_id": "T239",
+  "aliases": [
+    "linked worktree",
+    "árvores de trabalho Git"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T237",
+    "T236",
+    "T233"
+  ],
+  "source_ids": [
+    "V2A-S019",
+    "V3C-S037",
+    "V4C-S030",
+    "V3C-S039",
+    "V4C-S016",
+    "V4C-S020",
+    "V4C-S027",
+    "V4C-S029"
+  ],
+  "namespace": "T239",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T239",
+  "chunk_count": 9
+}

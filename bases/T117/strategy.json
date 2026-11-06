@@ -1,0 +1,120 @@
+{
+  "id": "T117",
+  "novelty": "A v3 tratou posições e balanceamento causal. Esta camada considera quando paralelizar contexto é apropriado, como interage com GQA e quais aspectos de implantação foram efetivamente descritos pelos operadores.",
+  "deep_layers": [
+    {
+      "name": "Escopo de aplicação",
+      "detail": "Context parallelism ajuda a distribuir trabalho ou estados associados ao comprimento, especialmente em prefill longo. Decode com uma consulta nova possui outra relação entre computação e comunicação. Uma topologia adequada para uma fase não precisa ser mantida em todas; qualquer transição deve considerar redistribuição do estado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S045",
+        "V4B-S003",
+        "V4B-S008"
+      ]
+    },
+    {
+      "name": "Partição composta",
+      "detail": "Combinar contexto e tensor parallelism cria eixos de comunicação distintos. Registre qual grupo possui cada posição e cada conjunto de cabeças, incluindo réplicas KV quando necessário. Uma redução de memória por eixo não se multiplica automaticamente pela outra se buffers ou estados forem replicados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S045",
+        "V4B-S003",
+        "V4B-S008"
+      ]
+    },
+    {
+      "name": "Evidência operacional delimitada",
+      "detail": "Meta descreve caminhos de paralelismo de contexto em sua infraestrutura e Amazon descreve prefill distribuído no Rufus. Esses relatos sustentam viabilidade operacional nas configurações publicadas, sem demonstrar benefício para um 3–30B ou para a interconexão local. A política precisa ser reavaliada no tamanho de contexto realmente usado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S045",
+        "V4B-S003",
+        "V4B-S008"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Contexto excepcionalmente longo",
+      "scenario": "Poucos pedidos ultrapassam o orçamento de uma réplica.",
+      "strategy": "Crie uma classe de execução distribuída e mantenha pedidos comuns no caminho simples. Inclua tempo de formar grupo e mover estado no orçamento da solicitação.",
+      "small_model_role": "Um 15–30B pode precisar dessa classe por comprimento, mesmo cabendo em pesos numa GPU.",
+      "acceptance": "Validar equivalência e medir espera da classe longa sem bloquear consultas curtas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S045",
+        "V4B-S003",
+        "V4B-S008"
+      ]
+    },
+    {
+      "name": "Estudo de seleção de topologia",
+      "scenario": "A carga mistura documentos e conversas curtas.",
+      "strategy": "Compare réplicas, TP e CP em entradas estratificadas por comprimento. Evite concluir a partir do maior contexto suportado, que pode ser raro.",
+      "small_model_role": "Modelos 8–14B oferecem uma faixa útil para avaliar se comunicação supera a economia.",
+      "acceptance": "Escolher pelo conjunto real de chegadas e respostas válidas dentro do prazo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S045",
+        "V4B-S003",
+        "V4B-S008"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "CP pode ser excesso de complexidade para contextos usuais; testar réplica inteira primeiro.",
+    "8_14b": "Considere CP apenas quando comprimento ou throughput de prefill justificam múltiplos dispositivos.",
+    "15_30b": "Modele partição por camada e comunicação, incluindo o espaço necessário para buffers.",
+    "training_or_runtime_requirements": "Runtime e kernels devem suportar a arquitetura e topologia. Não exige novo treino se a operação for equivalente.",
+    "do_not_use_when": "Não usar CP como promessa de aumentar a janela treinada ou a capacidade de compreender contexto distante."
+  },
+  "connections": [
+    {
+      "target_id": "T101",
+      "relation": "complements",
+      "how": "Troca de blocos em anel é uma possível implementação do eixo de contexto.",
+      "interface": "Posições, blocos KV e estatísticas parciais.",
+      "condition": "Máscara global e ordenação corretas.",
+      "acceptance": "Comparar contra atenção não particionada em comprimentos variados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S045",
+        "V4B-S003",
+        "V4B-S008"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T118",
+      "relation": "complements",
+      "how": "Os eixos de contexto e tensor podem compor uma malha.",
+      "interface": "Mapa de posições, shards e grupos de coletivas.",
+      "condition": "Interconexão e divisibilidade sustentam o plano.",
+      "acceptance": "Medir buffers replicados e custo de comunicação por fase.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S045",
+        "V4B-S003",
+        "V4B-S008"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Testar distribuição causal desbalanceada e comprimentos não divisíveis.",
+    "Não atribuir prefill distribuído automaticamente a todas as fases ou versões de um produto."
+  ],
+  "frontier_comparison": "A comparação com fronteira precisa igualar contexto útil e medir compreensão. Distribuir uma sequência permite executá-la; não prova que o modelo pequeno aproveita todas as informações presentes.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q003",
+      "V4B-Q004"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S045",
+    "V4B-S003",
+    "V4B-S008"
+  ]
+}

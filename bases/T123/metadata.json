@@ -1,0 +1,28 @@
+{
+  "id": "T123",
+  "name": "FP8 Quantization",
+  "canonical_name": "FP8 Quantization",
+  "canonical_id": "T123",
+  "aliases": [
+    "quantização FP8"
+  ],
+  "category": "inferencia",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T085",
+    "T086",
+    "T092"
+  ],
+  "source_ids": [
+    "B-S034",
+    "V4B-S011",
+    "V3B-S003"
+  ],
+  "namespace": "T123",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T123",
+  "chunk_count": 9
+}

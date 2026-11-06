@@ -1,0 +1,6 @@
+flowchart TD
+    T073["T073 Immutable Evidence Store"]
+    T061["T061 Content-Addressable Storage"]
+    T073 -. "requires: proposta" .-> T061
+    T072["T072 Versioned Memory"]
+    T073 -. "feeds: proposta" .-> T072

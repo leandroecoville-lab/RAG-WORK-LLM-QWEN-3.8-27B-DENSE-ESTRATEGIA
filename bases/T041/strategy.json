@@ -1,0 +1,111 @@
+{
+  "id": "T041",
+  "novelty": "A v3 mostrou variabilidade de mensagens. Aqui Last-N é um baseline controlado e uma política por classe de interação.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Escolha N por classe de diálogo usando distribuição real de mensagens e densidade de informação. Uma conversa com ferramentas extensas não deve compartilhar configuração com chat curto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Reinicie a seleção recente após mudança confirmada de objetivo, conservando contratos ativos fora da fila. A janela não deve importar detalhes de assunto antigo só porque ainda estão entre os últimos turnos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare N fixo, N por classe e janela por tokens com o mesmo teto máximo. Meça requisitos antigos esquecidos, custo médio e picos; não usar apenas conversas sem interrupções. Unidade de avaliação: conversa com mudança de tema.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "V4A-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Atendimento com questões independentes",
+      "scenario": "Usuário muda de assunto várias vezes.",
+      "strategy": "Detectar mudança explícita, carregar identidade e preferências necessárias e limitar histórico do assunto anterior.",
+      "small_model_role": "3–7B classifica tema.",
+      "acceptance": "Não reutilizar resposta ou entidade do tema abandonado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Fluxo de extração repetitiva",
+      "scenario": "Cada turno processa um item novo.",
+      "strategy": "Manter instrução fixa e poucos exemplos recentes, arquivando resultados em tabela fora da janela.",
+      "small_model_role": "8–14B trata exceções.",
+      "acceptance": "Itens anteriores não podem contaminar campos do item atual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "V4A-S002"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Classificador de tema com janela curta e instrução estável.",
+    "8_14b": "Leitor de poucas interações que incluem correções locais.",
+    "15_30b": "Supervisor de mudanças de objetivo, usando referências ao histórico quando necessário.",
+    "training_or_runtime_requirements": "Agrupamento por turnos lógicos e perfil de tamanho; ajuste de N não requer treino do modelo.",
+    "do_not_use_when": "Dependências antigas são frequentes e não existe mecanismo separado para obrigações ou recuperação."
+  },
+  "connections": [
+    {
+      "target_id": "T042",
+      "relation": "complements",
+      "how": "Aplicar teto de tokens à seleção Last-N.",
+      "interface": "Turnos elegíveis, custo real e reserva.",
+      "condition": "Grupos de protocolo permanecerem completos.",
+      "acceptance": "Testar uma única mensagem maior que o orçamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "V4A-S002"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T047",
+      "relation": "requires",
+      "how": "Manter fatos duráveis fora da fila recente.",
+      "interface": "Preferência confirmada, escopo e origem.",
+      "condition": "Persistência não ser inferida da presença recente.",
+      "acceptance": "Retomar fato após ele sair dos últimos N turnos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S003",
+        "V4A-S002"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não contar mensagens de sistema e ferramenta como unidades equivalentes.",
+    "Não concluir que conteúdo arquivado será lembrado automaticamente."
+  ],
+  "frontier_comparison": "Usar Last-N como controle simples; comparar retenção de obrigações e custo, sem atribuir ganho cognitivo ao tamanho N.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S003",
+    "V4A-S002"
+  ]
+}

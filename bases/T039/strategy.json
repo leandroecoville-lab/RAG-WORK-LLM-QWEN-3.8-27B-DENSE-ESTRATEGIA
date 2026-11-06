@@ -1,0 +1,111 @@
+{
+  "id": "T039",
+  "novelty": "A v3 formulou valor não aditivo. Aqui prioridades da janela incluem custo de reconstrução e risco de esquecimento de obrigações.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Calcule prioridade por necessidade imediata, custo de reabrir e impacto de omissão. Conteúdo fácil de recuperar pode sair antes de uma decisão rara que exige vários passos para reconstruir.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Use envelhecimento de prioridades para impedir que informação sempre citada monopolize janela. Fixação precisa de condição de liberação, ou a política deixa de administrar recursos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare prioridade por recência, frequência e custo de reconstrução. Meça retomadas, leituras adicionais e obrigações perdidas; manter iguais os limites de janela e saída. Unidade de avaliação: janela de execução.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V4A-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Diagnóstico longo",
+      "scenario": "Uma hipótese depende de evidência antiga cara.",
+      "strategy": "Fixar evidência até testar a hipótese; liberar após registrar resultado e referência, não após mero número de turnos.",
+      "small_model_role": "8–14B gerencia hipóteses locais.",
+      "acceptance": "Não repetir investigação porque a evidência decisiva foi removida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V4A-S002"
+      ]
+    },
+    {
+      "name": "Projeto com várias frentes",
+      "scenario": "Assuntos recentes competem com decisão crítica.",
+      "strategy": "Reservar espaço para contratos ativos e mover detalhes reabríveis; revisar prioridades quando a tarefa mudar.",
+      "small_model_role": "3–7B classifica blocos; 15–30B integra.",
+      "acceptance": "Decisão deve manter restrições mesmo com ruído recente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V4A-S002"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Classificador de tipo e recuperabilidade de blocos.",
+    "8_14b": "Controlador de hipóteses com liberação explícita de conteúdo fixado.",
+    "15_30b": "Planejador entre frentes com custos de reconstrução diferentes.",
+    "training_or_runtime_requirements": "Metadados de dependência, custo de leitura e estados de obrigação; limites devem ser aplicados em código.",
+    "do_not_use_when": "Todos os blocos são declarados indispensáveis sem possibilidade de decompor a tarefa."
+  },
+  "connections": [
+    {
+      "target_id": "T074",
+      "relation": "feeds",
+      "how": "Usar prioridade para escolher conteúdo removível.",
+      "interface": "Valor, custo de recarga e condição de fixação.",
+      "condition": "Evicção não destruir única cópia durável.",
+      "acceptance": "Medir recargas e repetição de trabalho.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V4A-S002"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T040",
+      "relation": "requires",
+      "how": "Recalcular importância após mudança de fase.",
+      "interface": "Estado atual, objetivo e contratos ativos.",
+      "condition": "Mudança de estado ser confirmada.",
+      "acceptance": "Cancelar hipótese e verificar liberação do bloco fixado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S006",
+        "V4A-S002"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não premiar acesso causado pelo próprio ranking sem correção.",
+    "Preservar conteúdo raro exigido por obrigação ativa."
+  ],
+  "frontier_comparison": "Comparar continuidade com igual janela; mais tokens de alta prioridade não significam raciocínio melhor.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S006",
+    "V4A-S002"
+  ]
+}

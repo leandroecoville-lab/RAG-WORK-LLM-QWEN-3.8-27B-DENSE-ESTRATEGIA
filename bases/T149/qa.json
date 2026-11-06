@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Priority queue é scheduler completo?",
+    "answer": "Não. Falta escolher política, capacidade e preempção."
+  },
+  {
+    "question": "Prioridade deve vir de texto livre do agente?",
+    "answer": "Preferencialmente de campos e regras de negócio verificáveis."
+  },
+  {
+    "question": "Duas tarefas com prioridade igual saem em FIFO?",
+    "answer": "Somente se o contrato adicionar um desempate por chegada ou usar uma implementação que o garanta."
+  },
+  {
+    "question": "Por que não mudar a chave dentro do heap?",
+    "answer": "Porque a posição armazenada não é recalculada automaticamente; a estrutura pode deixar de representar a ordenação pretendida."
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "id": "T119",
+  "name": "Pipeline Parallelism",
+  "canonical_name": "Pipeline Parallelism",
+  "canonical_id": "T119",
+  "aliases": [
+    "paralelismo de pipeline"
+  ],
+  "category": "inferencia",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T118",
+    "T117",
+    "T102"
+  ],
+  "source_ids": [
+    "B-S031",
+    "B-S045",
+    "V3B-S010"
+  ],
+  "namespace": "T119",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T119",
+  "chunk_count": 9
+}

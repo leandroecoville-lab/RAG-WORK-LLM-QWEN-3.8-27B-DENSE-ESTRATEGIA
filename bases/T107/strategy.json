@@ -1,0 +1,119 @@
+{
+  "id": "T107",
+  "novelty": "A v3 fixou a interpretação dos eixos do roofline. O aprofundamento propõe usar medições para escolher intervenções, observando fases, concorrência e os custos que o gráfico não representa.",
+  "deep_layers": [
+    {
+      "name": "Uma carga, vários pontos",
+      "detail": "Separe projeções, atenção, comunicação e amostragem; prefill e decode produzem regimes distintos mesmo no mesmo modelo. Um ponto médio pode ocultar atenção limitada por tráfego e projeções limitadas por computação. Colete formas dos tensores e duração junto aos contadores para não otimizar uma região de pouca importância.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S023",
+        "V3B-S012",
+        "V4B-S003"
+      ]
+    },
+    {
+      "name": "Mudança com o lote",
+      "detail": "Aumentar lote pode elevar reúso dos pesos e mudar intensidade aritmética, mas também elevar fila e KV. Faça a análise em lotes que realmente ocorrem no serviço, não somente no maior lote possível. A melhor utilização do dispositivo pode coexistir com pior tempo de resposta individual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S023",
+        "V3B-S012",
+        "V4B-S003"
+      ]
+    },
+    {
+      "name": "Custo fora do kernel",
+      "detail": "Lançamentos, sincronização, cópias e coletivas podem dominar depois de otimizar um operador. Um kernel mais perto do teto não prova redução proporcional do pedido. Relacione o perfil ao caminho crítico e confirme se o tempo economizado não foi simplesmente deslocado para preparação, descompactação ou comunicação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S023",
+        "V3B-S012",
+        "V4B-S003"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Decidir entre quantizar e agrupar",
+      "scenario": "Decode apresenta baixa utilização aparente.",
+      "strategy": "Meça tráfego de pesos e KV, depois varie lote e precisão separadamente. Use o perfil para decidir se reduzir bytes tem possibilidade de afetar o gargalo observado.",
+      "small_model_role": "Um 3–7B pode ser limitado por lançamentos ou baixa concorrência, não necessariamente por capacidade computacional.",
+      "acceptance": "A intervenção deve reduzir duração do caminho crítico sem degradar o contrato de resposta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S023",
+        "V3B-S012",
+        "V4B-S003"
+      ]
+    },
+    {
+      "name": "Justificar múltiplas GPUs",
+      "scenario": "Um 15–30B cabe em um dispositivo, mas parece lento.",
+      "strategy": "Compare perfil local com particionado, incluindo coletivas e volume por token. Se comunicação consome a economia de computação, mantenha uma réplica inteira ou teste outro grau de paralelismo.",
+      "small_model_role": "O porte menor permite explorar réplicas independentes antes de distribuir um único modelo.",
+      "acceptance": "Registrar latência e custo por resposta sob a mesma chegada de pedidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S023",
+        "V3B-S012",
+        "V4B-S003"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Examine overheads fixos e kernels pequenos; um teto teórico alto pode ser irrelevante.",
+    "8_14b": "Compare prefill longo e decode curto, que podem pedir intervenções diferentes.",
+    "15_30b": "Inclua banda interconexão e custo de partição quando o modelo atravessa dispositivos.",
+    "training_or_runtime_requirements": "Ferramenta de profiling deve suportar o dispositivo e medir a região correta; coleta pode perturbar execução.",
+    "do_not_use_when": "Não usar FLOPs teóricos, tokens por segundo e bytes de níveis diferentes na mesma inferência."
+  },
+  "connections": [
+    {
+      "target_id": "T085",
+      "relation": "feeds",
+      "how": "O perfil identifica se quantização de pesos ataca tráfego relevante.",
+      "interface": "Contadores por operador e caminho de desquantização.",
+      "condition": "Formato possui kernel executável no ambiente.",
+      "acceptance": "Comparar perfil antes e depois, além da qualidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S023",
+        "V3B-S012",
+        "V4B-S003"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T113",
+      "relation": "feeds",
+      "how": "Fusão é priorizada quando materializações ou lançamentos estão no caminho crítico.",
+      "interface": "Sequência de operadores, temporários e dependências.",
+      "condition": "Fusão mantém semântica e não eleva pressão excessiva de registradores.",
+      "acceptance": "Medir pedido completo e operador isolado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S023",
+        "V3B-S012",
+        "V4B-S003"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Registrar aquecimento, frequências e concorrência para permitir reprodução.",
+    "Não transformar proximidade ao teto em diagnóstico causal único."
+  ],
+  "frontier_comparison": "Use roofline para explicar custo computacional da solução pequena. A comparação de competência exige outro ensaio: ele não informa se o modelo tomou uma decisão correta ou se precisou de mais tentativas.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q020"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S023",
+    "V3B-S012",
+    "V4B-S003"
+  ]
+}

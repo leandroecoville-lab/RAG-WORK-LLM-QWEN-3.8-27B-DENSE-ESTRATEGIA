@@ -1,0 +1,29 @@
+{
+  "id": "T115",
+  "name": "Activation Checkpointing",
+  "canonical_name": "Activation Checkpointing",
+  "canonical_id": "T115",
+  "aliases": [
+    "gradient checkpointing",
+    "checkpointing de ativações"
+  ],
+  "category": "inferencia",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T060",
+    "T116",
+    "T183"
+  ],
+  "source_ids": [
+    "B-S029",
+    "V4B-S028",
+    "V4B-S006"
+  ],
+  "namespace": "T115",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T115",
+  "chunk_count": 9
+}

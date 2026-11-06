@@ -1,0 +1,31 @@
+{
+  "id": "T072",
+  "name": "Versioned Memory",
+  "canonical_name": "Versioned Memory",
+  "canonical_id": "T072",
+  "aliases": [
+    "memória versionada"
+  ],
+  "category": "memoria",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T056",
+    "T065",
+    "T073",
+    "T076"
+  ],
+  "source_ids": [
+    "A-S028",
+    "A-S032",
+    "V3A-S040",
+    "V3A-S037",
+    "V4A-S006"
+  ],
+  "namespace": "T072",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T072",
+  "chunk_count": 9
+}

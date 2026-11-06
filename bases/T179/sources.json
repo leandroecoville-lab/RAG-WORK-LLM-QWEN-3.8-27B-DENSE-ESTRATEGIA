@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "C-S033",
+    "title": "Learning by Distilling Context",
+    "url": "https://arxiv.org/abs/2209.15189",
+    "publisher": "Snell, Klein e Zhong / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Treinar saídas produzidas com contexto privilegiado para reproduzi-las sem esse contexto pode internalizar comportamento.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn30view0"
+  },
+  {
+    "source_id": "V4B-S012",
+    "title": "Model Distillation — Tinker Documentation",
+    "url": "https://tinker-docs.thinkingmachines.ai/cookbook/recipes/distillation/",
+    "publisher": "Thinking Machines Lab",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Receitas on-policy/off-policy, LoRA e avaliação; documentação atual diferencia modelos disponíveis dos históricos.",
+    "limitations": "Receita e resultados experimentais não comprovam deployment do aluno nem treino realizado neste pacote.",
+    "web_ref": "turn220view0"
+  },
+  {
+    "source_id": "V4B-S013",
+    "title": "On-Policy Distillation",
+    "url": "https://thinkingmachines.ai/blog/on-policy-distillation/",
+    "publisher": "Thinking Machines Lab",
+    "source_type": "research_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-10-27",
+    "supports": "Supervisão em trajetórias do aluno, KL reversa, experiências de raciocínio e assistente interno; atualização datada de modelos retirados.",
+    "limitations": "Casos experimentais; números e modelos do artigo não descrevem hardware nem checkpoint do usuário.",
+    "web_ref": "turn220view1"
+  },
+  {
+    "source_id": "V3D-S008",
+    "title": "Prompt Distillation — Tinker Cookbook",
+    "url": "https://tinker-docs.thinkingmachines.ai/cookbook/recipes/prompt-distillation/",
+    "publisher": "Thinking Machines Lab",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Professor usa prompt e consulta; estudante é treinado para prever resposta sem o prompt.",
+    "limitations": "Receita de treinamento não reproduzida; generalização e economia dependem da tarefa.",
+    "web_ref": "turn151view3"
+  }
+]

@@ -1,0 +1,64 @@
+{
+  "coverage": {
+    "entry_id": "T127",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "GGUF — formato de modelos, não método único de quantização",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C024",
+      "company": "Projeto llama.cpp",
+      "organization_class": "technology_operator",
+      "system": "llama.cpp server",
+      "title": "Servidor local com formatos e recursos documentados",
+      "evidence_level": "operational_product",
+      "observed_use": "O repositório documenta servidor utilizável e carregamento de modelos GGUF, com recursos de geração e configuração de execução.",
+      "technical_mechanism": "Runtime lê metadados e tensores GGUF e expõe geração por servidor; suporte depende da arquitetura, quantização e build.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V3D-S012",
+        "B-S037"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R024",
+          "match": "exact",
+          "rationale": "Referência ao runtime llama.cpp."
+        },
+        {
+          "entry_id": "T127",
+          "match": "exact",
+          "rationale": "GGUF é o contêiner consumido."
+        },
+        {
+          "entry_id": "P009",
+          "match": "analogy",
+          "rationale": "Pode ser componente de uma proposta LAI; não é evidência de sua implantação."
+        }
+      ],
+      "small_model_transfer": "Proposta: começar por um modelo 3–7B conhecido, validar template e respostas, depois medir uso de CPU/GPU e memória sob carga.",
+      "limits": "README comprova recurso, não cliente de produção. Não confirma compatibilidade do checkpoint ou hardware local; GGUF não designa um único algoritmo de quantização.",
+      "canonical_case_id": "V4B-C024",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "T127",
+        "match": "exact",
+        "rationale": "GGUF é o contêiner consumido."
+      }
+    }
+  ]
+}

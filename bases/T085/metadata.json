@@ -1,0 +1,36 @@
+{
+  "id": "T085",
+  "name": "Quantization",
+  "canonical_name": "Quantization",
+  "canonical_id": "T085",
+  "aliases": [
+    "quantização"
+  ],
+  "category": "inferencia",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T086",
+    "T123",
+    "T124",
+    "T125",
+    "T126",
+    "T127"
+  ],
+  "source_ids": [
+    "B-S006",
+    "V3B-S003",
+    "V4D-S002",
+    "V4D-S003",
+    "V4D-S004",
+    "V4D-S006",
+    "V4D-S009",
+    "V4D-S011"
+  ],
+  "namespace": "T085",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T085",
+  "chunk_count": 9
+}

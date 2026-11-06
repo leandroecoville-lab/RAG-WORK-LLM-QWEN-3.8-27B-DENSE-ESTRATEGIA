@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Persistir memória treina o modelo?",
+    "answer": "Não. Nesta proposta os objetos ficam em armazenamento externo e precisam ser recuperados ou inseridos no contexto."
+  },
+  {
+    "question": "Por que separar sessão e projeto?",
+    "answer": "Porque retomar um fluxo exige estado específico da sessão, enquanto decisões do projeto podem ser reutilizadas sob outro ciclo de execução."
+  },
+  {
+    "question": "O índice vetorial deve ser a única memória?",
+    "answer": "A proposta mantém origem e histórico recuperáveis para reconstruir índices e explicar correções."
+  },
+  {
+    "question": "Uma correção apaga o erro anterior?",
+    "answer": "Não por padrão: registra nova informação e permite consultar o que era conhecido em cada momento."
+  }
+]

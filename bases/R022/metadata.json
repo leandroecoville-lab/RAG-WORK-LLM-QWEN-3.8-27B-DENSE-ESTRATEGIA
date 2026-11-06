@@ -1,0 +1,36 @@
+{
+  "id": "R022",
+  "name": "Qwen",
+  "canonical_name": "Qwen — família de modelos",
+  "canonical_id": "R022",
+  "aliases": [
+    "Tongyi Qianwen",
+    "família Qwen"
+  ],
+  "category": "referencias",
+  "kind": "family",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "R009",
+    "R011",
+    "R023",
+    "R024",
+    "T085",
+    "T086",
+    "T133",
+    "T184"
+  ],
+  "source_ids": [
+    "V2B-S016",
+    "V2B-S017",
+    "V3D-S009",
+    "V4B-S020",
+    "V3D-S010"
+  ],
+  "namespace": "R022",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R022",
+  "chunk_count": 9
+}

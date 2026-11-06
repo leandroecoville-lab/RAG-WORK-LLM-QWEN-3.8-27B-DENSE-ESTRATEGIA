@@ -1,0 +1,18 @@
+[
+  {
+    "question": "A especificação precisa determinar cada linha de código?",
+    "answer": "Não. Ela deve definir comportamento, restrições e critérios suficientes; detalhes de implementação podem permanecer no plano e evoluir."
+  },
+  {
+    "question": "Como lidar com uma descoberta que invalida o plano?",
+    "answer": "Registrar a evidência, revisar a decisão afetada e atualizar tarefas e testes. Não declarar o requisito cumprido apenas porque o plano anterior terminou."
+  },
+  {
+    "question": "Uma tarefa concluída no plano prova requisito satisfeito?",
+    "answer": "Somente se sua saída cumprir o critério e a evidência estiver vinculada à versão vigente do requisito."
+  },
+  {
+    "question": "O que fazer quando a implementação revela premissa falsa?",
+    "answer": "Revisar a especificação com a decisão correspondente e propagar o impacto, em vez de ocultar a divergência no código."
+  }
+]

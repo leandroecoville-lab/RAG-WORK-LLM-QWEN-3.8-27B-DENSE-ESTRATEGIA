@@ -1,0 +1,113 @@
+{
+  "id": "T026",
+  "novelty": "A v3 discutiu perda no roteamento hierárquico. Aqui busca em feixe e orçamento de exploração protegem ramos pouco prováveis.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Mantenha mais de um ramo candidato quando descritores se sobrepõem. O tamanho do feixe depende de diversidade e custo dos ramos, não de um top-k fixo em toda a árvore.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V3A-S023"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Reserve cota para um ramo alternativo quando o melhor ramo não fornecer evidência suficiente. Registre cobertura real dos ramos; navegar repetidamente pelo mesmo ancestral não é exploração nova.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V3A-S023"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare top-1, feixe fixo e expansão por insuficiência. Meça recall de folhas relevantes, custo de navegação e falhas em documentos inseridos recentemente, ainda pouco representados nos resumos. Unidade de avaliação: consulta hierárquica.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V3A-S023"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Manuais por produto",
+      "scenario": "Uma consulta cruza versões e componentes.",
+      "strategy": "Roteie por produto e versão obrigatórios, depois explore componentes candidatos. Rejeite ramo semanticamente próximo com versão incompatível.",
+      "small_model_role": "3–7B roteia; 8–14B verifica folhas.",
+      "acceptance": "Toda evidência final deve respeitar produto e revisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V3A-S023"
+      ]
+    },
+    {
+      "name": "Revisão interdisciplinar",
+      "scenario": "Termos iguais aparecem em áreas diferentes.",
+      "strategy": "Abrir ramos de sentidos alternativos, reunir evidências discriminantes e somente depois fechar interpretação.",
+      "small_model_role": "15–30B integra resultados por sentido.",
+      "acceptance": "Não excluir um sentido correto apenas pelo resumo dominante.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V3A-S023"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Navegador com poucas opções e filtros estruturados.",
+    "8_14b": "Avaliador de suficiência e desambiguação entre ramos próximos.",
+    "15_30b": "Planejador de exploração limitada em hierarquias múltiplas.",
+    "training_or_runtime_requirements": "Descritores de nós, custo por expansão e vínculos às folhas; testar também ramos novos e raros.",
+    "do_not_use_when": "A taxonomia não representa a organização das perguntas e quase toda consulta cruza todos os ramos."
+  },
+  "connections": [
+    {
+      "target_id": "T008",
+      "relation": "requires",
+      "how": "Construir descritores adequados para cada nível.",
+      "interface": "node_id, escopo, filhos e resumo de descoberta.",
+      "condition": "Resumo não eliminar termos distintivos.",
+      "acceptance": "Testar consulta respondível apenas em folha minoritária.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V3A-S023"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T027",
+      "relation": "complements",
+      "how": "Usar busca lexical e vetorial nas folhas elegíveis.",
+      "interface": "Lista de ramos permitidos e filtros.",
+      "condition": "Ambos os canais respeitarem escopo.",
+      "acceptance": "Comparar recall antes e depois do filtro hierárquico.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V3A-S023"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Separar ramo não explorado de ramo sem resposta.",
+    "Impedir ciclo em hierarquias que permitem múltiplos pais."
+  ],
+  "frontier_comparison": "Comparar recall por custo de navegação; uma árvore profunda não prova raciocínio melhor.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q003",
+      "V4A-Q009",
+      "V4A-Q021"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S009",
+    "V3A-S023"
+  ]
+}

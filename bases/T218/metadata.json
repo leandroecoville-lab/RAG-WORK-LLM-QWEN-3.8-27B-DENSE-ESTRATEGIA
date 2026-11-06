@@ -1,0 +1,36 @@
+{
+  "id": "T218",
+  "name": "Loop Detection / detecção de estagnação e ciclos",
+  "canonical_name": "Loop Detection / detecção de estagnação e ciclos",
+  "canonical_id": "T218",
+  "aliases": [
+    "stagnation detection",
+    "cycle detection"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T219",
+    "T226",
+    "T208"
+  ],
+  "source_ids": [
+    "V2A-S009",
+    "V2A-S025",
+    "V3C-S006",
+    "V4C-S014",
+    "V3C-S032",
+    "V4C-S031",
+    "V4C-S030",
+    "V4C-S009",
+    "V3C-S023",
+    "V3C-S029"
+  ],
+  "namespace": "T218",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T218",
+  "chunk_count": 9
+}

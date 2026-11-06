@@ -1,0 +1,55 @@
+{
+  "id": "T051",
+  "technical_details": "Em memória por grafo, duas operações precisam ser separadas: identificar a entidade e decidir se uma nova relação substitui, complementa ou contradiz outra. Um nome parecido não resolve identidade; uma relação mais recente não substitui automaticamente todas as anteriores. A evolução das notas pode atualizar descrições úteis à busca, mas essas descrições derivadas precisam manter vínculos com as evidências que motivaram a mudança.",
+  "boundary_condition": "O grafo perde confiabilidade quando extração probabilística é tratada como fato confirmado ou quando mudanças de ontologia reinterpretam arestas antigas sem migração explícita.",
+  "implementation_contract": {
+    "inputs": "Observações com entidades candidatas, tipos de relação, origem e contexto temporal.",
+    "outputs": "Nós e arestas identificados, com decisões de resolução e registros de derivação.",
+    "state": "Ontologia versionada, aliases, evidências ligadas e histórico de revisão das relações.",
+    "invariant": "Uma aresta derivada permanece distinguível da observação que a sustenta e de uma relação apenas hipotética."
+  },
+  "tradeoffs": [
+    "Grafo explicita conexões úteis a perguntas relacionais e aumenta custo de manutenção de identidade.",
+    "Atualização incremental evita reconstrução completa e exige invalidar caminhos dependentes quando uma relação muda."
+  ],
+  "failure_test": "Teste proposto: criar duas organizações homônimas e inserir fatos diferentes em cada uma. A resolução deve manter identidades separadas; uma fusão deliberadamente errada deve ser reversível com seus vínculos de origem.",
+  "evaluation_plan": "Avaliação proposta: comparar grafo e índice de passagens em perguntas relacionais com mesmo orçamento de leitura. Medir precisão de entidades, sustentação das arestas, custo de atualização e caminhos inválidos; não confundir caminho encontrado com explicação comprovada.",
+  "comparisons": [
+    {
+      "entry_id": "T029",
+      "relation": "complements",
+      "reason": "GraphRAG usa estrutura para recuperação; memória por grafo também exige políticas de escrita e evolução ao longo do tempo."
+    },
+    {
+      "entry_id": "T077",
+      "relation": "complements",
+      "reason": "Adicionar validade temporal às relações é uma especialização que permite consultar diferentes estados históricos."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A-MEM conecta notas e atualiza suas representações; Graphiti mantém relações temporais ligadas aos episódios de origem.",
+    "source_ids": [
+      "V3A-S034",
+      "A-S035",
+      "V3A-S035"
+    ],
+    "support": "direct",
+    "caveat": "Essas implementações usam organizações distintas; nenhuma transforma ligações extraídas em causalidade identificada."
+  },
+  "advanced_qa": [
+    {
+      "question": "Toda aresta precisa apontar a uma fonte?",
+      "answer": "Para uso como evidência, deve ter suporte rastreável ou status explícito de hipótese. Arestas puramente organizacionais também precisam de tipo claro."
+    },
+    {
+      "question": "Um ciclo no grafo é sempre erro?",
+      "answer": "Não. Relações sociais ou dependências informacionais podem formar ciclos. A validade depende da semântica do tipo de relação."
+    }
+  ],
+  "source_ids": [
+    "V3A-S034",
+    "A-S035",
+    "V3A-S035"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

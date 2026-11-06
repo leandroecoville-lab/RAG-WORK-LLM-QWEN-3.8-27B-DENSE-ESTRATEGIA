@@ -1,0 +1,128 @@
+{
+  "id": "P010",
+  "novelty": "Aprofunda o roteador proposto com seleção sob restrições, aprendizado sem viés de sobreviventes e separação entre dificuldade estimada e falha de infraestrutura.",
+  "source_ids": [
+    "C-S050",
+    "V4C-S011",
+    "V4C-S012",
+    "V4C-S014"
+  ],
+  "deep_layers": [
+    {
+      "name": "Elegibilidade antes do ranking",
+      "detail": "Proposta: filtrar modelos por contrato de ferramenta, tamanho de entrada, prazo e requisitos de dados antes de prever qualidade/custo. Um candidato barato porém incapaz do formato não é uma rota válida. Registrar o conjunto excluído ajuda a explicar decisões e detectar configurações desatualizadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S050",
+        "V4C-S011",
+        "V4C-S012",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Feedback com censura",
+      "detail": "Guardar resultado de todas as tentativas, inclusive timeout, abstenção e escalada. Avaliar apenas tarefas aceitas pelo modelo pequeno cria seleção favorável. Amostras controladas em shadow, sem efeitos duplicados, podem estimar o desempenho das rotas não escolhidas; isso ainda exige desenho experimental adequado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S050",
+        "V4C-S011",
+        "V4C-S012",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Razão de escalada",
+      "detail": "Separar erro estrutural, evidência insuficiente, tarefa fora do domínio e indisponibilidade. Cada razão sugere uma ação diferente: reparar contexto, trocar ferramenta, usar modelo maior ou aguardar capacidade. Trocar modelo para qualquer erro pode apenas repetir a falha compartilhada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S050",
+        "V4C-S011",
+        "V4C-S012",
+        "V4C-S014"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Extração de contratos com exceções",
+      "scenario": "Maioria dos documentos segue padrões; poucos exigem interpretação difícil.",
+      "strategy": "Extrair com modelo pequeno, verificar campos e escalar apenas os casos de ambiguidade definidos.",
+      "small_model_role": "3–14B atende o fluxo comum com evidência por campo.",
+      "acceptance": "Medir cobertura, erro residual e custo total, incluindo casos escalados e revisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S050",
+        "V4C-S011",
+        "V4C-S012",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Serviço sob fila longa",
+      "scenario": "A rota habitual ultrapassa o prazo disponível.",
+      "strategy": "Escolher somente alternativa que preserve requisito; caso contrário adiar ou recusar explicitamente.",
+      "small_model_role": "Classificador pequeno estima tipo de tarefa; fila/deadline vêm da telemetria.",
+      "acceptance": "Nenhuma mudança silenciosa de qualidade contratada e p95 dentro do limite declarado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S050",
+        "V4C-S011",
+        "V4C-S012",
+        "V4C-S014"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "3–7B: tarefas estáveis e classificação de rota com calibração local.",
+    "8_14b": "8–14B: rota principal de tarefas especializadas com ferramentas e validação.",
+    "15_30b": "15–30B: escalada intermediária avaliada contra o custo de fronteira ou revisão humana.",
+    "training_or_runtime_requirements": "Calibrar usando resultados reais da política e controlar mudança de distribuição.",
+    "do_not_use_when": "Não usar autoconfiança verbal do modelo como probabilidade calibrada de sucesso."
+  },
+  "connections": [
+    {
+      "target_id": "T133",
+      "relation": "complements",
+      "how": "Implementar a política de escolha como decisão rastreável.",
+      "interface": "Candidatos elegíveis, scores, motivo e orçamento.",
+      "condition": "Existe heterogeneidade real de tarefas e modelos.",
+      "acceptance": "Reproduzir a decisão a partir de entradas e versão da política.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S050",
+        "V4C-S011",
+        "V4C-S012",
+        "V4C-S014"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T203",
+      "relation": "complements",
+      "how": "Usar verificação de correção para orientar nova rota.",
+      "interface": "Critério falho, evidência e tentativas anteriores.",
+      "condition": "Há verificador útil e escalada permitida.",
+      "acceptance": "A escalada reduz erro medido sem exceder orçamento de tarefa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S050",
+        "V4C-S011",
+        "V4C-S012",
+        "V4C-S014"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não treinar o roteador somente em sucessos publicados.",
+    "Não contar economia por chamada ignorando retries e professor."
+  ],
+  "frontier_comparison": "Comparar política completa contra modelo único nos mesmos pedidos, incluindo seleção e abstinência. Medir não inferioridade por subgrupo, custo por aceite e cauda de latência.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q008",
+      "V4C-Q009"
+    ],
+    "scope_note": "P010 é proposta. Bedrock oferece recurso de roteamento; relatos Uber têm escopos próprios e não comprovam automaticamente roteamento dinâmico por dificuldade."
+  }
+}

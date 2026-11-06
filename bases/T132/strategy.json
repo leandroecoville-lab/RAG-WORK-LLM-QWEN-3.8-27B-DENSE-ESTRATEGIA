@@ -1,0 +1,120 @@
+{
+  "id": "T132",
+  "novelty": "A v3 forneceu o modelo de custo e a condição probabilística. O aprofundamento analisa alinhamento entre distribuições, vida útil dos dois caches e seleção de pares sem confundir tamanho com economia.",
+  "deep_layers": [
+    {
+      "name": "Compatibilidade probabilística",
+      "detail": "Tokenização, filtros e temperatura afetam a distribuição de proposta e alvo. O algoritmo precisa usar probabilidades correspondentes ao que realmente foi amostrado, incluindo transformações aplicáveis. Alinhamento de texto entre tokenizers diferentes não basta para usar uma correção desenhada para o mesmo vocabulário.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S001",
+        "V4B-S029",
+        "V4D-S003"
+      ]
+    },
+    {
+      "name": "Dois estados, uma história",
+      "detail": "Draft e alvo possuem caches distintos, mas devem representar o mesmo prefixo confirmado. Quando parte da proposta é rejeitada, estado provisório precisa ser descartado ou corrigido. Cancelamento e retomada devem manter cursores separados de tokens propostos, verificados e emitidos; publicar cedo quebra a garantia.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S001",
+        "V4B-S029",
+        "V4D-S003"
+      ]
+    },
+    {
+      "name": "Escolha do par",
+      "detail": "Um draft menor pode ser rápido e divergir muito do alvo; outro ligeiramente maior pode aceitar mais e custar demais. Compare tempo do draft, verificação e trabalho confirmado por rodada sob carga. A documentação atual do Phi Silica descreve draft na NPU, sem provar que a mesma estratégia se aplica ao caminho GPU.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S001",
+        "V4B-S029",
+        "V4D-S003"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Alvo especializado estável",
+      "scenario": "O mesmo modelo maior atende um domínio recorrente.",
+      "strategy": "Avalie pares de draft e alvo, começando por compatibilidade de tokens. Ajuste horizonte em dados separados e inclua memória extra na comparação de capacidade.",
+      "small_model_role": "Um alvo 15–30B com draft barato pode ser hipótese útil para respostas longas.",
+      "acceptance": "Reduzir tempo completo mantendo o contrato de distribuição e custo aceitável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S001",
+        "V4B-S029",
+        "V4D-S003"
+      ]
+    },
+    {
+      "name": "Serving local com energia limitada",
+      "scenario": "A latência importa junto com consumo e memória.",
+      "strategy": "Meça o sistema com e sem draft no backend realmente disponível. Ociosiade menor da unidade de cálculo não garante menor energia total; registre duração e recursos adicionais.",
+      "small_model_role": "Alvos 3–7B podem não amortizar outro modelo; verificar antes de adotar.",
+      "acceptance": "Escolher por orçamento real, sem importar ganhos de NPU, GPU ou modelo diferente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S001",
+        "V4B-S029",
+        "V4D-S003"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "O alvo já barato pode tornar especulação redundante; a comparação precisa incluir carga baixa.",
+    "8_14b": "Pares próximos em comportamento podem ser estudados, sem presumir que família igual garante aceitação.",
+    "15_30b": "Memória do draft pode reduzir concorrência do alvo e anular vantagem por pedido.",
+    "training_or_runtime_requirements": "Dois modelos compatíveis e runtime que implemente verificação/correção. Treinar um draft próprio é opcional e separado.",
+    "do_not_use_when": "Não prometer texto idêntico em qualquer execução; a preservação pretendida é da distribuição sob as hipóteses do algoritmo."
+  },
+  "connections": [
+    {
+      "target_id": "T080",
+      "relation": "complements",
+      "how": "Lookahead regula quanto trabalho o draft antecipa.",
+      "interface": "Aceitação por posição e custo da rodada.",
+      "condition": "Estimativas suficientemente estáveis.",
+      "acceptance": "Comparar com horizontes fixos sob mudança de carga.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S001",
+        "V4B-S029",
+        "V4D-S003"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T079",
+      "relation": "feeds",
+      "how": "Draft externo é uma forma de construir candidatos para especulação.",
+      "interface": "Tokens e probabilidades necessárias à confirmação.",
+      "condition": "Caches e distribuição consistente.",
+      "acceptance": "Testar rejeição parcial, bônus e rollback de estado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S001",
+        "V4B-S029",
+        "V4D-S003"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não enviar tokens provisórios ao usuário como confirmados.",
+    "Revalidar o par após mudar quantização, adapter ou parâmetros de geração."
+  ],
+  "frontier_comparison": "Com verificação correta, o draft acelera o alvo sem elevar sua capacidade. A comparação com fronteira deve usar qualidade do alvo e custo do sistema de dois modelos.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q001",
+      "V4B-Q018"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S001",
+    "V4B-S029",
+    "V4D-S003"
+  ]
+}

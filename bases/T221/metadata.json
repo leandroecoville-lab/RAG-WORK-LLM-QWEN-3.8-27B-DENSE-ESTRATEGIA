@@ -1,0 +1,36 @@
+{
+  "id": "T221",
+  "name": "Goal Reminder Injection",
+  "canonical_name": "Goal Reminder Injection",
+  "canonical_id": "T221",
+  "aliases": [
+    "goal reminder",
+    "lembrete de objetivo"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T211",
+    "T212",
+    "T224"
+  ],
+  "source_ids": [
+    "A-S006",
+    "V2A-S004",
+    "V3C-S031",
+    "V4C-S030",
+    "V4C-S015",
+    "V3C-S012",
+    "V3C-S028",
+    "C-S030",
+    "V4C-S009",
+    "V3C-S032"
+  ],
+  "namespace": "T221",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T221",
+  "chunk_count": 9
+}

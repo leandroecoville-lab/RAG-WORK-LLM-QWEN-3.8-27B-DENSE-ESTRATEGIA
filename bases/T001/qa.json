@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Map-Reduce exige vários modelos?",
+    "answer": "Não. Um mesmo modelo pode processar partes sequencialmente; o paralelismo é uma decisão de execução."
+  },
+  {
+    "question": "Mais mapas sempre melhoram o resultado?",
+    "answer": "Não. Partes pequenas demais aumentam custo e removem relações necessárias para interpretar a evidência."
+  },
+  {
+    "question": "Quando um combiner local é correto?",
+    "answer": "Quando a operação admite a combinação parcial usada e preserva o resultado esperado. Essa propriedade deve ser demonstrada para o contrato, não presumida para texto gerado."
+  },
+  {
+    "question": "Como comparar dois redutores que escrevem diferente?",
+    "answer": "Compare fatos, contagens, conflitos e evidências preservadas. Igualdade literal de prosa mede uma propriedade diferente de equivalência factual."
+  }
+]

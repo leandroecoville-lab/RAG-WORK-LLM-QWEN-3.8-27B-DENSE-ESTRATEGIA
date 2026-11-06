@@ -1,0 +1,18 @@
+[
+  {
+    "question": "É igual a resumir o documento inteiro?",
+    "answer": "Não. A relevância é definida pela consulta; informações importantes para outras tarefas podem ficar de fora."
+  },
+  {
+    "question": "A consulta também pode ser comprimida?",
+    "answer": "Pode, mas deve preservar intenção, negação, identidade e escopo; perder isso invalida a seleção."
+  },
+  {
+    "question": "Como cachear a compressão?",
+    "answer": "Inclua pergunta ou intenção formal, versões das fontes e configuração do compressor. Cache por documento apenas mistura seleções feitas para objetivos diferentes."
+  },
+  {
+    "question": "Uma síntese fiel basta para responder bem?",
+    "answer": "Não. Ela pode ser fiel ao que selecionou e omitir uma condição indispensável. Fidelidade e suficiência precisam ser avaliadas separadamente."
+  }
+]

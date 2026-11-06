@@ -1,0 +1,103 @@
+{
+  "id": "R004",
+  "novelty": "A v3 distinguiu plausibilidade e verdade. Aqui Generative Agents é usado para estudar crenças divergentes e transferência de memória em simulação controlada.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Separe estado verdadeiro do ambiente e crenças de cada agente. Reflexões podem ser coerentes com observações incompletas e ainda estar erradas; isso deve ser mensurável no experimento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Controle quais eventos cada agente presencia e quais recebe por relato. A memória precisa preservar origem para distinguir experiência direta, rumor e inferência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare agentes com reflexão, somente episódios e memória fornecida por controlador. Meça fidelidade ao que foi observado, propagação de rumores e ações compatíveis com crenças, sem confundir realismo narrativo com acerto. Unidade de avaliação: agente em simulação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Simulação de colaboração",
+      "scenario": "Agentes precisam coordenar tarefas com informação parcial.",
+      "strategy": "Distribuir observações diferentes, registrar mensagens e verificar como crenças convergem após evidência nova.",
+      "small_model_role": "3–7B atua em papéis estreitos.",
+      "acceptance": "Agente não pode usar informação que nunca recebeu.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008"
+      ]
+    },
+    {
+      "name": "Treino de recuperação episódica",
+      "scenario": "É preciso testar memória sob ruído.",
+      "strategy": "Criar ambiente sintético próprio com eventos identificados e mudanças de preferência; comparar recência, relevância e importância.",
+      "small_model_role": "8–14B recupera; 15–30B planeja.",
+      "acceptance": "Correção explícita deve alterar comportamento sem apagar histórico de crença.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Agente simulado com vocabulário e ações limitadas.",
+    "8_14b": "Agente com memória episódica e reflexão em ambiente controlado.",
+    "15_30b": "Planejador social experimental, sem extrapolar para comportamento humano real.",
+    "training_or_runtime_requirements": "Simulador com estado conhecido, logs e controle de observações; não usar comportamento plausível como único avaliador.",
+    "do_not_use_when": "A intenção é prever pessoas reais ou validar causalidade social sem desenho empírico apropriado."
+  },
+  "connections": [
+    {
+      "target_id": "T049",
+      "relation": "requires",
+      "how": "Registrar experiências com origem e observador.",
+      "interface": "Evento, agente, percepção e tempo.",
+      "condition": "Store distinguir observação de relato.",
+      "acceptance": "Introduzir rumor e rastrear sua propagação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T051",
+      "relation": "complements",
+      "how": "Separar perspectivas e crenças no grafo.",
+      "interface": "Relação, agente que acredita e evidência.",
+      "condition": "Crença não ser promovida a fato do ambiente.",
+      "acceptance": "Consultar perspectiva individual e comparar com estado verdadeiro.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S008"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não chamar simulação de prova de produção empresarial.",
+    "Não inferir personalidade humana real a partir de agente textual."
+  ],
+  "frontier_comparison": "Comparar memória e coordenação dentro do simulador; realismo de personagens não demonstra inteligência social geral.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S008"
+  ]
+}

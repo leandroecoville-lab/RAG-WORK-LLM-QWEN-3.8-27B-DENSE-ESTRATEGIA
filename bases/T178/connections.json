@@ -1,0 +1,45 @@
+{
+  "entry_id": "T178",
+  "edges": [
+    {
+      "edge_id": "E-T178-01",
+      "from": "T178",
+      "to": "T182",
+      "relation": "complements",
+      "how": "Learning Zone descreve dados do professor usados na especialização por LoRA.",
+      "interface": "Exemplos filtrados e adapter treinado.",
+      "condition": "Escopo é a tarefa educacional documentada.",
+      "acceptance": "Confrontar avaliação automática com resultados humanos.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4D-S012"
+      ],
+      "case_ids": [
+        "V4D-C006"
+      ],
+      "evidence_stage": "operational_product"
+    },
+    {
+      "edge_id": "E-T178-02",
+      "from": "T178",
+      "to": "T199",
+      "relation": "complements",
+      "how": "Erros avaliados podem selecionar novos exemplos para o próximo ciclo.",
+      "interface": "Resultado verificado, categoria e versão.",
+      "condition": "Aprendizagem persistente exige uma atualização explícita.",
+      "acceptance": "Medir melhora em casos novos após a atualização.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S017",
+        "V4B-S005",
+        "V4B-S009",
+        "V4B-S012",
+        "V4B-S013",
+        "V4D-S012"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

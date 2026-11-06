@@ -1,0 +1,53 @@
+{
+  "id": "P004",
+  "technical_details": "LAI Memory Runtime é aqui um nome de proposta para coordenar gravação, leitura temporal e proveniência de memórias. Cada atualização deve distinguir quando o fato vale no domínio e quando foi registrado. A promoção de uma observação para memória consolidada precisa apontar as evidências usadas e preservar contradições ainda não resolvidas. Recomenda-se tratar índices e resumos como projeções reconstruíveis, mantendo o registro autorizado de origem separado de conveniências de busca.",
+  "boundary_condition": "Uma transação local não torna atômica a atualização de todo índice externo. A aplicação precisa declarar consistência, atraso tolerado e estratégia de reconstrução das projeções.",
+  "implementation_contract": {
+    "inputs": "Observação identificada, origem, escopo autorizado, tempos de validade e registro, versão esperada e política de retenção.",
+    "outputs": "Memória versionada, referências de evidência, evento de atualização e resultado explícito de conflito ou deduplicação.",
+    "state": "Registro de memórias, histórico temporal, chaves de deduplicação e cursores das projeções de busca.",
+    "invariant": "Toda memória promovida deve manter origem rastreável; corrigir um fato não pode reescrever silenciosamente o histórico de conhecimento."
+  },
+  "tradeoffs": [
+    "Histórico temporal aumenta armazenamento, mas permite explicar decisões tomadas com informação disponível à época.",
+    "Atualizar índices de forma assíncrona reduz acoplamento, porém exige controlar atraso e leituras de versões antigas."
+  ],
+  "failure_test": "Proposta: repetir o mesmo evento, inserir correção retroativa e interromper atualização do índice; verificar deduplicação, consultas temporais consistentes e reconstrução sem perda de origem.",
+  "evaluation_plan": "Avaliar uma sequência conhecida de fatos, correções e conflitos. Comparar armazenamento de último valor e memória versionada por acerto temporal, rastreabilidade, atraso de projeção e custo. Todos os testes de runtime descritos são propostos.",
+  "comparisons": [
+    {
+      "entry_id": "T056",
+      "relation": "complements",
+      "reason": "Bitemporalidade separa validade do fato e registro."
+    },
+    {
+      "entry_id": "T065",
+      "relation": "complements",
+      "reason": "Transações delimitam confirmações locais."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Transações agrupam operações locais; modelos temporais distinguem validade e registro de fatos.",
+    "source_ids": [
+      "V3D-S020",
+      "A-S032"
+    ],
+    "support": "related",
+    "caveat": "A composição LAI Memory Runtime é editorial; as fontes não comprovam sua existência ou implantação."
+  },
+  "advanced_qa": [
+    {
+      "question": "O índice vetorial deve ser a única memória?",
+      "answer": "A proposta mantém origem e histórico recuperáveis para reconstruir índices e explicar correções."
+    },
+    {
+      "question": "Uma correção apaga o erro anterior?",
+      "answer": "Não por padrão: registra nova informação e permite consultar o que era conhecido em cada momento."
+    }
+  ],
+  "source_ids": [
+    "V3D-S020",
+    "A-S032"
+  ],
+  "research_note": "Contrato, teste de falha e plano de avaliação são recomendações editoriais; nenhuma implantação ou medição deste mecanismo foi executada neste pacote."
+}

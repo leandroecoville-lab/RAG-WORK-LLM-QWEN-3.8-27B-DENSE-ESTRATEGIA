@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Snapshot torna Event Sourcing desnecessário?",
+    "answer": "Não neste padrão. O snapshot é um atalho materializado; os eventos posteriores e a identidade da fronteira continuam necessários à recuperação."
+  },
+  {
+    "question": "Isso garante exatamente uma execução de efeitos externos?",
+    "answer": "Não. O padrão reconstrói estado local. Garantias de efeitos dependem do protocolo com o sistema externo, da idempotência e da reconciliação de incertezas."
+  },
+  {
+    "question": "O snapshot permite apagar imediatamente todo o histórico?",
+    "answer": "Não sem mudar o contrato de recuperação e auditoria; erros de snapshot ou novas projeções podem precisar dos eventos antigos."
+  },
+  {
+    "question": "Como verificar a fronteira do cursor?",
+    "answer": "Comparar a recuperação híbrida com uma projeção de referência e incluir eventos imediatamente antes e depois da posição declarada."
+  }
+]

@@ -1,0 +1,53 @@
+{
+  "id": "T048",
+  "technical_details": "Gerenciar memória envolve decisões acopladas: admitir tudo aumenta custo de recuperação, enquanto consolidar cedo pode apagar contexto antes que seu valor seja conhecido. Políticas devem distinguir validade factual, prioridade de leitura e retenção física. Uma memória pouco acessada pode continuar verdadeira e obrigatória; outra muito frequente pode estar obsoleta. Confundir essas dimensões transforma estatísticas de uso em decisões incorretas sobre conhecimento.",
+  "boundary_condition": "Uma política uniforme costuma falhar quando o mesmo store contém preferências, evidência histórica, resultados transitórios e procedimentos com ciclos de atualização diferentes.",
+  "implementation_contract": {
+    "inputs": "Eventos de criação, acesso, correção e pressão de capacidade, com classe da memória.",
+    "outputs": "Decisões de admissão, reorganização, revisão ou descarte, cada uma com motivo rastreável.",
+    "state": "Políticas versionadas, dependências entre derivados e fontes e fila de manutenção pendente.",
+    "invariant": "Reduzir prioridade de recuperação não equivale a invalidar a afirmação nem autoriza apagar sua única evidência."
+  },
+  "tradeoffs": [
+    "Automatizar organização reduz manutenção manual e introduz erros que podem se propagar entre notas.",
+    "Políticas por classe preservam semântica de retenção e aumentam o número de contratos a operar."
+  ],
+  "failure_test": "Teste proposto: marcar como raramente acessada uma regra ainda vigente e como popular uma regra revogada. A manutenção deve conservar a primeira e impedir que frequência restaure a validade da segunda.",
+  "evaluation_plan": "Avaliação proposta: comparar política fixa, recência e política por classes em uma sequência com mudanças. Medir qualidade posterior, custo de manutenção, atrasos de correção e perdas irreversíveis; contar consultas extras geradas por memória descartada cedo.",
+  "comparisons": [
+    {
+      "entry_id": "T074",
+      "relation": "complements",
+      "reason": "Eviction é uma operação de capacidade dentro de um ciclo de vida mais amplo."
+    },
+    {
+      "entry_id": "T058",
+      "relation": "complements",
+      "reason": "Consolidação reorganiza conteúdo; a gestão decide quando e sob quais invariantes executar essa transformação."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "MemoryBank usa atualização inspirada em esquecimento e reforço; A-MEM permite que novas notas alterem representações de memórias anteriores.",
+    "source_ids": [
+      "V3A-S036",
+      "V3A-S034"
+    ],
+    "support": "direct",
+    "caveat": "São políticas de pesquisa distintas, sem prova de que uma imitação do esquecimento humano seja ótima para memória operacional."
+  },
+  "advanced_qa": [
+    {
+      "question": "É preciso apagar uma memória para esquecer seu uso?",
+      "answer": "Não. Pode removê-la da seleção ativa, reduzir prioridade ou arquivar o índice, preservando o registro quando necessário."
+    },
+    {
+      "question": "Qual custo precisa entrar na decisão?",
+      "answer": "Escrita, manutenção, indexação, recuperação, releitura e correção. Otimizar somente tokens da próxima resposta pode aumentar o custo total."
+    }
+  ],
+  "source_ids": [
+    "V3A-S036",
+    "V3A-S034"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

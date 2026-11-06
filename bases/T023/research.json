@@ -1,0 +1,51 @@
+{
+  "id": "T023",
+  "technical_details": "Uma árvore permite localizar a primeira camada em que uma afirmação desapareceu ou foi alterada. Para isso, cada nó deve conservar seus filhos e a versão do processo que o gerou. A estrutura também distingue cobertura e abstração: visitar um nó ancestral cobre uma síntese de seus descendentes, não prova que o leitor examinou cada folha nem preservou cada detalhe.",
+  "boundary_condition": "Se a síntese não reduz informação suficiente, a profundidade aumenta sem benefício; se reduz demais, perguntas locais exigem voltar às folhas.",
+  "implementation_contract": {
+    "inputs": "Folhas identificadas, regra de agrupamento e condição de término.",
+    "outputs": "Árvore com níveis, resumos e ligações verificáveis aos filhos.",
+    "state": "Versões dos nós, dependências e estado de reconstrução.",
+    "invariant": "Nenhum nó interno é apresentado como fonte independente dos descendentes que sintetiza."
+  },
+  "tradeoffs": [
+    "Árvores balanceadas limitam profundidade, mas podem agrupar unidades pouco relacionadas.",
+    "Agrupamento semântico melhora coerência local e pode produzir tamanhos irregulares e manutenção mais complexa."
+  ],
+  "failure_test": "Teste proposto: inserir uma exceção numa folha e acompanhar sua passagem por cada nível. Quando houver perda, a consulta deve expandir o nó relevante ou registrar insuficiência, sem inventar a exceção no topo.",
+  "evaluation_plan": "Avaliação proposta: comparar cadeia incremental e árvore sob igual orçamento de saída. Medir profundidade, custo de reconstrução, localização de erros e recuperação de detalhes; variar ordem dos documentos e distribuição de tamanho das folhas.",
+  "comparisons": [
+    {
+      "entry_id": "T008",
+      "relation": "specializes",
+      "reason": "A árvore explicita uma implementação estrutural da sumarização hierárquica."
+    },
+    {
+      "entry_id": "T030",
+      "relation": "distinct_from",
+      "reason": "RAPTOR acrescenta procedimentos de embeddings, agrupamento e busca; uma árvore de resumos isolada não o reproduz."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O trabalho sobre livros resume pequenas seções e depois resume recursivamente essas sínteses.",
+    "source_ids": [
+      "V3A-S021"
+    ],
+    "support": "direct",
+    "caveat": "O treinamento com feedback humano do estudo não está implícito em qualquer árvore construída por prompts."
+  },
+  "advanced_qa": [
+    {
+      "question": "Como manter uma citação precisa no resumo superior?",
+      "answer": "Preserve o caminho até a folha e cite a evidência original quando ela sustentar a afirmação. Citar apenas outro resumo pode esconder erro intermediário."
+    },
+    {
+      "question": "A raiz pode ser recalculada sem todas as folhas?",
+      "answer": "Pode usar filhos já válidos. Depois de mudanças, é necessário reconstruir os dependentes afetados, mantendo uma revisão consistente da árvore."
+    }
+  ],
+  "source_ids": [
+    "V3A-S021"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

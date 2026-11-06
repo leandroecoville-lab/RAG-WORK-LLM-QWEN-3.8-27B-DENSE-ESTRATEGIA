@@ -1,0 +1,51 @@
+{
+  "id": "T078",
+  "technical_details": "Semantic Page Fault é uma analogia útil para distinguir dependência identificável e lacuna semântica. A primeira pode ser verificada por contrato: falta uma versão, um resultado ou uma evidência obrigatória. A segunda depende de perceber que algo relevante está ausente, tarefa sujeita a falsos negativos. O controlador deve registrar a razão da busca e a condição observável que permitirá declarar a lacuna resolvida.",
+  "boundary_condition": "Não existe detector universal que saiba tudo que o modelo deixou de considerar; ausência de alarme não comprova suficiência do contexto.",
+  "implementation_contract": {
+    "inputs": "Ação pretendida, pré-condições, contexto ativo e referências potencialmente necessárias.",
+    "outputs": "Pedido de recuperação com critério de resolução, ou bloqueio explícito por dependência não satisfeita.",
+    "state": "Lacunas abertas, tentativas, evidências obtidas e orçamento de expansão.",
+    "invariant": "Encontrar qualquer resultado parecido não basta para marcar como satisfeita a dependência originalmente ausente."
+  },
+  "tradeoffs": [
+    "Regras determinísticas cobrem dependências conhecidas e não detectam todos os pressupostos implícitos.",
+    "Sinais do modelo ampliam cobertura e podem gerar alarmes falsos ou buscas sem progresso."
+  ],
+  "failure_test": "Teste proposto: retornar um documento semanticamente próximo que não contém a versão exigida pela ação. O controlador deve manter a falta aberta e impedir que o agente trate similaridade como resolução.",
+  "evaluation_plan": "Avaliação proposta: comparar gatilho apenas verbal, pré-condições explícitas e combinação dos dois. Medir dependências ausentes detectadas, alarmes falsos, custo de busca e ações indevidas; incluir casos de confiança alta sem evidência suficiente.",
+  "comparisons": [
+    {
+      "entry_id": "T063",
+      "relation": "complements",
+      "reason": "Gerência virtual fornece operações para trazer conteúdo; a analogia trata a decisão de perceber e resolver sua ausência."
+    },
+    {
+      "entry_id": "T044",
+      "relation": "complements",
+      "reason": "Expansão progressiva pode executar a busca motivada por uma lacuna identificada."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "MemGPT usa níveis externos e operações explícitas de recuperação para trabalhar com conteúdo além da janela ativa.",
+    "source_ids": [
+      "A-S009"
+    ],
+    "support": "related",
+    "caveat": "A fonte sustenta a inspiração arquitetural, não estabelece Semantic Page Fault como padrão formal nem garante detecção de faltas semânticas."
+  },
+  "advanced_qa": [
+    {
+      "question": "A falta pode ser resolvida por um resumo?",
+      "answer": "Sim, se o resumo contém suporte suficiente e verificável para a dependência. Quando exige detalhe exato, é necessário abrir a fonte correspondente."
+    },
+    {
+      "question": "O que fazer quando nenhuma busca resolve?",
+      "answer": "Preserve o estado desconhecido, registre tentativas e encerre a etapa conforme sua política. Não transforme esgotamento de orçamento em evidência de ausência."
+    }
+  ],
+  "source_ids": [
+    "A-S009"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

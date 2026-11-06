@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Caminho crítico é a tarefa mais lenta?",
+    "answer": "Não necessariamente; é uma sequência dependente que limita a conclusão."
+  },
+  {
+    "question": "Basta somar médias?",
+    "answer": "Não para estimar cauda ou recursos concorrentes; essas hipóteses precisam ser modeladas."
+  },
+  {
+    "question": "Somar p95 de cada etapa produz o p95 do workflow?",
+    "answer": "Não. Quantis não se somam dessa forma em geral; dependência estatística e paralelismo mudam a distribuição total."
+  },
+  {
+    "question": "Duplicar trabalhadores reduz o tempo pela metade?",
+    "answer": "Somente se capacidade for o gargalo dominante e o trabalho puder ser distribuído; dependências podem impor o mesmo limite L."
+  }
+]

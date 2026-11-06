@@ -1,0 +1,31 @@
+{
+  "id": "T008",
+  "name": "Hierarchical Summarization",
+  "canonical_name": "Hierarchical Summarization",
+  "canonical_id": "T008",
+  "aliases": [
+    "sumarização hierárquica"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T023",
+    "T026",
+    "T030",
+    "T062"
+  ],
+  "source_ids": [
+    "A-S014",
+    "V3A-S011",
+    "V3A-S021",
+    "V4A-S024",
+    "A-S024"
+  ],
+  "namespace": "T008",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T008",
+  "chunk_count": 9
+}

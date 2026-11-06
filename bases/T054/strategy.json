@@ -1,0 +1,121 @@
+{
+  "id": "T054",
+  "novelty": "A v3 exigiu qualificação e fonte. Aqui memória semântica organiza regras de aplicabilidade e revisões motivadas por contraexemplos.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Guarde proposição com predicados de aplicabilidade, não somente uma frase geral. Uma convenção pode valer para um projeto, idioma ou versão específica.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S017",
+        "V4A-S018",
+        "V3A-S037"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Quando aparecer contraexemplo, primeiro verificar se ele invalida o fato ou apenas restringe seu escopo. Atualização deve poder dividir uma regra em casos, preservando a origem da mudança.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S017",
+        "V4A-S018",
+        "V3A-S037"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare fatos planos e fatos condicionados. Meça aplicação fora de escopo, exceções ignoradas e custo de resolver ambiguidade; respostas fluentes não indicam memória correta. Unidade de avaliação: proposição reutilizável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S017",
+        "V4A-S018",
+        "V3A-S037"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Convenções de engenharia",
+      "scenario": "Projetos usam padrões diferentes.",
+      "strategy": "Registrar convenção por projeto e versão, recuperar junto ao contexto atual e rejeitar transferência automática para repositório novo.",
+      "small_model_role": "3–7B escolhe regra elegível.",
+      "acceptance": "Não aplicar convenção local como regra universal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S017",
+        "V4A-S018",
+        "V3A-S037"
+      ]
+    },
+    {
+      "name": "Conhecimento de produto",
+      "scenario": "Propriedades mudam entre versões.",
+      "strategy": "Representar propriedade por intervalo e variante; manter explicação de supersessão para perguntas históricas.",
+      "small_model_role": "8–14B compara versões.",
+      "acceptance": "Resposta deve indicar quando o fato vale e origem da informação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S017",
+        "V4A-S018",
+        "V3A-S037"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Leitor de proposições curtas com filtros de aplicabilidade.",
+    "8_14b": "Resolvedor de exceções entre poucas regras condicionais.",
+    "15_30b": "Integrador de conjuntos de regras com escopos sobrepostos.",
+    "training_or_runtime_requirements": "Schema de sujeito, relação, valor, escopo e fonte; extrações do modelo entram como candidatas.",
+    "do_not_use_when": "O sistema não consegue preservar qualificadores ou verificar fonte de proposição consolidada."
+  },
+  "connections": [
+    {
+      "target_id": "T056",
+      "relation": "complements",
+      "how": "Representar validade histórica das proposições.",
+      "interface": "Fato, intervalo de validade e momento de registro.",
+      "condition": "Domínio exigir distinção temporal.",
+      "acceptance": "Consultar antes e depois de correção retroativa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S017",
+        "V4A-S018",
+        "V3A-S037"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T071",
+      "relation": "requires",
+      "how": "Promover afirmação somente após validar suporte e escopo.",
+      "interface": "Candidato, fonte e regra de admissão.",
+      "condition": "Fonte sustentar a proposição integral.",
+      "acceptance": "Remover qualificador e exigir rejeição da promoção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S017",
+        "V4A-S018",
+        "V3A-S037"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não usar quantidade de repetições como prova independente.",
+    "Não interpretar exceção como revogação total sem evidência."
+  ],
+  "frontier_comparison": "Comparar aplicação correta de fatos condicionados; memória semântica extensa pode aumentar erros fora de escopo.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q013",
+      "V4A-Q015",
+      "V4A-Q022"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S017",
+    "V4A-S018",
+    "V3A-S037"
+  ]
+}

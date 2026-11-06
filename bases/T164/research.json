@@ -1,0 +1,52 @@
+{
+  "id": "T164",
+  "technical_details": "Um valor em segundos é relativo ao recebimento da resposta; uma data HTTP requer interpretar relógio de parede. Após calcular a espera, uma implementação pode usar relógio monotônico para evitar que ajustes locais de hora distorçam o timer. Valores inválidos, datas no passado e atrasos maiores que o deadline precisam de tratamento explícito. A orientação do servidor não transforma uma operação insegura para repetição em operação idempotente.",
+  "boundary_condition": "Quando o prazo restante é menor que a espera solicitada, não é possível cumprir ambos; é necessário adiar a missão ou terminar essa tentativa.",
+  "implementation_contract": {
+    "inputs": "Status HTTP, Retry-After bruto, instante de recebimento e deadline.",
+    "outputs": "Espera interpretada, origem do cálculo e decisão de repetir ou encerrar.",
+    "state": "Valor original, relógio de referência e próxima elegibilidade persistida.",
+    "invariant": "Uma política não repete antes do intervalo que decidiu respeitar apenas para manter seu backoff local."
+  },
+  "tradeoffs": [
+    "Respeitar o sinal reduz pressão e pode aumentar latência do cliente.",
+    "Adicionar jitter após o instante mínimo dispersa clientes e amplia espera de alguns deles."
+  ],
+  "failure_test": "Teste proposto: enviar segundos, data futura, data passada e valor inválido, além de alterar o relógio local durante a espera; verificar comportamento documentado e limite global.",
+  "evaluation_plan": "Comparar interpretação completa com parser apenas numérico usando respostas controladas. Medir repetições prematuras, prazo excedido e dispersão temporal. Adotar a política que preserve o contrato do serviço e a semântica da tarefa.",
+  "comparisons": [
+    {
+      "entry_id": "T163",
+      "relation": "complements",
+      "reason": "Backoff local e orientação do servidor devem formar uma única próxima elegibilidade."
+    },
+    {
+      "entry_id": "T162",
+      "relation": "complements",
+      "reason": "Identidade da intenção permanece necessária nas operações repetidas."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "RFC 9110 permite Retry-After como HTTP-date ou delay-seconds e define segundos após recebimento.",
+    "source_ids": [
+      "C-S028"
+    ],
+    "support": "direct",
+    "caveat": "O RFC descreve semântica HTTP; jitter e integração com orçamento são políticas propostas da aplicação."
+  },
+  "advanced_qa": [
+    {
+      "question": "Se a espera supera meu deadline, devo tentar imediatamente?",
+      "answer": "Não. Isso ignora a orientação adotada; encerrar ou reagendar com prazo explícito preserva o contrato."
+    },
+    {
+      "question": "Uma data passada deve gerar espera negativa?",
+      "answer": "Não. O parser precisa normalizar esse caso conforme política documentada, mantendo registro do valor recebido."
+    }
+  ],
+  "source_ids": [
+    "C-S028",
+    "V3C-S010"
+  ],
+  "research_note": "Contratos e ensaios são propostas; os resultados citados pertencem às fontes, sem reprodução local."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "T211",
+  "technical_details": "Um handoff pode ser organizado como manifesto de publicação: conteúdo descritivo, revisões dos artefatos, cursor de eventos e estado de operações externas. A publicação só fica pronta depois que seus membros estão persistidos. Isso evita uma transferência que aponta para arquivo ainda incompleto. Hashes identificam bytes; o manifesto também precisa explicar significado e escopo, pois integridade textual não demonstra que o documento descreve a versão vigente.",
+  "boundary_condition": "Um handoff consistente fica obsoleto se o projeto mudar depois da publicação sem registrar uma nova versão.",
+  "implementation_contract": {
+    "inputs": "Objetivo atual, decisões, evidências, revisões e pendências.",
+    "outputs": "Manifesto completo com identificação de pronto e referências resolvíveis.",
+    "state": "Versão de publicação, membros esperados e confirmação de persistência.",
+    "invariant": "O marcador de pronto não antecede a gravação dos artefatos que ele declara completos."
+  },
+  "tradeoffs": [
+    "Manifesto detalhado reduz redescoberta e exige manutenção.",
+    "Resumo mínimo acelera leitura e pode ocultar dependências essenciais à retomada."
+  ],
+  "failure_test": "Teste proposto: interromper a gravação de um artefato antes de publicar o handoff; o consumidor deve rejeitar transferência incompleta, sem assumir que arquivo existente significa conteúdo final.",
+  "evaluation_plan": "Comparar retomada por conversa integral, resumo livre e manifesto com referências. Medir tempo até primeira ação correta, referências quebradas e repetição de trabalho. Usar tarefas interrompidas em pontos diferentes, com aceitação por estado esperado.",
+  "comparisons": [
+    {
+      "entry_id": "T210",
+      "relation": "complements",
+      "reason": "Rotação define a transferência; handoff fornece seu pacote verificável."
+    },
+    {
+      "entry_id": "T240",
+      "relation": "distinct_from",
+      "reason": "Snapshot captura estado; handoff também orienta o próximo responsável e explica pendências."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A Anthropic descreve artefatos persistentes de progresso e histórico Git para orientar sessões sucessivas.",
+    "source_ids": [
+      "V2A-S004"
+    ],
+    "support": "related",
+    "caveat": "O protocolo de publicação por manifesto é proposta editorial, apoiada também em controle de versão e persistência."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um arquivo chamado FINAL prova que está completo?",
+      "answer": "Não. É necessário verificar os membros, suas revisões e a publicação concluída conforme o contrato."
+    },
+    {
+      "question": "O que fazer se o código mudou desde o handoff?",
+      "answer": "Comparar revisões, identificar divergências e reconstruir o estado afetado antes de executar instruções baseadas na versão antiga."
+    }
+  ],
+  "source_ids": [
+    "V2A-S004",
+    "V3C-S027",
+    "V3C-S028"
+  ],
+  "research_note": "Fontes primárias reabertas nesta pesquisa; contratos, cenários de falha e avaliação são propostas editoriais."
+}

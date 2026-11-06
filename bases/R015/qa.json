@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Esse método cria memória externa?",
+    "answer": "Não. Ele ajusta parâmetros para internalizar comportamento que se beneficiava de contexto adicional."
+  },
+  {
+    "question": "O professor precisa ser maior que o aluno?",
+    "answer": "Não neste desenho. O mesmo modelo recebe contexto privilegiado para produzir os alvos usados no treinamento."
+  },
+  {
+    "question": "Destilar exige um professor maior?",
+    "answer": "Não necessariamente. O professor pode ser o mesmo modelo com contexto ou processo de geração mais informativo."
+  },
+  {
+    "question": "O aluno passa a fornecer a fonte de cada resposta?",
+    "answer": "Não automaticamente. Treinamento paramétrico não cria proveniência por afirmação; quando citações são necessárias, mantenha um mecanismo explícito de recuperação e verificação."
+  }
+]

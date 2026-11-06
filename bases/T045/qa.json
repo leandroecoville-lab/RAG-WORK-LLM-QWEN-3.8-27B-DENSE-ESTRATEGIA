@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Tool retrieval é apenas busca vetorial?",
+    "answer": "Não. Busca lexical, filtros, regras e combinações também podem servir."
+  },
+  {
+    "question": "Ferramentas adiadas precisam existir no servidor?",
+    "answer": "Sim. Adiar o schema no contexto não cria uma implementação nem elimina requisitos do provedor."
+  },
+  {
+    "question": "Resultado vazio significa que a capacidade não existe?",
+    "answer": "Significa ausência de correspondência nessa busca. Descrição ruim, filtro ou consulta inadequada também podem ocultar uma ferramenta existente."
+  },
+  {
+    "question": "A referência pode substituir o schema para sempre?",
+    "answer": "Não. Ela precisa ser resolvida por um contrato compatível. Sua existência não garante versão, permissão ou disponibilidade da implementação."
+  }
+]

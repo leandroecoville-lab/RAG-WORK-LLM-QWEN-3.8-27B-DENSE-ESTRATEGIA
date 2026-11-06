@@ -1,0 +1,46 @@
+{
+  "id": "T191",
+  "technical_details": "Uma pergunta de checagem pode carregar a própria conclusão que deveria verificar. Formular “por que X aconteceu em 2020?” já pressupõe evento e data. Como proposta, transforme afirmações em questões neutras sobre entidades, relações e tempo, preserve um mapa entre alegações e verificações e marque o que não foi coberto. Responder em contextos separados reduz cópia do rascunho, mas não elimina conhecimento compartilhado incorreto.",
+  "boundary_condition": "Alegações omitidas pelo planejador permanecem sem verificação mesmo quando todas as perguntas produzidas foram respondidas.",
+  "implementation_contract": {
+    "inputs": "Rascunho, inventário de alegações, perguntas neutras e fontes quando disponíveis.",
+    "outputs": "Texto revisado e mapa de cada correção ou incerteza.",
+    "state": "Relações alegação-pergunta-resposta, contextos separados e proveniência.",
+    "invariant": "Nenhuma alegação é declarada verificada apenas por estar perto de outra que foi checada."
+  },
+  "tradeoffs": [
+    "Fatorar perguntas reduz interferência e aumenta número de chamadas.",
+    "Adicionar busca amplia evidência e exige avaliar qualidade e atualidade das fontes."
+  ],
+  "failure_test": "Teste proposto: inserir data falsa na formulação de uma pergunta e deixar outra alegação sem pergunta correspondente. Esperar detecção de pressuposição e indicação de cobertura incompleta.",
+  "evaluation_plan": "Plano proposto: comparar checagem conjunta e fatorada com o mesmo rascunho. Medir cobertura, correções válidas, erros introduzidos e custo; avaliar factualidade por referências externas, sem considerar respostas do próprio modelo como certificado suficiente.",
+  "comparisons": [
+    {
+      "entry_id": "T200",
+      "relation": "complements",
+      "reason": "Independência de contexto ajuda a reduzir contaminação, mas verificação externa acrescenta outra dimensão de independência."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Na variante fatorada de CoVe, perguntas são respondidas separadamente sem o rascunho original no contexto de resposta.",
+    "source_ids": [
+      "C-S044"
+    ],
+    "support": "direct",
+    "caveat": "O trabalho publicado estudou uso do próprio LLM; integrar fontes externas é uma extensão proposta."
+  },
+  "advanced_qa": [
+    {
+      "question": "Perguntas neutras garantem verdade?",
+      "answer": "Não. Elas reduzem indução, mas o respondente ainda pode desconhecer o fato ou consultar fonte errada."
+    },
+    {
+      "question": "Pode retornar só o texto final?",
+      "answer": "Pode, mas preservar internamente o mapa de cobertura permite auditar quais afirmações receberam evidência e quais continuam incertas."
+    }
+  ],
+  "source_ids": [
+    "C-S044"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

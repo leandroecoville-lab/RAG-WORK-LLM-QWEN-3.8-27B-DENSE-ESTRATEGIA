@@ -1,0 +1,116 @@
+{
+  "id": "T228",
+  "novelty": "A v3 separava elegibilidade temporal e posse do item. A expansão define fila de recuperação com causa persistida, política de expiração e controle de tráfego para impedir que repetição atrasada execute intenção já obsoleta.",
+  "deep_layers": [
+    {
+      "name": "Item é tentativa de intenção",
+      "detail": "Persista intenção, argumentos, causa da falha, tentativa atual e próximo horário. Um novo consumo do item não cria nova operação lógica. A fila deve saber se houve envio anterior e se o efeito está desconhecido; nesse caso, a próxima ação pode ser consulta de reconciliação, não repetição da chamada original.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026",
+        "V2A-S012"
+      ]
+    },
+    {
+      "name": "Validade ao consumir",
+      "detail": "Antes de executar, verifique prazo, versão do objetivo e estado atual da dependência. A tarefa pode ter sido cancelada, substituída ou concluída por resposta tardia enquanto aguardava. Retirar da fila por obsolescência é um resultado legítimo e deve ser distinguido de sucesso da operação; não execute trabalho vencido só porque chegou sua vez.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S028",
+        "V3C-S023"
+      ]
+    },
+    {
+      "name": "Fila de erro final",
+      "detail": "Depois do orçamento ou de falha permanente, mova o item para estado terminal com diagnóstico e evidências. Reprocessar manualmente exige nova decisão com identidade e política explícitas; despejar todos os itens de volta pode reproduzir o incidente. A fila precisa de métricas por idade e causa, não apenas profundidade total.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S012",
+        "V3C-S009"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Integração intermitente",
+      "scenario": "Tarefas de agentes dependem de um serviço com falhas temporárias.",
+      "strategy": "Agende tentativas persistentes com backoff e limite de carga. Quando o serviço volta, libere itens por capacidade e prioridade, revalidando os mais antigos. Se o serviço informa espera mínima, preserve essa orientação ao reiniciar o consumidor.",
+      "small_model_role": "3–7B prepara argumentos; runtime controla agenda e limite global.",
+      "acceptance": "Proposta: nenhuma avalanche após recuperação e nenhum item executado além de seu prazo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S012",
+        "C-S028"
+      ]
+    },
+    {
+      "name": "Publicação de patches",
+      "scenario": "Uma entrega fica sem confirmação após falha de rede.",
+      "strategy": "Enfileire reconciliação pelo ID do candidato, não outra publicação cega. Se o candidato já foi publicado, confirme e feche; se há base nova, volte à validação; se a operação está ausente com evidência suficiente, repita com a mesma intenção quando o contrato permitir.",
+      "small_model_role": "8–14B interpreta divergência; 15–30B replaneja patch incompatível.",
+      "acceptance": "Proposta: uma publicação efetiva por intenção e nenhuma aprovação de base antiga.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026",
+        "V3C-S037"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Consumidores de tarefas tipadas, com tentativa e prazo fornecidos pelo controlador.",
+    "8_14b": "Diagnóstico de erros permanentes e classificação de necessidade de reparo.",
+    "15_30b": "Decisões de replanejamento e reprocessamento excepcional, com evidência e orçamento.",
+    "training_or_runtime_requirements": "Fila persistente, exclusão por geração, políticas de retenção e resultado terminal rastreável.",
+    "do_not_use_when": "Não reenfileirar indefinidamente um item impossível nem confundir lease com exatamente uma vez."
+  },
+  "connections": [
+    {
+      "target_id": "T163",
+      "relation": "complements",
+      "how": "A política de backoff calcula elegibilidade, e a fila persiste o instante entre reinícios.",
+      "interface": "Tentativa, atraso, deadline e orçamento remanescente.",
+      "condition": "Classificação permite repetição e capacidade admite consumo.",
+      "acceptance": "Reinício não antecipa a próxima tentativa nem zera contador.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S012"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T243",
+      "relation": "complements",
+      "how": "Itens com efeito desconhecido executam reconciliação antes de decidir reenvio.",
+      "interface": "Chave, recibo e resultado observado.",
+      "condition": "Destino oferece correlação suficiente ou mantém estado desconhecido.",
+      "acceptance": "Evitar duplicação após entrega confirmada tardiamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Consumidor antigo pode terminar depois de perder posse; validar geração no commit local.",
+    "Fila menor pode significar descarte indevido; medir resultados por causa de saída."
+  ],
+  "frontier_comparison": "Compare recuperação e amplificação com mesma carga e falhas injetadas. O porte do modelo não determina segurança de reprocessamento; o contrato da fila e do destino determina.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q001",
+      "V4C-Q003",
+      "V4C-Q019"
+    ],
+    "scope_note": "AWS apoia retries seguros e Conductor mostra coordenação operacional. A composição desta fila é proposta e não foi contada como recurso exato de todos esses sistemas."
+  },
+  "source_ids": [
+    "C-S026",
+    "V2A-S012",
+    "V3C-S028",
+    "V3C-S023",
+    "V3C-S009",
+    "C-S028",
+    "V3C-S037"
+  ]
+}

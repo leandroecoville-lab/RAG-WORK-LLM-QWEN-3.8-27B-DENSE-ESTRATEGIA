@@ -1,0 +1,120 @@
+{
+  "id": "T183",
+  "novelty": "A v3 explicou base congelada e NF4. A nova camada separa memória de treinamento de memória de serving, compara caminhos de exportação e trata qualidade como propriedade da composição final.",
+  "deep_layers": [
+    {
+      "name": "Contabilidade completa",
+      "detail": "QLoRA reduz armazenamento da base durante adaptação, mas ativações, gradientes dos adapters e estados do otimizador continuam existindo. Contexto, lote e módulos-alvo alteram o pico. Meça fases de forward, backward e atualização, pois um número único de memória média pode ocultar o limite real.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S037",
+        "V4B-S006",
+        "V4B-S028"
+      ]
+    },
+    {
+      "name": "Treino não é entrega",
+      "detail": "O adapter treinado sobre base quantizada pode ser servido com outra representação somente após validação. Fundir em pesos de maior precisão e requantizar muda o caminho numérico. Preserve uma referência do treino e compare todas as rotas candidatas, incluindo templates e versões de kernels.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S037",
+        "V4B-S006",
+        "V4B-S028"
+      ]
+    },
+    {
+      "name": "Intervenções separadas",
+      "detail": "NF4, double quantization, otimizador paginado e checkpointing atuam em componentes diferentes. Documente quais estão ativos. O estudo da plataforma Uber explora combinações, mas isso não prova que qualquer receita funciona em toda GPU ou que cada configuração experimental virou produto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S037",
+        "V4B-S006",
+        "V4B-S028"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Adaptação sob memória limitada",
+      "scenario": "O checkpoint cabe quantizado, mas ajuste completo é inviável no orçamento.",
+      "strategy": "Selecione módulos e lote, meça picos e acrescente checkpointing apenas quando ativações forem o problema. Teste estabilidade e compare com LoRA em precisão maior numa escala controlada.",
+      "small_model_role": "Um 8–14B pode ser adaptado com menos memória de pesos, sem prometer uma placa específica.",
+      "acceptance": "Atingir qualidade-alvo com memória e tempo registrados no ambiente real.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S037",
+        "V4B-S006",
+        "V4B-S028"
+      ]
+    },
+    {
+      "name": "Entrega em outro runtime",
+      "scenario": "O treinamento e o servidor usam bibliotecas distintas.",
+      "strategy": "Planeje conversão e teste antes de investir no treino. Valide base, adapter, fusão e quantização final por etapas para localizar a origem de perdas.",
+      "small_model_role": "Um 15–30B exige atenção ao custo de manter cópias temporárias durante a exportação.",
+      "acceptance": "Reproduzir respostas e métricas de tarefa no caminho de implantação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S037",
+        "V4B-S006",
+        "V4B-S028"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Pode facilitar experimentação, mas curadoria e avaliação continuam sendo custos centrais.",
+    "8_14b": "Contextos longos podem tornar ativações dominantes apesar da base em quatro bits.",
+    "15_30b": "Planeje recursos de exportação e validação, além do pico do treinamento.",
+    "training_or_runtime_requirements": "Treinamento eficiente com base quantizada e adapters; NF4 não é sinônimo de INT4 uniforme ou GGUF.",
+    "do_not_use_when": "Não afirmar que economia de treino garante latência menor ou o mesmo formato na inferência."
+  },
+  "connections": [
+    {
+      "target_id": "T115",
+      "relation": "complements",
+      "how": "Checkpointing reduz ativações enquanto QLoRA reduz custo da base congelada.",
+      "interface": "Fronteiras de recomputação e configuração de quantização.",
+      "condition": "Gradientes dos adapters continuam corretos.",
+      "acceptance": "Comparar picos e convergência, isolando cada técnica.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S037",
+        "V4B-S006",
+        "V4B-S028"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T126",
+      "relation": "alternative",
+      "how": "Uma rota de entrega pode quantizar novamente com método suportado pelo servidor.",
+      "interface": "Modelo adaptado e nova calibração.",
+      "condition": "Exportação explícita e qualidade reavaliada.",
+      "acceptance": "Medir perda adicional da requantização e execução final.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S037",
+        "V4B-S006",
+        "V4B-S028"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Registrar dtype de computação e precisão dos parâmetros treináveis.",
+    "Evitar comparar lotes ou contextos diferentes como se a memória poupada viesse só de QLoRA."
+  ],
+  "frontier_comparison": "O resultado a comparar é o modelo adaptado no servidor final. QLoRA viabiliza um processo de treinamento; não demonstra por si mesma paridade de qualidade ou custo com fronteira.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q007",
+      "V4B-Q017"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "C-S037",
+    "V4B-S006",
+    "V4B-S028"
+  ]
+}

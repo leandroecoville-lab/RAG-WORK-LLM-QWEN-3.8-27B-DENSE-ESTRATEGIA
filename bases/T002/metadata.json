@@ -1,0 +1,29 @@
+{
+  "id": "T002",
+  "name": "Prompt Caching",
+  "canonical_name": "Prompt Caching",
+  "canonical_id": "T002",
+  "aliases": [
+    "cache de prompt"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T005",
+    "T081",
+    "T082",
+    "T171"
+  ],
+  "source_ids": [
+    "A-S002",
+    "V3A-S008",
+    "V4A-S015"
+  ],
+  "namespace": "T002",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T002",
+  "chunk_count": 9
+}

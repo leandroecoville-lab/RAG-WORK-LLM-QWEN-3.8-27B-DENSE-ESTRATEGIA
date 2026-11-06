@@ -1,0 +1,28 @@
+{
+  "id": "T202",
+  "name": "Uncertainty-Aware Planning",
+  "canonical_name": "Uncertainty-Aware Planning",
+  "canonical_id": "T202",
+  "aliases": [
+    "planejamento com incerteza"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T143",
+    "T198",
+    "T203"
+  ],
+  "source_ids": [
+    "C-S050",
+    "C-S053",
+    "V4B-S027"
+  ],
+  "namespace": "T202",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T202",
+  "chunk_count": 9
+}

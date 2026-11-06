@@ -1,0 +1,60 @@
+{
+  "entry_id": "P007",
+  "edges": [
+    {
+      "edge_id": "E-P007-01",
+      "from": "P007",
+      "to": "T027",
+      "relation": "complements",
+      "how": "Combinar canais conforme tipo de requisito.",
+      "interface": "Consulta, termos protegidos, filtros e orçamento.",
+      "condition": "Canais respeitarem mesma elegibilidade.",
+      "acceptance": "Testar código literal e paráfrase com orçamento igual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V4A-S022",
+        "V4A-S023"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-P007-02",
+      "from": "P007",
+      "to": "T028",
+      "relation": "feeds",
+      "how": "Ordenar por capacidade de sustentar requisito.",
+      "interface": "Candidato, requisito, origem e tipo de suporte.",
+      "condition": "Contradições materiais não forem eliminadas.",
+      "acceptance": "Medir evidência suficiente na lista final.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V4A-S022",
+        "V4A-S023"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-P007-03",
+      "from": "P007",
+      "to": "P001",
+      "relation": "feeds",
+      "how": "Entregar evidências e lacunas à montagem.",
+      "interface": "requirement_id, trechos, referências e cobertura.",
+      "condition": "Builder preservar lacunas e conflitos.",
+      "acceptance": "Gerar pacote sem suporte para campo obrigatório e exigir insuficiência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V4A-S022",
+        "V4A-S023"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

@@ -1,0 +1,112 @@
+{
+  "id": "R006",
+  "novelty": "A v3 verificou PRISM e suas ablações. Aqui o foco é governar atualização de adapters quando o componente internalizado do prompt muda.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Mantenha identidade exata: Prompt Representation Internalization via Selective Compression into LoRA Weights. A proposta distingue o que foi internalizado e o que continua explícito no prompt.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S011",
+        "V4A-S020"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Uma mudança de procedimento ou padrão exige avaliar se adapter antigo permanece válido. Remover instrução do contexto e depois esquecê-la no treinamento cria divergência difícil de observar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S011",
+        "V4A-S020"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare mesmo modelo com prompt completo, adapter e prompt residual. Meça aderência a mudanças, custo de retreino e interferência em tarefas não alvo; rótulos do professor podem propagar erro. Unidade de avaliação: adapter por versão de instrução.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S011",
+        "V4A-S020"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Rotina repetitiva estável",
+      "scenario": "Instruções extensas se repetem em muitos pedidos.",
+      "strategy": "Identificar componente dominante, gerar dados de treino autorizados e validar substituição seletiva antes de retirar texto do prompt.",
+      "small_model_role": "3–7B aluno em tarefa estreita.",
+      "acceptance": "Adapter deve manter exceções e formato em casos novos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S011",
+        "V4A-S020"
+      ]
+    },
+    {
+      "name": "Política com revisões",
+      "scenario": "Uma regra internalizada precisa mudar.",
+      "strategy": "Versionar instrução e adapter juntos, testar regra antiga versus nova e manter prompt explícito durante transição.",
+      "small_model_role": "8–14B aluno; 15–30B professor possível.",
+      "acceptance": "Nenhuma resposta pode seguir regra revogada sem detecção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S011",
+        "V4A-S020"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Aluno especializado em padrão fechado, com controle de regressões.",
+    "8_14b": "Aluno para procedimento mais variado e prompt residual explícito.",
+    "15_30b": "Professor ou aluno complexo quando treinamento e benefício forem demonstrados.",
+    "training_or_runtime_requirements": "Treino LoRA, dados de professor, versão da instrução e avaliação independente; nenhuma implantação PRISM foi executada.",
+    "do_not_use_when": "Regras mudam rápido, exigem auditoria literal a cada chamada ou diagnóstico não identifica componente estável."
+  },
+  "connections": [
+    {
+      "target_id": "T179",
+      "relation": "complements",
+      "how": "Tratar internalização como atualização paramétrica.",
+      "interface": "Prompt de origem, dados e adapter versionado.",
+      "condition": "Pesos realmente serem treinados e avaliados.",
+      "acceptance": "Comparar aluno antes e depois, mantendo tarefa e fontes constantes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S011",
+        "V4A-S020"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T072",
+      "relation": "requires",
+      "how": "Vincular adapter à versão de instrução.",
+      "interface": "adapter_id, instrução, base model e dados.",
+      "condition": "Roteamento impedir uso de versão incompatível.",
+      "acceptance": "Enviar pedido sob regra nova ao adapter antigo e exigir rejeição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S011",
+        "V4A-S020"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir PRISM com trabalhos homônimos.",
+    "Não apresentar LoRA treinada como cache de contexto sem custo de manutenção."
+  ],
+  "frontier_comparison": "Comparar substituição de instrução numa tarefa definida; não inferir paridade geral com o professor.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q017",
+      "V4A-Q024"
+    ],
+    "scope_note": "Consulta encontrou pesquisa e integração relacionada de compressão, não implantação bigtech exata do PRISM identificado. Sigla não foi associada a trabalhos homônimos."
+  },
+  "source_ids": [
+    "A-S011",
+    "V4A-S020"
+  ]
+}

@@ -1,0 +1,8 @@
+flowchart TD
+    P006["P006 Progressive Loader"]
+    T066["T066 Memory Resolver / Reference Resolver"]
+    P006 -. "requires: proposta" .-> T066
+    P002["P002 Context Manager"]
+    P006 -. "requires: proposta" .-> P002
+    T045["T045 Tool Retrieval"]
+    P006 -. "complements: proposta" .-> T045

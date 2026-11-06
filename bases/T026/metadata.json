@@ -1,0 +1,31 @@
+{
+  "id": "T026",
+  "name": "Hierarchical Retrieval",
+  "canonical_name": "Hierarchical Retrieval",
+  "canonical_id": "T026",
+  "aliases": [
+    "recuperação hierárquica"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T008",
+    "T023",
+    "T030",
+    "T032"
+  ],
+  "source_ids": [
+    "A-S014",
+    "A-S039",
+    "V3A-S011",
+    "V4A-S009",
+    "V3A-S023"
+  ],
+  "namespace": "T026",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T026",
+  "chunk_count": 9
+}

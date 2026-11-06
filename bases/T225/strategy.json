@@ -1,0 +1,115 @@
+{
+  "id": "T225",
+  "novelty": "A v3 distinguia processo, dependência e progresso. A expansão define recuperação escalonada, evita ciclos de restart e trata a nova instância como sucessora que precisa demonstrar propriedade e estado antes de agir.",
+  "deep_layers": [
+    {
+      "name": "Diagnóstico antes do restart",
+      "detail": "Use sinais separados de processo vivo, capacidade de responder e avanço da missão. Falha de GPU, deadlock local e serviço externo indisponível pedem respostas diferentes. Capture diagnóstico suficiente antes de encerrar o processo quando isso for possível; reiniciar rapidamente pode destruir a evidência necessária para corrigir uma falha determinística.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S011",
+        "V3C-S040"
+      ]
+    },
+    {
+      "name": "Orçamento de recuperação",
+      "detail": "Imponha intervalo mínimo, teto de reinícios e período de estabilidade antes de considerar a recuperação bem-sucedida. Uma sequência de processos novos não representa disponibilidade se nenhum conclui trabalho útil. Ao esgotar o orçamento, suspenda a missão com estado preservado e causa explícita, evitando a amplificação de inicialização e recomputação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S012",
+        "V4C-S023"
+      ]
+    },
+    {
+      "name": "Sucessão de executor",
+      "detail": "A instância nova lê checkpoint, confirma revisão e reconcilia operações em voo. Se a antiga ainda puder terminar, seus resultados recebem geração e precisam ser validados antes de publicar. Uma lease vencida não revoga automaticamente acesso remoto; use fencing onde o destino o suporta e reconciliação nos demais casos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S028",
+        "C-S026"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Worker local de inferência",
+      "scenario": "Uma missão longa sofre falha de processo ou falta de memória.",
+      "strategy": "Identifique se o erro é transitório ou se o mesmo payload excederá novamente a capacidade. Para o segundo caso, reduza lote ou contexto mediante contrato antes de retomar. Recarregar os mesmos pesos e reenviar a mesma entrada não corrige incapacidade estrutural.",
+      "small_model_role": "3–7B pode servir classe reduzida; 15–30B requer admissão compatível com recursos disponíveis.",
+      "acceptance": "Proposta: recuperação termina em resultado útil, sem tempestade de recarga ou perda de checkpoint.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S023",
+        "V3C-S028"
+      ]
+    },
+    {
+      "name": "Controlador de edição interrompido",
+      "scenario": "O processo cai após enviar patch ou disparar CI.",
+      "strategy": "Recupere artefatos persistidos e consulte IDs de publicação e build. Se já existem, acompanhe-os; se o desfecho continua desconhecido, mantenha reconciliação. Só reinicie a etapa lógica quando houver evidência de que ela ainda é necessária.",
+      "small_model_role": "8–14B interpreta diagnóstico; runtime administra sucessão e efeitos.",
+      "acceptance": "Proposta: nenhuma duplicação de publicação ou CI após falhas em pontos diferentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S001",
+        "C-S026"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Atividades curtas permitem checkpoints frequentes e menor custo de reinício.",
+    "8_14b": "Diagnóstico de falhas locais e sugestão de redução de escopo, sob regras determinísticas.",
+    "15_30b": "Replanejamento da missão após repetidos reinícios, sem apagar histórico de falhas.",
+    "training_or_runtime_requirements": "Supervisor externo ao processo monitorado, orçamento persistente e identidade de geração para escritores.",
+    "do_not_use_when": "Não reiniciar aplicação saudável só porque uma dependência externa caiu ou uma tarefa válida é longa."
+  },
+  "connections": [
+    {
+      "target_id": "T226",
+      "relation": "complements",
+      "how": "Usar progresso confirmado para distinguir processo ocupado de missão estagnada.",
+      "interface": "Cursor, último avanço e geração do executor.",
+      "condition": "Heartbeat corresponde a unidade realmente concluída.",
+      "acceptance": "Silêncio e ausência de avanço acionam políticas distintas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S040"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T243",
+      "relation": "complements",
+      "how": "Reconciliar o que a instância anterior pode ter realizado antes de repetir etapas.",
+      "interface": "Intenção, envio e observação remota.",
+      "condition": "A nova instância não assume ausência de efeito por ausência de confirmação local.",
+      "acceptance": "Queda após efeito não produz duplicata.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Restart sem mudança de condição tende a repetir falha determinística.",
+    "Custo de carregamento e aquecimento precisa entrar no orçamento de recuperação."
+  ],
+  "frontier_comparison": "Compare recuperação por tarefa concluída, não por tempo até processo responder. Modelos menores podem reiniciar mais barato, mas ainda dependem de estado durável e fronteiras corretas de efeito.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q002",
+      "V4C-Q018"
+    ],
+    "scope_note": "Cadence e Borg apoiam continuidade e gestão de recursos; a política completa de watchdog cognitivo é proposta, sem implantação LAI alegada."
+  },
+  "source_ids": [
+    "V2A-S011",
+    "V3C-S040",
+    "V2A-S012",
+    "V4C-S023",
+    "V3C-S028",
+    "C-S026",
+    "V4C-S001"
+  ]
+}

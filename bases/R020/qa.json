@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Memória de projeto garante cumprimento de regras?",
+    "answer": "Não. Ela fornece contexto; restrições obrigatórias precisam ser verificadas por controles e ferramentas apropriados."
+  },
+  {
+    "question": "Modo headless garante recuperação após queda?",
+    "answer": "Não por si só. O controlador precisa registrar execução, artefatos e estado confirmado para decidir como retomar."
+  },
+  {
+    "question": "Restaurar a conversa restaura o código?",
+    "answer": "A ação permite conservar o código; os dois estados devem ser selecionados e verificados separadamente."
+  },
+  {
+    "question": "Um checkpoint listado garante arquivos recuperáveis?",
+    "answer": "Não. Snapshots podem ter sido removidos; é necessário conferir disponibilidade e resultado da restauração."
+  }
+]

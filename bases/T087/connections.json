@@ -1,0 +1,42 @@
+{
+  "entry_id": "T087",
+  "edges": [
+    {
+      "edge_id": "E-T087-01",
+      "from": "T087",
+      "to": "T088",
+      "relation": "alternative",
+      "how": "Trocar o lote fechado por composição por iteração quando comprimentos de geração variam muito.",
+      "interface": "Fila de requisições e estados independentes.",
+      "condition": "O runtime suporta entrada e saída de sequências ativas.",
+      "acceptance": "Comparar utilidade entregue com a mesma chegada e orçamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S047",
+        "V4B-S008",
+        "V4B-S014"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T087-02",
+      "from": "T087",
+      "to": "T162",
+      "relation": "complements",
+      "how": "Confirmar cada resultado por chave idempotente antes de marcar o lote concluído.",
+      "interface": "ID do item, revisão da entrada e hash da saída.",
+      "condition": "Há armazenamento com deduplicação de commits.",
+      "acceptance": "Falhar após gravação parcial e verificar que nenhum efeito é repetido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S047",
+        "V4B-S008",
+        "V4B-S014"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

@@ -1,0 +1,47 @@
+{
+  "id": "T116",
+  "technical_details": "Reconstruir KV exige repetir o processamento do histórico confirmado, não repetir decisões de amostragem que já produziram tokens publicados. O cursor da resposta e o cursor do cache devem ser distintos: reconstrução avança estado interno sem emitir novamente a conversa. Se pesos ou adaptadores mudaram, recomputar produz outro estado e requer uma política explícita de migração, em vez de fingir continuidade idêntica.",
+  "boundary_condition": "Sem os token IDs e posições originais, o texto salvo pode não reconstruir exatamente o prefixo esperado.",
+  "implementation_contract": {
+    "inputs": "Histórico confirmado, identidade do modelo, posição de retomada e orçamento disponível.",
+    "outputs": "Cache restaurado e continuação a partir do primeiro token ainda não confirmado.",
+    "state": "Cursor de emissão, cursor reconstruído e tentativas de preempção.",
+    "invariant": "Tokens já entregues não são reamostrados nem duplicados no transporte."
+  },
+  "tradeoffs": [
+    "Liberar memória permite atender outros pedidos e adiciona prefill repetido.",
+    "Preempções frequentes podem transformar capacidade aparente em trabalho improdutivo."
+  ],
+  "failure_test": "Teste proposto: expulsar cache após alguns tokens enviados e reiniciar a reconstrução após interrupção. Esperar uma única sequência publicada e logits compatíveis com execução contínua, usando os mesmos pesos.",
+  "evaluation_plan": "Plano proposto: comparar execução sem preempção com pressões de memória controladas. Medir tokens recalculados, progresso útil, latência e repetições de preempção; ajustar admissão quando a reconstrução impede satisfazer os objetivos do serviço.",
+  "comparisons": [
+    {
+      "entry_id": "T105",
+      "relation": "complements",
+      "reason": "A política de remoção precisa preservar dados suficientes para reconstruir os estados necessários."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O vLLM documenta recomputação de requisições preemptadas quando volta a existir espaço suficiente para KV.",
+    "source_ids": [
+      "B-S014"
+    ],
+    "support": "direct",
+    "caveat": "A documentação não garante que recomputação seja mais barata que transferência em qualquer arquitetura."
+  },
+  "advanced_qa": [
+    {
+      "question": "Recomputar é o mesmo que fazer nova resposta?",
+      "answer": "Não. Deve processar tokens confirmados como entrada e retomar somente onde ainda falta gerar."
+    },
+    {
+      "question": "Pode restaurar com outro adaptador?",
+      "answer": "Isso altera as projeções e possivelmente a distribuição futura; exige uma mudança declarada de configuração, não simples recuperação de cache."
+    }
+  ],
+  "source_ids": [
+    "B-S014",
+    "V3B-S005"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

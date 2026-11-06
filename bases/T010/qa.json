@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Quinhentos caracteres equivalem a quinhentos tokens?",
+    "answer": "Não. A correspondência varia com idioma, símbolos e tokenizer."
+  },
+  {
+    "question": "Mais overlap resolve qualquer quebra?",
+    "answer": "Não. Pode ajudar em fronteiras próximas, mas não substitui preservação da estrutura do documento."
+  },
+  {
+    "question": "Sobreposição deve ser removida antes do embedding?",
+    "answer": "Se remover o conteúdo sobreposto, muda o método. A deduplicação costuma ser considerada na montagem dos candidatos, preservando o contexto usado na indexação."
+  },
+  {
+    "question": "Tokens e caracteres produzem o mesmo tamanho efetivo?",
+    "answer": "Não. Idioma, código e símbolos mudam a relação; o contrato deve usar a unidade realmente relevante para o consumidor."
+  }
+]

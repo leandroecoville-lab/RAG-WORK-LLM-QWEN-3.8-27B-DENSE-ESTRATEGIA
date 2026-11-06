@@ -1,0 +1,18 @@
+[
+  {
+    "question": "O registro executa a ferramenta?",
+    "answer": "Pode resolver o destino; execução é responsabilidade separada ou claramente delimitada."
+  },
+  {
+    "question": "MCP é obrigatório?",
+    "answer": "Não. É uma opção de protocolo; o catálogo pode existir com outras interfaces."
+  },
+  {
+    "question": "Remover uma ferramenta indisponível resolve o histórico?",
+    "answer": "Não. Uma execução antiga ainda precisa apontar para o descritor utilizado; disponibilidade e identidade histórica devem ser separadas."
+  },
+  {
+    "question": "Duas ferramentas com o mesmo nome são intercambiáveis?",
+    "answer": "Somente após verificar origem, contrato e efeitos; igualdade nominal não demonstra equivalência."
+  }
+]

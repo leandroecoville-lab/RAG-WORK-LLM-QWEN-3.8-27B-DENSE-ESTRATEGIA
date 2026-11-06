@@ -1,0 +1,32 @@
+{
+  "id": "T151",
+  "name": "Lazy Loading de ferramentas",
+  "canonical_name": "Lazy Loading de Ferramentas",
+  "canonical_id": "T151",
+  "aliases": [
+    "carregamento tardio de ferramentas",
+    "Lazy Loading de Ferramentas"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T014",
+    "T045",
+    "T158",
+    "T170"
+  ],
+  "source_ids": [
+    "C-S016",
+    "V3C-S004",
+    "V4C-S013",
+    "C-S030",
+    "V4C-S014"
+  ],
+  "namespace": "T151",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T151",
+  "chunk_count": 9
+}

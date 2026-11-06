@@ -1,0 +1,42 @@
+{
+  "entry_id": "T123",
+  "edges": [
+    {
+      "edge_id": "E-T123-01",
+      "from": "T123",
+      "to": "T085",
+      "relation": "complements",
+      "how": "FP8 é uma escolha concreta dentro de uma política de quantização de pesos e operações.",
+      "interface": "Formatos, escalas e precisão de acumulação.",
+      "condition": "Compatibilidade confirmada no caminho real.",
+      "acceptance": "Testar erro por operador e qualidade da tarefa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S034",
+        "V4B-S011",
+        "V3B-S003"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T123-02",
+      "from": "T123",
+      "to": "T086",
+      "relation": "complements",
+      "how": "Quantizar KV é uma decisão separada de quantizar pesos em FP8.",
+      "interface": "Dtype e escalas de cada componente.",
+      "condition": "Experimentos isolam as intervenções.",
+      "acceptance": "Medir degradação em contextos longos antes de combinar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S034",
+        "V4B-S011",
+        "V3B-S003"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

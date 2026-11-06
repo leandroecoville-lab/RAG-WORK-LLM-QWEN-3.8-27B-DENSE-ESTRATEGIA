@@ -1,0 +1,112 @@
+{
+  "id": "T046",
+  "novelty": "A v3 tratou viés e vazamento. Aqui seleção de exemplos é orientada por necessidade de habilidade e custo de interferência.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Recupere exemplos pelo tipo de transformação necessário, não apenas pelo assunto. Uma pergunta sobre finanças pode precisar de exemplo de extração temporal, não de narrativa financeira.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S016",
+        "V3A-S017"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Separe exemplos de formato, decisão e exceção. Escolher vários exemplos da mesma função pode reforçar estilo e deixar a dificuldade real sem demonstração.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S016",
+        "V3A-S017"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare similaridade semântica e cobertura de habilidades com orçamento igual. Meça erros de transferência de entidade, rótulo e valor dos exemplos para o caso novo. Unidade de avaliação: consulta com demonstrações.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S016",
+        "V3A-S017"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Extração variável",
+      "scenario": "Documentos diferem em layout e ambiguidade.",
+      "strategy": "Selecionar um exemplo de formato e outro da exceção relevante; substituir nomes e valores somente quando isso não alterar o mecanismo demonstrado.",
+      "small_model_role": "3–7B aprende formato local.",
+      "acceptance": "Não copiar valores do exemplo para a saída real.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S016",
+        "V3A-S017"
+      ]
+    },
+    {
+      "name": "Tarefas com ferramentas",
+      "scenario": "Modelo confunde ordem de operações.",
+      "strategy": "Selecionar demonstração com a mesma dependência entre chamadas, preservando diferenças de schema da ferramenta atual.",
+      "small_model_role": "8–14B planeja sequência curta.",
+      "acceptance": "Argumentos e versão devem vir do caso atual, não da demonstração.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S016",
+        "V3A-S017"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Poucas demonstrações contrastivas por habilidade fechada.",
+    "8_14b": "Exemplos de sequência e tratamento de insuficiência.",
+    "15_30b": "Demonstrações de integração de evidências sem depender de nomes do domínio.",
+    "training_or_runtime_requirements": "Banco de exemplos com metadados de habilidade e origem; particionar avaliação por fonte para evitar quase duplicatas.",
+    "do_not_use_when": "Exemplos disponíveis são contraditórios ou incompatíveis com o protocolo atual."
+  },
+  "connections": [
+    {
+      "target_id": "T019",
+      "relation": "complements",
+      "how": "Remover demonstrações redundantes após selecionar habilidades.",
+      "interface": "Lista de exemplos, função e custo de tokens.",
+      "condition": "Todas as habilidades necessárias continuarem cobertas.",
+      "acceptance": "Excluir exemplo e testar fronteira que ele representava.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S016",
+        "V3A-S017"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T036",
+      "relation": "requires",
+      "how": "Extrair necessidade de habilidade da consulta.",
+      "interface": "Transformação, restrições e formato esperado.",
+      "condition": "Análise não depender da resposta desconhecida.",
+      "acceptance": "Testar assunto parecido com habilidade diferente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S016",
+        "V3A-S017"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não selecionar pelo gabarito de avaliação.",
+    "Não usar exemplos antigos de ferramenta como contrato atual."
+  ],
+  "frontier_comparison": "Comparar transferência de habilidade em casos novos; mais exemplos semelhantes podem aumentar cópia indevida.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q003",
+      "V4A-Q016"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S016",
+    "V3A-S017"
+  ]
+}

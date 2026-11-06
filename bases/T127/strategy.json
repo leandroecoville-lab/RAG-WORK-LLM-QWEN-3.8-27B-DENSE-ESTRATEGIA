@@ -1,0 +1,111 @@
+{
+  "id": "T127",
+  "novelty": "A v3 tratou estrutura e offsets do contêiner. A nova camada aborda proveniência do artefato, paridade de tokenização e controle de mudanças entre conversão, quantização e carregamento.",
+  "deep_layers": [
+    {
+      "name": "Manifesto de origem",
+      "detail": "Um arquivo válido pode conter pesos de origem diferente da esperada. Associe hash, checkpoint base, licença aplicável, ferramenta de conversão e política de quantização. A inspeção do cabeçalho verifica estrutura; não prova autoria, qualidade nem correspondência com uma versão anunciada pelo nome do arquivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S037",
+        "V3D-S012"
+      ]
+    },
+    {
+      "name": "Template como parte do comportamento",
+      "detail": "Tokenizer, tokens especiais e template de chat afetam a entrada efetivamente vista pelo modelo. Compare sequências de token IDs produzidas no caminho original e no consumidor GGUF. Uma migração pode parecer perda de quantização quando o erro real é duplicação de marcadores, papel de mensagens ou encerramento incorreto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S037",
+        "V3D-S012"
+      ]
+    },
+    {
+      "name": "Compatibilidade evolutiva",
+      "detail": "Uma versão do contêiner e um tipo de tensor reconhecidos não garantem suporte à arquitetura inteira. Verifique tipos de camada, posições e recursos exigidos pelo checkpoint. O carregador deve rejeitar uma interpretação desconhecida em vez de assumir defaults que produzem respostas plausíveis e incorretas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S037",
+        "V3D-S012"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Pacote local reproduzível",
+      "scenario": "Um modelo será distribuído para execução offline.",
+      "strategy": "Entregue manifesto, configuração de chat, exemplos mínimos e verificações de integridade. Valide o carregamento no build escolhido e meça memória com contexto real.",
+      "small_model_role": "Um 3–7B pode oferecer extração ou classificação local com contratos explícitos.",
+      "acceptance": "Reproduzir tokenização e respostas de controle sem depender do nome comercial do arquivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S037",
+        "V3D-S012"
+      ]
+    },
+    {
+      "name": "Comparação de quantizações",
+      "scenario": "Vários arquivos GGUF representam o mesmo checkpoint.",
+      "strategy": "Inspecione tipos por tensor e metadados antes de comparar. Fixe runtime, template e geração; diferencie ganho do método de ganho do backend.",
+      "small_model_role": "Um 8–14B pode ser selecionado conforme orçamento de RAM/VRAM e qualidade medida.",
+      "acceptance": "Relatar tamanho, memória em execução e erros por categoria.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S037",
+        "V3D-S012"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Boa faixa para prototipação local, sujeita ao suporte da arquitetura e ao contexto desejado.",
+    "8_14b": "CPU/GPU offload e precisão mista precisam de medição no dispositivo real.",
+    "15_30b": "Arquivos de 15–30B podem caber em armazenamento sem caber no orçamento de execução; incluir KV e buffers.",
+    "training_or_runtime_requirements": "GGUF é contêiner, não método único. Conversão de formato e quantização são operações distintas.",
+    "do_not_use_when": "Não interpretar extensão .gguf como prova de compatibilidade, segurança ou ausência de perda numérica."
+  },
+  "connections": [
+    {
+      "target_id": "R024",
+      "relation": "requires",
+      "how": "llama.cpp é um consumidor relevante de GGUF, com suporte específico por build.",
+      "interface": "Arquivo, arquitetura e parâmetros de carregamento.",
+      "condition": "Leitor reconhece todos os componentes usados.",
+      "acceptance": "Executar validação de carregamento e tokenização.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S037",
+        "V3D-S012"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T124",
+      "relation": "complements",
+      "how": "Alguns tensores podem usar quatro bits, mas o formato permite várias políticas.",
+      "interface": "Tipos por tensor e metadados de quantização.",
+      "condition": "Comparação identifica a receita concreta.",
+      "acceptance": "Medir qualidade e memória, sem chamar todo GGUF de W4A16.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S037",
+        "V3D-S012"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Verificar hashes antes de carregar artefatos transferidos.",
+    "Não ocultar perda de tokenizer ou template sob uma comparação genérica de modelos."
+  ],
+  "frontier_comparison": "Compare a solução local completa com fronteira numa tarefa delimitada. Um formato portátil facilita entrega; não demonstra competência nem torna quantizações diferentes equivalentes.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q026"
+    ],
+    "scope_note": "Busca de uso de llama.cpp/GGUF consultada. A documentação comprova recursos; não foi confirmado nesta pesquisa um caso específico novo de implantação de bigtech para cada método de quantização."
+  },
+  "source_ids": [
+    "B-S037",
+    "V3D-S012"
+  ]
+}

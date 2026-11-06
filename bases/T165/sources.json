@@ -1,0 +1,80 @@
+[
+  {
+    "source_id": "C-S005",
+    "title": "Circuit Breaker Pattern",
+    "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker",
+    "publisher": "Microsoft",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Circuito fechado, aberto e parcialmente aberto isolam dependências com falhas persistentes.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn12view0"
+  },
+  {
+    "source_id": "V3C-S026",
+    "title": "Polly — Circuit breaker resilience strategy",
+    "url": "https://www.pollydocs.org/strategies/circuit-breaker.html",
+    "publisher": "Polly project",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Abertura por amostra, mínimo de throughput, sondagem após duração e separação de circuit breaker e retry.",
+    "limitations": "Opções e defaults são da biblioteca; regras de coordenação distribuída não são inferidas automaticamente.",
+    "web_ref": "turn117view1"
+  },
+  {
+    "source_id": "V3C-S009",
+    "title": "Google SRE — Handling Overload",
+    "url": "https://sre.google/sre-book/handling-overload/",
+    "publisher": "Google",
+    "source_type": "official_book",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Admissão e rejeição por sobrecarga, throttling adaptativo e propagação de criticidade entre serviços.",
+    "limitations": "Arquitetura de referência; classes e parâmetros operacionais do Google não são prescrições universais.",
+    "web_ref": "turn89view0"
+  },
+  {
+    "source_id": "V2A-S012",
+    "title": "Timeouts, retries, and backoff with jitter",
+    "url": "https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/",
+    "publisher": "AWS",
+    "source_type": "official_article",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2019-12-05",
+    "supports": "Retentativas limitadas, espera exponencial, jitter e incerteza de efeitos após timeout.",
+    "limitations": "Consulta documental primária. Não houve reprodução de experimentos, instalação do produto nem validação de disponibilidade na infraestrutura LAI. Receitas e testes das entradas são propostas editoriais.",
+    "web_ref": "turn61view1"
+  },
+  {
+    "source_id": "C-S026",
+    "title": "Making retries safe with idempotent APIs",
+    "url": "https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/",
+    "publisher": "Amazon Web Services",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Identificador de intenção do cliente permite repetir uma solicitação sem repetir seu efeito lógico.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn34view2"
+  },
+  {
+    "source_id": "V3C-S001",
+    "title": "RouteLLM — repository and threshold calibration",
+    "url": "https://github.com/lm-sys/RouteLLM",
+    "publisher": "LMSYS / autores do RouteLLM",
+    "source_type": "official_source_code",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Calibração de limiares depende da distribuição de consultas e da fração pretendida de chamadas ao modelo forte.",
+    "limitations": "README em branch mutável; exemplos numéricos não são limiares recomendados para LAI.",
+    "web_ref": "turn93view3"
+  }
+]

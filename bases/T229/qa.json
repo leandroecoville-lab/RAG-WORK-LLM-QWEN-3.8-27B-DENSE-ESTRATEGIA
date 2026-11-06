@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Diff-only significa que o agente não precisa ler o arquivo?",
+    "answer": "Não. O delta deve ser fundamentado no conteúdo e no contrato atuais. Ler trechos relevantes continua necessário para formular uma mudança correta."
+  },
+  {
+    "question": "Qual a diferença para Unified Diff?",
+    "answer": "Patch-based coding é o padrão de edição. Unified Diff é um formato específico para representar alterações textuais dentro desse padrão."
+  },
+  {
+    "question": "Um patch aplicado sem erro pode estar errado?",
+    "answer": "Sim. Pode alterar um local semanticamente inadequado ou produzir comportamento incorreto apesar da compatibilidade textual."
+  },
+  {
+    "question": "Um diff do Aider é sempre Unified Diff?",
+    "answer": "Não. O formato chamado diff pelo Aider usa blocos search/replace; formato e aplicador precisam corresponder."
+  }
+]

@@ -1,0 +1,51 @@
+{
+  "id": "T077",
+  "technical_details": "A semântica de um caminho temporal depende da pergunta. Para relações simultâneas, os intervalos das arestas precisam ter interseção: com intervalos semiabertos, o maior início deve ser menor que o menor fim. Para uma trajetória ao longo do tempo, pode ser necessário apenas respeitar a ordem dos eventos. Além disso, promessa atual sobre evento futuro não equivale a ocorrência futura já confirmada.",
+  "boundary_condition": "Aplicar a mesma regra temporal a toda consulta pode excluir trajetórias válidas ou produzir relações simultâneas que nunca coexistiram.",
+  "implementation_contract": {
+    "inputs": "Entidades, arestas com validade e origem, perspectiva de conhecimento e tipo de consulta temporal.",
+    "outputs": "Caminhos ou relações com intervalos compatíveis e evidências que distinguem planos de fatos ocorridos.",
+    "state": "Histórico de invalidação, referência temporal dos episódios e regras de interpretação dos campos.",
+    "invariant": "O sistema não transforma intenção, prazo ou promessa em evidência de que o evento descrito aconteceu."
+  },
+  "tradeoffs": [
+    "Arestas temporais permitem reconstrução precisa e aumentam complexidade de filtros e junções.",
+    "Preservar relações invalidadas facilita auditoria e exige que consultas atuais excluam as versões inadequadas."
+  ],
+  "failure_test": "Teste proposto: criar uma promessa hoje para uma entrega futura e depois registrar cancelamento. A consulta sobre compromissos deve reconhecer a promessa; a consulta sobre entregas realizadas não pode contar essa ocorrência.",
+  "evaluation_plan": "Avaliação proposta: comparar consultas de snapshot e trajetórias ordenadas em dados com intervalos não sobrepostos. Medir coerência temporal, atualização após cancelamento e recuperação de proveniência; incluir fatos descobertos tardiamente para testar o eixo de conhecimento.",
+  "comparisons": [
+    {
+      "entry_id": "T056",
+      "relation": "complements",
+      "reason": "Bitemporalidade acrescenta a perspectiva do que era conhecido às relações válidas no domínio."
+    },
+    {
+      "entry_id": "T051",
+      "relation": "specializes",
+      "reason": "O grafo temporal especializa a representação relacional com regras explícitas de validade e evolução."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "EntityEdge no Graphiti diferencia valid_at, invalid_at, expired_at e reference_time e documenta tratamento específico para planos futuros.",
+    "source_ids": [
+      "V3A-S043"
+    ],
+    "support": "direct",
+    "caveat": "Os nomes e interpretações são da revisão consultada; não constituem padrão universal para todo grafo temporal."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um timestamp de criação resolve validade?",
+      "answer": "Não. Ele indica registro ou criação do objeto. O fato pode ter começado antes, valer depois ou não ter ocorrência confirmada."
+    },
+    {
+      "question": "Um caminho temporal é causal?",
+      "answer": "Não. Compatibilidade de tempos permite compor relações segundo a consulta; causalidade ainda exige hipóteses e evidências adicionais de identificação."
+    }
+  ],
+  "source_ids": [
+    "V3A-S043"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

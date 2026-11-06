@@ -1,0 +1,125 @@
+{
+  "id": "T190",
+  "novelty": "A v3 vinculou vereditos a revisões. O aprofundamento acrescenta classificação das falhas, reparos mínimos e condições de parada que preservam progresso sem transformar o loop em geração ilimitada.",
+  "deep_layers": [
+    {
+      "name": "Falha acionável",
+      "detail": "O verificador deve devolver critério, evidência e localização do defeito. Separe erro do artefato, requisito ambíguo e falha do executor. Cada classe pede ação distinta: corrigir, esclarecer ou repetir infraestrutura. Passar a mesma mensagem genérica ao gerador tende a criar mudanças grandes e pouco controladas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S043",
+        "V4C-S009",
+        "V4B-S022",
+        "V4B-S023"
+      ]
+    },
+    {
+      "name": "Reparo com escopo",
+      "detail": "Uma correção deve declarar quais partes pode alterar e quais propriedades precisam ser preservadas. Reexecute testes afetados e barreiras obrigatórias na revisão final. O AutoClean descreve fixers e verificações por propriedade; a proposta transferível é reduzir superfície de mudança e manter evidência ligada ao conteúdo entregue.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S043",
+        "V4C-S009",
+        "V4B-S022",
+        "V4B-S023"
+      ]
+    },
+    {
+      "name": "Progresso e encerramento",
+      "detail": "Use uma medida explícita de falhas remanescentes e detecte ciclos de revisões. Se a correção de uma propriedade quebra outra repetidamente, a hipótese ou o escopo pode estar errado. Encerre com pendências verificáveis quando o orçamento acabar, sem converter exaustão em aprovação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S043",
+        "V4C-S009",
+        "V4B-S022",
+        "V4B-S023"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Correção de código localizada",
+      "scenario": "Um teste falha num conjunto pequeno de arquivos.",
+      "strategy": "Forneça ao modelo o erro mínimo e o contrato, gere patch restrito e valide. Amplie o contexto somente quando a falha indicar dependência externa ao escopo.",
+      "small_model_role": "Um 3–7B pode reparar padrões simples; um 8–14B pode tratar relações maiores, conforme teste.",
+      "acceptance": "Entregar revisão que passa critérios e preserva invariantes, com custo e tentativas registrados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S043",
+        "V4C-S009",
+        "V4B-S022",
+        "V4B-S023"
+      ]
+    },
+    {
+      "name": "Objeto estruturado com regras",
+      "scenario": "A saída viola formato ou uma regra de negócio.",
+      "strategy": "Corrija apenas campos apontados e revalide o objeto completo. Se a regra depende de fato ausente, busque evidência em vez de inventar um valor para satisfazer o schema.",
+      "small_model_role": "Um pequeno modelo funciona como proponente, não como autoridade de aceitação.",
+      "acceptance": "Nenhuma alteração silenciosa em campos já verificados; resultado final consistente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S043",
+        "V4C-S009",
+        "V4B-S022",
+        "V4B-S023"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Loops curtos e critérios estreitos favorecem modelos pequenos sem prometer reparo geral.",
+    "8_14b": "Use contexto incremental e ferramentas para reduzir adivinhação em dependências.",
+    "15_30b": "Um 15–30B pode justificar problemas mais difíceis, mas continua sujeito ao orçamento e ao mesmo verificador.",
+    "training_or_runtime_requirements": "Runtime de geração, checagem e revisão; não implica aprendizagem persistente do modelo.",
+    "do_not_use_when": "Não considerar timeout, erro de teste ou ausência de feedback como aprovação."
+  },
+  "connections": [
+    {
+      "target_id": "T195",
+      "relation": "requires",
+      "how": "AutoClean combina propostas e verificações executáveis antes de prosseguir.",
+      "interface": "Revisão, resultados e falhas localizadas.",
+      "condition": "Verificação ligada ao conteúdo que será entregue.",
+      "acceptance": "Introduzir defeitos conhecidos e confirmar bloqueio.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S009"
+      ],
+      "case_ids": [
+        "V4C-C010"
+      ]
+    },
+    {
+      "target_id": "T200",
+      "relation": "complements",
+      "how": "Revisores por propriedade acrescentam checagem antes de revisão humana no AutoClean.",
+      "interface": "Artefato e relatórios separados.",
+      "condition": "Critérios e limites da revisão são explícitos.",
+      "acceptance": "Medir falhas detectadas e discordâncias.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S009"
+      ],
+      "case_ids": [
+        "V4C-C010"
+      ]
+    }
+  ],
+  "failure_controls": [
+    "Preservar última versão válida e rejeitar regressões.",
+    "Registrar conclusão inconclusiva quando o orçamento ou infraestrutura impede verificação."
+  ],
+  "frontier_comparison": "Compare taxa de tarefas concluídas corretamente e custo do loop com uma chamada de fronteira. Verificação pode amplificar utilidade de um modelo pequeno, desde que o critério cubra a falha relevante.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q011"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "C-S043",
+    "V4C-S009",
+    "V4B-S022",
+    "V4B-S023"
+  ]
+}

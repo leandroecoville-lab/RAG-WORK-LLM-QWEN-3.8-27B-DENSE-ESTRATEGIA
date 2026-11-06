@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "A-S014",
+    "title": "RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval",
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/8a2acd174940dbca361a6398a4f9df91-Abstract-Conference.html",
+    "publisher": "ICLR / autores",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Árvore construída por embeddings, agrupamento e resumos recursivos; recuperação em níveis de abstração.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn20view6"
+  },
+  {
+    "source_id": "V3A-S029",
+    "title": "RAPTOR cluster_utils.py",
+    "url": "https://github.com/parthsarthi03/raptor/blob/master/raptor/cluster_utils.py",
+    "publisher": "Autores de RAPTOR / GitHub",
+    "source_type": "official_code",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "UMAP, GaussianMixture, seleção por BIC e associação por probabilidades acima de limiar; leitura do código, sem execução.",
+    "limitations": "Fonte primária consultada; não houve reprodução, instalação ou validação de desempenho na LAI. Contratos e cenários adicionais são propostas editoriais.",
+    "web_ref": "turn124view3"
+  },
+  {
+    "source_id": "V3A-S011",
+    "title": "RAPTOR: official implementation",
+    "url": "https://github.com/parthsarthi03/raptor",
+    "publisher": "Autores de RAPTOR / GitHub",
+    "source_type": "official_repository",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Árvore recuperável, serialização e interfaces de sumarização, embeddings e resposta. Código de pesquisa não instalado.",
+    "limitations": "Consulta de fonte primária; não houve reprodução experimental. Resultados e APIs são limitados ao trabalho ou documentação citados, consultados em 2026-11-05.",
+    "web_ref": "turn95view0"
+  }
+]

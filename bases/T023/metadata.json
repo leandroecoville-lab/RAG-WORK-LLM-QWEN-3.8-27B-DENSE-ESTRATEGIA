@@ -1,0 +1,29 @@
+{
+  "id": "T023",
+  "name": "Recursive Summarization Tree",
+  "canonical_name": "Recursive Summarization Tree",
+  "canonical_id": "T008",
+  "aliases": [
+    "árvore recursiva de resumos"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T004",
+    "T008",
+    "T026",
+    "T030"
+  ],
+  "source_ids": [
+    "A-S014",
+    "V3A-S021",
+    "V4A-S024"
+  ],
+  "namespace": "T023",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T023",
+  "chunk_count": 9
+}

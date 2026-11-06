@@ -1,0 +1,51 @@
+{
+  "id": "T212",
+  "technical_details": "Compactação concorrente exige definir qual prefixo do histórico foi resumido. Enquanto o resumo é produzido, novos turnos podem chegar; substituí-los junto com o prefixo causaria perda. Uma proposta prende a compactação a um cursor e combina o resumo com a cauda posterior, validando a versão antes da troca. A documentação atual da Anthropic distingue compactação sob demanda, em segundo plano e por limiar, com contratos próprios para reinserção de turnos.",
+  "boundary_condition": "O gatilho pode disparar corretamente e o resumo ainda omitir informação necessária; controle de ocupação e qualidade da síntese são problemas separados.",
+  "implementation_contract": {
+    "inputs": "Histórico versionado, cursor a compactar, instruções de preservação e orçamento.",
+    "outputs": "Resumo do intervalo, referências e cauda não resumida preservada.",
+    "state": "Job de compactação, base observada e turno mais recente.",
+    "invariant": "Nenhum turno posterior ao cursor é descartado por uma síntese que não o recebeu."
+  },
+  "tradeoffs": [
+    "Compactação em segundo plano reduz pausa e introduz corrida de versões.",
+    "Compactar mais cedo reduz pressão e pode repetir o custo de síntese sem necessidade."
+  ],
+  "failure_test": "Teste proposto: adicionar uma decisão enquanto o resumo está em produção; exigir que a decisão apareça na cauda preservada ou em nova síntese corretamente identificada.",
+  "evaluation_plan": "Comparar compactação bloqueante e concorrente com a mesma política de preservação. Medir pausa, perda de fatos, tokens finais e recomputações. Separar compressão alcançada e capacidade de retomar a tarefa.",
+  "comparisons": [
+    {
+      "entry_id": "T168",
+      "relation": "complements",
+      "reason": "O limiar suave precisa reservar espaço para executar a compactação."
+    },
+    {
+      "entry_id": "T215",
+      "relation": "alternative",
+      "reason": "Masking remove observações antigas sem produzir uma síntese semântica delas."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação Anthropic diferencia compactação por limiar e sob demanda, incluindo operação em segundo plano.",
+    "source_ids": [
+      "V3C-S031"
+    ],
+    "support": "direct",
+    "caveat": "Os recursos consultados são específicos da API e têm condições de suporte; a proposta não presume disponibilidade local."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um resumo gerado em paralelo pode substituir o histórico inteiro?",
+      "answer": "Somente se abranger exatamente essa versão; caso contrário, é necessário preservar a cauda que chegou depois."
+    },
+    {
+      "question": "Taxa de compressão alta prova boa compactação?",
+      "answer": "Não. É preciso medir preservação de decisões, evidências e capacidade de continuar o trabalho."
+    }
+  ],
+  "source_ids": [
+    "V3C-S031"
+  ],
+  "research_note": "Fontes primárias reabertas nesta pesquisa; contratos, cenários de falha e avaliação são propostas editoriais."
+}

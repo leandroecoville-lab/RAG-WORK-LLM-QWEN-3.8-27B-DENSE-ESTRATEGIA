@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lai:rag:search:v4",
+  "title": "LAI RAG search",
+  "type": "object",
+  "properties": {
+    "search_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "query": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entry_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^[TRP][0-9]{3}$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "checked_on": {
+      "type": "string",
+      "format": "date"
+    },
+    "findings": {
+      "type": "string",
+      "minLength": 1
+    },
+    "limits": {
+      "type": "string",
+      "minLength": 1
+    },
+    "web_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "search_id",
+    "query",
+    "entry_ids",
+    "checked_on",
+    "findings",
+    "limits",
+    "web_refs"
+  ],
+  "additionalProperties": false
+}

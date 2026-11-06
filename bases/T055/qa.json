@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Uma skill é aprendizado nos pesos?",
+    "answer": "Não necessariamente. Ela pode ser memória procedural externa carregada sob demanda."
+  },
+  {
+    "question": "Procedimentos precisam explicar por quê?",
+    "answer": "Uma justificativa curta e limites de aplicação ajudam a reconhecer quando adaptar ou interromper os passos."
+  },
+  {
+    "question": "Um procedimento deve incluir rollback?",
+    "answer": "Quando aplicável, descreva compensação e limites. Nem todo efeito pode ser revertido, e executar uma compensação também exige verificar o estado externo."
+  },
+  {
+    "question": "Como aprender com um único sucesso?",
+    "answer": "Registre uma receita candidata com escopo estreito. Amplie sua recomendação somente depois de testar variações e situações em que não deve ser usada."
+  }
+]

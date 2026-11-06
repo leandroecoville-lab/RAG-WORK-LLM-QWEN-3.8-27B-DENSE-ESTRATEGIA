@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "C-S050",
+    "title": "On Calibration of Modern Neural Networks",
+    "url": "https://arxiv.org/abs/1706.04599",
+    "publisher": "Guo e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Calibração relaciona probabilidades previstas à frequência de acerto; temperatura de calibração não é temperatura de geração.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn16view11"
+  },
+  {
+    "source_id": "C-S053",
+    "title": "Do As I Can, Not As I Say: Grounding Language in Robotic Affordances",
+    "url": "https://arxiv.org/abs/2204.01691",
+    "publisher": "Ahn e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Planejamento pode combinar adequação linguística com estimativas de viabilidade das habilidades.",
+    "limitations": "Fonte primária sobre robótica; aplicação a ferramentas de software é uma analogia de engenharia, não resultado demonstrado pelo artigo.",
+    "web_ref": "turn34view10"
+  },
+  {
+    "source_id": "V4B-S027",
+    "title": "What are Automated Reasoning checks in Amazon Bedrock Guardrails?",
+    "url": "https://docs.aws.amazon.com/en_en/bedrock/latest/userguide/guardrails-automated-reasoning-checks.html",
+    "publisher": "AWS",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Verificação contra política, resultados detect-only, limites de variáveis, idioma e ausência de streaming; recomenda testar tradução linguagem-lógica.",
+    "limitations": "Consistência com política não valida fatos não modelados nem protege sozinha contra injeção; recursos não são caso de adoção de cliente.",
+    "web_ref": "turn251view1"
+  }
+]

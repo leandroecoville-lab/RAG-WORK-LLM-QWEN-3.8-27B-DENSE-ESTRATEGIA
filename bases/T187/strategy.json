@@ -1,0 +1,119 @@
+{
+  "id": "T187",
+  "novelty": "A v3 tratou espaço de classes e normalização. A nova camada quantifica o valor da diversidade, considera abstenções e separa votação de sistemas que apenas usam vários modelos em etapas distintas.",
+  "deep_layers": [
+    {
+      "name": "Erros conjuntos",
+      "detail": "Avalie a matriz de erros compartilhados, não somente a precisão isolada de cada participante. Um terceiro modelo que repete os erros dos dois primeiros pode adicionar pouco valor. Diversidade útil precisa ser medida no domínio; marcas, prompts ou seeds diferentes não demonstram independência estatística.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S041",
+        "V4B-S022",
+        "V3B-S019"
+      ]
+    },
+    {
+      "name": "Abstenção e empate",
+      "detail": "Defina como votos ausentes, respostas inválidas e empates afetam a decisão. Forçar todos a escolher pode produzir maioria artificial em casos sem informação suficiente. Uma política proposta só publica quando há suporte válido e um verificador de requisitos passa; caso contrário, busca evidência ou encaminha.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S041",
+        "V4B-S022",
+        "V3B-S019"
+      ]
+    },
+    {
+      "name": "Vários modelos não implica votação",
+      "detail": "AlphaEvolve usa modelos com papéis na busca de programas, mas isso não comprova decisão por maioria. Registre o mecanismo exato de agregação: votação de classe, média de probabilidades, ranking por juiz ou evolução. Essas formas têm custos e garantias diferentes e não devem compartilhar um rótulo genérico.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S041",
+        "V4B-S022",
+        "V3B-S019"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Classificação com rótulos fechados",
+      "scenario": "Erros de uma classe específica têm custo elevado.",
+      "strategy": "Escolha participantes com falhas complementares, ajuste pesos em desenvolvimento e teste abstenção. Use probabilidades somente quando significado e calibração forem comparáveis.",
+      "small_model_role": "Modelos 3–7B especializados podem compor uma decisão estreita, se a diversidade compensar o custo.",
+      "acceptance": "Medir erro por classe, cobertura e custo adicional frente ao melhor participante.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S041",
+        "V4B-S022",
+        "V3B-S019"
+      ]
+    },
+    {
+      "name": "Extração de campos",
+      "scenario": "Há discordância sobre valores recuperáveis em documentos.",
+      "strategy": "Peça extrações independentes e confronte divergências com a evidência original. Não vote sobre strings sem normalização de unidade e identidade.",
+      "small_model_role": "Um 8–14B pode ser um dos extratores; o documento é a referência decisiva.",
+      "acceptance": "Avaliar campos corretos e erros compartilhados, incluindo ausência de informação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S041",
+        "V4B-S022",
+        "V3B-S019"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Vários modelos baratos podem custar mais que uma chamada melhor; comparar orçamento total.",
+    "8_14b": "Especialização complementar é hipótese mais concreta que duplicar o mesmo prompt.",
+    "15_30b": "Um 15–30B pode funcionar como participante ou árbitro, mas arbitrar não é votar.",
+    "training_or_runtime_requirements": "Orquestração de inferência; pesos de votação exigem dados separados. Não implica atualização dos modelos.",
+    "do_not_use_when": "Não converter proporção de votos em probabilidade de verdade sem calibração na distribuição relevante."
+  },
+  "connections": [
+    {
+      "target_id": "T198",
+      "relation": "requires",
+      "how": "Probabilidades e limiares de abstenção precisam de avaliação de confiabilidade.",
+      "interface": "Votos, scores e resultados rotulados.",
+      "condition": "Conjunto final independente dos pesos escolhidos.",
+      "acceptance": "Medir calibração e cobertura por domínio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S041",
+        "V4B-S022",
+        "V3B-S019"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T200",
+      "relation": "complements",
+      "how": "Evidência independente pode resolver discordâncias que a maioria não decide corretamente.",
+      "interface": "Campos contestados e fontes originais.",
+      "condition": "Verificador não recebe a maioria como resposta esperada.",
+      "acceptance": "Incluir casos em que todos os participantes erram igual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S041",
+        "V4B-S022",
+        "V3B-S019"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Preservar votos individuais para detectar correlação e mudança de comportamento.",
+    "Não agrupar respostas semanticamente distintas apenas para aumentar consenso."
+  ],
+  "frontier_comparison": "Compare o ensemble com uma chamada de fronteira sob custo e prazo equivalentes. Um ganho em classificação fechada não prova capacidade geral nem justifica votar sobre fatos sem evidência.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q011"
+    ],
+    "scope_note": "Busca de sistemas com múltiplos modelos consultada. Casos como AlphaEvolve não são classificados automaticamente como ensemble voting; não foi confirmado caso exato adicional de votação em produção neste recorte."
+  },
+  "source_ids": [
+    "C-S041",
+    "V4B-S022",
+    "V3B-S019"
+  ]
+}

@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "A-S003",
+    "title": "Short-term memory",
+    "url": "https://docs.langchain.com/oss/python/langchain/short-term-memory",
+    "publisher": "LangChain",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Histórico por thread, redução de mensagens e persistência do estado de curta duração.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn7view0"
+  },
+  {
+    "source_id": "A-S009",
+    "title": "MemGPT: Towards LLMs as Operating Systems",
+    "url": "https://arxiv.org/abs/2310.08560",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-10-12",
+    "supports": "Gerência de contexto virtual entre níveis de memória e controle de fluxo.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn1view3"
+  },
+  {
+    "source_id": "A-S006",
+    "title": "Effective context engineering for AI agents",
+    "url": "https://www.anthropic.com/research/effective-context-engineering-for-ai-agents",
+    "publisher": "Anthropic",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-09-29",
+    "supports": "Gestão seletiva de contexto, recuperação sob demanda e técnicas de continuidade de agentes.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn5view0"
+  }
+]

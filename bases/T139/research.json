@@ -1,0 +1,47 @@
+{
+  "id": "T139",
+  "technical_details": "Concorrência exige escolher a política de erro do grupo. Em execução fail-fast, um erro sinaliza cancelamento dos irmãos; em coleta completa, todos os resultados são aguardados e classificados. O cancelamento costuma ser cooperativo: uma ferramenta pode ter concluído o efeito antes de observar o sinal. Por isso, o agregador deve acompanhar estados individuais em vez de inferir que todas as chamadas falharam junto com a primeira.",
+  "boundary_condition": "O ganho desaparece quando as ferramentas competem pelo mesmo recurso ou quando a segunda chamada depende de um valor produzido pela primeira.",
+  "implementation_contract": {
+    "inputs": "Chamadas independentes, limites de concorrência e política de resultado parcial.",
+    "outputs": "Resultado por chamada, ordem lógica e status de cancelamento confirmado ou pendente.",
+    "state": "IDs das chamadas, tarefas ativas, erros e deadline compartilhado.",
+    "invariant": "A posição do resultado corresponde ao ID da chamada, não à ordem de chegada."
+  },
+  "tradeoffs": [
+    "Fail-fast pode economizar trabalho; coleta completa preserva evidências úteis mesmo com falhas parciais.",
+    "Limitar concorrência reduz pressão e pode aumentar tempo de um lote pequeno."
+  ],
+  "failure_test": "Teste proposto: combinar uma chamada rápida com erro, uma lenta cancelável e uma escrita que conclui antes do cancelamento; exigir três desfechos distintos e reconciliação da escrita.",
+  "evaluation_plan": "Comparar sequência, paralelismo ilimitado e grupo limitado com latências heterogêneas. Controlar capacidade das ferramentas. Medir tempo do lote, carga máxima, efeitos redundantes e completude do resultado; escolher a política conforme dependência real de todos os ramos.",
+  "comparisons": [
+    {
+      "entry_id": "T147",
+      "relation": "complements",
+      "reason": "Fan-out define distribuição e junção; chamadas paralelas concretizam o trabalho dos ramos."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "errgroup associa propagação de erros, cancelamento por contexto e limite de tarefas ativas.",
+    "source_ids": [
+      "V3C-S007"
+    ],
+    "support": "direct",
+    "caveat": "A API não torna efeitos remotos reversíveis nem obriga funções a respeitarem imediatamente o cancelamento."
+  },
+  "advanced_qa": [
+    {
+      "question": "Cancelar o grupo garante ausência de efeitos?",
+      "answer": "Não. O cancelamento pode chegar depois da conclusão; cada operação precisa de confirmação ou reconciliação própria."
+    },
+    {
+      "question": "Como preservar ordem sem serializar chamadas?",
+      "answer": "Atribuir índice ou ID estável às entradas e ordenar os resultados por essa identidade após a coleta."
+    }
+  ],
+  "source_ids": [
+    "V3C-S007",
+    "V3C-S005"
+  ],
+  "research_note": "Contratos, testes e critérios são propostas editoriais; as fontes sustentam os mecanismos indicados."
+}

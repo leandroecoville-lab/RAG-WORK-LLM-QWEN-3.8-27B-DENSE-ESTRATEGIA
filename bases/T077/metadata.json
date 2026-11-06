@@ -1,0 +1,31 @@
+{
+  "id": "T077",
+  "name": "Temporal Knowledge Graphs",
+  "canonical_name": "Temporal Knowledge Graphs",
+  "canonical_id": "T077",
+  "aliases": [
+    "grafos de conhecimento temporais"
+  ],
+  "category": "memoria",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T029",
+    "T051",
+    "T056",
+    "T072"
+  ],
+  "source_ids": [
+    "A-S032",
+    "A-S035",
+    "V3A-S043",
+    "V3A-S035",
+    "V4A-S012"
+  ],
+  "namespace": "T077",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T077",
+  "chunk_count": 9
+}

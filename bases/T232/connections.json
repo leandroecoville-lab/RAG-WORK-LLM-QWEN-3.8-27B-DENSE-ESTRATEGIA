@@ -1,0 +1,42 @@
+{
+  "entry_id": "T232",
+  "edges": [
+    {
+      "edge_id": "E-T232-01",
+      "from": "T232",
+      "to": "T140",
+      "relation": "complements",
+      "how": "AutoClean expõe Piranha por MCP para que o agente invoque transformação estrutural.",
+      "interface": "Regra, argumentos e resultado da ferramenta.",
+      "condition": "A tarefa é elegível ao mecanismo determinístico.",
+      "acceptance": "Revisar o delta e tratar exceções sem alterar o objetivo.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S009"
+      ],
+      "case_ids": [
+        "V4C-C010"
+      ],
+      "evidence_stage": "production_documented"
+    },
+    {
+      "edge_id": "E-T232-02",
+      "from": "T232",
+      "to": "T217",
+      "relation": "complements",
+      "how": "AutoClean executa CI e encaminha falhas a reparadores após a transformação.",
+      "interface": "Patch, logs e classe de falha.",
+      "condition": "Reparadores respeitam escopo e validam novamente.",
+      "acceptance": "Verde de CI não dispensa verificações de propriedade.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S009"
+      ],
+      "case_ids": [
+        "V4C-C010"
+      ],
+      "evidence_stage": "production_documented"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

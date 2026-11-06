@@ -1,0 +1,18 @@
+[
+  {
+    "question": "É um algoritmo específico?",
+    "answer": "Não. O nome precisa vir acompanhado das regras concretas de adaptação."
+  },
+  {
+    "question": "Como evitar confirmação seletiva?",
+    "answer": "Buscar evidências que poderiam refutar a hipótese e registrar lacunas e fontes conflitantes."
+  },
+  {
+    "question": "A hipótese deve aparecer na resposta?",
+    "answer": "Somente se identificada como hipótese e útil ao raciocínio comunicado. Não deve ser citada como descoberta documental."
+  },
+  {
+    "question": "Uma expansão pode adicionar filtros?",
+    "answer": "Pode propor filtros opcionais, mas não trocar restrições explícitas. Identidade, período e autorização devem ser controlados fora da geração livre."
+  }
+]

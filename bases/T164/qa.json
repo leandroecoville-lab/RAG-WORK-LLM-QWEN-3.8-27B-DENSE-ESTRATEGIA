@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Retry-After é sempre obrigatório na resposta 429?",
+    "answer": "Não se deve presumir; consultar contrato do serviço e tratar sua ausência."
+  },
+  {
+    "question": "Ele autoriza nova escrita?",
+    "answer": "Não. Só informa espera; segurança da repetição depende da operação."
+  },
+  {
+    "question": "Se a espera supera meu deadline, devo tentar imediatamente?",
+    "answer": "Não. Isso ignora a orientação adotada; encerrar ou reagendar com prazo explícito preserva o contrato."
+  },
+  {
+    "question": "Uma data passada deve gerar espera negativa?",
+    "answer": "Não. O parser precisa normalizar esse caso conforme política documentada, mantendo registro do valor recebido."
+  }
+]

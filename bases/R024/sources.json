@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "V2B-S020",
+    "title": "llama.cpp — LLM inference in C/C++",
+    "url": "https://github.com/ggml-org/llama.cpp",
+    "publisher": "ggml-org / llama.cpp contributors",
+    "source_type": "official_repository",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Motor C/C++, backends CPU/GPU, inferência híbrida e opções de quantização.",
+    "limitations": "Documentação primária consultada nesta data; compatibilidade depende de versão, modelo e ambiente. Nenhuma implantação ou avaliação LAI foi executada.",
+    "web_ref": "turn73view5"
+  },
+  {
+    "source_id": "V2B-S021",
+    "title": "LLaMA.cpp HTTP Server",
+    "url": "https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md",
+    "publisher": "ggml-org / llama.cpp contributors",
+    "source_type": "official_repository",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Servidor HTTP, batching, rotas compatíveis, opções de modelo e configuração de contexto.",
+    "limitations": "Documentação primária consultada nesta data; compatibilidade depende de versão, modelo e ambiente. Nenhuma implantação ou avaliação LAI foi executada.",
+    "web_ref": "turn73view6"
+  },
+  {
+    "source_id": "B-S037",
+    "title": "GGUF specification",
+    "url": "https://github.com/ggml-org/ggml/blob/master/docs/gguf.md",
+    "publisher": "ggml-org",
+    "source_type": "official_repository",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Formato binário de modelos, tensores e metadados; não é por si só um algoritmo de quantização.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn17view5"
+  },
+  {
+    "source_id": "V3D-S012",
+    "title": "llama.cpp HTTP server — README",
+    "url": "https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md",
+    "publisher": "ggml-org / llama.cpp",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Servidor com caminhos CPU/GPU, geração paralela e batching contínuo.",
+    "limitations": "Arquivo master; recursos dependem do build, backend e arquitetura do modelo.",
+    "web_ref": "turn138view3"
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "id": "T161",
+  "name": "Critical Path Analysis",
+  "canonical_name": "Critical Path Analysis",
+  "canonical_id": "T161",
+  "aliases": [
+    "análise do caminho crítico"
+  ],
+  "category": "orquestracao",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T147",
+    "T160",
+    "T174"
+  ],
+  "source_ids": [
+    "C-S025",
+    "C-S024",
+    "V3C-S002",
+    "V4C-S004",
+    "V4C-S017",
+    "V4C-S009",
+    "V4C-S023",
+    "C-S030",
+    "V3C-S016"
+  ],
+  "namespace": "T161",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T161",
+  "chunk_count": 9
+}

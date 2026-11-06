@@ -1,0 +1,52 @@
+{
+  "id": "T025",
+  "technical_details": "O roteador precisa considerar assimetria de erros: evitar uma busca desnecessária poupa recursos; omitir uma busca indispensável pode comprometer a resposta inteira. Complexidade aparente e necessidade de atualidade são dimensões diferentes. Uma pergunta curta sobre um estado que muda pode exigir recuperação, enquanto uma transformação longa de texto fornecido pode dispensar conhecimento externo.",
+  "boundary_condition": "Classificadores ajustados em um domínio podem encaminhar consultas novas incorretamente, especialmente quando o custo do erro muda ou o corpus disponível não contém a evidência necessária.",
+  "implementation_contract": {
+    "inputs": "Consulta, restrições de evidência, rotas disponíveis e estimativas de custo.",
+    "outputs": "Rota escolhida, justificativa operacional e condição de fallback.",
+    "state": "Versão do roteador, decisões anteriores e resultados verificáveis.",
+    "invariant": "Escolher uma rota barata não remove uma exigência de evidência imposta pela tarefa."
+  },
+  "tradeoffs": [
+    "Mais rotas permitem adaptação fina e aumentam superfície de teste.",
+    "Fallback protege casos incertos, mas reduz economia e pode criar buscas repetidas sem avanço."
+  ],
+  "failure_test": "Teste proposto: apresentar consulta simples dependente de fato atualizado e consulta complexa resolúvel com texto fornecido. Verificar que a decisão não usa apenas comprimento ou aparência de dificuldade.",
+  "evaluation_plan": "Avaliação proposta: comparar recuperação sempre, nunca e adaptativa em classes definidas por necessidade real. Medir acerto do roteamento, custo total, respostas sem suporte e qualidade final; calibrar pelo custo de cada tipo de erro.",
+  "comparisons": [
+    {
+      "entry_id": "T009",
+      "relation": "specializes",
+      "reason": "A adaptação escolhe quando e como aplicar etapas de RAG."
+    },
+    {
+      "entry_id": "T067",
+      "relation": "complements",
+      "reason": "Recuperação ativa pode reavaliar a necessidade de memória depois da decisão inicial."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Adaptive-RAG utiliza um classificador de complexidade para selecionar entre rotas sem recuperação, recuperação única e iterativa.",
+    "source_ids": [
+      "A-S017"
+    ],
+    "support": "direct",
+    "caveat": "A exigência de atualidade e o fallback de domínio são extensões editoriais ao critério descrito."
+  },
+  "advanced_qa": [
+    {
+      "question": "Self-RAG é a mesma implementação?",
+      "answer": "Não. Self-RAG treina um modelo com tokens de reflexão para controlar recuperação e crítica. O roteador de Adaptive-RAG constitui outro desenho."
+    },
+    {
+      "question": "Devo continuar buscando até obter alguma resposta?",
+      "answer": "Não. Defina suficiência e orçamento; ausência persistente de evidência precisa levar a lacuna explícita, não a uma conclusão forçada."
+    }
+  ],
+  "source_ids": [
+    "A-S017",
+    "V3A-S009"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

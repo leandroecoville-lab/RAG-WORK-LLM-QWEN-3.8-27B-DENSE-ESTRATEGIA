@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "C-S026",
+    "title": "Making retries safe with idempotent APIs",
+    "url": "https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/",
+    "publisher": "Amazon Web Services",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Identificador de intenção do cliente permite repetir uma solicitação sem repetir seu efeito lógico.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn34view2"
+  },
+  {
+    "source_id": "V3C-S025",
+    "title": "Stripe API — Idempotent requests",
+    "url": "https://docs.stripe.com/api/idempotent_requests",
+    "publisher": "Stripe",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "API v1 guarda resposta após início de execução, compara parâmetros e possui retenção finita; API v2 tem semântica distinta explicitada.",
+    "limitations": "Exemplo concreto de contrato; não generalizar política de retenção ou tratamento de erros a toda API.",
+    "web_ref": "turn117view0"
+  },
+  {
+    "source_id": "V3C-S037",
+    "title": "Git — git-update-ref",
+    "url": "https://git-scm.com/docs/git-update-ref",
+    "publisher": "Git project",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Atualização condicional de ref compara old-oid; transações bloqueiam e validam refs antes de aplicar mudanças.",
+    "limitations": "Atomicidade de cada ref não significa snapshot simultâneo garantido a todo leitor concorrente de várias refs.",
+    "web_ref": "turn156view4"
+  },
+  {
+    "source_id": "V3C-S018",
+    "title": "Temporal Workflow Definition — determinism and code evolution",
+    "url": "https://docs.temporal.io/workflow-definition",
+    "publisher": "Temporal",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Replay exige compatibilidade da sequência de comandos com o histórico; evolução do código exige estratégia de versionamento.",
+    "limitations": "Determinação de comandos não significa igualdade de cada instrução ou captura de memória arbitrária do processo.",
+    "web_ref": "turn103view0"
+  }
+]

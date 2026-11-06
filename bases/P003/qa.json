@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Contexto virtual significa memória ilimitada disponível ao modelo?",
+    "answer": "Não. O acervo externo pode ser maior, mas cada chamada continua limitada e cada carregamento tem custo."
+  },
+  {
+    "question": "Quando um bloco modificado pode sair da janela?",
+    "answer": "Quando houver confirmação de sua persistência ou outra cópia durável identificada; remoção antecipada perderia o único estado atualizado."
+  },
+  {
+    "question": "Uma referência ocupa o lugar do documento sem custo?",
+    "answer": "Ela reduz tokens residentes, mas exige armazenamento acessível, resolução e nova leitura quando necessário."
+  },
+  {
+    "question": "Qual erro é específico deste componente?",
+    "answer": "Resolver a referência para versão errada ou descartar evidência ainda necessária a uma operação ativa."
+  }
+]

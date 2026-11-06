@@ -1,0 +1,30 @@
+{
+  "id": "T055",
+  "name": "Procedural Memory",
+  "canonical_name": "Procedural Memory",
+  "canonical_id": "T055",
+  "aliases": [
+    "memória procedural",
+    "memória de procedimentos"
+  ],
+  "category": "memoria",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T049",
+    "T071",
+    "T204"
+  ],
+  "source_ids": [
+    "A-S023",
+    "A-S026",
+    "V3A-S018",
+    "V2A-S016"
+  ],
+  "namespace": "T055",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T055",
+  "chunk_count": 9
+}

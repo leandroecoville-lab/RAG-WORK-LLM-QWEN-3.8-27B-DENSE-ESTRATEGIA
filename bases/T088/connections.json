@@ -1,0 +1,44 @@
+{
+  "entry_id": "T088",
+  "edges": [
+    {
+      "edge_id": "E-T088-01",
+      "from": "T088",
+      "to": "T094",
+      "relation": "complements",
+      "how": "Dividir prefills extensos para reduzir interrupções do decode de sequências admitidas.",
+      "interface": "Orçamento de tokens novos e estados de prefill parcial.",
+      "condition": "Scheduler intercala fases mantendo causalidade.",
+      "acceptance": "Medir TTFT e maior intervalo de streaming por classe.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S008",
+        "V3B-S004",
+        "V4B-S008",
+        "V4B-S010",
+        "V4B-S014"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T088-02",
+      "from": "T088",
+      "to": "T082",
+      "relation": "complements",
+      "how": "Reutilizar prefixos comuns no fan-out antes de preencher novas posições do lote.",
+      "interface": "Blocos compartilhados e tokens novos por pedido.",
+      "condition": "Estados possuem a mesma identidade de execução.",
+      "acceptance": "Comparar memória compartilhada e capacidade dentro do SLO.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4B-S010"
+      ],
+      "case_ids": [
+        "V4B-C001"
+      ],
+      "evidence_stage": "production_documented"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

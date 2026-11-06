@@ -1,0 +1,29 @@
+{
+  "id": "T039",
+  "name": "Importance-Aware Window",
+  "canonical_name": "Importance-Aware Window",
+  "canonical_id": "T039",
+  "aliases": [
+    "janela orientada à importância"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T018",
+    "T040",
+    "T048"
+  ],
+  "source_ids": [
+    "A-S006",
+    "A-S023",
+    "A-S008",
+    "V4A-S002"
+  ],
+  "namespace": "T039",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T039",
+  "chunk_count": 9
+}

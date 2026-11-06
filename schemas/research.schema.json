@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lai:rag:depth:v3",
+  "title": "LAI RAG aprofundamento v3",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[TRP][0-9]{3}$"
+    },
+    "technical_details": {
+      "type": "string",
+      "minLength": 1
+    },
+    "boundary_condition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "implementation_contract": {
+      "type": "object",
+      "properties": {
+        "inputs": {
+          "type": "string",
+          "minLength": 1
+        },
+        "outputs": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "invariant": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "inputs",
+        "outputs",
+        "state",
+        "invariant"
+      ],
+      "additionalProperties": false
+    },
+    "tradeoffs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 2
+    },
+    "failure_test": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evaluation_plan": {
+      "type": "string",
+      "minLength": 1
+    },
+    "comparisons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "entry_id": {
+            "type": "string",
+            "pattern": "^[TRP][0-9]{3}$"
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "complements",
+              "alternative",
+              "specializes",
+              "distinct_from",
+              "requires"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "entry_id",
+          "relation",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 3
+    },
+    "evidence_claim": {
+      "type": "object",
+      "properties": {
+        "claim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "support": {
+          "type": "string",
+          "enum": [
+            "direct",
+            "related"
+          ]
+        },
+        "caveat": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "claim",
+        "source_ids",
+        "support",
+        "caveat"
+      ],
+      "additionalProperties": false
+    },
+    "advanced_qa": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "string",
+            "minLength": 1
+          },
+          "answer": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "question",
+          "answer"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "research_note": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "id",
+    "technical_details",
+    "boundary_condition",
+    "implementation_contract",
+    "tradeoffs",
+    "failure_test",
+    "evaluation_plan",
+    "comparisons",
+    "evidence_claim",
+    "advanced_qa",
+    "source_ids",
+    "research_note"
+  ],
+  "additionalProperties": false
+}

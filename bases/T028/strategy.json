@@ -1,0 +1,112 @@
+{
+  "id": "T028",
+  "novelty": "A v3 mostrou teto de candidatos e truncamento. Aqui reranking ganha comparação em pares difíceis e decisão de parada por utilidade marginal.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Separe relevância temática de capacidade de sustentar resposta. Um texto sobre o assunto pode não conter a condição pedida; rótulos de treino e validação precisam refletir suporte.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V3A-S025"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Use segunda rodada apenas quando os melhores candidatos forem redundantes ou contraditórios. O orçamento deve priorizar diversidade de evidência, preservando versões e documentos de autoridade necessária.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V3A-S025"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare cross-encoder, julgamento pequeno por pares e ranking original. Meça posição da primeira evidência suficiente, diversidade útil e latência por tamanho de lista; incluir documentos longos que excedem entrada do reranker. Unidade de avaliação: lista de candidatos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V3A-S025"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Pergunta com exceção",
+      "scenario": "Resultados populares omitem condição rara.",
+      "strategy": "Rerankear pelo requisito completo e manter candidato que contém a exceção mesmo com menor similaridade global.",
+      "small_model_role": "3–7B julga suporte binário em trechos.",
+      "acceptance": "Exceção deve chegar ao leitor em consultas que a exigem.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V3A-S025"
+      ]
+    },
+    {
+      "name": "Contradições de versão",
+      "scenario": "Dois documentos parecem igualmente relevantes.",
+      "strategy": "Aplicar elegibilidade temporal antes de relevância; sinalizar conflito quando ambos forem válidos em escopos diferentes.",
+      "small_model_role": "8–14B explica distinção de escopo.",
+      "acceptance": "Não promover documento obsoleto por linguagem mais parecida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V3A-S025"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Classificador de suporte em pares curtos, preferencialmente especializado.",
+    "8_14b": "Reranker de listas pequenas com justificativa vinculada a trecho.",
+    "15_30b": "Revisor de candidatos conflitantes, usado somente em listas difíceis.",
+    "training_or_runtime_requirements": "Candidatos com evidência rotulada e tamanho real de entrada; considerar modelos menores que 3B quando suficientes.",
+    "do_not_use_when": "A evidência correta está fora do conjunto inicial ou o custo de julgamento supera benefício."
+  },
+  "connections": [
+    {
+      "target_id": "T027",
+      "relation": "requires",
+      "how": "Receber candidatos diversos antes de reordenar.",
+      "interface": "União de resultados e proveniência de cada canal.",
+      "condition": "Filtros aplicados de maneira consistente.",
+      "acceptance": "Testar recuperação da evidência antes de atribuir erro ao reranker.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V3A-S025"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T037",
+      "relation": "feeds",
+      "how": "Comprimir depois de selecionar suporte.",
+      "interface": "Trechos selecionados e requisitos da pergunta.",
+      "condition": "Compressão preservar evidência que justificou posição.",
+      "acceptance": "Comparar decisão com trecho integral e comprimido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V3A-S025"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não interpretar score de ranking como verdade.",
+    "Não avaliar somente documentos que o próprio reranker selecionou."
+  ],
+  "frontier_comparison": "Comparar suporte entregue ao leitor e custo por pergunta; qualidade de ranking não equivale à qualidade de raciocínio geral.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q003",
+      "V4A-Q016"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S009",
+    "V3A-S025"
+  ]
+}

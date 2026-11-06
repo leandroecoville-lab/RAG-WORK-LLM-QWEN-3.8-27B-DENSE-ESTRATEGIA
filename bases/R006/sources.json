@@ -1,0 +1,28 @@
+[
+  {
+    "source_id": "A-S011",
+    "title": "PRISM: Prompt Representation Internalization via Selective Compression into LoRA Weights",
+    "url": "https://aclanthology.org/2026.emnlp-main.2431/",
+    "publisher": "ACL Anthology / autores",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Diagnóstico de componentes do prompt e autodestilação seletiva em adaptadores LoRA.",
+    "limitations": "Identificação pelo título completo; há projetos homônimos. Resultados publicados não foram reproduzidos nesta entrega.",
+    "web_ref": "turn1view0"
+  },
+  {
+    "source_id": "V4A-S020",
+    "title": "IBM Granite 3.3: Speech recognition, refined reasoning, and RAG LoRAs",
+    "url": "https://www.ibm.com/new/announcements/ibm-granite-3-3-speech-recognition-refined-reasoning-rag-loras",
+    "publisher": "IBM",
+    "source_type": "product_and_research_announcement",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Modelo 8B disponível e adaptadores experimentais por subtarefa RAG; separar disponibilidade e experimento.",
+    "limitations": "Escopo limitado ao material aberto. Disponibilidade, resultados experimentais e implantação histórica são classes distintas; não demonstra desempenho de modelos 3–30B no ambiente do usuário.",
+    "web_ref": "turn246view9"
+  }
+]

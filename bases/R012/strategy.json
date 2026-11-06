@@ -1,0 +1,119 @@
+{
+  "id": "R012",
+  "novelty": "A v3 descreveu a receita professor com prompt e aluno sem prompt. A nova camada define critérios para escolher a receita, acompanhar disponibilidade dos modelos e comparar transferência on-policy e dados estáticos.",
+  "deep_layers": [
+    {
+      "name": "Receita como ponto de partida",
+      "detail": "O exemplo do cookbook demonstra uma tarefa, não uma configuração universal. Antes de adaptar, declare quais instruções são estáveis e quais entradas continuam variáveis. Preserve um prompt mínimo quando necessário para selecionar comportamento; retirar tudo pode tornar casos diferentes indistinguíveis para o aluno.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S008",
+        "V4B-S012",
+        "V4B-S013"
+      ]
+    },
+    {
+      "name": "Disponibilidade temporal",
+      "detail": "Modelos e exemplos do serviço mudam. A documentação atual de distillation usa opções diferentes de exemplos históricos que foram retirados. Registre identificadores disponíveis no momento do experimento e não prometa treinamento de um checkpoint local arbitrário só porque o nome da família aparece numa receita.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S008",
+        "V4B-S012",
+        "V4B-S013"
+      ]
+    },
+    {
+      "name": "Sinal na distribuição do aluno",
+      "detail": "As receitas e o estudo de on-policy distillation motivam avaliar o professor nos estados gerados pelo aluno. Compare com dados estáticos do professor e rótulos corretos quando disponíveis. Isso muda custo e cobertura; um sinal de imitação continua sujeito a erros do professor e limitações de capacidade do estudante.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S008",
+        "V4B-S012",
+        "V4B-S013"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Destilar classificação de domínio",
+      "scenario": "Um prompt extenso define categorias estáveis.",
+      "strategy": "Gere consultas representativas, obtenha respostas verificadas e ajuste o aluno com entradas reduzidas. Teste fronteiras entre classes e exemplos fora do padrão.",
+      "small_model_role": "Um 3–7B ou outro porte efetivamente suportado pode executar classificação estreita.",
+      "acceptance": "Acurácia por classe e custo completo após retirar instruções, em dados inéditos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S008",
+        "V4B-S012",
+        "V4B-S013"
+      ]
+    },
+    {
+      "name": "Melhorar trajetórias do aluno",
+      "scenario": "O aluno falha em estados que o professor raramente visita.",
+      "strategy": "Colete estados em ambiente controlado e obtenha supervisão apropriada. Compare políticas sem contaminar avaliação e mantenha filtros de qualidade.",
+      "small_model_role": "Um 8–14B pode ser estudado se disponível e adequado; faixa não implica suporte atual de todo modelo.",
+      "acceptance": "Sucesso de tarefa e estabilidade após a transferência, além da loss de treino.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S008",
+        "V4B-S012",
+        "V4B-S013"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Priorize comportamento delimitado e verificador confiável; suporte do serviço é requisito separado.",
+    "8_14b": "Receitas atuais precisam ser lidas com identificadores e APIs da versão utilizada.",
+    "15_30b": "Compare custo de destilar 15–30B com adaptar diretamente um checkpoint disponível, sem presumir oferta do serviço.",
+    "training_or_runtime_requirements": "É referência de treinamento; requer dados, estudante suportado e avaliação. Não é cache nem memória externa.",
+    "do_not_use_when": "Não afirmar que recipe reproduzida em documentação foi executada neste pacote ou que transfere toda capacidade do professor."
+  },
+  "connections": [
+    {
+      "target_id": "T180",
+      "relation": "feeds",
+      "how": "A receita concretiza transferência de instruções estáveis para comportamento do aluno.",
+      "interface": "Prompt professor, consultas e respostas revisadas.",
+      "condition": "Parâmetros variáveis preservados na entrada.",
+      "acceptance": "Testar com e sem instrução original em famílias novas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S008",
+        "V4B-S012",
+        "V4B-S013"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T178",
+      "relation": "complements",
+      "how": "On-policy e off-policy são escolhas de distribuição do sinal de destilação.",
+      "interface": "Trajetórias, logits ou textos disponíveis.",
+      "condition": "Objetivo e acesso ao professor explícitos.",
+      "acceptance": "Comparar cobertura e qualidade sob orçamento total.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S008",
+        "V4B-S012",
+        "V4B-S013"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Versionar professor, estudante, receita e dados; não copiar nomes de exemplos retirados.",
+    "Manter casos reservados fora da geração e seleção de exemplos."
+  ],
+  "frontier_comparison": "Compare a rotina aprendida com professor e fronteira na mesma tarefa. Tinker oferece meios para experimentar transferência; a receita não estabelece paridade geral nem economia garantida.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q009"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3D-S008",
+    "V4B-S012",
+    "V4B-S013"
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "id": "T007",
+  "novelty": "A v3 discutiu identidade canônica da requisição. Aqui o cache ganha admissão por valor econômico e separação entre resultado calculado e apresentação.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Cacheie artefatos determinísticos antes da resposta linguística: extração validada, conjunto de candidatos ou tabela calculada. Isso mantém reutilização quando muda apenas o estilo solicitado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S006",
+        "V4A-S010"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Use política de admissão que considere custo evitado e frequência prevista. Respostas enormes consultadas uma vez podem expulsar pequenos resultados caros e recorrentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S006",
+        "V4A-S010"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare cache de resposta, cache intermediário e execução integral. Inclua tempo de serialização, transferência e verificação de dependências. Unidade de avaliação: requisição versionada. Teste duas apresentações do mesmo resultado calculado e uma terceira com configuração de cálculo diferente. As primeiras podem reutilizar o artefato intermediário, enquanto a terceira deve provocar recomputação. Medir esse padrão separa economia legítima de uma chave insuficiente. Avalie também quando transferir o artefato custa mais do que refazer uma computação pequena.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S006",
+        "V4A-S010"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Reformatação recorrente",
+      "scenario": "O mesmo relatório precisa formatos diferentes.",
+      "strategy": "Reusar tabela validada e gerar apresentação por pedido; invalidar se qualquer fonte mudar.",
+      "small_model_role": "3–7B formata sem recalcular fatos.",
+      "acceptance": "Valores devem coincidir com artefato canônico.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S006",
+        "V4A-S010"
+      ]
+    },
+    {
+      "name": "Validação repetida",
+      "scenario": "Vários agentes verificam o mesmo arquivo.",
+      "strategy": "Reusar laudo por hash do conteúdo, versão do validador e configuração. Resultado parcial não entra no cache.",
+      "small_model_role": "Modelo pequeno interpreta laudo; código verifica identidade.",
+      "acceptance": "Arquivo alterado precisa provocar miss.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S006",
+        "V4A-S010"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Formatador sobre resultado exato previamente validado.",
+    "8_14b": "Explicador de laudos e diagnósticos cacheados por revisão.",
+    "15_30b": "Sintetizador de múltiplos artefatos sem reutilizar conclusão incompatível.",
+    "training_or_runtime_requirements": "Armazenamento por chave e estatísticas de custo; separar conteúdo, configuração e versão do produtor.",
+    "do_not_use_when": "Resultado depende de estado externo não representado na chave."
+  },
+  "connections": [
+    {
+      "target_id": "T061",
+      "relation": "complements",
+      "how": "Endereçar artefatos reutilizáveis pelo conteúdo.",
+      "interface": "Digest, codec e versão do formato.",
+      "condition": "Bytes e interpretação forem estáveis.",
+      "acceptance": "Alterar configuração e verificar nova identidade lógica.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S006",
+        "V4A-S010"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T150",
+      "relation": "complements",
+      "how": "Unificar computações simultâneas da mesma chave.",
+      "interface": "Chave completa e promessa de resultado.",
+      "condition": "Cancelamento de cliente não apagar trabalho compartilhado.",
+      "acceptance": "Executar pedidos concorrentes e contar computações reais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S006",
+        "V4A-S010"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não armazenar falha transitória como resultado definitivo.",
+    "Conservar fonte e idade do artefato cacheado."
+  ],
+  "frontier_comparison": "Comparar trabalho evitado com corretude idêntica; cache não deve ser creditado como capacidade cognitiva.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q004",
+      "V4A-Q011"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S006",
+    "V4A-S010"
+  ]
+}

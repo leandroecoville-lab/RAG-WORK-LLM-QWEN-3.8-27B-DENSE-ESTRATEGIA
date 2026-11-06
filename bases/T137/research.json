@@ -1,0 +1,52 @@
+{
+  "id": "T137",
+  "technical_details": "Limitar unidades heterogêneas exige decidir quando o custo é conhecido. Em geração, tokens de saída são observados ao final; uma proposta é reservar capacidade antes do envio e reconciliar consumo posteriormente. Uma reserva conservadora reduz excesso e pode deixar capacidade ociosa. Em múltiplas réplicas, limitadores locais com orçamento completo multiplicam a admissão global; particionamento de quotas e coordenação têm propriedades diferentes.",
+  "boundary_condition": "Uma taxa aceitável não protege memória quando a duração das chamadas cresce; também é necessário observar trabalho simultâneo e tamanho das filas.",
+  "implementation_contract": {
+    "inputs": "Identidade da quota, custo estimado, unidade contábil e prazo da requisição.",
+    "outputs": "Admissão, espera ou rejeição, com reserva e motivo identificáveis.",
+    "state": "Saldo, reposição, reservas em aberto e consumo confirmado.",
+    "invariant": "A mesma capacidade não é reservada duas vezes por réplicas concorrentes."
+  },
+  "tradeoffs": [
+    "Coordenação global aproxima a quota total, acrescentando comunicação e um ponto operacional adicional.",
+    "Reservas pelo teto de saída reduzem ultrapassagem e diminuem utilização quando respostas são curtas."
+  ],
+  "failure_test": "Teste proposto: liberar requisições simultâneas em várias réplicas e atrasar a conclusão de algumas; verificar orçamento global, devolução de reservas e limite de concorrência.",
+  "evaluation_plan": "Comparar quotas locais, partilhadas e coordenadas sob carga estável e rajadas. Controlar distribuição de tamanhos e duração. Medir excesso admitido, utilização, espera e justiça por cliente. Escolher conforme tolerância contratual a rajadas e consistência.",
+  "comparisons": [
+    {
+      "entry_id": "T167",
+      "relation": "complements",
+      "reason": "Token bucket fornece um mecanismo de saldo; a política decide unidade, escopo e reserva."
+    },
+    {
+      "entry_id": "T175",
+      "relation": "complements",
+      "reason": "Uma rejeição pode acionar alternativa somente dentro das quotas elegíveis."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação de retries da AWS distingue a quota de repetições da admissão da primeira chamada.",
+    "source_ids": [
+      "V3C-S010"
+    ],
+    "support": "direct",
+    "caveat": "Esse bucket específico não implementa automaticamente o orçamento total de tokens de uma aplicação."
+  },
+  "advanced_qa": [
+    {
+      "question": "Tokens faturados podem ser usados diretamente como sinal de admissão?",
+      "answer": "São úteis para reconciliação, mas chegam tarde para impedir o consumo já iniciado; é necessária estimativa ou reserva prévia."
+    },
+    {
+      "question": "Dividir uma quota por réplicas é sempre eficiente?",
+      "answer": "Não. Uma réplica ociosa pode reter saldo enquanto outra rejeita trabalho; redistribuição introduz outro compromisso de coordenação."
+    }
+  ],
+  "source_ids": [
+    "V3C-S010",
+    "V3C-S009"
+  ],
+  "research_note": "Contratos, testes e critérios são propostas editoriais; as fontes sustentam os mecanismos indicados."
+}

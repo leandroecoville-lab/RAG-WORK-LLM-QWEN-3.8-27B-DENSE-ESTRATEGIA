@@ -1,0 +1,42 @@
+{
+  "entry_id": "T201",
+  "edges": [
+    {
+      "edge_id": "E-T201-01",
+      "from": "T201",
+      "to": "T189",
+      "relation": "complements",
+      "how": "Best-of-N investe orçamento em alternativas selecionadas por verificação.",
+      "interface": "Candidatos e custos marginais.",
+      "condition": "Verificador distingue qualidade real.",
+      "acceptance": "Comparar largura com profundidade em orçamento equivalente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S020",
+        "V4B-S022",
+        "V4B-S023"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T201-02",
+      "from": "T201",
+      "to": "T202",
+      "relation": "complements",
+      "how": "Planejamento por incerteza decide quando observar em vez de gerar.",
+      "interface": "Lacunas e ações de aquisição de informação.",
+      "condition": "Observações são acessíveis e relevantes.",
+      "acceptance": "Medir redução de erro por ação adicional.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S020",
+        "V4B-S022",
+        "V4B-S023"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

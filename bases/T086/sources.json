@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "B-S007",
+    "title": "Quantized KV Cache",
+    "url": "https://docs.vllm.ai/en/latest/features/quantization/quantized_kvcache/",
+    "publisher": "vLLM",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "KV em baixa precisão e calibração de escalas; suporte condicionado ao backend.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn10view3"
+  },
+  {
+    "source_id": "V3B-S002",
+    "title": "KIVI: A Tuning-Free Asymmetric 2bit Quantization for KV Cache",
+    "url": "https://arxiv.org/abs/2402.02750",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2024-02-05",
+    "supports": "Quantização assimétrica de chaves por canal e valores por token.",
+    "limitations": "Resumo e metadados consultados; resultados dependem dos modelos e configurações estudados.",
+    "web_ref": "turn100view0"
+  },
+  {
+    "source_id": "V4D-S002",
+    "title": "Apple’s On-Device and Server Foundation Models: 2025 Updates",
+    "url": "https://machinelearning.apple.com/research/apple-foundation-models-2025-updates",
+    "publisher": "Apple",
+    "source_type": "first_party_research",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-06-09",
+    "supports": "Modelo local de cerca de 3B, QAT de pesos a 2 bits, KV a 8 bits e runtime que combina geração guiada e decodificação especulativa; adaptadores e ferramentas.",
+    "limitations": "A arquitetura com compartilhamento de KV depende do modelo treinado. Recursos do modelo servidor, como PT-MoE e combinação de atenção local/global, não são automaticamente recursos do modelo local.",
+    "web_ref": "turn206view1"
+  },
+  {
+    "source_id": "V4D-S006",
+    "title": "Apple’s Foundation Models framework unlocks new app experiences",
+    "url": "https://www.apple.com/newsroom/2025/09/apples-foundation-models-framework-unlocks-new-intelligent-app-experiences/",
+    "publisher": "Apple",
+    "source_type": "product_release",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-09-29",
+    "supports": "Framework disponível com OS 26; exemplos de aplicativos já usando o modelo local, inclusive SmartGym e Stoic.",
+    "limitations": "Aplicativos citados são operadores distintos, não dez implantações próprias da Apple. Descrição do fornecedor sem benchmark independente do usuário.",
+    "web_ref": "turn231view0"
+  },
+  {
+    "source_id": "V4D-S011",
+    "title": "New Apple Intelligence features are available today",
+    "url": "https://www.apple.com/newsroom/2025/09/new-apple-intelligence-features-are-available-today/",
+    "publisher": "Apple",
+    "source_type": "product_release",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-09-15",
+    "supports": "Disponibilidade em OS 26, ações de Shortcuts e aplicativos que já utilizam Foundation Models.",
+    "limitations": "Não atribui todos os recursos multimodais ao mesmo modelo textual de 3B. Private Cloud Compute e integrações externas possuem limites distintos.",
+    "web_ref": "turn263view1"
+  }
+]

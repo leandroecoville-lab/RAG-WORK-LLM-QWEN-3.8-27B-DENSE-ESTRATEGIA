@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "B-S015",
+    "title": "Longformer: The Long-Document Transformer",
+    "url": "https://arxiv.org/abs/2004.05150",
+    "publisher": "Beltagy, Peters e Cohan / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2020-04-10",
+    "supports": "Combinação de atenção local e posições globais selecionadas.",
+    "limitations": "Resumo e metadados acessados; artigo integral não auditado e resultados não reproduzidos.",
+    "web_ref": "turn18view0"
+  },
+  {
+    "source_id": "B-S003",
+    "title": "Cache strategies",
+    "url": "https://huggingface.co/docs/transformers/main/en/kv_cache",
+    "publisher": "Hugging Face",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Reuso de estados KV; caches dinâmico, estático e quantizado; controle de past_key_values.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn25view0"
+  },
+  {
+    "source_id": "V3B-S007",
+    "title": "Mistral 7B — full text",
+    "url": "https://arxiv.org/html/2310.06825v1",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-10-10",
+    "supports": "Campo receptivo em camadas, cache circular e chunking com janela.",
+    "limitations": "Refere-se à arquitetura publicada; não prova qualidade para contexto arbitrário nem compatibilidade com checkpoint do usuário.",
+    "web_ref": "turn120view1"
+  },
+  {
+    "source_id": "V4B-S017",
+    "title": "FlexAttention Part II: FlexAttention for Inference",
+    "url": "https://pytorch.org/blog/flexattention-for-inference/",
+    "publisher": "PyTorch",
+    "source_type": "technical_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-04-30",
+    "supports": "Backend de decode, suporte a GQA e PagedAttention e diferenças entre formas de prefill/decode.",
+    "limitations": "Implementação e experimentos não constituem prova de adoção em produto; atenção customizada depende de máscara correta.",
+    "web_ref": "turn227view0"
+  },
+  {
+    "source_id": "V4D-S002",
+    "title": "Apple’s On-Device and Server Foundation Models: 2025 Updates",
+    "url": "https://machinelearning.apple.com/research/apple-foundation-models-2025-updates",
+    "publisher": "Apple",
+    "source_type": "first_party_research",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-06-09",
+    "supports": "Modelo local de cerca de 3B, QAT de pesos a 2 bits, KV a 8 bits e runtime que combina geração guiada e decodificação especulativa; adaptadores e ferramentas.",
+    "limitations": "A arquitetura com compartilhamento de KV depende do modelo treinado. Recursos do modelo servidor, como PT-MoE e combinação de atenção local/global, não são automaticamente recursos do modelo local.",
+    "web_ref": "turn206view1"
+  }
+]

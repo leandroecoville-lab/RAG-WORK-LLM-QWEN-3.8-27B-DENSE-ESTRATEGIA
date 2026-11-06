@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Selective Context e qualquer poda seletiva são sinônimos exatos?",
+    "answer": "Não. Um é uma proposta específica; o outro é um rótulo geral para várias políticas."
+  },
+  {
+    "question": "Um seletor pode ser usado sem treinamento?",
+    "answer": "Sim. Há regras e escores que não exigem treinar o gerador, mas ainda precisam de avaliação."
+  },
+  {
+    "question": "Somar surpresa favorece unidades longas?",
+    "answer": "Pode favorecer: a soma cresce com o número de tokens. A comparação precisa declarar agregação, tamanho e limiar utilizados."
+  },
+  {
+    "question": "LLMLingua-2 aplica exatamente o mesmo critério?",
+    "answer": "Não. Formula retenção como classificação de tokens com aprendizado supervisionado e informação bidirecional; não é apenas outro limiar sobre surpresa."
+  }
+]

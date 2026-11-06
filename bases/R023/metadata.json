@@ -1,0 +1,37 @@
+{
+  "id": "R023",
+  "name": "Hugging Face Transformers",
+  "canonical_name": "Hugging Face Transformers — biblioteca de modelos",
+  "canonical_id": "R023",
+  "aliases": [
+    "Transformers library",
+    "transformers Python"
+  ],
+  "category": "referencias",
+  "kind": "project",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "R022",
+    "R009",
+    "R024",
+    "T081",
+    "T085",
+    "T089",
+    "T177"
+  ],
+  "source_ids": [
+    "V2B-S018",
+    "V2B-S019",
+    "B-S009",
+    "V3D-S010",
+    "V3D-S011",
+    "V4B-S014",
+    "V4B-S006"
+  ],
+  "namespace": "R023",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R023",
+  "chunk_count": 9
+}

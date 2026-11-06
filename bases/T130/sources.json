@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "B-S041",
+    "title": "N-Gram Speculative Decoding in TensorRT LLM",
+    "url": "https://nvidia.github.io/TensorRT-LLM/blogs/tech_blog/blog07_NGram_performance_Analysis_And_Auto_Enablement.html",
+    "publisher": "NVIDIA",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Propostas a partir de n-gramas, pools privados ou compartilhados e verificação pelo modelo alvo.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn27view8"
+  },
+  {
+    "source_id": "V4B-S001",
+    "title": "Accelerating LLM inference with speculative decoding: Lessons from LinkedIn's Hiring Assistant",
+    "url": "https://www.linkedin.com/blog/engineering/ai/accelerating-llm-inference-with-speculative-decoding-lessons-from-linkedins-hiring-assistant",
+    "publisher": "LinkedIn Engineering",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-11-06",
+    "supports": "Uso de especulação por n-gramas em vLLM no Hiring Assistant; workload estruturado com sobreposição lexical.",
+    "limitations": "Relato do operador para carga própria; igualdade de distribuição não deve ser confundida com texto idêntico sob amostragem. Ganhos não transferidos.",
+    "web_ref": "turn202view0"
+  },
+  {
+    "source_id": "V4B-S029",
+    "title": "Per-Request Acceptance Metrics — vLLM",
+    "url": "https://docs.vllm.ai/en/latest/features/speculative_decoding/acceptance_metrics/",
+    "publisher": "vLLM",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Métricas de aceitação por requisição, histograma de comprimentos e distinção do token bônus; interface experimental.",
+    "limitations": "Medições de aceitação não garantem ganho; coleta, streaming e múltiplas sequências têm condições específicas.",
+    "web_ref": "turn278view1"
+  },
+  {
+    "source_id": "V4B-S010",
+    "title": "How we leveraged vLLM to power our GenAI applications at LinkedIn",
+    "url": "https://www.linkedin.com/blog/engineering/ai/how-we-leveraged-vllm-to-power-our-genai-applications",
+    "publisher": "LinkedIn Engineering",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-08-26",
+    "supports": "Adoção interna de vLLM para workloads online e offline; evolução do scheduler e interface de serving.",
+    "limitations": "Versões históricas do relato não são recomendação atual; casos citados não equivalem a implantações independentes de cada recurso.",
+    "web_ref": "turn219view1"
+  }
+]

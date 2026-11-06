@@ -1,0 +1,47 @@
+{
+  "id": "T135",
+  "technical_details": "Para uma cascata de dois modelos, um modelo simplificado de custo é E[C]=c₁+cᵥ+pₑ·c₂, onde c₁ e c₂ são custos médios das chamadas, cᵥ o custo de avaliação e pₑ a probabilidade de escalonamento. A fórmula exige explicitar se o segundo modelo recebe a primeira resposta, pois isso muda custo e pode propagar seu erro. A latência de quem escala inclui a etapa anterior, mesmo quando a média global diminui.",
+  "boundary_condition": "Se a primeira etapa aceita erros difíceis de detectar ou quase todas as tarefas escalam, a economia prevista pode desaparecer.",
+  "implementation_contract": {
+    "inputs": "Pergunta, candidatos de modelos, contrato de aceitação e orçamento total.",
+    "outputs": "Resposta aceita ou escalonamento, trilha de custos e resultados dos verificadores.",
+    "state": "Ordem da cascata, limiares e histórico de tentativas.",
+    "invariant": "Cada nova etapa consome o orçamento remanescente e preserva a identidade da tarefa."
+  },
+  "tradeoffs": [
+    "Um avaliador forte detecta mais erros, mas pode custar tanto quanto executar diretamente o modelo seguinte.",
+    "Reutilizar a tentativa anterior economiza trabalho e pode ancorar o próximo modelo em uma conclusão errada."
+  ],
+  "failure_test": "Teste proposto: fornecer respostas curtas e convincentes, porém incorretas, ao critério de aceitação; observar se erros atravessam a cascata sem escalonamento.",
+  "evaluation_plan": "Comparar execução direta, roteamento inicial e cascata com o mesmo conjunto. Medir falsa aceitação, custo completo e latência dos casos escalados. Separar custo do avaliador e dos modelos; decidir por qualidade exigida e distribuição real de escalonamento.",
+  "comparisons": [
+    {
+      "entry_id": "T133",
+      "relation": "alternative",
+      "reason": "Um roteador pode evitar pagar pela etapa inicial nas tarefas já reconhecidas como difíceis."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "FrugalGPT trata cascatas de modelos como estratégia de controle conjunto de custo e desempenho.",
+    "source_ids": [
+      "C-S002"
+    ],
+    "support": "direct",
+    "caveat": "A expressão de custo é uma simplificação editorial; dependências e custos condicionais precisam ser medidos."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma primeira chamada barata sempre reduz a conta?",
+      "answer": "Não. Seu custo soma-se ao avaliador e às escaladas; pode acrescentar despesa a todas as tarefas difíceis."
+    },
+    {
+      "question": "Devo passar a primeira resposta ao modelo seguinte?",
+      "answer": "É uma opção experimental: comparar reaproveitamento com resolução independente para medir ancoragem e consumo."
+    }
+  ],
+  "source_ids": [
+    "C-S002",
+    "V3C-S001"
+  ],
+  "research_note": "Contratos, testes e critérios são propostas editoriais; as fontes sustentam os mecanismos indicados."
+}

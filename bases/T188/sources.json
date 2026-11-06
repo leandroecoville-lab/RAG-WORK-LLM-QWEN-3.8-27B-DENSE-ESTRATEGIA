@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "C-S042",
+    "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+    "url": "https://arxiv.org/abs/2203.11171",
+    "publisher": "Wang e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Amostra caminhos diversos e agrega respostas finais equivalentes.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn16view6"
+  },
+  {
+    "source_id": "V3B-S020",
+    "title": "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters",
+    "url": "https://arxiv.org/abs/2408.03314",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2024-08-06",
+    "supports": "Alocação adaptativa de computação e dependência da dificuldade do problema.",
+    "limitations": "Resumo e resultados conceituais consultados; ganhos publicados não foram reproduzidos nem extrapolados.",
+    "web_ref": "turn180view6"
+  },
+  {
+    "source_id": "V3B-S019",
+    "title": "Large Language Models Cannot Self-Correct Reasoning Yet",
+    "url": "https://arxiv.org/abs/2310.01798",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-10-03",
+    "supports": "Limites empíricos da autocorreção intrínseca sem feedback externo.",
+    "limitations": "Estudo de modelos e tarefas específicos; não é impossibilidade universal ou avaliação de modelos atuais do usuário.",
+    "web_ref": "turn180view5"
+  }
+]

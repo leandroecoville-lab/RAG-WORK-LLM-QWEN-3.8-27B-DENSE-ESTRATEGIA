@@ -1,0 +1,33 @@
+{
+  "id": "T106",
+  "name": "Otimização de KV com MQA/GQA",
+  "canonical_name": "Otimização do armazenamento KV em modelos MQA/GQA",
+  "canonical_id": "T106",
+  "aliases": [
+    "GQA/MQA KV Optimization",
+    "KV cache com cabeças compartilhadas",
+    "MQA/GQA KV optimization"
+  ],
+  "category": "inferencia",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T099",
+    "T100",
+    "T081",
+    "P009"
+  ],
+  "source_ids": [
+    "B-S018",
+    "B-S019",
+    "B-S017",
+    "V4B-S020",
+    "V4B-S017"
+  ],
+  "namespace": "T106",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T106",
+  "chunk_count": 9
+}

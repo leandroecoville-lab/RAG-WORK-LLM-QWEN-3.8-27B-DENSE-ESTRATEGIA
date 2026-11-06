@@ -1,0 +1,31 @@
+{
+  "id": "T083",
+  "name": "Advanced Prefix Caching",
+  "canonical_name": "Advanced Prefix Caching",
+  "canonical_id": "T082",
+  "aliases": [],
+  "category": "inferencia",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "terminology_correction",
+  "relationships": [
+    "T082",
+    "T103",
+    "T104",
+    "T105",
+    "T120"
+  ],
+  "source_ids": [
+    "B-S005",
+    "V3D-S004",
+    "V4B-S004",
+    "V4D-S017",
+    "V4D-S018",
+    "V4D-S019"
+  ],
+  "namespace": "T083",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T083",
+  "chunk_count": 9
+}

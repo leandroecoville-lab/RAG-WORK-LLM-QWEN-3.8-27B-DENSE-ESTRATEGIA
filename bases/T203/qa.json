@@ -1,0 +1,18 @@
+[
+  {
+    "question": "É melhor que roteamento por tamanho?",
+    "answer": "Pode ser, se o sinal de correção for confiável; precisa de comparação."
+  },
+  {
+    "question": "RouteLLM mede exatamente toda correção?",
+    "answer": "Não. A fonte usa sinais de preferência; a política proposta deve definir seus próprios critérios."
+  },
+  {
+    "question": "Pode chamar o maior modelo em todo caso difícil?",
+    "answer": "É uma política possível, mas dificuldade prevista e capacidade real precisam ser medidas, incluindo erros do modelo maior."
+  },
+  {
+    "question": "Por que guardar o resultado depois do roteamento?",
+    "answer": "Ele permite verificar calibração e detectar mudança de desempenho; guardar apenas a decisão impede avaliar se a escolha cumpriu o contrato."
+  }
+]

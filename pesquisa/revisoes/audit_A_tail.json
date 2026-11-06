@@ -1,0 +1,271 @@
+{
+  "audit_id": "audit_A_tail",
+  "checked_on": "2026-11-05",
+  "auditor": "/root/rag_contexto_memoria",
+  "audited_snapshot": {
+    "path": "rag_research_v4/strategy_C_tail.jsonl",
+    "sha256": "0a28f27f0d606a124cd30c9be570337cd0a6eee1ba7b67cfcb22d9302b2d2d13",
+    "records": 14,
+    "ids": [
+      "R008",
+      "R017",
+      "R018",
+      "R019",
+      "R020",
+      "R021",
+      "R027",
+      "P008",
+      "P010",
+      "P011",
+      "P012",
+      "P013",
+      "P014",
+      "P015"
+    ]
+  },
+  "comparison_inputs": [
+    {
+      "path": "LAI_RAG_243_v3/corpus/entries.jsonl",
+      "sha256": "ae94ba51f981055b5eafa3654be755eb538451414159e3e7338e614c9a52c50f"
+    },
+    {
+      "path": "LAI_RAG_243_v3/fontes/sources.jsonl",
+      "sha256": "979de5fa4de15e4a5571af78da884ed3c2f7855fccbe9ba2161efc19643d7ef0"
+    },
+    {
+      "path": "rag_research_v4/staging/sources_C.jsonl",
+      "sha256": "5cc007c7d2065f747f852a20d5ca452f71873ab672833e937f027d744a2016ab"
+    }
+  ],
+  "scope": {
+    "method": "Leitura das 14 estratégias completas; comparação com resumo, technical_details, boundary_condition, implementação, validação, contrato, teste de falha, avaliação e QAs pertinentes da v3. Conferência estrutural de IDs, referências, cardinalidades e tipos de fundamentação.",
+    "focus": [
+      "Novidade substantiva em relação à v3",
+      "Separação entre produto documentado e proposta para 3–30B",
+      "Coerência entre mecanismos, interfaces e critérios de aceite",
+      "Ausência de garantias de execução ou compatibilidade não demonstradas"
+    ],
+    "limitations": "Auditoria documental deste snapshot. Não executa modelos, ferramentas, testes ou ambiente do usuário; não refaz todas as pesquisas nem verifica exaustivamente cada alegação de cada fonte. Registros de fontes e buscas foram resolvidos por ID, o que não equivale a nova leitura integral de 42 fontes. Nenhum caso novo foi pesquisado. Os casos públicos foram tratados em auditorias separadas.",
+    "files_modified": [
+      "rag_research_v4/audit_A_tail.json"
+    ],
+    "frozen_inputs_preserved": true
+  },
+  "structural_checks": {
+    "expected_ids_match": true,
+    "duplicate_ids": 0,
+    "missing_ids": [],
+    "unknown_connection_targets": [],
+    "self_connections": [],
+    "deep_layers": 42,
+    "advanced_uses": 28,
+    "connections": 28,
+    "basis_counts": {
+      "engineering_proposal": 98,
+      "source_documented": 0
+    },
+    "distinct_source_ids": 42,
+    "unresolved_source_ids": [],
+    "nested_source_ids_missing_from_top_level": [],
+    "distinct_search_ids": 23,
+    "unresolved_search_ids": [],
+    "cardinality_violations": []
+  },
+  "findings": [
+    {
+      "finding_id": "A-TAIL-001",
+      "entry_id": "P012",
+      "severity": "medium",
+      "category": "novelty",
+      "status": "open_in_audited_snapshot",
+      "fields": [
+        "novelty",
+        "deep_layers",
+        "advanced_uses"
+      ],
+      "finding": "A novidade anunciada das três camadas é restrita: cobertura por critério, dependência entre verificadores e invalidação de prova após mudança já constituíam a ficha v3. Os usos factuais e de patch operacionalizam esses princípios, mas não acrescentam um mecanismo ou decisão suficientemente distinto para sustentar o aprofundamento novo proposto.",
+      "evidence": [
+        {
+          "path": "LAI_RAG_243_v3/corpus/entries.jsonl",
+          "entry_id": "P012",
+          "fields": [
+            "depth.technical_details",
+            "depth.implementation_contract.outputs",
+            "depth.implementation_contract.invariant",
+            "depth.failure_test",
+            "depth.evaluation_plan",
+            "implementation"
+          ],
+          "supports": "Já separava aprovado/reprovado/não verificável, reduzia premissas compartilhadas, emitia decisão por critério, vinculava aprovação a hash, invalidava-a após alteração e media falsos aceites, rejeições, custo e cobertura."
+        },
+        {
+          "path": "rag_research_v4/strategy_C_tail.jsonl",
+          "entry_id": "P012",
+          "fields": [
+            "deep_layers[0]",
+            "deep_layers[1]",
+            "deep_layers[2]"
+          ],
+          "supports": "Matriz de cobertura, juízes correlacionados e validade temporal repetem esses eixos; calibrar por classe acrescenta detalhe, sem novo contrato desenvolvido."
+        }
+      ],
+      "impact": "Não identifica falha factual ou garantia indevida; reduz o cumprimento da exigência de conteúdo novo e denso em cada base.",
+      "suggested_correction": "Substituir ao menos um eixo repetido por um protocolo novo e concreto, como seleção incremental de verificações a partir das dependências do artefato, critérios de parada sob custo e risco, ou experimento de independência de juízes com controle explícito de evidência compartilhada. Declarar a diferença em relação à v3 e incluir teste de falha e aceite específicos.",
+      "requires_case_research": false
+    },
+    {
+      "finding_id": "A-TAIL-002",
+      "entry_id": "P015",
+      "severity": "medium",
+      "category": "novelty",
+      "status": "open_in_audited_snapshot",
+      "fields": [
+        "novelty",
+        "deep_layers",
+        "advanced_uses"
+      ],
+      "finding": "As três camadas e os dois usos retomam quase integralmente contratos e testes da v3: autorização vinculada ao artefato/base, precondição na escrita, confirmação por domínio, corrida de base e timeout após efeito remoto. A redação é correta, mas a camada adicional anunciada não fica demonstrada.",
+      "evidence": [
+        {
+          "path": "LAI_RAG_243_v3/corpus/entries.jsonl",
+          "entry_id": "P015",
+          "fields": [
+            "implementation",
+            "validation",
+            "depth.implementation_contract",
+            "depth.boundary_condition",
+            "depth.failure_test",
+            "qa"
+          ],
+          "supports": "Já exigia envelope de alvo/base/alteração/intenção, precondição nativa, reconciliação antes de retry, escopo autorizado, outbox quando aplicável, fronteira separada por sistema e os testes de alteração concorrente e confirmação perdida."
+        },
+        {
+          "path": "rag_research_v4/strategy_C_tail.jsonl",
+          "entry_id": "P015",
+          "fields": [
+            "deep_layers",
+            "advanced_uses"
+          ],
+          "supports": "Reapresenta os mesmos mecanismos e cenários sem desenvolver uma ameaça, transição ou teste novo."
+        }
+      ],
+      "impact": "Não há contradição técnica detectada; o problema é a repetição substantiva diante da exigência de aprofundamento novo.",
+      "suggested_correction": "Introduzir uma fronteira adicional de integridade, por exemplo revogação ou expiração de autorização entre preparo e commit, com época de autorização validada no destino e política para operações já em curso. Outra opção é distinguir validade semântica, validade de permissão e integridade de artefato em um recibo composto. Desenvolver interface e teste próprios, sem prometer atomicidade que o destino não oferece.",
+      "requires_case_research": false
+    }
+  ],
+  "coverage": [
+    {
+      "id": "R008",
+      "novelty": "adequate_increment",
+      "note": "Revisão de intenção e descarte de retorno tardio acrescentam controle específico; evolução de grafo e reducers aprofundam temas já presentes.",
+      "transfer": "explicit_proposal",
+      "mechanism": "no_material_conflict_detected"
+    },
+    {
+      "id": "R017",
+      "novelty": "adequate_increment",
+      "note": "Árvore de tentativas, matriz de contratos por provedor e deadline residual ampliam o estudo anterior de middlewares.",
+      "transfer": "explicit_proposal",
+      "mechanism": "no_material_conflict_detected"
+    },
+    {
+      "id": "R018",
+      "novelty": "adequate_increment",
+      "note": "Crescimento do histórico e renovação/subdivisão mantendo identidade lógica trazem eixo adicional; reconciliação e replay já apareciam na v3.",
+      "transfer": "explicit_proposal",
+      "mechanism": "no_material_conflict_detected"
+    },
+    {
+      "id": "R019",
+      "novelty": "adequate_increment",
+      "note": "Roteamento por superfície de edição e taxonomia de falhas complementam formato/architect-editor já documentados.",
+      "transfer": "explicit_proposal",
+      "mechanism": "no_material_conflict_detected"
+    },
+    {
+      "id": "R020",
+      "novelty": "adequate_increment",
+      "note": "Revalidação da memória por revisão e preservação de obrigações na compactação ampliam a v3, centrada no escopo de checkpoint/rewind.",
+      "transfer": "explicit_harness_transfer_no_small_model_product_support_claim",
+      "mechanism": "no_material_conflict_detected"
+    },
+    {
+      "id": "R021",
+      "novelty": "adequate_increment",
+      "note": "Observabilidade por artefato e acesso seletivo a logs acrescentam operacionalização; parte do isolamento e término já estava na v3.",
+      "transfer": "explicit_harness_transfer_no_backend_compatibility_guarantee",
+      "mechanism": "no_material_conflict_detected"
+    },
+    {
+      "id": "R027",
+      "novelty": "adequate_increment",
+      "note": "Manifesto conjunto de código, pesos/adaptador, prompt e dados acrescenta eixo novo; vínculo árvore/teste e publicação condicional já eram cobertos.",
+      "transfer": "infrastructure_independent_of_model_size",
+      "mechanism": "no_material_conflict_detected"
+    },
+    {
+      "id": "P008",
+      "novelty": "adequate_increment",
+      "note": "Envelope causal e estados distintos de intenção/envio/confirmação aprofundam o log; replay sem API mutante é mantido.",
+      "transfer": "explicit_editorial_component_proposal",
+      "mechanism": "no_material_conflict_detected"
+    },
+    {
+      "id": "P010",
+      "novelty": "adequate_increment",
+      "note": "Censura de feedback e avaliação shadow de rotas não escolhidas ampliam o roteador; não há promessa de paridade nem de economia medida.",
+      "transfer": "explicit_editorial_component_proposal",
+      "mechanism": "no_material_conflict_detected"
+    },
+    {
+      "id": "P011",
+      "novelty": "adequate_increment",
+      "note": "Fencing exigido no destino e commit vinculado à revisão do plano acrescentam mecanismos; efeito incerto continua sujeito a reconciliação.",
+      "transfer": "explicit_editorial_component_proposal",
+      "mechanism": "no_material_conflict_detected"
+    },
+    {
+      "id": "P012",
+      "novelty": "insufficient_substantive_increment",
+      "finding_ids": [
+        "A-TAIL-001"
+      ],
+      "transfer": "explicit_editorial_component_proposal",
+      "mechanism": "no_material_conflict_detected"
+    },
+    {
+      "id": "P013",
+      "novelty": "adequate_increment",
+      "note": "Partição do circuito por domínio de falha acrescenta decisão específica; probes e amplificação de retries já eram parcialmente cobertos.",
+      "transfer": "explicit_editorial_component_proposal",
+      "mechanism": "no_material_conflict_detected"
+    },
+    {
+      "id": "P014",
+      "novelty": "adequate_increment",
+      "note": "Estagnação semântica com tokens ativos e distinção entre ciclo e trabalho lento acrescentam caso específico.",
+      "transfer": "explicit_editorial_capability_proposal",
+      "mechanism": "no_material_conflict_detected"
+    },
+    {
+      "id": "P015",
+      "novelty": "insufficient_substantive_increment",
+      "finding_ids": [
+        "A-TAIL-002"
+      ],
+      "transfer": "explicit_editorial_component_proposal",
+      "mechanism": "no_material_conflict_detected"
+    }
+  ],
+  "summary": {
+    "material_findings": 2,
+    "by_severity": {
+      "medium": 2
+    },
+    "technical_contradictions_detected": 0,
+    "unsupported_claude_codex_small_model_equivalence_claims_detected": 0,
+    "outcome": "Revisão de novidade necessária em P012 e P015. Nos demais IDs, acréscimos identificáveis e propostas explicitadas; sem achado material de contradição técnica no escopo examinado.",
+    "integration_note": "As conclusões referem-se ao hash acima. Eventuais correções realizadas na consolidação exigem comparação do delta; não se presume que alterem os arquivos congelados."
+  }
+}

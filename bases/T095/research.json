@@ -1,0 +1,46 @@
+{
+  "id": "T095",
+  "technical_details": "Uma janela por camada não limita necessariamente toda influência histórica ao mesmo tamanho. Informações podem propagar-se por camadas sucessivas, ampliando o campo receptivo teórico. Isso não equivale a recuperar fielmente qualquer detalhe antigo. Em cache circular, o slot físico pode ser posição módulo capacidade, mas a posição lógica continua absoluta; confundir as duas afeta máscaras e codificação posicional.",
+  "boundary_condition": "A remoção de estados só é válida nas camadas cuja atenção realmente deixou de consultá-los; camadas globais exigem tratamento distinto.",
+  "implementation_contract": {
+    "inputs": "Posições lógicas, largura da janela, configuração por camada e tokens novos.",
+    "outputs": "Atenção local correta e atualização dos slots que podem ser substituídos.",
+    "state": "Mapa de posições para slots, idade dos estados e políticas por camada.",
+    "invariant": "Nenhuma chave fora da janela é reutilizada como se fosse um token recente."
+  },
+  "tradeoffs": [
+    "Memória limitada reduz acesso direto a detalhes distantes.",
+    "Janelas maiores preservam mais conexões e elevam tráfego e capacidade necessária."
+  ],
+  "failure_test": "Teste proposto: gerar além de duas voltas do buffer e colocar fatos nas fronteiras. Comparar com implementação de máscara local explícita; erros de wraparound devem aparecer sem alterar o modelo de referência.",
+  "evaluation_plan": "Plano proposto: manter arquitetura e pesos fixos, variando somente a implementação do cache. Medir equivalência, memória estabilizada e latência; avaliar capacidade de dependência distante em conjunto separado, sem tratá-la como garantia arquitetural.",
+  "comparisons": [
+    {
+      "entry_id": "T109",
+      "relation": "specializes",
+      "reason": "A janela deslizante especifica como a vizinhança avança com a posição."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O Mistral publicado descreve propagação de informação entre camadas e armazenamento circular para a janela.",
+    "source_ids": [
+      "V3B-S007"
+    ],
+    "support": "direct",
+    "caveat": "O campo receptivo teórico não demonstra desempenho uniforme em qualquer comprimento."
+  },
+  "advanced_qa": [
+    {
+      "question": "O índice circular pode substituir a posição absoluta?",
+      "answer": "Não. O slot é armazenamento; a posição lógica determina relações causais e informação posicional."
+    },
+    {
+      "question": "Janela é uma flag neutra em modelo global?",
+      "answer": "Não. Restringir conectividade muda a função do modelo e exige validação de qualidade e compatibilidade."
+    }
+  ],
+  "source_ids": [
+    "V3B-S007"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

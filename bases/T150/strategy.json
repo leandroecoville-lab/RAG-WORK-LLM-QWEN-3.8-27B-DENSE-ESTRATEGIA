@@ -1,0 +1,115 @@
+{
+  "id": "T150",
+  "novelty": "A v3 detalhou equivalência de chave e comportamento de Forget. A camada nova trata ciclo de vida dos aguardantes, publicação por versão e limites da coalescência em gerações probabilísticas.",
+  "deep_layers": [
+    {
+      "name": "Dono e consumidores distintos",
+      "detail": "Uma execução compartilhada tem uma identidade própria; cada consumidor mantém prazo e cancelamento independentes. A saída de um aguardante não deve cancelar a operação enquanto outros ainda precisam dela. Quando ninguém resta, a política pode cancelar o produtor, mas precisa confirmar o que já consumiu ou realizou.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S011",
+        "V4C-S022"
+      ]
+    },
+    {
+      "name": "Publicação vinculada à versão",
+      "detail": "Se o recurso mudar durante a execução, o resultado antigo não deve preencher a chave da nova revisão. Registre versão observada e versão solicitada, publicando apenas no espaço correspondente. Invalidação de cache e fim do singleflight são eventos distintos: excluir uma entrada não interrompe necessariamente trabalho em andamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S011",
+        "V3C-S037"
+      ]
+    },
+    {
+      "name": "Probabilidade e privacidade",
+      "detail": "Duas inferências com o mesmo texto podem esperar diversidade ou contextos privados diferentes. Compartilhe somente quando contrato, fontes, identidade de escopo e política de amostragem permitirem o mesmo resultado. A redução de chamadas não justifica colapsar tentativas deliberadamente independentes usadas para avaliação ou busca de alternativas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S011",
+        "V3C-S017"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Busca documental após cache miss",
+      "scenario": "Muitos agentes solicitam o mesmo documento versionado.",
+      "strategy": "Use uma busca compartilhada por documento, revisão e escopo. Distribua o resultado e seu estado aos aguardantes; erros recebem uma política comum de espera para impedir que todos reiniciem simultaneamente a chamada que acabou de falhar.",
+      "small_model_role": "3–7B consome trechos já recuperados; coalescência fica no cliente determinístico.",
+      "acceptance": "Proposta: medir chamadas à origem, espera por consumidor e contaminação entre versões durante rajadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S022",
+        "V3C-S011"
+      ]
+    },
+    {
+      "name": "Inferência repetitiva de classificação",
+      "scenario": "Vários workflows pedem a mesma classificação sobre entrada imutável.",
+      "strategy": "Fixe template, revisão do modelo e schema antes de compartilhar. Se a tarefa exige múltiplas amostras, inclua identidade da amostra e evite coalescência entre elas. Guarde a decisão de compartilhamento para auditar economias reais.",
+      "small_model_role": "3–14B pode atender classes fechadas; 15–30B não muda o requisito de equivalência.",
+      "acceptance": "Proposta: comparar resultado e custo com execução independente, incluindo cancelamento de parte dos consumidores.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S011",
+        "V4C-S014"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: classificador determinístico ou quase determinístico em domínio fechado, com revisão fixada.",
+    "8_14b": "Proposta: extrações repetidas de fontes imutáveis sob contrato idêntico.",
+    "15_30b": "Proposta: tarefas mais caras com evidência compartilhável, sem colapsar exploração de hipóteses diferentes.",
+    "training_or_runtime_requirements": "Requer gestão de aguardantes, timeout próprio e chave completa; singleflight local não coordena automaticamente réplicas.",
+    "do_not_use_when": "Não usar para ações de negócio distintas, inferência privada incompatível ou amostras que deveriam ser independentes."
+  },
+  "connections": [
+    {
+      "target_id": "T137",
+      "relation": "complements",
+      "how": "Uma execução compartilhada consome uma reserva de produtor, conservando custos de entrega aos consumidores.",
+      "interface": "Chave, participantes e reserva de execução.",
+      "condition": "Cancelar um consumidor não liquida a reserva de todos.",
+      "acceptance": "Testar entradas e saídas concorrentes sem saldo duplicado ou perdido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S011"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T171",
+      "relation": "complements",
+      "how": "Coalescência protege misses enquanto cache reaproveita resultados ou cálculo já armazenado.",
+      "interface": "Estado ativo, resultado publicado e versão de cache.",
+      "condition": "As políticas de expiração são separadas.",
+      "acceptance": "Alterar recurso durante a chamada e impedir publicação na revisão errada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S022",
+        "V3C-S015"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Diferenciar entrega duplicada de intenção nova que tem parâmetros iguais.",
+    "Não apresentar uma exclusão local por chave como garantia distribuída de exatamente uma vez."
+  ],
+  "frontier_comparison": "Compare redução de chamadas e equivalência de resultado em tarefas fixas, contra modelos locais e fronteira. A técnica economiza execução repetida, sem melhorar competência do modelo.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q009",
+      "V4C-Q017"
+    ],
+    "scope_note": "Cloudflare documenta request collapsing como recurso; não foi promovido a caso identificado de cliente nem a prova de coalescência LLM em produção."
+  },
+  "source_ids": [
+    "V3C-S011",
+    "V4C-S022",
+    "V3C-S037",
+    "V3C-S017",
+    "V4C-S014",
+    "V3C-S015"
+  ]
+}

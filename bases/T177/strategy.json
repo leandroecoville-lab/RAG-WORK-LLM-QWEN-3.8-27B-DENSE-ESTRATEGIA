@@ -1,0 +1,136 @@
+{
+  "id": "T177",
+  "novelty": "A v3 tratou supervisão por token e separação de dados. A nova camada orienta a decisão de ajustar, o desenho de releases e a identificação de falhas que treinamento não resolve.",
+  "deep_layers": [
+    {
+      "name": "Diagnóstico antes do treino",
+      "detail": "Classifique erros em formato, procedimento, conhecimento ausente, recuperação e ferramenta. Ajuste é plausível para comportamento estável e habilidade recorrente; fatos voláteis ou documentos não recuperados podem exigir outra intervenção. Construa exemplos contrastivos que isolam a falha, em vez de ampliar indiscriminadamente o dataset.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S015",
+        "C-S031",
+        "V4B-S006",
+        "V4B-S005",
+        "V4D-S012"
+      ]
+    },
+    {
+      "name": "Release com identidade",
+      "detail": "Um modelo ajustado é uma nova versão de comportamento. Registre base, dados, máscara, hiperparâmetros e avaliação. Mantenha baseline e possibilidade de retorno; adapters, quantização e template usados na implantação devem ser testados juntos, porque a qualidade do checkpoint isolado não descreve o serviço final.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S015",
+        "C-S031",
+        "V4B-S006",
+        "V4B-S005",
+        "V4D-S012"
+      ]
+    },
+    {
+      "name": "Custo de manutenção",
+      "detail": "Especialização pode reduzir prompts e tentativas, mas cria necessidade de atualizar dados e revalidar regressões. Meça frequência de mudança do domínio e custo de curadoria. O relato da plataforma Uber demonstra infraestrutura operacional de treinamento, sem provar que toda combinação experimental de LoRA/QLoRA virou produto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S015",
+        "C-S031",
+        "V4B-S006",
+        "V4B-S005",
+        "V4D-S012"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Extração de domínio",
+      "scenario": "O modelo erra formato e terminologia em tarefas repetidas.",
+      "strategy": "Crie exemplos corretos e negativos, ajuste em dados autorizados e teste em origens novas. Mantenha validação estrutural e factual fora do modelo.",
+      "small_model_role": "Um 3–7B pode assumir extração estreita com critérios de aceite claros.",
+      "acceptance": "Medir precisão por campo e falhas graves, incluindo entradas fora do domínio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S015",
+        "C-S031",
+        "V4B-S006",
+        "V4B-S005",
+        "V4D-S012"
+      ]
+    },
+    {
+      "name": "Procedimento com ferramentas",
+      "scenario": "O agente conhece as ferramentas, mas aplica sequência inadequada.",
+      "strategy": "Treine trajetórias revisadas com estados e resultados reais, incluindo falhas e recuperação. Evite ensinar comandos que dependem de um ambiente já obsoleto.",
+      "small_model_role": "Um 8–14B pode aprender padrões de procedimento, com execução controlada.",
+      "acceptance": "Avaliar conclusão verificável da tarefa e ações indevidas, não semelhança textual à trajetória.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S015",
+        "C-S031",
+        "V4B-S006",
+        "V4B-S005",
+        "V4D-S012"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Priorize poucos comportamentos estáveis e dados de alta qualidade; capacidades amplas não surgem de exemplos repetidos.",
+    "8_14b": "Use tarefas variadas do domínio e regressões de capacidades que devem permanecer.",
+    "15_30b": "Maior porte aumenta custo de ciclo; compare adaptação eficiente com ajuste completo conforme a hipótese.",
+    "training_or_runtime_requirements": "Exige treino e validação independente. Infraestrutura de serving e quantização devem ser incluídas no teste final.",
+    "do_not_use_when": "Não usar ajuste como substituto de atualização de fatos, controle de acesso ou verificação de ações."
+  },
+  "connections": [
+    {
+      "target_id": "T178",
+      "relation": "complements",
+      "how": "Um professor pode produzir sinais de treino, desde que revisados e rastreáveis.",
+      "interface": "Exemplos, origem e filtros.",
+      "condition": "Dados representam o uso e não vazam avaliação.",
+      "acceptance": "Comparar com rótulos humanos e casos que o professor erra.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S015",
+        "C-S031",
+        "V4B-S006",
+        "V4B-S005",
+        "V4D-S012"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T182",
+      "relation": "alternative",
+      "how": "LoRA permite testar especialização sem atualizar todos os pesos.",
+      "interface": "Módulos-alvo, posto e identidade da base.",
+      "condition": "Capacidade da adaptação atende a hipótese.",
+      "acceptance": "Comparar qualidade, custo e manutenção com ajuste completo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S015",
+        "C-S031",
+        "V4B-S006",
+        "V4B-S005",
+        "V4D-S012"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Agrupar divisões por origem e tempo para evitar variantes do mesmo caso em treino e teste.",
+    "Não selecionar repetidamente hiperparâmetros sobre o conjunto final de aceitação."
+  ],
+  "frontier_comparison": "Compare a especialização com fronteira em tarefas de negócio previamente definidas. Vencer num conjunto estreito não prova capacidade geral; inclua casos desconhecidos e custo de manutenção.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q007",
+      "V4B-Q008"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S015",
+    "C-S031",
+    "V4B-S006",
+    "V4B-S005",
+    "V4D-S012"
+  ]
+}

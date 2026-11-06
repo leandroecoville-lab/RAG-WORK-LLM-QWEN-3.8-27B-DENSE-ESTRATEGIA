@@ -1,0 +1,42 @@
+{
+  "entry_id": "T192",
+  "edges": [
+    {
+      "edge_id": "E-T192-01",
+      "from": "T192",
+      "to": "T190",
+      "relation": "complements",
+      "how": "Um loop com verificador externo transforma críticas em condições de aceite.",
+      "interface": "Versões e falhas específicas.",
+      "condition": "Verificador examina a revisão final.",
+      "acceptance": "Comparar refinamento interno e refinamento com evidência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S045",
+        "V3B-S019",
+        "V4C-S009"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T192-02",
+      "from": "T192",
+      "to": "T205",
+      "relation": "complements",
+      "how": "Testes de equivalência ajudam a preservar significado durante edição.",
+      "interface": "Observáveis, tolerâncias e versões.",
+      "condition": "Critério de equivalência adequado à tarefa.",
+      "acceptance": "Detectar mudanças de números, unidades ou efeitos laterais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S045",
+        "V3B-S019",
+        "V4C-S009"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

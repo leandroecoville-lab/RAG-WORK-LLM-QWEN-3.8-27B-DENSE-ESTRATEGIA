@@ -1,0 +1,33 @@
+{
+  "id": "T036",
+  "name": "Query-Aware RAG",
+  "canonical_name": "Query-Aware RAG",
+  "canonical_id": "T036",
+  "aliases": [
+    "RAG orientado à consulta"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T025",
+    "T027",
+    "T028",
+    "T037"
+  ],
+  "source_ids": [
+    "A-S007",
+    "A-S017",
+    "V3A-S028",
+    "V4A-S022",
+    "V4A-S009",
+    "V4A-S020",
+    "V4A-S008"
+  ],
+  "namespace": "T036",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T036",
+  "chunk_count": 9
+}

@@ -1,0 +1,111 @@
+{
+  "id": "T011",
+  "novelty": "A v3 questionou custo e limiar semântico. Aqui o foco é segmentação estável perante pequenas edições e adaptação por domínio.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Uma edição curta pode mudar várias fronteiras quando o limiar depende da distribuição do documento. Compare estabilidade dos IDs e custo de reindexação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S013",
+        "V3A-S013"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Calibre segmentação separadamente para narrativa, perguntas frequentes e documentação técnica. Similaridade entre frases não identifica automaticamente unidade útil de resposta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S013",
+        "V3A-S013"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Meça qualidade de recuperação e churn de chunks após alterações locais. Um ganho pequeno pode não justificar reconstrução frequente do índice. Unidade de avaliação: família de documentos. Uma edição de pontuação e outra de assunto devem produzir efeitos distintos. A primeira idealmente preserva a organização útil; a segunda pode exigir nova divisão. Medir churn de IDs, embeddings refeitos e respostas alteradas torna visível o custo operacional da segmentação semântica, que uma avaliação estática de recuperação tende a omitir.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S013",
+        "V3A-S013"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Documentos vivos",
+      "scenario": "A base recebe edições diárias.",
+      "strategy": "Identificar regiões alteradas, recomputar fronteiras locais e comparar com segmentação integral antes de publicar.",
+      "small_model_role": "3–7B apenas valida tópico de fronteiras candidatas.",
+      "acceptance": "Mudança local não deve esconder evidência fora da região.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S013",
+        "V3A-S013"
+      ]
+    },
+    {
+      "name": "Corpus multilíngue",
+      "scenario": "Mesmos temas aparecem em idiomas diferentes.",
+      "strategy": "Calibrar por idioma e testar mistura de termos técnicos; preservar identificadores literais independentemente do embedding.",
+      "small_model_role": "8–14B verifica coerência do segmento.",
+      "acceptance": "Cobertura deve permanecer estável entre idiomas avaliados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S013",
+        "V3A-S013"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Validador binário de fronteira candidata em poucos parágrafos.",
+    "8_14b": "Revisor de continuidade temática e exceções entre segmentos.",
+    "15_30b": "Integrador de segmentos heterogêneos, sem decidir fronteiras por intuição livre.",
+    "training_or_runtime_requirements": "Embedding versionado e conjunto de validação por domínio; trocar embedding exige recalibração.",
+    "do_not_use_when": "O custo de reindexação supera benefício ou documento exige separadores estruturais rígidos."
+  },
+  "connections": [
+    {
+      "target_id": "T072",
+      "relation": "requires",
+      "how": "Publicar segmentação como versão do índice.",
+      "interface": "Documento, embedding, limiar e mapa de fronteiras.",
+      "condition": "Cada resultado apontar versão compatível.",
+      "acceptance": "Consultar durante atualização e detectar mistura de versões.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S013",
+        "V3A-S013"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T033",
+      "relation": "complements",
+      "how": "Respeitar estruturas antes da distância semântica.",
+      "interface": "Blocos tipados e fronteiras permitidas.",
+      "condition": "Tabelas e código manterem integridade.",
+      "acceptance": "Injetar tabela semanticamente heterogênea e impedir corte destrutivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S013",
+        "V3A-S013"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não reutilizar limiar entre modelos sem validação.",
+    "Medir mudança de fronteira causada por ruído de OCR."
+  ],
+  "frontier_comparison": "Comparar retorno útil por token e estabilidade de atualização; coerência textual não prova utilidade na resposta.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q009"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S013",
+    "V3A-S013"
+  ]
+}

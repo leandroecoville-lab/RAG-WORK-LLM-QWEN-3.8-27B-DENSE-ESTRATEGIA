@@ -1,0 +1,53 @@
+{
+  "id": "T030",
+  "technical_details": "O código consultado reduz dimensionalidade com UMAP e usa misturas gaussianas, selecionando número de componentes por BIC. A associação por probabilidades acima de um limiar permite que um trecho pertença a mais de um grupo. Consequentemente, a estrutura chamada árvore não deve ser interpretada como partição necessariamente disjunta; duplicação de origens precisa ser considerada na recuperação e síntese.",
+  "boundary_condition": "Agrupamento de poucos pontos, embeddings inadequados ou textos altamente heterogêneos podem produzir grupos frágeis, independentemente da qualidade do sumarizador.",
+  "implementation_contract": {
+    "inputs": "Chunks, embeddings compatíveis, configuração de agrupamento e sumarização.",
+    "outputs": "Representações em níveis e referências aos trechos que sustentam cada nó.",
+    "state": "Versões dos modelos, seeds, configurações e relações de pertencimento.",
+    "invariant": "Múltiplos caminhos até a mesma origem não contam como confirmações independentes."
+  },
+  "tradeoffs": [
+    "Pertencimento múltiplo preserva temas transversais, mas aumenta redundância e custo de resumos.",
+    "Redução dimensional torna agrupamento viável e pode alterar vizinhanças relevantes para consultas específicas."
+  ],
+  "failure_test": "Teste proposto: inserir um trecho que conecte dois temas e rastrear sua presença em resumos diferentes. A resposta deve evitar duplicar contagens e continuar permitindo acesso à mesma origem.",
+  "evaluation_plan": "Avaliação proposta: comparar folhas, resumos em níveis e conjunto combinado com orçamento idêntico. Variar agrupamento e resumidor; medir estabilidade, recuperação de detalhes e temas, custo de ingestão e redundância de evidências.",
+  "comparisons": [
+    {
+      "entry_id": "T023",
+      "relation": "specializes",
+      "reason": "RAPTOR implementa uma hierarquia recursiva com escolha específica de agrupamento e recuperação."
+    },
+    {
+      "entry_id": "T029",
+      "relation": "alternative",
+      "reason": "GraphRAG organiza entidades e comunidades; RAPTOR agrupa representações de texto para produzir resumos."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O código oficial usa probabilidades de GaussianMixture acima de limiar para atribuir grupos.",
+    "source_ids": [
+      "V3A-S029"
+    ],
+    "support": "direct",
+    "caveat": "Foi realizada leitura de código, sem execução; detalhes podem mudar em outras revisões do repositório."
+  },
+  "advanced_qa": [
+    {
+      "question": "BIC escolhe o melhor número de grupos para responder perguntas?",
+      "answer": "Não diretamente. Ele avalia um critério estatístico do modelo de mistura, não a utilidade downstream de cada agrupamento."
+    },
+    {
+      "question": "Posso trocar o embedding sem reconstruir a estrutura?",
+      "answer": "Isso pode tornar representações e grupos incompatíveis. A migração deve incluir nova indexação e validação, preservando a versão anterior para comparação."
+    }
+  ],
+  "source_ids": [
+    "V3A-S029",
+    "V3A-S011",
+    "A-S014"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

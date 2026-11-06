@@ -1,0 +1,29 @@
+{
+  "id": "T021",
+  "name": "Context Compression On-the-Fly",
+  "canonical_name": "Context Compression On-the-Fly",
+  "canonical_id": "T006",
+  "aliases": [
+    "compressão dinâmica em execução"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T006",
+    "T043",
+    "T168"
+  ],
+  "source_ids": [
+    "A-S003",
+    "A-S006",
+    "V3A-S008",
+    "V4A-S002"
+  ],
+  "namespace": "T021",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T021",
+  "chunk_count": 9
+}

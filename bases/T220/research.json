@@ -1,0 +1,52 @@
+{
+  "id": "T220",
+  "technical_details": "Reparo pode alterar seleção da ferramenta, nome de campo, tipo, enum ou referência de recurso; cada classe exige diagnóstico diferente. Converter um número em string resolve sintaxe, mas pode mudar significado, como zeros à esquerda de um identificador. A proposta recebe erros estruturados e preserva o objetivo original. Rejeição comprovada antes da execução permite uma nova tentativa corrigida; desfecho incerto precisa de outra estratégia.",
+  "boundary_condition": "Um erro genérico após envio não comprova que nada ocorreu; reparar e reenviar pode duplicar um efeito já aplicado.",
+  "implementation_contract": {
+    "inputs": "Chamada original, schema efetivo, diagnóstico e fase de execução alcançada.",
+    "outputs": "Chamada revisada, justificativa da mudança e decisão de executar ou reconciliar.",
+    "state": "Número de reparos, alterações realizadas e identidade da intenção.",
+    "invariant": "O reparo não muda silenciosamente o recurso ou objetivo para obter uma resposta sem erro."
+  },
+  "tradeoffs": [
+    "Correções determinísticas são previsíveis e cobrem poucos tipos de falha.",
+    "Reparo por modelo trata casos diversos e pode inventar valores apenas para satisfazer o schema."
+  ],
+  "failure_test": "Teste proposto: fornecer enum inválido, ID desconhecido e resposta perdida após escrita; exigir correção no primeiro, busca ou inconclusão no segundo e reconciliação no terceiro.",
+  "evaluation_plan": "Comparar regras e reparo por modelo em erros rotulados por fase. Medir recuperação correta, alterações semânticas indevidas, loops e custo. Limitar reparos por intenção e separar erros recuperáveis de ausência de informação.",
+  "comparisons": [
+    {
+      "entry_id": "T170",
+      "relation": "complements",
+      "reason": "A revisão do schema define se o erro decorre de contrato obsoleto."
+    },
+    {
+      "entry_id": "T243",
+      "relation": "distinct_from",
+      "reason": "Reconciliação investiga efeito incerto; não é simples correção dos argumentos."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "LangChain distingue middleware que transforma erro da ferramenta em feedback e middleware que repete a chamada.",
+    "source_ids": [
+      "V3C-S038"
+    ],
+    "support": "direct",
+    "caveat": "A composição não prova que todo erro é repetível nem que corrigir argumentos preserva a intenção."
+  },
+  "advanced_qa": [
+    {
+      "question": "Preencher um campo ausente com valor plausível é reparo válido?",
+      "answer": "Somente se houver fonte ou default contratual; plausibilidade não fornece o dado que falta."
+    },
+    {
+      "question": "Quando reparar deveria parar?",
+      "answer": "Quando falta informação indispensável, a mesma classe de erro persiste ou o orçamento acaba, preservando o diagnóstico."
+    }
+  ],
+  "source_ids": [
+    "V3C-S038",
+    "V3C-S004"
+  ],
+  "research_note": "Mecanismos referenciados em fontes primárias; contratos e verificação descritos são propostas, não ensaios executados."
+}

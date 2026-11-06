@@ -1,0 +1,18 @@
+[
+  {
+    "question": "FIFO apaga automaticamente a memória persistente?",
+    "answer": "Não. Nesta proposta ele remove a cópia do contexto ativo; retenção ou exclusão do arquivo histórico pertence a outra política."
+  },
+  {
+    "question": "Posso descartar uma tool call antiga mantendo seu resultado recente?",
+    "answer": "Somente se o protocolo permitir uma representação independente. O padrão recomendado mantém chamada e resultado como unidade indivisível."
+  },
+  {
+    "question": "Arquivar torna o descarte sem perdas?",
+    "answer": "Preserva o original no armazenamento, mas ainda pode falhar a recuperação no momento necessário. Perda operacional e perda física são propriedades diferentes."
+  },
+  {
+    "question": "E quando todos os blocos restantes forem obrigatórios?",
+    "answer": "O montador deve declarar orçamento insuficiente e mudar a estratégia: reduzir tarefa, buscar outra representação válida ou usar capacidade compatível."
+  }
+]

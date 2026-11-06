@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Semântica quer dizer vetor?",
+    "answer": "Não. Refere-se ao tipo de conhecimento armazenado; SQL, grafos e arquivos também podem representá-lo."
+  },
+  {
+    "question": "Posso apagar versões antigas de um fato?",
+    "answer": "Depende da política de retenção; para auditoria e consultas históricas, preservar versões costuma ser necessário."
+  },
+  {
+    "question": "Duas frases parecidas devem ser fundidas?",
+    "answer": "Somente se sujeito, relação, qualificadores e validade forem compatíveis. Similaridade pode aproximar afirmações opostas ou referentes a versões distintas."
+  },
+  {
+    "question": "Uma afirmação com muitas fontes é mais confiável?",
+    "answer": "Depende da independência e qualidade das fontes. Dez republicações da mesma origem não equivalem a dez observações independentes."
+  }
+]

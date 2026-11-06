@@ -1,0 +1,46 @@
+{
+  "id": "T102",
+  "technical_details": "A separação de fases introduz uma transferência de propriedade do estado KV. Como proposta de contrato, o worker de decode só deve iniciar após receber todos os segmentos necessários e verificar identidade, comprimento e layout. O tempo mínimo de transporte inclui bytes divididos pela banda efetiva, além de latência e serialização. Separar filas permite alocação diferente para prefill e decode, mas não elimina essa conta.",
+  "boundary_condition": "Quando prompts são pequenos ou o transporte é caro, a perda de localidade pode superar a redução de interferência entre fases.",
+  "implementation_contract": {
+    "inputs": "Tokens processados, estado KV versionado, destino e configuração compatível dos workers.",
+    "outputs": "Confirmação de transferência e ponto de continuação inequívoco.",
+    "state": "Manifesto de segmentos, offsets recebidos e proprietário atual do pedido.",
+    "invariant": "Decode nunca usa cache parcial nem mistura segmentos de revisões distintas."
+  },
+  "tradeoffs": [
+    "Pools independentes permitem dimensionar fases conforme suas cargas.",
+    "Transferência adiciona falhas parciais, memória transitória e pressão na rede."
+  ],
+  "failure_test": "Teste proposto: interromper o envio após algumas camadas e duplicar uma confirmação. Esperar retomada idempotente ou reconstrução explícita, sem geração baseada em estado incompleto.",
+  "evaluation_plan": "Plano proposto: comparar colocação conjunta e separada com mesmos recursos totais e chegadas. Medir TTFT, tempo por token, goodput dentro dos prazos e tráfego KV; aceitar somente quando os objetivos conjuntos melhoram no cenário real.",
+  "comparisons": [
+    {
+      "entry_id": "T122",
+      "relation": "complements",
+      "reason": "RDMA pode reduzir custos de transferência, mas não substitui o contrato de consistência."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "DistServe separa prefill e decode e considera banda de comunicação ao escolher alocação e posicionamento.",
+    "source_ids": [
+      "V3B-S010"
+    ],
+    "support": "direct",
+    "caveat": "O estudo não garante benefício com qualquer rede ou número de GPUs."
+  },
+  "advanced_qa": [
+    {
+      "question": "Goodput é igual a tokens por segundo?",
+      "answer": "Não. Aqui interessa trabalho concluído atendendo aos prazos definidos, não apenas produção bruta."
+    },
+    {
+      "question": "É suficiente enviar o tensor?",
+      "answer": "Não. O destino também precisa saber posições, formas, dtype, identidade dos pesos e qual continuação aquele estado representa."
+    }
+  ],
+  "source_ids": [
+    "V3B-S010"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

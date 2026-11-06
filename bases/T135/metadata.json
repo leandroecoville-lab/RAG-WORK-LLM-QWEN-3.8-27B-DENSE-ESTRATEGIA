@@ -1,0 +1,32 @@
+{
+  "id": "T135",
+  "name": "Model Cascade",
+  "canonical_name": "Model Cascade",
+  "canonical_id": "T135",
+  "aliases": [
+    "cascata de modelos"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T133",
+    "T136",
+    "T190"
+  ],
+  "source_ids": [
+    "C-S002",
+    "V3C-S001",
+    "V4C-S009",
+    "V4C-S014",
+    "V4C-S011",
+    "V2A-S012",
+    "V3C-S038"
+  ],
+  "namespace": "T135",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T135",
+  "chunk_count": 9
+}

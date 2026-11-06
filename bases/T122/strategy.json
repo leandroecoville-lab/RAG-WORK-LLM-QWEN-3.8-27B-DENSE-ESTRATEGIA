@@ -1,0 +1,120 @@
+{
+  "id": "T122",
+  "novelty": "A v3 explicou ordenação entre DMA e consumidores. A nova camada considera integração do transporte ao ciclo de vida da requisição, congestionamento e transferência de estado além dos tensores principais.",
+  "deep_layers": [
+    {
+      "name": "Objeto transferido",
+      "detail": "Uma transferência de inferência pode incluir páginas KV, metadados e estados auxiliares. A Perplexity descreve transporte ligado a prefill/decode e componentes adicionais quando necessários. Defina um manifesto por sequência e versão; o destino não deve iniciar só porque recebeu a maior parcela dos bytes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S033",
+        "V4B-S002",
+        "V4B-S008"
+      ]
+    },
+    {
+      "name": "Pipeline de transporte",
+      "detail": "Transferir camadas conforme ficam prontas pode sobrepor comunicação e computação, mas depende da ordem em que o consumidor precisará delas. Meça caminho crítico e buffers em voo. Uma sobreposição aparente pode apenas deslocar espera para o final, especialmente quando a rede atende muitos produtores simultaneamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S033",
+        "V4B-S002",
+        "V4B-S008"
+      ]
+    },
+    {
+      "name": "Congestionamento e custo",
+      "detail": "RDMA reduz certas sobrecargas, mas não elimina banda finita, registro de memória, topologia ou contenção. Compare tempo de transferência e prefill evitado sob carga. Em estado pequeno, preparação pode dominar; em estado grande, transporte pode aumentar TTFT apesar de liberar capacidade de computação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S033",
+        "V4B-S002",
+        "V4B-S008"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Pools separados de prefill e decode",
+      "scenario": "Os recursos de cada fase são dimensionados independentemente.",
+      "strategy": "Reserve destino, transfira estado com manifesto e publique disponibilidade somente após confirmação. Cancele ou recupere transferências interrompidas sem liberar buffers prematuramente.",
+      "small_model_role": "Um 15–30B pode se beneficiar se a carga justificar a separação; não é requisito por porte.",
+      "acceptance": "Medir latência completa e capacidade de cada pool, incluindo rede saturada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S033",
+        "V4B-S002",
+        "V4B-S008"
+      ]
+    },
+    {
+      "name": "Teste de recuperação do transporte",
+      "scenario": "Falhas ocorrem durante troca de estado.",
+      "strategy": "Injete interrupções antes e depois de confirmação, registre propriedade e invalide destinos incompletos. Retome por transferência íntegra ou recomputação explícita.",
+      "small_model_role": "Um modelo menor permite exercitar protocolo com custos controlados antes da escala.",
+      "acceptance": "Nenhum consumo parcial, duplicação de propriedade ou vazamento de memória após falha.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S033",
+        "V4B-S002",
+        "V4B-S008"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Para 3–7B e contextos curtos, reexecução ou transferência convencional podem ser alternativas suficientes.",
+    "8_14b": "Em 8–14B, determine se o volume KV e concorrência justificam infraestrutura especializada.",
+    "15_30b": "Contextos longos elevam bytes transferidos; ganho de computação precisa superar custos de rede e coordenação.",
+    "training_or_runtime_requirements": "Requer hardware, drivers e stack compatíveis; fonte de outro operador não confirma GPUDirect ou EFA no servidor local.",
+    "do_not_use_when": "Não presumir que conclusão da rede significa visibilidade ordenada para qualquer kernel consumidor."
+  },
+  "connections": [
+    {
+      "target_id": "T102",
+      "relation": "complements",
+      "how": "A Perplexity descreve RDMA/libfabric como transporte de estado em serving desagregado.",
+      "interface": "Páginas KV, metadados e confirmação de disponibilidade.",
+      "condition": "Configuração específica suporta o transporte.",
+      "acceptance": "Verificar conclusão antes do decode e incluir TTFT no resultado.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4B-S002"
+      ],
+      "case_ids": [
+        "V4B-C002"
+      ]
+    },
+    {
+      "target_id": "T118",
+      "relation": "complements",
+      "how": "Coletivas de TP podem depender de transporte entre dispositivos.",
+      "interface": "Grupos, buffers e eventos.",
+      "condition": "Backend de comunicação habilita o caminho adequado.",
+      "acceptance": "Medir tempo e detectar falhas de rank sem aceitar resultados parciais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S033",
+        "V4B-S002",
+        "V4B-S008"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não registrar ou reutilizar uma região de memória depois de liberada enquanto há operações em voo.",
+    "Separar throughput de rede de throughput de respostas válidas."
+  ],
+  "frontier_comparison": "RDMA é infraestrutura de movimentação de dados. Sua contribuição à comparação com fronteira aparece em custo e latência da solução completa, sem aumentar capacidade de raciocínio.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q003",
+      "V4B-Q004"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S033",
+    "V4B-S002",
+    "V4B-S008"
+  ]
+}

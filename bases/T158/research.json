@@ -1,0 +1,51 @@
+{
+  "id": "T158",
+  "technical_details": "Um registro distribuído de ferramentas deve representar identidade e disponibilidade separadamente. Uma ferramenta conhecida pode estar temporariamente fora de serviço; removê-la do catálogo sem histórico pode tornar tarefas antigas impossíveis de explicar. Na agregação de vários servidores, nomes iguais exigem namespace. Uma fotografia do catálogo por execução permite reconstruir quais descrições e schemas orientaram a seleção, mesmo após mudanças posteriores.",
+  "boundary_condition": "Catálogo atualizado não prova que a ferramenta continuará disponível ou autorizada no momento da chamada.",
+  "implementation_contract": {
+    "inputs": "Descritores por servidor, capacidades declaradas, revisões e sinal de alteração.",
+    "outputs": "Catálogo normalizado, namespace inequívoco e fotografia da seleção.",
+    "state": "Revisões conhecidas, descritores carregados e estado operacional separado.",
+    "invariant": "O nome visível nunca é usado para fundir ferramentas de origens diferentes sem identidade explícita."
+  },
+  "tradeoffs": [
+    "Atualização imediata reduz obsolescência e pode alterar comportamento no meio de uma missão.",
+    "Fixar uma fotografia melhora explicação e exige revalidar disponibilidade na execução."
+  ],
+  "failure_test": "Teste proposto: registrar dois servidores com ferramenta homônima e atualizar apenas um schema; verificar seleção inequívoca e invalidação da definição correta.",
+  "evaluation_plan": "Comparar refresh por período e atualização por notificação sob mudanças de catálogo. Medir atraso de propagação, chamadas com contrato antigo e custo de descoberta. Definir a política segundo frequência de alteração e duração das tarefas.",
+  "comparisons": [
+    {
+      "entry_id": "T151",
+      "relation": "complements",
+      "reason": "O registro abastece a descoberta usada pelo carregamento tardio."
+    },
+    {
+      "entry_id": "T170",
+      "relation": "complements",
+      "reason": "Versionamento define como interpretar revisões dos contratos catalogados."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "MCP define listagem de ferramentas e notificação listChanged para servidores que declaram essa capacidade.",
+    "source_ids": [
+      "V3C-S004"
+    ],
+    "support": "direct",
+    "caveat": "Agregação entre servidores, snapshots e histórico do catálogo são propostas de aplicação."
+  },
+  "advanced_qa": [
+    {
+      "question": "Remover uma ferramenta indisponível resolve o histórico?",
+      "answer": "Não. Uma execução antiga ainda precisa apontar para o descritor utilizado; disponibilidade e identidade histórica devem ser separadas."
+    },
+    {
+      "question": "Duas ferramentas com o mesmo nome são intercambiáveis?",
+      "answer": "Somente após verificar origem, contrato e efeitos; igualdade nominal não demonstra equivalência."
+    }
+  ],
+  "source_ids": [
+    "V3C-S004"
+  ],
+  "research_note": "Contratos e ensaios são propostas; os resultados citados pertencem às fontes, sem reprodução local."
+}

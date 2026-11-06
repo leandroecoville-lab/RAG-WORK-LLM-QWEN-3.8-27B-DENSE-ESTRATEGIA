@@ -1,0 +1,128 @@
+{
+  "id": "T184",
+  "novelty": "A v3 distinguiu parâmetros totais, ativos e capacidade dos especialistas. O aprofundamento trata seleção de modelos MoE, distribuição entre dispositivos e diagnóstico de especialização sem inferências pelo nome do expert.",
+  "deep_layers": [
+    {
+      "name": "Dois orçamentos",
+      "detail": "Parâmetros ativos aproximam parte da computação por token; parâmetros totais continuam relevantes para armazenamento e residência. Qwen3-30B-A3B possui cerca de 30B totais e 3B ativos conforme sua nomenclatura publicada. Não deve ser dimensionado como um dense 3B nem confundido com um dense 32B fora da faixa estrita solicitada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S016",
+        "C-S038",
+        "V4B-S020",
+        "V4B-S003"
+      ]
+    },
+    {
+      "name": "Comunicação de especialistas",
+      "detail": "Distribuir experts adiciona dispatch, combinação e possíveis desequilíbrios. Modelos pequenos em contexto de MoE ainda podem carregar muitos pesos. Meça tráfego por token, ocupação e grupos quentes; balanceamento observado em um perfil sintético não garante comportamento de tráfego real.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S016",
+        "C-S038",
+        "V4B-S020",
+        "V4B-S003"
+      ]
+    },
+    {
+      "name": "Especialização observada",
+      "detail": "Um expert frequentemente selecionado em código não é automaticamente um módulo confiável de programação. Analise padrões de roteamento e faça ablações controladas antes de atribuir significado. Mudança de domínio pode concentrar carga ou alterar qualidade, exigindo avaliação conjunta de sistema e modelo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S016",
+        "C-S038",
+        "V4B-S020",
+        "V4B-S003"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Escolher dense ou MoE",
+      "scenario": "Há candidatos com orçamento de computação parecido.",
+      "strategy": "Compare qualidade, pesos residentes, custo de comunicação e latência em prompts reais. Não reduza a escolha a parâmetros ativos ou a um benchmark agregado.",
+      "small_model_role": "Um modelo total 15–30B com poucos parâmetros ativos pode ser opção, sujeito à memória e ao domínio.",
+      "acceptance": "Selecionar pelo custo completo e pelas falhas relevantes à tarefa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S016",
+        "C-S038",
+        "V4B-S020",
+        "V4B-S003"
+      ]
+    },
+    {
+      "name": "Servir domínios heterogêneos",
+      "scenario": "A carga alterna código, texto e documentos técnicos.",
+      "strategy": "Monitore distribuição de experts e filas, mantendo testes de deriva. Ajuste posicionamento ou capacidade somente quando houver evidência de gargalo e suporte do runtime.",
+      "small_model_role": "Um MoE 8–30B total pode precisar de política distinta de um dense do mesmo porte.",
+      "acceptance": "Medir picos de comunicação e qualidade por domínio, sem mascarar classes raras.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S016",
+        "C-S038",
+        "V4B-S020",
+        "V4B-S003"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Se a faixa se refere a parâmetros totais, um MoE com 3B ativos e 30B totais pertence ao limite superior, não ao inferior.",
+    "8_14b": "Modelos totais intermediários exigem inspeção de configuração e pesos realmente disponíveis.",
+    "15_30b": "A faixa 15–30B inclui certos MoEs, mas não autoriza extrapolar suporte do runtime ou memória local.",
+    "training_or_runtime_requirements": "Arquitetura treinada com roteador e experts; não se cria MoE apenas agrupando checkpoints e escolhendo um por prompt.",
+    "do_not_use_when": "Não comparar parâmetros ativos com parâmetros totais como se fossem a mesma medida."
+  },
+  "connections": [
+    {
+      "target_id": "T118",
+      "relation": "complements",
+      "how": "Tensor parallelism e expert parallelism podem coexistir, com custos distintos.",
+      "interface": "Mapa de experts, shards e grupos.",
+      "condition": "Runtime suporta a combinação do checkpoint.",
+      "acceptance": "Medir comunicação e memória por dispositivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S016",
+        "C-S038",
+        "V4B-S020",
+        "V4B-S003"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T177",
+      "relation": "requires",
+      "how": "Adaptação de MoE precisa considerar roteador, experts e distribuição de dados.",
+      "interface": "Módulos treináveis e métricas de roteamento.",
+      "condition": "Política de overflow e capacidade explícita.",
+      "acceptance": "Avaliar qualidade e balanceamento depois do treino.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S016",
+        "C-S038",
+        "V4B-S020",
+        "V4B-S003"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Informar parâmetros totais e ativos lado a lado.",
+    "Não inferir desempenho local a partir do número no nome do modelo."
+  ],
+  "frontier_comparison": "MoE pode oferecer outra relação entre computação e capacidade, mas a comparação com fronteira continua dependente de tarefa, memória, comunicação e qualidade observada.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q016",
+      "V4B-Q003"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S016",
+    "C-S038",
+    "V4B-S020",
+    "V4B-S003"
+  ]
+}

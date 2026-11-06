@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Durable execution garante exactly once no CRM?",
+    "answer": "Não. Essa propriedade depende também do contrato do CRM e da reconciliação."
+  },
+  {
+    "question": "Checkpoint basta para qualquer retomada?",
+    "answer": "Não. Precisa estar consistente com efeitos já realizados."
+  },
+  {
+    "question": "Uma LLM com temperatura zero pode rodar livremente dentro do replay?",
+    "answer": "Não se deve presumir determinismo externo. O resultado precisa ser registrado pelo mecanismo apropriado do runtime."
+  },
+  {
+    "question": "Por que testar apenas workflows novos é insuficiente?",
+    "answer": "Porque eles não exercitam históricos produzidos por versões anteriores, onde alterações de comandos podem quebrar a retomada."
+  }
+]

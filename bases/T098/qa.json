@@ -1,0 +1,18 @@
+[
+  {
+    "question": "É outro algoritmo além de FlashAttention?",
+    "answer": "Pode ser uma implementação diferente ou apenas um rótulo amplo; é necessário identificar o backend."
+  },
+  {
+    "question": "Diminui a memória dos pesos?",
+    "answer": "Não diretamente. O foco é o cálculo de atenção e seus intermediários."
+  },
+  {
+    "question": "Menor pico de memória prova mesma função?",
+    "answer": "Não. A implementação pode ter mudado precisão, máscara ou conexões; compare a operação e seus resultados."
+  },
+  {
+    "question": "Por que registrar fallback?",
+    "answer": "Sem isso, uma configuração aparentemente otimizada pode executar outro kernel e invalidar a interpretação de desempenho."
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "id": "T231",
+  "name": "Search/Replace Editing",
+  "canonical_name": "Search/Replace Editing",
+  "canonical_id": "T231",
+  "aliases": [
+    "search replace blocks",
+    "edição por substituição literal"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T229",
+    "T232",
+    "T233"
+  ],
+  "source_ids": [
+    "V2A-S008",
+    "V3C-S033",
+    "V3C-S027",
+    "V3C-S035",
+    "V3C-S037",
+    "V3C-S042"
+  ],
+  "namespace": "T231",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T231",
+  "chunk_count": 9
+}

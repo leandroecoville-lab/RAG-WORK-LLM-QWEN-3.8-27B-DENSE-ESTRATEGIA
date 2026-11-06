@@ -1,0 +1,29 @@
+{
+  "id": "T031",
+  "name": "Semantic Cache Invalidation",
+  "canonical_name": "Semantic Cache Invalidation",
+  "canonical_id": "T031",
+  "aliases": [
+    "invalidação de cache semântico"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T005",
+    "T007",
+    "T072"
+  ],
+  "source_ids": [
+    "A-S005",
+    "V3A-S007",
+    "V4A-S011",
+    "V4A-S016"
+  ],
+  "namespace": "T031",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T031",
+  "chunk_count": 9
+}

@@ -1,0 +1,42 @@
+{
+  "entry_id": "R014",
+  "edges": [
+    {
+      "edge_id": "E-R014-01",
+      "from": "R014",
+      "to": "R013",
+      "relation": "alternative",
+      "how": "Resolver este nome para a ficha canônica, sem etapa adicional.",
+      "interface": "canonical_id=R013, alias e revisão do catálogo.",
+      "condition": "Escopo continuar equivalente ao adotado na base.",
+      "acceptance": "Consultar ambos os nomes e comparar identidade e fontes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-R014-02",
+      "from": "R014",
+      "to": "T066",
+      "relation": "requires",
+      "how": "Normalizar nome antes de abrir memória correspondente.",
+      "interface": "Alias, identidade canônica e versão.",
+      "condition": "Resolver preservar histórico de renomeação.",
+      "acceptance": "Detectar alias apontando para objeto diferente sem evidência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S010",
+        "V2B-S003",
+        "V3A-S046"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

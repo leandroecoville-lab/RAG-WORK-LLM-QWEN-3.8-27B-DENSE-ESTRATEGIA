@@ -1,0 +1,112 @@
+{
+  "id": "R015",
+  "novelty": "A v3 separou professor contextual e aluno. Aqui distilação de contexto é avaliada pela capacidade de atualizar, esquecer e detectar conhecimento não internalizado.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Defina qual conhecimento ou comportamento deve ser internalizado e qual continuará recuperável externamente. Um aluno pode reproduzir respostas frequentes sem aprender condições que as tornam válidas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S040",
+        "A-S011"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Atualização de contexto exige dados novos e análise de interferência. Manter evidência externa facilita corrigir fatos sem depender apenas de retreino, especialmente quando domínio muda.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S040",
+        "A-S011"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare aluno antes/depois, professor com contexto e aluno com RAG. Meça generalização, atualização de fatos e regressões fora da tarefa; não assumir que todo raciocínio do professor foi transferido. Unidade de avaliação: ciclo de distilação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S040",
+        "A-S011"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Procedimento estável de alta frequência",
+      "scenario": "Instruções repetidas dominam custo.",
+      "strategy": "Gerar exemplos com variações e exceções, treinar aluno e manter teste de aderência à versão vigente. Retirar prompt somente após validar.",
+      "small_model_role": "3–7B aluno especializado.",
+      "acceptance": "Casos novos devem obedecer condições, não só reproduzir formatos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S040",
+        "A-S011"
+      ]
+    },
+    {
+      "name": "Conhecimento técnico mutável",
+      "scenario": "Fatos mudam após treinamento.",
+      "strategy": "Internalizar vocabulário e habilidades estáveis, mantendo dados recentes em RAG; testar se aluno aceita correção explícita das fontes.",
+      "small_model_role": "8–14B leitor híbrido.",
+      "acceptance": "Não insistir em fato antigo quando evidência atual contradiz pesos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S040",
+        "A-S011"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Aluno de tarefa fechada com dados de alta qualidade e cobertura de exceções.",
+    "8_14b": "Aluno híbrido que combina habilidade internalizada e conhecimento externo.",
+    "15_30b": "Professor ou aluno de integração complexa quando custo de treino justificar.",
+    "training_or_runtime_requirements": "Acesso a treino, dados autorizados, versão de contexto e avaliação por origem; compressão externa T069 não é o mesmo processo.",
+    "do_not_use_when": "Conhecimento muda rápido, dados são insuficientes ou aluno não demonstra generalização além de respostas vistas."
+  },
+  "connections": [
+    {
+      "target_id": "T179",
+      "relation": "complements",
+      "how": "Formalizar transferência como atualização de parâmetros.",
+      "interface": "Professor, contexto, exemplos e checkpoint do aluno.",
+      "condition": "Treino e mudança de pesos serem verificáveis.",
+      "acceptance": "Comparar comportamento em exemplos inéditos e exceções.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S040",
+        "A-S011"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T009",
+      "relation": "complements",
+      "how": "Manter fatos voláteis em recuperação externa.",
+      "interface": "Consulta, evidência vigente e versão.",
+      "condition": "Aluno respeitar contexto quando contradiz memória paramétrica.",
+      "acceptance": "Atualizar fato no corpus e medir resposta sem retreinar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S040",
+        "A-S011"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não chamar resumo salvo de destilação paramétrica.",
+    "Não usar resultado do professor como verdade sem verificar dados de treino."
+  ],
+  "frontier_comparison": "Comparar tarefa delimitada e custo amortizado; aprender com professor contextual não transfere toda sua capacidade.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q017",
+      "V4A-Q024"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S040",
+    "A-S011"
+  ]
+}

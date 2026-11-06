@@ -1,0 +1,18 @@
+[
+  {
+    "question": "FA3 serve automaticamente na 5090?",
+    "answer": "Não se pode concluir pelo nome; é necessário verificar backend, versão, build e formatos suportados."
+  },
+  {
+    "question": "FP8 e FA3 são a mesma técnica?",
+    "answer": "Não. Um é formato/estratégia numérica; o outro é uma implementação de atenção que pode explorá-lo."
+  },
+  {
+    "question": "Ter suporte a FP8 basta para usar o kernel?",
+    "answer": "Não. O caminho pode depender de instruções, layouts e software adicionais."
+  },
+  {
+    "question": "Pipeline mais ocupado prova menor latência?",
+    "answer": "Não. Coordenação e pressão de recursos podem compensar a sobreposição; compare duração real do trabalho completo."
+  }
+]

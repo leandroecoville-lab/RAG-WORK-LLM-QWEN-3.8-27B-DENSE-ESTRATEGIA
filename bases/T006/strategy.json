@@ -1,0 +1,111 @@
+{
+  "id": "T006",
+  "novelty": "A v3 calculou custos de compressão. Aqui a estratégia escolhe representações diferentes por tipo de informação e consumidor.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Transforme tabelas em registros tipados e narrativa em trechos extraídos. Números, relações e ressalvas exigem representações diferentes; aplicar a mesma taxa a tudo desperdiça capacidade do leitor pequeno.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S027",
+        "V4A-S028"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Reserve passagem sem compressão para campos de alta sensibilidade e compacte redundâncias de apresentação. O compressor deve emitir mapa de cobertura por requisito, permitindo ampliar somente a parte insuficiente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S027",
+        "V4A-S028"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare compressão uniforme, por tipo e ausência de compressão. Meça respostas sensíveis a unidade, exceção e atribuição de fonte, além de tokens. Unidade de avaliação: documento com consulta. Na validação, uma tabela deve conter o mesmo número em colunas com unidades diferentes e uma nota que altera apenas uma linha. A representação comprimida precisa conservar essas relações. Compare resposta com objeto estruturado, texto linearizado e resumo abstrativo; esse contraste localiza se o erro foi criado pelo parser, pelo compressor ou pela leitura.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S027",
+        "V4A-S028"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Manual com especificações",
+      "scenario": "Texto mistura requisitos e explicações.",
+      "strategy": "Extrair requisitos literalmente, resumir justificativas e manter tabelas estruturadas; reabrir se um requisito não puder ser ligado à seção.",
+      "small_model_role": "3–7B lê campos; 8–14B integra exceções.",
+      "acceptance": "Não perder valor, unidade ou condição obrigatória.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S027",
+        "V4A-S028"
+      ]
+    },
+    {
+      "name": "Dossiê repetitivo",
+      "scenario": "Vários documentos repetem o mesmo fato.",
+      "strategy": "Agrupar duplicações por origem, preservar divergências e enviar exemplos representativos acompanhados da contagem de fontes independentes.",
+      "small_model_role": "15–30B sintetiza controvérsias.",
+      "acceptance": "Conservar posição minoritária documentada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S027",
+        "V4A-S028"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Consumidor de representação estruturada curta, sem reconstruir texto telegráfico complexo.",
+    "8_14b": "Leitor misto de registros e trechos, apto a pedir expansão específica.",
+    "15_30b": "Integrador de múltiplas representações com verificador de consistência.",
+    "training_or_runtime_requirements": "Parser de tipos, mapa de cobertura e tokenizer do consumidor; treinamento opcional para leitura comprimida.",
+    "do_not_use_when": "O compressor altera relação entre condições ou custa mais que a leitura integral."
+  },
+  "connections": [
+    {
+      "target_id": "T033",
+      "relation": "requires",
+      "how": "Identificar tipos antes de compactar.",
+      "interface": "Seções, tabelas, listas e seus identificadores.",
+      "condition": "Parser preservar unidades e fronteiras.",
+      "acceptance": "Verificar casos com tabela atravessando páginas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S027",
+        "V4A-S028"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T044",
+      "relation": "complements",
+      "how": "Expandir apenas o requisito insuficiente.",
+      "interface": "Lacuna, referência e orçamento restante.",
+      "condition": "Original permanecer acessível.",
+      "acceptance": "Medir releitura e recuperação da condição omitida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S027",
+        "V4A-S028"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não declarar compressão sem perda sem prova.",
+    "Preservar distinção entre citação literal e paráfrase."
+  ],
+  "frontier_comparison": "Avaliar qualidade final por tipo de informação; compressão bem lida por fronteira pode falhar em 3–7B.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q024"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S027",
+    "V4A-S028"
+  ]
+}

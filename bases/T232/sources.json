@@ -1,0 +1,93 @@
+[
+  {
+    "source_id": "V2A-S015",
+    "title": "LibCST documentation",
+    "url": "https://libcst.readthedocs.io/en/latest/",
+    "publisher": "LibCST",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Árvore sintática concreta para transformações Python preservando formatação, comentários e parênteses.",
+    "limitations": "Consulta documental primária. Não houve reprodução de experimentos, instalação do produto nem validação de disponibilidade na infraestrutura LAI. Receitas e testes das entradas são propostas editoriais.",
+    "web_ref": "turn55view5"
+  },
+  {
+    "source_id": "V3C-S033",
+    "title": "LibCST — Metadata",
+    "url": "https://libcst.readthedocs.io/en/latest/metadata.html",
+    "publisher": "LibCST project",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "MetadataWrapper e providers fornecem posições, escopos e nomes para transformações estruturais.",
+    "limitations": "Metadados estáticos têm limites em código dinâmico; preserving CST não garante equivalência funcional.",
+    "web_ref": "turn141view3"
+  },
+  {
+    "source_id": "V3C-S035",
+    "title": "LibCST — Codemods",
+    "url": "https://libcst.readthedocs.io/en/latest/codemods.html",
+    "publisher": "LibCST project",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Framework de transformações, metadata e passes para codemods sobre CST.",
+    "limitations": "Transformação automatizada não comprova comportamento preservado; validação depende do contrato da mudança.",
+    "web_ref": "turn155view0"
+  },
+  {
+    "source_id": "V4C-S008",
+    "title": "Introducing Piranha: An Open Source Tool to Automatically Delete Stale Code",
+    "url": "https://www.uber.com/us/en/blog/piranha/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2020-03-17",
+    "supports": "Pipeline interno de remoção de flags obsoletas por transformação de AST e geração de diffs para revisão.",
+    "limitations": "Fonte primária aberta. Desempenho relatado pertence ao sistema e ao período descritos; não foi reproduzido e não comprova transferência para modelos 3–30B.",
+    "web_ref": "turn234view0"
+  },
+  {
+    "source_id": "V4C-S009",
+    "title": "Using AI to Delete Code: Agentic Tech Debt Cleanup at Uber",
+    "url": "https://www.uber.com/us/en/blog/ai-code-cleanup/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "AutoClean operacional combina agentes, PolyglotPiranha via MCP, CI, fixers delimitados, verificações estáticas e CodeCourt por propriedades.",
+    "limitations": "Fonte primária aberta. Desempenho relatado pertence ao sistema e ao período descritos; não foi reproduzido e não comprova transferência para modelos 3–30B.",
+    "web_ref": "turn238view0"
+  },
+  {
+    "source_id": "V4C-S006",
+    "title": "Getafix: How Facebook tools learn to fix bugs automatically",
+    "url": "https://engineering.fb.com/2018/11/06/developer-tools/getafix-how-facebook-tools-learn-to-fix-bugs-automatically/",
+    "publisher": "Meta",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2018-11-06",
+    "supports": "Getafix implantado na Facebook, diferenças por AST e padrões aprendidos de correções humanas para sugerir patches.",
+    "limitations": "Fonte primária aberta. Desempenho relatado pertence ao sistema e ao período descritos; não foi reproduzido e não comprova transferência para modelos 3–30B.",
+    "web_ref": "turn235view0"
+  },
+  {
+    "source_id": "V4C-S007",
+    "title": "Finding and fixing software bugs automatically with SapFix and Sapienz",
+    "url": "https://engineering.fb.com/2018/09/13/developer-tools/finding-and-fixing-software-bugs-automatically-with-sapfix-and-sapienz/",
+    "publisher": "Meta",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2018-09-13",
+    "supports": "Geração e validação de patches com compilação, testes e aprovação humana, incluindo correções efetivamente implantadas.",
+    "limitations": "Fonte primária aberta. Desempenho relatado pertence ao sistema e ao período descritos; não foi reproduzido e não comprova transferência para modelos 3–30B.",
+    "web_ref": "turn237view0"
+  }
+]

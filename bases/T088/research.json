@@ -1,0 +1,47 @@
+{
+  "id": "T088",
+  "technical_details": "O recurso escasso muda durante a execução: uma sequência admitida ganha tokens e amplia seu estado, enquanto outra termina e libera espaço. Um escalonador precisa contabilizar tokens processados, capacidade KV e prazos, além do número de requisições. Prefills longos introduzidos entre decodes podem aumentar o intervalo entre tokens; a política de admissão determina quem suporta esse atraso.",
+  "boundary_condition": "Melhor ocupação média não garante boa latência de cauda quando crescimento do cache causa preempções ou reconstruções.",
+  "implementation_contract": {
+    "inputs": "Fila de entrada, sequências ativas, orçamento de tokens e blocos disponíveis.",
+    "outputs": "Conjunto de trabalho por iteração e eventos de admissão, término ou preempção.",
+    "state": "Slots com identificadores de geração, estado KV e prazos individuais.",
+    "invariant": "Resultado assíncrono só atualiza a sequência que ainda possui aquele slot e geração."
+  },
+  "tradeoffs": [
+    "Admitir mais sequências aproveita recursos e eleva pressão de memória.",
+    "Priorizar decodes reduz interrupções, mas pode aumentar espera por primeiro token."
+  ],
+  "failure_test": "Teste proposto: inserir prompt muito longo entre várias gerações curtas e cancelar uma delas antes do retorno do kernel. Esperar preservação de identidade e registro explícito das interrupções.",
+  "evaluation_plan": "Plano proposto: comparar lotes fixos e escalonamento por iteração com mesmos comprimentos e chegadas. Medir tokens úteis por segundo, TTFT, intervalos entre tokens, preempções e falhas; escolher uma política que satisfaça os objetivos por classe.",
+  "comparisons": [
+    {
+      "entry_id": "T094",
+      "relation": "complements",
+      "reason": "Dividir prefills limita o trabalho que uma admissão longa introduz em cada rodada."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O Orca propõe escalonamento na granularidade de uma iteração do modelo, permitindo mudanças no lote.",
+    "source_ids": [
+      "B-S008"
+    ],
+    "support": "direct",
+    "caveat": "O princípio publicado não determina sozinho reserva de memória, prioridades ou comportamento de um servidor específico."
+  },
+  "advanced_qa": [
+    {
+      "question": "Mais sequências ativas significa mais trabalho útil?",
+      "answer": "Não quando a pressão provoca preempções repetidas e reconstrução do mesmo contexto."
+    },
+    {
+      "question": "Por que versionar o slot?",
+      "answer": "Após cancelamento e reutilização, uma resposta atrasada poderia ser aplicada à sequência errada sem essa distinção."
+    }
+  ],
+  "source_ids": [
+    "B-S008",
+    "V3B-S004"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

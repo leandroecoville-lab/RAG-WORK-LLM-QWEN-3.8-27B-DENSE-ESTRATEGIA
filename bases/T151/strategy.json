@@ -1,0 +1,110 @@
+{
+  "id": "T151",
+  "novelty": "A v3 tratou a corrida entre descoberta e execução. O aprofundamento define descoberta progressiva com orçamento, apresentação de contratos mínimos e invalidação de descrições que mudam a seleção.",
+  "deep_layers": [
+    {
+      "name": "Escada de detalhe",
+      "detail": "Comece com nomes de domínio e capacidades, depois carregue descrição curta e só então schema completo. Cada nível deve conter o suficiente para decidir se vale aprofundar. Um índice excessivamente resumido perde distinções essenciais; um schema inteiro para cada candidato elimina a economia que motivou o carregamento tardio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ]
+    },
+    {
+      "name": "Busca terminável",
+      "detail": "Defina quando a descoberta termina: ferramenta compatível, ausência confirmada no catálogo consultado ou orçamento esgotado. Repetir buscas com sinônimos não deve esconder a mesma lista de resultados. Guarde candidatos já examinados e razões de rejeição, permitindo reabrir um candidato apenas se o catálogo ou o objetivo mudou.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013",
+        "C-S030"
+      ]
+    },
+    {
+      "name": "Contrato carregado não vira memória eterna",
+      "detail": "Descritores podem expirar ou ser revogados. A sessão deve conservar a versão utilizada para explicar decisões, mas consultar habilitação atual antes da execução. Separar histórico de disponibilidade impede que uma ferramenta removida continue operando apenas porque sua definição ficou no contexto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013",
+        "V3C-S004"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Agente com milhares de ferramentas",
+      "scenario": "Uma consulta local demanda poucas operações de um catálogo amplo.",
+      "strategy": "Resolva servidor por intenção, liste ferramentas relevantes, carregue schema do candidato e valide argumentos. Se a chamada falhar por revisão incompatível, atualize o descritor uma vez e reavalie; não transforme erro permanente em busca infinita.",
+      "small_model_role": "3–7B pode selecionar entre poucos candidatos; 8–14B compõe argumentos curtos.",
+      "acceptance": "Proposta: medir tokens de catálogo, escolha correta e custo total de descoberta em ferramentas desconhecidas do treino.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ]
+    },
+    {
+      "name": "Sessões de programação frequentes",
+      "scenario": "A maioria das tarefas usa apenas arquivos e testes, mas há integrações externas disponíveis.",
+      "strategy": "Mantenha ferramentas básicas no início e resolva integrações específicas quando uma lacuna real surgir. Execute polling mecânico em código e devolva resumo, evitando carregar schemas e resultados intermediários em todos os turnos.",
+      "small_model_role": "8–30B mantém o objetivo; um wrapper determinístico resolve protocolos e espera.",
+      "acceptance": "Proposta: comparar custo e conclusão com carregamento integral, incluindo tarefas que exigem a integração rara.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: descoberta em duas ou três etapas com conjuntos pequenos e critérios explícitos de abstenção.",
+    "8_14b": "Proposta: composição de contratos locais e seleção de campos de resposta.",
+    "15_30b": "Proposta: descoberta entre domínios com estado persistido dos candidatos e orçamento de investigação.",
+    "training_or_runtime_requirements": "Exige registro pesquisável, descrições úteis e cache de schemas versionado; menor prompt não garante melhor seleção.",
+    "do_not_use_when": "Não usar quando a ferramenta é sempre necessária e o custo de buscá-la supera a economia de contexto."
+  },
+  "connections": [
+    {
+      "target_id": "T158",
+      "relation": "complements",
+      "how": "No Omni MCP, a descoberta resolve ferramentas presentes no registro antes da invocação.",
+      "interface": "IDs de servidor e ferramenta, schema e estado de habilitação.",
+      "condition": "O plano de controle conhece a revisão executável.",
+      "acceptance": "Proposta: retirar ferramenta do catálogo ativo e conferir rejeição apesar do descritor antigo.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S013"
+      ],
+      "case_ids": [
+        "V4C-C014"
+      ]
+    },
+    {
+      "target_id": "T214",
+      "relation": "complements",
+      "how": "Depois de carregar o contrato, selecione campos de resposta necessários à próxima decisão.",
+      "interface": "Schema de saída e projeção de campos.",
+      "condition": "Campos omitidos podem ser recuperados se a tarefa mudar.",
+      "acceptance": "Comparar erros por omissão com economia total de tokens.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir ferramenta descoberta com ferramenta habilitada para aquele chamador.",
+    "Evitar que descrições geradas automaticamente mudem sem revisão e rastreabilidade."
+  ],
+  "frontier_comparison": "Compare escolha de ferramentas entre 3–30B e fronteira com catálogos idênticos. A descoberta reduz distração e custo, mas não prova capacidade equivalente de executar qualquer ferramenta.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q009"
+    ],
+    "scope_note": "Omni MCP e harnesses Uber comprovam descoberta gradual; as bandas e políticas de orçamento são propostas locais."
+  },
+  "source_ids": [
+    "V4C-S013",
+    "C-S030",
+    "V3C-S004",
+    "V4C-S014"
+  ]
+}

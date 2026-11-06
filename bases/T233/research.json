@@ -1,0 +1,53 @@
+{
+  "id": "T233",
+  "technical_details": "Verificar hash e aplicar depois deixa uma janela de corrida: outro escritor pode alterar a base entre as duas operações. Uma proposta prepara a alteração em árvore isolada, verifica o resultado e publica uma referência somente se o destino ainda apontar para a revisão esperada. git-update-ref oferece comparação com old-oid para esse tipo de atualização de ref. Isso protege publicação da revisão; não torna efeitos de scripts ou bancos parte da mesma transação.",
+  "boundary_condition": "Um teste aprovado em árvore diferente da publicada não sustenta a conclusão sobre o artefato entregue.",
+  "implementation_contract": {
+    "inputs": "Patch, revisão-base, critérios de validação e referência de destino.",
+    "outputs": "Artefato validado identificado ou conflito de base/publicação.",
+    "state": "Hashes de entrada e saída, evidências dos testes e referência esperada.",
+    "invariant": "O objeto publicado é exatamente aquele ao qual se referem as evidências de validação."
+  },
+  "tradeoffs": [
+    "Preparação isolada reduz disputas e exige integração explícita.",
+    "Revalidar após mudanças concorrentes custa tempo e evita publicar evidência obsoleta."
+  ],
+  "failure_test": "Teste proposto: aprovar um candidato e avançar a referência de destino antes da publicação; exigir rejeição condicional e nova integração, sem sobrescrever o avanço concorrente.",
+  "evaluation_plan": "Comparar check seguido de escrita livre e publicação condicionada à base. Medir conflitos detectados, revisões erradas publicadas e custo de revalidação. Separar integridade dos bytes, aplicação do patch e correção funcional.",
+  "comparisons": [
+    {
+      "entry_id": "T229",
+      "relation": "complements",
+      "reason": "A estratégia de patch precisa dessa ligação entre base, delta e resultado."
+    },
+    {
+      "entry_id": "T236",
+      "relation": "complements",
+      "reason": "Commits podem identificar o artefato validado e seu ponto de integração."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "git-update-ref permite atualizar uma ref somente quando seu valor atual corresponde ao old-oid informado.",
+    "source_ids": [
+      "V3C-S037"
+    ],
+    "support": "direct",
+    "caveat": "A guarda cobre a referência Git; não é uma transação global de todo o ambiente de execução."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um hash-base lido anteriormente elimina concorrência?",
+      "answer": "Não. A comparação precisa participar da guarda da escrita ou publicação, não ser apenas uma verificação separada."
+    },
+    {
+      "question": "Por que registrar hash do resultado testado?",
+      "answer": "Para demonstrar que o artefato entregue corresponde à versão avaliada e não a uma edição posterior sem validação."
+    }
+  ],
+  "source_ids": [
+    "V3C-S037",
+    "V2A-S014",
+    "V3C-S034"
+  ],
+  "research_note": "Contratos, cenários de falha e planos de avaliação são propostas editoriais fundamentadas nas fontes indicadas."
+}

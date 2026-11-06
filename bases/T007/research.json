@@ -1,0 +1,51 @@
+{
+  "id": "T007",
+  "technical_details": "A chave deve representar a requisição efetiva, não apenas o texto visível da pergunta. Modelo, parâmetros, instruções, escopo e revisão das fontes podem alterar a resposta. Canonicalização resolve diferenças de serialização, como ordem de propriedades, mas não decide que duas instruções significam a mesma coisa. Normalizar arrays, tipos ou espaços significativos indevidamente cria colisões semânticas mesmo com hash criptográfico correto.",
+  "boundary_condition": "Requisições dependentes de relógio, aleatoriedade desejada ou estado externo mutável não são reutilizáveis sem incorporar uma fronteira válida desses fatores.",
+  "implementation_contract": {
+    "inputs": "Envelope completo do pedido e versão da regra de canonicalização.",
+    "outputs": "Chave, resposta elegível e metadados da execução que a originou.",
+    "state": "Entradas associadas à revisão das dependências e ao escopo de acesso.",
+    "invariant": "Pedidos distintos em um fator que muda o resultado não recebem deliberadamente a mesma identidade."
+  },
+  "tradeoffs": [
+    "Chaves completas diminuem hits, mas reduzem reutilização incorreta.",
+    "Canonicalização acrescenta trabalho e exige tratamento rigoroso de números, Unicode e campos opcionais."
+  ],
+  "failure_test": "Teste proposto: enviar objetos com propriedades em ordem diferente e depois mudar um parâmetro relevante. Os primeiros devem compartilhar a identidade definida; a alteração de parâmetro deve produzir outra chave.",
+  "evaluation_plan": "Avaliação proposta: comparar identidade de bytes e envelope canonicalizado com casos equivalentes e distintos. Medir hits corretos, colisões de significado, tempo de chaveamento e recuperação após mudança de política.",
+  "comparisons": [
+    {
+      "entry_id": "T005",
+      "relation": "alternative",
+      "reason": "Cache semântico busca equivalência aproximada; o hash depende de equivalência explicitamente definida."
+    },
+    {
+      "entry_id": "T061",
+      "relation": "complements",
+      "reason": "Endereçamento por conteúdo pode armazenar os artefatos associados à resposta."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "RFC 8785 define representação JSON determinística apropriada a operações reproduzíveis de hashing.",
+    "source_ids": [
+      "V3A-S006"
+    ],
+    "support": "direct",
+    "caveat": "A especificação não define quais campos de uma requisição de LLM são semanticamente obrigatórios."
+  },
+  "advanced_qa": [
+    {
+      "question": "SHA-256 elimina todo risco de cache incorreto?",
+      "answer": "Não. Um hash forte não corrige uma chave incompleta nem uma resposta originalmente errada; colisão de projeto costuma ser mais relevante que colisão criptográfica."
+    },
+    {
+      "question": "Cache de resposta pode repetir uma ferramenta de escrita?",
+      "answer": "Reutilizar texto não equivale a executar nem confirmar um efeito. Operações de escrita precisam de identidade e reconciliação próprias, separadas deste cache."
+    }
+  ],
+  "source_ids": [
+    "V3A-S006"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

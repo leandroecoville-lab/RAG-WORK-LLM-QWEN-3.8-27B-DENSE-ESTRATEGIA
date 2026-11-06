@@ -1,0 +1,114 @@
+{
+  "id": "T210",
+  "novelty": "A v3 modelava transferência de propriedade do estado. A expansão define critérios para rotacionar, preserva contexto que não pode ser reconstruído e trata a retomada como operação verificável com custo próprio.",
+  "deep_layers": [
+    {
+      "name": "Motivo de rotação",
+      "detail": "Rotacione quando o histórico deixou de ajudar, a janela ficou pressionada ou uma fase terminou com fronteira clara. Reiniciar por um número fixo de turnos pode interromper raciocínio útil e aumentar reconsultas. Use sinais de ocupação e de término de fase, mantendo a decisão separada de erro de ferramenta ou falha do processo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S028",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Pacote de retomada testável",
+      "detail": "Antes de encerrar, publique objetivo atual, artefatos, decisões, operações pendentes e próximo passo. Faça uma leitura de validação como se fosse um novo executor: referências resolvem, revisões coincidem e pendências não parecem concluídas. O custo dessa passagem deve entrar na comparação entre sessão longa e rotação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S004",
+        "V4C-S030"
+      ]
+    },
+    {
+      "name": "Fronteira entre sessões",
+      "detail": "A sessão nova assume uma geração de estado; respostas atrasadas da anterior precisam ser classificadas por tarefa e revisão. Não descarte automaticamente um resultado válido só por ser antigo, mas não o publique sem verificar compatibilidade. Operações externas em andamento continuam pertencendo à mesma intenção até reconciliação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026",
+        "V3C-S028"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Campanha com modelos locais",
+      "scenario": "Um agente trabalha horas em módulos separados.",
+      "strategy": "Rotacione após validar e persistir uma micro-missão, não no meio de uma edição ainda sem teste. A nova sessão lê o mapa geral e a memória do módulo seguinte, reabrindo arquivos atuais. Preserve decisões compartilhadas que ainda condicionam os próximos módulos.",
+      "small_model_role": "3–7B executa micro-missões; 15–30B supervisiona fronteiras e integração.",
+      "acceptance": "Proposta: continuidade correta com menos contexto ativo e sem aumento excessivo de releituras.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S028"
+      ]
+    },
+    {
+      "name": "Mudança de papel",
+      "scenario": "Uma sessão coletou evidências e outra fará síntese crítica.",
+      "strategy": "Publique matriz de alegações e referências, mantendo os documentos completos acessíveis. A nova sessão recebe perguntas de comparação e lacunas, reduzindo contaminação por hipóteses prematuras do coletor. Compare resultados para detectar perda de exceções na passagem.",
+      "small_model_role": "8–14B coleta; 15–30B sintetiza com critérios próprios.",
+      "acceptance": "Proposta: cobertura preservada e detecção de contradições após rotação de papel.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Sessões por tarefa estreita, com estado externo mínimo e verificável.",
+    "8_14b": "Alternar coleta e análise mantendo fontes acessíveis por referência.",
+    "15_30b": "Integração entre fases, avaliando se o pacote preserva dependências relevantes.",
+    "training_or_runtime_requirements": "Manifesto de estado, versões de artefatos e controle de geração; retorno de chamada antiga não publica sozinho.",
+    "do_not_use_when": "Não usar rotação para esconder falha não resolvida ou reiniciar orçamento e contadores."
+  },
+  "connections": [
+    {
+      "target_id": "T211",
+      "relation": "complements",
+      "how": "Handoff materializa o estado que a nova sessão precisa consumir.",
+      "interface": "Manifesto, revisão e operações pendentes.",
+      "condition": "Membros persistidos antes da publicação do manifesto.",
+      "acceptance": "Novo executor resolve referências e identifica próximo passo inequívoco.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S004",
+        "V4C-S030"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T243",
+      "relation": "complements",
+      "how": "Reconciliar efeitos enviados pela sessão anterior antes de novas tentativas.",
+      "interface": "Identidade da intenção e observações remotas.",
+      "condition": "A transferência mantém a mesma missão.",
+      "acceptance": "Nenhum efeito duplicado por tratar sessão nova como execução nova.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Resumo curto não prova completude de estado.",
+    "Resultados tardios exigem checagem de versão e objetivo, não aceitação ou descarte automático."
+  ],
+  "frontier_comparison": "Compare sessões rotacionadas e contínuas com os mesmos modelos e custo total. A técnica pode aliviar contexto de 3–30B, mas não recompõe informação que o handoff omitiu.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q002",
+      "V4C-Q027"
+    ],
+    "scope_note": "Relatos de planos persistidos e subagentes apoiam continuidade; não foi encontrado caso que comprove exatamente esta política de rotação como produto padronizado."
+  },
+  "source_ids": [
+    "V3C-S028",
+    "V4C-S014",
+    "V2A-S004",
+    "V4C-S030",
+    "C-S026",
+    "C-S030"
+  ]
+}

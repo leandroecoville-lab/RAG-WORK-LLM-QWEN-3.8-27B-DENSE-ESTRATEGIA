@@ -1,0 +1,51 @@
+{
+  "id": "T033",
+  "technical_details": "A estrutura usada para agrupar trechos é resultado de uma etapa anterior de interpretação. Um erro de classificação transforma uma legenda em título e pode mudar os limites de todas as unidades seguintes. O chunker precisa conservar elementos originais e separar limites rígidos, como tamanho máximo, de preferências, como não juntar seções. Unidades estruturais gigantes ainda exigem subdivisão explícita.",
+  "boundary_condition": "A vantagem diminui quando a estrutura é inferida de extração desordenada ou quando a pergunta depende de relações que atravessam vários elementos.",
+  "implementation_contract": {
+    "inputs": "Elementos tipados com ordem, documento, seção e coordenadas ou offsets recuperáveis.",
+    "outputs": "Chunks com lista de elementos de origem, divisões internas e metadados herdados.",
+    "state": "Versões do particionador, regras de agrupamento e tratamento de elementos excedentes.",
+    "invariant": "A reconstrução da origem não depende de interpretar novamente o texto sintetizado do chunk."
+  },
+  "tradeoffs": [
+    "Agrupar elementos inteiros conserva relações locais, mas pode desperdiçar orçamento ao respeitar fronteiras.",
+    "Mesclar seções pequenas reduz fragmentação; também pode juntar assuntos cuja separação tinha significado."
+  ],
+  "failure_test": "Teste proposto: classificar deliberadamente uma legenda como título e inserir uma tabela maior que o limite. O processamento deve expor a segmentação derivada e conservar associação entre cabeçalho, linhas e fonte.",
+  "evaluation_plan": "Avaliação proposta: comparar segmentação por elementos e recursiva usando a mesma extração inicial. Medir fidelidade estrutural, cobertura de relações tabela-texto, proporção de subdivisões e recuperação por orçamento; separar falhas do parser das do chunker.",
+  "comparisons": [
+    {
+      "entry_id": "T012",
+      "relation": "alternative",
+      "reason": "A divisão recursiva usa separadores textuais; elementos estruturados carregam tipos e relações produzidos antes do agrupamento."
+    },
+    {
+      "entry_id": "T032",
+      "relation": "complements",
+      "reason": "A expansão parental pode recuperar contexto que uma unidade estrutural pequena não contém."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O Unstructured agrupa elementos previamente particionados e divide elementos que excedem o tamanho máximo.",
+    "source_ids": [
+      "V3A-S027"
+    ],
+    "support": "direct",
+    "caveat": "O comportamento depende da estratégia e configuração; preservar toda seção não é uma garantia universal."
+  },
+  "advanced_qa": [
+    {
+      "question": "A versão do splitter basta para reproduzir os chunks?",
+      "answer": "Não. Também registre o particionador e seus parâmetros. Alterar reconhecimento de títulos ou tabelas modifica a estrutura antes da divisão."
+    },
+    {
+      "question": "Uma tabela deve sempre permanecer inteira?",
+      "answer": "Somente se couber e for utilizável. A subdivisão precisa conservar identificação das colunas, unidades e vínculo com a tabela original."
+    }
+  ],
+  "source_ids": [
+    "V3A-S027"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

@@ -1,0 +1,8 @@
+flowchart TD
+    P016["P016 Evaluation Engine"]
+    T198["T198 Calibrated Confidence"]
+    P016 -. "feeds: proposta" .-> T198
+    T203["T203 Correctness-Based Routing"]
+    P016 -. "feeds: proposta" .-> T203
+    P017["P017 Distillation Pipeline"]
+    P016 -. "complements: proposta" .-> P017

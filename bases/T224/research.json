@@ -1,0 +1,52 @@
+{
+  "id": "T224",
+  "technical_details": "Uma especificação operacional liga requisito, decisão de projeto, tarefa e evidência de aceitação. Quando o requisito muda, essa ligação permite localizar os artefatos afetados; sem ela, o plano pode continuar executando uma versão antiga. Spec Kit fornece processos e templates, mas preencher documentos não comprova convergência. A proposta trata ambiguidades como questões explícitas e preserva a origem das decisões que as resolveram.",
+  "boundary_condition": "Uma especificação extensa, porém contraditória ou desatualizada, pode produzir execução consistente com o documento e incompatível com a intenção vigente.",
+  "implementation_contract": {
+    "inputs": "Objetivo, requisitos identificados, restrições e decisões autorizadas.",
+    "outputs": "Plano, tarefas e matriz de evidências por requisito.",
+    "state": "Versões da especificação, decisões e vínculos com alterações.",
+    "invariant": "Critério alterado invalida ou reavalia evidências produzidas sob a versão anterior."
+  },
+  "tradeoffs": [
+    "Rastreabilidade reduz interpretação implícita e aumenta manutenção documental.",
+    "Especificação muito prescritiva restringe soluções melhores descobertas durante a implementação."
+  ],
+  "failure_test": "Teste proposto: mudar um requisito após testes aprovados e antes da entrega; exigir identificação dos testes e artefatos que precisam ser reavaliados.",
+  "evaluation_plan": "Comparar execução por prompt amplo e por especificação rastreável em tarefas equivalentes. Medir ambiguidades tardias, retrabalho e requisitos sem evidência. Avaliar documento e produto separadamente; quantidade de arquivos não é métrica de completude.",
+  "comparisons": [
+    {
+      "entry_id": "T217",
+      "relation": "complements",
+      "reason": "Testes materializam parte dos critérios de aceitação da especificação."
+    },
+    {
+      "entry_id": "T213",
+      "relation": "complements",
+      "reason": "Micro-missões precisam de vínculo com resultados exigidos, evitando fragmentação sem finalidade."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Spec Kit oferece processos estruturados, templates e resultados documentados para agentes de programação.",
+    "source_ids": [
+      "V2A-S023"
+    ],
+    "support": "direct",
+    "caveat": "O repositório é uma ferramenta de organização; a qualidade da especificação e das evidências depende da aplicação."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma tarefa concluída no plano prova requisito satisfeito?",
+      "answer": "Somente se sua saída cumprir o critério e a evidência estiver vinculada à versão vigente do requisito."
+    },
+    {
+      "question": "O que fazer quando a implementação revela premissa falsa?",
+      "answer": "Revisar a especificação com a decisão correspondente e propagar o impacto, em vez de ocultar a divergência no código."
+    }
+  ],
+  "source_ids": [
+    "V2A-S023",
+    "V3C-S034"
+  ],
+  "research_note": "Mecanismos referenciados em fontes primárias; contratos e verificação descritos são propostas, não ensaios executados."
+}

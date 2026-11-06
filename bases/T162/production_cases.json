@@ -1,0 +1,65 @@
+{
+  "coverage": {
+    "entry_id": "T162",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 1,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 9,
+    "target_met": false,
+    "strict_case_ids": [
+      "V4C-C001"
+    ],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Idempotência",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C001",
+      "company": "Amazon Web Services",
+      "system": "EC2 RunInstances",
+      "title": "Intenção idempotente no provisionamento EC2",
+      "evidence_level": "production_documented",
+      "observed_use": "A AWS descreve uso de identificadores fornecidos pelo cliente na criação de instâncias e reutilização pelos SDKs/CLI em tentativas repetidas.",
+      "technical_mechanism": "O identificador conserva a intenção; parâmetros divergentes são rejeitados e respostas semanticamente equivalentes permitem recuperar confirmação perdida.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "C-S026"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T162",
+          "match": "exact",
+          "rationale": "O contrato documentado controla repetição da mesma intenção no RunInstances."
+        },
+        {
+          "entry_id": "T243",
+          "match": "family",
+          "rationale": "O relato discute a ambiguidade de recursos existentes e a necessidade de identificar a operação que os criou."
+        },
+        {
+          "entry_id": "P015",
+          "match": "analogy",
+          "rationale": "Identidade, parâmetros e resposta exemplificam princípios do controlador editorial, sem existência do componente LAI."
+        }
+      ],
+      "small_model_transfer": "Proposta: um modelo 3–30B produz argumentos; código determinístico atribui a intenção e impede que reparo textual gere uma segunda operação. Validar timeout depois do efeito e parâmetros divergentes.",
+      "limits": "Caso de API de infraestrutura, sem LLM. Retenção e identidade são específicas do serviço; não prova exactly-once universal nem ganho de qualidade de modelos.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C001",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T162",
+        "match": "exact",
+        "rationale": "O contrato documentado controla repetição da mesma intenção no RunInstances."
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "T196",
+  "technical_details": "Uma gramática válida para caracteres precisa ser relacionada aos tokens reais do modelo, que podem conter fragmentos ou vários símbolos estruturais. O estado do matcher deve avançar pelo token escolhido e produzir a máscara da etapa seguinte. Tamanho de vocabulário do tokenizer e dimensão dos logits também podem diferir por padding. Um prefixo ainda extensível não é uma estrutura concluída quando o orçamento termina.",
+  "boundary_condition": "Restrições incompatíveis podem deixar nenhum token permitido; remover a máscara silenciosamente violaria o contrato estrutural.",
+  "implementation_contract": {
+    "inputs": "Gramática ou schema suportado, tokenizer, dimensão dos logits e estado de geração.",
+    "outputs": "Tokens permitidos e resultado com estado de conclusão explícito.",
+    "state": "Gramática compilada, matcher por sequência e máscaras alinhadas ao vocabulário.",
+    "invariant": "A máscara corresponde exatamente ao prefixo confirmado daquela sequência."
+  },
+  "tradeoffs": [
+    "Restringir tokens reduz erros estruturais e adiciona custo de compilação ou matching.",
+    "Gramáticas rígidas podem excluir representações válidas que o contrato não descreveu."
+  ],
+  "failure_test": "Teste proposto: reutilizar matcher de outra sequência e encerrar a geração antes do fechamento de um objeto. Esperar detecção do estado incompatível e indicação de estrutura incompleta, sem fallback irrestrito.",
+  "evaluation_plan": "Plano proposto: comparar geração livre e restrita sob o mesmo schema e modelo. Medir validade completa, conteúdo correto, latência e casos sem continuação; exigir validação final independente e separar sucesso sintático de factualidade.",
+  "comparisons": [
+    {
+      "entry_id": "T197",
+      "relation": "complements",
+      "reason": "Schema validation examina o objeto produzido; constrained decoding restringe o caminho enquanto ele é produzido."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O workflow XGrammar vincula compilação ao tokenizer e mantém um matcher que aceita tokens e gera máscaras subsequentes.",
+    "source_ids": [
+      "V3B-S025"
+    ],
+    "support": "direct",
+    "caveat": "O suporte de grammar/schema e término depende da implementação; estrutura permitida não prova fatos externos."
+  },
+  "advanced_qa": [
+    {
+      "question": "Token estruturalmente permitido pode estar errado?",
+      "answer": "Sim. Um número ou identificador pode obedecer à gramática e designar um valor incorreto."
+    },
+    {
+      "question": "EOS sempre significa JSON completo?",
+      "answer": "Somente se o protocolo de término exige completude; truncamento e políticas de parada externas precisam ser tratados separadamente."
+    }
+  ],
+  "source_ids": [
+    "V3B-S025",
+    "C-S008"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

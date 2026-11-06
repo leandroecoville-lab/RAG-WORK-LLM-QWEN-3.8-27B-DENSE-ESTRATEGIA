@@ -1,0 +1,38 @@
+{
+  "entry_id": "T240",
+  "edges": [
+    {
+      "edge_id": "E-T240-01",
+      "from": "T240",
+      "to": "T242",
+      "relation": "complements",
+      "how": "Snapshot serve como base para aplicar eventos posteriores e reduzir tempo de recuperação.",
+      "interface": "Estado, cursor e versão do processador.",
+      "condition": "Cursor corresponde exatamente ao conteúdo capturado.",
+      "acceptance": "Resultado equivale à reconstrução de referência sob as mesmas regras.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S041"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T240-02",
+      "from": "T240",
+      "to": "T243",
+      "relation": "complements",
+      "how": "Após restaurar estado local, consultar desfecho atual das intenções externas pendentes.",
+      "interface": "IDs de operação e último estado conhecido.",
+      "condition": "Snapshot não é tratado como rollback do serviço remoto.",
+      "acceptance": "Efeito ocorrido depois da captura é reconhecido antes de repetir.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

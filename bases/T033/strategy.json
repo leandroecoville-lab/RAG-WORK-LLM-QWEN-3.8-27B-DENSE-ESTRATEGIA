@@ -1,0 +1,113 @@
+{
+  "id": "T033",
+  "novelty": "A v3 analisou erros de parsing. Aqui estruturas viram unidades de evidência com contratos distintos de leitura e comparação.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Trate tabela, procedimento, figura e código como tipos diferentes. Uma tabela precisa de cabeçalhos e unidades; procedimento precisa de ordem; código precisa de contexto sintático.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S027",
+        "V4A-S013"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Produza duas representações: texto para busca e objeto estruturado para leitura. O índice pode omitir detalhes, mas a geração deve acessar a representação que conserva relações necessárias.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S027",
+        "V4A-S013"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare texto linearizado e blocos tipados em perguntas que dependem de linhas, colunas ou ordem. Meça erros de associação, não só recuperação do documento correto. Unidade de avaliação: bloco estrutural.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S027",
+        "V4A-S013"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Tabelas comparativas",
+      "scenario": "Valores similares pertencem a modelos diferentes.",
+      "strategy": "Recuperar tabela pelo tema, selecionar linhas em código e fornecer cabeçalho completo ao leitor. Preservar notas de rodapé aplicáveis.",
+      "small_model_role": "3–7B verbaliza células selecionadas.",
+      "acceptance": "Não trocar coluna, unidade ou condição de nota.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S027",
+        "V4A-S013"
+      ]
+    },
+    {
+      "name": "Procedimento operacional",
+      "scenario": "Passos incluem ramos condicionais.",
+      "strategy": "Preservar ordem e condições em estrutura; fornecer somente ramo aplicável, mantendo ponto de retorno.",
+      "small_model_role": "8–14B explica execução.",
+      "acceptance": "Toda ação deve respeitar pré-condições e ordem documentadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S027",
+        "V4A-S013"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Leitor de células e campos com relações explícitas.",
+    "8_14b": "Interpretador de listas condicionais e blocos de código pequenos.",
+    "15_30b": "Comparador de múltiplas estruturas com referências cruzadas.",
+    "training_or_runtime_requirements": "Parser com testes por formato e ligação entre texto indexado e objeto de leitura; OCR exige avaliação própria.",
+    "do_not_use_when": "Extração não preserva layout decisivo e não há imagem ou original disponível para conferir."
+  },
+  "connections": [
+    {
+      "target_id": "T032",
+      "relation": "feeds",
+      "how": "Expandir filho em estrutura completa necessária.",
+      "interface": "Tipo, bloco_id, cabeçalhos e revisão.",
+      "condition": "Pai estrutural corresponder à mesma origem.",
+      "acceptance": "Recuperar célula sem perder cabeçalho que muda significado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S027",
+        "V4A-S013"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T195",
+      "relation": "complements",
+      "how": "Verificar propriedades calculáveis da estrutura.",
+      "interface": "Tabela tipada ou código e regras de validação.",
+      "condition": "Execução autorizada e ambiente adequado.",
+      "acceptance": "Detectar soma ou sintaxe inválida antes da resposta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S027",
+        "V4A-S013"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não interpretar ordem visual como sequência temporal sem indicação.",
+    "Conservar vínculo entre nota e células afetadas."
+  ],
+  "frontier_comparison": "Comparar leitura relacional de tabelas e procedimentos; domínio estrutural pode permitir bons resultados com modelos menores.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q009",
+      "V4A-Q019",
+      "V4A-Q022"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S027",
+    "V4A-S013"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "coverage": {
+    "entry_id": "T230",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Unified Diff",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C028",
+      "company": "Aider",
+      "system": "Architect/editor e formatos de edição",
+      "title": "Papéis de planejamento e aplicação no Aider",
+      "evidence_level": "operational_product",
+      "observed_use": "Documentação disponibiliza modo architect e formatos whole, diff e udiff.",
+      "technical_mechanism": "Uma chamada propõe a solução e outra traduz em edições; formatos têm contratos diferentes e podem usar o mesmo modelo.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V3C-S042",
+        "V2A-S008"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R019",
+          "match": "exact",
+          "rationale": "Recurso nativo documentado do Aider."
+        },
+        {
+          "entry_id": "T231",
+          "match": "exact",
+          "rationale": "SEARCH/REPLACE é formato explicitamente descrito."
+        },
+        {
+          "entry_id": "T230",
+          "match": "family",
+          "rationale": "Formato udiff documentado é baseado em diffs, com convenção própria; não é edição AST."
+        },
+        {
+          "entry_id": "T143",
+          "match": "family",
+          "rationale": "Architect antecipa proposta antes da edição."
+        }
+      ],
+      "small_model_transfer": "Proposta: testar 3–7B como tradutor de edições curtas e 15–30B como arquiteto, sem presumir que dividir melhora acerto.",
+      "limits": "Recurso disponível não comprova adoção empresarial nem desempenho nesta instalação. Mesma fonte reaproveitada da v3, reaberta nesta pesquisa.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C028",
+      "deployment_domain": "llm_framework",
+      "mapping": {
+        "entry_id": "T230",
+        "match": "family",
+        "rationale": "Formato udiff documentado é baseado em diffs, com convenção própria; não é edição AST."
+      }
+    }
+  ]
+}

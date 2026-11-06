@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "A-S021",
+    "title": "Reciprocal rank fusion",
+    "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+    "publisher": "Elastic",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Combinação por posições de múltiplos rankings, incluindo busca lexical e vetorial.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn11view2"
+  },
+  {
+    "source_id": "V3A-S022",
+    "title": "Normalization processor",
+    "url": "https://docs.opensearch.org/latest/search-plugins/search-pipelines/normalization-processor/",
+    "publisher": "OpenSearch",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Normalização e combinação de scores; estatísticas calculadas sobre candidatos retornados e sensibilidade ao tamanho desse conjunto.",
+    "limitations": "Fonte primária consultada; não houve reprodução, instalação ou validação de desempenho na LAI. Contratos e cenários adicionais são propostas editoriais.",
+    "web_ref": "turn122view0"
+  },
+  {
+    "source_id": "V3A-S026",
+    "title": "BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models",
+    "url": "https://arxiv.org/abs/2104.08663",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2021-04-17",
+    "supports": "Generalização entre domínios e comparação de recuperadores lexicais, densos e reranking com custos distintos.",
+    "limitations": "Consultados resumo e conclusões gerais de avaliação; perguntas e gabaritos do benchmark não foram consultados. Comparações publicadas não se transferem automaticamente a modelos atuais.",
+    "web_ref": "turn122view4"
+  },
+  {
+    "source_id": "V4A-S009",
+    "title": "Semantic ranking in Azure AI Search",
+    "url": "https://learn.microsoft.com/en-us/azure/search/semantic-search-overview",
+    "publisher": "Microsoft Learn",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Ranking secundário, campos resumidos, limite de candidatos, BM25 e RRF.",
+    "limitations": "Escopo limitado ao material aberto. Disponibilidade, resultados experimentais e implantação histórica são classes distintas; não demonstra desempenho de modelos 3–30B no ambiente do usuário.",
+    "web_ref": "turn241view6"
+  }
+]

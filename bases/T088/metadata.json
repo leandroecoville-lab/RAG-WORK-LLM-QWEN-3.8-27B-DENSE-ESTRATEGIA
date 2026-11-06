@@ -1,0 +1,37 @@
+{
+  "id": "T088",
+  "name": "Continuous Batching",
+  "canonical_name": "Continuous Batching",
+  "canonical_id": "T088",
+  "aliases": [
+    "iteration-level scheduling",
+    "in-flight batching"
+  ],
+  "category": "inferencia",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T087",
+    "T093",
+    "T094",
+    "T121"
+  ],
+  "source_ids": [
+    "B-S008",
+    "V3B-S004",
+    "V4B-S008",
+    "V4B-S010",
+    "V4B-S014",
+    "V3D-S006",
+    "V4B-S001",
+    "V4B-S019",
+    "V4D-S016",
+    "V4D-S020"
+  ],
+  "namespace": "T088",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T088",
+  "chunk_count": 9
+}

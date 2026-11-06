@@ -1,0 +1,34 @@
+{
+  "id": "T210",
+  "name": "Session Rotation",
+  "canonical_name": "Session Rotation",
+  "canonical_id": "T210",
+  "aliases": [
+    "renovação de sessão",
+    "context reset com handoff"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T211",
+    "T060",
+    "T243"
+  ],
+  "source_ids": [
+    "V2A-S004",
+    "V2A-S005",
+    "V2A-S006",
+    "V3C-S028",
+    "V4C-S014",
+    "V4C-S030",
+    "C-S026",
+    "C-S030"
+  ],
+  "namespace": "T210",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T210",
+  "chunk_count": 9
+}

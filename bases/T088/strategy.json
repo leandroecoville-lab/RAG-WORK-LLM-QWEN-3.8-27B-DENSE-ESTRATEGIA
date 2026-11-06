@@ -1,0 +1,134 @@
+{
+  "id": "T088",
+  "novelty": "A v3 cobriu crescimento KV e admissão entre iterações. Agora o foco é justiça temporal, cancelamento e capacidade efetivamente entregue, incluindo diferença entre uma política que maximiza tokens e outra que preserva a experiência de cada usuário.",
+  "deep_layers": [
+    {
+      "name": "Justiça em unidades de trabalho",
+      "detail": "Uma sequência longa pode consumir muitas iterações enquanto outras aguardam. Monitore atraso acumulado, tokens já recebidos e custo estimado restante, sem exigir estimativa perfeita do tamanho final. Projete envelhecimento de prioridade e limites por cliente; dar preferência permanente a solicitações curtas pode excluir tarefas longas necessárias.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S008",
+        "V3B-S004",
+        "V4B-S008",
+        "V4B-S010",
+        "V4B-S014"
+      ]
+    },
+    {
+      "name": "Cancelamento com prazo",
+      "detail": "Quando um cliente abandona a requisição, interrompa geração e libere recursos assim que o backend puder fazê-lo com segurança. Registre a diferença entre pedido de cancelamento e confirmação de liberação. Jobs mortos que continuam decodificando reduzem capacidade e contaminam throughput aparente com tokens que ninguém utilizará.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S008",
+        "V3B-S004",
+        "V4B-S008",
+        "V4B-S010",
+        "V4B-S014"
+      ]
+    },
+    {
+      "name": "Capacidade sob SLO",
+      "detail": "Defina capacidade como a maior taxa de chegada que mantém qualidade, TTFT e intervalos entre tokens dentro dos limites escolhidos. Não basta encontrar a saturação de tokens por segundo. Teste long tails de prompt e resposta, pois uma pequena fração de pedidos extremos pode alterar a política ótima do restante.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S008",
+        "V3B-S004",
+        "V4B-S008",
+        "V4B-S010",
+        "V4B-S014"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Assistentes com fan-out",
+      "scenario": "Uma tarefa abre muitas análises independentes de candidatos ou documentos.",
+      "strategy": "Adicione limite por missão e reúna as subrequisições pelo scheduler contínuo. Cancele ramos que se tornaram desnecessários depois de seleção antecipada; preserve a contabilização do custo consumido por eles.",
+      "small_model_role": "Um 8–30B pode atender análises especializadas em paralelo sem carregar uma cópia por ramo.",
+      "acceptance": "Aprovar por tempo da missão e justiça entre clientes, mantendo resultados associados ao ramo correto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S008",
+        "V3B-S004",
+        "V4B-S008",
+        "V4B-S010",
+        "V4B-S014"
+      ]
+    },
+    {
+      "name": "Serviço misto online e offline",
+      "scenario": "Classificações adiáveis disputam o acelerador com conversas.",
+      "strategy": "Use admissão prioritária para o fluxo interativo e aproveite folga para o offline. Reserve uma cota mínima ao offline para evitar inanição. Reavalie quando prompts ou comprimentos médios mudarem.",
+      "small_model_role": "Um 3–14B pode manter alta utilização em períodos ociosos, desde que jobs adiáveis aceitem pausa.",
+      "acceptance": "Medir SLO interativo e progresso offline simultaneamente; nenhum pode desaparecer da avaliação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S008",
+        "V3B-S004",
+        "V4B-S008",
+        "V4B-S010",
+        "V4B-S014"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, verificar se orquestração CPU e montagem do lote limitam o ganho antes do cálculo GPU.",
+    "8_14b": "Em 8–14B, ajustar admissão por comprimento e tipo de tarefa costuma ser mais informativo que apenas aumentar sequências.",
+    "15_30b": "Em 15–30B, pressão de KV exige limites claros e avaliação de preempção/recomputação.",
+    "training_or_runtime_requirements": "Runtime deve manter estados por sequência, remoção segura e métricas por requisição; lista de prompts numa API não prova batching contínuo.",
+    "do_not_use_when": "Não ativar grandes limites sem margem para crescimento da saída e sem mecanismo de cancelamento verificável."
+  },
+  "connections": [
+    {
+      "target_id": "T094",
+      "relation": "complements",
+      "how": "Dividir prefills extensos para reduzir interrupções do decode de sequências admitidas.",
+      "interface": "Orçamento de tokens novos e estados de prefill parcial.",
+      "condition": "Scheduler intercala fases mantendo causalidade.",
+      "acceptance": "Medir TTFT e maior intervalo de streaming por classe.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S008",
+        "V3B-S004",
+        "V4B-S008",
+        "V4B-S010",
+        "V4B-S014"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T082",
+      "relation": "complements",
+      "how": "Reutilizar prefixos comuns no fan-out antes de preencher novas posições do lote.",
+      "interface": "Blocos compartilhados e tokens novos por pedido.",
+      "condition": "Estados possuem a mesma identidade de execução.",
+      "acceptance": "Comparar memória compartilhada e capacidade dentro do SLO.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4B-S010"
+      ],
+      "case_ids": [
+        "V4B-C001"
+      ]
+    }
+  ],
+  "failure_controls": [
+    "Registrar tokens produzidos após cancelamento como desperdício.",
+    "Expor métricas por cliente e comprimento para detectar inanição mascarada pela média."
+  ],
+  "frontier_comparison": "Avaliar um fluxo completo contra a fronteira sob a mesma taxa de chegada. Continuous batching melhora utilização; a comparação de qualidade continua exigindo testes de domínio independentes do scheduler.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q004",
+      "V4B-Q014"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S008",
+    "V3B-S004",
+    "V4B-S008",
+    "V4B-S010",
+    "V4B-S014"
+  ]
+}

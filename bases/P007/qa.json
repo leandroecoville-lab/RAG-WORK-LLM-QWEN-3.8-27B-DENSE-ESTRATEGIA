@@ -1,0 +1,18 @@
+[
+  {
+    "question": "O primeiro resultado é necessariamente o fato vigente?",
+    "answer": "Não. Ranking mede adequação à consulta; vigência depende da versão, temporalidade e estado do registro."
+  },
+  {
+    "question": "Como avaliar um caso sem resposta no acervo?",
+    "answer": "Rotular a ausência e verificar se o recuperador comunica insuficiência, em vez de entregar um candidato parecido como prova."
+  },
+  {
+    "question": "Score alto significa evidência verdadeira?",
+    "answer": "Não. Ranking estima correspondência à consulta; validade e qualidade da fonte precisam de critérios próprios."
+  },
+  {
+    "question": "Por que testar o documento pai?",
+    "answer": "Uma expansão pode reintroduzir conteúdo que a busca inicial filtrou corretamente."
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "id": "R002",
+  "name": "Letta",
+  "canonical_name": "Letta — plataforma de agentes com estado",
+  "canonical_id": "R002",
+  "aliases": [
+    "Letta platform",
+    "plataforma Letta",
+    "Letta MemFS",
+    "context repository",
+    "filesystem de memória",
+    "Letta / Letta MemFS"
+  ],
+  "category": "referencias",
+  "kind": "project",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "R001",
+    "R013",
+    "R014",
+    "T047",
+    "T064",
+    "T072"
+  ],
+  "source_ids": [
+    "V2B-S001",
+    "V2B-S002",
+    "V3A-S046",
+    "V4A-S026"
+  ],
+  "namespace": "R002",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R002",
+  "chunk_count": 9
+}

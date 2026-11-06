@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Episódio é a conversa inteira?",
+    "answer": "Pode conter conversa, mas deve ter fronteiras, objetivo e resultado. Um histórico bruto não fornece automaticamente essa estrutura."
+  },
+  {
+    "question": "Uma correção que funcionou vira regra?",
+    "answer": "Vira evidência de um caso. Generalização exige condições de aplicação e novas avaliações."
+  },
+  {
+    "question": "Qual é a unidade correta de episódio?",
+    "answer": "A menor sequência que conserva objetivo, condições e desfecho interpretável. Pode atravessar sessões; uma sessão pode conter vários episódios."
+  },
+  {
+    "question": "Casos incompletos devem entrar no índice?",
+    "answer": "Podem ser úteis, desde que a incompletude seja recuperável como campo. O leitor não deve interpretar ausência de resultado como resultado negativo."
+  }
+]

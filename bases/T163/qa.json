@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Jitter é somar sempre o mesmo atraso?",
+    "answer": "Não. Exige variação aleatória segundo uma distribuição definida; um deslocamento fixo mantém clientes sincronizados."
+  },
+  {
+    "question": "Posso repetir uma escrita após timeout?",
+    "answer": "Só com garantia adequada de idempotência ou reconciliação. Timeout não informa se o servidor já aplicou o efeito."
+  },
+  {
+    "question": "Um teto de atraso limita a duração total?",
+    "answer": "Não. Faltam quantidade de tentativas, duração das chamadas, filas e deadline global."
+  },
+  {
+    "question": "Quota de retries também atrasa a primeira chamada?",
+    "answer": "No mecanismo documentado, não; essa quota limita repetições, e admissão inicial pertence a outro controle."
+  }
+]

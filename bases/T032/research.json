@@ -1,0 +1,51 @@
+{
+  "id": "T032",
+  "technical_details": "O vínculo filho-pai precisa incluir revisão, além de identidade lógica. Se o índice vetorial contém um filho antigo e o docstore devolve o pai novo, o trecho usado para localizar a resposta pode não existir no conteúdo entregue. Também é necessário deduplicar pais: muitos filhos semelhantes podem consumir todo o conjunto candidato e devolver apenas um documento.",
+  "boundary_condition": "A expansão perde valor quando o pai é grande demais para o orçamento, inclui conteúdo inelegível ou não corresponde à versão do filho recuperado.",
+  "implementation_contract": {
+    "inputs": "Filhos indexados, mapa de parent_id e pais com versões recuperáveis.",
+    "outputs": "Pais elegíveis ou regiões selecionadas, com evidência dos filhos que motivaram a expansão.",
+    "state": "Revisão de ingestão, presença dos pais e política de publicação do índice.",
+    "invariant": "Nenhum filho é apresentado como evidência da versão de um pai à qual ele não pertence."
+  },
+  "tradeoffs": [
+    "Filhos pequenos localizam detalhes, mas exigem lookup adicional e manutenção de relações.",
+    "Pais maiores preservam contexto e podem introduzir ruído ou duplicação na montagem final."
+  ],
+  "failure_test": "Teste proposto: interromper ingestão entre a escrita de filhos e pais, e depois alterar um pai sem reindexar. A consulta deve detectar ausência ou incompatibilidade, sem substituir silenciosamente o conteúdo.",
+  "evaluation_plan": "Avaliação proposta: comparar filhos isolados e expansão parental com orçamento igual. Medir pais únicos recuperados, integridade dos vínculos, recall de condições e custo de lookup; avaliar também muitas correspondências concentradas num único pai.",
+  "comparisons": [
+    {
+      "entry_id": "T026",
+      "relation": "complements",
+      "reason": "A hierarquia pode orientar busca; parent-child separa unidade de indexação da unidade entregue."
+    },
+    {
+      "entry_id": "T010",
+      "relation": "complements",
+      "reason": "Um divisor simples pode gerar filhos, desde que os vínculos e versões sejam preservados."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O ParentDocumentRetriever armazena o identificador do pai nos metadados dos filhos e mantém os pais num docstore.",
+    "source_ids": [
+      "V2C-S003"
+    ],
+    "support": "direct",
+    "caveat": "O código consultado faz operações em stores distintos; atomicidade entre eles não deve ser presumida."
+  },
+  "advanced_qa": [
+    {
+      "question": "Pai é sempre o documento completo?",
+      "answer": "Não. Pode ser um bloco maior gerado previamente. O tamanho adequado depende do contexto necessário e do orçamento de leitura."
+    },
+    {
+      "question": "Top-k de filhos é igual a top-k de pais?",
+      "answer": "Não. Vários filhos podem apontar ao mesmo pai. Controle diversidade e cobertura no nível realmente entregue ao gerador."
+    }
+  ],
+  "source_ids": [
+    "V2C-S003"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

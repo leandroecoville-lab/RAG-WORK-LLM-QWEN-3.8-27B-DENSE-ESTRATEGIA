@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Mais contexto sempre melhora a resposta?",
+    "answer": "Não. A expansão deve resolver uma lacuna identificada, pois dados extras também introduzem ruído."
+  },
+  {
+    "question": "Quem decide que a evidência é suficiente?",
+    "answer": "Uma política de cobertura e verificação, auxiliada pelo modelo; confiança textual isolada não basta."
+  },
+  {
+    "question": "Como estimar o valor da próxima busca?",
+    "answer": "Use o tipo de lacuna, custo e histórico de tentativas. É uma heurística operacional que precisa ser comparada com expansão fixa."
+  },
+  {
+    "question": "Quando expandir o documento em vez da coleção?",
+    "answer": "Quando a lacuna é local, como uma definição ou ressalva próxima. Ausência de identidade ou fonte independente pode exigir busca mais ampla."
+  }
+]

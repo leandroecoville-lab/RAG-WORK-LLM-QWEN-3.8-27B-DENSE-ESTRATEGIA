@@ -1,0 +1,52 @@
+{
+  "id": "T002",
+  "technical_details": "O benefício econômico depende de quantas reutilizações acontecem antes de o prefixo mudar ou expirar. Se W é o custo da primeira gravação, R o custo de cada leitura e U o custo sem cache, uma sequência com m reutilizações economiza quando W+mR<(m+1)U. Todas as parcelas devem usar a mesma unidade e excluir economias imaginadas na geração da saída.",
+  "boundary_condition": "Prefixos frequentemente alterados, pedidos abaixo dos requisitos do provedor ou baixa repetição podem impedir amortização, mesmo com conteúdo conceitualmente semelhante.",
+  "implementation_contract": {
+    "inputs": "Prefixo serializado estável, modelo e configuração documentados.",
+    "outputs": "Resposta nova e indicadores de leitura ou criação de cache reportados.",
+    "state": "Revisões do prefixo, intervalos entre chamadas e uso observado.",
+    "invariant": "Um ganho de cache só é contabilizado quando houver evidência de reutilização no serviço."
+  },
+  "tradeoffs": [
+    "Colocar material estável primeiro favorece reutilização, mas não justifica preservar instruções obsoletas.",
+    "Compactar pode recuperar contexto e simultaneamente invalidar processamento já armazenado."
+  ],
+  "failure_test": "Teste proposto: modificar uma ferramenta no prefixo e repetir a chamada. Verificar a invalidação indicada pelo provedor e impedir que o relatório conte um hit apenas porque o texto do usuário não mudou.",
+  "evaluation_plan": "Avaliação proposta: comparar séries com repetição, expiração e mudança de prefixo. Controlar entrada, saída e modelo; medir tokens reportados, latência de início e custo total, incluindo gravações sem reutilização.",
+  "comparisons": [
+    {
+      "entry_id": "T007",
+      "relation": "distinct_from",
+      "reason": "Cache de resposta evita uma geração; prompt caching reutiliza processamento de entrada e ainda gera a resposta."
+    },
+    {
+      "entry_id": "T043",
+      "relation": "complements",
+      "reason": "Compactação e caching precisam ser avaliados juntos porque editar o prefixo muda a reutilização."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação de context editing registra que limpar resultados de ferramentas pode invalidar prefixos em cache.",
+    "source_ids": [
+      "V3A-S008"
+    ],
+    "support": "direct",
+    "caveat": "O comportamento preciso e os preços dependem do provedor e da configuração consultada."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um cache hit demonstra que a informação continua atual?",
+      "answer": "Não. Demonstra reutilização de processamento. Atualidade depende da versão das fontes e de decidir quais informações entram no prompt."
+    },
+    {
+      "question": "Devo aumentar o prompt apenas para obter cache?",
+      "answer": "Só após comparar o custo total e a qualidade. Um hit artificial pode acrescentar trabalho e conteúdo irrelevante sem benefício líquido."
+    }
+  ],
+  "source_ids": [
+    "A-S002",
+    "V3A-S008"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

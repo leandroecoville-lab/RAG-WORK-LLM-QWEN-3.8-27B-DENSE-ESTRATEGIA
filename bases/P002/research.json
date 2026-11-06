@@ -1,0 +1,51 @@
+{
+  "id": "P002",
+  "technical_details": "Context Manager é proposto como dono do ciclo de vida do contexto de uma sessão. Uma operação de compactação deve ler uma revisão, produzir uma candidata e confirmar somente se o estado de origem continuar compatível. Mensagens novas durante a compactação não podem desaparecer. O manager também precisa diferenciar objetivo vigente, decisões encerradas, pendências e referências externas, pois persistir todas as mensagens não garante que o próximo turno receba as informações certas.",
+  "boundary_condition": "Uma sessão pode envolver atualizações concorrentes e resultados tardios de ferramentas. A ordem de chegada não representa necessariamente a ordem lógica das decisões.",
+  "implementation_contract": {
+    "inputs": "Identificador de sessão, revisão esperada, nova observação, objetivo e política de retenção do contexto.",
+    "outputs": "Nova revisão confirmada, conflito explícito ou contexto preparado para a próxima etapa.",
+    "state": "Histórico de revisões, resumo ativo, referências de evidência e operações de compactação ainda pendentes.",
+    "invariant": "Toda compactação deve preservar mensagens posteriores ao snapshot ou ser rejeitada por conflito de revisão."
+  },
+  "tradeoffs": [
+    "Controle por revisão pode exigir recomputação após conflitos, porém evita sobrescrita silenciosa de fatos recentes.",
+    "Reter histórico completo facilita auditoria, mas a janela ativa ainda precisa de limites e política de seleção."
+  ],
+  "failure_test": "Proposta: iniciar compactação na revisão n, anexar nova instrução em n+1 e tentar confirmar o resumo antigo; exigir reconciliação ou rejeição, preservando a instrução recente.",
+  "evaluation_plan": "Comparar truncamento simples e gestão por revisão em conversas com correções, cancelamentos e resultados tardios. Medir perda de requisitos, conflitos, custo de compactação e continuidade após reinício. Não contar resumo bem formado como prova de preservação.",
+  "comparisons": [
+    {
+      "entry_id": "T043",
+      "relation": "complements",
+      "reason": "Compactação é uma operação do ciclo de vida."
+    },
+    {
+      "entry_id": "T154",
+      "relation": "complements",
+      "reason": "Gestão de múltiplos turnos fornece eventos e estado da conversa."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Checkpointers persistem estado de uma thread; stores mantêm dados que podem atravessar threads.",
+    "source_ids": [
+      "V3D-S016"
+    ],
+    "support": "related",
+    "caveat": "A distinção documental inspira o escopo, mas não implementa o controle de revisão proposto."
+  },
+  "advanced_qa": [
+    {
+      "question": "Persistir histórico resolve perda de contexto?",
+      "answer": "Não sozinho. O próximo turno precisa receber a revisão e as informações corretas."
+    },
+    {
+      "question": "Qual condição impede sobrescrever uma correção?",
+      "answer": "Confirmar a transformação contra a revisão de origem e reconciliar alterações posteriores antes do commit."
+    }
+  ],
+  "source_ids": [
+    "V3D-S016"
+  ],
+  "research_note": "Contrato, teste de falha e plano de avaliação são recomendações editoriais; nenhuma implantação ou medição deste mecanismo foi executada neste pacote."
+}

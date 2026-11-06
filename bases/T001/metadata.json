@@ -1,0 +1,28 @@
+{
+  "id": "T001",
+  "name": "Map-Reduce",
+  "canonical_name": "Map-Reduce",
+  "canonical_id": "T001",
+  "aliases": [
+    "MapReduce",
+    "mapear e reduzir"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T008",
+    "T147",
+    "T169"
+  ],
+  "source_ids": [
+    "A-S001",
+    "C-S030"
+  ],
+  "namespace": "T001",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T001",
+  "chunk_count": 9
+}

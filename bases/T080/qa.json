@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Confiança do assistente pode dispensar o alvo?",
+    "answer": "Não em especulação exata. Ela orienta o tamanho do rascunho, não autoriza aceitar seu conteúdo."
+  },
+  {
+    "question": "Qual comprimento é ideal?",
+    "answer": "É específico da carga, par de modelos e hardware; deve ser ajustado por ganho líquido medido."
+  },
+  {
+    "question": "É necessário treinar o assistente novamente?",
+    "answer": "Não para adaptar o horizonte; atualizar pesos online seria uma intervenção distinta, com outros custos e controles."
+  },
+  {
+    "question": "Qual unidade orienta a decisão?",
+    "answer": "Milissegundos por token confirmado, condicionados à carga, são mais úteis que a fração aceita observada isoladamente."
+  }
+]

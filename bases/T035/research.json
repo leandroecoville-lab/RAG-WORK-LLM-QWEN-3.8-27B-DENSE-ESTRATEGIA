@@ -1,0 +1,53 @@
+{
+  "id": "T035",
+  "technical_details": "A contextualização altera a representação de busca antes da consulta: termos de entidade, período e escopo passam a integrar o texto indexado. Isso pode elevar a recuperação de um trecho ambíguo, mas também contaminar dois caminhos simultaneamente quando o prefixo é usado em embeddings e BM25. A atualização documental deve considerar dependências além do chunk: o prefixo pode depender de outra seção.",
+  "boundary_condition": "Quando metadados determinísticos já resolvem a ambiguidade, gerar uma descrição pode adicionar custo e erro sem melhorar a discriminação entre trechos.",
+  "implementation_contract": {
+    "inputs": "Chunk original, contexto documental autorizado e revisão consistente da fonte.",
+    "outputs": "Anotação contextual separada do texto citado, com dependências documentais registradas.",
+    "state": "Modelo contextualizador, template, versões do índice e associação entre prefixo e original.",
+    "invariant": "Termos acrescentados para busca permanecem identificáveis como anotação, sem se tornarem evidência primária."
+  },
+  "tradeoffs": [
+    "Contexto específico resolve referências locais, mas prefixos semelhantes podem aproximar artificialmente todos os chunks.",
+    "Gerar anotações na ingestão amortiza custo de consulta e exige reprocessamento quando as dependências mudam."
+  ],
+  "failure_test": "Teste proposto: mudar a entidade descrita na introdução sem alterar o chunk. A indexação deve invalidar o prefixo dependente e impedir recuperação que ainda atribua o trecho à entidade antiga.",
+  "evaluation_plan": "Avaliação proposta: comparar original, metadados determinísticos e contexto gerado, mantendo recuperador e orçamento iguais. Medir recuperação de referências implícitas, erros adicionados, custo de reindexação e diversidade dos candidatos; distinguir ganho lexical de ganho vetorial.",
+  "comparisons": [
+    {
+      "entry_id": "T011",
+      "relation": "distinct_from",
+      "reason": "Mudar fronteiras por similaridade não equivale a contextualizar a representação de um chunk existente."
+    },
+    {
+      "entry_id": "T027",
+      "relation": "complements",
+      "reason": "Contextualização pode beneficiar busca lexical e vetorial; a fusão ainda precisa ser avaliada com candidatos equivalentes."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Contextual Retrieval acrescenta contexto específico do trecho antes da indexação vetorial e lexical; Late Chunking contextualiza vetores antes do pooling.",
+    "source_ids": [
+      "A-S025",
+      "V3A-S014"
+    ],
+    "support": "direct",
+    "caveat": "São mecanismos distintos; resultados de um não demonstram eficácia do outro nem superioridade em qualquer acervo."
+  },
+  "advanced_qa": [
+    {
+      "question": "Late Chunking produz uma explicação textual adicional?",
+      "answer": "Não necessariamente. A informação contextual entra nas representações dos tokens antes do agrupamento que forma o embedding do trecho."
+    },
+    {
+      "question": "O prefixo precisa conter um resumo completo?",
+      "answer": "Não. O objetivo é resolver o que torna aquele trecho ambíguo. Resumo amplo pode ocupar espaço e reduzir sua especificidade."
+    }
+  ],
+  "source_ids": [
+    "A-S025",
+    "V3A-S014"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

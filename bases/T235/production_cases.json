@@ -1,0 +1,78 @@
+{
+  "coverage": {
+    "entry_id": "T235",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Headless Mode em loop / Headless Controller",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C017",
+      "company": "GitHub / Microsoft",
+      "system": "Copilot coding agent",
+      "title": "Execução de tarefa em ambiente isolado e entrega por PR",
+      "evidence_level": "operational_product",
+      "observed_use": "O anúncio documenta recurso que inicia ambiente GitHub Actions, consulta repositório, edita, valida e publica commits em draft PR.",
+      "technical_mechanism": "A tarefa mantém vínculo com issue, sessão, repositório e mudanças; instruções e feedback da revisão alimentam novas alterações.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S016"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T235",
+          "match": "exact",
+          "rationale": "O recurso executa trabalho em background com logs."
+        },
+        {
+          "entry_id": "T236",
+          "match": "exact",
+          "rationale": "O agente publica mudanças como commits em draft PR."
+        },
+        {
+          "entry_id": "T234",
+          "match": "exact",
+          "rationale": "Instruções do repositório são usadas como contexto."
+        },
+        {
+          "entry_id": "T233",
+          "match": "family",
+          "rationale": "Há etapas de validação, sem demonstração integral do protocolo de hash-base da ficha."
+        },
+        {
+          "entry_id": "T239",
+          "match": "analogy",
+          "rationale": "Ambiente isolado não é prova de uso do comando Git worktree."
+        },
+        {
+          "entry_id": "R027",
+          "match": "exact",
+          "rationale": "Clonagem, commits e pull requests compõem o fluxo documentado."
+        }
+      ],
+      "small_model_transfer": "Proposta: reproduzir a separação tarefa→checkout→patch→testes→revisão com um 3–30B, avaliando artefatos e custo em tarefas delimitadas. Implementar controles de publicação na aplicação, não no prompt.",
+      "limits": "Classificado operational_product: a página descreve recurso, não uma implantação identificada de cliente. Configurações e exigências de aprovação mudaram desde o anúncio.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C017",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T235",
+        "match": "exact",
+        "rationale": "O recurso executa trabalho em background com logs."
+      }
+    }
+  ]
+}

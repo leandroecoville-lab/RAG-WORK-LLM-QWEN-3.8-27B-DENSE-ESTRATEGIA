@@ -1,0 +1,30 @@
+{
+  "id": "R012",
+  "name": "Tinker — Prompt Distillation",
+  "canonical_name": "Tinker Prompt Distillation",
+  "canonical_id": "R012",
+  "aliases": [
+    "Tinker prompt-distillation recipe",
+    "Tinker Prompt Distillation"
+  ],
+  "category": "referencias",
+  "kind": "project",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "T179",
+    "T180",
+    "T182"
+  ],
+  "source_ids": [
+    "C-S034",
+    "V3D-S008",
+    "V4B-S012",
+    "V4B-S013"
+  ],
+  "namespace": "R012",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R012",
+  "chunk_count": 9
+}

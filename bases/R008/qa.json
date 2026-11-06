@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Precisa usar LangChain para usar LangGraph?",
+    "answer": "A documentação consultada informa que não, embora exemplos frequentemente usem suas integrações."
+  },
+  {
+    "question": "Instalar LangGraph dá memória factual correta?",
+    "answer": "Não. É preciso definir conteúdo, proveniência e recuperação."
+  },
+  {
+    "question": "O redutor padrão concatena mensagens concorrentes?",
+    "answer": "Não. É necessário escolher uma regra adequada ao canal e testar conflitos e repetição."
+  },
+  {
+    "question": "O store substitui o checkpointer da conversa?",
+    "answer": "Não. O store compartilha dados entre threads; a retomada do estado da thread exige persistência apropriada."
+  }
+]

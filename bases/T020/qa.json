@@ -1,0 +1,18 @@
+[
+  {
+    "question": "LLMLingua e gist tokens são a mesma coisa?",
+    "answer": "Não. Um pode produzir texto reduzido; gist tokens dependem de uma representação aprendida e de suporte do consumidor."
+  },
+  {
+    "question": "É compressão sem perda?",
+    "answer": "Em geral não. É uma aproximação cuja utilidade precisa ser medida na resposta final."
+  },
+  {
+    "question": "Compressor treinado dispensa validação de fidelidade?",
+    "answer": "Não. O objetivo pode aproximar utilidade média sem preservar todos os detalhes críticos de uma aplicação específica."
+  },
+  {
+    "question": "Como versionar uma representação latente persistida?",
+    "answer": "Vincule-a ao encoder, consumidor, tokenizer e configuração necessários. Se houver incompatibilidade, regenere a partir do original em vez de reinterpretar bytes silenciosamente."
+  }
+]

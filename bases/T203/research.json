@@ -1,0 +1,47 @@
+{
+  "id": "T203",
+  "technical_details": "Para prever correção, o roteador precisa de um evento verificável, como passar um contrato ou resolver um caso com referência. Preferência humana entre respostas é outro alvo e pode valorizar estilo. Se dados registram somente o modelo escolhido anteriormente, faltam resultados contrafactuais dos demais, criando viés de seleção. Avaliação offline deve comparar candidatos em uma amostra apropriada ou declarar essa limitação.",
+  "boundary_condition": "Um classificador de tema ou tamanho de prompt não estima automaticamente a chance de cada modelo cumprir a tarefa.",
+  "implementation_contract": {
+    "inputs": "Tarefa, executores elegíveis, custos e sinais calibrados contra um critério de correção.",
+    "outputs": "Destino, regra de escalonamento e resultado verificado quando disponível.",
+    "state": "Histórico de decisões, versões dos modelos e dados de desempenho por domínio.",
+    "invariant": "Preferência, confiança e correção observada permanecem métricas distintas."
+  },
+  "tradeoffs": [
+    "Modelos menores podem resolver parte da carga e reduzir custo.",
+    "Escalonar após falha adiciona latência e depende de detectar a falha corretamente."
+  ],
+  "failure_test": "Teste proposto: construir respostas de estilo preferido, mas factualmente erradas, e alterar o modelo de destino sem recalibrar. Esperar identificação do desalinhamento entre proxy e critério real.",
+  "evaluation_plan": "Plano proposto: comparar roteamento fixo, por custo e por correção em tarefas novas. Medir acerto externo, custo, latência e erros de escalonamento por classe; validar novamente após troca de modelos ou distribuição.",
+  "comparisons": [
+    {
+      "entry_id": "T184",
+      "relation": "distinct_from",
+      "reason": "Seleciona executores de tarefas; MoE seleciona especialistas internos de uma rede."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "RouteLLM aprende roteadores a partir de preferências para equilibrar custo e qualidade entre modelos.",
+    "source_ids": [
+      "C-S001"
+    ],
+    "support": "related",
+    "caveat": "A fonte é relacionada: preferência não é rótulo universal de correção, e o nome desta ficha não designa algoritmo padronizado."
+  },
+  "advanced_qa": [
+    {
+      "question": "Pode chamar o maior modelo em todo caso difícil?",
+      "answer": "É uma política possível, mas dificuldade prevista e capacidade real precisam ser medidas, incluindo erros do modelo maior."
+    },
+    {
+      "question": "Por que guardar o resultado depois do roteamento?",
+      "answer": "Ele permite verificar calibração e detectar mudança de desempenho; guardar apenas a decisão impede avaliar se a escolha cumpriu o contrato."
+    }
+  ],
+  "source_ids": [
+    "C-S001",
+    "C-S050"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

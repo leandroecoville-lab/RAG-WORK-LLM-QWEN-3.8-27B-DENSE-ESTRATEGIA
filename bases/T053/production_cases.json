@@ -1,0 +1,69 @@
+{
+  "coverage": {
+    "entry_id": "T053",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Scratchpad em arquivo",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C003",
+      "company": "Anthropic",
+      "system": "Claude Code: compaction e memória entre sessões",
+      "title": "Claude Code: compaction e memória entre sessões — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "Cookbook oficial afirma uso em produção de compactação e sistemas complementares de memória no Claude Code.",
+      "technical_mechanism": "Redução da conversa e persistência de informação reutilizável fora da janela.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T043",
+          "match": "exact",
+          "rationale": "Compactação implementada no produto é explicitada."
+        },
+        {
+          "entry_id": "T047",
+          "match": "exact",
+          "rationale": "Persistência entre sessões é afirmada."
+        },
+        {
+          "entry_id": "T053",
+          "match": "family",
+          "rationale": "Notas externas são família relacionada; não demonstra todos os contratos desta ficha."
+        },
+        {
+          "entry_id": "P002",
+          "match": "analogy",
+          "rationale": "Gestão de janela inspira o componente proposto."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Treinar leitor pequeno para retomar pacote estruturado; testar obrigações antigas após compactação.",
+      "limits": "Não revela todos os algoritmos, nem prova que armazenamento de notas torna conclusões corretas. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4A-C003",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T053",
+        "match": "family",
+        "rationale": "Notas externas são família relacionada; não demonstra todos os contratos desta ficha."
+      }
+    }
+  ]
+}

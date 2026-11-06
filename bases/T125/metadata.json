@@ -1,0 +1,30 @@
+{
+  "id": "T125",
+  "name": "GPTQ",
+  "canonical_name": "GPTQ",
+  "canonical_id": "T125",
+  "aliases": [
+    "post-training weight quantization GPTQ"
+  ],
+  "category": "inferencia",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T085",
+    "T124",
+    "T126"
+  ],
+  "source_ids": [
+    "B-S035",
+    "V3B-S013",
+    "V4D-S009",
+    "V4D-S003",
+    "V4D-S004"
+  ],
+  "namespace": "T125",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T125",
+  "chunk_count": 9
+}

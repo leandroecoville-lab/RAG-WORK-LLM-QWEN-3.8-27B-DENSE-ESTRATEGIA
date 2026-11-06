@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Duas chamadas paralelas tornam a LLM paralela?",
+    "answer": "Não. O paralelismo pertence ao runtime e às ferramentas."
+  },
+  {
+    "question": "O tempo final será o da mais lenta?",
+    "answer": "Só como aproximação sem filas, limites ou overhead relevante."
+  },
+  {
+    "question": "Cancelar o grupo garante ausência de efeitos?",
+    "answer": "Não. O cancelamento pode chegar depois da conclusão; cada operação precisa de confirmação ou reconciliação própria."
+  },
+  {
+    "question": "Como preservar ordem sem serializar chamadas?",
+    "answer": "Atribuir índice ou ID estável às entradas e ordenar os resultados por essa identidade após a coleta."
+  }
+]

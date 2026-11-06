@@ -1,0 +1,6 @@
+flowchart TD
+    T040["T040 State-Aware Window"]
+    T065["T065 Transactional State Manager"]
+    T040 -. "requires: proposta" .-> T065
+    T043["T043 Context Compaction"]
+    T040 -. "complements: proposta" .-> T043

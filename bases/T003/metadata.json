@@ -1,0 +1,33 @@
+{
+  "id": "T003",
+  "name": "Sliding Window de contexto — incluindo descarte FIFO",
+  "canonical_name": "Janela deslizante do histórico com descarte FIFO",
+  "canonical_id": "T003",
+  "aliases": [
+    "Sliding Window de contexto",
+    "janela deslizante de histórico",
+    "descarte FIFO de contexto",
+    "histórico recente por tokens"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T050",
+    "T063",
+    "T069",
+    "P002"
+  ],
+  "source_ids": [
+    "A-S003",
+    "A-S006",
+    "V3A-S008",
+    "V4A-S002"
+  ],
+  "namespace": "T003",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T003",
+  "chunk_count": 9
+}

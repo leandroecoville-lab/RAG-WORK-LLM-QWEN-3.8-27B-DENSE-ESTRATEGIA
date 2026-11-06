@@ -1,0 +1,42 @@
+{
+  "entry_id": "T009",
+  "edges": [
+    {
+      "edge_id": "E-T009-01",
+      "from": "T009",
+      "to": "T028",
+      "relation": "complements",
+      "how": "Ordenar candidatos por necessidade de evidência.",
+      "interface": "claim_id, candidato e tipo de suporte.",
+      "condition": "Reranker não excluir contradições obrigatórias.",
+      "acceptance": "Avaliar cobertura por afirmação, além do ranking global.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S022",
+        "V4A-S019",
+        "V4A-S014"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T009-02",
+      "from": "T009",
+      "to": "T200",
+      "relation": "requires",
+      "how": "Verificar suporte após geração.",
+      "interface": "Frase, citação e trecho utilizado.",
+      "condition": "Verificador acessar a origem exata.",
+      "acceptance": "Detectar citação verdadeira mas irrelevante para a frase.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S022",
+        "V4A-S019",
+        "V4A-S014"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

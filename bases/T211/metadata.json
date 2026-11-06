@@ -1,0 +1,34 @@
+{
+  "id": "T211",
+  "name": "Handoff File",
+  "canonical_name": "Handoff File",
+  "canonical_id": "T211",
+  "aliases": [
+    "arquivo de passagem",
+    "arquivo de continuidade"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T210",
+    "T234",
+    "T060"
+  ],
+  "source_ids": [
+    "V2A-S004",
+    "A-S022",
+    "V3C-S027",
+    "V3C-S028",
+    "V4C-S030",
+    "C-S026",
+    "C-S030",
+    "V4C-S021"
+  ],
+  "namespace": "T211",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T211",
+  "chunk_count": 9
+}

@@ -1,0 +1,128 @@
+{
+  "id": "T079",
+  "novelty": "A v3 explicou aceitação e correção da distribuição. A nova camada decide onde especular dentro de um serviço compartilhado, como contabilizar trabalho descartado e como promover uma configuração sem confundir equivalência estatística com igualdade textual.",
+  "deep_layers": [
+    {
+      "name": "Economia por requisição",
+      "detail": "Trate o caminho especulativo como uma opção com custo de oportunidade. Estime tempo de draft, verificação, manutenção de KV e espera que ele impõe às demais requisições. Um lote que confirma mais tokens pode ainda piorar a cauda do serviço; registre economia por token confirmado e por tarefa concluída, incluindo recusas e cancelamentos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S048",
+        "V3B-S001",
+        "V4B-S001",
+        "V4B-S002"
+      ]
+    },
+    {
+      "name": "Fronteira de confirmação",
+      "detail": "Separe estados propostos, verificados e entregues ao cliente. Apenas o prefixo confirmado avança o contador de saída; cancelamento durante verificação deve liberar o trecho especulativo sem publicar candidatos. Quando prefill e decode estiverem separados, transporte também os metadados exigidos pelo método, não somente tensores KV.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S048",
+        "V3B-S001",
+        "V4B-S001",
+        "V4B-S002"
+      ]
+    },
+    {
+      "name": "Promoção por regime",
+      "detail": "Mantenha perfis distintos para baixa concorrência, saturação e prompts com muita repetição. Use tráfego de sombra para escolher o perfil e registre a versão do amostrador. Preserve um caminho sem especulação acionável por aumento de custo, falha de compatibilidade ou perda de qualidade, sem alterar silenciosamente a temperatura.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S048",
+        "V3B-S001",
+        "V4B-S001",
+        "V4B-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Extração com evidências repetidas",
+      "scenario": "Relatórios estruturados reutilizam entidades do material fornecido.",
+      "strategy": "Compare proponente por n-gramas com draft neural usando a mesma distribuição alvo. Escolha por custo completo; desabilite especulação quando o trecho livre reduzir a aceitação. Publique somente resultados verificados.",
+      "small_model_role": "Um alvo de 3–30B resolve a tarefa; o proponente economiza execução, sem acrescentar conhecimento.",
+      "acceptance": "Aceitar apenas com preservação validada da distribuição e melhora de latência sob o mesmo SLO.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S048",
+        "V3B-S001",
+        "V4B-S001",
+        "V4B-S002"
+      ]
+    },
+    {
+      "name": "Agente com ferramentas lentas",
+      "scenario": "A geração textual está no caminho crítico entre chamadas.",
+      "strategy": "Meça primeiro a fração do tempo atribuída ao decode. Aplique especulação apenas às chamadas suficientemente longas; em respostas curtas, evite inicialização de draft que custa mais que o trabalho poupado.",
+      "small_model_role": "O modelo pequeno pode ser alvo ou draft; as duas funções precisam de avaliação separada.",
+      "acceptance": "Comparar tempo por missão, tokens confirmados e incidência de fallback, sem esconder latência de ferramentas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S048",
+        "V3B-S001",
+        "V4B-S001",
+        "V4B-S002"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em alvos 3–7B, o custo do draft pode consumir a vantagem; testar proposta sem pesos antes de carregar outro modelo.",
+    "8_14b": "Em 8–14B, comparar assistente especializado e n-gramas por tarefa, reservando memória para ambos os caches.",
+    "15_30b": "Em 15–30B, maior custo do alvo pode favorecer especulação, mas pressão de KV e concorrência continuam determinantes.",
+    "training_or_runtime_requirements": "Runtime precisa implementar verificação correta; EAGLE/MTP acrescentam requisitos de treino ou arquitetura específicos.",
+    "do_not_use_when": "Não usar modo aproximado como se preservasse distribuição, nem ativar quando o gargalo está fora da geração."
+  },
+  "connections": [
+    {
+      "target_id": "T130",
+      "relation": "complements",
+      "how": "Usar repetição do prompt como proponente barato, mantendo o verificador do alvo.",
+      "interface": "Tokens candidatos e extensão máxima do prefixo proposto.",
+      "condition": "Há repetição suficiente e isolamento dos históricos.",
+      "acceptance": "Comparar taxa de aceitação, custo CPU e distribuição final.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S048",
+        "V3B-S001",
+        "V4B-S001",
+        "V4B-S002"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T102",
+      "relation": "complements",
+      "how": "Transferir estados necessários antes de admitir o decode especulativo no worker destino.",
+      "interface": "KV, logits ou características conforme método e revisão do modelo.",
+      "condition": "Conector conhece o estado adicional do proponente.",
+      "acceptance": "Interromper transferência e confirmar que nenhum token não verificado é emitido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S048",
+        "V3B-S001",
+        "V4B-S001",
+        "V4B-S002"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Contabilizar tokens descartados como custo, não throughput útil.",
+    "Reconciliar contadores de saída após cancelamento, rejeição e troca de worker."
+  ],
+  "frontier_comparison": "Comparar uma tarefa delimitada com um modelo de fronteira usando qualidade e custo por resultado aceito. Especulação pode aproximar a responsividade, mas não aumenta a capacidade de raciocínio ou conhecimento do alvo.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q001",
+      "V4B-Q018"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S048",
+    "V3B-S001",
+    "V4B-S001",
+    "V4B-S002"
+  ]
+}

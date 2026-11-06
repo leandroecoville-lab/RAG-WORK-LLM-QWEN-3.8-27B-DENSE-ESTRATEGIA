@@ -1,0 +1,120 @@
+{
+  "id": "T081",
+  "novelty": "Além da identidade dos estados explicada na v3, esta ficha trata KV como artefato de execução com ciclo de vida: aquisição, validação, empréstimo, migração e reconstrução. A prioridade é evitar que otimização torne recuperação operacional frágil.",
+  "deep_layers": [
+    {
+      "name": "Manifesto de estado",
+      "detail": "Associe ao cache um manifesto com revisão de pesos, adaptador, tokenizer, posições, formato numérico e comprimento confirmado. O manifesto deve ser verificável antes de anexar novos tokens. Um blob legível pode estar semanticamente incompatível; checksum prova integridade de bytes, não equivalência da configuração que os produziu.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S005",
+        "B-S003",
+        "V4B-S002"
+      ]
+    },
+    {
+      "name": "Empréstimo e propriedade",
+      "detail": "Distingua uma referência compartilhada somente para leitura de uma continuação que pode escrever. Ao criar ramificações, use referências contadas ou cópia controlada para as regiões mutáveis. Uma requisição cancelada não pode liberar blocos ainda consumidos por outra; a contabilidade deve acompanhar o ciclo completo do consumidor.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S005",
+        "B-S003",
+        "V4B-S002"
+      ]
+    },
+    {
+      "name": "Recuperação desacoplada",
+      "detail": "Projete o serviço para reconstruir KV a partir dos tokens confirmados quando a afinidade se perder. Persistir todos os tensores pode ser mais caro que recalcular um prefixo curto. A decisão de persistência deve considerar tempo de retomada, bytes transferidos, taxa de falha e frequência real de revisita.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S005",
+        "B-S003",
+        "V4B-S002"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Continuação após mudança de worker",
+      "scenario": "Um agente retorna à conversa depois de expiração ou reinício.",
+      "strategy": "Negocie compatibilidade do manifesto; se for exata, transfira o estado suportado. Caso contrário, reproduza os tokens confirmados no destino. Diferencie retomar a computação de repetir ações externas já realizadas.",
+      "small_model_role": "Modelos 3–30B podem reconstruir contexto local sem depender de memória KV durável.",
+      "acceptance": "Aceitar com mesmo histórico lógico e sem duplicação de efeitos; medir custo de reconstrução.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S005",
+        "B-S003",
+        "V4B-S002"
+      ]
+    },
+    {
+      "name": "Comparação de alternativas",
+      "scenario": "Um planejador abre duas continuações do mesmo prefixo.",
+      "strategy": "Compartilhe o prefixo imutável, mantenha sufixos independentes e descarte o ramo perdedor após seleção. Não misture tokens de ramos diferentes ao consolidar a conversa, mesmo que os prompts tenham o mesmo texto inicial.",
+      "small_model_role": "Um modelo pequeno pode explorar alternativas dentro de um orçamento explícito de memória.",
+      "acceptance": "Verificar independência dos ramos e bytes adicionais realmente alocados por continuação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S005",
+        "B-S003",
+        "V4B-S002"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, reconstrução pode ser simples o bastante para dispensar transferência persistente de grandes blobs.",
+    "8_14b": "Em 8–14B, comparar retenção local de sessões ativas com recomputação de sessões raras.",
+    "15_30b": "Em 15–30B, projetar migração conforme volume KV e capacidade de cada worker, evitando reservar memória inutilizada.",
+    "training_or_runtime_requirements": "Reuso é runtime; mudanças de adaptador, posição ou representação exigem invalidação ou conversão formalmente suportada.",
+    "do_not_use_when": "Não usar KV como histórico auditável nem recuperar conversa a partir de estado sem tokens e configuração de origem."
+  },
+  "connections": [
+    {
+      "target_id": "T116",
+      "relation": "alternative",
+      "how": "Recalcular quando custo ou incompatibilidade tornam transferência inadequada.",
+      "interface": "Tokens confirmados, máscara e manifesto de execução.",
+      "condition": "O histórico original é reconstruível.",
+      "acceptance": "Comparar logits e saída sob tolerância definida do backend.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S005",
+        "B-S003",
+        "V4B-S002"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T060",
+      "relation": "complements",
+      "how": "Salvar progresso lógico independentemente do cache computacional.",
+      "interface": "Revisão da sessão, resultados aceitos e referências de artefatos.",
+      "condition": "Checkpoint distingue efeitos concluídos de geração parcial.",
+      "acceptance": "Reiniciar sem KV e verificar continuidade da missão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S005",
+        "B-S003",
+        "V4B-S002"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Nunca aceitar comprimento confirmado maior que os tokens disponíveis.",
+    "Testar liberação concorrente e cache perdido durante uma ramificação."
+  ],
+  "frontier_comparison": "Avaliar retomada de uma tarefa real contra um serviço de fronteira com o mesmo contexto. Menor tempo de prefill pode melhorar custo e experiência, mas não resolve lacunas de entendimento do modelo.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q002",
+      "V4B-Q003"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S005",
+    "B-S003",
+    "V4B-S002"
+  ]
+}

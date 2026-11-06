@@ -1,0 +1,115 @@
+{
+  "id": "T143",
+  "novelty": "A v3 tratou dependências de informação e valores ainda desconhecidos. A novidade é planejar por compromissos reversíveis, permitindo validar premissas baratas antes de consumir orçamento em etapas dependentes.",
+  "deep_layers": [
+    {
+      "name": "Plano com pontos de decisão",
+      "detail": "Marque etapas como investigação, preparação ou efeito. Primeiro resolva premissas que podem invalidar muitas ações posteriores. Um plano textual pode parecer completo e ainda esconder a hipótese de que uma API, arquivo ou versão existe; esses pontos precisam virar verificações antes da execução custosa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S015",
+        "V4C-S017"
+      ]
+    },
+    {
+      "name": "Replanejamento localizado",
+      "detail": "Quando uma premissa falha, identifique os descendentes que dependem dela e invalide apenas esse conjunto. Preserve resultados independentes com suas versões. Recomeçar todo o plano desperdiça trabalho; conservar tudo indiscriminadamente propaga conclusões produzidas sobre uma base que deixou de existir.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S004",
+        "V3C-S012"
+      ]
+    },
+    {
+      "name": "Plano como orçamento auditável",
+      "detail": "Atribua uma previsão de custo e critério de aceite a cada etapa, incluindo integração e testes. Estimativas são hipóteses revisáveis, não autorização para exceder limites. Se o esforço previsto ultrapassar o orçamento, reduza escopo permitido ou exponha o impedimento antes de iniciar metade da missão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S014",
+        "V4C-S017"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Upgrade com dependências internas",
+      "scenario": "Uma aplicação depende de bibliotecas ainda incompatíveis com a versão alvo.",
+      "strategy": "Inventarie dependências, execute um build inicial e organize ondas. Atualize bases compartilhadas antes de consumidores; quando uma biblioteca não for coberta pela automação, crie uma pendência própria em vez de declarar a aplicação migrada.",
+      "small_model_role": "8–14B resume incompatibilidades; 15–30B sugere plano por módulos com evidências.",
+      "acceptance": "Proposta: medir módulos concluídos, esforço refeito e falhas descobertas tardiamente contra ordem simples por arquivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S017"
+      ]
+    },
+    {
+      "name": "Pesquisa com decisão operacional",
+      "scenario": "É preciso comparar alternativas e preparar uma recomendação condicionada.",
+      "strategy": "Planeje critérios, fontes e lacunas antes das buscas. O executor adapta consultas localmente; o planejador revisita apenas critérios afetados por novas evidências. Conclua com condições de adoção e pontos não resolvidos, não com um plano artificialmente cumprido.",
+      "small_model_role": "3–7B coleta campos por fonte; 15–30B integra critérios e contradições.",
+      "acceptance": "Proposta: avaliar cobertura dos critérios e correção das dependências, com custo de coleta e verificação incluído.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4C-S015"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: preencher etapas de templates conhecidos, verificando uma premissa por vez.",
+    "8_14b": "Proposta: produzir planos curtos com dependências explícitas e operações do catálogo.",
+    "15_30b": "Proposta: replanejar subconjuntos após falhas, mantendo histórico de decisões e motivos.",
+    "training_or_runtime_requirements": "Exige um validador de grafo e entradas versionadas; treino pode melhorar formato, não garantir validade do plano.",
+    "do_not_use_when": "Não usar planejamento extenso quando o ambiente muda mais rápido que a execução ou o próximo passo é uma simples leitura."
+  },
+  "connections": [
+    {
+      "target_id": "T144",
+      "relation": "complements",
+      "how": "Hiring Assistant combina plano global com ciclo ReAct no executor local.",
+      "interface": "Plano de tarefas e observações produzidas durante sua execução.",
+      "condition": "O domínio permite decomposição e adaptação dentro de cada tarefa.",
+      "acceptance": "Proposta: verificar que contingência local não altera objetivo sem retorno ao planejador.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S015"
+      ],
+      "case_ids": [
+        "V4C-C016"
+      ]
+    },
+    {
+      "target_id": "T213",
+      "relation": "feeds",
+      "how": "Cada etapa planejada vira micro-missão com critério de aceite e fronteira de dependência.",
+      "interface": "Pacote de trabalho, pré-condições e artefato esperado.",
+      "condition": "Há valor em validar etapas separadamente.",
+      "acceptance": "Medir lacunas entre entregas e retrabalho de integração.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S017"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não substituir valores desconhecidos por palpites para completar o plano.",
+    "Revalidar premissas críticas imediatamente antes de efeitos que dependam delas."
+  ],
+  "frontier_comparison": "Compare planos e resultados com um modelo de fronteira em migrações delimitadas. Bons templates podem reduzir diferença em tarefas recorrentes, sem garantir planejamento aberto equivalente.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q010",
+      "V4C-Q012"
+    ],
+    "scope_note": "LinkedIn e Amazon documentam combinações específicas; o protocolo de compromissos e invalidação local é desenho proposto."
+  },
+  "source_ids": [
+    "V4C-S015",
+    "V4C-S017",
+    "V4C-S004",
+    "V3C-S012",
+    "V4C-S014",
+    "C-S030"
+  ]
+}

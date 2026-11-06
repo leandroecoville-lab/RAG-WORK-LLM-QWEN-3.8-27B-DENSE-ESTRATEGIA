@@ -1,0 +1,46 @@
+{
+  "id": "T204",
+  "technical_details": "Uma skill executável precisa separar condições de aplicação, instruções centrais e recursos carregados sob demanda. Metadados ajudam a selecionar o procedimento, mas não demonstram que seus scripts, caminhos e dependências estão válidos. Aprender um procedimento a partir de uma execução exige generalizar somente o que se repete, deixando parâmetros variáveis explícitos. Copiar a trajetória inteira pode cristalizar atalhos ou suposições locais.",
+  "boundary_condition": "Um procedimento que funcionou uma vez pode depender de estado, permissões ou versões ausentes em outra tarefa.",
+  "implementation_contract": {
+    "inputs": "Experiência verificada, objetivo recorrente, pré-condições e recursos necessários.",
+    "outputs": "Pacote de procedimento versionado e critérios para ativar ou interromper sua execução.",
+    "state": "Instruções, scripts, referências, exemplos e histórico de alterações.",
+    "invariant": "Recursos necessários são carregados e validados antes da etapa que deles depende."
+  },
+  "tradeoffs": [
+    "Carregamento progressivo reduz contexto inicial e exige referências confiáveis.",
+    "Procedimentos específicos facilitam execução e podem generalizar mal fora de suas condições."
+  ],
+  "failure_test": "Teste proposto: ativar a skill com dependência ausente e com caso semelhante, mas fora do domínio declarado. Esperar diagnóstico de pré-condição ou não aplicação, sem improvisar uma execução supostamente equivalente.",
+  "evaluation_plan": "Plano proposto: comparar execução sem skill e com skill em tarefas novas da mesma classe e em casos fora dela. Medir sucesso verificado, chamadas, contexto e ativações indevidas; aprovar somente reutilização que preserve condições e critérios.",
+  "comparisons": [
+    {
+      "entry_id": "T199",
+      "relation": "complements",
+      "reason": "Avaliações podem justificar atualização da skill, mas o pacote precisa mudar de fato para alterar comportamento futuro."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A especificação Agent Skills define SKILL.md com metadados/instruções e carregamento progressivo de recursos conforme necessidade.",
+    "source_ids": [
+      "V3B-S021"
+    ],
+    "support": "direct",
+    "caveat": "O formato organiza conteúdo; não treina pesos nem comprova que o procedimento está correto ou autorizado."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma skill é memória paramétrica?",
+      "answer": "Não. É um artefato externo consumido durante execução; aprendizado de pesos seria outro mecanismo."
+    },
+    {
+      "question": "Como evitar regras frágeis?",
+      "answer": "Documente pré-condições e parâmetros, teste variantes relevantes e preserve evidência dos limites encontrados em vez de transformar um exemplo em regra universal."
+    }
+  ],
+  "source_ids": [
+    "V3B-S021"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

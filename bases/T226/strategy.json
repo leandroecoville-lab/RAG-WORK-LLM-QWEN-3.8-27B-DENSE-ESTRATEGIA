@@ -1,0 +1,115 @@
+{
+  "id": "T226",
+  "novelty": "A v3 diferenciava heartbeat local e persistido. A expansão define marcadores de avanço por fase, interpreta silêncio e lida com resultados atrasados sem converter comunicação frequente em falsa prova de progresso.",
+  "deep_layers": [
+    {
+      "name": "Progresso mensurável por fase",
+      "detail": "Durante download, bytes confirmados podem ser sinal útil; durante teste, casos concluídos; durante edição, artefato validado. Um contador que avança por token gerado não demonstra aproximação do objetivo. Cada fase declara qual marcador representa trabalho retomável e qual é apenas atividade do processo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S040",
+        "V4C-S001"
+      ]
+    },
+    {
+      "name": "Silêncio com contexto",
+      "detail": "Uma fase de computação longa pode não emitir avanço incremental observável. Defina duração esperada e sinal auxiliar de vida sem inventar cursor. Não reinicie automaticamente porque um marcador ficou estável durante uma operação indivisível legítima. A política precisa distinguir ausência de transporte, fase longa e repetição sem avanço semântico.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S040",
+        "V2A-S011"
+      ]
+    },
+    {
+      "name": "Marcador e efeito",
+      "detail": "O cursor deve apontar para uma fronteira cuja retomada seja segura. Emiti-lo antes do efeito pode pular trabalho; depois do efeito pode permitir repetição. Combine marcador com identidade da operação e estado de confirmação. A frequência de heartbeat reduz janela de incerteza, mas não substitui idempotência nem transação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026",
+        "V3C-S040"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Processamento por lotes",
+      "scenario": "Uma atividade transforma milhares de registros.",
+      "strategy": "Emita último lote confirmado e referência de saída, após persistência. Na retomada, valide existência e integridade do lote e continue da próxima unidade. Se a plataforma agrupa heartbeats, aceite que o último progresso local possa precisar de repetição segura.",
+      "small_model_role": "3–7B processa registros; código registra lotes e cursor.",
+      "acceptance": "Proposta: nenhuma lacuna e repetição limitada ao trecho cuja confirmação não chegou.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S040"
+      ]
+    },
+    {
+      "name": "Subagente em tarefa extensa",
+      "scenario": "O supervisor quer acompanhar progresso sem receber toda a conversa.",
+      "strategy": "Publique fase, artefatos aceitos, bloqueios e último avanço significativo. Um ping de conexão continua separado. Se o trabalhador retorna apenas texto dizendo que está trabalhando, o supervisor não deve renovar indefinidamente o prazo da missão.",
+      "small_model_role": "8–14B resume estado tipado; 15–30B usa mudanças reais para replanejar.",
+      "acceptance": "Proposta: detectar trabalhador estagnado sem interromper etapas longas válidas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4C-S013"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Executar unidades com confirmação externa simples, sem emitir progresso por autodeclaração.",
+    "8_14b": "Converter resultados em estados de fase e impedimentos concretos.",
+    "15_30b": "Avaliar se progresso observado sustenta continuidade, respeitando duração e custo restantes.",
+    "training_or_runtime_requirements": "Transmissão e persistência observáveis, cursor por geração e contrato para retomada de unidades.",
+    "do_not_use_when": "Não usar heartbeat MCP de conectividade como prova de progresso cognitivo ou de conclusão de ferramenta."
+  },
+  "connections": [
+    {
+      "target_id": "T225",
+      "relation": "feeds",
+      "how": "Entregar ao watchdog marcadores confirmados e sinais separados de vida para decidir recuperação.",
+      "interface": "Fase, cursor, timestamp e geração.",
+      "condition": "O marcador tem significado definido para aquela atividade.",
+      "acceptance": "Restart só ocorre pela política correspondente ao tipo de falha.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S040"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T240",
+      "relation": "complements",
+      "how": "Incluir no snapshot o progresso que foi efetivamente confirmado, junto do estado correspondente.",
+      "interface": "Cursor e referência dos resultados persistidos.",
+      "condition": "Captura consistente, sem cursor posterior ao estado.",
+      "acceptance": "Retomada não pula trabalho ainda não incluído no snapshot.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S040",
+        "V3C-S028"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Heartbeat frequente pode esconder ciclo se só relata atividade, não avanço.",
+    "Resultado atrasado de geração antiga não deve atualizar o cursor atual sem validação."
+  ],
+  "frontier_comparison": "Compare detecção de falhas e custo de retomada com atividades iguais. Um modelo maior não torna seus sinais de progresso confiáveis sem vínculo a artefatos ou efeitos observáveis.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q002",
+      "V4C-Q009"
+    ],
+    "scope_note": "Temporal documenta semântica de heartbeat; gateway Uber documenta conectividade. Esses conceitos foram mantidos distintos, sem contar ping como adoção exata de progresso."
+  },
+  "source_ids": [
+    "V3C-S040",
+    "V4C-S001",
+    "V2A-S011",
+    "C-S026",
+    "C-S030",
+    "V4C-S013",
+    "V3C-S028"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "T207",
+  "technical_details": "O Memory Stream de Generative Agents registra descrição, criação e acesso recente. A recuperação combina relevância, importância e recência; no experimento, recência depende do último acesso, não apenas da ocorrência. Essa escolha pode reforçar memórias já recuperadas, sem torná-las mais verdadeiras. Em uma aplicação proposta, observação, inferência e decisão devem manter tipos e vínculos de origem distintos para que uma reflexão não pareça experiência diretamente observada.",
+  "boundary_condition": "Uma linha do tempo de acesso não substitui tempo de validade dos fatos nem ordem causal de eventos externos.",
+  "implementation_contract": {
+    "inputs": "Registro de experiência, instante de criação, origem e tipo de evidência.",
+    "outputs": "Memória identificada e candidatos recuperados com componentes de pontuação.",
+    "state": "Fluxo persistente, histórico de acesso e relações entre observações e reflexões.",
+    "invariant": "Ler uma memória não altera silenciosamente a data ou a verdade do acontecimento descrito."
+  },
+  "tradeoffs": [
+    "Reforçar recência de acesso mantém continuidade e pode concentrar atenção em memórias populares.",
+    "Guardar experiências completas amplia rastreabilidade e custo de armazenamento e seleção."
+  ],
+  "failure_test": "Teste proposto: recuperar repetidamente uma informação antiga e apresentar depois correção válida; verificar que frequência de acesso não vence automaticamente a nova evidência.",
+  "evaluation_plan": "Comparar recuperação por recência de criação, acesso e combinação com relevância em perguntas temporais rotuladas. Medir cobertura, repetição de memórias e correção de vigência. Definir pesos por tarefa, sem importar parâmetros do simulador como defaults universais.",
+  "comparisons": [
+    {
+      "entry_id": "T056",
+      "relation": "complements",
+      "reason": "Bitemporalidade acrescenta validade e registro, dimensões diferentes do acesso recente."
+    },
+    {
+      "entry_id": "T209",
+      "relation": "distinct_from",
+      "reason": "Reflexion usa feedback de tentativas; stream registra experiências que podem alimentar diferentes mecanismos."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Generative Agents combina recência, importância e relevância, armazenando criação e acesso nos objetos de memória.",
+    "source_ids": [
+      "A-S008"
+    ],
+    "support": "direct",
+    "caveat": "O estudo busca comportamento verossímil em simulação, não certificação factual de memória empresarial."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma memória muito acessada é mais confiável?",
+      "answer": "Não. Acesso mede uso; confiabilidade depende de fonte, validade e correções."
+    },
+    {
+      "question": "Uma reflexão deve substituir as observações que a originaram?",
+      "answer": "Não por padrão. Preservar o vínculo permite revisar a inferência quando uma observação for corrigida."
+    }
+  ],
+  "source_ids": [
+    "A-S008",
+    "V3C-S028"
+  ],
+  "research_note": "Fontes primárias reabertas nesta pesquisa; contratos, cenários de falha e avaliação são propostas editoriais."
+}

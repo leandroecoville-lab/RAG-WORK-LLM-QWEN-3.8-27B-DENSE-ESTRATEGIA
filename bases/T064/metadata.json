@@ -1,0 +1,34 @@
+{
+  "id": "T064",
+  "name": "Persistent Agent State",
+  "canonical_name": "Persistent Agent State",
+  "canonical_id": "T064",
+  "aliases": [
+    "estado persistente de agente"
+  ],
+  "category": "memoria",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T040",
+    "T053",
+    "T059",
+    "T060",
+    "T065"
+  ],
+  "source_ids": [
+    "A-S022",
+    "V3A-S031",
+    "V3A-S032",
+    "V2B-S002",
+    "V4A-S026",
+    "V4A-S004",
+    "V4A-S012"
+  ],
+  "namespace": "T064",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T064",
+  "chunk_count": 9
+}

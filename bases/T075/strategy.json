@@ -1,0 +1,120 @@
+{
+  "id": "T075",
+  "novelty": "A v3 tratou ACK perdido. Aqui reconciliação separa conflito epistemológico, conflito de versão e efeito externo incerto.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Cada classe exige evidência diferente. Versões concorrentes pedem regra de atualização; afirmações contraditórias pedem fontes; efeito externo incerto pede consulta ao sistema que executou.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S006",
+        "V4A-S011",
+        "V2A-S026"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Não resolva tudo por última escrita ou votação. Uma correção tardia pode ser mais válida que relato recente; várias cópias da mesma origem não constituem consenso.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S006",
+        "V4A-S011",
+        "V2A-S026"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare reconciliador genérico e rotas tipadas. Meça duplicação de efeitos, perda de correções e conflitos encerrados sem evidência; incluir estado explicitamente inconclusivo. Unidade de avaliação: conflito ou operação incerta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S006",
+        "V4A-S011",
+        "V2A-S026"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Memórias contraditórias",
+      "scenario": "Agentes registram fatos incompatíveis.",
+      "strategy": "Agrupar pelo mesmo sujeito e escopo, comparar fontes e preservar alternativas quando não houver critério decisivo.",
+      "small_model_role": "8–14B explica conflito.",
+      "acceptance": "Não escolher fato apenas por formulação mais confiante.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S006",
+        "V4A-S011",
+        "V2A-S026"
+      ]
+    },
+    {
+      "name": "Operação sem recibo",
+      "scenario": "A chamada externa pode ter concluído.",
+      "strategy": "Consultar por identificador estável; se status não for determinável, suspender retry e registrar resolução necessária. Compensação também é novo efeito controlado.",
+      "small_model_role": "3–7B classifica status; controlador decide.",
+      "acceptance": "Nenhum reenvio cego pode criar efeito duplicado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S006",
+        "V4A-S011",
+        "V2A-S026"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Classificador de tipos de conflito e estados observados.",
+    "8_14b": "Reconciliador de afirmações com fontes e escopos explícitos.",
+    "15_30b": "Planejador de resolução complexa, mantendo efeitos sob protocolo determinístico.",
+    "training_or_runtime_requirements": "Identidade de operação, versões e evidência externa consultável; registrar desconhecido como estado válido.",
+    "do_not_use_when": "A aplicação exige conclusão definitiva sem acesso a informação que decide o conflito."
+  },
+  "connections": [
+    {
+      "target_id": "T243",
+      "relation": "requires",
+      "how": "Tratar efeitos incertos pelo protocolo do serviço.",
+      "interface": "operation_id, consulta de status e recibos.",
+      "condition": "Serviço oferecer mecanismo ou intervenção definida.",
+      "acceptance": "Simular efeito concluído com resposta perdida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S006",
+        "V4A-S011",
+        "V2A-S026"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T056",
+      "relation": "complements",
+      "how": "Separar recência do relato e validade do fato.",
+      "interface": "Tempos de validade, registro e fonte.",
+      "condition": "Escopos temporais serem comparáveis.",
+      "acceptance": "Inserir correção tardia e impedir vitória automática do último relato.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S006",
+        "V4A-S011",
+        "V2A-S026"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não converter timeout em falha confirmada.",
+    "Não executar compensação antes de saber qual efeito ocorreu."
+  ],
+  "frontier_comparison": "Comparar resolução correta e preservação de incerteza; eloquência não resolve estado externo desconhecido.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q006",
+      "V4A-Q007"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S006",
+    "V4A-S011",
+    "V2A-S026"
+  ]
+}

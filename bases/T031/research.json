@@ -1,0 +1,51 @@
+{
+  "id": "T031",
+  "technical_details": "Uma resposta pode ficar inválida por mudança na fonte, no direito de acesso, na política ou no modelo de interpretação. TTL limita idade, mas não acompanha necessariamente essas mudanças. Um desenho por dependências registra quais revisões sustentam cada entrada e verifica sua elegibilidade no hit; invalidação por evento e expiração podem coexistir como controles de problemas diferentes.",
+  "boundary_condition": "Se não é possível identificar dependências ou sua versão vigente, o cache não pode prometer atualização imediata somente ajustando o limiar semântico.",
+  "implementation_contract": {
+    "inputs": "Entrada candidata, revisões das dependências e contexto atual de acesso.",
+    "outputs": "Decisão de servir, revalidar ou remover a entrada, com motivo.",
+    "state": "Índice de dependências, época de política e prazo de retenção.",
+    "invariant": "Um hit semelhante não ignora revogação ou revisão incompatível conhecida no momento da leitura."
+  },
+  "tradeoffs": [
+    "Invalidação precisa exige metadados e coordenação entre serviços.",
+    "Expiração ampla simplifica operação, mas provoca misses e ainda permite obsolescência até o vencimento."
+  ],
+  "failure_test": "Teste proposto: armazenar uma resposta e corrigir a fonte antes de vencer o TTL. A próxima consulta equivalente deve rejeitar ou revalidar a entrada, sem esperar a expiração para reconhecer a correção.",
+  "evaluation_plan": "Avaliação proposta: comparar TTL isolado, versão por namespace e dependências explícitas. Variar frequência de mudanças e reutilização; medir respostas obsoletas, tempo de propagação, misses evitáveis e custo de revalidação.",
+  "comparisons": [
+    {
+      "entry_id": "T005",
+      "relation": "complements",
+      "reason": "A invalidação decide elegibilidade; a similaridade só localiza uma resposta candidata."
+    },
+    {
+      "entry_id": "T072",
+      "relation": "complements",
+      "reason": "Versões de memória e fonte permitem detectar dependências incompatíveis."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "RedisVL oferece controles separados de TTL, filtros e exclusão de entradas de cache.",
+    "source_ids": [
+      "V3A-S007"
+    ],
+    "support": "direct",
+    "caveat": "A rastreabilidade das dependências e sua propagação são responsabilidades adicionais da aplicação."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um cache negativo pode ser reutilizado?",
+      "answer": "Somente se a ausência observada tiver escopo e validade definidos. Falha de recuperação ou indisponibilidade não equivale a inexistência do fato."
+    },
+    {
+      "question": "Como tratar uma entrada acessada durante invalidação?",
+      "answer": "Defina o contrato de consistência. Para exigência forte, verifique versão ou época no caminho de leitura; apenas apagar em segundo plano deixa uma janela de reutilização."
+    }
+  ],
+  "source_ids": [
+    "V3A-S007"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

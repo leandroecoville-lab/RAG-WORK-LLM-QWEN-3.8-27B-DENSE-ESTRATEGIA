@@ -1,0 +1,120 @@
+{
+  "id": "T065",
+  "novelty": "A v3 separou atomicidade e isolamento. Aqui transações protegem propostas semânticas calculadas fora do banco contra estado obsoleto.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "O modelo lê snapshot e produz proposta com pré-condições. A transação verifica versões e invariantes antes de escrever; executar inferência longa segurando locks aumenta contenção sem melhorar verdade da proposta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S029",
+        "V4A-S003",
+        "V4A-S004"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Quando o estado mudar, diferencie conflito irrelevante e conflito que invalida raciocínio. Reaplicar cegamente o mesmo texto após retry pode confirmar conclusão baseada em dados antigos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S029",
+        "V4A-S003",
+        "V4A-S004"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare confirmação por última escrita e por pré-condições semânticas explícitas. Meça atualizações perdidas, retries e propostas aceitas com base obsoleta; isolar tempo de inferência do tempo de transação. Unidade de avaliação: proposta de atualização.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S029",
+        "V4A-S003",
+        "V4A-S004"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Atualização de memória compartilhada",
+      "scenario": "Dois agentes corrigem a mesma decisão.",
+      "strategy": "Cada proposta inclui versão observada e afirmações afetadas; commit rejeita conflito e solicita nova leitura antes de reconciliar.",
+      "small_model_role": "3–7B extrai alteração; 8–14B reconcilia.",
+      "acceptance": "Nenhuma proposta obsoleta pode apagar correção mais recente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S029",
+        "V4A-S003",
+        "V4A-S004"
+      ]
+    },
+    {
+      "name": "Planejamento com recursos limitados",
+      "scenario": "Agentes disputam cota ou tarefa.",
+      "strategy": "Selecionar intenção fora da transação, reservar recurso atomicamente e somente depois iniciar execução autorizada.",
+      "small_model_role": "15–30B planeja; código reserva.",
+      "acceptance": "Uma tarefa não pode receber duas reservas incompatíveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S029",
+        "V4A-S003",
+        "V4A-S004"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Gerador de atualização tipada com campos e revisão esperada.",
+    "8_14b": "Reconciliador local após conflito, sem controlar locks.",
+    "15_30b": "Planejador de operações cujo commit continua determinístico.",
+    "training_or_runtime_requirements": "Banco com isolamento adequado, invariantes executáveis e identificadores de operação; transação local não cobre APIs externas.",
+    "do_not_use_when": "A operação exige atomicidade entre serviços sem protocolo apropriado ou inferência fica dentro de lock prolongado."
+  },
+  "connections": [
+    {
+      "target_id": "T075",
+      "relation": "complements",
+      "how": "Reconciliar proposta rejeitada após nova leitura.",
+      "interface": "Proposta, revisão antiga, estado atual e motivo do conflito.",
+      "condition": "Reconciliador preservar mudanças concorrentes válidas.",
+      "acceptance": "Simular correções independentes e uma correção incompatível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S029",
+        "V4A-S003",
+        "V4A-S004"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T162",
+      "relation": "requires",
+      "how": "Associar confirmação à identidade estável da operação.",
+      "interface": "operation_id e resultado confirmado.",
+      "condition": "Retry não criar nova intenção.",
+      "acceptance": "Repetir mesma solicitação e verificar único efeito lógico.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S029",
+        "V4A-S003",
+        "V4A-S004"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não usar commit bem-sucedido como prova de verdade semântica.",
+    "Não repetir chamada externa dentro de retry transacional."
+  ],
+  "frontier_comparison": "Comparar propostas corretas confirmadas sob concorrência; o banco protege invariantes, não substitui julgamento sobre evidência.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q005",
+      "V4A-Q006"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S029",
+    "V4A-S003",
+    "V4A-S004"
+  ]
+}

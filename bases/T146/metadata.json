@@ -1,0 +1,38 @@
+{
+  "id": "T146",
+  "name": "Adaptive Compute",
+  "canonical_name": "Adaptive Compute",
+  "canonical_id": "T146",
+  "aliases": [
+    "computação adaptativa"
+  ],
+  "category": "orquestracao",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T133",
+    "T145",
+    "T184",
+    "T201"
+  ],
+  "source_ids": [
+    "C-S012",
+    "V3C-S003",
+    "V3C-S002",
+    "V4C-S009",
+    "C-S030",
+    "V4C-S014",
+    "V4C-S003",
+    "V3C-S009",
+    "V4C-S007",
+    "V4C-S005",
+    "V4C-S018",
+    "V4C-S019"
+  ],
+  "namespace": "T146",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T146",
+  "chunk_count": 9
+}

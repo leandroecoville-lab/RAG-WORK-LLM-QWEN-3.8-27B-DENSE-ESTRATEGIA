@@ -1,0 +1,29 @@
+{
+  "id": "T198",
+  "name": "Calibrated Confidence",
+  "canonical_name": "Calibrated Confidence",
+  "canonical_id": "T198",
+  "aliases": [
+    "confiança calibrada"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T156",
+    "T187",
+    "T202",
+    "T203"
+  ],
+  "source_ids": [
+    "C-S050",
+    "V3B-S019",
+    "V4B-S027"
+  ],
+  "namespace": "T198",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T198",
+  "chunk_count": 9
+}

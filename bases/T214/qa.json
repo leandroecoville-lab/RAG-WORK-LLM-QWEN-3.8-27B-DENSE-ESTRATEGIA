@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Poda precisa usar outro LLM?",
+    "answer": "Não. Seleção de campos, deduplicação e limites por seção podem ser determinísticos; um resumo por LLM é outra opção."
+  },
+  {
+    "question": "Poda e Observation Masking são iguais?",
+    "answer": "Não. Poda seleciona partes de uma saída; masking normalmente oculta observações antigas inteiras por uma política de histórico."
+  },
+  {
+    "question": "Posso guardar só a última linha do comando?",
+    "answer": "Somente se ela representar o resultado necessário; muitos comandos produzem avisos ou falhas relevantes antes dela."
+  },
+  {
+    "question": "Como diferenciar ausência de erro e erro removido?",
+    "answer": "Preservar metadados de completude e critérios de seleção, além de acesso à saída original."
+  }
+]

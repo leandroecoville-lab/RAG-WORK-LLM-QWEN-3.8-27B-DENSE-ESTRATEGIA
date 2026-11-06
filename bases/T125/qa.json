@@ -1,0 +1,18 @@
+[
+  {
+    "question": "GPTQ é um modelo?",
+    "answer": "Não. É um método para reduzir precisão dos pesos de um modelo já treinado."
+  },
+  {
+    "question": "O resultado mantém todas as habilidades?",
+    "answer": "Não há garantia universal; depende do checkpoint, calibração, configuração e avaliação do domínio."
+  },
+  {
+    "question": "Por que magnitude do peso não basta?",
+    "answer": "O efeito do erro depende de quais entradas o multiplicam e de suas correlações."
+  },
+  {
+    "question": "PTQ significa nenhum dado?",
+    "answer": "Não. O método pode dispensar treino por gradientes do modelo completo e ainda exigir ativações representativas para calibração."
+  }
+]

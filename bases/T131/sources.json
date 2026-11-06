@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "B-S040",
+    "title": "SuffixDecoding at Production Scale with Arctic Inference and vLLM",
+    "url": "https://www.snowflake.com/en/blog/engineering/suffixdecoding-arctic-inference-vllm/",
+    "publisher": "Snowflake",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Árvores de sufixos sobre tokens anteriores produzem candidatos especulativos sem modelo auxiliar.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn27view3"
+  },
+  {
+    "source_id": "V3B-S001",
+    "title": "Fast Inference from Transformers via Speculative Decoding",
+    "url": "https://proceedings.mlr.press/v202/leviathan23a/leviathan23a.pdf",
+    "publisher": "PMLR / Leviathan, Kalman e Matias",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Algoritmo de aceitação, distribuição residual e análise idealizada de custo.",
+    "limitations": "Texto do algoritmo e análise consultados; resultados experimentais não reproduzidos; pressupostos de paralelismo não certificam servidor local.",
+    "web_ref": "turn98view0"
+  },
+  {
+    "source_id": "V4B-S029",
+    "title": "Per-Request Acceptance Metrics — vLLM",
+    "url": "https://docs.vllm.ai/en/latest/features/speculative_decoding/acceptance_metrics/",
+    "publisher": "vLLM",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Métricas de aceitação por requisição, histograma de comprimentos e distinção do token bônus; interface experimental.",
+    "limitations": "Medições de aceitação não garantem ganho; coleta, streaming e múltiplas sequências têm condições específicas.",
+    "web_ref": "turn278view1"
+  }
+]

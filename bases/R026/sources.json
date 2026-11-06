@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "V2B-S024",
+    "title": "Introduction to guidance",
+    "url": "https://guidance.readthedocs.io/en/latest/example_notebooks/tutorials/intro_to_guidance.html",
+    "publisher": "Guidance contributors",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Composição de contexto, select, captura de variáveis e controle Python; suporte de restrições depende do backend.",
+    "limitations": "Documentação primária consultada nesta data; nenhum teste de integração, geração real ou benchmark no ambiente LAI foi executado.",
+    "web_ref": "turn76view4"
+  },
+  {
+    "source_id": "V2B-S025",
+    "title": "guidance.json",
+    "url": "https://guidance.readthedocs.io/en/latest/generated/guidance.json.html",
+    "publisher": "Guidance contributors",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Geração JSON com schema ou modelos tipados e limites declarados de cobertura de JSON Schema.",
+    "limitations": "Documentação primária consultada nesta data; nenhum teste de integração, geração real ou benchmark no ambiente LAI foi executado.",
+    "web_ref": "turn73view0"
+  },
+  {
+    "source_id": "V3D-S014",
+    "title": "Guidance — guidance.json",
+    "url": "https://guidance.readthedocs.io/en/latest/generated/guidance.json.html",
+    "publisher": "Guidance project",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Contrato da geração JSON e limitações de suporte a recursos de JSON Schema.",
+    "limitations": "Suporte depende da versão; saída final e regras de domínio precisam de validação própria.",
+    "web_ref": "turn139view2"
+  },
+  {
+    "source_id": "V3D-S015",
+    "title": "Guidance — Introduction",
+    "url": "https://guidance.readthedocs.io/en/latest/example_notebooks/tutorials/intro_to_guidance.html",
+    "publisher": "Guidance project",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Fluxo programático e diferenças de capacidade entre backends locais e remotos.",
+    "limitations": "Compartilhamento interno de recursos não implica fronteira de segurança ou equivalência de provedores.",
+    "web_ref": "turn139view3"
+  },
+  {
+    "source_id": "V4B-S030",
+    "title": "Token healing — Guidance",
+    "url": "https://guidance.readthedocs.io/en/latest/example_notebooks/tutorials/token_healing.html",
+    "publisher": "Guidance",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Tratamento de fronteiras de tokenização por recuo e prefixo restrito; integração documentada com LlamaCpp/Transformers.",
+    "limitations": "Exemplos não comprovam qualidade de domínio nem implementação eficiente em todo provedor remoto.",
+    "web_ref": "turn288view0"
+  }
+]

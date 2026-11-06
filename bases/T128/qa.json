@@ -1,0 +1,18 @@
+[
+  {
+    "question": "EAGLE-3 é apenas trocar uma flag de EAGLE?",
+    "answer": "Não. A versão muda o método do auxiliar e requer pesos e suporte correspondentes."
+  },
+  {
+    "question": "O draft substitui o modelo alvo?",
+    "answer": "Não. Produz candidatos; a verificação do alvo continua sendo parte central."
+  },
+  {
+    "question": "Treinar um bom proponente garante exatidão?",
+    "answer": "Não. A garantia de distribuição depende também do algoritmo de aceitação e do tratamento de rejeições."
+  },
+  {
+    "question": "Pode reutilizar após fine-tuning do alvo?",
+    "answer": "É necessário validar compatibilidade e concordância; pesos alterados podem mudar as características que o auxiliar aprendeu a consumir."
+  }
+]

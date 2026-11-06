@@ -1,0 +1,37 @@
+{
+  "id": "P008",
+  "name": "Event Store / Event Log",
+  "canonical_name": "Event Store / Event Log",
+  "canonical_id": "P008",
+  "aliases": [
+    "armazenamento proposto de eventos",
+    "log proposto de eventos de estado"
+  ],
+  "category": "componentes_propostos",
+  "kind": "component",
+  "scope": "proposta",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T059",
+    "T060",
+    "T162",
+    "T240",
+    "T241",
+    "T242",
+    "P011"
+  ],
+  "source_ids": [
+    "A-S027",
+    "C-S023",
+    "V2C-S001",
+    "V2C-S002",
+    "V3D-S018",
+    "V4C-S024",
+    "V4C-S025"
+  ],
+  "namespace": "P008",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/P008",
+  "chunk_count": 9
+}

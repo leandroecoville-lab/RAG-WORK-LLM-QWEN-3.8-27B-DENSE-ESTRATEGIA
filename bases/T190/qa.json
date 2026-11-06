@@ -1,0 +1,18 @@
+[
+  {
+    "question": "O mesmo modelo pode verificar?",
+    "answer": "Pode, mas isso reduz independência e exige medir falsos positivos."
+  },
+  {
+    "question": "Passar no verificador prova tudo?",
+    "answer": "Prova apenas os critérios cobertos e a confiabilidade daquele verificador."
+  },
+  {
+    "question": "Passou uma vez, está resolvido para sempre?",
+    "answer": "Não. Mudança de conteúdo, dependências ou ambiente pode invalidar o resultado anterior."
+  },
+  {
+    "question": "O próprio gerador pode verificar?",
+    "answer": "Pode contribuir com crítica, mas seus erros podem ser correlacionados; critérios objetivos e fontes independentes fortalecem a evidência."
+  }
+]

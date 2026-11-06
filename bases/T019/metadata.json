@@ -1,0 +1,28 @@
+{
+  "id": "T019",
+  "name": "Few-Shot Pruning",
+  "canonical_name": "Few-Shot Pruning",
+  "canonical_id": "T019",
+  "aliases": [
+    "poda de demonstrações"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T046",
+    "T155"
+  ],
+  "source_ids": [
+    "A-S031",
+    "V3A-S017",
+    "V3A-S016",
+    "V4A-S019"
+  ],
+  "namespace": "T019",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T019",
+  "chunk_count": 9
+}

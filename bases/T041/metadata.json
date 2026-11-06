@@ -1,0 +1,27 @@
+{
+  "id": "T041",
+  "name": "Last-N Messages Window",
+  "canonical_name": "Last-N Messages Window",
+  "canonical_id": "T041",
+  "aliases": [
+    "janela das últimas mensagens"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T003",
+    "T042",
+    "T050"
+  ],
+  "source_ids": [
+    "A-S003",
+    "V4A-S002"
+  ],
+  "namespace": "T041",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T041",
+  "chunk_count": 9
+}

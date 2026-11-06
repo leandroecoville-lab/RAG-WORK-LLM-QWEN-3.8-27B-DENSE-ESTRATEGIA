@@ -1,0 +1,141 @@
+{
+  "id": "T195",
+  "novelty": "A v3 definiu execução, ambiente e oráculo. Esta camada trata qualidade dos próprios testes, cobertura de efeitos e desenho de um executor que produz evidência reproduzível para seleção ou reparo.",
+  "deep_layers": [
+    {
+      "name": "Testar o verificador",
+      "detail": "Uma suíte que sempre passa pode estar vazia, desabilitada ou incapaz de detectar o defeito relevante. Use alterações deliberadas e mutações plausíveis para verificar sensibilidade. ACH documenta geração orientada por mutações; matar um mutante demonstra discriminação daquele comportamento, sem provar cobertura de todos os defeitos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S048",
+        "V4B-S022",
+        "V4B-S024",
+        "V4B-S025",
+        "V4B-S026",
+        "V4C-S009"
+      ]
+    },
+    {
+      "name": "Efeitos observáveis",
+      "detail": "Além de retorno, registre arquivos alterados, chamadas externas, recursos consumidos e exceções quando fazem parte do contrato. Um teste pode aprovar um valor enquanto a implementação modifica dados indevidamente. Limites de tempo e memória devem produzir estado inconclusivo ou reprovado conforme a regra, nunca sucesso por ausência de saída.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S048",
+        "V4B-S022",
+        "V4B-S024",
+        "V4B-S025",
+        "V4B-S026",
+        "V4C-S009"
+      ]
+    },
+    {
+      "name": "Ambiente reproduzível",
+      "detail": "Fixe dependências, entradas e versão do artefato; preserve logs suficientes para reproduzir falhas. Isole execução de propostas de ambientes com efeitos reais não autorizados. Resultados em um simulador só sustentam o que ele modela; diferenças de integração precisam de checagem específica.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S048",
+        "V4B-S022",
+        "V4B-S024",
+        "V4B-S025",
+        "V4B-S026",
+        "V4C-S009"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Geração de testes úteis",
+      "scenario": "Um modelo propõe ampliar uma suíte existente.",
+      "strategy": "Exija que testes executem de forma estável e detectem uma alteração relevante. TestGen-LLM relata filtros industriais de compilação, execução e cobertura; preserve limites desses critérios.",
+      "small_model_role": "Um 3–7B pode propor testes locais quando recebe contrato e exemplos.",
+      "acceptance": "Medir defeitos detectados e testes frágeis, não apenas linhas cobertas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S048",
+        "V4B-S022",
+        "V4B-S024",
+        "V4B-S025",
+        "V4B-S026",
+        "V4C-S009"
+      ]
+    },
+    {
+      "name": "Busca de algoritmo",
+      "scenario": "Há muitas propostas com custo ou comportamento mensurável.",
+      "strategy": "Execute em entradas representativas e adversas, filtre incorretas e compare desempenho somente entre válidas. AlphaEvolve é um caso de busca com avaliadores, em configurações próprias.",
+      "small_model_role": "Um 8–14B pode explorar variantes pequenas dentro de um domínio executável.",
+      "acceptance": "Aceitar melhoria reproduzível sem regressão nos observáveis definidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S048",
+        "V4B-S022",
+        "V4B-S024",
+        "V4B-S025",
+        "V4B-S026",
+        "V4C-S009"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Critérios estreitos e ambientes rápidos tornam tentativa e verificação economicamente plausíveis.",
+    "8_14b": "A dificuldade de produzir candidato correto e a qualidade do oráculo continuam limitantes.",
+    "15_30b": "Modelos maiores podem gerar mais complexidade; orçamento de execução precisa acompanhar essa complexidade.",
+    "training_or_runtime_requirements": "Runtime de execução e avaliação; pode alimentar treino depois, mas executar testes não atualiza pesos.",
+    "do_not_use_when": "Não chamar cobertura alta de prova de correção nem executar código gerado em produção por mera aprovação textual."
+  },
+  "connections": [
+    {
+      "target_id": "T190",
+      "relation": "feeds",
+      "how": "AutoClean usa resultados de verificações para controlar progressão de correções.",
+      "interface": "Revisão e evidência de execução.",
+      "condition": "Resultados correspondem à versão final.",
+      "acceptance": "Injetar falhas e verificar bloqueio ou reparo.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S009"
+      ],
+      "case_ids": [
+        "V4C-C010"
+      ]
+    },
+    {
+      "target_id": "T205",
+      "relation": "complements",
+      "how": "Comparação diferencial e propriedades metamórficas ampliam testes quando não há resposta única.",
+      "interface": "Entradas, referência e observáveis.",
+      "condition": "Normalização não apaga diferenças relevantes.",
+      "acceptance": "Gerar contraexemplos e reduzi-los para reprodução.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S048",
+        "V4B-S022",
+        "V4B-S024",
+        "V4B-S025",
+        "V4B-S026",
+        "V4C-S009"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Confirmar que os testes foram efetivamente descobertos e executados.",
+    "Separar defeito do candidato de indisponibilidade do ambiente."
+  ],
+  "frontier_comparison": "Execução pode tornar modelos pequenos úteis em tarefas com bons oráculos. A comparação com fronteira deve incluir custo de candidatos descartados e falhas que a suíte não observa.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q011",
+      "V4B-Q012"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "C-S048",
+    "V4B-S022",
+    "V4B-S024",
+    "V4B-S025",
+    "V4B-S026",
+    "V4C-S009"
+  ]
+}

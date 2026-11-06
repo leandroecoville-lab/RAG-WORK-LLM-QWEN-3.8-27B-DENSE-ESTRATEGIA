@@ -1,0 +1,52 @@
+{
+  "id": "T142",
+  "technical_details": "Em um runtime de grafos, a composição do estado é tão importante quanto o plano. Nós paralelos podem produzir atualizações para a mesma chave; sem regra de combinação, ocorre conflito ou sobrescrita conforme o runtime. Reducers com concatenação também podem duplicar resultados quando há reexecução. Definir identidade dos itens e semântica de merge permite distinguir repetir processamento de registrar nova evidência.",
+  "boundary_condition": "Um grafo que compila corretamente ainda pode conter ciclos sem progresso, dependências semânticas omitidas ou reducers inadequados.",
+  "implementation_contract": {
+    "inputs": "Estado tipado, nós, transições, políticas de merge e plano corrente.",
+    "outputs": "Atualizações do estado, tarefas prontas e motivo de término ou interrupção.",
+    "state": "Versões do grafo, checkpoint, reducers e itens já confirmados.",
+    "invariant": "Atualizações concorrentes preservam identidade e não descartam silenciosamente resultados de outro nó."
+  },
+  "tradeoffs": [
+    "Estado compartilhado simplifica coordenação e torna conflitos mais frequentes.",
+    "Subgrafos isolados reduzem acoplamento, exigindo contratos explícitos na junção."
+  ],
+  "failure_test": "Teste proposto: dois nós escrevem na mesma lista e um é reexecutado após falha; verificar que a política escolhida não perde nem duplica resultados lógicos.",
+  "evaluation_plan": "Comparar fluxo simples e grafo com paralelismo na mesma tarefa. Fixar modelos e ferramentas. Medir repetição de nós, coerência do estado, tempo e conclusão por objetivo. Escolher a abstração quando sua vantagem compensar custo de estado e depuração.",
+  "comparisons": [
+    {
+      "entry_id": "R008",
+      "relation": "distinct_from",
+      "reason": "LangGraph é um runtime concreto; a família de frameworks com planejamento inclui decisões que o aplicativo ainda precisa definir."
+    },
+    {
+      "entry_id": "T208",
+      "relation": "complements",
+      "reason": "Planner–Executor define responsabilidades que podem ser representadas em nós separados."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "LangGraph define canais de estado e reducers para combinar atualizações dos nós.",
+    "source_ids": [
+      "V3C-S006"
+    ],
+    "support": "direct",
+    "caveat": "As regras exatas dependem da versão; requisitos de deduplicação do domínio não são fornecidos automaticamente."
+  },
+  "advanced_qa": [
+    {
+      "question": "Um reducer que concatena listas é idempotente?",
+      "answer": "Em geral, não: aplicar duas vezes a mesma atualização duplica elementos, salvo deduplicação por identidade."
+    },
+    {
+      "question": "Compilação do grafo prova que o plano resolve a tarefa?",
+      "answer": "Não. Ela verifica aspectos estruturais do grafo, enquanto viabilidade e suficiência do plano exigem critérios da tarefa."
+    }
+  ],
+  "source_ids": [
+    "V3C-S006",
+    "V3C-S002"
+  ],
+  "research_note": "Contratos, testes e critérios são propostas editoriais; as fontes sustentam os mecanismos indicados."
+}

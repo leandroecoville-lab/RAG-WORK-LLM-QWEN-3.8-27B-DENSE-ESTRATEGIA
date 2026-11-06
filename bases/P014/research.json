@@ -1,0 +1,53 @@
+{
+  "id": "P014",
+  "technical_details": "Execution Resilience é uma capacidade transversal proposta, não necessariamente um novo serviço. Ela resulta da combinação verificável de persistência, limites, detecção de falhas e recuperação. O projeto deve enumerar fronteiras: processo, armazenamento, fila, modelo e serviço externo. Para cada uma, declarar o que pode ser perdido, repetido ou ficar ambíguo. Um runbook útil associa o sinal observado a uma ação e a uma evidência de recuperação, sem depender apenas de logs de reinício.",
+  "boundary_condition": "Disponibilidade do processo e conclusão correta da tarefa são objetivos distintos. Recuperar o worker pode deixar uma operação externa duplicada ou uma tarefa logicamente bloqueada.",
+  "implementation_contract": {
+    "inputs": "Matriz de falhas, estado persistido, critérios de serviço e de tarefa, limites de repetição e mecanismos de recuperação disponíveis.",
+    "outputs": "Plano operacional, transições de recuperação e comprovação do estado final ou pendência explicitamente identificada.",
+    "state": "Checkpoints, eventos, versões de código, indicadores de progresso e inventário de operações externas em aberto.",
+    "invariant": "Uma recuperação só encerra o incidente quando o estado e os efeitos exigidos pela tarefa estão reconciliados."
+  },
+  "tradeoffs": [
+    "Cobrir mais fronteiras reduz pontos cegos, mas exige injeções de falha e manutenção de procedimentos.",
+    "Recuperação automática acelera casos conhecidos; condições ambíguas precisam de decisão explícita para evitar dano repetido."
+  ],
+  "failure_test": "Proposta: testar separadamente queda antes do commit, depois do commit e após efeito remoto sem confirmação local. Exigir classificação distinta e verificar que o runbook não aplica retry indiscriminado.",
+  "evaluation_plan": "Construir matriz com falhas e resultados esperados antes dos testes. Medir recuperação de tarefas, perda admissível, duplicatas e tempo de restauração. Relatar limites não cobertos em vez de resumir tudo a uma taxa genérica de disponibilidade.",
+  "comparisons": [
+    {
+      "entry_id": "P013",
+      "relation": "complements",
+      "reason": "O controlador fornece políticas de reação."
+    },
+    {
+      "entry_id": "T242",
+      "relation": "complements",
+      "reason": "Snapshot mais eventos é um mecanismo possível de reconstrução."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Persistência e repetição segura tratam problemas complementares de recuperação.",
+    "source_ids": [
+      "V3D-S016",
+      "C-S026"
+    ],
+    "support": "related",
+    "caveat": "Execution Resilience é uma capacidade editorial composta; não constitui tecnologia padronizada adicional."
+  },
+  "advanced_qa": [
+    {
+      "question": "Preciso criar outro microsserviço com este nome?",
+      "answer": "Não. Primeiro defina responsabilidades e evidências; a capacidade pode estar distribuída nos componentes existentes."
+    },
+    {
+      "question": "Qual aceite demonstra resiliência?",
+      "answer": "Injeções de falha com estado final correto, efeitos controlados e recuperação dentro do objetivo definido."
+    }
+  ],
+  "source_ids": [
+    "V3D-S016",
+    "C-S026"
+  ],
+  "research_note": "Contrato, teste de falha e plano de avaliação são recomendações editoriais; nenhuma implantação ou medição deste mecanismo foi executada neste pacote."
+}

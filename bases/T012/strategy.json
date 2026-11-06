@@ -1,0 +1,111 @@
+{
+  "id": "T012",
+  "novelty": "A v3 descreveu separadores e contagem. A novidade é preservar âncoras estáveis e limitar propagação de mudanças no particionamento recursivo.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Associe fragmentos a caminhos estruturais antes de aplicar separadores. Tamanho ainda governa fallback, mas o caminho permite localizar continuidade após inserções.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S004",
+        "V4A-S013"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Registre qual nível de separador produziu cada fronteira. Muitos cortes no último nível indicam conteúdo incompatível ou parser ausente, não apenas chunk pequeno.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S004",
+        "V4A-S013"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Avalie reindexação após inserções no início e no meio do arquivo. Meça referências preservadas e necessidade real de recomputar embeddings. Unidade de avaliação: arquivo versionado. Teste inserção de uma seção antes de todas as demais e alteração interna num bloco protegido. Referências por caminho e revisão devem continuar localizando conteúdo sem depender do número ordinal do chunk. Se o bloco ficar grande demais, a saída precisa indicar oversize e oferecer estratégia de leitura; cortar silenciosamente não é fallback aceitável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S004",
+        "V4A-S013"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Manuais em Markdown",
+      "scenario": "Seções mudam sem reorganização total.",
+      "strategy": "Dividir por cabeçalhos, depois parágrafos e sentenças; conservar caminho da seção e número da revisão.",
+      "small_model_role": "3–7B extrai campos dentro do fragmento.",
+      "acceptance": "Citações devem resolver seção correta após edição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S004",
+        "V4A-S013"
+      ]
+    },
+    {
+      "name": "Arquivos mistos",
+      "scenario": "Texto contém comandos longos e exemplos.",
+      "strategy": "Reconhecer blocos protegidos e encaminhar oversize para leitura específica em vez de quebrar comando arbitrariamente.",
+      "small_model_role": "8–14B explica bloco protegido.",
+      "acceptance": "Nenhum exemplo executável pode ser alterado pelo splitter.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S004",
+        "V4A-S013"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Leitor de unidades finais pequenas com contexto de cabeçalho.",
+    "8_14b": "Comparador de fragmentos que compartilham uma seção.",
+    "15_30b": "Síntese entre seções, pedindo bloco completo quando necessário.",
+    "training_or_runtime_requirements": "Separadores versionados, metadados de caminho e tratamento explícito de oversize.",
+    "do_not_use_when": "A estrutura depende de layout visual que os separadores textuais perderam."
+  },
+  "connections": [
+    {
+      "target_id": "T015",
+      "relation": "feeds",
+      "how": "Emitir referência independente do índice ordinal.",
+      "interface": "Caminho, revisão, offsets e digest.",
+      "condition": "Âncora representar conteúdo identificável.",
+      "acceptance": "Inserir parágrafo e verificar referências preservadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S004",
+        "V4A-S013"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T033",
+      "relation": "requires",
+      "how": "Detectar unidades protegidas antes do fallback.",
+      "interface": "Tipo de bloco e limites permitidos.",
+      "condition": "Parser reconhecer estrutura relevante.",
+      "acceptance": "Testar bloco longo sem corte em ponto inválido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S004",
+        "V4A-S013"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Evitar IDs baseados somente na posição na lista.",
+    "Não ocultar trecho excessivo descartando o restante."
+  ],
+  "frontier_comparison": "Comparar localização e leitura após edições; a profundidade da recursão não mede qualidade semântica.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q009"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S004",
+    "V4A-S013"
+  ]
+}

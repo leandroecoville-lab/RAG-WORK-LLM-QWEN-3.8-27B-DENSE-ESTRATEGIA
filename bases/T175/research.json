@@ -1,0 +1,52 @@
+{
+  "id": "T175",
+  "technical_details": "Fallback após limitação deve identificar qual quota foi atingida. Trocar de endpoint sob a mesma quota organizacional não cria capacidade adicional; pode apenas multiplicar rejeições. Uma alternativa realmente independente ainda precisa de orçamento próprio e capacidade semântica. Uma proposta mantém o estado de admissão separado da falha da ferramenta para que uma rejeição antes do envio não seja confundida com tentativa de efeito remoto.",
+  "boundary_condition": "Quando todos os destinos pertencem à mesma restrição contratual, a ação coerente pode ser esperar ou encerrar, não circular entre URLs.",
+  "implementation_contract": {
+    "inputs": "Quota atingida, escopo de cobrança, destinos elegíveis e prazo restante.",
+    "outputs": "Espera, admissão alternativa ou rejeição final fundamentada.",
+    "state": "Consumo por quota, rotas visitadas e próxima elegibilidade.",
+    "invariant": "Alternativas não reutilizam o mesmo crédito nem ocultam consumo de tentativas anteriores."
+  },
+  "tradeoffs": [
+    "Diversificar destinos melhora disponibilidade potencial e amplia complexidade de contabilidade.",
+    "Esperar preserva consistência do backend e pode violar o prazo da tarefa."
+  ],
+  "failure_test": "Teste proposto: dois endpoints compartilham uma quota esgotada e um terceiro possui contrato incompatível; exigir espera ou falha explícita, sem rota artificialmente considerada válida.",
+  "evaluation_plan": "Comparar fila e fallback sob saturação localizada e global. Medir rejeições repetidas, conclusão, custo e equidade entre clientes. Distinguir ganho por capacidade adicional real de aparente ganho por contabilização incompleta.",
+  "comparisons": [
+    {
+      "entry_id": "T137",
+      "relation": "complements",
+      "reason": "O limitador fornece motivo e escopo da rejeição."
+    },
+    {
+      "entry_id": "T173",
+      "relation": "complements",
+      "reason": "Fallback de modelos precisa manter capacidades além de encontrar quota disponível."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Google SRE trata quotas e rejeição por criticidade como controles que devem propagar pela cadeia de serviços.",
+    "source_ids": [
+      "V3C-S009"
+    ],
+    "support": "related",
+    "caveat": "A política de troca entre provedores é composição editorial, dependente de contratos e quotas efetivos."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma URL nova significa uma quota nova?",
+      "answer": "Não. A quota pode ser por conta, organização, modelo, região ou recurso compartilhado."
+    },
+    {
+      "question": "Como diferenciar fila e retry?",
+      "answer": "Fila aguarda admissão ainda não concedida; retry repete uma tentativa que ocorreu ou falhou, com implicações diferentes de efeito e custo."
+    }
+  ],
+  "source_ids": [
+    "V3C-S009",
+    "V3C-S010"
+  ],
+  "research_note": "Síntese técnica com contratos e testes propostos; não há alegação de implantação ou medição LAI."
+}

@@ -1,0 +1,42 @@
+{
+  "entry_id": "T140",
+  "edges": [
+    {
+      "edge_id": "E-T140-01",
+      "from": "T140",
+      "to": "T232",
+      "relation": "feeds",
+      "how": "No AutoClean, o agente invoca PolyglotPiranha por MCP para transformações estruturais.",
+      "interface": "Chamada de ferramenta e código alvo; a integração local define versão e recibo adicionais.",
+      "condition": "A transformação determinística cobre o padrão desejado.",
+      "acceptance": "Proposta: comparar estrutura e comportamento antes e depois, vinculando os testes ao diff.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S009"
+      ],
+      "case_ids": [
+        "V4C-C010"
+      ],
+      "evidence_stage": "production_documented"
+    },
+    {
+      "edge_id": "E-T140-02",
+      "from": "T140",
+      "to": "T158",
+      "relation": "complements",
+      "how": "O executor resolve ferramenta habilitada e contrato antes de aceitar uma invocação descoberta.",
+      "interface": "ID de ferramenta, schema, revisão e estado de habilitação.",
+      "condition": "O registro é a autoridade operacional da integração.",
+      "acceptance": "Alterar schema entre descoberta e execução e exigir revalidação.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S013"
+      ],
+      "case_ids": [
+        "V4C-C014"
+      ],
+      "evidence_stage": "production_documented"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

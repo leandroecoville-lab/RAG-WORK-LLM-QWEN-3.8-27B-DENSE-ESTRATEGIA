@@ -1,0 +1,33 @@
+{
+  "id": "R014",
+  "name": "Letta Context Repositories",
+  "canonical_name": "Letta MemFS — Context Repositories",
+  "canonical_id": "R013",
+  "aliases": [
+    "Letta context repository",
+    "Context Repositories da Letta"
+  ],
+  "category": "referencias",
+  "kind": "project",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "R002",
+    "R013",
+    "R027",
+    "T075",
+    "T076",
+    "T237",
+    "T239"
+  ],
+  "source_ids": [
+    "A-S010",
+    "V2B-S003",
+    "V3A-S046"
+  ],
+  "namespace": "R014",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R014",
+  "chunk_count": 9
+}

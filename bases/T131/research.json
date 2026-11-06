@@ -1,0 +1,46 @@
+{
+  "id": "T131",
+  "technical_details": "Uma árvore de sufixos pode organizar continuações de múltiplas sequências, mas busca rápida não torna atualização gratuita. A implementação descrita pela Snowflake mantém informações de frequência para selecionar filhos, expondo uma troca entre tempo de consulta, atualização e memória. Sob alta concorrência, o proponente na CPU pode limitar o sistema mesmo quando a GPU verifica candidatos eficientemente.",
+  "boundary_condition": "Históricos pouco repetitivos ou manutenção pesada da estrutura reduzem o benefício, independentemente da ausência de pesos adicionais.",
+  "implementation_contract": {
+    "inputs": "Tokens confirmados, histórico autorizado ao índice, limite de retenção e orçamento de proposta.",
+    "outputs": "Continuação candidata com origem e comprimento explícitos.",
+    "state": "Árvores locais/compartilhadas, contagens e política de remoção de sequências.",
+    "invariant": "Atualizações e remoções preservam contagens e não deixam referências a sequências ausentes."
+  },
+  "tradeoffs": [
+    "Reter mais sequências amplia cobertura e custo de memória.",
+    "Pré-organizar filhos acelera escolha e acrescenta manutenção quando contagens mudam."
+  ],
+  "failure_test": "Teste proposto: remover uma sequência muito frequente enquanto outras usam seus padrões e inserir continuações novas. Esperar consistência de referências e contagens, com verificação normal dos candidatos restantes.",
+  "evaluation_plan": "Plano proposto: comparar N-Gram e sufixos na mesma mistura repetitiva e não repetitiva. Medir tempo CPU de atualização/consulta, memória, verificação e latência total por concorrência; aceitar benefício sem esconder custo do proponente.",
+  "comparisons": [
+    {
+      "entry_id": "T103",
+      "relation": "distinct_from",
+      "reason": "Uma trie de prefixos indexa ancestralidade KV; a estrutura de sufixos encontra padrões para propor novos tokens."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O relato técnico da Snowflake descreve árvores de sufixos e estruturas auxiliares para reduzir custo de selecionar continuações.",
+    "source_ids": [
+      "B-S040"
+    ],
+    "support": "direct",
+    "caveat": "Os ganhos relatados pertencem às cargas avaliadas; não garantem superioridade em toda tarefa."
+  },
+  "advanced_qa": [
+    {
+      "question": "O índice torna a resposta uma cópia obrigatória?",
+      "answer": "Não. Ele fornece candidatos; o alvo deve rejeitar continuações incompatíveis com seu contexto atual."
+    },
+    {
+      "question": "Sem pesos adicionais significa custo zero?",
+      "answer": "Não. Estruturas, contagens, consultas, sincronização e atualização consomem memória e tempo de CPU."
+    }
+  ],
+  "source_ids": [
+    "B-S040"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

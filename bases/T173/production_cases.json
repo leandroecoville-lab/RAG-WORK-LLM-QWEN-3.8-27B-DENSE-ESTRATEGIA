@@ -1,0 +1,63 @@
+{
+  "coverage": {
+    "entry_id": "T173",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Model Fallback Controlado",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C012",
+      "company": "Amazon Web Services",
+      "system": "Amazon Bedrock Intelligent Prompt Routing",
+      "title": "Roteamento configurável de prompts como recurso comercial",
+      "evidence_level": "operational_product",
+      "observed_use": "A documentação disponibiliza um endpoint de roteamento que prevê qualidade e escolhe entre dois modelos compatíveis da mesma família.",
+      "technical_mechanism": "Configuração define modelos, critério e fallback; resposta informa o modelo usado. A página é documentação de produto, não relato de implantação de um cliente.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S011"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T133",
+          "match": "exact",
+          "rationale": "Escolha de modelo por consulta é o recurso documentado."
+        },
+        {
+          "entry_id": "T173",
+          "match": "family",
+          "rationale": "Fallback do roteador é definido por critério de qualidade, não equivale automaticamente a recuperação por indisponibilidade."
+        },
+        {
+          "entry_id": "P010",
+          "match": "analogy",
+          "rationale": "O serviço oferece referência para um componente editorial de roteamento."
+        }
+      ],
+      "small_model_transfer": "Proposta: comparar um roteador local 3–30B com regras simples, rotas fixas e escalonamento após validação. Rejeitar candidatos sem capacidade necessária antes de estimar qualidade.",
+      "limits": "Classificado como operational_product. Não conta para dez casos comprovados em produção; lista de modelos e regiões muda. Exemplos com modelos maiores não validam as bandas pequenas.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C012",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "T173",
+        "match": "family",
+        "rationale": "Fallback do roteador é definido por critério de qualidade, não equivale automaticamente a recuperação por indisponibilidade."
+      }
+    }
+  ]
+}

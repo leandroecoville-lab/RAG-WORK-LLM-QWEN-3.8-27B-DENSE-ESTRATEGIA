@@ -1,0 +1,46 @@
+{
+  "id": "T083",
+  "technical_details": "O índice precisa identificar o contexto que produziu cada bloco, incluindo ancestralidade, adaptadores e entradas multimodais relevantes. Dois prompts com o mesmo token marcador de imagem podem conter imagens diferentes; comparar apenas IDs de tokens produz um falso hit. Como proposta de implementação, referências de blocos devem ser adquiridas antes de sua possível expulsão, com geração de identificador que detecte reutilização de slots.",
+  "boundary_condition": "A designação advanced prefix caching não especifica um protocolo universal; consistência e isolamento devem ser definidos por implementação.",
+  "implementation_contract": {
+    "inputs": "Tokens, hashes de conteúdo multimodal, identidade do adaptador e domínio de cache.",
+    "outputs": "Referências válidas a blocos e explicação verificável dos hits.",
+    "state": "Índice, contadores de referência e versões de alocação.",
+    "invariant": "Igualdade de chave implica compatibilidade de todo estado que afeta as projeções."
+  },
+  "tradeoffs": [
+    "Chaves mais completas exigem computação e metadados adicionais.",
+    "Verificação defensiva reduz falsos hits, porém pode converter possíveis reutilizações em misses."
+  ],
+  "failure_test": "Teste proposto: manter marcadores iguais e trocar a imagem ou adaptador; também simular referência expirada. Esperar miss ou rejeição explícita, nunca uso silencioso do bloco incompatível.",
+  "evaluation_plan": "Plano proposto: comparar índice simples e identidade completa com entradas multimodais e trocas de adaptador. Medir falsos hits, misses, bytes de metadados e TTFT; exigir ausência de mistura de estados no conjunto controlado.",
+  "comparisons": [
+    {
+      "entry_id": "T082",
+      "relation": "specializes",
+      "reason": "Acrescenta identidade e ciclo de vida ao reúso básico de prefixos."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O desenho do vLLM inclui hashes extras para adaptadores, multimodalidade e salt de cache.",
+    "source_ids": [
+      "B-S005"
+    ],
+    "support": "direct",
+    "caveat": "Essa lista documenta uma implementação; não demonstra isolamento completo de qualquer implantação."
+  },
+  "advanced_qa": [
+    {
+      "question": "Hash forte elimina todos os erros?",
+      "answer": "Não. Omissão de campos da identidade e referências expiradas são defeitos lógicos independentes de colisões criptográficas."
+    },
+    {
+      "question": "Uma colisão simulada deve ser ignorada?",
+      "answer": "Não. Ela testa a política de conflito ou a validação secundária, explicitando o comportamento seguro previsto pelo contrato."
+    }
+  ],
+  "source_ids": [
+    "B-S005"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

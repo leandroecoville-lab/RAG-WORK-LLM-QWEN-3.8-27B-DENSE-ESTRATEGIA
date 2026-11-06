@@ -1,0 +1,46 @@
+{
+  "id": "T201",
+  "technical_details": "O orçamento extra pode ser investido em largura, como candidatos paralelos, ou profundidade, como revisões sequenciais. Essas escolhas têm latências diferentes mesmo com número parecido de tokens. A utilidade marginal depende da dificuldade e do verificador: se falta uma informação externa, mais tentativas sem buscá-la podem repetir a mesma falha. Uma política adaptativa precisa estimar quando o próximo passo provavelmente acrescentará evidência ou capacidade.",
+  "boundary_condition": "Aumento de computação não garante melhoria monótona, sobretudo quando seleção e feedback são imperfeitos.",
+  "implementation_contract": {
+    "inputs": "Tarefa, orçamento de tokens/tempo/chamadas, ações adicionais e sinais de progresso.",
+    "outputs": "Resultado selecionado ou abstenção com custo e razão de parada.",
+    "state": "Candidatos, evidências, avaliações e orçamento restante.",
+    "invariant": "O sistema contabiliza custo de geração, ferramentas e verificação, sem esconder trabalho descartado."
+  },
+  "tradeoffs": [
+    "Paralelismo reduz tempo de parede e aumenta recursos simultâneos.",
+    "Revisão sequencial usa feedback intermediário e impõe dependências de latência."
+  ],
+  "failure_test": "Teste proposto: oferecer tarefa sem dado indispensável e permitir muitas tentativas internas. Esperar que a política busque o dado ou declare a lacuna, em vez de contar repetição como progresso.",
+  "evaluation_plan": "Plano proposto: comparar resposta única, amostragem paralela, revisão e busca com orçamento equivalente. Estratificar dificuldade; medir qualidade externa, latência e custo total. Aprovar a política pela curva de benefício marginal e pelos prazos de uso.",
+  "comparisons": [
+    {
+      "entry_id": "T189",
+      "relation": "complements",
+      "reason": "Best-of-N é uma alocação possível do orçamento adicional, dependente da qualidade do seletor."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O estudo de test-time compute encontra dependência da estratégia eficiente em relação à dificuldade do prompt.",
+    "source_ids": [
+      "V3B-S020"
+    ],
+    "support": "direct",
+    "caveat": "Os resultados não definem política ótima universal para agentes, ferramentas ou cargas do usuário."
+  },
+  "advanced_qa": [
+    {
+      "question": "Mais tokens é igual a mais computação útil?",
+      "answer": "Não. Podem ser redundantes ou produzir candidatos que o verificador não sabe distinguir."
+    },
+    {
+      "question": "Como decidir parar?",
+      "answer": "Use orçamento e evidência de progresso mensurável; satisfação verbal do agente não basta como critério de utilidade marginal."
+    }
+  ],
+  "source_ids": [
+    "V3B-S020"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

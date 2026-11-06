@@ -1,0 +1,51 @@
+{
+  "id": "T015",
+  "technical_details": "Uma referência precisa distinguir identidade lógica de identidade de versão. Um caminho que aponta para a versão mais recente pode resolver conteúdo diferente entre planejamento e execução. Para continuidade verificável, transfira também revisão, tipo e descrição do que o destinatário deve ler. O custo evitado no envio pode reaparecer como latência de resolução ou indisponibilidade do recurso.",
+  "boundary_condition": "Passar apenas um identificador é insuficiente quando o próximo agente não possui resolvedor, acesso ou capacidade para interpretar o artefato referenciado.",
+  "implementation_contract": {
+    "inputs": "Referência, versão esperada, finalidade e escopo da leitura.",
+    "outputs": "Conteúdo autorizado ou erro classificado de ausência, versão ou acesso.",
+    "state": "Mapeamento de identificadores, revisões e leituras realizadas.",
+    "invariant": "O destinatário não afirma conhecer o conteúdo antes de resolvê-lo ou receber evidência explícita suficiente."
+  },
+  "tradeoffs": [
+    "Referências diminuem duplicação de conteúdo, mas introduzem dependência de disponibilidade.",
+    "Versões fixadas favorecem reprodução, enquanto referências móveis facilitam atualização e exigem revalidação."
+  ],
+  "failure_test": "Teste proposto: alterar um arquivo entre a emissão e a resolução da referência. Um consumidor que exigiu a versão antiga deve receber essa versão ou erro claro, nunca substituição silenciosa.",
+  "evaluation_plan": "Avaliação proposta: comparar conteúdo embutido e referência resolvida sob diferentes tamanhos e taxas de reutilização. Medir tokens, tempo total, referências quebradas e divergências de versão; escolher por custo completo da troca.",
+  "comparisons": [
+    {
+      "entry_id": "T066",
+      "relation": "complements",
+      "reason": "O resolvedor aplica o contrato de leitura e versão usado na passagem."
+    },
+    {
+      "entry_id": "T061",
+      "relation": "complements",
+      "reason": "Um hash de conteúdo pode identificar uma versão, mantendo localização e acesso como problemas separados."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "MCP identifica recursos por URI e define operações distintas de listagem e leitura.",
+    "source_ids": [
+      "V3A-S019"
+    ],
+    "support": "direct",
+    "caveat": "A especificação não torna toda URI imutável nem fornece automaticamente o versionamento editorial proposto."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma URL prova que o conteúdo foi lido?",
+      "answer": "Não. Ela prova apenas que uma localização foi fornecida. O relato deve distinguir referência recebida, leitura bem-sucedida e conteúdo efetivamente utilizado."
+    },
+    {
+      "question": "Como evitar referências que perdem validade?",
+      "answer": "Defina retenção e versões recuperáveis compatíveis com a tarefa; registre falhas e preserve uma representação autorizada quando o contrato exigir continuidade."
+    }
+  ],
+  "source_ids": [
+    "V3A-S019"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

@@ -1,0 +1,40 @@
+{
+  "entry_id": "T062",
+  "edges": [
+    {
+      "edge_id": "E-T062-01",
+      "from": "T062",
+      "to": "T074",
+      "relation": "complements",
+      "how": "Escolher residência por fase e custo de retorno.",
+      "interface": "Objeto, nível, custo e condição de fixação.",
+      "condition": "Evicção não alterar retenção canônica.",
+      "acceptance": "Medir oscilações entre os mesmos dois níveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "V3A-S039"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T062-02",
+      "from": "T062",
+      "to": "T008",
+      "relation": "complements",
+      "how": "Criar abstrações para navegação, separadas da localização física.",
+      "interface": "Resumo, nível semântico e referências.",
+      "condition": "Originais permanecerem disponíveis.",
+      "acceptance": "Comparar resposta detalhada com resumo e com folha.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S009",
+        "V3A-S039"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

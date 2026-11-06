@@ -1,0 +1,105 @@
+{
+  "coverage": {
+    "entry_id": "R005",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 1,
+    "research_cases": 1,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "LLMLingua",
+    "scope": "referencia"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C025",
+      "company": "Microsoft",
+      "system": "LLMLingua integrado ao Prompt flow",
+      "title": "LLMLingua integrado ao Prompt flow — evidência delimitada",
+      "evidence_level": "operational_product",
+      "observed_use": "Documentação expõe ferramenta de compressão utilizável em fluxo.",
+      "technical_mechanism": "Entrada de prompt e taxa alvo, conexão para probabilidades, saída textual comprimida.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S027"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R005",
+          "match": "exact",
+          "rationale": "Integração do projeto identificado."
+        },
+        {
+          "entry_id": "T006",
+          "match": "exact",
+          "rationale": "Compressão textual explícita."
+        },
+        {
+          "entry_id": "T038",
+          "match": "family",
+          "rationale": "Seleção de tokens pertence à família; mecanismo específico depende da versão."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Medir compressor mais leitor compacto; armazenar original e recuperar quando requisitos falharem.",
+      "limits": "Integração disponível não é uso operacional de cliente nem promessa de perda mínima. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C025",
+      "deployment_domain": "llm_framework",
+      "mapping": {
+        "entry_id": "R005",
+        "match": "exact",
+        "rationale": "Integração do projeto identificado."
+      }
+    },
+    {
+      "case_id": "V4A-C031",
+      "company": "Microsoft Research",
+      "system": "LLMLingua-2",
+      "title": "LLMLingua-2 — evidência delimitada",
+      "evidence_level": "research_only",
+      "observed_use": "Pesquisa formula compressão como classificação de tokens treinada com dados destilados.",
+      "technical_mechanism": "Compressor especializado seleciona texto para um leitor posterior.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V3A-S001",
+        "V4A-S028"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R005",
+          "match": "family",
+          "rationale": "Variante da família, distinta do original."
+        },
+        {
+          "entry_id": "T020",
+          "match": "exact",
+          "rationale": "Compressão aprendida explícita."
+        },
+        {
+          "entry_id": "T018",
+          "match": "family",
+          "rationale": "Seleção aprendida especializa poda de contexto."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Compressor menor que o leitor pode preparar trechos para 3–30B; validar capacidade de ler texto comprimido.",
+      "limits": "Página declara demonstração de pesquisa; integrações não comprovam ganho para todo leitor. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C031",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "R005",
+        "match": "family",
+        "rationale": "Variante da família, distinta do original."
+      }
+    }
+  ]
+}

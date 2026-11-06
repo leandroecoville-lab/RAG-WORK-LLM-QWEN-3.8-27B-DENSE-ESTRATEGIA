@@ -1,0 +1,130 @@
+{
+  "id": "T067",
+  "novelty": "A v3 distinguiu sinais de FLARE e Self-RAG. Aqui recuperação ativa é guiada por falhas verificáveis de evidência e valor da próxima busca.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Defina gatilhos como campo obrigatório sem suporte, conflito de versões e necessidade de dado atual. Probabilidade de token e confiança verbal não são equivalentes a suficiência de evidência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S009",
+        "V3A-S010",
+        "V4A-S014",
+        "C-S030"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Antes de buscar, registrar qual observação mudaria a resposta. Se a consulta retorna novamente conteúdo equivalente, mudar fonte ou encerrar com lacuna, evitando busca compulsiva.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S009",
+        "V3A-S010",
+        "V4A-S014",
+        "C-S030"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare recuperação em toda etapa, uma vez e por gatilho. Meça buscas úteis, afirmações sem suporte e custo por resposta aceita; incluir tarefas em que nenhuma fonte contém resposta. Unidade de avaliação: decisão de recuperar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S009",
+        "V3A-S010",
+        "V4A-S014",
+        "C-S030"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Geração de relatório factual",
+      "scenario": "Uma frase exige número não presente.",
+      "strategy": "Interromper preenchimento desse campo, consultar fonte estruturada e retomar com unidade e período; não inventar valor provisório.",
+      "small_model_role": "3–7B detecta campo; 8–14B redige.",
+      "acceptance": "Todo número final deve possuir origem e escopo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S009",
+        "V3A-S010",
+        "V4A-S014",
+        "C-S030"
+      ]
+    },
+    {
+      "name": "Investigação iterativa",
+      "scenario": "Nova evidência altera hipótese.",
+      "strategy": "Gerar consulta discriminante para hipótese alternativa e comparar suporte antes de continuar síntese.",
+      "small_model_role": "15–30B planeja sequência.",
+      "acceptance": "Nova busca deve produzir evidência diferente ou justificar parada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S009",
+        "V3A-S010",
+        "V4A-S014",
+        "C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Detector de campos sem evidência em formato fechado.",
+    "8_14b": "Leitor que identifica conflito e solicita uma busca específica.",
+    "15_30b": "Planejador de recuperação dependente de descobertas anteriores.",
+    "training_or_runtime_requirements": "Sinais observáveis de suporte, orçamento de tentativas e registro de consultas; métodos com tokens especiais exigem modelo treinado.",
+    "do_not_use_when": "Não existe canal plausível de informação nova ou o controlador só usa autoconfiança não calibrada."
+  },
+  "connections": [
+    {
+      "target_id": "T036",
+      "relation": "feeds",
+      "how": "Transformar lacuna em consulta preservando restrições.",
+      "interface": "Campo, entidade, tempo e tipo de suporte.",
+      "condition": "Consulta direcionada à lacuna efetiva.",
+      "acceptance": "Testar reformulação que altera entidade e exigir correção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S009",
+        "V3A-S010",
+        "V4A-S014",
+        "C-S030"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T218",
+      "relation": "requires",
+      "how": "Interromper busca repetida sem informação nova.",
+      "interface": "Histórico de consultas e evidências únicas.",
+      "condition": "Identidade de resultados ser rastreável.",
+      "acceptance": "Repetir paráfrases e detectar estagnação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S009",
+        "V3A-S010",
+        "V4A-S014",
+        "C-S030"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não citar texto gerado durante busca como evidência externa.",
+    "Não penalizar abstenção correta em caso sem resposta."
+  ],
+  "frontier_comparison": "Comparar decisões de quando buscar e fidelidade final; recuperação ativa pode aumentar custo sem melhorar qualidade.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q010",
+      "V4A-Q017",
+      "V4A-Q020"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S009",
+    "V3A-S010",
+    "V4A-S014",
+    "C-S030"
+  ]
+}

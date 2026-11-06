@@ -1,0 +1,53 @@
+{
+  "id": "R003",
+  "technical_details": "O código de LongMem armazena chaves e valores por cabeça de atenção. Para buscar, indexa uma média das chaves de cada chunk e recupera os estados dos chunks selecionados, separando unidade de busca da unidade lida. O backbone congelado mantém estável a representação codificada enquanto a rede lateral aprende a utilizá-la. Essa estabilidade reduz incompatibilidade por deriva do codificador; não torna fatos antigos automaticamente atuais.",
+  "boundary_condition": "A memória continua limitada por capacidade, custo de busca e interface neural; transportar esse banco para outro backbone pode invalidar seu significado mesmo com dimensões iguais.",
+  "implementation_contract": {
+    "inputs": "Contextos anteriores, backbone e tokenizer compatíveis, configuração de banco e rede lateral adaptada.",
+    "outputs": "Estados recuperados e geração condicionada pela arquitetura de leitura de memória.",
+    "state": "Chaves e valores, índice por cabeça, configuração de chunks e versões dos pesos.",
+    "invariant": "Memórias codificadas sob uma versão não são reutilizadas com outro consumidor apenas por passarem na validação de forma."
+  },
+  "tradeoffs": [
+    "Buscar representantes de chunks reduz a unidade de indexação e pode diluir um detalhe importante dentro da média.",
+    "Congelar o codificador facilita reutilização do banco e restringe liberdade de atualizar o backbone sem reconstrução."
+  ],
+  "failure_test": "Teste proposto: alterar o backbone mantendo o banco anterior e comparar com recodificação completa. A experiência deve detectar deriva de compatibilidade, sem atribuir qualquer queda apenas ao tamanho da memória.",
+  "evaluation_plan": "Avaliação proposta: comparar backbone sem memória, arquitetura com banco e banco recodificado após mudança controlada. Medir uso de contexto passado, latência de busca, memória computacional e preservação de detalhes; contabilizar adaptação e construção do índice.",
+  "comparisons": [
+    {
+      "entry_id": "T052",
+      "relation": "specializes",
+      "reason": "LongMem usa uma interface neural específica para contexto passado, dentro da família ampla de representações latentes."
+    },
+    {
+      "entry_id": "R001",
+      "relation": "distinct_from",
+      "reason": "MemGPT controla texto e funções externamente; LongMem modifica a arquitetura de leitura e requer adaptação treinada."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A implementação oficial indexa médias das chaves por chunk e retorna chaves e valores dos grupos recuperados.",
+    "source_ids": [
+      "V3A-S047"
+    ],
+    "support": "direct",
+    "caveat": "Código consultado sem execução; detalhes são desta implementação de pesquisa e não demonstram prontidão para o servidor da LAI."
+  },
+  "advanced_qa": [
+    {
+      "question": "A palavra staleness significa informação factual vencida?",
+      "answer": "No argumento arquitetural, refere-se à compatibilidade de representações quando redes mudam. Validade temporal dos fatos exige controle adicional."
+    },
+    {
+      "question": "É uma biblioteca intercambiável com RAG textual?",
+      "answer": "Não diretamente. Ela depende de componentes internos e treinamento; a documentação do repositório apresenta uma implementação específica baseada em fairseq."
+    }
+  ],
+  "source_ids": [
+    "A-S013",
+    "V3A-S045",
+    "V3A-S047"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

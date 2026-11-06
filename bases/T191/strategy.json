@@ -1,0 +1,119 @@
+{
+  "id": "T191",
+  "novelty": "A v3 propôs perguntas neutras por alegação. A nova camada trata cobertura, evidência contraditória e atualização do texto, distinguindo autoquestionamento de verificação apoiada em fontes externas.",
+  "deep_layers": [
+    {
+      "name": "Inventário verificável",
+      "detail": "Extraia alegações atômicas com entidade, relação, tempo e escopo. Uma frase pode conter várias afirmações e qualificações; checar só o nome principal deixa datas e causalidade sem cobertura. Mantenha ligação entre cada alegação e a versão do rascunho para atualizar o mapa depois de revisões.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S044",
+        "V4B-S027",
+        "V3B-S019"
+      ]
+    },
+    {
+      "name": "Busca que pode refutar",
+      "detail": "Formule consultas que permitam encontrar contradição e priorize fontes primárias adequadas ao tipo de fato. Preserve resultados conflitantes e data de validade. Pedir ao mesmo modelo que confirme sua frase sem nova evidência pode reduzir alguns erros, mas não constitui independência nem garantia factual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S044",
+        "V4B-S027",
+        "V3B-S019"
+      ]
+    },
+    {
+      "name": "Revisão com rastreabilidade",
+      "detail": "Quando uma checagem muda uma alegação, revise trechos dependentes dela, inclusive conclusões. Não substitua uma afirmação precisa por linguagem vaga apenas para escapar do teste. Marque o que continua não verificado e remova conclusões cuja base foi invalidada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S044",
+        "V4B-S027",
+        "V3B-S019"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Relatório factual",
+      "scenario": "O modelo produz texto com datas, produtos e capacidades.",
+      "strategy": "Extraia alegações, consulte fontes e reescreva somente depois de consolidar evidência. Priorize fatos que sustentam decisões, sem fingir cobertura integral quando o orçamento é limitado.",
+      "small_model_role": "Um 3–7B pode estruturar alegações; recuperação e revisão externas sustentam a validade.",
+      "acceptance": "Medir cobertura de alegações relevantes e taxa de correções válidas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S044",
+        "V4B-S027",
+        "V3B-S019"
+      ]
+    },
+    {
+      "name": "Resposta sobre política formal",
+      "scenario": "Há regras documentadas e exceções.",
+      "strategy": "Use perguntas de verificação para localizar fatos e um verificador formal para relações cobertas pela política. Separe erro de tradução, regra ausente e inconsistência.",
+      "small_model_role": "Um 8–14B pode redigir a explicação, mantendo o alcance da prova explícito.",
+      "acceptance": "Nenhuma afirmação de verdade além do escopo das fontes ou da política.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S044",
+        "V4B-S027",
+        "V3B-S019"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Decomposição curta e fontes explícitas reduzem carga de memória; o modelo não deve inventar respostas de checagem.",
+    "8_14b": "Pode organizar verificações mais complexas, desde que entidades e datas sejam resolvidas.",
+    "15_30b": "Maior porte não elimina necessidade de fontes atualizadas nem problemas de premissas falsas.",
+    "training_or_runtime_requirements": "Workflow em runtime; pesquisa externa e verificadores são complementos distintos do CoVe original.",
+    "do_not_use_when": "Não contar perguntas respondidas como fatos verificados sem avaliar evidência e cobertura."
+  },
+  "connections": [
+    {
+      "target_id": "T200",
+      "relation": "complements",
+      "how": "Checagem independente reduz dependência do rascunho como fonte.",
+      "interface": "Alegações neutras e evidências originais.",
+      "condition": "Verificador não recebe conclusão esperada como prova.",
+      "acceptance": "Testar alegações plausíveis, mas falsas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S044",
+        "V4B-S027",
+        "V3B-S019"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T197",
+      "relation": "complements",
+      "how": "Um schema pode organizar o mapa de alegações e estados de verificação.",
+      "interface": "IDs, fonte, status e trecho afetado.",
+      "condition": "Validade estrutural não substitui validade da evidência.",
+      "acceptance": "Detectar alegações sem fonte ou com checagem pendente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S044",
+        "V4B-S027",
+        "V3B-S019"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não usar perguntas que pressupõem o fato contestado.",
+    "Rever conclusões dependentes quando uma premissa é corrigida."
+  ],
+  "frontier_comparison": "Compare fidelidade factual e cobertura com um baseline de fronteira sob acesso equivalente a fontes. O número de etapas de verificação não é uma medida de correção.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q019"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "C-S044",
+    "V4B-S027",
+    "V3B-S019"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "T185",
+  "technical_details": "Princípios geram sinais de supervisão, mas a passagem de texto normativo para preferências envolve interpretação do avaliador. Regras conflitantes ou vagas podem criar rótulos inconsistentes; otimizar o reward model pode amplificar esses padrões. Portanto, é necessário separar adesão aos princípios, utilidade e correção factual. Uma resposta alinhada à preferência aprendida ainda pode conter informação falsa ou falhar em um contrato operacional.",
+  "boundary_condition": "Alterar apenas a constituição em inferência não equivale a refazer o treinamento supervisionado e por reforço do método publicado.",
+  "implementation_contract": {
+    "inputs": "Princípios versionados, exemplos, críticas, revisões e preferências com proveniência.",
+    "outputs": "Modelo treinado e avaliação por critérios independentes do gerador de preferências.",
+    "state": "Versões dos avaliadores, dataset de preferências e sinais de recompensa.",
+    "invariant": "A mudança observada é atribuída à etapa efetivamente realizada, sem confundir prompting e treinamento."
+  },
+  "tradeoffs": [
+    "Feedback automático amplia escala e herda vieses do avaliador.",
+    "Princípios detalhados ajudam consistência e podem entrar em conflito em situações novas."
+  ],
+  "failure_test": "Teste proposto: criar pares de princípios incompatíveis e exemplos factualmente errados que pareçam obedientes. Esperar detecção de conflito e reprovação factual independente da preferência automática.",
+  "evaluation_plan": "Plano proposto: comparar modelo inicial, etapa supervisionada e etapa com feedback de IA em conjuntos separados. Medir adesão, utilidade, factualidade e regressões; revisar casos discordantes com critérios explícitos antes de atribuir melhoria global.",
+  "comparisons": [
+    {
+      "entry_id": "T192",
+      "relation": "distinct_from",
+      "reason": "Autorrevisão em tempo de execução não reproduz, sozinha, as etapas de treinamento de Constitutional AI."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O trabalho original inclui fine-tuning com revisões e reinforcement learning orientado por preferências geradas por IA.",
+    "source_ids": [
+      "C-S039"
+    ],
+    "support": "direct",
+    "caveat": "A fonte não demonstra que a constituição seja completa nem que preferências automáticas garantam verdade."
+  },
+  "advanced_qa": [
+    {
+      "question": "Sem rótulos humanos significa sem escolhas humanas?",
+      "answer": "Não. A escolha dos princípios, dados, critérios e avaliação continua definindo o comportamento pretendido."
+    },
+    {
+      "question": "Como mudar uma regra depois do treino?",
+      "answer": "Versione a política e avalie a intervenção escolhida; um novo prompt pode influenciar respostas, mas não apaga automaticamente o comportamento aprendido."
+    }
+  ],
+  "source_ids": [
+    "C-S039"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

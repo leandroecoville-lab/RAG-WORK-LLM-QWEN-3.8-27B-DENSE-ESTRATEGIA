@@ -1,0 +1,29 @@
+{
+  "id": "T099",
+  "name": "Multi-Query Attention — MQA",
+  "canonical_name": "Multi-Query Attention — MQA",
+  "canonical_id": "T099",
+  "aliases": [
+    "multi-query attention",
+    "atenção multi-query"
+  ],
+  "category": "inferencia",
+  "kind": "architecture",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T100",
+    "T106",
+    "T108"
+  ],
+  "source_ids": [
+    "B-S018",
+    "V4B-S017",
+    "V4B-S020"
+  ],
+  "namespace": "T099",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T099",
+  "chunk_count": 9
+}

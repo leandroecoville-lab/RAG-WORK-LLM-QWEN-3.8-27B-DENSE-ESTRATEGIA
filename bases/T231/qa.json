@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Search/replace é sempre regex?",
+    "answer": "Não. O padrão desta entrada é literal. Expressões regulares adicionam outra linguagem e exigem escopo, escaping e critérios de correspondência próprios."
+  },
+  {
+    "question": "Posso substituir todas as ocorrências?",
+    "answer": "Somente quando esse conjunto é o alvo intencional e foi verificado. Uma operação global não deve ser inferida a partir de uma ocorrência solicitada."
+  },
+  {
+    "question": "Nenhuma ocorrência deve provocar uma substituição aproximada automática?",
+    "answer": "Não por padrão. Pode haver revisão incorreta; o erro precisa ser diagnosticado antes de relaxar a correspondência."
+  },
+  {
+    "question": "Duas ocorrências iguais podem ser ambas corretas?",
+    "answer": "Sim, quando o objetivo exige alterar ambas e o contrato declara isso; igualdade textual sozinha não decide."
+  }
+]

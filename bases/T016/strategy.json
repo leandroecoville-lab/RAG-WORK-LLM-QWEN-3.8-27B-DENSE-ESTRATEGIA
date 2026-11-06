@@ -1,0 +1,111 @@
+{
+  "id": "T016",
+  "novelty": "A v3 distinguiu parcial, erro e vazio. Aqui a saída truncada é uma projeção orientada pela pergunta, com caminho mensurável de recuperação.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Escolha projeção por tipo de resultado: amostra estratificada para exploração, agregação para contagem e linhas exatas para diagnóstico. Cortar os primeiros caracteres raramente é contrato suficiente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Preserve total de itens, filtros, ordenação e cursor. O modelo decide se a projeção responde à pergunta ou solicita leitura adicional com campos definidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare prefixo simples e projeções orientadas à tarefa. Meça conclusões corretas sobre o conjunto e custo das leituras adicionais. Unidade de avaliação: resultado de ferramenta. Para validar projeções, use conjunto cuja exceção aparece no final e outro com distribuição desigual entre categorias. Prefixo simples deve falhar de modo observável; amostra estratificada pode localizar a exceção, mas ainda não prova sua frequência. Contagens e conclusões exaustivas precisam vir da consulta completa, com filtro e ordenação registrados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Busca com muitos resultados",
+      "scenario": "A pergunta pede exceções raras.",
+      "strategy": "Calcular contagens em código, devolver grupos e abrir amostras das categorias suspeitas. Não inferir ausência pela amostra.",
+      "small_model_role": "3–7B classifica categorias.",
+      "acceptance": "Contagem final deve vir da consulta completa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006"
+      ]
+    },
+    {
+      "name": "Falha de compilação volumosa",
+      "scenario": "Logs contêm cascata de erros.",
+      "strategy": "Retornar primeiros erros por arquivo e resumo de frequências; preservar log integral para buscar causa anterior.",
+      "small_model_role": "8–14B prioriza diagnóstico.",
+      "acceptance": "Patch deve ser validado contra execução posterior, não resumo do log.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Leitor de schema e contagens calculadas, sem estimar totais pela amostra.",
+    "8_14b": "Investigador que pede intervalos adicionais com hipótese explícita.",
+    "15_30b": "Correlacionador de múltiplos logs por identificadores de operação.",
+    "training_or_runtime_requirements": "Ferramenta de projeção determinística e armazenamento do resultado completo quando necessário.",
+    "do_not_use_when": "O corte remove a única evidência disponível ou a tarefa exige exaustividade sem cursor."
+  },
+  "connections": [
+    {
+      "target_id": "T238",
+      "relation": "complements",
+      "how": "Abrir intervalos do artefato integral.",
+      "interface": "artifact_id, versão, intervalo e total.",
+      "condition": "Leitura manter ordenação e revisão.",
+      "acceptance": "Reconstituir trecho omitido sem trocar a origem.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T042",
+      "relation": "requires",
+      "how": "Limitar projeção pelo orçamento real.",
+      "interface": "Tokens estimados, reserva e esquema de resposta.",
+      "condition": "Medir após serializar metadados.",
+      "acceptance": "Testar resultado cujo cabeçalho sozinho excede a cota.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não chamar amostra de resultado completo.",
+    "Propagar erro da ferramenta sem convertê-lo em conjunto vazio."
+  ],
+  "frontier_comparison": "Comparar diagnóstico e decisões sobre conjuntos grandes; concisão isolada não basta.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S002",
+    "A-S006"
+  ]
+}

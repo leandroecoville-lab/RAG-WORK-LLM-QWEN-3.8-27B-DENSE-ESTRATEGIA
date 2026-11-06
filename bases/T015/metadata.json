@@ -1,0 +1,31 @@
+{
+  "id": "T015",
+  "name": "Reference Passing",
+  "canonical_name": "Reference Passing",
+  "canonical_id": "T015",
+  "aliases": [
+    "passagem por referência",
+    "artifact references"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T053",
+    "T061",
+    "T066"
+  ],
+  "source_ids": [
+    "A-S006",
+    "A-S010",
+    "V3A-S019",
+    "V4A-S025",
+    "V4A-S015"
+  ],
+  "namespace": "T015",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T015",
+  "chunk_count": 9
+}

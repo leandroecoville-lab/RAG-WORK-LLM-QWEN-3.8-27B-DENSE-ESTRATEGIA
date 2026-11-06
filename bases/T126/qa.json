@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Activation-aware significa que as ativações são INT4?",
+    "answer": "Não. As ativações orientam a quantização dos pesos; o regime numérico completo precisa ser especificado."
+  },
+  {
+    "question": "AWQ substitui fine-tuning?",
+    "answer": "Não. Comprime um modelo existente; não ensina por si só um novo procedimento."
+  },
+  {
+    "question": "Activation-aware quantiza as ativações?",
+    "answer": "O nome descreve informação usada para quantizar pesos; a variante weight-only pode manter ativações em maior precisão."
+  },
+  {
+    "question": "Escala equivalente garante saída idêntica?",
+    "answer": "A equivalência é anterior ao arredondamento; quantização e aritmética finita ainda alteram a operação."
+  }
+]

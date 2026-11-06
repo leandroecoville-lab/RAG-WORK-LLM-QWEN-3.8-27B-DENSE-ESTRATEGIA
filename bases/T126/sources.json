@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "B-S036",
+    "title": "AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration",
+    "url": "https://arxiv.org/abs/2306.00978",
+    "publisher": "Lin e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-06-01",
+    "supports": "Estatísticas de ativações orientam escalas para proteger canais relevantes na quantização de pesos.",
+    "limitations": "Resumo e metadados acessados; artigo integral não auditado e resultados não reproduzidos.",
+    "web_ref": "turn17view4"
+  },
+  {
+    "source_id": "V3B-S014",
+    "title": "AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration — full text",
+    "url": "https://arxiv.org/html/2306.00978v6",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-06-01",
+    "supports": "Escalonamento por canal baseado em ativações, quantização weight-only e distinção de mixed precision.",
+    "limitations": "Texto consultado na revisão v6 disponível em 2026-11-05; nenhuma versão de servidor foi presumida.",
+    "web_ref": "turn149view1"
+  },
+  {
+    "source_id": "V4B-S011",
+    "title": "NVIDIA TensorRT LLM",
+    "url": "https://developer.nvidia.com/tensorrt-llm",
+    "publisher": "NVIDIA",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Runtime Python/PyTorch, cache paginado, batching, quantização e especulação documentados.",
+    "limitations": "Página de produto demonstra recursos disponíveis, não adoção comprovada por cliente nem compatibilidade do hardware local.",
+    "web_ref": "turn219view2"
+  }
+]

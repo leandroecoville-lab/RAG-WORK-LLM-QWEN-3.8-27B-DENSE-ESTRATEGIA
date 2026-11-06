@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Tokens em cache deixam de contar no contexto?",
+    "answer": "Não se deve assumir isso. Cache pode alterar processamento ou custo conforme o provedor, mas o conteúdo continua sujeito aos limites documentados da chamada."
+  },
+  {
+    "question": "Compactação aumenta a janela do modelo?",
+    "answer": "Não. Ela reduz a representação enviada, podendo perder informação. O monitor precisa observar capacidade e qualidade da recuperação."
+  },
+  {
+    "question": "Reduzir a janela recupera tokens já faturados?",
+    "answer": "Não. Pode reduzir chamadas futuras; o consumo passado permanece no custo da missão."
+  },
+  {
+    "question": "Contar mensagens serve para estimar contexto?",
+    "answer": "É um sinal muito fraco quando mensagens e resultados têm tamanhos variados; contar unidades efetivas é mais informativo."
+  }
+]

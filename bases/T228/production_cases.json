@@ -1,0 +1,84 @@
+{
+  "coverage": {
+    "entry_id": "T228",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Fila de retries com backoff exponencial",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C006",
+      "company": "Netflix",
+      "system": "Conductor — plataforma interna atualizada",
+      "title": "Avaliação assíncrona e coordenação durável de workflows",
+      "evidence_level": "production_documented",
+      "observed_use": "A Netflix descreve Conductor em pipelines de mídia e anúncios, com Timestone, persistência de tarefas e mecanismos de reparação operacional.",
+      "technical_mechanism": "O motor avalia um blueprint e carrega dados específicos; a fila assíncrona e regras de estado reduzem disputas, enquanto estratégias sequenciais serializam execuções por chave.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S004",
+        "V4C-S003"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T159",
+          "match": "exact",
+          "rationale": "O relato inclui recuperação de processos distribuídos longos."
+        },
+        {
+          "entry_id": "T147",
+          "match": "exact",
+          "rationale": "Workflows incluem forks paralelos e junções."
+        },
+        {
+          "entry_id": "T148",
+          "match": "exact",
+          "rationale": "O DSL representa condicionais e outras transições."
+        },
+        {
+          "entry_id": "T160",
+          "match": "exact",
+          "rationale": "Blueprint e avaliação coordenam dependências e tarefas elegíveis."
+        },
+        {
+          "entry_id": "T228",
+          "match": "family",
+          "rationale": "Filas atrasadas e reparação apoiam retomada, sem provar uma política única de backoff exponencial."
+        },
+        {
+          "entry_id": "P011",
+          "match": "analogy",
+          "rationale": "O motor inspira responsabilidades do executor editorial."
+        },
+        {
+          "entry_id": "P014",
+          "match": "analogy",
+          "rationale": "Recuperação de workflows é analogia da capacidade proposta."
+        }
+      ],
+      "small_model_transfer": "Proposta: orquestrar chamadas pequenas com payloads externos por referência, lendo apenas resultados necessários à decisão; manter transições e concorrência fora do modelo.",
+      "limits": "Um único caso de plataforma, sem contar cada pipeline como caso adicional. Recursos explicitamente descritos como roadmap não são tratados como já implantados.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C006",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T228",
+        "match": "family",
+        "rationale": "Filas atrasadas e reparação apoiam retomada, sem provar uma política única de backoff exponencial."
+      }
+    }
+  ]
+}

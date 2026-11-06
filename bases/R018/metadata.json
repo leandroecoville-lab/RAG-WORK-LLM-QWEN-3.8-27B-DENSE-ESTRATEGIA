@@ -1,0 +1,37 @@
+{
+  "id": "R018",
+  "name": "Temporal",
+  "canonical_name": "Temporal",
+  "canonical_id": "R018",
+  "aliases": [
+    "Temporal durable execution",
+    "Temporal Workflows"
+  ],
+  "category": "referencias",
+  "kind": "project",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "T059",
+    "T060",
+    "T159",
+    "T160",
+    "T162",
+    "T241",
+    "T243"
+  ],
+  "source_ids": [
+    "V2B-S005",
+    "V2B-S006",
+    "V2A-S010",
+    "V3C-S018",
+    "V3C-S023",
+    "V3C-S024",
+    "V3C-S040"
+  ],
+  "namespace": "R018",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R018",
+  "chunk_count": 9
+}

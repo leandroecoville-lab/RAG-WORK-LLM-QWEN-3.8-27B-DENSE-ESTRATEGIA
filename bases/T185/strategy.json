@@ -1,0 +1,119 @@
+{
+  "id": "T185",
+  "novelty": "A v3 discutiu interpretação e reward hacking. Esta camada propõe governança de princípios, testes de conflitos e separação entre norma treinada e regra operacional que precisa mudar imediatamente.",
+  "deep_layers": [
+    {
+      "name": "Princípios como especificação",
+      "detail": "Defina prioridade e exemplos de fronteira para regras que podem conflitar. Um princípio abstrato não determina sozinho a resposta correta em cada situação. Registre justificativa e versão dos rótulos produzidos por avaliadores, para detectar se uma mudança de interpretação alterou o dataset sem alteração explícita da política.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S039",
+        "V4B-S021",
+        "V3B-S018"
+      ]
+    },
+    {
+      "name": "Treino versus controle externo",
+      "detail": "Comportamento aprendido pode persistir após uma regra mudar. Políticas que exigem atualização imediata devem ter uma camada externa verificável, além do treinamento. A constituição atual da Anthropic é descrita como parte do processo de treino; colocá-la num prompt de um modelo comum é uma intervenção diferente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S039",
+        "V4B-S021",
+        "V3B-S018"
+      ]
+    },
+    {
+      "name": "Avaliar utilidade e erro",
+      "detail": "Uma resposta pode seguir estilo e princípios enquanto fornece fatos errados ou recusa tarefas válidas. Meça adesão, utilidade, correção e recusas excessivas separadamente. Avaliadores baseados no mesmo texto de princípios podem compartilhar pontos cegos; inclua revisão humana e casos que tensionem prioridades.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S039",
+        "V4B-S021",
+        "V3B-S018"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Assistente de domínio regulado internamente",
+      "scenario": "A empresa possui regras de atendimento claras.",
+      "strategy": "Traduza regras em exemplos revisados, mantenha controles externos para requisitos objetivos e avalie conflitos. Não apresente o treinamento como garantia de conformidade universal.",
+      "small_model_role": "Um 3–7B pode executar uma rotina de atendimento estreita com limites verificáveis.",
+      "acceptance": "Aceitação por regra e categoria, incluindo respostas úteis que não devem ser recusadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S039",
+        "V4B-S021",
+        "V3B-S018"
+      ]
+    },
+    {
+      "name": "Política que evolui",
+      "scenario": "Novas regras tornam parte do comportamento anterior inadequada.",
+      "strategy": "Versione dados e avaliadores, aplique controle externo enquanto prepara atualização e teste regressões. Preserve casos que distingam versões para verificar se a mudança ocorreu.",
+      "small_model_role": "Um 8–14B pode ser atualizado por adaptação, sujeito à validação de comportamento.",
+      "acceptance": "Confirmar mudança desejada sem ampliar erros factuais ou recusas fora do escopo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S039",
+        "V4B-S021",
+        "V3B-S018"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Princípios simples e exemplos consistentes são preferíveis a constituições extensas sem cobertura de teste.",
+    "8_14b": "Capacidade de seguir nuances precisa ser medida; aumentar texto normativo não garante compreensão.",
+    "15_30b": "Maior porte pode melhorar interpretação, mas não elimina conflitos nem necessidade de governança.",
+    "training_or_runtime_requirements": "Constitutional AI envolve processo de treinamento/feedback; prompting constitucional isolado não é reprodução integral do método.",
+    "do_not_use_when": "Não usar concordância de um juiz com a política como prova de verdade externa ou de cumprimento perfeito."
+  },
+  "connections": [
+    {
+      "target_id": "T193",
+      "relation": "complements",
+      "how": "Guardrails externos implementam requisitos verificáveis e atualizáveis.",
+      "interface": "Política versionada e resultados de checagem.",
+      "condition": "Norma externa não contradiz silenciosamente o comportamento treinado.",
+      "acceptance": "Testar conflitos e registrar qual regra determinou o resultado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S039",
+        "V4B-S021",
+        "V3B-S018"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T198",
+      "relation": "complements",
+      "how": "Confiança e abstenção devem ser avaliadas separadamente da adesão normativa.",
+      "interface": "Predições, rótulos e razões de recusa.",
+      "condition": "Conjunto cobre casos permitidos e proibidos.",
+      "acceptance": "Medir erro e recusa por categoria, sem recompensa por estilo apenas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S039",
+        "V4B-S021",
+        "V3B-S018"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir política do operador com consenso moral universal.",
+    "Auditar exemplos sintéticos para evitar repetição sistemática de interpretações erradas."
+  ],
+  "frontier_comparison": "Compare adesão e utilidade no domínio definido. Uma constituição pode orientar comportamento, mas não transmite automaticamente conhecimento ou raciocínio de um modelo de fronteira.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q010"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "C-S039",
+    "V4B-S021",
+    "V3B-S018"
+  ]
+}

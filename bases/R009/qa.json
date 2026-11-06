@@ -1,0 +1,18 @@
+[
+  {
+    "question": "vLLM ensina o modelo a usar ferramentas?",
+    "answer": "Não. Oferece serving e parsers; competência depende do checkpoint, template e avaliação."
+  },
+  {
+    "question": "As opções latest valem para minha versão instalada?",
+    "answer": "Não necessariamente. A configuração deve ser conferida na documentação da versão real."
+  },
+  {
+    "question": "cache_salt resolve sozinho o isolamento entre clientes?",
+    "answer": "Não. Ele participa da separação do cache; a própria documentação exige considerar outras superfícies compartilhadas."
+  },
+  {
+    "question": "Qual ganho medir primeiro?",
+    "answer": "Separe prefill e decode; avalie TTFT sob carga antes de atribuir melhora global ao cache."
+  }
+]

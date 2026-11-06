@@ -1,0 +1,51 @@
+{
+  "id": "T021",
+  "technical_details": "Compressão durante execução é um problema de controle com custo de intervenção. Um gatilho próximo demais do limite pode não deixar espaço para produzir a nova representação; acionamento frequente também perde tempo e cache. A política deve considerar tamanho provável do próximo resultado, margem para saída e uma condição de rearme, evitando compactar continuamente em torno do mesmo limiar.",
+  "boundary_condition": "Se o próximo artefato indispensável exceder o orçamento disponível, compressão oportunista do histórico pode não resolver a incompatibilidade da tarefa.",
+  "implementation_contract": {
+    "inputs": "Contexto atual, próxima etapa, reservas e regiões protegidas.",
+    "outputs": "Nova representação validada e manifesto do que foi substituído.",
+    "state": "Versões antes e depois, último gatilho e referências aos originais.",
+    "invariant": "A nova versão só substitui a anterior após preservar o estado operacional necessário à próxima ação."
+  },
+  "tradeoffs": [
+    "Gatilhos antecipados deixam margem, mas podem comprimir conteúdo que ainda seria útil.",
+    "Reduções maiores amortizam intervenção, ao custo de retirar mais informação de uma vez."
+  ],
+  "failure_test": "Teste proposto: simular crescimento abrupto por saída de ferramenta e, depois, pequenas oscilações de tamanho. Verificar reserva suficiente e ausência de repetidas compressões sem trabalho útil entre elas.",
+  "evaluation_plan": "Avaliação proposta: comparar limiar simples e política com margem e rearme sobre sequências equivalentes. Medir intervenções, tokens recuperados, perda de fatos, invalidações de cache e tempo total até concluir a tarefa.",
+  "comparisons": [
+    {
+      "entry_id": "T006",
+      "relation": "specializes",
+      "reason": "É uma política de aplicação temporal dos mecanismos de compressão."
+    },
+    {
+      "entry_id": "T212",
+      "relation": "complements",
+      "reason": "Auto-Compact por gatilho pode implementar parte desta política, com comportamento próprio do executor."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação de context editing permite condicionar a limpeza a um ganho mínimo de tokens para justificar a invalidação de cache.",
+    "source_ids": [
+      "V3A-S008"
+    ],
+    "support": "direct",
+    "caveat": "O desenho de controlador aqui proposto é mais geral que as opções de um provedor específico."
+  },
+  "advanced_qa": [
+    {
+      "question": "A margem deve ser uma porcentagem fixa?",
+      "answer": "Não necessariamente. Resultados de ferramentas e saídas variam em tamanho; uma reserva baseada nas próximas etapas pode ser mais informativa."
+    },
+    {
+      "question": "O que fazer se a compactação falhar?",
+      "answer": "Preserve a versão anterior e registre a falha. Não avance com um resumo parcial como se tivesse conservado os requisitos indispensáveis."
+    }
+  ],
+  "source_ids": [
+    "V3A-S008"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

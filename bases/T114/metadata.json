@@ -1,0 +1,28 @@
+{
+  "id": "T114",
+  "name": "Online Softmax",
+  "canonical_name": "Online Softmax",
+  "canonical_id": "T114",
+  "aliases": [
+    "softmax incremental",
+    "normalização online"
+  ],
+  "category": "inferencia",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T090",
+    "T113"
+  ],
+  "source_ids": [
+    "B-S028",
+    "B-S027",
+    "V4B-S017"
+  ],
+  "namespace": "T114",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T114",
+  "chunk_count": 9
+}

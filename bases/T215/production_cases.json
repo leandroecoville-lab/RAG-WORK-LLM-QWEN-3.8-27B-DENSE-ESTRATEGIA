@@ -1,0 +1,58 @@
+{
+  "coverage": {
+    "entry_id": "T215",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 1,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Observation Masking",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C030",
+      "company": "JetBrains Research / autores",
+      "system": "SWE-agent com políticas de contexto",
+      "title": "Experimento de observation masking e sumarização",
+      "evidence_level": "research_only",
+      "observed_use": "Estudo compara estratégias de contexto em tarefas SWE-bench Verified.",
+      "technical_mechanism": "Masking oculta observações anteriores; sumarização substitui histórico por texto sintetizado; avaliação considera resolução e custo.",
+      "event_date": "2025-08-29",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S031"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T215",
+          "match": "exact",
+          "rationale": "Observation masking é objeto central do experimento."
+        },
+        {
+          "entry_id": "T212",
+          "match": "family",
+          "rationale": "Sumarização de trajetória é avaliada, sem provar uma política universal de gatilho de compactação."
+        }
+      ],
+      "small_model_transfer": "Proposta: avaliar remoção seletiva antes de acrescentar um resumidor 3–30B, preservando observações necessárias ao próximo teste.",
+      "limits": "Pesquisa controlada não conta como produção; não generalizar comparação para todo domínio ou modelo.",
+      "organization_class": "research_group",
+      "canonical_case_id": "V4C-C030",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "T215",
+        "match": "exact",
+        "rationale": "Observation masking é objeto central do experimento."
+      }
+    }
+  ]
+}

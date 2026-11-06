@@ -1,0 +1,120 @@
+{
+  "id": "R008",
+  "novelty": "Aprofunda o merge e a persistência anteriores com evolução de grafos em execução, testes algébricos de junção e isolamento de resultados que chegam depois da mudança de intenção.",
+  "source_ids": [
+    "V3C-S006",
+    "V3D-S016",
+    "V4C-S028"
+  ],
+  "deep_layers": [
+    {
+      "name": "Evolução com conversas abertas",
+      "detail": "Proposta: versionar grafo, schema e política junto do checkpoint. Classificar migrações em leitura compatível, transformação explícita ou encerramento controlado. Manter o executor antigo enquanto houver estados incompatíveis evita reinterpretar um nó pendente com significado novo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S006",
+        "V3D-S016",
+        "V4C-S028"
+      ]
+    },
+    {
+      "name": "Junção sob reentrega",
+      "detail": "Testar redutores com permutações, duplicatas e resultados tardios. Associatividade ou idempotência só devem ser exigidas quando o domínio permite; uma sequência de decisões pode exigir ordem. Registrar revisão da intenção em cada ramo permite rejeitar uma resposta correta para uma pergunta já cancelada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S006",
+        "V3D-S016",
+        "V4C-S028"
+      ]
+    },
+    {
+      "name": "Estado público por projeção",
+      "detail": "Construir uma projeção de saída a partir do estado validado, separada do estado de trabalho. O fluxo de eventos recebe a mesma revisão e política de exposição. A proposta trata vazamento de eventos e resposta final como superfícies distintas, com testes próprios.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S006",
+        "V3D-S016",
+        "V4C-S028"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Atendimento com mudança de solicitação",
+      "scenario": "Cliente altera o pedido enquanto duas consultas executam.",
+      "strategy": "Incrementar revisão da intenção, preservar resultados auditáveis e impedir que ramos antigos atualizem a resposta atual.",
+      "small_model_role": "Classificar a alteração e extrair campos; a decisão de validade pertence ao controlador.",
+      "acceptance": "Reproduzir chegada fora de ordem e confirmar ausência de resposta ou efeito da revisão cancelada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S006",
+        "V3D-S016",
+        "V4C-S028"
+      ]
+    },
+    {
+      "name": "Migração de workflow vivo",
+      "scenario": "Novo contrato de ferramenta precisa coexistir com sessões antigas.",
+      "strategy": "Roteá-las pela versão persistida e migrar somente estados com transformação testada.",
+      "small_model_role": "Produzir estado tipado sem escolher silenciosamente a versão de execução.",
+      "acceptance": "Retomar amostras históricas e conferir transições, efeitos e projeção final por versão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S006",
+        "V3D-S016",
+        "V4C-S028"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "3–7B: nós de extração ou classificação com estados pequenos e ramos explícitos.",
+    "8_14b": "8–14B: decisões locais com poucas ferramentas, limitadas por critérios externos.",
+    "15_30b": "15–30B: síntese de ramos quando a avaliação mostrar ganho sobre agregação determinística.",
+    "training_or_runtime_requirements": "Persistência, versões e redutores pertencem à aplicação; não exigem treino da LLM.",
+    "do_not_use_when": "Não adotar grafo complexo quando uma função determinística e uma chamada resolvem a tarefa."
+  },
+  "connections": [
+    {
+      "target_id": "T060",
+      "relation": "complements",
+      "how": "Vincular retomada à versão do grafo e à revisão da intenção.",
+      "interface": "Checkpoint, graph_version, intent_revision e próximo nó.",
+      "condition": "Sessões atravessam deploys ou falhas.",
+      "acceptance": "Um checkpoint incompatível é recusado ou migrado por regra registrada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S006",
+        "V3D-S016",
+        "V4C-S028"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T148",
+      "relation": "complements",
+      "how": "Resolver elegibilidade do ramo antes de publicar seu resultado.",
+      "interface": "Predicado tipado e revisão do estado de origem.",
+      "condition": "Existem ramos paralelos ou decisões atrasadas.",
+      "acceptance": "Resultado de ramo obsoleto não altera o estado vigente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S006",
+        "V3D-S016",
+        "V4C-S028"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não inferir independência apenas porque nós executam em paralelo.",
+    "Não usar memória entre threads sem namespace e política de visibilidade."
+  ],
+  "frontier_comparison": "Comparar o mesmo grafo e ferramentas com modelos diferentes; depois ablar a estrutura. Contabilizar ramos descartados e efeitos incorretos, não apenas respostas finais.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q021",
+      "V4C-Q026"
+    ],
+    "scope_note": "Klarna é relato de cliente pelo fornecedor e permanece produto/uso documentado com limites. A busca LinkedIn não confirmou LangGraph; sem atribuição por semelhança arquitetural."
+  }
+}

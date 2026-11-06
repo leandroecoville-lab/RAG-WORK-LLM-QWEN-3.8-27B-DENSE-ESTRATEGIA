@@ -1,0 +1,40 @@
+{
+  "id": "P015",
+  "name": "Execution Integrity Controller",
+  "canonical_name": "Execution Integrity Controller",
+  "canonical_id": "P015",
+  "aliases": [
+    "controlador proposto de integridade da execução"
+  ],
+  "category": "componentes_propostos",
+  "kind": "component",
+  "scope": "proposta",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T072",
+    "T162",
+    "T200",
+    "T233",
+    "P011",
+    "P012",
+    "P013"
+  ],
+  "source_ids": [
+    "C-S026",
+    "A-S028",
+    "A-S029",
+    "V2C-S002",
+    "V3D-S018",
+    "V4D-S021",
+    "V3C-S025",
+    "V3C-S028",
+    "V4C-S002",
+    "V4C-S013",
+    "V4C-S027"
+  ],
+  "namespace": "P015",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/P015",
+  "chunk_count": 9
+}

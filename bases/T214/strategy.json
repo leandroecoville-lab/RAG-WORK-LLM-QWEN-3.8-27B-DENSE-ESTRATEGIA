@@ -1,0 +1,115 @@
+{
+  "id": "T214",
+  "novelty": "A v3 preservava proveniência, erros e paginação na poda. A expansão projeta respostas de ferramenta antes da transferência, usa seleção em duas passagens e protege dados que terão função em verificações futuras.",
+  "deep_layers": [
+    {
+      "name": "Projeção junto à origem",
+      "detail": "Quando o serviço suporta seleção de campos, peça somente o que a próxima decisão exige. Isso reduz rede e parsing além de tokens. A seleção precisa incluir identificador, versão e estado de completude; omitir um campo de erro pode tornar uma resposta parcial indistinguível de sucesso. Projeção é contrato, não simples corte de caracteres.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ]
+    },
+    {
+      "name": "Índice seguido de detalhe",
+      "detail": "Para resultados desconhecidos, peça primeiro metadados ou índice e depois os itens relevantes. A segunda passagem custa latência e só compensa quando evita grande volume inútil. Mantenha uma reserva para buscar detalhes que surgirem como necessários; não avalie a política apenas pelos tokens do primeiro retorno.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Poda orientada ao teste",
+      "detail": "Marque campos exigidos pelo critério de aceite como protegidos. Se a etapa seguinte compara versões ou verifica integridade, esses metadados não podem sair porque parecem repetitivos. Ao compactar logs, mantenha unidade semântica completa do erro e referência para o original; a seleção deve ser reprodutível para investigar omissões.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009",
+        "V3C-S031"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "API retorna objetos extensos",
+      "scenario": "O agente precisa de três campos de um conjunto profundo.",
+      "strategy": "Resolva o schema, derive projeção explícita e valide que os campos obrigatórios vieram. Se o servidor não suportar projeção, armazene a resposta integral e selecione num adaptador determinístico antes de inserir no contexto. Retorno vazio exige distinguir ausência de dados e projeção incorreta.",
+      "small_model_role": "3–7B consome objeto curto; 8–14B propõe projeção revisada pelo contrato.",
+      "acceptance": "Proposta: redução de bytes e tokens sem campos críticos ausentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ]
+    },
+    {
+      "name": "Diagnóstico de build",
+      "scenario": "Milhares de linhas contêm poucos erros causais.",
+      "strategy": "Agrupe falhas por teste e preserve traceback completo do primeiro erro relevante, versão e comando executado. Deixe avisos secundários recuperáveis. Quando o reparo falhar, recupere linhas ao redor antes de inventar nova hipótese sobre log que foi ocultado.",
+      "small_model_role": "8–14B classifica diagnósticos; 15–30B analisa causas entre módulos.",
+      "acceptance": "Proposta: mesma taxa de diagnóstico correto com menos contexto e reconsultas contabilizadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009",
+        "V3C-S031"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Consumir campos estritos e pequenos, preservando sinais de ausência e erro.",
+    "8_14b": "Selecionar unidades relevantes com retorno de referências ao original.",
+    "15_30b": "Projetar dados para decisões compostas e identificar dependências informacionais futuras.",
+    "training_or_runtime_requirements": "Schemas confiáveis, armazenamento integral quando necessário e métricas de reconsulta e omissão.",
+    "do_not_use_when": "Não podar evidência que sustenta um resultado ainda pendente de validação."
+  },
+  "connections": [
+    {
+      "target_id": "T151",
+      "relation": "complements",
+      "how": "OmniMCP combina descoberta progressiva e projeção de resposta para reduzir exposição desnecessária de contexto.",
+      "interface": "Schema resolvido e lista de campos solicitados.",
+      "condition": "A projeção respeita a ferramenta escolhida.",
+      "acceptance": "Campo ausente é tratado como ausência explícita, não sucesso presumido.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S013"
+      ],
+      "case_ids": [
+        "V4C-C014"
+      ]
+    },
+    {
+      "target_id": "T238",
+      "relation": "complements",
+      "how": "Após retorno resumido, permitir leitura pontual dos trechos necessários para diagnóstico ou validação.",
+      "interface": "Referência imutável e intervalo requerido.",
+      "condition": "Original permanece disponível e na mesma revisão.",
+      "acceptance": "Releitura entrega evidência exatamente correspondente à seleção inicial.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013",
+        "V4C-S027"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Cortar por caracteres pode destruir JSON, traceback ou registro multipartido.",
+    "Resultado projetado deve indicar se houve paginação, truncamento ou falha parcial."
+  ],
+  "frontier_comparison": "Compare modelo pequeno com projeção e fronteira com a mesma evidência relevante. Vantagem por remoção de ruído não significa capacidade de reconstruir campos descartados.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q009",
+      "V4C-Q028",
+      "V4D-Q019"
+    ],
+    "scope_note": "Gateway Uber documenta ResponseProjection e exposição progressiva. Critérios de preservação para cada tarefa são propostas a testar. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+  },
+  "source_ids": [
+    "V4C-S013",
+    "V4C-S014",
+    "V4C-S009",
+    "V3C-S031",
+    "V4C-S027"
+  ]
+}

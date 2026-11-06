@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Planner e executor precisam ser modelos diferentes?",
+    "answer": "Não. São responsabilidades arquiteturais; podem usar o mesmo modelo com entradas, estados e critérios de saída separados."
+  },
+  {
+    "question": "Um plano aprovado garante que as próximas ações estão corretas?",
+    "answer": "Não. Cada ação depende do estado atual e das evidências; mudanças relevantes exigem revisão do plano."
+  },
+  {
+    "question": "Replanejar deve zerar o histórico do executor?",
+    "answer": "Não. O estado confirmado e as intenções concluídas precisam continuar disponíveis para evitar repetição de efeitos."
+  },
+  {
+    "question": "Qual é o retorno mínimo útil do executor?",
+    "answer": "Resultado observado, evidência de conclusão, erro classificado e premissa afetada; apenas dizer que falhou deixa o planejador sem diagnóstico."
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "previous_version": "3.0.0",
+  "version": "4.0.0",
+  "previous_package_sha256": "e43ce03e384df85ee8107e8a6e8cb4cb2f1d107a641d5e08ff650aa6aea6c6b8",
+  "entry_ids_preserved": 287,
+  "old_chunks_preserved": 1722,
+  "new_sections": [
+    "C07",
+    "C08",
+    "C09"
+  ],
+  "expected_chunks": 2583,
+  "new_strategies": 287,
+  "new_source_records": 111,
+  "new_case_records": 98,
+  "search_queries": 105,
+  "requires_embedding_rebuild": true
+}

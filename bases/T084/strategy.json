@@ -1,0 +1,119 @@
+{
+  "id": "T084",
+  "novelty": "A v3 vinculou cache à revisão do histórico. A nova proposta explicita leases, tentativas concorrentes e políticas de mobilidade, evitando que afinidade de sessão se torne dependência permanente de um worker ou uma fonte de resultados atrasados.",
+  "deep_layers": [
+    {
+      "name": "Lease de continuação",
+      "detail": "Associe a execução em andamento a uma revisão esperada e a um lease de duração limitada. A conclusão só confirma o novo estado se ambos continuarem válidos. Um pedido lento que retorna depois de edição do usuário deve ser registrado como tentativa obsoleta, sem sobrescrever a ramificação atual da conversa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S005",
+        "V4B-S004",
+        "V3D-S016"
+      ]
+    },
+    {
+      "name": "Afinidade com saída de emergência",
+      "detail": "Afinidade melhora a chance de encontrar KV, mas precisa poder ceder a indisponibilidade ou fila excessiva. Guarde o histórico confirmado fora do worker e defina quando vale reconstruir em outro destino. Uma sessão pode manter identidade estável enquanto seu estado computacional muda de localização.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S005",
+        "V4B-S004",
+        "V3D-S016"
+      ]
+    },
+    {
+      "name": "Contabilidade de sessão ociosa",
+      "detail": "Faça retenção depender do intervalo de revisita, do tamanho do cache e da prioridade da sessão. Sessões curtas e frequentes podem ser baratas de manter; uma conversa longa abandonada pode expulsar várias sessões úteis. Registre retomadas e reconstruções para ajustar a política, preservando a possibilidade de voltar sem o cache.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S005",
+        "V4B-S004",
+        "V3D-S016"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Assistente interrompido pelo usuário",
+      "scenario": "O usuário cancela uma resposta e envia correção imediatamente.",
+      "strategy": "Cancele a tentativa antiga, confirme somente tokens que a política de conversa considera aceitos e abra nova revisão. Não reutilize automaticamente o trecho gerado e não entregue uma conclusão tardia como se respondesse à correção.",
+      "small_model_role": "Um modelo 3–14B pode manter interação rápida com estado lógico pequeno e explícito.",
+      "acceptance": "Testar corridas entre cancelamento, fim da geração e nova mensagem sem mistura de revisões.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S005",
+        "V4B-S004",
+        "V3D-S016"
+      ]
+    },
+    {
+      "name": "Sessão móvel entre máquinas",
+      "scenario": "Um serviço precisa drenar workers para atualização.",
+      "strategy": "Pare novas admissões no worker antigo, preserve estados confirmados e escolha transferência suportada ou replay dos tokens. Permita concluir requisições em voo ou cancelar com razão explícita; nunca tratar cache ausente como perda da sessão.",
+      "small_model_role": "Um modelo 15–30B pode exigir reconstrução planejada para manter a cauda aceitável.",
+      "acceptance": "Medir sucesso de retomada, duplicação de respostas e tempo de drenagem.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S005",
+        "V4B-S004",
+        "V3D-S016"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, replay de uma conversa curta pode ser mais simples que infraestrutura de migração de KV.",
+    "8_14b": "Em 8–14B, manter cache de sessões ativas e externalizar histórico permite mobilidade com custo previsível.",
+    "15_30b": "Em 15–30B, planejar retenção e drenagem por bytes KV, não somente por quantidade de sessões.",
+    "training_or_runtime_requirements": "Runtime fornece cache e cancelamento; aplicação fornece revisão, histórico durável e semântica de confirmação.",
+    "do_not_use_when": "Não presumir afinidade garantida pelo balanceador nem usar ID de sessão como autorização suficiente."
+  },
+  "connections": [
+    {
+      "target_id": "T064",
+      "relation": "requires",
+      "how": "Persistir histórico confirmado e artefatos antes de depender do cache de sessão.",
+      "interface": "ID estável, revisão e resultados aceitos.",
+      "condition": "Estado durável pode reconstruir a entrada exata.",
+      "acceptance": "Excluir todo KV e retomar sem repetir ferramentas concluídas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S005",
+        "V4B-S004",
+        "V3D-S016"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T120",
+      "relation": "complements",
+      "how": "Escolher destino com afinidade enquanto fila e saúde permanecem adequadas.",
+      "interface": "Localização preferida, validade do lease e atraso previsto.",
+      "condition": "Roteador dispõe de fallback e não confunde afinidade com exclusividade.",
+      "acceptance": "Derrubar o destino preferido e verificar retomada controlada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S005",
+        "V4B-S004",
+        "V3D-S016"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Rejeitar commit de tentativa com revisão vencida.",
+    "Testar perda de worker durante streaming e não publicar fragmentos obsoletos."
+  ],
+  "frontier_comparison": "Avaliar continuidade de uma missão em condições de falha frente a uma baseline de fronteira. Cache reduz recomputação; qualidade da recuperação depende dos contratos de estado e não do número de parâmetros.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q002"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S005",
+    "V4B-S004",
+    "V3D-S016"
+  ]
+}

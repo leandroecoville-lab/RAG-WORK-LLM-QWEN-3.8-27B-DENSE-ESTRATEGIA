@@ -1,0 +1,46 @@
+{
+  "id": "T187",
+  "technical_details": "Antes de somar probabilidades, todos os participantes precisam usar o mesmo espaço de classes e a mesma ordem. Uma permutação silenciosa de rótulos pode produzir um ensemble numericamente válido e semanticamente errado. Pesos de votação devem ser ajustados em dados separados da avaliação final. Para respostas livres, a normalização que agrupa equivalentes também vira parte do sistema e pode errar.",
+  "boundary_condition": "Erros correlacionados limitam o benefício de adicionar modelos; soft voting não corrige automaticamente probabilidades mal calibradas.",
+  "implementation_contract": {
+    "inputs": "Predições, rótulos canônicos, probabilidades disponíveis e política de pesos/empates.",
+    "outputs": "Decisão agregada com votos, abstenções e proveniência.",
+    "state": "Mapas de classes, pesos escolhidos e versão do normalizador.",
+    "invariant": "Cada coluna de probabilidade representa a mesma classe em todos os participantes."
+  },
+  "tradeoffs": [
+    "Hard voting perde intensidade de preferência e exige menos informação.",
+    "Soft voting usa mais sinal e exige comparabilidade probabilística e alinhamento rigoroso."
+  ],
+  "failure_test": "Teste proposto: inverter a ordem de classes de um modelo sem alterar seus números e inserir empate. Esperar detecção do desalinhamento e aplicação explícita da regra de desempate.",
+  "evaluation_plan": "Plano proposto: comparar membros individuais e ensemble em dados independentes. Medir correção, calibração, correlação de erros e custo; avaliar pesos sem reutilizar o conjunto final e aceitar agregação somente quando melhora o objetivo definido.",
+  "comparisons": [
+    {
+      "entry_id": "T188",
+      "relation": "alternative",
+      "reason": "Self-consistency agrega amostras de soluções, frequentemente do mesmo modelo, em vez de pressupor classificadores distintos."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação scikit-learn define soft voting pela agregação ponderada de probabilidades e escolha da classe com maior média.",
+    "source_ids": [
+      "C-S041"
+    ],
+    "support": "direct",
+    "caveat": "O procedimento matemático não garante calibração nem trata automaticamente equivalência de respostas abertas."
+  },
+  "advanced_qa": [
+    {
+      "question": "Maioria de três cópias iguais aumenta evidência?",
+      "answer": "Não. Repetir o mesmo erro não acrescenta informação independente."
+    },
+    {
+      "question": "Como lidar com abstenção?",
+      "answer": "Defina se ela reduz o peso disponível ou provoca escalonamento; não converta ausência de evidência em voto por uma classe arbitrária."
+    }
+  ],
+  "source_ids": [
+    "C-S041"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

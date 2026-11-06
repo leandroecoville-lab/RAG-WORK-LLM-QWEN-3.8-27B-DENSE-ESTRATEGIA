@@ -1,0 +1,52 @@
+{
+  "id": "R016",
+  "technical_details": "O valor metodológico de Lost in the Middle está no controle de posição: manter a evidência e mudar sua localização permite testar utilização, em vez de apenas disponibilidade. Para uma avaliação atual, posição absoluta e relativa precisam ser separadas do comprimento total e da quantidade de distratores. Reordenar trechos também pode alterar relações entre eles, portanto a intervenção deve preservar o conteúdo e a estrutura necessária à pergunta.",
+  "boundary_condition": "A tendência observada não é lei universal de toda arquitetura ou modelo atual; tarefas de agregação e múltiplas evidências podem apresentar padrões diferentes de recuperação pontual.",
+  "implementation_contract": {
+    "inputs": "Contextos controlados, evidência identificada, posições alternativas e configuração fixa do modelo.",
+    "outputs": "Desempenho por posição e comprimento, com registro de evidência realmente utilizada na resposta.",
+    "state": "Versão do modelo, ordem dos trechos, geração de distratores e divisão independente de avaliação.",
+    "invariant": "Aceitar o tamanho da entrada não é interpretado como capacidade uniforme de utilizar toda a informação contida nela."
+  },
+  "tradeoffs": [
+    "Mover evidência ajuda diagnosticar atenção efetiva e pode introduzir mudanças de vizinhança que precisam controle.",
+    "Encurtar contexto reduz distratores e também pode remover apoio necessário a tarefas de combinação."
+  ],
+  "failure_test": "Teste proposto: deslocar a mesma evidência entre início, meio e fim, mantendo demais elementos equivalentes. Se o acerto variar, a avaliação deve reportar dependência posicional, sem explicar a diferença por ausência da informação.",
+  "evaluation_plan": "Avaliação proposta: comparar posições em vários comprimentos e tarefas, com amostras novas e configurações iguais. Medir resposta sustentada, variabilidade e custo; separar localização de uma evidência de combinação de várias, sem usar perguntas do benchmark como conteúdo do RAG.",
+  "comparisons": [
+    {
+      "entry_id": "T013",
+      "relation": "complements",
+      "reason": "Capacidade efetiva de contexto exige medir uso da informação, além do limite nominal do modelo."
+    },
+    {
+      "entry_id": "T028",
+      "relation": "complements",
+      "reason": "Reranking e montagem podem alterar posição da evidência, mas precisam ser avaliados sem ocultar condições relevantes."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O artigo observa degradação quando evidência relevante fica no meio de contextos longos nos modelos e tarefas estudados.",
+    "source_ids": [
+      "A-S019"
+    ],
+    "support": "direct",
+    "caveat": "Os resultados pertencem ao estudo publicado; RULER também evidencia a necessidade de avaliar capacidades distintas, sem estabelecer posição ótima universal."
+  },
+  "advanced_qa": [
+    {
+      "question": "Devo colocar toda evidência importante no começo e no fim?",
+      "answer": "Não existe regra universal. Isso pode duplicar tokens e não resolver relações complexas. Teste a montagem no modelo e tarefa efetivamente usados."
+    },
+    {
+      "question": "Uma janela maior elimina a necessidade de recuperação?",
+      "answer": "Não necessariamente. Recuperação pode selecionar conteúdo útil mesmo quando tudo caberia; compare qualidade e custo sob condições controladas."
+    }
+  ],
+  "source_ids": [
+    "A-S019",
+    "V3A-S015"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "O lembrete pode ampliar a autorização da tarefa?",
+    "answer": "Não. Ele deve representar instruções já existentes. Uma geração incorreta do lembrete não cria permissão para agir."
+  },
+  {
+    "question": "Deve aparecer em todo turno?",
+    "answer": "Não há frequência universal. Pontos de mudança de estado costumam fornecer um gatilho mais justificável que repetição indiscriminada."
+  },
+  {
+    "question": "O lembrete deve repetir todo o plano?",
+    "answer": "Não. O plano pode mudar; resultado desejado e critérios vigentes são mais estáveis e úteis para orientar a próxima decisão."
+  },
+  {
+    "question": "Como impedir que lembretes entrem em conflito?",
+    "answer": "Vinculá-los à versão do objetivo e tratar alteração autorizada como supersessão explícita da versão anterior."
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "id": "T113",
+  "name": "FlashAttention Tiling",
+  "canonical_name": "FlashAttention Tiling",
+  "canonical_id": "T113",
+  "aliases": [
+    "blocagem de FlashAttention"
+  ],
+  "category": "inferencia",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T090",
+    "T091",
+    "T114",
+    "T097"
+  ],
+  "source_ids": [
+    "B-S027",
+    "V3B-S006",
+    "V4B-S017",
+    "V4B-S018"
+  ],
+  "namespace": "T113",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T113",
+  "chunk_count": 9
+}

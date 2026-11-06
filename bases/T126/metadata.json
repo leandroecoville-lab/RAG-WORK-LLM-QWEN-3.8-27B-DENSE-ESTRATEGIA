@@ -1,0 +1,28 @@
+{
+  "id": "T126",
+  "name": "AWQ",
+  "canonical_name": "AWQ",
+  "canonical_id": "T126",
+  "aliases": [
+    "Activation-aware Weight Quantization"
+  ],
+  "category": "inferencia",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T085",
+    "T124",
+    "T125"
+  ],
+  "source_ids": [
+    "B-S036",
+    "V3B-S014",
+    "V4B-S011"
+  ],
+  "namespace": "T126",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T126",
+  "chunk_count": 9
+}

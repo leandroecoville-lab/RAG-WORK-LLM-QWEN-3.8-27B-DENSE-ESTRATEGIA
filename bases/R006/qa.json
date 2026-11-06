@@ -1,0 +1,18 @@
+[
+  {
+    "question": "PRISM dispensa treinamento?",
+    "answer": "Não. A proposta identificada usa autodestilação e treinamento de adaptadores LoRA."
+  },
+  {
+    "question": "PRISM significa qualquer projeto com esse nome?",
+    "answer": "Não. Aqui a referência é o título completo registrado na ACL Anthology; há homônimos."
+  },
+  {
+    "question": "O diagnóstico garante que treinar compensa?",
+    "answer": "Não. É um sinal sobre a contribuição do prompt. Custo, reutilização, generalização e preservação de exceções ainda precisam ser medidos."
+  },
+  {
+    "question": "Posso remover toda instrução após o treinamento?",
+    "answer": "Somente se o desenho e a avaliação sustentarem isso. Regras variáveis e condições novas podem continuar exigindo contexto explícito."
+  }
+]

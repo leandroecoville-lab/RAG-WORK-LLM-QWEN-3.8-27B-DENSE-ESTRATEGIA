@@ -1,0 +1,32 @@
+{
+  "id": "T206",
+  "name": "Process Verification",
+  "canonical_name": "Process Verification",
+  "canonical_id": "T206",
+  "aliases": [
+    "verificação de processo"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T059",
+    "T159",
+    "T194",
+    "T200"
+  ],
+  "source_ids": [
+    "C-S047",
+    "C-S023",
+    "V3B-S023",
+    "V4C-S009",
+    "V4B-S022",
+    "V4C-S008"
+  ],
+  "namespace": "T206",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T206",
+  "chunk_count": 9
+}

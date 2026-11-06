@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Event sourcing garante exatamente uma execução?",
+    "answer": "Não. Entrega, processamento e efeitos externos precisam de estratégias explícitas de idempotência e reconciliação."
+  },
+  {
+    "question": "Todo log é evento de domínio?",
+    "answer": "Não. Um evento precisa ter significado, identidade e contrato suficientes para reconstruir estado."
+  },
+  {
+    "question": "Replay deve usar o relógio atual?",
+    "answer": "Somente se a projeção foi definida assim. Reconstrução determinística costuma precisar do tempo do evento ou de valores persistidos, evitando depender de agora."
+  },
+  {
+    "question": "Como corrigir um evento já registrado?",
+    "answer": "Use eventos corretivos ou interpretação versionada conforme o domínio. Sobrescrever o passado silenciosamente destrói a explicação do estado anteriormente conhecido."
+  }
+]

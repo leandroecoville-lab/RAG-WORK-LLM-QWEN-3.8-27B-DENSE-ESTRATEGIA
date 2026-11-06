@@ -1,0 +1,111 @@
+{
+  "id": "T111",
+  "novelty": "A v3 tratou custo de seleção e instabilidade dos grupos. Esta camada acrescenta distribuição do orçamento de conexões, sinais de omissão e avaliação separada do seletor e do operador de atenção.",
+  "deep_layers": [
+    {
+      "name": "Orçamento por consulta",
+      "detail": "Dar o mesmo número de conexões a cada consulta pode desperdiçar trabalho em regiões previsíveis e faltar em relações difíceis. Uma política adaptativa precisa estimar dificuldade sem calcular a atenção densa inteira. Defina um limite máximo e contabilize custo do estimador, roteamento, ordenação e padding, não apenas dos produtos finalmente selecionados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S025",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Omissão versus cálculo",
+      "detail": "Uma resposta pode falhar porque a chave relevante não foi selecionada ou porque o modelo não usou corretamente uma chave acessível. Em um conjunto pequeno, compare conexões selecionadas com uma referência densa e meça cobertura da evidência anotada. Esse diagnóstico orienta aumentar orçamento, mudar seletor ou revisar treinamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S025",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Robustez de distribuição",
+      "detail": "Agrupamentos aprendidos em textos comuns podem se comportar diferente em código, números ou documentos multilíngues. Teste desequilíbrio, grupos vazios e concentração adversarial de tokens. Uma política de capacidade deve declarar se descarta, reroteia ou amplia processamento quando um grupo excede o limite; essas escolhas alteram custo e semântica.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S025",
+        "V4B-S017"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Leitura longa especializada",
+      "scenario": "O domínio possui dependências recorrentes que podem ser aprendidas.",
+      "strategy": "Treine ou adapte um seletor compatível, mantenha uma amostra densa de controle e compare qualidade por tipo de relação. Use fallback quando sinais operacionais mostram saturação.",
+      "small_model_role": "Um 8–14B pode explorar sparsity treinada em tarefas bem delimitadas.",
+      "acceptance": "O seletor deve manter cobertura de evidência enquanto reduz trabalho total medido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S025",
+        "V4B-S017"
+      ]
+    },
+    {
+      "name": "Investigação de latência irregular",
+      "scenario": "Poucos pedidos geram picos apesar de tamanho semelhante.",
+      "strategy": "Correlacione distribuição de grupos, quantidade de conexões e temporários. Separe desbalanceamento do seletor de problemas do kernel ou da fila.",
+      "small_model_role": "Um 15–30B exige orçamento por dispositivo, inclusive para grupos excepcionais.",
+      "acceptance": "Reproduzir os picos com entradas controladas e confirmar a causa antes de alterar a máscara.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S025",
+        "V4B-S017"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Uma implementação dinâmica pode custar mais que atenção densa otimizada em sequências pequenas.",
+    "8_14b": "O benefício depende de contexto longo e seletor barato, não somente do porte do modelo.",
+    "15_30b": "Considere memória de índices e buffers, além da matriz de atenção evitada.",
+    "training_or_runtime_requirements": "Seleção arquitetural geralmente exige treinamento; substituir arbitrariamente a atenção de um checkpoint é aproximação a validar.",
+    "do_not_use_when": "Não apresentar redução de conexões como aceleração se o seletor ou padding dominam o tempo."
+  },
+  "connections": [
+    {
+      "target_id": "T097",
+      "relation": "feeds",
+      "how": "Conexões selecionadas são convertidas em blocos processáveis.",
+      "interface": "Índices, ocupação e máscaras de borda.",
+      "condition": "A conversão não amplia indevidamente o campo visível.",
+      "acceptance": "Comparar lista lógica e máscara realmente executada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S025",
+        "V4B-S017"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T107",
+      "relation": "complements",
+      "how": "Profiling mede seleção, movimentação e computação conjuntamente.",
+      "interface": "Tempo por fase e bytes transportados.",
+      "condition": "Mesmo conjunto de consultas e contexto.",
+      "acceptance": "Confirmar redução no caminho crítico, não apenas em FLOPs estimados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S025",
+        "V4B-S017"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Incluir casos raros em que uma única chave distante determina a resposta.",
+    "Registrar descartes por capacidade como intervenção semântica, não detalhe invisível."
+  ],
+  "frontier_comparison": "Compare com fronteira em documentos com evidência marcada e dependências variadas. Sparsity pode economizar execução e simultaneamente perder relações; a avaliação deve tornar essa troca visível.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q005"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S025",
+    "V4B-S017"
+  ]
+}

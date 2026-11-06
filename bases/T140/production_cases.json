@@ -1,0 +1,321 @@
+{
+  "coverage": {
+    "entry_id": "T140",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 2,
+    "unique_cases_associated": 5,
+    "operational_product_cases": 3,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Tool Use / Function Calling",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C010",
+      "company": "Uber",
+      "system": "AutoClean com PolyglotPiranha — evolução do cleanup",
+      "title": "Agentes delimitados e transformações determinísticas em cleanup contínuo",
+      "evidence_level": "production_documented",
+      "observed_use": "A Uber descreve AutoClean executando continuamente nos monorepos, produzindo diffs de remoção de flags com CI e validação antes da revisão humana.",
+      "technical_mechanism": "Agente chama transformação determinística por MCP; falhas de CI passam primeiro por fixers mecânicos; verificadores CodeCourt por propriedade executam em paralelo e agregam decisão.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S008",
+        "V4C-S009"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T140",
+          "match": "exact",
+          "rationale": "PolyglotPiranha é exposto ao agente por MCP."
+        },
+        {
+          "entry_id": "T232",
+          "match": "exact",
+          "rationale": "Transformações determinísticas de código ficam no PolyglotPiranha."
+        },
+        {
+          "entry_id": "T217",
+          "match": "exact",
+          "rationale": "Atualizações do diff são reavaliadas por CI até sucesso ou limite de tentativas."
+        },
+        {
+          "entry_id": "T237",
+          "match": "exact",
+          "rationale": "Fixers e verificadores recebem papéis e escopos específicos."
+        },
+        {
+          "entry_id": "T190",
+          "match": "exact",
+          "rationale": "Verificadores avaliam propriedades após geração e CI."
+        },
+        {
+          "entry_id": "T195",
+          "match": "exact",
+          "rationale": "Compilação e testes contribuem para validação do resultado."
+        },
+        {
+          "entry_id": "T200",
+          "match": "exact",
+          "rationale": "CodeCourt separa propriedades de aceitação do agente que fez a limpeza."
+        },
+        {
+          "entry_id": "T206",
+          "match": "family",
+          "rationale": "Propriedades como ausência de desvio de intenção verificam requisitos do processo, sem prova formal."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "O gate de propriedades inspira o componente proposto, sem demonstrar um produto LAI."
+        },
+        {
+          "entry_id": "T147",
+          "match": "exact",
+          "rationale": "CodeCourt executa revisores por propriedade em paralelo e agrega todos os resultados antes de encaminhar o diff."
+        }
+      ],
+      "small_model_transfer": "Proposta: 3–7B classifica falhas mecânicas; 8–14B propõe alteração localizada; 15–30B avalia propagação de mudanças. Transformações booleanas e gates permanecem determinísticos; cada banda precisa de avaliação própria.",
+      "limits": "O operador não informa que as faixas propostas de modelos reproduzam o sistema. CI verde não prova semântica, e vereditos de agentes continuam sujeitos a erro. Pipeline e sua evolução histórica contam uma vez.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C010",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T140",
+        "match": "exact",
+        "rationale": "PolyglotPiranha é exposto ao agente por MCP."
+      }
+    },
+    {
+      "case_id": "V4C-C014",
+      "company": "Uber",
+      "system": "MCP Gateway e Omni MCP",
+      "title": "Descoberta gradual, registro e projeção de ferramentas",
+      "evidence_level": "production_documented",
+      "observed_use": "A Uber descreve seu gateway central de interações MCP, com registro de ferramentas e descoberta incremental por intenção.",
+      "technical_mechanism": "Omni MCP separa descobrir servidor, listar ferramentas, obter schema e invocar; o gateway projeta campos de resposta e propaga configurações revisadas ao plano de execução.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S013"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T134",
+          "match": "exact",
+          "rationale": "Descoberta de servidor utiliza intenção da consulta."
+        },
+        {
+          "entry_id": "T140",
+          "match": "exact",
+          "rationale": "O gateway traduz e executa chamadas MCP para serviços."
+        },
+        {
+          "entry_id": "T151",
+          "match": "exact",
+          "rationale": "Schemas são obtidos progressivamente em vez de carregar o catálogo inteiro."
+        },
+        {
+          "entry_id": "T158",
+          "match": "exact",
+          "rationale": "MCP Registry mantém ferramentas, schemas, propriedade e habilitação."
+        },
+        {
+          "entry_id": "T170",
+          "match": "family",
+          "rationale": "O gateway documenta diffs, revisão e rollback de configuração/descritores; isso não prova uma política completa de versionamento e compatibilidade semântica de entrada e saída."
+        },
+        {
+          "entry_id": "T214",
+          "match": "exact",
+          "rationale": "Response Projection reduz respostas aos campos selecionados."
+        },
+        {
+          "entry_id": "T226",
+          "match": "family",
+          "rationale": "Heartbeat descobre presença de servidores, sem comprovar progresso semântico de tarefa."
+        },
+        {
+          "entry_id": "P015",
+          "match": "analogy",
+          "rationale": "Revisões e controle de exposição apoiam integridade editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: oferecer a 3–7B busca curta de ferramentas e schema apenas do candidato escolhido; 8–30B podem compor chamadas delimitadas, mantendo habilitação e projeção verificadas fora da LLM.",
+      "limits": "Um caso de gateway, sem contar cada servidor interno. Projeção reduz informação e precisa preservar campos indispensáveis; heartbeat de descoberta não é conclusão de trabalho.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C014",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T140",
+        "match": "exact",
+        "rationale": "O gateway traduz e executa chamadas MCP para serviços."
+      }
+    },
+    {
+      "case_id": "V4D-C001",
+      "company": "Apple",
+      "system": "Foundation Models / Apple Intelligence OS 26",
+      "title": "Modelo local especializado e runtime com geração guiada",
+      "evidence_level": "operational_product",
+      "observed_use": "Framework do modelo local disponibilizado no OS 26 e utilizado por aplicativos citados pela Apple.",
+      "technical_mechanism": "A descrição técnica associa modelo de cerca de 3B, quantização, adaptadores, ferramentas e combinação de geração guiada com especulação.",
+      "event_date": "2025-09-29",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4D-S002",
+        "V4D-S006",
+        "V4D-S011"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T079",
+          "match": "exact",
+          "rationale": "O daemon combina especulação com geração guiada."
+        },
+        {
+          "entry_id": "T085",
+          "match": "exact",
+          "rationale": "A descrição técnica especifica quantização do modelo local."
+        },
+        {
+          "entry_id": "T086",
+          "match": "exact",
+          "rationale": "KV do modelo local é quantizado a 8 bits."
+        },
+        {
+          "entry_id": "T140",
+          "match": "exact",
+          "rationale": "Tool calling integra o framework descrito."
+        },
+        {
+          "entry_id": "T141",
+          "match": "exact",
+          "rationale": "Tipos gerados são restringidos por geração guiada."
+        },
+        {
+          "entry_id": "T196",
+          "match": "exact",
+          "rationale": "Geração guiada compila restrições sobre a saída."
+        },
+        {
+          "entry_id": "T182",
+          "match": "family",
+          "rationale": "Adaptadores de baixo rank são documentados, mas não se deve universalizar o treino para qualquer LoRA externa."
+        }
+      ],
+      "small_model_transfer": "Proposta: restringir o pequeno modelo a extrair ou produzir objetos de domínio, validar conteúdo após a gramática e medir latência com especulação ligada/desligada.",
+      "limits": "Classificação conservadora de produto disponível: não há telemetria pública de uso de cada mecanismo nem demonstração de equivalência com fronteira. Aplicativos externos não são contados como implantações próprias da Apple.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4D-C001",
+      "deployment_domain": "llm_framework",
+      "mapping": {
+        "entry_id": "T140",
+        "match": "exact",
+        "rationale": "Tool calling integra o framework descrito."
+      }
+    },
+    {
+      "case_id": "V4C-C019",
+      "company": "NVIDIA",
+      "system": "Nemotron Nano 9B v2 e integração RAG",
+      "title": "Modelo pequeno com controle documentado de esforço",
+      "evidence_level": "operational_product",
+      "observed_use": "A NVIDIA publica modelo 9B e documentação de integração com controles de reasoning e ferramentas.",
+      "technical_mechanism": "O orçamento de thinking tem semântica própria de término e pode ultrapassar o limiar antes do corte; template e parser fazem parte do contrato de serving.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S018",
+        "V4C-S019"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T145",
+          "match": "family",
+          "rationale": "O modelo controla orçamento de thinking interno; isso é relacionado, mas não comprova profundidade de rodadas ou etapas do agente."
+        },
+        {
+          "entry_id": "T146",
+          "match": "family",
+          "rationale": "Orçamento de reasoning controla uma dimensão de computação, não alocação geral."
+        },
+        {
+          "entry_id": "T156",
+          "match": "exact",
+          "rationale": "A model card distingue configurações de amostragem por modo."
+        },
+        {
+          "entry_id": "T168",
+          "match": "exact",
+          "rationale": "Limiar de thinking e limite final de geração têm semânticas diferentes."
+        },
+        {
+          "entry_id": "T140",
+          "match": "exact",
+          "rationale": "Há integração documentada de tool calling com parser específico."
+        }
+      ],
+      "small_model_transfer": "Proposta: avaliar uma matriz de tarefas e orçamentos no checkpoint e servidor exatos; reservar saída final e checar ferramentas antes de adotar modo com menos esforço.",
+      "limits": "Operational_product: recurso publicado, não caso de cliente em produção. 9B não demonstra limites universais das bandas; não foram usados os comandos nem reproduzidos benchmarks.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C019",
+      "deployment_domain": "llm_framework",
+      "mapping": {
+        "entry_id": "T140",
+        "match": "exact",
+        "rationale": "Há integração documentada de tool calling com parser específico."
+      }
+    },
+    {
+      "case_id": "V4D-C004",
+      "company": "Google",
+      "system": "Chrome built-in AI / Summarizer API",
+      "title": "API local de sumarização no navegador",
+      "evidence_level": "operational_product",
+      "observed_use": "A documentação lista a Summarizer API no Chrome estável desde a versão 138.",
+      "technical_mechanism": "Interface local de geração com modelo gerenciado pelo navegador e requisitos de disponibilidade.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4D-S007"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T006",
+          "match": "family",
+          "rationale": "Sumarização acessível via API; não demonstra técnica particular de poda/compressão."
+        },
+        {
+          "entry_id": "T004",
+          "match": "family",
+          "rationale": "Não documenta cadeia de sumarização por trás da API."
+        },
+        {
+          "entry_id": "T140",
+          "match": "analogy",
+          "rationale": "API de aplicação não equivale a function calling aprendido pelo modelo."
+        }
+      ],
+      "small_model_transfer": "Proposta: detectar disponibilidade local e limitar a tarefa a texto fornecido; manter o contrato de saída igual quando um backend alternativo for necessário.",
+      "limits": "Disponibilidade não constitui prova de implantação em cliente, volume de tráfego ou porte exato do modelo. As etapas de preview e estável precisam ser verificadas por API.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4D-C004",
+      "deployment_domain": "llm_framework",
+      "mapping": {
+        "entry_id": "T140",
+        "match": "analogy",
+        "rationale": "API de aplicação não equivale a function calling aprendido pelo modelo."
+      }
+    }
+  ]
+}

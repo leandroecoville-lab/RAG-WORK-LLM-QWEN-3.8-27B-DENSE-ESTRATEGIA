@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Fallback controlado garante mesma resposta?",
+    "answer": "Não. Garante que a transição foi validada; conteúdo ainda precisa ser avaliado."
+  },
+  {
+    "question": "É uma técnica independente de fallback?",
+    "answer": "É uma especialização aplicada a modelos."
+  },
+  {
+    "question": "Um endpoint compatível com a mesma API é substituto completo?",
+    "answer": "Não. Modelos podem divergir em modalidades, janela, ferramentas e subconjunto de schema aceito."
+  },
+  {
+    "question": "Resumir a entrada para caber no fallback é neutro?",
+    "answer": "Não. Pode remover evidência relevante; a transformação deve ser avaliada e registrada como parte da tentativa."
+  }
+]

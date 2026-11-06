@@ -1,0 +1,963 @@
+{
+  "audit_id": "audit_A_C",
+  "auditor_group": "A",
+  "checked_on": "2026-11-05",
+  "scope": {
+    "case_count": 30,
+    "case_ids": [
+      "V4C-C001",
+      "V4C-C002",
+      "V4C-C003",
+      "V4C-C004",
+      "V4C-C005",
+      "V4C-C006",
+      "V4C-C007",
+      "V4C-C008",
+      "V4C-C009",
+      "V4C-C010",
+      "V4C-C011",
+      "V4C-C012",
+      "V4C-C013",
+      "V4C-C014",
+      "V4C-C015",
+      "V4C-C016",
+      "V4C-C017",
+      "V4C-C018",
+      "V4C-C019",
+      "V4C-C020",
+      "V4C-C021",
+      "V4C-C022",
+      "V4C-C023",
+      "V4C-C024",
+      "V4C-C025",
+      "V4C-C026",
+      "V4C-C027",
+      "V4C-C028",
+      "V4C-C029",
+      "V4C-C030"
+    ],
+    "method": "Revisão documental independente de todos os 30 casos: identificação da adoção, classe de evidência e mecanismo central; aprofundamento seletivo de mapeamentos suscetíveis a extrapolação.",
+    "depth_limit": "Não equivale a verificação exaustiva de cada frase, de cada opção de implementação ou de todas as métricas de cada fonte. Não foram reproduzidos modelos, workloads, traces ou resultados. Questões/gabaritos de benchmark não foram consultados.",
+    "source_pages_opened": 37,
+    "source_scope": "31 fontes novas e 6 referências reutilizadas abertas. Foram lidos trechos pertinentes; isso não significa leitura integral das páginas. Um relato de fornecedor (Klarna/LangChain) permanece distinguido do operador.",
+    "snapshot_mode": true,
+    "ready_c_observed_at_capture": false,
+    "inputs_unchanged": true,
+    "consolidation_rule": "Consolidar esta auditoria somente se os hashes dos insumos C coincidirem; mudanças posteriores exigem revisão do delta. Metadados e correções editoriais do root devem manter proveniência.",
+    "case_and_source_files_declared_stable_by_author": true,
+    "delta_review": "Após a auditoria original, o autor restringiu oito mapeamentos em sete casos. O delta foi lido integralmente e nenhuma outra alteração de campo foi detectada. READY geral ainda não observado; comparar os hashes novamente na consolidação."
+  },
+  "inputs": [
+    {
+      "path": "staging/cases_C.jsonl",
+      "sha256": "1db7ad772bf650c8c3ed034941217bc2a99fd3d68bc2c341ef8a81be5c37a219"
+    },
+    {
+      "path": "staging/sources_C.jsonl",
+      "sha256": "5cc007c7d2065f747f852a20d5ca452f71873ab672833e937f027d744a2016ab"
+    },
+    {
+      "path": "../LAI_RAG_243_v3/fontes/sources.jsonl",
+      "sha256": "979de5fa4de15e4a5571af78da884ed3c2f7855fccbe9ba2161efc19643d7ef0"
+    },
+    {
+      "path": "../LAI_RAG_243_v3/corpus/entries.jsonl",
+      "sha256": "ae94ba51f981055b5eafa3654be755eb538451414159e3e7338e614c9a52c50f"
+    }
+  ],
+  "summary": {
+    "cases_reviewed": 30,
+    "findings": 5,
+    "high": 0,
+    "medium": 4,
+    "low": 1,
+    "production_classification_changes_recommended": 0,
+    "coverage_note": "Recomendações restringem mapeamentos. Casos de bancos, filas, CD, versionamento e infraestrutura sem LLM devem permanecer separados da cobertura estrita de aplicação a LLMs.",
+    "findings_addressed": 5,
+    "findings_outstanding": 0,
+    "additional_conservative_mapping_revisions": 3
+  },
+  "findings": [
+    {
+      "finding_id": "A-C-F01",
+      "case_id": "V4C-C014",
+      "field": "mappings[T170]",
+      "severity": "low",
+      "status": "addressed_in_reviewed_snapshot",
+      "finding": "O trecho aberto comprova mudanças revisadas e reversíveis na configuração/descrição de ferramentas. Não detalha um contrato versionado de entradas/saídas exposto aos consumidores nem regras de compatibilidade semântica.",
+      "suggested_correction": "Preferir family para T170, com justificativa restrita a revisão e rollback de definições. Se mantiver exact, delimitar expressamente o mecanismo a versões da configuração, sem afirmar compatibilidade de todos os schemas.",
+      "evidence": [
+        {
+          "source_id": "V4C-S013",
+          "url": "https://www.uber.com/us/en/blog/designing-mcp-gateway/",
+          "web_ref": "turn342view0",
+          "location": "Authoring and Enablement, linhas 87–90; AutoCrawler, linhas 49–73",
+          "supports": "Descrição de ferramenta gera diff de configuração aprovado pelo proprietário e reversível; o crawler também acompanha alterações de schema."
+        }
+      ],
+      "scope_limit": "É recomendação conservadora de precisão, não evidência de falha do gateway.",
+      "initial_status": "conservative_scope_recommendation",
+      "resolution": "O mapeamento indicado foi alterado para family, com justificativa delimitada, no snapshot de casos cujo hash está nos insumos."
+    },
+    {
+      "finding_id": "A-C-F02",
+      "case_id": "V4C-C015",
+      "field": "mappings[T133]",
+      "severity": "medium",
+      "status": "addressed_in_reviewed_snapshot",
+      "finding": "O uso atual descrito seleciona modelos por workload e estabelece defaults diferentes para principal/subagentes. A publicação apresenta estratégias adicionais de model routing como evolução. Não fica demonstrado um roteador que avalie cada consulta individualmente.",
+      "suggested_correction": "Rebaixar T133 para family na contagem estrita; justificar seleção por workload/papel. Alternativamente, delimitar exact apenas à regra estática de seleção por papel, sem atribuir roteamento adaptativo por dificuldade de consulta.",
+      "evidence": [
+        {
+          "source_id": "V4C-S014",
+          "url": "https://www.uber.com/us/en/blog/efficient-software-factory/",
+          "web_ref": "turn340view0",
+          "location": "Benchmark-Driven Model Selection e Default Model Selection, linhas 97–117",
+          "supports": "Modelos são escolhidos por qualidade/custo em workloads e por defaults de papéis; novas estratégias de routing aparecem como trabalho adiante."
+        }
+      ],
+      "scope_limit": "A definição de Model Routing admite regras; o ponto é impedir que seleção de configuração seja lida como predição por pedido.",
+      "initial_status": "conservative_scope_recommendation",
+      "resolution": "O mapeamento indicado foi alterado para family, com justificativa delimitada, no snapshot de casos cujo hash está nos insumos."
+    },
+    {
+      "finding_id": "A-C-F03",
+      "case_id": "V4C-C016",
+      "field": "mappings[T172].match",
+      "severity": "medium",
+      "status": "addressed_in_reviewed_snapshot",
+      "finding": "O artigo confirma canal por sessão, publicação de eventos e saídas parciais. A justificativa atual de T172 se apoia apenas nessa transmissão; não descreve pressão reversa, cancelamento e encerramento do controlador definido na ficha.",
+      "suggested_correction": "Alterar T172 para family e conservar a evidência de transporte incremental e sincronização de eventos, sem inferir o ciclo completo do controlador.",
+      "evidence": [
+        {
+          "source_id": "V4C-S015",
+          "url": "https://www.linkedin.com/blog/engineering/ai/how-we-engineered-linkedins-hiring-assistant",
+          "web_ref": "turn341view0",
+          "location": "Real-time integration, linhas 236–243",
+          "supports": "Eventos por canal de sessão entregam atualizações e respostas parciais, com sincronização entre sessões."
+        }
+      ],
+      "scope_limit": "A infraestrutura pode ter controles adicionais; eles não foram demonstrados no trecho consultado.",
+      "initial_status": "correction_recommended",
+      "resolution": "O mapeamento indicado foi alterado para family, com justificativa delimitada, no snapshot de casos cujo hash está nos insumos."
+    },
+    {
+      "finding_id": "A-C-F04",
+      "case_id": "V4C-C018",
+      "field": "mappings[T217].match",
+      "severity": "medium",
+      "status": "addressed_in_reviewed_snapshot",
+      "finding": "A fonte descreve plano, transformação, compilação e execução de testes. Não explicita um ciclo em que falhas de testes orientam sucessivas alterações, que é o mecanismo de Test-Driven Loop.",
+      "suggested_correction": "Alterar T217 para family. Preservar a afirmação factual de build e testes após transformação; não acrescentar iteração automática ausente da fonte.",
+      "evidence": [
+        {
+          "source_id": "V4C-S017",
+          "url": "https://aws.amazon.com/blogs/devops/accelerate-application-upgrades-with-amazon-q-developer-agent-for-code-transformation/",
+          "web_ref": "turn347view1",
+          "location": "Use Q Developer to automate upgrade tasks, linhas 241–247",
+          "supports": "O agente retorna mudanças, distingue transformação completa/parcial e executa testes durante a compilação."
+        }
+      ],
+      "scope_limit": "Não questiona a adoção interna nem a execução dos testes. Ausência de loop explicitado não prova que nenhum workflow adicional o implemente.",
+      "initial_status": "correction_recommended",
+      "resolution": "O mapeamento indicado foi alterado para family, com justificativa delimitada, no snapshot de casos cujo hash está nos insumos."
+    },
+    {
+      "finding_id": "A-C-F05",
+      "case_id": "V4C-C019",
+      "field": "mappings[T145].match",
+      "severity": "medium",
+      "status": "addressed_in_reviewed_snapshot",
+      "finding": "O orçamento do Nemotron regula tokens da fase de thinking dentro de uma geração. T145 nesta base define profundidade de rodadas, etapas ou verificações do agente; são níveis diferentes de controle.",
+      "suggested_correction": "Alterar T145 para family e indicar que o controle de reasoning pode alimentar uma política de profundidade do agente, sem implementá-la sozinho. Manter T168 para a distinção entre limiar e fronteira de tokens.",
+      "evidence": [
+        {
+          "source_id": "V4C-S018",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2",
+          "web_ref": "turn347view2",
+          "location": "Reasoning Budget Control e Using Budget Control, linhas 268–270 e 431–436",
+          "supports": "Modelo oferece orçamento de thinking; o limiar tenta terminar a fase na próxima quebra de linha e possui limite adicional documentado."
+        }
+      ],
+      "scope_limit": "Não se transfere a semântica desse checkpoint para todas as versões Nemotron ou para qualquer política de agente.",
+      "initial_status": "correction_recommended",
+      "resolution": "O mapeamento indicado foi alterado para family, com justificativa delimitada, no snapshot de casos cujo hash está nos insumos."
+    }
+  ],
+  "case_reviews": [
+    {
+      "case_id": "V4C-C001",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Contrato idempotente do RunInstances",
+        "Repetição por identificador de intenção"
+      ],
+      "notes": "Relato do operador sobre a API. O exemplo introdutório é hipotético, mas o texto descreve o contrato aplicado pelo serviço. Isso não é implantação LLM.",
+      "opened_sources": [
+        {
+          "source_id": "C-S026",
+          "url": "https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/",
+          "web_ref": "turn330view0",
+          "location": "Reducing client complexity e Late arriving requests",
+          "supports": "RunInstances conserva semântica por identificador; cenários de recurso já criado e resposta perdida são distinguidos."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C002",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Token bucket de retries",
+        "Jitter e amplificação entre camadas"
+      ],
+      "notes": "Fonte histórica afirma adoção nos SDKs. A documentação atual aberta descreve comportamento 2026 com opt-in; o caso não atribui números ou defaults novos a versões antigas.",
+      "opened_sources": [
+        {
+          "source_id": "V2A-S012",
+          "url": "https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/",
+          "web_ref": "turn330view1",
+          "location": "Retries e Jitter, linhas 88–100",
+          "supports": "AWS descreve token bucket introduzido nos SDKs e espaçamento de repetição com jitter."
+        },
+        {
+          "source_id": "V3C-S010",
+          "url": "https://docs.aws.amazon.com/sdkref/latest/guide/feature-retry-behavior.html",
+          "web_ref": "turn327view2",
+          "location": "Important, linhas 7–10",
+          "supports": "Comportamento 2026 exige opt-in enquanto não se torna padrão."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C003",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Uso interno do Cadence",
+        "Replay/shadowing e compatibilidade"
+      ],
+      "notes": "Fonte distingue recursos da plataforma e uso em serviços Uber. Replay não foi interpretado como repetição de efeitos externos.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S001",
+          "url": "https://www.uber.com/us/en/blog/announcing-cadence/",
+          "web_ref": "turn330view2",
+          "location": "Feature Set e Scale, linhas 51–70",
+          "supports": "Cadence tem retomada, versionamento e replay/shadowing de históricos, com uso operacional na Uber."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C004",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Gates por estágio",
+        "Reconciliação de deploys manuais"
+      ],
+      "notes": "O caso mantém o domínio de implantação de software. A fonte declara outros esforços concomitantes; não se atribuiu causalidade ou métricas ao gate isolado.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S002",
+          "url": "https://www.uber.com/us/en/blog/continuous-deployment/",
+          "web_ref": "turn334view2",
+          "location": "Gating conditions e Tight coupling, linhas 110–117 e 145–149",
+          "supports": "Workflows Cadence condicionam estágios; ações manuais atualizam o estado efetivo representado pelo CD."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C005",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Uso de Timestone pela Netflix",
+        "EDF e exclusão por chave"
+      ],
+      "notes": "Exclusão de consumidores e garantia de efeitos únicos não foram confundidas. Não foi auditada a implementação do lease sob falhas.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S003",
+          "url": "https://netflixtechblog.com/timestone-netflixs-high-throughput-low-latency-priority-queueing-system-with-built-in-support-1abf249ba95f",
+          "web_ref": "turn334view1",
+          "location": "Introduction e Current Usage",
+          "supports": "Operador relata uso em Cosmos, Conductor e pipelines; mensagens são selecionadas por deadline."
+        },
+        {
+          "source_id": "V4C-S003",
+          "url": "https://netflixtechblog.com/timestone-netflixs-high-throughput-low-latency-priority-queueing-system-with-built-in-support-1abf249ba95f",
+          "web_ref": "turn330view4",
+          "location": "Queues, linhas 160–170",
+          "supports": "Fila exclusiva limita consumidores simultâneos por valor da chave."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C006",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Operação interna de Conductor",
+        "Fork/join, condicionais e durabilidade"
+      ],
+      "notes": "Roadmap de políticas adicionais não foi atribuído à implantação corrente. O caso consolida a plataforma sem multiplicar seus pipelines.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S004",
+          "url": "https://netflixtechblog.com/netflix-conductor-the-next-chapter-41ad21067649",
+          "web_ref": "turn331view0",
+          "location": "Real control flow e In production: Netflix Ads",
+          "supports": "DSL representa forks/junções e ramificações; pipelines operacionais usam estado durável e retomada."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C007",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Produção do Research",
+        "Contextos de subagentes, delegação e checkpoints"
+      ],
+      "notes": "A fonte limita coordenação assíncrona plena como evolução. Modelos e métricas do estudo não foram transferidos para 3–30B.",
+      "opened_sources": [
+        {
+          "source_id": "C-S030",
+          "url": "https://www.anthropic.com/research/multi-agent-research-system",
+          "web_ref": "turn334view0",
+          "location": "Introduction e Benefits, linhas 47–60",
+          "supports": "Operador descreve Research em produção e exploração paralela em contextos próprios."
+        },
+        {
+          "source_id": "C-S030",
+          "url": "https://www.anthropic.com/research/multi-agent-research-system",
+          "web_ref": "turn338view0",
+          "location": "Production reliability, linhas 110–119",
+          "supports": "Sistemas retomam estado após erros e usam checkpoints regulares."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C008",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Degradação operacional do Google Search"
+      ],
+      "notes": "Relato histórico, corretamente separado do estado atual e de técnicas de inferência LLM. family/analogy preservados.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S005",
+          "url": "https://sre.google/sre-book/service-best-practices/",
+          "web_ref": "turn331view1",
+          "location": "Overloads and Failure, linhas 104–109",
+          "supports": "Search reduz trabalho e recursos sob sobrecarga e testa capacidade excedida."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C009",
+      "verdict": "supported_after_scope_correction",
+      "checked_claims": [
+        "Produção de reparo automático",
+        "Transformação por AST e validação separada"
+      ],
+      "notes": "Um caso integrado é defensável: Getafix fornece candidatos a SapFix/Sapienz. Não foi inferida independência estatística dos validadores.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S006",
+          "url": "https://engineering.fb.com/2018/11/06/developer-tools/getafix-how-facebook-tools-learn-to-fix-bugs-automatically/",
+          "web_ref": "turn331view2",
+          "location": "How Getafix creates patches e Implementation",
+          "supports": "Sub-ASTs são combinadas e substituídas; Getafix é descrito em uso interno."
+        },
+        {
+          "source_id": "V4C-S007",
+          "url": "https://engineering.fb.com/2018/09/13/developer-tools/finding-and-fixing-software-bugs-automatically-with-sapfix-and-sapienz/",
+          "web_ref": "turn331view3",
+          "location": "Autonomous validation and human approval, linhas 18–26",
+          "supports": "Candidatos passam por compilação, testes e aprovação antes de integração."
+        }
+      ],
+      "initial_verdict": "supported_with_existing_qualifiers",
+      "correction_checked": [
+        {
+          "entry_id": "T229",
+          "match": "family",
+          "rationale": "Correções são produzidas e revisadas, mas o relato não documenta um protocolo específico de edição exclusivamente por diffs."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C010",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "AutoClean contínuo",
+        "MCP, CI iterativa e verificadores por propriedade"
+      ],
+      "notes": "A fonte confirma separação entre transformações determinísticas, fixers e CodeCourt. Veredito de agentes não foi convertido em prova formal de semântica.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S009",
+          "url": "https://www.uber.com/us/en/blog/ai-code-cleanup/",
+          "web_ref": "turn341view4",
+          "location": "Architecture e Stages 1–2, linhas 53–76",
+          "supports": "AutoClean opera continuamente e reaplica CI após correções, com PolyglotPiranha acessível por MCP."
+        },
+        {
+          "source_id": "V4C-S009",
+          "url": "https://www.uber.com/us/en/blog/ai-code-cleanup/",
+          "web_ref": "turn338view2",
+          "location": "Stage 3, linhas 77–107",
+          "supports": "Revisores por propriedade executam em paralelo e bloqueiam diffs reprovados."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C011",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Tricorder no Critique",
+        "Análise vinculada à revisão"
+      ],
+      "notes": "Caso de análise estática sem demonstração de LLM. Leitura por versão é family de leitura seletiva, sem inventar uma API por linhas.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S010",
+          "url": "https://abseil.io/resources/swe-book/html/ch20.html",
+          "web_ref": "turn338view3",
+          "location": "Tricorder, linhas 42–58",
+          "supports": "Plataforma envia metadados da mudança aos analisadores e mostra resultados no diff."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C012",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Recurso Bedrock de roteamento",
+        "Significado do fallback por qualidade"
+      ],
+      "notes": "operational_product adequado. O fallback documentado é baseline de qualidade e não comprova recuperação de indisponibilidade.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S011",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-routing.html",
+          "web_ref": "turn338view4",
+          "location": "Prompt router criteria e How it works, linhas 57–85",
+          "supports": "Roteador prevê qualidade entre modelos compatíveis e retorna identificação do modelo usado."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C013",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Gateway unificado em uso Uber",
+        "Adaptação de interfaces e política central"
+      ],
+      "notes": "family para roteamento e analogy para versionamento são conservadores. Interface comum não estabelece equivalência entre modelos.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S012",
+          "url": "https://www.uber.com/us/en/blog/genai-gateway/",
+          "web_ref": "turn339view0",
+          "location": "Introduction e Design & Architecture, linhas 18–54",
+          "supports": "Gateway reúne endpoints externos/internos, tradução de interface e controles centrais."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C014",
+      "verdict": "supported_after_scope_correction",
+      "checked_claims": [
+        "Gateway operacional",
+        "Descoberta incremental, registry e projeção"
+      ],
+      "notes": "Mecanismos centrais diretamente descritos. T170 merece delimitação conservadora conforme F01; heartbeat não foi tratado como progresso de tarefa.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S013",
+          "url": "https://www.uber.com/us/en/blog/designing-mcp-gateway/",
+          "web_ref": "turn339view1",
+          "location": "Runtime Discovery, linhas 141–157",
+          "supports": "Omni descobre servidores/ferramentas/schema progressivamente e projeta campos de resposta."
+        },
+        {
+          "source_id": "V4C-S013",
+          "url": "https://www.uber.com/us/en/blog/designing-mcp-gateway/",
+          "web_ref": "turn342view0",
+          "location": "Control Plane e Authoring",
+          "supports": "Registro controla definições e revisão de mudanças."
+        }
+      ],
+      "initial_verdict": "supported_with_scope_recommendation",
+      "correction_checked": [
+        {
+          "entry_id": "T170",
+          "match": "family",
+          "rationale": "O gateway documenta diffs, revisão e rollback de configuração/descritores; isso não prova uma política completa de versionamento e compatibilidade semântica de entrada e saída."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C015",
+      "verdict": "supported_after_scope_correction",
+      "checked_claims": [
+        "Políticas compartilhadas de agentes",
+        "Compaction por gatilho e defaults por papel",
+        "Cache e code-mode"
+      ],
+      "notes": "T133 exige a delimitação de F02. A publicação usa modelos/contextos específicos; políticas numéricas e economias não são transplantadas para 3–30B.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S014",
+          "url": "https://www.uber.com/us/en/blog/efficient-software-factory/",
+          "web_ref": "turn339view3",
+          "location": "Defaults e Prompt Caching, linhas 115–132",
+          "supports": "Harnesses aplicam compaction e defaults de modelos/cache por contexto operacional."
+        },
+        {
+          "source_id": "V4C-S014",
+          "url": "https://www.uber.com/us/en/blog/efficient-software-factory/",
+          "web_ref": "turn341view3",
+          "location": "Code-Mode, linhas 144–162",
+          "supports": "Polling fica no subprocesso e somente resultado reduzido retorna ao contexto."
+        }
+      ],
+      "initial_verdict": "supported_with_scope_recommendation",
+      "correction_checked": [
+        {
+          "entry_id": "T133",
+          "match": "family",
+          "rationale": "A fonte descreve seleção por workload, modelo principal e padrão de subagentes; estratégias mais amplas de routing são discutidas como direção futura, não decisão preditiva por consulta demonstrada."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C016",
+      "verdict": "supported_after_scope_correction",
+      "checked_claims": [
+        "Disponibilidade global e uso de Hiring Assistant",
+        "Planner–executor, ReAct local e mailbox",
+        "Transmissão incremental"
+      ],
+      "notes": "Arquitetura principal é sustentada. A fonte modela subagentes como ferramentas sem identidades próprias; T172 deve manter o alcance do trecho por F03.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S015",
+          "url": "https://www.linkedin.com/blog/engineering/ai/how-we-engineered-linkedins-hiring-assistant",
+          "web_ref": "turn341view1",
+          "location": "Cognitive architecture, linhas 174–204",
+          "supports": "Instâncias por recrutador combinam plano estruturado com executor ReAct."
+        },
+        {
+          "source_id": "V4C-S015",
+          "url": "https://www.linkedin.com/blog/engineering/ai/how-we-engineered-linkedins-hiring-assistant",
+          "web_ref": "turn341view0",
+          "location": "Real-time integration, linhas 236–243",
+          "supports": "Canal por sessão entrega eventos e respostas parciais."
+        }
+      ],
+      "initial_verdict": "mapping_correction_recommended",
+      "correction_checked": [
+        {
+          "entry_id": "T172",
+          "match": "family",
+          "rationale": "Canal por sessão e transmissão parcial são documentados, mas não todo o contrato de controle de fluxo, backpressure e cancelamento desta ficha."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C017",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Recurso Copilot coding agent",
+        "Background, commits e instruções do repositório"
+      ],
+      "notes": "operational_product adequado. VM isolada não foi tratada como prova de Git worktree e restrições do anúncio não foram universalizadas.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S016",
+          "url": "https://github.blog/news-insights/product-news/github-copilot-meet-the-new-coding-agent/",
+          "web_ref": "turn347view0",
+          "location": "A detailed look, linhas 442–455",
+          "supports": "Agente clona repositório, trabalha em background e envia commits a draft PR; usa instruções locais."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C018",
+      "verdict": "supported_after_scope_correction",
+      "checked_claims": [
+        "Campanhas internas Amazon",
+        "Plano, ondas e compilação/testes"
+      ],
+      "notes": "Produção interna sustentada; F04 limita a ligação a Test-Driven Loop. O texto distingue transformações parciais e não garante equivalência funcional por compilação.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S017",
+          "url": "https://aws.amazon.com/blogs/devops/accelerate-application-upgrades-with-amazon-q-developer-agent-for-code-transformation/",
+          "web_ref": "turn347view1",
+          "location": "Customer success e Use Q Developer, linhas 225–247",
+          "supports": "Amazon relata campanhas e ondas de atualização; agente entrega alterações e executa testes."
+        }
+      ],
+      "initial_verdict": "mapping_correction_recommended",
+      "correction_checked": [
+        {
+          "entry_id": "T217",
+          "match": "family",
+          "rationale": "A fonte descreve testes e builds na transformação Java; não demonstra explicitamente o ciclo orientado por falha exigido nesta ficha."
+        },
+        {
+          "entry_id": "T229",
+          "match": "family",
+          "rationale": "A transformação produz mudanças de código, sem documentar que a representação e aplicação sejam exclusivamente patches localizados."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C019",
+      "verdict": "supported_after_scope_correction",
+      "checked_claims": [
+        "Checkpoint Nemotron 9B disponível",
+        "Thinking budget e parser de ferramentas"
+      ],
+      "notes": "Produto/modelo publicado, sem caso de cliente em produção. F05 distingue thinking interno de profundidade do agente. A documentação RAG atual inclui outras gerações de Nemotron; não unificar suas opções.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S018",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2",
+          "web_ref": "turn347view2",
+          "location": "Reasoning Budget Control",
+          "supports": "Orçamento de thinking e comportamento do limiar estão especificados na model card."
+        },
+        {
+          "source_id": "V4C-S018",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2",
+          "web_ref": "turn347view3",
+          "location": "Using Tool-Calling, linhas 539–551",
+          "supports": "Integração fornece parser de ferramentas próprio."
+        },
+        {
+          "source_id": "V4C-S019",
+          "url": "https://docs.nvidia.com/rag/latest/enable-nemotron-thinking.html",
+          "web_ref": "turn346view0",
+          "location": "Modelos e mecanismos de controle, linhas 109–140",
+          "supports": "Página diferencia mecanismos entre gerações de Nemotron."
+        }
+      ],
+      "initial_verdict": "mapping_correction_recommended",
+      "correction_checked": [
+        {
+          "entry_id": "T145",
+          "match": "family",
+          "rationale": "O modelo controla orçamento de thinking interno; isso é relacionado, mas não comprova profundidade de rodadas ou etapas do agente."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C020",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Rollout Git/GVFS no Windows",
+        "Materialização sob demanda"
+      ],
+      "notes": "Relato de 2017, sem atribuição de estado atual. Analogia com leitura seletiva e worktrees está corretamente restrita.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S020",
+          "url": "https://devblogs.microsoft.com/bharry/the-largest-git-repo-on-the-planet/",
+          "web_ref": "turn346view1",
+          "location": "Windows is live on Git, linhas 23–33",
+          "supports": "Microsoft descreve rollout de Git/GVFS e atividade real das equipes Windows."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C021",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Uso interno Sapling",
+        "Pilhas de commits revisadas"
+      ],
+      "notes": "Diferenças de Sapling para Git estão preservadas; recursos do cliente público e do servidor interno não foram fundidos.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S021",
+          "url": "https://engineering.fb.com/2022/11/15/open-source/sapling-source-control-scalable/",
+          "web_ref": "turn346view2",
+          "location": "First-class commit stacks, linhas 49–65",
+          "supports": "Meta usa mudanças incrementais revisadas em pilhas; algumas otimizações exigem servidor Sapling."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C022",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Coalescência por asset e data center"
+      ],
+      "notes": "operational_product conservador. Fonte limita cache lock a uma localização; não há garantia global ou semântica de inferência probabilística.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S022",
+          "url": "https://developers.cloudflare.com/cache/concepts/default-cache-behavior/",
+          "web_ref": "turn351view1",
+          "location": "Request collapsing, linhas 170–173",
+          "supports": "Uma busca de asset ausente atende solicitações simultâneas aguardantes no mesmo data center."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C023",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Operação de Borg",
+        "Admissão, isolamento e recuperação no abstract"
+      ],
+      "notes": "A revisão ficou no abstract oficial. Nenhuma política fina de prioridade foi verificada; family/analogy e a limitação existente são adequados.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S023",
+          "url": "https://research.google/pubs/large-scale-cluster-management-at-google-with-borg/",
+          "web_ref": "turn351view0",
+          "location": "Abstract, linhas 115–119",
+          "supports": "Autores relatam uso operacional em clusters e mecanismos gerais de admissão, isolamento e recuperação."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C024",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Brooklin em produção LinkedIn",
+        "Estado e offsets/checkpoints"
+      ],
+      "notes": "Checkpoints de posição não foram elevados a snapshots completos nem replay de ações externas. Sem inferência de memória cognitiva.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S024",
+          "url": "https://www.linkedin.com/blog/engineering/open-source/brooklin-open-source",
+          "web_ref": "turn352view0",
+          "location": "Introduction, linhas 153–159",
+          "supports": "LinkedIn relata Brooklin em produção desde 2016."
+        },
+        {
+          "source_id": "V4C-S025",
+          "url": "https://github.com/linkedin/brooklin/wiki/Brooklin-Architecture",
+          "web_ref": "turn356view0",
+          "location": "ZooKeeper, linhas 163–183",
+          "supports": "Estado das tarefas e offsets/checkpoints são persistidos na estrutura de coordenação."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C025",
+      "verdict": "supported_after_scope_correction",
+      "checked_claims": [
+        "Uso interno Claude Code",
+        "CLAUDE.md e ciclos com testes"
+      ],
+      "notes": "As correções T234 e remoção de T224 constam do snapshot. Adoção interna continua sendo um caso, sem multiplicação por equipe.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S026",
+          "url": "https://claude.com/resources/articles/how-anthropic-teams-use-claude-code",
+          "web_ref": "turn352view2",
+          "location": "Codebase navigation, Testing e Prototyping, linhas 41–64",
+          "supports": "Equipes usam instruções CLAUDE.md, testes e revisão nas tarefas descritas."
+        }
+      ],
+      "initial_verdict": "supported_with_existing_qualifiers",
+      "correction_checked": [
+        {
+          "entry_id": "T233",
+          "match": "family",
+          "rationale": "Uso de testes e revisão é relatado; o artigo não demonstra o contrato completo de validação de patch com identidade de base e publicação."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C026",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Migração interna para Scion",
+        "Objetos imutáveis, materialização e refs"
+      ],
+      "notes": "O sistema substitui Git naquele monorepo. Relações family/analogy preservam essa diferença e não afirmam que checkouts sejam Git worktrees.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S027",
+          "url": "https://www.anthropic.com/research/redesigning-source-control",
+          "web_ref": "turn354view2",
+          "location": "Growing our monorepo, linhas 40–64",
+          "supports": "Operador relata migração completa do monorepo para Scion."
+        },
+        {
+          "source_id": "V4C-S027",
+          "url": "https://www.anthropic.com/research/redesigning-source-control",
+          "web_ref": "turn357view0",
+          "location": "Data structures e Scaling, linhas 65–94",
+          "supports": "Changesets por conteúdo, refs por operação separada e caches hierárquicos são descritos."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C027",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Relato do fornecedor sobre Klarna",
+        "LangGraph, prompts por tarefa e avaliação"
+      ],
+      "notes": "Fonte do fornecedor é primária para o relato de sua integração, mas não substitui relato técnico aberto do operador. operational_product preserva a ressalva e exclui contagem de produção.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S028",
+          "url": "https://www.langchain.com/blog/customers-klarna",
+          "web_ref": "turn352view4",
+          "location": "The Solution, linhas 39–46",
+          "supports": "LangChain atribui a Klarna coordenação LangGraph, prompts adaptados e avaliações LangSmith."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C028",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Aider architect/editor",
+        "SEARCH/REPLACE e udiff próprio"
+      ],
+      "notes": "Correções anteriores estão no snapshot: T230 family, sem alegar AST. Duas chamadas podem usar o mesmo modelo, e o custo adicional permanece explícito.",
+      "opened_sources": [
+        {
+          "source_id": "V3C-S042",
+          "url": "https://aider.chat/docs/usage/modes.html",
+          "web_ref": "turn353view0",
+          "location": "Architect mode, linhas 180–190",
+          "supports": "Uma chamada propõe a solução e outra converte em instruções de edição."
+        },
+        {
+          "source_id": "V2A-S008",
+          "url": "https://aider.chat/docs/more/edit-formats.html",
+          "web_ref": "turn355view3",
+          "location": "diff e udiff, linhas 123–168",
+          "supports": "Formato diff usa SEARCH/REPLACE; udiff é variante modificada do unified diff."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C029",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Adoção interna Codex e beta com usuários",
+        "Worktrees, documentação e verificações"
+      ],
+      "notes": "Dois relatos foram consolidados. Beta operacional não implica autonomia geral; não se atribuem métricas a modelos pequenos.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S029",
+          "url": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/",
+          "web_ref": "turn355view2",
+          "location": "Introduction, linhas 55–58",
+          "supports": "Equipes OpenAI usam Codex diariamente."
+        },
+        {
+          "source_id": "V4C-S030",
+          "url": "https://openai.com/index/harness-engineering/",
+          "web_ref": "turn355view0",
+          "location": "Introdução e processo, linhas 47–71",
+          "supports": "Beta possui usuários e ciclos de implementação/revisão."
+        },
+        {
+          "source_id": "V4C-S030",
+          "url": "https://openai.com/index/harness-engineering/",
+          "web_ref": "turn357view1",
+          "location": "Application legibility e repository knowledge, linhas 75–92",
+          "supports": "App/observabilidade são isolados por worktree e instruções curtas apontam documentação versionada."
+        }
+      ]
+    },
+    {
+      "case_id": "V4C-C030",
+      "verdict": "supported_with_existing_qualifiers",
+      "checked_claims": [
+        "Pesquisa de políticas de contexto",
+        "Distinção masking versus resumo"
+      ],
+      "notes": "research_only correto. Foram lidos problema e desenho da comparação, não questões/gabaritos dos benchmarks. Remoções T219/T221/T223 constam do snapshot.",
+      "opened_sources": [
+        {
+          "source_id": "V4C-S031",
+          "url": "https://arxiv.org/html/2508.21433v1",
+          "web_ref": "turn353view3",
+          "location": "Introduction e desenho comparativo, linhas 83–90",
+          "supports": "Estudo compara omitir observações com condensar histórico no mesmo scaffold SWE-agent."
+        }
+      ]
+    }
+  ],
+  "revision_history": [
+    {
+      "checked_on": "2026-11-05",
+      "previous_cases_sha256": "64add09b139c5d800ee18db1a938bcea14f06273d3711257918516e724253be9",
+      "reviewed_cases_sha256": "1db7ad772bf650c8c3ed034941217bc2a99fd3d68bc2c341ef8a81be5c37a219",
+      "sources_sha256": "5cc007c7d2065f747f852a20d5ca452f71873ab672833e937f027d744a2016ab",
+      "changes": [
+        {
+          "case_id": "V4C-C009",
+          "entry_id": "T229",
+          "from": "exact",
+          "to": "family",
+          "reason": "Correções são produzidas e revisadas, mas o relato não documenta um protocolo específico de edição exclusivamente por diffs."
+        },
+        {
+          "case_id": "V4C-C014",
+          "entry_id": "T170",
+          "from": "exact",
+          "to": "family",
+          "reason": "O gateway documenta diffs, revisão e rollback de configuração/descritores; isso não prova uma política completa de versionamento e compatibilidade semântica de entrada e saída."
+        },
+        {
+          "case_id": "V4C-C015",
+          "entry_id": "T133",
+          "from": "exact",
+          "to": "family",
+          "reason": "A fonte descreve seleção por workload, modelo principal e padrão de subagentes; estratégias mais amplas de routing são discutidas como direção futura, não decisão preditiva por consulta demonstrada."
+        },
+        {
+          "case_id": "V4C-C016",
+          "entry_id": "T172",
+          "from": "exact",
+          "to": "family",
+          "reason": "Canal por sessão e transmissão parcial são documentados, mas não todo o contrato de controle de fluxo, backpressure e cancelamento desta ficha."
+        },
+        {
+          "case_id": "V4C-C018",
+          "entry_id": "T217",
+          "from": "exact",
+          "to": "family",
+          "reason": "A fonte descreve testes e builds na transformação Java; não demonstra explicitamente o ciclo orientado por falha exigido nesta ficha."
+        },
+        {
+          "case_id": "V4C-C018",
+          "entry_id": "T229",
+          "from": "exact",
+          "to": "family",
+          "reason": "A transformação produz mudanças de código, sem documentar que a representação e aplicação sejam exclusivamente patches localizados."
+        },
+        {
+          "case_id": "V4C-C019",
+          "entry_id": "T145",
+          "from": "exact",
+          "to": "family",
+          "reason": "O modelo controla orçamento de thinking interno; isso é relacionado, mas não comprova profundidade de rodadas ou etapas do agente."
+        },
+        {
+          "case_id": "V4C-C025",
+          "entry_id": "T233",
+          "from": "exact",
+          "to": "family",
+          "reason": "Uso de testes e revisão é relatado; o artigo não demonstra o contrato completo de validação de patch com identidade de base e publicação."
+        }
+      ],
+      "validation": "Oito alterações conservadoras em mappings; demais campos idênticos ao snapshot inicial. Todos os casos continuam nas mesmas classes de evidência.",
+      "unreviewed_changes": "Alterações a conexões de strategy_C, informadas pelo autor, não fazem parte desta auditoria de casos."
+    }
+  ]
+}

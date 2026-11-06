@@ -1,0 +1,93 @@
+[
+  {
+    "source_id": "A-S027",
+    "title": "Event Sourcing pattern",
+    "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/event-sourcing",
+    "publisher": "Microsoft",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Histórico append-only como origem de projeções e reconstrução do estado.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn15view1"
+  },
+  {
+    "source_id": "C-S023",
+    "title": "Temporal Workflow Execution overview",
+    "url": "https://docs.temporal.io/workflow-execution",
+    "publisher": "Temporal",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Execução durável recupera estado por histórico de eventos e replay sujeito a determinismo.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn34view7"
+  },
+  {
+    "source_id": "V2C-S001",
+    "title": "Transactional outbox pattern",
+    "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html",
+    "publisher": "Amazon Web Services",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Gravação de estado e evento de outbox na mesma transação; publicação posterior; duplicatas exigem consumidores idempotentes.",
+    "limitations": "Fundamenta princípios de consistência. Não prova implementação, exatamente-uma-vez ponta a ponta ou resultado de desempenho na LAI.",
+    "web_ref": "turn68view0"
+  },
+  {
+    "source_id": "V2C-S002",
+    "title": "PostgreSQL Documentation — Transactions",
+    "url": "https://www.postgresql.org/docs/current/tutorial-transactions.html",
+    "publisher": "PostgreSQL Global Development Group",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Atomicidade, commit, rollback e visibilidade das alterações transacionais.",
+    "limitations": "Garantias referem-se à transação no banco configurado; serviços externos e armazenamento independente não entram automaticamente nela.",
+    "web_ref": "turn68view2"
+  },
+  {
+    "source_id": "V3D-S018",
+    "title": "AWS — Transactional outbox pattern",
+    "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html",
+    "publisher": "Amazon Web Services",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Alteração local e evento pendente na mesma transação; publicação posterior pode duplicar mensagens.",
+    "limitations": "Outbox não torna toda chamada externa exatamente uma vez; consumidores precisam de idempotência.",
+    "web_ref": "turn168view0"
+  },
+  {
+    "source_id": "V4C-S024",
+    "title": "Open sourcing Brooklin: Near real-time data streaming at scale",
+    "url": "https://www.linkedin.com/blog/engineering/open-source/brooklin-open-source",
+    "publisher": "LinkedIn / Microsoft",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Uso operacional de Brooklin na LinkedIn para replicação e streaming, incluindo CDC; arquitetura técnica detalhada em fonte separada.",
+    "limitations": "Fonte primária consultada, sem reprodução. Documentação de recurso não identifica automaticamente um deployment de cliente.",
+    "web_ref": "turn284view0"
+  },
+  {
+    "source_id": "V4C-S025",
+    "title": "Brooklin Architecture",
+    "url": "https://github.com/linkedin/brooklin/wiki/Brooklin-Architecture",
+    "publisher": "LinkedIn / Microsoft",
+    "source_type": "official_code_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Coordenador, partições, atribuição de tarefas e offsets/checkpoints em ZooKeeper.",
+    "limitations": "Fonte primária consultada, sem reprodução. Documentação de recurso não identifica automaticamente um deployment de cliente.",
+    "web_ref": "turn286view0"
+  }
+]

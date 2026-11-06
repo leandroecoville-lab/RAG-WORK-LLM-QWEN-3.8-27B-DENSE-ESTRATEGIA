@@ -1,0 +1,29 @@
+{
+  "id": "R007",
+  "name": "SADA",
+  "canonical_name": "SADA: Bridging In-Context Learning and Fine-Tuning via State-Aligned Distillation Adapters",
+  "canonical_id": "R007",
+  "aliases": [
+    "State-Aligned Distillation Adapters",
+    "adaptadores com alinhamento de estados"
+  ],
+  "category": "referencias",
+  "kind": "paper",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "T052",
+    "T179",
+    "T182",
+    "R006"
+  ],
+  "source_ids": [
+    "A-S012",
+    "V3A-S004"
+  ],
+  "namespace": "R007",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R007",
+  "chunk_count": 9
+}

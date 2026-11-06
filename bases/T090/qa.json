@@ -1,0 +1,18 @@
+[
+  {
+    "question": "FlashAttention é atenção esparsa?",
+    "answer": "A versão densa original é exata e não remove pares de tokens; variantes esparsas são uma extensão distinta."
+  },
+  {
+    "question": "Dobra automaticamente a velocidade?",
+    "answer": "Não. O ganho depende do kernel, formas, hardware e parcela da atenção no custo total."
+  },
+  {
+    "question": "Cabe menos matriz intermediária significa menos cache KV?",
+    "answer": "Não necessariamente. Intermediários de atenção e estados persistentes KV são parcelas diferentes."
+  },
+  {
+    "question": "Pode validar apenas perplexidade?",
+    "answer": "Não. Compare também saídas e máscaras em casos controlados; qualidade agregada pode ocultar um erro de fronteira."
+  }
+]

@@ -1,0 +1,119 @@
+{
+  "id": "R002",
+  "novelty": "A v3 separou identidade de agente e conversa. Aqui Letta é tratado como infraestrutura substituível cujo contrato precisa ser testado com cada consumidor.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Defina perfil de compatibilidade por modelo: formato de ferramentas, leitura de blocos, qualidade de atualizações e retomada. Framework stateful não torna automaticamente qualquer 3–30B competente em memória.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2B-S002",
+        "V4A-S026",
+        "V3A-S046"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Separe fatos persistidos pelo servidor de instruções visíveis no turno. Migração de modelo deve reconstruir contexto e testar se o consumidor interpreta corretamente o estado existente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2B-S002",
+        "V4A-S026",
+        "V3A-S046"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare mesmo agente com dois leitores e mesmos dados. Meça operações válidas, memórias recuperadas e alterações indevidas; uso de armazenamento compartilhado não implica compreensão compartilhada. Unidade de avaliação: agente persistente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2B-S002",
+        "V4A-S026",
+        "V3A-S046"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Mudança para modelo local",
+      "scenario": "Projeto quer reduzir dependência de provedor.",
+      "strategy": "Exportar inventário de estado, validar interfaces e retomar tarefas reversíveis em amostra antes da migração ampla.",
+      "small_model_role": "8–14B candidato a leitor local.",
+      "acceptance": "Memórias e pendências devem permanecer interpretáveis sem mudar seu significado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2B-S002",
+        "V4A-S026",
+        "V3A-S046"
+      ]
+    },
+    {
+      "name": "Agentes com memória comum",
+      "scenario": "Especialistas usam decisões do projeto.",
+      "strategy": "Compartilhar apenas objetos com escopo apropriado e separar hipóteses privadas; validar conflitos quando dois agentes propõem correção.",
+      "small_model_role": "15–30B integra; 3–7B extrai.",
+      "acceptance": "Uma atualização não pode sobrescrever decisão confirmada sem controle de versão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2B-S002",
+        "V4A-S026",
+        "V3A-S046"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Executor de domínio estreito com memória explícita e poucas ferramentas.",
+    "8_14b": "Agente stateful de tarefas moderadas após teste do protocolo.",
+    "15_30b": "Especialista integrador com acesso seletivo a memória compartilhada.",
+    "training_or_runtime_requirements": "Servidor e versão de API identificados, storage durável e modelo compatível; não há execução do Letta neste pacote.",
+    "do_not_use_when": "A decisão de adotar se baseia somente em README ou promete persistência sem testar backend real."
+  },
+  "connections": [
+    {
+      "target_id": "T064",
+      "relation": "requires",
+      "how": "Validar persistência independente do processo.",
+      "interface": "agent_id, estado, versão e referências.",
+      "condition": "Backend sobreviver ao reinício.",
+      "acceptance": "Restaurar em processo novo e verificar mesmas pendências.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2B-S002",
+        "V4A-S026",
+        "V3A-S046"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T075",
+      "relation": "complements",
+      "how": "Reconciliar propostas de múltiplos agentes.",
+      "interface": "Objeto, revisão-base, proposta e origem.",
+      "condition": "Escritas compartilhadas terem controle de concorrência.",
+      "acceptance": "Simular duas correções incompatíveis e preservar conflito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2B-S002",
+        "V4A-S026",
+        "V3A-S046"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não equiparar conversa nova a agente novo sem conferir escopo.",
+    "Não chamar produto disponível de implantação comprovada."
+  ],
+  "frontier_comparison": "Comparar continuidade e uso de ferramentas com o mesmo runtime; trocar leitor pode alterar qualidade mesmo preservando estado.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V2B-S002",
+    "V4A-S026",
+    "V3A-S046"
+  ]
+}

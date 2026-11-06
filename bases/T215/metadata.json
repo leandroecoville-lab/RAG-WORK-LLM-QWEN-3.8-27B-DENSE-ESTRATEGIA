@@ -1,0 +1,30 @@
+{
+  "id": "T215",
+  "name": "Observation Masking",
+  "canonical_name": "Observation Masking",
+  "canonical_id": "T215",
+  "aliases": [
+    "mascaramento de observações"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T214",
+    "T041",
+    "T004"
+  ],
+  "source_ids": [
+    "V2A-S003",
+    "V3C-S031",
+    "V4C-S031",
+    "C-S026",
+    "V4C-S030"
+  ],
+  "namespace": "T215",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T215",
+  "chunk_count": 9
+}

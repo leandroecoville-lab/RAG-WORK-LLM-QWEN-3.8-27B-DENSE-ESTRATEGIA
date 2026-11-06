@@ -1,0 +1,18 @@
+[
+  {
+    "question": "AGENTS.md e CLAUDE.md funcionam da mesma forma?",
+    "answer": "Não se deve presumir isso. Nomes, descoberta, escopo e precedência dependem da documentação e versão de cada executor."
+  },
+  {
+    "question": "O arquivo pode afirmar que uma tarefa terminou?",
+    "answer": "Pode referenciar a evidência de conclusão, mas uma anotação isolada não substitui o estado confirmado, os artefatos e os resultados de verificação."
+  },
+  {
+    "question": "Colocar AGENTS.md em qualquer pasta garante leitura?",
+    "answer": "Não. É necessário conhecer o caminho de descoberta, o diretório de execução e os limites do produto."
+  },
+  {
+    "question": "Memória de módulo deve copiar todas as regras globais?",
+    "answer": "Não por padrão. Referências e responsabilidades claras reduzem divergência entre cópias que envelhecem separadamente."
+  }
+]

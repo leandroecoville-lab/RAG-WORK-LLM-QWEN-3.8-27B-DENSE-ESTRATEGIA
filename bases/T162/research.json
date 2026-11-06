@@ -1,0 +1,52 @@
+{
+  "id": "T162",
+  "technical_details": "Idempotência prática possui horizonte temporal e identidade de payload. Depois de expirar o registro de uma chave, o servidor pode tratar a mesma chave como operação nova. Também precisa decidir o que ocorre quando a chave reaparece com parâmetros diferentes ou enquanto a primeira chamada está em andamento. Na Stripe API v1, respostas são guardadas após início de execução, inclusive erros 500; a documentação distingue esse comportamento da API v2.",
+  "boundary_condition": "Uma chave sem retenção compatível com o período de retry não protege repetições tardias.",
+  "implementation_contract": {
+    "inputs": "Intenção estável, chave, parâmetros normalizados e versão do contrato.",
+    "outputs": "Resultado lógico registrado, conflito de parâmetros ou operação pendente.",
+    "state": "Chave, digest do pedido, status e prazo de retenção.",
+    "invariant": "A mesma chave não representa duas intenções distintas nem payloads incompatíveis."
+  },
+  "tradeoffs": [
+    "Retenção longa amplia proteção e aumenta armazenamento e obrigações de limpeza.",
+    "Reutilizar a resposta facilita repetição e pode conservar um erro que exige diagnóstico por outra via."
+  ],
+  "failure_test": "Teste proposto: repetir a chave com payload alterado, em concorrência e após expiração simulada; verificar os três comportamentos previstos pelo contrato.",
+  "evaluation_plan": "Comparar efeitos reais com e sem chave sob respostas perdidas e reentrega. Controlar período de retenção e normalização. Medir duplicações, conflitos e operações pendentes; a aceitação depende de cobrir o horizonte de repetição esperado.",
+  "comparisons": [
+    {
+      "entry_id": "T243",
+      "relation": "complements",
+      "reason": "Reconciliação consulta o efeito quando a camada idempotente não fornece conclusão suficiente."
+    },
+    {
+      "entry_id": "T150",
+      "relation": "distinct_from",
+      "reason": "Compartilhar uma chamada ativa não conserva necessariamente a intenção após seu término."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A Stripe documenta retenção finita, comparação de parâmetros e diferenças de idempotência entre APIs v1 e v2.",
+    "source_ids": [
+      "V3C-S025"
+    ],
+    "support": "direct",
+    "caveat": "Essas regras são exemplo concreto; outro serviço pode ter políticas completamente diferentes."
+  },
+  "advanced_qa": [
+    {
+      "question": "Reusar a mesma chave dias depois é sempre seguro?",
+      "answer": "Não. É necessário conhecer retenção e expiração; após remoção, a chave pode criar uma nova operação."
+    },
+    {
+      "question": "É correto gerar nova chave a cada tentativa?",
+      "answer": "Não para a mesma intenção. Isso elimina a identidade que permite ao servidor reconhecer a repetição."
+    }
+  ],
+  "source_ids": [
+    "V3C-S025",
+    "C-S026"
+  ],
+  "research_note": "Contratos e ensaios são propostas; os resultados citados pertencem às fontes, sem reprodução local."
+}

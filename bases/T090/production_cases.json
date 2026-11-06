@@ -1,0 +1,64 @@
+{
+  "coverage": {
+    "entry_id": "T090",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "FlashAttention",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C018",
+      "company": "PyTorch",
+      "organization_class": "technology_operator",
+      "system": "FlexAttention para inferência",
+      "title": "Kernels de atenção programável e caminhos especializados de inferência",
+      "evidence_level": "operational_product",
+      "observed_use": "As publicações documentam recursos utilizáveis de FlexAttention, incluindo atenção em decode, GQA, cache paginado e backend FlashAttention-4 para hardware especificado.",
+      "technical_mechanism": "Modificações de scores e máscaras são compiladas para caminhos especializados; comportamento e elegibilidade dependem do backend.",
+      "event_date": "2026-03-05",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S017",
+        "V4B-S018"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T098",
+          "match": "exact",
+          "rationale": "Interface eficiente de atenção com caminhos especializados."
+        },
+        {
+          "entry_id": "T097",
+          "match": "exact",
+          "rationale": "Máscaras por blocos representam esparsidade explorável pelo kernel."
+        },
+        {
+          "entry_id": "T090",
+          "match": "family",
+          "rationale": "Relaciona implementação da família FlashAttention; FA4 não prova adoção específica de FA1, FA2 ou FA3."
+        }
+      ],
+      "small_model_transfer": "Proposta: executar equivalência de máscara e logits para o checkpoint 3–30B e depois avaliar formas reais de prefill/decode.",
+      "limits": "Disponibilidade documentada não demonstra implantação de bigtech nem suporte ao dispositivo local. Não transportar resultados de kernels entre arquiteturas de GPU.",
+      "canonical_case_id": "V4B-C018",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "T090",
+        "match": "family",
+        "rationale": "Relaciona implementação da família FlashAttention; FA4 não prova adoção específica de FA1, FA2 ou FA3."
+      }
+    }
+  ]
+}

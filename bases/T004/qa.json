@@ -1,0 +1,18 @@
+[
+  {
+    "question": "O resumo anterior é suficiente para auditar?",
+    "answer": "Não. Uma cadeia de resumos pode perder informação; os eventos e documentos originais precisam permanecer disponíveis."
+  },
+  {
+    "question": "Como evitar que uma correção desapareça?",
+    "answer": "Registrar validade, versão e relação de substituição em campos próprios, além do texto resumido."
+  },
+  {
+    "question": "Como detectar deriva sem reler tudo?",
+    "answer": "Amostre fatos críticos, verifique referências e compare campos protegidos com sua fonte. Essa auditoria reduz risco, mas não prova ausência de perdas não amostradas."
+  },
+  {
+    "question": "Um resumo antigo pode ser a única fonte?",
+    "answer": "Pode ser a única representação disponível, mas deve ser marcado como evidência derivada. Sem o original, não é possível confirmar detalhes que ele omitiu."
+  }
+]

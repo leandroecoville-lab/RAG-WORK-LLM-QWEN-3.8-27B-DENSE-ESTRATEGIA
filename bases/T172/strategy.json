@@ -1,0 +1,112 @@
+{
+  "id": "T172",
+  "novelty": "A v3 tratava filas, framing e backpressure. A nova camada organiza múltiplos produtores, estado parcial e reconexão do consumidor sem confundir uma sequência de tokens com confirmação de tarefa concluída.",
+  "deep_layers": [
+    {
+      "name": "Canal de controle separado",
+      "detail": "Eventos de início, progresso, cancelamento, erro e conclusão precisam de semântica estável, independentemente do texto produzido. Uma mensagem final não deve ficar presa atrás de megabytes de logs opcionais. Defina priorização e retenção de eventos essenciais, sem reordenar conteúdo que depende de uma sequência anterior.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S019",
+        "V4C-S015"
+      ]
+    },
+    {
+      "name": "Multiplexação identificada",
+      "detail": "Quando subagentes produzem simultaneamente, anexe origem, tarefa e sequência por fluxo. Misturar fragmentos de respostas diferentes pode formar texto plausível e impossível de auditar. O agregador pode apresentar progresso resumido, mas o consumidor precisa distinguir artefato completo de atualização parcial de outro trabalhador.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S015",
+        "C-S030"
+      ]
+    },
+    {
+      "name": "Reconexão com cursor",
+      "detail": "Um consumidor desconectado pode retornar depois que a tarefa avançou. Use cursor e retenção suficiente para repetir eventos necessários ou ofereça snapshot atual acompanhado do ponto de continuidade. Reentregar um evento não deve executar novamente a ação que o originou; apresentação e execução são camadas distintas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S015",
+        "V3C-S019"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Missão assíncrona acompanhada por UI",
+      "scenario": "Pesquisa ou edição continua enquanto o usuário troca de dispositivo.",
+      "strategy": "Persistir estado da tarefa e publicar eventos por sessão com identidade. Na reconexão, reconstruir visão atual e destacar quais resultados ainda são provisórios. Uma mudança de objetivo invalida a apresentação correspondente sem apagar evidências históricas.",
+      "small_model_role": "3–7B pode resumir progresso factual; o controlador não depende do texto para decidir estado.",
+      "acceptance": "Proposta: mesma visão final em consumidores lentos, rápidos e reconectados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S015"
+      ]
+    },
+    {
+      "name": "Ferramenta com saída extensa",
+      "scenario": "Build ou busca produz milhares de linhas enquanto o modelo espera.",
+      "strategy": "Transmita contadores e diagnósticos selecionados, guardando o log completo como artefato. Aplique pressão reversa quando possível; se precisar truncar apresentação, preserve erro terminal e caminho para recuperar trechos. Não envie de volta ao modelo cada linha de progresso.",
+      "small_model_role": "8–14B extrai diagnóstico após critérios de seleção; 15–30B decide próximo passo.",
+      "acceptance": "Proposta: memória limitada e nenhum erro terminal perdido sob consumidor lento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S019",
+        "V4C-S014"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Resumo de eventos tipados e pequenos; evitar interpretar fragmentos incompletos como dados finais.",
+    "8_14b": "Classificação de diagnósticos e extração de erros com referências ao log.",
+    "15_30b": "Integração de múltiplos fluxos por tarefa, mantendo proveniência e estados de confirmação.",
+    "training_or_runtime_requirements": "Sequência, cursor, retenção e política de buffer; resultado completo possui contrato separado de eventos intermediários.",
+    "do_not_use_when": "Não executar chamadas estruturadas enquanto argumentos ainda estão parciais ou misturados entre produtores."
+  },
+  "connections": [
+    {
+      "target_id": "T154",
+      "relation": "complements",
+      "how": "Proposta: combinar canal por sessão e transmissão parcial com controle explícito de fluxo e reconexão; o relato LinkedIn apoia somente as duas primeiras partes.",
+      "interface": "Sessão, tarefa e estado apresentado ao cliente.",
+      "condition": "Consumidores identificam contexto e atualização.",
+      "acceptance": "Troca de dispositivo não transforma progresso antigo em nova ação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S015"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T153",
+      "relation": "complements",
+      "how": "Propagar interrupção do consumidor e registrar estado terminal sem presumir cancelamento do efeito remoto.",
+      "interface": "Pedido de cancelamento, confirmação e últimas saídas aceitas.",
+      "condition": "A ferramenta define se coopera com cancelamento.",
+      "acceptance": "Nenhum texto após cancelamento é apresentado como resposta confirmada inadvertidamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S019"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Fila vazia não prova término e silêncio não prova falha.",
+    "Deduplicar eventos de apresentação sem descartar atualizações com sequência nova."
+  ],
+  "frontier_comparison": "Compare experiência, integridade e consumo com o mesmo modelo. Streaming melhora acompanhamento e pode reduzir espera percebida sem reduzir o trabalho necessário para concluir.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q010",
+      "V4C-Q009",
+      "V4D-Q020"
+    ],
+    "scope_note": "LinkedIn descreve integração operacional de trabalho assíncrono e streaming; a implementação de cursor e retenção proposta precisa de validação própria. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+  },
+  "source_ids": [
+    "V3C-S019",
+    "V4C-S015",
+    "C-S030",
+    "V4C-S014"
+  ]
+}

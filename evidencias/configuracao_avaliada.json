@@ -1,0 +1,45 @@
+{
+  "evaluated_at": "2026-11-05T23:41:26.055794+00:00",
+  "code_hashes": {
+    "rag.py": "55e2969dc2b8c474f3842b1221c06eb70986dbff7539c5d3efb41eb76fa07c43",
+    "build_corpus.py": "dc1884abe0e80bcf4bad104431ea497b02f9d2305b1c31bfd05688eaca5c47ef",
+    "contracts.py": "92685e64e5a90e5e4b584cc8c0357969367d6136f2f6bf8232115c059f7fdb5c",
+    "strategy_contracts.py": "174abff467306b93f36b1404137c71212a0215516dd5048ce6d8fd0f972bb129",
+    "strategic.py": "97c0725737a8fd9878df527a3164344d267144b4a1a2ca849b8fd1064576d600",
+    "compare_systems.py": "431fba1b83f59fbc471e2b0d0b5c45929ba58ce4c28ac53e7a03c0508b579e7a",
+    "validate_release.py": "eec7a0ddf12b200e2d1a277dc0cdea9df24f0404cdd5d98f6d55ded4e72bd47b",
+    "package_release.py": "8d6c8d4d723a1e6b0bb6c6f96ce36b5a82f8455812e1fcd9a437ef717fe6dd9c"
+  },
+  "corpus_sha256": "a959686a86fae91e2f3635e8f2db3fb9f0da7bc36b8d9ab02b484d3f2f22dc8c",
+  "entries_sha256": "0dac5e03f3dfd56c6d150f6cd3e485d5e232ef8a88d427604aa8e713cc47a898",
+  "cases_sha256": "2204c733522145950de61a44489949e99ed447d174e68967a9e468e884a30144",
+  "sources_sha256": "4c1559656bbe35c8042c63be9598399a6618332c4b36ed6c82509148b277b9c9",
+  "known_queries_sha256": {
+    "semantic_queries.jsonl": "aea80c303c5247fba920b1403a601fcc33d96b46732e85cc460b8651e6e9ec82",
+    "reserved_queries_v3.jsonl": "6a4b7ccb1363c4cdfbc0a15991cbbe14f4912b264a0cc9bc9f56a7b15fe81308"
+  },
+  "default_lexical_profile": "expanded",
+  "retrieval_parameters": {
+    "k1": 1.5,
+    "b": 0.75,
+    "variant_similarity": 0.65,
+    "variant_weight": 0.35,
+    "entry_weight": 0.5
+  },
+  "derived_hashes": {
+    "grafos/conexoes.json": "7537989d7ceb606f649b12af8feb8386fd9c48b58586fcc2492bfb014486ff6a",
+    "grafos/producao.json": "c98c4fd31ba6819cb4acfcf149e5f47663a8693e7acd0b3aaeeaa5953f695831",
+    "producao/COBERTURA_10_POR_BASE.json": "606073011be72bee30a47693dbd6b9234aa688acc27dd2e50e9a03c60fe69196",
+    "catalogo/estatisticas.json": "2c998509d37162b4e2cf86da2815fedd67397fc672dba3765856d153df481d2b",
+    "ABRIR_CATALOGO.html": "7a56eda73e80cd588aae36f485a476d6abc2d3681d4a22d081cd9e0217946725",
+    "ABRIR_GRAFO.html": "9bafdedc86293796192badad1a48fcfa9af602e341f5169c8bbf491b2248f884",
+    "pesquisa/CONSULTAS_V4.jsonl": "4c77fe6a7bb6b642ddf45eef0e3e53927a41c14fffda48f3f75897740b590adf",
+    "pesquisa/REVISAO_FACTUAL_V4.json": "48d34be0381d5dc9a415384d4421e8e2b04ec896d89ecd6feb6d4db0733d8ac7"
+  },
+  "test_hashes": {
+    "check_graph_dom.js": "5273d9d8de7a56b31602ae42121d23086d5df9989fcee9f5cbf1a55a997b279f",
+    "test_compare_systems.py": "8d528bca9feddfe0241a9bcffda0a0d6335630764cbe076df59a358867946ec7",
+    "test_runtime.py": "a6021f33e33127ed00e51c18efd8d11ee5a4dc2de141bcf02f8470bcd7bc3b22",
+    "test_strategy.py": "c3f734193970e50911ec2e2b1db57a6bb56b190fc308cb095d885462f46e6a8c"
+  }
+}

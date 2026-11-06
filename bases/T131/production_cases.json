@@ -1,0 +1,63 @@
+{
+  "coverage": {
+    "entry_id": "T131",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 1,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Suffix Decoding",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C023",
+      "company": "Snowflake",
+      "organization_class": "technology_operator",
+      "system": "Suffix Decoding",
+      "title": "Propostas especulativas por árvores de sufixos",
+      "evidence_level": "research_only",
+      "observed_use": "A publicação apresenta método e avaliações de geração especulativa a partir de sufixos. O registro não transforma resultados experimentais em comprovação de implantação operacional.",
+      "technical_mechanism": "Estruturas de sufixos usam histórico de tokens para propor continuações que precisam ser verificadas pelo alvo.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "B-S040"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T131",
+          "match": "exact",
+          "rationale": "O mecanismo é suffix decoding."
+        },
+        {
+          "entry_id": "T079",
+          "match": "exact",
+          "rationale": "Os candidatos são usados em decodificação especulativa."
+        },
+        {
+          "entry_id": "R009",
+          "match": "family",
+          "rationale": "Integração com runtime não comprova toda configuração de vLLM."
+        }
+      ],
+      "small_model_transfer": "Proposta: avaliar em saídas com forte repetição, incluindo custo de atualizar e consultar o índice em CPU.",
+      "limits": "Sem caso específico de bigtech implantada confirmado nesta fonte; ganho depende de repetição, alvo, concorrência e custo do proponente.",
+      "canonical_case_id": "V4B-C023",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "T131",
+        "match": "exact",
+        "rationale": "O mecanismo é suffix decoding."
+      }
+    }
+  ]
+}

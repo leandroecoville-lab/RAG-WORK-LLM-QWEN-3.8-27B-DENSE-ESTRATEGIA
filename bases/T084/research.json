@@ -1,0 +1,46 @@
+{
+  "id": "T084",
+  "technical_details": "O estado de sessão precisa distinguir histórico confirmado de geração em andamento. Uma edição de mensagem ou ramificação muda a ancestralidade, enquanto uma resposta atrasada ainda pode tentar gravar no cache antigo. Um contrato editorial robusto associa sessão, revisão e identidade do modelo, confirmando atualizações apenas quando a revisão esperada permanece válida. Mensagens persistidas são a fonte de reconstrução; o cache é descartável.",
+  "boundary_condition": "Persistência de conversa não implica persistência de tensores; reinícios e mudanças de configuração podem exigir reconstrução integral.",
+  "implementation_contract": {
+    "inputs": "Identificador da sessão, revisão esperada, histórico tokenizado e extensão solicitada.",
+    "outputs": "Nova revisão confirmada ou conflito explícito, com continuação correspondente.",
+    "state": "Histórico durável separado dos estados de atenção e operações pendentes.",
+    "invariant": "Uma operação atrasada nunca sobrescreve silenciosamente uma ramificação mais recente."
+  },
+  "tradeoffs": [
+    "Manter várias ramificações aumenta memória, mas evita reconstruções frequentes.",
+    "Serializar todas as operações simplifica consistência e pode reduzir concorrência útil."
+  ],
+  "failure_test": "Teste proposto: iniciar duas continuações, editar a mensagem anterior e concluir a primeira por último. Esperar conflito de revisão ou cache isolado, sem associar sua resposta à nova conversa.",
+  "evaluation_plan": "Plano proposto: comparar execução sem cache e cache por revisão em sessões lineares e ramificadas. Medir reconstruções, bytes residentes, latência e conflitos; aceitar apenas respostas equivalentes para o mesmo histórico confirmado.",
+  "comparisons": [
+    {
+      "entry_id": "T081",
+      "relation": "complements",
+      "reason": "A consistência de sessão controla quando o estado incremental pode ser reutilizado."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O cache armazena estados derivados de tokens processados, permitindo continuação sem refazer suas projeções.",
+    "source_ids": [
+      "V3B-S005"
+    ],
+    "support": "related",
+    "caveat": "A documentação sustenta o mecanismo de cache; revisão transacional de sessão é proposta de integração, não API padronizada."
+  },
+  "advanced_qa": [
+    {
+      "question": "Pode salvar apenas o cache como memória?",
+      "answer": "Isso dificulta auditoria e migração; preserve também o histórico necessário para reconstruir estados compatíveis."
+    },
+    {
+      "question": "O cancelamento apaga todos os tokens gerados?",
+      "answer": "O contrato precisa distinguir tokens já confirmados dos provisórios e definir precisamente qual revisão permanece válida."
+    }
+  ],
+  "source_ids": [
+    "V3B-S005"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

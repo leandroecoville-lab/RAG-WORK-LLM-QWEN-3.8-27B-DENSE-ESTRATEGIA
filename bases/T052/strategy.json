@@ -1,0 +1,121 @@
+{
+  "id": "T052",
+  "novelty": "A v3 distinguiu sentidos de contexto latente. Aqui cada representação é avaliada por intervenções e compatibilidade com o consumidor.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Declare qual objeto está sendo usado: vetor de busca, tokens latentes treinados ou estados de atenção. O mesmo nome editorial não torna essas interfaces substituíveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S004",
+        "V3A-S047",
+        "A-S012"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Teste dependência causal funcional removendo, trocando e perturbando a representação enquanto mantém texto constante. Se a saída não muda onde deveria, o consumidor pode ignorar a memória.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S004",
+        "V3A-S047",
+        "A-S012"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare texto equivalente, representação latente e memória trocada entre exemplos. Meça resposta correta, sensibilidade a troca e compatibilidade após quantização; proximidade entre estados não basta como sucesso. Unidade de avaliação: representação e consumidor.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S004",
+        "V3A-S047",
+        "A-S012"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Compressão neural de documentos",
+      "scenario": "Modelo aberto recebe slots aprendidos.",
+      "strategy": "Treinar encoder e consumidor compatíveis, comparar com extração textual e registrar quando a representação não preserva campos raros.",
+      "small_model_role": "15–30B consumidor experimental.",
+      "acceptance": "Troca controlada de memória deve alterar somente fatos correspondentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S004",
+        "V3A-S047",
+        "A-S012"
+      ]
+    },
+    {
+      "name": "Busca vetorial local",
+      "scenario": "Embeddings localizam memórias textuais.",
+      "strategy": "Usar vetor apenas para escolher evidências; devolver texto original ao leitor e medir recuperação separadamente da geração.",
+      "small_model_role": "3–7B lê trechos; embedding pode ser menor.",
+      "acceptance": "Nenhum fato pode ser inferido diretamente do número do vetor.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S004",
+        "V3A-S047",
+        "A-S012"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Leitor textual após busca vetorial, sem supor leitura direta de embeddings.",
+    "8_14b": "Consumidor treinado de representação específica quando houver dados e interface estável.",
+    "15_30b": "Modelo aberto instrumentado para experimentos de memória neural e adapters.",
+    "training_or_runtime_requirements": "Identidade do encoder, camada, dimensão, normalização e consumidor; acesso a treino para formas neurais.",
+    "do_not_use_when": "Representações vêm de arquitetura incompatível ou não há modo de verificar seu efeito na resposta."
+  },
+  "connections": [
+    {
+      "target_id": "T068",
+      "relation": "complements",
+      "how": "Conectar representação ao mecanismo de leitura correspondente.",
+      "interface": "Tensor, máscara, versão e semântica da interface.",
+      "condition": "Consumidor treinado para esse formato.",
+      "acceptance": "Trocar tensor por outro exemplo e medir mudança factual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S004",
+        "V3A-S047",
+        "A-S012"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T020",
+      "relation": "complements",
+      "how": "Aprender representação para tarefa e consumidor fixados.",
+      "interface": "Corpus, objetivo e checkpoint dos dois lados.",
+      "condition": "Avaliação separar treino e fontes.",
+      "acceptance": "Comparar com texto sob mesmo orçamento de memória.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S004",
+        "V3A-S047",
+        "A-S012"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não chamar embedding de memória comprimida universal.",
+    "Não transportar métricas de SADA ou ICAE para implementação distinta."
+  ],
+  "frontier_comparison": "Comparar tarefa e interface específicas; alinhamento interno não demonstra equivalência geral ao modelo professor.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q018",
+      "V4A-Q023",
+      "V4A-Q024"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S004",
+    "V3A-S047",
+    "A-S012"
+  ]
+}

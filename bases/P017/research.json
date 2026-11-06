@@ -1,0 +1,51 @@
+{
+  "id": "P017",
+  "technical_details": "Distillation Pipeline propõe transformar evidências de desempenho em um processo de treinamento reproduzível. Cada exemplo deve preservar versão do professor, prompt, contexto permitido, resposta e critérios usados para aceitá-la. A divisão de dados precisa evitar vazamento por documentos, sessões ou tarefas quase duplicadas. O artefato treinado deve ser avaliado com o contrato de uso pretendido, inclusive quando o contexto fornecido ao professor será removido na inferência do estudante.",
+  "boundary_condition": "Treinar sobre respostas aparentemente boas não garante preservar comportamento em entradas fora da distribuição. Informação volátil nos pesos também exige estratégia explícita de atualização.",
+  "implementation_contract": {
+    "inputs": "Objetivo de comportamento, dados autorizados com proveniência, professor, estudante, partições e orçamento de treinamento.",
+    "outputs": "Checkpoint ou adaptador versionado, manifesto de dados, configuração de treino e relatório comparativo de aceitação.",
+    "state": "Hashes dos datasets, critérios de filtragem, checkpoints intermediários e decisões de promoção ou rejeição.",
+    "invariant": "Dados de avaliação reservada não participam da seleção de exemplos, ajuste do professor ou escolha do checkpoint final."
+  },
+  "tradeoffs": [
+    "Filtragem rigorosa reduz exemplos ruins, porém pode estreitar cobertura e esconder casos difíceis.",
+    "Destilar comportamento recorrente economiza contexto potencialmente, mas requer amortizar treino e manter atualização de políticas."
+  ],
+  "failure_test": "Proposta: inserir um exemplo de avaliação na coleta e uma resposta errada muito confiante do professor; exigir detecção de contaminação e rejeição baseada em critério independente.",
+  "evaluation_plan": "Comparar base com contexto, base sem contexto e estudante sob as mesmas tarefas reservadas. Medir acerto, violações, tokens, custo amortizado e regressões em capacidades preservadas. Registrar resultados negativos e não promover apenas pelo loss de treinamento.",
+  "comparisons": [
+    {
+      "entry_id": "T178",
+      "relation": "complements",
+      "reason": "Distilação de conhecimento define a transferência de comportamento."
+    },
+    {
+      "entry_id": "T179",
+      "relation": "complements",
+      "reason": "Context distillation paramétrica especifica o objetivo de internalização."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Prompt distillation pode treinar um estudante para responder sem o prompt usado pelo professor.",
+    "source_ids": [
+      "V3D-S008"
+    ],
+    "support": "related",
+    "caveat": "O pipeline e seus critérios de promoção são proposta própria; nenhum treinamento foi executado neste pacote."
+  },
+  "advanced_qa": [
+    {
+      "question": "Posso treinar apenas com respostas aprovadas pelo próprio professor?",
+      "answer": "Isso mantém risco de erros correlacionados; use critérios independentes e casos difíceis reservados."
+    },
+    {
+      "question": "Qual artefato comprova a melhoria?",
+      "answer": "Relatório comparativo por tarefa, com dados e configuração identificados, além do checkpoint treinado e seus limites."
+    }
+  ],
+  "source_ids": [
+    "V3D-S008"
+  ],
+  "research_note": "Contrato, teste de falha e plano de avaliação são recomendações editoriais; nenhuma implantação ou medição deste mecanismo foi executada neste pacote."
+}

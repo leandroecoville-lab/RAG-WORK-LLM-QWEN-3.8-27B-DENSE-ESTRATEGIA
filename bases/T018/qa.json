@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Poda extrativa é sempre fiel?",
+    "answer": "O texto preservado é original, mas a combinação de trechos pode omitir qualificações e induzir erro."
+  },
+  {
+    "question": "Posso podar depois do resultado da busca?",
+    "answer": "Sim. Esse é um ponto comum, desde que o processo retenha evidências suficientes para a pergunta."
+  },
+  {
+    "question": "Uma frase irrelevante à pergunta pode ser necessária?",
+    "answer": "Sim. Ela pode definir quem é o sujeito, qual unidade está em uso ou quando a regra vale. Relevância direta e suporte são funções distintas."
+  },
+  {
+    "question": "Como auditar o seletor?",
+    "answer": "Guarde a máscara de seleção e os offsets. Assim é possível localizar exatamente o que foi removido e investigar uma resposta incorreta."
+  }
+]

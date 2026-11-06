@@ -1,0 +1,144 @@
+{
+  "coverage": {
+    "entry_id": "T036",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 1,
+    "verified_bigtech_llm_production_exact": 1,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 3,
+    "operational_product_cases": 0,
+    "research_cases": 1,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 9,
+    "target_met": false,
+    "strict_case_ids": [
+      "V4A-C012"
+    ],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Query-Aware RAG",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C012",
+      "company": "Amazon",
+      "system": "Rufus shopping assistant",
+      "title": "Rufus shopping assistant — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "Amazon descreve assistente em uso no aplicativo de compras.",
+      "technical_mechanism": "RAG seleciona catálogo, avaliações, perguntas comunitárias e APIs conforme a pergunta.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S022"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T009",
+          "match": "exact",
+          "rationale": "Recuperação antecede geração e inclui múltiplas fontes."
+        },
+        {
+          "entry_id": "T036",
+          "match": "exact",
+          "rationale": "Relevância de cada fonte varia com a consulta."
+        },
+        {
+          "entry_id": "T024",
+          "match": "family",
+          "rationale": "Seleção de fontes inspira broker, sem confirmar componente LAI."
+        },
+        {
+          "entry_id": "P007",
+          "match": "analogy",
+          "rationale": "Recuperador editorial pode adotar contrato semelhante, sem alegar adoção."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Separar busca factual de texto opinativo e exigir evidência de atributo antes da comparação por 8–14B.",
+      "limits": "Porte do LLM customizado não é indicado; não explicita BM25+vetores nem cada técnica de chunking. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4B-C008",
+      "deployment_domain": "llm_application",
+      "deduplication_note": "Consolidado com V4B-C008 para contagem. Mapeamentos e versões das fontes permanecem separados; não se presume simultaneidade de todos os mecanismos.",
+      "mapping": {
+        "entry_id": "T036",
+        "match": "exact",
+        "rationale": "Relevância de cada fonte varia com a consulta."
+      }
+    },
+    {
+      "case_id": "V4A-C008",
+      "company": "Microsoft",
+      "system": "Bing: transformers na busca global",
+      "title": "Bing: transformers na busca global — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "Operador afirma modelos transformer aplicados às consultas Bing globais no período descrito.",
+      "technical_mechanism": "Compreensão contextual de consultas e páginas com inferência otimizada.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S008"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T028",
+          "match": "family",
+          "rationale": "Ranking neural é relacionado; fonte não especifica integralmente o pipeline desta ficha."
+        },
+        {
+          "entry_id": "T036",
+          "match": "family",
+          "rationale": "Consulta orienta compreensão e seleção; não comprova leitor RAG específico."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Empregar modelo compacto para julgar pares consulta-trecho, medindo custo e ordenação.",
+      "limits": "BERT destilado do relato não é um gerador 3–30B; números de infraestrutura não são transportáveis. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4B-C009",
+      "deployment_domain": "non_generative_nlp",
+      "deduplication_note": "Consolidado com V4B-C009 para contagem. Mapeamentos e versões das fontes permanecem separados; não se presume simultaneidade de todos os mecanismos.",
+      "mapping": {
+        "entry_id": "T036",
+        "match": "family",
+        "rationale": "Consulta orienta compreensão e seleção; não comprova leitor RAG específico."
+      }
+    },
+    {
+      "case_id": "V4A-C023",
+      "company": "IBM",
+      "system": "Granite RAG LoRAs experimentais",
+      "title": "Granite RAG LoRAs experimentais — evidência delimitada",
+      "evidence_level": "research_only",
+      "observed_use": "Anúncio distingue modelos disponíveis de adaptadores publicados no Granite Experiments.",
+      "technical_mechanism": "Adaptadores para subtarefas como reescrita de consultas e detecção de alucinação.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S020"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T036",
+          "match": "exact",
+          "rationale": "Reescrita específica de consulta é subtarefa nomeada."
+        },
+        {
+          "entry_id": "T020",
+          "match": "family",
+          "rationale": "Especialização aprendida é relacionada, mas não comprova compressor de prompts."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Medir especialização de 8B por papel sem ativar o mesmo adaptador em tarefas incompatíveis.",
+      "limits": "Experimentos não são implantação; não transferir compatibilidade KV de aLoRA a qualquer LoRA. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C023",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "T036",
+        "match": "exact",
+        "rationale": "Reescrita específica de consulta é subtarefa nomeada."
+      }
+    }
+  ]
+}

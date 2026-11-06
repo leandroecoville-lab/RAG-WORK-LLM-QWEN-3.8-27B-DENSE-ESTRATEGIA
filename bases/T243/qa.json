@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Qual é a diferença entre retry e reconciliação?",
+    "answer": "Retry tenta executar novamente. Reconciliação primeiro determina a relação entre intenção e estado observado para escolher uma ação segura."
+  },
+  {
+    "question": "Sempre é possível resolver automaticamente?",
+    "answer": "Não. Sem identidade, recibo ou consulta confiável, pode restar ambiguidade. O sistema deve reportá-la em vez de fabricar sucesso ou falha definitiva."
+  },
+  {
+    "question": "Não encontrei o objeto: posso repetir imediatamente?",
+    "answer": "Somente se a leitura e o contrato sustentarem ausência conclusiva; com consistência eventual, pode ser cedo demais."
+  },
+  {
+    "question": "Compensação é igual a rollback?",
+    "answer": "Não. É outra operação de domínio, possivelmente com efeitos observáveis e falhas próprias, que precisa de identidade e verificação."
+  }
+]

@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lai:rag:case:v4",
+  "title": "LAI RAG case",
+  "type": "object",
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^V4[A-D]-C[0-9]{3}$"
+    },
+    "company": {
+      "type": "string",
+      "minLength": 1
+    },
+    "system": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_level": {
+      "enum": [
+        "production_documented",
+        "operational_product",
+        "research_only"
+      ]
+    },
+    "observed_use": {
+      "type": "string",
+      "minLength": 1
+    },
+    "technical_mechanism": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "checked_on": {
+      "type": "string",
+      "format": "date"
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "mappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "entry_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[TRP][0-9]{3}$"
+          },
+          "match": {
+            "enum": [
+              "exact",
+              "family",
+              "analogy"
+            ]
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "entry_id",
+          "match",
+          "rationale"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "small_model_transfer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "limits": {
+      "type": "string",
+      "minLength": 1
+    },
+    "organization_class": {
+      "enum": [
+        "bigtech",
+        "ai_lab",
+        "technology_operator",
+        "research_group"
+      ]
+    },
+    "canonical_case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "deduplication_note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "deployment_domain": {
+      "type": "string",
+      "minLength": 1
+    },
+    "review_note": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "case_id",
+    "company",
+    "system",
+    "title",
+    "evidence_level",
+    "observed_use",
+    "technical_mechanism",
+    "event_date",
+    "checked_on",
+    "source_ids",
+    "mappings",
+    "small_model_transfer",
+    "limits",
+    "organization_class"
+  ],
+  "additionalProperties": false
+}

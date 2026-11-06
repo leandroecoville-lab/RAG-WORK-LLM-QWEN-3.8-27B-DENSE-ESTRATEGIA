@@ -1,0 +1,161 @@
+{
+  "audit_id": "audit_A_tail_delta",
+  "checked_on": "2026-11-05",
+  "auditor": "/root/rag_contexto_memoria",
+  "audited_snapshot": {
+    "path": "rag_research_v4/strategy_tail_revisions.jsonl",
+    "sha256": "c9782aebcf39aa5d1f272d1a563eb3ab72c521c19a1f0679bf0bac034c8122e9",
+    "records": 2,
+    "ids": [
+      "P012",
+      "P015"
+    ]
+  },
+  "previous_audit": {
+    "path": "rag_research_v4/audit_A_tail.json",
+    "sha256": "6ebca77b16c6ba1568fc7906f9b9148dd1afee8a95d8bbd387502ac320451a7e",
+    "finding_ids": [
+      "A-TAIL-001",
+      "A-TAIL-002"
+    ],
+    "previous_tail_sha256": "0a28f27f0d606a124cd30c9be570337cd0a6eee1ba7b67cfcb22d9302b2d2d13"
+  },
+  "comparison_inputs": [
+    {
+      "path": "LAI_RAG_243_v3/corpus/entries.jsonl",
+      "sha256": "ae94ba51f981055b5eafa3654be755eb538451414159e3e7338e614c9a52c50f"
+    },
+    {
+      "path": "LAI_RAG_243_v3/fontes/sources.jsonl",
+      "sha256": "979de5fa4de15e4a5571af78da884ed3c2f7855fccbe9ba2161efc19643d7ef0"
+    },
+    {
+      "path": "rag_research_v4/staging/sources_C.jsonl",
+      "sha256": "5cc007c7d2065f747f852a20d5ca452f71873ab672833e937f027d744a2016ab"
+    },
+    {
+      "path": "rag_research_v4/supplement_sources.jsonl",
+      "sha256": "2fc29aeeb974bde8a808848d5faf95975d9b2835aa3e1dc69cbb349b93255547"
+    }
+  ],
+  "scope": {
+    "method": "Leitura integral somente das duas estratégias revisadas; comparação com a v3 e os dois achados anteriores. Conferência dos novos contratos e abertura de cinco fontes primárias pertinentes, com leitura seletiva das seções indicadas.",
+    "limits": "Não houve execução de modelos, testes de software, reprodução experimental nem validação em ambiente do usuário. Os artigos de calibração e EvalPlus foram consultados nos resumos; não foram lidas perguntas, soluções ou casos de benchmark. Não foram pesquisados novos casos de produção nem reavaliadas as outras doze estratégias.",
+    "source_interpretation": "Fontes fundamentam mecanismos particulares. Cascatas, auditoria amostral, metamorfismo e o controlador composto permanecem propostas de engenharia; a revisão não os transforma em resultados medidos.",
+    "files_modified": [
+      "rag_research_v4/audit_A_tail_delta.json"
+    ],
+    "staging_and_previous_tail_preserved": true
+  },
+  "structural_checks": {
+    "ids_match_expected": true,
+    "duplicate_ids": 0,
+    "deep_layers": 6,
+    "advanced_uses": 4,
+    "connections": 4,
+    "basis_counts": {
+      "engineering_proposal": 14,
+      "source_documented": 0
+    },
+    "unresolved_sources": [],
+    "unresolved_targets": [],
+    "nested_source_ids_missing_from_top_level": [],
+    "cardinality_violations": [],
+    "connection_targets": {
+      "T198": "Calibrated Confidence",
+      "T205": "Semantic Equivalence Testing",
+      "T162": "Idempotência",
+      "T072": "Versioned Memory"
+    }
+  },
+  "resolved_findings": [
+    {
+      "finding_id": "A-TAIL-001",
+      "entry_id": "P012",
+      "status": "resolved_in_revised_snapshot",
+      "novelty_verdict": "materially_resolved",
+      "why": "A v3 tratava cobertura, independência e validade do laudo. A revisão acrescenta uma política seletiva de verificação com abstenção, calibração fora da avaliação final, auditoria dos itens aceitos e controle de viés de amostragem. Também desenvolve resistência à exploração do juiz com negativos conhecidos e transformações metamórficas condicionadas à validade semântica.",
+      "contract_checks": [
+        "Custo e poder discriminativo dos verificadores são medidos antes de ordenar a cascata; aprovação barata não dispensa verificação em classes de alto risco.",
+        "Erro entre aceitos é acompanhado de cobertura; abstenções e timeouts não desaparecem da contabilidade.",
+        "Auditoria inclui aceitos de alta confiança; amostra enriquecida exige ponderação ou apresentação por estrato, sem ser confundida com frequência natural do tráfego.",
+        "Teste final permanece fora do ajuste; transformações inválidas e mutantes equivalentes são excluídos antes da avaliação.",
+        "Bandas 3–30B são papéis propostos e condicionados à calibração e custo; não há alegação de ganho medido ou de equivalência a modelos de fronteira."
+      ],
+      "remaining_material_issue": false
+    },
+    {
+      "finding_id": "A-TAIL-002",
+      "entry_id": "P015",
+      "status": "resolved_in_revised_snapshot",
+      "novelty_verdict": "materially_resolved",
+      "why": "A revisão abandona a repetição de hash-base e reconciliação genérica. Introduz diferença entre igualdade de conteúdo e continuidade histórica no caso ABA, janela de retenção da deduplicação e vínculo entre identidade da operação e intenção. Os três pontos exigem testes e decisões ausentes na ficha v3.",
+      "contract_checks": [
+        "ABA só é bloqueado quando o requisito depende da ausência de alterações intermediárias; igualdade de bytes continua suficiente quando esse é o contrato correto.",
+        "Comparação da revisão precisa ocorrer atomicamente no destino; exclusão/recriação exige identidade de criação e restauração de backend exige política de épocas.",
+        "Registro local não prolonga a retenção remota; chave expurgada não autoriza repetição segura de efeito com resultado desconhecido.",
+        "A mesma chave com parâmetros semanticamente diferentes é conflito; duas intenções legítimas com conteúdo igual conservam identidades distintas.",
+        "Normalização não deve apagar diferenças relevantes; versão de API e escopo do destino integram o contrato.",
+        "Não há promessa de exactly-once global, recibo recuperável por raciocínio ou capacidade especial conferida pelo porte da LLM."
+      ],
+      "remaining_material_issue": false
+    }
+  ],
+  "primary_evidence_opened": [
+    {
+      "source_id": "C-S050",
+      "url": "https://arxiv.org/abs/1706.04599",
+      "web_ref": "turn409view3",
+      "read_scope": "Título, autores e resumo.",
+      "supports": "Calibração relaciona estimativas de confiança e frequência de correção; o trabalho avalia métodos de pós-processamento.",
+      "limits": "O resumo não comprova a cascata, o protocolo de amostragem ou desempenho de verificadores 3–30B propostos em P012."
+    },
+    {
+      "source_id": "C-S048",
+      "url": "https://arxiv.org/abs/2305.01210",
+      "web_ref": "turn409view4",
+      "read_scope": "Título, autores e resumo; sem acesso ao dataset ou perguntas.",
+      "supports": "Testes insuficientes podem deixar código incorreto passar e alterar comparações; EvalPlus amplia testes por geração e mutação.",
+      "limits": "Não valida por si só a cascata ou todo o protocolo metamórfico proposto; nenhuma métrica do artigo foi transferida à estratégia."
+    },
+    {
+      "source_id": "V3C-S025",
+      "url": "https://docs.stripe.com/api/idempotent_requests",
+      "web_ref": "turn409view0",
+      "read_scope": "Regras de início de execução, versões de API, retenção e comparação de parâmetros.",
+      "supports": "A documentação distingue API v1 e v2. Na v1, chaves podem ser expurgadas e sua reutilização posterior gera nova requisição; parâmetros divergentes provocam erro.",
+      "limits": "Contrato específico da Stripe; a estratégia corretamente exige consultar versão e retenção do destino, sem universalizar o comportamento."
+    },
+    {
+      "source_id": "V3C-S028",
+      "url": "https://etcd.io/docs/v3.6/learning/api/",
+      "web_refs": [
+        "turn409view1",
+        "turn410view1",
+        "turn410view2"
+      ],
+      "read_scope": "Campos KeyValue e seção de transações condicionais.",
+      "supports": "Versão da chave, revisão de criação e revisão de modificação são distintas; exclusão reinicia a versão. Transações aplicam comparações atomicamente, incluindo revisões e valor.",
+      "limits": "As primitivas sustentam o desenho condicional contra ABA; não garantem continuidade de época após restauração externa do backend. A revisão explicita essa limitação."
+    },
+    {
+      "source_id": "V4D-S021",
+      "url": "https://builder.aws.com/content/3Ev0BENTyBr0XxzRk5FDZzgNYos/m",
+      "web_refs": [
+        "turn409view2",
+        "turn410view0",
+        "turn410view3"
+      ],
+      "read_scope": "Identidade fornecida pelo cliente, solicitações tardias, duração da retenção e mudança de parâmetros.",
+      "supports": "Duas requisições iguais podem expressar intenções distintas. O artigo usa identidade do cliente/operação, retenção delimitada e erro de parâmetros divergentes para uma identidade já vista.",
+      "limits": "Práticas e contratos delimitados por API; não atestam um controlador LAI nem garantia universal entre serviços."
+    }
+  ],
+  "new_findings": [],
+  "summary": {
+    "previous_findings_resolved": 2,
+    "new_material_findings": 0,
+    "outcome": "Correção material confirmada para P012 e P015 no snapshot auditado.",
+    "integration_condition": "Aplicar exatamente os dois registros do hash auditado, preservando a classificação engineering_proposal e as limitações. A revisão anterior permanece válida para seu snapshot; este delta encerra seus dois achados após substituição pelos registros revisados."
+  }
+}

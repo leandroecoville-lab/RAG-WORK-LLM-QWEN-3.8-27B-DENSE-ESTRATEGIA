@@ -1,0 +1,73 @@
+{
+  "coverage": {
+    "entry_id": "T101",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Ring Attention",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C003",
+      "company": "Meta",
+      "organization_class": "bigtech",
+      "system": "Infraestrutura de inferência Meta AI",
+      "title": "Paralelismo de tensores e contexto no serving Meta",
+      "evidence_level": "production_documented",
+      "observed_use": "Meta relata técnicas implementadas para sistemas de inferência que sustentam aplicações como Meta AI, com metas distintas de prefill e geração.",
+      "technical_mechanism": "Algoritmos de comunicação para TP e variantes Pass-KV/Pass-Q para contexto; resultados de escala são apresentados separadamente das direções futuras.",
+      "event_date": "2025-10-17",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S003"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T118",
+          "match": "exact",
+          "rationale": "O operador descreve implementação e otimização de tensor parallelism."
+        },
+        {
+          "entry_id": "T117",
+          "match": "exact",
+          "rationale": "Particionamento de contexto é explicitamente implementado."
+        },
+        {
+          "entry_id": "T101",
+          "match": "family",
+          "rationale": "Pass-KV/Pass-Q são descritos como variantes frequentemente chamadas ring attention, sem identificar toda implementação com o paper específico."
+        },
+        {
+          "entry_id": "T184",
+          "match": "family",
+          "rationale": "Expert parallelism é discutido para modelos MoE, sem demonstrar cada arquitetura do inventário."
+        },
+        {
+          "entry_id": "P009",
+          "match": "analogy",
+          "rationale": "Ajuda a definir telemetria e capacidades distribuídas do componente editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: usar topologia e formas reais para decidir CP/TP em 3–30B, preservando uma execução local como comparação quando possível.",
+      "limits": "Modelos e clusters citados excedem muitos ambientes 3–30B. Disaggregated inference aparece como direção futura nesse texto e não é contado como implantação exata a partir dele.",
+      "canonical_case_id": "V4B-C003",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "T101",
+        "match": "family",
+        "rationale": "Pass-KV/Pass-Q são descritos como variantes frequentemente chamadas ring attention, sem identificar toda implementação com o paper específico."
+      }
+    }
+  ]
+}

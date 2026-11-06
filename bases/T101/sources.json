@@ -1,0 +1,28 @@
+[
+  {
+    "source_id": "B-S020",
+    "title": "Ring Attention with Blockwise Transformers for Near-Infinite Context",
+    "url": "https://arxiv.org/abs/2310.01889",
+    "publisher": "Liu, Zaharia e Abbeel / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-10-03",
+    "supports": "Sequência distribuída e circulação de blocos KV com computação sobreposta.",
+    "limitations": "Resumo e metadados acessados; artigo integral não auditado e resultados não reproduzidos.",
+    "web_ref": "turn6view5"
+  },
+  {
+    "source_id": "V4B-S003",
+    "title": "Scaling LLM Inference: Innovations in Tensor Parallelism, Context Parallelism, and Expert Parallelism",
+    "url": "https://engineering.fb.com/2025/10/17/ai-research/scaling-llm-inference-innovations-tensor-parallelism-context-parallelism-expert-parallelism/",
+    "publisher": "Meta Engineering",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-10-17",
+    "supports": "Técnicas implementadas para inferência de aplicações Meta AI; separação de métricas de prefill e decode e paralelismos.",
+    "limitations": "Escala e interconexão da Meta não representam servidor do usuário; não confirma cada técnica em todo modelo.",
+    "web_ref": "turn205view1"
+  }
+]

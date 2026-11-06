@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "C-S016",
+    "title": "Introducing advanced tool use on the Claude Developer Platform",
+    "url": "https://www.anthropic.com/research/advanced-tool-use",
+    "publisher": "Anthropic",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Descoberta de ferramentas sob demanda evita inserir antecipadamente todos os schemas.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn34view1"
+  },
+  {
+    "source_id": "V3C-S004",
+    "title": "Model Context Protocol — Tools, revision 2025-11-25",
+    "url": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
+    "publisher": "Model Context Protocol",
+    "source_type": "protocol_specification",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Contratos inputSchema/outputSchema, listChanged, resultados estruturados e distinção entre erro de protocolo e erro da ferramenta.",
+    "limitations": "Revisão fixada para análise; não alegada como revisão mais recente nem adotada pelo servidor do usuário.",
+    "web_ref": "turn90view0"
+  },
+  {
+    "source_id": "V4C-S013",
+    "title": "Designing MCP Gateway Uber's MCP Management Platform",
+    "url": "https://www.uber.com/us/en/blog/designing-mcp-gateway/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Registro, descoberta gradual, schemas, proxy de execução, revisão de configurações e projeção de respostas em uso interno.",
+    "limitations": "Relato primário delimitado à data e sistema; não houve reprodução. Números e escolhas do operador não definem ganhos, preços ou limites para a LAI ou modelos 3–30B.",
+    "web_ref": "turn261view0"
+  },
+  {
+    "source_id": "C-S030",
+    "title": "How we built our multi-agent research system",
+    "url": "https://www.anthropic.com/research/multi-agent-research-system",
+    "publisher": "Anthropic",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Arquitetura coordenador-especialistas e contextos separados pode paralelizar pesquisa e usar artefatos de transferência.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn34view9"
+  },
+  {
+    "source_id": "V4C-S014",
+    "title": "Running a Software Factory Efficiently at Uber Scale",
+    "url": "https://www.uber.com/us/en/blog/efficient-software-factory/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-08-27",
+    "supports": "Harnesses internos, seleção por tarefas reais, modelos diferentes para subagentes, compactação, cache e code-mode.",
+    "limitations": "Relato primário delimitado à data e sistema; não houve reprodução. Números e escolhas do operador não definem ganhos, preços ou limites para a LAI ou modelos 3–30B.",
+    "web_ref": "turn257view0"
+  }
+]

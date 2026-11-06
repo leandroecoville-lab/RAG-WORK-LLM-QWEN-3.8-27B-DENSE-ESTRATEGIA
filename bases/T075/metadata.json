@@ -1,0 +1,32 @@
+{
+  "id": "T075",
+  "name": "Memory Reconciliation",
+  "canonical_name": "Memory Reconciliation",
+  "canonical_id": "T075",
+  "aliases": [
+    "reconciliação de memória"
+  ],
+  "category": "memoria",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T054",
+    "T056",
+    "T058",
+    "T072"
+  ],
+  "source_ids": [
+    "A-S032",
+    "A-S035",
+    "V3A-S030",
+    "V4A-S006",
+    "V4A-S011",
+    "V2A-S026"
+  ],
+  "namespace": "T075",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T075",
+  "chunk_count": 9
+}

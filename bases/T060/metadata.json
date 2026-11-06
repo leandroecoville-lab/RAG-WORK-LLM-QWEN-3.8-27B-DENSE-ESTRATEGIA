@@ -1,0 +1,43 @@
+{
+  "id": "T060",
+  "name": "Agent Checkpointing / Checkpoint & Resume — incluindo checkpoints transacionais",
+  "canonical_name": "Agent Checkpointing com retomada e checkpoint transacional",
+  "canonical_id": "T060",
+  "aliases": [
+    "Checkpointing",
+    "ponto de retomada",
+    "snapshot de execução",
+    "Agent Checkpointing",
+    "Checkpoint & Resume",
+    "checkpoint transacional"
+  ],
+  "category": "memoria",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T059",
+    "T162",
+    "T240",
+    "T242",
+    "P011",
+    "P015"
+  ],
+  "source_ids": [
+    "A-S022",
+    "V2C-S001",
+    "V2C-S002",
+    "C-S026",
+    "V3A-S031",
+    "V3A-S030",
+    "C-S030",
+    "V4A-S012",
+    "V4C-S024",
+    "V4C-S025"
+  ],
+  "namespace": "T060",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T060",
+  "chunk_count": 9
+}

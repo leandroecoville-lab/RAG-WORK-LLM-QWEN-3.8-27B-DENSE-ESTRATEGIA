@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Replay chama novamente toda LLM anterior?",
+    "answer": "Resultados de Activities já confirmadas são reutilizados pelo histórico; atividades sem conclusão confirmada podem precisar de nova execução."
+  },
+  {
+    "question": "Temporal elimina a necessidade de idempotência?",
+    "answer": "Não. Activities podem executar mais de uma vez, portanto os efeitos externos precisam tolerar repetição ou ser reconciliados."
+  },
+  {
+    "question": "Schedule-to-Start resolve uma fila sem workers com retry?",
+    "answer": "Esse timeout é não repetível por desenho; reenfileirar na mesma fila não resolveria a ausência de capacidade."
+  },
+  {
+    "question": "Heartbeat local garante progresso recuperável?",
+    "answer": "Não necessariamente. É preciso considerar throttling e o último detalhe efetivamente recebido pelo serviço."
+  }
+]

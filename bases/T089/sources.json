@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "B-S009",
+    "title": "Generation — GenerationConfig",
+    "url": "https://huggingface.co/docs/transformers/main_classes/text_generation",
+    "publisher": "Hugging Face",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Critérios de parada, limite de novos tokens e semântica específica de early_stopping em beam search.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn25view1"
+  },
+  {
+    "source_id": "C-S008",
+    "title": "XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models",
+    "url": "https://arxiv.org/abs/2411.15100",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Gramáticas e restrições de decodificação permitem saídas estruturadas.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn19view3"
+  },
+  {
+    "source_id": "V4B-S015",
+    "title": "Structural Tag Usage — XGrammar",
+    "url": "https://xgrammar.mlc.ai/docs/latest/structural_tag/structural_tag.html",
+    "publisher": "XGrammar / MLC",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Composição de formatos, tags, regiões livres/estruturadas e delimitadores de tokens.",
+    "limitations": "Restrições formais não validam autorização, conteúdo factual nem sucesso de ferramenta.",
+    "web_ref": "turn221view1"
+  },
+  {
+    "source_id": "V4B-S016",
+    "title": "Tool Calling and Reasoning — XGrammar",
+    "url": "https://xgrammar.mlc.ai/docs/latest/structural_tag/tool_calling_and_reasoning.html",
+    "publisher": "XGrammar / MLC",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Gramáticas específicas de formato de modelo e escolhas auto/required/forced/none para chamadas de ferramenta.",
+    "limitations": "Lista de estilos não verifica checkpoint do usuário; interoperabilidade precisa ensaio por tokenizer e backend.",
+    "web_ref": "turn221view2"
+  }
+]

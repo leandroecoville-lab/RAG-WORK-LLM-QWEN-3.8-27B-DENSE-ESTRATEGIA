@@ -1,0 +1,46 @@
+{
+  "id": "T205",
+  "technical_details": "Equivalência precisa declarar quais observáveis importam: valor retornado, efeitos laterais, exceções, ordem, precisão ou tempo. Duas funções podem devolver o mesmo resultado e modificar entradas de modo diferente. Comparação diferencial usa uma referência independente; propriedades metamórficas verificam relações entre entradas e saídas quando não existe resposta completa conhecida. A normalização deve preservar distinções relevantes, como unidades, ordem ou multiplicidade.",
+  "boundary_condition": "Testes amostrais podem encontrar contraexemplos, mas ausência deles não prova equivalência para todo o domínio.",
+  "implementation_contract": {
+    "inputs": "Duas representações, domínio válido, observáveis e tolerâncias justificadas.",
+    "outputs": "Contraexemplos reproduzíveis ou evidência limitada de equivalência nos casos examinados.",
+    "state": "Geradores de entradas, referências e regras de normalização.",
+    "invariant": "Nenhuma diferença relevante é apagada pela normalização antes de ser avaliada."
+  },
+  "tradeoffs": [
+    "Comparação estrita detecta diferenças e pode rejeitar variações aceitáveis.",
+    "Tolerâncias amplas acomodam precisão finita e podem esconder erros significativos."
+  ],
+  "failure_test": "Teste proposto: comparar implementações iguais em listas sem duplicatas, mas diferentes quando há repetição, NaN ou mutação da entrada. Esperar contraexemplo no domínio realmente permitido.",
+  "evaluation_plan": "Plano proposto: combinar casos de fronteira, geração por propriedades e comparação diferencial. Medir defeitos detectados, reprodutibilidade e cobertura das classes de entrada; aceitar equivalência somente no escopo declarado, preservando casos descobertos para regressão.",
+  "comparisons": [
+    {
+      "entry_id": "T195",
+      "relation": "complements",
+      "reason": "Execução fornece observações para comparar comportamento entre versões, dentro do domínio declarado."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação Hypothesis apresenta testes por propriedades e comparação de implementação otimizada com referência, usando entradas geradas.",
+    "source_ids": [
+      "V3B-S022"
+    ],
+    "support": "direct",
+    "caveat": "O mecanismo explora entradas; uma prova geral exigiria argumento ou ferramenta formal compatível com a propriedade."
+  },
+  "advanced_qa": [
+    {
+      "question": "Similaridade de embeddings prova equivalência textual?",
+      "answer": "Não. Textos semanticamente próximos podem inverter uma condição, quantidade ou negação decisiva."
+    },
+    {
+      "question": "Round-trip perfeito prova um codec correto?",
+      "answer": "Não sozinho. Encoder e decoder podem compartilhar o mesmo erro; compare também com especificação ou implementação independente."
+    }
+  ],
+  "source_ids": [
+    "V3B-S022"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

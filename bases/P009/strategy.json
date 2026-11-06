@@ -1,0 +1,154 @@
+{
+  "id": "P009",
+  "novelty": "A v3 definiu eventos e estados de geração. Esta proposta acrescenta qualificação de capacidades, orçamento de recursos e troca de backend com testes de contrato. O componente continua editorial, sem implantação LAI alegada.",
+  "deep_layers": [
+    {
+      "name": "Capabilities verificáveis",
+      "detail": "O engine proposto publica capacidades por modelo e versão: estrutura, ferramentas, cache, especulação, contexto e streaming. A presença de um campo na API não basta; um teste de integração deve confirmar comportamento. Recursos não suportados precisam gerar erro explícito ou alternativa documentada, sem degradação silenciosa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4B-S010",
+        "V4B-S008",
+        "V4B-S014",
+        "V3D-S007",
+        "V3D-S012"
+      ]
+    },
+    {
+      "name": "Orçamento por tentativa",
+      "detail": "Reserve prazo, saída máxima e recursos estimados antes de enviar. Registre fila, prefill, decode e cancelamento, mantendo tentativas separadas. Uma repetição pode gerar texto diferente e novo custo; o consumidor precisa saber se houve continuidade, reinício ou falha parcial.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4B-S010",
+        "V4B-S008",
+        "V4B-S014",
+        "V3D-S007",
+        "V3D-S012"
+      ]
+    },
+    {
+      "name": "Backend como adaptador",
+      "detail": "Defina contrato comum mínimo e extensões específicas, evitando esconder diferenças semânticas de engines. vLLM, Transformers e llama.cpp ilustram implementações possíveis; os casos de seus operadores são analogias técnicas. A proposta LAI só ganha evidência de implementação depois de código, testes e execução próprios.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4B-S010",
+        "V4B-S008",
+        "V4B-S014",
+        "V3D-S007",
+        "V3D-S012"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Serviço de modelos especializados",
+      "scenario": "Vários modelos 3–30B atendem tarefas diferentes.",
+      "strategy": "Qualifique cada par modelo/backend, selecione por contrato e exponha estado completo. Preserve identidade de tokenizer, adapter e precisão para cache e métricas.",
+      "small_model_role": "Um 3–7B pode assumir rotinas estreitas; modelos maiores ficam nos casos que justificam custo.",
+      "acceptance": "Nenhuma solicitação usa capacidade não comprovada e nenhum parcial é marcado concluído.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4B-S010",
+        "V4B-S008",
+        "V4B-S014",
+        "V3D-S007",
+        "V3D-S012"
+      ]
+    },
+    {
+      "name": "Migração de runtime",
+      "scenario": "A equipe deseja trocar engine sem alterar consumidores.",
+      "strategy": "Faça replay de contratos e testes de erro, depois compare carga. Mantenha compatibilidade explícita e rollback, registrando diferenças que exigem mudança do cliente.",
+      "small_model_role": "Um 8–14B pode servir de candidato real; testes sintéticos não substituem sua execução.",
+      "acceptance": "Preservar semântica de término, cancelamento e ferramentas, além da qualidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4B-S010",
+        "V4B-S008",
+        "V4B-S014",
+        "V3D-S007",
+        "V3D-S012"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Começar com uma réplica e contrato pequeno reduz complexidade sem impedir evolução.",
+    "8_14b": "Adicionar cache, batching e quantização conforme gargalos medidos.",
+    "15_30b": "Distribuição ou especulação só entram quando suporte e ganho líquido forem demonstrados.",
+    "training_or_runtime_requirements": "Proposta de camada de runtime; precisa de implementação e qualificação por ambiente, não treinamento em si.",
+    "do_not_use_when": "Não apresentar abstração editorial como engine já instalado nem prometer equivalência entre provedores."
+  },
+  "connections": [
+    {
+      "target_id": "R009",
+      "relation": "alternative",
+      "how": "vLLM pode implementar parte do contrato de execução proposto.",
+      "interface": "Modelo, configuração e eventos normalizados.",
+      "condition": "Compatibilidade validada na versão real.",
+      "acceptance": "Testar casos normais, truncamento, falha e cancelamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4B-S010",
+        "V4B-S008",
+        "V4B-S014",
+        "V3D-S007",
+        "V3D-S012"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "R024",
+      "relation": "alternative",
+      "how": "llama.cpp pode atender execução local quando suporta modelo e formato.",
+      "interface": "GGUF, build e limites de geração.",
+      "condition": "Contrato do cliente preservado.",
+      "acceptance": "Comparar memória, término e concorrência no dispositivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4B-S010",
+        "V4B-S008",
+        "V4B-S014",
+        "V3D-S007",
+        "V3D-S012"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "P016",
+      "relation": "complements",
+      "how": "A avaliação proposta qualifica mudanças no engine antes da promoção.",
+      "interface": "Manifesto e resultados por caso.",
+      "condition": "Conjuntos separados de desenvolvimento e aceitação.",
+      "acceptance": "Rejeitar regressões de semântica mesmo com throughput maior.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4B-S010",
+        "V4B-S008",
+        "V4B-S014",
+        "V3D-S007",
+        "V3D-S012"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Manter metadados de término obrigatórios no contrato.",
+    "Não esconder fallback de precisão ou recurso em métricas agregadas."
+  ],
+  "frontier_comparison": "Compare a aplicação proposta com fronteira por tarefa, prazo e custo completo. Nenhuma combinação de runtimes prova paridade geral ou existência de uma implantação LAI.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q004",
+      "V4B-Q014",
+      "V4B-Q026"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V4B-S010",
+    "V4B-S008",
+    "V4B-S014",
+    "V3D-S007",
+    "V3D-S012"
+  ]
+}

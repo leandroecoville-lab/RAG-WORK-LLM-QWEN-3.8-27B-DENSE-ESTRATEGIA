@@ -1,0 +1,18 @@
+[
+  {
+    "question": "codex exec cria um serviço durável de workflow?",
+    "answer": "Não por si só. Ele executa a tarefa; persistência operacional, reconciliação e política de retomada precisam de desenho próprio."
+  },
+  {
+    "question": "Qual evidência comprova a correção?",
+    "answer": "Resultados de verificações relevantes e o estado dos artefatos, vinculados à revisão analisada; a declaração do agente sozinha não basta."
+  },
+  {
+    "question": "Um evento item.completed encerra necessariamente a tarefa?",
+    "answer": "Não. Concluir um item não substitui o status do turno e a verificação externa dos artefatos."
+  },
+  {
+    "question": "Por que evitar a sessão implicitamente mais recente?",
+    "answer": "Execuções paralelas podem tornar a escolha ambígua; registre e retome o identificador da missão."
+  }
+]

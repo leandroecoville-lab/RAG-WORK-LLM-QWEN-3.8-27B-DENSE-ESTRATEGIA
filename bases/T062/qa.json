@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Hierarquia é sempre do recente para o antigo?",
+    "answer": "Não. Pode refletir função, abstração, persistência ou custo de acesso."
+  },
+  {
+    "question": "Ela amplia fisicamente a janela da LLM?",
+    "answer": "Não. Gerencia o que entra na janela e mantém o restante recuperável fora dela."
+  },
+  {
+    "question": "Toda camada precisa de uma cópia do fato?",
+    "answer": "Não. Pode conter apenas índice ou referência. Cópias e resumos criam obrigações adicionais de atualização e controle de versão."
+  },
+  {
+    "question": "Como decidir onde manter um item?",
+    "answer": "Considere custo de acesso, frequência, criticidade e capacidade de reconstrução. Frequência alta não autoriza ignorar validade ou proveniência."
+  }
+]

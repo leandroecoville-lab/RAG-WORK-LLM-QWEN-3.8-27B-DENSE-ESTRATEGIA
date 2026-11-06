@@ -1,0 +1,115 @@
+{
+  "id": "T213",
+  "novelty": "A v3 vinculava micro-missões a artefatos testáveis. A expansão escolhe tamanho de unidade conforme variância e integração, cria orçamentos locais e diferencia decomposição útil de fragmentação que só multiplica mensagens.",
+  "deep_layers": [
+    {
+      "name": "Fronteira por invariantes",
+      "detail": "Uma micro-missão deve preservar ou transformar um conjunto claro de invariantes. Dividir um requisito entre dois agentes sem definir quem garante sua propriedade final deixa uma lacuna de responsabilidade. Prefira unidade que termine com artefato verificável e pouco estado compartilhado; decisões transversais devem ser tomadas antes da distribuição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S002"
+      ]
+    },
+    {
+      "name": "Tamanho adaptativo",
+      "detail": "Tarefas repetitivas previsíveis podem ser agrupadas; exceções ambíguas merecem unidades menores e mais diagnóstico. Use histórico de retrabalho para ajustar tamanho, mantendo overhead de preparação e integração no cálculo. O número de parâmetros não define sozinho quantos arquivos cabem numa missão: acoplamento e clareza do teste importam mais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S017",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Orçamento herdado",
+      "detail": "Distribua tempo, tokens e tentativas a partir do teto global, reservando integração e contingência. Cada filho recebe sua parcela e não um orçamento novo completo. Ao encerrar uma unidade, devolva capacidade não usada conforme a política do controlador; não permita que a narrativa de sucesso esconda custo de subtarefas abandonadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V3C-S022"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Atualização de dependência",
+      "scenario": "Muitos consumidores precisam ajustar chamadas e validar comportamento.",
+      "strategy": "Agrupe por módulo e contrato, defina revisão comum da API e produza patches separados. Execute validação local antes de integrar; uma incompatibilidade no contrato compartilhado suspende os dependentes afetados. Unidades concluídas que continuam compatíveis não precisam ser reescritas.",
+      "small_model_role": "3–7B faz alterações mecânicas; 8–14B diagnostica testes; 15–30B resolve contrato comum.",
+      "acceptance": "Proposta: custo por módulo aceito e retrabalho causado por mudanças transversais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S017",
+        "V4C-S030"
+      ]
+    },
+    {
+      "name": "Pesquisa de muitas bases",
+      "scenario": "Cada tópico exige aprofundamento e fontes próprias.",
+      "strategy": "Atribua IDs únicos, contrato de conteúdo e arquivos separados, com junção só após validação. Fontes e casos podem ser compartilhados por identidade; tópicos não devem inventar casos para preencher uma quota. Reserve etapa de revisão cruzada para detectar nomenclatura e evidência indevidas.",
+      "small_model_role": "8–14B extrai e estrutura; 15–30B integra relações e audita alegações.",
+      "acceptance": "Proposta: cobertura integral dos IDs e nenhuma duplicação artificial de casos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Unidades curtas com transformação e teste local explícitos, sem múltiplos objetivos vagos.",
+    "8_14b": "Missões com algumas dependências internas e retorno estruturado de impedimentos.",
+    "15_30b": "Decomposição global, integração e resolução de interfaces compartilhadas.",
+    "training_or_runtime_requirements": "Identidade estável das unidades, arquivos ou áreas de escrita separados e orçamento global observável.",
+    "do_not_use_when": "Não fragmentar trabalho cujo aceite depende de contexto indivisível sem prever integrador capaz de recuperá-lo."
+  },
+  "connections": [
+    {
+      "target_id": "T237",
+      "relation": "feeds",
+      "how": "Transformar unidades independentes em tarefas de subagentes com retorno verificável.",
+      "interface": "ID, entradas, dono de escrita e critério de aceite.",
+      "condition": "Dependências compartilhadas resolvidas ou explicitadas.",
+      "acceptance": "Integrador consegue aceitar ou rejeitar cada unidade sem adivinhar estado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T234",
+      "relation": "complements",
+      "how": "No harness Codex, planos e conhecimento do repositório sustentam decomposição e continuidade.",
+      "interface": "Plano versionado, decisão e referências de projeto.",
+      "condition": "Documentos correspondem à revisão em trabalho.",
+      "acceptance": "Etapas antigas não são executadas após mudança de requisito sem revisão.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S030"
+      ],
+      "case_ids": [
+        "V4C-C029"
+      ]
+    }
+  ],
+  "failure_controls": [
+    "Unidades pequenas demais podem consumir mais coordenação que execução.",
+    "Uma tarefa marcada concluída sem artefato aceito continua pendente para integração."
+  ],
+  "frontier_comparison": "Compare campanha inteira, incluindo planejamento e revisão, entre decomposição com modelos pequenos e modelo de fronteira. Sucesso em tarefas atomizadas não demonstra competência equivalente em requisitos abertos.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q012",
+      "V4C-Q027"
+    ],
+    "scope_note": "Amazon Q e harness Codex descrevem campanhas e decomposição; o método de tamanho adaptativo é proposta e não métrica comprovada."
+  },
+  "source_ids": [
+    "V4C-S030",
+    "V3C-S002",
+    "V4C-S017",
+    "V4C-S014",
+    "C-S030",
+    "V3C-S022"
+  ]
+}

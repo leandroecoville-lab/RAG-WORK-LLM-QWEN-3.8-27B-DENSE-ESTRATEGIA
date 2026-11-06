@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "B-S039",
+    "title": "Better & Faster Large Language Models via Multi-token Prediction",
+    "url": "https://arxiv.org/abs/2404.19737",
+    "publisher": "Gloeckle e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2024-04-30",
+    "supports": "Objetivo de treino prevê múltiplos tokens com cabeças auxiliares sobre tronco compartilhado.",
+    "limitations": "Resumo e metadados acessados; artigo integral não auditado e resultados não reproduzidos.",
+    "web_ref": "turn17view2"
+  },
+  {
+    "source_id": "V4B-S011",
+    "title": "NVIDIA TensorRT LLM",
+    "url": "https://developer.nvidia.com/tensorrt-llm",
+    "publisher": "NVIDIA",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Runtime Python/PyTorch, cache paginado, batching, quantização e especulação documentados.",
+    "limitations": "Página de produto demonstra recursos disponíveis, não adoção comprovada por cliente nem compatibilidade do hardware local.",
+    "web_ref": "turn219view2"
+  },
+  {
+    "source_id": "V4D-S008",
+    "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+    "url": "https://arxiv.org/abs/2501.12948",
+    "publisher": "DeepSeek-AI",
+    "source_type": "research_paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-01-22",
+    "supports": "Pesquisa sobre RL de raciocínio e transferência de capacidades a modelos menores.",
+    "limitations": "Pesquisa e benchmarks, não evidência de implantação de cada variante. Registro atual é v2, revisado em 2026-01-04; comparação histórica não define fronteira de novembro de 2026.",
+    "web_ref": "turn231view2"
+  },
+  {
+    "source_id": "V4D-S014",
+    "title": "Profiling Data in DeepSeek Infra",
+    "url": "https://github.com/deepseek-ai/profile-data/blob/main/README.md",
+    "publisher": "DeepSeek-AI",
+    "source_type": "official_repository",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Descrição de sobreposição computação/comunicação, RDMA e configurações ligadas ao deployment online V3/R1.",
+    "limitations": "Os traces publicados simulam roteamento MoE perfeitamente balanceado; não são reprodução integral de tráfego real. EP32/EP128 deste perfil e EP32/EP320 do relatório são contextos/revisões diferentes.",
+    "web_ref": "turn311view0"
+  },
+  {
+    "source_id": "V4D-S015",
+    "title": "DeepSeek-V3 Technical Report — v2",
+    "url": "https://arxiv.org/html/2412.19437v2",
+    "publisher": "DeepSeek-AI",
+    "source_type": "research_paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-02-18",
+    "supports": "Seção 3.4 descreve deployment de inferência com prefill/decode separados, TP/EP e redundância de especialistas guiada por carga.",
+    "limitations": "Modelo de 671B totais, fora de 3–30B. Custos publicados de treino não incluem toda a pesquisa. MTP especulativo avaliado não prova ativação em todo serviço online.",
+    "web_ref": "turn312view2"
+  }
+]

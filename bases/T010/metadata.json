@@ -1,0 +1,29 @@
+{
+  "id": "T010",
+  "name": "Fixed-Size Chunking",
+  "canonical_name": "Fixed-Size Chunking",
+  "canonical_id": "T010",
+  "aliases": [
+    "segmentação de tamanho fixo"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T011",
+    "T012",
+    "T033"
+  ],
+  "source_ids": [
+    "A-S004",
+    "V3A-S013",
+    "V4A-S013",
+    "A-S007"
+  ],
+  "namespace": "T010",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T010",
+  "chunk_count": 9
+}

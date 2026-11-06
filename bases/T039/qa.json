@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Importante significa verdadeiro?",
+    "answer": "Não. Uma hipótese muito relevante ainda pode ser falsa e precisa manter seu status."
+  },
+  {
+    "question": "Preciso usar embeddings para medir importância?",
+    "answer": "Não. Regras de domínio, tipo de evento e dependências podem ser mais apropriados para certos campos."
+  },
+  {
+    "question": "É adequado normalizar todos os escores juntos?",
+    "answer": "Depende do significado e da distribuição de cada critério. Normalização por candidatos pode mudar prioridades quando novos itens entram."
+  },
+  {
+    "question": "Como evitar que uma memória acessada domine para sempre?",
+    "answer": "Separe frequência de acesso, validade e novidade. Faça avaliações com fatos antigos pouco acessados que continuam necessários à tarefa."
+  }
+]

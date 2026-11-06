@@ -1,0 +1,52 @@
+{
+  "id": "T049",
+  "technical_details": "Um episódio precisa preservar o que o agente sabia no momento da decisão. Acrescentar a solução descoberta depois à descrição inicial cria retrospectiva enganosa e ensina um procedimento impossível de reproduzir. Resultados também podem ser censurados: uma tarefa interrompida não é necessariamente fracasso, e sucesso sem verificação pode ser apenas ausência de erro observado. Esses estados devem sobreviver à síntese do caso.",
+  "boundary_condition": "Casos históricos deixam de orientar bem quando foram selecionados somente por sucesso ou quando as condições anteriores à ação não podem ser reconstruídas.",
+  "implementation_contract": {
+    "inputs": "Sequência do episódio, evidências disponíveis por etapa e observações posteriores separadas.",
+    "outputs": "Caso recuperável com contexto inicial, decisões, desfecho e limitações de observação.",
+    "state": "Versões do ambiente, fronteiras do episódio, participantes e proveniência dos resultados.",
+    "invariant": "Informação conhecida depois não aparece como premissa disponível antes de sua observação."
+  },
+  "tradeoffs": [
+    "Episódios completos melhoram análise de sequência e aumentam o custo de leitura.",
+    "Resumos favorecem busca por problema e podem esconder tentativas malsucedidas que explicam o desfecho."
+  ],
+  "failure_test": "Teste proposto: registrar uma tarefa encerrada antes da validação e adicionar a conclusão em data posterior. A consulta histórica deve distinguir resultado desconhecido naquele instante de resultado posteriormente confirmado.",
+  "evaluation_plan": "Avaliação proposta: comparar recuperação por objetivo e por condições iniciais usando casos positivos, negativos e interrompidos. Medir adequação da analogia, reconstrução temporal e confusão entre intenção e efeito; avaliar transferência entre versões separadamente.",
+  "comparisons": [
+    {
+      "entry_id": "T070",
+      "relation": "complements",
+      "reason": "O episodic store fornece armazenamento e índices; memória episódica define a unidade de experiência e sua interpretação."
+    },
+    {
+      "entry_id": "T057",
+      "relation": "distinct_from",
+      "reason": "Uma sequência lembrada pode sugerir hipótese, mas não identifica por si só o efeito de uma intervenção."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Generative Agents mantém experiências em um fluxo de memória e usa sua recuperação para orientar comportamento.",
+    "source_ids": [
+      "A-S008"
+    ],
+    "support": "direct",
+    "caveat": "A avaliação de plausibilidade em simulação não demonstra validade causal nem qualidade de procedimentos de produção."
+  },
+  "advanced_qa": [
+    {
+      "question": "Qual é a unidade correta de episódio?",
+      "answer": "A menor sequência que conserva objetivo, condições e desfecho interpretável. Pode atravessar sessões; uma sessão pode conter vários episódios."
+    },
+    {
+      "question": "Casos incompletos devem entrar no índice?",
+      "answer": "Podem ser úteis, desde que a incompletude seja recuperável como campo. O leitor não deve interpretar ausência de resultado como resultado negativo."
+    }
+  ],
+  "source_ids": [
+    "A-S008",
+    "V3A-S037"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

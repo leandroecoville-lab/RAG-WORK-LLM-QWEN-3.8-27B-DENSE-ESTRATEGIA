@@ -1,0 +1,112 @@
+{
+  "id": "T034",
+  "novelty": "A v3 separou fronteiras e proposições. Aqui decisões do agente sobre segmentação ficam sujeitas a estabilidade e custo de revisão.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "O agente deve escolher entre fronteiras candidatas produzidas por regras, não inventar livremente texto derivado. Isso limita variação e preserva alinhamento com origem.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S012",
+        "V4A-S013"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Registre justificativa de fronteira por dependência: mudança de assunto, entidade ou escopo. Repetir a segmentação com pequena edição deve modificar apenas regiões justificáveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S012",
+        "V4A-S013"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare splitter determinístico e agente com orçamento de chamadas igualado por corpus. Meça recuperação, estabilidade de IDs, custo de ingestão e taxa de fronteiras que separam condição e consequência. Unidade de avaliação: documento segmentado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S012",
+        "V4A-S013"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Documentos heterogêneos",
+      "scenario": "Seções misturam FAQ e narrativa.",
+      "strategy": "Classificar região e selecionar política de divisão específica; usar julgamento do agente somente em fronteiras ambíguas.",
+      "small_model_role": "3–7B classifica tipos; 8–14B decide bordas.",
+      "acceptance": "Nenhuma condição essencial deve ficar sem referência ao trecho dependente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S012",
+        "V4A-S013"
+      ]
+    },
+    {
+      "name": "Notas de pesquisa",
+      "scenario": "Uma observação interrompe tópico e retorna depois.",
+      "strategy": "Criar segmentos por unidade argumentativa e relações de continuidade; não fundir trechos distantes sem registrar origem.",
+      "small_model_role": "15–30B identifica dependências complexas.",
+      "acceptance": "Cada segmento deve ser reconstruível a partir de intervalos explícitos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S012",
+        "V4A-S013"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Classificador de região com conjunto fechado de políticas.",
+    "8_14b": "Árbitro de poucas fronteiras ambíguas, com justificativa curta.",
+    "15_30b": "Analista de continuidade argumentativa em documentos difíceis.",
+    "training_or_runtime_requirements": "Candidatos de fronteira, alinhamento por offsets e orçamento de ingestão; decisão estocástica precisa versão registrada.",
+    "do_not_use_when": "Conteúdo é homogêneo e splitter simples tem qualidade equivalente com custo muito menor."
+  },
+  "connections": [
+    {
+      "target_id": "T033",
+      "relation": "requires",
+      "how": "Detectar estruturas antes da escolha pelo agente.",
+      "interface": "Blocos protegidos e cortes permitidos.",
+      "condition": "Agente não poder romper unidade obrigatória.",
+      "acceptance": "Testar tabela e bloco de código que parecem mudar de tema.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S012",
+        "V4A-S013"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T072",
+      "relation": "feeds",
+      "how": "Versionar decisões de segmentação.",
+      "interface": "Modelo, prompt, fronteiras e revisão documental.",
+      "condition": "Reindexação preservar histórico de referência.",
+      "acceptance": "Repetir ingestão e medir mudança injustificada de IDs.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S012",
+        "V4A-S013"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não chamar reescrita de texto de simples chunking.",
+    "Comparar fronteiras com origem, não só com fluência dos segmentos."
+  ],
+  "frontier_comparison": "Avaliar benefício marginal sobre regras; usar modelo maior na ingestão só se o ganho persistir na leitura.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q009",
+      "V4A-Q022"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S012",
+    "V4A-S013"
+  ]
+}

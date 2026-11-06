@@ -1,0 +1,112 @@
+{
+  "id": "T056",
+  "novelty": "A v3 cuidou de joins temporais. Aqui bitemporalidade suporta auditoria de decisões e comparação justa de políticas sob informação disponível.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Defina consulta de auditoria com dois instantes: quando o fato valeu e o que o sistema sabia ao decidir. Misturar essas perspectivas pode punir uma decisão por informação que chegou depois.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S032",
+        "V3A-S042"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Correções retroativas devem gerar nova versão de conhecimento e permitir recalcular projeções sem apagar a resposta histórica. O resultado recalculado precisa ser rotulado como reavaliação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S032",
+        "V3A-S042"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare política original e nova usando o mesmo corte de conhecimento. Meça diferenças atribuíveis à política versus dados tardios; testar fatos com validade futura declarada e observação atrasada. Unidade de avaliação: decisão histórica.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S032",
+        "V3A-S042"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Explicação de decisão",
+      "scenario": "Usuário pergunta por que recomendação mudou.",
+      "strategy": "Recuperar evidências conhecidas em cada data, mostrar qual correção alterou o entendimento e separar erro anterior de informação nova.",
+      "small_model_role": "8–14B explica duas perspectivas.",
+      "acceptance": "Cada justificativa deve usar somente fatos disponíveis naquele corte.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S032",
+        "V3A-S042"
+      ]
+    },
+    {
+      "name": "Avaliação de memória",
+      "scenario": "Nova política de consolidação parece melhor.",
+      "strategy": "Reprocessar histórico com cortes consistentes, sem entregar ao modelo correções futuras; comparar erros evitados e antecipações indevidas.",
+      "small_model_role": "3–7B extrai; 15–30B integra auditoria.",
+      "acceptance": "Não contabilizar vantagem causada por vazamento temporal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S032",
+        "V3A-S042"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extrator de datas com rótulos de validade e registro separados.",
+    "8_14b": "Leitor de consultas temporais já executadas por banco.",
+    "15_30b": "Explicador de mudanças de decisão entre perspectivas históricas.",
+    "training_or_runtime_requirements": "Banco ou camada que preserve ambos os tempos, política de intervalos e identificação de correções.",
+    "do_not_use_when": "Datas são inferidas sem fonte ou aplicação só armazena último valor e tenta reconstruir passado por suposição."
+  },
+  "connections": [
+    {
+      "target_id": "T077",
+      "relation": "complements",
+      "how": "Aplicar cortes temporais às relações do grafo.",
+      "interface": "Aresta, valid_time, recorded_time e perspectiva.",
+      "condition": "Todos os elos respeitarem corte comum.",
+      "acceptance": "Consultar caminho com elo conhecido apenas posteriormente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S032",
+        "V3A-S042"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T059",
+      "relation": "feeds",
+      "how": "Registrar correção como evento interpretável.",
+      "interface": "Evento, tempos, origem e versão do esquema.",
+      "condition": "Replay preservar distinção dos dois tempos.",
+      "acceptance": "Reproduzir decisão histórica sem incorporar correção futura.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S032",
+        "V3A-S042"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não usar timestamp de ingestão como data do fato.",
+    "Não apresentar reavaliação atual como resposta que existia no passado."
+  ],
+  "frontier_comparison": "Comparar consistência temporal das justificativas; nenhum porte de modelo corrige retrospectivamente um histórico inexistente.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q005",
+      "V4A-Q025"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S032",
+    "V3A-S042"
+  ]
+}

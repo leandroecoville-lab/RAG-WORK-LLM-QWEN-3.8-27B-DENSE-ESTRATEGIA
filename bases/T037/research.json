@@ -1,0 +1,52 @@
+{
+  "id": "T037",
+  "technical_details": "O compressor condicionado à pergunta implementa uma decisão sobre utilidade futura, não apenas sobre relevância lexical imediata. Em problemas com várias etapas, um trecho aparentemente secundário pode conter a ligação necessária para a próxima busca. RECOMP também permite saída vazia quando os documentos não acrescentam informação útil, evitando alimentar o gerador com contexto irrelevante. Essa escolha exige distinguir ausência de utilidade e ausência de evidência.",
+  "boundary_condition": "Uma representação comprimida perde validade quando muda a finalidade, a pergunta ou a versão das fontes; correspondência temática não garante reutilização segura.",
+  "implementation_contract": {
+    "inputs": "Pergunta, documentos candidatos, orçamento e requisitos de sustentação da resposta.",
+    "outputs": "Trechos ou síntese condicionada, referências de suporte e campos sem cobertura.",
+    "state": "Identidade da consulta, versões documentais, seletor e motivos de descarte recuperáveis.",
+    "invariant": "Saída vazia não é registrada automaticamente como prova de que a afirmação consultada é falsa."
+  },
+  "tradeoffs": [
+    "Seleção agressiva reduz leitura, mas aumenta risco de excluir pontes necessárias a inferências posteriores.",
+    "Compressão treinada para o gerador pode melhorar compatibilidade e restringe transferência entre tarefas e modelos."
+  ],
+  "failure_test": "Teste proposto: usar duas fontes em que a ligação depende de uma definição pouco semelhante à pergunta. O compressor deve preservar a ponte ou indicar cobertura insuficiente, sem fabricar a conexão.",
+  "evaluation_plan": "Avaliação proposta: comparar contexto integral, seleção extrativa e síntese com custo completo de compressão e geração. Medir sustentação, recall de relações intermediárias e erros por falsa ausência; repetir após mudança de pergunta para detectar reutilização indevida.",
+  "comparisons": [
+    {
+      "entry_id": "T036",
+      "relation": "complements",
+      "reason": "A consulta pode ser adaptada antes da busca, mas a compressão precisa respeitar a intenção original."
+    },
+    {
+      "entry_id": "T020",
+      "relation": "complements",
+      "reason": "Um compressor aprendido pode ser condicionado à consulta; aprendizado e condicionamento são dimensões diferentes."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "RECOMP estuda compressores extrativos e abstrativos orientados ao desempenho posterior e permite contexto vazio quando não acrescenta utilidade.",
+    "source_ids": [
+      "V3A-S003"
+    ],
+    "support": "direct",
+    "caveat": "Os experimentos do artigo não justificam um limiar universal de descarte nem garantem cobertura de tarefas novas."
+  },
+  "advanced_qa": [
+    {
+      "question": "Como cachear a compressão?",
+      "answer": "Inclua pergunta ou intenção formal, versões das fontes e configuração do compressor. Cache por documento apenas mistura seleções feitas para objetivos diferentes."
+    },
+    {
+      "question": "Uma síntese fiel basta para responder bem?",
+      "answer": "Não. Ela pode ser fiel ao que selecionou e omitir uma condição indispensável. Fidelidade e suficiência precisam ser avaliadas separadamente."
+    }
+  ],
+  "source_ids": [
+    "V3A-S003",
+    "A-S018"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

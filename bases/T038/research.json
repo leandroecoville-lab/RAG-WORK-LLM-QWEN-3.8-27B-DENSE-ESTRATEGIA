@@ -1,0 +1,52 @@
+{
+  "id": "T038",
+  "technical_details": "No método Selective Context, a informação de um token é sua surpresa sob um modelo: I(x) = −log₂ P(x | prefixo), em bits. Pontuações podem ser agregadas em unidades lexicais antes do descarte. Isso mede improbabilidade contextual, não valor causal para a resposta. Uma condição previsível pode ter baixo escore, enquanto um erro de digitação raro recebe pontuação elevada.",
+  "boundary_condition": "A transferência falha quando o modelo que estima probabilidades trata linguagem técnica ou idioma de forma muito diferente do gerador que lerá o resultado.",
+  "implementation_contract": {
+    "inputs": "Texto tokenizado, modelo de pontuação, unidade selecionável e orçamento de retenção.",
+    "outputs": "Máscara de seleção com offsets, pontuações e motivos de preservação obrigatória.",
+    "state": "Tokenizer, definição de agregação, limiar e contexto usado no cálculo das probabilidades.",
+    "invariant": "Uma unidade removida por baixa surpresa não é declarada semanticamente dispensável sem avaliação da tarefa."
+  },
+  "tradeoffs": [
+    "Unidades maiores preservam sintaxe e tornam a seleção menos granular.",
+    "Pontuação probabilística dispensa treinar o gerador, mas acrescenta inferência e pode privilegiar ruído incomum."
+  ],
+  "failure_test": "Teste proposto: inserir uma restrição frequente junto de códigos aleatórios sem utilidade. A avaliação deve revelar se a política prefere o ruído; regras obrigatórias precisam impedir a perda da restrição.",
+  "evaluation_plan": "Avaliação proposta: comparar surpresa, seleção por relevância e LLMLingua-2 sob o mesmo orçamento final. Medir retenção de condições, resposta sustentada, custo do seletor e degradação por idioma; controlar o tamanho das unidades para não atribuir seu efeito ao escore.",
+  "comparisons": [
+    {
+      "entry_id": "T018",
+      "relation": "specializes",
+      "reason": "O registro preserva a associação ao conceito geral de poda, detalhando um critério informacional específico."
+    },
+    {
+      "entry_id": "T020",
+      "relation": "distinct_from",
+      "reason": "Um seletor treinado com rótulos de retenção aprende outra função; surpresa não equivale a probabilidade de relevância."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Selective Context calcula auto-informação com um modelo causal e usa unidades lexicais para reduzir conteúdo considerado redundante.",
+    "source_ids": [
+      "A-S016"
+    ],
+    "support": "direct",
+    "caveat": "A interpretação como importância operacional é uma hipótese adicional; o artigo não transforma previsibilidade em garantia de inutilidade."
+  },
+  "advanced_qa": [
+    {
+      "question": "Somar surpresa favorece unidades longas?",
+      "answer": "Pode favorecer: a soma cresce com o número de tokens. A comparação precisa declarar agregação, tamanho e limiar utilizados."
+    },
+    {
+      "question": "LLMLingua-2 aplica exatamente o mesmo critério?",
+      "answer": "Não. Formula retenção como classificação de tokens com aprendizado supervisionado e informação bidirecional; não é apenas outro limiar sobre surpresa."
+    }
+  ],
+  "source_ids": [
+    "A-S016",
+    "V3A-S001"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

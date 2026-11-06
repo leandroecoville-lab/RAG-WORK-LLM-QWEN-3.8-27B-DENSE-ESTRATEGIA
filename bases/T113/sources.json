@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "B-S027",
+    "title": "Fused Attention",
+    "url": "https://triton-lang.org/main/getting-started/tutorials/06-fused-attention.html",
+    "publisher": "Triton / OpenAI kernel team",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Implementação de referência de atenção em blocos com kernel fundido.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn25view4"
+  },
+  {
+    "source_id": "V3B-S006",
+    "title": "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning — full text",
+    "url": "https://arxiv.org/html/2307.08691v1",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-07-17",
+    "supports": "Particionamento entre blocos e warps, custo de operações não matriciais.",
+    "limitations": "Texto técnico consultado; velocidade depende de formas, dtype e arquitetura do dispositivo.",
+    "web_ref": "turn120view0"
+  },
+  {
+    "source_id": "V4B-S017",
+    "title": "FlexAttention Part II: FlexAttention for Inference",
+    "url": "https://pytorch.org/blog/flexattention-for-inference/",
+    "publisher": "PyTorch",
+    "source_type": "technical_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-04-30",
+    "supports": "Backend de decode, suporte a GQA e PagedAttention e diferenças entre formas de prefill/decode.",
+    "limitations": "Implementação e experimentos não constituem prova de adoção em produto; atenção customizada depende de máscara correta.",
+    "web_ref": "turn227view0"
+  },
+  {
+    "source_id": "V4B-S018",
+    "title": "FlexAttention + FlashAttention-4: Fast and Flexible",
+    "url": "https://pytorch.org/blog/flexattention-flashattention-4-fast-and-flexible/",
+    "publisher": "PyTorch",
+    "source_type": "technical_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-03-05",
+    "supports": "Backend FlashAttention-4 de FlexAttention em Hopper/Blackwell e geração de modificadores de score/máscara.",
+    "limitations": "Demonstração de backend; não transforma FA2/FA3 em versões equivalentes nem garante ganho em qualquer forma de tensor.",
+    "web_ref": "turn227view1"
+  }
+]

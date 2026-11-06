@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Pipeline divide tokens entre GPUs?",
+    "answer": "Primariamente divide camadas; context parallelism divide a dimensão de sequência."
+  },
+  {
+    "question": "Por que surgem bolhas?",
+    "answer": "Um estágio pode esperar dados do anterior ou ficar sem trabalho enquanto o pipeline preenche e esvazia."
+  },
+  {
+    "question": "Mais microbatches sempre ajudam?",
+    "answer": "Não. Menores operações podem perder eficiência e mais itens pendentes ampliam filas e temporários."
+  },
+  {
+    "question": "Pipeline acelera uma única sequência curta?",
+    "answer": "Pode apenas permitir que o modelo caiba; a travessia serial e a dependência autoregressiva continuam presentes."
+  }
+]

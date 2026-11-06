@@ -1,0 +1,3548 @@
+{
+  "corpus_sha256": "a959686a86fae91e2f3635e8f2db3fb9f0da7bc36b8d9ab02b484d3f2f22dc8c",
+  "mode": "lexical",
+  "lexical_profile": "expanded",
+  "semantic_cases": 40,
+  "semantic_hit_at_5": 0.925,
+  "semantic_mrr_at_10": 0.8230555555555557,
+  "name_lookup_cases": 287,
+  "name_lookup_hit_at_3": 1.0,
+  "cases": [
+    {
+      "case_id": "H01",
+      "query": "A fonte mudou, mas perguntas parecidas ainda recebem uma resposta armazenada antiga. Qual política deve remover essa resposta?",
+      "expected_ids": [
+        "T031",
+        "T005"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T054",
+        "T149",
+        "T158",
+        "T048",
+        "T003",
+        "T211",
+        "T076",
+        "T170",
+        "T005",
+        "T191"
+      ],
+      "first_relevant_rank": 9,
+      "hit_at_5": false
+    },
+    {
+      "case_id": "H02",
+      "query": "Preciso localizar um parágrafo preciso e depois fornecer a seção maior à resposta, mantendo a ligação entre as duas escalas.",
+      "expected_ids": [
+        "T032"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T026",
+        "T012",
+        "T033",
+        "T086",
+        "T123",
+        "T032",
+        "T085",
+        "T018",
+        "T037",
+        "T216"
+      ],
+      "first_relevant_rank": 6,
+      "hit_at_5": false
+    },
+    {
+      "case_id": "H03",
+      "query": "Uma informação vale desde janeiro, mas só chegou ao sistema em março. Quero responder tanto o que era válido quanto o que já se sabia em fevereiro.",
+      "expected_ids": [
+        "T056"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T009",
+        "T056",
+        "T077",
+        "T063",
+        "T218",
+        "T058",
+        "T212",
+        "T018",
+        "T049",
+        "T145"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H04",
+      "query": "O cursor de processamento e a memória do agente precisam avançar juntos: uma queda não pode persistir apenas um dos dois.",
+      "expected_ids": [
+        "T065",
+        "T060"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T060",
+        "T226",
+        "T116",
+        "T047",
+        "T002",
+        "P014",
+        "T064",
+        "R020",
+        "T241",
+        "T050"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H05",
+      "query": "Uma restrição antiga deve continuar recuperável mesmo depois de várias sessões terem sido sintetizadas em textos menores.",
+      "expected_ids": [
+        "T069",
+        "T008",
+        "T023"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T154",
+        "T212",
+        "T084",
+        "T063",
+        "T036",
+        "T003",
+        "T222",
+        "T207",
+        "T008",
+        "T197"
+      ],
+      "first_relevant_rank": 9,
+      "hit_at_5": false
+    },
+    {
+      "case_id": "H06",
+      "query": "Quero representar fatos e relações que mudam ao longo dos meses sem transformar toda relação histórica em fato vigente.",
+      "expected_ids": [
+        "T077",
+        "T056"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T077",
+        "T054",
+        "T207",
+        "T056",
+        "T051",
+        "T047",
+        "T076",
+        "T029",
+        "T241",
+        "T234"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H07",
+      "query": "A consulta combina um código de produto raro com uma descrição vaga. A busca precisa aproveitar correspondência exata e similaridade.",
+      "expected_ids": [
+        "T027"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T027",
+        "T005",
+        "T045",
+        "P007",
+        "T044",
+        "T067",
+        "R013",
+        "P006",
+        "T134",
+        "T009"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H08",
+      "query": "Os documentos recuperados parecem relacionados, mas só alguns realmente respondem à pergunta. Quero reordenar uma lista inicial curta.",
+      "expected_ids": [
+        "T028"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T028",
+        "P007",
+        "T006",
+        "T032",
+        "T011",
+        "T146",
+        "T012",
+        "T010",
+        "T036",
+        "T066"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H09",
+      "query": "Um arquivo enorme tem cabeçalhos, listas e tabelas; cortes por quantidade fixa podem separar o título dos seus dados.",
+      "expected_ids": [
+        "T033",
+        "T012"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T033",
+        "T011",
+        "T012",
+        "T230",
+        "T006",
+        "P002",
+        "T093",
+        "T056",
+        "T053",
+        "R006"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H10",
+      "query": "A conversa excedeu a janela e precisamos conservar objetivo, decisões vigentes e pendências com caminhos para as evidências.",
+      "expected_ids": [
+        "T043",
+        "T069",
+        "T211"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T154",
+        "T043",
+        "T039",
+        "P002",
+        "T069",
+        "P005",
+        "T003",
+        "T211",
+        "T004",
+        "T234"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H11",
+      "query": "Vários pedidos começam com exatamente as mesmas instruções longas. Quero evitar recalcular a parte inicial já processada.",
+      "expected_ids": [
+        "T082",
+        "T081",
+        "T002"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T094",
+        "T081",
+        "T007",
+        "T082",
+        "T180",
+        "T157",
+        "T241",
+        "T233",
+        "T121",
+        "T111"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H12",
+      "query": "O modelo cabe na placa, mas a memória acaba quando entram mais conversas longas. O consumo variável parece vir das chaves e valores.",
+      "expected_ids": [
+        "T086",
+        "T105",
+        "T106"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T086",
+        "T222",
+        "R003",
+        "T099",
+        "T081",
+        "T046",
+        "T130",
+        "T113",
+        "T108",
+        "T137"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H13",
+      "query": "As consultas possuem comprimentos diferentes e não quero deixar toda a fila esperando a geração mais longa terminar para admitir trabalho novo.",
+      "expected_ids": [
+        "T088"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T088",
+        "T149",
+        "T121",
+        "T094",
+        "T087",
+        "T166",
+        "T228",
+        "T137",
+        "T104",
+        "T225"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H14",
+      "query": "Um prompt comprido prejudica o intervalo entre tokens de outras sessões. Como dividir seu processamento inicial em etapas menores?",
+      "expected_ids": [
+        "T094"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T176",
+        "T094",
+        "T032",
+        "T222",
+        "T088",
+        "P002",
+        "R005",
+        "T086",
+        "T143",
+        "T010"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H15",
+      "query": "Preciso acelerar a geração com um modelo auxiliar, preservando a distribuição da política alvo quando o verificador rejeitar rascunhos.",
+      "expected_ids": [
+        "T079",
+        "T132"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T132",
+        "T131",
+        "T128",
+        "T079",
+        "T130",
+        "R015",
+        "T129",
+        "P009",
+        "T088",
+        "T189"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H16",
+      "query": "Os dados atravessam mais a memória da GPU do que a unidade de cálculo consegue aproveitar. Quero localizar o gargalo antes de mudar kernels.",
+      "expected_ids": [
+        "T107"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T107",
+        "T092",
+        "T085",
+        "T091",
+        "T124",
+        "T098",
+        "T121",
+        "T131",
+        "T117",
+        "T113"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H17",
+      "query": "Cada placa guardará grupos diferentes de camadas consecutivas, com dados intermediários circulando entre estágios.",
+      "expected_ids": [
+        "T119"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T119",
+        "T106",
+        "T100",
+        "T118",
+        "T122",
+        "T135",
+        "T125",
+        "T115",
+        "T090",
+        "T085"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H18",
+      "query": "A sequência é tão longa que quero repartir os seus tokens entre dispositivos, diferenciando isso de dividir pesos.",
+      "expected_ids": [
+        "T117",
+        "T101"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T117",
+        "T100",
+        "T101",
+        "T118",
+        "T119",
+        "T106",
+        "T088",
+        "T093",
+        "T094",
+        "T184"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H19",
+      "query": "Tenho pesos em quatro bits e ativações em dezesseis. Quero distinguir esse arranjo de reduzir também o cache da atenção.",
+      "expected_ids": [
+        "T124",
+        "T086"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T124",
+        "T085",
+        "T183",
+        "T086",
+        "T123",
+        "T127",
+        "T126",
+        "T125",
+        "T115",
+        "T090"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H20",
+      "query": "A aplicação recebe uma estrutura válida pela gramática, porém os valores podem estar errados. Quais mecanismos cobrem estrutura e correção separadamente?",
+      "expected_ids": [
+        "T196",
+        "T197",
+        "T195",
+        "T200"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T196",
+        "R025",
+        "T197",
+        "T220",
+        "T089",
+        "T141",
+        "T170",
+        "T232",
+        "T205",
+        "P009"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H21",
+      "query": "O serviço remoto está falhando continuamente. Quero interromper as tentativas por um período e depois enviar poucas sondagens controladas.",
+      "expected_ids": [
+        "T138",
+        "T165"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T165",
+        "P013",
+        "T138",
+        "T136",
+        "R018",
+        "P011",
+        "T228",
+        "T164",
+        "T225",
+        "T162"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H22",
+      "query": "Duas solicitações simultâneas pedem a mesma computação. A ideia é compartilhar o trabalho em andamento e entregar o resultado para ambas.",
+      "expected_ids": [
+        "T150"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T150",
+        "T210",
+        "T154",
+        "T007",
+        "R019",
+        "R025",
+        "T162",
+        "T201",
+        "T093",
+        "T226"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H23",
+      "query": "Uma tarefa de baixa prioridade nunca é atendida porque trabalhos urgentes continuam chegando. Quero reduzir essa espera indefinida.",
+      "expected_ids": [
+        "T166"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T149",
+        "T174",
+        "T166",
+        "T121",
+        "T104",
+        "T225",
+        "T094",
+        "T092",
+        "P002",
+        "T087"
+      ],
+      "first_relevant_rank": 3,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H24",
+      "query": "Após receber uma resposta com orientação de espera do servidor, preciso definir a próxima tentativa sem ignorar esse intervalo.",
+      "expected_ids": [
+        "T164",
+        "T163"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T164",
+        "T163",
+        "T209",
+        "T175",
+        "T118",
+        "R018",
+        "T228",
+        "P013",
+        "T218",
+        "T087"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H25",
+      "query": "Uma chamada alterou o sistema externo, mas a conexão caiu antes de o agente receber o recibo. A retomada precisa evitar repetir o efeito.",
+      "expected_ids": [
+        "T243",
+        "T162"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T243",
+        "T060",
+        "T225",
+        "T211",
+        "T162",
+        "T159",
+        "P011",
+        "T140",
+        "T064",
+        "P015"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H26",
+      "query": "Quero reconstruir uma projeção a partir de fatos históricos, preservando a ordem pertinente e sem reenviar pagamentos ou mensagens.",
+      "expected_ids": [
+        "T241",
+        "T059"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T241",
+        "T059",
+        "P008",
+        "T154",
+        "R008",
+        "T042",
+        "T043",
+        "T041",
+        "T004",
+        "T216"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H27",
+      "query": "Reprocessar todos os eventos ficou lento. Quero começar de um estado previamente validado e aplicar somente eventos posteriores.",
+      "expected_ids": [
+        "T242",
+        "T240"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T242",
+        "T241",
+        "P008",
+        "T059",
+        "T043",
+        "T141",
+        "T172",
+        "T056",
+        "T047",
+        "T148"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H28",
+      "query": "Dois agentes vão modificar o mesmo repositório em paralelo. Cada um deve trabalhar numa árvore isolada antes da integração.",
+      "expected_ids": [
+        "T239",
+        "T169"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T239",
+        "R014",
+        "T169",
+        "R027",
+        "T023",
+        "T233",
+        "T076",
+        "T236",
+        "T237",
+        "T147"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H29",
+      "query": "O arquivo mudou depois que o agente preparou a edição. Como detectar a base diferente antes de aplicar um patch?",
+      "expected_ids": [
+        "T233"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T229",
+        "T233",
+        "P015",
+        "T230",
+        "R019",
+        "T231",
+        "T211",
+        "T169",
+        "T239",
+        "T076"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H30",
+      "query": "O processo está vivo e responde ao monitor, mas não conclui nenhuma etapa. O supervisor precisa distinguir vida de progresso.",
+      "expected_ids": [
+        "T227",
+        "T226",
+        "T225"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T225",
+        "T226",
+        "T227",
+        "T194",
+        "P013",
+        "P014",
+        "T206",
+        "T235",
+        "T222",
+        "T047"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H31",
+      "query": "A sessão nova não conhece a meta nem o último comando executado. Quero um registro explícito para a passagem de trabalho.",
+      "expected_ids": [
+        "T211",
+        "T234"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T211",
+        "T210",
+        "T015",
+        "T214",
+        "T234",
+        "R021",
+        "T056",
+        "T045",
+        "T226",
+        "P004"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H32",
+      "query": "O agente alterna as mesmas duas ações sem produzir novos artefatos. Precisamos reconhecer a repetição e encerrar ou replanejar.",
+      "expected_ids": [
+        "T218",
+        "T219"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T218",
+        "T208",
+        "T235",
+        "T146",
+        "T225",
+        "T089",
+        "T219",
+        "T142",
+        "T221",
+        "R017"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H33",
+      "query": "Quero adaptar um modelo sem atualizar todos os seus parâmetros, usando matrizes de baixa dimensão e comparando qualidade com a base.",
+      "expected_ids": [
+        "T182"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T182",
+        "T100",
+        "R022",
+        "T106",
+        "R011",
+        "T144",
+        "T092",
+        "T118",
+        "T080",
+        "T146"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H34",
+      "query": "A base quantizada ficará congelada durante o ajuste e somente adaptadores serão aprendidos. Como diferenciar essa técnica de mera quantização de inferência?",
+      "expected_ids": [
+        "T183",
+        "T182"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T183",
+        "T127",
+        "T115",
+        "T182",
+        "T129",
+        "T177",
+        "T085",
+        "T020",
+        "R003",
+        "R007"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H35",
+      "query": "Preciso transferir comportamentos de um modelo professor para outro estudante e avaliar o que se perdeu nas tarefas alvo.",
+      "expected_ids": [
+        "T178"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "P017",
+        "R012",
+        "T179",
+        "R015",
+        "T178",
+        "T177",
+        "R006",
+        "T181",
+        "T155",
+        "T132"
+      ],
+      "first_relevant_rank": 5,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H36",
+      "query": "Um conjunto de exemplos de treino não pode servir também de prova independente do ganho. Quero avaliar aprendizagem sem vazamento entre os conjuntos.",
+      "expected_ids": [
+        "T199",
+        "T200",
+        "T205"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T199",
+        "T177",
+        "P016",
+        "T019",
+        "T200",
+        "P017",
+        "T097",
+        "T109",
+        "T204",
+        "R012"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H37",
+      "query": "Várias respostas concordantes podem compartilhar o mesmo erro. Quero comparar votação com checagem executável e independente.",
+      "expected_ids": [
+        "T187",
+        "T188",
+        "T195",
+        "T200"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T200",
+        "T186",
+        "T191",
+        "T187",
+        "T189",
+        "T205",
+        "T188",
+        "P016",
+        "T223",
+        "T150"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H38",
+      "query": "O agente deve guardar feedback textual de uma tentativa e consultar essa experiência na próxima, sem fingir que seus pesos foram atualizados.",
+      "expected_ids": [
+        "T209",
+        "T049"
+      ],
+      "suite": "reserva_v3",
+      "scope": "all",
+      "retrieved_ids": [
+        "T209",
+        "P017",
+        "R017",
+        "T207",
+        "T070",
+        "T199",
+        "T206",
+        "T064",
+        "R004",
+        "T049"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H39",
+      "query": "Entre componentes propostos, qual deve escolher quanto histórico, memória e evidência caberá na próxima chamada?",
+      "expected_ids": [
+        "P001",
+        "P002",
+        "P005"
+      ],
+      "suite": "reserva_v3",
+      "scope": "proposta",
+      "retrieved_ids": [
+        "P004",
+        "P002",
+        "P005",
+        "P008",
+        "P001",
+        "P017",
+        "P016",
+        "P007",
+        "P010",
+        "P003"
+      ],
+      "first_relevant_rank": 2,
+      "hit_at_5": true
+    },
+    {
+      "case_id": "H40",
+      "query": "Qual componente proposto organizaria dados professor e estudante, treino, avaliação separada e promoção de um artefato de modelo?",
+      "expected_ids": [
+        "P017"
+      ],
+      "suite": "reserva_v3",
+      "scope": "proposta",
+      "retrieved_ids": [
+        "P017",
+        "P016",
+        "P012",
+        "P015",
+        "P008",
+        "P010",
+        "P004",
+        "P011",
+        "P009",
+        "P005"
+      ],
+      "first_relevant_rank": 1,
+      "hit_at_5": true
+    }
+  ],
+  "name_lookup": [
+    {
+      "id": "T001",
+      "passed": true,
+      "retrieved_ids": [
+        "T001",
+        "T216",
+        "R019"
+      ]
+    },
+    {
+      "id": "T002",
+      "passed": true,
+      "retrieved_ids": [
+        "T002",
+        "T082",
+        "T007"
+      ]
+    },
+    {
+      "id": "T003",
+      "passed": true,
+      "retrieved_ids": [
+        "T003",
+        "T095",
+        "T109"
+      ]
+    },
+    {
+      "id": "T004",
+      "passed": true,
+      "retrieved_ids": [
+        "T004",
+        "T023",
+        "T136"
+      ]
+    },
+    {
+      "id": "T005",
+      "passed": true,
+      "retrieved_ids": [
+        "T005",
+        "T002",
+        "T157"
+      ]
+    },
+    {
+      "id": "T006",
+      "passed": true,
+      "retrieved_ids": [
+        "T006",
+        "T021",
+        "T020"
+      ]
+    },
+    {
+      "id": "T007",
+      "passed": true,
+      "retrieved_ids": [
+        "T007",
+        "T082",
+        "T083"
+      ]
+    },
+    {
+      "id": "T008",
+      "passed": true,
+      "retrieved_ids": [
+        "T008",
+        "T004",
+        "T026"
+      ]
+    },
+    {
+      "id": "T009",
+      "passed": true,
+      "retrieved_ids": [
+        "T009",
+        "T068",
+        "R003"
+      ]
+    },
+    {
+      "id": "T010",
+      "passed": true,
+      "retrieved_ids": [
+        "T010",
+        "T088",
+        "T035"
+      ]
+    },
+    {
+      "id": "T011",
+      "passed": true,
+      "retrieved_ids": [
+        "T011",
+        "T134",
+        "T031"
+      ]
+    },
+    {
+      "id": "T012",
+      "passed": true,
+      "retrieved_ids": [
+        "T012",
+        "T023",
+        "T030"
+      ]
+    },
+    {
+      "id": "T013",
+      "passed": true,
+      "retrieved_ids": [
+        "T013",
+        "R003",
+        "T069"
+      ]
+    },
+    {
+      "id": "T014",
+      "passed": true,
+      "retrieved_ids": [
+        "T014",
+        "P006",
+        "T044"
+      ]
+    },
+    {
+      "id": "T015",
+      "passed": true,
+      "retrieved_ids": [
+        "T015",
+        "T066",
+        "T078"
+      ]
+    },
+    {
+      "id": "T016",
+      "passed": true,
+      "retrieved_ids": [
+        "T016",
+        "T045",
+        "T220"
+      ]
+    },
+    {
+      "id": "T017",
+      "passed": true,
+      "retrieved_ids": [
+        "T017",
+        "T038",
+        "T024"
+      ]
+    },
+    {
+      "id": "T018",
+      "passed": true,
+      "retrieved_ids": [
+        "T018",
+        "T038",
+        "T019"
+      ]
+    },
+    {
+      "id": "T019",
+      "passed": true,
+      "retrieved_ids": [
+        "T019",
+        "T046",
+        "T038"
+      ]
+    },
+    {
+      "id": "T020",
+      "passed": true,
+      "retrieved_ids": [
+        "T020",
+        "R005",
+        "T022"
+      ]
+    },
+    {
+      "id": "T021",
+      "passed": true,
+      "retrieved_ids": [
+        "T021",
+        "T006",
+        "T020"
+      ]
+    },
+    {
+      "id": "T022",
+      "passed": true,
+      "retrieved_ids": [
+        "T022",
+        "T006",
+        "T020"
+      ]
+    },
+    {
+      "id": "T023",
+      "passed": true,
+      "retrieved_ids": [
+        "T023",
+        "T030",
+        "T012"
+      ]
+    },
+    {
+      "id": "T024",
+      "passed": true,
+      "retrieved_ids": [
+        "T024",
+        "P001",
+        "P002"
+      ]
+    },
+    {
+      "id": "T025",
+      "passed": true,
+      "retrieved_ids": [
+        "T025",
+        "T009",
+        "T145"
+      ]
+    },
+    {
+      "id": "T026",
+      "passed": true,
+      "retrieved_ids": [
+        "T026",
+        "T008",
+        "T062"
+      ]
+    },
+    {
+      "id": "T027",
+      "passed": true,
+      "retrieved_ids": [
+        "T027",
+        "T035",
+        "T009"
+      ]
+    },
+    {
+      "id": "T028",
+      "passed": true,
+      "retrieved_ids": [
+        "T028",
+        "P007",
+        "T027"
+      ]
+    },
+    {
+      "id": "T029",
+      "passed": true,
+      "retrieved_ids": [
+        "T029",
+        "T051",
+        "T066"
+      ]
+    },
+    {
+      "id": "T030",
+      "passed": true,
+      "retrieved_ids": [
+        "T030",
+        "T008",
+        "T026"
+      ]
+    },
+    {
+      "id": "T031",
+      "passed": true,
+      "retrieved_ids": [
+        "T031",
+        "T005",
+        "T002"
+      ]
+    },
+    {
+      "id": "T032",
+      "passed": true,
+      "retrieved_ids": [
+        "T032",
+        "T026",
+        "P007"
+      ]
+    },
+    {
+      "id": "T033",
+      "passed": true,
+      "retrieved_ids": [
+        "T033",
+        "T035",
+        "T011"
+      ]
+    },
+    {
+      "id": "T034",
+      "passed": true,
+      "retrieved_ids": [
+        "T034",
+        "T035",
+        "T011"
+      ]
+    },
+    {
+      "id": "T035",
+      "passed": true,
+      "retrieved_ids": [
+        "T035",
+        "T033",
+        "T032"
+      ]
+    },
+    {
+      "id": "T036",
+      "passed": true,
+      "retrieved_ids": [
+        "T036",
+        "T037",
+        "T176"
+      ]
+    },
+    {
+      "id": "T037",
+      "passed": true,
+      "retrieved_ids": [
+        "T037",
+        "T036",
+        "T006"
+      ]
+    },
+    {
+      "id": "T038",
+      "passed": true,
+      "retrieved_ids": [
+        "T038",
+        "T018",
+        "T019"
+      ]
+    },
+    {
+      "id": "T039",
+      "passed": true,
+      "retrieved_ids": [
+        "T039",
+        "T040",
+        "T003"
+      ]
+    },
+    {
+      "id": "T040",
+      "passed": true,
+      "retrieved_ids": [
+        "T040",
+        "T039",
+        "T003"
+      ]
+    },
+    {
+      "id": "T041",
+      "passed": true,
+      "retrieved_ids": [
+        "T041",
+        "T003",
+        "T189"
+      ]
+    },
+    {
+      "id": "T042",
+      "passed": true,
+      "retrieved_ids": [
+        "T042",
+        "T084",
+        "T095"
+      ]
+    },
+    {
+      "id": "T043",
+      "passed": true,
+      "retrieved_ids": [
+        "T043",
+        "P002",
+        "T038"
+      ]
+    },
+    {
+      "id": "T044",
+      "passed": true,
+      "retrieved_ids": [
+        "T044",
+        "P006",
+        "T014"
+      ]
+    },
+    {
+      "id": "T045",
+      "passed": true,
+      "retrieved_ids": [
+        "T045",
+        "T112",
+        "T009"
+      ]
+    },
+    {
+      "id": "T046",
+      "passed": true,
+      "retrieved_ids": [
+        "T046",
+        "T019",
+        "T087"
+      ]
+    },
+    {
+      "id": "T047",
+      "passed": true,
+      "retrieved_ids": [
+        "T047",
+        "R003",
+        "T069"
+      ]
+    },
+    {
+      "id": "T048",
+      "passed": true,
+      "retrieved_ids": [
+        "T048",
+        "T063",
+        "T154"
+      ]
+    },
+    {
+      "id": "T049",
+      "passed": true,
+      "retrieved_ids": [
+        "T049",
+        "T070",
+        "T050"
+      ]
+    },
+    {
+      "id": "T050",
+      "passed": true,
+      "retrieved_ids": [
+        "T050",
+        "R001",
+        "T003"
+      ]
+    },
+    {
+      "id": "T051",
+      "passed": true,
+      "retrieved_ids": [
+        "T051",
+        "T029",
+        "T077"
+      ]
+    },
+    {
+      "id": "T052",
+      "passed": true,
+      "retrieved_ids": [
+        "T052",
+        "T020",
+        "T006"
+      ]
+    },
+    {
+      "id": "T053",
+      "passed": true,
+      "retrieved_ids": [
+        "T053",
+        "T050",
+        "T234"
+      ]
+    },
+    {
+      "id": "T054",
+      "passed": true,
+      "retrieved_ids": [
+        "T054",
+        "T011",
+        "T134"
+      ]
+    },
+    {
+      "id": "T055",
+      "passed": true,
+      "retrieved_ids": [
+        "T055",
+        "T204",
+        "T181"
+      ]
+    },
+    {
+      "id": "T056",
+      "passed": true,
+      "retrieved_ids": [
+        "T056",
+        "T077",
+        "T072"
+      ]
+    },
+    {
+      "id": "T057",
+      "passed": true,
+      "retrieved_ids": [
+        "T057",
+        "T051",
+        "T207"
+      ]
+    },
+    {
+      "id": "T058",
+      "passed": true,
+      "retrieved_ids": [
+        "T058",
+        "T048",
+        "P005"
+      ]
+    },
+    {
+      "id": "T059",
+      "passed": true,
+      "retrieved_ids": [
+        "T059",
+        "T242",
+        "P008"
+      ]
+    },
+    {
+      "id": "T060",
+      "passed": true,
+      "retrieved_ids": [
+        "T060",
+        "T115",
+        "R017"
+      ]
+    },
+    {
+      "id": "T061",
+      "passed": true,
+      "retrieved_ids": [
+        "T061",
+        "R001",
+        "T070"
+      ]
+    },
+    {
+      "id": "T062",
+      "passed": true,
+      "retrieved_ids": [
+        "T062",
+        "T026",
+        "T008"
+      ]
+    },
+    {
+      "id": "T063",
+      "passed": true,
+      "retrieved_ids": [
+        "T063",
+        "P003",
+        "R001"
+      ]
+    },
+    {
+      "id": "T064",
+      "passed": true,
+      "retrieved_ids": [
+        "T064",
+        "T234",
+        "T060"
+      ]
+    },
+    {
+      "id": "T065",
+      "passed": true,
+      "retrieved_ids": [
+        "T065",
+        "P002",
+        "P003"
+      ]
+    },
+    {
+      "id": "T066",
+      "passed": true,
+      "retrieved_ids": [
+        "T066",
+        "T015",
+        "T076"
+      ]
+    },
+    {
+      "id": "T067",
+      "passed": true,
+      "retrieved_ids": [
+        "T067",
+        "T112",
+        "T009"
+      ]
+    },
+    {
+      "id": "T068",
+      "passed": true,
+      "retrieved_ids": [
+        "T068",
+        "T009",
+        "R003"
+      ]
+    },
+    {
+      "id": "T069",
+      "passed": true,
+      "retrieved_ids": [
+        "T069",
+        "R015",
+        "T179"
+      ]
+    },
+    {
+      "id": "T070",
+      "passed": true,
+      "retrieved_ids": [
+        "T070",
+        "T049",
+        "P008"
+      ]
+    },
+    {
+      "id": "T071",
+      "passed": true,
+      "retrieved_ids": [
+        "T071",
+        "T048",
+        "T047"
+      ]
+    },
+    {
+      "id": "T072",
+      "passed": true,
+      "retrieved_ids": [
+        "T072",
+        "T066",
+        "T048"
+      ]
+    },
+    {
+      "id": "T073",
+      "passed": true,
+      "retrieved_ids": [
+        "T073",
+        "T070",
+        "P008"
+      ]
+    },
+    {
+      "id": "T074",
+      "passed": true,
+      "retrieved_ids": [
+        "T074",
+        "T105",
+        "T048"
+      ]
+    },
+    {
+      "id": "T075",
+      "passed": true,
+      "retrieved_ids": [
+        "T075",
+        "T243",
+        "T048"
+      ]
+    },
+    {
+      "id": "T076",
+      "passed": true,
+      "retrieved_ids": [
+        "T076",
+        "P007",
+        "T044"
+      ]
+    },
+    {
+      "id": "T077",
+      "passed": true,
+      "retrieved_ids": [
+        "T077",
+        "T178",
+        "T051"
+      ]
+    },
+    {
+      "id": "T078",
+      "passed": true,
+      "retrieved_ids": [
+        "T078",
+        "P003",
+        "T063"
+      ]
+    },
+    {
+      "id": "T079",
+      "passed": true,
+      "retrieved_ids": [
+        "T079",
+        "T132",
+        "T080"
+      ]
+    },
+    {
+      "id": "T080",
+      "passed": true,
+      "retrieved_ids": [
+        "T080",
+        "T079",
+        "T132"
+      ]
+    },
+    {
+      "id": "T081",
+      "passed": true,
+      "retrieved_ids": [
+        "T081",
+        "T105",
+        "T120"
+      ]
+    },
+    {
+      "id": "T082",
+      "passed": true,
+      "retrieved_ids": [
+        "T082",
+        "T083",
+        "T157"
+      ]
+    },
+    {
+      "id": "T083",
+      "passed": true,
+      "retrieved_ids": [
+        "T083",
+        "T082",
+        "T157"
+      ]
+    },
+    {
+      "id": "T084",
+      "passed": true,
+      "retrieved_ids": [
+        "T084",
+        "T210",
+        "T082"
+      ]
+    },
+    {
+      "id": "T085",
+      "passed": true,
+      "retrieved_ids": [
+        "T085",
+        "T126",
+        "T124"
+      ]
+    },
+    {
+      "id": "T086",
+      "passed": true,
+      "retrieved_ids": [
+        "T086",
+        "T081",
+        "T120"
+      ]
+    },
+    {
+      "id": "T087",
+      "passed": true,
+      "retrieved_ids": [
+        "T087",
+        "T088",
+        "T046"
+      ]
+    },
+    {
+      "id": "T088",
+      "passed": true,
+      "retrieved_ids": [
+        "T088",
+        "T087",
+        "T121"
+      ]
+    },
+    {
+      "id": "T089",
+      "passed": true,
+      "retrieved_ids": [
+        "T089",
+        "P009",
+        "T196"
+      ]
+    },
+    {
+      "id": "T090",
+      "passed": true,
+      "retrieved_ids": [
+        "T090",
+        "T113",
+        "T092"
+      ]
+    },
+    {
+      "id": "T091",
+      "passed": true,
+      "retrieved_ids": [
+        "T091",
+        "T113",
+        "T090"
+      ]
+    },
+    {
+      "id": "T092",
+      "passed": true,
+      "retrieved_ids": [
+        "T092",
+        "T090",
+        "T113"
+      ]
+    },
+    {
+      "id": "T093",
+      "passed": true,
+      "retrieved_ids": [
+        "T093",
+        "T097",
+        "T183"
+      ]
+    },
+    {
+      "id": "T094",
+      "passed": true,
+      "retrieved_ids": [
+        "T094",
+        "T102",
+        "T081"
+      ]
+    },
+    {
+      "id": "T095",
+      "passed": true,
+      "retrieved_ids": [
+        "T095",
+        "T003",
+        "T109"
+      ]
+    },
+    {
+      "id": "T096",
+      "passed": true,
+      "retrieved_ids": [
+        "T096",
+        "T111",
+        "T097"
+      ]
+    },
+    {
+      "id": "T097",
+      "passed": true,
+      "retrieved_ids": [
+        "T097",
+        "T096",
+        "T111"
+      ]
+    },
+    {
+      "id": "T098",
+      "passed": true,
+      "retrieved_ids": [
+        "T098",
+        "T112",
+        "T100"
+      ]
+    },
+    {
+      "id": "T099",
+      "passed": true,
+      "retrieved_ids": [
+        "T099",
+        "T100",
+        "T108"
+      ]
+    },
+    {
+      "id": "T100",
+      "passed": true,
+      "retrieved_ids": [
+        "T100",
+        "T099",
+        "T108"
+      ]
+    },
+    {
+      "id": "T101",
+      "passed": true,
+      "retrieved_ids": [
+        "T101",
+        "T117",
+        "T112"
+      ]
+    },
+    {
+      "id": "T102",
+      "passed": true,
+      "retrieved_ids": [
+        "T102",
+        "T094",
+        "P009"
+      ]
+    },
+    {
+      "id": "T103",
+      "passed": true,
+      "retrieved_ids": [
+        "T103",
+        "T082",
+        "T157"
+      ]
+    },
+    {
+      "id": "T104",
+      "passed": true,
+      "retrieved_ids": [
+        "T104",
+        "T103",
+        "T112"
+      ]
+    },
+    {
+      "id": "T105",
+      "passed": true,
+      "retrieved_ids": [
+        "T105",
+        "T074",
+        "T086"
+      ]
+    },
+    {
+      "id": "T106",
+      "passed": true,
+      "retrieved_ids": [
+        "T106",
+        "T100",
+        "T099"
+      ]
+    },
+    {
+      "id": "T107",
+      "passed": true,
+      "retrieved_ids": [
+        "T107",
+        "T161"
+      ]
+    },
+    {
+      "id": "T108",
+      "passed": true,
+      "retrieved_ids": [
+        "T108",
+        "T099",
+        "T100"
+      ]
+    },
+    {
+      "id": "T109",
+      "passed": true,
+      "retrieved_ids": [
+        "T109",
+        "T095",
+        "T003"
+      ]
+    },
+    {
+      "id": "T110",
+      "passed": true,
+      "retrieved_ids": [
+        "T110",
+        "T109",
+        "T108"
+      ]
+    },
+    {
+      "id": "T111",
+      "passed": true,
+      "retrieved_ids": [
+        "T111",
+        "T096",
+        "T097"
+      ]
+    },
+    {
+      "id": "T112",
+      "passed": true,
+      "retrieved_ids": [
+        "T112",
+        "T027",
+        "T009"
+      ]
+    },
+    {
+      "id": "T113",
+      "passed": true,
+      "retrieved_ids": [
+        "T113",
+        "T090",
+        "T092"
+      ]
+    },
+    {
+      "id": "T114",
+      "passed": true,
+      "retrieved_ids": [
+        "T114",
+        "T108",
+        "T092"
+      ]
+    },
+    {
+      "id": "T115",
+      "passed": true,
+      "retrieved_ids": [
+        "T115",
+        "T060",
+        "T126"
+      ]
+    },
+    {
+      "id": "T116",
+      "passed": true,
+      "retrieved_ids": [
+        "T116",
+        "T105",
+        "T081"
+      ]
+    },
+    {
+      "id": "T117",
+      "passed": true,
+      "retrieved_ids": [
+        "T117",
+        "T119",
+        "T118"
+      ]
+    },
+    {
+      "id": "T118",
+      "passed": true,
+      "retrieved_ids": [
+        "T118",
+        "T117",
+        "T119"
+      ]
+    },
+    {
+      "id": "T119",
+      "passed": true,
+      "retrieved_ids": [
+        "T119",
+        "T117",
+        "T118"
+      ]
+    },
+    {
+      "id": "T120",
+      "passed": true,
+      "retrieved_ids": [
+        "T120",
+        "T171",
+        "T086"
+      ]
+    },
+    {
+      "id": "T121",
+      "passed": true,
+      "retrieved_ids": [
+        "T121",
+        "T174",
+        "T160"
+      ]
+    },
+    {
+      "id": "T122",
+      "passed": true,
+      "retrieved_ids": [
+        "T122",
+        "T102",
+        "T117"
+      ]
+    },
+    {
+      "id": "T123",
+      "passed": true,
+      "retrieved_ids": [
+        "T123",
+        "T126",
+        "T085"
+      ]
+    },
+    {
+      "id": "T124",
+      "passed": true,
+      "retrieved_ids": [
+        "T124",
+        "T126",
+        "T085"
+      ]
+    },
+    {
+      "id": "T125",
+      "passed": true,
+      "retrieved_ids": [
+        "T125",
+        "T124",
+        "T126"
+      ]
+    },
+    {
+      "id": "T126",
+      "passed": true,
+      "retrieved_ids": [
+        "T126",
+        "T124",
+        "T183"
+      ]
+    },
+    {
+      "id": "T127",
+      "passed": true,
+      "retrieved_ids": [
+        "T127",
+        "R024",
+        "T124"
+      ]
+    },
+    {
+      "id": "T128",
+      "passed": true,
+      "retrieved_ids": [
+        "T128",
+        "R011",
+        "T123"
+      ]
+    },
+    {
+      "id": "T129",
+      "passed": true,
+      "retrieved_ids": [
+        "T129",
+        "T108",
+        "T099"
+      ]
+    },
+    {
+      "id": "T130",
+      "passed": true,
+      "retrieved_ids": [
+        "T130",
+        "T079",
+        "T132"
+      ]
+    },
+    {
+      "id": "T131",
+      "passed": true,
+      "retrieved_ids": [
+        "T131",
+        "T079",
+        "T196"
+      ]
+    },
+    {
+      "id": "T132",
+      "passed": true,
+      "retrieved_ids": [
+        "T132",
+        "T130",
+        "T128"
+      ]
+    },
+    {
+      "id": "T133",
+      "passed": true,
+      "retrieved_ids": [
+        "T133",
+        "T120",
+        "T135"
+      ]
+    },
+    {
+      "id": "T134",
+      "passed": true,
+      "retrieved_ids": [
+        "T134",
+        "T171",
+        "T011"
+      ]
+    },
+    {
+      "id": "T135",
+      "passed": true,
+      "retrieved_ids": [
+        "T135",
+        "T132",
+        "T133"
+      ]
+    },
+    {
+      "id": "T136",
+      "passed": true,
+      "retrieved_ids": [
+        "T136",
+        "T173",
+        "T175"
+      ]
+    },
+    {
+      "id": "T137",
+      "passed": true,
+      "retrieved_ids": [
+        "T137",
+        "T175",
+        "T167"
+      ]
+    },
+    {
+      "id": "T138",
+      "passed": true,
+      "retrieved_ids": [
+        "T138",
+        "T165",
+        "P013"
+      ]
+    },
+    {
+      "id": "T139",
+      "passed": true,
+      "retrieved_ids": [
+        "T139",
+        "T147",
+        "T220"
+      ]
+    },
+    {
+      "id": "T140",
+      "passed": true,
+      "retrieved_ids": [
+        "T140",
+        "R011",
+        "T045"
+      ]
+    },
+    {
+      "id": "T141",
+      "passed": true,
+      "retrieved_ids": [
+        "T141",
+        "T239",
+        "T233"
+      ]
+    },
+    {
+      "id": "T142",
+      "passed": true,
+      "retrieved_ids": [
+        "T142",
+        "R017",
+        "T202"
+      ]
+    },
+    {
+      "id": "T143",
+      "passed": true,
+      "retrieved_ids": [
+        "T143",
+        "T208"
+      ]
+    },
+    {
+      "id": "T144",
+      "passed": true,
+      "retrieved_ids": [
+        "T144",
+        "T143",
+        "T208"
+      ]
+    },
+    {
+      "id": "T145",
+      "passed": true,
+      "retrieved_ids": [
+        "T145",
+        "T025",
+        "T146"
+      ]
+    },
+    {
+      "id": "T146",
+      "passed": true,
+      "retrieved_ids": [
+        "T146",
+        "T145",
+        "T025"
+      ]
+    },
+    {
+      "id": "T147",
+      "passed": true,
+      "retrieved_ids": [
+        "T147",
+        "T139",
+        "T213"
+      ]
+    },
+    {
+      "id": "T148",
+      "passed": true,
+      "retrieved_ids": [
+        "T148",
+        "T239",
+        "R027"
+      ]
+    },
+    {
+      "id": "T149",
+      "passed": true,
+      "retrieved_ids": [
+        "T149",
+        "T174",
+        "T166"
+      ]
+    },
+    {
+      "id": "T150",
+      "passed": true,
+      "retrieved_ids": [
+        "T150",
+        "T157",
+        "T171"
+      ]
+    },
+    {
+      "id": "T151",
+      "passed": true,
+      "retrieved_ids": [
+        "T151",
+        "T045",
+        "T158"
+      ]
+    },
+    {
+      "id": "T152",
+      "passed": true,
+      "retrieved_ids": [
+        "T152",
+        "T222",
+        "T110"
+      ]
+    },
+    {
+      "id": "T153",
+      "passed": true,
+      "retrieved_ids": [
+        "T153",
+        "T172",
+        "T141"
+      ]
+    },
+    {
+      "id": "T154",
+      "passed": true,
+      "retrieved_ids": [
+        "T154",
+        "T063",
+        "T099"
+      ]
+    },
+    {
+      "id": "T155",
+      "passed": true,
+      "retrieved_ids": [
+        "T155",
+        "T185",
+        "T106"
+      ]
+    },
+    {
+      "id": "T156",
+      "passed": true,
+      "retrieved_ids": [
+        "T156",
+        "T177",
+        "T198"
+      ]
+    },
+    {
+      "id": "T157",
+      "passed": true,
+      "retrieved_ids": [
+        "T157",
+        "T082",
+        "T103"
+      ]
+    },
+    {
+      "id": "T158",
+      "passed": true,
+      "retrieved_ids": [
+        "T158",
+        "T045",
+        "T220"
+      ]
+    },
+    {
+      "id": "T159",
+      "passed": true,
+      "retrieved_ids": [
+        "T159",
+        "R018",
+        "P011"
+      ]
+    },
+    {
+      "id": "T160",
+      "passed": true,
+      "retrieved_ids": [
+        "T160",
+        "T121",
+        "T174"
+      ]
+    },
+    {
+      "id": "T161",
+      "passed": true,
+      "retrieved_ids": [
+        "T161",
+        "T107",
+        "R021"
+      ]
+    },
+    {
+      "id": "T162",
+      "passed": true,
+      "retrieved_ids": [
+        "T162",
+        "T243",
+        "T059"
+      ]
+    },
+    {
+      "id": "T163",
+      "passed": true,
+      "retrieved_ids": [
+        "T163",
+        "T228",
+        "P013"
+      ]
+    },
+    {
+      "id": "T164",
+      "passed": true,
+      "retrieved_ids": [
+        "T164",
+        "T163",
+        "T175"
+      ]
+    },
+    {
+      "id": "T165",
+      "passed": true,
+      "retrieved_ids": [
+        "T165",
+        "T138",
+        "P013"
+      ]
+    },
+    {
+      "id": "T166",
+      "passed": true,
+      "retrieved_ids": [
+        "T166",
+        "T149",
+        "T174"
+      ]
+    },
+    {
+      "id": "T167",
+      "passed": true,
+      "retrieved_ids": [
+        "T167",
+        "T137",
+        "T163"
+      ]
+    },
+    {
+      "id": "T168",
+      "passed": true,
+      "retrieved_ids": [
+        "T168",
+        "T187",
+        "T137"
+      ]
+    },
+    {
+      "id": "T169",
+      "passed": true,
+      "retrieved_ids": [
+        "T169",
+        "T237",
+        "T142"
+      ]
+    },
+    {
+      "id": "T170",
+      "passed": true,
+      "retrieved_ids": [
+        "T170",
+        "T045",
+        "T158"
+      ]
+    },
+    {
+      "id": "T171",
+      "passed": true,
+      "retrieved_ids": [
+        "T171",
+        "T037",
+        "T120"
+      ]
+    },
+    {
+      "id": "T172",
+      "passed": true,
+      "retrieved_ids": [
+        "T172",
+        "T153",
+        "T235"
+      ]
+    },
+    {
+      "id": "T173",
+      "passed": true,
+      "retrieved_ids": [
+        "T173",
+        "T136",
+        "T133"
+      ]
+    },
+    {
+      "id": "T174",
+      "passed": true,
+      "retrieved_ids": [
+        "T174",
+        "T149",
+        "T121"
+      ]
+    },
+    {
+      "id": "T175",
+      "passed": true,
+      "retrieved_ids": [
+        "T175",
+        "T137",
+        "T167"
+      ]
+    },
+    {
+      "id": "T176",
+      "passed": true,
+      "retrieved_ids": [
+        "T176",
+        "T202",
+        "T126"
+      ]
+    },
+    {
+      "id": "T177",
+      "passed": true,
+      "retrieved_ids": [
+        "T177",
+        "P017",
+        "T199"
+      ]
+    },
+    {
+      "id": "T178",
+      "passed": true,
+      "retrieved_ids": [
+        "T178",
+        "T077",
+        "R012"
+      ]
+    },
+    {
+      "id": "T179",
+      "passed": true,
+      "retrieved_ids": [
+        "T179",
+        "T069",
+        "P017"
+      ]
+    },
+    {
+      "id": "T180",
+      "passed": true,
+      "retrieved_ids": [
+        "T180",
+        "R012",
+        "P017"
+      ]
+    },
+    {
+      "id": "T181",
+      "passed": true,
+      "retrieved_ids": [
+        "T181",
+        "P017",
+        "T204"
+      ]
+    },
+    {
+      "id": "T182",
+      "passed": true,
+      "retrieved_ids": [
+        "T182",
+        "R006",
+        "T183"
+      ]
+    },
+    {
+      "id": "T183",
+      "passed": true,
+      "retrieved_ids": [
+        "T183",
+        "T115",
+        "T182"
+      ]
+    },
+    {
+      "id": "T184",
+      "passed": true,
+      "retrieved_ids": [
+        "T184",
+        "R022",
+        "T146"
+      ]
+    },
+    {
+      "id": "T185",
+      "passed": true,
+      "retrieved_ids": [
+        "T185",
+        "T223",
+        "T120"
+      ]
+    },
+    {
+      "id": "T186",
+      "passed": true,
+      "retrieved_ids": [
+        "T186",
+        "R004",
+        "R017"
+      ]
+    },
+    {
+      "id": "T187",
+      "passed": true,
+      "retrieved_ids": [
+        "T187"
+      ]
+    },
+    {
+      "id": "T188",
+      "passed": true,
+      "retrieved_ids": [
+        "T188",
+        "T187",
+        "T192"
+      ]
+    },
+    {
+      "id": "T189",
+      "passed": true,
+      "retrieved_ids": [
+        "T189",
+        "T201",
+        "T188"
+      ]
+    },
+    {
+      "id": "T190",
+      "passed": true,
+      "retrieved_ids": [
+        "T190",
+        "T192",
+        "T235"
+      ]
+    },
+    {
+      "id": "T191",
+      "passed": true,
+      "retrieved_ids": [
+        "T191",
+        "P012",
+        "T206"
+      ]
+    },
+    {
+      "id": "T192",
+      "passed": true,
+      "retrieved_ids": [
+        "T192",
+        "T209",
+        "T188"
+      ]
+    },
+    {
+      "id": "T193",
+      "passed": true,
+      "retrieved_ids": [
+        "T193",
+        "T180",
+        "T186"
+      ]
+    },
+    {
+      "id": "T194",
+      "passed": true,
+      "retrieved_ids": [
+        "T194",
+        "T206",
+        "T225"
+      ]
+    },
+    {
+      "id": "T195",
+      "passed": true,
+      "retrieved_ids": [
+        "T195",
+        "T051",
+        "P010"
+      ]
+    },
+    {
+      "id": "T196",
+      "passed": true,
+      "retrieved_ids": [
+        "T196",
+        "R025",
+        "T131"
+      ]
+    },
+    {
+      "id": "T197",
+      "passed": true,
+      "retrieved_ids": [
+        "T197",
+        "T196",
+        "T233"
+      ]
+    },
+    {
+      "id": "T198",
+      "passed": true,
+      "retrieved_ids": [
+        "T198",
+        "T133",
+        "P012"
+      ]
+    },
+    {
+      "id": "T199",
+      "passed": true,
+      "retrieved_ids": [
+        "T199",
+        "T204",
+        "P016"
+      ]
+    },
+    {
+      "id": "T200",
+      "passed": true,
+      "retrieved_ids": [
+        "T200",
+        "P012",
+        "T206"
+      ]
+    },
+    {
+      "id": "T201",
+      "passed": true,
+      "retrieved_ids": [
+        "T201",
+        "T217",
+        "T056"
+      ]
+    },
+    {
+      "id": "T202",
+      "passed": true,
+      "retrieved_ids": [
+        "T202",
+        "T176",
+        "T142"
+      ]
+    },
+    {
+      "id": "T203",
+      "passed": true,
+      "retrieved_ids": [
+        "T203",
+        "T120",
+        "P010"
+      ]
+    },
+    {
+      "id": "T204",
+      "passed": true,
+      "retrieved_ids": [
+        "T204",
+        "T055",
+        "T076"
+      ]
+    },
+    {
+      "id": "T205",
+      "passed": true,
+      "retrieved_ids": [
+        "T205",
+        "T005",
+        "T011"
+      ]
+    },
+    {
+      "id": "T206",
+      "passed": true,
+      "retrieved_ids": [
+        "T206",
+        "T194",
+        "P012"
+      ]
+    },
+    {
+      "id": "T207",
+      "passed": true,
+      "retrieved_ids": [
+        "T207",
+        "R004",
+        "T153"
+      ]
+    },
+    {
+      "id": "T208",
+      "passed": true,
+      "retrieved_ids": [
+        "T208",
+        "T143",
+        "T142"
+      ]
+    },
+    {
+      "id": "T209",
+      "passed": true,
+      "retrieved_ids": [
+        "T209",
+        "T207"
+      ]
+    },
+    {
+      "id": "T210",
+      "passed": true,
+      "retrieved_ids": [
+        "T210",
+        "T084",
+        "R007"
+      ]
+    },
+    {
+      "id": "T211",
+      "passed": true,
+      "retrieved_ids": [
+        "T211",
+        "T234",
+        "T210"
+      ]
+    },
+    {
+      "id": "T212",
+      "passed": true,
+      "retrieved_ids": [
+        "T212",
+        "T021",
+        "T168"
+      ]
+    },
+    {
+      "id": "T213",
+      "passed": true,
+      "retrieved_ids": [
+        "T213",
+        "T210",
+        "T224"
+      ]
+    },
+    {
+      "id": "T214",
+      "passed": true,
+      "retrieved_ids": [
+        "T214",
+        "T141",
+        "T016"
+      ]
+    },
+    {
+      "id": "T215",
+      "passed": true,
+      "retrieved_ids": [
+        "T215",
+        "T214",
+        "T212"
+      ]
+    },
+    {
+      "id": "T216",
+      "passed": true,
+      "retrieved_ids": [
+        "T216",
+        "R019",
+        "T238"
+      ]
+    },
+    {
+      "id": "T217",
+      "passed": true,
+      "retrieved_ids": [
+        "T217",
+        "T224",
+        "T190"
+      ]
+    },
+    {
+      "id": "T218",
+      "passed": true,
+      "retrieved_ids": [
+        "T218",
+        "T190",
+        "T217"
+      ]
+    },
+    {
+      "id": "T219",
+      "passed": true,
+      "retrieved_ids": [
+        "T219",
+        "T145",
+        "T012"
+      ]
+    },
+    {
+      "id": "T220",
+      "passed": true,
+      "retrieved_ids": [
+        "T220",
+        "T003",
+        "T045"
+      ]
+    },
+    {
+      "id": "T221",
+      "passed": true,
+      "retrieved_ids": [
+        "T221"
+      ]
+    },
+    {
+      "id": "T222",
+      "passed": true,
+      "retrieved_ids": [
+        "T222",
+        "T152",
+        "T024"
+      ]
+    },
+    {
+      "id": "T223",
+      "passed": true,
+      "retrieved_ids": [
+        "T223",
+        "T185",
+        "T192"
+      ]
+    },
+    {
+      "id": "T224",
+      "passed": true,
+      "retrieved_ids": [
+        "T224",
+        "T217",
+        "T190"
+      ]
+    },
+    {
+      "id": "T225",
+      "passed": true,
+      "retrieved_ids": [
+        "T225",
+        "T226",
+        "T212"
+      ]
+    },
+    {
+      "id": "T226",
+      "passed": true,
+      "retrieved_ids": [
+        "T226",
+        "T227",
+        "R018"
+      ]
+    },
+    {
+      "id": "T227",
+      "passed": true,
+      "retrieved_ids": [
+        "T227",
+        "P013",
+        "T225"
+      ]
+    },
+    {
+      "id": "T228",
+      "passed": true,
+      "retrieved_ids": [
+        "T228",
+        "T163",
+        "P013"
+      ]
+    },
+    {
+      "id": "T229",
+      "passed": true,
+      "retrieved_ids": [
+        "T229",
+        "T230",
+        "T232"
+      ]
+    },
+    {
+      "id": "T230",
+      "passed": true,
+      "retrieved_ids": [
+        "T230",
+        "T229",
+        "R019"
+      ]
+    },
+    {
+      "id": "T231",
+      "passed": true,
+      "retrieved_ids": [
+        "T231",
+        "T229",
+        "R019"
+      ]
+    },
+    {
+      "id": "T232",
+      "passed": true,
+      "retrieved_ids": [
+        "T232",
+        "T229",
+        "T231"
+      ]
+    },
+    {
+      "id": "T233",
+      "passed": true,
+      "retrieved_ids": [
+        "T233",
+        "T229",
+        "P015"
+      ]
+    },
+    {
+      "id": "T234",
+      "passed": true,
+      "retrieved_ids": [
+        "T234",
+        "T211",
+        "T064"
+      ]
+    },
+    {
+      "id": "T235",
+      "passed": true,
+      "retrieved_ids": [
+        "T235",
+        "P012",
+        "P013"
+      ]
+    },
+    {
+      "id": "T236",
+      "passed": true,
+      "retrieved_ids": [
+        "T236",
+        "R027",
+        "T076"
+      ]
+    },
+    {
+      "id": "T237",
+      "passed": true,
+      "retrieved_ids": [
+        "T237",
+        "T169",
+        "R024"
+      ]
+    },
+    {
+      "id": "T238",
+      "passed": true,
+      "retrieved_ids": [
+        "T238",
+        "T214",
+        "T230"
+      ]
+    },
+    {
+      "id": "T239",
+      "passed": true,
+      "retrieved_ids": [
+        "T239",
+        "R027",
+        "T076"
+      ]
+    },
+    {
+      "id": "T240",
+      "passed": true,
+      "retrieved_ids": [
+        "T240",
+        "T242",
+        "T059"
+      ]
+    },
+    {
+      "id": "T241",
+      "passed": true,
+      "retrieved_ids": [
+        "T241",
+        "T059",
+        "P008"
+      ]
+    },
+    {
+      "id": "T242",
+      "passed": true,
+      "retrieved_ids": [
+        "T242",
+        "T059",
+        "P008"
+      ]
+    },
+    {
+      "id": "T243",
+      "passed": true,
+      "retrieved_ids": [
+        "T243",
+        "P011",
+        "P015"
+      ]
+    },
+    {
+      "id": "R001",
+      "passed": true,
+      "retrieved_ids": [
+        "R001",
+        "T063",
+        "P003"
+      ]
+    },
+    {
+      "id": "R002",
+      "passed": true,
+      "retrieved_ids": [
+        "R002",
+        "R014",
+        "R013"
+      ]
+    },
+    {
+      "id": "R003",
+      "passed": true,
+      "retrieved_ids": [
+        "R003",
+        "T068",
+        "T052"
+      ]
+    },
+    {
+      "id": "R004",
+      "passed": true,
+      "retrieved_ids": [
+        "R004",
+        "T207",
+        "T049"
+      ]
+    },
+    {
+      "id": "R005",
+      "passed": true,
+      "retrieved_ids": [
+        "R005",
+        "T038",
+        "T020"
+      ]
+    },
+    {
+      "id": "R006",
+      "passed": true,
+      "retrieved_ids": [
+        "R006",
+        "T022",
+        "R005"
+      ]
+    },
+    {
+      "id": "R007",
+      "passed": true,
+      "retrieved_ids": [
+        "R007",
+        "T052",
+        "R006"
+      ]
+    },
+    {
+      "id": "R008",
+      "passed": true,
+      "retrieved_ids": [
+        "R008",
+        "R017",
+        "T142"
+      ]
+    },
+    {
+      "id": "R009",
+      "passed": true,
+      "retrieved_ids": [
+        "R009",
+        "T102",
+        "P009"
+      ]
+    },
+    {
+      "id": "R010",
+      "passed": true,
+      "retrieved_ids": [
+        "R010",
+        "R023",
+        "T088"
+      ]
+    },
+    {
+      "id": "R011",
+      "passed": true,
+      "retrieved_ids": [
+        "R011",
+        "T123",
+        "T124"
+      ]
+    },
+    {
+      "id": "R012",
+      "passed": true,
+      "retrieved_ids": [
+        "R012",
+        "T180",
+        "T179"
+      ]
+    },
+    {
+      "id": "R013",
+      "passed": true,
+      "retrieved_ids": [
+        "R002",
+        "R013",
+        "R014"
+      ]
+    },
+    {
+      "id": "R014",
+      "passed": true,
+      "retrieved_ids": [
+        "R014",
+        "R013",
+        "R002"
+      ]
+    },
+    {
+      "id": "R015",
+      "passed": true,
+      "retrieved_ids": [
+        "R015",
+        "T179",
+        "P017"
+      ]
+    },
+    {
+      "id": "R016",
+      "passed": true,
+      "retrieved_ids": [
+        "R016",
+        "T013",
+        "R017"
+      ]
+    },
+    {
+      "id": "R017",
+      "passed": true,
+      "retrieved_ids": [
+        "R017",
+        "R008",
+        "T220"
+      ]
+    },
+    {
+      "id": "R018",
+      "passed": true,
+      "retrieved_ids": [
+        "R018",
+        "T077",
+        "T009"
+      ]
+    },
+    {
+      "id": "R019",
+      "passed": true,
+      "retrieved_ids": [
+        "R019",
+        "T216",
+        "T229"
+      ]
+    },
+    {
+      "id": "R020",
+      "passed": true,
+      "retrieved_ids": [
+        "R020",
+        "T237",
+        "T234"
+      ]
+    },
+    {
+      "id": "R021",
+      "passed": true,
+      "retrieved_ids": [
+        "R021",
+        "T239",
+        "T234"
+      ]
+    },
+    {
+      "id": "R022",
+      "passed": true,
+      "retrieved_ids": [
+        "R022",
+        "R011",
+        "T184"
+      ]
+    },
+    {
+      "id": "R023",
+      "passed": true,
+      "retrieved_ids": [
+        "R023",
+        "R010",
+        "T093"
+      ]
+    },
+    {
+      "id": "R024",
+      "passed": true,
+      "retrieved_ids": [
+        "R024",
+        "T127",
+        "R023"
+      ]
+    },
+    {
+      "id": "R025",
+      "passed": true,
+      "retrieved_ids": [
+        "R025",
+        "T196",
+        "T197"
+      ]
+    },
+    {
+      "id": "R026",
+      "passed": true,
+      "retrieved_ids": [
+        "R026",
+        "T196",
+        "T081"
+      ]
+    },
+    {
+      "id": "R027",
+      "passed": true,
+      "retrieved_ids": [
+        "R027",
+        "T076",
+        "T239"
+      ]
+    },
+    {
+      "id": "P001",
+      "passed": true,
+      "retrieved_ids": [
+        "P001",
+        "P009",
+        "P010"
+      ]
+    },
+    {
+      "id": "P002",
+      "passed": true,
+      "retrieved_ids": [
+        "P002",
+        "P003",
+        "T065"
+      ]
+    },
+    {
+      "id": "P003",
+      "passed": true,
+      "retrieved_ids": [
+        "P003",
+        "P002",
+        "T063"
+      ]
+    },
+    {
+      "id": "P004",
+      "passed": true,
+      "retrieved_ids": [
+        "P004",
+        "T098",
+        "T068"
+      ]
+    },
+    {
+      "id": "P005",
+      "passed": true,
+      "retrieved_ids": [
+        "P005",
+        "R014",
+        "P013"
+      ]
+    },
+    {
+      "id": "P006",
+      "passed": true,
+      "retrieved_ids": [
+        "P006",
+        "T044",
+        "T014"
+      ]
+    },
+    {
+      "id": "P007",
+      "passed": true,
+      "retrieved_ids": [
+        "P007",
+        "T112",
+        "P004"
+      ]
+    },
+    {
+      "id": "P008",
+      "passed": true,
+      "retrieved_ids": [
+        "P008",
+        "T059",
+        "T242"
+      ]
+    },
+    {
+      "id": "P009",
+      "passed": true,
+      "retrieved_ids": [
+        "P009",
+        "R010",
+        "T102"
+      ]
+    },
+    {
+      "id": "P010",
+      "passed": true,
+      "retrieved_ids": [
+        "P010",
+        "T120",
+        "T134"
+      ]
+    },
+    {
+      "id": "P011",
+      "passed": true,
+      "retrieved_ids": [
+        "P011",
+        "P015",
+        "P013"
+      ]
+    },
+    {
+      "id": "P012",
+      "passed": true,
+      "retrieved_ids": [
+        "P012",
+        "P013",
+        "P011"
+      ]
+    },
+    {
+      "id": "P013",
+      "passed": true,
+      "retrieved_ids": [
+        "P013",
+        "P014",
+        "P011"
+      ]
+    },
+    {
+      "id": "P014",
+      "passed": true,
+      "retrieved_ids": [
+        "P014",
+        "P013",
+        "P011"
+      ]
+    },
+    {
+      "id": "P015",
+      "passed": true,
+      "retrieved_ids": [
+        "P015",
+        "P011",
+        "P005"
+      ]
+    },
+    {
+      "id": "P016",
+      "passed": true,
+      "retrieved_ids": [
+        "P016",
+        "P009",
+        "T199"
+      ]
+    },
+    {
+      "id": "P017",
+      "passed": true,
+      "retrieved_ids": [
+        "P017",
+        "T178",
+        "R012"
+      ]
+    }
+  ],
+  "limitations": "Consultas locais elaboradas para este pacote; não são benchmark externo nem teste de qualidade de LLM. Nome exato mede endereçabilidade, não compreensão."
+}

@@ -1,0 +1,115 @@
+{
+  "id": "T176",
+  "novelty": "A v3 estimava crescimento de evidência e contingências. A nova camada planeja a distribuição informacional entre chamadas, incluindo custo de integrar resultados e a reserva necessária para verificar o que foi produzido.",
+  "deep_layers": [
+    {
+      "name": "Grafo informacional",
+      "detail": "Para cada etapa, declare quais fatos precisa receber e quais deve preservar para seus sucessores. Uma saída curta pode omitir o detalhe necessário ao teste seguinte. Planeje interfaces por campos e referências, não apenas por número de tokens; a compressão é aceitável quando a informação excluída permanece recuperável no momento certo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S012",
+        "V4C-S013"
+      ]
+    },
+    {
+      "name": "Custo de coordenação",
+      "detail": "Dividir uma tarefa reduz contexto local e acrescenta instruções repetidas, chamadas, resultados intermediários e síntese. Estime esse custo antes de criar especialistas. Quando a comunicação domina o trabalho útil, mantenha etapas juntas ou use funções determinísticas para filtrar dados, em vez de multiplicar agentes pequenos por princípio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Plano com gatilhos",
+      "detail": "Defina ações quando a observação ultrapassar a previsão: paginação, seleção de campos, nova subtarefa ou interrupção para handoff. O gatilho deve ocorrer antes de consumir a reserva de validação. Replanejamento altera somente etapas ainda abertas; artefatos já aceitos permanecem referenciados e podem ser invalidados apenas por mudança de requisito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013",
+        "V3C-S022"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Refatoração em repositório grande",
+      "scenario": "O contexto completo não cabe de forma útil no modelo local.",
+      "strategy": "Comece com mapa de símbolos e dependências, leia trechos necessários e produza patch por unidade. Reserve leitura de consumidores e execução de testes antes de integrar. Se um tipo comum mudar, reabra o planejamento dos módulos afetados em vez de continuar com resumos antigos.",
+      "small_model_role": "3–7B aplica mudanças locais; 8–14B seleciona contexto; 15–30B integra contratos.",
+      "acceptance": "Proposta: nenhuma mudança aceita sem contexto de validação e menor consumo por tarefa concluída.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S012"
+      ]
+    },
+    {
+      "name": "Síntese de fontes extensas",
+      "scenario": "Há documentos suficientes para exceder várias janelas.",
+      "strategy": "Extraia tabelas de alegação, trecho e limite por fonte. Planeje a síntese sobre essas tabelas e reserve consultas pontuais aos originais para conflitos. Não conte apenas tokens de síntese: some extração, revisões e recuperações adicionais para comparar arquiteturas.",
+      "small_model_role": "8–14B realiza extração padronizada; 15–30B compara alegações apoiadas.",
+      "acceptance": "Proposta: cobertura de evidência e custo completo frente à leitura monolítica quando ela for viável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4C-S013"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Nós de transformação estreitos, com saída curta e critério determinístico.",
+    "8_14b": "Seleção e extração de contexto com referências que permitam recuperação posterior.",
+    "15_30b": "Planejamento de dependências informacionais e integração de exceções sem carregar todos os intermediários.",
+    "training_or_runtime_requirements": "Contagem com tokenizer real, estimativas por etapa e medição do custo de reconsulta e integração.",
+    "do_not_use_when": "Não chamar de economia uma compressão que elimina a evidência necessária para verificar o resultado."
+  },
+  "connections": [
+    {
+      "target_id": "T152",
+      "relation": "feeds",
+      "how": "Converter previsão do plano em reservas de entrada, saída e validação por etapa.",
+      "interface": "Estimativas, variabilidade e prioridade informacional.",
+      "condition": "Reservas cabem na janela e no orçamento acumulado.",
+      "acceptance": "Estouro de uma ferramenta dispara contingência antes de invalidar a chamada seguinte.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S022"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T214",
+      "relation": "complements",
+      "how": "Projetar campos de ferramentas conforme a necessidade da próxima etapa.",
+      "interface": "Schema da resposta e campos requeridos pelo contrato.",
+      "condition": "Dados omitidos permanecem recuperáveis por referência.",
+      "acceptance": "Poda não remove identificação, erro ou campo necessário ao teste.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Mais trabalhadores podem aumentar tokens totais apesar de reduzir janela individual.",
+    "Não iniciar síntese final sem reserva para conferir fontes e produzir estado de cobertura."
+  ],
+  "frontier_comparison": "Compare arquitetura pequena e modelo de fronteira com custo de todas as fases e taxa de conclusão válida. Planejamento pode compensar contexto limitado em tarefas decomponíveis, sem garantir paridade em sínteses indivisíveis.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q009",
+      "V4C-Q014",
+      "V4C-Q027"
+    ],
+    "scope_note": "ReWOO e relatos de harness sustentam separação de fases; as estimativas e critérios propostos não foram executados nem tratados como benchmark."
+  },
+  "source_ids": [
+    "V3C-S012",
+    "V4C-S013",
+    "C-S030",
+    "V4C-S014",
+    "V3C-S022",
+    "V4C-S030"
+  ]
+}

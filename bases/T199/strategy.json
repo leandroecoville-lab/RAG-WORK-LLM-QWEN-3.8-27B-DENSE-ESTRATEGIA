@@ -1,0 +1,128 @@
+{
+  "id": "T199",
+  "novelty": "A v3 exigiu alteração persistente e teste reservado. Esta camada organiza o ciclo como experimentação causal, com seleção de falhas, prevenção de regressão e controle da dívida criada por ajustes sucessivos.",
+  "deep_layers": [
+    {
+      "name": "Uma mudança identificável",
+      "detail": "Associe cada hipótese a um componente: prompt, exemplo, índice, roteador, procedimento ou pesos. Registre diferença e critério esperado antes de testar. Alterar vários componentes simultaneamente pode melhorar a métrica sem explicar causa, dificultando manutenção e reversão quando a distribuição muda.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S020",
+        "V4B-S022",
+        "V4B-S023",
+        "V4B-S025"
+      ]
+    },
+    {
+      "name": "Falhas representativas",
+      "detail": "Priorize erros por impacto e frequência, mas inclua classes raras relevantes. Transformar cada falha observada num exemplo quase idêntico pode produzir memorização de incidentes. Gere variações legítimas e teste em novas origens; preserve uma lista de problemas ainda não resolvidos em vez de remover casos difíceis da suíte.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S020",
+        "V4B-S022",
+        "V4B-S023",
+        "V4B-S025"
+      ]
+    },
+    {
+      "name": "Aprender não é só filtrar",
+      "detail": "Executar testes e rejeitar candidatos melhora a saída daquela execução; aprendizagem exige reutilizar uma mudança depois. AlphaEvolve mantém uma busca com avaliações e histórico, enquanto testes industriais podem apenas selecionar propostas. Descreva exatamente qual estado persiste antes de chamar o sistema de autoaperfeiçoamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S020",
+        "V4B-S022",
+        "V4B-S023",
+        "V4B-S025"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Melhorar extração recorrente",
+      "scenario": "Uma versão erra categorias específicas de documento.",
+      "strategy": "Agrupe falhas, escolha uma intervenção pequena e compare com controle. Atualize exemplos ou recuperação quando a causa estiver neles, evitando fine-tuning automático para todo erro.",
+      "small_model_role": "Um 3–7B pode ganhar utilidade especializada por melhoria do sistema ao redor dele.",
+      "acceptance": "Avaliar casos novos, regressões e custo por resultado correto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S020",
+        "V4B-S022",
+        "V4B-S023",
+        "V4B-S025"
+      ]
+    },
+    {
+      "name": "Evoluir procedimento de agente",
+      "scenario": "Execuções mostram uma sequência de ações desnecessária.",
+      "strategy": "Crie uma nova skill ou política, valide pré-condições e compare em replay ou ambiente de teste. Promova somente a versão que mantém resultados e reduz custo observado.",
+      "small_model_role": "Um 8–14B pode executar o procedimento melhorado sem precisar atualizar pesos.",
+      "acceptance": "Comprovar alteração persistente e ganho em tarefas fora das trajetórias usadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S020",
+        "V4B-S022",
+        "V4B-S023",
+        "V4B-S025"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Melhorias de dados, ferramentas e contratos podem superar mudanças de pesos no início.",
+    "8_14b": "Use um histórico de experimentos para evitar ciclos de correções contraditórias.",
+    "15_30b": "Em 15–30B, custo de treino torna diagnóstico causal ainda mais importante.",
+    "training_or_runtime_requirements": "Pode modificar runtime, conteúdo ou pesos; declare qual componente mudou e como foi promovido.",
+    "do_not_use_when": "Não contar avaliação repetida como aprendizagem nem usar o teste final como guia contínuo de desenvolvimento."
+  },
+  "connections": [
+    {
+      "target_id": "T177",
+      "relation": "feeds",
+      "how": "Falhas verificadas podem alimentar um próximo ajuste quando a causa é comportamento aprendível.",
+      "interface": "Exemplos revisados e categoria de erro.",
+      "condition": "Separação entre dados de desenvolvimento e avaliação.",
+      "acceptance": "Medir generalização após o ajuste.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S020",
+        "V4B-S022",
+        "V4B-S023",
+        "V4B-S025"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T204",
+      "relation": "feeds",
+      "how": "Procedimentos bem-sucedidos podem ser consolidados em skills versionadas.",
+      "interface": "Pré-condições, passos e evidência de resultado.",
+      "condition": "Generalização preserva parâmetros variáveis.",
+      "acceptance": "Reexecutar em situações novas e manter rollback.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S020",
+        "V4B-S022",
+        "V4B-S023",
+        "V4B-S025"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não remover casos difíceis para melhorar o número agregado.",
+    "Registrar mudanças rejeitadas e seus efeitos, evitando redescobrir regressões."
+  ],
+  "frontier_comparison": "Compare versões da aplicação e um baseline de fronteira em tarefas novas. Um ciclo de melhoria pode reduzir lacunas específicas, sem estabelecer crescimento ilimitado ou inteligência geral.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q011",
+      "V4B-Q012"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "C-S020",
+    "V4B-S022",
+    "V4B-S023",
+    "V4B-S025"
+  ]
+}

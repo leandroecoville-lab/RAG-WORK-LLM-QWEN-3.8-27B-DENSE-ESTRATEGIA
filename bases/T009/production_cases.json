@@ -1,0 +1,266 @@
+{
+  "coverage": {
+    "entry_id": "T009",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 1,
+    "verified_bigtech_llm_production_exact": 1,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 6,
+    "operational_product_cases": 2,
+    "research_cases": 3,
+    "family_or_analogy_cases": 2,
+    "missing_to_target": 9,
+    "target_met": false,
+    "strict_case_ids": [
+      "V4A-C012"
+    ],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "RAG — Retrieval-Augmented Generation; incluindo RAG temporal",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4A-C012",
+      "company": "Amazon",
+      "system": "Rufus shopping assistant",
+      "title": "Rufus shopping assistant — evidência delimitada",
+      "evidence_level": "production_documented",
+      "observed_use": "Amazon descreve assistente em uso no aplicativo de compras.",
+      "technical_mechanism": "RAG seleciona catálogo, avaliações, perguntas comunitárias e APIs conforme a pergunta.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S022"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T009",
+          "match": "exact",
+          "rationale": "Recuperação antecede geração e inclui múltiplas fontes."
+        },
+        {
+          "entry_id": "T036",
+          "match": "exact",
+          "rationale": "Relevância de cada fonte varia com a consulta."
+        },
+        {
+          "entry_id": "T024",
+          "match": "family",
+          "rationale": "Seleção de fontes inspira broker, sem confirmar componente LAI."
+        },
+        {
+          "entry_id": "P007",
+          "match": "analogy",
+          "rationale": "Recuperador editorial pode adotar contrato semelhante, sem alegar adoção."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Separar busca factual de texto opinativo e exigir evidência de atributo antes da comparação por 8–14B.",
+      "limits": "Porte do LLM customizado não é indicado; não explicita BM25+vetores nem cada técnica de chunking. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4B-C008",
+      "deployment_domain": "llm_application",
+      "deduplication_note": "Consolidado com V4B-C008 para contagem. Mapeamentos e versões das fontes permanecem separados; não se presume simultaneidade de todos os mecanismos.",
+      "mapping": {
+        "entry_id": "T009",
+        "match": "exact",
+        "rationale": "Recuperação antecede geração e inclui múltiplas fontes."
+      }
+    },
+    {
+      "case_id": "V4A-C019",
+      "company": "GitHub / Microsoft",
+      "system": "Copilot semantic repository indexing",
+      "title": "Copilot semantic repository indexing — evidência delimitada",
+      "evidence_level": "operational_product",
+      "observed_use": "Documentação oferece índice semântico para Chat e cloud agent.",
+      "technical_mechanism": "Busca de seções de código por significado e atualização do índice.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S023"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T009",
+          "match": "exact",
+          "rationale": "Contexto recuperado do repositório orienta respostas."
+        },
+        {
+          "entry_id": "T044",
+          "match": "family",
+          "rationale": "Busca sob demanda relacionada à expansão."
+        },
+        {
+          "entry_id": "P007",
+          "match": "analogy",
+          "rationale": "Inspira interface de recuperação; não comprova componente editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Usar 3–7B para formular consulta e 8–14B para explicar trecho com revisão do commit.",
+      "limits": "Não comprova Git-backed memory do agente nem AST chunking; índices podem atrasar. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C019",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T009",
+        "match": "exact",
+        "rationale": "Contexto recuperado do repositório orienta respostas."
+      }
+    },
+    {
+      "case_id": "V4A-C020",
+      "company": "Google",
+      "system": "NotebookLM com fontes multimodais",
+      "title": "NotebookLM com fontes multimodais — evidência delimitada",
+      "evidence_level": "operational_product",
+      "observed_use": "Produto oferece análise de documentos, áudio e vídeo com citações.",
+      "technical_mechanism": "Conteúdo de fontes e transcrições fundamenta respostas referenciadas.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S025"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T009",
+          "match": "family",
+          "rationale": "Fundamentação em fontes é relacionada, sem pipeline interno publicado."
+        },
+        {
+          "entry_id": "T015",
+          "match": "family",
+          "rationale": "Citações retornam às fontes; formato de Reference Passing não é especificado."
+        },
+        {
+          "entry_id": "T033",
+          "match": "analogy",
+          "rationale": "Transcrições permitem endereçar trechos, sem comprovar splitter estrutural próprio."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Conservar timestamp e locutor ao fornecer excertos para leitor compacto.",
+      "limits": "Não importar limites comerciais históricos como atuais; não é prova de parser infalível. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C020",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T009",
+        "match": "family",
+        "rationale": "Fundamentação em fontes é relacionada, sem pipeline interno publicado."
+      }
+    },
+    {
+      "case_id": "V4A-C021",
+      "company": "Google DeepMind",
+      "system": "DataGemma RIG/RAG",
+      "title": "DataGemma RIG/RAG — evidência delimitada",
+      "evidence_level": "research_only",
+      "observed_use": "Projeto publica variantes para fundamentar geração em Data Commons.",
+      "technical_mechanism": "RIG troca números por dados; RAG usa modelo Gemma para preparar contexto de Gemini 1.5 Pro.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S014"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T009",
+          "match": "exact",
+          "rationale": "Recuperação contextual é objetivo explícito."
+        },
+        {
+          "entry_id": "T067",
+          "match": "exact",
+          "rationale": "RIG reconhece necessidade de consultar para corrigir número."
+        },
+        {
+          "entry_id": "T068",
+          "match": "exact",
+          "rationale": "Geração é aumentada por dados externos."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Testar roteador pequeno para consulta estatística, mantendo unidade, período e população.",
+      "limits": "RAG citado não é pipeline integral 3–30B; não há implantação de usuário comprovada. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C021",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "T009",
+        "match": "exact",
+        "rationale": "Recuperação contextual é objetivo explícito."
+      }
+    },
+    {
+      "case_id": "V4A-C022",
+      "company": "Salesforce",
+      "system": "SFR-RAG 9B",
+      "title": "SFR-RAG 9B — evidência delimitada",
+      "evidence_level": "research_only",
+      "observed_use": "Pesquisa apresenta modelo de nove bilhões especializado em fidelidade contextual.",
+      "technical_mechanism": "Pós-treino privilegia leitura de evidência, citações e reconhecimento de insuficiência.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4A-S019"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T009",
+          "match": "exact",
+          "rationale": "Leitor especializado para RAG."
+        },
+        {
+          "entry_id": "T068",
+          "match": "family",
+          "rationale": "Uso de memória textual externa; não arquitetura neural LongMem."
+        }
+      ],
+      "small_model_transfer": "Proposta de engenharia: Considerar leitor 8–14B especializado e comparar com modelo geral do mesmo porte.",
+      "limits": "Resultados experimentais publicados não garantem produção nem superioridade universal; nenhuma pergunta de benchmark foi incorporada. Não comprova resultado no ambiente do usuário nem equivalência geral de modelos 3–30B.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4A-C022",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "T009",
+        "match": "exact",
+        "rationale": "Leitor especializado para RAG."
+      }
+    },
+    {
+      "case_id": "V4B-C025",
+      "company": "Google DeepMind",
+      "organization_class": "bigtech",
+      "system": "RETRO",
+      "title": "Arquitetura de recuperação integrada a atenção",
+      "evidence_level": "research_only",
+      "observed_use": "O trabalho avalia um modelo treinado para consumir trechos recuperados por uma arquitetura específica de atenção.",
+      "technical_mechanism": "Codificação de vizinhos recuperados e cross-attention por trechos fazem parte da função treinada.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "B-S026"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T112",
+          "match": "exact",
+          "rationale": "Recuperação participa da arquitetura de atenção."
+        },
+        {
+          "entry_id": "T009",
+          "match": "family",
+          "rationale": "A família usa conhecimento recuperado, mas não equivale a anexar trechos a um prompt comum."
+        }
+      ],
+      "small_model_transfer": "Proposta: estudar custo e benefício de arquitetura treinada versus RAG externo antes de escolher uma intervenção em 3–30B.",
+      "limits": "Pesquisa não comprova produto implantado. Alterar um checkpoint convencional para reproduzir RETRO requer treinamento e compatibilidade; não é uma opção intercambiável de serving.",
+      "canonical_case_id": "V4B-C025",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "T009",
+        "match": "family",
+        "rationale": "A família usa conhecimento recuperado, mas não equivale a anexar trechos a um prompt comum."
+      }
+    }
+  ]
+}

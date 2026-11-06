@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "B-S013",
+    "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+    "url": "https://arxiv.org/abs/2309.06180",
+    "publisher": "Kwon e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-09-12",
+    "supports": "Blocos não contíguos de KV, menor fragmentação e compartilhamento no serving.",
+    "limitations": "Resumo e metadados acessados; artigo integral não auditado e resultados não reproduzidos.",
+    "web_ref": "turn6view3"
+  },
+  {
+    "source_id": "V3B-S009",
+    "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention — full text",
+    "url": "https://arxiv.org/html/2309.06180v1",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-09-12",
+    "supports": "Blocos lógicos/físicos, compartilhamento, contagem de referências e cópia na escrita.",
+    "limitations": "Texto do projeto original; medições publicadas não são resultados da implantação do usuário.",
+    "web_ref": "turn121view1"
+  },
+  {
+    "source_id": "V4B-S014",
+    "title": "Continuous batching — Transformers",
+    "url": "https://huggingface.co/docs/transformers/en/continuous_batching",
+    "publisher": "Hugging Face",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "ContinuousBatchingManager, generate_batch, configuração separada de geração e scheduling, cache paginado e recursos de serving.",
+    "limitations": "Documentação dinâmica; exemplos não são implantação de cliente. Verificar versão instalada e suporte arquitetural.",
+    "web_ref": "turn221view0"
+  },
+  {
+    "source_id": "V4B-S008",
+    "title": "How Amazon scaled Rufus by building multi-node inference using AWS Trainium chips and vLLM",
+    "url": "https://aws.amazon.com/blogs/machine-learning/how-amazon-scaled-rufus-by-building-multi-node-inference-using-aws-trainium-chips-and-vllm/",
+    "publisher": "Amazon / AWS",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-08-13",
+    "supports": "Rufus lançado com inferência multinó, Neuron, vLLM e continuous batching; relato de tráfego Prime Day.",
+    "limitations": "Arquitetura específica Trainium; não transpor escala, latência nem suporte de GPU a outro ambiente.",
+    "web_ref": "turn218view0"
+  }
+]

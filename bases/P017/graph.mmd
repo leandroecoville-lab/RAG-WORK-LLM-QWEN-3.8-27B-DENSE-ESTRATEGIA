@@ -1,0 +1,8 @@
+flowchart TD
+    P017["P017 Distillation Pipeline"]
+    T178["T178 Knowledge Distillation"]
+    P017 -. "feeds: proposta" .-> T178
+    T181["T181 Agent Memory Distillation"]
+    P017 -. "alternative: proposta" .-> T181
+    P016["P016 Evaluation Engine"]
+    P017 -. "requires: proposta" .-> P016

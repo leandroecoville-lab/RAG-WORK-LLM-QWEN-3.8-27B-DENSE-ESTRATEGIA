@@ -1,0 +1,28 @@
+{
+  "id": "T005",
+  "name": "Semantic Caching",
+  "canonical_name": "Semantic Caching",
+  "canonical_id": "T005",
+  "aliases": [
+    "cache semântico"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "technique",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T007",
+    "T031",
+    "T205"
+  ],
+  "source_ids": [
+    "A-S005",
+    "V3A-S007",
+    "V4A-S016"
+  ],
+  "namespace": "T005",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T005",
+  "chunk_count": 9
+}

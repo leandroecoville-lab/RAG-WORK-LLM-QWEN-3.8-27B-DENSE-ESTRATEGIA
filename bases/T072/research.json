@@ -1,0 +1,51 @@
+{
+  "id": "T072",
+  "technical_details": "Versionar cada arquivo individualmente não garante uma visão consistente do conjunto. Uma memória pode depender de um resumo, índice e documento original produzidos em momentos distintos. Um manifesto de publicação identifica quais revisões formam uma versão utilizável e permite detectar misturas. O alias vigente deve apontar a esse conjunto completo, sem confundir edição mais recente com revisão validada para consumo.",
+  "boundary_condition": "Se consumidores resolvem latest independentemente para cada componente, podem combinar versões incompatíveis mesmo quando todos os objetos possuem histórico correto.",
+  "implementation_contract": {
+    "inputs": "Revisões de memórias, dependências, resultados de validação e conjunto que será publicado.",
+    "outputs": "Manifesto consistente e alias de versão utilizável, mantendo acesso às revisões anteriores.",
+    "state": "Histórico, relações entre versões, alterações pendentes e consumidores que fixaram uma revisão.",
+    "invariant": "Uma resposta reproduzível identifica o conjunto efetivamente lido, incluindo índice e representações derivadas."
+  },
+  "tradeoffs": [
+    "Fixar revisões torna diagnóstico possível e aumenta armazenamento e gestão de referências.",
+    "Atualizar aliases simplifica descoberta e exige publicação coordenada para impedir leitura parcial do conjunto."
+  ],
+  "failure_test": "Teste proposto: publicar um índice novo antes de disponibilizar o documento correspondente. O leitor deve continuar na versão anterior ou detectar indisponibilidade; não deve combinar índice novo com fonte antiga.",
+  "evaluation_plan": "Avaliação proposta: comparar revisões independentes e publicação por manifesto durante atualizações. Medir combinações inválidas, tempo até disponibilidade, reprodução de respostas e custo de retenção; testar rollback de dados sem repetir efeitos externos.",
+  "comparisons": [
+    {
+      "entry_id": "T056",
+      "relation": "distinct_from",
+      "reason": "Revisão registra evolução do artefato; bitemporalidade define validade no domínio e perspectiva de conhecimento."
+    },
+    {
+      "entry_id": "T061",
+      "relation": "complements",
+      "reason": "Identificadores por conteúdo podem fixar precisamente os objetos incluídos em um manifesto."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Git organiza objetos de conteúdo e commits que referenciam uma árvore e a história de revisões.",
+    "source_ids": [
+      "A-S028"
+    ],
+    "support": "related",
+    "caveat": "Usar um manifesto consistente para índices e memórias externos é uma proposta; um commit não inclui recursos que não foram incorporados ao seu contrato."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma versão numérica basta para reproduzir uma resposta?",
+      "answer": "Somente se resolve todos os componentes relevantes. Também podem importar modelo, configuração de recuperação e fontes externas lidas depois."
+    },
+    {
+      "question": "Reverter memória desfaz decisões anteriores?",
+      "answer": "Não. Reverte o conteúdo utilizado em chamadas futuras. Decisões e alterações já aplicadas precisam permanecer no histórico e, quando cabível, ser reconciliadas."
+    }
+  ],
+  "source_ids": [
+    "A-S028"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

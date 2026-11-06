@@ -1,0 +1,337 @@
+{
+  "audit_id": "audit_A_D",
+  "auditor_group": "A",
+  "checked_on": "2026-11-05",
+  "scope": {
+    "case_count": 9,
+    "case_ids": [
+      "V4D-C001",
+      "V4D-C002",
+      "V4D-C003",
+      "V4D-C004",
+      "V4D-C005",
+      "V4D-C006",
+      "V4D-C007",
+      "V4D-C008",
+      "V4D-C009"
+    ],
+    "method": "Auditoria documental independente por caso: classificação de evidência, principal mecanismo e mapeamentos de maior risco confrontados com fontes primárias abertas.",
+    "not_claimed": "Não é verificação exaustiva de toda frase, de todas as páginas vinculadas, da implementação real ou das métricas publicadas. Não foram consultadas questões/gabaritos de benchmark nem executados modelos.",
+    "inputs_unchanged": true
+  },
+  "inputs": [
+    {
+      "path": "staging/cases_D.jsonl",
+      "sha256": "391fcdb7657ab5ee5139d9d45b2a527e1b17d9fe48749b0356e1c8fca87757a8"
+    },
+    {
+      "path": "staging/cases_D_extra.jsonl",
+      "sha256": "1555cb704135a981350829440f6798cac043e017d345ea9a37250660fd2926da"
+    },
+    {
+      "path": "staging/sources_D.jsonl",
+      "sha256": "fd60682869d3c13d71f347e8f2cc425c11ae97af148f5ebb09eb6ed50001a729"
+    },
+    {
+      "path": "staging/sources_D_extra.jsonl",
+      "sha256": "00a337466cea722697f8a3701f4564ddfdf8b0f7e293114ceb34c470e8f9fbaf"
+    }
+  ],
+  "summary": {
+    "cases_reviewed": 9,
+    "findings": 4,
+    "high": 0,
+    "medium": 3,
+    "low": 1,
+    "production_classification_changes_recommended": 0
+  },
+  "findings": [
+    {
+      "finding_id": "A-D-F01",
+      "case_id": "V4D-C008",
+      "field": "source_ids; mappings[T120]",
+      "severity": "medium",
+      "status": "source_gap_resolved_by_opened_paper",
+      "finding": "O mapeamento exact para T120 tem apoio primário explícito, mas o caso referencia apenas a homepage. A rastreabilidade atual não aponta o trecho que demonstra a decisão de roteamento.",
+      "suggested_correction": "Manter T120 exact e acrescentar o artigo arXiv:2407.00079v1 ao registro de fontes e ao caso. Referenciar seção 5.1/Algoritmo 1. Se essa fonte não for incorporada, rebaixar o vínculo para family.",
+      "evidence": [
+        {
+          "url": "https://arxiv.org/html/2407.00079v1",
+          "web_ref": "turn321view0",
+          "location": "Seção 5.1 e Algoritmo 1, linhas 140–211; seção 3",
+          "supports": "O Conductor escolhe a instância de prefill usando comprimento do prefixo reutilizável, fila e tempo previsto; considera transferência e SLO."
+        }
+      ],
+      "scope_limit": "O artigo histórico e as integrações atuais do repositório não devem ser fundidos numa única configuração. Experimentos do artigo usam modelo substituto e replay de traces; isso não altera a identificação operacional do sistema, mas limita métricas."
+    },
+    {
+      "finding_id": "A-D-F02",
+      "case_id": "V4D-C002",
+      "field": "mappings[T153].match",
+      "severity": "medium",
+      "status": "correction_recommended",
+      "finding": "A fonte prova streaming da resposta. T153 no catálogo exige também possibilidade de interrupção propagada ao processamento. A documentação de Click to Do aberta não demonstra esse segundo mecanismo.",
+      "suggested_correction": "Alterar T153 de exact para family e registrar: entrega incremental documentada; contrato de interrupção/cancelamento não especificado na fonte consultada.",
+      "evidence": [
+        {
+          "url": "https://learn.microsoft.com/en-us/windows/client-management/manage-click-to-do",
+          "web_ref": "turn317view1",
+          "location": "Intelligent text actions, linhas 105–113",
+          "supports": "Ações de texto usam Phi Silica no NPU e transmitem a resposta incrementalmente; não descreve cancelamento da geração."
+        }
+      ],
+      "scope_limit": "Ausência de evidência nesta fonte não afirma que o produto seja incapaz de interromper."
+    },
+    {
+      "finding_id": "A-D-F03",
+      "case_id": "V4D-C006",
+      "field": "mappings[T153].match; mappings[T172].match",
+      "severity": "medium",
+      "status": "correction_recommended",
+      "finding": "A fonte descreve liberação progressiva de perguntas somente após guardas. Isso não demonstra interrupção/cancelamento exigido por T153 nem o ciclo completo de controlador de streaming de T172, que inclui estados, pressão reversa e encerramento.",
+      "suggested_correction": "Rebaixar T153 e T172 para family. Preservar o vínculo técnico como barreira de validação antes da entrega; não inferir controlador completo ou cancelamento no servidor.",
+      "evidence": [
+        {
+          "url": "https://blogs.windows.com/windowsdeveloper/2025/07/31/phi-silica-task-specialization-using-lora-in-microsoft-learning-zone-a-technical-deep-dive/",
+          "web_ref": "turn318view1",
+          "location": "Pipeline, treinamento e avaliação, linhas 23–105; anúncio de preview na linha 129",
+          "supports": "Perguntas passam por guardas antes da entrega; treino LoRA usa dados de professor; avaliadores múltiplos pertencem à avaliação offline. Publicação de julho anunciava preview futuro."
+        }
+      ],
+      "scope_limit": "O guardrail T193 continua diretamente sustentado. Não é necessário remover o caso ou alterar sua classificação operacional."
+    },
+    {
+      "finding_id": "A-D-F04",
+      "case_id": "V4D-C002",
+      "field": "technical_mechanism; mappings[T085,T125,T094,T079,T132]",
+      "severity": "low",
+      "status": "version_scope_clarification",
+      "finding": "As ressalvas atuais já distinguem a configuração de 2024 da API atual. Mesmo assim, a união dos mapeamentos pode ser lida como uma pilha única, simultânea e imutável.",
+      "suggested_correction": "Marcar nas justificativas T085/T125/T094 como configuração publicada em 2024-12-06; T079/T132 como capacidade NPU descrita na API consultada em 2026-11-05. Não descrever essa união como um checkpoint/release único comprovado. Não criar novos casos para cada versão.",
+      "evidence": [
+        {
+          "url": "https://blogs.windows.com/windowsexperience/2024/12/06/phi-silica-small-but-mighty-on-device-slm/",
+          "web_ref": "turn317view2",
+          "location": "Quantization e chunked context, linhas 86–124",
+          "supports": "Configuração histórica com QuaRot/GPTQ e processamento de contexto em blocos de 64 tokens."
+        },
+        {
+          "url": "https://learn.microsoft.com/en-us/windows/ai/apis/phi-silica",
+          "web_ref": "turn317view0",
+          "location": "Visão geral e comparação NPU/GPU, linhas 40–95",
+          "supports": "API atual distingue NPU/GPU, especulação e compressão; também documenta uma transição futura para Aion."
+        },
+        {
+          "url": "https://learn.microsoft.com/en-us/windows/client-management/manage-click-to-do",
+          "web_ref": "turn317view1",
+          "location": "Intelligent text actions, linhas 105–113",
+          "supports": "Ações de texto usam Phi Silica no NPU e transmitem a resposta incrementalmente; não descreve cancelamento da geração."
+        }
+      ],
+      "scope_limit": "Não foi encontrado conflito factual que exija eliminar os mecanismos históricos; a correção é de delimitação temporal."
+    }
+  ],
+  "case_reviews": [
+    {
+      "case_id": "V4D-C001",
+      "verdict": "supported_with_existing_qualifiers",
+      "depth": "Confrontados o mecanismo de quantização/geração guiada/ferramentas e a disponibilização do framework; não auditados todos os aplicativos citados pela Apple.",
+      "opened_sources": [
+        {
+          "url": "https://machinelearning.apple.com/research/apple-foundation-models-2025-updates",
+          "web_ref": "turn321view2",
+          "location": "Optimizations e Foundation Models Framework, linhas 73–94",
+          "supports": "Documento técnico associa modelo local ~3B, KV de 8 bits, geração guiada, especulação, ferramentas e adaptadores."
+        },
+        {
+          "url": "https://www.apple.com/newsroom/2025/09/apples-foundation-models-framework-unlocks-new-intelligent-app-experiences/",
+          "web_ref": "turn320view2",
+          "location": "Lançamento e aplicativos, linhas 31–41",
+          "supports": "Release de setembro descreve framework disponibilizado com OS 26 e exemplos de aplicativos."
+        }
+      ],
+      "notes": "operational_product é conservador; não se transfere telemetria ou configuração de todos os aplicativos ao operador."
+    },
+    {
+      "case_id": "V4D-C002",
+      "verdict": "mapping_and_version_corrections_recommended",
+      "depth": "Confrontadas as três fontes que ligam Click to Do à implementação local e às versões históricas/atuais; sem teste do produto.",
+      "opened_sources": [
+        {
+          "url": "https://blogs.windows.com/windowsexperience/2024/12/06/phi-silica-small-but-mighty-on-device-slm/",
+          "web_ref": "turn317view2",
+          "location": "Quantization e chunked context, linhas 86–124",
+          "supports": "Configuração histórica com QuaRot/GPTQ e processamento de contexto em blocos de 64 tokens."
+        },
+        {
+          "url": "https://learn.microsoft.com/en-us/windows/ai/apis/phi-silica",
+          "web_ref": "turn317view0",
+          "location": "Visão geral e comparação NPU/GPU, linhas 40–95",
+          "supports": "API atual distingue NPU/GPU, especulação e compressão; também documenta uma transição futura para Aion."
+        },
+        {
+          "url": "https://learn.microsoft.com/en-us/windows/client-management/manage-click-to-do",
+          "web_ref": "turn317view1",
+          "location": "Intelligent text actions, linhas 105–113",
+          "supports": "Ações de texto usam Phi Silica no NPU e transmitem a resposta incrementalmente; não descreve cancelamento da geração."
+        }
+      ],
+      "notes": "Uso real das ações no NPU é sustentado. Interrupção do stream e coexistência de todos os detalhes numa mesma versão não foram estabelecidas. Achados F02/F04."
+    },
+    {
+      "case_id": "V4D-C003",
+      "verdict": "supported_with_existing_qualifiers",
+      "depth": "Conferido anúncio de rollout do recurso Recorder; não verificados internals ou porte exato do modelo instalado.",
+      "opened_sources": [
+        {
+          "url": "https://blog.google/products-and-platforms/devices/pixel/pixel-feature-drop-december-2023/",
+          "web_ref": "turn321view6",
+          "location": "Summarize in Recorder, linhas 230–240",
+          "supports": "Google anuncia resumos locais do Recorder no Pixel 8 Pro com Gemini Nano e disponibilidade sem rede."
+        }
+      ],
+      "notes": "produção documentada para o recurso anunciado. family/analogy adequados; não comprova resumo hierárquico nem memória persistente de agente."
+    },
+    {
+      "case_id": "V4D-C004",
+      "verdict": "supported_with_existing_qualifiers",
+      "depth": "Conferida disponibilidade da API e escopo de sumarização, sem investigação de adoção por clientes.",
+      "opened_sources": [
+        {
+          "url": "https://developer.chrome.com/docs/ai/built-in-apis",
+          "web_ref": "turn321view5",
+          "location": "Summarizer API, linhas 83–113",
+          "supports": "Summarizer é listado como disponível desde Chrome 138 estável."
+        }
+      ],
+      "notes": "operational_product adequado. APIs vizinhas possuem estágios distintos e não foram generalizadas para o Summarizer."
+    },
+    {
+      "case_id": "V4D-C005",
+      "verdict": "supported_with_existing_qualifiers",
+      "depth": "Conferidos modelos destilados e método no repositório dos autores; não refeitas avaliações nem acessadas questões/gabaritos.",
+      "opened_sources": [
+        {
+          "url": "https://github.com/deepseek-ai/DeepSeek-R1",
+          "web_ref": "turn324view1",
+          "location": "Distillation e Model Downloads, linhas 202–224",
+          "supports": "Autores descrevem ajuste de modelos densos com amostras R1 e listam checkpoints 7B/8B/14B."
+        },
+        {
+          "url": "https://arxiv.org/abs/2501.12948",
+          "web_ref": "turn320view5",
+          "location": "Identificação bibliográfica",
+          "supports": "Página primária do relatório R1; versão atual revisada após a publicação inicial."
+        }
+      ],
+      "notes": "research_only correto; T201 apenas family, sem inferência de política operacional ótima."
+    },
+    {
+      "case_id": "V4D-C006",
+      "verdict": "classification_supported_stream_mappings_overstated",
+      "depth": "Confrontados pipeline de treino/validação/avaliação e cronologia do preview com a ficha atual do produto.",
+      "opened_sources": [
+        {
+          "url": "https://blogs.windows.com/windowsdeveloper/2025/07/31/phi-silica-task-specialization-using-lora-in-microsoft-learning-zone-a-technical-deep-dive/",
+          "web_ref": "turn318view1",
+          "location": "Pipeline, treinamento e avaliação, linhas 23–105; anúncio de preview na linha 129",
+          "supports": "Perguntas passam por guardas antes da entrega; treino LoRA usa dados de professor; avaliadores múltiplos pertencem à avaliação offline. Publicação de julho anunciava preview futuro."
+        },
+        {
+          "url": "https://learn.microsoft.com/en-us/microsoft-365/education/guide/1-reference/microsoft-365-education-ai-application-card",
+          "web_ref": "turn317view6",
+          "location": "Learning Zone, linhas 66, 94, 130–132",
+          "supports": "Ficha atual descreve produto com geração assistida, revisão e Phi Silica local; não fixa a configuração de engenharia de julho/2025."
+        }
+      ],
+      "notes": "operational_product já está correto. O artigo de julho/2025 anunciava preview futuro; a ficha atual não prova implantação da mesma pilha experimental. Guardrails, professor, LoRA e prompt reduzido têm suporte. Achado F03."
+    },
+    {
+      "case_id": "V4D-C007",
+      "verdict": "supported_with_existing_qualifiers",
+      "depth": "Confrontadas seção de deployment e descrição de perfis; sem reprodução de performance ou acesso a traces de benchmark.",
+      "opened_sources": [
+        {
+          "url": "https://arxiv.org/html/2412.19437v2",
+          "web_ref": "turn323view1",
+          "location": "Seção 3.4, linhas 421–432",
+          "supports": "Autores descrevem serviço online com prefill/decode separados, TP/EP e especialistas redundantes ajustados por estatísticas."
+        },
+        {
+          "url": "https://github.com/deepseek-ai/profile-data/blob/main/README.md",
+          "web_ref": "turn325view0",
+          "location": "Inference e nota de escopo, linhas 168–186",
+          "supports": "Perfis descrevem RDMA e configurações próximas do deployment, mas simulam roteamento perfeitamente balanceado."
+        }
+      ],
+      "notes": "Diferenças EP128/EP320 e natureza idealizada do perfil já estão delimitadas. MTP permanece family e o porte excede 30B."
+    },
+    {
+      "case_id": "V4D-C008",
+      "verdict": "supported_after_direct_paper_added",
+      "depth": "Conferidos identificação operacional do Kimi, arquitetura e seleção de worker no artigo histórico; sem validação das métricas de desempenho.",
+      "opened_sources": [
+        {
+          "url": "https://kvcache-ai.github.io/Mooncake/",
+          "web_ref": "turn318view0",
+          "location": "Apresentação do projeto e cronologia",
+          "supports": "Projeto se identifica como plataforma do Kimi e mantém histórico de integrações."
+        },
+        {
+          "url": "https://arxiv.org/html/2407.00079v1",
+          "web_ref": "turn321view0",
+          "location": "Seção 5.1 e Algoritmo 1, linhas 140–211; seção 3",
+          "supports": "O Conductor escolhe a instância de prefill usando comprimento do prefixo reutilizável, fila e tempo previsto; considera transferência e SLO."
+        }
+      ],
+      "notes": "T120 exact é tecnicamente sustentado pela seção 5.1. Incorporar evidência direta pelo achado F01; preservar ressalva sobre versões e experimentos."
+    },
+    {
+      "case_id": "V4D-C009",
+      "verdict": "supported_with_existing_qualifiers",
+      "depth": "Confrontados HiRadixTree, workflow e disponibilidade de transporte; nenhuma implantação Big Tech é inferida.",
+      "opened_sources": [
+        {
+          "url": "https://kvcache-ai.github.io/Mooncake/design/hicache-design.html",
+          "web_ref": "turn323view3",
+          "location": "HiRadixTree e workflow, linhas 71–94",
+          "supports": "Prefixos compartilham nós, metadados apontam camadas e fluxo combina match local, prefetch e write-back."
+        },
+        {
+          "url": "https://kvcache-ai.github.io/Mooncake/design/transfer-engine/index.html",
+          "web_ref": "turn323view4",
+          "location": "Transportes e seleção de caminho, linhas 101–115",
+          "supports": "Biblioteca documenta RDMA, registro de memória e seleção por topologia."
+        },
+        {
+          "url": "https://kvcache-ai.github.io/Mooncake/design/architecture.html",
+          "web_ref": "turn325view1",
+          "location": "Componentes e cenários, linhas 70–106",
+          "supports": "Planos de controle/dados e composição de componentes são descritos separadamente."
+        }
+      ],
+      "notes": "operational_product e analogia T062 adequados. RDMA é capacidade configurável, sem afirmar que qualquer cliente a usa."
+    }
+  ],
+  "additional_source_proposal": {
+    "title": "Mooncake: Kimi’s KVCache-centric Architecture for LLM Serving",
+    "authors": [
+      "Ruoyu Qin",
+      "Zheming Li",
+      "Weiran He",
+      "Mingxing Zhang",
+      "Yongwei Wu",
+      "Weimin Zheng",
+      "Xinran Xu"
+    ],
+    "url": "https://arxiv.org/html/2407.00079v1",
+    "publisher": "Moonshot AI / Tsinghua University",
+    "source_type": "research_paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2024-06-24",
+    "web_ref": "turn321view0",
+    "supports": "Seção 5.1 e Algoritmo 1 sustentam diretamente KV-aware routing por prefixo, fila e TTFT; introdução identifica plataforma do Kimi.",
+    "limitations": "Conservar versão v1; experimentos incluem modelo substituto e replay de traces. Não atribuir recursos posteriores da biblioteca à implantação histórica."
+  }
+}

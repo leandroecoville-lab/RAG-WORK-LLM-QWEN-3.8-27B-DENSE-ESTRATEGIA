@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "C-S047",
+    "title": "Let's Verify Step by Step",
+    "url": "https://arxiv.org/abs/2305.20050",
+    "publisher": "Lightman e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Supervisão por etapas difere de rotular apenas o resultado final.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn16view10"
+  },
+  {
+    "source_id": "V3B-S018",
+    "title": "Scaling Laws for Reward Model Overoptimization",
+    "url": "https://arxiv.org/abs/2210.10760",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2022-10-19",
+    "supports": "Risco de otimizar reward proxy e estudo de best-of-N em ambiente sintético.",
+    "limitations": "O padrão observado em reward models não fornece uma lei universal de correção factual nem prova resultados de qualquer verificador.",
+    "web_ref": "turn177view3"
+  },
+  {
+    "source_id": "V4B-S022",
+    "title": "AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms",
+    "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+    "publisher": "Google DeepMind",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-05-14",
+    "supports": "Geração evolutiva com avaliadores executáveis; heurística descoberta implantada em Borg e verificações de circuitos.",
+    "limitations": "Não confundir ensemble de proponentes com votação nem transferir ganhos de sistemas Google a modelos 3–30B.",
+    "web_ref": "turn245view0"
+  }
+]

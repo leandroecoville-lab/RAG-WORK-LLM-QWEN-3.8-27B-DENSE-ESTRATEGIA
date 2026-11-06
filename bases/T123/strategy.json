@@ -1,0 +1,120 @@
+{
+  "id": "T123",
+  "novelty": "A v3 explicou formatos e escalas FP8. Esta camada distingue quantização de pesos, ativações e KV, além de propor diagnóstico de erro por operador antes de avaliar o serviço completo.",
+  "deep_layers": [
+    {
+      "name": "Precisão por componente",
+      "detail": "Dizer que um modelo usa FP8 pode esconder componentes em precisões distintas. Registre formato dos pesos, ativações, cache e acumuladores separadamente. Uma operação pode armazenar em FP8 e acumular em precisão maior; outra pode converter antes de executar. A economia e o erro dependem desse caminho real.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S034",
+        "V4B-S011",
+        "V3B-S003"
+      ]
+    },
+    {
+      "name": "Calibração e mudança",
+      "detail": "Escalas escolhidas em uma distribuição podem saturar em textos com amplitudes diferentes. Monitore valores fora da faixa em amostras representativas e compare comportamento em código, números e múltiplos idiomas quando esses dados fazem parte do uso. Uma taxa média baixa pode ocultar uma camada crítica.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S034",
+        "V4B-S011",
+        "V3B-S003"
+      ]
+    },
+    {
+      "name": "Causalidade do desempenho",
+      "detail": "FP8 pode reduzir bytes e usar instruções especializadas quando hardware e kernel suportam. Se o backend cai para conversões ou kernels inadequados, menor arquivo não implica menor latência. Compare a mesma configuração de batch e contexto antes de mudar outros fatores como cache ou paralelismo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S034",
+        "V4B-S011",
+        "V3B-S003"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Quantização com risco localizado",
+      "scenario": "Um modelo perde qualidade em poucas categorias.",
+      "strategy": "Compare erros por camada e por tipo de entrada; mantenha componentes sensíveis em precisão maior se o runtime permitir. Registre a política mista como parte do artefato.",
+      "small_model_role": "Um 8–14B especializado pode preservar tarefas críticas sem exigir uma configuração uniforme.",
+      "acceptance": "Validar categorias afetadas e medir o custo da exceção de precisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S034",
+        "V4B-S011",
+        "V3B-S003"
+      ]
+    },
+    {
+      "name": "Aumentar capacidade de serving",
+      "scenario": "A frota é limitada por tráfego ou memória.",
+      "strategy": "Teste FP8 isoladamente, confira o kernel utilizado e depois reavalie concorrência. Inclua escalas, buffers e cache no dimensionamento.",
+      "small_model_role": "Um 15–30B pode usar a economia para mais sessões, se qualidade e suporte forem confirmados.",
+      "acceptance": "Comparar respostas válidas por recurso reservado, além de throughput bruto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S034",
+        "V4B-S011",
+        "V3B-S003"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, overheads fixos podem limitar benefícios; o objetivo pode ser memória, não velocidade.",
+    "8_14b": "Teste qualidade por domínio e picos de ativação, especialmente após fine-tuning.",
+    "15_30b": "Distribuição entre dispositivos e precisão de coletivas podem interagir com formato local.",
+    "training_or_runtime_requirements": "Exige suporte do backend e artefato apropriado. Receitas de treino FP8 não são automaticamente quantização pós-treino equivalente.",
+    "do_not_use_when": "Não confundir FP8 com INT8 nem assumir que todo hardware executa o formato de modo nativo."
+  },
+  "connections": [
+    {
+      "target_id": "T085",
+      "relation": "complements",
+      "how": "FP8 é uma escolha concreta dentro de uma política de quantização de pesos e operações.",
+      "interface": "Formatos, escalas e precisão de acumulação.",
+      "condition": "Compatibilidade confirmada no caminho real.",
+      "acceptance": "Testar erro por operador e qualidade da tarefa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S034",
+        "V4B-S011",
+        "V3B-S003"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T086",
+      "relation": "complements",
+      "how": "Quantizar KV é uma decisão separada de quantizar pesos em FP8.",
+      "interface": "Dtype e escalas de cada componente.",
+      "condition": "Experimentos isolam as intervenções.",
+      "acceptance": "Medir degradação em contextos longos antes de combinar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S034",
+        "V4B-S011",
+        "V3B-S003"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Detectar saturação e não finitos sem substituir silenciosamente resultados.",
+    "Guardar metadados de calibração e versão do runtime junto ao checkpoint."
+  ],
+  "frontier_comparison": "Avalie o modelo quantizado contra sua própria referência e depois contra fronteira na tarefa. Economizar precisão não demonstra nem impede por si só desempenho especializado competitivo.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q020",
+      "V4B-Q025"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S034",
+    "V4B-S011",
+    "V3B-S003"
+  ]
+}

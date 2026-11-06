@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Limite de passos resolve loops?",
+    "answer": "Ele limita o dano, mas não identifica a causa nem recupera a estratégia. A detecção usa sinais do conteúdo e do estado."
+  },
+  {
+    "question": "Uma tentativa sem alteração conta como progresso?",
+    "answer": "Pode contar quando elimina uma hipótese ou revela informação relevante. O critério deve registrar essa evidência, não apenas a atividade."
+  },
+  {
+    "question": "Trocar palavras na próxima tentativa desfaz um loop?",
+    "answer": "Não se ação, informação disponível e efeito esperado continuam iguais sem nova evidência."
+  },
+  {
+    "question": "O que fazer depois de detectar estagnação?",
+    "answer": "Registrar a hipótese do bloqueio e escolher uma intervenção que altere informação ou estratégia; repetir o mesmo passo com prazo maior pode não ajudar."
+  }
+]

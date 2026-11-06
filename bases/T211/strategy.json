@@ -1,0 +1,114 @@
+{
+  "id": "T211",
+  "novelty": "A v3 tratava o handoff como manifesto publicado. A expansão projeta seu conteúdo como interface entre executores, com ordem de leitura, teste de suficiência e atualização após mudanças concorrentes.",
+  "deep_layers": [
+    {
+      "name": "Primeira leitura orientada à ação",
+      "detail": "Organize o arquivo por objetivo vigente, estado confirmado, próximo passo e impedimentos. Histórico detalhado fica em referências. O novo executor deve saber o que pode fazer sem reinterpretar toda a conversa. Uma explicação extensa que esconde o próximo passo aumenta a chance de repetir trabalho ou partir de premissa ultrapassada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V2A-S004"
+      ]
+    },
+    {
+      "name": "Evidência por afirmação operacional",
+      "detail": "Para cada item concluído, indique artefato e validação correspondente. Para pendência externa, registre se houve envio, confirmação ou desfecho desconhecido. Diferencie decisão aprovada, sugestão e hipótese. O handoff não precisa copiar todos os logs, mas precisa permitir reabrir a prova que justifica uma ação subsequente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026",
+        "V4C-S030"
+      ]
+    },
+    {
+      "name": "Consumo e envelhecimento",
+      "detail": "O consumidor confirma a revisão lida e verifica se arquivos ou objetivo avançaram desde a publicação. Se houver diferença, faça atualização incremental ou nova passagem; não edite o manifesto antigo como se sempre tivesse descrito o estado atual. Esse cuidado preserva investigação de falhas entre sessões.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S027",
+        "V3C-S028"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Troca de executor em programação",
+      "scenario": "Uma tarefa parcialmente concluída passa a outro agente.",
+      "strategy": "Publique revisão base, arquivos alterados, testes realmente executados e falhas restantes. A nova sessão verifica diff e ambiente antes de editar. Se o comando de teste não foi executado, registrar explicitamente como plano, sem transformar instrução em evidência.",
+      "small_model_role": "3–7B pode continuar ajuste local; 8–14B diagnostica divergências; 15–30B decide replanejamento.",
+      "acceptance": "Proposta: retomada produz mesmo conjunto de pendências e não reverte mudanças válidas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S027"
+      ]
+    },
+    {
+      "name": "Passagem entre coleta e relatório",
+      "scenario": "Pesquisadores encerram antes da síntese final.",
+      "strategy": "Entregue tabela de questões, fontes consultadas, evidência encontrada e lacunas. Inclua identidade de casos para evitar contar a mesma implantação várias vezes. O sintetizador resolve referências e recusa alegações sem fonte suficiente antes de redigir a conclusão.",
+      "small_model_role": "8–14B prepara extrações; 15–30B integra sem herdar como fatos as interpretações do coletor.",
+      "acceptance": "Proposta: todas as alegações finais rastreáveis e lacunas preservadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Consumir um próximo passo delimitado com referências pequenas e contrato de saída.",
+    "8_14b": "Checar suficiência do pacote e localizar divergências entre texto e artefatos.",
+    "15_30b": "Reconciliar múltiplos handoffs e dependências, mantendo autoria e versões.",
+    "training_or_runtime_requirements": "Publicação atômica do manifesto após seus membros, identificação de revisão e política para referências ausentes.",
+    "do_not_use_when": "Não usar o arquivo como prova de execução quando só contém narrativa ou comandos sugeridos."
+  },
+  "connections": [
+    {
+      "target_id": "T210",
+      "relation": "feeds",
+      "how": "O manifesto fornece o estado que permite rotacionar sessão sem depender de memória conversacional.",
+      "interface": "Objetivo, geração, artefatos e pendências.",
+      "condition": "Leitura confirmada antes de nova escrita.",
+      "acceptance": "Sessão seguinte distingue concluído, falho e desconhecido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S004"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T240",
+      "relation": "complements",
+      "how": "Snapshot fornece dados de estado e o handoff explica significado e próximo passo.",
+      "interface": "Identificador do snapshot e revisão dos artefatos.",
+      "condition": "Ambos correspondem ao mesmo ponto de publicação.",
+      "acceptance": "Rejeitar manifesto que aponta para snapshot posterior ou incompleto.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S027",
+        "V3C-S028"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Hash correto prova identidade de bytes, não verdade do relato.",
+    "Um comando mencionado em histórico não deve virar teste aprovado sem registro de execução."
+  ],
+  "frontier_comparison": "Compare retomada por handoff e histórico bruto medindo decisões corretas e custo de reconstrução. Texto bem organizado facilita modelos pequenos, mas não elimina necessidade de verificar estado externo.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q024",
+      "V4C-Q027"
+    ],
+    "scope_note": "Planos versionados no harness Codex sustentam artefatos de continuidade; o schema editorial de handoff é proposta e não produto implantado demonstrado."
+  },
+  "source_ids": [
+    "V4C-S030",
+    "V2A-S004",
+    "C-S026",
+    "V3C-S027",
+    "V3C-S028",
+    "C-S030"
+  ]
+}

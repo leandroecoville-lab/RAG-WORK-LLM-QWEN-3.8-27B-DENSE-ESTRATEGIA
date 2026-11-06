@@ -1,0 +1,119 @@
+{
+  "id": "T189",
+  "novelty": "A v3 separou cobertura dos candidatos e seleção. Esta camada trata diversidade dirigida, custo do verificador e avaliação de exploração da métrica conforme o número de candidatos cresce.",
+  "deep_layers": [
+    {
+      "name": "Cobertura controlada",
+      "detail": "Gere alternativas que diferem em decisões relevantes, não apenas estilo. Para código, varie algoritmo ou decomposição; para extração, varie hipótese de evidência. Registre se o conjunto contém uma solução correta com um oráculo independente, permitindo localizar falha de geração versus falha de seleção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S018",
+        "C-S043",
+        "V4B-S022"
+      ]
+    },
+    {
+      "name": "Seleção sob pressão",
+      "detail": "Quanto mais candidatos, maior a chance de encontrar uma resposta que explora defeitos do score. Compare qualidade independente ao aumentar N. Se a nota sobe enquanto o acerto cai, o seletor está escolhendo extremos de seu erro; reduzir orçamento ou melhorar o critério pode ser melhor que gerar mais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S018",
+        "C-S043",
+        "V4B-S022"
+      ]
+    },
+    {
+      "name": "Verificador caro",
+      "detail": "Nem todos os candidatos precisam receber a checagem mais cara. Use filtros baratos que não eliminem soluções válidas sistematicamente, depois verificação aprofundada nos sobreviventes. Registre custo e falsos negativos de cada estágio. Um pipeline de filtros deve ser avaliado como composição, não por precisão isolada do último juiz.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S018",
+        "C-S043",
+        "V4B-S022"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Geração de funções pequenas",
+      "scenario": "Há testes e restrições de interface.",
+      "strategy": "Gere candidatos com abordagens distintas, compile, execute testes e examine propriedades não cobertas. Escolha pelo critério de tarefa, mantendo empates e falhas de infraestrutura explícitos.",
+      "small_model_role": "Um 3–7B pode produzir candidatos úteis quando a solução correta aparece com frequência suficiente.",
+      "acceptance": "Medir cobertura do conjunto, acerto da seleção e custo total.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S018",
+        "C-S043",
+        "V4B-S022"
+      ]
+    },
+    {
+      "name": "Resposta com evidências alternativas",
+      "scenario": "Uma consulta admite várias sínteses.",
+      "strategy": "Gere versões com cobertura diferente, verifique alegações contra fontes e selecione a que cumpre requisitos. Não premiar comprimento ou tom de certeza.",
+      "small_model_role": "Um 8–14B pode propor sínteses enquanto um verificador checa citações e cobertura.",
+      "acceptance": "Avaliar fidelidade e utilidade, inclusive quando nenhum candidato é aceitável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S018",
+        "C-S043",
+        "V4B-S022"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Pode compensar instabilidade em tarefas estreitas, mas N alto não resolve ausência de capacidade.",
+    "8_14b": "O verificador deve ser mais confiável que o critério implícito usado pelo gerador.",
+    "15_30b": "Compare N candidatos de 15–30B com uma chamada mais forte, incluindo custo de julgar e esperar.",
+    "training_or_runtime_requirements": "Orquestração de inferência; treinamento do verificador é etapa opcional separada.",
+    "do_not_use_when": "Não chamar busca evolutiva inteira de best-of-N independente nem assumir que maior score significa maior verdade."
+  },
+  "connections": [
+    {
+      "target_id": "T195",
+      "relation": "complements",
+      "how": "Execução fornece sinais objetivos para selecionar código ou planos executáveis.",
+      "interface": "Artefato, entradas e resultados esperados.",
+      "condition": "Ambiente e oráculo são confiáveis dentro do escopo.",
+      "acceptance": "Separar erro de infraestrutura de reprovação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S018",
+        "C-S043",
+        "V4B-S022"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T201",
+      "relation": "feeds",
+      "how": "Best-of-N é uma forma de investir orçamento em largura.",
+      "interface": "Custo por candidato e qualidade marginal.",
+      "condition": "Política de parada observa retorno útil.",
+      "acceptance": "Comparar largura com refinamento sequencial no mesmo orçamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3B-S018",
+        "C-S043",
+        "V4B-S022"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Permitir rejeitar todos os candidatos.",
+    "Avaliar robustez do juiz a respostas que imitam a rubrica sem satisfazer a tarefa."
+  ],
+  "frontier_comparison": "O alvo é obter mais respostas corretas por orçamento em tarefas verificáveis. Um grande conjunto e um juiz fraco podem piorar resultados; não há equivalência geral com fronteira.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q011"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3B-S018",
+    "C-S043",
+    "V4B-S022"
+  ]
+}

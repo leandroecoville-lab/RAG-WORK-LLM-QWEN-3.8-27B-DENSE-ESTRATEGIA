@@ -1,0 +1,51 @@
+{
+  "id": "T076",
+  "technical_details": "Git fornece objetos versionados e referências mutáveis; a memória visível depende de qual commit foi publicado e de qual checkout o leitor usa. Atualizações condicionais de referência podem detectar concorrência verificando o identificador anterior. Mesmo transações de múltiplas referências não devem ser confundidas com uma visão atômica de todos os arquivos e serviços externos para qualquer leitor concorrente. A fronteira de consistência precisa ser explicitada.",
+  "boundary_condition": "Git não resolve conflitos semânticos: duas alterações sem conflito textual podem introduzir regras incompatíveis, duplicar fatos ou remover uma condição importante.",
+  "implementation_contract": {
+    "inputs": "Arquivos de memória, commit de base, alterações justificadas e política de publicação.",
+    "outputs": "Commit revisável, referência atualizada sob condição conhecida e estado de sincronização registrado.",
+    "state": "Branches, worktrees, histórico, conflitos e revisões usadas por cada consumidor.",
+    "invariant": "Integração bem-sucedida de texto não é declarada como validação factual da memória resultante."
+  },
+  "tradeoffs": [
+    "Diffs permitem revisão precisa e podem ocultar mudanças de sentido em pequenas edições.",
+    "Worktrees isolam trabalho paralelo e exigem integração explícita e avaliação de conflitos entre conclusões."
+  ],
+  "failure_test": "Teste proposto: dois agentes alteram cláusulas diferentes que juntas tornam um procedimento contraditório. O merge pode ser textualmente limpo, mas a validação semântica deve impedir sua promoção como procedimento confirmado.",
+  "evaluation_plan": "Avaliação proposta: comparar edição compartilhada direta e branches com revisão em mudanças concorrentes. Medir sobrescritas, conflitos detectados, tempo até sincronização e inconsistências semânticas; verificar quais commits cada agente realmente leu.",
+  "comparisons": [
+    {
+      "entry_id": "T053",
+      "relation": "complements",
+      "reason": "Notas em arquivo ganham histórico e integração; ainda precisam de contrato de estado e interpretação."
+    },
+    {
+      "entry_id": "R013",
+      "relation": "complements",
+      "reason": "MemFS aplica Git à memória de agentes com organização e carregamento próprios."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "git-update-ref permite verificar old-oid antes de alterar uma referência; a documentação distingue atomicidade individual e observações de leitores concorrentes.",
+    "source_ids": [
+      "V3A-S040"
+    ],
+    "support": "direct",
+    "caveat": "Essa primitiva não substitui validação de conteúdo, sincronização remota ou uma transação distribuída entre Git e outros serviços."
+  },
+  "advanced_qa": [
+    {
+      "question": "Commit local significa que outro agente recebeu a memória?",
+      "answer": "Não. É necessário publicar e atualizar o checkout consumidor conforme o fluxo de sincronização; registre ambos os estados quando a continuidade depender disso."
+    },
+    {
+      "question": "Uma branch antiga pode continuar sendo útil?",
+      "answer": "Sim, para reprodução ou experimentação. Identifique seu propósito e impeça que seja confundida com a revisão vigente para decisões operacionais."
+    }
+  ],
+  "source_ids": [
+    "V3A-S040"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

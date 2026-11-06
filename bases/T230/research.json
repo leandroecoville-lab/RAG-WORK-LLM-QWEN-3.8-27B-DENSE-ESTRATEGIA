@@ -1,0 +1,52 @@
+{
+  "id": "T230",
+  "technical_details": "No cabeçalho @@ -l,s +l,s @@, os intervalos descrevem posição e quantidade de linhas das versões antiga e nova; contagens omitidas representam casos unitários do formato. Linhas de contexto participam dos dois lados, remoções somente do antigo e adições somente do novo. Metadados Git podem incluir modos, renomes e IDs de blobs. Combined diff de merges possui outra estrutura e não deve ser tratado como patch comum de dois lados.",
+  "boundary_condition": "Um parser que reconhece apenas linhas iniciadas por mais e menos pode confundir cabeçalhos, conteúdo e mudanças de metadados.",
+  "implementation_contract": {
+    "inputs": "Diff, dialeto de formato, base e convenção de caminhos.",
+    "outputs": "Hunks interpretados, mudanças de arquivo e diagnóstico de inconsistência.",
+    "state": "Contagens por lado, arquivo corrente e metadados de versão.",
+    "invariant": "As contagens do hunk correspondem às linhas que cada lado realmente contém."
+  },
+  "tradeoffs": [
+    "Metadados adicionais melhoram identificação e exigem parser compatível.",
+    "Contexto mínimo reduz tamanho e aumenta fragilidade diante de alterações próximas."
+  ],
+  "failure_test": "Teste proposto: incluir criação, remoção, renome e marcador de ausência de newline; conferir que o parser distingue metadados de linhas editáveis e preserva conteúdo final.",
+  "evaluation_plan": "Comparar parser simples e aplicador oficial sobre patches com casos-limite. Medir rejeição de hunks malformados, equivalência dos bytes produzidos e tratamento de modos. Usar a base exata para não atribuir conflito legítimo a defeito do formato.",
+  "comparisons": [
+    {
+      "entry_id": "T229",
+      "relation": "complements",
+      "reason": "Patch-based coding escolhe a estratégia de edição; Unified Diff fornece uma representação específica."
+    },
+    {
+      "entry_id": "T231",
+      "relation": "distinct_from",
+      "reason": "Search/replace identifica texto literal e usa outro contrato de localização."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação Git distingue patch de dois lados e combined diff, além de cabeçalhos estendidos.",
+    "source_ids": [
+      "V2A-S013"
+    ],
+    "support": "direct",
+    "caveat": "Nem todo texto visualmente parecido com diff é aceito pelo mesmo aplicador ou representa os mesmos metadados."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma linha +++ sempre representa conteúdo adicionado?",
+      "answer": "Não. Pode ser o cabeçalho do arquivo novo; a interpretação depende do estado do parser."
+    },
+    {
+      "question": "As posições tornam o patch independente da base?",
+      "answer": "Não. Contexto e conteúdo esperado ainda precisam corresponder à revisão em que a alteração será aplicada."
+    }
+  ],
+  "source_ids": [
+    "V2A-S013",
+    "V3C-S034"
+  ],
+  "research_note": "Mecanismos referenciados em fontes primárias; contratos e verificação descritos são propostas, não ensaios executados."
+}

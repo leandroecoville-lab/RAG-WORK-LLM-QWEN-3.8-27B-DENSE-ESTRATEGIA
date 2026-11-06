@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "A-S013",
+    "title": "Augmenting Language Models with Long-Term Memory",
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/ebd82705f44793b6f9ade5a669d0f0bf-Abstract-Conference.html",
+    "publisher": "NeurIPS / autores",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "LongMem: backbone congelado como codificador e rede lateral treinada para recuperação e leitura.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn20view5"
+  },
+  {
+    "source_id": "V3A-S045",
+    "title": "LongMem official implementation",
+    "url": "https://github.com/Victorwz/LongMem",
+    "publisher": "Autores de LongMem / GitHub",
+    "source_type": "official_code",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Organização de SideNetwork, banco de memória e atenção para fusão; dependências de implementação de pesquisa em fairseq.",
+    "limitations": "Fonte primária dinâmica consultada; leitura de documentação ou código sem instalação, execução ou reprodução de resultados. Branch e documentação podem evoluir; fixar revisão antes de implementar.",
+    "web_ref": "turn184view2"
+  },
+  {
+    "source_id": "V3A-S047",
+    "title": "LongMem External_Memory implementation",
+    "url": "https://github.com/Victorwz/LongMem/blob/main/fairseq/fairseq/modules/dynamic_memory_with_chunk.py",
+    "publisher": "Autores de LongMem / GitHub",
+    "source_type": "official_code",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Banco de chaves e valores por cabeça, indexação da média das chaves em chunks e recuperação dos estados dos chunks selecionados.",
+    "limitations": "Leitura do código na branch main, sem execução. Detalhes representam esta implementação de pesquisa e não garantem compatibilidade com qualquer modelo ou ambiente.",
+    "web_ref": "turn193view4"
+  }
+]

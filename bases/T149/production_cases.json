@@ -1,0 +1,68 @@
+{
+  "coverage": {
+    "entry_id": "T149",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 1,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Priority Queue",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C005",
+      "company": "Netflix",
+      "system": "Timestone",
+      "title": "Prioridade por deadline e exclusão de trabalho concorrente",
+      "evidence_level": "production_documented",
+      "observed_use": "A Netflix relata Timestone como fila operacional de Cosmos, Conductor e pipelines internos.",
+      "technical_mechanism": "Mensagens recebem deadlines para seleção EDF; filas exclusivas impedem processamento simultâneo do trabalho identificado como não paralelizável.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S003"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T149",
+          "match": "exact",
+          "rationale": "Fila de prioridade seleciona mensagens por deadlines."
+        },
+        {
+          "entry_id": "T174",
+          "match": "exact",
+          "rationale": "Seleção de trabalho respeita prioridade e restrições de concorrência."
+        },
+        {
+          "entry_id": "T147",
+          "match": "family",
+          "rationale": "O sistema limita paralelismo onde ele violaria estado; não é fan-out de ferramentas LLM."
+        },
+        {
+          "entry_id": "P011",
+          "match": "analogy",
+          "rationale": "Admissão e exclusão por chave apoiam o desenho proposto do executor."
+        }
+      ],
+      "small_model_transfer": "Proposta: pedidos 3–30B de leitura podem concorrer; edições na mesma base usam uma chave exclusiva. Comparar vazão útil e conflitos sem presumir que prioridade elimina starvation.",
+      "limits": "EDF não demonstra aging nem justiça por tenant. Uma fila consistente não garante exatamente uma vez dos efeitos feitos pelo worker.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C005",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T149",
+        "match": "exact",
+        "rationale": "Fila de prioridade seleciona mensagens por deadlines."
+      }
+    }
+  ]
+}

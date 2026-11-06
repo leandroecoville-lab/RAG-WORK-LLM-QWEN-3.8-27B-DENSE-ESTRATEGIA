@@ -1,0 +1,122 @@
+{
+  "id": "T036",
+  "novelty": "A v3 discutiu deriva em HyDE. Aqui a consulta é decomposta em requisitos preserváveis e estratégias de recuperação por requisito.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Extraia entidades, período, relação pedida e formato esperado antes de reformular. Marque elementos que nenhuma expansão pode alterar, como versão e quantificador.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S022",
+        "V4A-S009",
+        "V4A-S020"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Use consultas diferentes para suporte e contradição. Buscar somente textos que parecem confirmar a hipótese favorece respostas coerentes e incompletas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S022",
+        "V4A-S009",
+        "V4A-S020"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare consulta original, reformulação única e decomposição por requisito. Meça cobertura e deriva semântica com casos de negação, comparação e restrição temporal. Unidade de avaliação: consulta decomposta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S022",
+        "V4A-S009",
+        "V4A-S020"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Pergunta comparativa",
+      "scenario": "Usuário pede diferenças com mesma condição.",
+      "strategy": "Criar subconsultas simétricas por item e atributo; impedir que uma opção receba evidência mais ampla que outra.",
+      "small_model_role": "3–7B decompõe campos; 8–14B lê respostas.",
+      "acceptance": "Cobertura deve ser equivalente nos atributos comparados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S022",
+        "V4A-S009",
+        "V4A-S020"
+      ]
+    },
+    {
+      "name": "Verificação de afirmação",
+      "scenario": "Há suspeita de regra revogada.",
+      "strategy": "Buscar versão vigente, histórico de mudança e fontes contrárias; separar não encontrado de refutado.",
+      "small_model_role": "15–30B integra conflito temporal.",
+      "acceptance": "Conclusão deve refletir escopo e data das evidências.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S022",
+        "V4A-S009",
+        "V4A-S020"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Reformulador controlado com termos protegidos e saídas estruturadas.",
+    "8_14b": "Decompositor de perguntas compostas com poucas dependências.",
+    "15_30b": "Planejador de consultas sequenciais quando resposta anterior determina a próxima.",
+    "training_or_runtime_requirements": "Esquema de intenção e comparação da reformulação com pedido original; exemplos de negativos ajudam especialização.",
+    "do_not_use_when": "Reformulação remove requisitos ou cria documentos hipotéticos tratados como prova."
+  },
+  "connections": [
+    {
+      "target_id": "T027",
+      "relation": "feeds",
+      "how": "Distribuir subconsultas para canais adequados.",
+      "interface": "Termos literais, intenção e filtros comuns.",
+      "condition": "Canais preservarem restrições originais.",
+      "acceptance": "Testar versão alterada durante paráfrase.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S022",
+        "V4A-S009",
+        "V4A-S020"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T037",
+      "relation": "complements",
+      "how": "Comprimir contexto conforme requisito específico.",
+      "interface": "Subconsulta, requisito e trechos recuperados.",
+      "condition": "Retorno manter ligação ao pedido global.",
+      "acceptance": "Conferir que compressões locais não eliminam ponte entre requisitos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S022",
+        "V4A-S009",
+        "V4A-S020"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não usar consulta sintetizada como evidência factual.",
+    "Registrar cada reformulação para rastrear perda de condição."
+  ],
+  "frontier_comparison": "Comparar cobertura de requisitos com mesmo acervo; bom planejamento de busca não garante síntese geral superior.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q003",
+      "V4A-Q010",
+      "V4A-Q017",
+      "V4A-Q020"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S022",
+    "V4A-S009",
+    "V4A-S020"
+  ]
+}

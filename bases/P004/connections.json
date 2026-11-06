@@ -1,0 +1,60 @@
+{
+  "entry_id": "P004",
+  "edges": [
+    {
+      "edge_id": "E-P004-01",
+      "from": "P004",
+      "to": "T065",
+      "relation": "requires",
+      "how": "Confirmar registro e evento de atualização localmente.",
+      "interface": "Objeto, versão esperada, commit e evento.",
+      "condition": "Invariantes locais cobertos pela transação.",
+      "acceptance": "Interromper entre escrita e publicação e verificar recuperação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S004",
+        "V4A-S007",
+        "V3A-S032"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-P004-02",
+      "from": "P004",
+      "to": "P007",
+      "relation": "feeds",
+      "how": "Expor revisão e atraso para recuperação.",
+      "interface": "Objeto, index_revision e projection_cursor.",
+      "condition": "Retriever respeitar requisito de frescor.",
+      "acceptance": "Consultar logo após correção e detectar índice atrasado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S004",
+        "V4A-S007",
+        "V3A-S032"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-P004-03",
+      "from": "P004",
+      "to": "T072",
+      "relation": "requires",
+      "how": "Publicar manifesto coerente de projeções.",
+      "interface": "Store_revision, embedding e índices ativos.",
+      "condition": "Troca preservar leitores pinados.",
+      "acceptance": "Reconstruir índice e comparar objetos ausentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S004",
+        "V4A-S007",
+        "V3A-S032"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

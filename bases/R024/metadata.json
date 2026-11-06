@@ -1,0 +1,36 @@
+{
+  "id": "R024",
+  "name": "llama.cpp",
+  "canonical_name": "llama.cpp — inferência em C/C++",
+  "canonical_id": "R024",
+  "aliases": [
+    "llama-server",
+    "llama CLI",
+    "ggml-org/llama.cpp"
+  ],
+  "category": "referencias",
+  "kind": "project",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "T085",
+    "T086",
+    "T088",
+    "T121",
+    "T127",
+    "R009",
+    "R022",
+    "R023"
+  ],
+  "source_ids": [
+    "V2B-S020",
+    "V2B-S021",
+    "B-S037",
+    "V3D-S012"
+  ],
+  "namespace": "R024",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R024",
+  "chunk_count": 9
+}

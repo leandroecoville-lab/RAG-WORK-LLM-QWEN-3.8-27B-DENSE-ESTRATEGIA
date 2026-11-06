@@ -1,0 +1,113 @@
+{
+  "id": "T168",
+  "novelty": "A v3 enfatizava margem para recuperação. Esta camada diferencia limite de raciocínio, resposta, contexto e consumo acumulado, com uma política de degradação que termina em artefato útil e verificável.",
+  "deep_layers": [
+    {
+      "name": "Quatro fronteiras distintas",
+      "detail": "Mantenha contadores para entrada total, saída visível, raciocínio quando exposto pelo backend e orçamento da missão. Um teto de saída não impede o histórico de crescer; uma janela disponível não autoriza gastar indefinidamente. Expresse qual limite é imposto pelo servidor e qual é apenas gatilho do controlador.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S018",
+        "V3C-S022"
+      ]
+    },
+    {
+      "name": "Limite suave condicionado",
+      "detail": "O ponto de ação deve depender do próximo passo. Receber um log grande exige margem diferente de emitir JSON curto. Antes de chamar ferramenta com saída imprevisível, negocie paginação ou projeção; se não existir limite de payload, o controlador precisa tratar o resultado fora da janela antes de apresentá-lo ao modelo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S013",
+        "V4C-S018"
+      ]
+    },
+    {
+      "name": "Finalização reservada",
+      "detail": "Reserve capacidade para registrar estado, evidências e pendências. A resposta final parcial deve distinguir o que foi verificado do que ficou sem executar. Cortar no meio de uma chamada de ferramenta ou de um JSON pode deixar artefato inutilizável; trate truncamento como falha de contrato e preserve o último resultado confirmado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S022",
+        "V4C-S018"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Modelo de raciocínio local",
+      "scenario": "Um 9B pode consumir orçamento em raciocínio antes de responder.",
+      "strategy": "Teste limites com o backend real e observe a diferença entre pedido de interrupção e término efetivo. A documentação Nemotron mostra controle específico de thinking; não suponha que o parâmetro seja uma barreira rígida idêntica em todos os servidores. Defina reserva para a saída validável.",
+      "small_model_role": "8–14B executa raciocínio delimitado; um controlador externo contabiliza a conclusão.",
+      "acceptance": "Proposta: taxa de respostas completas, consumo acima do alvo e qualidade por faixa de orçamento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S018",
+        "V4C-S019"
+      ]
+    },
+    {
+      "name": "Análise de repositório extensa",
+      "scenario": "O agente se aproxima do limite antes de terminar o patch.",
+      "strategy": "Interrompa expansão de arquivos, salve a revisão e um plano de continuação, e valide o que já foi editado. Uma nova sessão recebe apenas objetivos pendentes e referências. Não declare concluído porque o limite rígido encerrou a geração.",
+      "small_model_role": "3–7B atua em trechos; 15–30B integra lotes com reservas explícitas.",
+      "acceptance": "Proposta: retomada sem perder alterações confirmadas e sem aceitar JSON ou patch truncado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S022"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Saídas curtas e schemas simples reduzem risco de consumir a reserva de finalização.",
+    "8_14b": "Raciocínio condicionado ao orçamento, medido no backend que realmente servirá o modelo.",
+    "15_30b": "Dividir análises longas em estágios com checkpoint e critérios de integração.",
+    "training_or_runtime_requirements": "Contador por tokenizer, telemetria do provedor e tratamento de finish reason; margem baseada em payload observado.",
+    "do_not_use_when": "Não tratar orçamento de thinking como limite universal nem compactar quando já não cabe a própria compactação."
+  },
+  "connections": [
+    {
+      "target_id": "T222",
+      "relation": "feeds",
+      "how": "Publicar consumo e margem para disparar ação antes do limite rígido.",
+      "interface": "Contadores por categoria e estimativa do próximo payload.",
+      "condition": "Medidas distinguem uso observado de previsão.",
+      "acceptance": "Gatilho ocorre com espaço para a ação corretiva escolhida.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S022"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T211",
+      "relation": "complements",
+      "how": "Ao atingir limite suave, gerar passagem de estado antes de perder a capacidade de registrar pendências.",
+      "interface": "Objetivos, revisão, artefatos e próximo passo.",
+      "condition": "Handoff precisa ser validado e persistido antes do encerramento.",
+      "acceptance": "Nova sessão retoma sem inventar conclusão das etapas ausentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Timeout, limite de tokens e término normal precisam de estados diferentes.",
+    "Uma saída válida sintaticamente ainda pode ter omitido requisito para caber no teto."
+  ],
+  "frontier_comparison": "Compare curvas de qualidade por orçamento em vez de uma única configuração. O 9B documentado é recurso concreto, mas sua existência não demonstra equivalência geral a modelos de fronteira.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q014",
+      "V4C-Q027"
+    ],
+    "scope_note": "Nemotron oferece evidência direta de modelo dentro da faixa pedida e controles documentados; implantação específica e ganhos locais não foram demonstrados."
+  },
+  "source_ids": [
+    "V4C-S018",
+    "V3C-S022",
+    "V4C-S013",
+    "V4C-S019",
+    "V4C-S030"
+  ]
+}

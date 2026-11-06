@@ -1,0 +1,113 @@
+{
+  "id": "T022",
+  "novelty": "A v3 preservou exceções e precedência. Aqui instruções são compiladas em contratos testáveis antes da redução textual.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Separe objetivos, restrições e formato de saída em estrutura intermediária. Só então gere instrução curta; a forma reduzida precisa representar o mesmo conjunto de condições.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S033",
+        "V4A-S028"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Use testes de fronteira para detectar mudança semântica: permissões condicionais, prioridades e exceções. Frases redundantes podem funcionar como sinal ao modelo pequeno e não devem ser removidas por estética.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S033",
+        "V4A-S028"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare instrução original, abreviada e estruturada. Meça violações por tipo, incluindo pedidos que ativam simultaneamente condições conflitantes. Unidade de avaliação: família de instruções. Use pares de pedidos que ativam a regra geral e sua exceção, incluindo um caso em que duas restrições competem. A instrução reduzida deve preservar a mesma precedência observada na especificação. Quando a forma curta falhar apenas num consumidor pequeno, aumentar explicitação local pode ser preferível a copiar integralmente todo o prompt original.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S033",
+        "V4A-S028"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Classificador de documentos",
+      "scenario": "Política extensa define poucos campos.",
+      "strategy": "Converter regras em tabela de decisão, fornecer apenas ramo aplicável e manter justificativa de seleção.",
+      "small_model_role": "3–7B executa decisão delimitada.",
+      "acceptance": "Saída deve cumprir todas as regras ativas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S033",
+        "V4A-S028"
+      ]
+    },
+    {
+      "name": "Agente com ferramentas",
+      "scenario": "Instruções misturam planejamento e protocolos.",
+      "strategy": "Manter contrato de chamada em schema e resumo de intenção no prompt; carregar procedimento completo para operação rara.",
+      "small_model_role": "8–14B escolhe operação.",
+      "acceptance": "Nenhuma pré-condição pode desaparecer na versão curta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S033",
+        "V4A-S028"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Executor de regras curtas com poucos ramos e exemplos contrastivos.",
+    "8_14b": "Interpretador de contrato estruturado com exceções explícitas.",
+    "15_30b": "Planejador que seleciona subcontratos sem alterar sua autoridade.",
+    "training_or_runtime_requirements": "Especificação de regras, testes independentes e versão do prompt; métodos paramétricos exigem treino distinto.",
+    "do_not_use_when": "A redução muda prioridade ou o modelo não interpreta confiavelmente a estrutura escolhida."
+  },
+  "connections": [
+    {
+      "target_id": "T197",
+      "relation": "complements",
+      "how": "Validar formato fora do texto de instrução.",
+      "interface": "Schema, campos obrigatórios e versão.",
+      "condition": "Validação sintática não substituir semântica.",
+      "acceptance": "Produzir saída bem formada que viole regra e exigir rejeição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S033",
+        "V4A-S028"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T014",
+      "relation": "complements",
+      "how": "Carregar regra especializada somente quando aplicável.",
+      "interface": "Intenção, pré-condições e referência ao procedimento.",
+      "condition": "Roteamento manter cobertura de exceções.",
+      "acceptance": "Testar operação rara omitida do resumo inicial.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S033",
+        "V4A-S028"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir compressão textual com PRISM ou destilação paramétrica.",
+    "Preservar teste da instrução original como controle."
+  ],
+  "frontier_comparison": "Comparar aderência a regras difíceis; instrução curta não garante capacidade de interpretação equivalente.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q017",
+      "V4A-Q024"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S033",
+    "V4A-S028"
+  ]
+}

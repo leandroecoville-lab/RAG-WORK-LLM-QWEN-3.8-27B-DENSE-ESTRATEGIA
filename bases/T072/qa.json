@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Versionar é igual a não poder apagar?",
+    "answer": "Não. Retenção e imutabilidade são políticas separadas."
+  },
+  {
+    "question": "Git resolve toda memória versionada?",
+    "answer": "Ajuda com arquivos, mas concorrência, acesso, validade temporal e grandes volumes ainda precisam de desenho específico."
+  },
+  {
+    "question": "Uma versão numérica basta para reproduzir uma resposta?",
+    "answer": "Somente se resolve todos os componentes relevantes. Também podem importar modelo, configuração de recuperação e fontes externas lidas depois."
+  },
+  {
+    "question": "Reverter memória desfaz decisões anteriores?",
+    "answer": "Não. Reverte o conteúdo utilizado em chamadas futuras. Decisões e alterações já aplicadas precisam permanecer no histórico e, quando cabível, ser reconciliadas."
+  }
+]

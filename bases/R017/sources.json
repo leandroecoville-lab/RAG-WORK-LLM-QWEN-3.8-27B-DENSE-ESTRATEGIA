@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "V2B-S004",
+    "title": "LangChain overview",
+    "url": "https://docs.langchain.com/oss/python/langchain/overview",
+    "publisher": "LangChain",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "create_agent, composição de modelo, ferramentas, prompt e middleware; distinção entre LangChain, LangGraph e Deep Agents.",
+    "limitations": "Documentação primária consultada nesta data; nenhuma instalação, benchmark ou avaliação no ambiente LAI foi executada.",
+    "web_ref": "turn46view2"
+  },
+  {
+    "source_id": "A-S003",
+    "title": "Short-term memory",
+    "url": "https://docs.langchain.com/oss/python/langchain/short-term-memory",
+    "publisher": "LangChain",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Histórico por thread, redução de mensagens e persistência do estado de curta duração.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn7view0"
+  },
+  {
+    "source_id": "V3C-S038",
+    "title": "LangChain — Prebuilt middleware",
+    "url": "https://docs.langchain.com/oss/python/langchain/middleware/built-in",
+    "publisher": "LangChain",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Middleware de erro de ferramenta é distinto de retry; ordem de composição determina tratamento de exceções e limites.",
+    "limitations": "Documentação dinâmica com requisitos de versão; não se pressupõe disponibilidade de classes no ambiente do usuário.",
+    "web_ref": "turn165view2"
+  },
+  {
+    "source_id": "V4C-S012",
+    "title": "Navigating the LLM Landscape: Uber’s Innovation with GenAI Gateway",
+    "url": "https://www.uber.com/us/en/blog/genai-gateway/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2024-07-11",
+    "supports": "Gateway interno com adaptadores de modelos, interface unificada, controle de acesso e atribuição de consumo.",
+    "limitations": "Relato primário delimitado à data e sistema; não houve reprodução. Números e escolhas do operador não definem ganhos, preços ou limites para a LAI ou modelos 3–30B.",
+    "web_ref": "turn256view0"
+  }
+]

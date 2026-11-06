@@ -1,0 +1,36 @@
+{
+  "id": "T175",
+  "name": "Rate Limiting com Fallback",
+  "canonical_name": "Rate Limiting com Fallback",
+  "canonical_id": "T175",
+  "aliases": [
+    "limitação de taxa com contingência"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T136",
+    "T137",
+    "T164",
+    "T173"
+  ],
+  "source_ids": [
+    "C-S003",
+    "C-S004",
+    "C-S028",
+    "V3C-S009",
+    "V3C-S010",
+    "C-S026",
+    "V3C-S001",
+    "V4C-S005",
+    "C-S030",
+    "V4C-S011"
+  ],
+  "namespace": "T175",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T175",
+  "chunk_count": 9
+}

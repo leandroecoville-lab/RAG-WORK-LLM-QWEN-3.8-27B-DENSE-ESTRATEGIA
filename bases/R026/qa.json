@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Guidance tem as mesmas capacidades em todos os modelos?",
+    "answer": "Não. A documentação distingue o suporte por backend; cada combinação precisa ser verificada."
+  },
+  {
+    "question": "Uma escolha forçada entre rótulos garante classificação correta?",
+    "answer": "Não. Ela garante um formato admissível quando suportada, mas ainda exige avaliar se o rótulo corresponde à entrada."
+  },
+  {
+    "question": "Se o programa aceitou o schema, todas as regras foram garantidas?",
+    "answer": "Não presuma isso; confira suporte documentado e valide o objeto final com o contrato da aplicação."
+  },
+  {
+    "question": "Como tratar uma captura interrompida?",
+    "answer": "Preserve o estado de incompletude, descarte uso operacional e decida entre retry limitado ou erro explícito."
+  }
+]

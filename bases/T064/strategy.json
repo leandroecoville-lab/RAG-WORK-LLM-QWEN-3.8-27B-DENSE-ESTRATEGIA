@@ -1,0 +1,121 @@
+{
+  "id": "T064",
+  "novelty": "A v3 discutiu serialização e migração. Aqui estado persistente inclui fronteiras de portabilidade e prova de restauração em ambiente novo.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Separe estado lógico da tarefa e conexões ao ambiente. Tokens de sessão, descritores de arquivo e clientes de API devem ser reconstruídos, não tratados como objetos duráveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2B-S002",
+        "V3A-S032",
+        "V4A-S026"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Manifesto de restauração declara recursos necessários e quais podem ser substituídos. Trocar modelo ou ferramenta pode exigir revalidação do plano, mesmo quando dados persistidos continuam legíveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2B-S002",
+        "V3A-S032",
+        "V4A-S026"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare reinício no mesmo processo, processo novo e ambiente novo. Meça recursos ausentes, decisões indevidamente preservadas e retomada correta; gravar JSON não prova portabilidade. Unidade de avaliação: estado restaurável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2B-S002",
+        "V3A-S032",
+        "V4A-S026"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Migração de executor",
+      "scenario": "Tarefa sai de uma máquina para outra.",
+      "strategy": "Restaurar dados e artefatos, reabrir conexões e verificar versões antes de liberar próxima etapa.",
+      "small_model_role": "3–7B interpreta estado; código valida recursos.",
+      "acceptance": "Nenhuma referência efêmera deve ser aceita como recurso disponível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2B-S002",
+        "V3A-S032",
+        "V4A-S026"
+      ]
+    },
+    {
+      "name": "Troca de modelo",
+      "scenario": "Modelo local substitui provedor remoto.",
+      "strategy": "Manter fatos e progresso, reconstruir contexto no template do novo modelo e validar comportamento em etapa reversível.",
+      "small_model_role": "8–14B retoma contrato explícito.",
+      "acceptance": "Não assumir compatibilidade de prompt, tokenizer ou ferramenta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2B-S002",
+        "V3A-S032",
+        "V4A-S026"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Executor de tarefa estreita a partir de estado estruturado completo.",
+    "8_14b": "Leitor de estado restaurado que identifica lacunas e incompatibilidades.",
+    "15_30b": "Replanejador quando recursos ou capacidade do consumidor mudarem.",
+    "training_or_runtime_requirements": "Schema versionado, referências duráveis e verificação de dependências; persistência externa não modifica pesos.",
+    "do_not_use_when": "O estado depende de recursos que desapareceram e não há procedimento de reconstrução."
+  },
+  "connections": [
+    {
+      "target_id": "T060",
+      "relation": "complements",
+      "how": "Vincular estado à fronteira executável de retomada.",
+      "interface": "Estado, etapa, revisão e operações pendentes.",
+      "condition": "Checkpoint preservar contexto de continuidade.",
+      "acceptance": "Restaurar estado sem cursor e exigir diagnóstico de incompletude.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2B-S002",
+        "V3A-S032",
+        "V4A-S026"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T066",
+      "relation": "requires",
+      "how": "Resolver recursos após restauração.",
+      "interface": "Referências, versões e status de disponibilidade.",
+      "condition": "Resolver respeitar ambiente e escopo atuais.",
+      "acceptance": "Testar recurso removido e impedir uso presumido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2B-S002",
+        "V3A-S032",
+        "V4A-S026"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não persistir segredo efêmero como memória reutilizável.",
+    "Não confundir estado legível com plano ainda válido."
+  ],
+  "frontier_comparison": "Comparar retomada entre ambientes; capacidade do modelo não substitui recursos e contratos ausentes.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q005",
+      "V4A-Q008",
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V2B-S002",
+    "V3A-S032",
+    "V4A-S026"
+  ]
+}

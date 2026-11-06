@@ -1,0 +1,128 @@
+{
+  "id": "T118",
+  "novelty": "A v3 explicou shards e coletivas. A nova camada aborda seleção econômica do grau de paralelismo, consistência de carregamento e comportamento quando o conjunto de dispositivos deixa de progredir junto.",
+  "deep_layers": [
+    {
+      "name": "Paralelismo mínimo suficiente",
+      "detail": "Mais shards podem permitir carregar pesos e reduzir computação local, mas acrescentam sincronizações. Compare o menor grau que atende memória com graus maiores sob a carga real. Para modelos que cabem inteiros, réplicas podem oferecer melhor capacidade total, enquanto TP pode ser útil para um prazo individual específico.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S030",
+        "B-S045",
+        "V4B-S003",
+        "V4B-S008"
+      ]
+    },
+    {
+      "name": "Carregamento verificável",
+      "detail": "Uma distribuição errada de pesos pode produzir tensores válidos e resultados incorretos. Versione o plano de shards, nomes, offsets e configuração de quantização. Confirme checksums dos artefatos e compare camadas selecionadas com uma referência não distribuída, especialmente após conversões de layout.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S030",
+        "B-S045",
+        "V4B-S003",
+        "V4B-S008"
+      ]
+    },
+    {
+      "name": "Falha e progresso",
+      "detail": "Uma coletiva atrasada pode prender todo o grupo. A saúde de uma GPU isolada não prova saúde da réplica distribuída. Observe progresso de passos, watchdogs e falhas de comunicação; ao reiniciar, trate o conjunto como unidade consistente e reconstrua cache a partir de estado confirmado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S030",
+        "B-S045",
+        "V4B-S003",
+        "V4B-S008"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Modelo que excede uma GPU",
+      "scenario": "O checkpoint especializado precisa de mais memória de pesos.",
+      "strategy": "Escolha topologia com comunicação adequada, distribua pesos e reserve espaço para KV e temporários. Não ocupe toda a memória só porque a divisão dos pesos parece caber.",
+      "small_model_role": "Um 15–30B pode usar TP quando quantização adequada não atende o objetivo.",
+      "acceptance": "Carregar, completar contexto alvo e manter qualidade e latência sob concorrência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S030",
+        "B-S045",
+        "V4B-S003",
+        "V4B-S008"
+      ]
+    },
+    {
+      "name": "Menor latência por pedido",
+      "scenario": "Uma única réplica atende pouco tráfego, mas há prazo rígido.",
+      "strategy": "Compare TP com réplica inteira usando lote pequeno, incluindo sincronização. Se TP não reduzir o caminho crítico, prefira capacidade independente.",
+      "small_model_role": "Um 8–14B deve justificar a distribuição por medição, não por associação com infraestrutura de bigtech.",
+      "acceptance": "Medir percentis de latência e custo reservado por resposta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S030",
+        "B-S045",
+        "V4B-S003",
+        "V4B-S008"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, comunicação e overhead podem dominar; réplicas independentes são uma hipótese inicial.",
+    "8_14b": "Teste divisibilidade de cabeças e layouts quantizados antes de escolher o grau.",
+    "15_30b": "Inclua falha conjunta, buffers e KV no dimensionamento; pesos são apenas uma parcela.",
+    "training_or_runtime_requirements": "Runtime distribuído, coletivas e checkpoint compatíveis; TP preserva a arquitetura quando implementado corretamente.",
+    "do_not_use_when": "Não inferir aceleração a partir da quantidade de GPUs nem da soma nominal de suas capacidades."
+  },
+  "connections": [
+    {
+      "target_id": "T117",
+      "relation": "complements",
+      "how": "Contexto e tensor podem ser particionados em eixos diferentes.",
+      "interface": "Malha e propriedade de tensores.",
+      "condition": "Plano consistente em todas as camadas.",
+      "acceptance": "Comparar memória real com estimativa e validar resultados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S030",
+        "B-S045",
+        "V4B-S003",
+        "V4B-S008"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T122",
+      "relation": "complements",
+      "how": "Interconexão de baixa sobrecarga pode transportar dados das coletivas quando suportada.",
+      "interface": "Buffers, grupos e eventos de conclusão.",
+      "condition": "Stack e topologia efetivamente habilitam o caminho.",
+      "acceptance": "Medir comunicação e testar falhas sem consumidores de dados parciais.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S030",
+        "B-S045",
+        "V4B-S003",
+        "V4B-S008"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Checar versões e layouts idênticos em todos os ranks.",
+    "Não servir resultados de um grupo com estado divergente após recuperação parcial."
+  ],
+  "frontier_comparison": "TP pode tornar um modelo especializado executável ou mais rápido, sem alterar sua competência. Compare custo por tarefa concluída e inclua recursos ociosos reservados ao grupo.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q003",
+      "V4B-Q004"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S030",
+    "B-S045",
+    "V4B-S003",
+    "V4B-S008"
+  ]
+}

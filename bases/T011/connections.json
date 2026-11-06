@@ -1,0 +1,40 @@
+{
+  "entry_id": "T011",
+  "edges": [
+    {
+      "edge_id": "E-T011-01",
+      "from": "T011",
+      "to": "T072",
+      "relation": "requires",
+      "how": "Publicar segmentação como versão do índice.",
+      "interface": "Documento, embedding, limiar e mapa de fronteiras.",
+      "condition": "Cada resultado apontar versão compatível.",
+      "acceptance": "Consultar durante atualização e detectar mistura de versões.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S013",
+        "V3A-S013"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T011-02",
+      "from": "T011",
+      "to": "T033",
+      "relation": "complements",
+      "how": "Respeitar estruturas antes da distância semântica.",
+      "interface": "Blocos tipados e fronteiras permitidas.",
+      "condition": "Tabelas e código manterem integridade.",
+      "acceptance": "Injetar tabela semanticamente heterogênea e impedir corte destrutivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S013",
+        "V3A-S013"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

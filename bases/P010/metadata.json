@@ -1,0 +1,36 @@
+{
+  "id": "P010",
+  "name": "Routing Engine",
+  "canonical_name": "Routing Engine",
+  "canonical_id": "P010",
+  "aliases": [
+    "motor proposto de roteamento de modelos"
+  ],
+  "category": "componentes_propostos",
+  "kind": "component",
+  "scope": "proposta",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T133",
+    "T136",
+    "T198",
+    "T203",
+    "P009",
+    "P012",
+    "P016"
+  ],
+  "source_ids": [
+    "C-S001",
+    "C-S002",
+    "C-S050",
+    "V2C-S004",
+    "V4C-S011",
+    "V4C-S012",
+    "V4C-S014"
+  ],
+  "namespace": "P010",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/P010",
+  "chunk_count": 9
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Fallback elimina 429?",
+    "answer": "Não. Pode redistribuir carga autorizada; o destino alternativo também tem limites."
+  },
+  {
+    "question": "Sempre é melhor trocar que esperar?",
+    "answer": "Não. Deve considerar prazo, custo, compatibilidade e resultado esperado."
+  },
+  {
+    "question": "Uma URL nova significa uma quota nova?",
+    "answer": "Não. A quota pode ser por conta, organização, modelo, região ou recurso compartilhado."
+  },
+  {
+    "question": "Como diferenciar fila e retry?",
+    "answer": "Fila aguarda admissão ainda não concedida; retry repete uma tentativa que ocorreu ou falhou, com implicações diferentes de efeito e custo."
+  }
+]

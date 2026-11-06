@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Temporal graph é sempre bitemporal?",
+    "answer": "Não. Pode registrar um único eixo. Bitemporalidade exige distinguir validade e conhecimento ou registro."
+  },
+  {
+    "question": "Preciso usar um produto específico?",
+    "answer": "Não. Graphiti é uma referência de implementação, mas a modelagem temporal pode existir em outras tecnologias."
+  },
+  {
+    "question": "Um timestamp de criação resolve validade?",
+    "answer": "Não. Ele indica registro ou criação do objeto. O fato pode ter começado antes, valer depois ou não ter ocorrência confirmada."
+  },
+  {
+    "question": "Um caminho temporal é causal?",
+    "answer": "Não. Compatibilidade de tempos permite compor relações segundo a consulta; causalidade ainda exige hipóteses e evidências adicionais de identificação."
+  }
+]

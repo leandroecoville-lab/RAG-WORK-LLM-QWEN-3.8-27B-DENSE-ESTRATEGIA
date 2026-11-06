@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "B-S032",
+    "title": "KV-Aware Routing",
+    "url": "https://docs.nvidia.com/dynamo/knowledge-base/concepts/system-architecture/kv-aware-routing",
+    "publisher": "NVIDIA Dynamo",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Roteamento considera reutilização KV e carga ativa; seleção e transferência são responsabilidades distintas.",
+    "limitations": "Documentação consultada nesta data; compatibilidade depende da versão, modelo e hardware. Sem ensaio no ambiente LAI.",
+    "web_ref": "turn27view1"
+  },
+  {
+    "source_id": "V4B-S004",
+    "title": "Powering the agents: Workers AI now runs large models, starting with Kimi K2.5",
+    "url": "https://blog.cloudflare.com/workers-ai-large-models/",
+    "publisher": "Cloudflare",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Workers AI descreve prefix caching, afinidade por sessão, métricas de cache e fila assíncrona orientada por capacidade.",
+    "limitations": "Disponibilidade por modelo e contexto temporal; política de preço e ganhos não extrapolados.",
+    "web_ref": "turn202view3"
+  },
+  {
+    "source_id": "V4B-S002",
+    "title": "Disaggregated Prefill and Decode",
+    "url": "https://www.perplexity.ai/en-GB/hub/blog/disaggregated-prefill-and-decode",
+    "publisher": "Perplexity Engineering",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Implementação própria de prefill/decode separados, KV Messenger, transferência por camada e RDMA com libfabric.",
+    "limitations": "Descrição do operador sem garantir compatibilidade local ou benefício para modelos pequenos; TTFT inclui transferência.",
+    "web_ref": "turn205view0"
+  },
+  {
+    "source_id": "V4D-S016",
+    "title": "Mooncake — serving platform for Kimi",
+    "url": "https://kvcache-ai.github.io/Mooncake/",
+    "publisher": "Moonshot AI / Mooncake",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Operador identifica Mooncake como plataforma do Kimi; arquitetura com pool KV e prefill/decode separados, scheduler condicionado a SLO.",
+    "limitations": "Separar resultados simulados e tráfego real. Não transferir ganhos publicados ou integrações adicionadas em 2026 a qualquer modelo/hardware/revisão histórica.",
+    "web_ref": "turn311view2"
+  },
+  {
+    "title": "Mooncake: Kimi’s KVCache-centric Architecture for LLM Serving",
+    "url": "https://arxiv.org/html/2407.00079v1",
+    "publisher": "Moonshot AI / Tsinghua University",
+    "source_type": "research_paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2024-06-24",
+    "web_ref": "turn326view0",
+    "supports": "Arquitetura Kimi descrita em v1: reuso/prefixos, prefill em blocos, batching contínuo, Messenger RDMA, hashes encadeados e roteamento por fila, cache e SLO (seções 3–5).",
+    "limitations": "Conservar versão v1; experimentos incluem modelo substituto e replay de traces. Não atribuir recursos posteriores da biblioteca à implantação histórica.",
+    "source_id": "V4D-S020"
+  }
+]

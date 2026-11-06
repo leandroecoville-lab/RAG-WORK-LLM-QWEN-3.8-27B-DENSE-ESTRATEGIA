@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Um grafo direcionado já é causal?",
+    "answer": "Não. As arestas precisam de interpretação causal e de premissas sustentadas."
+  },
+  {
+    "question": "O agente pode aprender causa com logs?",
+    "answer": "Logs ajudam, mas a identificação depende do desenho, das variáveis observadas e das hipóteses, não apenas do volume."
+  },
+  {
+    "question": "Uma LLM pode escolher o grafo causal?",
+    "answer": "Pode propor hipóteses para revisão. Conhecimento de domínio, desenho de estudo e restrições observáveis precisam sustentar a escolha."
+  },
+  {
+    "question": "Uma estimativa pode ser lembrada após mudança de população?",
+    "answer": "Pode ser recuperada como referência, preservando seu escopo. Transportá-la exige justificar compatibilidade dos mecanismos e das condições relevantes."
+  }
+]

@@ -1,0 +1,136 @@
+{
+  "id": "P007",
+  "novelty": "A v3 definiu filtros e ranking. Aqui Memory Retriever é proposto como serviço de evidência por requisito, com recuperação de apoio e contraposição.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Receba requisitos, não apenas uma string. O serviço deve distinguir localizar objeto exato, responder atributo, comparar alternativas e procurar evidência contrária.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V4A-S022",
+        "V4A-S023"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Distribua orçamento entre canais e fontes por contribuição exclusiva. Quando candidatos repetem mesma origem, ampliar diversidade pode ser mais útil que aumentar top-k do mesmo índice.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V4A-S022",
+        "V4A-S023"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare busca global e recuperação por requisito. Meça cobertura de afirmações, evidências contraditórias encontradas e custo de expansão; não usar similaridade como substituto de validade. Unidade de avaliação: requisição de evidência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V4A-S022",
+        "V4A-S023"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Comparação de decisões",
+      "scenario": "Cada alternativa precisa suporte equivalente.",
+      "strategy": "Criar consultas simétricas por critério, recuperar fontes independentes e devolver lacunas por alternativa antes da síntese.",
+      "small_model_role": "3–7B decompõe; 8–14B lê.",
+      "acceptance": "Nenhuma alternativa pode parecer melhor por ter sido mais pesquisada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V4A-S022",
+        "V4A-S023"
+      ]
+    },
+    {
+      "name": "Correção de memória",
+      "scenario": "Fato antigo continua parecido com pergunta.",
+      "strategy": "Aplicar validade e revisão antes de ranking, buscar também evento de correção e retornar conflito quando resolução ainda estiver pendente.",
+      "small_model_role": "15–30B integra histórico.",
+      "acceptance": "Resposta deve usar revisão elegível ou declarar insuficiência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V4A-S022",
+        "V4A-S023"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Reformulador de consultas fechadas e extrator de filtros.",
+    "8_14b": "Leitor de candidatos com suporte e contradição rotulados.",
+    "15_30b": "Planejador de busca multietapas para requisitos dependentes.",
+    "training_or_runtime_requirements": "Índices com origem, versões e elegibilidade; conjunto de consultas próprio para avaliar cobertura e abstenção.",
+    "do_not_use_when": "A fonte necessária não existe ou a recuperação é usada para modificar memória sem contrato de escrita."
+  },
+  "connections": [
+    {
+      "target_id": "T027",
+      "relation": "complements",
+      "how": "Combinar canais conforme tipo de requisito.",
+      "interface": "Consulta, termos protegidos, filtros e orçamento.",
+      "condition": "Canais respeitarem mesma elegibilidade.",
+      "acceptance": "Testar código literal e paráfrase com orçamento igual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V4A-S022",
+        "V4A-S023"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T028",
+      "relation": "feeds",
+      "how": "Ordenar por capacidade de sustentar requisito.",
+      "interface": "Candidato, requisito, origem e tipo de suporte.",
+      "condition": "Contradições materiais não forem eliminadas.",
+      "acceptance": "Medir evidência suficiente na lista final.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V4A-S022",
+        "V4A-S023"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "P001",
+      "relation": "feeds",
+      "how": "Entregar evidências e lacunas à montagem.",
+      "interface": "requirement_id, trechos, referências e cobertura.",
+      "condition": "Builder preservar lacunas e conflitos.",
+      "acceptance": "Gerar pacote sem suporte para campo obrigatório e exigir insuficiência.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S009",
+        "V4A-S022",
+        "V4A-S023"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não inferir ausência universal de resultado vazio.",
+    "Não confundir múltiplos trechos da mesma fonte com corroboradores independentes."
+  ],
+  "frontier_comparison": "Comparar cobertura por afirmação e fidelidade final; bom retriever amplia evidência disponível sem garantir capacidade geral do leitor.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q009",
+      "V4A-Q019",
+      "V4A-Q020"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S009",
+    "V4A-S022",
+    "V4A-S023"
+  ]
+}

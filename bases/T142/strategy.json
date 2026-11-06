@@ -1,0 +1,114 @@
+{
+  "id": "T142",
+  "novelty": "A v3 examinou estado e reducers. A nova camada trata o framework como interpretador de uma linguagem operacional restrita, com separação entre plano proposto, validação e comandos efetivamente executados.",
+  "deep_layers": [
+    {
+      "name": "Representação intermediária",
+      "detail": "Defina um conjunto pequeno de operações, condições e dependências que o agente pode propor. Compile esse plano para o runtime somente após checar referências e caminhos de término. Isso reduz o espaço de ações de um modelo pequeno e permite rejeitar planos inválidos sem executar ferramentas para descobrir o erro.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S004",
+        "V3C-S006"
+      ]
+    },
+    {
+      "name": "Estado de controle separado",
+      "detail": "Mensagens do modelo não devem ser a única fonte de status. Mantenha no controlador etapas elegíveis, leases, resultados e prazos; o texto contém interpretação e evidência. Assim, uma compactação ou mudança de prompt não apaga a informação de que uma ação já foi confirmada ou continua ambígua.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S001",
+        "V4C-S015"
+      ]
+    },
+    {
+      "name": "Evolução por compatibilidade",
+      "detail": "Uma missão em andamento precisa conhecer a versão do plano e do interpretador. Ao atualizar ferramentas ou nós, decida se ela continua na versão anterior, migra com conversão explícita ou é interrompida. Um deploy que compila corretamente ainda pode modificar o significado de comandos de históricos existentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S001",
+        "V3C-S018"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Agente de atendimento técnico delimitado",
+      "scenario": "O processo sempre coleta diagnóstico, consulta documentos e prepara ação.",
+      "strategy": "Modele etapas recorrentes em código e permita ao modelo selecionar perguntas e evidências dentro delas. Só abra planejamento livre quando o fluxo conhecido não cobrir a solicitação, preservando o estado e o motivo da saída.",
+      "small_model_role": "3–7B preenche operações locais; 8–14B escolhe caminhos entre poucas alternativas.",
+      "acceptance": "Proposta: comparar conclusão, passos inúteis e falhas de contrato com um loop inteiramente livre.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S015"
+      ]
+    },
+    {
+      "name": "Workflow de migração de código",
+      "scenario": "Várias bibliotecas precisam ser atualizadas com dependências.",
+      "strategy": "Gere um plano por módulo, valide a ordem e execute em checkpoints. Quando build falhar, replaneje somente o subgrafo afetado; resultados anteriores são reutilizados apenas se suas entradas continuarem válidas.",
+      "small_model_role": "15–30B propõe dependências e reparos; o framework conserva execução e verificação.",
+      "acceptance": "Proposta: interromper, atualizar um módulo e retomar; medir trabalho reutilizado corretamente e testes invalidados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S017",
+        "V4C-S004"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: executor de uma linguagem pequena de tarefas com esquemas curtos e respostas verificáveis.",
+    "8_14b": "Proposta: planejamento de workflows de domínio conhecido, com compilação e testes do plano.",
+    "15_30b": "Proposta: supervisão de subgrafos e tratamento de exceções, sem substituir o interpretador determinístico.",
+    "training_or_runtime_requirements": "Exige schemas, controle de versão e persistência do runtime; instalar uma biblioteca não produz essas políticas.",
+    "do_not_use_when": "Evitar framework complexo para uma chamada isolada ou quando o domínio não possui estados e critérios de término definidos."
+  },
+  "connections": [
+    {
+      "target_id": "T143",
+      "relation": "feeds",
+      "how": "O planejador emite a representação que o framework valida e executa.",
+      "interface": "Plano versionado com entradas, dependências e resultados exigidos.",
+      "condition": "As operações pertencem ao catálogo permitido.",
+      "acceptance": "Gerar planos adversos e conferir rejeição antes de qualquer efeito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S004"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T159",
+      "relation": "complements",
+      "how": "Persistência conserva as fronteiras confirmadas do plano ao longo de falhas.",
+      "interface": "Histórico de comandos, resultados e versão do interpretador.",
+      "condition": "Operações externas são separadas da reconstrução.",
+      "acceptance": "Retomar uma missão interrompida e comparar efeitos com a execução sem falha.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S001"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não deixar o modelo sobrescrever estados confirmados por texto de planejamento.",
+    "Exigir migração explícita quando nomes de etapas ou significado de argumentos mudarem."
+  ],
+  "frontier_comparison": "Compare framework restrito com modelo de fronteira usando o mesmo catálogo e verificadores. Uma arquitetura melhor pode reduzir erros de execução sem ampliar conhecimento geral do modelo.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q002",
+      "V4C-Q003",
+      "V4C-Q010"
+    ],
+    "scope_note": "Conductor, Cadence e Hiring Assistant sustentam princípios diferentes; não se atribui um framework específico ao operador sem identificação explícita."
+  },
+  "source_ids": [
+    "V4C-S004",
+    "V3C-S006",
+    "V4C-S001",
+    "V4C-S015",
+    "V3C-S018",
+    "V4C-S017"
+  ]
+}

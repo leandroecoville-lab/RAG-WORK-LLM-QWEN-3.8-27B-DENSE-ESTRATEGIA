@@ -1,0 +1,53 @@
+{
+  "id": "P009",
+  "technical_details": "Inference Engine propõe uma interface que transforma uma requisição validada em geração observável. Deve distinguir aceitação na fila, início de execução, primeiro token, progresso, término e cancelamento. Tokens transmitidos antes de uma falha podem constituir saída parcial, não resposta concluída. O componente precisa manter separado o contrato comum da aplicação e as capacidades específicas de cada backend, incluindo schemas, ferramentas, cache e contagem de tokens.",
+  "boundary_condition": "Um servidor com API semelhante pode interpretar parâmetros ou motivos de término de modo diferente. O adaptador precisa normalizar somente o que realmente compreende.",
+  "implementation_contract": {
+    "inputs": "Modelo e revisão, mensagens serializadas, parâmetros permitidos, limite de saída, deadline e identificador da requisição.",
+    "outputs": "Eventos de geração, texto final ou parcial, motivo de término, uso e classificação de falha.",
+    "state": "Fila, requisições ativas, sessão do backend e mapa entre IDs internos e externos.",
+    "invariant": "Cancelar ou falhar não pode produzir status de conclusão bem-sucedida; uso e saída parcial permanecem associados à tentativa correta."
+  },
+  "tradeoffs": [
+    "Uma interface comum simplifica consumidores, mas pode ocultar recursos úteis se reduzir tudo ao menor denominador.",
+    "Streaming reduz tempo até a primeira informação, sem eliminar necessidade de validar a resposta terminada."
+  ],
+  "failure_test": "Proposta: derrubar a conexão após alguns tokens e atrasar o cancelamento; verificar classificação parcial, encerramento dos recursos e ausência de reenvio automático que duplique efeitos do consumidor.",
+  "evaluation_plan": "Comparar backends com mesmo contrato, checkpoint quando possível e carga controlada. Medir TTFT, latência entre tokens, total, erros, memória e respostas aceitas. Registrar campos não normalizáveis e capacidades indisponíveis.",
+  "comparisons": [
+    {
+      "entry_id": "T153",
+      "relation": "complements",
+      "reason": "Streaming com interrupção exige estados explícitos."
+    },
+    {
+      "entry_id": "R009",
+      "relation": "complements",
+      "reason": "vLLM é uma implementação possível de serving, não o próprio contrato proposto."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Servidores de inferência oferecem execução e agendamento com características dependentes do backend.",
+    "source_ids": [
+      "V3D-S007",
+      "V3D-S012"
+    ],
+    "support": "related",
+    "caveat": "A máquina de estados da interface é proposta editorial; não foi implantada neste trabalho."
+  },
+  "advanced_qa": [
+    {
+      "question": "Receber tokens significa que a tarefa terminou?",
+      "answer": "Não. O término pode ser por limite, falha, cancelamento ou conclusão; o consumidor deve distingui-los."
+    },
+    {
+      "question": "Qual métrica evita confundir fila com geração?",
+      "answer": "Registre tempos de admissão, início, primeiro token e término separadamente."
+    }
+  ],
+  "source_ids": [
+    "V3D-S007",
+    "V3D-S012"
+  ],
+  "research_note": "Contrato, teste de falha e plano de avaliação são recomendações editoriais; nenhuma implantação ou medição deste mecanismo foi executada neste pacote."
+}

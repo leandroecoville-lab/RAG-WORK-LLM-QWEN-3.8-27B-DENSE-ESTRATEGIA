@@ -1,0 +1,53 @@
+{
+  "id": "T018",
+  "technical_details": "A seleção independente de frases pode conservar uma conclusão e remover a condição que a limita. Uma poda orientada por dependências trata definição, unidade, negação e referente como parte da evidência necessária. O orçamento deve ser aplicado depois desse fechamento: escolher os trechos mais pontuados e descobrir tarde que suas dependências não cabem produz contexto incoerente.",
+  "boundary_condition": "O critério de relevância deixa de ser suficiente quando as unidades selecionadas dependem de elementos com baixa pontuação isolada.",
+  "implementation_contract": {
+    "inputs": "Blocos identificados, orçamento e critérios de relevância e dependência.",
+    "outputs": "Subconjunto literal acompanhado dos trechos de suporte necessários.",
+    "state": "Mapa de seleção, pontuações e localização do conteúdo retirado.",
+    "invariant": "A poda não transforma uma afirmação condicional em regra incondicional por remoção silenciosa."
+  },
+  "tradeoffs": [
+    "Poda por bloco mantém mais contexto e reduz economia em relação a tokens isolados.",
+    "Critérios aprendidos capturam padrões, mas podem falhar em exceções raras e fora de domínio."
+  ],
+  "failure_test": "Teste proposto: atribuir alta relevância a um resultado e baixa relevância à frase que informa sua unidade e exceção. O seletor deve manter suporte suficiente ou indicar que o orçamento não permite resposta confiável.",
+  "evaluation_plan": "Avaliação proposta: comparar ranking independente e seleção com dependências no mesmo orçamento. Medir conservação de condições, respostas apoiadas, tokens e custo do seletor; avaliar também casos em que a ausência de informação exige abstenção.",
+  "comparisons": [
+    {
+      "entry_id": "T038",
+      "relation": "complements",
+      "reason": "Selective Context acrescenta critérios específicos de seleção à família de poda."
+    },
+    {
+      "entry_id": "T006",
+      "relation": "specializes",
+      "reason": "Poda é compressão por remoção; não sintetiza necessariamente um texto novo."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Selective Context reduz entrada removendo redundância, enquanto LLMLingua-2 aprende seleção de tokens com contexto bidirecional.",
+    "source_ids": [
+      "A-S016",
+      "V3A-S001"
+    ],
+    "support": "direct",
+    "caveat": "Os métodos não oferecem garantia universal de preservação de toda dependência semântica."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma frase irrelevante à pergunta pode ser necessária?",
+      "answer": "Sim. Ela pode definir quem é o sujeito, qual unidade está em uso ou quando a regra vale. Relevância direta e suporte são funções distintas."
+    },
+    {
+      "question": "Como auditar o seletor?",
+      "answer": "Guarde a máscara de seleção e os offsets. Assim é possível localizar exatamente o que foi removido e investigar uma resposta incorreta."
+    }
+  ],
+  "source_ids": [
+    "A-S016",
+    "V3A-S001"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

@@ -1,0 +1,52 @@
+{
+  "id": "T012",
+  "technical_details": "A ordem dos separadores funciona como uma prioridade estrutural. Um bloco só desce para uma regra mais fina quando permanece grande demais. A configuração padrão de um divisor por caracteres não impõe automaticamente limite em tokens; trocar apenas o nome do parâmetro não muda a função de comprimento. Para línguas sem espaços, a lista de separadores deve considerar sua pontuação e convenções.",
+  "boundary_condition": "Arquivos minificados, tabelas densas e unidades sem separadores reconhecidos podem chegar ao fallback mais fino e perder fronteiras úteis.",
+  "implementation_contract": {
+    "inputs": "Texto, separadores ordenados, função de comprimento e sobreposição alvo.",
+    "outputs": "Segmentos com offsets e unidade de tamanho declarada.",
+    "state": "Versão da configuração, normalização aplicada e metadados de documento.",
+    "invariant": "Cada fallback reduz uma unidade excessiva ou encerra com erro explícito, sem recursão improdutiva."
+  },
+  "tradeoffs": [
+    "Regras simples tornam a ingestão reproduzível, mas não identificam relações semânticas implícitas.",
+    "Mais separadores específicos preservam estrutura e também exigem testes por tipo de documento."
+  ],
+  "failure_test": "Teste proposto: processar texto sem espaços e um bloco de código muito longo. Confirmar término, respeito ao limite medido e registro de cortes que atravessam uma unidade sintática.",
+  "evaluation_plan": "Avaliação proposta: comparar separadores genéricos e específicos por linguagem mantendo função de comprimento e índice iguais. Medir unidades quebradas, quantidade de chunks, custo e recuperação de evidências; escolher configuração por corpus, não por preferência nominal.",
+  "comparisons": [
+    {
+      "entry_id": "T010",
+      "relation": "complements",
+      "reason": "O limite de tamanho continua útil como restrição, embora os cortes tentem preservar unidades maiores."
+    },
+    {
+      "entry_id": "T033",
+      "relation": "distinct_from",
+      "reason": "Recursão por delimitadores não equivale a interpretar uma árvore estrutural do documento."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação do RecursiveCharacterTextSplitter separa lista de separadores, função de comprimento e sobreposição.",
+    "source_ids": [
+      "A-S004"
+    ],
+    "support": "direct",
+    "caveat": "A configuração consultada é de uma biblioteca específica; outros divisores podem ter contratos diferentes."
+  },
+  "advanced_qa": [
+    {
+      "question": "A sobreposição configurada sempre aparece exatamente?",
+      "answer": "Não se deve presumir. A preservação de unidades e a estratégia de junção podem alterar a sobreposição efetiva; inspecione offsets resultantes."
+    },
+    {
+      "question": "Quando usar parser em vez de separadores?",
+      "answer": "Quando a semântica estrutural importa, como funções e tabelas. Um parser fornece relações que uma lista de caracteres não reconhece."
+    }
+  ],
+  "source_ids": [
+    "A-S004",
+    "V3A-S013"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

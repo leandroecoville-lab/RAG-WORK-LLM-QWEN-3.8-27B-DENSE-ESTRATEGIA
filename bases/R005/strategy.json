@@ -1,0 +1,119 @@
+{
+  "id": "R005",
+  "novelty": "A v3 diferenciou variantes LLMLingua. Aqui a seleção de variante depende do consumidor e do perfil de carga, com teste de robustez de leitura.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Escolha entre compressão orientada à consulta e independente da tarefa conforme reutilização prevista. Um corpus consultado de muitas formas pode não amortizar recompressão específica por pergunta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S027",
+        "V4A-S028",
+        "V3A-S001"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Avalie legibilidade funcional para cada leitor 3–30B. O fato de um modelo grande interpretar tokens selecionados não prova que um modelo menor preserve relações, negações e referências.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S027",
+        "V4A-S028",
+        "V3A-S001"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare variantes com taxa efetiva e custo completo, incluindo compressor, leitura e expansão de recuperação. Meça qualidade por tipo de informação, não apenas compressão média. Unidade de avaliação: pipeline compressor-leitor.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S027",
+        "V4A-S028",
+        "V3A-S001"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "RAG local de baixa latência",
+      "scenario": "Documentos retornados são redundantes.",
+      "strategy": "Usar compressor leve após recuperação, proteger campos decisivos e encaminhar original quando teste de suporte falhar.",
+      "small_model_role": "3–7B lê pacote conservador.",
+      "acceptance": "Não reduzir latência sacrificando unidade, negação ou fonte.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S027",
+        "V4A-S028",
+        "V3A-S001"
+      ]
+    },
+    {
+      "name": "Análise recorrente de dossiê",
+      "scenario": "Várias perguntas usam o mesmo material.",
+      "strategy": "Comparar representação geral reutilizada com compressão por pergunta; manter original e medir custo acumulado por sessão.",
+      "small_model_role": "8–14B integra; 15–30B audita casos difíceis.",
+      "acceptance": "Escolher variante por custo por resposta aceita, não por taxa anunciada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S027",
+        "V4A-S028",
+        "V3A-S001"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Consumidor de compressão moderada com relações explícitas e recuperação de fallback.",
+    "8_14b": "Leitor de texto mais denso após validação de fidelidade contextual.",
+    "15_30b": "Professor ou auditor de preservação, sem presumir comportamento igual entre modelos.",
+    "training_or_runtime_requirements": "Versão exata da biblioteca e compressor, tokenizer do leitor e dados próprios de avaliação; integração Prompt flow é disponibilidade.",
+    "do_not_use_when": "Compressão custa mais que leitura ou produz texto que o consumidor não interpreta com confiabilidade."
+  },
+  "connections": [
+    {
+      "target_id": "T037",
+      "relation": "complements",
+      "how": "Condicionar seleção à pergunta quando variante suportar.",
+      "interface": "Pergunta, trechos e taxa efetiva.",
+      "condition": "Objetivo permanecer estável durante reuso.",
+      "acceptance": "Trocar pergunta e testar perda de evidência relevante.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S027",
+        "V4A-S028",
+        "V3A-S001"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T042",
+      "relation": "requires",
+      "how": "Contar contexto final e reserva do consumidor.",
+      "interface": "Tokens após compressão, metadados e saída prevista.",
+      "condition": "Contagem usar protocolo do leitor.",
+      "acceptance": "Comparar taxa solicitada e redução efetiva em tokens.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S027",
+        "V4A-S028",
+        "V3A-S001"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não chamar integração em biblioteca de produção comprovada.",
+    "Não transportar ganhos publicados para todo modelo pequeno."
+  ],
+  "frontier_comparison": "Comparar pipeline completo com leitura integral; compressor eficiente pode piorar um consumidor menos robusto.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q024"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S027",
+    "V4A-S028",
+    "V3A-S001"
+  ]
+}

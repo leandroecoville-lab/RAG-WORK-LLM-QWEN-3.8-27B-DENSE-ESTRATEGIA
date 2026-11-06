@@ -1,0 +1,30 @@
+{
+  "id": "T071",
+  "name": "Memory Promotion",
+  "canonical_name": "Memory Promotion",
+  "canonical_id": "T071",
+  "aliases": [
+    "promoção de memória"
+  ],
+  "category": "memoria",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T048",
+    "T055",
+    "T058",
+    "T204"
+  ],
+  "source_ids": [
+    "A-S023",
+    "A-S026",
+    "V3A-S037",
+    "V4A-S017"
+  ],
+  "namespace": "T071",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T071",
+  "chunk_count": 9
+}

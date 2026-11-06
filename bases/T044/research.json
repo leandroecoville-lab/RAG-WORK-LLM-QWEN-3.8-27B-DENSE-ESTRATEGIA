@@ -1,0 +1,51 @@
+{
+  "id": "T044",
+  "technical_details": "A expansão pode escolher entre abrir uma referência exata, aumentar a região de um documento ou iniciar nova busca. Essas ações têm custos e riscos diferentes. Uma política útil associa cada ação a uma lacuna: identidade ambígua, premissa ausente ou contradição. O progresso é redução verificável dessa lacuna, não crescimento de tokens nem confiança retórica do modelo após mais leitura.",
+  "boundary_condition": "Um agente pode permanecer confiante apesar de uma premissa falsa; gatilhos baseados apenas em incerteza do gerador não detectam todos os casos que precisam expandir.",
+  "implementation_contract": {
+    "inputs": "Lista de lacunas, contexto atual, referências disponíveis e orçamento restante de busca e leitura.",
+    "outputs": "Nova evidência vinculada à lacuna ou registro de tentativa sem resolução.",
+    "state": "Consultas já feitas, fontes abertas, versões e razões de parada.",
+    "invariant": "Repetir a mesma evidência não conta como confirmação independente nem como ganho de cobertura."
+  },
+  "tradeoffs": [
+    "Expansão sob demanda evita leitura desnecessária e acrescenta latência sequencial.",
+    "Abrir fontes vizinhas conserva escopo; novas buscas ampliam cobertura e aumentam risco de desvio temático."
+  ],
+  "failure_test": "Teste proposto: fornecer evidência que responde metade de uma comparação e resultados repetidos para a outra metade. O agente deve identificar cobertura parcial e parar após esgotar a política, sem completar por analogia.",
+  "evaluation_plan": "Avaliação proposta: comparar recuperação única, expansão fixa e expansão por lacunas com orçamento máximo igual. Medir cobertura incremental, custo por lacuna resolvida e encerramentos justificados; incluir casos de alta confiança com premissa ausente.",
+  "comparisons": [
+    {
+      "entry_id": "T014",
+      "relation": "complements",
+      "reason": "Carregamento progressivo define níveis disponíveis; expansão escolhe quando percorrê-los por necessidade concreta."
+    },
+    {
+      "entry_id": "T067",
+      "relation": "complements",
+      "reason": "Recuperação ativa oferece gatilhos e consultas durante a geração, compondo uma política de expansão."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "FLARE antecipa a continuação textual e usa baixa confiança em tokens para acionar recuperação e regeneração.",
+    "source_ids": [
+      "V3A-S010"
+    ],
+    "support": "direct",
+    "caveat": "É um mecanismo específico de acionamento; confiança do modelo não equivale a uma prova geral de suficiência da evidência."
+  },
+  "advanced_qa": [
+    {
+      "question": "Como estimar o valor da próxima busca?",
+      "answer": "Use o tipo de lacuna, custo e histórico de tentativas. É uma heurística operacional que precisa ser comparada com expansão fixa."
+    },
+    {
+      "question": "Quando expandir o documento em vez da coleção?",
+      "answer": "Quando a lacuna é local, como uma definição ou ressalva próxima. Ausência de identidade ou fonte independente pode exigir busca mais ampla."
+    }
+  ],
+  "source_ids": [
+    "V3A-S010"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

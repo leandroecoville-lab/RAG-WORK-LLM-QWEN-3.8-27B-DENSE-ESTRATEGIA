@@ -1,0 +1,36 @@
+{
+  "id": "T228",
+  "name": "Fila de retries com backoff exponencial",
+  "canonical_name": "Fila de retries com backoff exponencial",
+  "canonical_id": "T228",
+  "aliases": [
+    "exponential backoff retry queue",
+    "retry com jitter"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T243",
+    "T220",
+    "T225"
+  ],
+  "source_ids": [
+    "V2A-S012",
+    "V2A-S026",
+    "V3C-S023",
+    "V3C-S028",
+    "C-S026",
+    "V3C-S009",
+    "C-S028",
+    "V3C-S037",
+    "V4C-S003",
+    "V4C-S004"
+  ],
+  "namespace": "T228",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T228",
+  "chunk_count": 9
+}

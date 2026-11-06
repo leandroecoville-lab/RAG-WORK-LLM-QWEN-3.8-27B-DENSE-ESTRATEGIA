@@ -1,0 +1,31 @@
+{
+  "id": "T157",
+  "name": "Prefix Hashing",
+  "canonical_name": "Prefix Hashing",
+  "canonical_id": "T157",
+  "aliases": [
+    "hash de prefixos"
+  ],
+  "category": "orquestracao",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T082",
+    "T103",
+    "T171"
+  ],
+  "source_ids": [
+    "C-S022",
+    "V3C-S015",
+    "V4C-S014",
+    "V4C-S030",
+    "V4D-S016",
+    "V4D-S020"
+  ],
+  "namespace": "T157",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T157",
+  "chunk_count": 9
+}

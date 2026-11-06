@@ -1,0 +1,288 @@
+﻿id,name,canonical_name,canonical_id,scope,category,kind,evidence_status,directory
+T001,Map-Reduce,Map-Reduce,T001,inventario,contexto_recuperacao,pattern,supported,bases/T001
+T002,Prompt Caching,Prompt Caching,T002,inventario,contexto_recuperacao,technique,supported,bases/T002
+T003,Sliding Window de contexto — incluindo descarte FIFO,Janela deslizante do histórico com descarte FIFO,T003,inventario,contexto_recuperacao,pattern,supported,bases/T003
+T004,Summarization em cadeia,Summarization em Cadeia,T004,inventario,contexto_recuperacao,pattern,supported,bases/T004
+T005,Semantic Caching,Semantic Caching,T005,inventario,contexto_recuperacao,technique,supported,bases/T005
+T006,Context Compression,Context Compression,T006,inventario,contexto_recuperacao,family,supported,bases/T006
+T007,Response Caching por Hash,Response Caching por Hash,T007,inventario,contexto_recuperacao,pattern,related_support,bases/T007
+T008,Hierarchical Summarization,Hierarchical Summarization,T008,inventario,contexto_recuperacao,pattern,supported,bases/T008
+T009,RAG — Retrieval-Augmented Generation; incluindo RAG temporal,RAG com filtragem temporal explícita,T009,inventario,contexto_recuperacao,architecture,supported,bases/T009
+T010,Fixed-Size Chunking,Fixed-Size Chunking,T010,inventario,contexto_recuperacao,technique,supported,bases/T010
+T011,Semantic Chunking,Semantic Chunking,T011,inventario,contexto_recuperacao,technique,supported,bases/T011
+T012,Recursive Chunking,Recursive Chunking,T012,inventario,contexto_recuperacao,technique,supported,bases/T012
+T013,Long-Context Models,Long-Context Models,T013,inventario,contexto_recuperacao,family,supported,bases/T013
+T014,Progressive Disclosure,Progressive Disclosure,T014,inventario,contexto_recuperacao,pattern,supported,bases/T014
+T015,Reference Passing,Reference Passing,T015,inventario,contexto_recuperacao,pattern,related_support,bases/T015
+T016,Tool Result Truncation,Tool Result Truncation,T016,inventario,contexto_recuperacao,pattern,related_support,bases/T016
+T017,Context Folding,Context Folding,T017,inventario,contexto_recuperacao,technique,supported,bases/T017
+T018,Context Pruning,Context Pruning,T018,inventario,contexto_recuperacao,family,supported,bases/T018
+T019,Few-Shot Pruning,Few-Shot Pruning,T019,inventario,contexto_recuperacao,pattern,related_support,bases/T019
+T020,Learned Prompt Compression,Learned Prompt Compression,T020,inventario,contexto_recuperacao,family,supported,bases/T020
+T021,Context Compression On-the-Fly,Context Compression On-the-Fly,T006,inventario,contexto_recuperacao,pattern,related_support,bases/T021
+T022,Instruction Compression,Instruction Compression,T022,inventario,contexto_recuperacao,family,supported,bases/T022
+T023,Recursive Summarization Tree,Recursive Summarization Tree,T008,inventario,contexto_recuperacao,pattern,supported,bases/T023
+T024,Context Broker e Context Builder,Context Broker / Context Builder,T024,inventario,contexto_recuperacao,component,related_support,bases/T024
+T025,Adaptive RAG,Adaptive RAG,T025,inventario,contexto_recuperacao,technique,supported,bases/T025
+T026,Hierarchical Retrieval,Hierarchical Retrieval,T026,inventario,contexto_recuperacao,family,supported,bases/T026
+T027,Hybrid Retrieval — BM25 + vetores,Hybrid Retrieval — BM25 + Vetores,T027,inventario,contexto_recuperacao,technique,supported,bases/T027
+T028,Reranking,Reranking,T028,inventario,contexto_recuperacao,technique,supported,bases/T028
+T029,GraphRAG,GraphRAG,T029,inventario,contexto_recuperacao,architecture,supported,bases/T029
+T030,RAPTOR,RAPTOR,T030,inventario,contexto_recuperacao,architecture,supported,bases/T030
+T031,Semantic Cache Invalidation,Semantic Cache Invalidation,T031,inventario,contexto_recuperacao,pattern,related_support,bases/T031
+T032,Parent-Child Retrieval / Parent-Child Chunking,Parent-Child Chunking e Parent-Child Retrieval,T032,inventario,contexto_recuperacao,technique,supported,bases/T032
+T033,Structure-Aware Chunking,Structure-Aware Chunking,T033,inventario,contexto_recuperacao,technique,supported,bases/T033
+T034,Agentic Chunking,Agentic Chunking,T034,inventario,contexto_recuperacao,family,related_support,bases/T034
+T035,Contextual Chunking,Contextual Chunking,T035,inventario,contexto_recuperacao,pattern,related_support,bases/T035
+T036,Query-Aware RAG,Query-Aware RAG,T036,inventario,contexto_recuperacao,family,related_support,bases/T036
+T037,Query-Aware Compression,Query-Aware Compression,T037,inventario,contexto_recuperacao,technique,supported,bases/T037
+T038,Selective Context Pruning,Selective Context Pruning,T018,inventario,contexto_recuperacao,pattern,supported,bases/T038
+T039,Importance-Aware Window,Importance-Aware Window,T039,inventario,contexto_recuperacao,pattern,related_support,bases/T039
+T040,State-Aware Window,State-Aware Window,T040,inventario,contexto_recuperacao,pattern,related_support,bases/T040
+T041,Last-N Messages Window,Last-N Messages Window,T041,inventario,contexto_recuperacao,pattern,supported,bases/T041
+T042,Token-Based Window,Token-Based Window,T042,inventario,contexto_recuperacao,pattern,supported,bases/T042
+T043,Context Compaction,Context Compaction,T043,inventario,contexto_recuperacao,pattern,supported,bases/T043
+T044,Progressive Context Expansion,Progressive Context Expansion,T044,inventario,contexto_recuperacao,pattern,related_support,bases/T044
+T045,Tool Retrieval,Tool Retrieval,T045,inventario,contexto_recuperacao,technique,supported,bases/T045
+T046,Dynamic Few-Shot Selection,Dynamic Few-Shot Selection,T046,inventario,contexto_recuperacao,technique,supported,bases/T046
+T047,Long-Term Memory — memória de longo prazo,Long-Term Memory,T047,inventario,memoria,family,supported,bases/T047
+T048,Memory Management,Memory Management,T048,inventario,memoria,family,supported,bases/T048
+T049,Episodic Memory,Episodic Memory,T049,inventario,memoria,family,supported,bases/T049
+T050,Working Memory Window,Working Memory Window,T050,inventario,memoria,component,supported,bases/T050
+T051,Graph-Based Memory,Graph-Based Memory,T051,inventario,memoria,architecture,supported,bases/T051
+T052,Latent Context,Latent Context,T052,inventario,memoria,family,related_support,bases/T052
+T053,Scratchpad em arquivo,Scratchpad em Arquivo,T053,inventario,memoria,pattern,supported,bases/T053
+T054,Semantic Memory,Semantic Memory,T054,inventario,memoria,family,supported,bases/T054
+T055,Procedural Memory,Procedural Memory,T055,inventario,memoria,family,supported,bases/T055
+T056,Bitemporal Memory,Bitemporal Memory,T056,inventario,memoria,architecture,supported,bases/T056
+T057,Causal Memory,Causal Memory,T057,inventario,memoria,pattern,related_support,bases/T057
+T058,Memory Consolidation,Memory Consolidation,T058,inventario,memoria,pattern,supported,bases/T058
+T059,Event Sourcing,Event Sourcing,T059,inventario,memoria,pattern,supported,bases/T059
+T060,Agent Checkpointing / Checkpoint & Resume — incluindo checkpoints transacionais,Agent Checkpointing com retomada e checkpoint transacional,T060,inventario,memoria,pattern,supported,bases/T060
+T061,Content-Addressable Storage,Content-Addressable Storage,T061,inventario,memoria,architecture,supported,bases/T061
+T062,Hierarchical Memory,Hierarchical Memory,T062,inventario,memoria,architecture,supported,bases/T062
+T063,"Virtual Context Management — memória virtual de contexto, estilo MemGPT",Virtual Context Management — MemGPT,T063,inventario,memoria,architecture,supported,bases/T063
+T064,Persistent Agent State,Persistent Agent State,T064,inventario,memoria,component,supported,bases/T064
+T065,Transactional State Manager,Transactional State Manager,T065,inventario,memoria,component,related_support,bases/T065
+T066,Memory Resolver / Reference Resolver,Memory Resolver / Reference Resolver,T066,inventario,memoria,component,related_support,bases/T066
+T067,Active Memory Retrieval,Active Memory Retrieval,T067,inventario,memoria,pattern,supported,bases/T067
+T068,Memory-Augmented Generation,Memory-Augmented Generation,T068,inventario,memoria,family,supported,bases/T068
+T069,Consolidação por resumos — anteriormente chamada de “Context Distillation”,Consolidação por resumos,T069,inventario,memoria,pattern,supported,bases/T069
+T070,Episodic Store,Episodic Store,T070,inventario,memoria,component,supported,bases/T070
+T071,Memory Promotion,Memory Promotion,T071,inventario,memoria,pattern,related_support,bases/T071
+T072,Versioned Memory,Versioned Memory,T072,inventario,memoria,pattern,supported,bases/T072
+T073,Immutable Evidence Store,Immutable Evidence Store,T073,inventario,memoria,component,supported,bases/T073
+T074,Memory Eviction,Memory Eviction,T074,inventario,memoria,pattern,supported,bases/T074
+T075,Memory Reconciliation,Memory Reconciliation,T075,inventario,memoria,pattern,related_support,bases/T075
+T076,Git-Backed Memory,Git-Backed Memory,T076,inventario,memoria,architecture,supported,bases/T076
+T077,Temporal Knowledge Graphs,Temporal Knowledge Graphs,T077,inventario,memoria,architecture,supported,bases/T077
+T078,Semantic Page Fault,Semantic Page Fault,T078,inventario,memoria,pattern,related_support,bases/T078
+T079,Speculative Decoding,Speculative Decoding,T079,inventario,inferencia,technique,supported,bases/T079
+T080,Adaptive Speculative Decoding,Adaptive Speculative Decoding,T080,inventario,inferencia,family,supported,bases/T080
+T081,KV Cache Reuse,KV Cache Reuse,T081,inventario,inferencia,technique,supported,bases/T081
+T082,Prefix Caching,Prefix Caching,T082,inventario,inferencia,technique,supported,bases/T082
+T083,Advanced Prefix Caching,Advanced Prefix Caching,T082,inventario,inferencia,family,terminology_correction,bases/T083
+T084,Session-Based Caching,Session-Based Caching,T084,inventario,inferencia,pattern,related_support,bases/T084
+T085,Quantization,Quantization,T085,inventario,inferencia,family,supported,bases/T085
+T086,Quantized KV Cache,Quantized KV Cache,T086,inventario,inferencia,technique,supported,bases/T086
+T087,Batching — Static Batching e Dynamic Batching,Static Batching e Dynamic Batching,T087,inventario,inferencia,family,supported,bases/T087
+T088,Continuous Batching,Continuous Batching,T088,inventario,inferencia,technique,supported,bases/T088
+T089,"Early Stopping — EOS, stop sequences, limites e parada semântica",Critérios de término da geração,T089,inventario,inferencia,family,supported,bases/T089
+T090,FlashAttention,FlashAttention,T090,inventario,inferencia,technique,supported,bases/T090
+T091,FlashAttention-2,FlashAttention-2,T091,inventario,inferencia,technique,supported,bases/T091
+T092,FlashAttention-3,FlashAttention-3,T092,inventario,inferencia,technique,supported,bases/T092
+T093,PagedAttention,PagedAttention,T093,inventario,inferencia,technique,supported,bases/T093
+T094,Chunked Prefill,Chunked Prefill,T094,inventario,inferencia,technique,supported,bases/T094
+T095,Sliding Window Attention,Sliding Window Attention,T095,inventario,inferencia,architecture,supported,bases/T095
+T096,Sparse Attention,Sparse Attention,T096,inventario,inferencia,family,supported,bases/T096
+T097,Block-Sparse Attention,Block-Sparse Attention,T097,inventario,inferencia,technique,supported,bases/T097
+T098,Memory-Efficient Attention,Memory-Efficient Attention,T098,inventario,inferencia,family,supported,bases/T098
+T099,Multi-Query Attention — MQA,Multi-Query Attention — MQA,T099,inventario,inferencia,architecture,supported,bases/T099
+T100,Grouped-Query Attention — GQA,Grouped-Query Attention — GQA,T100,inventario,inferencia,architecture,supported,bases/T100
+T101,Ring Attention,Ring Attention,T101,inventario,inferencia,technique,supported,bases/T101
+T102,Disaggregated Inference / Disaggregated Prefill-Decode,Inferência com prefill e decode desagregados,T102,inventario,inferencia,architecture,supported,bases/T102
+T103,Prefix Tree / Trie de prefixos,Prefix Tree / Trie de Prefixos,T103,inventario,inferencia,component,supported,bases/T103
+T104,Radix Attention,RadixAttention,T104,inventario,inferencia,technique,supported,bases/T104
+T105,KV Cache Eviction,KV Cache Eviction,T105,inventario,inferencia,family,supported,bases/T105
+T106,Otimização de KV com MQA/GQA,Otimização do armazenamento KV em modelos MQA/GQA,T106,inventario,inferencia,pattern,supported,bases/T106
+T107,Roofline Analysis,Roofline Analysis,T107,inventario,inferencia,technique,supported,bases/T107
+T108,Multi-Head Attention — MHA,Multi-Head Attention — MHA,T108,inventario,inferencia,architecture,supported,bases/T108
+T109,Local / Window Attention,Local / Window Attention,T095,inventario,inferencia,family,related_support,bases/T109
+T110,Global Token Attention,Global Token Attention,T110,inventario,inferencia,pattern,supported,bases/T110
+T111,Dynamic Sparse Attention,Dynamic Sparse Attention,T111,inventario,inferencia,family,supported,bases/T111
+T112,Retrieval-Based Attention,Retrieval-Based Attention,T112,inventario,inferencia,family,related_support,bases/T112
+T113,FlashAttention Tiling,FlashAttention Tiling,T113,inventario,inferencia,component,supported,bases/T113
+T114,Online Softmax,Online Softmax,T114,inventario,inferencia,technique,supported,bases/T114
+T115,Activation Checkpointing,Activation Checkpointing,T115,inventario,inferencia,technique,supported,bases/T115
+T116,KV Cache Recomputation,KV Cache Recomputation,T116,inventario,inferencia,technique,supported,bases/T116
+T117,Context Parallelism,Context Parallelism,T117,inventario,inferencia,technique,supported,bases/T117
+T118,Tensor Parallelism,Tensor Parallelism,T118,inventario,inferencia,technique,supported,bases/T118
+T119,Pipeline Parallelism,Pipeline Parallelism,T119,inventario,inferencia,technique,supported,bases/T119
+T120,KV Cache Routing,KV Cache Routing,T120,inventario,inferencia,pattern,supported,bases/T120
+T121,GPU Scheduling,GPU Scheduling,T121,inventario,inferencia,family,supported,bases/T121
+T122,RDMA para inferência distribuída,RDMA para inferência distribuída,T122,inventario,inferencia,protocol,supported,bases/T122
+T123,FP8 Quantization,FP8 Quantization,T123,inventario,inferencia,technique,supported,bases/T123
+T124,INT4 / W4A16 Quantization,INT4 / W4A16 Quantization,T124,inventario,inferencia,family,supported,bases/T124
+T125,GPTQ,GPTQ,T125,inventario,inferencia,technique,supported,bases/T125
+T126,AWQ,AWQ,T126,inventario,inferencia,technique,supported,bases/T126
+T127,"GGUF — formato de modelos, não método único de quantização",GGUF — contêiner binário de modelos,T127,inventario,inferencia,format,terminology_correction,bases/T127
+T128,EAGLE / EAGLE-3,EAGLE / EAGLE-3,T128,inventario,inferencia,family,supported,bases/T128
+T129,MTP — Multi-Token Prediction,MTP — Multi-Token Prediction,T129,inventario,inferencia,architecture,supported,bases/T129
+T130,N-Gram Speculative Decoding,N-Gram Speculative Decoding,T130,inventario,inferencia,technique,supported,bases/T130
+T131,Suffix Decoding,SuffixDecoding,T131,inventario,inferencia,technique,supported,bases/T131
+T132,Draft-Model Speculation,Draft-Model Speculation,T132,inventario,inferencia,pattern,supported,bases/T132
+T133,Model Routing,Model Routing,T133,inventario,orquestracao,family,supported,bases/T133
+T134,Semantic Routing,Semantic Routing,T134,inventario,orquestracao,pattern,related_support,bases/T134
+T135,Model Cascade,Model Cascade,T135,inventario,orquestracao,pattern,supported,bases/T135
+T136,Fallback Chains,Fallback Chains,T136,inventario,orquestracao,pattern,supported,bases/T136
+T137,Rate Limiting,Rate Limiting,T137,inventario,orquestracao,pattern,supported,bases/T137
+T138,Circuit Breaker,Circuit Breaker,T138,inventario,orquestracao,pattern,supported,bases/T138
+T139,Parallel Tool Calls,Parallel Tool Calls,T139,inventario,orquestracao,pattern,supported,bases/T139
+T140,Tool Use / Function Calling,Tool Use / Function Calling,T140,inventario,orquestracao,family,supported,bases/T140
+T141,Structured Outputs,Structured Outputs,T141,inventario,orquestracao,family,supported,bases/T141
+T142,Agent Frameworks com Planning,Agent Frameworks com Planning,T142,inventario,orquestracao,family,related_support,bases/T142
+T143,Plan-Then-Act,Plan-Then-Act,T143,inventario,orquestracao,pattern,related_support,bases/T143
+T144,ReAct Pattern,ReAct Pattern,T144,inventario,orquestracao,pattern,supported,bases/T144
+T145,Adaptive Depth,Adaptive Depth,T145,inventario,orquestracao,pattern,related_support,bases/T145
+T146,Adaptive Compute,Adaptive Compute,T146,inventario,orquestracao,family,related_support,bases/T146
+T147,Parallel Fan-Out,Parallel Fan-Out,T147,inventario,orquestracao,pattern,supported,bases/T147
+T148,Conditional Branching,Conditional Branching,T148,inventario,orquestracao,pattern,supported,bases/T148
+T149,Priority Queue,Priority Queue,T149,inventario,orquestracao,component,supported,bases/T149
+T150,Request Coalescing / Singleflight,Request Coalescing / Singleflight,T150,inventario,orquestracao,pattern,supported,bases/T150
+T151,Lazy Loading de ferramentas,Lazy Loading de Ferramentas,T151,inventario,orquestracao,pattern,supported,bases/T151
+T152,Token Budget Allocation,Token Budget Allocation,T152,inventario,orquestracao,pattern,related_support,bases/T152
+T153,Output Streaming com interrupção,Output Streaming com Interrupção,T153,inventario,orquestracao,pattern,related_support,bases/T153
+T154,Multi-Turn Conversation Management,Multi-Turn Conversation Management,T154,inventario,orquestracao,component,supported,bases/T154
+T155,System Prompt Optimization / prompt de sistema enxuto,Otimização e concisão do prompt de sistema,T155,inventario,orquestracao,family,supported,bases/T155
+T156,Temperature Tuning,Temperature Tuning,T156,inventario,orquestracao,technique,supported,bases/T156
+T157,Prefix Hashing,Prefix Hashing,T157,inventario,orquestracao,component,supported,bases/T157
+T158,Tool Registry,Tool Registry,T158,inventario,orquestracao,component,supported,bases/T158
+T159,Durable Execution,Durable Execution,T159,inventario,orquestracao,pattern,supported,bases/T159
+T160,DAG Scheduling,DAG Scheduling,T160,inventario,orquestracao,pattern,supported,bases/T160
+T161,Critical Path Analysis,Critical Path Analysis,T161,inventario,orquestracao,technique,related_support,bases/T161
+T162,Idempotência,Idempotência,T162,inventario,orquestracao,pattern,supported,bases/T162
+T163,Backoff exponencial com jitter,Exponential backoff with jitter,T163,inventario,orquestracao,pattern,supported,bases/T163
+T164,Retry-After,Retry-After,T164,inventario,orquestracao,protocol,supported,bases/T164
+T165,Half-open — estado do Circuit Breaker,Estado half-open do circuit breaker,T165,inventario,orquestracao,component,supported,bases/T165
+T166,Queue Fairness / Aging,Queue Fairness / Aging,T166,inventario,orquestracao,family,supported,bases/T166
+T167,Token Bucket,Token Bucket,T167,inventario,orquestracao,technique,supported,bases/T167
+T168,Soft Limit / Hard Limit de tokens,Soft Limit / Hard Limit de Tokens,T168,inventario,orquestracao,pattern,related_support,bases/T168
+T169,Multi-Agent com contextos isolados,Multi-Agent com Contextos Isolados,T169,inventario,orquestracao,architecture,supported,bases/T169
+T170,Tool Schema Versioning,Tool Schema Versioning,T170,inventario,orquestracao,pattern,related_support,bases/T170
+T171,Cache-Aware Orchestration,Cache-Aware Orchestration,T171,inventario,orquestracao,pattern,related_support,bases/T171
+T172,Streaming Controller,Streaming Controller,T172,inventario,orquestracao,component,related_support,bases/T172
+T173,Model Fallback Controlado,Model Fallback Controlado,T136,inventario,orquestracao,pattern,related_support,bases/T173
+T174,Priority-Based Scheduling,Priority-Based Scheduling,T174,inventario,orquestracao,pattern,supported,bases/T174
+T175,Rate Limiting com Fallback,Rate Limiting com Fallback,T175,inventario,orquestracao,pattern,related_support,bases/T175
+T176,Token-Aware Planning,Token-Aware Planning,T176,inventario,orquestracao,pattern,related_support,bases/T176
+T177,Fine-Tuning,Fine-Tuning,T177,inventario,verificacao_treinamento,family,supported,bases/T177
+T178,Knowledge Distillation,Knowledge Distillation,T178,inventario,verificacao_treinamento,family,supported,bases/T178
+T179,Context Distillation Paramétrica,Context Distillation,T179,inventario,verificacao_treinamento,technique,supported,bases/T179
+T180,Prompt Distillation,Prompt Distillation,T179,inventario,verificacao_treinamento,technique,supported,bases/T180
+T181,Agent Memory Distillation,Agent Memory Distillation,T181,inventario,verificacao_treinamento,technique,supported,bases/T181
+T182,LoRA,Low-Rank Adaptation,T182,inventario,verificacao_treinamento,technique,supported,bases/T182
+T183,QLoRA,QLoRA,T183,inventario,verificacao_treinamento,technique,supported,bases/T183
+T184,Mixture of Experts — MoE,Mixture of Experts — MoE,T184,inventario,verificacao_treinamento,architecture,supported,bases/T184
+T185,Constitutional AI,Constitutional AI,T185,inventario,verificacao_treinamento,technique,supported,bases/T185
+T186,Debate entre agentes,Debate entre Agentes,T186,inventario,verificacao_treinamento,pattern,supported,bases/T186
+T187,Ensemble Voting,Ensemble Voting,T187,inventario,verificacao_treinamento,technique,supported,bases/T187
+T188,Self-Consistency,Self-Consistency,T188,inventario,verificacao_treinamento,technique,supported,bases/T188
+T189,Best-of-N Verification,Best-of-N Verification,T189,inventario,verificacao_treinamento,pattern,supported,bases/T189
+T190,Verifier Loop,Verifier Loop,T190,inventario,verificacao_treinamento,pattern,related_support,bases/T190
+T191,Chain-of-Verification,Chain-of-Verification,T191,inventario,verificacao_treinamento,technique,supported,bases/T191
+T192,Self-Refine,Self-Refine,T192,inventario,verificacao_treinamento,technique,supported,bases/T192
+T193,Guardrails,Guardrails,T193,inventario,verificacao_treinamento,family,supported,bases/T193
+T194,Process Supervision,Process Supervision,T194,inventario,verificacao_treinamento,technique,supported,bases/T194
+T195,Verificação baseada em execução,Verificação Baseada em Execução,T195,inventario,verificacao_treinamento,family,supported,bases/T195
+T196,Constrained Decoding / Grammar-Constrained Decoding,Decodificação restrita por gramática,T196,inventario,verificacao_treinamento,technique,supported,bases/T196
+T197,JSON Schema Validation,JSON Schema Validation,T197,inventario,verificacao_treinamento,technique,supported,bases/T197
+T198,Calibrated Confidence,Calibrated Confidence,T198,inventario,verificacao_treinamento,technique,supported,bases/T198
+T199,Aprendizagem por avaliação,Aprendizagem por Avaliação,T199,inventario,verificacao_treinamento,family,related_support,bases/T199
+T200,Independent Verification,Independent Verification,T200,inventario,verificacao_treinamento,pattern,related_support,bases/T200
+T201,Agent Test-Time Scaling,Agent Test-Time Scaling,T201,inventario,verificacao_treinamento,family,related_support,bases/T201
+T202,Uncertainty-Aware Planning,Uncertainty-Aware Planning,T202,inventario,verificacao_treinamento,pattern,related_support,bases/T202
+T203,Correctness-Based Routing,Correctness-Based Routing,T203,inventario,verificacao_treinamento,pattern,related_support,bases/T203
+T204,Skills / Procedural Learning,Skills / Procedural Learning,T204,inventario,verificacao_treinamento,family,supported,bases/T204
+T205,Semantic Equivalence Testing,Semantic Equivalence Testing,T205,inventario,verificacao_treinamento,family,related_support,bases/T205
+T206,Process Verification,Process Verification,T206,inventario,verificacao_treinamento,pattern,related_support,bases/T206
+T207,Memory Stream,Memory Stream,T207,inventario,continuidade_programacao,pattern,supported,bases/T207
+T208,Planner–Executor / Plan-and-Execute,Planner–Executor / Plan-and-Execute,T208,inventario,continuidade_programacao,architecture,supported,bases/T208
+T209,Reflexion,Reflexion,T209,inventario,continuidade_programacao,technique,supported,bases/T209
+T210,Session Rotation,Session Rotation,T210,inventario,continuidade_programacao,pattern,related_support,bases/T210
+T211,Handoff File,Handoff File,T211,inventario,continuidade_programacao,pattern,related_support,bases/T211
+T212,Auto-Compact por gatilho,Auto-Compact por gatilho,T212,inventario,continuidade_programacao,pattern,supported,bases/T212
+T213,Task Decomposition em micro-missões,Task Decomposition em micro-missões,T213,inventario,continuidade_programacao,pattern,related_support,bases/T213
+T214,Tool Output Pruning,Tool Output Pruning,T214,inventario,continuidade_programacao,technique,related_support,bases/T214
+T215,Observation Masking,Observation Masking,T215,inventario,continuidade_programacao,technique,supported,bases/T215
+T216,Repo Map / mapa do repositório,Repo Map / mapa do repositório,T216,inventario,continuidade_programacao,component,supported,bases/T216
+T217,Test-Driven Loop,Test-Driven Loop,T217,inventario,continuidade_programacao,pattern,related_support,bases/T217
+T218,Loop Detection / detecção de estagnação e ciclos,Loop Detection / detecção de estagnação e ciclos,T218,inventario,continuidade_programacao,pattern,related_support,bases/T218
+T219,Limite de recursão / profundidade de execução,Limite de recursão / profundidade de execução,T219,inventario,continuidade_programacao,pattern,supported,bases/T219
+T220,Tool Call Repair,Tool Call Repair,T220,inventario,continuidade_programacao,pattern,related_support,bases/T220
+T221,Goal Reminder Injection,Goal Reminder Injection,T221,inventario,continuidade_programacao,pattern,related_support,bases/T221
+T222,Context Budget Monitor,Context Budget Monitor,T222,inventario,continuidade_programacao,component,related_support,bases/T222
+T223,Constitutional Self-Check,Constitutional Self-Check,T223,inventario,continuidade_programacao,pattern,related_support,bases/T223
+T224,Spec-Driven Loop,Spec-Driven Loop,T224,inventario,continuidade_programacao,pattern,related_support,bases/T224
+T225,Watchdog com Auto-Restart,Watchdog com Auto-Restart,T225,inventario,continuidade_programacao,pattern,related_support,bases/T225
+T226,Heartbeat de progresso,Heartbeat de progresso,T226,inventario,continuidade_programacao,protocol,supported,bases/T226
+T227,"Health Checks — liveness, readiness e progresso","Health Checks — liveness, readiness e progresso",T227,inventario,continuidade_programacao,family,supported,bases/T227
+T228,Fila de retries com backoff exponencial,Fila de retries com backoff exponencial,T228,inventario,continuidade_programacao,pattern,supported,bases/T228
+T229,Diff-Only Editing / Patch-Based Coding,Diff-Only Editing / Patch-Based Coding,T229,inventario,continuidade_programacao,pattern,supported,bases/T229
+T230,Unified Diff,Unified Diff,T230,inventario,continuidade_programacao,format,supported,bases/T230
+T231,Search/Replace Editing,Search/Replace Editing,T231,inventario,continuidade_programacao,pattern,supported,bases/T231
+T232,AST Editing,AST Editing,T232,inventario,continuidade_programacao,technique,supported,bases/T232
+T233,Patch Validation — incluindo verificação de hash-base,Patch Validation — incluindo verificação de hash-base,T233,inventario,continuidade_programacao,pattern,related_support,bases/T233
+T234,Persistent Project Memory File — incluindo memória por módulo,Persistent Project Memory File — incluindo memória por módulo,T234,inventario,continuidade_programacao,component,supported,bases/T234
+T235,Headless Mode em loop / Headless Controller,Headless Mode em loop / Headless Controller,T235,inventario,continuidade_programacao,architecture,supported,bases/T235
+T236,Git Commit por etapa,Git Commit por etapa,T236,inventario,continuidade_programacao,pattern,related_support,bases/T236
+T237,Subagent Offloading,Subagent Offloading,T237,inventario,continuidade_programacao,pattern,supported,bases/T237
+T238,Read On Demand com faixa de linhas,Read On Demand com faixa de linhas,T238,inventario,continuidade_programacao,pattern,related_support,bases/T238
+T239,Git Worktrees,Git Worktrees,T239,inventario,continuidade_programacao,component,supported,bases/T239
+T240,Snapshot de estado,Snapshot de estado,T240,inventario,continuidade_programacao,pattern,supported,bases/T240
+T241,Event Replay,Event Replay,T241,inventario,continuidade_programacao,technique,supported,bases/T241
+T242,Recuperação híbrida por Snapshot + Event Sourcing,Recuperação híbrida por Snapshot + Event Sourcing,T242,inventario,continuidade_programacao,architecture,supported,bases/T242
+T243,Reconciliação de operações externas,Reconciliação de operações externas,T243,inventario,continuidade_programacao,pattern,supported,bases/T243
+R001,MemGPT,MemGPT: Towards LLMs as Operating Systems,R001,referencia,referencias,paper,supported,bases/R001
+R002,Letta,Letta — plataforma de agentes com estado,R002,referencia,referencias,project,supported,bases/R002
+R003,LongMem,LongMem — Augmenting Language Models with Long-Term Memory,R003,referencia,referencias,architecture,supported,bases/R003
+R004,Generative Agents,Generative Agents: Interactive Simulacra of Human Behavior,R004,referencia,referencias,paper,supported,bases/R004
+R005,LLMLingua,LLMLingua — compressão de prompts em múltiplas etapas,R005,referencia,referencias,paper,supported,bases/R005
+R006,PRISM,PRISM: Prompt Representation Internalization via Selective Compression into LoRA Weights,R006,referencia,referencias,paper,supported,bases/R006
+R007,SADA,SADA: Bridging In-Context Learning and Fine-Tuning via State-Aligned Distillation Adapters,R007,referencia,referencias,paper,supported,bases/R007
+R008,LangGraph,LangGraph,R008,referencia,referencias,project,supported,bases/R008
+R009,vLLM,vLLM,R009,referencia,referencias,project,supported,bases/R009
+R010,Hugging Face TGI,Hugging Face TGI,R010,referencia,referencias,project,supported,bases/R010
+R011,NVIDIA TensorRT-LLM,NVIDIA TensorRT-LLM,R011,referencia,referencias,project,supported,bases/R011
+R012,Tinker — Prompt Distillation,Tinker Prompt Distillation,R012,referencia,referencias,project,supported,bases/R012
+R013,Letta MemFS,Letta MemFS — memória versionada em arquivos,R013,referencia,referencias,project,supported,bases/R013
+R014,Letta Context Repositories,Letta MemFS — Context Repositories,R013,referencia,referencias,project,supported,bases/R014
+R015,Learning by Distilling Context,Learning by Distilling Context,R015,referencia,referencias,paper,supported,bases/R015
+R016,Lost in the Middle,Lost in the Middle: How Language Models Use Long Contexts,R016,referencia,referencias,paper,supported,bases/R016
+R017,LangChain,LangChain,R017,referencia,referencias,project,supported,bases/R017
+R018,Temporal,Temporal,R018,referencia,referencias,project,supported,bases/R018
+R019,Aider,Aider — programação assistida no terminal,R019,referencia,referencias,project,supported,bases/R019
+R020,Claude Code,Claude Code — agente de programação da Anthropic,R020,referencia,referencias,project,supported,bases/R020
+R021,OpenAI Codex,OpenAI Codex — agente e CLI de programação,R021,referencia,referencias,project,supported,bases/R021
+R022,Qwen,Qwen — família de modelos,R022,referencia,referencias,family,supported,bases/R022
+R023,Hugging Face Transformers,Hugging Face Transformers — biblioteca de modelos,R023,referencia,referencias,project,supported,bases/R023
+R024,llama.cpp,llama.cpp — inferência em C/C++,R024,referencia,referencias,project,supported,bases/R024
+R025,XGrammar,XGrammar — motor de geração estruturada,R025,referencia,referencias,project,supported,bases/R025
+R026,Guidance,Guidance — programação controlada de geração,R026,referencia,referencias,project,supported,bases/R026
+R027,Git,Git — controle distribuído de versões,R027,referencia,referencias,project,supported,bases/R027
+P001,Context Engine,Context Engine,P001,proposta,componentes_propostos,component,related_support,bases/P001
+P002,Context Manager,Context Manager,P002,proposta,componentes_propostos,component,related_support,bases/P002
+P003,Virtual Context Manager,Virtual Context Manager,P003,proposta,componentes_propostos,component,related_support,bases/P003
+P004,LAI Memory Runtime,LAI Memory Runtime,P004,proposta,componentes_propostos,component,related_support,bases/P004
+P005,Context & Memory Controller,Context & Memory Controller,P005,proposta,componentes_propostos,component,related_support,bases/P005
+P006,Progressive Loader,Progressive Loader,P006,proposta,componentes_propostos,component,related_support,bases/P006
+P007,Memory Retriever,Memory Retriever,P007,proposta,componentes_propostos,component,related_support,bases/P007
+P008,Event Store / Event Log,Event Store / Event Log,P008,proposta,componentes_propostos,component,related_support,bases/P008
+P009,Inference Engine,Inference Engine,P009,proposta,componentes_propostos,component,related_support,bases/P009
+P010,Routing Engine,Routing Engine,P010,proposta,componentes_propostos,component,related_support,bases/P010
+P011,Execution Engine / Execution Controller,Execution Engine / Execution Controller,P011,proposta,componentes_propostos,component,related_support,bases/P011
+P012,Verification Engine / Verification Controller,Verification Engine / Verification Controller,P012,proposta,componentes_propostos,component,related_support,bases/P012
+P013,Resilience Engine / Reliability Controller,Resilience Engine / Reliability Controller,P013,proposta,componentes_propostos,component,related_support,bases/P013
+P014,Execution Resilience,Execution Resilience,P014,proposta,componentes_propostos,architecture,related_support,bases/P014
+P015,Execution Integrity Controller,Execution Integrity Controller,P015,proposta,componentes_propostos,component,related_support,bases/P015
+P016,Evaluation Engine,Evaluation Engine,P016,proposta,componentes_propostos,component,related_support,bases/P016
+P017,Distillation Pipeline,Distillation Pipeline,P017,proposta,componentes_propostos,component,related_support,bases/P017

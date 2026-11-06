@@ -1,0 +1,116 @@
+{
+  "id": "T209",
+  "novelty": "A v3 tratava reflexões como hipóteses procedurais. A ampliação define quando uma lição merece ser recuperada, como testar seu benefício e como impedir que feedback ruim se torne política permanente.",
+  "deep_layers": [
+    {
+      "name": "Separar diagnóstico e regra",
+      "detail": "Uma reflexão deve registrar o que falhou, qual observação sustenta a causa e qual mudança será tentada. Não converter um erro transitório em regra global como evitar uma ferramenta. Se a causa continua incerta, preserve hipóteses concorrentes e um teste discriminante; a reflexão útil orienta coleta de evidência, não apenas reescreve a tentativa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S029",
+        "V3C-S032"
+      ]
+    },
+    {
+      "name": "Validade contextual",
+      "detail": "Indexe a lição por classe de tarefa, ferramenta e versão. Uma solução de compatibilidade antiga pode se tornar contraproducente após atualização. Recuperação deve exigir correspondência de condições e permitir expiração ou revisão; manter todo conselho acumulado no prompt cria conflitos que o modelo pequeno pode não conseguir resolver.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V2A-S001",
+        "V4C-S030"
+      ]
+    },
+    {
+      "name": "Avaliar transferência",
+      "detail": "Compare novas tarefas com e sem as reflexões candidatas usando o mesmo orçamento. Uma lição que só explica o exemplo que a gerou não demonstra generalização. Meça também efeitos negativos: correções excessivas, chamadas evitadas indevidamente e aumento de tokens. Promova a regra somente quando seu escopo e benefício forem verificáveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S029",
+        "V3C-S032"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Reparo de chamadas de ferramenta",
+      "scenario": "O agente repete uma classe específica de argumento inválido.",
+      "strategy": "Guarde erro estruturado, schema vigente e exemplo mínimo corrigido. Na próxima tarefa semelhante, recupere a regra antes de gerar argumentos. Se a falha ocorreu depois de efeito incerto, a lição deve mandar reconciliar, não simplesmente trocar o formato e reenviar.",
+      "small_model_role": "3–7B aplica exemplos estreitos; 8–14B diagnostica a classe; controlador verifica efeito.",
+      "acceptance": "Proposta: menor repetição do mesmo erro sem aumento de chamadas semanticamente incorretas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S029",
+        "C-S026"
+      ]
+    },
+    {
+      "name": "Ciclos de programação",
+      "scenario": "Uma tentativa falha num teste de comportamento.",
+      "strategy": "Extraia a propriedade violada e formule a próxima hipótese de reparo. Preserve o teste que falhou e evite ensinar a remover a asserção. Quando o teste estava errado, corrija sua origem de requisito e registre por que a lição anterior foi invalidada.",
+      "small_model_role": "8–14B analisa falha local; 15–30B propõe alternativas sob testes independentes.",
+      "acceptance": "Proposta: resolver novos defeitos da mesma classe e detectar regressões produzidas pela lição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S032",
+        "V4C-S009"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Lições curtas ligadas a erros tipados e condições claras de aplicação.",
+    "8_14b": "Diagnóstico local e comparação de hipóteses com feedback executável.",
+    "15_30b": "Síntese de regras condicionais entre tarefas, mantendo revisão e possibilidade de descarte.",
+    "training_or_runtime_requirements": "Memória de tentativas, avaliador informativo e casos reservados para medir transferência.",
+    "do_not_use_when": "Não acumular reflexões quando feedback é arbitrário ou quando só há autoconcordância do gerador."
+  },
+  "connections": [
+    {
+      "target_id": "T218",
+      "relation": "complements",
+      "how": "Repetições sem progresso disparam diagnóstico, que propõe mudança testável em vez de outro turno equivalente.",
+      "interface": "Assinatura do ciclo, observações e hipótese nova.",
+      "condition": "Existe sinal de estagnação além de mero número de passos.",
+      "acceptance": "A próxima tentativa altera variável relevante e seu efeito é medido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S029"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T234",
+      "relation": "complements",
+      "how": "Guardar apenas lições promovidas e contextualizadas na memória do projeto.",
+      "interface": "Regra, escopo, origem e condição de invalidação.",
+      "condition": "A regra passou por revisão e teste de transferência.",
+      "acceptance": "Atualização de versão remove ou revisa orientação incompatível.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S029"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Uma lição eloquente pode explicar a causa errada; exigir evidência discriminante.",
+    "Não confundir reflexão textual com atualização de pesos ou com o método formal de uma implantação não identificada."
+  ],
+  "frontier_comparison": "Compare pequeno com memória de reflexões e fronteira com o mesmo feedback. Avalie generalização em tarefas novas; mais iterações no próprio exemplo não provam aprendizado transferível.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q024",
+      "V4C-Q027",
+      "V4C-Q028"
+    ],
+    "scope_note": "Foram encontrados loops de revisão em operadores, mas não comprovação de adoção exata de Reflexion nesses casos. O método permanece apoiado em pesquisa, sem inflar produção."
+  },
+  "source_ids": [
+    "V3C-S029",
+    "V3C-S032",
+    "V2A-S001",
+    "V4C-S030",
+    "C-S026",
+    "V4C-S009"
+  ]
+}

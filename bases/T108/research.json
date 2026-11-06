@@ -1,0 +1,46 @@
+{
+  "id": "T108",
+  "technical_details": "A escala 1/√d controla a magnitude dos produtos entre consultas e chaves sob hipóteses usuais sobre seus componentes. Sem escala adequada, o softmax pode concentrar massa e produzir gradientes pouco informativos. A interpretação de uma cabeça também depende da projeção final: permutar cabeças juntamente com a permutação inversa nos blocos da projeção pode preservar a função, mostrando que números de cabeça não têm significado sem os pesos associados.",
+  "boundary_condition": "Mapa de atenção visual não constitui prova causal de que determinado token sustentou a conclusão textual do modelo.",
+  "implementation_contract": {
+    "inputs": "Projeções QKV, dimensão por cabeça, máscara, escala e projeção de saída.",
+    "outputs": "Representações combinadas preservando ordem e layout das cabeças.",
+    "state": "Pesos de projeção e convenção de concatenação dos resultados.",
+    "invariant": "Carregamento e execução usam a mesma correspondência entre cabeças e projeção final."
+  },
+  "tradeoffs": [
+    "Mais cabeças repartem capacidade em subespaços e afetam formas dos kernels.",
+    "MHA convencional mantém KV separado, aumentando memória frente a compartilhamento arquitetural."
+  ],
+  "failure_test": "Teste proposto: permutar cabeças com compensação na projeção final e depois sem compensação. Esperar equivalência no primeiro caso e divergência no segundo, isolando um erro de layout.",
+  "evaluation_plan": "Plano proposto: validar a operação contra implementação explícita em formas pequenas e diferentes máscaras. Medir erro de saída, estabilidade e custo, mantendo pesos idênticos; comparações de qualidade entre arquiteturas precisam controlar treinamento e capacidade.",
+  "comparisons": [
+    {
+      "entry_id": "T099",
+      "relation": "distinct_from",
+      "reason": "MQA compartilha K e V; isso muda a parametrização, não apenas a concatenação final."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O Transformer original combina múltiplas projeções de atenção e uma projeção final de suas saídas.",
+    "source_ids": [
+      "B-S024"
+    ],
+    "support": "direct",
+    "caveat": "A interpretação sobre permutações é uma derivação algébrica do layout, não um resultado experimental relatado."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma cabeça corresponde sempre a uma função humana?",
+      "answer": "Não. Especializações podem surgir, mas precisam de evidência; a numeração sozinha não carrega significado."
+    },
+    {
+      "question": "A escala garante boa calibração?",
+      "answer": "Não. Ela regula magnitude dos scores de atenção, não a probabilidade de uma resposta factual estar correta."
+    }
+  ],
+  "source_ids": [
+    "B-S024"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

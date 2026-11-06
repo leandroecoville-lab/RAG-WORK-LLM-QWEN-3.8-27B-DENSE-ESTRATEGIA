@@ -1,0 +1,44 @@
+{
+  "entry_id": "T113",
+  "edges": [
+    {
+      "edge_id": "E-T113-01",
+      "from": "T113",
+      "to": "T114",
+      "relation": "requires",
+      "how": "Estatísticas de softmax permitem combinar tiles sem materializar a matriz inteira.",
+      "interface": "Máximos, somas e numeradores parciais.",
+      "condition": "Mesma máscara e escala em todas as parcelas.",
+      "acceptance": "Comparar combinação em ordens diferentes sob tolerância numérica.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S027",
+        "V3B-S006",
+        "V4B-S017",
+        "V4B-S018"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T113-02",
+      "from": "T113",
+      "to": "T107",
+      "relation": "complements",
+      "how": "Profiling verifica se maior tile reduz tráfego sem criar spills ou baixa ocupação.",
+      "interface": "Contadores e tempo por forma.",
+      "condition": "Medições do mesmo kernel e dispositivo.",
+      "acceptance": "Demonstrar efeito no tempo do pedido, além do microbenchmark.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S027",
+        "V3B-S006",
+        "V4B-S017",
+        "V4B-S018"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

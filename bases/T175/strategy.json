@@ -1,0 +1,117 @@
+{
+  "id": "T175",
+  "novelty": "A v3 distinguia quotas compartilhadas e independentes. A expansão considera o custo marginal do fallback, reservas já consumidas e política de degradação sem transformar indisponibilidade em vazamento de orçamento.",
+  "deep_layers": [
+    {
+      "name": "Mapa de domínios de quota",
+      "detail": "Represente relações entre conta, organização, modelo e região. Dois destinos podem compartilhar um limite superior mesmo quando possuem quotas locais diferentes. A decisão precisa consultar o limite que realmente bloqueou o pedido; trocar rota sem essa informação pode aumentar rejeições e ocultar a causa original.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S009",
+        "V3C-S010"
+      ]
+    },
+    {
+      "name": "Reserva antes de transferir",
+      "detail": "Adquira capacidade na alternativa antes de abandonar uma rota ainda válida, quando o protocolo permitir. Libere a reserva original apenas quando o estado do envio estiver claro. Se a primeira chamada segue executando, cobrar só a segunda subestima uso e pode ultrapassar o teto global da missão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S010",
+        "C-S026"
+      ]
+    },
+    {
+      "name": "Degradação por contrato",
+      "detail": "Uma alternativa pode oferecer menos contexto ou ferramentas. A política deve decidir se o requisito ainda pode ser cumprido, não apenas se existe crédito. Em alguns casos, resposta parcial com evidências e pendências é melhor que forçar conclusão em rota incapaz; essa escolha precisa aparecer no estado final.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S001",
+        "V4C-S005"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Pico de consultas interativas",
+      "scenario": "O backend habitual fica limitado por taxa durante horário de pico.",
+      "strategy": "Mantenha fila curta e calcule se o prazo ainda permite espera. Quando houver alternativa compatível com quota independente, compare custo total e latência prevista. Se o limite for global, aplique admissão ou resposta de indisponibilidade em vez de circular por endpoints equivalentes.",
+      "small_model_role": "3–7B local cobre apenas classes pré-validadas; pedidos complexos permanecem em fila apropriada.",
+      "acceptance": "Proposta: menor rejeição útil sem aumentar erro por substituição inadequada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S009",
+        "V4C-S005"
+      ]
+    },
+    {
+      "name": "Campanha de pesquisa com orçamento",
+      "scenario": "Agentes paralelos consomem quota de vários serviços.",
+      "strategy": "Distribua créditos por destino e prioridade da pergunta. Ao receber limitação, reduza fan-out e reprograme coletas; não duplique a busca em todos os provedores por padrão. Resultados já confirmados seguem para extração enquanto fontes indispensáveis aguardam.",
+      "small_model_role": "8–14B aproveita evidência disponível; 15–30B decide quais lacunas justificam custo adicional.",
+      "acceptance": "Proposta: cobertura por pergunta e custo de tentativas rejeitadas, com prazo explícito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V3C-S009"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Fallback local para tarefas estritas, com teto de qualidade e capacidade medido.",
+    "8_14b": "Triagem de demandas para filas diferentes sem inventar independência de quota.",
+    "15_30b": "Replanejar cobertura e escopo quando limitações tornam a missão original inviável.",
+    "training_or_runtime_requirements": "Telemetria por quota, matriz de capacidades, reservas pendentes e orçamento agregado entre destinos.",
+    "do_not_use_when": "Não usar novas credenciais ou endpoints para contornar restrições de acesso ou contratos do serviço."
+  },
+  "connections": [
+    {
+      "target_id": "T137",
+      "relation": "complements",
+      "how": "O limitador informa qual escopo recusou admissão para orientar a decisão de espera ou troca.",
+      "interface": "Quota, saldo, próximo prazo elegível e motivo.",
+      "condition": "Causa da limitação é conhecida ou marcada como incerta.",
+      "acceptance": "Não realizar fallback circular entre destinos sob o mesmo limite.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S009"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T173",
+      "relation": "complements",
+      "how": "Antes da troca, confirmar que o modelo alternativo preserva modalidades, ferramentas e resultado exigido.",
+      "interface": "Contrato da tarefa e capacidades efetivas.",
+      "condition": "Existe orçamento e qualidade mínima comprovada.",
+      "acceptance": "Alternativa incompatível é rejeitada mesmo com quota sobrando.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S001",
+        "V4C-S011"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Falha de admissão anterior ao envio não significa efeito remoto incerto.",
+    "Cancelamento do cliente não libera automaticamente consumo no backend original."
+  ],
+  "frontier_comparison": "Compare disponibilidade sob quota fixa e qualidade mínima constante. Mais respostas obtidas por remover requisitos não são ganho legítimo de capacidade para modelos pequenos.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q001",
+      "V4C-Q004",
+      "V4C-Q008"
+    ],
+    "scope_note": "SRE fornece controles de sobrecarga e degradação; a troca coordenada entre provedores é proposta, sem alegação de dez adoções específicas."
+  },
+  "source_ids": [
+    "V3C-S009",
+    "V3C-S010",
+    "C-S026",
+    "V3C-S001",
+    "V4C-S005",
+    "C-S030",
+    "V4C-S011"
+  ]
+}

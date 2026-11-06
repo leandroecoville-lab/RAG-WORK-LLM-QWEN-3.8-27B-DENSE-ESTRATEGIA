@@ -1,0 +1,18 @@
+[
+  {
+    "question": "LongMem é apenas RAG textual?",
+    "answer": "Não. O trabalho inclui arquitetura neural, representações armazenadas e treinamento de adaptação."
+  },
+  {
+    "question": "Posso assumir compatibilidade com meu Qwen?",
+    "answer": "Não. Ela depende de implementação, arquitetura, checkpoint e treinamento, que precisam ser examinados."
+  },
+  {
+    "question": "A palavra staleness significa informação factual vencida?",
+    "answer": "No argumento arquitetural, refere-se à compatibilidade de representações quando redes mudam. Validade temporal dos fatos exige controle adicional."
+  },
+  {
+    "question": "É uma biblioteca intercambiável com RAG textual?",
+    "answer": "Não diretamente. Ela depende de componentes internos e treinamento; a documentação do repositório apresenta uma implementação específica baseada em fairseq."
+  }
+]

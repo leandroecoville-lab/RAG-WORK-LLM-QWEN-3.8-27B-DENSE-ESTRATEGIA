@@ -1,0 +1,40 @@
+{
+  "id": "P011",
+  "name": "Execution Engine / Execution Controller",
+  "canonical_name": "Execution Engine / Execution Controller",
+  "canonical_id": "P011",
+  "aliases": [
+    "executor proposto de workflows",
+    "controlador proposto de execução"
+  ],
+  "category": "componentes_propostos",
+  "kind": "component",
+  "scope": "proposta",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T060",
+    "T159",
+    "T160",
+    "T162",
+    "P008",
+    "P013",
+    "P015"
+  ],
+  "source_ids": [
+    "C-S023",
+    "C-S013",
+    "C-S026",
+    "A-S022",
+    "V3D-S019",
+    "V4C-S001",
+    "V4C-S004",
+    "V4C-S003",
+    "V4C-S015",
+    "V4C-S017"
+  ],
+  "namespace": "P011",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/P011",
+  "chunk_count": 9
+}

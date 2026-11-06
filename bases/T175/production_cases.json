@@ -1,0 +1,73 @@
+{
+  "coverage": {
+    "entry_id": "T175",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Rate Limiting com Fallback",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C008",
+      "company": "Google",
+      "system": "Google Search — degradação sob sobrecarga",
+      "title": "Preservação de serviço por redução de trabalho",
+      "evidence_level": "production_documented",
+      "observed_use": "O livro de SRE descreve Google Search reduzindo a fração pesquisada do índice e desativando recursos em sobrecarga, além de testes acima da capacidade nominal.",
+      "technical_mechanism": "O sistema reduz trabalho e funcionalidades para preservar serviço útil; a degradação é específica do produto.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S005"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T136",
+          "match": "family",
+          "rationale": "Resposta degradada é alternativa operacional, sem ser necessariamente troca de modelo."
+        },
+        {
+          "entry_id": "T146",
+          "match": "analogy",
+          "rationale": "Reduzir trabalho em busca é analogia para adaptar esforço de inferência."
+        },
+        {
+          "entry_id": "T175",
+          "match": "family",
+          "rationale": "Controle de sobrecarga combinado com degradação é relacionado a fallback por limite."
+        },
+        {
+          "entry_id": "P013",
+          "match": "analogy",
+          "rationale": "Política de degradação é princípio do controlador editorial."
+        },
+        {
+          "entry_id": "P014",
+          "match": "analogy",
+          "rationale": "Manter objetivos de serviço sob falha ilustra resiliência transversal."
+        }
+      ],
+      "small_model_transfer": "Proposta: sob saturação de um servidor 3–30B, reduzir ramos opcionais de exploração e preservar verificações obrigatórias; informar cobertura reduzida em vez de chamar a saída de equivalente.",
+      "limits": "Relato histórico; recursos citados, como Instant, não devem ser interpretados como estado atual do Search. Nenhuma equivalência de qualidade de respostas LLM foi demonstrada.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C008",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T175",
+        "match": "family",
+        "rationale": "Controle de sobrecarga combinado com degradação é relacionado a fallback por limite."
+      }
+    }
+  ]
+}

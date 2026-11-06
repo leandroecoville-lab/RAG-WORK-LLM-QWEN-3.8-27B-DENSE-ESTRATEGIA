@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Outro agente basta para ser independente?",
+    "answer": "Não. Precisa avaliar compartilhamento de modelo, dados, contexto e critérios."
+  },
+  {
+    "question": "Verificação independente é infalível?",
+    "answer": "Não. Seu alcance deve ser descrito e medido."
+  },
+  {
+    "question": "Outro agente já é auditor independente?",
+    "answer": "Não necessariamente. Verifique o que ele recebeu, quais fontes usa e como decide."
+  },
+  {
+    "question": "Um verificador formal resolve tudo?",
+    "answer": "Pode provar propriedades de uma formalização sob hipóteses; a correspondência entre essa formalização e a necessidade real ainda precisa ser examinada."
+  }
+]

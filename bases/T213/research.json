@@ -1,0 +1,52 @@
+{
+  "id": "T213",
+  "technical_details": "A fronteira de uma micro-missão deve reduzir dependências cruzadas e produzir um artefato testável. Dividir por número de linhas ou minutos pode cortar uma mudança no meio de seu contrato. Uma decomposição proposta distingue entradas estáveis, saídas integráveis e decisões compartilhadas que precisam ocorrer antes do fan-out. Quanto mais acoplados os resultados, maior o custo de resolver conflitos no fim.",
+  "boundary_condition": "Quando as partes precisam alterar continuamente a mesma interface, fragmentação excessiva aumenta coordenação e retrabalho.",
+  "implementation_contract": {
+    "inputs": "Objetivo, dependências, interfaces e capacidade de execução.",
+    "outputs": "Unidades com entrada versionada, saída esperada e critério de integração.",
+    "state": "DAG de micro-missões, responsáveis e contratos compartilhados.",
+    "invariant": "Nenhuma unidade declara sucesso somente por produzir arquivo sem satisfazer a saída combinada."
+  },
+  "tradeoffs": [
+    "Unidades pequenas facilitam retomada e geram mais overhead de despacho e revisão.",
+    "Unidades maiores preservam coerência local e exigem mais contexto e tempo antes de gerar resultado verificável."
+  ],
+  "failure_test": "Teste proposto: dividir uma mudança em consumidor e produtor com contratos divergentes; verificar se a incompatibilidade é detectada na especificação compartilhada antes da integração final.",
+  "evaluation_plan": "Comparar divisão por arquivos, por funcionalidade e por dependências em tarefas equivalentes. Medir retrabalho de merge, tempo até artefato útil e custo de coordenação. Escolher granularidade pelo acoplamento observado, sem tamanho universal de micro-missão.",
+  "comparisons": [
+    {
+      "entry_id": "T147",
+      "relation": "complements",
+      "reason": "Fan-out explora independência das unidades já bem delimitadas."
+    },
+    {
+      "entry_id": "T208",
+      "relation": "complements",
+      "reason": "Planner–Executor distribui e acompanha unidades com critérios explícitos."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "LLMCompiler identifica dependências para despachar funções que podem executar em paralelo.",
+    "source_ids": [
+      "V3C-S002"
+    ],
+    "support": "related",
+    "caveat": "A escolha de micro-missões de software amplia esse princípio; não é uma taxonomia padronizada fornecida pelo artigo."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma micro-missão deve caber em uma única chamada?",
+      "answer": "Não necessariamente. A unidade útil é definida por resultado e dependências, embora orçamento e janela limitem sua execução."
+    },
+    {
+      "question": "Como reconhecer uma divisão ruim?",
+      "answer": "Quando cada parte depende de decisões ainda mutáveis das outras e a integração exige refazer grande parte do trabalho."
+    }
+  ],
+  "source_ids": [
+    "V3C-S002",
+    "V2A-S004"
+  ],
+  "research_note": "Fontes primárias reabertas nesta pesquisa; contratos, cenários de falha e avaliação são propostas editoriais."
+}

@@ -1,0 +1,37 @@
+{
+  "id": "R019",
+  "name": "Aider",
+  "canonical_name": "Aider — programação assistida no terminal",
+  "canonical_id": "R019",
+  "aliases": [
+    "aider.chat",
+    "AI pair programming com Aider"
+  ],
+  "category": "referencias",
+  "kind": "project",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "T216",
+    "T217",
+    "T229",
+    "T230",
+    "T231",
+    "T236",
+    "T239",
+    "R027"
+  ],
+  "source_ids": [
+    "V2B-S007",
+    "V2B-S008",
+    "V2B-S009",
+    "V3C-S042",
+    "V2A-S008",
+    "V2A-S007"
+  ],
+  "namespace": "R019",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R019",
+  "chunk_count": 9
+}

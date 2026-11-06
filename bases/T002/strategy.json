@@ -1,0 +1,111 @@
+{
+  "id": "T002",
+  "novelty": "A v3 calculou amortização. A nova camada trata escalonamento de cargas para tornar prefixos reutilizáveis sem congelar informação variável.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Classifique blocos em estáveis, derivados por versão e específicos da requisição. Ordene o prefixo pela probabilidade de reutilização, preservando precedência de instruções. Datas e identificadores voláteis pertencem ao sufixo quando o protocolo permitir.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S002",
+        "V4A-S015"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Planeje aquecimento apenas para grupos com reutilização prevista. Se o lote atrasar além da vida útil, cancelar aquecimento pode ser melhor que recriar continuamente. Registre hits reais, não oportunidades estimadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S002",
+        "V4A-S015"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare chamadas na ordem de chegada e agrupadas por prefixo sob o mesmo prazo de resposta. Inclua espera de fila, escritas e leituras do cache. Unidade de avaliação: sessão de chamadas. No teste de carga, misture sessões de prefixo popular e prefixo raro com os mesmos prazos. Agrupar chamadas pode melhorar hits e piorar espera das sessões raras. A política só deve ser aceita quando a economia persistir incluindo atraso, aquecimento desperdiçado e renovação; não basta observar tokens cacheados em uma sequência artificialmente ordenada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S002",
+        "V4A-S015"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Revisão repetida de catálogo",
+      "scenario": "Várias perguntas compartilham documentação estável.",
+      "strategy": "Fixar revisão do catálogo, distribuir perguntas pelo mesmo prefixo e renovar somente quando a revisão mudar.",
+      "small_model_role": "3–7B responde extrações simples sobre o prefixo.",
+      "acceptance": "Exigir mesma fidelidade que chamada sem cache e menor custo líquido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S002",
+        "V4A-S015"
+      ]
+    },
+    {
+      "name": "Equipe com instrução comum",
+      "scenario": "Agentes recebem a mesma política.",
+      "strategy": "Empacotar instrução comum antes das atribuições, mas não compartilhar material privado entre escopos. Separar grupos quando permissões diferirem.",
+      "small_model_role": "8–14B executa papéis com sufixos próprios.",
+      "acceptance": "Verificar igualdade de prefixos autorizados e ausência de contaminação entre grupos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S002",
+        "V4A-S015"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Usar instrução curta reutilizada em muitas chamadas de classificação.",
+    "8_14b": "Reusar manuais maiores em extração e respostas contextualizadas.",
+    "15_30b": "Amortizar leitura extensa em revisões profundas com perguntas independentes.",
+    "training_or_runtime_requirements": "Runtime com suporte real a prefix caching e telemetria de tokens cacheados; treino não é necessário.",
+    "do_not_use_when": "Cada chamada muda o prefixo inteiro ou espera de agrupamento viola o prazo."
+  },
+  "connections": [
+    {
+      "target_id": "T171",
+      "relation": "complements",
+      "how": "Agrupar execução por afinidade de prefixo.",
+      "interface": "Hash do prefixo, modelo, revisão e prazo.",
+      "condition": "Servidor oferecer cache e isolamento adequados.",
+      "acceptance": "Medir hit real e atraso de fila conjuntamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S002",
+        "V4A-S015"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T042",
+      "relation": "requires",
+      "how": "Contar também tokens cacheados na janela.",
+      "interface": "Contagem integral, reserva de saída e cache_id.",
+      "condition": "Cache não altera limite de contexto.",
+      "acceptance": "Rejeitar requisição que cabe no custo mas excede a janela.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "A-S002",
+        "V4A-S015"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Invalidar reutilização após mudança de modelo ou serialização.",
+    "Evitar tratar hit de cache como prova de resposta atualizada."
+  ],
+  "frontier_comparison": "Comparar custo de leitura repetida com qualidade constante; caching não melhora por si só raciocínio do leitor.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q011"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "A-S002",
+    "V4A-S015"
+  ]
+}

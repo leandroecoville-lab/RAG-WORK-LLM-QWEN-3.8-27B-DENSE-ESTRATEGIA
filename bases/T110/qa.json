@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Token global significa maior prioridade de instrução?",
+    "answer": "Não. Descreve conexões de atenção da arquitetura, não autoridade de uma mensagem."
+  },
+  {
+    "question": "Todo modelo permite isso por máscara?",
+    "answer": "Não. Há requisitos de arquitetura, implementação e treinamento."
+  },
+  {
+    "question": "Token global é uma instrução prioritária?",
+    "answer": "Não. Global descreve conexões de atenção, enquanto prioridade de instruções depende de treinamento e comportamento do sistema."
+  },
+  {
+    "question": "Uma camada permite todos trocarem informação via global?",
+    "answer": "As atualizações usam estados da camada anterior; reunir e redistribuir informação pode exigir etapas sucessivas."
+  }
+]

@@ -1,0 +1,113 @@
+{
+  "id": "T031",
+  "novelty": "A v3 diferenciou TTL e invalidação. Aqui a estratégia usa granularidade de dependências e prazo de frescor observável por resposta.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Associe cada resposta às entidades, fontes e versões que poderiam alterá-la. Dependência apenas no documento inteiro provoca invalidação excessiva; dependência estreita demais deixa resposta antiga ativa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S011",
+        "V4A-S016"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Defina frescor por classe de dado e meça atraso entre correção confirmada e último hit obsoleto. A verificação deve consultar o caminho visto pelo cliente, incluindo réplicas e índices.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S011",
+        "V4A-S016"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare invalidação por documento, por entidade e TTL. Injete atualização e preenchimento atrasado para medir sobrevivência indevida; hit rate não é métrica de consistência. Unidade de avaliação: resposta derivada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S011",
+        "V4A-S016"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "FAQ com políticas alteradas",
+      "scenario": "Uma cláusula muda várias respostas.",
+      "strategy": "Publicar nova revisão, revogar respostas dependentes e verificar réplicas antes de liberar reutilização para cláusula sensível.",
+      "small_model_role": "3–7B identifica candidatos afetados; código confirma vínculos.",
+      "acceptance": "Nenhum hit antigo após o prazo de frescor definido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S011",
+        "V4A-S016"
+      ]
+    },
+    {
+      "name": "Cache de busca derivada",
+      "scenario": "Índice recebe correções assíncronas.",
+      "strategy": "Marcar resultados por revisão da projeção e desviar consultas sensíveis para origem quando o atraso exceder o limite.",
+      "small_model_role": "8–14B responde com evidência elegível.",
+      "acceptance": "Resposta deve informar insuficiência em vez de citar projeção revogada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S011",
+        "V4A-S016"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extrator de entidades para construir dependências candidatas.",
+    "8_14b": "Revisor de alcance semântico de uma alteração e seus efeitos.",
+    "15_30b": "Analista de conflitos entre versões quando regras de invalidação não bastarem.",
+    "training_or_runtime_requirements": "Eventos de atualização, versões monotônicas por objeto e monitoramento do caminho de leitura; LLM não controla sozinho a coerência.",
+    "do_not_use_when": "Não é possível saber a origem da resposta ou detectar atualizações relevantes."
+  },
+  "connections": [
+    {
+      "target_id": "T007",
+      "relation": "requires",
+      "how": "Guardar dependências junto ao item cacheado.",
+      "interface": "Chave, origem, revisão e estado de revogação.",
+      "condition": "Admissão ocorrer com proveniência completa.",
+      "acceptance": "Alterar entidade e localizar todos os itens afetados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S011",
+        "V4A-S016"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T075",
+      "relation": "complements",
+      "how": "Reconciliar preenchimento atrasado com versão atual.",
+      "interface": "Versão observada, versão vigente e operação pendente.",
+      "condition": "Regra impedir regressão de versão.",
+      "acceptance": "Reproduzir chegada de valor antigo após invalidar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S011",
+        "V4A-S016"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não apagar a única informação de versão durante evicção.",
+    "Não interpretar ausência temporária como exclusão definitiva."
+  ],
+  "frontier_comparison": "Comparar exposição a resposta obsoleta; modelos maiores também erram quando recebem cache inconsistente.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q004",
+      "V4A-Q007",
+      "V4A-Q012"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S011",
+    "V4A-S016"
+  ]
+}

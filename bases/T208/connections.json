@@ -1,0 +1,42 @@
+{
+  "entry_id": "T208",
+  "edges": [
+    {
+      "edge_id": "E-T208-01",
+      "from": "T208",
+      "to": "T144",
+      "relation": "complements",
+      "how": "Hiring Assistant combina planejamento com execução local baseada em ReAct.",
+      "interface": "Plano global, tarefa local e observações do executor.",
+      "condition": "O loop local respeita o escopo da tarefa delegada.",
+      "acceptance": "Falha de premissa volta ao supervisor com evidência.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S015"
+      ],
+      "case_ids": [
+        "V4C-C016"
+      ],
+      "evidence_stage": "production_documented"
+    },
+    {
+      "edge_id": "E-T208-02",
+      "from": "T208",
+      "to": "T237",
+      "relation": "complements",
+      "how": "Claude Research usa liderança e trabalhadores especializados para executar partes do plano.",
+      "interface": "Pergunta, orçamento e artefato de retorno.",
+      "condition": "A tarefa permite divisão e integração verificável.",
+      "acceptance": "Reunir cobertura sem contar duplicatas como confirmação independente.",
+      "basis": "source_documented",
+      "source_ids": [
+        "C-S030"
+      ],
+      "case_ids": [
+        "V4C-C007"
+      ],
+      "evidence_stage": "production_documented"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

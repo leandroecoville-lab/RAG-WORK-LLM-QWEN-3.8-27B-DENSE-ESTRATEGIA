@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "V2B-S016",
+    "title": "Key Concepts — Qwen",
+    "url": "https://qwen.readthedocs.io/en/latest/getting_started/concepts.html",
+    "publisher": "Qwen Team / Alibaba",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Qwen como família de modelos, variantes, tokenização e distinção entre parâmetros totais e ativos de MoE.",
+    "limitations": "Página oficial contém exemplos de gerações específicas; não estabelece qual modelo está instalado nem deve ser usada para declarar a geração mais recente.",
+    "web_ref": "turn74view6"
+  },
+  {
+    "source_id": "V2B-S017",
+    "title": "Quickstart — Qwen",
+    "url": "https://qwen.readthedocs.io/en/latest/getting_started/quickstart.html",
+    "publisher": "Qwen Team / Alibaba",
+    "source_type": "official_docs",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Exemplos de uso com Transformers e serving; templates e modos de raciocínio variam entre variantes Qwen3.",
+    "limitations": "Receitas de modelos específicos, sem validação no hardware do usuário. Versões e parâmetros dos exemplos não são requisitos universais da família.",
+    "web_ref": "turn73view8"
+  },
+  {
+    "source_id": "V3D-S009",
+    "title": "Qwen — Key Concepts",
+    "url": "https://qwen.readthedocs.io/en/latest/getting_started/concepts.html",
+    "publisher": "Qwen project",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Nomenclatura de parâmetros totais e ativos em modelos MoE, identidade do checkpoint e formatos de uso.",
+    "limitations": "Não identifica modelo local nem estabelece qual é o lançamento mais recente de toda a família.",
+    "web_ref": "turn139view0"
+  },
+  {
+    "source_id": "V4B-S020",
+    "title": "Qwen3: Think Deeper, Act Faster",
+    "url": "https://qwenlm.github.io/blog/qwen3/",
+    "publisher": "Qwen Team / Alibaba",
+    "source_type": "model_release",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-04-29",
+    "supports": "Modelos densos e MoE, cabeças Q/KV, distinção entre parâmetros totais/ativos e modos de raciocínio.",
+    "limitations": "Resultados de modelo publicado não verificam checkpoint local nem equivalência geral com modelos de fronteira.",
+    "web_ref": "turn227view3"
+  },
+  {
+    "source_id": "V3D-S010",
+    "title": "Transformers — Chat templates",
+    "url": "https://huggingface.co/docs/transformers/main/chat_templating",
+    "publisher": "Hugging Face",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Serialização de mensagens, tokens especiais e cuidados para não duplicá-los após aplicar template.",
+    "limitations": "Página main; confirmar API e template na revisão concreta do modelo.",
+    "web_ref": "turn138view1"
+  }
+]

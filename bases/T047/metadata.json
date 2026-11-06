@@ -1,0 +1,35 @@
+{
+  "id": "T047",
+  "name": "Long-Term Memory — memória de longo prazo",
+  "canonical_name": "Long-Term Memory",
+  "canonical_id": "T047",
+  "aliases": [
+    "memória de longo prazo",
+    "Long-Term Memory"
+  ],
+  "category": "memoria",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T049",
+    "T054",
+    "T055",
+    "T062"
+  ],
+  "source_ids": [
+    "A-S023",
+    "V3A-S033",
+    "V3A-S002",
+    "V3A-S032",
+    "V4A-S017",
+    "V4A-S026",
+    "A-S006",
+    "V4A-S002"
+  ],
+  "namespace": "T047",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T047",
+  "chunk_count": 9
+}

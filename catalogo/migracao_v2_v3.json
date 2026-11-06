@@ -1,0 +1,24 @@
+{
+  "from_version": "2.0.0",
+  "to_version": "3.0.0",
+  "previous_package_sha256": "6d065a59bf926479a743105689e516c092522f583319f291fa5a998f44101cb6",
+  "preserved_entries": 287,
+  "new_entries": 0,
+  "deepened_entries": 287,
+  "technical_entries": 243,
+  "references": 27,
+  "proposed_components": 17,
+  "previous_chunks": 1148,
+  "current_chunks": 1722,
+  "preserved_chunk_ids": "C01–C04 de cada entrada",
+  "new_chunk_ids": "C05–C06 de cada entrada",
+  "study_questions": 1148,
+  "old_namespace_paths_preserved": true,
+  "rebuild_embeddings": true,
+  "canonical_corrections_preserved": [
+    "T069 diferente de T179",
+    "T106 cobre MQA e GQA; não é alias exclusivo de T100"
+  ],
+  "ingestion": "Upsert dos 1722 chunks por chunk_id e knowledge_version; preservar fontes e scope. Histórico não é indexado.",
+  "external_actions_executed": false
+}

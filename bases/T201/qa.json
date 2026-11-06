@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Mais tempo transforma modelo pequeno em modelo de fronteira?",
+    "answer": "Não há equivalência garantida; algumas capacidades podem continuar ausentes."
+  },
+  {
+    "question": "É a mesma coisa que treinar por mais épocas?",
+    "answer": "Não. O recurso é gasto durante execução da tarefa."
+  },
+  {
+    "question": "Mais tokens é igual a mais computação útil?",
+    "answer": "Não. Podem ser redundantes ou produzir candidatos que o verificador não sabe distinguir."
+  },
+  {
+    "question": "Como decidir parar?",
+    "answer": "Use orçamento e evidência de progresso mensurável; satisfação verbal do agente não basta como critério de utilidade marginal."
+  }
+]

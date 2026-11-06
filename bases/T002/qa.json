@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Prompt caching aumenta a janela?",
+    "answer": "Não. Reaproveita computação de uma entrada elegível; o limite de contexto continua aplicável."
+  },
+  {
+    "question": "É igual a semantic caching?",
+    "answer": "Não. O cache semântico pode devolver uma resposta pronta; prompt caching reutiliza processamento da entrada."
+  },
+  {
+    "question": "Um cache hit demonstra que a informação continua atual?",
+    "answer": "Não. Demonstra reutilização de processamento. Atualidade depende da versão das fontes e de decidir quais informações entram no prompt."
+  },
+  {
+    "question": "Devo aumentar o prompt apenas para obter cache?",
+    "answer": "Só após comparar o custo total e a qualidade. Um hit artificial pode acrescentar trabalho e conteúdo irrelevante sem benefício líquido."
+  }
+]

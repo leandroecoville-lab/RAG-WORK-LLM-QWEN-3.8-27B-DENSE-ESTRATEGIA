@@ -1,0 +1,117 @@
+{
+  "id": "T147",
+  "novelty": "A v3 definiu completude de ramos e políticas de junção. O novo desenho acrescenta contratos de diversidade, tratamento de atrasos e limitação hierárquica para impedir explosão de subagentes.",
+  "deep_layers": [
+    {
+      "name": "Partição por pergunta diferente",
+      "detail": "Delegue ramos que respondam aspectos distintos ou usem evidências independentes. Dividir a mesma pergunta sem mudar fontes tende a gerar duplicação e erro correlacionado. O coordenador precisa registrar qual lacuna cada ramo cobre e reconhecer quando dois resultados são apenas paráfrases do mesmo documento.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030"
+      ]
+    },
+    {
+      "name": "Capacidade compartilhada na árvore",
+      "detail": "Cada subagente pode gerar novas chamadas, portanto limitar apenas o número de filhos diretos não limita a carga total. Passe orçamento residual e contador global pela árvore. Expansão exige reservar capacidade, evitando que um worker reinicie cotas ao criar outro worker.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V3C-S009"
+      ]
+    },
+    {
+      "name": "Atraso com significado",
+      "detail": "Um ramo lento pode ser o único responsável por um requisito obrigatório. Encerrar por quorum sem olhar a cobertura pode entregar uma resposta incompleta com aparência de consenso. Diferencie requisito indispensável, redundância e exploração opcional; prazo expirado deve produzir uma lacuna identificada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S003",
+        "V3C-S007"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Verificação de patch por propriedades",
+      "scenario": "O mesmo diff precisa preservar comportamento, escopo e ausência de resíduos.",
+      "strategy": "Distribua propriedades independentes a revisores delimitados, incluindo ferramentas determinísticas. Agregue por critério, não por votação global. Se uma propriedade obrigatória falhar ou não for avaliada, mantenha o candidato sem aceite.",
+      "small_model_role": "3–14B revisa critérios estreitos; 15–30B integra conflitos com evidências.",
+      "acceptance": "Proposta: medir bugs detectados, falso bloqueio e custo de revisão em patches com defeitos introduzidos conhecidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S009"
+      ]
+    },
+    {
+      "name": "Inventário técnico de vários módulos",
+      "scenario": "Uma migração exige mapear dependências de dezenas de componentes.",
+      "strategy": "Particione por módulo com entradas versionadas e formato comum. Reserve um ramo de integração para detectar dependências entre módulos; alterações compartilhadas voltam a uma fila serial, evitando duas correções concorrentes do mesmo arquivo.",
+      "small_model_role": "3–7B extrai símbolos e versões; 8–30B interpreta relações e exceções.",
+      "acceptance": "Proposta: conferir cobertura do inventário, conflitos e tempo de integração contra processamento sequencial.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S017",
+        "V4C-S003"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: workers com uma pergunta objetiva e saída curta, evitando autonomia recursiva.",
+    "8_14b": "Proposta: revisores ou executores especializados em um módulo com contrato explícito.",
+    "15_30b": "Proposta: coordenador de conjunto limitado, com integração obrigatória e memória de cobertura.",
+    "training_or_runtime_requirements": "Necessita orçamento compartilhado, identidade dos ramos e agregador que trate ausência, erro e duplicação.",
+    "do_not_use_when": "Não usar quando os ramos dependem fortemente do mesmo estado mutável ou quando integração domina todo o trabalho."
+  },
+  "connections": [
+    {
+      "target_id": "T237",
+      "relation": "feeds",
+      "how": "A decomposição fornece tarefas delimitadas aos subagentes e recebe resultados por objetivo.",
+      "interface": "Objetivo, fontes, escopo, formato e estado de cada ramo.",
+      "condition": "A delegação possui lacunas identificáveis e resultados comparáveis.",
+      "acceptance": "Proposta: medir cobertura real sem contar respostas duplicadas como contribuição nova.",
+      "basis": "source_documented",
+      "source_ids": [
+        "C-S030"
+      ],
+      "case_ids": [
+        "V4C-C007"
+      ]
+    },
+    {
+      "target_id": "T200",
+      "relation": "complements",
+      "how": "CodeCourt usa revisores paralelos por propriedade e agrega seus vereditos.",
+      "interface": "Diff e critérios separados para cada revisor.",
+      "condition": "Cada propriedade obrigatória precisa passar.",
+      "acceptance": "Proposta: semear violações distintas e conferir qual revisor as identifica.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4C-S009"
+      ],
+      "case_ids": [
+        "V4C-C010"
+      ]
+    }
+  ],
+  "failure_controls": [
+    "Impedir fan-out recursivo sem consumo do orçamento comum.",
+    "Conservar resultado tardio como evidência adicional, sem alterar silenciosamente uma entrega já publicada."
+  ],
+  "frontier_comparison": "Compare equipes pequenas com fronteira individual e com fronteira paralela, igualando custo e ferramentas. Mais agentes não garantem independência nem melhor resposta.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q003",
+      "V4C-Q006",
+      "V4C-Q010"
+    ],
+    "scope_note": "Claude Research e AutoClean documentam fan-out em funções diferentes. Cada deployment aparece uma vez, independentemente do número de ramos."
+  },
+  "source_ids": [
+    "C-S030",
+    "V3C-S009",
+    "V4C-S003",
+    "V3C-S007",
+    "V4C-S009",
+    "V4C-S017"
+  ]
+}

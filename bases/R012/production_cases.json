@@ -1,0 +1,75 @@
+{
+  "coverage": {
+    "entry_id": "R012",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 1,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Tinker — Prompt Distillation",
+    "scope": "referencia"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C012",
+      "company": "Thinking Machines Lab",
+      "organization_class": "ai_lab",
+      "system": "Tinker Cookbook — destilação",
+      "title": "Receitas e experimentos de destilação on-policy e de contexto",
+      "evidence_level": "research_only",
+      "observed_use": "A equipe publica receitas reproduzíveis e experiências de transferência de comportamento, incluindo aluno em suas próprias trajetórias e redução do contexto de instruções.",
+      "technical_mechanism": "LoRA e perdas de destilação treinam o aluno; prompt distillation condiciona o professor com informação ausente da entrada reduzida do aluno.",
+      "event_date": "2025-10-27",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S012",
+        "V4B-S013",
+        "V3D-S008"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T178",
+          "match": "exact",
+          "rationale": "Experimentos são de transferência professor-aluno."
+        },
+        {
+          "entry_id": "T179",
+          "match": "exact",
+          "rationale": "Receita de prompt distillation transfere comportamento condicionado por contexto."
+        },
+        {
+          "entry_id": "T180",
+          "match": "exact",
+          "rationale": "A receita específica reduz instruções na entrada do aluno."
+        },
+        {
+          "entry_id": "R012",
+          "match": "exact",
+          "rationale": "É a referência Tinker para prompt distillation."
+        },
+        {
+          "entry_id": "P017",
+          "match": "analogy",
+          "rationale": "Fornece contratos de dados e checkpoints para um pipeline editorial proposto."
+        }
+      ],
+      "small_model_transfer": "Proposta: começar com uma tarefa 3–14B e teste temporal independente, mantendo acesso a exemplos do professor e custos de geração/treino separados.",
+      "limits": "Receita/benchmark não prova deployment do aluno. Modelos históricos do artigo foram substituídos na oferta; não se assume disponibilidade nem suporte do checkpoint local.",
+      "canonical_case_id": "V4B-C012",
+      "deployment_domain": "llm_research",
+      "mapping": {
+        "entry_id": "R012",
+        "match": "exact",
+        "rationale": "É a referência Tinker para prompt distillation."
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "T176",
+  "name": "Token-Aware Planning",
+  "canonical_name": "Token-Aware Planning",
+  "canonical_id": "T176",
+  "aliases": [
+    "planejamento consciente de tokens"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T143",
+    "T152",
+    "T168"
+  ],
+  "source_ids": [
+    "C-S017",
+    "C-S012",
+    "V3C-S012",
+    "V3C-S022",
+    "V4C-S013",
+    "C-S030",
+    "V4C-S014",
+    "V4C-S030"
+  ],
+  "namespace": "T176",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T176",
+  "chunk_count": 9
+}

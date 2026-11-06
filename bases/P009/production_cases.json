@@ -1,0 +1,367 @@
+{
+  "coverage": {
+    "entry_id": "P009",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 7,
+    "operational_product_cases": 2,
+    "research_cases": 0,
+    "family_or_analogy_cases": 7,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Inference Engine",
+    "scope": "proposta"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C008",
+      "company": "Amazon",
+      "organization_class": "bigtech",
+      "system": "Rufus",
+      "title": "Inferência multinó em Trainium com vLLM",
+      "evidence_level": "production_documented",
+      "observed_use": "Amazon relata lançamento de modelo maior para clientes Rufus e atendimento ao tráfego de Prime Day usando a solução multinó descrita.",
+      "technical_mechanism": "Líder vLLM agenda lotes contínuos; Neuron executa cálculo distribuído, com TP/CP conforme fase e comunicação EFA/RDMA.",
+      "event_date": "2025-08-13",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S008"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R009",
+          "match": "exact",
+          "rationale": "vLLM é parte explícita do runtime lançado."
+        },
+        {
+          "entry_id": "T088",
+          "match": "exact",
+          "rationale": "Continuous batching é aplicado pelo scheduler do líder."
+        },
+        {
+          "entry_id": "T118",
+          "match": "exact",
+          "rationale": "Tensor parallelism integra as estratégias híbridas descritas."
+        },
+        {
+          "entry_id": "T117",
+          "match": "exact",
+          "rationale": "O prefill divide entrada pela dimensão de sequência."
+        },
+        {
+          "entry_id": "T122",
+          "match": "exact",
+          "rationale": "Operações entre nós usam EFA/RDMA com seleção por topologia."
+        },
+        {
+          "entry_id": "P009",
+          "match": "analogy",
+          "rationale": "Deployment unit e saúde dos workers inspiram requisitos do engine proposto."
+        }
+      ],
+      "small_model_transfer": "Proposta: para 15–30B, dimensionar comunicação e memória antes de distribuir; para 3–14B, comparar uma réplica local bem utilizada antes de adotar multinó.",
+      "limits": "Hardware é Trainium, não GPU local. Pipeline parallelism não é explicitado e não é mapeado. Escala publicada não demonstra ganho equivalente para modelos menores.",
+      "canonical_case_id": "V4B-C008",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "P009",
+        "match": "analogy",
+        "rationale": "Deployment unit e saúde dos workers inspiram requisitos do engine proposto."
+      }
+    },
+    {
+      "case_id": "V4B-C010",
+      "company": "Hugging Face",
+      "organization_class": "technology_operator",
+      "system": "HuggingChat — relato de 2023",
+      "title": "TGI como backend de chat público",
+      "evidence_level": "production_documented",
+      "observed_use": "O operador informou em 2023 que TGI alimentava HuggingChat e integrava seus serviços de inferência.",
+      "technical_mechanism": "Servidor dedicado de geração com streaming e otimizações disponíveis na pilha; o relato identifica o runtime efetivamente usado.",
+      "event_date": "2023-07-17",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S019",
+        "V3D-S006"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R010",
+          "match": "exact",
+          "rationale": "A fonte do operador afirma TGI como backend de HuggingChat naquele período."
+        },
+        {
+          "entry_id": "T088",
+          "match": "family",
+          "rationale": "É recurso do TGI, mas a fonte não detalha a configuração exata de batching desse deployment."
+        },
+        {
+          "entry_id": "P009",
+          "match": "analogy",
+          "rationale": "Caso histórico de separação entre interface de chat e runtime de inferência."
+        }
+      ],
+      "small_model_transfer": "Proposta: usar o caso como referência de migração e compatibilidade; novos serviços 3–30B devem considerar estado atual de manutenção e testar alternativas.",
+      "limits": "Não demonstra stack atual do HuggingChat. O maintenance mode documentado em 2026 é preservado, e disponibilidade histórica não é recomendação automática de nova adoção.",
+      "canonical_case_id": "V4B-C010",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "P009",
+        "match": "analogy",
+        "rationale": "Caso histórico de separação entre interface de chat e runtime de inferência."
+      }
+    },
+    {
+      "case_id": "V4B-C001",
+      "company": "LinkedIn (Microsoft)",
+      "organization_class": "bigtech",
+      "system": "Hiring Assistant",
+      "title": "Serving de análises estruturadas com vLLM e especulação por n-gramas",
+      "evidence_level": "production_documented",
+      "observed_use": "O operador descreve uso em produção do Hiring Assistant para analisar correspondência entre vagas e candidatos, com saídas estruturadas e repetição de trechos de entrada.",
+      "technical_mechanism": "N-gramas propõem tokens e o alvo verifica; o serving descrito também reutiliza prefixos e recompõe lotes a cada iteração.",
+      "event_date": "2025-11-06",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S001",
+        "V4B-S010"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T079",
+          "match": "exact",
+          "rationale": "O artigo afirma uso real de speculative decoding."
+        },
+        {
+          "entry_id": "T130",
+          "match": "exact",
+          "rationale": "O proponente escolhido usa correspondências por n-gramas, sem modelo auxiliar."
+        },
+        {
+          "entry_id": "T082",
+          "match": "exact",
+          "rationale": "O relato de serving explicita reuso de prefixos comuns no Hiring Assistant."
+        },
+        {
+          "entry_id": "T088",
+          "match": "exact",
+          "rationale": "O operador descreve batching por iteração para o mesmo workload."
+        },
+        {
+          "entry_id": "R009",
+          "match": "exact",
+          "rationale": "vLLM é identificado como runtime do serviço."
+        },
+        {
+          "entry_id": "P009",
+          "match": "analogy",
+          "rationale": "Ilustra funções que a interface editorial Inference Engine poderia expor."
+        }
+      ],
+      "small_model_transfer": "Proposta: testar extração especializada com alvo 3–30B, n-gramas e prefixos estáveis, preservando aceitação correta e medindo custo por relatório válido.",
+      "limits": "Não comprova o porte exato do modelo do usuário nem ganhos em outro hardware. Distribuição preservada não implica a mesma amostra textual. É um único caso, embora apoie vários mecanismos.",
+      "canonical_case_id": "V4B-C001",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "P009",
+        "match": "analogy",
+        "rationale": "Ilustra funções que a interface editorial Inference Engine poderia expor."
+      }
+    },
+    {
+      "case_id": "V4B-C003",
+      "company": "Meta",
+      "organization_class": "bigtech",
+      "system": "Infraestrutura de inferência Meta AI",
+      "title": "Paralelismo de tensores e contexto no serving Meta",
+      "evidence_level": "production_documented",
+      "observed_use": "Meta relata técnicas implementadas para sistemas de inferência que sustentam aplicações como Meta AI, com metas distintas de prefill e geração.",
+      "technical_mechanism": "Algoritmos de comunicação para TP e variantes Pass-KV/Pass-Q para contexto; resultados de escala são apresentados separadamente das direções futuras.",
+      "event_date": "2025-10-17",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S003"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T118",
+          "match": "exact",
+          "rationale": "O operador descreve implementação e otimização de tensor parallelism."
+        },
+        {
+          "entry_id": "T117",
+          "match": "exact",
+          "rationale": "Particionamento de contexto é explicitamente implementado."
+        },
+        {
+          "entry_id": "T101",
+          "match": "family",
+          "rationale": "Pass-KV/Pass-Q são descritos como variantes frequentemente chamadas ring attention, sem identificar toda implementação com o paper específico."
+        },
+        {
+          "entry_id": "T184",
+          "match": "family",
+          "rationale": "Expert parallelism é discutido para modelos MoE, sem demonstrar cada arquitetura do inventário."
+        },
+        {
+          "entry_id": "P009",
+          "match": "analogy",
+          "rationale": "Ajuda a definir telemetria e capacidades distribuídas do componente editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: usar topologia e formas reais para decidir CP/TP em 3–30B, preservando uma execução local como comparação quando possível.",
+      "limits": "Modelos e clusters citados excedem muitos ambientes 3–30B. Disaggregated inference aparece como direção futura nesse texto e não é contado como implantação exata a partir dele.",
+      "canonical_case_id": "V4B-C003",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "P009",
+        "match": "analogy",
+        "rationale": "Ajuda a definir telemetria e capacidades distribuídas do componente editorial."
+      }
+    },
+    {
+      "case_id": "V4B-C002",
+      "company": "Perplexity",
+      "organization_class": "technology_operator",
+      "system": "Engine de inferência com KV Messenger",
+      "title": "Prefill e decode separados com transferência KV por RDMA",
+      "evidence_level": "production_documented",
+      "observed_use": "A equipe descreve sua implementação de serving com workers de prefill e decode separados e um KV Messenger que coordena o transporte de estados.",
+      "technical_mechanism": "Transferência por camada e páginas via libfabric/RDMA, seguida de sinalização de conclusão antes de admitir decode; certos métodos exigem estado auxiliar.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S002"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T102",
+          "match": "exact",
+          "rationale": "Separação de pools e transporte de KV são descritos na implementação do operador."
+        },
+        {
+          "entry_id": "T122",
+          "match": "exact",
+          "rationale": "O caminho de dados usa RDMA com EFA e ConnectX compatíveis."
+        },
+        {
+          "entry_id": "T081",
+          "match": "family",
+          "rationale": "O decode consome estado recebido, mas o caso não demonstra todo tipo de reuso entre requisições."
+        },
+        {
+          "entry_id": "P009",
+          "match": "analogy",
+          "rationale": "Referência de contrato de transferência para um engine proposto."
+        }
+      ],
+      "small_model_transfer": "Proposta: considerar o desenho para 15–30B apenas quando interferência entre fases justificar rede e coordenação; comparar primeiro com chunked prefill agregado.",
+      "limits": "Fonte não fixa porte do modelo em cada deployment. Não autoriza prometer redução de TTFT: transporte pode aumentá-lo. Não é uma bigtech na classificação estrita.",
+      "canonical_case_id": "V4B-C002",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "P009",
+        "match": "analogy",
+        "rationale": "Referência de contrato de transferência para um engine proposto."
+      }
+    },
+    {
+      "case_id": "V4B-C013",
+      "company": "Hugging Face",
+      "organization_class": "technology_operator",
+      "system": "Transformers ContinuousBatchingManager",
+      "title": "Batching contínuo e configuração de serving documentados",
+      "evidence_level": "operational_product",
+      "observed_use": "A documentação atual expõe geração por lote contínuo e interface para submissão e recuperação de requisições.",
+      "technical_mechanism": "Configuração de memória/scheduling separada da configuração de geração, com recursos de cache paginado e prefixos conforme backend.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S014"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R023",
+          "match": "exact",
+          "rationale": "O recurso faz parte da biblioteca Transformers documentada."
+        },
+        {
+          "entry_id": "T088",
+          "match": "exact",
+          "rationale": "Recomposição de batch a cada geração é o mecanismo descrito."
+        },
+        {
+          "entry_id": "T093",
+          "match": "exact",
+          "rationale": "A documentação inclui gerenciamento paginado do cache."
+        },
+        {
+          "entry_id": "T082",
+          "match": "exact",
+          "rationale": "Prefix caching integra os recursos descritos."
+        },
+        {
+          "entry_id": "P009",
+          "match": "analogy",
+          "rationale": "Ilustra capacidades que um adaptador de engine poderia negociar."
+        }
+      ],
+      "small_model_transfer": "Proposta: experimentar serving de 3–30B com manifestos de versão e comparação contra outros runtimes, sem presumir que uma API de biblioteca substitui todos os controles operacionais.",
+      "limits": "Guia não comprova uso por uma organização cliente. Defaults e APIs podem mudar; instalação local não foi executada.",
+      "canonical_case_id": "V4B-C013",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "P009",
+        "match": "analogy",
+        "rationale": "Ilustra capacidades que um adaptador de engine poderia negociar."
+      }
+    },
+    {
+      "case_id": "V4B-C024",
+      "company": "Projeto llama.cpp",
+      "organization_class": "technology_operator",
+      "system": "llama.cpp server",
+      "title": "Servidor local com formatos e recursos documentados",
+      "evidence_level": "operational_product",
+      "observed_use": "O repositório documenta servidor utilizável e carregamento de modelos GGUF, com recursos de geração e configuração de execução.",
+      "technical_mechanism": "Runtime lê metadados e tensores GGUF e expõe geração por servidor; suporte depende da arquitetura, quantização e build.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V3D-S012",
+        "B-S037"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R024",
+          "match": "exact",
+          "rationale": "Referência ao runtime llama.cpp."
+        },
+        {
+          "entry_id": "T127",
+          "match": "exact",
+          "rationale": "GGUF é o contêiner consumido."
+        },
+        {
+          "entry_id": "P009",
+          "match": "analogy",
+          "rationale": "Pode ser componente de uma proposta LAI; não é evidência de sua implantação."
+        }
+      ],
+      "small_model_transfer": "Proposta: começar por um modelo 3–7B conhecido, validar template e respostas, depois medir uso de CPU/GPU e memória sob carga.",
+      "limits": "README comprova recurso, não cliente de produção. Não confirma compatibilidade do checkpoint ou hardware local; GGUF não designa um único algoritmo de quantização.",
+      "canonical_case_id": "V4B-C024",
+      "deployment_domain": "llm_serving",
+      "mapping": {
+        "entry_id": "P009",
+        "match": "analogy",
+        "rationale": "Pode ser componente de uma proposta LAI; não é evidência de sua implantação."
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "T140",
+  "name": "Tool Use / Function Calling",
+  "canonical_name": "Tool Use / Function Calling",
+  "canonical_id": "T140",
+  "aliases": [
+    "uso de ferramentas",
+    "chamada de função"
+  ],
+  "category": "orquestracao",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T141",
+    "T158",
+    "T170",
+    "T197"
+  ],
+  "source_ids": [
+    "C-S007",
+    "V3C-S004",
+    "V3C-S005",
+    "V4C-S009",
+    "V4C-S013",
+    "C-S026",
+    "V4C-S008",
+    "V4C-S018",
+    "V4C-S019",
+    "V4D-S002",
+    "V4D-S006",
+    "V4D-S007",
+    "V4D-S011"
+  ],
+  "namespace": "T140",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T140",
+  "chunk_count": 9
+}

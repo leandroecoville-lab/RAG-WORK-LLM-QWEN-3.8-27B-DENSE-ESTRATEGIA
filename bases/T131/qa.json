@@ -1,0 +1,18 @@
+[
+  {
+    "question": "SuffixDecoding é memória episódica?",
+    "answer": "Não. Armazena padrões úteis para propor tokens, sem avaliar se uma experiência foi correta."
+  },
+  {
+    "question": "Precisa treinar um modelo auxiliar?",
+    "answer": "O método descrito é model-free na proposta; ainda depende de implementação e verificação no alvo."
+  },
+  {
+    "question": "O índice torna a resposta uma cópia obrigatória?",
+    "answer": "Não. Ele fornece candidatos; o alvo deve rejeitar continuações incompatíveis com seu contexto atual."
+  },
+  {
+    "question": "Sem pesos adicionais significa custo zero?",
+    "answer": "Não. Estruturas, contagens, consultas, sincronização e atualização consomem memória e tempo de CPU."
+  }
+]

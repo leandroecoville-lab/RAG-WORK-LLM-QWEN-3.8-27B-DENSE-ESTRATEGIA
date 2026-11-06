@@ -1,0 +1,30 @@
+{
+  "id": "T043",
+  "name": "Context Compaction",
+  "canonical_name": "Context Compaction",
+  "canonical_id": "T043",
+  "aliases": [
+    "compactação de contexto"
+  ],
+  "category": "contexto_recuperacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T004",
+    "T006",
+    "T021",
+    "T060"
+  ],
+  "source_ids": [
+    "A-S006",
+    "A-S022",
+    "V3A-S008",
+    "V4A-S002"
+  ],
+  "namespace": "T043",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T043",
+  "chunk_count": 9
+}

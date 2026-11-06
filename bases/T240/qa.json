@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Snapshot e checkpoint são sinônimos?",
+    "answer": "Não em todos os sistemas. Snapshot descreve um estado capturado; checkpoint é um ponto de retomada definido pelo mecanismo de execução e pode exigir metadados adicionais."
+  },
+  {
+    "question": "Restaurar um snapshot volta o mundo externo no tempo?",
+    "answer": "Não. A restauração afeta somente o escopo controlado. Operações externas precisam ser observadas e reconciliadas segundo seu estado real."
+  },
+  {
+    "question": "BEGIN garante que duas leituras vejam o mesmo instante?",
+    "answer": "Não em todo nível de isolamento; é preciso conhecer a semântica da transação utilizada."
+  },
+  {
+    "question": "Qual é o risco de um cursor adiantado?",
+    "answer": "A recuperação pode considerar já incorporados eventos que não estão no estado capturado, perdendo mudanças."
+  }
+]

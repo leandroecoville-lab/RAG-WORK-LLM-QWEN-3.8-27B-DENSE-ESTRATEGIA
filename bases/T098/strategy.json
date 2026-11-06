@@ -1,0 +1,119 @@
+{
+  "id": "T098",
+  "novelty": "A v3 advertiu sobre dispatch e dropout. A expansão organiza uma camada de negociação de capacidades, um fallback explícito e uma matriz de testes de semântica, para que memory-efficient seja uma propriedade medida da execução completa.",
+  "deep_layers": [
+    {
+      "name": "Negociação antes de servir",
+      "detail": "Construa uma tabela de recursos exigidos pelo modelo e oferecidos por cada backend: GQA, máscaras, offsets, gradientes e formatos numéricos. Rejeite combinações impossíveis no carregamento. Um fallback aceitável deve ser explícito e observado, pois usar um caminho denso pode ultrapassar memória apesar de produzir resultados corretos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S017",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    },
+    {
+      "name": "Medição de pico e vida útil",
+      "detail": "Registre quando temporários são alocados e liberados em relação a KV, logits e comunicação. Economizar memória em uma operação não garante redução do pico global se outro buffer cresce ao mesmo tempo. Compare o perfil temporal, especialmente quando compilação, grafos ou múltiplas streams mantêm artefatos residentes.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S017",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    },
+    {
+      "name": "Semântica de máscaras",
+      "detail": "Use testes pequenos com resultados inspecionáveis para confirmar convenções de máscara, causalidade e escala. APIs distintas podem interpretar um booleano de modo diferente. Uma máscara válida por tipo pode inverter permissões sem erro; compare também atenção permitida em sequências unitárias, padding e fronteiras de documentos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S017",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Backend portátil",
+      "scenario": "O mesmo produto precisa executar em CPU e diferentes GPUs.",
+      "strategy": "Defina contrato de atenção independente do fornecedor, selecione implementação por capacidade e mantenha referência lenta para testes. Capture o backend efetivo nos logs. Não prometa números iguais entre dispositivos nem o mesmo conjunto de formatos.",
+      "small_model_role": "Um 3–7B pode ter execução local simples; maiores modelos precisam de perfis de memória específicos.",
+      "acceptance": "Exigir ausência de fallback silencioso e qualidade consistente no conjunto de compatibilidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S017",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    },
+    {
+      "name": "Treino com margem apertada",
+      "scenario": "Um ajuste fino falha por pico de memória intermitente.",
+      "strategy": "Meça vida útil de buffers e experimente atenção eficiente, checkpointing e limites de batch separadamente. Procure o pico verdadeiro antes de reduzir a tarefa. Se o fallback materializar matriz densa, trate-o como erro de configuração operacional.",
+      "small_model_role": "Um 8–30B com adaptadores ainda precisa acomodar ativações e buffers da base.",
+      "acceptance": "Aprovar por redução do pico completo e estabilidade de passos com comprimentos extremos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S017",
+        "V4B-S017",
+        "V4B-S018"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em 3–7B, portabilidade e previsibilidade podem valer mais que um kernel especializado para um único acelerador.",
+    "8_14b": "Em 8–14B, combinar métricas de pico com distribuição de contextos permite evitar OOMs esporádicos.",
+    "15_30b": "Em 15–30B, avaliar buffers transitórios e comunicação, que podem consumir a margem liberada.",
+    "training_or_runtime_requirements": "Troca de implementação é runtime quando preserva a operação; aproximações ou máscaras novas mudam o contrato.",
+    "do_not_use_when": "Não escolher backend apenas pelo nome nem assumir que modo de avaliação desliga dropout em toda API funcional."
+  },
+  "connections": [
+    {
+      "target_id": "T090",
+      "relation": "alternative",
+      "how": "Selecionar FlashAttention quando ele cobrir todos os requisitos e vencer na carga real.",
+      "interface": "Contrato de atenção, shapes e precisão.",
+      "condition": "Semântica é preservada e o kernel está disponível.",
+      "acceptance": "Comparar saída, pico global e tempo end-to-end.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S017",
+        "V4B-S017",
+        "V4B-S018"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T193",
+      "relation": "complements",
+      "how": "Bloquear configuração incompatível antes que uma requisição alcance o acelerador.",
+      "interface": "Matriz de capacidades e manifesto do checkpoint.",
+      "condition": "Validação conhece os recursos obrigatórios.",
+      "acceptance": "Injetar combinações inválidas e exigir erro legível sem execução parcial.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S017",
+        "V4B-S017",
+        "V4B-S018"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Testar convenções de máscara com casos mínimos de verdade conhecida.",
+    "Registrar fallback e alocação de temporários em produção."
+  ],
+  "frontier_comparison": "Comparar uma tarefa especializada em diferentes runtimes com a fronteira. Economia de memória pode viabilizar execução local; não transforma compatibilidade de API em equivalência de competência.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q005"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S017",
+    "V4B-S017",
+    "V4B-S018"
+  ]
+}

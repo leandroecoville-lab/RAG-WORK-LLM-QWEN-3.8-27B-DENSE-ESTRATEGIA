@@ -1,0 +1,46 @@
+{
+  "id": "T100",
+  "technical_details": "Com Hq consultas e Hkv grupos KV, cada consulta precisa apontar para o grupo correto. Nas configurações uniformes comuns, Hq é múltiplo de Hkv; o layout físico pode ainda repartir ou replicar grupos entre dispositivos. O número intermediário de grupos permite ajustar memória e diversidade de representação, mas constitui escolha de arquitetura e de pesos, não apenas uma política de alocação de cache.",
+  "boundary_condition": "Uma implementação que expande materialmente todas as cabeças pode manter correção e perder parte da economia pretendida.",
+  "implementation_contract": {
+    "inputs": "Configuração de cabeças, pesos treinados ou adaptados e mapa consulta-grupo.",
+    "outputs": "Saídas das consultas e cache com agrupamento consistente.",
+    "state": "Layout KV, shard por dispositivo e eventual replicação declarada.",
+    "invariant": "O mesmo mapa de grupos é preservado no carregamento, prefill e decode."
+  },
+  "tradeoffs": [
+    "Mais grupos podem aumentar diversidade e custo de cache.",
+    "Distribuição entre GPUs pode introduzir replicação quando grupos não se repartem adequadamente."
+  ],
+  "failure_test": "Teste proposto: permutar duas associações de grupos somente no decode. Comparar logits com prefill e referência expandida; a transição deve revelar a inconsistência.",
+  "evaluation_plan": "Plano proposto: primeiro comparar kernels com pesos idênticos; depois comparar arquiteturas com treinamento e avaliação controlados. Medir qualidade, bytes físicos por dispositivo e tempos de prefill/decode; aceitar a troca segundo o orçamento definido para a aplicação.",
+  "comparisons": [
+    {
+      "entry_id": "T099",
+      "relation": "alternative",
+      "reason": "MQA é o extremo com um grupo KV; GQA preserva múltiplos grupos."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O trabalho de GQA apresenta grupos KV intermediários e uma receita de adaptação de checkpoints multi-head.",
+    "source_ids": [
+      "B-S019"
+    ],
+    "support": "direct",
+    "caveat": "Os resultados de adaptação do artigo não garantem qualidade de uma conversão arbitrária ou sem treinamento."
+  },
+  "advanced_qa": [
+    {
+      "question": "Mudar Hkv no arquivo de configuração basta?",
+      "answer": "Não. Formas e significado dos pesos precisam corresponder; editar metadados não produz pesos corretamente adaptados."
+    },
+    {
+      "question": "Por que medir memória por GPU?",
+      "answer": "A redução lógica pode ser parcialmente anulada por replicação necessária ao particionamento ou por expansões introduzidas no kernel."
+    }
+  ],
+  "source_ids": [
+    "B-S019"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

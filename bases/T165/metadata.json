@@ -1,0 +1,34 @@
+{
+  "id": "T165",
+  "name": "Half-open — estado do Circuit Breaker",
+  "canonical_name": "Estado half-open do circuit breaker",
+  "canonical_id": "T165",
+  "aliases": [
+    "Half-Open Circuit Breaker",
+    "circuito parcialmente aberto",
+    "sondagem de recuperação do circuito"
+  ],
+  "category": "orquestracao",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T138",
+    "T163",
+    "T227",
+    "P013"
+  ],
+  "source_ids": [
+    "C-S005",
+    "V3C-S026",
+    "V3C-S009",
+    "V2A-S012",
+    "C-S026",
+    "V3C-S001"
+  ],
+  "namespace": "T165",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T165",
+  "chunk_count": 9
+}

@@ -1,0 +1,44 @@
+{
+  "id": "P014",
+  "name": "Execution Resilience",
+  "canonical_name": "Execution Resilience",
+  "canonical_id": "P014",
+  "aliases": [
+    "capacidade proposta de resiliência da execução"
+  ],
+  "category": "componentes_propostos",
+  "kind": "architecture",
+  "scope": "proposta",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T060",
+    "T159",
+    "T227",
+    "T240",
+    "T241",
+    "T242",
+    "P008",
+    "P011",
+    "P013",
+    "P015"
+  ],
+  "source_ids": [
+    "C-S003",
+    "C-S023",
+    "C-S026",
+    "A-S027",
+    "A-S022",
+    "V3D-S016",
+    "V3D-S017",
+    "V4C-S001",
+    "V4C-S003",
+    "V4C-S004",
+    "V4C-S005",
+    "V4C-S023"
+  ],
+  "namespace": "P014",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/P014",
+  "chunk_count": 9
+}

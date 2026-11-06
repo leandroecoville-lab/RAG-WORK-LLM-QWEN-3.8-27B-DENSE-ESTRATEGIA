@@ -1,0 +1,81 @@
+{
+  "coverage": {
+    "entry_id": "T130",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 1,
+    "verified_bigtech_llm_production_exact": 1,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 9,
+    "target_met": false,
+    "strict_case_ids": [
+      "V4B-C001"
+    ],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "N-Gram Speculative Decoding",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C001",
+      "company": "LinkedIn (Microsoft)",
+      "organization_class": "bigtech",
+      "system": "Hiring Assistant",
+      "title": "Serving de análises estruturadas com vLLM e especulação por n-gramas",
+      "evidence_level": "production_documented",
+      "observed_use": "O operador descreve uso em produção do Hiring Assistant para analisar correspondência entre vagas e candidatos, com saídas estruturadas e repetição de trechos de entrada.",
+      "technical_mechanism": "N-gramas propõem tokens e o alvo verifica; o serving descrito também reutiliza prefixos e recompõe lotes a cada iteração.",
+      "event_date": "2025-11-06",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S001",
+        "V4B-S010"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T079",
+          "match": "exact",
+          "rationale": "O artigo afirma uso real de speculative decoding."
+        },
+        {
+          "entry_id": "T130",
+          "match": "exact",
+          "rationale": "O proponente escolhido usa correspondências por n-gramas, sem modelo auxiliar."
+        },
+        {
+          "entry_id": "T082",
+          "match": "exact",
+          "rationale": "O relato de serving explicita reuso de prefixos comuns no Hiring Assistant."
+        },
+        {
+          "entry_id": "T088",
+          "match": "exact",
+          "rationale": "O operador descreve batching por iteração para o mesmo workload."
+        },
+        {
+          "entry_id": "R009",
+          "match": "exact",
+          "rationale": "vLLM é identificado como runtime do serviço."
+        },
+        {
+          "entry_id": "P009",
+          "match": "analogy",
+          "rationale": "Ilustra funções que a interface editorial Inference Engine poderia expor."
+        }
+      ],
+      "small_model_transfer": "Proposta: testar extração especializada com alvo 3–30B, n-gramas e prefixos estáveis, preservando aceitação correta e medindo custo por relatório válido.",
+      "limits": "Não comprova o porte exato do modelo do usuário nem ganhos em outro hardware. Distribuição preservada não implica a mesma amostra textual. É um único caso, embora apoie vários mecanismos.",
+      "canonical_case_id": "V4B-C001",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T130",
+        "match": "exact",
+        "rationale": "O proponente escolhido usa correspondências por n-gramas, sem modelo auxiliar."
+      }
+    }
+  ]
+}

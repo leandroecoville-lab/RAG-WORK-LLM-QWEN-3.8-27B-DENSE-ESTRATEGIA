@@ -1,0 +1,93 @@
+[
+  {
+    "source_id": "C-S043",
+    "title": "Training Verifiers to Solve Math Word Problems",
+    "url": "https://arxiv.org/abs/2110.14168",
+    "publisher": "Cobbe e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Verificador pontua soluções candidatas; seleção é distinta de votação simples.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn16view7"
+  },
+  {
+    "source_id": "C-S051",
+    "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+    "url": "https://arxiv.org/abs/2303.11366",
+    "publisher": "Shinn e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Feedback verbal e memória episódica podem melhorar tentativas posteriores sem atualizar pesos.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn19view11"
+  },
+  {
+    "source_id": "V4C-S009",
+    "title": "Using AI to Delete Code: Agentic Tech Debt Cleanup at Uber",
+    "url": "https://www.uber.com/us/en/blog/ai-code-cleanup/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "AutoClean operacional combina agentes, PolyglotPiranha via MCP, CI, fixers delimitados, verificações estáticas e CodeCourt por propriedades.",
+    "limitations": "Fonte primária aberta. Desempenho relatado pertence ao sistema e ao período descritos; não foi reproduzido e não comprova transferência para modelos 3–30B.",
+    "web_ref": "turn238view0"
+  },
+  {
+    "source_id": "V4B-S022",
+    "title": "AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms",
+    "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+    "publisher": "Google DeepMind",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-05-14",
+    "supports": "Geração evolutiva com avaliadores executáveis; heurística descoberta implantada em Borg e verificações de circuitos.",
+    "limitations": "Não confundir ensemble de proponentes com votação nem transferir ganhos de sistemas Google a modelos 3–30B.",
+    "web_ref": "turn245view0"
+  },
+  {
+    "source_id": "V4B-S023",
+    "title": "AlphaEvolve: How our Gemini-powered coding agent is scaling impact across fields",
+    "url": "https://deepmind.google/blog/alphaevolve-impact/",
+    "publisher": "Google DeepMind",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-05-07",
+    "supports": "Uso continuado de algoritmos descobertos em infraestrutura Google, incluindo refinamento de heurísticas de Spanner.",
+    "limitations": "Aplicações diferentes não serão multiplicadas artificialmente em dez casos do mesmo sistema; detalhes experimentais e operacionais variam.",
+    "web_ref": "turn245view1"
+  },
+  {
+    "source_id": "V4B-S026",
+    "title": "Automated Unit Test Improvement using Large Language Models at Meta",
+    "url": "https://arxiv.org/abs/2402.09171",
+    "publisher": "Autores da Meta / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2024-02-14",
+    "supports": "Autores relatam implantação de TestGen-LLM em test-a-thons e recomendações aceitas para produção, com filtros de build, estabilidade e cobertura.",
+    "limitations": "Alegação de produção vem do relato explícito dos autores sobre deployment, não do fato de ser paper; cobertura não prova correção geral.",
+    "web_ref": "turn251view0"
+  },
+  {
+    "source_id": "V4C-S008",
+    "title": "Introducing Piranha: An Open Source Tool to Automatically Delete Stale Code",
+    "url": "https://www.uber.com/us/en/blog/piranha/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2020-03-17",
+    "supports": "Pipeline interno de remoção de flags obsoletas por transformação de AST e geração de diffs para revisão.",
+    "limitations": "Fonte primária aberta. Desempenho relatado pertence ao sistema e ao período descritos; não foi reproduzido e não comprova transferência para modelos 3–30B.",
+    "web_ref": "turn234view0"
+  }
+]

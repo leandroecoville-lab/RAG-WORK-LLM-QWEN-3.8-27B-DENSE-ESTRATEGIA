@@ -1,0 +1,80 @@
+[
+  {
+    "source_id": "V2A-S009",
+    "title": "GRAPH_RECURSION_LIMIT",
+    "url": "https://docs.langchain.com/oss/python/langgraph/errors/GRAPH_RECURSION_LIMIT",
+    "publisher": "LangChain",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Limite de passos de execução do grafo antes de alcançar condição de parada.",
+    "limitations": "Consulta documental primária. Não houve reprodução de experimentos, instalação do produto nem validação de disponibilidade na infraestrutura LAI. Receitas e testes das entradas são propostas editoriais.",
+    "web_ref": "turn50view2"
+  },
+  {
+    "source_id": "V2A-S018",
+    "title": "Create custom subagents",
+    "url": "https://code.claude.com/docs/en/sub-agents",
+    "publisher": "Anthropic",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Subagentes com contexto próprio, capacidades delimitadas e retorno de resultados ao agente principal.",
+    "limitations": "Consulta documental primária. Não houve reprodução de experimentos, instalação do produto nem validação de disponibilidade na infraestrutura LAI. Receitas e testes das entradas são propostas editoriais.",
+    "web_ref": "turn60view2"
+  },
+  {
+    "source_id": "V3C-S006",
+    "title": "LangGraph — Graph API overview",
+    "url": "https://docs.langchain.com/oss/python/langgraph/graph-api",
+    "publisher": "LangChain",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Supersteps, reducers de estado, Send, Command, migrações e reexecução de nós.",
+    "limitations": "Documentação dinâmica consultada em 2026-11-05; compatibilidade exige fixar a versão efetivamente instalada.",
+    "web_ref": "turn89view1"
+  },
+  {
+    "source_id": "C-S030",
+    "title": "How we built our multi-agent research system",
+    "url": "https://www.anthropic.com/research/multi-agent-research-system",
+    "publisher": "Anthropic",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Arquitetura coordenador-especialistas e contextos separados pode paralelizar pesquisa e usar artefatos de transferência.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn34view9"
+  },
+  {
+    "source_id": "V4C-S014",
+    "title": "Running a Software Factory Efficiently at Uber Scale",
+    "url": "https://www.uber.com/us/en/blog/efficient-software-factory/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-08-27",
+    "supports": "Harnesses internos, seleção por tarefas reais, modelos diferentes para subagentes, compactação, cache e code-mode.",
+    "limitations": "Relato primário delimitado à data e sistema; não houve reprodução. Números e escolhas do operador não definem ganhos, preços ou limites para a LAI ou modelos 3–30B.",
+    "web_ref": "turn257view0"
+  },
+  {
+    "source_id": "V3C-S032",
+    "title": "Hypothesis — Stateful tests",
+    "url": "https://hypothesis.readthedocs.io/en/latest/stateful.html",
+    "publisher": "Hypothesis project",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Máquinas de estado e regras geram sequências de ações; modelos de referência permitem comparar comportamento acumulado.",
+    "limitations": "Testes dependem de regras e invariantes corretos; não demonstram exaustividade de estados ou ausência total de defeitos.",
+    "web_ref": "turn140view3"
+  }
+]

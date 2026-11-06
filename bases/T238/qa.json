@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Faixa de linhas é uma referência estável?",
+    "answer": "Somente em uma revisão determinada. Para trabalho entre revisões, use também identidade do arquivo, símbolo e contexto de busca."
+  },
+  {
+    "question": "Quando vale ler o arquivo completo?",
+    "answer": "Quando suas relações internas são necessárias e ele cabe no orçamento. A técnica prioriza evidência adequada, não a menor leitura possível a qualquer custo."
+  },
+  {
+    "question": "O número da linha identifica uma função permanentemente?",
+    "answer": "Não. Ele depende da revisão; símbolo, caminho e conteúdo ajudam a reidentificar o alvo após mudanças."
+  },
+  {
+    "question": "Quando ampliar a leitura?",
+    "answer": "Quando faltarem definições, condições, chamadas ou erros necessários para interpretar o trecho e decidir a alteração."
+  }
+]

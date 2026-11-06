@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Unified Diff inclui sempre o hash da base?",
+    "answer": "Não. Cabeçalhos de hunk e linhas de contexto não fornecem, sozinhos, uma garantia criptográfica. Algumas variantes Git incluem informações adicionais, mas a política deve verificar o que está presente."
+  },
+  {
+    "question": "Aplicar sem erro prova correção?",
+    "answer": "Não. Prova apenas que o aplicador aceitou as alterações nas condições observadas. Correção semântica exige revisão e verificações do comportamento."
+  },
+  {
+    "question": "Uma linha +++ sempre representa conteúdo adicionado?",
+    "answer": "Não. Pode ser o cabeçalho do arquivo novo; a interpretação depende do estado do parser."
+  },
+  {
+    "question": "As posições tornam o patch independente da base?",
+    "answer": "Não. Contexto e conteúdo esperado ainda precisam corresponder à revisão em que a alteração será aplicada."
+  }
+]

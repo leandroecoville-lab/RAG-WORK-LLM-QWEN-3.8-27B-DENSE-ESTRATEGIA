@@ -1,0 +1,256 @@
+{
+  "checked_on": "2026-11-05",
+  "case_records_reviewed": 98,
+  "reviewed_case_ids": [
+    "V4A-C001",
+    "V4A-C002",
+    "V4A-C003",
+    "V4A-C004",
+    "V4A-C005",
+    "V4A-C006",
+    "V4A-C007",
+    "V4A-C008",
+    "V4A-C009",
+    "V4A-C010",
+    "V4A-C011",
+    "V4A-C012",
+    "V4A-C013",
+    "V4A-C014",
+    "V4A-C015",
+    "V4A-C016",
+    "V4A-C017",
+    "V4A-C018",
+    "V4A-C019",
+    "V4A-C020",
+    "V4A-C021",
+    "V4A-C022",
+    "V4A-C023",
+    "V4A-C024",
+    "V4A-C025",
+    "V4A-C026",
+    "V4A-C027",
+    "V4A-C028",
+    "V4A-C029",
+    "V4A-C030",
+    "V4A-C031",
+    "V4A-C032",
+    "V4A-C033",
+    "V4B-C001",
+    "V4B-C002",
+    "V4B-C003",
+    "V4B-C004",
+    "V4B-C005",
+    "V4B-C006",
+    "V4B-C007",
+    "V4B-C008",
+    "V4B-C009",
+    "V4B-C010",
+    "V4B-C011",
+    "V4B-C012",
+    "V4B-C013",
+    "V4B-C014",
+    "V4B-C015",
+    "V4B-C016",
+    "V4B-C017",
+    "V4B-C018",
+    "V4B-C019",
+    "V4B-C020",
+    "V4B-C021",
+    "V4B-C022",
+    "V4B-C023",
+    "V4B-C024",
+    "V4B-C025",
+    "V4B-C026",
+    "V4C-C001",
+    "V4C-C002",
+    "V4C-C003",
+    "V4C-C004",
+    "V4C-C005",
+    "V4C-C006",
+    "V4C-C007",
+    "V4C-C008",
+    "V4C-C009",
+    "V4C-C010",
+    "V4C-C011",
+    "V4C-C012",
+    "V4C-C013",
+    "V4C-C014",
+    "V4C-C015",
+    "V4C-C016",
+    "V4C-C017",
+    "V4C-C018",
+    "V4C-C019",
+    "V4C-C020",
+    "V4C-C021",
+    "V4C-C022",
+    "V4C-C023",
+    "V4C-C024",
+    "V4C-C025",
+    "V4C-C026",
+    "V4C-C027",
+    "V4C-C028",
+    "V4C-C029",
+    "V4C-C030",
+    "V4D-C001",
+    "V4D-C002",
+    "V4D-C003",
+    "V4D-C004",
+    "V4D-C005",
+    "V4D-C006",
+    "V4D-C007",
+    "V4D-C008",
+    "V4D-C009"
+  ],
+  "all_required_findings_resolved": true,
+  "original_input_hash_checks": [
+    {
+      "audit": "audit_A_D.json",
+      "input": "staging/cases_D.jsonl",
+      "sha256": "391fcdb7657ab5ee5139d9d45b2a527e1b17d9fe48749b0356e1c8fca87757a8",
+      "passed": true
+    },
+    {
+      "audit": "audit_A_D.json",
+      "input": "staging/cases_D_extra.jsonl",
+      "sha256": "1555cb704135a981350829440f6798cac043e017d345ea9a37250660fd2926da",
+      "passed": true
+    },
+    {
+      "audit": "audit_A_D.json",
+      "input": "staging/sources_D.jsonl",
+      "sha256": "fd60682869d3c13d71f347e8f2cc425c11ae97af148f5ebb09eb6ed50001a729",
+      "passed": true
+    },
+    {
+      "audit": "audit_A_D.json",
+      "input": "staging/sources_D_extra.jsonl",
+      "sha256": "00a337466cea722697f8a3701f4564ddfdf8b0f7e293114ceb34c470e8f9fbaf",
+      "passed": true
+    },
+    {
+      "audit": "audit_A_C.json",
+      "input": "staging/cases_C.jsonl",
+      "sha256": "1db7ad772bf650c8c3ed034941217bc2a99fd3d68bc2c341ef8a81be5c37a219",
+      "passed": true
+    },
+    {
+      "audit": "audit_A_C.json",
+      "input": "staging/sources_C.jsonl",
+      "sha256": "5cc007c7d2065f747f852a20d5ca452f71873ab672833e937f027d744a2016ab",
+      "passed": true
+    },
+    {
+      "audit": "audit_A_C.json",
+      "input": "../LAI_RAG_243_v3/fontes/sources.jsonl",
+      "sha256": "979de5fa4de15e4a5571af78da884ed3c2f7855fccbe9ba2161efc19643d7ef0",
+      "passed": true
+    },
+    {
+      "audit": "audit_A_C.json",
+      "input": "../LAI_RAG_243_v3/corpus/entries.jsonl",
+      "sha256": "ae94ba51f981055b5eafa3654be755eb538451414159e3e7338e614c9a52c50f",
+      "passed": true
+    },
+    {
+      "audit": "audit_B_A.json",
+      "input": "rag_research_v4/staging/cases_A.jsonl",
+      "sha256": "d319201a96798293c146633ce9c65cdab25adb4967e34ee8e9bdb0dc180a4e87",
+      "passed": true
+    },
+    {
+      "audit": "audit_B_A.json",
+      "input": "rag_research_v4/staging/sources_A.jsonl",
+      "sha256": "316cc6f04254900142a1cbc63676db230461dbf8542a3fbb8fd66c442e35f9ec",
+      "passed": true
+    },
+    {
+      "audit": "audit_B_A.json",
+      "input": "LAI_RAG_243_v3/corpus/entries.jsonl",
+      "sha256": "ae94ba51f981055b5eafa3654be755eb538451414159e3e7338e614c9a52c50f",
+      "passed": true
+    },
+    {
+      "audit": "audit_B_A.json",
+      "input": "LAI_RAG_243_v3/fontes/sources.jsonl",
+      "sha256": "979de5fa4de15e4a5571af78da884ed3c2f7855fccbe9ba2161efc19643d7ef0",
+      "passed": true
+    },
+    {
+      "audit": "audit_B_A.json",
+      "input": "rag_research_v4/staging/cases_B.jsonl",
+      "sha256": "afedb5f487b86bfb4d4f8ca8b69e33dc359c9bef27c31e4ba3111fa43d707690",
+      "passed": true
+    },
+    {
+      "audit": "audit_B_A.json",
+      "input": "rag_research_v4/staging/cases_C.jsonl",
+      "sha256": "1db7ad772bf650c8c3ed034941217bc2a99fd3d68bc2c341ef8a81be5c37a219",
+      "passed": true
+    },
+    {
+      "audit": "audit_C_B.json",
+      "input": "cases_B.jsonl",
+      "sha256": "afedb5f487b86bfb4d4f8ca8b69e33dc359c9bef27c31e4ba3111fa43d707690",
+      "passed": true
+    },
+    {
+      "audit": "audit_C_B.json",
+      "input": "sources_B.jsonl",
+      "sha256": "29e5221a1d86284ec12895db838a0ca50fc27ad0adbb6ecbc38fa117a90108a7",
+      "passed": true
+    },
+    {
+      "audit": "audit_C_B.json",
+      "input": "strategy_B.jsonl",
+      "sha256": "ff5327060651eb3cd7bc60b9a2cefabd5b037d718dab4e3381eb1eed9af575a6",
+      "passed": true
+    },
+    {
+      "audit": "audit_C_B.json",
+      "input": "searches_B.jsonl",
+      "sha256": "1ec7ace61e0e9c66e8b944e87c808b3e135a7fc76cc8b06953cb72d070461f9e",
+      "passed": true
+    }
+  ],
+  "audit_files": {
+    "audit_A_D.json": "a6aeab33832492940ab576541d986a01dd5625608df5c2289734e56ea3045493",
+    "audit_A_C.json": "94ee74111d452b359a71a2cf6788722625ae4e188c47b399d776ae06274961a4",
+    "audit_B_A.json": "142c332e345b808ece2c1dec8f9d3ad9703e49abac93a2f61671e962eb6e02b3",
+    "audit_C_B.json": "fda06e16af55946e60be97575e34cd7eb16d55348cebf413a7e744e84ef054bd",
+    "audit_A_tail.json": "6ebca77b16c6ba1568fc7906f9b9148dd1afee8a95d8bbd387502ac320451a7e",
+    "audit_A_tail_delta.json": "6874a9ea5a8ba425be4fdde04c9821c7eddc037040265761bdce3db420bb218c"
+  },
+  "resolutions": [
+    {
+      "scope": "A→D",
+      "result": "Quatro achados tratados: fonte primária Mooncake adicionada; streaming limitado a family; configurações Phi delimitadas por época. Novos mapeamentos Mooncake explicitamente apoiados na leitura direta da raiz."
+    },
+    {
+      "scope": "A→C",
+      "result": "Cinco achados tratados pelo autor antes de congelar. Auditor conferiu delta: oito relações exact→family em sete casos; não houve mudança das classes operacionais."
+    },
+    {
+      "scope": "B→A",
+      "result": "Sem falso positivo material nas alegações centrais examinadas. Duplicatas Claude Research, Rufus e Bing agrupadas; mais dois aliases conservadores da raiz documentados."
+    },
+    {
+      "scope": "C→B",
+      "result": "Removidas associações indevidas T197/T206 de V4B-C022. Observação opcional de promover SuffixDecoding a produto não aplicada: conserva-se o recorte de pesquisa do registro, sem promover evidência de implantação."
+    },
+    {
+      "scope": "A→tail",
+      "result": "P012/P015 repetiam material anterior. Foram reescritas e seu delta recebeu nova auditoria; dois achados de novidade materialmente resolvidos."
+    }
+  ],
+  "extra_editorial_decisions": [
+    "Domínio de implantação explícito, separando sistemas sem LLM de aplicações/serving/treino de LLM.",
+    "Rastreabilidade de dez fichas corrigida com sete buscas adicionais reais, sem alterar retroativamente consultas congeladas.",
+    "Casos e fontes suplementares não transformam métricas de replay em telemetria de produção."
+  ],
+  "limitations": [
+    "Revisão documental de registros e mecanismos centrais; não certifica cada frase nem implementação ou métricas das empresas.",
+    "Os relatórios identificam snapshots originais. Correções finais estão em PROVENIENCIA_V4.json; novos detalhes de Mooncake foram lidos pela raiz.",
+    "As 287 estratégias de engenharia não foram experimentadas com modelos 3–30B.",
+    "Nenhum ganho de performance, paridade de fronteira ou ausência absoluta de erro é certificado."
+  ]
+}

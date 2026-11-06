@@ -1,0 +1,76 @@
+{
+  "coverage": {
+    "entry_id": "T087",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 1,
+    "verified_bigtech_llm_production_exact": 1,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 9,
+    "target_met": false,
+    "strict_case_ids": [
+      "V4B-C005"
+    ],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Batching — Static Batching e Dynamic Batching",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C005",
+      "company": "LinkedIn (Microsoft)",
+      "organization_class": "bigtech",
+      "system": "AI-Powered Job Search",
+      "title": "Destilação multiprofessor e serving especializado de busca",
+      "evidence_level": "production_documented",
+      "observed_use": "O pipeline de ranking usa professores especializados e um aluno compacto; o serviço de entendimento de consultas do mesmo produto é descrito com vLLM e batching.",
+      "technical_mechanism": "Sinais de relevância, engajamento e representações alimentam treinamento do aluno; cache de sinais reduz trabalho repetido entre experimentos.",
+      "event_date": "2026-08-06",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S005",
+        "V4B-S010"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T178",
+          "match": "exact",
+          "rationale": "Destilação de conhecimento é explicitamente usada no pipeline de produção."
+        },
+        {
+          "entry_id": "T177",
+          "match": "exact",
+          "rationale": "Professores são ajustados e o aluno é treinado para o domínio."
+        },
+        {
+          "entry_id": "T087",
+          "match": "exact",
+          "rationale": "O relato de serving de query understanding identifica batching no cliente e servidor."
+        },
+        {
+          "entry_id": "R009",
+          "match": "exact",
+          "rationale": "vLLM serve o componente de interpretação de consultas."
+        },
+        {
+          "entry_id": "P017",
+          "match": "analogy",
+          "rationale": "Pipeline real inspira gestão de professores e artefatos da proposta LAI."
+        }
+      ],
+      "small_model_transfer": "Proposta: treinar um aluno 3–14B para uma tarefa bem delimitada, versionando sinais e avaliando dados futuros; o caso mostra especialização, não necessidade de copiar sua escala.",
+      "limits": "O aluno de ranking citado é 0,6B, fora da faixa solicitada. Ranking e query understanding são componentes diferentes do produto; não se afirma que o aluno de ranking é o modelo servido pelo vLLM descrito.",
+      "canonical_case_id": "V4B-C005",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T087",
+        "match": "exact",
+        "rationale": "O relato de serving de query understanding identifica batching no cliente e servidor."
+      }
+    }
+  ]
+}

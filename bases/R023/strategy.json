@@ -1,0 +1,126 @@
+{
+  "id": "R023",
+  "novelty": "A v3 tratou templates e estratégias KV. Esta camada incorpora continuous batching documentado atualmente, separação entre geração e agendamento e transição de protótipo para serviço observável.",
+  "deep_layers": [
+    {
+      "name": "Biblioteca também evolui no serving",
+      "detail": "A documentação atual apresenta generate_batch e ContinuousBatchingManager, com configuração de geração e de scheduling separadas. Portanto, a afirmação de que Transformers não oferece batching contínuo seria incorreta. Disponibilidade da API não garante suporte de todas as arquiteturas nem substitui qualificação operacional.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S010",
+        "V3D-S011",
+        "V4B-S014",
+        "V4B-S006"
+      ]
+    },
+    {
+      "name": "Configurações com funções distintas",
+      "detail": "Temperatura e limite de tokens controlam geração; orçamento de tokens, cache e admissão controlam execução. Mantenha essas escolhas em manifests separados e registre valores efetivos. Um ajuste de scheduling não deve alterar silenciosamente a intenção de amostragem ou o limite contratado pelo cliente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S010",
+        "V3D-S011",
+        "V4B-S014",
+        "V4B-S006"
+      ]
+    },
+    {
+      "name": "Protótipo para operação",
+      "detail": "Um exemplo de notebook que gera corretamente não cobre concorrência, cancelamento, pressão de memória e erros. A plataforma Uber usa componentes Transformers em treinamento e serviços associados, mas isso não comprova qualquer combinação de inferência. Construa testes de integração da classe e do modelo realmente usados.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S010",
+        "V3D-S011",
+        "V4B-S014",
+        "V4B-S006"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Protótipo especializado",
+      "scenario": "A equipe precisa comparar modelos e ajustes rapidamente.",
+      "strategy": "Use carregamento e tokenização explícitos, inspecione templates e valide respostas. Só depois acrescente batching ou cache adequado, medindo cada mudança.",
+      "small_model_role": "Um 3–7B permite ciclos de experimento curtos sem dispensar validação final.",
+      "acceptance": "Reproduzir entrada tokenizada e resultado de tarefa com versões fixadas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S010",
+        "V3D-S011",
+        "V4B-S014",
+        "V4B-S006"
+      ]
+    },
+    {
+      "name": "Serviço com concorrência moderada",
+      "scenario": "Há interesse em usar recursos atuais da própria biblioteca.",
+      "strategy": "Qualifique ContinuousBatchingManager na arquitetura escolhida, teste cancelamento e limites e compare com outro engine sob carga equivalente.",
+      "small_model_role": "Um 8–14B pode ser servido se o caminho atende recursos e prazos necessários.",
+      "acceptance": "Medir fila, conclusão e memória, além da geração de um único pedido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S010",
+        "V3D-S011",
+        "V4B-S014",
+        "V4B-S006"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "A simplicidade de integração pode ser vantagem quando carga e modelo são modestos.",
+    "8_14b": "Separar configuração de geração e scheduling ajuda a diagnosticar regressões.",
+    "15_30b": "Modelos 15–30B exigem verificar quantização, distribuição e buffers na classe concreta.",
+    "training_or_runtime_requirements": "Biblioteca de modelos, treino e inferência com recursos atuais de serving; suporte é por versão e arquitetura.",
+    "do_not_use_when": "Não descrever toda geração via Transformers como serial nem assumir que a API substitui gestão completa de produção."
+  },
+  "connections": [
+    {
+      "target_id": "T088",
+      "relation": "complements",
+      "how": "A documentação de continuous batching oferece gerenciamento de pedidos ativos.",
+      "interface": "Requisições e configuração de agendamento.",
+      "condition": "Modelo e backend suportados.",
+      "acceptance": "Testar entrada, saída e cancelamento de sequências.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4B-S014"
+      ],
+      "case_ids": [
+        "V4B-C013"
+      ]
+    },
+    {
+      "target_id": "T082",
+      "relation": "complements",
+      "how": "O caminho documentado inclui cache de prefixos onde suportado.",
+      "interface": "Identidade de tokens e configuração de cache.",
+      "condition": "Compatibilidade e isolamento confirmados.",
+      "acceptance": "Medir reúso consumido e evitar mistura de estado.",
+      "basis": "source_documented",
+      "source_ids": [
+        "V4B-S014"
+      ],
+      "case_ids": [
+        "V4B-C013"
+      ]
+    }
+  ],
+  "failure_controls": [
+    "Não duplicar tokens especiais depois de aplicar template.",
+    "Registrar classe carregada e avisos de fallback, não só versão do pacote."
+  ],
+  "frontier_comparison": "Transformers facilita implementar e comparar modelos. A vantagem frente a fronteira depende da aplicação e do checkpoint; a biblioteca não torna arquiteturas e capacidades equivalentes.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q007",
+      "V4B-Q014"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3D-S010",
+    "V3D-S011",
+    "V4B-S014",
+    "V4B-S006"
+  ]
+}

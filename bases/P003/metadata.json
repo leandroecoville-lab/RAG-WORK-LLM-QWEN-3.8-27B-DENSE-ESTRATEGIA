@@ -1,0 +1,36 @@
+{
+  "id": "P003",
+  "name": "Virtual Context Manager",
+  "canonical_name": "Virtual Context Manager",
+  "canonical_id": "P003",
+  "aliases": [
+    "gestor proposto de contexto virtual",
+    "paginação proposta de memória externa"
+  ],
+  "category": "componentes_propostos",
+  "kind": "component",
+  "scope": "proposta",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T063",
+    "T066",
+    "T074",
+    "P002",
+    "P004",
+    "P006"
+  ],
+  "source_ids": [
+    "A-S009",
+    "A-S006",
+    "A-S022",
+    "A-S010",
+    "V3A-S039",
+    "V2B-S003",
+    "V3A-S046"
+  ],
+  "namespace": "P003",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/P003",
+  "chunk_count": 9
+}

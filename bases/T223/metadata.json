@@ -1,0 +1,32 @@
+{
+  "id": "T223",
+  "name": "Constitutional Self-Check",
+  "canonical_name": "Constitutional Self-Check",
+  "canonical_id": "T223",
+  "aliases": [
+    "principle based self check",
+    "checagem por princípios"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T185",
+    "T224",
+    "T217"
+  ],
+  "source_ids": [
+    "V2A-S020",
+    "V2A-S022",
+    "V3C-S032",
+    "V4C-S030",
+    "V4C-S009",
+    "C-S030"
+  ],
+  "namespace": "T223",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T223",
+  "chunk_count": 9
+}

@@ -1,0 +1,54 @@
+{
+  "id": "R019",
+  "technical_details": "O modo architect do Aider separa duas tarefas: formular a alteração e traduzi-la em instruções de edição. Os papéis podem usar modelos diferentes ou o mesmo modelo em duas chamadas. Isso separa erro de raciocínio de erro de formatação, mas uma tradução sintaticamente válida ainda pode contrariar o plano. O editor usa um formato próprio: diff significa SEARCH/REPLACE; udiff pertence a outra convenção. O repo map orienta localização, enquanto o conteúdo atual do arquivo determina a alteração aplicável. Na integração de lint, o código de saída precisa distinguir erro real de um formatador que apenas modificou arquivos.",
+  "boundary_condition": "Dois estágios não garantem maior qualidade. Um plano incompleto, mapa desatualizado ou comando de validação mal configurado pode aumentar ciclos de correção.",
+  "implementation_contract": {
+    "inputs": "Revisão base, arquivos editáveis, proposta do architect, formato do editor e comandos de validação.",
+    "outputs": "Alterações aplicadas, diagnóstico do parser e resultados associados à revisão modificada.",
+    "state": "Plano original, resposta do editor, diferenças resultantes e tentativas de reparo.",
+    "invariant": "A edição preserva o escopo aprovado e é validada no conteúdo efetivamente produzido."
+  },
+  "tradeoffs": [
+    "Separar papéis facilita localizar a causa da falha, mas acrescenta latência e consumo de contexto.",
+    "SEARCH/REPLACE economiza saída, porém depende de trechos identificáveis no arquivo atual."
+  ],
+  "failure_test": "Teste proposto: fornecer plano correto e fazer o editor emitir formato incompatível. Exigir rejeição explícita; configurar formatador com saída não zero e conferir que não produz falso ciclo de reparação.",
+  "evaluation_plan": "Comparar code e architect nas mesmas tarefas, revisões e orçamento total. Medir acerto funcional, aplicação de edições, divergência do plano e custo incluindo reparos; selecionar pela taxa de alterações aceitas.",
+  "comparisons": [
+    {
+      "entry_id": "T229",
+      "relation": "complements",
+      "reason": "Aider pode concretizar edição por patches, mas também oferece formatos de arquivo completo; o contrato depende da configuração."
+    },
+    {
+      "entry_id": "R027",
+      "relation": "complements",
+      "reason": "Git fixa a base e permite comparar o resultado entre as etapas de planejamento e edição."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Architect e editor são etapas separadas e podem utilizar o mesmo modelo em duas solicitações.",
+    "source_ids": [
+      "V3C-S042"
+    ],
+    "support": "direct",
+    "caveat": "A documentação não demonstra que a separação supera todo modelo e tarefa de programação."
+  },
+  "advanced_qa": [
+    {
+      "question": "Editor correto no formato significa plano implementado?",
+      "answer": "Não. Compare as diferenças com requisitos e testes comportamentais específicos."
+    },
+    {
+      "question": "Por que um formatador pode confundir a correção automática?",
+      "answer": "Se retornar código não zero por ter formatado código, o executor pode interpretar sucesso de formatação como falha de lint."
+    }
+  ],
+  "source_ids": [
+    "V3C-S042",
+    "V2A-S008",
+    "V2B-S009",
+    "V2A-S007"
+  ],
+  "research_note": "Síntese documental; contrato e testes são propostas editoriais, sem execução do produto neste trabalho."
+}

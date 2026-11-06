@@ -1,0 +1,118 @@
+{
+  "id": "T153",
+  "novelty": "A v3 cobriu framing e corrida de cancelamento. Agora a transmissão distingue conteúdo provisório, eventos confirmados e mensagens de encerramento, preservando integridade quando o usuário interrompe uma tarefa longa.",
+  "deep_layers": [
+    {
+      "name": "Provisório não é confirmado",
+      "detail": "A interface pode exibir texto incremental sem permitir que outros componentes o tratem como resposta final. Use estados explícitos para rascunho, concluído e interrompido. Em objetos estruturados, só publique campos acionáveis quando o protocolo e a validação permitirem, sem executar argumentos ainda incompletos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S019",
+        "V3C-S004"
+      ]
+    },
+    {
+      "name": "Cancelamento em árvore",
+      "detail": "Interromper o stream deve alcançar produtor, ferramentas e subagentes conforme suas possibilidades. Cada filho devolve se parou, terminou ou possui resultado desconhecido. O controlador agrega esses estados; fechar a conexão do usuário não é prova de que a GPU, a consulta ou a operação externa foram encerradas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S005",
+        "V3C-S007"
+      ]
+    },
+    {
+      "name": "Reutilização após interrupção",
+      "detail": "Resultados confirmados de leituras podem ser guardados para continuar depois, enquanto uma resposta parcial fica marcada como incompleta. A próxima sessão precisa receber objetivo e estado de cada operação, não apenas o último texto exibido. Assim, interromper para mudar de ideia não exige perder todo trabalho útil.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S015",
+        "V3C-S030"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Pesquisa que o usuário redefine",
+      "scenario": "Durante a coleta, o usuário reduz o escopo da pergunta.",
+      "strategy": "Pare novas buscas, cancele ramos desnecessários e preserve evidências dos restantes. Emita uma revisão do objetivo e monte uma nova entrega com o que continua válido. Não misture o final da resposta antiga ao início da nova.",
+      "small_model_role": "3–7B extrai fatos por ramo; 15–30B reavalia relevância sob o objetivo atualizado.",
+      "acceptance": "Proposta: medir chamadas evitadas, evidências reutilizadas e fragmentos indevidamente atribuídos à nova resposta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4C-S015"
+      ]
+    },
+    {
+      "name": "Geração de patch cancelada",
+      "scenario": "A saída estava formando uma alteração quando a sessão foi interrompida.",
+      "strategy": "Guarde o candidato como incompleto, sem aplicá-lo automaticamente. Se a edição já ocorreu por ferramenta, registre revisão e efeitos confirmados. A continuação decide entre validar, completar ou descartar, sempre contra a base atual.",
+      "small_model_role": "8–30B reconstrói a intenção; código distingue texto parcial de arquivo realmente alterado.",
+      "acceptance": "Proposta: interromper em vários pontos e exigir ausência de publicação de patch não validado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S030",
+        "V3C-S037"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Proposta: respostas curtas com estados simples de conclusão e nenhum efeito disparado por fragmento.",
+    "8_14b": "Proposta: transmissão de etapas de ferramenta com recibos separados do texto explicativo.",
+    "15_30b": "Proposta: coordenação de streams de pesquisa ou edição mantendo cancelamento por ramo.",
+    "training_or_runtime_requirements": "Confirmar suporte de streaming e parser do modelo; alguns contratos de ferramentas exigem resposta completa.",
+    "do_not_use_when": "Não depender de cancelamento para desfazer um efeito externo ou recuperar memória de GPU imediatamente."
+  },
+  "connections": [
+    {
+      "target_id": "T172",
+      "relation": "feeds",
+      "how": "O controlador interpreta frames, aplica backpressure e preserva o estado terminal.",
+      "interface": "ID do stream, sequência e evento de término ou interrupção.",
+      "condition": "O consumidor reconhece revisões e duplicatas.",
+      "acceptance": "Injetar desconexão e impedir conclusão falsa por último fragmento recebido.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S019"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T243",
+      "relation": "complements",
+      "how": "Operações já enviadas durante o stream precisam de reconciliação separada.",
+      "interface": "Intenção, tentativa e status observado pelo destino.",
+      "condition": "O efeito pode sobreviver à conexão encerrada.",
+      "acceptance": "Cancelar após envio e confirmar que não há repetição cega.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S026",
+        "V3C-S005"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não tratar um botão de parar como confirmação do servidor.",
+    "Liquidar custos e reservas somente conforme o estado observado das operações."
+  ],
+  "frontier_comparison": "Compare responsividade e integridade sob cancelamento em modelos pequenos e fronteira. Percepção de rapidez não equivale a menor tempo de conclusão validada.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q010",
+      "V4C-Q013"
+    ],
+    "scope_note": "LinkedIn documenta experiência incremental; protocolos de cancelamento vêm de especificações. Não se inventou deployment que conecte todos esses detalhes."
+  },
+  "source_ids": [
+    "V3C-S019",
+    "V3C-S004",
+    "V3C-S005",
+    "V3C-S007",
+    "V4C-S015",
+    "V3C-S030",
+    "C-S030",
+    "V3C-S037",
+    "C-S026"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "entry_id": "T070",
+  "edges": [
+    {
+      "edge_id": "E-T070-01",
+      "from": "T070",
+      "to": "T049",
+      "relation": "feeds",
+      "how": "Retornar experiência com contexto suficiente.",
+      "interface": "Condições, ações, resultado e campos desconhecidos.",
+      "condition": "Recuperação preservar episódio completo ou link.",
+      "acceptance": "Testar episódio sem resultado e impedir preenchimento por suposição.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S002",
+        "V3A-S032"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T070-02",
+      "from": "T070",
+      "to": "T056",
+      "relation": "requires",
+      "how": "Aplicar corte de conhecimento em auditoria histórica.",
+      "interface": "Tempos de ocorrência e registro.",
+      "condition": "Amostra usar perspectiva temporal declarada.",
+      "acceptance": "Inserir episódio atrasado e comparar consultas antes e depois.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S002",
+        "V3A-S032"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

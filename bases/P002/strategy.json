@@ -1,0 +1,135 @@
+{
+  "id": "P002",
+  "novelty": "A v3 cuidou de revisão e ocupação. Aqui Context Manager é proposto como escalonador de orçamento entre sessões e fases.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Defina limite útil por modelo e condição de carga, preservando reserva de saída. Concorrência pode reduzir contexto viável por sessão mesmo quando a janela nominal permanece igual.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006",
+        "V4A-S015"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Escolha entre adiar, compactar, dividir tarefa e trocar consumidor. Cada opção tem custo e risco próprios; o controlador não deve compactar automaticamente tudo que ultrapassa um limiar.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006",
+        "V4A-S015"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare política fixa e política por fase sob carga variável. Meça estouros, latência de fila, qualidade após redução e sessões prejudicadas por outras; eficiência média não deve esconder starvation. Unidade de avaliação: sessão sob carga.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006",
+        "V4A-S015"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Servidor com vários agentes",
+      "scenario": "Sessões longas disputam memória.",
+      "strategy": "Separar filas por necessidade, limitar trabalho ativo e reduzir contexto apenas onde requisitos permitem. Recontar após qualquer mudança de modelo.",
+      "small_model_role": "3–7B tarefas curtas; 15–30B fila de integração.",
+      "acceptance": "Nenhuma sessão pode exceder recursos ou perder obrigação silenciosamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006",
+        "V4A-S015"
+      ]
+    },
+    {
+      "name": "Tarefa que cresce",
+      "scenario": "Nova evidência torna pacote maior que a janela.",
+      "strategy": "Estimar expansão, escolher decomposição ou compactação de fase concluída e manter lacuna explícita quando conjunto obrigatório não couber.",
+      "small_model_role": "8–14B produz proposta de redução.",
+      "acceptance": "Redução só é aceita se campos obrigatórios permanecerem resolvíveis.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006",
+        "V4A-S015"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Executor de tarefas pequenas com limite e saída previsíveis.",
+    "8_14b": "Leitor de fases moderadas com retomada por pacote estruturado.",
+    "15_30b": "Integrador reservado para fases que exigem relações mais amplas.",
+    "training_or_runtime_requirements": "Telemetria de tokens, memória, filas e perfil de tarefa; decisões de limite devem ser aplicadas por código.",
+    "do_not_use_when": "A aplicação exige que todas as sessões recebam contexto máximo simultaneamente sem recursos correspondentes."
+  },
+  "connections": [
+    {
+      "target_id": "T222",
+      "relation": "requires",
+      "how": "Receber ocupação e crescimento previsto.",
+      "interface": "Tokens atuais, reserva, próxima operação e quantis.",
+      "condition": "Contagem refletir protocolo real.",
+      "acceptance": "Injetar resultado volumoso e verificar prevenção de estouro.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006",
+        "V4A-S015"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T043",
+      "relation": "complements",
+      "how": "Compactar fase encerrada com contrato de retomada.",
+      "interface": "Revisão, fronteira e obrigações ativas.",
+      "condition": "Resumo preservar estado necessário.",
+      "acceptance": "Retomar em leitor menor e verificar condições do próximo passo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006",
+        "V4A-S015"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "P001",
+      "relation": "feeds",
+      "how": "Fornecer orçamento útil para montagem.",
+      "interface": "Modelo, cotas, prazo e decisão de insuficiência.",
+      "condition": "Builder respeitar conjunto obrigatório.",
+      "acceptance": "Solicitar pacote impossível e exigir replanejamento explícito.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4A-S002",
+        "A-S006",
+        "V4A-S015"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não descontar tokens cacheados da janela.",
+    "Não trocar modelo sem recalcular tokenizer, contexto e compatibilidade."
+  ],
+  "frontier_comparison": "Comparar qualidade por sessão sob carga igual; política eficiente não torna modelo pequeno equivalente em toda tarefa.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q002",
+      "V4A-Q011"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V4A-S002",
+    "A-S006",
+    "V4A-S015"
+  ]
+}

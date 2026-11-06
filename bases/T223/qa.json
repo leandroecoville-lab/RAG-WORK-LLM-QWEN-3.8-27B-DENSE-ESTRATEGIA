@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Isso é Constitutional AI completo?",
+    "answer": "Não. O uso aqui é uma checagem em execução inspirada em revisão por princípios. A referência original inclui processos de treinamento que não são executados nesta base."
+  },
+  {
+    "question": "Uma aprovação do modelo autoriza uma operação?",
+    "answer": "Não. Autorizações pertencem ao controle de acesso e às instruções válidas. Uma autochecagem fornece avaliação, não concessão de permissão."
+  },
+  {
+    "question": "Não encontrar uma violação prova conformidade?",
+    "answer": "Não. Pode refletir cobertura limitada ou critério mal interpretado; o relatório deve explicitar escopo e evidência."
+  },
+  {
+    "question": "Preciso verificar novamente após uma correção?",
+    "answer": "Sim, nas dimensões afetadas: o artefato mudou e a evidência anterior pode não valer para a nova versão."
+  }
+]

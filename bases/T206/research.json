@@ -1,0 +1,47 @@
+{
+  "id": "T206",
+  "technical_details": "Um registro de execução oferece observabilidade, mas verificar o processo exige regras sobre transições permitidas e evidências que sustentem cada etapa. Em sistemas concorrentes, timestamps sozinhos não definem causalidade; IDs, relações entre operações e versões ajudam a reconstruir o que ocorreu. Uma mensagem “sucesso” emitida pela própria ação não prova que sua pós-condição se realizou no recurso externo.",
+  "boundary_condition": "Traces incompletos ou amostrados podem omitir a etapa que violou o contrato; ausência de evento não demonstra ausência de ação.",
+  "implementation_contract": {
+    "inputs": "Eventos correlacionados, versões de estado, pré/pós-condições e regras de transição.",
+    "outputs": "Relatório de invariantes atendidas, violações e lacunas de evidência.",
+    "state": "Identidades de operações, vínculos causais, resultados observados e política de retenção.",
+    "invariant": "Toda conclusão de processo indica quais eventos e estados realmente a sustentam."
+  },
+  "tradeoffs": [
+    "Mais instrumentação melhora diagnóstico e acrescenta custo e volume.",
+    "Checagem de resultado externo fortalece evidência e pode exigir consultas adicionais."
+  ],
+  "failure_test": "Teste proposto: registrar sucesso antes de uma gravação que falha, duplicar uma operação e remover um evento intermediário. Esperar distinção entre violação, duplicidade e evidência insuficiente.",
+  "evaluation_plan": "Plano proposto: comparar execuções corretas e falhas injetadas com traces completos e parciais. Medir detecção, falsos alarmes e capacidade de localizar a transição inválida; aprovar somente conclusões proporcionais à cobertura observada.",
+  "comparisons": [
+    {
+      "entry_id": "T194",
+      "relation": "distinct_from",
+      "reason": "Verificação inspeciona execução; process supervision usa sinais de etapas para treinamento."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "OpenTelemetry representa operações por spans e oferece vínculos, eventos e contexto para correlacionar trabalho distribuído.",
+    "source_ids": [
+      "V3B-S023"
+    ],
+    "support": "related",
+    "caveat": "A fonte define observabilidade; o verificador de invariantes é uma camada adicional proposta, não garantia automática do tracing."
+  },
+  "advanced_qa": [
+    {
+      "question": "Pode reconstruir ordem apenas pelo relógio?",
+      "answer": "Nem sempre. Relógios diferentes e concorrência exigem relações causais e identificadores, além dos horários."
+    },
+    {
+      "question": "Processo correto garante objetivo correto?",
+      "answer": "Pode cumprir uma especificação errada ou incompleta; valide também se critérios e pós-condições correspondem à necessidade real."
+    }
+  ],
+  "source_ids": [
+    "V3B-S023",
+    "C-S047"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "PagedAttention comprime o conteúdo?",
+    "answer": "Não. Organiza o armazenamento dos estados; quantização e poda são decisões distintas."
+  },
+  {
+    "question": "É igual ao paging do sistema operacional?",
+    "answer": "Usa inspiração semelhante, mas gerencia estruturas específicas do cache KV do modelo."
+  },
+  {
+    "question": "Paginação comprime os valores?",
+    "answer": "Não. Ela reorganiza alocação e compartilhamento; quantização é uma transformação separada da representação."
+  },
+  {
+    "question": "Pode liberar ao terminar uma resposta?",
+    "answer": "Somente depois de remover sua referência e confirmar que nenhum outro consumidor utiliza aquele bloco físico."
+  }
+]

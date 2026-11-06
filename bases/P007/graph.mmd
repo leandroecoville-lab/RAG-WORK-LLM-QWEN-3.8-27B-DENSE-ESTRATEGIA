@@ -1,0 +1,8 @@
+flowchart TD
+    P007["P007 Memory Retriever"]
+    T027["T027 Hybrid Retrieval — BM25 + vetores"]
+    P007 -. "complements: proposta" .-> T027
+    T028["T028 Reranking"]
+    P007 -. "feeds: proposta" .-> T028
+    P001["P001 Context Engine"]
+    P007 -. "feeds: proposta" .-> P001

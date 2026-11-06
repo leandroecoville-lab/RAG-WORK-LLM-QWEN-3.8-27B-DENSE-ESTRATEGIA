@@ -1,0 +1,129 @@
+{
+  "id": "P014",
+  "novelty": "Aprofunda a capacidade transversal de resiliência com invariantes durante recuperação, observabilidade de estagnação e testes por fronteira de falha.",
+  "source_ids": [
+    "V3D-S016",
+    "V3D-S017",
+    "C-S026",
+    "V4C-S001"
+  ],
+  "deep_layers": [
+    {
+      "name": "Invariantes durante falha",
+      "detail": "Proposta: definir o que deve permanecer verdadeiro enquanto o sistema está degradado, não apenas depois de reiniciar. Exemplos incluem não confirmar efeito desconhecido, não perder tarefa aceita e não permitir dois donos ativos sobre a mesma mutação. Cada fronteira recebe um teste de violação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S016",
+        "V3D-S017",
+        "C-S026",
+        "V4C-S001"
+      ]
+    },
+    {
+      "name": "Progresso semântico observável",
+      "detail": "Separar heartbeat do processo, avanço de cursor e conclusão de subtarefa. Um agente pode continuar emitindo tokens enquanto repete a mesma hipótese. Medir mudança de estado verificável e comparar com o orçamento esperado para detectar estagnação sem interromper trabalho legitimamente longo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S016",
+        "V3D-S017",
+        "C-S026",
+        "V4C-S001"
+      ]
+    },
+    {
+      "name": "Recuperação em níveis",
+      "detail": "Escalar de nova tentativa local para retomada do checkpoint, reatribuição de worker e intervenção definida. Cada nível consome orçamento e preserva diagnóstico. Reiniciar toda a sessão ao primeiro erro pode descartar evidência e multiplicar chamadas sem corrigir a causa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S016",
+        "V3D-S017",
+        "C-S026",
+        "V4C-S001"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Agente preso em ciclos",
+      "scenario": "Chamadas seguem funcionando, mas a tarefa não avança.",
+      "strategy": "Detectar repetição de estado/ação e testar uma mudança controlada de estratégia antes de escalar.",
+      "small_model_role": "Modelo pequeno pode classificar padrões; detector mantém contador e estado externo.",
+      "acceptance": "Ciclo sintético é detectado; tarefa lenta com progresso válido não é encerrada indevidamente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S016",
+        "V3D-S017",
+        "C-S026",
+        "V4C-S001"
+      ]
+    },
+    {
+      "name": "Queda entre etapas duráveis",
+      "scenario": "Processo termina após gerar candidato, antes de publicar.",
+      "strategy": "Retomar do estado persistido, verificar integridade e executar somente a parte ainda não confirmada.",
+      "small_model_role": "LLM lê o pacote mínimo de retomada; não reconstrói histórico por adivinhação.",
+      "acceptance": "Falha injetada em cada fronteira preserva invariantes e evidencia a conclusão correta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S016",
+        "V3D-S017",
+        "C-S026",
+        "V4C-S001"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "3–7B: execução curta com progresso explícito e recuperação externa.",
+    "8_14b": "8–14B: tarefas em várias etapas com limites de repetição e checkpoints úteis.",
+    "15_30b": "15–30B: investigação de impasses complexos somente depois de preservar evidências e estado.",
+    "training_or_runtime_requirements": "A capacidade emerge de persistência, observação e políticas; não exige um novo modelo ou serviço monolítico.",
+    "do_not_use_when": "Não medir resiliência somente por uptime ou quantidade de reinícios."
+  },
+  "connections": [
+    {
+      "target_id": "T225",
+      "relation": "complements",
+      "how": "Permitir restart apenas com diagnóstico e estado recuperável.",
+      "interface": "Sinal de falha, orçamento, última etapa confirmada.",
+      "condition": "Processo ou worker deixou de atender seu contrato.",
+      "acceptance": "Restart não perde trabalho confirmado nem repete efeito ambíguo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S016",
+        "V3D-S017",
+        "C-S026",
+        "V4C-S001"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T227",
+      "relation": "complements",
+      "how": "Combinar saúde de processo, prontidão e progresso da tarefa.",
+      "interface": "Sinais separados e critérios por tipo de trabalho.",
+      "condition": "Um indicador isolado não distingue travamento de lentidão.",
+      "acceptance": "Os testes discriminam processo vivo sem progresso de tarefa avançando normalmente.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S016",
+        "V3D-S017",
+        "C-S026",
+        "V4C-S001"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não renovar indefinidamente o prazo apenas porque chegaram tokens.",
+    "Não apagar diagnóstico no reinício que deveria investigá-lo."
+  ],
+  "frontier_comparison": "Avaliar custo e conclusão correta em matrizes de falha equivalentes entre modelos. Um sistema maior sem persistência pode falhar em continuidade; isso não prova menor capacidade cognitiva.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q002",
+      "V4C-Q004",
+      "V4C-Q022"
+    ],
+    "scope_note": "P014 é capacidade editorial transversal. Relatos de execução durável e práticas operacionais são referências, sem implantação literal de um componente com esse nome."
+  }
+}

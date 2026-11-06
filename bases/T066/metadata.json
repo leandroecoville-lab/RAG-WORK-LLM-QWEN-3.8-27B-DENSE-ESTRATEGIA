@@ -1,0 +1,32 @@
+{
+  "id": "T066",
+  "name": "Memory Resolver / Reference Resolver",
+  "canonical_name": "Memory Resolver / Reference Resolver",
+  "canonical_id": "T066",
+  "aliases": [
+    "resolvedor de memória",
+    "resolvedor de referências"
+  ],
+  "category": "memoria",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T015",
+    "T053",
+    "T061",
+    "T067"
+  ],
+  "source_ids": [
+    "A-S010",
+    "A-S028",
+    "V3A-S019",
+    "V3A-S038",
+    "V4A-S018"
+  ],
+  "namespace": "T066",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T066",
+  "chunk_count": 9
+}

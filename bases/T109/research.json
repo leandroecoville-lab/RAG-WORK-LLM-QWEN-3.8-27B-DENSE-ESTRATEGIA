@@ -1,0 +1,46 @@
+{
+  "id": "T109",
+  "technical_details": "Vizinhança local precisa declarar orientação, inclusão da própria posição e tratamento de limites. Uma janela bidirecional em encoder e uma janela causal em decoder podem ter a mesma largura nominal e conjuntos visíveis diferentes. Em sequências empacotadas, a proximidade física de tokens não permite cruzar fronteiras documentais. O padrão local também pode ser combinado com dilatação, alterando quais distâncias são acessíveis por camada.",
+  "boundary_condition": "Usar máscara local em pesos treinados com outro padrão altera a função e pode reduzir qualidade mesmo quando o kernel é correto.",
+  "implementation_contract": {
+    "inputs": "Comprimentos, fronteiras de documentos, orientação da janela e alcance por camada.",
+    "outputs": "Máscara ou metadados que representam exatamente a vizinhança permitida.",
+    "state": "Posições lógicas e identificação documental independente do offset físico.",
+    "invariant": "Nenhuma conexão atravessa limites sem autorização explícita da arquitetura."
+  },
+  "tradeoffs": [
+    "Vizinhanças curtas reduzem trabalho e aumentam a distância de propagação entre fatos.",
+    "Empacotar exemplos economiza padding, mas exige isolamento rigoroso das máscaras."
+  ],
+  "failure_test": "Teste proposto: colocar dois documentos adjacentes e modificar somente o segundo. Em configuração causal ou isolada, esperar que a representação das posições não autorizadas do primeiro permaneça inalterada.",
+  "evaluation_plan": "Plano proposto: comparar implementação local com referência densa mascarada, incluindo bordas e comprimentos curtos. Depois medir tarefas com dependências em distâncias diferentes; separar correção do kernel de adequação do padrão à aplicação.",
+  "comparisons": [
+    {
+      "entry_id": "T095",
+      "relation": "complements",
+      "reason": "As fichas se sobrepõem na janela contígua; orientação e fronteiras precisam ser declaradas para comparar implementações."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Longformer combina conexões locais com mecanismos globais para tarefas de documentos extensos.",
+    "source_ids": [
+      "B-S015"
+    ],
+    "support": "direct",
+    "caveat": "A fonte descreve uma arquitetura; suas propriedades não tornam qualquer janela local adequada a decoders."
+  },
+  "advanced_qa": [
+    {
+      "question": "Largura W define a máscara completamente?",
+      "answer": "Não. É preciso saber se inclui o centro, quantos tokens ficam em cada direção e quais fronteiras existem."
+    },
+    {
+      "question": "Pode reutilizar uma máscara em todo o lote?",
+      "answer": "Somente quando posições, comprimentos e separação documental produzem a mesma conectividade ou broadcasting corretamente definido."
+    }
+  ],
+  "source_ids": [
+    "B-S015"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

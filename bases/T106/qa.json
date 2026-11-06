@@ -1,0 +1,18 @@
+[
+  {
+    "question": "MQA e GQA são técnicas de compressão textual?",
+    "answer": "Não. Alteram o compartilhamento de chaves e valores na atenção; o texto da entrada pode continuar idêntico."
+  },
+  {
+    "question": "Por que T106 não usa apenas T100 como canônico?",
+    "answer": "Este registro trata a operação de serving aplicável a MQA e GQA; T099 e T100 descrevem as arquiteturas específicas."
+  },
+  {
+    "question": "Como considerar camadas locais e globais?",
+    "answer": "Use comprimentos retidos por camada, em vez de multiplicar todas por um único comprimento total."
+  },
+  {
+    "question": "Menos bytes por token garante mais usuários?",
+    "answer": "Apenas se KV for o limitante relevante e outros recursos, prazos e reservas também suportarem a concorrência adicional."
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "A-S006",
+    "title": "Effective context engineering for AI agents",
+    "url": "https://www.anthropic.com/research/effective-context-engineering-for-ai-agents",
+    "publisher": "Anthropic",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-09-29",
+    "supports": "Gestão seletiva de contexto, recuperação sob demanda e técnicas de continuidade de agentes.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn5view0"
+  },
+  {
+    "source_id": "A-S026",
+    "title": "Equipping agents for the real world with Agent Skills",
+    "url": "https://www.anthropic.com/research/equipping-agents-for-the-real-world-with-agent-skills",
+    "publisher": "Anthropic",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-10-16",
+    "supports": "Skills descobertas por metadados, com instruções e recursos carregados sob demanda.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn5view1"
+  },
+  {
+    "source_id": "V3A-S010",
+    "title": "Active Retrieval Augmented Generation",
+    "url": "https://arxiv.org/abs/2305.06983",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-05-11",
+    "supports": "FLARE usa previsão da próxima sentença e sinais de confiança para decidir consultas e regeneração.",
+    "limitations": "Consulta de fonte primária; não houve reprodução experimental. Resultados e APIs são limitados ao trabalho ou documentação citados, consultados em 2026-11-05.",
+    "web_ref": "turn91view3"
+  },
+  {
+    "source_id": "C-S030",
+    "title": "How we built our multi-agent research system",
+    "url": "https://www.anthropic.com/research/multi-agent-research-system",
+    "publisher": "Anthropic",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Arquitetura coordenador-especialistas e contextos separados pode paralelizar pesquisa e usar artefatos de transferência.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn34view9"
+  },
+  {
+    "source_id": "V4A-S023",
+    "title": "Indexing repositories for GitHub Copilot",
+    "url": "https://docs.github.com/en/copilot/concepts/prompting-and-context/repository-indexing",
+    "publisher": "GitHub",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Índice semântico de código e atualização; funcionalidade documentada do Copilot.",
+    "limitations": "Escopo limitado ao material aberto. Disponibilidade, resultados experimentais e implantação histórica são classes distintas; não demonstra desempenho de modelos 3–30B no ambiente do usuário.",
+    "web_ref": "turn249view1"
+  }
+]

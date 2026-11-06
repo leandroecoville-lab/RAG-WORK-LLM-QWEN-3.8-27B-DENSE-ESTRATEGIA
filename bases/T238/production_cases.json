@@ -1,0 +1,165 @@
+{
+  "coverage": {
+    "entry_id": "T238",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 3,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 3,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Read On Demand com faixa de linhas",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C026",
+      "company": "Anthropic",
+      "system": "Scion",
+      "title": "Source control interno para escala de agentes",
+      "evidence_level": "production_documented",
+      "observed_use": "Monorepo migrado para sistema interno de controle de versões; CI e agentes usam consultas e materialização seletiva.",
+      "technical_mechanism": "Changesets e conteúdo imutáveis, dados derivados, caches hierárquicos e alteração de referência separada da criação de conteúdo.",
+      "event_date": "2026-10-13",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S027"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T238",
+          "match": "family",
+          "rationale": "Scion fornece consulta e materialização seletiva de arquivos sob demanda; não demonstra especificamente a API de faixa de linhas."
+        },
+        {
+          "entry_id": "T236",
+          "match": "family",
+          "rationale": "Changesets versionam alterações mas não são git commit."
+        },
+        {
+          "entry_id": "R027",
+          "match": "analogy",
+          "rationale": "Sistema substituiu Git naquele ambiente; não comprova comportamento Git atual."
+        },
+        {
+          "entry_id": "T239",
+          "match": "analogy",
+          "rationale": "Checkouts esparsos/virtualizados não são Git worktrees."
+        },
+        {
+          "entry_id": "P015",
+          "match": "analogy",
+          "rationale": "Publicação e autoria por versão inspiram o componente editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: armazenar artefatos por conteúdo e ler arquivos necessários; adotar princípios sem recriar Scion ou atribuir seus ganhos à faixa 3–30B.",
+      "limits": "Infraestrutura excepcional, sistema distinto de Git; uma adoção, não um caso para cada cache ou ferramenta.",
+      "organization_class": "ai_lab",
+      "canonical_case_id": "V4C-C026",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T238",
+        "match": "family",
+        "rationale": "Scion fornece consulta e materialização seletiva de arquivos sob demanda; não demonstra especificamente a API de faixa de linhas."
+      }
+    },
+    {
+      "case_id": "V4C-C011",
+      "company": "Google",
+      "system": "Tricorder integrado a Critique",
+      "title": "Análise estática no momento da revisão",
+      "evidence_level": "production_documented",
+      "observed_use": "O livro de engenharia do Google descreve Tricorder como plataforma interna integrada à revisão de código, com análises de mudanças e feedback aos responsáveis.",
+      "technical_mechanism": "Analisadores recebem metadados da mudança e acessam versões pertinentes; resultados aparecem junto ao diff, com controle de utilidade e falsos positivos.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S010"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T233",
+          "match": "exact",
+          "rationale": "Análises são associadas à mudança de código antes da integração."
+        },
+        {
+          "entry_id": "T238",
+          "match": "family",
+          "rationale": "A infraestrutura lê versões pertinentes à mudança, mas não demonstra leitura LLM por faixas de linhas."
+        },
+        {
+          "entry_id": "T224",
+          "match": "family",
+          "rationale": "Verificações expressam critérios de engenharia, sem afirmar um processo integral spec-driven."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "Validação vinculada à revisão e ao responsável inspira o gate editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: um modelo pequeno transforma diagnósticos em candidatos de reparo, mantendo analisadores como fontes de evidência. Medir avisos acionáveis, introdução de regressões e tempo de revisão, não apenas número de alertas.",
+      "limits": "Caso de análise estática sem LLM de 3–30B. Ausência de diagnóstico não garante ausência de erro; resultados históricos não definem capacidade atual.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C011",
+      "deployment_domain": "software_analysis_without_llm",
+      "mapping": {
+        "entry_id": "T238",
+        "match": "family",
+        "rationale": "A infraestrutura lê versões pertinentes à mudança, mas não demonstra leitura LLM por faixas de linhas."
+      }
+    },
+    {
+      "case_id": "V4C-C020",
+      "company": "Microsoft",
+      "system": "Windows — Git/GVFS",
+      "title": "Versionamento do Windows com materialização sob demanda",
+      "evidence_level": "production_documented",
+      "observed_use": "A Microsoft relata rollout de Git/GVFS para equipes Windows e uso de commits, branches e builds de validação em sua engenharia.",
+      "technical_mechanism": "Virtualização reduz a necessidade de materializar todo o repositório; proxies e melhorias de operações locais apoiam o fluxo de código versionado.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S020"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R027",
+          "match": "exact",
+          "rationale": "O operador confirma migração e uso de Git."
+        },
+        {
+          "entry_id": "T236",
+          "match": "family",
+          "rationale": "Há commits e validação, mas não uma política de commit por etapa de agente."
+        },
+        {
+          "entry_id": "T238",
+          "match": "analogy",
+          "rationale": "Materialização sob demanda inspira leitura seletiva, mas não é leitura LLM por faixa de linhas."
+        },
+        {
+          "entry_id": "T239",
+          "match": "analogy",
+          "rationale": "Virtualização de checkout não comprova uso de Git worktrees."
+        }
+      ],
+      "small_model_transfer": "Proposta: manter um 3–30B trabalhando sobre arquivos materializados e referências de revisão, solicitando dependências quando necessário; não confundir arquivo ausente localmente com inexistente no repositório.",
+      "limits": "Relato histórico de 2017; não certifica configuração atual do Windows ou vantagem em toda dimensão. Não há LLM nem prova de método de edição autônoma.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C020",
+      "deployment_domain": "infrastructure",
+      "mapping": {
+        "entry_id": "T238",
+        "match": "analogy",
+        "rationale": "Materialização sob demanda inspira leitura seletiva, mas não é leitura LLM por faixa de linhas."
+      }
+    }
+  ]
+}

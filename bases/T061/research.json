@@ -1,0 +1,51 @@
+{
+  "id": "T061",
+  "technical_details": "O endereço por conteúdo depende da representação efetivamente hasheada. Em IPFS, um CID inclui informações de codec e hash, e um arquivo pode ser dividido em blocos ligados por um DAG. Portanto, o CID raiz não é simplesmente o SHA-256 dos bytes do arquivo completo. Configurações de chunking e codificação podem mudar o identificador sem mudar o conteúdo lógico interpretado pelo usuário.",
+  "boundary_condition": "Identidade por bytes não resolve equivalência semântica, disponibilidade, autenticidade do produtor ou permissão de acesso ao objeto compartilhado.",
+  "implementation_contract": {
+    "inputs": "Bytes ou estrutura serializada, algoritmo de hash, codec e parâmetros de segmentação.",
+    "outputs": "Identificador verificável, manifesto de representação e objeto recuperável conforme a política de retenção.",
+    "state": "Objetos, referências vivas, aliases mutáveis e configuração de produção dos identificadores.",
+    "invariant": "A verificação usa exatamente a representação e o esquema declarados, sem confundir um checksum simples com outro tipo de identificador."
+  },
+  "tradeoffs": [
+    "Deduplicação economiza armazenamento de objetos iguais e exige rastrear referências antes de coletá-los.",
+    "Representações estruturadas permitem reutilizar partes e tornam a reprodução do identificador dependente de mais parâmetros."
+  ],
+  "failure_test": "Teste proposto: ingerir o mesmo arquivo com dois esquemas de blocos e comparar os identificadores. O sistema deve reconhecer a diferença de representação e verificar cada objeto segundo seu contrato, sem acusar corrupção apenas por IDs distintos.",
+  "evaluation_plan": "Avaliação proposta: comparar endereçamento por nome e conteúdo em revisões, deduplicação e recuperação. Medir integridade detectada, reprodução dos IDs, custo de manifestos e objetos órfãos; testar indisponibilidade separadamente de alteração de bytes.",
+  "comparisons": [
+    {
+      "entry_id": "T007",
+      "relation": "complements",
+      "reason": "Canonicalização define quais bytes representam uma requisição; CAS endereça o objeto resultante pelo conteúdo."
+    },
+    {
+      "entry_id": "T073",
+      "relation": "distinct_from",
+      "reason": "Endereço verificável detecta alteração; retenção imutável controla possibilidade de sobrescrever ou excluir versões."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação IPFS explica que CIDs incluem hash e codec e não equivalem necessariamente ao hash do arquivo inteiro.",
+    "source_ids": [
+      "V3A-S038"
+    ],
+    "support": "direct",
+    "caveat": "A descrição é específica do esquema IPFS; outros stores podem usar um hash direto sobre bytes canônicos."
+  },
+  "advanced_qa": [
+    {
+      "question": "Mesmo CID garante que o objeto estará disponível?",
+      "answer": "Não. O identificador permite conferir o conteúdo encontrado, mas alguém ainda precisa armazenar e servir os blocos necessários."
+    },
+    {
+      "question": "Posso usar latest num store por conteúdo?",
+      "answer": "Pode manter um alias mutável separado. Para reproduzir uma decisão, registre também o identificador imutável para o qual o alias foi resolvido."
+    }
+  ],
+  "source_ids": [
+    "V3A-S038"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

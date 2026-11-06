@@ -1,0 +1,41 @@
+{
+  "group": "B",
+  "checked_on": "2026-11-05",
+  "files": {
+    "strategy_B.jsonl": {
+      "count": 96,
+      "sha256": "ff5327060651eb3cd7bc60b9a2cefabd5b037d718dab4e3381eb1eed9af575a6"
+    },
+    "cases_B.jsonl": {
+      "count": 26,
+      "sha256": "afedb5f487b86bfb4d4f8ca8b69e33dc359c9bef27c31e4ba3111fa43d707690"
+    },
+    "sources_B.jsonl": {
+      "count": 32,
+      "sha256": "29e5221a1d86284ec12895db838a0ca50fc27ad0adbb6ecbc38fa117a90108a7"
+    },
+    "searches_B.jsonl": {
+      "count": 26,
+      "sha256": "1ec7ace61e0e9c66e8b944e87c808b3e135a7fc76cc8b06953cb72d070461f9e"
+    }
+  },
+  "validation": {
+    "assignment_ids_complete": true,
+    "schema_and_references_errors": 0,
+    "documented_connections_checked": 19,
+    "case_classes": {
+      "production_documented": 13,
+      "operational_product": 8,
+      "research_only": 5
+    },
+    "production_bigtech_cases": 8,
+    "notes": [
+      "450–700 palavras tratado como guia, sem enchimento para atingir quota.",
+      "P009, P016 e P017 somente propostas; casos P usam analogy.",
+      "Nenhuma consulta reservada lida ou execução de modelo/hardware alegada.",
+      "Oito sistemas classificados produção+bigtech no grupo; cobertura por base é calculada na consolidação, sem inflar dez exemplos.",
+      "Métricas e receitas externas não transferidas para servidor local."
+    ]
+  },
+  "frozen": true
+}

@@ -1,0 +1,53 @@
+{
+  "id": "R009",
+  "technical_details": "Em vLLM, o reúso de prefixos se apoia na identidade de blocos e de seus antecessores. Tokens iguais isoladamente não bastam quando adaptadores, conteúdo multimodal ou outros fatores alteram o cálculo. A documentação inclui identificadores adicionais e cache_salt na chave. A documentação de segurança também esclarece que compartilhar o processo servidor não oferece isolamento completo entre locatários. O gateway precisa definir o domínio de confiança antes de otimizar o cache.",
+  "boundary_condition": "A presença de uma opção na documentação atual não comprova suporte no binário instalado; versão, arquitetura do checkpoint e configuração precisam ser registrados juntos.",
+  "implementation_contract": {
+    "inputs": "Revisão do modelo, tokenizer, adaptador, mensagens serializadas, identidade autorizada e política de cache por domínio.",
+    "outputs": "Tokens gerados, motivo de término, uso reportado e métricas de prefill, decode, fila e reutilização.",
+    "state": "Mapa de blocos KV, referências ativas, filas de requisições e configuração efetiva do processo servidor.",
+    "invariant": "Nenhuma solicitação deve selecionar diretamente o namespace de cache de outro domínio; identidades incompatíveis exigem separação ou miss."
+  },
+  "tradeoffs": [
+    "Prefixos frequentes podem reduzir trabalho de prefill, mas dados mantidos ocupam memória que serviria à concorrência.",
+    "Separar processos aumenta custo operacional; compartilhar requer avaliar explicitamente os limites reais de isolamento."
+  ],
+  "failure_test": "Proposta: enviar prompts idênticos com adaptadores distintos e identidades separadas; verificar que não ocorre reúso incompatível e que um cancelamento libera recursos da requisição.",
+  "evaluation_plan": "Comparar cache desligado e ligado com distribuição fixa de comprimentos, concorrência e proporção de prefixos repetidos. Medir TTFT, latência entre tokens, throughput, memória e qualidade. Não extrapolar ganho de prefill para geração longa.",
+  "comparisons": [
+    {
+      "entry_id": "T082",
+      "relation": "complements",
+      "reason": "O servidor materializa cache de prefixos e outros mecanismos."
+    },
+    {
+      "entry_id": "T093",
+      "relation": "complements",
+      "reason": "A gestão paginada de KV participa do uso eficiente de memória."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A chave do cache de prefixos inclui contexto anterior e identidades adicionais; o processo compartilhado não é uma fronteira geral de isolamento.",
+    "source_ids": [
+      "V3D-S004",
+      "V3D-S005"
+    ],
+    "support": "direct",
+    "caveat": "Documentação atual consultada; nenhuma instalação ou configuração do usuário foi inspecionada."
+  },
+  "advanced_qa": [
+    {
+      "question": "cache_salt resolve sozinho o isolamento entre clientes?",
+      "answer": "Não. Ele participa da separação do cache; a própria documentação exige considerar outras superfícies compartilhadas."
+    },
+    {
+      "question": "Qual ganho medir primeiro?",
+      "answer": "Separe prefill e decode; avalie TTFT sob carga antes de atribuir melhora global ao cache."
+    }
+  ],
+  "source_ids": [
+    "V3D-S004",
+    "V3D-S005"
+  ],
+  "research_note": "Contrato, teste de falha e plano de avaliação são recomendações editoriais; nenhuma implantação ou medição deste mecanismo foi executada neste pacote."
+}

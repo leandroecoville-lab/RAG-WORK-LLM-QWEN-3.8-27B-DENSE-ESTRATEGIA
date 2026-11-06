@@ -1,0 +1,39 @@
+{
+  "entry_id": "T157",
+  "edges": [
+    {
+      "edge_id": "E-T157-01",
+      "from": "T157",
+      "to": "T171",
+      "relation": "feeds",
+      "how": "Fornecer identidade e idade de residência para decisão de afinidade, mantendo possibilidade de recomputar.",
+      "interface": "Chave de prefixo, namespace e timestamp de telemetria.",
+      "condition": "Estimativa de economia compete com espera na fila.",
+      "acceptance": "Rota correta mesmo após expulsão de bloco.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S015"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    },
+    {
+      "edge_id": "E-T157-02",
+      "from": "T157",
+      "to": "T155",
+      "relation": "complements",
+      "how": "Avaliar edição do prompt também pelo quanto invalida prefixos frequentes.",
+      "interface": "Versões de módulos e distribuição de reutilização.",
+      "condition": "Qualidade é aprovada antes da economia de cache.",
+      "acceptance": "Comparar custo total após troca e não apenas tokens removidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S030",
+        "V3C-S015"
+      ],
+      "case_ids": [],
+      "evidence_stage": "engineering_proposal"
+    }
+  ],
+  "note": "Somente source_documented exprime uma combinação descrita em caso operacional; seu estágio pode ser produto disponível, não implantação comprovada. Propostas têm interface, condição e teste, não ganho medido."
+}

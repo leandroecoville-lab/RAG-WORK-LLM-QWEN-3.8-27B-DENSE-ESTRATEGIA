@@ -1,0 +1,35 @@
+{
+  "id": "T174",
+  "name": "Priority-Based Scheduling",
+  "canonical_name": "Priority-Based Scheduling",
+  "canonical_id": "T174",
+  "aliases": [
+    "escalonamento por prioridade"
+  ],
+  "category": "orquestracao",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T149",
+    "T160",
+    "T166"
+  ],
+  "source_ids": [
+    "C-S014",
+    "C-S029",
+    "V3C-S016",
+    "V3C-S020",
+    "V4C-S003",
+    "C-S026",
+    "C-S025",
+    "V4C-S023",
+    "V4C-S009",
+    "V4C-S017"
+  ],
+  "namespace": "T174",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T174",
+  "chunk_count": 9
+}

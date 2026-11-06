@@ -1,0 +1,33 @@
+{
+  "id": "T205",
+  "name": "Semantic Equivalence Testing",
+  "canonical_name": "Semantic Equivalence Testing",
+  "canonical_id": "T205",
+  "aliases": [
+    "teste de equivalência semântica"
+  ],
+  "category": "verificacao_treinamento",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "related_support",
+  "relationships": [
+    "T019",
+    "T043",
+    "T188",
+    "T195"
+  ],
+  "source_ids": [
+    "C-S048",
+    "C-S049",
+    "V3B-S022",
+    "V4B-S022",
+    "V4B-S024",
+    "V4B-S025",
+    "V4B-S023"
+  ],
+  "namespace": "T205",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T205",
+  "chunk_count": 9
+}

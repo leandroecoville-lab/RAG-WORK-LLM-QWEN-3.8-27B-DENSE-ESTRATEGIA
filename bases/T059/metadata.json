@@ -1,0 +1,27 @@
+{
+  "id": "T059",
+  "name": "Event Sourcing",
+  "canonical_name": "Event Sourcing",
+  "canonical_id": "T059",
+  "aliases": [
+    "estado derivado de eventos"
+  ],
+  "category": "memoria",
+  "kind": "pattern",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T060",
+    "T064",
+    "T162"
+  ],
+  "source_ids": [
+    "A-S027",
+    "V4A-S012"
+  ],
+  "namespace": "T059",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T059",
+  "chunk_count": 9
+}

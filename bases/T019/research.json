@@ -1,0 +1,47 @@
+{
+  "id": "T019",
+  "technical_details": "Remover demonstrações altera simultaneamente cobertura de casos, distribuição de rótulos e posição dos exemplos restantes. Portanto, atribuir todo ganho à economia de tokens pode esconder um efeito de ordem. Uma política de poda deve proteger exemplos que ensinam exceções ou formatos raros, mesmo quando eles têm pouca similaridade superficial com a maioria das consultas.",
+  "boundary_condition": "Quando o único exemplo de uma regra importante é removido, o conjunto reduzido pode deixar de especificar o comportamento que se pretendia demonstrar.",
+  "implementation_contract": {
+    "inputs": "Conjunto de demonstrações verificadas, categorias de comportamento e orçamento.",
+    "outputs": "Subconjunto ordenado com razões de exclusão e cobertura declarada.",
+    "state": "Versão do pool, critérios de seleção e separação do conjunto de avaliação.",
+    "invariant": "Exemplos e respostas reservados à avaliação não entram no pool usado para escolher ou ajustar a poda."
+  },
+  "tradeoffs": [
+    "Menos exemplos reduzem entrada e podem eliminar ruído, mas também retiram contraexemplos úteis.",
+    "Diversidade aumenta cobertura, porém consome orçamento com casos menos próximos da consulta."
+  ],
+  "failure_test": "Teste proposto: incluir uma exceção demonstrada apenas uma vez e vários exemplos redundantes da regra comum. A poda deve preservar a exceção quando ela pertence ao contrato da tarefa.",
+  "evaluation_plan": "Avaliação proposta: comparar conjunto integral, remoção aleatória e poda orientada, controlando ordem e orçamento. Medir acerto por categoria, formato e sensibilidade a permutações; escolher pelo comportamento dos casos relevantes, não só pela média.",
+  "comparisons": [
+    {
+      "entry_id": "T046",
+      "relation": "complements",
+      "reason": "Seleção dinâmica escolhe exemplos por consulta; poda pode reduzir previamente o pool ou o conjunto final."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "O estudo sobre ordem de prompts mostra que a permutação das demonstrações afeta desempenho e não transfere automaticamente entre modelos.",
+    "source_ids": [
+      "V3A-S017"
+    ],
+    "support": "direct",
+    "caveat": "Os experimentos são históricos e restritos; a entrada propõe controle de ordem, não um efeito universal de magnitude fixa."
+  },
+  "advanced_qa": [
+    {
+      "question": "Exemplos quase duplicados são sempre dispensáveis?",
+      "answer": "Não. Podem mostrar diferenças mínimas que ensinam uma fronteira de decisão. Verifique a função do exemplo antes de comparar apenas o texto."
+    },
+    {
+      "question": "Posso escolher o subconjunto pela melhor nota final?",
+      "answer": "Use desenvolvimento separado. Escolher com o teste final transforma a avaliação em otimização sobre o gabarito e superestima generalização."
+    }
+  ],
+  "source_ids": [
+    "V3A-S017",
+    "V3A-S016"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "É igual a manter apenas as últimas mensagens?",
+    "answer": "Não. Uma técnica opera dentro da atenção; a outra altera o texto enviado ao modelo."
+  },
+  {
+    "question": "Posso ligar isso em qualquer modelo?",
+    "answer": "Não sem suporte e avaliação. Mudar o padrão pode alterar o comportamento aprendido."
+  },
+  {
+    "question": "O índice circular pode substituir a posição absoluta?",
+    "answer": "Não. O slot é armazenamento; a posição lógica determina relações causais e informação posicional."
+  },
+  {
+    "question": "Janela é uma flag neutra em modelo global?",
+    "answer": "Não. Restringir conectividade muda a função do modelo e exige validação de qualidade e compatibilidade."
+  }
+]

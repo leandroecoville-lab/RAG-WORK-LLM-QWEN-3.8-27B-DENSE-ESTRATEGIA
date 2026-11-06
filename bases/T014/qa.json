@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Preciso colocar as 218 entradas no prompt inicial?",
+    "answer": "Não. Um índice de descoberta pode selecionar as entradas pertinentes e seus trechos."
+  },
+  {
+    "question": "Progressive disclosure reduz conhecimento disponível?",
+    "answer": "Reduz informação imediatamente carregada; o acervo continua acessível por recuperação."
+  },
+  {
+    "question": "Posso resumir todas as regras no catálogo?",
+    "answer": "Pode aumentar custo e ambiguidade. Inclua condições discriminativas e mantenha a instrução completa acessível, identificando o resumo como resumo."
+  },
+  {
+    "question": "Carregar uma skill concede autorização para executar tudo nela?",
+    "answer": "Não. Descoberta e leitura disponibilizam instruções; autorização continua vinculada à tarefa e aos controles do ambiente, sem expansão automática de escopo."
+  }
+]

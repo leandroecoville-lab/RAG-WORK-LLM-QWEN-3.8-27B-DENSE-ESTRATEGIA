@@ -1,0 +1,34 @@
+{
+  "id": "T234",
+  "name": "Persistent Project Memory File — incluindo memória por módulo",
+  "canonical_name": "Persistent Project Memory File — incluindo memória por módulo",
+  "canonical_id": "T234",
+  "aliases": [
+    "project memory file",
+    "memória persistente por módulo"
+  ],
+  "category": "continuidade_programacao",
+  "kind": "component",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T211",
+    "T064",
+    "T238"
+  ],
+  "source_ids": [
+    "V2A-S016",
+    "V2A-S017",
+    "A-S006",
+    "V3C-S039",
+    "V4C-S030",
+    "V4C-S026",
+    "V4C-S029",
+    "V4C-S016"
+  ],
+  "namespace": "T234",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T234",
+  "chunk_count": 9
+}

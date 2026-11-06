@@ -1,0 +1,136 @@
+{
+  "id": "T128",
+  "novelty": "A v3 explicou a interface de características do EAGLE-3. Esta camada trata ciclo de vida do proponente, métricas de aceitação e seleção de horizonte sob carga, sem transformar escala experimental em produção comprovada.",
+  "deep_layers": [
+    {
+      "name": "Proponente versionado",
+      "detail": "O módulo auxiliar depende do alvo e de sua interface interna. Mudanças de quantização, adapters ou camadas expostas podem alterar concordância mesmo quando a forma dos tensores continua válida. Versione o par e execute um teste de compatibilidade após qualquer mudança; não avalie apenas se ambos carregam.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S038",
+        "V3B-S001",
+        "V4B-S007",
+        "V4B-S029",
+        "V4B-S011"
+      ]
+    },
+    {
+      "name": "Métrica interpretável",
+      "detail": "As métricas atuais do vLLM distinguem tokens aceitos de tokens adicionais produzidos na rodada. Comprimento médio de aceitação que inclui bônus não é a mesma medida que taxa de propostas aceitas. Registre tentativas, posições e comprimento, mantendo denominadores explícitos para comparar políticas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S038",
+        "V3B-S001",
+        "V4B-S007",
+        "V4B-S029",
+        "V4B-S011"
+      ]
+    },
+    {
+      "name": "Horizonte sob concorrência",
+      "detail": "Gerar mais candidatos aumenta trabalho do módulo e da verificação. Quando o alvo já processa lotes grandes eficientemente, a vantagem pode diminuir. Uma política proposta ajusta horizonte por domínio e carga, mas precisa de limites e períodos de avaliação para não reagir a ruído de poucos pedidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S038",
+        "V3B-S001",
+        "V4B-S007",
+        "V4B-S029",
+        "V4B-S011"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Saídas especializadas longas",
+      "scenario": "Um alvo é usado repetidamente no mesmo domínio.",
+      "strategy": "Treine ou selecione proponente compatível, valide correção do algoritmo e meça aceitação por posição. Compare com o alvo sozinho sob a mesma chegada de pedidos.",
+      "small_model_role": "Um alvo 15–30B pode usar um auxiliar barato; a relação de custo importa mais que o rótulo do método.",
+      "acceptance": "Reduzir latência de respostas completas sem degradar distribuição-alvo ou capacidade útil.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S038",
+        "V3B-S001",
+        "V4B-S007",
+        "V4B-S029",
+        "V4B-S011"
+      ]
+    },
+    {
+      "name": "Mudança de adapter",
+      "scenario": "O serviço troca comportamento especializado durante o dia.",
+      "strategy": "Mantenha métricas por adapter e desative especulação quando a configuração não foi validada. Se houver proponente próprio, trate-o como artefato dependente.",
+      "small_model_role": "Um 8–14B pode necessitar menos investimento que um módulo específico por tarefa.",
+      "acceptance": "Detectar queda de aceitação e comparar fallback com execução normal.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S038",
+        "V3B-S001",
+        "V4B-S007",
+        "V4B-S029",
+        "V4B-S011"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Em alvos 3–7B, custo auxiliar pode consumir a economia; medir antes de treinar um proponente.",
+    "8_14b": "Domínio repetitivo e respostas longas podem justificar estudo, sem garantia por porte.",
+    "15_30b": "A memória adicional do proponente compete com KV e concorrência do alvo.",
+    "training_or_runtime_requirements": "EAGLE requer módulo treinado e interface compatível; runtime precisa verificar candidatos corretamente.",
+    "do_not_use_when": "Não chamar todos os EAGLE de predição de características idêntica nem prometer ganho a partir de taxa de aceitação."
+  },
+  "connections": [
+    {
+      "target_id": "T080",
+      "relation": "complements",
+      "how": "Lookahead adaptativo pode controlar o trabalho proposto.",
+      "interface": "Aceitação por posição e duração de cada fase.",
+      "condition": "Política não modifica a regra correta de confirmação.",
+      "acceptance": "Comparar horizonte adaptativo com opções fixas em carga aberta.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S038",
+        "V3B-S001",
+        "V4B-S007",
+        "V4B-S029",
+        "V4B-S011"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T086",
+      "relation": "complements",
+      "how": "Quantização KV pode alterar custo e concordância quando aplicada ao sistema.",
+      "interface": "Precisões e estados dos dois caminhos.",
+      "condition": "Par completo revalidado após mudança.",
+      "acceptance": "Testar qualidade e desempenho isolando cada intervenção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "B-S038",
+        "V3B-S001",
+        "V4B-S007",
+        "V4B-S029",
+        "V4B-S011"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não confundir 'production scale' em pesquisa com implantação operacional identificada.",
+    "Rejeitar uso de características de alvo incompatível, mesmo se dimensões coincidem."
+  ],
+  "frontier_comparison": "O ganho esperado é executar o alvo mais eficientemente. Se a verificação preserva sua distribuição, EAGLE não torna o alvo mais competente que ele próprio nem prova equivalência a fronteira.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q001",
+      "V4B-Q018"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "B-S038",
+    "V3B-S001",
+    "V4B-S007",
+    "V4B-S029",
+    "V4B-S011"
+  ]
+}

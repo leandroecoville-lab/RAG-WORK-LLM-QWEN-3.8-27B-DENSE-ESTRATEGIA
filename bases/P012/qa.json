@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Validar schema confirma a verdade do conteúdo?",
+    "answer": "Não. Schema verifica restrições estruturais; existência, veracidade e cumprimento do requisito exigem verificadores adicionais."
+  },
+  {
+    "question": "O que fazer quando o ambiente de teste falha?",
+    "answer": "Registrar que a verificação não foi concluída nessa dimensão; falha do teste não é evidência suficiente de aprovação ou defeito do artefato."
+  },
+  {
+    "question": "Uma aprovação pode ser reutilizada após editar o arquivo?",
+    "answer": "Somente se o contrato provar equivalência relevante; por padrão a mudança exige nova verificação."
+  },
+  {
+    "question": "Como representar falta de evidência?",
+    "answer": "Use estado não verificável e liste a lacuna, sem converter ausência de falha em aprovação."
+  }
+]

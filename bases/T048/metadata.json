@@ -1,0 +1,34 @@
+{
+  "id": "T048",
+  "name": "Memory Management",
+  "canonical_name": "Memory Management",
+  "canonical_id": "T048",
+  "aliases": [
+    "gestão de memória"
+  ],
+  "category": "memoria",
+  "kind": "family",
+  "scope": "inventario",
+  "evidence_status": "supported",
+  "relationships": [
+    "T047",
+    "T058",
+    "T071",
+    "T074",
+    "T075"
+  ],
+  "source_ids": [
+    "A-S009",
+    "A-S023",
+    "V3A-S036",
+    "V3A-S034",
+    "V3A-S032",
+    "V4A-S010",
+    "V4A-S017"
+  ],
+  "namespace": "T048",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/T048",
+  "chunk_count": 9
+}

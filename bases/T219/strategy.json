@@ -1,0 +1,116 @@
+{
+  "id": "T219",
+  "novelty": "A v3 distinguia profundidade, largura e supersteps. A ampliação propõe um orçamento de expansão verificável, critérios para conceder extensão e saída útil quando a execução alcança o teto.",
+  "deep_layers": [
+    {
+      "name": "Contadores tipados",
+      "detail": "Mantenha limites separados para delegação aninhada, transições do grafo, chamadas externas e custo acumulado. Uma unidade não substitui as outras: um nó pode disparar muitas operações, e vários nós podem avançar no mesmo superstep. Exponha ao controlador qual contador bloqueou a próxima ação, para não diagnosticar como falha cognitiva uma restrição estrutural.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S006",
+        "V2A-S018"
+      ]
+    },
+    {
+      "name": "Expansão com reserva",
+      "detail": "Antes de criar filhos, reserve parte do orçamento para juntar e validar seus resultados. Um supervisor que distribui todo o saldo aos trabalhadores pode ficar incapaz de concluir a missão. Limite também a quantidade de filhos ativos e de novas fronteiras abertas; profundidade baixa não impede fan-out excessivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V4C-S014"
+      ]
+    },
+    {
+      "name": "Extensão condicionada",
+      "detail": "Permitir mais passos exige evidência de progresso e estimativa do trabalho restante. Não renove o limite somente porque o agente pediu para continuar. Registre motivo, saldo adicional e critério de término; mantenha teto absoluto da missão. Se a condição de saída não está definida, aumentar o limite apenas adia a falha.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S006",
+        "V3C-S032"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Delegação recursiva",
+      "scenario": "Um planejador divide tarefas e especialistas querem criar novos especialistas.",
+      "strategy": "Autorize expansão somente se o filho produzir resultado integrável e couber na reserva. Exija referência à necessidade descoberta e elimine subproblemas duplicados. No último nível, o agente deve resolver com suas ferramentas ou devolver impedimento, sem contornar o teto criando nova sessão.",
+      "small_model_role": "3–7B não delega por padrão; 8–14B pede divisão; 15–30B decide com orçamento global.",
+      "acceptance": "Proposta: crescimento limitado e nenhum ramo abandonado sem estado final.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V2A-S018"
+      ]
+    },
+    {
+      "name": "Grafo de reparo iterativo",
+      "scenario": "O agente alterna editar, testar e diagnosticar.",
+      "strategy": "Defina número máximo de ciclos e custo total, mas ofereça saída com patch parcial e diagnóstico antes do teto. Se há progresso comprovado, uma extensão explícita pode continuar; repetição do mesmo erro deve acionar diagnóstico e não simplesmente incrementar o limite.",
+      "small_model_role": "8–14B executa ciclos locais; controlador valida progresso e extensão.",
+      "acceptance": "Proposta: distinguir tarefas longas produtivas de ciclos sem solução, medindo encerramento prematuro.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S006",
+        "V3C-S032"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Executar uma etapa ou pequeno ciclo com término claro, reduzindo necessidade de profundidade.",
+    "8_14b": "Tratar subproblemas com algumas iterações e retornar saldo e impedimentos.",
+    "15_30b": "Planejar expansão e integração, submetendo decisões de orçamento ao controlador determinístico.",
+    "training_or_runtime_requirements": "Contadores globais persistentes, reserva de finalização e documentação da unidade de limite do framework.",
+    "do_not_use_when": "Não interpretar recursion_limit de uma biblioteca como número universal de chamadas LLM ou profundidade de linguagem."
+  },
+  "connections": [
+    {
+      "target_id": "T218",
+      "relation": "complements",
+      "how": "O detector identifica ciclos antes do teto, enquanto o limite garante término máximo mesmo quando a detecção falha.",
+      "interface": "Contadores, assinatura de repetição e progresso observado.",
+      "condition": "Intervenções não reiniciam o saldo.",
+      "acceptance": "Encerrar ciclo conhecido e permitir sequência longa que ainda avança.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S006"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T237",
+      "relation": "complements",
+      "how": "Delegação consome orçamento do pai e devolve resultado que cabe na reserva de integração.",
+      "interface": "Quota do filho, profundidade e contrato de retorno.",
+      "condition": "Expansão autorizada pelo controlador e não apenas pelo texto do prompt.",
+      "acceptance": "Soma de quotas e reservas não excede o teto global.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "C-S030",
+        "V2A-S018"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Trocar o nome da sessão ou do agente não deve zerar contadores da missão.",
+    "Ao atingir o teto, preservar estado aceito e explicitar o trabalho não executado."
+  ],
+  "frontier_comparison": "Compare taxa de conclusão sob orçamento igual, contando todos os descendentes. A equipe pequena não deve ganhar vantagem aparente por ocultar chamadas atrás de um único superstep.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q002",
+      "V4C-Q010",
+      "V4C-Q021",
+      "V4D-Q021"
+    ],
+    "scope_note": "Documentação de grafos e agentes apoia os controles; relatos de delegação não demonstram esta política completa de limites nem justificam dez casos exatos. Consulta complementar específica registrada na consolidação; ver limites da busca e da correspondência, sem criar casos não comprovados."
+  },
+  "source_ids": [
+    "V3C-S006",
+    "V2A-S018",
+    "C-S030",
+    "V4C-S014",
+    "V3C-S032"
+  ]
+}

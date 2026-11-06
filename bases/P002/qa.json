@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Uma mensagem fixada cabe sempre?",
+    "answer": "Não. Fixação expressa prioridade, mas o limite físico permanece; conjuntos obrigatórios excessivos exigem replanejamento."
+  },
+  {
+    "question": "Quando medir tokens novamente?",
+    "answer": "Depois da montagem final e sempre que mensagens, ferramentas, modelo ou reserva de saída forem alterados."
+  },
+  {
+    "question": "Persistir histórico resolve perda de contexto?",
+    "answer": "Não sozinho. O próximo turno precisa receber a revisão e as informações corretas."
+  },
+  {
+    "question": "Qual condição impede sobrescrever uma correção?",
+    "answer": "Confirmar a transformação contra a revisão de origem e reconciliar alterações posteriores antes do commit."
+  }
+]

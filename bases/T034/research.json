@@ -1,0 +1,51 @@
+{
+  "id": "T034",
+  "technical_details": "Há duas decisões distintas sob esse rótulo: escolher fronteiras entre segmentos existentes e produzir proposições independentes. A segunda resolve pronomes e combina contexto, mas cria texto novo. Sua validação deve verificar sustentação e escopo: sujeito, quantificador, modalidade e condição temporal. Uma proposição curta pode ter boa recuperabilidade e ainda inverter a conclusão por remover uma palavra como “pode”.",
+  "boundary_condition": "A extração proposicional é arriscada quando interpretação depende de ironia, discordância entre participantes ou condições distribuídas em várias partes do documento.",
+  "implementation_contract": {
+    "inputs": "Segmentos identificados, contexto necessário e contrato indicando seleção literal ou derivação.",
+    "outputs": "Grupos de offsets ou proposições marcadas como derivadas, cada uma ligada às evidências.",
+    "state": "Modelo, instrução, revisões documentais e resultados de verificações de sustentação.",
+    "invariant": "Uma reescrita nunca recebe automaticamente o mesmo status de uma afirmação literal da fonte."
+  },
+  "tradeoffs": [
+    "Proposições autocontidas facilitam localização de fatos específicos, mas aumentam tamanho do índice e custo de ingestão.",
+    "Verificação adicional reduz erros de derivação; pode anular a economia obtida na geração final."
+  ],
+  "failure_test": "Teste proposto: apresentar falas contraditórias de dois autores e uma hipótese condicional. A extração deve preservar atribuição, discordância e modalidade, sem fundi-las numa afirmação categórica.",
+  "evaluation_plan": "Avaliação proposta: comparar chunks estruturais, fronteiras escolhidas por modelo e proposições derivadas com mesmo corpus. Medir recall, fidelidade por proposição, expansão do índice e custo de atualização; inspecionar separadamente erros de atribuição e negação.",
+  "comparisons": [
+    {
+      "entry_id": "T033",
+      "relation": "alternative",
+      "reason": "Estrutura formal fornece fronteiras sem exigir que um modelo reconstrua cada afirmação."
+    },
+    {
+      "entry_id": "T054",
+      "relation": "complements",
+      "reason": "Proposições validadas podem alimentar memória semântica, mantendo proveniência e grau de confirmação."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Dense X Retrieval investiga proposições autocontidas como unidade de recuperação, comparando granularidades de indexação.",
+    "source_ids": [
+      "V3A-S012"
+    ],
+    "support": "related",
+    "caveat": "A fonte sustenta uma abordagem proposicional, não padroniza todos os métodos chamados Agentic Chunking."
+  },
+  "advanced_qa": [
+    {
+      "question": "Toda proposição precisa repetir o nome da entidade?",
+      "answer": "Precisa ser interpretável na recuperação. Uma referência estruturada pode cumprir esse papel sem repetir texto, desde que o leitor a resolva."
+    },
+    {
+      "question": "Como atualizar uma proposição após correção da fonte?",
+      "answer": "Recalcule as derivadas dependentes da revisão alterada. Similaridade de texto não basta para detectar quais relações ficaram inválidas."
+    }
+  ],
+  "source_ids": [
+    "V3A-S012"
+  ],
+  "research_note": "Síntese técnica com fontes primárias; contratos, cenários de falha e critérios de decisão são propostas editoriais, não execução na LAI."
+}

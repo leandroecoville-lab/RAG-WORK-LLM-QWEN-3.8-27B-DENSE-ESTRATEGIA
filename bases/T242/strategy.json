@@ -1,0 +1,113 @@
+{
+  "id": "T242",
+  "novelty": "A v3 fixava cursor e fallback para snapshot anterior. A expansão otimiza recuperação com verificação de compatibilidade, política de retenção e ensaios que distinguem dados perdidos de mero tempo de reconstrução.",
+  "deep_layers": [
+    {
+      "name": "Escolher base elegível",
+      "detail": "O snapshot mais recente nem sempre é utilizável: pode ter schema incompatível, artefato ausente ou versão de reducer indisponível. Selecione a base mais recente que satisfaça integridade e semântica, e declare o custo do sufixo restante. Não converter silenciosamente campos sem origem apenas para conseguir usar o checkpoint novo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S041",
+        "V3C-S028"
+      ]
+    },
+    {
+      "name": "Retenção como contrato",
+      "detail": "Decida por quanto tempo conservar eventos anteriores e snapshots compatíveis. Apagar o prefixo reduz armazenamento e elimina caminhos de recuperação; o snapshot passa a ser parte crítica do estado durável. Teste corrupção e perda antes de adotar essa política, incluindo referências a arquivos que não estão dentro do log.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S041",
+        "V4C-S025"
+      ]
+    },
+    {
+      "name": "Metas de recuperação",
+      "detail": "Meça tempo até serviço apto e até missão efetivamente reconciliada. Carregar um snapshot rapidamente não significa que efeitos externos e eventos atrasados foram resolvidos. Defina quais dados podem ser perdidos, se algum, e quais operações devem permanecer desconhecidas até consulta; não esconder incerteza atrás de uma métrica de startup.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S001",
+        "C-S026"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Missões com histórico extenso",
+      "scenario": "Reproduzir tudo a cada retomada fica caro.",
+      "strategy": "Crie snapshots em fronteiras consistentes e aplique o sufixo em ambiente controlado. Compare o resultado com replay integral numa amostra de históricos que incluam falhas. Se a comparação divergir, preserve log e investigue antes de reduzir retenção.",
+      "small_model_role": "3–30B opera nas atividades; recuperação do estado fica em código verificável.",
+      "acceptance": "Proposta: estado equivalente à referência com tempo de recuperação menor e sem lacunas.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S041",
+        "V4C-S001"
+      ]
+    },
+    {
+      "name": "Migração do formato de estado",
+      "scenario": "Um novo esquema muda como tarefas e evidências são representadas.",
+      "strategy": "Mantenha processador antigo disponível ou gere snapshot migrado com manifesto de transformação. Verifique invariantes e referências antes de marcá-lo elegível. Se um campo não pode ser reconstruído, represente a lacuna ou refaça a etapa com nova intenção, sem atribuir dado inventado ao passado.",
+      "small_model_role": "8–14B auxilia mapeamento; 15–30B revisa casos ambíguos; código executa migração.",
+      "acceptance": "Proposta: migração auditável e fallback para base anterior enquanto houver compatibilidade.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S041",
+        "V3C-S028"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Unidades de atividade pequenas reduzem o estado que precisa ser recuperado por vez.",
+    "8_14b": "Checagem de tarefas e referências após replay, sem modificar automaticamente o histórico.",
+    "15_30b": "Análise de migração e reconciliação de exceções, mantendo lógica de recuperação determinística.",
+    "training_or_runtime_requirements": "Cursor inequívoco, identidade do stream, versão do reducer e política explícita de retenção.",
+    "do_not_use_when": "Não eliminar eventos antigos antes de demonstrar restauração e compatibilidade dos snapshots remanescentes."
+  },
+  "connections": [
+    {
+      "target_id": "T240",
+      "relation": "complements",
+      "how": "Capturar base consistente com manifesto e cursor para iniciar a recuperação.",
+      "interface": "Estado, cursor e referências de artefatos.",
+      "condition": "Base passou por teste de restauração.",
+      "acceptance": "Snapshot não incorpora cursor posterior ao estado gravado.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S028"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T241",
+      "relation": "complements",
+      "how": "Reproduzir sufixo com processador compatível e sem repetir efeitos externos.",
+      "interface": "Eventos posteriores e versão de redução.",
+      "condition": "Convenção de último incluído ou próximo a aplicar é explícita.",
+      "acceptance": "Nenhum evento perdido ou aplicado duas vezes na fronteira.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S041"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Checkpoint de transporte por partição não prova corte global entre streams.",
+    "Snapshot corrompido com prefixo apagado pode impedir recuperação; registrar esse limite antes de reduzir retenção."
+  ],
+  "frontier_comparison": "Compare recuperação completa, incluindo reconciliação, em vez de carregar bytes. A estratégia aumenta continuidade de sistemas com modelos pequenos, mas não cria memória cognitiva nem resolve ausência de eventos.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q002",
+      "V4C-Q020"
+    ],
+    "scope_note": "Fontes de event sourcing e continuidade sustentam princípios. Não foi encontrado caso operacional que prove exatamente toda a composição editorial para agentes proposta aqui."
+  },
+  "source_ids": [
+    "V3C-S041",
+    "V3C-S028",
+    "V4C-S025",
+    "V4C-S001",
+    "C-S026"
+  ]
+}

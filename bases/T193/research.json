@@ -1,0 +1,46 @@
+{
+  "id": "T193",
+  "technical_details": "O ponto em que um controle atua determina o que ele consegue impedir. Validar uma resposta textual depois que uma ferramenta já executou não desfaz o efeito produzido. Controles de ação precisam receber argumentos reais antes da execução e avaliar o resultado depois, enquanto controles de saída tratam o conteúdo entregue. Falhas de infraestrutura do verificador exigem política explícita, em vez de serem confundidas com aprovação.",
+  "boundary_condition": "Um guardrail probabilístico pode ter falsos positivos e negativos; controles determinísticos também dependem da completude do contrato.",
+  "implementation_contract": {
+    "inputs": "Entrada, ação proposta, argumentos concretos, política versionada e resultado quando existente.",
+    "outputs": "Decisão de permitir, bloquear ou corrigir, com motivo rastreável.",
+    "state": "Estado da operação, evidências, versão da regra e tentativas.",
+    "invariant": "Uma ação sujeita a controle não contorna o ponto de validação por outro caminho."
+  },
+  "tradeoffs": [
+    "Mais controles aumentam cobertura e latência.",
+    "Regras rígidas simplificam auditoria e podem rejeitar casos legítimos não previstos."
+  ],
+  "failure_test": "Teste proposto: fazer a ferramenta ser chamada por uma rota alternativa sem passar no controlador e interromper o classificador. Esperar identificação do caminho descoberto e comportamento conforme a política de indisponibilidade.",
+  "evaluation_plan": "Plano proposto: avaliar casos permitidos, proibidos e ambíguos por ponto de aplicação. Medir falsos aceites, bloqueios indevidos, latência e cobertura de rotas; aprovar controles pelo comportamento observado e não apenas pela presença de configuração.",
+  "comparisons": [
+    {
+      "entry_id": "T197",
+      "relation": "complements",
+      "reason": "Schema valida forma dos argumentos, enquanto regras adicionais avaliam autorização e significado operacional."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "NeMo Guardrails distingue controles de entrada, diálogo, recuperação, execução de ferramentas e saída.",
+    "source_ids": [
+      "C-S046"
+    ],
+    "support": "direct",
+    "caveat": "Configurar uma biblioteca não prova que todas as rotas da aplicação passam pelos controles."
+  },
+  "advanced_qa": [
+    {
+      "question": "Prompt com regras é um guardrail completo?",
+      "answer": "Não. Pode orientar o modelo, mas efeitos operacionais exigem controles no caminho que realmente os executa."
+    },
+    {
+      "question": "Falha do verificador significa saída inválida?",
+      "answer": "Significa que a checagem não concluiu; a política deve decidir como proceder sem rotular desconhecimento como sucesso."
+    }
+  ],
+  "source_ids": [
+    "C-S046"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

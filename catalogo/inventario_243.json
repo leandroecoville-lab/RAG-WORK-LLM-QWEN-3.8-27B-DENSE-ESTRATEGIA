@@ -1,0 +1,2808 @@
+[
+  {
+    "number": 1,
+    "id": "T001",
+    "name": "Map-Reduce",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T001",
+    "aliases": [
+      "MapReduce",
+      "mapear e reduzir"
+    ]
+  },
+  {
+    "number": 2,
+    "id": "T002",
+    "name": "Prompt Caching",
+    "category": "contexto_recuperacao",
+    "kind": "technique",
+    "canonical_id": "T002",
+    "aliases": [
+      "cache de prompt"
+    ]
+  },
+  {
+    "number": 3,
+    "id": "T003",
+    "name": "Sliding Window de contexto — incluindo descarte FIFO",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T003",
+    "aliases": [
+      "Sliding Window de contexto",
+      "janela deslizante de histórico",
+      "descarte FIFO de contexto",
+      "histórico recente por tokens"
+    ]
+  },
+  {
+    "number": 4,
+    "id": "T004",
+    "name": "Summarization em cadeia",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T004",
+    "aliases": [
+      "rolling summary",
+      "resumo acumulado",
+      "Summarization em Cadeia"
+    ]
+  },
+  {
+    "number": 5,
+    "id": "T005",
+    "name": "Semantic Caching",
+    "category": "contexto_recuperacao",
+    "kind": "technique",
+    "canonical_id": "T005",
+    "aliases": [
+      "cache semântico"
+    ]
+  },
+  {
+    "number": 6,
+    "id": "T006",
+    "name": "Context Compression",
+    "category": "contexto_recuperacao",
+    "kind": "family",
+    "canonical_id": "T006",
+    "aliases": [
+      "compressão de contexto"
+    ]
+  },
+  {
+    "number": 7,
+    "id": "T007",
+    "name": "Response Caching por Hash",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T007",
+    "aliases": [
+      "exact response cache",
+      "cache exato por hash"
+    ]
+  },
+  {
+    "number": 8,
+    "id": "T008",
+    "name": "Hierarchical Summarization",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T008",
+    "aliases": [
+      "sumarização hierárquica"
+    ]
+  },
+  {
+    "number": 9,
+    "id": "T009",
+    "name": "RAG — Retrieval-Augmented Generation; incluindo RAG temporal",
+    "category": "contexto_recuperacao",
+    "kind": "architecture",
+    "canonical_id": "T009",
+    "aliases": [
+      "RAG — Retrieval-Augmented Generation",
+      "Retrieval-Augmented Generation",
+      "geração aumentada por recuperação",
+      "RAG temporal",
+      "temporal retrieval-augmented generation"
+    ]
+  },
+  {
+    "number": 10,
+    "id": "T010",
+    "name": "Fixed-Size Chunking",
+    "category": "contexto_recuperacao",
+    "kind": "technique",
+    "canonical_id": "T010",
+    "aliases": [
+      "segmentação de tamanho fixo"
+    ]
+  },
+  {
+    "number": 11,
+    "id": "T011",
+    "name": "Semantic Chunking",
+    "category": "contexto_recuperacao",
+    "kind": "technique",
+    "canonical_id": "T011",
+    "aliases": [
+      "segmentação semântica"
+    ]
+  },
+  {
+    "number": 12,
+    "id": "T012",
+    "name": "Recursive Chunking",
+    "category": "contexto_recuperacao",
+    "kind": "technique",
+    "canonical_id": "T012",
+    "aliases": [
+      "segmentação recursiva"
+    ]
+  },
+  {
+    "number": 13,
+    "id": "T013",
+    "name": "Long-Context Models",
+    "category": "contexto_recuperacao",
+    "kind": "family",
+    "canonical_id": "T013",
+    "aliases": [
+      "modelos de contexto longo"
+    ]
+  },
+  {
+    "number": 14,
+    "id": "T014",
+    "name": "Progressive Disclosure",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T014",
+    "aliases": [
+      "divulgação progressiva",
+      "carregamento por camadas"
+    ]
+  },
+  {
+    "number": 15,
+    "id": "T015",
+    "name": "Reference Passing",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T015",
+    "aliases": [
+      "passagem por referência",
+      "artifact references"
+    ]
+  },
+  {
+    "number": 16,
+    "id": "T016",
+    "name": "Tool Result Truncation",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T016",
+    "aliases": [
+      "limitação de saída de ferramenta"
+    ]
+  },
+  {
+    "number": 17,
+    "id": "T017",
+    "name": "Context Folding",
+    "category": "contexto_recuperacao",
+    "kind": "technique",
+    "canonical_id": "T017",
+    "aliases": [
+      "dobramento de contexto"
+    ]
+  },
+  {
+    "number": 18,
+    "id": "T018",
+    "name": "Context Pruning",
+    "category": "contexto_recuperacao",
+    "kind": "family",
+    "canonical_id": "T018",
+    "aliases": [
+      "poda de contexto"
+    ]
+  },
+  {
+    "number": 19,
+    "id": "T019",
+    "name": "Few-Shot Pruning",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T019",
+    "aliases": [
+      "poda de demonstrações"
+    ]
+  },
+  {
+    "number": 20,
+    "id": "T020",
+    "name": "Learned Prompt Compression",
+    "category": "contexto_recuperacao",
+    "kind": "family",
+    "canonical_id": "T020",
+    "aliases": [
+      "compressão aprendida de prompts"
+    ]
+  },
+  {
+    "number": 21,
+    "id": "T021",
+    "name": "Context Compression On-the-Fly",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T006",
+    "aliases": [
+      "compressão dinâmica em execução"
+    ]
+  },
+  {
+    "number": 22,
+    "id": "T022",
+    "name": "Instruction Compression",
+    "category": "contexto_recuperacao",
+    "kind": "family",
+    "canonical_id": "T022",
+    "aliases": [
+      "compressão de instruções"
+    ]
+  },
+  {
+    "number": 23,
+    "id": "T023",
+    "name": "Recursive Summarization Tree",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T008",
+    "aliases": [
+      "árvore recursiva de resumos"
+    ]
+  },
+  {
+    "number": 24,
+    "id": "T024",
+    "name": "Context Broker e Context Builder",
+    "category": "contexto_recuperacao",
+    "kind": "component",
+    "canonical_id": "T024",
+    "aliases": [
+      "montador de contexto",
+      "gerenciador de contexto",
+      "Context Broker / Context Builder"
+    ]
+  },
+  {
+    "number": 25,
+    "id": "T025",
+    "name": "Adaptive RAG",
+    "category": "contexto_recuperacao",
+    "kind": "technique",
+    "canonical_id": "T025",
+    "aliases": [
+      "Adaptive-RAG",
+      "RAG adaptativo"
+    ]
+  },
+  {
+    "number": 26,
+    "id": "T026",
+    "name": "Hierarchical Retrieval",
+    "category": "contexto_recuperacao",
+    "kind": "family",
+    "canonical_id": "T026",
+    "aliases": [
+      "recuperação hierárquica"
+    ]
+  },
+  {
+    "number": 27,
+    "id": "T027",
+    "name": "Hybrid Retrieval — BM25 + vetores",
+    "category": "contexto_recuperacao",
+    "kind": "technique",
+    "canonical_id": "T027",
+    "aliases": [
+      "hybrid search",
+      "busca híbrida",
+      "Hybrid Retrieval — BM25 + Vetores"
+    ]
+  },
+  {
+    "number": 28,
+    "id": "T028",
+    "name": "Reranking",
+    "category": "contexto_recuperacao",
+    "kind": "technique",
+    "canonical_id": "T028",
+    "aliases": [
+      "reordenação de resultados",
+      "cross-encoder reranking"
+    ]
+  },
+  {
+    "number": 29,
+    "id": "T029",
+    "name": "GraphRAG",
+    "category": "contexto_recuperacao",
+    "kind": "architecture",
+    "canonical_id": "T029",
+    "aliases": [
+      "graph-based RAG",
+      "RAG com grafos"
+    ]
+  },
+  {
+    "number": 30,
+    "id": "T030",
+    "name": "RAPTOR",
+    "category": "contexto_recuperacao",
+    "kind": "architecture",
+    "canonical_id": "T030",
+    "aliases": [
+      "Recursive Abstractive Processing for Tree-Organized Retrieval"
+    ]
+  },
+  {
+    "number": 31,
+    "id": "T031",
+    "name": "Semantic Cache Invalidation",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T031",
+    "aliases": [
+      "invalidação de cache semântico"
+    ]
+  },
+  {
+    "number": 32,
+    "id": "T032",
+    "name": "Parent-Child Retrieval / Parent-Child Chunking",
+    "category": "contexto_recuperacao",
+    "kind": "technique",
+    "canonical_id": "T032",
+    "aliases": [
+      "Parent-Child Retrieval",
+      "recuperação pai-filho",
+      "Parent-Child Chunking",
+      "segmentação pai-filho"
+    ]
+  },
+  {
+    "number": 33,
+    "id": "T033",
+    "name": "Structure-Aware Chunking",
+    "category": "contexto_recuperacao",
+    "kind": "technique",
+    "canonical_id": "T033",
+    "aliases": [
+      "segmentação consciente da estrutura"
+    ]
+  },
+  {
+    "number": 34,
+    "id": "T034",
+    "name": "Agentic Chunking",
+    "category": "contexto_recuperacao",
+    "kind": "family",
+    "canonical_id": "T034",
+    "aliases": [
+      "segmentação por agente"
+    ]
+  },
+  {
+    "number": 35,
+    "id": "T035",
+    "name": "Contextual Chunking",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T035",
+    "aliases": [
+      "contextualização de chunks",
+      "Contextual Retrieval"
+    ]
+  },
+  {
+    "number": 36,
+    "id": "T036",
+    "name": "Query-Aware RAG",
+    "category": "contexto_recuperacao",
+    "kind": "family",
+    "canonical_id": "T036",
+    "aliases": [
+      "RAG orientado à consulta"
+    ]
+  },
+  {
+    "number": 37,
+    "id": "T037",
+    "name": "Query-Aware Compression",
+    "category": "contexto_recuperacao",
+    "kind": "technique",
+    "canonical_id": "T037",
+    "aliases": [
+      "compressão orientada à consulta"
+    ]
+  },
+  {
+    "number": 38,
+    "id": "T038",
+    "name": "Selective Context Pruning",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T018",
+    "aliases": [
+      "poda seletiva de contexto",
+      "Selective Context"
+    ]
+  },
+  {
+    "number": 39,
+    "id": "T039",
+    "name": "Importance-Aware Window",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T039",
+    "aliases": [
+      "janela orientada à importância"
+    ]
+  },
+  {
+    "number": 40,
+    "id": "T040",
+    "name": "State-Aware Window",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T040",
+    "aliases": [
+      "janela orientada ao estado"
+    ]
+  },
+  {
+    "number": 41,
+    "id": "T041",
+    "name": "Last-N Messages Window",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T041",
+    "aliases": [
+      "janela das últimas mensagens"
+    ]
+  },
+  {
+    "number": 42,
+    "id": "T042",
+    "name": "Token-Based Window",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T042",
+    "aliases": [
+      "janela baseada em tokens"
+    ]
+  },
+  {
+    "number": 43,
+    "id": "T043",
+    "name": "Context Compaction",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T043",
+    "aliases": [
+      "compactação de contexto"
+    ]
+  },
+  {
+    "number": 44,
+    "id": "T044",
+    "name": "Progressive Context Expansion",
+    "category": "contexto_recuperacao",
+    "kind": "pattern",
+    "canonical_id": "T044",
+    "aliases": [
+      "expansão progressiva de contexto"
+    ]
+  },
+  {
+    "number": 45,
+    "id": "T045",
+    "name": "Tool Retrieval",
+    "category": "contexto_recuperacao",
+    "kind": "technique",
+    "canonical_id": "T045",
+    "aliases": [
+      "descoberta de ferramentas",
+      "tool search"
+    ]
+  },
+  {
+    "number": 46,
+    "id": "T046",
+    "name": "Dynamic Few-Shot Selection",
+    "category": "contexto_recuperacao",
+    "kind": "technique",
+    "canonical_id": "T046",
+    "aliases": [
+      "seleção dinâmica de demonstrações"
+    ]
+  },
+  {
+    "number": 47,
+    "id": "T047",
+    "name": "Long-Term Memory — memória de longo prazo",
+    "category": "memoria",
+    "kind": "family",
+    "canonical_id": "T047",
+    "aliases": [
+      "memória de longo prazo",
+      "Long-Term Memory"
+    ]
+  },
+  {
+    "number": 48,
+    "id": "T048",
+    "name": "Memory Management",
+    "category": "memoria",
+    "kind": "family",
+    "canonical_id": "T048",
+    "aliases": [
+      "gestão de memória"
+    ]
+  },
+  {
+    "number": 49,
+    "id": "T049",
+    "name": "Episodic Memory",
+    "category": "memoria",
+    "kind": "family",
+    "canonical_id": "T049",
+    "aliases": [
+      "memória episódica"
+    ]
+  },
+  {
+    "number": 50,
+    "id": "T050",
+    "name": "Working Memory Window",
+    "category": "memoria",
+    "kind": "component",
+    "canonical_id": "T050",
+    "aliases": [
+      "janela de memória de trabalho"
+    ]
+  },
+  {
+    "number": 51,
+    "id": "T051",
+    "name": "Graph-Based Memory",
+    "category": "memoria",
+    "kind": "architecture",
+    "canonical_id": "T051",
+    "aliases": [
+      "memória baseada em grafos"
+    ]
+  },
+  {
+    "number": 52,
+    "id": "T052",
+    "name": "Latent Context",
+    "category": "memoria",
+    "kind": "family",
+    "canonical_id": "T052",
+    "aliases": [
+      "contexto latente"
+    ]
+  },
+  {
+    "number": 53,
+    "id": "T053",
+    "name": "Scratchpad em arquivo",
+    "category": "memoria",
+    "kind": "pattern",
+    "canonical_id": "T053",
+    "aliases": [
+      "scratchpad persistente",
+      "notas operacionais externas",
+      "Scratchpad em Arquivo"
+    ]
+  },
+  {
+    "number": 54,
+    "id": "T054",
+    "name": "Semantic Memory",
+    "category": "memoria",
+    "kind": "family",
+    "canonical_id": "T054",
+    "aliases": [
+      "memória semântica"
+    ]
+  },
+  {
+    "number": 55,
+    "id": "T055",
+    "name": "Procedural Memory",
+    "category": "memoria",
+    "kind": "family",
+    "canonical_id": "T055",
+    "aliases": [
+      "memória procedural",
+      "memória de procedimentos"
+    ]
+  },
+  {
+    "number": 56,
+    "id": "T056",
+    "name": "Bitemporal Memory",
+    "category": "memoria",
+    "kind": "architecture",
+    "canonical_id": "T056",
+    "aliases": [
+      "memória bitemporal",
+      "valid time e system time"
+    ]
+  },
+  {
+    "number": 57,
+    "id": "T057",
+    "name": "Causal Memory",
+    "category": "memoria",
+    "kind": "pattern",
+    "canonical_id": "T057",
+    "aliases": [
+      "memória causal"
+    ]
+  },
+  {
+    "number": 58,
+    "id": "T058",
+    "name": "Memory Consolidation",
+    "category": "memoria",
+    "kind": "pattern",
+    "canonical_id": "T058",
+    "aliases": [
+      "consolidação de memória"
+    ]
+  },
+  {
+    "number": 59,
+    "id": "T059",
+    "name": "Event Sourcing",
+    "category": "memoria",
+    "kind": "pattern",
+    "canonical_id": "T059",
+    "aliases": [
+      "estado derivado de eventos"
+    ]
+  },
+  {
+    "number": 60,
+    "id": "T060",
+    "name": "Agent Checkpointing / Checkpoint & Resume — incluindo checkpoints transacionais",
+    "category": "memoria",
+    "kind": "pattern",
+    "canonical_id": "T060",
+    "aliases": [
+      "Checkpointing",
+      "ponto de retomada",
+      "snapshot de execução",
+      "Agent Checkpointing",
+      "Checkpoint & Resume",
+      "checkpoint transacional"
+    ]
+  },
+  {
+    "number": 61,
+    "id": "T061",
+    "name": "Content-Addressable Storage",
+    "category": "memoria",
+    "kind": "architecture",
+    "canonical_id": "T061",
+    "aliases": [
+      "armazenamento endereçado por conteúdo",
+      "CAS"
+    ]
+  },
+  {
+    "number": 62,
+    "id": "T062",
+    "name": "Hierarchical Memory",
+    "category": "memoria",
+    "kind": "architecture",
+    "canonical_id": "T062",
+    "aliases": [
+      "memória hierárquica"
+    ]
+  },
+  {
+    "number": 63,
+    "id": "T063",
+    "name": "Virtual Context Management — memória virtual de contexto, estilo MemGPT",
+    "category": "memoria",
+    "kind": "architecture",
+    "canonical_id": "T063",
+    "aliases": [
+      "gerenciamento de contexto virtual",
+      "Virtual Context Management — MemGPT"
+    ]
+  },
+  {
+    "number": 64,
+    "id": "T064",
+    "name": "Persistent Agent State",
+    "category": "memoria",
+    "kind": "component",
+    "canonical_id": "T064",
+    "aliases": [
+      "estado persistente de agente"
+    ]
+  },
+  {
+    "number": 65,
+    "id": "T065",
+    "name": "Transactional State Manager",
+    "category": "memoria",
+    "kind": "component",
+    "canonical_id": "T065",
+    "aliases": [
+      "gerenciador transacional de estado"
+    ]
+  },
+  {
+    "number": 66,
+    "id": "T066",
+    "name": "Memory Resolver / Reference Resolver",
+    "category": "memoria",
+    "kind": "component",
+    "canonical_id": "T066",
+    "aliases": [
+      "resolvedor de memória",
+      "resolvedor de referências"
+    ]
+  },
+  {
+    "number": 67,
+    "id": "T067",
+    "name": "Active Memory Retrieval",
+    "category": "memoria",
+    "kind": "pattern",
+    "canonical_id": "T067",
+    "aliases": [
+      "recuperação ativa de memória"
+    ]
+  },
+  {
+    "number": 68,
+    "id": "T068",
+    "name": "Memory-Augmented Generation",
+    "category": "memoria",
+    "kind": "family",
+    "canonical_id": "T068",
+    "aliases": [
+      "geração aumentada por memória",
+      "MAG"
+    ]
+  },
+  {
+    "number": 69,
+    "id": "T069",
+    "name": "Consolidação por resumos — anteriormente chamada de “Context Distillation”",
+    "category": "memoria",
+    "kind": "pattern",
+    "canonical_id": "T069",
+    "aliases": [
+      "Context Distillation como memória resumida",
+      "correção de context distillation",
+      "destilação não é resumo",
+      "memória resumida externa",
+      "consolidação textual sem treino"
+    ]
+  },
+  {
+    "number": 70,
+    "id": "T070",
+    "name": "Episodic Store",
+    "category": "memoria",
+    "kind": "component",
+    "canonical_id": "T070",
+    "aliases": [
+      "repositório de episódios"
+    ]
+  },
+  {
+    "number": 71,
+    "id": "T071",
+    "name": "Memory Promotion",
+    "category": "memoria",
+    "kind": "pattern",
+    "canonical_id": "T071",
+    "aliases": [
+      "promoção de memória"
+    ]
+  },
+  {
+    "number": 72,
+    "id": "T072",
+    "name": "Versioned Memory",
+    "category": "memoria",
+    "kind": "pattern",
+    "canonical_id": "T072",
+    "aliases": [
+      "memória versionada"
+    ]
+  },
+  {
+    "number": 73,
+    "id": "T073",
+    "name": "Immutable Evidence Store",
+    "category": "memoria",
+    "kind": "component",
+    "canonical_id": "T073",
+    "aliases": [
+      "repositório imutável de evidências",
+      "evidence store"
+    ]
+  },
+  {
+    "number": 74,
+    "id": "T074",
+    "name": "Memory Eviction",
+    "category": "memoria",
+    "kind": "pattern",
+    "canonical_id": "T074",
+    "aliases": [
+      "expulsão de memória",
+      "descarregamento de memória"
+    ]
+  },
+  {
+    "number": 75,
+    "id": "T075",
+    "name": "Memory Reconciliation",
+    "category": "memoria",
+    "kind": "pattern",
+    "canonical_id": "T075",
+    "aliases": [
+      "reconciliação de memória"
+    ]
+  },
+  {
+    "number": 76,
+    "id": "T076",
+    "name": "Git-Backed Memory",
+    "category": "memoria",
+    "kind": "architecture",
+    "canonical_id": "T076",
+    "aliases": [
+      "memória versionada em Git"
+    ]
+  },
+  {
+    "number": 77,
+    "id": "T077",
+    "name": "Temporal Knowledge Graphs",
+    "category": "memoria",
+    "kind": "architecture",
+    "canonical_id": "T077",
+    "aliases": [
+      "grafos de conhecimento temporais"
+    ]
+  },
+  {
+    "number": 78,
+    "id": "T078",
+    "name": "Semantic Page Fault",
+    "category": "memoria",
+    "kind": "pattern",
+    "canonical_id": "T078",
+    "aliases": [
+      "falta semântica de página",
+      "lacuna de contexto"
+    ]
+  },
+  {
+    "number": 79,
+    "id": "T079",
+    "name": "Speculative Decoding",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T079",
+    "aliases": [
+      "decodificação especulativa",
+      "speculative sampling"
+    ]
+  },
+  {
+    "number": 80,
+    "id": "T080",
+    "name": "Adaptive Speculative Decoding",
+    "category": "inferencia",
+    "kind": "family",
+    "canonical_id": "T080",
+    "aliases": [
+      "dynamic speculation lookahead",
+      "especulação adaptativa"
+    ]
+  },
+  {
+    "number": 81,
+    "id": "T081",
+    "name": "KV Cache Reuse",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T081",
+    "aliases": [
+      "reuso de cache de chaves e valores"
+    ]
+  },
+  {
+    "number": 82,
+    "id": "T082",
+    "name": "Prefix Caching",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T082",
+    "aliases": [
+      "automatic prefix caching",
+      "cache de prefixos"
+    ]
+  },
+  {
+    "number": 83,
+    "id": "T083",
+    "name": "Advanced Prefix Caching",
+    "category": "inferencia",
+    "kind": "family",
+    "canonical_id": "T082",
+    "aliases": []
+  },
+  {
+    "number": 84,
+    "id": "T084",
+    "name": "Session-Based Caching",
+    "category": "inferencia",
+    "kind": "pattern",
+    "canonical_id": "T084",
+    "aliases": []
+  },
+  {
+    "number": 85,
+    "id": "T085",
+    "name": "Quantization",
+    "category": "inferencia",
+    "kind": "family",
+    "canonical_id": "T085",
+    "aliases": [
+      "quantização"
+    ]
+  },
+  {
+    "number": 86,
+    "id": "T086",
+    "name": "Quantized KV Cache",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T086",
+    "aliases": [
+      "quantização de cache KV"
+    ]
+  },
+  {
+    "number": 87,
+    "id": "T087",
+    "name": "Batching — Static Batching e Dynamic Batching",
+    "category": "inferencia",
+    "kind": "family",
+    "canonical_id": "T087",
+    "aliases": [
+      "Batching",
+      "processamento em lotes",
+      "lote estático",
+      "lote dinâmico"
+    ]
+  },
+  {
+    "number": 88,
+    "id": "T088",
+    "name": "Continuous Batching",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T088",
+    "aliases": [
+      "iteration-level scheduling",
+      "in-flight batching"
+    ]
+  },
+  {
+    "number": 89,
+    "id": "T089",
+    "name": "Early Stopping — EOS, stop sequences, limites e parada semântica",
+    "category": "inferencia",
+    "kind": "family",
+    "canonical_id": "T089",
+    "aliases": [
+      "Early Stopping",
+      "parada antecipada",
+      "EOS",
+      "stop sequences",
+      "parada semântica"
+    ]
+  },
+  {
+    "number": 90,
+    "id": "T090",
+    "name": "FlashAttention",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T090",
+    "aliases": [
+      "atenção com otimização de IO"
+    ]
+  },
+  {
+    "number": 91,
+    "id": "T091",
+    "name": "FlashAttention-2",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T091",
+    "aliases": [
+      "Flash Attention 2"
+    ]
+  },
+  {
+    "number": 92,
+    "id": "T092",
+    "name": "FlashAttention-3",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T092",
+    "aliases": [
+      "Flash Attention 3"
+    ]
+  },
+  {
+    "number": 93,
+    "id": "T093",
+    "name": "PagedAttention",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T093",
+    "aliases": [
+      "atenção paginada"
+    ]
+  },
+  {
+    "number": 94,
+    "id": "T094",
+    "name": "Chunked Prefill",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T094",
+    "aliases": [
+      "prefill em partes"
+    ]
+  },
+  {
+    "number": 95,
+    "id": "T095",
+    "name": "Sliding Window Attention",
+    "category": "inferencia",
+    "kind": "architecture",
+    "canonical_id": "T095",
+    "aliases": [
+      "atenção de janela deslizante"
+    ]
+  },
+  {
+    "number": 96,
+    "id": "T096",
+    "name": "Sparse Attention",
+    "category": "inferencia",
+    "kind": "family",
+    "canonical_id": "T096",
+    "aliases": [
+      "atenção esparsa"
+    ]
+  },
+  {
+    "number": 97,
+    "id": "T097",
+    "name": "Block-Sparse Attention",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T097",
+    "aliases": [
+      "atenção esparsa por blocos"
+    ]
+  },
+  {
+    "number": 98,
+    "id": "T098",
+    "name": "Memory-Efficient Attention",
+    "category": "inferencia",
+    "kind": "family",
+    "canonical_id": "T098",
+    "aliases": [
+      "atenção eficiente em memória"
+    ]
+  },
+  {
+    "number": 99,
+    "id": "T099",
+    "name": "Multi-Query Attention — MQA",
+    "category": "inferencia",
+    "kind": "architecture",
+    "canonical_id": "T099",
+    "aliases": [
+      "multi-query attention",
+      "atenção multi-query"
+    ]
+  },
+  {
+    "number": 100,
+    "id": "T100",
+    "name": "Grouped-Query Attention — GQA",
+    "category": "inferencia",
+    "kind": "architecture",
+    "canonical_id": "T100",
+    "aliases": [
+      "grouped-query attention",
+      "atenção com consultas agrupadas"
+    ]
+  },
+  {
+    "number": 101,
+    "id": "T101",
+    "name": "Ring Attention",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T101",
+    "aliases": [
+      "atenção em anel"
+    ]
+  },
+  {
+    "number": 102,
+    "id": "T102",
+    "name": "Disaggregated Inference / Disaggregated Prefill-Decode",
+    "category": "inferencia",
+    "kind": "architecture",
+    "canonical_id": "T102",
+    "aliases": [
+      "Disaggregated Inference / Prefill-Decode",
+      "prefill-decode disaggregation",
+      "inferência desagregada",
+      "Disaggregated Prefill-Decode",
+      "PD disaggregation"
+    ]
+  },
+  {
+    "number": 103,
+    "id": "T103",
+    "name": "Prefix Tree / Trie de prefixos",
+    "category": "inferencia",
+    "kind": "component",
+    "canonical_id": "T103",
+    "aliases": [
+      "prefix trie",
+      "árvore de prefixos",
+      "Prefix Tree / Trie de Prefixos"
+    ]
+  },
+  {
+    "number": 104,
+    "id": "T104",
+    "name": "Radix Attention",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T104",
+    "aliases": [
+      "RadixAttention"
+    ]
+  },
+  {
+    "number": 105,
+    "id": "T105",
+    "name": "KV Cache Eviction",
+    "category": "inferencia",
+    "kind": "family",
+    "canonical_id": "T105",
+    "aliases": [
+      "despejo de cache KV"
+    ]
+  },
+  {
+    "number": 106,
+    "id": "T106",
+    "name": "Otimização de KV com MQA/GQA",
+    "category": "inferencia",
+    "kind": "pattern",
+    "canonical_id": "T106",
+    "aliases": [
+      "GQA/MQA KV Optimization",
+      "KV cache com cabeças compartilhadas",
+      "MQA/GQA KV optimization"
+    ]
+  },
+  {
+    "number": 107,
+    "id": "T107",
+    "name": "Roofline Analysis",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T107",
+    "aliases": [
+      "análise Roofline",
+      "intensidade aritmética"
+    ]
+  },
+  {
+    "number": 108,
+    "id": "T108",
+    "name": "Multi-Head Attention — MHA",
+    "category": "inferencia",
+    "kind": "architecture",
+    "canonical_id": "T108",
+    "aliases": [
+      "multi-head attention",
+      "atenção multicabeças"
+    ]
+  },
+  {
+    "number": 109,
+    "id": "T109",
+    "name": "Local / Window Attention",
+    "category": "inferencia",
+    "kind": "family",
+    "canonical_id": "T095",
+    "aliases": []
+  },
+  {
+    "number": 110,
+    "id": "T110",
+    "name": "Global Token Attention",
+    "category": "inferencia",
+    "kind": "pattern",
+    "canonical_id": "T110",
+    "aliases": [
+      "atenção em tokens globais"
+    ]
+  },
+  {
+    "number": 111,
+    "id": "T111",
+    "name": "Dynamic Sparse Attention",
+    "category": "inferencia",
+    "kind": "family",
+    "canonical_id": "T111",
+    "aliases": [
+      "atenção esparsa dinâmica"
+    ]
+  },
+  {
+    "number": 112,
+    "id": "T112",
+    "name": "Retrieval-Based Attention",
+    "category": "inferencia",
+    "kind": "family",
+    "canonical_id": "T112",
+    "aliases": []
+  },
+  {
+    "number": 113,
+    "id": "T113",
+    "name": "FlashAttention Tiling",
+    "category": "inferencia",
+    "kind": "component",
+    "canonical_id": "T113",
+    "aliases": [
+      "blocagem de FlashAttention"
+    ]
+  },
+  {
+    "number": 114,
+    "id": "T114",
+    "name": "Online Softmax",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T114",
+    "aliases": [
+      "softmax incremental",
+      "normalização online"
+    ]
+  },
+  {
+    "number": 115,
+    "id": "T115",
+    "name": "Activation Checkpointing",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T115",
+    "aliases": [
+      "gradient checkpointing",
+      "checkpointing de ativações"
+    ]
+  },
+  {
+    "number": 116,
+    "id": "T116",
+    "name": "KV Cache Recomputation",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T116",
+    "aliases": [
+      "recomputação de KV"
+    ]
+  },
+  {
+    "number": 117,
+    "id": "T117",
+    "name": "Context Parallelism",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T117",
+    "aliases": [
+      "paralelismo de contexto"
+    ]
+  },
+  {
+    "number": 118,
+    "id": "T118",
+    "name": "Tensor Parallelism",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T118",
+    "aliases": [
+      "paralelismo tensorial"
+    ]
+  },
+  {
+    "number": 119,
+    "id": "T119",
+    "name": "Pipeline Parallelism",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T119",
+    "aliases": [
+      "paralelismo de pipeline"
+    ]
+  },
+  {
+    "number": 120,
+    "id": "T120",
+    "name": "KV Cache Routing",
+    "category": "inferencia",
+    "kind": "pattern",
+    "canonical_id": "T120",
+    "aliases": [
+      "cache-aware routing",
+      "roteamento consciente de KV"
+    ]
+  },
+  {
+    "number": 121,
+    "id": "T121",
+    "name": "GPU Scheduling",
+    "category": "inferencia",
+    "kind": "family",
+    "canonical_id": "T121",
+    "aliases": [
+      "escalonamento de GPU"
+    ]
+  },
+  {
+    "number": 122,
+    "id": "T122",
+    "name": "RDMA para inferência distribuída",
+    "category": "inferencia",
+    "kind": "protocol",
+    "canonical_id": "T122",
+    "aliases": [
+      "Remote Direct Memory Access",
+      "GPUDirect RDMA"
+    ]
+  },
+  {
+    "number": 123,
+    "id": "T123",
+    "name": "FP8 Quantization",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T123",
+    "aliases": [
+      "quantização FP8"
+    ]
+  },
+  {
+    "number": 124,
+    "id": "T124",
+    "name": "INT4 / W4A16 Quantization",
+    "category": "inferencia",
+    "kind": "family",
+    "canonical_id": "T124",
+    "aliases": [
+      "weight-only INT4",
+      "pesos 4 bits ativações 16 bits"
+    ]
+  },
+  {
+    "number": 125,
+    "id": "T125",
+    "name": "GPTQ",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T125",
+    "aliases": [
+      "post-training weight quantization GPTQ"
+    ]
+  },
+  {
+    "number": 126,
+    "id": "T126",
+    "name": "AWQ",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T126",
+    "aliases": [
+      "Activation-aware Weight Quantization"
+    ]
+  },
+  {
+    "number": 127,
+    "id": "T127",
+    "name": "GGUF — formato de modelos, não método único de quantização",
+    "category": "inferencia",
+    "kind": "format",
+    "canonical_id": "T127",
+    "aliases": [
+      "GGUF / formatos de quantização",
+      "GGUF",
+      "formato GGUF",
+      "GGUF não é algoritmo de quantização"
+    ]
+  },
+  {
+    "number": 128,
+    "id": "T128",
+    "name": "EAGLE / EAGLE-3",
+    "category": "inferencia",
+    "kind": "family",
+    "canonical_id": "T128",
+    "aliases": [
+      "EAGLE",
+      "EAGLE-3"
+    ]
+  },
+  {
+    "number": 129,
+    "id": "T129",
+    "name": "MTP — Multi-Token Prediction",
+    "category": "inferencia",
+    "kind": "architecture",
+    "canonical_id": "T129",
+    "aliases": [
+      "multi-token prediction",
+      "predição de múltiplos tokens"
+    ]
+  },
+  {
+    "number": 130,
+    "id": "T130",
+    "name": "N-Gram Speculative Decoding",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T130",
+    "aliases": [
+      "ngram speculation",
+      "especulação por n-gramas"
+    ]
+  },
+  {
+    "number": 131,
+    "id": "T131",
+    "name": "Suffix Decoding",
+    "category": "inferencia",
+    "kind": "technique",
+    "canonical_id": "T131",
+    "aliases": [
+      "SuffixDecoding",
+      "decodificação por sufixos"
+    ]
+  },
+  {
+    "number": 132,
+    "id": "T132",
+    "name": "Draft-Model Speculation",
+    "category": "inferencia",
+    "kind": "pattern",
+    "canonical_id": "T132",
+    "aliases": [
+      "draft model speculative decoding",
+      "especulação com modelo auxiliar"
+    ]
+  },
+  {
+    "number": 133,
+    "id": "T133",
+    "name": "Model Routing",
+    "category": "orquestracao",
+    "kind": "family",
+    "canonical_id": "T133",
+    "aliases": [
+      "roteamento de modelos"
+    ]
+  },
+  {
+    "number": 134,
+    "id": "T134",
+    "name": "Semantic Routing",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T134",
+    "aliases": [
+      "roteamento semântico"
+    ]
+  },
+  {
+    "number": 135,
+    "id": "T135",
+    "name": "Model Cascade",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T135",
+    "aliases": [
+      "cascata de modelos"
+    ]
+  },
+  {
+    "number": 136,
+    "id": "T136",
+    "name": "Fallback Chains",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T136",
+    "aliases": [
+      "cadeia de contingência"
+    ]
+  },
+  {
+    "number": 137,
+    "id": "T137",
+    "name": "Rate Limiting",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T137",
+    "aliases": [
+      "limitação de taxa"
+    ]
+  },
+  {
+    "number": 138,
+    "id": "T138",
+    "name": "Circuit Breaker",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T138",
+    "aliases": [
+      "disjuntor de chamadas"
+    ]
+  },
+  {
+    "number": 139,
+    "id": "T139",
+    "name": "Parallel Tool Calls",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T139",
+    "aliases": [
+      "chamadas concorrentes de ferramentas"
+    ]
+  },
+  {
+    "number": 140,
+    "id": "T140",
+    "name": "Tool Use / Function Calling",
+    "category": "orquestracao",
+    "kind": "family",
+    "canonical_id": "T140",
+    "aliases": [
+      "uso de ferramentas",
+      "chamada de função"
+    ]
+  },
+  {
+    "number": 141,
+    "id": "T141",
+    "name": "Structured Outputs",
+    "category": "orquestracao",
+    "kind": "family",
+    "canonical_id": "T141",
+    "aliases": [
+      "saídas estruturadas"
+    ]
+  },
+  {
+    "number": 142,
+    "id": "T142",
+    "name": "Agent Frameworks com Planning",
+    "category": "orquestracao",
+    "kind": "family",
+    "canonical_id": "T142",
+    "aliases": [
+      "frameworks de agentes com planejamento"
+    ]
+  },
+  {
+    "number": 143,
+    "id": "T143",
+    "name": "Plan-Then-Act",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T143",
+    "aliases": [
+      "planejar e depois agir"
+    ]
+  },
+  {
+    "number": 144,
+    "id": "T144",
+    "name": "ReAct Pattern",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T144",
+    "aliases": [
+      "reasoning and acting"
+    ]
+  },
+  {
+    "number": 145,
+    "id": "T145",
+    "name": "Adaptive Depth",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T145",
+    "aliases": [
+      "profundidade adaptativa"
+    ]
+  },
+  {
+    "number": 146,
+    "id": "T146",
+    "name": "Adaptive Compute",
+    "category": "orquestracao",
+    "kind": "family",
+    "canonical_id": "T146",
+    "aliases": [
+      "computação adaptativa"
+    ]
+  },
+  {
+    "number": 147,
+    "id": "T147",
+    "name": "Parallel Fan-Out",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T147",
+    "aliases": [
+      "distribuição paralela em ramos"
+    ]
+  },
+  {
+    "number": 148,
+    "id": "T148",
+    "name": "Conditional Branching",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T148",
+    "aliases": [
+      "ramificação condicional"
+    ]
+  },
+  {
+    "number": 149,
+    "id": "T149",
+    "name": "Priority Queue",
+    "category": "orquestracao",
+    "kind": "component",
+    "canonical_id": "T149",
+    "aliases": [
+      "fila de prioridade"
+    ]
+  },
+  {
+    "number": 150,
+    "id": "T150",
+    "name": "Request Coalescing / Singleflight",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T150",
+    "aliases": [
+      "coalescência de solicitações",
+      "singleflight"
+    ]
+  },
+  {
+    "number": 151,
+    "id": "T151",
+    "name": "Lazy Loading de ferramentas",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T151",
+    "aliases": [
+      "carregamento tardio de ferramentas",
+      "Lazy Loading de Ferramentas"
+    ]
+  },
+  {
+    "number": 152,
+    "id": "T152",
+    "name": "Token Budget Allocation",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T152",
+    "aliases": [
+      "alocação de orçamento de tokens"
+    ]
+  },
+  {
+    "number": 153,
+    "id": "T153",
+    "name": "Output Streaming com interrupção",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T153",
+    "aliases": [
+      "streaming cancelável",
+      "Output Streaming com Interrupção"
+    ]
+  },
+  {
+    "number": 154,
+    "id": "T154",
+    "name": "Multi-Turn Conversation Management",
+    "category": "orquestracao",
+    "kind": "component",
+    "canonical_id": "T154",
+    "aliases": [
+      "gerenciamento de conversas multiturno"
+    ]
+  },
+  {
+    "number": 155,
+    "id": "T155",
+    "name": "System Prompt Optimization / prompt de sistema enxuto",
+    "category": "orquestracao",
+    "kind": "family",
+    "canonical_id": "T155",
+    "aliases": [
+      "System Prompt Optimization",
+      "otimização do prompt de sistema",
+      "prompt de sistema enxuto"
+    ]
+  },
+  {
+    "number": 156,
+    "id": "T156",
+    "name": "Temperature Tuning",
+    "category": "orquestracao",
+    "kind": "technique",
+    "canonical_id": "T156",
+    "aliases": [
+      "ajuste de temperatura"
+    ]
+  },
+  {
+    "number": 157,
+    "id": "T157",
+    "name": "Prefix Hashing",
+    "category": "orquestracao",
+    "kind": "component",
+    "canonical_id": "T157",
+    "aliases": [
+      "hash de prefixos"
+    ]
+  },
+  {
+    "number": 158,
+    "id": "T158",
+    "name": "Tool Registry",
+    "category": "orquestracao",
+    "kind": "component",
+    "canonical_id": "T158",
+    "aliases": [
+      "registro de ferramentas"
+    ]
+  },
+  {
+    "number": 159,
+    "id": "T159",
+    "name": "Durable Execution",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T159",
+    "aliases": [
+      "execução durável"
+    ]
+  },
+  {
+    "number": 160,
+    "id": "T160",
+    "name": "DAG Scheduling",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T160",
+    "aliases": [
+      "escalonamento de grafo acíclico"
+    ]
+  },
+  {
+    "number": 161,
+    "id": "T161",
+    "name": "Critical Path Analysis",
+    "category": "orquestracao",
+    "kind": "technique",
+    "canonical_id": "T161",
+    "aliases": [
+      "análise do caminho crítico"
+    ]
+  },
+  {
+    "number": 162,
+    "id": "T162",
+    "name": "Idempotência",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T162",
+    "aliases": [
+      "idempotency"
+    ]
+  },
+  {
+    "number": 163,
+    "id": "T163",
+    "name": "Backoff exponencial com jitter",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T163",
+    "aliases": [
+      "Backoff com Jitter",
+      "exponential backoff with jitter",
+      "recuo exponencial aleatório"
+    ]
+  },
+  {
+    "number": 164,
+    "id": "T164",
+    "name": "Retry-After",
+    "category": "orquestracao",
+    "kind": "protocol",
+    "canonical_id": "T164",
+    "aliases": [
+      "cabeçalho Retry-After"
+    ]
+  },
+  {
+    "number": 165,
+    "id": "T165",
+    "name": "Half-open — estado do Circuit Breaker",
+    "category": "orquestracao",
+    "kind": "component",
+    "canonical_id": "T165",
+    "aliases": [
+      "Half-Open Circuit Breaker",
+      "circuito parcialmente aberto",
+      "sondagem de recuperação do circuito"
+    ]
+  },
+  {
+    "number": 166,
+    "id": "T166",
+    "name": "Queue Fairness / Aging",
+    "category": "orquestracao",
+    "kind": "family",
+    "canonical_id": "T166",
+    "aliases": [
+      "equidade de filas",
+      "envelhecimento de prioridade"
+    ]
+  },
+  {
+    "number": 167,
+    "id": "T167",
+    "name": "Token Bucket",
+    "category": "orquestracao",
+    "kind": "technique",
+    "canonical_id": "T167",
+    "aliases": [
+      "balde de tokens"
+    ]
+  },
+  {
+    "number": 168,
+    "id": "T168",
+    "name": "Soft Limit / Hard Limit de tokens",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T168",
+    "aliases": [
+      "limites suave e rígido de tokens",
+      "Soft Limit / Hard Limit de Tokens"
+    ]
+  },
+  {
+    "number": 169,
+    "id": "T169",
+    "name": "Multi-Agent com contextos isolados",
+    "category": "orquestracao",
+    "kind": "architecture",
+    "canonical_id": "T169",
+    "aliases": [
+      "subagentes com contexto separado",
+      "Multi-Agent com Contextos Isolados"
+    ]
+  },
+  {
+    "number": 170,
+    "id": "T170",
+    "name": "Tool Schema Versioning",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T170",
+    "aliases": [
+      "versionamento de schemas de ferramentas"
+    ]
+  },
+  {
+    "number": 171,
+    "id": "T171",
+    "name": "Cache-Aware Orchestration",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T171",
+    "aliases": [
+      "orquestração orientada a cache"
+    ]
+  },
+  {
+    "number": 172,
+    "id": "T172",
+    "name": "Streaming Controller",
+    "category": "orquestracao",
+    "kind": "component",
+    "canonical_id": "T172",
+    "aliases": [
+      "controlador de streaming"
+    ]
+  },
+  {
+    "number": 173,
+    "id": "T173",
+    "name": "Model Fallback Controlado",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T136",
+    "aliases": [
+      "contingência controlada de modelo"
+    ]
+  },
+  {
+    "number": 174,
+    "id": "T174",
+    "name": "Priority-Based Scheduling",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T174",
+    "aliases": [
+      "escalonamento por prioridade"
+    ]
+  },
+  {
+    "number": 175,
+    "id": "T175",
+    "name": "Rate Limiting com Fallback",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T175",
+    "aliases": [
+      "limitação de taxa com contingência"
+    ]
+  },
+  {
+    "number": 176,
+    "id": "T176",
+    "name": "Token-Aware Planning",
+    "category": "orquestracao",
+    "kind": "pattern",
+    "canonical_id": "T176",
+    "aliases": [
+      "planejamento consciente de tokens"
+    ]
+  },
+  {
+    "number": 177,
+    "id": "T177",
+    "name": "Fine-Tuning",
+    "category": "verificacao_treinamento",
+    "kind": "family",
+    "canonical_id": "T177",
+    "aliases": [
+      "ajuste fino"
+    ]
+  },
+  {
+    "number": 178,
+    "id": "T178",
+    "name": "Knowledge Distillation",
+    "category": "verificacao_treinamento",
+    "kind": "family",
+    "canonical_id": "T178",
+    "aliases": [
+      "destilação de conhecimento"
+    ]
+  },
+  {
+    "number": 179,
+    "id": "T179",
+    "name": "Context Distillation Paramétrica",
+    "category": "verificacao_treinamento",
+    "kind": "technique",
+    "canonical_id": "T179",
+    "aliases": [
+      "destilação paramétrica de contexto"
+    ]
+  },
+  {
+    "number": 180,
+    "id": "T180",
+    "name": "Prompt Distillation",
+    "category": "verificacao_treinamento",
+    "kind": "technique",
+    "canonical_id": "T179",
+    "aliases": [
+      "destilação de prompt"
+    ]
+  },
+  {
+    "number": 181,
+    "id": "T181",
+    "name": "Agent Memory Distillation",
+    "category": "verificacao_treinamento",
+    "kind": "technique",
+    "canonical_id": "T181",
+    "aliases": [
+      "AMD",
+      "destilação de memória de agentes"
+    ]
+  },
+  {
+    "number": 182,
+    "id": "T182",
+    "name": "LoRA",
+    "category": "verificacao_treinamento",
+    "kind": "technique",
+    "canonical_id": "T182",
+    "aliases": [
+      "Low-Rank Adaptation",
+      "adaptação de baixo posto"
+    ]
+  },
+  {
+    "number": 183,
+    "id": "T183",
+    "name": "QLoRA",
+    "category": "verificacao_treinamento",
+    "kind": "technique",
+    "canonical_id": "T183",
+    "aliases": [
+      "ajuste fino com LoRA sobre base quantizada"
+    ]
+  },
+  {
+    "number": 184,
+    "id": "T184",
+    "name": "Mixture of Experts — MoE",
+    "category": "verificacao_treinamento",
+    "kind": "architecture",
+    "canonical_id": "T184",
+    "aliases": [
+      "MoE",
+      "mistura de especialistas"
+    ]
+  },
+  {
+    "number": 185,
+    "id": "T185",
+    "name": "Constitutional AI",
+    "category": "verificacao_treinamento",
+    "kind": "technique",
+    "canonical_id": "T185",
+    "aliases": [
+      "IA constitucional"
+    ]
+  },
+  {
+    "number": 186,
+    "id": "T186",
+    "name": "Debate entre agentes",
+    "category": "verificacao_treinamento",
+    "kind": "pattern",
+    "canonical_id": "T186",
+    "aliases": [
+      "multiagent debate",
+      "Debate entre Agentes"
+    ]
+  },
+  {
+    "number": 187,
+    "id": "T187",
+    "name": "Ensemble Voting",
+    "category": "verificacao_treinamento",
+    "kind": "technique",
+    "canonical_id": "T187",
+    "aliases": [
+      "votação de ensemble"
+    ]
+  },
+  {
+    "number": 188,
+    "id": "T188",
+    "name": "Self-Consistency",
+    "category": "verificacao_treinamento",
+    "kind": "technique",
+    "canonical_id": "T188",
+    "aliases": [
+      "autoconsistência"
+    ]
+  },
+  {
+    "number": 189,
+    "id": "T189",
+    "name": "Best-of-N Verification",
+    "category": "verificacao_treinamento",
+    "kind": "pattern",
+    "canonical_id": "T189",
+    "aliases": [
+      "seleção do melhor de N"
+    ]
+  },
+  {
+    "number": 190,
+    "id": "T190",
+    "name": "Verifier Loop",
+    "category": "verificacao_treinamento",
+    "kind": "pattern",
+    "canonical_id": "T190",
+    "aliases": [
+      "ciclo de verificação"
+    ]
+  },
+  {
+    "number": 191,
+    "id": "T191",
+    "name": "Chain-of-Verification",
+    "category": "verificacao_treinamento",
+    "kind": "technique",
+    "canonical_id": "T191",
+    "aliases": [
+      "CoVe",
+      "cadeia de verificação"
+    ]
+  },
+  {
+    "number": 192,
+    "id": "T192",
+    "name": "Self-Refine",
+    "category": "verificacao_treinamento",
+    "kind": "technique",
+    "canonical_id": "T192",
+    "aliases": [
+      "autorefino"
+    ]
+  },
+  {
+    "number": 193,
+    "id": "T193",
+    "name": "Guardrails",
+    "category": "verificacao_treinamento",
+    "kind": "family",
+    "canonical_id": "T193",
+    "aliases": [
+      "controles de execução e saída"
+    ]
+  },
+  {
+    "number": 194,
+    "id": "T194",
+    "name": "Process Supervision",
+    "category": "verificacao_treinamento",
+    "kind": "technique",
+    "canonical_id": "T194",
+    "aliases": [
+      "supervisão de processo"
+    ]
+  },
+  {
+    "number": 195,
+    "id": "T195",
+    "name": "Verificação baseada em execução",
+    "category": "verificacao_treinamento",
+    "kind": "family",
+    "canonical_id": "T195",
+    "aliases": [
+      "execution-based verification",
+      "Verificação Baseada em Execução"
+    ]
+  },
+  {
+    "number": 196,
+    "id": "T196",
+    "name": "Constrained Decoding / Grammar-Constrained Decoding",
+    "category": "verificacao_treinamento",
+    "kind": "technique",
+    "canonical_id": "T196",
+    "aliases": [
+      "Constrained Decoding",
+      "decodificação restrita",
+      "grammar-guided decoding",
+      "Grammar-Constrained Decoding",
+      "grammar-constrained generation"
+    ]
+  },
+  {
+    "number": 197,
+    "id": "T197",
+    "name": "JSON Schema Validation",
+    "category": "verificacao_treinamento",
+    "kind": "technique",
+    "canonical_id": "T197",
+    "aliases": [
+      "validação de JSON Schema"
+    ]
+  },
+  {
+    "number": 198,
+    "id": "T198",
+    "name": "Calibrated Confidence",
+    "category": "verificacao_treinamento",
+    "kind": "technique",
+    "canonical_id": "T198",
+    "aliases": [
+      "confiança calibrada"
+    ]
+  },
+  {
+    "number": 199,
+    "id": "T199",
+    "name": "Aprendizagem por avaliação",
+    "category": "verificacao_treinamento",
+    "kind": "family",
+    "canonical_id": "T199",
+    "aliases": [
+      "evaluation-driven improvement",
+      "Aprendizagem por Avaliação"
+    ]
+  },
+  {
+    "number": 200,
+    "id": "T200",
+    "name": "Independent Verification",
+    "category": "verificacao_treinamento",
+    "kind": "pattern",
+    "canonical_id": "T200",
+    "aliases": [
+      "verificação independente"
+    ]
+  },
+  {
+    "number": 201,
+    "id": "T201",
+    "name": "Agent Test-Time Scaling",
+    "category": "verificacao_treinamento",
+    "kind": "family",
+    "canonical_id": "T201",
+    "aliases": [
+      "escalada de computação em execução de agentes"
+    ]
+  },
+  {
+    "number": 202,
+    "id": "T202",
+    "name": "Uncertainty-Aware Planning",
+    "category": "verificacao_treinamento",
+    "kind": "pattern",
+    "canonical_id": "T202",
+    "aliases": [
+      "planejamento com incerteza"
+    ]
+  },
+  {
+    "number": 203,
+    "id": "T203",
+    "name": "Correctness-Based Routing",
+    "category": "verificacao_treinamento",
+    "kind": "pattern",
+    "canonical_id": "T203",
+    "aliases": [
+      "roteamento por correção"
+    ]
+  },
+  {
+    "number": 204,
+    "id": "T204",
+    "name": "Skills / Procedural Learning",
+    "category": "verificacao_treinamento",
+    "kind": "family",
+    "canonical_id": "T204",
+    "aliases": [
+      "habilidades procedurais",
+      "aprendizagem procedural"
+    ]
+  },
+  {
+    "number": 205,
+    "id": "T205",
+    "name": "Semantic Equivalence Testing",
+    "category": "verificacao_treinamento",
+    "kind": "family",
+    "canonical_id": "T205",
+    "aliases": [
+      "teste de equivalência semântica"
+    ]
+  },
+  {
+    "number": 206,
+    "id": "T206",
+    "name": "Process Verification",
+    "category": "verificacao_treinamento",
+    "kind": "pattern",
+    "canonical_id": "T206",
+    "aliases": [
+      "verificação de processo"
+    ]
+  },
+  {
+    "number": 207,
+    "id": "T207",
+    "name": "Memory Stream",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T207",
+    "aliases": [
+      "fluxo de experiências",
+      "stream de memória"
+    ]
+  },
+  {
+    "number": 208,
+    "id": "T208",
+    "name": "Planner–Executor / Plan-and-Execute",
+    "category": "continuidade_programacao",
+    "kind": "architecture",
+    "canonical_id": "T208",
+    "aliases": [
+      "plan and execute",
+      "planejador e executor"
+    ]
+  },
+  {
+    "number": 209,
+    "id": "T209",
+    "name": "Reflexion",
+    "category": "continuidade_programacao",
+    "kind": "technique",
+    "canonical_id": "T209",
+    "aliases": [
+      "reflexão episódica por feedback"
+    ]
+  },
+  {
+    "number": 210,
+    "id": "T210",
+    "name": "Session Rotation",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T210",
+    "aliases": [
+      "renovação de sessão",
+      "context reset com handoff"
+    ]
+  },
+  {
+    "number": 211,
+    "id": "T211",
+    "name": "Handoff File",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T211",
+    "aliases": [
+      "arquivo de passagem",
+      "arquivo de continuidade"
+    ]
+  },
+  {
+    "number": 212,
+    "id": "T212",
+    "name": "Auto-Compact por gatilho",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T212",
+    "aliases": [
+      "compactação automática por limiar"
+    ]
+  },
+  {
+    "number": 213,
+    "id": "T213",
+    "name": "Task Decomposition em micro-missões",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T213",
+    "aliases": [
+      "missões incrementais",
+      "decomposição orientada a resultado"
+    ]
+  },
+  {
+    "number": 214,
+    "id": "T214",
+    "name": "Tool Output Pruning",
+    "category": "continuidade_programacao",
+    "kind": "technique",
+    "canonical_id": "T214",
+    "aliases": [
+      "poda de saída de ferramentas"
+    ]
+  },
+  {
+    "number": 215,
+    "id": "T215",
+    "name": "Observation Masking",
+    "category": "continuidade_programacao",
+    "kind": "technique",
+    "canonical_id": "T215",
+    "aliases": [
+      "mascaramento de observações"
+    ]
+  },
+  {
+    "number": 216,
+    "id": "T216",
+    "name": "Repo Map / mapa do repositório",
+    "category": "continuidade_programacao",
+    "kind": "component",
+    "canonical_id": "T216",
+    "aliases": [
+      "repository map",
+      "repo map"
+    ]
+  },
+  {
+    "number": 217,
+    "id": "T217",
+    "name": "Test-Driven Loop",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T217",
+    "aliases": [
+      "test driven development loop",
+      "ciclo orientado por testes"
+    ]
+  },
+  {
+    "number": 218,
+    "id": "T218",
+    "name": "Loop Detection / detecção de estagnação e ciclos",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T218",
+    "aliases": [
+      "stagnation detection",
+      "cycle detection"
+    ]
+  },
+  {
+    "number": 219,
+    "id": "T219",
+    "name": "Limite de recursão / profundidade de execução",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T219",
+    "aliases": [
+      "execution depth limit",
+      "recursion budget"
+    ]
+  },
+  {
+    "number": 220,
+    "id": "T220",
+    "name": "Tool Call Repair",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T220",
+    "aliases": [
+      "tool argument repair",
+      "reparo de argumentos"
+    ]
+  },
+  {
+    "number": 221,
+    "id": "T221",
+    "name": "Goal Reminder Injection",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T221",
+    "aliases": [
+      "goal reminder",
+      "lembrete de objetivo"
+    ]
+  },
+  {
+    "number": 222,
+    "id": "T222",
+    "name": "Context Budget Monitor",
+    "category": "continuidade_programacao",
+    "kind": "component",
+    "canonical_id": "T222",
+    "aliases": [
+      "context budget monitoring",
+      "monitor de tokens"
+    ]
+  },
+  {
+    "number": 223,
+    "id": "T223",
+    "name": "Constitutional Self-Check",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T223",
+    "aliases": [
+      "principle based self check",
+      "checagem por princípios"
+    ]
+  },
+  {
+    "number": 224,
+    "id": "T224",
+    "name": "Spec-Driven Loop",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T224",
+    "aliases": [
+      "spec driven development loop",
+      "ciclo orientado por especificação"
+    ]
+  },
+  {
+    "number": 225,
+    "id": "T225",
+    "name": "Watchdog com Auto-Restart",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T225",
+    "aliases": [
+      "watchdog",
+      "supervisor com reinício"
+    ]
+  },
+  {
+    "number": 226,
+    "id": "T226",
+    "name": "Heartbeat de progresso",
+    "category": "continuidade_programacao",
+    "kind": "protocol",
+    "canonical_id": "T226",
+    "aliases": [
+      "progress heartbeat",
+      "batimento de progresso"
+    ]
+  },
+  {
+    "number": 227,
+    "id": "T227",
+    "name": "Health Checks — liveness, readiness e progresso",
+    "category": "continuidade_programacao",
+    "kind": "family",
+    "canonical_id": "T227",
+    "aliases": [
+      "liveness readiness progress",
+      "verificações de saúde"
+    ]
+  },
+  {
+    "number": 228,
+    "id": "T228",
+    "name": "Fila de retries com backoff exponencial",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T228",
+    "aliases": [
+      "exponential backoff retry queue",
+      "retry com jitter"
+    ]
+  },
+  {
+    "number": 229,
+    "id": "T229",
+    "name": "Diff-Only Editing / Patch-Based Coding",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T229",
+    "aliases": [
+      "patch based coding",
+      "edição por patch"
+    ]
+  },
+  {
+    "number": 230,
+    "id": "T230",
+    "name": "Unified Diff",
+    "category": "continuidade_programacao",
+    "kind": "format",
+    "canonical_id": "T230",
+    "aliases": [
+      "diff unificado"
+    ]
+  },
+  {
+    "number": 231,
+    "id": "T231",
+    "name": "Search/Replace Editing",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T231",
+    "aliases": [
+      "search replace blocks",
+      "edição por substituição literal"
+    ]
+  },
+  {
+    "number": 232,
+    "id": "T232",
+    "name": "AST Editing",
+    "category": "continuidade_programacao",
+    "kind": "technique",
+    "canonical_id": "T232",
+    "aliases": [
+      "structural editing",
+      "codemod",
+      "CST Editing"
+    ]
+  },
+  {
+    "number": 233,
+    "id": "T233",
+    "name": "Patch Validation — incluindo verificação de hash-base",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T233",
+    "aliases": [
+      "base hash validation",
+      "validação de patch"
+    ]
+  },
+  {
+    "number": 234,
+    "id": "T234",
+    "name": "Persistent Project Memory File — incluindo memória por módulo",
+    "category": "continuidade_programacao",
+    "kind": "component",
+    "canonical_id": "T234",
+    "aliases": [
+      "project memory file",
+      "memória persistente por módulo"
+    ]
+  },
+  {
+    "number": 235,
+    "id": "T235",
+    "name": "Headless Mode em loop / Headless Controller",
+    "category": "continuidade_programacao",
+    "kind": "architecture",
+    "canonical_id": "T235",
+    "aliases": [
+      "headless controller",
+      "execução programática de agente"
+    ]
+  },
+  {
+    "number": 236,
+    "id": "T236",
+    "name": "Git Commit por etapa",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T236",
+    "aliases": [
+      "incremental commits",
+      "checkpoint de código em Git"
+    ]
+  },
+  {
+    "number": 237,
+    "id": "T237",
+    "name": "Subagent Offloading",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T237",
+    "aliases": [
+      "subagent delegation",
+      "delegação de contexto"
+    ]
+  },
+  {
+    "number": 238,
+    "id": "T238",
+    "name": "Read On Demand com faixa de linhas",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T238",
+    "aliases": [
+      "just in time file reading",
+      "leitura dirigida por linhas"
+    ]
+  },
+  {
+    "number": 239,
+    "id": "T239",
+    "name": "Git Worktrees",
+    "category": "continuidade_programacao",
+    "kind": "component",
+    "canonical_id": "T239",
+    "aliases": [
+      "linked worktree",
+      "árvores de trabalho Git"
+    ]
+  },
+  {
+    "number": 240,
+    "id": "T240",
+    "name": "Snapshot de estado",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T240",
+    "aliases": [
+      "state snapshot",
+      "snapshot persistente"
+    ]
+  },
+  {
+    "number": 241,
+    "id": "T241",
+    "name": "Event Replay",
+    "category": "continuidade_programacao",
+    "kind": "technique",
+    "canonical_id": "T241",
+    "aliases": [
+      "event replay",
+      "reprodução de eventos"
+    ]
+  },
+  {
+    "number": 242,
+    "id": "T242",
+    "name": "Recuperação híbrida por Snapshot + Event Sourcing",
+    "category": "continuidade_programacao",
+    "kind": "architecture",
+    "canonical_id": "T242",
+    "aliases": [
+      "snapshot plus event sourcing",
+      "snapshot e replay incremental"
+    ]
+  },
+  {
+    "number": 243,
+    "id": "T243",
+    "name": "Reconciliação de operações externas",
+    "category": "continuidade_programacao",
+    "kind": "pattern",
+    "canonical_id": "T243",
+    "aliases": [
+      "external operation reconciliation",
+      "reconciliação de efeitos incertos"
+    ]
+  }
+]

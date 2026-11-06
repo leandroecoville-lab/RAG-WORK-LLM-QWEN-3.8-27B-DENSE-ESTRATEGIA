@@ -1,0 +1,32 @@
+{
+  "id": "R015",
+  "name": "Learning by Distilling Context",
+  "canonical_name": "Learning by Distilling Context",
+  "canonical_id": "R015",
+  "aliases": [
+    "Snell, Klein e Zhong 2022",
+    "context distillation por treinamento"
+  ],
+  "category": "referencias",
+  "kind": "paper",
+  "scope": "referencia",
+  "evidence_status": "supported",
+  "relationships": [
+    "R012",
+    "T069",
+    "T177",
+    "T178",
+    "T179",
+    "T180",
+    "P017"
+  ],
+  "source_ids": [
+    "A-S040",
+    "A-S011"
+  ],
+  "namespace": "R015",
+  "knowledge_version": "4.0.0",
+  "curated_on": "2026-11-05",
+  "directory": "bases/R015",
+  "chunk_count": 9
+}

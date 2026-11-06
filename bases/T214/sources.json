@@ -1,0 +1,93 @@
+[
+  {
+    "source_id": "A-S006",
+    "title": "Effective context engineering for AI agents",
+    "url": "https://www.anthropic.com/research/effective-context-engineering-for-ai-agents",
+    "publisher": "Anthropic",
+    "source_type": "official_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-09-29",
+    "supports": "Gestão seletiva de contexto, recuperação sob demanda e técnicas de continuidade de agentes.",
+    "limitations": "Leitura da página indicada; não equivale à reprodução experimental nem à auditoria integral do projeto.",
+    "web_ref": "turn5view0"
+  },
+  {
+    "source_id": "V2A-S003",
+    "title": "The Complexity Trap: Simple Observation Masking Is as Efficient as LLM Summarization for Agent Context Management",
+    "url": "https://kairos.jetbrains.com/research/articles/the-complexity-trap",
+    "publisher": "JetBrains Research",
+    "source_type": "research_article",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Comparação controlada de mascaramento de observações e resumo de trajetória; são transformações distintas.",
+    "limitations": "Consulta documental primária. Não houve reprodução de experimentos, instalação do produto nem validação de disponibilidade na infraestrutura LAI. Receitas e testes das entradas são propostas editoriais.",
+    "web_ref": "turn57view5"
+  },
+  {
+    "source_id": "V3C-S031",
+    "title": "Claude Platform — Compaction overview",
+    "url": "https://platform.claude.com/docs/en/build-with-claude/compaction",
+    "publisher": "Anthropic",
+    "source_type": "official_documentation",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Distingue compactação sob demanda e por limiar, preservação de turnos recentes e gestão do bloco resultante.",
+    "limitations": "Documentação dinâmica e recursos em beta na consulta; nenhuma flag ou suporte local foi presumido.",
+    "web_ref": "turn140view0"
+  },
+  {
+    "source_id": "V4C-S013",
+    "title": "Designing MCP Gateway Uber's MCP Management Platform",
+    "url": "https://www.uber.com/us/en/blog/designing-mcp-gateway/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Registro, descoberta gradual, schemas, proxy de execução, revisão de configurações e projeção de respostas em uso interno.",
+    "limitations": "Relato primário delimitado à data e sistema; não houve reprodução. Números e escolhas do operador não definem ganhos, preços ou limites para a LAI ou modelos 3–30B.",
+    "web_ref": "turn261view0"
+  },
+  {
+    "source_id": "V4C-S014",
+    "title": "Running a Software Factory Efficiently at Uber Scale",
+    "url": "https://www.uber.com/us/en/blog/efficient-software-factory/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-08-27",
+    "supports": "Harnesses internos, seleção por tarefas reais, modelos diferentes para subagentes, compactação, cache e code-mode.",
+    "limitations": "Relato primário delimitado à data e sistema; não houve reprodução. Números e escolhas do operador não definem ganhos, preços ou limites para a LAI ou modelos 3–30B.",
+    "web_ref": "turn257view0"
+  },
+  {
+    "source_id": "V4C-S009",
+    "title": "Using AI to Delete Code: Agentic Tech Debt Cleanup at Uber",
+    "url": "https://www.uber.com/us/en/blog/ai-code-cleanup/",
+    "publisher": "Uber",
+    "source_type": "operator_engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "AutoClean operacional combina agentes, PolyglotPiranha via MCP, CI, fixers delimitados, verificações estáticas e CodeCourt por propriedades.",
+    "limitations": "Fonte primária aberta. Desempenho relatado pertence ao sistema e ao período descritos; não foi reproduzido e não comprova transferência para modelos 3–30B.",
+    "web_ref": "turn238view0"
+  },
+  {
+    "source_id": "V4C-S027",
+    "title": "Redesigning source control at Anthropic",
+    "url": "https://www.anthropic.com/research/redesigning-source-control",
+    "publisher": "Anthropic",
+    "source_type": "engineering_report",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2026-10-13",
+    "supports": "Implantação de Scion, dados endereçados por conteúdo, leitura sob demanda, hierarquia de caches e publicação separada de changesets.",
+    "limitations": "Sistema interno distinto de Git, feito para escala e recursos excepcionais; não é recomendação geral de substituição.",
+    "web_ref": "turn300view0"
+  }
+]

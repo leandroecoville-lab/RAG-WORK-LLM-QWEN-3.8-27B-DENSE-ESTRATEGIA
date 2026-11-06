@@ -1,0 +1,46 @@
+{
+  "id": "T098",
+  "technical_details": "A escolha de backend faz parte do comportamento operacional: um dispatcher pode selecionar caminhos distintos conforme forma, máscara, dtype e dispositivo. A memória economizada precisa ser atribuída à eliminação de intermediários, à aproximação ou à alteração de precisão, porque essas decisões têm garantias diferentes. Na API funcional documentada do PyTorch, dropout depende do argumento fornecido, mesmo quando o módulo chamador está em avaliação.",
+  "boundary_condition": "Comparações entre implementações perdem sentido se uma delas aplica dropout, máscara ou escala diferentes sem registro.",
+  "implementation_contract": {
+    "inputs": "Tensores, semântica explícita de máscara, escala, dropout e backends permitidos.",
+    "outputs": "Saída e identificação observável da implementação escolhida.",
+    "state": "Configuração de despacho, compilação e temporários necessários.",
+    "invariant": "Troca de backend preserva a operação contratada dentro da tolerância numérica definida."
+  },
+  "tradeoffs": [
+    "Fallback amplia cobertura e pode alterar bruscamente memória e latência.",
+    "Precisão de acumulação maior melhora estabilidade com possível custo de execução."
+  ],
+  "failure_test": "Teste proposto: chamar o caminho funcional com módulo em avaliação e dropout não zero; depois corrigir o argumento. Esperar variabilidade no primeiro caso e consistência compatível com o backend no segundo.",
+  "evaluation_plan": "Plano proposto: usar formas representativas e limites de especialização, fixando máscaras e precisão. Medir pico de memória, fallback e erro numérico; comparar prefill e decode separadamente e aprovar somente o caminho realmente despachado.",
+  "comparisons": [
+    {
+      "entry_id": "T090",
+      "relation": "complements",
+      "reason": "FlashAttention pode ser um backend eficiente, mas o rótulo amplo não especifica qual algoritmo foi executado."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "A documentação funcional do PyTorch exige dropout_p igual a zero para desativar dropout durante avaliação.",
+    "source_ids": [
+      "B-S017"
+    ],
+    "support": "direct",
+    "caveat": "O detalhe é específico da API consultada; outras interfaces podem administrar esse argumento automaticamente."
+  },
+  "advanced_qa": [
+    {
+      "question": "Menor pico de memória prova mesma função?",
+      "answer": "Não. A implementação pode ter mudado precisão, máscara ou conexões; compare a operação e seus resultados."
+    },
+    {
+      "question": "Por que registrar fallback?",
+      "answer": "Sem isso, uma configuração aparentemente otimizada pode executar outro kernel e invalidar a interpretação de desempenho."
+    }
+  ],
+  "source_ids": [
+    "B-S017"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

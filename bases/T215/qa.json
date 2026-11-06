@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Observation Masking produz um resumo?",
+    "answer": "Não. A operação central oculta o conteúdo e deixa um marcador; não tenta reescrever sua informação principal."
+  },
+  {
+    "question": "É comprovadamente superior em qualquer agente?",
+    "answer": "Não. Há evidência em configurações estudadas; a escolha depende do tipo de observação, dependências temporais e custo de releitura."
+  },
+  {
+    "question": "Mascarar significa resumir com menos palavras?",
+    "answer": "Não. O mecanismo pode apenas substituir o conteúdo por um marcador, sem representar semanticamente o que foi retirado."
+  },
+  {
+    "question": "Por que medir releituras na avaliação?",
+    "answer": "Porque a economia inicial pode ser compensada por ferramentas repetidas para recuperar observações removidas cedo demais."
+  }
+]

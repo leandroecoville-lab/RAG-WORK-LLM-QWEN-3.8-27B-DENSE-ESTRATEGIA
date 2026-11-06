@@ -1,0 +1,116 @@
+{
+  "id": "T166",
+  "novelty": "A v3 explicava justiça por custo e aging. A nova camada trata estimativas manipuláveis, trabalho indivisível e efeitos de prioridades herdadas, para que justiça sobreviva à variação de tarefas LLM.",
+  "deep_layers": [
+    {
+      "name": "Crédito estimado e cobrança real",
+      "detail": "Reserve capacidade por custo previsto e ajuste a dívida após observar consumo. Cobrar apenas pelo número de pedidos favorece requisições grandes; cobrar somente a previsão permite subestimar para furar a fila. Mantenha histórico por classe e limite o desvio admitido, sem punir permanentemente um cliente por uma exceção legítima.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S020",
+        "V3C-S009"
+      ]
+    },
+    {
+      "name": "Tarefas grandes elegíveis",
+      "detail": "Um trabalho maior que a parcela normal não pode ficar esperando eternamente por crédito impossível. Divida onde o contrato permitir ou ofereça uma classe de lote com acumulação e limite próprios. Aging deve elevar chance de atendimento sem transformar qualquer tarefa antiga em prioridade absoluta contra toda a carga interativa.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S020",
+        "V3C-S021"
+      ]
+    },
+    {
+      "name": "Dependência e justiça",
+      "detail": "Uma tarefa urgente pode depender de outra classe com prioridade baixa. Propagar urgência pela dependência evita bloqueio, mas deve ser limitado ao trabalho necessário. Não permita que qualquer cliente declare uma dependência artificial para elevar toda sua campanha; a relação deve existir no grafo de artefatos e ser verificável.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S016",
+        "C-S025"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Inferência compartilhada",
+      "scenario": "Extrações rápidas e análises longas competem pela mesma GPU.",
+      "strategy": "Separe classes com reservas mínimas e contabilize tokens ou tempo efetivo. Em picos, preserve uma fração de progresso para lote; quando a carga interativa cai, empreste capacidade ociosa. Registre retomada da reserva para que empréstimo não vire promessa permanente.",
+      "small_model_role": "3–7B atende chamadas curtas; 15–30B recebe trabalhos de maior custo com admissão própria.",
+      "acceptance": "Proposta: medir espera por classe, cauda e custo efetivo, incluindo tarefas que nunca terminaram.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S009",
+        "V4C-S023"
+      ]
+    },
+    {
+      "name": "Revisão de patches",
+      "scenario": "Uma campanha grande não deve bloquear correções pequenas de outras equipes.",
+      "strategy": "Agende por projeto e custo de validação, não pelo volume de patches enviados. Use aging para evitar abandono de revisões lentas e reserve prioridade para dependências que bloqueiam integração já em andamento.",
+      "small_model_role": "8–14B estima escopo do diff; runtime decide créditos e exceções rastreáveis.",
+      "acceptance": "Proposta: limitar concentração por projeto sem degradar a integridade dos testes exigidos.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V4C-S003",
+        "V3C-S020"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Trabalhos curtos previsíveis em classes com overhead pequeno.",
+    "8_14b": "Estimativas de tamanho e agrupamento de tarefas por perfil operacional.",
+    "15_30b": "Análise de dependências e identificação de divisões que preservem aceitação.",
+    "training_or_runtime_requirements": "Medição de custo real, política de empréstimo e proteção contra tarefas acima da capacidade máxima.",
+    "do_not_use_when": "Não afirmar justiça apenas porque a fila é FIFO ou porque cada cliente recebeu uma chamada."
+  },
+  "connections": [
+    {
+      "target_id": "T149",
+      "relation": "complements",
+      "how": "Aging altera a chave efetiva da fila segundo espera e classe, sem violar elegibilidade.",
+      "interface": "Prioridade base, idade e custo estimado.",
+      "condition": "Atualizações de prioridade têm semântica consistente.",
+      "acceptance": "Tarefa antiga elegível recebe progresso em carga sustentada.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S020"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T174",
+      "relation": "complements",
+      "how": "O escalonador implementa reservas e herança limitada de urgência.",
+      "interface": "Créditos por classe e dependências bloqueadoras.",
+      "condition": "Recursos compatíveis e pontos válidos de preempção.",
+      "acceptance": "Evitar inversão de prioridade sem sacrificar toda a classe de lote.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3C-S016",
+        "V4C-S023"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Excluir tarefas incompletas das métricas pode esconder inanição.",
+    "Uma política justa em tokens pode ser injusta em tempo de GPU; declarar a unidade escolhida."
+  ],
+  "frontier_comparison": "Compare configurações pequenas e de fronteira por distribuição de espera, além da média de throughput. Justiça é propriedade do serviço, não competência emergente de um modelo.",
+  "production_search": {
+    "search_ids": [
+      "V4C-Q004",
+      "V4C-Q018"
+    ],
+    "scope_note": "Borg sustenta admissão e isolamento, mas não prova este aging exato. Timestone documenta prioridade; não foi contado automaticamente como justiça por custo."
+  },
+  "source_ids": [
+    "V3C-S020",
+    "V3C-S009",
+    "V3C-S021",
+    "V3C-S016",
+    "C-S025",
+    "V4C-S023",
+    "V4C-S003"
+  ]
+}

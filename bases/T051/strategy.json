@@ -1,0 +1,113 @@
+{
+  "id": "T051",
+  "novelty": "A v3 tratou identidade e ontologia. Aqui memória em grafo mantém perspectivas por agente e caminhos de evidência sem confundir crença com mundo.",
+  "deep_layers": [
+    {
+      "name": "Projeto e decomposição",
+      "detail": "Separe grafo de fatos observados e grafo de crenças ou hipóteses do agente. Uma relação pode existir como crença sem estar confirmada no domínio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S034",
+        "V4A-S018"
+      ]
+    },
+    {
+      "name": "Controle adaptativo",
+      "detail": "Faça consultas exigirem tipo de perspectiva e validade. Agregação de memórias de vários agentes deve preservar quem observou, quem inferiu e quem apenas repetiu a informação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S034",
+        "V4A-S018"
+      ]
+    },
+    {
+      "name": "Validação contrafactual",
+      "detail": "Compare grafo unificado e perspectivas separadas. Meça fusões incorretas, propagação de inferências e respostas que atribuem a um agente conhecimento que ele ainda não possuía. Unidade de avaliação: afirmação em grafo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S034",
+        "V4A-S018"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Equipe de agentes",
+      "scenario": "Trabalhadores veem subconjuntos distintos.",
+      "strategy": "Registrar observações por origem e compartilhar evidências confirmadas; não fundir hipóteses contraditórias em uma relação única.",
+      "small_model_role": "3–7B extrai relações; 15–30B reconcilia.",
+      "acceptance": "Uma crença individual não pode virar consenso sem suporte adicional.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S034",
+        "V4A-S018"
+      ]
+    },
+    {
+      "name": "Investigação histórica",
+      "scenario": "É necessário explicar decisões passadas.",
+      "strategy": "Consultar perspectiva e informações disponíveis ao decisor na época, distinguindo fatos descobertos posteriormente.",
+      "small_model_role": "8–14B lê subgrafo restrito.",
+      "acceptance": "Resposta deve evitar conhecimento retrospectivo na explicação.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S034",
+        "V4A-S018"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Extrator de relações em vocabulário fechado e origem explícita.",
+    "8_14b": "Leitor de subgrafo pequeno com perspectiva fixada.",
+    "15_30b": "Reconciliador de perspectivas e contradições entre agentes.",
+    "training_or_runtime_requirements": "Entidades estáveis, campos de perspectiva e proveniência por aresta; expansão deve respeitar escopo.",
+    "do_not_use_when": "O sistema não consegue distinguir observação, inferência e repetição de outra fonte."
+  },
+  "connections": [
+    {
+      "target_id": "T056",
+      "relation": "requires",
+      "how": "Restringir conhecimento por perspectiva temporal.",
+      "interface": "valid_time, recorded_time e observador.",
+      "condition": "Consulta declarar o instante de conhecimento.",
+      "acceptance": "Inserir descoberta tardia e impedir vazamento retrospectivo.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S034",
+        "V4A-S018"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "T075",
+      "relation": "complements",
+      "how": "Reconciliar relações concorrentes sem apagar origem.",
+      "interface": "Arestas conflitantes, versões e fontes.",
+      "condition": "Critério de reconciliação ser explícito.",
+      "acceptance": "Preservar conflito quando evidência não decidir.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3A-S034",
+        "V4A-S018"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Não deduzir causalidade de caminho no grafo.",
+    "Não contar agentes que repetem uma origem como fontes independentes."
+  ],
+  "frontier_comparison": "Comparar atribuição correta de conhecimento e relações; densidade do grafo pode amplificar erro de extração.",
+  "production_search": {
+    "search_ids": [
+      "V4A-Q015",
+      "V4A-Q021",
+      "V4A-Q023"
+    ],
+    "scope_note": "Busca por família; produtos e pesquisas separados de produção. Correspondência aproximada não satisfaz a meta de dez. Estratégia proposta, sem execução local."
+  },
+  "source_ids": [
+    "V3A-S034",
+    "V4A-S018"
+  ]
+}

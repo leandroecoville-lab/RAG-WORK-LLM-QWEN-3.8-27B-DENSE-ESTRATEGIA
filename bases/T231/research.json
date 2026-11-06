@@ -1,0 +1,52 @@
+{
+  "id": "T231",
+  "technical_details": "O contrato de search/replace precisa declarar cardinalidade esperada: zero correspondências significa base divergente ou busca inadequada; várias podem indicar ambiguidade. Trocar todas as ocorrências é uma decisão semântica adicional. Espaços, quebras de linha e normalização influenciam matching; tolerância aumenta taxa de aplicação e pode atingir um bloco parecido que não era o alvo. No Aider, o formato diff usa esses blocos e não deve ser confundido com Unified Diff.",
+  "boundary_condition": "Texto repetido ou código gerado pode inviabilizar localização única sem aumentar contexto ou usar estrutura sintática.",
+  "implementation_contract": {
+    "inputs": "Arquivo versionado, trecho de busca, substituição e quantidade esperada de ocorrências.",
+    "outputs": "Alteração aplicada ou diagnóstico de ausência e ambiguidade.",
+    "state": "Hash-base, ocorrências localizadas e conteúdo resultante.",
+    "invariant": "A cardinalidade e o escopo observados correspondem ao pedido antes da substituição."
+  },
+  "tradeoffs": [
+    "Matching exato é previsível e sensível a pequenas mudanças de formatação.",
+    "Matching tolerante aceita mais variações e exige confirmação mais forte do alvo semântico."
+  ],
+  "failure_test": "Teste proposto: repetir o mesmo trecho em duas funções e alterar whitespace em apenas uma; exigir rejeição da ambiguidade ou seleção por contexto explícito.",
+  "evaluation_plan": "Comparar matching exato, tolerante e edição estrutural em bases com repetição controlada. Medir aplicação correta, alterações fora do alvo e tokens necessários para desambiguar. Escolher o método por risco de colisão e complexidade da mudança.",
+  "comparisons": [
+    {
+      "entry_id": "T230",
+      "relation": "distinct_from",
+      "reason": "Unified Diff inclui hunks e intervalos; blocos search/replace localizam conteúdo literal."
+    },
+    {
+      "entry_id": "T232",
+      "relation": "alternative",
+      "reason": "Edição sintática pode distinguir símbolos iguais em escopos diferentes."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "Aider descreve seu formato diff como uma série de blocos de busca e substituição.",
+    "source_ids": [
+      "V2A-S008"
+    ],
+    "support": "direct",
+    "caveat": "A semântica precisa de matching depende do aplicador; esta ficha propõe cardinalidade e validação explícitas."
+  },
+  "advanced_qa": [
+    {
+      "question": "Nenhuma ocorrência deve provocar uma substituição aproximada automática?",
+      "answer": "Não por padrão. Pode haver revisão incorreta; o erro precisa ser diagnosticado antes de relaxar a correspondência."
+    },
+    {
+      "question": "Duas ocorrências iguais podem ser ambas corretas?",
+      "answer": "Sim, quando o objetivo exige alterar ambas e o contrato declara isso; igualdade textual sozinha não decide."
+    }
+  ],
+  "source_ids": [
+    "V2A-S008",
+    "V3C-S033"
+  ],
+  "research_note": "Contratos, cenários de falha e planos de avaliação são propostas editoriais fundamentadas nas fontes indicadas."
+}

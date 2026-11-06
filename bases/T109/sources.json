@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "B-S015",
+    "title": "Longformer: The Long-Document Transformer",
+    "url": "https://arxiv.org/abs/2004.05150",
+    "publisher": "Beltagy, Peters e Cohan / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2020-04-10",
+    "supports": "Combinação de atenção local e posições globais selecionadas.",
+    "limitations": "Resumo e metadados acessados; artigo integral não auditado e resultados não reproduzidos.",
+    "web_ref": "turn18view0"
+  },
+  {
+    "source_id": "V3B-S007",
+    "title": "Mistral 7B — full text",
+    "url": "https://arxiv.org/html/2310.06825v1",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2023-10-10",
+    "supports": "Campo receptivo em camadas, cache circular e chunking com janela.",
+    "limitations": "Refere-se à arquitetura publicada; não prova qualidade para contexto arbitrário nem compatibilidade com checkpoint do usuário.",
+    "web_ref": "turn120view1"
+  },
+  {
+    "source_id": "V4B-S017",
+    "title": "FlexAttention Part II: FlexAttention for Inference",
+    "url": "https://pytorch.org/blog/flexattention-for-inference/",
+    "publisher": "PyTorch",
+    "source_type": "technical_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-04-30",
+    "supports": "Backend de decode, suporte a GQA e PagedAttention e diferenças entre formas de prefill/decode.",
+    "limitations": "Implementação e experimentos não constituem prova de adoção em produto; atenção customizada depende de máscara correta.",
+    "web_ref": "turn227view0"
+  }
+]

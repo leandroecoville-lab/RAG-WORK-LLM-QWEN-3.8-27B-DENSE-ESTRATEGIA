@@ -1,0 +1,158 @@
+{
+  "coverage": {
+    "entry_id": "T232",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 1,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 1,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 0,
+    "research_cases": 0,
+    "family_or_analogy_cases": 0,
+    "missing_to_target": 9,
+    "target_met": false,
+    "strict_case_ids": [
+      "V4C-C009"
+    ],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "AST Editing",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4C-C009",
+      "company": "Meta",
+      "system": "Getafix / SapFix / Sapienz — reparo de código",
+      "title": "Patches aprendidos, testes e revisão antes de integrar",
+      "evidence_level": "production_documented",
+      "observed_use": "A Meta relata Getafix e SapFix em seu processo de desenvolvimento, com correções testadas, aprovadas e levadas a produção.",
+      "technical_mechanism": "Padrões de reparo são extraídos de alterações por AST; candidatos passam por compilação e testes de persistência do erro e novas falhas, antes da revisão humana.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S006",
+        "V4C-S007"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T232",
+          "match": "exact",
+          "rationale": "A fonte identifica diferenças e modificações em AST para construir reparos."
+        },
+        {
+          "entry_id": "T229",
+          "match": "family",
+          "rationale": "Correções são produzidas e revisadas, mas o relato não documenta um protocolo específico de edição exclusivamente por diffs."
+        },
+        {
+          "entry_id": "T217",
+          "match": "exact",
+          "rationale": "Candidatos são avaliados e iterados com compilação e testes."
+        },
+        {
+          "entry_id": "T233",
+          "match": "exact",
+          "rationale": "Patches são verificados antes de serem oferecidos para integração."
+        },
+        {
+          "entry_id": "T200",
+          "match": "family",
+          "rationale": "Validação separada da geração e revisão humana fornecem sinais adicionais, sem independência estatística demonstrada."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "A cadeia de verificações exemplifica o componente editorial."
+        }
+      ],
+      "small_model_transfer": "Proposta: um 3–30B escolhe entre transformações conhecidas ou prepara candidato; analisadores e testes verificam propriedades fora do modelo. Avaliar bugs fora das famílias de treinamento para medir generalização.",
+      "limits": "Um único caso integrado, sem contar Getafix, SapFix e Sapienz como três deployments independentes. Ferramentas históricas não são LLMs modernas; não se transfere taxa de acerto.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4C-C009",
+      "deployment_domain": "software_analysis_without_llm",
+      "mapping": {
+        "entry_id": "T232",
+        "match": "exact",
+        "rationale": "A fonte identifica diferenças e modificações em AST para construir reparos."
+      }
+    },
+    {
+      "case_id": "V4C-C010",
+      "company": "Uber",
+      "system": "AutoClean com PolyglotPiranha — evolução do cleanup",
+      "title": "Agentes delimitados e transformações determinísticas em cleanup contínuo",
+      "evidence_level": "production_documented",
+      "observed_use": "A Uber descreve AutoClean executando continuamente nos monorepos, produzindo diffs de remoção de flags com CI e validação antes da revisão humana.",
+      "technical_mechanism": "Agente chama transformação determinística por MCP; falhas de CI passam primeiro por fixers mecânicos; verificadores CodeCourt por propriedade executam em paralelo e agregam decisão.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4C-S008",
+        "V4C-S009"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T140",
+          "match": "exact",
+          "rationale": "PolyglotPiranha é exposto ao agente por MCP."
+        },
+        {
+          "entry_id": "T232",
+          "match": "exact",
+          "rationale": "Transformações determinísticas de código ficam no PolyglotPiranha."
+        },
+        {
+          "entry_id": "T217",
+          "match": "exact",
+          "rationale": "Atualizações do diff são reavaliadas por CI até sucesso ou limite de tentativas."
+        },
+        {
+          "entry_id": "T237",
+          "match": "exact",
+          "rationale": "Fixers e verificadores recebem papéis e escopos específicos."
+        },
+        {
+          "entry_id": "T190",
+          "match": "exact",
+          "rationale": "Verificadores avaliam propriedades após geração e CI."
+        },
+        {
+          "entry_id": "T195",
+          "match": "exact",
+          "rationale": "Compilação e testes contribuem para validação do resultado."
+        },
+        {
+          "entry_id": "T200",
+          "match": "exact",
+          "rationale": "CodeCourt separa propriedades de aceitação do agente que fez a limpeza."
+        },
+        {
+          "entry_id": "T206",
+          "match": "family",
+          "rationale": "Propriedades como ausência de desvio de intenção verificam requisitos do processo, sem prova formal."
+        },
+        {
+          "entry_id": "P012",
+          "match": "analogy",
+          "rationale": "O gate de propriedades inspira o componente proposto, sem demonstrar um produto LAI."
+        },
+        {
+          "entry_id": "T147",
+          "match": "exact",
+          "rationale": "CodeCourt executa revisores por propriedade em paralelo e agrega todos os resultados antes de encaminhar o diff."
+        }
+      ],
+      "small_model_transfer": "Proposta: 3–7B classifica falhas mecânicas; 8–14B propõe alteração localizada; 15–30B avalia propagação de mudanças. Transformações booleanas e gates permanecem determinísticos; cada banda precisa de avaliação própria.",
+      "limits": "O operador não informa que as faixas propostas de modelos reproduzam o sistema. CI verde não prova semântica, e vereditos de agentes continuam sujeitos a erro. Pipeline e sua evolução histórica contam uma vez.",
+      "organization_class": "technology_operator",
+      "canonical_case_id": "V4C-C010",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T232",
+        "match": "exact",
+        "rationale": "Transformações determinísticas de código ficam no PolyglotPiranha."
+      }
+    }
+  ]
+}

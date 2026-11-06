@@ -1,0 +1,46 @@
+{
+  "id": "T202",
+  "technical_details": "A incerteza pode estar na interpretação do objetivo, no estado do ambiente ou no resultado da ação. Cada fonte pede uma resposta diferente: esclarecer objetivo, observar o ambiente ou testar uma ação reversível. Um plano deve distinguir utilidade para a tarefa de viabilidade operacional. Combinar scores sem calibração ou hipóteses claras produz um ranking, não necessariamente uma probabilidade válida de sucesso do plano inteiro.",
+  "boundary_condition": "Uma ação pode ser linguisticamente plausível e impossível no estado atual, mesmo quando descrita com alta confiança.",
+  "implementation_contract": {
+    "inputs": "Objetivo, observações, ações disponíveis, estimativas e custos de adquirir informação.",
+    "outputs": "Próxima ação ou observação com justificativa baseada na lacuna relevante.",
+    "state": "Crenças, pré-condições verificadas e origem de cada estimativa.",
+    "invariant": "O plano não trata uma hipótese desconhecida como pré-condição satisfeita."
+  },
+  "tradeoffs": [
+    "Observar antes reduz alguns erros e consome tempo ou recursos.",
+    "Planos conservadores podem ser confiáveis e deixar de explorar alternativas úteis."
+  ],
+  "failure_test": "Teste proposto: oferecer uma ferramenta mencionada na documentação, mas indisponível na sessão, e outra disponível com efeito incerto. Esperar distinção entre falta de acesso e incerteza sobre resultado.",
+  "evaluation_plan": "Plano proposto: comparar planejamento direto e planejamento com aquisição de informação em ambientes controlados. Medir sucesso, ações inválidas, custo de observação e arrependimento frente às opções disponíveis; definir política conforme consequências e reversibilidade.",
+  "comparisons": [
+    {
+      "entry_id": "T198",
+      "relation": "complements",
+      "reason": "Calibração ajuda quando existe evento de sucesso bem definido, mas não substitui representar estados desconhecidos."
+    }
+  ],
+  "evidence_claim": {
+    "claim": "SayCan combina conhecimento procedural de linguagem com funções de valor associadas a habilidades no ambiente físico.",
+    "source_ids": [
+      "C-S053"
+    ],
+    "support": "related",
+    "caveat": "A fonte apoia distinguir utilidade e viabilidade; o contrato geral de incerteza desta ficha é proposta editorial."
+  },
+  "advanced_qa": [
+    {
+      "question": "Uma probabilidade por ação basta para o plano?",
+      "answer": "Não se ações compartilham falhas ou mudam o estado; dependências precisam entrar na avaliação."
+    },
+    {
+      "question": "Quando perguntar ao usuário?",
+      "answer": "Quando a informação ausente depende de sua intenção e altera materialmente a escolha; outras lacunas podem ser resolvidas por observação autorizada."
+    }
+  ],
+  "source_ids": [
+    "C-S053"
+  ],
+  "research_note": "Síntese técnica com fontes; contratos, testes e critérios de avaliação são propostas editoriais, não resultados executados."
+}

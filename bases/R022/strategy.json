@@ -1,0 +1,119 @@
+{
+  "id": "R022",
+  "novelty": "A v3 exigiu identidade exata do checkpoint. Esta camada orienta seleção dentro da família, leitura de parâmetros totais/ativos e validação de modos de geração sem presumir o modelo existente no servidor.",
+  "deep_layers": [
+    {
+      "name": "Família e escolha concreta",
+      "detail": "O lançamento Qwen3 de 2025 fornece exemplos densos e MoE com configurações distintas. Use-o como referência datada, não como catálogo completo ou mais recente de toda a família. Antes de decidir, identifique modalidade, revisão, tamanho total, licença, template e capacidades declaradas do candidato específico.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S009",
+        "V4B-S020",
+        "V3D-S010"
+      ]
+    },
+    {
+      "name": "Modos e contrato",
+      "detail": "Modos de geração e separação de campos internos ou finais podem mudar tokenização, comprimento e tratamento pelo cliente. Valide o template oficial da revisão e a forma de consumir a resposta. Uma aplicação que espera apenas JSON precisa tratar corretamente qualquer região adicional e término, sem assumir que todos os Qwen usam a mesma convenção.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S009",
+        "V4B-S020",
+        "V3D-S010"
+      ]
+    },
+    {
+      "name": "Dimensionamento honesto",
+      "detail": "Qwen3-30B-A3B ilustra a diferença entre total e ativo: computação por token não equivale a memória de pesos. Qwen3-32B denso está fora de uma faixa estrita de até 30B, embora seja próximo numericamente. Não alargue o intervalo solicitado sem declarar essa decisão.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S009",
+        "V4B-S020",
+        "V3D-S010"
+      ]
+    }
+  ],
+  "advanced_uses": [
+    {
+      "name": "Escolher aluno especializado",
+      "scenario": "A tarefa tem dados e critérios claros.",
+      "strategy": "Compare candidatos dentro da faixa total desejada com o mesmo acesso a ferramentas e documentos. Avalie base, adaptação e quantização como versões distintas.",
+      "small_model_role": "Modelos densos 3–7B podem ser candidatos a tarefas estreitas; suporte depende do checkpoint concreto.",
+      "acceptance": "Medir qualidade por categoria, custo de contexto e comportamento fora do domínio.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S009",
+        "V4B-S020",
+        "V3D-S010"
+      ]
+    },
+    {
+      "name": "Escolher MoE para serving",
+      "scenario": "A computação ativa parece atraente.",
+      "strategy": "Inspecione pesos totais, roteamento e runtime, depois teste memória e comunicação. Compare com dense que cabe no mesmo orçamento físico.",
+      "small_model_role": "Um MoE total 15–30B pode ser alternativa, sem ser tratado como dense de poucos bilhões.",
+      "acceptance": "Atender memória e prazos com qualidade observada, não estimada pelo nome.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S009",
+        "V4B-S020",
+        "V3D-S010"
+      ]
+    }
+  ],
+  "small_model_fit": {
+    "3_7b": "Exemplos como Qwen3-4B ilustram a faixa; não confirmam qual versão é adequada ou instalada.",
+    "8_14b": "Exemplos 8B e 14B permitem estudar especialização, respeitando revisão e template próprios.",
+    "15_30b": "30B-A3B exige orçamento de pesos totais; 32B não deve ser contado dentro do limite estrito.",
+    "training_or_runtime_requirements": "Modelo e runtime precisam suportar arquitetura, precisão e modo usados. Nenhum checkpoint local foi inspecionado nesta ficha.",
+    "do_not_use_when": "Não afirmar compatibilidade com uma GPU ou engine apenas pelo nome Qwen."
+  },
+  "connections": [
+    {
+      "target_id": "T184",
+      "relation": "complements",
+      "how": "Variantes MoE exigem leitura separada de total, ativo e comunicação.",
+      "interface": "Configuração do checkpoint e mapas de experts.",
+      "condition": "Variante realmente é MoE.",
+      "acceptance": "Conferir memória física e custo por token.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S009",
+        "V4B-S020",
+        "V3D-S010"
+      ],
+      "case_ids": []
+    },
+    {
+      "target_id": "R023",
+      "relation": "complements",
+      "how": "Transformers fornece classes e templates para checkpoints suportados.",
+      "interface": "Revisão, tokenizer e mensagens.",
+      "condition": "Versão da biblioteca reconhece o modelo.",
+      "acceptance": "Comparar tokens serializados e término da geração.",
+      "basis": "engineering_proposal",
+      "source_ids": [
+        "V3D-S009",
+        "V4B-S020",
+        "V3D-S010"
+      ],
+      "case_ids": []
+    }
+  ],
+  "failure_controls": [
+    "Evitar usar nome abreviado como identidade de artefato.",
+    "Não transferir contexto, licença ou formato de uma geração Qwen para outra."
+  ],
+  "frontier_comparison": "Compare o checkpoint escolhido em tarefas reais de domínio com fronteira. A família contém modelos distintos; nenhum resultado de um membro prova capacidade de todos os demais.",
+  "production_search": {
+    "search_ids": [
+      "V4B-Q016"
+    ],
+    "scope_note": "Busca de família e fontes oficiais consultadas em 05/11/2026. Ausência de caso exato significa não encontrado neste recorte; recursos documentados e propostas não contam como implantação."
+  },
+  "source_ids": [
+    "V3D-S009",
+    "V4B-S020",
+    "V3D-S010"
+  ]
+}

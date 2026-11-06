@@ -1,0 +1,80 @@
+[
+  {
+    "source_id": "C-S038",
+    "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+    "url": "https://arxiv.org/abs/1701.06538",
+    "publisher": "Shazeer e colaboradores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Roteador treinado ativa um subconjunto de especialistas dentro da rede.",
+    "limitations": "Conteúdo consultado na data indicada; não houve reprodução experimental do trabalho.",
+    "web_ref": "turn16view3"
+  },
+  {
+    "source_id": "V3B-S016",
+    "title": "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity — full text",
+    "url": "https://arxiv.org/html/2101.03961v3",
+    "publisher": "Autores / arXiv",
+    "source_type": "paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2021-01-11",
+    "supports": "Roteamento esparso, capacidade de especialistas e balanceamento de carga.",
+    "limitations": "Uma variante de MoE; não universalizar política de overflow ou ganhos de treinamento.",
+    "web_ref": "turn171view2"
+  },
+  {
+    "source_id": "V4B-S020",
+    "title": "Qwen3: Think Deeper, Act Faster",
+    "url": "https://qwenlm.github.io/blog/qwen3/",
+    "publisher": "Qwen Team / Alibaba",
+    "source_type": "model_release",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-04-29",
+    "supports": "Modelos densos e MoE, cabeças Q/KV, distinção entre parâmetros totais/ativos e modos de raciocínio.",
+    "limitations": "Resultados de modelo publicado não verificam checkpoint local nem equivalência geral com modelos de fronteira.",
+    "web_ref": "turn227view3"
+  },
+  {
+    "source_id": "V4B-S003",
+    "title": "Scaling LLM Inference: Innovations in Tensor Parallelism, Context Parallelism, and Expert Parallelism",
+    "url": "https://engineering.fb.com/2025/10/17/ai-research/scaling-llm-inference-innovations-tensor-parallelism-context-parallelism-expert-parallelism/",
+    "publisher": "Meta Engineering",
+    "source_type": "engineering_blog",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-10-17",
+    "supports": "Técnicas implementadas para inferência de aplicações Meta AI; separação de métricas de prefill e decode e paralelismos.",
+    "limitations": "Escala e interconexão da Meta não representam servidor do usuário; não confirma cada técnica em todo modelo.",
+    "web_ref": "turn205view1"
+  },
+  {
+    "source_id": "V4D-S014",
+    "title": "Profiling Data in DeepSeek Infra",
+    "url": "https://github.com/deepseek-ai/profile-data/blob/main/README.md",
+    "publisher": "DeepSeek-AI",
+    "source_type": "official_repository",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": null,
+    "supports": "Descrição de sobreposição computação/comunicação, RDMA e configurações ligadas ao deployment online V3/R1.",
+    "limitations": "Os traces publicados simulam roteamento MoE perfeitamente balanceado; não são reprodução integral de tráfego real. EP32/EP128 deste perfil e EP32/EP320 do relatório são contextos/revisões diferentes.",
+    "web_ref": "turn311view0"
+  },
+  {
+    "source_id": "V4D-S015",
+    "title": "DeepSeek-V3 Technical Report — v2",
+    "url": "https://arxiv.org/html/2412.19437v2",
+    "publisher": "DeepSeek-AI",
+    "source_type": "research_paper",
+    "verification": "opened",
+    "checked_on": "2026-11-05",
+    "published_on": "2025-02-18",
+    "supports": "Seção 3.4 descreve deployment de inferência com prefill/decode separados, TP/EP e redundância de especialistas guiada por carga.",
+    "limitations": "Modelo de 671B totais, fora de 3–30B. Custos publicados de treino não incluem toda a pesquisa. MTP especulativo avaliado não prova ativação em todo serviço online.",
+    "web_ref": "turn312view2"
+  }
+]

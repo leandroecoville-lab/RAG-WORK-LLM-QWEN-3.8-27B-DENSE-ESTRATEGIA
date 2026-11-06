@@ -1,0 +1,69 @@
+{
+  "coverage": {
+    "entry_id": "T197",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 1,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 1,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "JSON Schema Validation",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4B-C014",
+      "company": "MLC / XGrammar",
+      "organization_class": "technology_operator",
+      "system": "XGrammar structural tags",
+      "title": "Composição de regiões estruturadas e chamadas de ferramenta",
+      "evidence_level": "operational_product",
+      "observed_use": "A biblioteca documenta construção de gramáticas com regiões livres, delimitadores e envelopes de ferramentas específicos de famílias de modelos.",
+      "technical_mechanism": "Tags estruturais e matcher restringem continuações; modos de tool choice controlam se chamadas são permitidas, exigidas ou forçadas.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4B-S015",
+        "V4B-S016"
+      ],
+      "mappings": [
+        {
+          "entry_id": "R025",
+          "match": "exact",
+          "rationale": "É a implementação XGrammar documentada."
+        },
+        {
+          "entry_id": "T196",
+          "match": "exact",
+          "rationale": "Restringe geração por gramática durante decoding."
+        },
+        {
+          "entry_id": "T197",
+          "match": "family",
+          "rationale": "JSON Schema pode alimentar a gramática, mas isso não substitui validação posterior independente."
+        },
+        {
+          "entry_id": "T089",
+          "match": "family",
+          "rationale": "Delimitadores e estados de término participam do formato, sem decidir sucesso da tarefa."
+        }
+      ],
+      "small_model_transfer": "Proposta: usar com um pequeno modelo que domine a tarefa e validar argumentos contra regras de negócio antes de executar ferramentas.",
+      "limits": "Disponibilidade de biblioteca não é deployment comprovado. Gramática correta não prova fatos, autorização, intenção ou sucesso da ação.",
+      "canonical_case_id": "V4B-C014",
+      "deployment_domain": "llm_framework",
+      "mapping": {
+        "entry_id": "T197",
+        "match": "family",
+        "rationale": "JSON Schema pode alimentar a gramática, mas isso não substitui validação posterior independente."
+      }
+    }
+  ]
+}

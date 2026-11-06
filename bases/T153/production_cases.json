@@ -1,0 +1,167 @@
+{
+  "coverage": {
+    "entry_id": "T153",
+    "requested_bigtech_production_examples": 10,
+    "verified_bigtech_production_exact": 0,
+    "verified_bigtech_llm_production_exact": 0,
+    "verified_ai_lab_production_exact": 0,
+    "verified_other_operator_production_exact": 0,
+    "unique_cases_associated": 2,
+    "operational_product_cases": 1,
+    "research_cases": 0,
+    "family_or_analogy_cases": 2,
+    "missing_to_target": 10,
+    "target_met": false,
+    "strict_case_ids": [],
+    "gap_meaning": "Não comprovado nesta curadoria; não significa inexistência mundial. A contagem do mecanismo pode incluir infraestrutura sem LLM; o subconjunto LLM é exposto separadamente.",
+    "name": "Output Streaming com interrupção",
+    "scope": "inventario"
+  },
+  "cases": [
+    {
+      "case_id": "V4D-C002",
+      "company": "Microsoft",
+      "system": "Windows Click to Do / Phi Silica NPU",
+      "title": "Ações de texto locais em Copilot+ PCs",
+      "evidence_level": "production_documented",
+      "observed_use": "Click to Do integra Phi Silica para operações locais sobre texto selecionado.",
+      "technical_mechanism": "A configuração publicada em dezembro/2024 descreve quantização e prefill em blocos. A documentação NPU consultada em novembro/2026 descreve draft speculative decoding. São evidências de versões diferentes do ecossistema Phi; não se afirma uma única pilha simultânea e imutável.",
+      "event_date": null,
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4D-S003",
+        "V4D-S004",
+        "V4D-S009"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T079",
+          "match": "exact",
+          "rationale": "Runtime NPU documenta especulação; não generalizar para GPU ou revisão histórica. Escopo: capacidade NPU da documentação consultada em 2026-11-05; não é inferida para GPU ou para a versão histórica de 2024."
+        },
+        {
+          "entry_id": "T132",
+          "match": "exact",
+          "rationale": "A API explica o modelo de rascunho menor verificado pelo principal na NPU. Escopo: capacidade NPU da documentação consultada em 2026-11-05; não é inferida para GPU ou para a versão histórica de 2024."
+        },
+        {
+          "entry_id": "T085",
+          "match": "exact",
+          "rationale": "Pilha Phi Silica publicada descreve quantização de pesos, com ressalva de revisão. Escopo: configuração técnica publicada em 2024-12-06, não confirmação de todos os detalhes da API atual."
+        },
+        {
+          "entry_id": "T125",
+          "match": "exact",
+          "rationale": "Implementação publicada usa GPTQ em pesos rotacionados; não afirmar que todo backend atual é idêntico. Escopo: configuração técnica publicada em 2024-12-06, não confirmação de todos os detalhes da API atual."
+        },
+        {
+          "entry_id": "T094",
+          "match": "exact",
+          "rationale": "Processamento do prompt em blocos de 64 preserva histórico KV na configuração publicada. Escopo: configuração técnica publicada em 2024-12-06, não confirmação de todos os detalhes da API atual."
+        },
+        {
+          "entry_id": "T153",
+          "match": "family",
+          "rationale": "Entrega incremental documentada; a fonte consultada não especifica propagação de interrupção/cancelamento ao processamento."
+        },
+        {
+          "entry_id": "T006",
+          "match": "family",
+          "rationale": "Compressão de prompt é recurso do runtime NPU; a fonte não prova sua ativação em toda ação Click to Do."
+        }
+      ],
+      "small_model_transfer": "Proposta: medir um executor local de reescrita/extração sobre seleções curtas, com contratos por backend, e adotar fallback somente após avaliar os erros reais.",
+      "limits": "Não fixa porte exato entre revisões nem prova fronteira. A documentação de novembro de 2026 anuncia mudança futura para Aion Instruct; todos os mecanismos têm escopo de versão/hardware. Fonte de 2024 não sustenta KV quadrático. Nenhuma destas configurações foi executada neste pacote.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4D-C002",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T153",
+        "match": "family",
+        "rationale": "Entrega incremental documentada; a fonte consultada não especifica propagação de interrupção/cancelamento ao processamento."
+      }
+    },
+    {
+      "case_id": "V4D-C006",
+      "company": "Microsoft",
+      "system": "Learning Zone / Kahoot! / Phi Silica LoRA",
+      "title": "Especialização, saída validada e avaliação humana",
+      "evidence_level": "operational_product",
+      "observed_use": "Equipe descreveu a preparação de um recurso educacional com Phi Silica especializado e avaliação do resultado; a capability Learning Zone consta na documentação atual.",
+      "technical_mechanism": "Dados do professor filtrados alimentam LoRA; prompt reforça formato; guardrails precedem exibição; avaliação por agentes é confrontada com humanos.",
+      "event_date": "2025-07-31",
+      "checked_on": "2026-11-05",
+      "source_ids": [
+        "V4D-S012",
+        "V4D-S013"
+      ],
+      "mappings": [
+        {
+          "entry_id": "T177",
+          "match": "exact",
+          "rationale": "Ajuste para uma tarefa educacional delimitada."
+        },
+        {
+          "entry_id": "T178",
+          "match": "exact",
+          "rationale": "Professor gera exemplos para treinar o modelo menor."
+        },
+        {
+          "entry_id": "T182",
+          "match": "exact",
+          "rationale": "Especialização realizada por adaptadores LoRA."
+        },
+        {
+          "entry_id": "T183",
+          "match": "family",
+          "rationale": "Treino contra modelo quantizado não comprova todos os detalhes do método QLoRA original."
+        },
+        {
+          "entry_id": "T155",
+          "match": "exact",
+          "rationale": "Especialização permitiu reduzir o prompt mantendo instrução explícita de formato."
+        },
+        {
+          "entry_id": "T180",
+          "match": "exact",
+          "rationale": "Parte das instruções foi absorvida no adaptador; avaliação continua necessária."
+        },
+        {
+          "entry_id": "T193",
+          "match": "exact",
+          "rationale": "Restrições verificáveis rejeitam saídas inadequadas antes da exibição."
+        },
+        {
+          "entry_id": "T186",
+          "match": "exact",
+          "rationale": "Reviewer/Critic/Meta-Reviewer apoiam avaliação offline."
+        },
+        {
+          "entry_id": "T200",
+          "match": "family",
+          "rationale": "Estudo humano confronta os julgamentos, mas não demonstra independência causal de todo erro."
+        },
+        {
+          "entry_id": "T153",
+          "match": "family",
+          "rationale": "Entrega incremental documentada; a fonte consultada não especifica propagação de interrupção/cancelamento ao processamento."
+        },
+        {
+          "entry_id": "T172",
+          "match": "family",
+          "rationale": "Guardas controlam liberação de perguntas; não se documenta o ciclo completo do controlador, com pressão reversa e encerramento."
+        }
+      ],
+      "small_model_transfer": "Proposta: especializar um aluno 3–30B em objetos de negócio e remover do caminho online o professor caro; medir rejeição, acerto factual, custo por resultado aceito e divergência do juiz.",
+      "limits": "Não chamar o experimento de 2025 de rollout geral: o artigo previa public preview. A ficha atual documenta o produto, sem comprovar escala nem identidade integral da configuração. Melhoria relativa de preferência não é multiplicação de inteligência ou precisão geral.",
+      "organization_class": "bigtech",
+      "canonical_case_id": "V4D-C006",
+      "deployment_domain": "llm_application",
+      "mapping": {
+        "entry_id": "T153",
+        "match": "family",
+        "rationale": "Entrega incremental documentada; a fonte consultada não especifica propagação de interrupção/cancelamento ao processamento."
+      }
+    }
+  ]
+}
